@@ -18,7 +18,7 @@ require (
 	github.com/hashicorp/go-getter v1.7.5
 	github.com/hashicorp/hcl v1.0.0
 	github.com/hashicorp/hcl/v2 v2.20.0
-	github.com/hashicorp/terraform-json v0.21.0
+	github.com/hashicorp/terraform-json v0.22.1
 	github.com/johnfercher/maroto v1.0.0
 	github.com/open-policy-agent/opa v0.49.2
 	github.com/pkg/errors v0.9.1
@@ -30,7 +30,7 @@ require (
 	github.com/tdewolff/minify/v2 v2.20.33
 	github.com/tidwall/gjson v1.16.0
 	github.com/yargevad/filepathx v1.0.0
-	github.com/zclconf/go-cty v1.14.3
+	github.com/zclconf/go-cty v1.14.4
 	golang.org/x/net v0.26.0
 	golang.org/x/text v0.16.0
 	golang.org/x/tools v0.22.0
