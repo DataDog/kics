@@ -1,4 +1,10 @@
 /*
+ * Unless explicitly stated otherwise all files in this repository are licensed under the Apache-2.0 License.
+ *
+ * This product includes software developed at Datadog (https://www.datadoghq.com)  Copyright 2024 Datadog, Inc.
+ */
+
+/*
 Package kuberneter implements calls to the Kubernetes API in order to scan the runtime information of the resources
 */
 package kuberneter
@@ -12,7 +18,6 @@ import (
 
 	"github.com/pkg/errors"
 	"github.com/rs/zerolog/log"
-	"k8s.io/apimachinery/pkg/api/meta"
 	"sigs.k8s.io/controller-runtime/pkg/client"
 )
 
@@ -112,17 +117,17 @@ func (info *k8sAPICall) listKinds(apiVersion string, kinds map[string]interface{
 			log.Info().Msgf("failed to list %s: %s", apiVersion, err)
 		}
 
-		objList, err := meta.ExtractList(resource)
-		if err != nil {
-			log.Info().Msgf("failed to extract list: %s", err)
-		}
+		// // objList, err := meta.ExtractList(resource)
+		// // if err != nil {
+		// // 	log.Info().Msgf("failed to extract list: %s", err)
+		// // }
 
-		log.Info().Msgf("KICS found %d %s(s) in %s from %s", len(objList), kind, getNamespace(namespace), apiVersion)
+		// log.Info().Msgf("KICS found %d %s(s) in %s from %s", len(objList), kind, getNamespace(namespace), apiVersion)
 
-		for i := range objList {
-			item := objList[i]
-			sb = info.getResource(item, apiVersion, kind, sb)
-		}
+		// for i := range objList {
+		// 	item := objList[i]
+		// 	sb = info.getResource(item, apiVersion, kind, sb)
+		// }
 
 		if sb.String() != "" {
 			info.saveK8sResources(kind, sb.String(), apiVersionFolder)

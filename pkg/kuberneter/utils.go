@@ -1,3 +1,8 @@
+/*
+ * Unless explicitly stated otherwise all files in this repository are licensed under the Apache-2.0 License.
+ *
+ * This product includes software developed at Datadog (https://www.datadoghq.com)  Copyright 2024 Datadog, Inc.
+ */
 package kuberneter
 
 import (
@@ -23,9 +28,6 @@ import (
 	rbacv1 "k8s.io/api/rbac/v1"
 	rbacv1alpha1 "k8s.io/api/rbac/v1alpha1"
 	rbacv1beta1 "k8s.io/api/rbac/v1beta1"
-	"k8s.io/apimachinery/pkg/runtime"
-	"k8s.io/apimachinery/pkg/runtime/serializer/json"
-	"k8s.io/client-go/kubernetes/scheme"
 )
 
 // K8sAPIOptions saves all the necessary information to list the resources
@@ -56,21 +58,21 @@ func (info *k8sAPICall) saveK8sResources(kind, k8sResourcesContent, apiVersionFo
 	}
 }
 
-func (info *k8sAPICall) getResource(o runtime.Object, apiVersion, kind string, sb *strings.Builder) *strings.Builder {
-	e := json.NewYAMLSerializer(json.DefaultMetaFactory, scheme.Scheme, scheme.Scheme)
+// func (info *k8sAPICall) getResource(o runtime.Object, apiVersion, kind string, sb *strings.Builder) *strings.Builder {
+// 	e := json.NewYAMLSerializer(json.DefaultMetaFactory, scheme.Scheme, scheme.Scheme)
 
-	begin := fmt.Sprintf("\n---\napiVersion: %s\nkind: %s\n", getAPIVersion(apiVersion), kind)
+// 	begin := fmt.Sprintf("\n---\napiVersion: %s\nkind: %s\n", getAPIVersion(apiVersion), kind)
 
-	if _, err := sb.WriteString(begin); err != nil {
-		log.Err(err).Msg("failed to write")
-	}
+// 	if _, err := sb.WriteString(begin); err != nil {
+// 		log.Err(err).Msg("failed to write")
+// 	}
 
-	if err := e.Encode(o, sb); err != nil {
-		log.Err(err).Msg("failed to encode")
-	}
+// 	if err := e.Encode(o, sb); err != nil {
+// 		log.Err(err).Msg("failed to encode")
+// 	}
 
-	return sb
-}
+// 	return sb
+// }
 
 func extractK8sAPIOptions(path string, supportedKinds *supportedKinds) (*K8sAPIOptions, error) {
 	pathInfo := strings.Split(path, ":")

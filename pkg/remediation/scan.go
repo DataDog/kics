@@ -1,3 +1,8 @@
+/*
+ * Unless explicitly stated otherwise all files in this repository are licensed under the Apache-2.0 License.
+ *
+ * This product includes software developed at Datadog (https://www.datadoghq.com)  Copyright 2024 Datadog, Inc.
+ */
 package remediation
 
 import (
@@ -189,21 +194,17 @@ func runQuery(r *runQueryInfo) []model.Vulnerability {
 
 func initScan(queryID string) (*engine.Inspector, error) {
 	scanParams := &scan.Parameters{
-		CloudProvider:       []string{""},
-		DisableFullDesc:     false,
-		ExcludeCategories:   []string{},
-		ExcludeQueries:      []string{},
-		ExcludeResults:      []string{},
-		ExcludeSeverities:   []string{},
-		ExcludePaths:        []string{},
-		ExperimentalQueries: false,
-		IncludeQueries:      []string{},
-		InputData:           "",
-		OutputName:          "kics-result",
-		OutputPath:          "/Users/bahar.shah/go/src/github.com/DataDog/innovation-week-cloud-to-tf",
-		Path: []string{
-			"/Users/bahar.shah/go/src/github.com/DataDog/innovation-week-cloud-to-tf/terraform/ami.tf",
-		},
+		CloudProvider:               []string{""},
+		DisableFullDesc:             false,
+		ExcludeCategories:           []string{},
+		ExcludeQueries:              []string{},
+		ExcludeResults:              []string{},
+		ExcludeSeverities:           []string{},
+		ExcludePaths:                []string{},
+		ExperimentalQueries:         false,
+		IncludeQueries:              []string{},
+		InputData:                   "",
+		OutputName:                  "kics-result",
 		PayloadPath:                 "",
 		PreviewLines:                3,
 		QueriesPath:                 []string{"./assets/queries"},

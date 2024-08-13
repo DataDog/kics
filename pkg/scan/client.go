@@ -1,3 +1,8 @@
+/*
+ * Unless explicitly stated otherwise all files in this repository are licensed under the Apache-2.0 License.
+ *
+ * This product includes software developed at Datadog (https://www.datadoghq.com)  Copyright 2024 Datadog, Inc.
+ */
 package scan
 
 import (
@@ -7,6 +12,7 @@ import (
 	"github.com/Checkmarx/kics/internal/storage"
 	"github.com/Checkmarx/kics/internal/tracker"
 	"github.com/Checkmarx/kics/pkg/descriptions"
+	"github.com/Checkmarx/kics/pkg/model"
 	consolePrinter "github.com/Checkmarx/kics/pkg/printer"
 	"github.com/Checkmarx/kics/pkg/progress"
 	"github.com/rs/zerolog/log"
@@ -50,6 +56,7 @@ type Parameters struct {
 	UseOldSeverities            bool
 	MaxResolverDepth            int
 	KicsComputeNewSimID         bool
+	SCIInfo                     model.SCIInfo
 }
 
 // Client represents a scan client
@@ -61,6 +68,44 @@ type Client struct {
 	ExcludeResultsMap map[string]bool
 	Printer           *consolePrinter.Printer
 	ProBarBuilder     *progress.PbBuilder
+}
+
+func GetDefaultParameters() *Parameters {
+	return &Parameters{
+		CloudProvider:               []string{""},
+		DisableFullDesc:             false,
+		ExcludeCategories:           []string{},
+		ExcludeQueries:              []string{},
+		ExcludeResults:              []string{},
+		ExcludeSeverities:           []string{},
+		ExcludePaths:                []string{},
+		ExperimentalQueries:         false,
+		IncludeQueries:              []string{},
+		InputData:                   "",
+		OutputName:                  "kics-result",
+		PayloadPath:                 "",
+		PreviewLines:                3,
+		QueriesPath:                 []string{"../../../assets/queries"},
+		LibrariesPath:               "../../../assets/libraries",
+		ReportFormats:               []string{"sarif"},
+		Platform:                    []string{""},
+		TerraformVarsPath:           "",
+		QueryExecTimeout:            60,
+		LineInfoPayload:             false,
+		DisableSecrets:              true,
+		SecretsRegexesPath:          "",
+		ChangedDefaultQueryPath:     false,
+		ChangedDefaultLibrariesPath: false,
+		ScanID:                      "console",
+		BillOfMaterials:             false,
+		ExcludeGitIgnore:            false,
+		OpenAPIResolveReferences:    false,
+		ParallelScanFlag:            0,
+		MaxFileSizeFlag:             5,
+		UseOldSeverities:            false,
+		MaxResolverDepth:            15,
+		ExcludePlatform:             []string{""},
+	}
 }
 
 // NewClient initializes the client with all the required parameters

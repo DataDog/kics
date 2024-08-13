@@ -1,8 +1,15 @@
+/*
+ * Unless explicitly stated otherwise all files in this repository are licensed under the Apache-2.0 License.
+ *
+ * This product includes software developed at Datadog (https://www.datadoghq.com)  Copyright 2024 Datadog, Inc.
+ */
 package model
 
 import (
 	"encoding/csv"
 	"encoding/json"
+	"errors"
+	"fmt"
 	"os"
 	"path/filepath"
 	"strings"
@@ -117,11 +124,16 @@ type sarifRule struct {
 }
 
 type sarifDriver struct {
-	ToolName     string      `json:"name"`
-	ToolVersion  string      `json:"version"`
-	ToolFullName string      `json:"fullName"`
-	ToolURI      string      `json:"informationUri"`
-	Rules        []sarifRule `json:"rules"`
+	ToolName     string              `json:"name"`
+	ToolVersion  string              `json:"version"`
+	ToolFullName string              `json:"fullName"`
+	ToolURI      string              `json:"informationUri"`
+	Properties   sarifToolProperties `json:"properties"`
+	Rules        []sarifRule         `json:"rules"`
+}
+
+type sarifToolProperties struct {
+	Tags []string `json:"tags"`
 }
 
 type sarifTool struct {
@@ -156,11 +168,23 @@ type sarifLocation struct {
 }
 
 type sarifResult struct {
-	ResultRuleID    string          `json:"ruleId"`
-	ResultRuleIndex int             `json:"ruleIndex"`
-	ResultKind      string          `json:"kind"`
-	ResultMessage   sarifMessage    `json:"message"`
-	ResultLocations []sarifLocation `json:"locations"`
+	ResultRuleID        string                   `json:"ruleId"`
+	ResultRuleIndex     int                      `json:"ruleIndex"`
+	ResultKind          string                   `json:"kind"`
+	ResultMessage       sarifMessage             `json:"message"`
+	ResultLocations     []sarifLocation          `json:"locations"`
+	PartialFingerprints SarifPartialFingerprints `json:"partialFingerprints,omitempty"`
+	ResultLevel         string                   `json:"level"`
+}
+
+type SarifPartialFingerprints struct {
+	Sha                string `json:"SHA,omitempty"`
+	DatadogFingerprint string `json:"DATADOG_FINGERPRINT,omitempty"`
+	CommitSha          string `json:"commitSha,omitempty"`
+	Email              string `json:"email,omitempty"`
+	Author             string `json:"author,omitempty"`
+	Date               string `json:"date,omitempty"`
+	CommitMessage      string `json:"commitMessage,omitempty"`
 }
 
 type taxonomyDefinitions struct {
@@ -203,6 +227,7 @@ type SarifReport interface {
 	BuildSarifIssue(issue *model.QueryResult) string
 	RebuildTaxonomies(cwes []string, guids map[string]string)
 	GetGUIDFromRelationships(idx int, cweID string) string
+	AddTags(summary *model.Summary, diffAware *model.DiffAware) error
 }
 
 type sarifReport struct {
@@ -211,10 +236,19 @@ type sarifReport struct {
 	Runs         []SarifRun `json:"runs"`
 }
 
+const (
+	diffAwareConfigDigestTag = "DATADOG_DIFF_AWARE_CONFIG_DIGEST:%s"
+	diffAwareEnabledTag      = "DATADOG_DIFF_AWARE_ENABLED:%v"
+	diffAwareBaseShaTag      = "DATADOG_DIFF_AWARE_BASE_SHA:%s"
+	diffAwareFileTag         = "DATADOG_DIFF_AWARE_FILE:%s"
+	executionTimeTag         = "DATADOG_EXECUTION_TIME_SECS:%v"
+	ruleTypeProperty         = "DATADOG_RULE_TYPE:IAC_SCANNING"
+)
+
 func initSarifTool() sarifTool {
 	return sarifTool{
 		Driver: sarifDriver{
-			ToolName:     "KICS",
+			ToolName:     "Datadog IaC Scanning",
 			ToolVersion:  constants.Version,
 			ToolFullName: constants.Fullname,
 			ToolURI:      constants.URL,
@@ -528,7 +562,9 @@ func (sr *sarifReport) buildSarifRule(queryMetadata *ruleMetadata, cisMetadata r
 			DefaultConfiguration: sarifConfiguration{Level: severityLevelEquivalence[queryMetadata.severity]},
 			Relationships:        relationships,
 			HelpURI:              helpURI,
-			RuleProperties:       nil,
+			RuleProperties: sarifProperties{
+				"tags": []string{ruleTypeProperty},
+			},
 		}
 		if cisMetadata.id != "" {
 			rule.RuleFullDescription.Text = cisMetadata.descriptionText
@@ -607,15 +643,16 @@ func (sr *sarifReport) BuildSarifIssue(issue *model.QueryResult) string {
 				Line: resourceLocation.ResourceStart.Line,
 				Col:  resourceLocation.ResourceStart.Col,
 			}
-			endLocation := sarifResourceLocation{
-				Line: resourceLocation.ResourceEnd.Line,
-				Col:  resourceLocation.ResourceEnd.Col,
-			}
+			// endLocation := sarifResourceLocation{
+			// 	Line: resourceLocation.ResourceEnd.Line,
+			// 	Col:  resourceLocation.ResourceEnd.Col,
+			// }
 			absoluteFilePath := strings.ReplaceAll(issue.Files[idx].FileName, "../", "")
 			result := sarifResult{
 				ResultRuleID:    issue.QueryID,
 				ResultRuleIndex: ruleIndex,
 				ResultKind:      kind,
+				ResultLevel:     severityLevelEquivalence[issue.Severity],
 				ResultMessage: sarifMessage{
 					Text: issue.Files[idx].KeyActualValue,
 					MessageProperties: sarifProperties{
@@ -630,7 +667,7 @@ func (sr *sarifReport) BuildSarifIssue(issue *model.QueryResult) string {
 								StartLine:   line,
 								EndLine:     line + 1,
 								StartColumn: startLocation.Col,
-								EndColumn:   endLocation.Col,
+								EndColumn:   0,
 								// StartResource: startLocation,
 								// EndResource:   endLocation,
 							},
@@ -643,4 +680,39 @@ func (sr *sarifReport) BuildSarifIssue(issue *model.QueryResult) string {
 		return issue.CWE
 	}
 	return ""
+}
+
+func (sr *sarifReport) AddTags(summary *model.Summary, diffAware *model.DiffAware) error {
+	if len(sr.Runs) != 1 {
+		return errors.New("sarifReport must have exactly one run")
+	}
+	tagsToAppend := []string{}
+	executionTimeTag := GetScanDurationTag(*summary)
+	diffAwareEnabledTag := GetDiffAwareEnabledTag(*diffAware)
+
+	tagsToAppend = append(tagsToAppend, executionTimeTag, diffAwareEnabledTag)
+
+	if diffAware.Enabled {
+		if diffAware.BaseSha == "" || diffAware.Files == "" || diffAware.ConfigDigest == "" {
+			return fmt.Errorf(
+				"diffAware enabled but base sha %s, files %s, config digest %s provided",
+				diffAware.BaseSha,
+				diffAware.Files,
+				diffAware.ConfigDigest,
+			)
+		}
+		diffAwareConfigDigestTag := GetDiffAwareConfigDigestTag(*diffAware)
+		diffAwareBaseShaTag := GetDiffAwareBaseShaTag(*diffAware)
+		diffAwareFileTag := GetDiffAwareFilesTag(*diffAware)
+
+		tagsToAppend = append(tagsToAppend, diffAwareConfigDigestTag, diffAwareBaseShaTag, diffAwareFileTag)
+	}
+
+	sarifToolProperties := &sr.Runs[0].Tool.Driver.Properties
+	sarifToolProperties.Tags = append(
+		sarifToolProperties.Tags,
+		tagsToAppend...,
+	)
+
+	return nil
 }
