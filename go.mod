@@ -35,9 +35,9 @@ require (
 	golang.org/x/text v0.16.0
 	golang.org/x/tools v0.22.0
 	gopkg.in/yaml.v3 v3.0.1
-	helm.sh/helm/v3 v3.14.4
-	k8s.io/api v0.29.7
-	k8s.io/client-go v0.29.7
+	helm.sh/helm/v3 v3.15.3
+	k8s.io/api v0.30.0
+	k8s.io/client-go v0.30.0
 	mvdan.cc/sh/v3 v3.8.0
 	sigs.k8s.io/controller-runtime v0.17.5
 )
@@ -56,6 +56,7 @@ require (
 	github.com/bgentry/go-netrc v0.0.0-20140422174119-9fd32a8b3d3d // indirect
 	github.com/boombuler/barcode v1.0.1 // indirect
 	github.com/davecgh/go-spew v1.1.2-0.20180830191138-d8f796af33cc // indirect
+	github.com/dustin/go-humanize v1.0.1 // indirect
 	github.com/emicklei/go-restful/v3 v3.11.0 // indirect
 	github.com/evanphx/json-patch/v5 v5.9.0 // indirect
 	github.com/fatih/color v1.15.0 // indirect
@@ -127,8 +128,7 @@ require (
 	google.golang.org/protobuf v1.33.0 // indirect
 	gopkg.in/inf.v0 v0.9.1 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
-	k8s.io/apiextensions-apiserver v0.29.7 // indirect
-	k8s.io/apimachinery v0.29.7 // indirect
+	k8s.io/apimachinery v0.30.0 // indirect
 	k8s.io/klog/v2 v2.120.1 // indirect
 	k8s.io/kube-openapi v0.0.0-20240228011516-70dd3763d340 // indirect
 	k8s.io/utils v0.0.0-20230726121419-3b25d923346b // indirect
