@@ -32,3 +32,7 @@ func GetDiffAwareBaseShaTag(diffAware model.DiffAware) string {
 func GetDiffAwareFilesTag(diffAware model.DiffAware) string {
 	return fmt.Sprintf(diffAwareFileTag, diffAware.Files)
 }
+
+func GetCategoryTag(category string) string {
+	return fmt.Sprintf(categoryTag, category)
+}

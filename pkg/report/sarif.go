@@ -35,7 +35,7 @@ func PrintSarifReport(path, filename string, body interface{}, sciInfo model.SCI
 			}
 		}
 		sarifReport.AddTags(&summary, &sciInfo.DiffAware)
-		sarifReport.RebuildTaxonomies(auxID, auxGUID)
+		// sarifReport.RebuildTaxonomies(auxID, auxGUID)
 		body = sarifReport
 	}
 
