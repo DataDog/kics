@@ -219,7 +219,7 @@ type sarifTaxonomy struct {
 type SarifRun struct {
 	Tool       sarifTool       `json:"tool"`
 	Results    []sarifResult   `json:"results"`
-	Taxonomies []sarifTaxonomy `json:"taxonomies"`
+	Taxonomies []sarifTaxonomy `json:"taxonomies,omitempty"`
 }
 
 // SarifReport represents a usable sarif report reference
@@ -243,6 +243,7 @@ const (
 	diffAwareFileTag         = "DATADOG_DIFF_AWARE_FILE:%s"
 	executionTimeTag         = "DATADOG_EXECUTION_TIME_SECS:%v"
 	ruleTypeProperty         = "DATADOG_RULE_TYPE:IAC_SCANNING"
+	categoryTag              = "DATADOG_CATEGORY:%s"
 )
 
 func initSarifTool() sarifTool {
@@ -360,9 +361,9 @@ func initSarifTaxonomies() []sarifTaxonomy {
 func initSarifRun() []SarifRun {
 	return []SarifRun{
 		{
-			Tool:       initSarifTool(),
-			Results:    make([]sarifResult, 0),
-			Taxonomies: initSarifTaxonomies(),
+			Tool:    initSarifTool(),
+			Results: make([]sarifResult, 0),
+			// Taxonomies: initSarifTaxonomies(),
 		},
 	}
 }
@@ -538,21 +539,23 @@ func (sr *sarifReport) buildSarifRule(queryMetadata *ruleMetadata, cisMetadata r
 			helpURI = queryMetadata.queryURI
 		}
 
-		target := sr.buildSarifCategory(queryMetadata.queryCategory)
-		cwe := sr.buildCweCategory(queryMetadata.queryCwe)
+		// target := sr.buildSarifCategory(queryMetadata.queryCategory)
+		// cwe := sr.buildCweCategory(queryMetadata.queryCwe)
 
-		var relationships []sarifRelationship
+		categoryTag := GetCategoryTag(queryMetadata.queryCategory)
 
-		if cwe.ReferenceID != "" {
-			relationships = []sarifRelationship{
-				{Relationship: target},
-				{Relationship: cwe},
-			}
-		} else {
-			relationships = []sarifRelationship{
-				{Relationship: target},
-			}
-		}
+		// var relationships []sarifRelationship
+
+		// if cwe.ReferenceID != "" {
+		// 	relationships = []sarifRelationship{
+		// 		{Relationship: target},
+		// 		{Relationship: cwe},
+		// 	}
+		// } else {
+		// 	relationships = []sarifRelationship{
+		// 		{Relationship: target},
+		// 	}
+		// }
 
 		rule := sarifRule{
 			RuleID:               queryMetadata.queryID,
@@ -560,10 +563,10 @@ func (sr *sarifReport) buildSarifRule(queryMetadata *ruleMetadata, cisMetadata r
 			RuleShortDescription: sarifMessage{Text: queryMetadata.queryName},
 			RuleFullDescription:  sarifMessage{Text: queryMetadata.queryDescription},
 			DefaultConfiguration: sarifConfiguration{Level: severityLevelEquivalence[queryMetadata.severity]},
-			Relationships:        relationships,
-			HelpURI:              helpURI,
+			// Relationships:        relationships,
+			HelpURI: helpURI,
 			RuleProperties: sarifProperties{
-				"tags": []string{ruleTypeProperty},
+				"tags": []string{ruleTypeProperty, categoryTag},
 			},
 		}
 		if cisMetadata.id != "" {
@@ -643,6 +646,10 @@ func (sr *sarifReport) BuildSarifIssue(issue *model.QueryResult) string {
 				Line: resourceLocation.ResourceStart.Line,
 				Col:  resourceLocation.ResourceStart.Col,
 			}
+
+			if startLocation.Col < 1 {
+				startLocation.Col = 1
+			}
 			// endLocation := sarifResourceLocation{
 			// 	Line: resourceLocation.ResourceEnd.Line,
 			// 	Col:  resourceLocation.ResourceEnd.Col,
@@ -667,7 +674,7 @@ func (sr *sarifReport) BuildSarifIssue(issue *model.QueryResult) string {
 								StartLine:   line,
 								EndLine:     line + 1,
 								StartColumn: startLocation.Col,
-								EndColumn:   0,
+								EndColumn:   1,
 								// StartResource: startLocation,
 								// EndResource:   endLocation,
 							},
