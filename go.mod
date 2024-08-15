@@ -3,7 +3,7 @@ module github.com/Checkmarx/kics
 go 1.22.5
 
 require (
-	github.com/BurntSushi/toml v1.3.2
+	github.com/BurntSushi/toml v1.4.0
 	github.com/agnivade/levenshtein v1.1.1
 	github.com/antlr4-go/antlr/v4 v4.13.0
 	github.com/aws/aws-sdk-go-v2 v1.30.3
