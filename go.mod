@@ -9,7 +9,7 @@ require (
 	github.com/aws/aws-sdk-go-v2 v1.30.3
 	github.com/bigkevmcd/go-configparser v0.0.0-20240808124832-fc81059ea0bd
 	github.com/cheggaaa/pb/v3 v3.0.8
-	github.com/emicklei/proto v1.10.0
+	github.com/emicklei/proto v1.13.2
 	github.com/gocarina/gocsv v0.0.0-20230616125104-99d496ca653d
 	github.com/golang/mock v1.6.0
 	github.com/google/pprof v0.0.0-20240424215950-a892ee059fd6
