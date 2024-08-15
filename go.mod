@@ -23,7 +23,7 @@ require (
 	github.com/open-policy-agent/opa v0.49.2
 	github.com/pkg/errors v0.9.1
 	github.com/relex/aini v1.5.0
-	github.com/rs/zerolog v1.27.0
+	github.com/rs/zerolog v1.33.0
 	github.com/sabhiram/go-gitignore v0.0.0-20210923224102-525f6e181f06
 	github.com/spf13/pflag v1.0.5
 	github.com/stretchr/testify v1.9.0
