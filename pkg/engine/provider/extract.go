@@ -81,13 +81,10 @@ func GetSources(source []string) (ExtractedPath, error) {
 	}
 	for _, path := range source {
 		destination := filepath.Join(os.TempDir(), "kics-extract-"+utils.NextRandom())
-
+		log.Info().Msgf("Extracting %s to %s", path, destination)
 		mode := getter.ClientModeAny
 
-		pwd, err := os.Getwd()
-		if err != nil {
-			log.Fatal().Msgf("Error getting wd: %s", err)
-		}
+		pwd := "external/com_github_checkmarx_kics/"
 
 		opts := []getter.ClientOption{}
 
