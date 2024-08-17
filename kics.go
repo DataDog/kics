@@ -14,7 +14,7 @@ import (
 	"github.com/Checkmarx/kics/pkg/scan"
 )
 
-//go:embed assets/queries
+//go:embed all:assets/queries
 var queryDir embed.FS
 
 func ExecuteKICSScan(inputPaths []string, outputPath string, sciInfo model.SCIInfo) {
