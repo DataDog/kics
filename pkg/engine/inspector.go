@@ -8,6 +8,7 @@ package engine
 import (
 	"bytes"
 	"context"
+	"embed"
 	"encoding/json"
 	"fmt"
 
@@ -127,11 +128,12 @@ func NewInspector(
 	useOldSeverities bool,
 	needsLog bool,
 	numWorkers int,
-	kicsComputeNewSimID bool) (*Inspector, error) {
+	kicsComputeNewSimID bool,
+	queryDir embed.FS) (*Inspector, error) {
 	log.Debug().Msg("engine.NewInspector()")
 
 	metrics.Metric.Start("get_queries")
-	queries, err := queriesSource.GetQueries(queryParameters)
+	queries, err := queriesSource.GetQueries(queryParameters, queryDir)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to get queries")
 	}

@@ -140,9 +140,9 @@ func (c *Client) postScan(scanResults *Results) error {
 	logger := consolePrinter.NewLogger(nil)
 	consolePrinter.PrintScanDuration(&logger, time.Since(c.ScanStartTime))
 
-	printVersionCheck(c.Printer, &summary)
+	// printVersionCheck(c.Printer, &summary)
 
-	contributionAppeal(c.Printer, c.ScanParams.QueriesPath)
+	// contributionAppeal(c.Printer, c.ScanParams.QueriesPath)
 
 	exitCode := consoleHelpers.ResultsExitCode(&summary)
 	if consoleHelpers.ShowError("results") && exitCode != 0 {

@@ -7,6 +7,7 @@ package scan
 
 import (
 	"context"
+	"embed"
 	"time"
 
 	"github.com/Checkmarx/kics/internal/storage"
@@ -57,6 +58,7 @@ type Parameters struct {
 	MaxResolverDepth            int
 	KicsComputeNewSimID         bool
 	SCIInfo                     model.SCIInfo
+	QueryDir                    embed.FS
 }
 
 // Client represents a scan client
@@ -85,8 +87,8 @@ func GetDefaultParameters() *Parameters {
 		OutputName:                  "kics-result",
 		PayloadPath:                 "",
 		PreviewLines:                3,
-		QueriesPath:                 []string{"../../../assets/queries"},
-		LibrariesPath:               "../../../assets/libraries",
+		QueriesPath:                 []string{"./assets/queries"},
+		LibrariesPath:               "./assets/libraries",
 		ReportFormats:               []string{"sarif"},
 		Platform:                    []string{""},
 		TerraformVarsPath:           "",

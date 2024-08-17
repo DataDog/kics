@@ -6,6 +6,7 @@
 package source
 
 import (
+	"embed"
 	"os"
 	"path/filepath"
 	"reflect"
@@ -59,7 +60,7 @@ func BenchmarkFilesystemSource_GetQueries(b *testing.B) {
 					ExcludeQueries: ExcludeQueries{ByIDs: []string{}, ByCategories: []string{}},
 					InputDataPath:  "",
 				}
-				if _, err := s.GetQueries(&filter); err != nil {
+				if _, err := s.GetQueries(&filter, embed.FS{}); err != nil {
 					b.Errorf("Error: %s", err)
 				}
 			}
@@ -176,7 +177,7 @@ func TestFilesystemSource_GetQueriesWithExclude(t *testing.T) { //nolint
 				ExcludeQueries: ExcludeQueries{ByIDs: tt.excludeIDs, ByCategories: tt.excludeCategory, BySeverities: tt.excludeSeverities},
 				InputDataPath:  "",
 			}
-			got, err := s.GetQueries(&filter)
+			got, err := s.GetQueries(&filter, embed.FS{})
 			if (err != nil) != tt.wantErr {
 				t.Errorf("FilesystemSource.GetQueries() error = %v, wantErr %v", err, tt.wantErr)
 				return
@@ -275,7 +276,7 @@ func TestFilesystemSource_GetQueriesWithInclude(t *testing.T) {
 				InputDataPath: "",
 			}
 
-			got, err := s.GetQueries(&filter)
+			got, err := s.GetQueries(&filter, embed.FS{})
 			if (err != nil) != tt.wantErr {
 				t.Errorf("FilesystemSource.GetQueries() error = %v, wantErr %v", err, tt.wantErr)
 				return
@@ -561,7 +562,7 @@ func TestFilesystemSource_GetQueries(t *testing.T) {
 				ExperimentalQueries: tt.fields.ExperimentalQueries,
 				InputDataPath:       "",
 			}
-			got, err := s.GetQueries(&filter)
+			got, err := s.GetQueries(&filter, embed.FS{})
 			if (err != nil) != tt.wantErr {
 				t.Errorf("FilesystemSource.GetQueries() error = %v, wantErr %v", err, tt.wantErr)
 				return

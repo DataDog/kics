@@ -6,8 +6,10 @@
 package source
 
 import (
+	"embed"
 	"encoding/json"
 	"fmt"
+	"io/fs"
 	"os"
 	"path"
 	"path/filepath"
@@ -251,13 +253,14 @@ func checkQueryExclude(metadata map[string]interface{}, queryParameters *QueryIn
 
 // GetQueries walks a given filesource path returns all queries found in an array of
 // QueryMetadata struct
-func (s *FilesystemSource) GetQueries(queryParameters *QueryInspectorParameters) ([]model.QueryMetadata, error) {
-	queryDirs, err := s.iterateSources()
+func (s *FilesystemSource) GetQueries(queryParameters *QueryInspectorParameters, queryDir embed.FS) ([]model.QueryMetadata, error) {
+	// queryDirs, err := s.iterateSources()
+	dirs, err := s.iterateEmbeddedQuerySources(queryDir)
 	if err != nil {
 		return nil, err
 	}
 
-	queries := s.iterateQueryDirs(queryDirs, queryParameters)
+	queries := s.iterateQueryDirs(dirs, queryParameters)
 
 	return queries, nil
 }
@@ -289,6 +292,36 @@ func (s *FilesystemSource) iterateSources() ([]string, error) {
 		if err != nil {
 			return nil, errors.Wrap(err, "failed to get query Source")
 		}
+	}
+
+	return queryDirs, nil
+}
+
+// iterate over the embedded query directory and read the respective queries
+func (s *FilesystemSource) iterateEmbeddedQuerySources(queryDir embed.FS) ([]string, error) {
+	queryDirs := make([]string, 0)
+	err := fs.WalkDir(queryDir, ".", func(p string, d fs.DirEntry, err error) error {
+		if err != nil {
+			return err
+		}
+
+		if d.IsDir() || d.Name() != QueryFileName {
+			return nil
+		}
+
+		querypathDir := filepath.Dir(p)
+
+		if err == nil {
+			queryDirs = append(queryDirs, querypathDir)
+		} else if err != nil {
+			return errors.Wrap(err, "Failed to get query relative path")
+		}
+
+		return nil
+	})
+
+	if err != nil {
+		log.Error().Msgf("failed to get query Source: %v", err)
 	}
 
 	return queryDirs, nil

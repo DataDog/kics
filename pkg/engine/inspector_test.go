@@ -7,6 +7,7 @@ package engine
 
 import (
 	"context"
+	"embed"
 	"fmt"
 	"io"
 	"os"
@@ -239,7 +240,10 @@ func TestNewInspector(t *testing.T) { //nolint
 				tt.args.queryExecTimeout,
 				tt.args.useOldSeverities,
 				tt.args.needsLog,
-				tt.args.numWorkers, tt.args.kicsComputeNewSimID)
+				tt.args.numWorkers,
+				tt.args.kicsComputeNewSimID,
+				embed.FS{},
+			)
 
 			if (err != nil) != tt.wantErr {
 				t.Errorf("NewInspector() error: got = %v,\n wantErr = %v", err, tt.wantErr)
@@ -562,6 +566,7 @@ func newInspectorInstance(t *testing.T, queryPath []string, kicsComputeNewSimID 
 		map[string]bool{}, 60,
 		false, true, 1,
 		kicsComputeNewSimID,
+		embed.FS{},
 	)
 	require.NoError(t, err)
 	return ins
@@ -572,10 +577,10 @@ type mockSource struct {
 	Types  []string
 }
 
-func (m *mockSource) GetQueries(queryFilter *source.QueryInspectorParameters) ([]model.QueryMetadata, error) {
+func (m *mockSource) GetQueries(queryFilter *source.QueryInspectorParameters, queryDir embed.FS) ([]model.QueryMetadata, error) {
 	sources := source.NewFilesystemSource(m.Source, []string{""}, []string{""}, filepath.FromSlash("./assets/libraries"), true)
 
-	return sources.GetQueries(queryFilter)
+	return sources.GetQueries(queryFilter, queryDir)
 }
 
 func (m *mockSource) GetQueryLibrary(platform string) (source.RegoLibraries, error) {

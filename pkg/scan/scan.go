@@ -82,12 +82,13 @@ func (c *Client) initScan(ctx context.Context) (*executeScanParameters, error) {
 		true,
 		c.ScanParams.ParallelScanFlag,
 		c.ScanParams.KicsComputeNewSimID,
+		c.ScanParams.QueryDir,
 	)
 	if err != nil {
 		return nil, err
 	}
 
-	log.Info().Msgf("Preparing to inspect query source %v", querySource)
+	log.Info().Msgf("Finshed inspect query source %v", querySource)
 
 	// secretsRegexRulesContent, err := getSecretsRegexRules(c.ScanParams.SecretsRegexesPath)
 	// if err != nil {

@@ -155,6 +155,7 @@ func GetFullPath(partialPath string) (string, error) {
 	fullPath := filepath.Join(executableDirPath, partialPath)
 	if _, err := os.Stat(fullPath); os.IsNotExist(err) {
 		currentWorkDir, err := os.Getwd()
+		log.Debug().Msgf("currentWorkDir: %s", currentWorkDir)
 		if err != nil {
 			return "", err
 		}
@@ -162,6 +163,7 @@ func GetFullPath(partialPath string) (string, error) {
 		if idx != -1 {
 			currentWorkDir = currentWorkDir[:strings.LastIndex(currentWorkDir, "kics")] + "kics"
 		}
+		log.Debug().Msgf("currentWorkDir now: %s", currentWorkDir)
 		fullPath = filepath.Join(currentWorkDir, partialPath)
 		if _, err := os.Stat(fullPath); os.IsNotExist(err) {
 			return "", err
