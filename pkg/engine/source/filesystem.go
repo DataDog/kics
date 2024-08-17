@@ -255,6 +255,7 @@ func checkQueryExclude(metadata map[string]interface{}, queryParameters *QueryIn
 // QueryMetadata struct
 func (s *FilesystemSource) GetQueries(queryParameters *QueryInspectorParameters, queryDir embed.FS) ([]model.QueryMetadata, error) {
 	// queryDirs, err := s.iterateSources()
+	log.Info().Msg("iterateEmbeddedQuerySources()")
 	dirs, err := s.iterateEmbeddedQuerySources(queryDir)
 	if err != nil {
 		return nil, err
@@ -311,11 +312,8 @@ func (s *FilesystemSource) iterateEmbeddedQuerySources(queryDir embed.FS) ([]str
 
 		querypathDir := filepath.Dir(p)
 
-		if err == nil {
-			queryDirs = append(queryDirs, querypathDir)
-		} else if err != nil {
-			return errors.Wrap(err, "Failed to get query relative path")
-		}
+		log.Info().Msgf("Query path: %s", querypathDir)
+		queryDirs = append(queryDirs, querypathDir)
 
 		return nil
 	})
@@ -332,6 +330,7 @@ func (s *FilesystemSource) iterateQueryDirs(queryDirs []string, queryParameters 
 	queries := make([]model.QueryMetadata, 0, len(queryDirs))
 
 	for _, queryDir := range queryDirs {
+		log.Info().Msg("reading query")
 		query, errRQ := ReadQuery(queryDir)
 		if errRQ != nil {
 			// sentryReport.ReportSentry(&sentryReport.Report{
