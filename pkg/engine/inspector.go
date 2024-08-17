@@ -129,7 +129,9 @@ func NewInspector(
 	needsLog bool,
 	numWorkers int,
 	kicsComputeNewSimID bool,
-	queryDir embed.FS) (*Inspector, error) {
+	queryDir embed.FS,
+	libraryFile string,
+) (*Inspector, error) {
 	log.Debug().Msg("engine.NewInspector()")
 
 	metrics.Metric.Start("get_queries")
@@ -148,7 +150,16 @@ func NewInspector(
 		// }, true)
 		return nil, errors.Wrap(err, "failed to get library")
 	}
-	platformLibraries := getPlatformLibraries(queriesSource, queries)
+	// platformLibraries := getPlatformLibraries(queriesSource, queries)
+
+	regoLibrary := source.RegoLibraries{
+		LibraryCode:      string(libraryFile),
+		LibraryInputData: "",
+	}
+
+	platformLibraries := map[string]source.RegoLibraries{
+		"terraform": regoLibrary,
+	}
 
 	queryLoader := prepareQueries(queries, commonLibrary, platformLibraries, tracker)
 

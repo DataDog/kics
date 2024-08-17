@@ -14,14 +14,12 @@ import (
 	"github.com/Checkmarx/kics/pkg/scan"
 )
 
-//go:embed all:assets/queries
-var queryDir embed.FS
-
-func ExecuteKICSScan(inputPaths []string, outputPath string, sciInfo model.SCIInfo) {
+func ExecuteKICSScan(inputPaths []string, outputPath string, sciInfo model.SCIInfo, queryDir embed.FS, libraryFile string) {
 	params := scan.GetDefaultParameters()
 	params.Path = inputPaths
 	params.OutputPath = outputPath
 	params.SCIInfo = sciInfo
 	params.QueryDir = queryDir
+	params.LibraryFile = libraryFile
 	console.ExecuteScan(params)
 }

@@ -59,6 +59,7 @@ type Parameters struct {
 	KicsComputeNewSimID         bool
 	SCIInfo                     model.SCIInfo
 	QueryDir                    embed.FS
+	LibraryFile                 string
 }
 
 // Client represents a scan client
