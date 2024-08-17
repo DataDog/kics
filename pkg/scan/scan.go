@@ -49,7 +49,7 @@ func (c *Client) initScan(ctx context.Context) (*executeScanParameters, error) {
 
 	extractedPaths, err := c.prepareAndAnalyzePaths(ctx)
 	if err != nil {
-		log.Err(err)
+		log.Err(err).Msgf("failed to prepare and analyze paths %v", err)
 		return nil, err
 	}
 
@@ -69,6 +69,8 @@ func (c *Client) initScan(ctx context.Context) (*executeScanParameters, error) {
 
 	queryFilter := c.createQueryFilter()
 
+	log.Info().Msgf("Preparing to inspect query source %v", querySource)
+
 	inspector, err := engine.NewInspector(ctx,
 		querySource,
 		engine.DefaultVulnerabilityBuilder,
@@ -84,6 +86,8 @@ func (c *Client) initScan(ctx context.Context) (*executeScanParameters, error) {
 	if err != nil {
 		return nil, err
 	}
+
+	log.Info().Msgf("Preparing to inspect query source %v", querySource)
 
 	// secretsRegexRulesContent, err := getSecretsRegexRules(c.ScanParams.SecretsRegexesPath)
 	// if err != nil {
@@ -115,7 +119,7 @@ func (c *Client) initScan(ctx context.Context) (*executeScanParameters, error) {
 		querySource,
 	)
 	if err != nil {
-		log.Err(err)
+		log.Err(err).Msgf("failed to create service %v", err)
 		return nil, err
 	}
 
@@ -134,7 +138,7 @@ func (c *Client) executeScan(ctx context.Context) (*Results, error) {
 	executeScanParameters, err := c.initScan(ctx)
 
 	if err != nil {
-		log.Err(err)
+		log.Err(err).Msgf("failed to execute scan %v", err)
 		return nil, err
 	}
 
@@ -142,25 +146,31 @@ func (c *Client) executeScan(ctx context.Context) (*Results, error) {
 		return nil, nil
 	}
 
+	log.Info().Msg("Scan initialized")
+
+	log.Info().Msgf("Preparing to scan")
+
 	if err = scanner.PrepareAndScan(
 		ctx,
 		c.ScanParams.ScanID, c.ScanParams.OpenAPIResolveReferences, c.ScanParams.MaxResolverDepth, *c.ProBarBuilder,
 		executeScanParameters.services); err != nil {
-		log.Err(err)
+		log.Err(err).Msgf("failed to prepare and scan %v", err)
 		return nil, err
 	}
+
+	log.Info().Msg("Scan finished")
 
 	failedQueries := executeScanParameters.inspector.GetFailedQueries()
 
 	results, err := c.Storage.GetVulnerabilities(ctx, c.ScanParams.ScanID)
 	if err != nil {
-		log.Err(err)
+		log.Err(err).Msgf("failed to get vulns %v", err)
 		return nil, err
 	}
 
 	files, err := c.Storage.GetFiles(ctx, c.ScanParams.ScanID)
 	if err != nil {
-		log.Err(err)
+		log.Err(err).Msgf("failed to get files %v", err)
 		return nil, err
 	}
 

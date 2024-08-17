@@ -131,7 +131,7 @@ func (c *Client) postScan(scanResults *Results) error {
 		scanResults.Files.Combine(c.ScanParams.LineInfoPayload),
 		c.Printer,
 		*c.ProBarBuilder); err != nil {
-		log.Err(err)
+		log.Err(err).Msgf("failed to resolve outputs %v", err)
 		return err
 	}
 

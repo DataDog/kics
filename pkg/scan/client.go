@@ -112,7 +112,7 @@ func GetDefaultParameters() *Parameters {
 func NewClient(params *Parameters, proBarBuilder *progress.PbBuilder, customPrint *consolePrinter.Printer) (*Client, error) {
 	t, err := tracker.NewTracker(params.PreviewLines)
 	if err != nil {
-		log.Err(err)
+		log.Err(err).Msgf("failed to create tracker %v", err)
 		return nil, err
 	}
 
@@ -139,7 +139,7 @@ func (c *Client) PerformScan(ctx context.Context) error {
 	scanResults, err := c.executeScan(ctx)
 
 	if err != nil {
-		log.Err(err)
+		log.Err(err).Msgf("failed to execute scan %v", err)
 		return err
 	}
 

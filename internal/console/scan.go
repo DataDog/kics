@@ -23,14 +23,14 @@ func ExecuteScan(scanParams *scan.Parameters) error {
 	client, err := scan.NewClient(scanParams, console.ProBarBuilder, console.Printer)
 
 	if err != nil {
-		log.Err(err)
+		log.Err(err).Msgf("failed to create scan client%v", err)
 		return err
 	}
 
 	err = client.PerformScan(ctx)
 
 	if err != nil {
-		log.Err(err)
+		log.Err(err).Msgf("failed to perform scan: %v", err)
 		return err
 	}
 

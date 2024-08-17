@@ -120,6 +120,8 @@ func GetSources(source []string) (ExtractedPath, error) {
 		extrStruct.Path = append(extrStruct.Path, tempDst)
 	}
 
+	log.Info().Msgf("Got sources %v", extrStruct)
+
 	return extrStruct, nil
 }
 

@@ -49,7 +49,7 @@ func scanTmpFile(
 	files, err := getPayload(tmpFile, remediated, openAPIResolveReferences, maxResolverDepth)
 
 	if err != nil {
-		log.Err(err)
+		log.Err(err).Msg("didn't get payload")
 		return []model.Vulnerability{}, err
 	}
 
@@ -64,11 +64,13 @@ func scanTmpFile(
 	inspector, err := initScan(queryID)
 
 	if err != nil {
-		log.Err(err)
+		log.Err(err).Msg("")
 		return []model.Vulnerability{}, err
 	}
+	log.Info().Msg("Scan initialized")
 
 	// load query
+	log.Info().Msg("Loading query")
 	query, err := loadQuery(inspector, queryID)
 
 	if err != nil {
@@ -261,6 +263,8 @@ func initScan(queryID string) (*engine.Inspector, error) {
 	}
 
 	ctx := context.Background()
+
+	log.Info().Msgf("Preparing to inspect query source %v", queriesSource)
 
 	inspector, err := engine.NewInspector(ctx,
 		queriesSource,

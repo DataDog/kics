@@ -184,7 +184,7 @@ func analyzePaths(a *analyzer.Analyzer) (model.AnalyzedPaths, error) {
 
 	pathsFlag, err = analyzer.Analyze(a)
 	if err != nil {
-		log.Err(err)
+		log.Err(err).Msgf("failed analyze %v", err)
 		return model.AnalyzedPaths{}, err
 	}
 

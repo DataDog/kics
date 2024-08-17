@@ -75,6 +75,7 @@ func (s *Service) PrepareSources(ctx context.Context,
 	defer wg.Done()
 	// CxSAST query under review
 	data := make([]byte, mbConst)
+	log.Info().Msgf("Getting sources")
 	if err := s.SourceProvider.GetSources(
 		ctx,
 		s.Parser.SupportedExtensions(),
