@@ -7,7 +7,6 @@
 package kics
 
 import (
-	"embed"
 	"log"
 	"path/filepath"
 
@@ -16,13 +15,11 @@ import (
 	"github.com/Checkmarx/kics/pkg/scan"
 )
 
-func ExecuteKICSScan(inputPaths []string, outputPath string, sciInfo model.SCIInfo, queryDir embed.FS, libraryFile string) string {
+func ExecuteKICSScan(inputPaths []string, outputPath string, sciInfo model.SCIInfo) string {
 	params := scan.GetDefaultParameters()
 	params.Path = inputPaths
 	params.OutputPath = outputPath
 	params.SCIInfo = sciInfo
-	params.QueryDir = queryDir
-	params.LibraryFile = libraryFile
 	err := console.ExecuteScan(params)
 	if err != nil {
 		log.Fatalf("failed to execute scan: %v", err)

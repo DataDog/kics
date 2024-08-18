@@ -2,7 +2,6 @@ package scanner
 
 import (
 	"context"
-	"embed"
 	"path/filepath"
 	"testing"
 	"time"
@@ -98,7 +97,7 @@ func createServices(types, cloudProviders []string) (serviceSlice, *storage.Memo
 
 	inspector, err := engine.NewInspector(context.Background(),
 		querySource, engine.DefaultVulnerabilityBuilder,
-		t, &source.QueryInspectorParameters{}, map[string]bool{}, 60, true, true, 1, false, embed.FS{}, "")
+		t, &source.QueryInspectorParameters{}, map[string]bool{}, 60, true, true, 1, false)
 	if err != nil {
 		return nil, nil, err
 	}

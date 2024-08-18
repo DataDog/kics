@@ -7,7 +7,6 @@
 package source
 
 import (
-	"embed"
 	"encoding/json"
 	"strings"
 
@@ -48,8 +47,8 @@ type RegoLibraries struct {
 // GetQueries gets all queries from a QueryMetadata list
 // GetQueryLibrary gets a library of rego functions given a plataform's name
 type QueriesSource interface {
-	GetQueries(querySelection *QueryInspectorParameters, queryDir embed.FS) ([]model.QueryMetadata, error)
-	GetQueryLibrary(baseDir embed.FS, platform string) (RegoLibraries, error)
+	GetQueries(querySelection *QueryInspectorParameters) ([]model.QueryMetadata, error)
+	GetQueryLibrary(platform string) (RegoLibraries, error)
 }
 
 // mergeLibraries return custom library and embedded library merged, overwriting embedded library functions, if necessary

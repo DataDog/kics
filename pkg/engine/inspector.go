@@ -8,7 +8,6 @@ package engine
 import (
 	"bytes"
 	"context"
-	"embed"
 	"encoding/json"
 	"fmt"
 
@@ -129,41 +128,33 @@ func NewInspector(
 	needsLog bool,
 	numWorkers int,
 	kicsComputeNewSimID bool,
-	queryDir embed.FS,
-	libraryFile string,
 ) (*Inspector, error) {
 	log.Debug().Msg("engine.NewInspector()")
 
 	metrics.Metric.Start("get_queries")
-	queries, err := queriesSource.GetQueries(queryParameters, queryDir)
+	queries, err := queriesSource.GetQueries(queryParameters)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to get queries")
 	}
 
 	log.Info().Msgf("Queries loaded: %d", len(queries))
 
-	commonLibrary, err := queriesSource.GetQueryLibrary(queryDir, "common")
+	commonLibrary, err := queriesSource.GetQueryLibrary("common")
 	if err != nil {
-		// sentryReport.ReportSentry(&sentryReport.Report{
-		// 	Message:  fmt.Sprintf("Inspector failed to get library for %s platform", "common"),
-		// 	Err:      err,
-		// 	Location: "func NewInspector()",
-		// 	Platform: "common",
-		// }, true)
 		return nil, errors.Wrap(err, "failed to get library")
 	}
-	// platformLibraries := getPlatformLibraries(queriesSource, queries, queryDir)
+	platformLibraries := getPlatformLibraries(queriesSource, queries)
 
-	regoLibrary := source.RegoLibraries{
-		LibraryCode:      string(libraryFile),
-		LibraryInputData: "",
-	}
+	// regoLibrary := source.RegoLibraries{
+	// 	LibraryCode:      string(libraryFile),
+	// 	LibraryInputData: "",
+	// }
 
-	platformLibraries := map[string]source.RegoLibraries{
-		"terraform": regoLibrary,
-	}
+	// platformLibraries := map[string]source.RegoLibraries{
+	// 	"terraform": regoLibrary,
+	// }
 
-	log.Info().Msgf("Platform libraries loaded: %d, %d", len(platformLibraries), len(libraryFile))
+	// log.Info().Msgf("Platform libraries loaded: %d, %d", len(platformLibraries), len(libraryFile))
 
 	queryLoader := prepareQueries(queries, commonLibrary, platformLibraries, tracker)
 
@@ -200,21 +191,16 @@ func NewInspector(
 	}, nil
 }
 
-func getPlatformLibraries(queriesSource source.QueriesSource, queries []model.QueryMetadata, baseDir embed.FS) map[string]source.RegoLibraries {
+func getPlatformLibraries(queriesSource source.QueriesSource, queries []model.QueryMetadata) map[string]source.RegoLibraries {
 	supportedPlatforms := make(map[string]string)
 	for _, query := range queries {
 		supportedPlatforms[query.Platform] = ""
 	}
 	platformLibraries := make(map[string]source.RegoLibraries)
 	for platform := range supportedPlatforms {
-		platformLibrary, errLoadingPlatformLib := queriesSource.GetQueryLibrary(baseDir, platform)
+		platformLibrary, errLoadingPlatformLib := queriesSource.GetQueryLibrary(platform)
 		if errLoadingPlatformLib != nil {
-			// sentryReport.ReportSentry(&sentryReport.Report{
-			// 	Message:  fmt.Sprintf("Inspector failed to get library for %s platform", platform),
-			// 	Err:      errLoadingPlatformLib,
-			// 	Location: "func getPlatformLibraries()",
-			// 	Platform: platform,
-			// }, true)
+			log.Err(errLoadingPlatformLib).Msgf("error loading platform library: %s", errLoadingPlatformLib)
 			continue
 		}
 		platformLibraries[platform] = platformLibrary

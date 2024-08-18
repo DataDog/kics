@@ -80,8 +80,6 @@ func (d DetectKindLine) DetectLine(file *model.FileMetadata, searchKey string,
 			}
 		}
 
-		fmt.Printf("Resource block starts at line %d and ends at line %d\n", resourceStart, resourceEnd)
-
 		return model.VulnerabilityLines{
 			Line:         line,
 			VulnLines:    detector.GetAdjacentVulnLines(det.CurrentLine, outputLines, lines),
