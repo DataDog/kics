@@ -161,16 +161,19 @@ func (s *FilesystemSource) GetQueryLibrary(baseDir embed.FS, platform string) (R
 	if errMergeLibs != nil {
 		return RegoLibraries{}, errMergeLibs
 	}
+	log.Info().Msgf("Have merged library code: %s", mergedLibraryCode)
 
 	embeddedLibraryData, errGettingEmbeddedLibraryCode := assets.GetEmbeddedLibraryData(strings.ToLower(platform))
 	if errGettingEmbeddedLibraryCode != nil {
 		log.Debug().Msgf("Could not open embedded library data for %s platform", platform)
 		embeddedLibraryData = emptyInputData
 	}
+	log.Info().Msgf("Have embedded library data: %s", embeddedLibraryData)
 	mergedLibraryData, errMergingLibraryData := MergeInputData(embeddedLibraryData, customLibraryData)
 	if errMergingLibraryData != nil {
 		log.Debug().Msgf("Could not merge library data for %s platform", platform)
 	}
+	log.Info().Msgf("Have merged library data: %s", mergedLibraryData)
 
 	regoLibrary := RegoLibraries{
 		LibraryCode:      mergedLibraryCode,
@@ -446,6 +449,7 @@ func ReadQuery(baseDir embed.FS, queryDir string) (model.QueryMetadata, error) {
 	if err != nil {
 		return model.QueryMetadata{}, errors.Wrapf(err, "failed to read query %s", path.Base(queryDir))
 	}
+	log.Info().Msgf("Query found in file %s: %s", filepath.Clean(path.Join(queryDir, QueryFileName)), string(queryContent))
 
 	metadata, err := ReadMetadata(baseDir, queryDir)
 	if err != nil {
@@ -455,8 +459,10 @@ func ReadQuery(baseDir embed.FS, queryDir string) (model.QueryMetadata, error) {
 	if valid, missingField := validateMetadata(metadata); !valid {
 		return model.QueryMetadata{}, fmt.Errorf("failed to read metadata field: %s", missingField)
 	}
+	log.Info().Msg("Validated metadata")
 
 	platform := getPlatform(metadata["platform"].(string))
+	log.Info().Msgf("Platform found: %s", platform)
 
 	inputData, errInputData := readInputData(baseDir, filepath.Join(queryDir, "data.json"))
 	if errInputData != nil {
@@ -498,6 +504,7 @@ func ReadMetadata(baseDir embed.FS, queryDir string) (map[string]interface{}, er
 		log.Error().Msgf("Queries provider can't read metadata, query=%s: %v", path.Base(queryDir), err)
 		return nil, err
 	}
+	log.Info().Msgf("Metadata found in file: %s", string(f))
 
 	var metadata map[string]interface{}
 	if err := json.Unmarshal(f, &metadata); err != nil {
@@ -510,6 +517,7 @@ func ReadMetadata(baseDir embed.FS, queryDir string) (map[string]interface{}, er
 
 		return nil, err
 	}
+	log.Info().Msgf("JSON Metadata found in file: %v", metadata)
 
 	return metadata, nil
 }
@@ -558,5 +566,6 @@ func readInputData(baseDir embed.FS, inputDataPath string) (string, error) {
 		}
 		return emptyInputData, errors.Wrapf(err, "failed to read query input data %s", path.Base(inputDataPath))
 	}
+	log.Info().Msgf("Input data found in file: %s", string(inputData))
 	return string(inputData), nil
 }
