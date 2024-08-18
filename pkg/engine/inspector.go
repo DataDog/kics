@@ -252,8 +252,6 @@ func (c *Inspector) performInspection(ctx context.Context, scanID string, files 
 			continue
 		}
 
-		queryStartTime := time.Now()
-
 		query := &PreparedQuery{
 			OpaQuery: *queryOpa,
 			Metadata: queries[job.queryID],
