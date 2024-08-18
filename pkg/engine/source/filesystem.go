@@ -9,6 +9,7 @@ import (
 	"embed"
 	"encoding/json"
 	"fmt"
+	"io/fs"
 	"os"
 	"path"
 	"path/filepath"
@@ -304,29 +305,24 @@ func (s *FilesystemSource) iterateSources() ([]string, error) {
 	return queryDirs, nil
 }
 
-func getAllFilenames(fs *embed.FS, path string) (out []string, err error) {
-	if len(path) == 0 {
-		path = "."
-	}
-	entries, err := fs.ReadDir(path)
+func getAllFilenames(embedfs *embed.FS, path string) ([]string, error) {
+	var out []string
+	err := fs.WalkDir(embedfs, ".", func(path string, d fs.DirEntry, err error) error {
+		if err != nil {
+			log.Info().Msgf("Failed to walk directory: %s", path)
+			return err
+		}
+		fmt.Printf("path=%q, isDir=%v\n", path, d.IsDir())
+		if !d.IsDir() && d.Name() == QueryFileName {
+			out = append(out, path)
+		}
+		return nil
+	})
 	if err != nil {
+		log.Error().Msgf("Failed to walk directory: %s: %v", path, err)
 		return nil, err
 	}
-	for _, entry := range entries {
-		fp := filepath.Join(path, entry.Name())
-		if entry.IsDir() {
-			res, err := getAllFilenames(fs, fp)
-			if err != nil {
-				return nil, err
-			}
-			out = append(out, res...)
-			continue
-		}
-		if entry.Name() == QueryFileName {
-			out = append(out, fp)
-		}
-	}
-	return
+	return out, nil
 }
 
 // iterate over the embedded query directory and read the respective queries
@@ -370,7 +366,7 @@ func (s *FilesystemSource) iterateQueryDirs(baseDir embed.FS, queryDirs []string
 	queries := make([]model.QueryMetadata, 0, len(queryDirs))
 
 	for _, queryDir := range queryDirs {
-		log.Info().Msg("reading query")
+		log.Info().Msgf("reading query: %v : %s", baseDir, queryDir)
 		query, errRQ := ReadQuery(baseDir, queryDir)
 		if errRQ != nil {
 			// sentryReport.ReportSentry(&sentryReport.Report{
@@ -444,6 +440,7 @@ func validateMetadata(metadata map[string]interface{}) (exist bool, field string
 // ReadQuery reads query's files for a given path and returns a QueryMetadata struct with it's
 // content
 func ReadQuery(baseDir embed.FS, queryDir string) (model.QueryMetadata, error) {
+	log.Info().Msgf("Trying to read query in file %s", filepath.Clean(path.Join(queryDir, QueryFileName)))
 	queryContent, err := baseDir.ReadFile(filepath.Clean(path.Join(queryDir, QueryFileName)))
 	// queryContent, err := os.ReadFile(filepath.Clean(path.Join(queryDir, QueryFileName)))
 	if err != nil {
