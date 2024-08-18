@@ -7,7 +7,6 @@ package scan
 
 import (
 	"context"
-	"embed"
 	"time"
 
 	"github.com/Checkmarx/kics/internal/storage"
@@ -58,8 +57,6 @@ type Parameters struct {
 	MaxResolverDepth            int
 	KicsComputeNewSimID         bool
 	SCIInfo                     model.SCIInfo
-	QueryDir                    embed.FS
-	LibraryFile                 string
 }
 
 // Client represents a scan client

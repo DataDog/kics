@@ -5,7 +5,6 @@
 package mock
 
 import (
-	"embed"
 	reflect "reflect"
 
 	source "github.com/Checkmarx/kics/pkg/engine/source"
@@ -37,7 +36,7 @@ func (m *MockQueriesSource) EXPECT() *MockQueriesSourceMockRecorder {
 }
 
 // GetQueries mocks base method.
-func (m *MockQueriesSource) GetQueries(querySelection *source.QueryInspectorParameters, baseDir embed.FS) ([]model.QueryMetadata, error) {
+func (m *MockQueriesSource) GetQueries(querySelection *source.QueryInspectorParameters) ([]model.QueryMetadata, error) {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "GetQueries", querySelection)
 	ret0, _ := ret[0].([]model.QueryMetadata)
@@ -52,7 +51,7 @@ func (mr *MockQueriesSourceMockRecorder) GetQueries(querySelection interface{}) 
 }
 
 // GetQueryLibrary mocks base method.
-func (m *MockQueriesSource) GetQueryLibrary(baseDir embed.FS, platform string) (source.RegoLibraries, error) {
+func (m *MockQueriesSource) GetQueryLibrary(platform string) (source.RegoLibraries, error) {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "GetQueryLibrary", platform)
 	ret0, _ := ret[0].(source.RegoLibraries)

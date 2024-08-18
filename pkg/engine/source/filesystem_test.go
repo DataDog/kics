@@ -6,7 +6,6 @@
 package source
 
 import (
-	"embed"
 	"os"
 	"path/filepath"
 	"reflect"
@@ -60,7 +59,7 @@ func BenchmarkFilesystemSource_GetQueries(b *testing.B) {
 					ExcludeQueries: ExcludeQueries{ByIDs: []string{}, ByCategories: []string{}},
 					InputDataPath:  "",
 				}
-				if _, err := s.GetQueries(&filter, embed.FS{}); err != nil {
+				if _, err := s.GetQueries(&filter); err != nil {
 					b.Errorf("Error: %s", err)
 				}
 			}
@@ -177,7 +176,7 @@ func TestFilesystemSource_GetQueriesWithExclude(t *testing.T) { //nolint
 				ExcludeQueries: ExcludeQueries{ByIDs: tt.excludeIDs, ByCategories: tt.excludeCategory, BySeverities: tt.excludeSeverities},
 				InputDataPath:  "",
 			}
-			got, err := s.GetQueries(&filter, embed.FS{})
+			got, err := s.GetQueries(&filter)
 			if (err != nil) != tt.wantErr {
 				t.Errorf("FilesystemSource.GetQueries() error = %v, wantErr %v", err, tt.wantErr)
 				return
@@ -276,7 +275,7 @@ func TestFilesystemSource_GetQueriesWithInclude(t *testing.T) {
 				InputDataPath: "",
 			}
 
-			got, err := s.GetQueries(&filter, embed.FS{})
+			got, err := s.GetQueries(&filter)
 			if (err != nil) != tt.wantErr {
 				t.Errorf("FilesystemSource.GetQueries() error = %v, wantErr %v", err, tt.wantErr)
 				return
@@ -407,7 +406,7 @@ func TestFilesystemSource_GetQueryLibrary(t *testing.T) { //nolint
 		t.Run(tt.name, func(t *testing.T) {
 			s := NewFilesystemSource(tt.fields.Source, []string{""}, []string{""}, tt.fields.Library, tt.fields.ExperimentalQueries)
 
-			got, err := s.GetQueryLibrary(embed.FS{}, tt.args.platform)
+			got, err := s.GetQueryLibrary(tt.args.platform)
 			if (err != nil) != tt.wantErr {
 				t.Errorf("FilesystemSource.GetQueryLibrary() error = %v, wantErr %v", err, tt.wantErr)
 				return
@@ -562,7 +561,7 @@ func TestFilesystemSource_GetQueries(t *testing.T) {
 				ExperimentalQueries: tt.fields.ExperimentalQueries,
 				InputDataPath:       "",
 			}
-			got, err := s.GetQueries(&filter, embed.FS{})
+			got, err := s.GetQueries(&filter)
 			if (err != nil) != tt.wantErr {
 				t.Errorf("FilesystemSource.GetQueries() error = %v, wantErr %v", err, tt.wantErr)
 				return
@@ -602,7 +601,7 @@ func Test_ReadMetadata(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got, err := ReadMetadata(embed.FS{}, tt.args.queryDir); !reflect.DeepEqual(got, tt.want) {
+			if got, err := ReadMetadata(tt.args.queryDir); !reflect.DeepEqual(got, tt.want) {
 				require.Equal(t, tt.wantErr, (err != nil))
 				gotStr, err := test.StringifyStruct(got)
 				require.Nil(t, err)
@@ -737,7 +736,7 @@ func TestReadInputData(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			got, err := readInputData(embed.FS{}, tt.path)
+			got, err := readInputData(tt.path)
 			require.NoError(t, err)
 			require.Equal(t, tt.want, got)
 		})
