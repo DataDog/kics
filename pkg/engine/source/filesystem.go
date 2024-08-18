@@ -259,9 +259,13 @@ func (s *FilesystemSource) GetQueries(queryParameters *QueryInspectorParameters,
 	if err != nil {
 		return nil, err
 	}
+	log.Info().Msgf("dirs: %d", len(dirs))
 
 	queries := s.iterateQueryDirs(queryDir, dirs, queryParameters)
-
+	log.Info().Msgf("queries: %d", len(queries))
+	if len(queries) > 0 {
+		log.Info().Msgf("First query found: %v", queries[0])
+	}
 	return queries, nil
 }
 

@@ -140,6 +140,8 @@ func NewInspector(
 		return nil, errors.Wrap(err, "failed to get queries")
 	}
 
+	log.Info().Msgf("Queries loaded: %d", len(queries))
+
 	commonLibrary, err := queriesSource.GetQueryLibrary(queryDir, "common")
 	if err != nil {
 		// sentryReport.ReportSentry(&sentryReport.Report{
@@ -160,6 +162,8 @@ func NewInspector(
 	platformLibraries := map[string]source.RegoLibraries{
 		"terraform": regoLibrary,
 	}
+
+	log.Info().Msgf("Platform libraries loaded: %d, %d", len(platformLibraries), len(libraryFile))
 
 	queryLoader := prepareQueries(queries, commonLibrary, platformLibraries, tracker)
 
