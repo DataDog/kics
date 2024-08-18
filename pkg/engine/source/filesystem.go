@@ -305,7 +305,7 @@ func (s *FilesystemSource) iterateSources() ([]string, error) {
 	return queryDirs, nil
 }
 
-func getAllFilenames(embedfs *embed.FS, path string) ([]string, error) {
+func getAllDirs(embedfs *embed.FS, path string) ([]string, error) {
 	var out []string
 	err := fs.WalkDir(embedfs, ".", func(path string, d fs.DirEntry, err error) error {
 		if err != nil {
@@ -313,7 +313,7 @@ func getAllFilenames(embedfs *embed.FS, path string) ([]string, error) {
 			return err
 		}
 		fmt.Printf("path=%q, isDir=%v\n", path, d.IsDir())
-		if !d.IsDir() && d.Name() == QueryFileName {
+		if d.IsDir() {
 			out = append(out, path)
 		}
 		return nil
@@ -331,8 +331,8 @@ func (s *FilesystemSource) iterateEmbeddedQuerySources(queryDir embed.FS) ([]str
 	// if err != nil {
 	// 	return nil, errors.Wrap(err, "failed to read embedded query directory")
 	// }
-	log.Info().Msg("getAllFilenames()")
-	queryDirs, err := getAllFilenames(&queryDir, "")
+	log.Info().Msg("getAllDirs()")
+	queryDirs, err := getAllDirs(&queryDir, "")
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to get query sources")
 	}
@@ -440,13 +440,13 @@ func validateMetadata(metadata map[string]interface{}) (exist bool, field string
 // ReadQuery reads query's files for a given path and returns a QueryMetadata struct with it's
 // content
 func ReadQuery(baseDir embed.FS, queryDir string) (model.QueryMetadata, error) {
-	log.Info().Msgf("Trying to read query in file %s", filepath.Clean(queryDir))
-	queryContent, err := baseDir.ReadFile(filepath.Clean(queryDir))
+	log.Info().Msgf("Trying to read query in file %s", filepath.Clean(path.Join(queryDir, QueryFileName)))
+	queryContent, err := baseDir.ReadFile(filepath.Clean(path.Join(queryDir, QueryFileName)))
 	// queryContent, err := os.ReadFile(filepath.Clean(path.Join(queryDir, QueryFileName)))
 	if err != nil {
 		return model.QueryMetadata{}, errors.Wrapf(err, "failed to read query %s", path.Base(queryDir))
 	}
-	log.Info().Msgf("Query found in file %s: %s", filepath.Clean(queryDir), string(queryContent))
+	log.Info().Msgf("Query found in file %s: %s", filepath.Clean(path.Join(queryDir, QueryFileName)), string(queryContent))
 
 	metadata, err := ReadMetadata(baseDir, queryDir)
 	if err != nil {
