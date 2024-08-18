@@ -263,10 +263,8 @@ func (s *FilesystemSource) GetQueries(queryParameters *QueryInspectorParameters,
 	if err != nil {
 		return nil, err
 	}
-	log.Info().Msgf("dirs: %d", len(dirs))
 
 	queries := s.iterateQueryDirs(queryDir, dirs, queryParameters)
-	log.Info().Msgf("queries: %d", len(queries))
 	if len(queries) > 0 {
 		log.Info().Msgf("First query found: %v", queries[0])
 	}
@@ -336,7 +334,6 @@ func (s *FilesystemSource) iterateEmbeddedQuerySources(queryDir embed.FS) ([]str
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to get query sources")
 	}
-	log.Info().Msgf("queryDirs: %v", queryDirs)
 	// err := fs.WalkDir(queryDir, ".", func(p string, d fs.DirEntry, err error) error {
 	// 	if err != nil {
 	// 		return err
@@ -366,7 +363,6 @@ func (s *FilesystemSource) iterateQueryDirs(baseDir embed.FS, queryDirs []string
 	queries := make([]model.QueryMetadata, 0, len(queryDirs))
 
 	for _, queryDir := range queryDirs {
-		log.Info().Msgf("reading query: %v : %s", baseDir, queryDir)
 		query, errRQ := ReadQuery(baseDir, queryDir)
 		if errRQ != nil {
 			// sentryReport.ReportSentry(&sentryReport.Report{
@@ -377,7 +373,6 @@ func (s *FilesystemSource) iterateQueryDirs(baseDir embed.FS, queryDirs []string
 			// }, true)
 			continue
 		}
-		log.Info().Msgf("Query found: %s", query.Query)
 
 		if query.Experimental && !queryParameters.ExperimentalQueries {
 			continue
@@ -440,13 +435,11 @@ func validateMetadata(metadata map[string]interface{}) (exist bool, field string
 // ReadQuery reads query's files for a given path and returns a QueryMetadata struct with it's
 // content
 func ReadQuery(baseDir embed.FS, queryDir string) (model.QueryMetadata, error) {
-	log.Info().Msgf("Trying to read query in file %s", filepath.Clean(path.Join(queryDir, QueryFileName)))
 	queryContent, err := baseDir.ReadFile(filepath.Clean(path.Join(queryDir, QueryFileName)))
 	// queryContent, err := os.ReadFile(filepath.Clean(path.Join(queryDir, QueryFileName)))
 	if err != nil {
 		return model.QueryMetadata{}, errors.Wrapf(err, "failed to read query %s", path.Base(queryDir))
 	}
-	log.Info().Msgf("Query found in file %s: %s", filepath.Clean(path.Join(queryDir, QueryFileName)), string(queryContent))
 
 	metadata, err := ReadMetadata(baseDir, queryDir)
 	if err != nil {

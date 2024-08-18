@@ -252,7 +252,6 @@ func (c *Inspector) performInspection(ctx context.Context, scanID string, files 
 			continue
 		}
 
-		log.Debug().Msgf("Starting to run query %s", queries[job.queryID].Query)
 		queryStartTime := time.Now()
 
 		query := &PreparedQuery{
@@ -271,7 +270,6 @@ func (c *Inspector) performInspection(ctx context.Context, scanID string, files 
 
 		vuls, err := c.doRun(queryContext)
 		if err == nil {
-			log.Debug().Msgf("Finished to run query %s after %v", queries[job.queryID].Query, time.Since(queryStartTime))
 			c.tracker.TrackQueryExecution(query.Metadata.Aggregation)
 		}
 		results <- QueryResult{vulnerabilities: vuls, err: err, queryID: job.queryID}
@@ -434,10 +432,6 @@ func (c *Inspector) doRun(ctx *QueryContext) (vulns []model.Vulnerability, err e
 			ctx.Query.Metadata.Query: module,
 		})
 	}
-
-	log.Trace().
-		Str("scanID", ctx.scanID).
-		Msgf("Inspector executed with result %+v, query=%s", results, ctx.Query.Metadata.Query)
 
 	timeoutCtxToDecode, cancelDecode := context.WithTimeout(ctx.Ctx, c.queryExecTimeout)
 	defer cancelDecode()
