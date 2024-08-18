@@ -85,7 +85,7 @@ func GetDefaultParameters() *Parameters {
 		ExperimentalQueries:         false,
 		IncludeQueries:              []string{},
 		InputData:                   "",
-		OutputName:                  "kics-result",
+		OutputName:                  "kics-result.sarif",
 		PayloadPath:                 "",
 		PreviewLines:                3,
 		QueriesPath:                 []string{"./assets/queries"},
