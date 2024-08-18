@@ -450,10 +450,8 @@ func ReadQuery(queryDir string) (model.QueryMetadata, error) {
 	if valid, missingField := validateMetadata(metadata); !valid {
 		return model.QueryMetadata{}, fmt.Errorf("failed to read metadata field: %s", missingField)
 	}
-	log.Info().Msg("Validated metadata")
 
 	platform := getPlatform(metadata["platform"].(string))
-	log.Info().Msgf("Platform found: %s", platform)
 
 	inputData, errInputData := readInputData(filepath.Join(queryDir, "data.json"))
 	if errInputData != nil {
@@ -465,8 +463,6 @@ func ReadQuery(queryDir string) (model.QueryMetadata, error) {
 	if agg, ok := metadata["aggregation"]; ok {
 		aggregation = int(agg.(float64))
 	}
-
-	log.Info().Msgf("Query found: %s metadata: %v input: %s", string(queryContent), metadata, inputData)
 
 	experimental := getExperimental(metadata["experimental"])
 
@@ -489,13 +485,11 @@ func ReadMetadata(queryDir string) (map[string]interface{}, error) {
 		log.Error().Msgf("Queries provider can't read metadata, query=%s: %v", path.Base(queryDir), err)
 		return nil, err
 	}
-	log.Info().Msgf("Metadata found in file: %s", string(f))
 
 	var metadata map[string]interface{}
 	if err := json.Unmarshal([]byte(f), &metadata); err != nil {
 		return nil, err
 	}
-	log.Info().Msgf("JSON Metadata found in file: %v", metadata)
 
 	return metadata, nil
 }

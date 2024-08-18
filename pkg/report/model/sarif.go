@@ -228,6 +228,7 @@ type SarifReport interface {
 	RebuildTaxonomies(cwes []string, guids map[string]string)
 	GetGUIDFromRelationships(idx int, cweID string) string
 	AddTags(summary *model.Summary, diffAware *model.DiffAware) error
+	ResolveFilepaths(basePath string) error
 }
 
 type sarifReport struct {
@@ -721,5 +722,14 @@ func (sr *sarifReport) AddTags(summary *model.Summary, diffAware *model.DiffAwar
 		tagsToAppend...,
 	)
 
+	return nil
+}
+
+func (sr *sarifReport) ResolveFilepaths(basePath string) error {
+	for idx := range sr.Runs[0].Results {
+		artifactLocation := &sr.Runs[0].Results[idx].ResultLocations[0].PhysicalLocation.ArtifactLocation.ArtifactURI
+		resolvedLocation := strings.TrimPrefix(*artifactLocation, basePath+"/")
+		sr.Runs[0].Results[idx].ResultLocations[0].PhysicalLocation.ArtifactLocation.ArtifactURI = resolvedLocation
+	}
 	return nil
 }
