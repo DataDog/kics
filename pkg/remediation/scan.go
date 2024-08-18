@@ -7,6 +7,7 @@ package remediation
 
 import (
 	"context"
+	"embed"
 	"encoding/json"
 	"errors"
 	"time"
@@ -277,6 +278,8 @@ func initScan(queryID string) (*engine.Inspector, error) {
 		false,
 		c.ScanParams.ParallelScanFlag,
 		c.ScanParams.KicsComputeNewSimID,
+		embed.FS{},
+		"",
 	)
 
 	return inspector, err

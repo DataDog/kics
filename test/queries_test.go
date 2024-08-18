@@ -2,6 +2,7 @@ package test
 
 import (
 	"context"
+	"embed"
 	"encoding/json"
 	"io"
 	"os"
@@ -113,7 +114,7 @@ func TestUniqueQueryIDs(t *testing.T) {
 	descriptionIdentifiers := make(map[string]string)
 
 	for _, entry := range queries {
-		metadata, err := source.ReadMetadata(entry.dir)
+		metadata, err := source.ReadMetadata(embed.FS{}, entry.dir)
 		require.NoError(t, err)
 		uuid := metadata["id"].(string)
 		duplicateDir, ok := queriesIdentifiers[uuid]
@@ -193,7 +194,7 @@ func testQuery(tb testing.TB, entry queryEntry, filesPath []string, expectedVuln
 	queriesSource := mock.NewMockQueriesSource(ctrl)
 	queriesSource.EXPECT().GetQueries(getQueryFilter()).
 		DoAndReturn(func(interface{}) ([]model.QueryMetadata, error) {
-			q, err := source.ReadQuery(entry.dir)
+			q, err := source.ReadQuery(embed.FS{}, entry.dir)
 			require.NoError(tb, err)
 
 			return []model.QueryMetadata{q}, nil
@@ -222,7 +223,7 @@ func testQuery(tb testing.TB, entry queryEntry, filesPath []string, expectedVuln
 			ExcludeQueries: source.ExcludeQueries{ByIDs: []string{}, ByCategories: []string{}},
 			InputDataPath:  "",
 		},
-		map[string]bool{}, 60, false, true, 1, false)
+		map[string]bool{}, 60, false, true, 1, false, embed.FS{}, "")
 
 	require.Nil(tb, err)
 	require.NotNil(tb, inspector)

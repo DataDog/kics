@@ -2,6 +2,7 @@ package test
 
 import (
 	"context"
+	"embed"
 	"fmt"
 	"io"
 	"sync"
@@ -187,7 +188,7 @@ func TestInspectorSimilarityID(t *testing.T) {
 func getTestQueryID(params *testCaseParamsType) string {
 	var testQueryID string
 	if params.queryID == "" {
-		metadata, err := source.ReadMetadata(params.queryDir)
+		metadata, err := source.ReadMetadata(embed.FS{}, params.queryDir)
 		if err != nil {
 			return ""
 		}
@@ -267,7 +268,7 @@ func createInspectorAndGetVulnerabilities(ctx context.Context, t testing.TB,
 
 	queriesSource.EXPECT().GetQueries(getQueryFilter()).
 		DoAndReturn(func(interface{}) ([]model.QueryMetadata, error) {
-			metadata, err := source.ReadMetadata(testParams.queryDir)
+			metadata, err := source.ReadMetadata(embed.FS{}, testParams.queryDir)
 			require.NoError(t, err)
 
 			// Override metadata ID with custom QueryID for testing
@@ -308,7 +309,7 @@ func createInspectorAndGetVulnerabilities(ctx context.Context, t testing.TB,
 			ExcludeQueries: source.ExcludeQueries{ByIDs: []string{}, ByCategories: []string{}},
 			InputDataPath:  "",
 		},
-		map[string]bool{}, 60, true, true, 1, false)
+		map[string]bool{}, 60, true, true, 1, false, embed.FS{}, "")
 
 	require.Nil(t, err)
 	require.NotNil(t, inspector)

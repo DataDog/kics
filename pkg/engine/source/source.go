@@ -49,7 +49,7 @@ type RegoLibraries struct {
 // GetQueryLibrary gets a library of rego functions given a plataform's name
 type QueriesSource interface {
 	GetQueries(querySelection *QueryInspectorParameters, queryDir embed.FS) ([]model.QueryMetadata, error)
-	GetQueryLibrary(platform string) (RegoLibraries, error)
+	GetQueryLibrary(baseDir embed.FS, platform string) (RegoLibraries, error)
 }
 
 // mergeLibraries return custom library and embedded library merged, overwriting embedded library functions, if necessary

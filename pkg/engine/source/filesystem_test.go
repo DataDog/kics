@@ -407,7 +407,7 @@ func TestFilesystemSource_GetQueryLibrary(t *testing.T) { //nolint
 		t.Run(tt.name, func(t *testing.T) {
 			s := NewFilesystemSource(tt.fields.Source, []string{""}, []string{""}, tt.fields.Library, tt.fields.ExperimentalQueries)
 
-			got, err := s.GetQueryLibrary(tt.args.platform)
+			got, err := s.GetQueryLibrary(embed.FS{}, tt.args.platform)
 			if (err != nil) != tt.wantErr {
 				t.Errorf("FilesystemSource.GetQueryLibrary() error = %v, wantErr %v", err, tt.wantErr)
 				return
@@ -602,7 +602,7 @@ func Test_ReadMetadata(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got, err := ReadMetadata(tt.args.queryDir); !reflect.DeepEqual(got, tt.want) {
+			if got, err := ReadMetadata(embed.FS{}, tt.args.queryDir); !reflect.DeepEqual(got, tt.want) {
 				require.Equal(t, tt.wantErr, (err != nil))
 				gotStr, err := test.StringifyStruct(got)
 				require.Nil(t, err)
@@ -737,7 +737,7 @@ func TestReadInputData(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			got, err := readInputData(tt.path)
+			got, err := readInputData(embed.FS{}, tt.path)
 			require.NoError(t, err)
 			require.Equal(t, tt.want, got)
 		})

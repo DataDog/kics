@@ -140,7 +140,7 @@ func NewInspector(
 		return nil, errors.Wrap(err, "failed to get queries")
 	}
 
-	commonLibrary, err := queriesSource.GetQueryLibrary("common")
+	commonLibrary, err := queriesSource.GetQueryLibrary(queryDir, "common")
 	if err != nil {
 		// sentryReport.ReportSentry(&sentryReport.Report{
 		// 	Message:  fmt.Sprintf("Inspector failed to get library for %s platform", "common"),
@@ -150,7 +150,7 @@ func NewInspector(
 		// }, true)
 		return nil, errors.Wrap(err, "failed to get library")
 	}
-	// platformLibraries := getPlatformLibraries(queriesSource, queries)
+	// platformLibraries := getPlatformLibraries(queriesSource, queries, queryDir)
 
 	regoLibrary := source.RegoLibraries{
 		LibraryCode:      string(libraryFile),
@@ -196,14 +196,14 @@ func NewInspector(
 	}, nil
 }
 
-func getPlatformLibraries(queriesSource source.QueriesSource, queries []model.QueryMetadata) map[string]source.RegoLibraries {
+func getPlatformLibraries(queriesSource source.QueriesSource, queries []model.QueryMetadata, baseDir embed.FS) map[string]source.RegoLibraries {
 	supportedPlatforms := make(map[string]string)
 	for _, query := range queries {
 		supportedPlatforms[query.Platform] = ""
 	}
 	platformLibraries := make(map[string]source.RegoLibraries)
 	for platform := range supportedPlatforms {
-		platformLibrary, errLoadingPlatformLib := queriesSource.GetQueryLibrary(platform)
+		platformLibrary, errLoadingPlatformLib := queriesSource.GetQueryLibrary(baseDir, platform)
 		if errLoadingPlatformLib != nil {
 			// sentryReport.ReportSentry(&sentryReport.Report{
 			// 	Message:  fmt.Sprintf("Inspector failed to get library for %s platform", platform),

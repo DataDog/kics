@@ -59,7 +59,6 @@ func (c *Client) initScan(ctx context.Context) (*executeScanParameters, error) {
 
 	paramsPlatforms := c.ScanParams.Platform
 	useDifferentPlatformQueries(&paramsPlatforms)
-
 	querySource := source.NewFilesystemSource(
 		c.ScanParams.QueriesPath,
 		paramsPlatforms,

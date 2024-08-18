@@ -585,7 +585,7 @@ func (m *mockSource) GetQueries(queryFilter *source.QueryInspectorParameters, qu
 	return sources.GetQueries(queryFilter, queryDir)
 }
 
-func (m *mockSource) GetQueryLibrary(platform string) (source.RegoLibraries, error) {
+func (m *mockSource) GetQueryLibrary(baseDir embed.FS, platform string) (source.RegoLibraries, error) {
 	library := source.GetPathToCustomLibrary(platform, "./assets/libraries")
 
 	if library != "default" {
