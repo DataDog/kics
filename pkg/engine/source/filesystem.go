@@ -440,13 +440,13 @@ func validateMetadata(metadata map[string]interface{}) (exist bool, field string
 // ReadQuery reads query's files for a given path and returns a QueryMetadata struct with it's
 // content
 func ReadQuery(baseDir embed.FS, queryDir string) (model.QueryMetadata, error) {
-	log.Info().Msgf("Trying to read query in file %s", filepath.Clean(path.Join(queryDir, QueryFileName)))
-	queryContent, err := baseDir.ReadFile(filepath.Clean(path.Join(queryDir, QueryFileName)))
+	log.Info().Msgf("Trying to read query in file %s", filepath.Clean(queryDir))
+	queryContent, err := baseDir.ReadFile(filepath.Clean(queryDir))
 	// queryContent, err := os.ReadFile(filepath.Clean(path.Join(queryDir, QueryFileName)))
 	if err != nil {
 		return model.QueryMetadata{}, errors.Wrapf(err, "failed to read query %s", path.Base(queryDir))
 	}
-	log.Info().Msgf("Query found in file %s: %s", filepath.Clean(path.Join(queryDir, QueryFileName)), string(queryContent))
+	log.Info().Msgf("Query found in file %s: %s", filepath.Clean(queryDir), string(queryContent))
 
 	metadata, err := ReadMetadata(baseDir, queryDir)
 	if err != nil {
