@@ -378,6 +378,7 @@ func (s *FilesystemSource) iterateQueryDirs(baseDir embed.FS, queryDirs []string
 			// }, true)
 			continue
 		}
+		log.Info().Msgf("Query found: %s", query.Query)
 
 		if query.Experimental && !queryParameters.ExperimentalQueries {
 			continue
@@ -467,6 +468,8 @@ func ReadQuery(baseDir embed.FS, queryDir string) (model.QueryMetadata, error) {
 	if agg, ok := metadata["aggregation"]; ok {
 		aggregation = int(agg.(float64))
 	}
+
+	log.Info().Msgf("Query found: %s metadata: %v input: %s", string(queryContent), metadata, inputData)
 
 	experimental := getExperimental(metadata["experimental"])
 
