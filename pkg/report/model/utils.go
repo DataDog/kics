@@ -11,6 +11,10 @@ import (
 	"github.com/Checkmarx/kics/pkg/model"
 )
 
+const (
+	kicsRuleIDTag = "KICS_RuleID:%s"
+)
+
 func GetScanDurationTag(summary model.Summary) string {
 	scanDuration := summary.Times.End.Sub(summary.Times.Start).Seconds()
 	executionTimeTag := fmt.Sprintf(executionTimeTag, scanDuration)
@@ -35,4 +39,8 @@ func GetDiffAwareFilesTag(diffAware model.DiffAware) string {
 
 func GetCategoryTag(category string) string {
 	return fmt.Sprintf(categoryTag, category)
+}
+
+func GetKICSRuleIDTag(ruleID string) string {
+	return fmt.Sprintf(kicsRuleIDTag, ruleID)
 }
