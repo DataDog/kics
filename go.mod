@@ -22,7 +22,7 @@ require (
 	github.com/johnfercher/maroto v1.0.0
 	github.com/open-policy-agent/opa v0.49.2
 	github.com/pkg/errors v0.9.1
-	github.com/relex/aini v1.5.0
+	github.com/relex/aini v1.6.0
 	github.com/rs/zerolog v1.27.0
 	github.com/sabhiram/go-gitignore v0.0.0-20210923224102-525f6e181f06
 	github.com/spf13/pflag v1.0.5
@@ -100,6 +100,7 @@ require (
 	github.com/rcrowley/go-metrics v0.0.0-20200313005456-10cdbea86bc0 // indirect
 	github.com/rivo/uniseg v0.2.0 // indirect
 	github.com/ruudk/golang-pdf417 v0.0.0-20201230142125-a7e3863a1245 // indirect
+	github.com/samber/lo v1.38.1 // indirect
 	github.com/tchap/go-patricia/v2 v2.3.1 // indirect
 	github.com/tdewolff/parse/v2 v2.7.15 // indirect
 	github.com/tidwall/match v1.1.1 // indirect
