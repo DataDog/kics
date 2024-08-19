@@ -544,6 +544,7 @@ func (sr *sarifReport) buildSarifRule(queryMetadata *ruleMetadata, cisMetadata r
 		// cwe := sr.buildCweCategory(queryMetadata.queryCwe)
 
 		categoryTag := GetCategoryTag(queryMetadata.queryCategory)
+		kicsRuleIDTag := GetKICSRuleIDTag(queryMetadata.queryID)
 
 		// var relationships []sarifRelationship
 
@@ -559,7 +560,7 @@ func (sr *sarifReport) buildSarifRule(queryMetadata *ruleMetadata, cisMetadata r
 		// }
 
 		rule := sarifRule{
-			RuleID:               queryMetadata.queryID,
+			RuleID:               queryMetadata.queryName,
 			RuleName:             queryMetadata.queryName,
 			RuleShortDescription: sarifMessage{Text: queryMetadata.queryName},
 			RuleFullDescription:  sarifMessage{Text: queryMetadata.queryDescription},
@@ -567,7 +568,7 @@ func (sr *sarifReport) buildSarifRule(queryMetadata *ruleMetadata, cisMetadata r
 			// Relationships:        relationships,
 			HelpURI: helpURI,
 			RuleProperties: sarifProperties{
-				"tags": []string{ruleTypeProperty, categoryTag},
+				"tags": []string{ruleTypeProperty, categoryTag, kicsRuleIDTag},
 			},
 		}
 		if cisMetadata.id != "" {
@@ -657,7 +658,7 @@ func (sr *sarifReport) BuildSarifIssue(issue *model.QueryResult) string {
 			// }
 			absoluteFilePath := strings.ReplaceAll(issue.Files[idx].FileName, "../", "")
 			result := sarifResult{
-				ResultRuleID:    issue.QueryID,
+				ResultRuleID:    issue.QueryName,
 				ResultRuleIndex: ruleIndex,
 				ResultKind:      kind,
 				ResultLevel:     severityLevelEquivalence[issue.Severity],

@@ -14,7 +14,7 @@ func TestNewSarifReport(t *testing.T) {
 	sarif := NewSarifReport().(*sarifReport)
 	require.Equal(t, "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json", sarif.Schema)
 	require.Equal(t, "2.1.0", sarif.SarifVersion)
-	require.Equal(t, "KICS", sarif.Runs[0].Tool.Driver.ToolName)
+	require.Equal(t, "Datadog IaC Scanning", sarif.Runs[0].Tool.Driver.ToolName)
 	require.Equal(t, constants.URL, sarif.Runs[0].Tool.Driver.ToolURI)
 	require.Equal(t, constants.Fullname, sarif.Runs[0].Tool.Driver.ToolFullName)
 	require.Equal(t, constants.Version, sarif.Runs[0].Tool.Driver.ToolVersion)
@@ -66,7 +66,7 @@ var sarifTests = []sarifTest{
 						Driver: sarifDriver{
 							Rules: []sarifRule{
 								{
-									RuleID:               "1",
+									RuleID:               "test",
 									RuleName:             "test",
 									RuleShortDescription: sarifMessage{Text: "test"},
 									RuleFullDescription:  sarifMessage{Text: "test description"},
@@ -93,7 +93,7 @@ var sarifTests = []sarifTest{
 					},
 					Results: []sarifResult{
 						{
-							ResultRuleID:    "1",
+							ResultRuleID:    "test",
 							ResultRuleIndex: 0,
 							ResultKind:      "fail",
 							ResultMessage:   sarifMessage{Text: "test", MessageProperties: sarifProperties{"platform": ""}},
@@ -101,10 +101,11 @@ var sarifTests = []sarifTest{
 								{
 									PhysicalLocation: sarifPhysicalLocation{
 										ArtifactLocation: sarifArtifactLocation{ArtifactURI: "test.json"},
-										Region:           sarifRegion{StartLine: 1, EndLine: 2},
+										Region:           sarifRegion{StartLine: 1, EndLine: 2, StartColumn: 1, EndColumn: 1},
 									},
 								},
 							},
+							ResultLevel: "error",
 						},
 					},
 					Taxonomies: []sarifTaxonomy{
@@ -149,7 +150,7 @@ var sarifTests = []sarifTest{
 		vq: []model.QueryResult{
 			{
 				QueryName:   "test",
-				QueryID:     "1",
+				QueryID:     "test",
 				Description: "test description",
 				QueryURI:    "https://www.test.com",
 				Category:    "test",
@@ -161,7 +162,7 @@ var sarifTests = []sarifTest{
 			},
 			{
 				QueryName:   "test info",
-				QueryID:     "2",
+				QueryID:     "test info",
 				Description: "test description",
 				QueryURI:    "https://www.test.com",
 				Category:    "test",
@@ -179,7 +180,7 @@ var sarifTests = []sarifTest{
 						Driver: sarifDriver{
 							Rules: []sarifRule{
 								{
-									RuleID:               "1",
+									RuleID:               "test",
 									RuleName:             "test",
 									RuleShortDescription: sarifMessage{Text: "test"},
 									RuleFullDescription:  sarifMessage{Text: "test description"},
@@ -202,7 +203,7 @@ var sarifTests = []sarifTest{
 									},
 								},
 								{
-									RuleID:               "2",
+									RuleID:               "test info",
 									RuleName:             "test info",
 									RuleShortDescription: sarifMessage{Text: "test"},
 									RuleFullDescription:  sarifMessage{Text: "test description"},
@@ -241,24 +242,25 @@ var sarifTests = []sarifTest{
 
 					Results: []sarifResult{
 						{
-							ResultRuleID:    "1",
+							ResultRuleID:    "test",
 							ResultRuleIndex: 0,
 							ResultKind:      "fail",
 							ResultMessage: sarifMessage{
 								Text:              "test",
 								MessageProperties: sarifProperties{"platform": ""},
 							},
+							ResultLevel: "error",
 							ResultLocations: []sarifLocation{
 								{
 									PhysicalLocation: sarifPhysicalLocation{
 										ArtifactLocation: sarifArtifactLocation{ArtifactURI: ""},
-										Region:           sarifRegion{StartLine: 1, EndLine: 2},
+										Region:           sarifRegion{StartLine: 1, EndLine: 2, EndColumn: 1, StartColumn: 1},
 									},
 								},
 							},
 						},
 						{
-							ResultRuleID:    "2",
+							ResultRuleID:    "test info",
 							ResultRuleIndex: 1,
 							ResultKind:      "informational",
 							ResultMessage: sarifMessage{
