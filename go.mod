@@ -27,7 +27,7 @@ require (
 	github.com/sabhiram/go-gitignore v0.0.0-20210923224102-525f6e181f06
 	github.com/spf13/pflag v1.0.5
 	github.com/stretchr/testify v1.9.0
-	github.com/tdewolff/minify/v2 v2.20.33
+	github.com/tdewolff/minify/v2 v2.20.37
 	github.com/tidwall/gjson v1.16.0
 	github.com/yargevad/filepathx v1.0.0
 	github.com/zclconf/go-cty v1.14.3
