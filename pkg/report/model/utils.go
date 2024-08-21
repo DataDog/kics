@@ -16,7 +16,7 @@ const (
 )
 
 func GetScanDurationTag(summary model.Summary) string {
-	scanDuration := summary.Times.End.Sub(summary.Times.Start).Seconds()
+	scanDuration := int(summary.Times.End.Sub(summary.Times.Start).Seconds())
 	executionTimeTag := fmt.Sprintf(executionTimeTag, scanDuration)
 	return executionTimeTag
 }
