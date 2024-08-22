@@ -105,7 +105,8 @@ var sarifTests = []sarifTest{
 									},
 								},
 							},
-							ResultLevel: "error",
+							ResultLevel:      "error",
+							ResultProperties: sarifProperties{"tags": []string{"DATADOG_CATEGORY:"}},
 						},
 					},
 					Taxonomies: []sarifTaxonomy{
@@ -258,6 +259,7 @@ var sarifTests = []sarifTest{
 									},
 								},
 							},
+							ResultProperties: sarifProperties{"tags": []string{"DATADOG_CATEGORY:test"}},
 						},
 						{
 							ResultRuleID:    "test info",
@@ -275,6 +277,7 @@ var sarifTests = []sarifTest{
 									},
 								},
 							},
+							ResultProperties: sarifProperties{"tags": []string{"DATADOG_CATEGORY:test"}},
 						},
 					},
 					Taxonomies: []sarifTaxonomy{

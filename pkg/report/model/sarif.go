@@ -175,6 +175,7 @@ type sarifResult struct {
 	ResultLocations     []sarifLocation          `json:"locations"`
 	PartialFingerprints SarifPartialFingerprints `json:"partialFingerprints,omitempty"`
 	ResultLevel         string                   `json:"level"`
+	ResultProperties    sarifProperties          `json:"properties,omitempty"`
 }
 
 type SarifPartialFingerprints struct {
@@ -638,6 +639,9 @@ func (sr *sarifReport) BuildSarifIssue(issue *model.QueryResult) string {
 		if severityLevelEquivalence[issue.Severity] == "none" {
 			kind = "informational"
 		}
+
+		categoryTag := GetCategoryTag(issue.Category)
+
 		for idx := range issue.Files {
 			line := issue.Files[idx].Line
 			if line < 1 {
@@ -682,6 +686,9 @@ func (sr *sarifReport) BuildSarifIssue(issue *model.QueryResult) string {
 							},
 						},
 					},
+				},
+				ResultProperties: sarifProperties{
+					"tags": []string{categoryTag},
 				},
 			}
 			sr.Runs[0].Results = append(sr.Runs[0].Results, result)
