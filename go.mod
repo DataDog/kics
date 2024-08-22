@@ -5,7 +5,7 @@ go 1.22.5
 require (
 	github.com/BurntSushi/toml v1.3.2
 	github.com/agnivade/levenshtein v1.1.1
-	github.com/antlr4-go/antlr/v4 v4.13.0
+	github.com/antlr4-go/antlr/v4 v4.13.1
 	github.com/aws/aws-sdk-go-v2 v1.30.3
 	github.com/bigkevmcd/go-configparser v0.0.0-20240808124832-fc81059ea0bd
 	github.com/cheggaaa/pb/v3 v3.0.8
@@ -111,7 +111,7 @@ require (
 	github.com/yashtewari/glob-intersection v0.1.0 // indirect
 	go.opencensus.io v0.24.0 // indirect
 	golang.org/x/crypto v0.24.0 // indirect
-	golang.org/x/exp v0.0.0-20230713183714-613f0c0eb8a1 // indirect
+	golang.org/x/exp v0.0.0-20240506185415-9bf2ced13842 // indirect
 	golang.org/x/mod v0.18.0 // indirect
 	golang.org/x/oauth2 v0.19.0 // indirect
 	golang.org/x/sync v0.7.0 // indirect
