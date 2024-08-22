@@ -54,7 +54,7 @@ func GetEmbeddedQueryDirs() ([]string, error) {
 func GetEmbeddedQueryFile(path string) (string, error) {
 	content, err := embeddedQueries.ReadFile(path)
 	if err != nil {
-		log.Error().Msgf("Failed to read file for path %s: %v", path, err)
+		log.Debug().Msgf("Failed to read file for path %s: %v", path, err)
 		return "", err
 	}
 	return string(content), nil
