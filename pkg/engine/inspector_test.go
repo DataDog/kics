@@ -508,7 +508,7 @@ func TestInspector_DecodeQueryResults(t *testing.T) {
 			//create a context with 0 second to timeout
 			timeoutDuration, _ := time.ParseDuration(tt.args.timeDuration)
 			myCtxTimeOut, _ := context.WithTimeout(contextToUSe, timeoutDuration)
-			result, err := c.DecodeQueryResults(&tt.args.queryContext, myCtxTimeOut, tt.args.regoResult)
+			result, err := c.DecodeQueryResults(&tt.args.queryContext, myCtxTimeOut, tt.args.regoResult, 57)
 			assert.Nil(t, err, "Error not as expected")
 			assert.Equal(t, 0, len(result), "Array size is not as expected")
 		})
@@ -552,7 +552,7 @@ func newQueryContext(ctx context.Context) QueryContext {
 func newInspectorInstance(t *testing.T, queryPath []string, kicsComputeNewSimID bool) *Inspector {
 	querySource := source.NewFilesystemSource(queryPath, []string{""}, []string{""}, filepath.FromSlash("./assets/libraries"), true)
 	var vb = func(ctx *QueryContext, tracker Tracker, v interface{},
-		detector *detector.DetectLine, useOldSeverity bool, kicsComputeNewSimID bool) (*model.Vulnerability, error) {
+		detector *detector.DetectLine, useOldSeverity bool, kicsComputeNewSimID bool, queryDuration time.Duration) (*model.Vulnerability, error) {
 		return &model.Vulnerability{}, nil
 	}
 	ins, err := NewInspector(

@@ -133,22 +133,22 @@ func NewClient(params *Parameters, proBarBuilder *progress.PbBuilder, customPrin
 }
 
 // PerformScan executes executeScan and postScan
-func (c *Client) PerformScan(ctx context.Context) error {
+func (c *Client) PerformScan(ctx context.Context) (ScanMetadata, error) {
 	c.ScanStartTime = time.Now()
 
 	scanResults, err := c.executeScan(ctx)
 
 	if err != nil {
 		log.Err(err).Msgf("failed to execute scan %v", err)
-		return err
+		return ScanMetadata{}, err
 	}
 
-	postScanError := c.postScan(scanResults)
+	scanMetadata, postScanError := c.postScan(scanResults)
 
 	if postScanError != nil {
 		log.Err(postScanError)
-		return postScanError
+		return ScanMetadata{}, postScanError
 	}
 
-	return nil
+	return scanMetadata, nil
 }

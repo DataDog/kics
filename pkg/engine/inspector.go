@@ -62,7 +62,7 @@ type QueryLoader struct {
 
 // VulnerabilityBuilder represents a function that will build a vulnerability
 type VulnerabilityBuilder func(ctx *QueryContext, tracker Tracker, v interface{},
-	detector *detector.DetectLine, useOldSeverities bool, kicsComputeNewSimID bool) (*model.Vulnerability, error)
+	detector *detector.DetectLine, useOldSeverities bool, kicsComputeNewSimID bool, queryDuration time.Duration) (*model.Vulnerability, error)
 
 // PreparedQuery includes the opaQuery and its metadata
 type PreparedQuery struct {
@@ -379,6 +379,7 @@ func (c *Inspector) GetFailedQueries() map[string]error {
 }
 
 func (c *Inspector) doRun(ctx *QueryContext) (vulns []model.Vulnerability, err error) {
+	queryStart := time.Now()
 	timeoutCtx, cancel := context.WithTimeout(ctx.Ctx, c.queryExecTimeout)
 	defer cancel()
 	defer func() {
@@ -416,17 +417,18 @@ func (c *Inspector) doRun(ctx *QueryContext) (vulns []model.Vulnerability, err e
 			ctx.Query.Metadata.Query: module,
 		})
 	}
-
+	queryDuration := time.Since(queryStart)
 	timeoutCtxToDecode, cancelDecode := context.WithTimeout(ctx.Ctx, c.queryExecTimeout)
 	defer cancelDecode()
-	return c.DecodeQueryResults(ctx, timeoutCtxToDecode, results)
+	return c.DecodeQueryResults(ctx, timeoutCtxToDecode, results, queryDuration)
 }
 
 // DecodeQueryResults decodes the results into []model.Vulnerability
 func (c *Inspector) DecodeQueryResults(
 	ctx *QueryContext,
 	ctxTimeout context.Context,
-	results rego.ResultSet) ([]model.Vulnerability, error) {
+	results rego.ResultSet,
+	queryDuration time.Duration) ([]model.Vulnerability, error) {
 	if len(results) == 0 {
 		return nil, ErrNoResult
 	}
@@ -452,7 +454,7 @@ func (c *Inspector) DecodeQueryResults(
 			timeOut = true
 			break
 		default:
-			vulnerability, aux := getVulnerabilitiesFromQuery(ctx, c, queryResultItem)
+			vulnerability, aux := getVulnerabilitiesFromQuery(ctx, c, queryResultItem, queryDuration)
 			if aux {
 				failedDetectLine = aux
 			}
@@ -477,8 +479,8 @@ func (c *Inspector) DecodeQueryResults(
 	return vulnerabilities, nil
 }
 
-func getVulnerabilitiesFromQuery(ctx *QueryContext, c *Inspector, queryResultItem interface{}) (*model.Vulnerability, bool) {
-	vulnerability, err := c.vb(ctx, c.tracker, queryResultItem, c.detector, c.useOldSeverities, c.kicsComputeNewSimID)
+func getVulnerabilitiesFromQuery(ctx *QueryContext, c *Inspector, queryResultItem interface{}, queryDuration time.Duration) (*model.Vulnerability, bool) {
+	vulnerability, err := c.vb(ctx, c.tracker, queryResultItem, c.detector, c.useOldSeverities, c.kicsComputeNewSimID, queryDuration)
 	if err != nil && err.Error() == ErrNoResult.Error() {
 		// Ignoring bad results
 		return nil, false

@@ -330,7 +330,8 @@ func Test_resolveOutputs(t *testing.T) {
 			c.ScanParams = &tt.scanParams
 			c.ProBarBuilder = progress.InitializePbBuilder(true, false, true)
 			c.Printer = printer.NewPrinter(true)
-			err := c.postScan(tt.scanResults)
+			md, err := c.postScan(tt.scanResults)
+			require.NotNil(t, md)
 			require.NoError(t, err)
 		})
 	}
