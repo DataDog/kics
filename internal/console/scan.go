@@ -12,7 +12,7 @@ import (
 	"github.com/rs/zerolog/log"
 )
 
-func ExecuteScan(scanParams *scan.Parameters) error {
+func ExecuteScan(scanParams *scan.Parameters) (scan.ScanMetadata, error) {
 	log.Debug().Msg("console.scan()")
 	ctx := context.Background()
 
@@ -24,15 +24,15 @@ func ExecuteScan(scanParams *scan.Parameters) error {
 
 	if err != nil {
 		log.Err(err).Msgf("failed to create scan client%v", err)
-		return err
+		return scan.ScanMetadata{}, err
 	}
 
-	err = client.PerformScan(ctx)
+	scanMetadata, err := client.PerformScan(ctx)
 
 	if err != nil {
 		log.Err(err).Msgf("failed to perform scan: %v", err)
-		return err
+		return scan.ScanMetadata{}, err
 	}
 
-	return nil
+	return scanMetadata, nil
 }

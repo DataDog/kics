@@ -101,7 +101,8 @@ func printOutput(outputPath, filename string, body interface{}, formats []string
 }
 
 // postScan is responsible for the output results
-func (c *Client) postScan(scanResults *Results) error {
+func (c *Client) postScan(scanResults *Results) (ScanMetadata, error) {
+	metadata := ScanMetadata{}
 	if scanResults == nil {
 		log.Info().Msg("No files were scanned")
 		scanResults = &Results{
@@ -132,13 +133,15 @@ func (c *Client) postScan(scanResults *Results) error {
 		c.Printer,
 		*c.ProBarBuilder); err != nil {
 		log.Err(err).Msgf("failed to resolve outputs %v", err)
-		return err
+		return metadata, err
 	}
 
 	deleteExtractionFolder(scanResults.ExtractedPaths.ExtractionMap)
 
 	logger := consolePrinter.NewLogger(nil)
-	consolePrinter.PrintScanDuration(&logger, time.Since(c.ScanStartTime))
+	endTime := time.Now()
+	scanDuration := endTime.Sub(c.ScanStartTime)
+	consolePrinter.PrintScanDuration(&logger, scanDuration)
 
 	// printVersionCheck(c.Printer, &summary)
 
@@ -149,5 +152,60 @@ func (c *Client) postScan(scanResults *Results) error {
 		os.Exit(exitCode)
 	}
 
-	return nil
+	// generate metadata payload
+	metadata = c.generateMetadata(scanResults, c.ScanStartTime, endTime)
+
+	return metadata, nil
+}
+
+func (c *Client) generateMetadata(scanResults *Results, startTime time.Time, endTime time.Time) ScanMetadata {
+	stats := c.generateStats(scanResults, endTime.Sub(startTime))
+	ruleStats := c.generateRuleStats(scanResults)
+
+	metadata := ScanMetadata{
+		StartTime:      startTime,
+		EndTime:        endTime,
+		CoresAvailable: int(consoleHelpers.GetNumCPU()),
+		DiffAware:      c.ScanParams.SCIInfo.DiffAware.Enabled,
+		Stats:          stats,
+		RuleStats:      ruleStats,
+	}
+
+	return metadata
+}
+
+func (c *Client) generateStats(scanResults *Results, scanDuration time.Duration) ScanStats {
+	return ScanStats{
+		Violations: len(scanResults.Results),
+		Files:      c.Tracker.FoundFiles,
+		Rules:      c.Tracker.ExecutedQueries,
+		Duration:   scanDuration,
+	}
+}
+
+func (c *Client) generateRuleStats(scanResults *Results) RuleStats {
+	failedQueries := make([]string, 0, len(scanResults.FailedQueries))
+	for _, q := range failedQueries {
+		failedQueries = append(failedQueries, q)
+	}
+	return RuleStats{
+		TimedOut:          failedQueries,
+		MostExpensiveRule: getLongestRunningQuery(scanResults.Results),
+		SlowestRule:       getLongestRunningQuery(scanResults.Results),
+	}
+}
+
+func getLongestRunningQuery(vulns []model.Vulnerability) RuleTiming {
+	longestQuery := ""
+	longestQueryTime := time.Duration(0)
+	for _, vuln := range vulns {
+		if vuln.QueryDuration > longestQueryTime {
+			longestQueryTime = vuln.QueryDuration
+			longestQuery = vuln.QueryName
+		}
+	}
+	return RuleTiming{
+		Name: longestQuery,
+		Time: longestQueryTime,
+	}
 }

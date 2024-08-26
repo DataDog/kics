@@ -15,16 +15,17 @@ import (
 	"github.com/Checkmarx/kics/pkg/scan"
 )
 
-func ExecuteKICSScan(inputPaths []string, outputPath string, sciInfo model.SCIInfo) string {
+func ExecuteKICSScan(inputPaths []string, outputPath string, sciInfo model.SCIInfo) (scan.ScanMetadata, string) {
 	params := scan.GetDefaultParameters()
 	params.Path = inputPaths
 	params.OutputPath = outputPath
 	params.SCIInfo = sciInfo
-	err := console.ExecuteScan(params)
+	metadata, err := console.ExecuteScan(params)
 	if err != nil {
 		log.Fatalf("failed to execute scan: %v", err)
-		return ""
+		return scan.ScanMetadata{}, ""
 	}
+	log.Printf("Scan completed successfully with metadata: %v", metadata)
 	resultsFile := filepath.Join(outputPath, params.OutputName)
-	return resultsFile
+	return metadata, resultsFile
 }
