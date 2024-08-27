@@ -14,7 +14,6 @@ import (
 	"time"
 
 	consoleHelpers "github.com/Checkmarx/kics/internal/console/helpers"
-	"github.com/Checkmarx/kics/pkg/descriptions"
 	"github.com/Checkmarx/kics/pkg/engine/provider"
 	"github.com/Checkmarx/kics/pkg/model"
 	consolePrinter "github.com/Checkmarx/kics/pkg/printer"
@@ -41,15 +40,15 @@ func (c *Client) getSummary(results []model.Vulnerability, end time.Time, pathPa
 		End:   end,
 	}
 
-	if c.ScanParams.DisableFullDesc {
-		log.Warn().Msg("Skipping descriptions because provided disable flag is set")
-	} else {
-		err := descriptions.RequestAndOverrideDescriptions(&summary)
-		if err != nil {
-			log.Warn().Msgf("Unable to get descriptions: %s", err)
-			log.Warn().Msgf("Using default descriptions")
-		}
-	}
+	// if c.ScanParams.DisableFullDesc {
+	// 	log.Warn().Msg("Skipping descriptions because provided disable flag is set")
+	// } else {
+	// 	err := descriptions.RequestAndOverrideDescriptions(&summary)
+	// 	if err != nil {
+	// 		log.Warn().Msgf("Unable to get descriptions: %s", err)
+	// 		log.Warn().Msgf("Using default descriptions")
+	// 	}
+	// }
 
 	return summary
 }
