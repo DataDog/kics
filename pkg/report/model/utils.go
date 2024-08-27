@@ -13,6 +13,7 @@ import (
 
 const (
 	kicsRuleIDTag = "KICS_RuleID:%s"
+	cweTag        = "CWE:%s"
 )
 
 func GetScanDurationTag(summary model.Summary) string {
@@ -43,4 +44,8 @@ func GetCategoryTag(category string) string {
 
 func GetKICSRuleIDTag(ruleID string) string {
 	return fmt.Sprintf(kicsRuleIDTag, ruleID)
+}
+
+func GetCWETag(cwe string) string {
+	return fmt.Sprintf(cweTag, cwe)
 }
