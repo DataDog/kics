@@ -541,24 +541,16 @@ func (sr *sarifReport) buildSarifRule(queryMetadata *ruleMetadata, cisMetadata r
 			helpURI = queryMetadata.queryURI
 		}
 
-		// target := sr.buildSarifCategory(queryMetadata.queryCategory)
-		// cwe := sr.buildCweCategory(queryMetadata.queryCwe)
+		tags := []string{ruleTypeProperty}
+		cwe := queryMetadata.queryCwe
+		if cwe != "" {
+			cweTag := GetCWETag(cwe)
+			tags = append(tags, cweTag)
+		}
 
 		categoryTag := GetCategoryTag(queryMetadata.queryCategory)
 		kicsRuleIDTag := GetKICSRuleIDTag(queryMetadata.queryID)
-
-		// var relationships []sarifRelationship
-
-		// if cwe.ReferenceID != "" {
-		// 	relationships = []sarifRelationship{
-		// 		{Relationship: target},
-		// 		{Relationship: cwe},
-		// 	}
-		// } else {
-		// 	relationships = []sarifRelationship{
-		// 		{Relationship: target},
-		// 	}
-		// }
+		tags = append(tags, categoryTag, kicsRuleIDTag)
 
 		rule := sarifRule{
 			RuleID:               queryMetadata.queryName,
@@ -569,7 +561,7 @@ func (sr *sarifReport) buildSarifRule(queryMetadata *ruleMetadata, cisMetadata r
 			// Relationships:        relationships,
 			HelpURI: helpURI,
 			RuleProperties: sarifProperties{
-				"tags": []string{ruleTypeProperty, categoryTag, kicsRuleIDTag},
+				"tags": tags,
 			},
 		}
 		if cisMetadata.id != "" {
