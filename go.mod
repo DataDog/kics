@@ -17,7 +17,7 @@ require (
 	github.com/gookit/color v1.5.4
 	github.com/hashicorp/go-getter v1.7.5
 	github.com/hashicorp/hcl v1.0.0
-	github.com/hashicorp/hcl/v2 v2.20.0
+	github.com/hashicorp/hcl/v2 v2.22.0
 	github.com/hashicorp/terraform-json v0.21.0
 	github.com/johnfercher/maroto v1.0.0
 	github.com/open-policy-agent/opa v0.49.2
