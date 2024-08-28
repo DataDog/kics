@@ -633,6 +633,12 @@ func (sr *sarifReport) BuildSarifIssue(issue *model.QueryResult) string {
 		}
 
 		categoryTag := GetCategoryTag(issue.Category)
+		tags := []string{categoryTag}
+		cwe := issue.CWE
+		if cwe != "" {
+			cweTag := GetCWETag(cwe)
+			tags = append(tags, cweTag)
+		}
 
 		for idx := range issue.Files {
 			line := issue.Files[idx].Line
@@ -680,7 +686,7 @@ func (sr *sarifReport) BuildSarifIssue(issue *model.QueryResult) string {
 					},
 				},
 				ResultProperties: sarifProperties{
-					"tags": []string{categoryTag},
+					"tags": tags,
 				},
 			}
 			sr.Runs[0].Results = append(sr.Runs[0].Results, result)

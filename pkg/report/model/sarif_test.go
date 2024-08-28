@@ -277,7 +277,7 @@ var sarifTests = []sarifTest{
 									},
 								},
 							},
-							ResultProperties: sarifProperties{"tags": []string{"DATADOG_CATEGORY:test"}},
+							ResultProperties: sarifProperties{"tags": []string{"DATADOG_CATEGORY:test", "CWE:22"}},
 						},
 					},
 					Taxonomies: []sarifTaxonomy{
@@ -334,6 +334,10 @@ func TestBuildSarifIssue(t *testing.T) {
 			}
 			require.Equal(t, len(tt.want.Runs[0].Results), len(result.Runs[0].Results))
 			require.Equal(t, len(tt.want.Runs[0].Tool.Driver.Rules), len(result.Runs[0].Tool.Driver.Rules))
+			for index, wantResult := range tt.want.Runs[0].Results {
+				actualResult := result.Runs[0].Results[index]
+				require.Equal(t, wantResult.ResultProperties["tags"], actualResult.ResultProperties["tags"])
+			}
 			if len(tt.want.Runs[0].Tool.Driver.Rules) > 0 {
 				if len(result.Runs[0].Tool.Driver.Rules[0].Relationships) > 0 {
 					if tt.vq[0].CWE == "" {
