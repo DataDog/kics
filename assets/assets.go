@@ -2,8 +2,8 @@ package assets
 
 import (
 	"embed" // used for embedding KICS libraries
+	"fmt"
 	"io/fs"
-	"path/filepath"
 
 	"github.com/rs/zerolog/log"
 )
@@ -28,7 +28,7 @@ func GetEmbeddedLibraryData(platform string) (string, error) {
 	return string(content), err
 }
 
-//go:embed queries/terraform
+//go:embed queries
 var embeddedQueries embed.FS
 
 func GetEmbeddedQueryDirs() ([]string, error) {
@@ -38,10 +38,7 @@ func GetEmbeddedQueryDirs() ([]string, error) {
 			log.Info().Msgf("Failed to walk directory: %s", path)
 			return err
 		}
-		baseDir := filepath.Base(path)
-		if baseDir == "test" {
-			return nil
-		}
+		fmt.Printf("path=%q, isDir=%v\n", path, d.IsDir())
 		if d.IsDir() {
 			out = append(out, path)
 		}
