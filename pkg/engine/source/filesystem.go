@@ -132,52 +132,53 @@ func GetPathToCustomLibrary(platform, libraryPathFlag string) string {
 // GetQueryLibrary returns the library.rego for the platform passed in the argument
 func (s *FilesystemSource) GetQueryLibrary(platform string) (RegoLibraries, error) {
 	library := GetPathToCustomLibrary(platform, s.Library)
-	// customLibraryCode := ""
-	// customLibraryData := emptyInputData
+	customLibraryCode := ""
+	customLibraryData := emptyInputData
 
 	if library == "" {
 		return RegoLibraries{}, errors.New("unable to get libraries path")
 	}
 
-	// if library != kicsDefault {
-	// 	byteContent, err := os.ReadFile(library)
-	// 	if err != nil {
-	// 		return RegoLibraries{}, err
-	// 	}
-	// 	customLibraryCode = string(byteContent)
-	// 	customLibraryData, err = readInputData(strings.TrimSuffix(library, filepath.Ext(library)) + ".json")
-	// 	if err != nil {
-	// 		log.Debug().Msg(err.Error())
-	// 	}
-	// } else {
-	// 	log.Debug().Msgf("Custom library %s not provided. Loading embedded library instead", platform)
-	// }
+	if library != kicsDefault {
+		byteContent, err := os.ReadFile(library)
+		if err != nil {
+			return RegoLibraries{}, err
+		}
+		customLibraryCode = string(byteContent)
+		customLibraryData, err = readInputData(strings.TrimSuffix(library, filepath.Ext(library)) + ".json")
+		if err != nil {
+			log.Debug().Msg(err.Error())
+		}
+	} else {
+		log.Debug().Msgf("Custom library %s not provided. Loading embedded library instead", platform)
+	}
 	// getting embedded library
 	embeddedLibraryCode, errGettingEmbeddedLibrary := assets.GetEmbeddedLibrary(strings.ToLower(platform))
 	if errGettingEmbeddedLibrary != nil {
 		return RegoLibraries{}, errGettingEmbeddedLibrary
 	}
 
-	// mergedLibraryCode, errMergeLibs := mergeLibraries(customLibraryCode, embeddedLibraryCode)
-	// if errMergeLibs != nil {
-	// 	return RegoLibraries{}, errMergeLibs
-	// }
+	mergedLibraryCode, errMergeLibs := mergeLibraries(customLibraryCode, embeddedLibraryCode)
+	if errMergeLibs != nil {
+		return RegoLibraries{}, errMergeLibs
+	}
+	log.Info().Msgf("Have merged library code: %s", mergedLibraryCode)
 
 	embeddedLibraryData, errGettingEmbeddedLibraryCode := assets.GetEmbeddedLibraryData(strings.ToLower(platform))
 	if errGettingEmbeddedLibraryCode != nil {
 		log.Debug().Msgf("Could not open embedded library data for %s platform", platform)
 		embeddedLibraryData = emptyInputData
 	}
-
-	// mergedLibraryData, errMergingLibraryData := MergeInputData(embeddedLibraryData, customLibraryData)
-	// if errMergingLibraryData != nil {
-	// 	log.Debug().Msgf("Could not merge library data for %s platform", platform)
-	// }
-	// log.Info().Msgf("Have merged library data: %s", mergedLibraryData)
+	log.Info().Msgf("Have embedded library data: %s", embeddedLibraryData)
+	mergedLibraryData, errMergingLibraryData := MergeInputData(embeddedLibraryData, customLibraryData)
+	if errMergingLibraryData != nil {
+		log.Debug().Msgf("Could not merge library data for %s platform", platform)
+	}
+	log.Info().Msgf("Have merged library data: %s", mergedLibraryData)
 
 	regoLibrary := RegoLibraries{
-		LibraryCode:      embeddedLibraryCode,
-		LibraryInputData: embeddedLibraryData,
+		LibraryCode:      mergedLibraryCode,
+		LibraryInputData: mergedLibraryData,
 	}
 	return regoLibrary, nil
 }
@@ -450,11 +451,11 @@ func ReadQuery(queryDir string) (model.QueryMetadata, error) {
 
 	platform := getPlatform(metadata["platform"].(string))
 
-	// inputData, errInputData := readInputData(filepath.Join(queryDir, "data.json"))
-	// if errInputData != nil {
-	// 	log.Err(errInputData).
-	// 		Msgf("Query provider failed to read input data, query=%s", path.Base(queryDir))
-	// }
+	inputData, errInputData := readInputData(filepath.Join(queryDir, "data.json"))
+	if errInputData != nil {
+		log.Err(errInputData).
+			Msgf("Query provider failed to read input data, query=%s", path.Base(queryDir))
+	}
 
 	aggregation := 1
 	if agg, ok := metadata["aggregation"]; ok {
@@ -468,7 +469,7 @@ func ReadQuery(queryDir string) (model.QueryMetadata, error) {
 		Content:      string(queryContent),
 		Metadata:     metadata,
 		Platform:     platform,
-		InputData:    "{}",
+		InputData:    inputData,
 		Aggregation:  aggregation,
 		Experimental: experimental,
 	}, nil

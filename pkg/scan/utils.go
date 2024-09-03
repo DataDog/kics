@@ -40,12 +40,12 @@ func (c *Client) prepareAndAnalyzePaths(ctx context.Context) (provider.Extracted
 		return provider.ExtractedPath{}, err
 	}
 
-	// regularExPaths, err := provider.GetSources(regularPaths)
-	// if err != nil {
-	// 	return provider.ExtractedPath{}, err
-	// }
+	regularExPaths, err := provider.GetSources(regularPaths)
+	if err != nil {
+		return provider.ExtractedPath{}, err
+	}
 
-	allPaths := combinePaths(kuberneterExPaths, queryExPaths, libExPaths, regularPaths)
+	allPaths := combinePaths(kuberneterExPaths, regularExPaths, queryExPaths, libExPaths)
 	if len(allPaths.Path) == 0 {
 		return provider.ExtractedPath{}, nil
 	}
@@ -77,18 +77,15 @@ func (c *Client) prepareAndAnalyzePaths(ctx context.Context) (provider.Extracted
 	return allPaths, nil
 }
 
-func combinePaths(kuberneter, query, library provider.ExtractedPath, regular []string) provider.ExtractedPath {
+func combinePaths(kuberneter, regular, query, library provider.ExtractedPath) provider.ExtractedPath {
 	var combinedPaths provider.ExtractedPath
 	paths := make([]string, 0)
 	combinedPathsEx := make(map[string]model.ExtractedPathObject)
 	paths = append(paths, kuberneter.Path...)
-	paths = append(paths, regular...)
+	paths = append(paths, regular.Path...)
 	combinedPaths.Path = paths
-	for _, v := range regular {
-		combinedPathsEx[v] = model.ExtractedPathObject{
-			Path:      v,
-			LocalPath: true,
-		}
+	for k, v := range regular.ExtractionMap {
+		combinedPathsEx[k] = v
 	}
 	for k, v := range kuberneter.ExtractionMap {
 		combinedPathsEx[k] = v
