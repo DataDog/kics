@@ -6,7 +6,6 @@
 package model
 
 import (
-	"os"
 	"path/filepath"
 	"regexp"
 	"sort"
@@ -132,7 +131,7 @@ func getRelativePath(basePath, filePath string) string {
 	} else {
 		returnPath = relativePath
 	}
-	returnPath = strings.Replace(returnPath, "innovation-week-cloud-to-tf/", "", 1)
+
 	return returnPath
 }
 
@@ -178,21 +177,16 @@ func removeURLCredentials(url string) string {
 	return strings.Replace(url, authGroup, "", 1)
 }
 
-func resolvePath(filePath string, pathExtractionMap map[string]ExtractedPathObject) string {
+func resolvePath(filePath string, pathExtractionMap map[string]ExtractedPathObject, downloadDir string) string {
 	var returnPath string
 	returnPath = replaceIfTemporaryPath(filepath.FromSlash(filePath), pathExtractionMap)
-	pwd, err := os.Getwd()
-	if err != nil {
-		log.Debug().Msgf("Unable to get current working dir %s", err)
-		return returnPath
-	}
-	returnPath = getRelativePath(pwd, returnPath)
+	returnPath = getRelativePath(downloadDir, returnPath)
 	return returnPath
 }
 
 // CreateSummary creates a report for a single scan, based on its scanID
 func CreateSummary(counters Counters, vulnerabilities []Vulnerability,
-	scanID string, pathExtractionMap map[string]ExtractedPathObject, version Version) Summary {
+	scanID string, pathExtractionMap map[string]ExtractedPathObject, version Version, downloadDir string) Summary {
 	log.Debug().Msg("model.CreateSummary()")
 	q := make(map[string]QueryResult, len(vulnerabilities))
 	severitySummary := SeveritySummary{
@@ -218,7 +212,7 @@ func CreateSummary(counters Counters, vulnerabilities []Vulnerability,
 			}
 		}
 
-		resolvedPath := resolvePath(item.FileName, pathExtractionMap)
+		resolvedPath := resolvePath(item.FileName, pathExtractionMap, downloadDir)
 
 		qItem := q[item.QueryID]
 		qItem.Files = append(qItem.Files, VulnerableFile{

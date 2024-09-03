@@ -40,7 +40,7 @@ func (c *Client) prepareAndAnalyzePaths(ctx context.Context) (provider.Extracted
 		return provider.ExtractedPath{}, err
 	}
 
-	regularExPaths, err := provider.GetSources(regularPaths)
+	regularExPaths, err := provider.GetSources(regularPaths, c.ScanParams.OutputPath)
 	if err != nil {
 		return provider.ExtractedPath{}, err
 	}
@@ -124,7 +124,7 @@ func (c *Client) GetQueryPath() (provider.ExtractedPath, error) {
 	}
 	if c.ScanParams.ChangedDefaultQueryPath {
 		for _, queryPath := range c.ScanParams.QueriesPath {
-			extractedPath, errExtractQueries := resolvePath(queryPath, "queries-path")
+			extractedPath, errExtractQueries := resolvePath(queryPath, "queries-path", c.ScanParams.OutputPath)
 			if errExtractQueries != nil {
 				return extPath, errExtractQueries
 			}
@@ -151,7 +151,7 @@ func (c *Client) getLibraryPath() (provider.ExtractedPath, error) {
 		ExtractionMap: make(map[string]model.ExtractedPathObject),
 	}
 	if c.ScanParams.ChangedDefaultLibrariesPath {
-		extractedLibrariesPath, errExtractLibraries := resolvePath(c.ScanParams.LibrariesPath, "libraries-path")
+		extractedLibrariesPath, errExtractLibraries := resolvePath(c.ScanParams.LibrariesPath, "libraries-path", c.ScanParams.OutputPath)
 		if errExtractLibraries != nil {
 			return extPath, errExtractLibraries
 		}
@@ -162,8 +162,8 @@ func (c *Client) getLibraryPath() (provider.ExtractedPath, error) {
 	return extPath, nil
 }
 
-func resolvePath(flagContent, flagName string) (provider.ExtractedPath, error) {
-	extractedPath, errExtractPath := provider.GetSources([]string{flagContent})
+func resolvePath(flagContent, flagName, downloadDir string) (provider.ExtractedPath, error) {
+	extractedPath, errExtractPath := provider.GetSources([]string{flagContent}, downloadDir)
 	if errExtractPath != nil {
 		return extractedPath, errExtractPath
 	}

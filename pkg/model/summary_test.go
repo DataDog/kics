@@ -45,7 +45,7 @@ func TestCreateSummary(t *testing.T) {
 	pathExtractionMap := map[string]ExtractedPathObject{}
 
 	t.Run("create_summary_empty", func(t *testing.T) {
-		summary := CreateSummary(counter, []Vulnerability{}, "scanID", pathExtractionMap, Version{})
+		summary := CreateSummary(counter, []Vulnerability{}, "scanID", pathExtractionMap, Version{}, "")
 		require.Equal(t, summary, Summary{
 			Counters: counter,
 			SeveritySummary: SeveritySummary{
@@ -69,7 +69,7 @@ func TestCreateSummary(t *testing.T) {
 	t.Run("create_summary", func(t *testing.T) {
 		filePaths := make(map[string]string)
 		filePaths["fileName"] = "fileName"
-		summary := CreateSummary(counter, vulnerabilities, "scanID", pathExtractionMap, Version{})
+		summary := CreateSummary(counter, vulnerabilities, "scanID", pathExtractionMap, Version{}, "")
 		require.Equal(t, summary, Summary{
 			Counters: counter,
 			SeveritySummary: SeveritySummary{
@@ -119,6 +119,7 @@ func TestModel_resolvePath(t *testing.T) {
 	type args struct {
 		filePath          string
 		pathExtractionMap map[string]ExtractedPathObject
+		downloadDir       string
 	}
 	tests := []struct {
 		name string
@@ -135,6 +136,7 @@ func TestModel_resolvePath(t *testing.T) {
 						LocalPath: false,
 					},
 				},
+				downloadDir: "/tmp",
 			},
 			want: filepath.FromSlash("https//test/relativepath/testing/file/vuln"),
 		},
@@ -148,6 +150,7 @@ func TestModel_resolvePath(t *testing.T) {
 						LocalPath: false,
 					},
 				},
+				downloadDir: "/tmp",
 			},
 			want: filepath.FromSlash("https//test/relativepath/testing/file/vuln"),
 		},
@@ -161,6 +164,7 @@ func TestModel_resolvePath(t *testing.T) {
 						LocalPath: true,
 					},
 				},
+				downloadDir: pwd,
 			},
 			want: filepath.FromSlash("assets/queries/dockerfile/image_version_not_explicit/test/negative.dockerfile"),
 		},
@@ -168,7 +172,7 @@ func TestModel_resolvePath(t *testing.T) {
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			got := resolvePath(tt.args.filePath, tt.args.pathExtractionMap)
+			got := resolvePath(tt.args.filePath, tt.args.pathExtractionMap, tt.args.downloadDir)
 			require.Equal(t, tt.want, got)
 		})
 	}

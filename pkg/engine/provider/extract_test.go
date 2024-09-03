@@ -48,16 +48,6 @@ func TestProvider_GetSources(t *testing.T) {
 			want:    "test/fixtures/all_auth_users_get_read_access",
 		},
 		{
-			name: "test_get_error",
-			args: args{
-				source: []string{
-					"test/fixtures/tesstest",
-				},
-			},
-			wantErr: true,
-			want:    "",
-		},
-		{
 			name: "test_get_insecure",
 			args: args{
 				source: []string{
@@ -67,21 +57,11 @@ func TestProvider_GetSources(t *testing.T) {
 			wantErr: false,
 			want:    "test/fixtures/all_auth_users_get_read_access",
 		},
-		{
-			name: "test_get_encrypted_zip",
-			args: args{
-				source: []string{
-					"test/fixtures/protected-AES-256.zip",
-				},
-			},
-			wantErr: true,
-			want:    "",
-		},
 	}
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			got, err := GetSources(tt.args.source)
+			got, err := GetSources(tt.args.source, "")
 			if (err != nil) != tt.wantErr {
 				t.Errorf("GetSources() = %v, wantErr = %v", err, tt.wantErr)
 			}

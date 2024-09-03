@@ -34,7 +34,14 @@ func (c *Client) getSummary(results []model.Vulnerability, end time.Time, pathPa
 		FailedSimilarityID:     c.Tracker.FailedSimilarityID,
 	}
 
-	summary := model.CreateSummary(counters, results, c.ScanParams.ScanID, pathParameters.PathExtractionMap, c.Tracker.Version)
+	summary := model.CreateSummary(
+		counters,
+		results,
+		c.ScanParams.ScanID,
+		pathParameters.PathExtractionMap,
+		c.Tracker.Version,
+		c.ScanParams.OutputPath,
+	)
 	summary.Times = model.Times{
 		Start: c.ScanStartTime,
 		End:   end,
@@ -134,8 +141,6 @@ func (c *Client) postScan(scanResults *Results) (ScanMetadata, error) {
 		log.Err(err).Msgf("failed to resolve outputs %v", err)
 		return metadata, err
 	}
-
-	deleteExtractionFolder(scanResults.ExtractedPaths.ExtractionMap)
 
 	logger := consolePrinter.NewLogger(nil)
 	endTime := time.Now()
