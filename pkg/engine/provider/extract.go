@@ -74,50 +74,50 @@ func GetKuberneterSources(ctx context.Context, source []string, destinationPath 
 // GetSources goes through the source slice, and determines the of source type (ex: zip, git, local).
 // It than extracts the files to be scanned. If the source given is not local, a temp dir
 // will be created where the files will be stored.
-func GetSources(source []string) (ExtractedPath, error) {
+func GetSources(source []string, downloadDir string) (ExtractedPath, error) {
 	extrStruct := ExtractedPath{
 		Path:          []string{},
 		ExtractionMap: make(map[string]model.ExtractedPathObject),
 	}
 	for _, path := range source {
-		destination := filepath.Join(os.TempDir(), "kics-extract-"+utils.NextRandom())
-		log.Info().Msgf("Extracting %s to %s", path, destination)
-		mode := getter.ClientModeAny
+		destination := filepath.Join(downloadDir, utils.NextRandom())
+		// log.Info().Msgf("Extracting %s to %s", path, destination)
+		// mode := getter.ClientModeAny
 
-		pwd := "external/com_github_checkmarx_kics/"
+		// pwd := "external/com_github_checkmarx_kics/"
 
-		opts := []getter.ClientOption{}
+		// opts := []getter.ClientOption{}
 
-		opts = append(opts, getter.WithInsecure())
+		// opts = append(opts, getter.WithInsecure())
 
-		ctx, cancel := context.WithCancel(context.Background())
+		// ctx, cancel := context.WithCancel(context.Background())
 
-		goGetter := getterStruct{
-			ctx:         ctx,
-			cancel:      cancel,
-			mode:        mode,
-			pwd:         pwd,
-			opts:        opts,
-			destination: destination,
-			source:      path,
-		}
+		// goGetter := getterStruct{
+		// 	ctx:         ctx,
+		// 	cancel:      cancel,
+		// 	mode:        mode,
+		// 	pwd:         pwd,
+		// 	opts:        opts,
+		// 	destination: destination,
+		// 	source:      path,
+		// }
 
-		getterDst, err := getPaths(&goGetter)
-		if err != nil {
-			if ignoreDamagedFiles(path) {
-				continue
-			}
-			log.Error().Msgf("%s", err)
-			return ExtractedPath{}, err
-		}
-		tempDst, local := checkSymLink(getterDst, path)
+		// getterDst, err := getPaths(&goGetter)
+		// if err != nil {
+		// 	if ignoreDamagedFiles(path) {
+		// 		continue
+		// 	}
+		// 	log.Error().Msgf("%s", err)
+		// 	return ExtractedPath{}, err
+		// }
+		// tempDst, local := checkSymLink(getterDst, path)
 
-		extrStruct.ExtractionMap[getterDst] = model.ExtractedPathObject{
+		extrStruct.ExtractionMap[destination] = model.ExtractedPathObject{
 			Path:      path,
-			LocalPath: local,
+			LocalPath: true,
 		}
 
-		extrStruct.Path = append(extrStruct.Path, tempDst)
+		extrStruct.Path = append(extrStruct.Path, path)
 	}
 
 	log.Info().Msgf("Got sources %v", extrStruct)
