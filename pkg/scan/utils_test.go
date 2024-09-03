@@ -371,7 +371,7 @@ func Test_CombinePaths(t *testing.T) {
 				Path:          []string{},
 				ExtractionMap: make(map[string]model.ExtractedPathObject),
 			}
-			v := combinePaths(tt.kuberneter, tt.regular, extPath, extPath)
+			v := combinePaths(tt.kuberneter, extPath, extPath, tt.regular.Path)
 
 			require.Equal(t, tt.expectedOutput, v)
 		})
