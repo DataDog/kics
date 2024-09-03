@@ -142,8 +142,6 @@ func (c *Client) postScan(scanResults *Results) (ScanMetadata, error) {
 		return metadata, err
 	}
 
-	deleteExtractionFolder(scanResults.ExtractedPaths.ExtractionMap)
-
 	logger := consolePrinter.NewLogger(nil)
 	endTime := time.Now()
 	scanDuration := endTime.Sub(c.ScanStartTime)
