@@ -119,9 +119,6 @@ func GetSources(source []string, downloadDir string) (ExtractedPath, error) {
 
 		extrStruct.Path = append(extrStruct.Path, path)
 	}
-
-	log.Info().Msgf("Got sources %v", extrStruct)
-
 	return extrStruct, nil
 }
 

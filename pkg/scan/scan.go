@@ -21,7 +21,6 @@ import (
 	bicepParser "github.com/Checkmarx/kics/pkg/parser/bicep"
 	buildahParser "github.com/Checkmarx/kics/pkg/parser/buildah"
 	protoParser "github.com/Checkmarx/kics/pkg/parser/grpc"
-	jsonParser "github.com/Checkmarx/kics/pkg/parser/json"
 	terraformParser "github.com/Checkmarx/kics/pkg/parser/terraform"
 	yamlParser "github.com/Checkmarx/kics/pkg/parser/yaml"
 	"github.com/Checkmarx/kics/pkg/resolver"
@@ -257,7 +256,7 @@ func (c *Client) createService(
 	}
 
 	combinedParser, err := parser.NewBuilder().
-		Add(&jsonParser.Parser{}).
+		// Add(&jsonParser.Parser{}).
 		Add(&yamlParser.Parser{}).
 		Add(terraformParser.NewDefaultWithVarsPath(c.ScanParams.TerraformVarsPath)).
 		Add(&bicepParser.Parser{}).

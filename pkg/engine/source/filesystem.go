@@ -379,8 +379,6 @@ func (s *FilesystemSource) iterateQueryDirs(queryDirs []string, queryParameters 
 			}
 		} else {
 			if checkQueryExclude(query.Metadata, queryParameters) {
-				log.Debug().
-					Msgf("Excluding query ID: %s category: %s severity: %s", query.Metadata["id"], query.Metadata["category"], query.Metadata["severity"])
 				continue
 			}
 
