@@ -153,22 +153,22 @@ func GetFullPath(partialPath string) (string, error) {
 	_, b, _, _ := runtime.Caller(0)
 	executableDirPath := filepath.Dir(b)
 	fullPath := filepath.Join(executableDirPath, partialPath)
-	if _, err := os.Stat(fullPath); os.IsNotExist(err) {
-		currentWorkDir, err := os.Getwd()
-		log.Debug().Msgf("currentWorkDir: %s", currentWorkDir)
-		if err != nil {
-			return "", err
-		}
-		idx := strings.Index(currentWorkDir, "kics")
-		if idx != -1 {
-			currentWorkDir = currentWorkDir[:strings.LastIndex(currentWorkDir, "kics")] + "kics"
-		}
-		log.Debug().Msgf("currentWorkDir now: %s", currentWorkDir)
-		fullPath = filepath.Join(currentWorkDir, partialPath)
-		if _, err := os.Stat(fullPath); os.IsNotExist(err) {
-			return "", err
-		}
-	}
+	// if _, err := os.Stat(fullPath); os.IsNotExist(err) {
+	// 	currentWorkDir, err := os.Getwd()
+	// 	log.Debug().Msgf("currentWorkDir: %s", currentWorkDir)
+	// 	if err != nil {
+	// 		return "", err
+	// 	}
+	// 	idx := strings.Index(currentWorkDir, "kics")
+	// 	if idx != -1 {
+	// 		currentWorkDir = currentWorkDir[:strings.LastIndex(currentWorkDir, "kics")] + "kics"
+	// 	}
+	// 	log.Debug().Msgf("currentWorkDir now: %s", currentWorkDir)
+	// 	fullPath = filepath.Join(currentWorkDir, partialPath)
+	// 	if _, err := os.Stat(fullPath); os.IsNotExist(err) {
+	// 		return "", err
+	// 	}
+	// }
 
 	return fullPath, nil
 }
