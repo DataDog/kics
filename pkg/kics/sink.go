@@ -34,7 +34,6 @@ func (s *Service) sink(ctx context.Context, filename, scanID string,
 	openAPIResolveReferences bool,
 	maxResolverDepth int) error {
 	s.Tracker.TrackFileFound(filename)
-	log.Debug().Msgf("Starting to process file %s", filename)
 
 	c, err := getContent(rc, data, s.MaxFileSize, filename)
 
@@ -97,7 +96,6 @@ func (s *Service) sink(ctx context.Context, filename, scanID string,
 		s.saveToFile(ctx, &file)
 	}
 	s.Tracker.TrackFileParse(filename)
-	log.Debug().Msgf("Finished to process file %s", filename)
 
 	s.Tracker.TrackFileParseCountLines(documents.CountLines - len(documents.IgnoreLines))
 	s.Tracker.TrackFileIgnoreCountLines(len(documents.IgnoreLines))

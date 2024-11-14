@@ -6,7 +6,6 @@
 package terraform
 
 import (
-	"fmt"
 	"os"
 	"path/filepath"
 	"regexp"
@@ -68,7 +67,7 @@ func checkTfvarsValid(f *hcl.File, filename string) error {
 		},
 	})
 	if len(content.Blocks) > 0 {
-		return fmt.Errorf("failed to get variables from %s, .tfvars file is used to assing values not to declare new variables", filename)
+		log.Debug().Msgf("failed to get variables from %s, .tfvars file is used to assing values not to declare new variables", filename)
 	}
 	return nil
 }
@@ -113,9 +112,7 @@ func getInputVariables(currentPath, fileContent, terraformVarsPath string) {
 	}
 
 	_, err = os.Stat(filepath.Join(currentPath, "terraform.tfvars"))
-	if err != nil {
-		log.Trace().Msgf("terraform.tfvars not found on %s", currentPath)
-	} else {
+	if err == nil {
 		tfVarsFiles = append(tfVarsFiles, filepath.Join(currentPath, "terraform.tfvars"))
 	}
 
@@ -158,6 +155,18 @@ func getInputVariables(currentPath, fileContent, terraformVarsPath string) {
 			} else {
 				mergeMaps(variablesMap, variables)
 			}
+		}
+	}
+
+	// check if variables.tf file exists in the current path
+	_, err = os.Stat(filepath.Join(currentPath, "variables.tf"))
+	if err == nil {
+		variables, errInputVariables := getInputVariablesFromFile(filepath.Join(currentPath, "variables.tf"))
+		if errInputVariables != nil {
+			log.Error().Msgf("Error getting values from %s: %v", filepath.Join(currentPath, "variables.tf"), errInputVariables)
+			log.Err(errInputVariables)
+		} else {
+			mergeMaps(variablesMap, variables)
 		}
 	}
 
