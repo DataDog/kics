@@ -685,7 +685,6 @@ func multiPlatformTypeCheck(typesSelected *[]string) {
 }
 
 func (a *analyzerInfo) isAvailableType(typeName string) bool {
-	fmt.Printf("typeName is %v\n", a.typesFlag)
 	// no flag is set
 	if len(a.typesFlag) == 1 && a.typesFlag[0] == "" && len(a.excludeTypesFlag) == 1 && a.excludeTypesFlag[0] == "" {
 		return true
