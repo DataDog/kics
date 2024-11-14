@@ -77,10 +77,10 @@ func getInputVariablesFromFile(filename string) (converter.VariableMap, error) {
 	if err != nil || parsedFile == nil {
 		return nil, err
 	}
-	err = checkTfvarsValid(parsedFile, filename)
-	if err != nil {
-		return nil, err
-	}
+	// err = checkTfvarsValid(parsedFile, filename)
+	// if err != nil {
+	// 	return nil, err
+	// }
 
 	attrs := parsedFile.Body.(*hclsyntax.Body).Attributes
 	variables := make(converter.VariableMap)
