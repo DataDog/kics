@@ -7,6 +7,7 @@ package model
 
 type SCIInfo struct {
 	DiffAware DiffAware
+	RunType   string `json:"run_type"`
 }
 
 // DiffAware contains the necessary information to be able to perform a diff between two reports
