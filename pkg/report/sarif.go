@@ -24,6 +24,7 @@ func PrintSarifReport(path, filename string, body interface{}, sciInfo model.SCI
 		}
 
 		sarifReport := reportModel.NewSarifReport()
+		sarifReport.SetToolVersionType(sciInfo.RunType)
 		auxID := []string{}
 		auxGUID := map[string]string{}
 		for idx := range summary.Queries {

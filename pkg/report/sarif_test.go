@@ -67,6 +67,46 @@ func TestPrintSarifReport(t *testing.T) {
 	}
 }
 
+func TestPrintSarifReportWithToolVersionFullScan(t *testing.T) {
+	for idx, test := range sarifTests {
+		t.Run(fmt.Sprintf("Sarif File test case %d", idx), func(t *testing.T) {
+			if err := os.MkdirAll(test.caseTest.path, os.ModePerm); err != nil {
+				t.Fatal(err)
+			}
+			err := PrintSarifReport(test.caseTest.path, test.caseTest.filename, test.caseTest.summary, model.SCIInfo{RunType: "full_scan"})
+			checkFileExists(t, err, &test, "sarif")
+			jsonResult, err := os.ReadFile(filepath.Join(test.caseTest.path, test.caseTest.filename+".sarif"))
+			require.NoError(t, err)
+			var resultSarif sarifReport
+			err = json.Unmarshal(jsonResult, &resultSarif)
+			require.NoError(t, err)
+			require.Len(t, resultSarif.Runs, len(test.expectedResult.Queries))
+			require.Equal(t, resultSarif.Runs[0].Tool.Driver.ToolVersion, "full_scan")
+			os.RemoveAll(test.caseTest.path)
+		})
+	}
+}
+
+func TestPrintSarifReportWithToolVersionCodeUpdate(t *testing.T) {
+	for idx, test := range sarifTests {
+		t.Run(fmt.Sprintf("Sarif File test case %d", idx), func(t *testing.T) {
+			if err := os.MkdirAll(test.caseTest.path, os.ModePerm); err != nil {
+				t.Fatal(err)
+			}
+			err := PrintSarifReport(test.caseTest.path, test.caseTest.filename, test.caseTest.summary, model.SCIInfo{RunType: "code_update"})
+			checkFileExists(t, err, &test, "sarif")
+			jsonResult, err := os.ReadFile(filepath.Join(test.caseTest.path, test.caseTest.filename+".sarif"))
+			require.NoError(t, err)
+			var resultSarif sarifReport
+			err = json.Unmarshal(jsonResult, &resultSarif)
+			require.NoError(t, err)
+			require.Len(t, resultSarif.Runs, len(test.expectedResult.Queries))
+			require.Equal(t, resultSarif.Runs[0].Tool.Driver.ToolVersion, "code_update")
+			os.RemoveAll(test.caseTest.path)
+		})
+	}
+}
+
 func checkFileExists(t *testing.T, err error, tc *reportTestCase, extension string) {
 	require.NoError(t, err)
 	require.FileExists(t, filepath.Join(tc.caseTest.path, tc.caseTest.filename+fmt.Sprintf(".%s", extension)))

@@ -230,6 +230,7 @@ type SarifReport interface {
 	GetGUIDFromRelationships(idx int, cweID string) string
 	AddTags(summary *model.Summary, diffAware *model.DiffAware) error
 	ResolveFilepaths(basePath string) error
+	SetToolVersionType(runType string)
 }
 
 type sarifReport struct {
@@ -694,6 +695,12 @@ func (sr *sarifReport) BuildSarifIssue(issue *model.QueryResult) string {
 		return issue.CWE
 	}
 	return ""
+}
+
+func (sr *sarifReport) SetToolVersionType(runType string) {
+	if len(runType) > 0 {
+		sr.Runs[0].Tool.Driver.ToolVersion = runType
+	}
 }
 
 func (sr *sarifReport) AddTags(summary *model.Summary, diffAware *model.DiffAware) error {
