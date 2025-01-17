@@ -7,7 +7,7 @@ For more details about the full capabilities of the tool, please refer to the up
 
 ## Contributing code
 
-This repository is already a fork of [Checkmarx KICS](https://github.com/Checkmarx/kics).
+This repository is a fork of [Checkmarx KICS](https://github.com/Checkmarx/kics).
 
 Before contributing, please ensure you want to change a Datadog specific behavior of the scanner.
 If not, please consider contributing directly to the upstream repository.
