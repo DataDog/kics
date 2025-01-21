@@ -699,7 +699,10 @@ func (sr *sarifReport) BuildSarifIssue(issue *model.QueryResult) string {
 
 func (sr *sarifReport) SetToolVersionType(runType string) {
 	if len(runType) > 0 {
-		sr.Runs[0].Tool.Driver.ToolVersion = runType
+		for idx := range sr.Runs {
+			sr.Runs[idx].Tool.Driver.ToolVersion = runType
+		}
+		log.Info().Msgf("Tool version set to %s", runType)
 	}
 }
 

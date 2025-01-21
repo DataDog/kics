@@ -24,7 +24,6 @@ func PrintSarifReport(path, filename string, body interface{}, sciInfo model.SCI
 		}
 
 		sarifReport := reportModel.NewSarifReport()
-		sarifReport.SetToolVersionType(sciInfo.RunType)
 		auxID := []string{}
 		auxGUID := map[string]string{}
 		for idx := range summary.Queries {
@@ -37,6 +36,8 @@ func PrintSarifReport(path, filename string, body interface{}, sciInfo model.SCI
 		}
 		sarifReport.AddTags(&summary, &sciInfo.DiffAware)
 		sarifReport.ResolveFilepaths(path)
+		sarifReport.SetToolVersionType(sciInfo.RunType)
+
 		// sarifReport.RebuildTaxonomies(auxID, auxGUID)
 		body = sarifReport
 	}
