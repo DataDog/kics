@@ -101,6 +101,7 @@ func printOutput(outputPath, filename string, body interface{}, formats []string
 	}
 
 	log.Debug().Msgf("Output formats provided [%v]", strings.Join(formats, ","))
+	log.Debug().Msgf("SCIInfo: %v", sciInfo)
 	err := consoleHelpers.GenerateReport(outputPath, filename, body, formats, proBarBuilder, sciInfo)
 
 	return err
