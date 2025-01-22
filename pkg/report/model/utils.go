@@ -6,6 +6,8 @@
 package model
 
 import (
+	"crypto/sha256"
+	"encoding/hex"
 	"fmt"
 
 	"github.com/Checkmarx/kics/pkg/model"
@@ -48,4 +50,12 @@ func GetKICSRuleIDTag(ruleID string) string {
 
 func GetCWETag(cwe string) string {
 	return fmt.Sprintf(cweTag, cwe)
+}
+
+// stringToHash returns a SHA256 hash of the input string.
+func StringToHash(str string) string {
+	hash := sha256.New()
+	hash.Write([]byte(str))
+	hashed := hash.Sum(nil)
+	return hex.EncodeToString(hashed)
 }

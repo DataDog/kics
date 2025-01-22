@@ -107,6 +107,21 @@ var sarifTests = []sarifTest{
 							},
 							ResultLevel:      "error",
 							ResultProperties: sarifProperties{"tags": []string{"DATADOG_CATEGORY:"}},
+							PartialFingerprints: SarifPartialFingerprints{
+								DatadogFingerprint: GetDatadogFingerprintHash(
+									model.SCIInfo{
+										RunType: "",
+										RepositoryCommitInfo: model.RepositoryCommitInfo{
+											RepositoryUrl: "",
+											Branch:        "",
+											CommitSHA:     "",
+										},
+									},
+									"test.json",
+									1,
+									"1",
+								),
+							},
 						},
 					},
 					Taxonomies: []sarifTaxonomy{
@@ -260,6 +275,21 @@ var sarifTests = []sarifTest{
 								},
 							},
 							ResultProperties: sarifProperties{"tags": []string{"DATADOG_CATEGORY:test"}},
+							PartialFingerprints: SarifPartialFingerprints{
+								DatadogFingerprint: GetDatadogFingerprintHash(
+									model.SCIInfo{
+										RunType: "",
+										RepositoryCommitInfo: model.RepositoryCommitInfo{
+											RepositoryUrl: "",
+											Branch:        "",
+											CommitSHA:     "",
+										},
+									},
+									"",
+									1,
+									"test",
+								),
+							},
 						},
 						{
 							ResultRuleID:    "test info",
@@ -278,6 +308,21 @@ var sarifTests = []sarifTest{
 								},
 							},
 							ResultProperties: sarifProperties{"tags": []string{"DATADOG_CATEGORY:test", "CWE:22"}},
+							PartialFingerprints: SarifPartialFingerprints{
+								DatadogFingerprint: GetDatadogFingerprintHash(
+									model.SCIInfo{
+										RunType: "",
+										RepositoryCommitInfo: model.RepositoryCommitInfo{
+											RepositoryUrl: "",
+											Branch:        "",
+											CommitSHA:     "",
+										},
+									},
+									"",
+									1,
+									"test info",
+								),
+							},
 						},
 					},
 					Taxonomies: []sarifTaxonomy{
@@ -330,13 +375,14 @@ func TestBuildSarifIssue(t *testing.T) {
 		t.Run(tt.name, func(t *testing.T) {
 			result := NewSarifReport().(*sarifReport)
 			for _, vq := range tt.vq {
-				result.BuildSarifIssue(&vq)
+				result.BuildSarifIssue(&vq, model.SCIInfo{})
 			}
 			require.Equal(t, len(tt.want.Runs[0].Results), len(result.Runs[0].Results))
 			require.Equal(t, len(tt.want.Runs[0].Tool.Driver.Rules), len(result.Runs[0].Tool.Driver.Rules))
 			for index, wantResult := range tt.want.Runs[0].Results {
 				actualResult := result.Runs[0].Results[index]
 				require.Equal(t, wantResult.ResultProperties["tags"], actualResult.ResultProperties["tags"])
+				require.Equal(t, wantResult.PartialFingerprints.DatadogFingerprint, actualResult.PartialFingerprints.DatadogFingerprint)
 			}
 			if len(tt.want.Runs[0].Tool.Driver.Rules) > 0 {
 				if len(result.Runs[0].Tool.Driver.Rules[0].Relationships) > 0 {

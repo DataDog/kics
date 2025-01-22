@@ -27,7 +27,7 @@ func PrintSarifReport(path, filename string, body interface{}, sciInfo model.SCI
 		auxID := []string{}
 		auxGUID := map[string]string{}
 		for idx := range summary.Queries {
-			x := sarifReport.BuildSarifIssue(&summary.Queries[idx])
+			x := sarifReport.BuildSarifIssue(&summary.Queries[idx], sciInfo)
 			if x != "" {
 				auxID = append(auxID, x)
 				guid := sarifReport.GetGUIDFromRelationships(idx, x)
