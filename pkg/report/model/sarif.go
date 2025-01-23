@@ -759,5 +759,5 @@ func GetDatadogFingerprintHash(sciInfo model.SCIInfo, filePath string, startLine
 	if sciInfo.RunType == "full_scan" {
 		runTypeRelatedInfo = time.Now().Format("2006/01/02")
 	}
-	return fmt.Sprintf("%s|%s|%s|%s|%d|%s", sciInfo.RunType, runTypeRelatedInfo, sciInfo.RepositoryCommitInfo.RepositoryUrl, filePath, startLine, ruleId)
+	return StringToHash(fmt.Sprintf("%s|%s|%s|%s|%d|%s", sciInfo.RunType, runTypeRelatedInfo, sciInfo.RepositoryCommitInfo.RepositoryUrl, filePath, startLine, ruleId))
 }
