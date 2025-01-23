@@ -13,6 +13,7 @@ import (
 	"os"
 	"path/filepath"
 	"strings"
+	"time"
 
 	"github.com/Checkmarx/kics/internal/constants"
 	"github.com/Checkmarx/kics/pkg/model"
@@ -225,7 +226,7 @@ type SarifRun struct {
 
 // SarifReport represents a usable sarif report reference
 type SarifReport interface {
-	BuildSarifIssue(issue *model.QueryResult) string
+	BuildSarifIssue(issue *model.QueryResult, sciInfo model.SCIInfo) string
 	RebuildTaxonomies(cwes []string, guids map[string]string)
 	GetGUIDFromRelationships(idx int, cweID string) string
 	AddTags(summary *model.Summary, diffAware *model.DiffAware) error
@@ -610,7 +611,7 @@ func (sr *sarifReport) RebuildTaxonomies(cwes []string, guids map[string]string)
 }
 
 // BuildSarifIssue creates a new entries in Results (one for each file) and new entry in Rules and Taxonomy if necessary
-func (sr *sarifReport) BuildSarifIssue(issue *model.QueryResult) string {
+func (sr *sarifReport) BuildSarifIssue(issue *model.QueryResult, sciInfo model.SCIInfo) string {
 	if len(issue.Files) > 0 {
 		metadata := ruleMetadata{
 			queryID:          issue.QueryID,
@@ -689,6 +690,9 @@ func (sr *sarifReport) BuildSarifIssue(issue *model.QueryResult) string {
 				ResultProperties: sarifProperties{
 					"tags": tags,
 				},
+				PartialFingerprints: SarifPartialFingerprints{
+					DatadogFingerprint: GetDatadogFingerprintHash(sciInfo, absoluteFilePath, line, issue.QueryID),
+				},
 			}
 			sr.Runs[0].Results = append(sr.Runs[0].Results, result)
 		}
@@ -748,4 +752,12 @@ func (sr *sarifReport) ResolveFilepaths(basePath string) error {
 		sr.Runs[0].Results[idx].ResultLocations[0].PhysicalLocation.ArtifactLocation.ArtifactURI = resolvedLocation
 	}
 	return nil
+}
+
+func GetDatadogFingerprintHash(sciInfo model.SCIInfo, filePath string, startLine int, ruleId string) string {
+	runTypeRelatedInfo := sciInfo.RepositoryCommitInfo.CommitSHA
+	if sciInfo.RunType == "full_scan" {
+		runTypeRelatedInfo = time.Now().Format("2006/01/02")
+	}
+	return fmt.Sprintf("%s|%s|%s|%s|%d|%s", sciInfo.RunType, runTypeRelatedInfo, sciInfo.RepositoryCommitInfo.RepositoryUrl, filePath, startLine, ruleId)
 }
