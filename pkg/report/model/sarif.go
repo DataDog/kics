@@ -253,7 +253,7 @@ const (
 func initSarifTool() sarifTool {
 	return sarifTool{
 		Driver: sarifDriver{
-			ToolName:     "Datadog IaC Scanning",
+			ToolName:     "Datadog IaC Scanning", // DO NOT CHANGE THIS VALUE. This value is needed for downstream mappings that rely on this value being "Datadog IaC Scanning"
 			ToolVersion:  constants.Version,
 			ToolFullName: constants.Fullname,
 			ToolURI:      constants.URL,
