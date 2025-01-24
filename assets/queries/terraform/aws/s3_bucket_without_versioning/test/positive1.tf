@@ -1,3 +1,4 @@
+# kics-scan enable="568a4d22-3517-44a6-a7ad-6a7eed88722c"
 provider "aws" {
   region = "us-east-1"
 }
