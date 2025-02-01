@@ -104,7 +104,7 @@ const (
 	DefaultLogFile = "info.log"
 
 	// DefaultConfigFilename - default configuration filename
-	DefaultConfigFilename = "kics.config"
+	DefaultConfigFilename = "dd-iac-scan.config"
 
 	// MinimumPreviewLines - default minimum preview lines number
 	MinimumPreviewLines = 1
