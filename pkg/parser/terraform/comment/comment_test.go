@@ -18,7 +18,7 @@ import (
 var (
 	samples = map[string][]byte{
 		"ignore-block": []byte(`
-		// kics-scan ignore-block
+		// dd-iac-scan ignore-block
 		resource "aws_api_gateway_stage" "positive2" {
 			deployment_id = "some deployment id"
 			rest_api_id   = "some rest api id"
@@ -27,14 +27,14 @@ var (
 		"ignore-line": []byte(`
 		resource "aws_api_gateway_stage" "positive2" {
 		  deployment_id = "some deployment id"
-		  // kics-scan ignore-line
+		  // dd-iac-scan ignore-line
 		  rest_api_id   = "some rest api id"
 		  stage_name    = "development"
 		}`),
 		"regular-comment": []byte(`
 		resource "aws_api_gateway_stage" "positive2" {
 		  deployment_id = "some deployment id"
-		  // kics-scan do-not-ignore
+		  // dd-iac-scan do-not-ignore
 		  rest_api_id   = "some rest api id"
 		  // regular comment
 		  stage_name    = "development"
@@ -42,7 +42,7 @@ var (
 		"ignore-inner-block": []byte(`
 		resource "aws_api_gateway_stage" "positive2" {
 		  deployment_id = "some deployment id"
-		  // kics-scan ignore-block
+		  // dd-iac-scan ignore-block
 		  tags = {
 			Terraform   = "true"
 			Environment = "dev"

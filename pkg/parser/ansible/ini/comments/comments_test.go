@@ -42,7 +42,7 @@ func Test_getIgnoreLinesFromBlock(t *testing.T) {
 	}{
 		{
 			lines: []string{
-				"; kics-scan ignore-block",
+				"; dd-iac-scan ignore-block",
 				"ansible_host=0.0.0.0",
 			},
 			ignoreBlockLine: 0,
@@ -50,7 +50,7 @@ func Test_getIgnoreLinesFromBlock(t *testing.T) {
 		},
 		{
 			lines: []string{
-				"; kics-scan ignore-block",
+				"; dd-iac-scan ignore-block",
 				"[group_name]",
 			},
 			ignoreBlockLine: 0,
@@ -58,7 +58,7 @@ func Test_getIgnoreLinesFromBlock(t *testing.T) {
 		},
 		{
 			lines: []string{
-				"; kics-scan ignore-block",
+				"; dd-iac-scan ignore-block",
 				"[group_name]",
 				"ansible_host=0.0.0.0",
 				"",
@@ -85,33 +85,33 @@ func Test_getIgnoreLines(t *testing.T) {
 	}{
 		{
 			lines: []string{
-				"# kics-scan ignore-block",
+				"# dd-iac-scan ignore-block",
 			},
 			want: []int{0},
 		},
 		{
 			lines: []string{
-				"# kics-scan ignore-line",
+				"# dd-iac-scan ignore-line",
 			},
 			want: []int{0},
 		},
 		{
 			lines: []string{
-				"# kics-scan ignore-block",
+				"# dd-iac-scan ignore-block",
 				"ansible_host=0.0.0.0",
 			},
 			want: []int{0},
 		},
 		{
 			lines: []string{
-				"; kics-scan ignore-block",
+				"; dd-iac-scan ignore-block",
 				"[group_name]",
 			},
 			want: []int{0, 1},
 		},
 		{
 			lines: []string{
-				"; kics-scan ignore-block",
+				"; dd-iac-scan ignore-block",
 				"[group_name]",
 				"ansible_host=0.0.0.0",
 				"",
@@ -121,7 +121,7 @@ func Test_getIgnoreLines(t *testing.T) {
 		},
 		{
 			lines: []string{
-				"; kics-scan ignore-line",
+				"; dd-iac-scan ignore-line",
 				"ansible_host=0.0.0.0",
 			},
 			want: []int{0, 1},

@@ -82,7 +82,7 @@ func (p *Parser) Parse(_ string, fileContent []byte) ([]model.Document, []int, e
 		return true
 	})
 
-	// get kics-scan ignore-block related to from
+	// get dd-iac-scan ignore-block related to from
 	info.ignoreFromBlock()
 
 	var documents []model.Document
@@ -110,7 +110,7 @@ func (i *Info) getStmt(stmt *syntax.Stmt) {
 	if cmd, ok := stmt.Cmd.(*syntax.CallExpr); ok {
 		args := cmd.Args
 
-		// get kics-scan ignore-block related to command + get command
+		// get dd-iac-scan ignore-block related to command + get command
 		stCommand := i.getStmtInfo(stmt, args)
 
 		if stCommand.Cmd == "buildah from" {
@@ -150,7 +150,7 @@ func (i *Info) getStmtInfo(stmt *syntax.Stmt, args []*syntax.Word) Command {
 				Value:     strings.TrimSpace(value),
 			}
 
-			// get kics-scan ignore-block comments
+			// get dd-iac-scan ignore-block comments
 			i.getIgnoreBlockLines(stmt.Comments, start, end)
 
 			return command

@@ -44,7 +44,7 @@ func Test_ignoreCommentsYAML(t *testing.T) {
 						},
 						{
 							Kind:        yaml.ScalarNode,
-							HeadComment: "# kics-scan ignore-block",
+							HeadComment: "# dd-iac-scan ignore-block",
 							Value:       "key_object",
 							Line:        2,
 						},
@@ -145,7 +145,7 @@ func Test_ignoreCommentsYAML(t *testing.T) {
 					Content: []*yaml.Node{
 						{
 							Kind:        yaml.ScalarNode,
-							HeadComment: "# kics-scan ignore-line",
+							HeadComment: "# dd-iac-scan ignore-line",
 							Value:       "key",
 							Line:        1,
 						},
@@ -256,7 +256,7 @@ func Test_ignoreCommentsYAML(t *testing.T) {
 					Content: []*yaml.Node{
 						{
 							Kind:        yaml.ScalarNode,
-							HeadComment: "# kics-scan regular comment",
+							HeadComment: "# dd-iac-scan regular comment",
 							Value:       "key",
 							Line:        1,
 						},
@@ -364,7 +364,7 @@ func Test_ignoreCommentsYAML(t *testing.T) {
 			args: args{
 				&yaml.Node{
 					Kind:        yaml.MappingNode,
-					HeadComment: "# kics-scan ignore-block",
+					HeadComment: "# dd-iac-scan ignore-block",
 					Content: []*yaml.Node{
 						{
 							Kind:  yaml.ScalarNode,
@@ -488,7 +488,7 @@ func Test_ignoreCommentsYAML(t *testing.T) {
 						},
 						{
 							Kind:        yaml.ScalarNode,
-							HeadComment: "# kics-scan ignore-block",
+							HeadComment: "# dd-iac-scan ignore-block",
 							Value:       "seq_object",
 							Line:        5,
 						},
@@ -651,7 +651,7 @@ func Test_ignoreCommentsYAML(t *testing.T) {
 						{
 							Kind:        yaml.ScalarNode,
 							Value:       "deploy.yml",
-							HeadComment: "# kics-scan ignore-block",
+							HeadComment: "# dd-iac-scan ignore-block",
 							Line:        5,
 							Column:      3,
 						},
@@ -687,7 +687,7 @@ func Test_value(t *testing.T) {
 	}{
 		{
 			name:  "Should return ignore-block",
-			input: comment("# source: test/templates/deployment.yaml\n# kics-scan ignore-block\n# kics_helm_id_2:"),
+			input: comment("# source: test/templates/deployment.yaml\n# dd-iac-scan ignore-block\n# kics_helm_id_2:"),
 			want:  "ignore-block",
 		},
 		{

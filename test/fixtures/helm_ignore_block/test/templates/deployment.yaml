@@ -1,5 +1,5 @@
 ---
-# kics-scan ignore-block
+# dd-iac-scan ignore-block
 apiVersion: apps/v1
 kind: Deployment
 metadata:

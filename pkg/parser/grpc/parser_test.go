@@ -76,7 +76,7 @@ func TestParser_Parse(t *testing.T) {
 				package Cx;
 				import public "other.proto";
 				option java_package = "com.example.foo";
-				// kics-scan ignore-block
+				// dd-iac-scan ignore-block
 				enum EnumAllowingAlias {
 				  option allow_alias = true;
 				  UNKNOWN = 0;
@@ -84,14 +84,14 @@ func TestParser_Parse(t *testing.T) {
 				  RUNNING = 2 [(custom_option) = "hello world"];
 				}
 				message Outer {
-				  // kics-scan ignore-line
+				  // dd-iac-scan ignore-line
 				  option (my_option).a = true;
 				  message Inner {   // Level 2
 					int64 ival = 1;
 				  }
 				  repeated Inner inner_message = 2;
 				  EnumAllowingAlias enum_field =3;
-				  // kics-scan ignore-line
+				  // dd-iac-scan ignore-line
 				  map<int32, string> my_map = 4;
 				}`),
 			},

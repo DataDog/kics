@@ -89,13 +89,13 @@ func TestConvert(t *testing.T) {
 			name: "convert message oneOf and enum",
 			content: []byte(`
 			syntax = "proto3";
-			// kics-scan ignore-line
+			// dd-iac-scan ignore-line
 			message test{
 				enum Testing {
-					// kics-scan ignore-line
+					// dd-iac-scan ignore-line
 					reserved "foo", "bar";
 				}
-				// kics-scan ignore-block
+				// dd-iac-scan ignore-block
 				oneof payload {
 					bytes protobuf_payload = 1;
 					string json_payload = 2;
