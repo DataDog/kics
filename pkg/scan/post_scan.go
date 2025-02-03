@@ -180,11 +180,24 @@ func (c *Client) generateMetadata(scanResults *Results, startTime time.Time, end
 }
 
 func (c *Client) generateStats(scanResults *Results, scanDuration time.Duration) ScanStats {
+	// iterate through scanResults and create a map of severity to count
+	violationBreakdowns := make(map[string]int)
+	severitySet := make(map[model.Severity]bool)
+	for _, sev := range model.AllSeverities {
+		severitySet[sev] = true
+	}
+	for _, vuln := range scanResults.Results {
+		if _, exists := severitySet[vuln.Severity]; exists {
+			violationBreakdowns[string(vuln.Severity)]++
+		}
+	}
+
 	return ScanStats{
-		Violations: len(scanResults.Results),
-		Files:      c.Tracker.FoundFiles,
-		Rules:      c.Tracker.ExecutedQueries,
-		Duration:   scanDuration,
+		Violations:          len(scanResults.Results),
+		Files:               c.Tracker.FoundFiles,
+		Rules:               c.Tracker.ExecutedQueries,
+		Duration:            scanDuration,
+		ViolationBreakdowns: violationBreakdowns,
 	}
 }
 

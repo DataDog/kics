@@ -28,6 +28,8 @@ type ScanStats struct {
 	Rules int
 	// Duration contains the time it took to complete the analysis.
 	Duration time.Duration
+	// ViolationBreakdowns contains a breakdown of the violations by severity.
+	ViolationBreakdowns map[string]int
 }
 
 type RuleStats struct {
