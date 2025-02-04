@@ -1,5 +1,5 @@
 ---
-# kics-scan disable=b7652612-de4e-4466-a0bf-1cd81f0c6063
+# dd-iac-scan disable=b7652612-de4e-4466-a0bf-1cd81f0c6063
 apiVersion: apps/v1
 kind: Deployment
 metadata:

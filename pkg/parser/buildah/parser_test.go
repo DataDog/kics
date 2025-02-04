@@ -100,13 +100,13 @@ func TestParser_Parse(t *testing.T) {
 			wantErr: false,
 		},
 		{
-			name: "Buildah with normal comments + kics-scan ignore-line parse",
+			name: "Buildah with normal comments + dd-iac-scan ignore-line parse",
 			p:    &Parser{},
 			args: args{
 				in0: "test.sh",
 				fileContent: []byte(`#
 				ctr=$(buildah from fedora)
-				# kics-scan ignore-line
+				# dd-iac-scan ignore-line
 				buildah config --env GOPATH=/root/buildah $ctr
 				buildah commit $ctr buildahupstream
 				# buildah run "$ctr" mkdir /tmp/open
@@ -145,12 +145,12 @@ func TestParser_Parse(t *testing.T) {
 			wantErr: false,
 		},
 		{
-			name: "Buildah with kics-scan ignore-block related to from parse",
+			name: "Buildah with dd-iac-scan ignore-block related to from parse",
 			p:    &Parser{},
 			args: args{
 				in0: "test.sh",
 				fileContent: []byte(`#
-				# kics-scan ignore-block
+				# dd-iac-scan ignore-block
 				ctr=$(buildah from fedora)
 				buildah run ${ctr} git clone https://github.com/Checkmarx/kics.git
 				ctr2=$(buildah from fedora2)
@@ -198,13 +198,13 @@ func TestParser_Parse(t *testing.T) {
 			want1:   []int{1, 2, 3, 4},
 			wantErr: false,
 		}, {
-			name: "Buildah with kics-scan ignore-block related to command parse",
+			name: "Buildah with dd-iac-scan ignore-block related to command parse",
 			p:    &Parser{},
 			args: args{
 				in0: "test.sh",
 				fileContent: []byte(`#
 				ctr=$(buildah from fedora)
-				# kics-scan ignore-block
+				# dd-iac-scan ignore-block
 				buildah run $ctr /bin/sh -c 'git clone https://github.com/Checkmarx/kics.git; \
 								make'
 				`),

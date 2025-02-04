@@ -31,6 +31,7 @@ file:/
 
 # kics configuration file
 kics.config
+dd-iac-scan.config
 
 # Results
 results.*

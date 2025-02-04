@@ -203,7 +203,7 @@ resource "aws_lambda_function" "analysis_lambda2" {
 }
 `
 
-var OriginalData4 = `# kics-scan ignore
+var OriginalData4 = `# dd-iac-scan ignore
 resource "google_container_cluster" "primary3" {
 name               = "marcellus-wallace"
 location           = "us-central1-a"
@@ -240,14 +240,14 @@ var OriginalData6 = `
 	community.network.iap_start_workflow:
 		iap_port: 3000
 	    iap_fqdn: localhost
-#       kics-scan ignore-line
+#       dd-iac-scan ignore-line
 #       token_key: "DFSFSFHFGFGF[DSFSFAADAFASD%3D"
 		workflow_name: "RouterUpgradeWorkflow"
 		description: "OS-Router-Upgrade"
 		variables: {"deviceName":"ASR9K"}
 `
 
-var OriginalData7 = `# kics-scan disable=baee238e-1921-4801-9c3f-79ae1d7b2cbc
+var OriginalData7 = `# dd-iac-scan disable=baee238e-1921-4801-9c3f-79ae1d7b2cbc
 - name: Start a workflow in the Itential Automation Platform
 	community.network.iap_start_workflow:
 		iap_port: 3000

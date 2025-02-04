@@ -136,7 +136,7 @@ func processRegularLine(comment string, content *yaml.Node, position int, isFoot
 	// comment is not a foot comment
 
 	if KICSCommentRgxpYaml.MatchString(comment) {
-		// has kics-scan ignore at the end of the comment
+		// has dd-iac-scan ignore at the end of the comment
 		linesIgnore = append(linesIgnore, line)
 	}
 

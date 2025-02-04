@@ -29,10 +29,6 @@
 
 Query execution timeout is now parametrized, the flag `timeout` will override the default value (60 seconds)
 
-#### Multiple paths
-
-KICS can now scan multiple paths (WARNING: For multiple paths, kics.config will not be loaded automatically, configuration flag must be explicitly used to load any configuration file.)
-
 #### Concurrent Scans
 
 For performance improvements, KICS will now run scans concurrently by parser.

@@ -111,7 +111,7 @@ func (c *Parser) CommentsCommands(filePath string, fileContent []byte) model.Com
 				}
 
 				fields := strings.Fields(strings.TrimSpace(strings.TrimPrefix(line, commentToken)))
-				if len(fields) > 1 && fields[0] == "kics-scan" && fields[1] != "" {
+				if len(fields) > 1 && fields[0] == "dd-iac-scan" && fields[1] != "" {
 					commandParameters := strings.SplitN(fields[1], "=", 2)
 					if len(commandParameters) > 1 {
 						commentsCommands[commandParameters[0]] = commandParameters[1]

@@ -84,9 +84,9 @@ docker run -t -v {path_to_kics_config}:/kics -v {path_to_host_folder_to_scan}:/p
 
 #### Configuration as Code
 
-1. Create a file named `kics.config` and place it in the root of your project repository.
+1. Create a file named `dd-iac-scan.config` and place it in the root of your project repository.
 2. Add the necessary configurations as shown in the templates section in any of the supported formats.
-3. Invoke KICS without arguments (KICS will search for the specific file in the root)
+3. Invoke Datadog IaC scanning without arguments (Datadog will search for the specific file in the root)
 
 ```
 docker run -t -v {path_to_host_folder_to_scan}:/path checkmarx/kics scan -p /path

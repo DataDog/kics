@@ -29,10 +29,10 @@ func (i *Info) getIgnoreLines(comment *syntax.Comment) {
 
 		switch model.CommentCommand(kicsIgnore) {
 		case model.IgnoreLine:
-			// get kics-scan ignore-line
+			// get dd-iac-scan ignore-line
 			i.IgnoreLines = append(i.IgnoreLines, int(comment.Hash.Line())+1)
 		case model.IgnoreBlock:
-			// get kics-scan ignore-block for ignoreFromBlock
+			// get dd-iac-scan ignore-block for ignoreFromBlock
 			i.IgnoreBlockLines = append(i.IgnoreBlockLines, int(comment.Pos().Line()))
 		}
 	}
@@ -42,7 +42,7 @@ func (i *Info) getIgnoreBlockLines(comments []syntax.Comment, start, end int) {
 	for c := range comments {
 		comment := comments[c]
 
-		// get kics-scan ignore-block related to command
+		// get dd-iac-scan ignore-block related to command
 		if model.KICSCommentRgxp.MatchString(comment.Text) {
 			kicsIgnore := getKicsIgnore(comment.Text)
 

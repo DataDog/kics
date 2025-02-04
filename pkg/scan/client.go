@@ -71,14 +71,22 @@ type Client struct {
 }
 
 func GetDefaultParameters() *Parameters {
+
+	// check for config file and load in relevant params if present
+	configParams, err := initializeConfig()
+	if err != nil {
+		log.Err(err).Msgf("failed to initialize config %v", err)
+		return nil
+	}
+
 	return &Parameters{
 		CloudProvider:               []string{""},
 		DisableFullDesc:             false,
-		ExcludeCategories:           []string{},
-		ExcludeQueries:              []string{},
-		ExcludeResults:              []string{},
-		ExcludeSeverities:           []string{},
-		ExcludePaths:                []string{},
+		ExcludeCategories:           configParams.ExcludeCategories,
+		ExcludeQueries:              configParams.ExcludeQueries,
+		ExcludeResults:              configParams.ExcludeResults,
+		ExcludeSeverities:           configParams.ExcludeSeverities,
+		ExcludePaths:                configParams.ExcludePaths,
 		ExperimentalQueries:         false,
 		IncludeQueries:              []string{},
 		InputData:                   "",

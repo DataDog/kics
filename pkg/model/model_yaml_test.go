@@ -490,7 +490,7 @@ func Test_GetIgnoreLines(t *testing.T) {
         name: "{{ add_user.name }}"
         password: "{{ all_openstack_default_pass }}"
         email: "{{ add_user.email }}"
-        # kics-scan ignore-line
+        # dd-iac-scan ignore-line
         update_password: on_create
         default_project: "{{ add_user.orgunit }}"
         domain: default
