@@ -74,7 +74,7 @@ func TestComment_ParseComments(t *testing.T) {
 			filename: "",
 			want: Ignore{
 				model.IgnoreBlock: []hcl.Pos{
-					{Line: 3, Column: 11, Byte: 39},
+					{Line: 3, Column: 11, Byte: 41},
 					{Line: 2, Column: 0, Byte: 0},
 				},
 				model.IgnoreLine:    []hcl.Pos{},
@@ -89,7 +89,7 @@ func TestComment_ParseComments(t *testing.T) {
 			want: Ignore{
 				model.IgnoreBlock: []hcl.Pos{},
 				model.IgnoreLine: []hcl.Pos{
-					{Line: 5, Column: 16, Byte: 135},
+					{Line: 5, Column: 16, Byte: 137},
 					{Line: 4, Column: 0, Byte: 0},
 				},
 				model.IgnoreComment: []hcl.Pos{},
@@ -116,7 +116,7 @@ func TestComment_ParseComments(t *testing.T) {
 			filename: "",
 			want: Ignore{
 				model.IgnoreBlock: []hcl.Pos{
-					{Line: 5, Column: 9, Byte: 129},
+					{Line: 5, Column: 9, Byte: 131},
 					{Line: 4, Column: 0, Byte: 0},
 				},
 				model.IgnoreLine:    []hcl.Pos{},

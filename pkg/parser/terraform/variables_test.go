@@ -133,12 +133,12 @@ func TestGetInputVariablesFromFile(t *testing.T) {
 		},
 		{
 			name:     "Should get an error when trying to set input variables from inexistent file",
-			filename: filepath.Join("..", "..", "..", "test", "fixtures", "test_terraform_variables", "invalid.auto.tfvars"),
+			filename: filepath.Join("..", "..", "..", "test", "fixtures", "test_terraform_variables", "invalid.tfvars"),
 			want:     nil,
 			wantErr:  true,
 		},
 		{
-			name:     "Should get an error when trying to set input variables from inexistent file",
+			name:     "Should get an error when trying to set input variables from inexistent file 2",
 			filename: filepath.FromSlash("not_found.tf"),
 			want:     nil,
 			wantErr:  true,
