@@ -10,6 +10,7 @@ import (
 	"github.com/Checkmarx/kics/pkg/model"
 	"github.com/Checkmarx/kics/pkg/printer"
 	"github.com/Checkmarx/kics/pkg/progress"
+	"github.com/Checkmarx/kics/pkg/utils"
 	"github.com/stretchr/testify/require"
 )
 
@@ -333,6 +334,100 @@ func Test_resolveOutputs(t *testing.T) {
 			md, err := c.postScan(tt.scanResults)
 			require.NotNil(t, md)
 			require.NoError(t, err)
+		})
+	}
+}
+
+func Test_GetScanMetadata(t *testing.T) {
+	tests := []struct {
+		name             string
+		tracker          tracker.CITracker
+		scanStartTime    time.Time
+		endTime          time.Time
+		results          *Results
+		expectedMetadata ScanMetadata
+	}{
+		{
+			name: "test valid getScanMetadata",
+			tracker: tracker.CITracker{
+				FoundFiles:         1,
+				FoundCountLines:    1,
+				ParsedCountLines:   1,
+				IgnoreCountLines:   0,
+				ParsedFiles:        1,
+				LoadedQueries:      2,
+				ExecutingQueries:   1,
+				ExecutedQueries:    1,
+				FailedSimilarityID: 12312312,
+				Version: model.Version{
+					Latest:           true,
+					LatestVersionTag: "Dev",
+				},
+			},
+			results: &Results{
+				Files: []model.FileMetadata{
+					{
+						ScanID:            "Test2",
+						ID:                "Test2",
+						Kind:              model.KindTerraform,
+						OriginalData:      "",
+						LinesOriginalData: utils.SplitLines(""),
+					},
+				},
+				Results: []model.Vulnerability{
+					{
+						ScanID:       "console",
+						SimilarityID: "ac0e0a60afa5543f6b26b90cecbf38da3341f44161289c172c91ea1a49652620",
+						FileID:       "ac0e0a60afa5543f6b26b90cecbf38da3341f44161289c172c91ea1a49652620",
+						FileName:     "/assets/queries/terraform/alicloud/action_trail_logging_all_regions_disabled/test/positive2.tf",
+						QueryID:      "c065b98e-1515-4991-9dca-b602bd6a2fbb",
+						QueryName:    "Action Trail Logging For All Regions Disabled",
+						Severity:     "MEDIUM",
+					},
+				},
+			},
+			scanStartTime: time.Time{},
+			endTime:       time.Time{}.Add(time.Minute),
+			expectedMetadata: ScanMetadata{
+				StartTime:      time.Time{},
+				EndTime:        time.Time{}.Add(time.Minute),
+				CoresAvailable: 1,
+				DiffAware:      false,
+				Stats: ScanStats{
+					Violations: 1,
+					Files:      1,
+					Rules:      1,
+					Duration:   time.Minute,
+					ViolationBreakdowns: map[string][]string{
+						"MEDIUM": {"c065b98e-1515-4991-9dca-b602bd6a2fbb"},
+					},
+				},
+				RuleStats: RuleStats{
+					TimedOut: nil,
+					MostExpensiveRule: RuleTiming{
+						Name: "Action Trail Logging For All Regions Disabled",
+						Time: time.Minute,
+					},
+					SlowestRule: RuleTiming{
+						Name: "Action Trail Logging For All Regions Disabled",
+						Time: time.Minute,
+					},
+				},
+			},
+		},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			c := Client{}
+			c.Tracker = &tt.tracker
+			c.ScanParams = GetDefaultParameters()
+			v := c.generateMetadata(tt.results, tt.scanStartTime, tt.endTime)
+
+			require.Equal(t, tt.expectedMetadata.StartTime, v.StartTime)
+			require.Equal(t, len(tt.expectedMetadata.Stats.ViolationBreakdowns), len(v.Stats.ViolationBreakdowns))
+			require.Equal(t, tt.expectedMetadata.Stats.Violations, v.Stats.Violations)
+			require.Equal(t, tt.expectedMetadata.Stats.ViolationBreakdowns["MEDIUM"], v.Stats.ViolationBreakdowns["MEDIUM"])
 		})
 	}
 }
