@@ -69,7 +69,7 @@ var sarifTests = []sarifTest{
 									RuleID:               "test",
 									RuleName:             "test",
 									RuleShortDescription: sarifMessage{Text: "test"},
-									RuleFullDescription:  sarifMessage{Text: "test description"},
+									RuleFullDescription:  sarifMessage{Text: "[1] test description"},
 									DefaultConfiguration: sarifConfiguration{
 										Level: "error",
 									},
@@ -199,7 +199,7 @@ var sarifTests = []sarifTest{
 									RuleID:               "test",
 									RuleName:             "test",
 									RuleShortDescription: sarifMessage{Text: "test"},
-									RuleFullDescription:  sarifMessage{Text: "test description"},
+									RuleFullDescription:  sarifMessage{Text: "[test] test description"},
 									DefaultConfiguration: sarifConfiguration{
 										Level: "error",
 									},
@@ -383,6 +383,7 @@ func TestBuildSarifIssue(t *testing.T) {
 				actualResult := result.Runs[0].Results[index]
 				require.Equal(t, wantResult.ResultProperties["tags"], actualResult.ResultProperties["tags"])
 				require.Equal(t, wantResult.PartialFingerprints.DatadogFingerprint, actualResult.PartialFingerprints.DatadogFingerprint)
+				require.Equal(t, wantResult.ResultMessage.Text, actualResult.ResultMessage.Text)
 			}
 			if len(tt.want.Runs[0].Tool.Driver.Rules) > 0 {
 				if len(result.Runs[0].Tool.Driver.Rules[0].Relationships) > 0 {
@@ -395,6 +396,7 @@ func TestBuildSarifIssue(t *testing.T) {
 					}
 				}
 				require.Equal(t, tt.want.Runs[0].Results[0], result.Runs[0].Results[0])
+				require.Equal(t, tt.want.Runs[0].Tool.Driver.Rules[0].RuleFullDescription.Text, result.Runs[0].Tool.Driver.Rules[0].RuleFullDescription.Text)
 			}
 		})
 	}
