@@ -6,6 +6,7 @@
 package report
 
 import (
+	"bytes"
 	"encoding/json"
 	"encoding/xml"
 	"fmt"
@@ -104,10 +105,22 @@ func ExportJSONReport(path, filename string, body interface{}) error {
 
 	defer closeFile(fullPath, filename, f)
 
-	encoder := json.NewEncoder(f)
-	encoder.SetIndent("", "\t")
+	var minifiedJSON bytes.Buffer
+	bodyBytes, err := json.Marshal(body)
+	if err != nil {
+		log.Err(err).Msg("failed to marshal sarif report body: ")
+		return err
+	}
 
-	return encoder.Encode(body)
+	err = json.Compact(&minifiedJSON, bodyBytes)
+	if err != nil {
+		log.Err(err).Msg("Error minifying JSON:")
+		return err
+	}
+
+	_, err = f.Write(minifiedJSON.Bytes())
+
+	return err
 }
 
 func getSummary(body interface{}) (sum model.Summary, err error) {
