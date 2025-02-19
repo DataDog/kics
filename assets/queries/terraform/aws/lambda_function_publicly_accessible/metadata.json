@@ -1,0 +1,12 @@
+{
+  "id": "1btsf2f9-af8c-4dfc-a0f1-a03adb70deb2",
+  "queryName": "Lambda Function Publicly Accessible",
+  "severity": "HIGH",
+  "category": "Access Control",
+  "descriptionText": "Lambda functions should not be publicly accessible.",
+  "descriptionUrl": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/lambda_function",
+  "platform": "Terraform",
+  "descriptionID": "1btsf2f9",
+  "cloudProvider": "aws",
+  "cwe": "200"
+}
