@@ -1,6 +1,6 @@
 [
   {
-    "queryName": "IAM Password Policy Requires Symbol",
+    "queryName": "IAM Password Policy Does Not Require Symbol",
     "severity": "MEDIUM",
     "line": 3
   }
