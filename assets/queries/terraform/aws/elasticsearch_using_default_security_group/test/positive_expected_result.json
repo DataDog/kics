@@ -1,0 +1,12 @@
+[
+  {
+    "queryName": "Elasticsearch Uses Default Security Group",
+    "severity": "HIGH",
+    "line": 5
+  },
+  {
+    "queryName": "Elasticsearch Uses Default Security Group",
+    "severity": "HIGH",
+    "line": 13
+  }
+]

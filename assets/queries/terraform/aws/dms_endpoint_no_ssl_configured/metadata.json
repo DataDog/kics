@@ -1,0 +1,12 @@
+{
+  "id": "e6f7g8h9-i0j1-4klm-56no-7890pqrstu12",
+  "queryName": "DMS Endpoints Without SSL",
+  "severity": "HIGH",
+  "category": "Networking",
+  "descriptionText": "Ensures that AWS Database Migration Service (DMS) endpoints have SSL configured for security. Source and target endpoints should have SSL enabled unless exempt.",
+  "descriptionUrl": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/dms_endpoint#ssl_mode",
+  "platform": "Terraform",
+  "descriptionID": "e6f7g8h9",
+  "cloudProvider": "aws",
+  "cwe": "319"
+}

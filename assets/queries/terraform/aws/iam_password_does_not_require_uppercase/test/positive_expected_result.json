@@ -1,0 +1,7 @@
+[
+  {
+    "queryName": "IAM Password Policy Does Not Require Uppercase Letter",
+    "severity": "MEDIUM",
+    "line": 5
+  }
+]

@@ -1,0 +1,12 @@
+[
+  {
+    "queryName": "IMDSv1 Enabled",
+    "severity": "HIGH",
+    "line": 6
+  },
+  {
+    "queryName": "IMDSv1 Enabled",
+    "severity": "HIGH",
+    "line": 16
+  }
+]

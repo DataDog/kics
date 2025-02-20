@@ -1,0 +1,12 @@
+{
+  "id": "a1b2c3d4-e5f6-7890-ab12-cd34ef567890",
+  "queryName": "Neptune Cluster Snapshot Not Encrypted",
+  "severity": "HIGH",
+  "category": "Encryption",
+  "descriptionText": "Ensures that AWS Neptune Cluster Snapshots are encrypted. Without encryption, sensitive data could be exposed in case of unauthorized access.",
+  "descriptionUrl": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/neptune_cluster_snapshot#storage_encrypted",
+  "platform": "Terraform",
+  "descriptionID": "a1b2c3d4",
+  "cloudProvider": "aws",
+  "cwe": "319"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "bts2c3d4-e5f6-7890-ab12-cd34ef567890",
+  "queryName": "IAM Password Policy Does Not Require Symbol",
+  "severity": "MEDIUM",
+  "category": "Best Practices",
+  "descriptionText": "Ensures that the AWS IAM password policy requires at least one symbol. Without this setting, passwords may be easier to guess, leading to security vulnerabilities.",
+  "descriptionUrl": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_account_password_policy#require_symbols",
+  "platform": "Terraform",
+  "descriptionID": "bts2c3d4",
+  "cloudProvider": "aws",
+  "cwe": "521"
+}

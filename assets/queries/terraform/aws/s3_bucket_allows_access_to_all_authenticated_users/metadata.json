@@ -1,0 +1,12 @@
+{
+  "id": "d4e5f6g7-h8i9-0jkl-1234-mn567opq8901",
+  "queryName": "S3 Bucket Allows Authenticated Users Access",
+  "severity": "HIGH",
+  "category": "IAM",
+  "descriptionText": "Ensures that AWS S3 Bucket ACLs do not allow access to all Authenticated Users. Granting access to all authenticated AWS users can expose data to unintended parties.",
+  "descriptionUrl": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_acl",
+  "platform": "Terraform",
+  "descriptionID": "d4e5f6g7",
+  "cloudProvider": "aws",
+  "cwe": "284"
+}
