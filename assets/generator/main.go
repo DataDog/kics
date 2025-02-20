@@ -1,11 +1,13 @@
 package main
 
 import (
+	"bufio"
 	"encoding/json"
 	"fmt"
 	"os"
 	"path/filepath"
 	"strconv"
+	"strings"
 )
 
 type Metadata struct {
@@ -14,20 +16,36 @@ type Metadata struct {
 	Provider string `json:"provider"`
 }
 
-func main() {
-	var repoPath, platform, provider, ruleName string
-	var numNegatives int
+// Function to get user input with a default value
+func getInput(prompt, defaultValue string) string {
+	fmt.Printf("%s (default: %s): ", prompt, defaultValue)
+	reader := bufio.NewReader(os.Stdin)
+	input, _ := reader.ReadString('\n')
+	input = strings.TrimSpace(input)
+	if input == "" {
+		return defaultValue
+	}
+	return input
+}
 
-	// Get user input
-	fmt.Print("Enter the path to the repo: (should be the root of the local repository) ")
-	fmt.Scanln(&repoPath)
-	fmt.Print("Enter the platform: (ex: terraform)")
-	fmt.Scanln(&platform)
-	fmt.Print("Enter the provider: (ex: aws)")
-	fmt.Scanln(&provider)
-	fmt.Print("Enter the rule name: (ex: ec2_instance_no_public_ip)")
-	fmt.Scanln(&ruleName)
-	fmt.Print("Enter the number of negative examples: (minimum 1) ")
+func main() {
+	// Set default values
+	defaultRepoPath := "/Users/bahar.shah/dev/kics"
+	defaultPlatform := "terraform"
+	defaultProvider := "aws"
+
+	// Get user input with default values
+	repoPath := getInput("Enter the path to the repo", defaultRepoPath)
+	platform := getInput("Enter the platform", defaultPlatform)
+	provider := getInput("Enter the provider", defaultProvider)
+	ruleName := getInput("Enter the rule name", "")
+	if ruleName == "" {
+		fmt.Println("Rule name is required. Exiting.")
+		return
+	}
+
+	var numNegatives int
+	fmt.Print("Enter the number of negative examples (default: 0): ")
 	fmt.Scanln(&numNegatives)
 
 	// Construct the base directory path
@@ -67,7 +85,7 @@ func main() {
 	positiveTFPath := filepath.Join(testDir, "positive.tf")
 	positiveExpectedPath := filepath.Join(testDir, "positive_expected_result.json")
 	os.WriteFile(positiveTFPath, []byte("# Positive test case"), 0644)
-	os.WriteFile(positiveExpectedPath, []byte("[]"), 0644)
+	os.WriteFile(positiveExpectedPath, []byte("{ \"result\": \"pass\" }"), 0644)
 
 	// Create negative test cases
 	if numNegatives == 1 {
