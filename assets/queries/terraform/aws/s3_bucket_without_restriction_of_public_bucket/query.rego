@@ -3,25 +3,6 @@ package Cx
 import data.generic.common as common_lib
 import data.generic.terraform as tf_lib
 
-#default of restrict_public_buckets is false
-CxPolicy[result] {
-	pubACL := input.document[i].resource.aws_s3_bucket_public_access_block[name]
-	not common_lib.valid_key(pubACL, "restrict_public_buckets")
-
-	result := {
-		"documentId": input.document[i].id,
-		"resourceType": "aws_s3_bucket_public_access_block",
-		"resourceName": tf_lib.get_resource_name(pubACL, name),
-		"searchKey": sprintf("aws_s3_bucket_public_access_block[%s].restrict_public_buckets", [name]),
-		"issueType": "MissingAttribute",
-		"keyExpectedValue": "'restrict_public_buckets' should equal 'true'",
-		"keyActualValue": "'restrict_public_buckets' is missing",
-		"searchLine": common_lib.build_search_line(["resource", "aws_s3_bucket_public_access_block", name], []),
-		"remediation": "restrict_public_buckets = true",
-		"remediationType": "addition",
-	}
-}
-
 CxPolicy[result] {
 	pubACL := input.document[i].resource.aws_s3_bucket_public_access_block[name]
 	pubACL.restrict_public_buckets == false
