@@ -1,0 +1,7 @@
+[
+  {
+    "queryName": "SageMaker Notebook Internet Access Enabled",
+    "severity": "HIGH",
+    "line": 4
+  }
+]
