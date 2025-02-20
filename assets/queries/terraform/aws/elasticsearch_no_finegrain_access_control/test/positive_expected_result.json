@@ -1,0 +1,12 @@
+[
+  {
+    "queryName": "Fine-Grained Access Control Disabled for OpenSearch/Elasticsearch",
+    "severity": "HIGH",
+    "line": 5
+  },
+  {
+    "queryName": "Fine-Grained Access Control Disabled for OpenSearch/Elasticsearch",
+    "severity": "HIGH",
+    "line": 14
+  }
+]
