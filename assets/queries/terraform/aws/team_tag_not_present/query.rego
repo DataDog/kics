@@ -8,6 +8,9 @@ required_tags := {"Team"}
 
 # Case where "tags" exists but required tags are missing
 CxPolicy[result] {
+    # Only consider resources whose type begins with "aws_"
+    startswith(resource_name, "aws_")
+
     resource_type := input.document[i].resource[resource_name][name]
     common_lib.valid_key(resource_type, "tags")
 
@@ -35,6 +38,9 @@ CxPolicy[result] {
 
 # Case where "tags" block is completely missing
 CxPolicy[result] {
+    # Only consider resources whose type begins with "aws_"
+    startswith(resource_type, "aws_")
+
     resource := input.document[i].resource[resource_type][name]
     not common_lib.valid_key(resource, "tags")
 

@@ -749,3 +749,11 @@ valid_non_empty_key(field, key) = output {
 	keyObj == ""
 	output := concat(".", ["", key])
 }
+
+# Helper to ensure that a value is always treated as an array.
+as_array(x) = y {
+    is_array(x)
+    y = x
+} else = [x] {
+    not is_array(x)
+}
