@@ -1,6 +1,6 @@
 {
   "id": "d3f8e9c1-7a2b-4d5f-90e2-123456789abc",
-  "queryName": "Ensure Google compute firewall ingress does not allow unrestricted FTP access",
+  "queryName": "Google compute firewall ingress allows unrestricted FTP access",
   "severity": "MEDIUM",
   "category": "Networking",
   "descriptionText": "The firewall should not allow ingress from 0.0.0.0/0 on port 21 (FTP). Unrestricted access can lead to unauthorized access.",
