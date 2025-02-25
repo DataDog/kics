@@ -1,7 +1,7 @@
 {
   "id": "a2b3c4d5-e6f7-8901-gh23-ijkl456m7890",
   "queryName": "Team Tag Missing",
-  "severity": "MEDIUM",
+  "severity": "INFO",
   "category": "Best Practices",
   "descriptionText": "Ensures that every cloud resource has a 'Team' tag for ownership tracking.",
   "descriptionUrl": "https://your-cloud-policy-docs.com/enforce-team-tag",

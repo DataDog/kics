@@ -1,0 +1,7 @@
+[
+  {
+    "queryName": "Ensure Dataproc Clusters Do Not Have Public IPs",
+    "severity": "HIGH",
+    "line": 7
+  }
+]

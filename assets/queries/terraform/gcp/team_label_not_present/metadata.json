@@ -1,0 +1,11 @@
+{
+  "id": "b2b3c4d5-e6f7-8901-gh23-ijkl456m7890",
+  "queryName": "Team Label Missing",
+  "severity": "INFO",
+  "category": "Best Practices",
+  "descriptionText": "Ensures that every cloud resource has a 'Team' label for ownership tracking.",
+  "descriptionUrl": "https://your-cloud-policy-docs.com/enforce-team-tag",
+  "platform": "Terraform",
+  "descriptionID": "b2b3c4d5",
+  "cloudProvider": "gcp"
+}

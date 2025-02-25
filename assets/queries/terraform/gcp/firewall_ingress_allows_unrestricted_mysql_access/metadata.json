@@ -1,0 +1,12 @@
+{
+  "id": "d0a1b2c3-d4e5-6789-abcd-ef0123456789",
+  "queryName": "Google compute firewall ingress allows unrestricted mysql access",
+  "severity": "MEDIUM",
+  "category": "Networking",
+  "descriptionText": "Firewall rules must not allow ingress from 0.0.0.0/0 on port 3306 (MySQL) to prevent unauthorized access.",
+  "descriptionUrl": "https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/compute_firewall",
+  "platform": "Terraform",
+  "descriptionID": "d0a1b2c3",
+  "cloudProvider": "gcp",
+  "cwe": "284"
+}

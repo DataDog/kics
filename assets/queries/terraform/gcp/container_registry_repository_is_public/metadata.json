@@ -1,0 +1,12 @@
+{
+  "id": "f6a7b8c9-d0e1-2345-f678-90abcdef1234",
+  "queryName": "Container Registry Repo Is Public",
+  "severity": "HIGH",
+  "category": "GENERAL_SECURITY",
+  "descriptionText": "Container Registry repositories must not be publicly accessible. Public principals such as 'allUsers' or 'allAuthenticatedUsers' should not be assigned in IAM member or binding configurations associated with the repository.",
+  "descriptionUrl": "https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/container_registry",
+  "platform": "Terraform",
+  "descriptionID": "CKV2_GCP_9",
+  "cloudProvider": "gcp",
+  "cwe": "311"
+}

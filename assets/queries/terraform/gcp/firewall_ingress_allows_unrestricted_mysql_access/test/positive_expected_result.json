@@ -1,0 +1,7 @@
+[
+  {
+    "queryName": "Ensure Google compute firewall ingress does not allow unrestricted mysql access",
+    "severity": "MEDIUM",
+    "line": 10
+  }
+]

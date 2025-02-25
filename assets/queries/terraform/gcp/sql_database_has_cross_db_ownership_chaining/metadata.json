@@ -1,0 +1,12 @@
+{
+  "id": "b2d5f3c9-1e68-47a1-89b4-92f3a6d7e123",
+  "queryName": "SQL Server Cross DB Ownership Chaining Enabled",
+  "severity": "HIGH",
+  "category": "Database Security",
+  "descriptionText": "SQL Server instances should have 'cross db ownership chaining' set to 'off' to prevent unauthorized privilege escalation between databases.",
+  "descriptionUrl": "https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/sql_database_instance#database_flags",
+  "platform": "Terraform",
+  "descriptionID": "b2d5f3c9",
+  "cloudProvider": "gcp",
+  "cwe": "200"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "d4e5f6g7-h8i9-0jkl-mnop-qrstuvwx1234",
+  "queryName": "Cloud KMS Key Ring is anonymously or publicly accessible",
+  "severity": "HIGH",
+  "category": "ENCRYPTION",
+  "descriptionText": "Cloud KMS Key Rings must not be publicly accessible. Public principals like 'allUsers' or 'allAuthenticatedUsers' should not be assigned in IAM member or binding configurations for key rings.",
+  "descriptionUrl": "https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/kms_key_ring",
+  "platform": "Terraform",
+  "descriptionID": "d4e5f6g7",
+  "cloudProvider": "gcp",
+  "cwe": "311"
+}

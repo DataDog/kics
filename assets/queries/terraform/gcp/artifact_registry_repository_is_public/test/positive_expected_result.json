@@ -1,0 +1,12 @@
+[
+  {
+    "queryName": "Artifact Registry Repo Is Public",
+    "severity": "MEDIUM",
+    "line": 4
+  },
+  {
+    "queryName": "Artifact Registry Repo Is Public",
+    "severity": "MEDIUM",
+    "line": 11
+  }
+]

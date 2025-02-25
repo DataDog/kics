@@ -1,0 +1,7 @@
+[
+  {
+    "queryName": "GKE Control Plane Is Public",
+    "severity": "HIGH",
+    "line": 5
+  }
+]

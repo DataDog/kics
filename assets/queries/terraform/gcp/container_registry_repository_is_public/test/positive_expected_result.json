@@ -1,0 +1,12 @@
+[
+  {
+    "queryName": "Container Registry Repo Is Public",
+    "severity": "HIGH",
+    "line": 4
+  },
+  {
+    "queryName": "Container Registry Repo Is Public",
+    "severity": "HIGH",
+    "line": 11
+  }
+]
