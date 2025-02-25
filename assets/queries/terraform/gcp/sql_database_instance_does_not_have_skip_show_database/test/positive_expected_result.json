@@ -1,0 +1,17 @@
+[
+  {
+    "queryName": "Ensure SQL Database Instance Has Skip Show Database Flag",
+    "severity": "MEDIUM",
+    "line": 8
+  },
+  {
+    "queryName": "Ensure SQL Database Instance Has Skip Show Database Flag",
+    "severity": "MEDIUM",
+    "line": 23
+  },
+  {
+    "queryName": "Ensure SQL Database Instance Has Skip Show Database Flag",
+    "severity": "MEDIUM",
+    "line": 34
+  }
+]
