@@ -1,0 +1,12 @@
+{
+  "id": "7e3c1a2b-9d4f-4c8e-8a5b-0f1e2d3c4b6a",
+  "queryName": "Cloud Run Service Is Public",
+  "severity": "HIGH",
+  "category": "General Security",
+  "descriptionText": "Cloud Run services must not be publicly accessible. IAM members or bindings should not use public principals like 'allUsers' or 'allAuthenticatedUsers'.",
+  "descriptionUrl": "https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/cloud_run_service_iam_member",
+  "platform": "Terraform",
+  "descriptionID": "7e3c1a2b",
+  "cloudProvider": "gcp",
+  "cwe": "284"
+}
