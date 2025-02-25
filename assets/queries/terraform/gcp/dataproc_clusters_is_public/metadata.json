@@ -1,11 +1,12 @@
 {
   "id": "e3f7a9b1-c2d3-4e5f-8901-23456789abcd",
   "queryName": "Dataproc Clusters Publicly Accessible",
-  "severity": "MEDIUM",
+  "severity": "HIGH",
   "category": "General Security",
   "descriptionText": "Dataproc clusters must not be publicly accessible. Public principals (allUsers, allAuthenticatedUsers) should not be allowed as IAM members or in IAM bindings.",
   "descriptionUrl": "https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/dataproc_cluster_iam_member",
   "platform": "Terraform",
   "descriptionID": "e3f7a9b1",
-  "cloudProvider": "gcp"
+  "cloudProvider": "gcp",
+  "cwe": "284"
 }

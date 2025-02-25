@@ -1,7 +1,7 @@
 {
   "id": "a9b8c7d6-e5f4-3210-abcd-1234567890ab",
   "queryName": "BigQuery Table Is Public",
-  "severity": "MEDIUM",
+  "severity": "HIGH",
   "category": "General Security",
   "descriptionText": "BigQuery tables must not be publicly accessible. Public principals like 'allUsers' or 'allAuthenticatedUsers' should not be assigned as IAM members or bindings, as this may expose sensitive data.",
   "descriptionUrl": "https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/bigquery_table_iam_member",
