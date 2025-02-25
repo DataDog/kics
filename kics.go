@@ -4,16 +4,37 @@
  * This product includes software developed at Datadog (https://www.datadoghq.com)  Copyright 2024 Datadog, Inc.
  */
 
-package kics
+package main
 
 import (
-	"log"
 	"path/filepath"
 
 	"github.com/Checkmarx/kics/internal/console"
 	"github.com/Checkmarx/kics/pkg/model"
 	"github.com/Checkmarx/kics/pkg/scan"
+	"github.com/rs/zerolog/log"
 )
+
+func main() {
+	inputPaths := []string{
+		// "/Users/bahar.shah/go/src/github.com/DataDog/innovation-week-cloud-to-tf/terraform/ami.tf",
+		"/Users/bahar.shah/dev/kics/assets/queries/terraform/aws/s3_bucket_without_versioning",
+		// "/Users/bahar.shah/dev/kics/assets/queries/terraform/aws/team_tag_not_present",
+	}
+	outputPath := "/Users/bahar.shah/go/src/github.com/DataDog/innovation-week-cloud-to-tf"
+	sci := model.SCIInfo{
+		DiffAware: model.DiffAware{
+			Enabled: false,
+		},
+		RunType: "code_update",
+		RepositoryCommitInfo: model.RepositoryCommitInfo{
+			RepositoryUrl: "github.com/blah",
+			Branch:        "main",
+			CommitSHA:     "1234567890",
+		},
+	}
+	ExecuteKICSScan(inputPaths, outputPath, sci)
+}
 
 func ExecuteKICSScan(inputPaths []string, outputPath string, sciInfo model.SCIInfo) (scan.ScanMetadata, string) {
 	params := scan.GetDefaultParameters()
@@ -22,10 +43,28 @@ func ExecuteKICSScan(inputPaths []string, outputPath string, sciInfo model.SCIIn
 	params.SCIInfo = sciInfo
 	metadata, err := console.ExecuteScan(params)
 	if err != nil {
-		log.Fatalf("failed to execute scan: %v", err)
+		log.Fatal().Str(
+			"branch", sciInfo.RepositoryCommitInfo.Branch,
+		).Str(
+			"sha", sciInfo.RepositoryCommitInfo.CommitSHA,
+		).Str(
+			"repository", sciInfo.RepositoryCommitInfo.RepositoryUrl,
+		).Msgf("failed to execute scan: %v", err)
 		return scan.ScanMetadata{}, ""
 	}
+
+	log.Info().Str(
+		"branch", sciInfo.RepositoryCommitInfo.Branch,
+	).Str(
+		"sha", sciInfo.RepositoryCommitInfo.CommitSHA,
+	).Str(
+		"repository", sciInfo.RepositoryCommitInfo.RepositoryUrl,
+	).Msgf(
+		"Scan completed successfully with metadata: %v", metadata,
+	)
+
 	log.Printf("Scan completed successfully with metadata: %v", metadata)
 	resultsFile := filepath.Join(outputPath, params.OutputName)
 	return metadata, resultsFile
+
 }

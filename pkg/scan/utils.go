@@ -72,6 +72,7 @@ func (c *Client) prepareAndAnalyzePaths(ctx context.Context) (provider.Extracted
 	}
 
 	c.ScanParams.Platform = pathTypes.Types
+	c.ScanParams.PreAnalysisExcludePaths = c.ScanParams.ExcludePaths
 	c.ScanParams.ExcludePaths = pathTypes.Exc
 
 	return allPaths, nil

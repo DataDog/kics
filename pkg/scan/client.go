@@ -56,6 +56,7 @@ type Parameters struct {
 	UseOldSeverities            bool
 	MaxResolverDepth            int
 	KicsComputeNewSimID         bool
+	PreAnalysisExcludePaths     []string
 	SCIInfo                     model.SCIInfo
 }
 
