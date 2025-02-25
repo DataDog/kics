@@ -207,7 +207,7 @@ func (p *Parser) Parse(path string, content []byte) ([]model.Document, []int, er
 		"exclusion_source", "inline",
 	).Int(
 		"lines_excluded", len(ignore[model.IgnoreLine]),
-	).Int("blocks_excluded", len(ignore[model.IgnoreBlock])).Msg("Exclusions")
+	).Int("blocks_excluded", len(ignore[model.IgnoreBlock])).Msg("Exclusions Info")
 
 	linesToIgnore := comment.GetIgnoreLines(ignore, file.Body.(*hclsyntax.Body))
 

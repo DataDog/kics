@@ -156,8 +156,8 @@ func (c *Client) postScan(scanResults *Results) (ScanMetadata, error) {
 		"repository", c.ScanParams.SCIInfo.RepositoryCommitInfo.RepositoryUrl,
 	).Str(
 		"exclusion_source", "config_file",
-	).Str(
-		"excluded_paths", strings.Join(c.ScanParams.PreAnalysisExcludePaths, ","),
+	).Int(
+		"excluded_paths", len(c.ScanParams.PreAnalysisExcludePaths),
 	).Int(
 		"excluded_categories", len(c.ScanParams.ExcludeCategories),
 	).Int(
