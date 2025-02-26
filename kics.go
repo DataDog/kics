@@ -16,7 +16,7 @@ import (
 )
 
 func ExecuteKICSScan(inputPaths []string, outputPath string, sciInfo model.SCIInfo) (scan.ScanMetadata, string) {
-	params := scan.GetDefaultParameters()
+	params := scan.GetDefaultParameters(outputPath)
 	params.Path = inputPaths
 	params.OutputPath = outputPath
 	params.SCIInfo = sciInfo
