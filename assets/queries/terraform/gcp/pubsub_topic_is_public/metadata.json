@@ -1,0 +1,11 @@
+{
+  "id": "25d251f3-f348-4f95-845c-1090e41a615c",
+  "queryName": "Pub/Sub Topics are anonymously or publicly accessible",
+  "severity": "MEDIUM",
+  "category": "General Security",
+  "descriptionText": "Pub/Sub Topics must not be publicly accessible. IAM members or bindings should not use 'allUsers' or 'allAuthenticatedUsers'.",
+  "descriptionUrl": "https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/pubsub_topic_iam_member",
+  "platform": "Terraform",
+  "descriptionID": "25d251f3",
+  "cloudProvider": "gcp"
+}
