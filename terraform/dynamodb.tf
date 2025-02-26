@@ -39,9 +39,4 @@ resource "aws_dynamodb_table" "basic-dynamodb-table" {
     projection_type    = "INCLUDE"
     non_key_attributes = ["UserId"]
   }
-
-  tags = {
-    Name        = "dynamodb-table-1"
-    Environment = "production"
-  }
 }
