@@ -30,7 +30,7 @@ func setupConfigFile() (bool, error) {
 	return false, nil
 }
 
-func initializeConfig() (ConfigParameters, error) {
+func initializeConfig(rootPath string) (ConfigParameters, error) {
 	log.Debug().Msg("console.initializeConfig()")
 
 	configParams := ConfigParameters{}
@@ -46,8 +46,9 @@ func initializeConfig() (ConfigParameters, error) {
 	if exit {
 		return configParams, nil
 	}
+	configPath := filepath.Join(rootPath, constants.DefaultConfigFilename)
 
-	base := filepath.Base(constants.DefaultConfigFilename)
+	base := filepath.Base(configPath)
 	v.SetConfigName(base)
 	v.AddConfigPath(filepath.Dir(base))
 	ext, err := consoleHelpers.FileAnalyzer(base)
