@@ -18,15 +18,19 @@ type ConfigParameters struct {
 	ExcludeSeverities []string
 }
 
-func setupConfigFile() (bool, error) {
-	_, err := os.Stat(constants.DefaultConfigFilename)
+func setupConfigFile(rootPath string) (bool, error) {
+	configPath := filepath.Join(rootPath, constants.DefaultConfigFilename)
+	_, err := os.Stat(configPath)
 	if err != nil {
 		if os.IsNotExist(err) {
+			log.Info().Msgf("Config file not found at %s", configPath)
 			return true, nil
 		}
+		log.Info().Msgf("Error reading config file at %s", configPath)
 		return true, err
 	}
 
+	log.Info().Msgf("Config file found at %s", configPath)
 	return false, nil
 }
 
@@ -39,7 +43,7 @@ func initializeConfig(rootPath string) (ConfigParameters, error) {
 	v.SetEnvPrefix("KICS")
 	v.AutomaticEnv()
 
-	exit, err := setupConfigFile()
+	exit, err := setupConfigFile(rootPath)
 	if err != nil {
 		return configParams, err
 	}
