@@ -7,12 +7,12 @@
 package kics
 
 import (
-	"log"
 	"path/filepath"
 
 	"github.com/Checkmarx/kics/internal/console"
 	"github.com/Checkmarx/kics/pkg/model"
 	"github.com/Checkmarx/kics/pkg/scan"
+	"github.com/rs/zerolog/log"
 )
 
 func ExecuteKICSScan(inputPaths []string, outputPath string, sciInfo model.SCIInfo) (scan.ScanMetadata, string) {
@@ -22,10 +22,28 @@ func ExecuteKICSScan(inputPaths []string, outputPath string, sciInfo model.SCIIn
 	params.SCIInfo = sciInfo
 	metadata, err := console.ExecuteScan(params)
 	if err != nil {
-		log.Fatalf("failed to execute scan: %v", err)
+		log.Fatal().Str(
+			"branch", sciInfo.RepositoryCommitInfo.Branch,
+		).Str(
+			"sha", sciInfo.RepositoryCommitInfo.CommitSHA,
+		).Str(
+			"repository", sciInfo.RepositoryCommitInfo.RepositoryUrl,
+		).Msgf("failed to execute scan: %v", err)
 		return scan.ScanMetadata{}, ""
 	}
+
+	log.Info().Str(
+		"branch", sciInfo.RepositoryCommitInfo.Branch,
+	).Str(
+		"sha", sciInfo.RepositoryCommitInfo.CommitSHA,
+	).Str(
+		"repository", sciInfo.RepositoryCommitInfo.RepositoryUrl,
+	).Msgf(
+		"Scan completed successfully with metadata: %v", metadata,
+	)
+
 	log.Printf("Scan completed successfully with metadata: %v", metadata)
 	resultsFile := filepath.Join(outputPath, params.OutputName)
 	return metadata, resultsFile
+
 }

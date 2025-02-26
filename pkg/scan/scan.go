@@ -258,7 +258,7 @@ func (c *Client) createService(
 	combinedParser, err := parser.NewBuilder().
 		// Add(&jsonParser.Parser{}).
 		Add(&yamlParser.Parser{}).
-		Add(terraformParser.NewDefaultWithVarsPath(c.ScanParams.TerraformVarsPath)).
+		Add(terraformParser.NewDefaultWithParams(c.ScanParams.TerraformVarsPath, c.ScanParams.SCIInfo)).
 		Add(&bicepParser.Parser{}).
 		Add(&protoParser.Parser{}).
 		Add(&buildahParser.Parser{}).

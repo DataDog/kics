@@ -33,6 +33,7 @@ type Parser struct {
 	convertFunc       Converter
 	numOfRetries      int
 	terraformVarsPath string
+	sciInfo           model.SCIInfo
 }
 
 // NewDefault initializes a parser with Parser default values
@@ -47,6 +48,13 @@ func NewDefault() *Parser {
 func NewDefaultWithVarsPath(terraformVarsPath string) *Parser {
 	parser := NewDefault()
 	parser.terraformVarsPath = terraformVarsPath
+	return parser
+}
+
+func NewDefaultWithParams(terraformVarsPath string, sciInfo model.SCIInfo) *Parser {
+	parser := NewDefault()
+	parser.terraformVarsPath = terraformVarsPath
+	parser.sciInfo = sciInfo
 	return parser
 }
 
@@ -188,6 +196,18 @@ func (p *Parser) Parse(path string, content []byte) ([]model.Document, []int, er
 	if err != nil {
 		log.Err(err).Msg("failed to parse comments")
 	}
+
+	log.Info().Str(
+		"branch", p.sciInfo.RepositoryCommitInfo.Branch,
+	).Str(
+		"sha", p.sciInfo.RepositoryCommitInfo.CommitSHA,
+	).Str(
+		"repository", p.sciInfo.RepositoryCommitInfo.RepositoryUrl,
+	).Str(
+		"exclusion_source", "inline",
+	).Int(
+		"lines_excluded", len(ignore[model.IgnoreLine]),
+	).Int("blocks_excluded", len(ignore[model.IgnoreBlock])).Msg("Exclusions Info")
 
 	linesToIgnore := comment.GetIgnoreLines(ignore, file.Body.(*hclsyntax.Body))
 

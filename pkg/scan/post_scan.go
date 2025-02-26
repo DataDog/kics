@@ -148,9 +148,25 @@ func (c *Client) postScan(scanResults *Results) (ScanMetadata, error) {
 	scanDuration := endTime.Sub(c.ScanStartTime)
 	consolePrinter.PrintScanDuration(&logger, scanDuration)
 
-	// printVersionCheck(c.Printer, &summary)
-
-	// contributionAppeal(c.Printer, c.ScanParams.QueriesPath)
+	log.Info().Str(
+		"branch", c.ScanParams.SCIInfo.RepositoryCommitInfo.Branch,
+	).Str(
+		"sha", c.ScanParams.SCIInfo.RepositoryCommitInfo.CommitSHA,
+	).Str(
+		"repository", c.ScanParams.SCIInfo.RepositoryCommitInfo.RepositoryUrl,
+	).Str(
+		"exclusion_source", "config_file",
+	).Int(
+		"excluded_paths", len(c.ScanParams.PreAnalysisExcludePaths),
+	).Int(
+		"excluded_categories", len(c.ScanParams.ExcludeCategories),
+	).Int(
+		"excluded_severities", len(c.ScanParams.ExcludeSeverities),
+	).Int(
+		"excluded_queries", len(c.ScanParams.ExcludeQueries),
+	).Int(
+		"excluded_results", len(c.ScanParams.ExcludeResults),
+	).Msg("Exclusions Info")
 
 	exitCode := consoleHelpers.ResultsExitCode(&summary)
 	if consoleHelpers.ShowError("results") && exitCode != 0 {

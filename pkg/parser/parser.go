@@ -77,6 +77,7 @@ type Parser struct {
 	parsers    kindParser
 	extensions model.Extensions
 	Platform   []string
+	SCIInfo    model.SCIInfo
 }
 
 // ParsedDocument is a struct containing data retrieved from parsing
