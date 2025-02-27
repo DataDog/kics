@@ -52,15 +52,17 @@ func initializeConfig(rootPath string) (ConfigParameters, error) {
 	}
 	configPath := filepath.Join(rootPath, constants.DefaultConfigFilename)
 
-	base := filepath.Base(configPath)
+	base := filepath.Base(constants.DefaultConfigFilename)
 	v.SetConfigName(base)
-	v.AddConfigPath(filepath.Dir(base))
-	ext, err := consoleHelpers.FileAnalyzer(base)
+	v.AddConfigPath(rootPath)
+	ext, err := consoleHelpers.FileAnalyzer(configPath)
 	if err != nil {
+		log.Debug().Msgf("Error analyzing config file base %s at %s", base, configPath)
 		return configParams, err
 	}
 	v.SetConfigType(ext)
 	if err := v.ReadInConfig(); err != nil {
+		log.Debug().Msgf("Error reading config file base %s at %s", base, configPath)
 		return configParams, err
 	}
 
