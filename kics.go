@@ -22,7 +22,9 @@ func ExecuteKICSScan(inputPaths []string, outputPath string, sciInfo model.SCIIn
 	params.SCIInfo = sciInfo
 	metadata, err := console.ExecuteScan(params)
 	if err != nil {
-		log.Fatal().Str(
+		log.Fatal().Int64(
+			"org", sciInfo.OrgId,
+		).Str(
 			"branch", sciInfo.RepositoryCommitInfo.Branch,
 		).Str(
 			"sha", sciInfo.RepositoryCommitInfo.CommitSHA,
@@ -32,7 +34,9 @@ func ExecuteKICSScan(inputPaths []string, outputPath string, sciInfo model.SCIIn
 		return scan.ScanMetadata{}, ""
 	}
 
-	log.Info().Str(
+	log.Info().Int64(
+		"org", sciInfo.OrgId,
+	).Str(
 		"branch", sciInfo.RepositoryCommitInfo.Branch,
 	).Str(
 		"sha", sciInfo.RepositoryCommitInfo.CommitSHA,
@@ -42,7 +46,6 @@ func ExecuteKICSScan(inputPaths []string, outputPath string, sciInfo model.SCIIn
 		"Scan completed successfully with metadata: %v", metadata,
 	)
 
-	log.Printf("Scan completed successfully with metadata: %v", metadata)
 	resultsFile := filepath.Join(outputPath, params.OutputName)
 	return metadata, resultsFile
 

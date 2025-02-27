@@ -69,7 +69,7 @@ func (c *Client) resolveOutputs(
 	log.Debug().Msg("console.resolveOutputs()")
 
 	usingCustomQueries := usingCustomQueries(c.ScanParams.QueriesPath)
-	if err := consolePrinter.PrintResult(summary, printer, usingCustomQueries); err != nil {
+	if err := consolePrinter.PrintResult(summary, printer, usingCustomQueries, c.ScanParams.SCIInfo); err != nil {
 		return err
 	}
 	if c.ScanParams.PayloadPath != "" {
@@ -148,7 +148,9 @@ func (c *Client) postScan(scanResults *Results) (ScanMetadata, error) {
 	scanDuration := endTime.Sub(c.ScanStartTime)
 	consolePrinter.PrintScanDuration(&logger, scanDuration)
 
-	log.Info().Str(
+	log.Info().Int64(
+		"org", c.ScanParams.SCIInfo.OrgId,
+	).Str(
 		"branch", c.ScanParams.SCIInfo.RepositoryCommitInfo.Branch,
 	).Str(
 		"sha", c.ScanParams.SCIInfo.RepositoryCommitInfo.CommitSHA,

@@ -9,6 +9,7 @@ type SCIInfo struct {
 	DiffAware            DiffAware
 	RunType              string               `json:"run_type"`
 	RepositoryCommitInfo RepositoryCommitInfo `json:"repository_commit_info"`
+	OrgId                int64                `json:"org_id"`
 }
 
 // DiffAware contains the necessary information to be able to perform a diff between two reports

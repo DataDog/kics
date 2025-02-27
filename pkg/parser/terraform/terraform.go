@@ -197,7 +197,9 @@ func (p *Parser) Parse(path string, content []byte) ([]model.Document, []int, er
 		log.Err(err).Msg("failed to parse comments")
 	}
 
-	log.Info().Str(
+	log.Info().Int64(
+		"org", p.sciInfo.OrgId,
+	).Str(
 		"branch", p.sciInfo.RepositoryCommitInfo.Branch,
 	).Str(
 		"sha", p.sciInfo.RepositoryCommitInfo.CommitSHA,

@@ -76,7 +76,7 @@ func WordWrap(s, indentation string, limit int) string {
 }
 
 // PrintResult prints on output the summary results
-func PrintResult(summary *model.Summary, printer *Printer, usingCustomQueries bool) error {
+func PrintResult(summary *model.Summary, printer *Printer, usingCustomQueries bool, sciInfo model.SCIInfo) error {
 	log.Debug().Msg("helpers.PrintResult()")
 	fmt.Printf("\n\n")
 	for index := range summary.Queries {
@@ -137,8 +137,26 @@ func PrintResult(summary *model.Summary, printer *Printer, usingCustomQueries bo
 	printSeverityCounter(model.SeverityInfo, summary.SeveritySummary.SeverityCounters[model.SeverityInfo], printer.Info)
 	fmt.Printf("TOTAL: %d\n\n", summary.SeveritySummary.TotalCounter)
 
-	log.Info().Msgf("Scanned Files: %d", summary.ScannedFiles)
-	log.Info().Msgf("Parsed Files: %d", summary.ParsedFiles)
+	log.Info().Int64(
+		"org", sciInfo.OrgId,
+	).Str(
+		"branch", sciInfo.RepositoryCommitInfo.Branch,
+	).Str(
+		"sha", sciInfo.RepositoryCommitInfo.CommitSHA,
+	).Str(
+		"repository", sciInfo.RepositoryCommitInfo.RepositoryUrl,
+	).Msgf("Scanned Files: %d", summary.ScannedFiles)
+
+	log.Info().Int64(
+		"org", sciInfo.OrgId,
+	).Str(
+		"branch", sciInfo.RepositoryCommitInfo.Branch,
+	).Str(
+		"sha", sciInfo.RepositoryCommitInfo.CommitSHA,
+	).Str(
+		"repository", sciInfo.RepositoryCommitInfo.RepositoryUrl,
+	).Msgf("Parsed Files: %d", summary.ParsedFiles)
+
 	log.Info().Msgf("Scanned Lines: %d", summary.ScannedFilesLines)
 	log.Info().Msgf("Parsed Lines: %d", summary.ParsedFilesLines)
 	log.Info().Msgf("Ignored Lines: %d", summary.IgnoredFilesLines)
