@@ -1,0 +1,12 @@
+{
+  "id": "e8f4d3c2-b1a0-4e5f-8d7c-9a0b1c2d3e4f",
+  "queryName": "Ensure that cloud resource has a 'team' tag",
+  "severity": "INFO",
+  "category": "Tagging",
+  "descriptionText": "All Azure resources must include a 'team' tag in their tags block to ensure proper ownership and accountability.",
+  "descriptionUrl": "https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/tag-resources",
+  "platform": "Terraform",
+  "descriptionID": "e8f4d3c2",
+  "cloudProvider": "azure",
+  "cwe": "200"
+}
