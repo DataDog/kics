@@ -1,0 +1,7 @@
+[
+  {
+    "queryName": "Ensure 'Enforce SSL connection' is set to 'ENABLED' for PostgreSQL Database Server",
+    "severity": "HIGH",
+    "line": 8
+  }
+]

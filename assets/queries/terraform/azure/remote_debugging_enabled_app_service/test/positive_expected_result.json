@@ -1,0 +1,56 @@
+[
+  {
+    "queryName": "Ensure that remote debugging is not enabled for app services",
+    "severity": "HIGH",
+    "resourceType": "azurerm_app_service",
+    "line": 5
+  },
+  {
+    "queryName": "Ensure that remote debugging is not enabled for app services",
+    "severity": "HIGH",
+    "resourceType": "azurerm_linux_function_app",
+    "line": 6
+  },
+  {
+    "queryName": "Ensure that remote debugging is not enabled for app services",
+    "severity": "HIGH",
+    "resourceType": "azurerm_linux_function_app_slot",
+    "line": 7
+  },
+  {
+    "queryName": "Ensure that remote debugging is not enabled for app services",
+    "severity": "HIGH",
+    "resourceType": "azurerm_linux_web_app",
+    "line": 8
+  },
+  {
+    "queryName": "Ensure that remote debugging is not enabled for app services",
+    "severity": "HIGH",
+    "resourceType": "azurerm_linux_web_app_slot",
+    "line": 9
+  },
+  {
+    "queryName": "Ensure that remote debugging is not enabled for app services",
+    "severity": "HIGH",
+    "resourceType": "azurerm_windows_function_app",
+    "line": 10
+  },
+  {
+    "queryName": "Ensure that remote debugging is not enabled for app services",
+    "severity": "HIGH",
+    "resourceType": "azurerm_windows_function_app_slot",
+    "line": 11
+  },
+  {
+    "queryName": "Ensure that remote debugging is not enabled for app services",
+    "severity": "HIGH",
+    "resourceType": "azurerm_windows_web_app",
+    "line": 12
+  },
+  {
+    "queryName": "Ensure that remote debugging is not enabled for app services",
+    "severity": "HIGH",
+    "resourceType": "azurerm_windows_web_app_slot",
+    "line": 13
+  }
+]
