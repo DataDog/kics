@@ -103,6 +103,11 @@ func (s *Service) resolverSink(
 		s.Tracker.TrackFileFoundCountLines(documents.CountLines)
 		s.Tracker.TrackFileParseCountLines(documents.CountLines - len(documents.IgnoreLines))
 		s.Tracker.TrackFileIgnoreCountLines(len(documents.IgnoreLines))
+
+		if kind == model.KindTerraform {
+			resourceCount := GetCountTerraformResources(rfile.Content)
+			s.Tracker.TrackFileFoundCountResources(resourceCount)
+		}
 	}
 	return resFiles.Excluded, nil
 }

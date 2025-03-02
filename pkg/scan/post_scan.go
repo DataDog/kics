@@ -32,6 +32,7 @@ func (c *Client) getSummary(results []model.Vulnerability, end time.Time, pathPa
 		TotalQueries:           c.Tracker.LoadedQueries,
 		FailedToExecuteQueries: c.Tracker.ExecutingQueries - c.Tracker.ExecutedQueries,
 		FailedSimilarityID:     c.Tracker.FailedSimilarityID,
+		FoundResources:         c.Tracker.FoundResources,
 	}
 
 	summary := model.CreateSummary(
@@ -220,6 +221,7 @@ func (c *Client) generateStats(scanResults *Results, scanDuration time.Duration)
 		Rules:               c.Tracker.ExecutedQueries,
 		Duration:            scanDuration,
 		ViolationBreakdowns: violationBreakdowns,
+		ResourcesScanned:    c.Tracker.FoundResources,
 	}
 }
 
