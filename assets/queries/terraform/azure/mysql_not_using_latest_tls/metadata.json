@@ -4,7 +4,7 @@
   "severity": "HIGH",
   "category": "Networking",
   "descriptionText": "Azure MySQL servers must enforce TLS encryption by setting ssl_minimal_tls_version_enforced to 'TLS1_2'. This ensures secure connections and protects data in transit.",
-  "descriptionUrl": "https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/mysql_server",
+  "descriptionUrl": "https://registry.terraform.io/providers/hashicorp/azurerm/3.117.1/docs/resources/mysql_server#ssl_minimal_tls_version_enforced-2",
   "platform": "Terraform",
   "descriptionID": "c2a1d4e6",
   "cloudProvider": "azure",

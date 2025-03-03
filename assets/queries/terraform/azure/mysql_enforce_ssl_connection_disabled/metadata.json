@@ -1,12 +1,12 @@
 {
   "id": "c3f2e1d0-b9a8-7c6d-5e4f-3210fedcba98",
-  "queryName": "'Enforce SSL connection' is not set to 'ENABLED' for MySQL Database Server",
+  "queryName": "'ssl_enforcement_enabled' is not set to 'ENABLED' for MySQL Database Server",
   "severity": "HIGH",
   "category": "Networking",
   "descriptionText": "MySQL Database Server should have SSL enforcement enabled to ensure secure connections. The 'ssl_enforcement_enabled' attribute must be set to 'ENABLED'.",
   "descriptionUrl": "https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/mysql_server",
   "platform": "Terraform",
-  "descriptionID": "CKV_AZURE_28",
+  "descriptionID": "c3f2e1d0",
   "cloudProvider": "azure",
   "cwe": "311"
 }
