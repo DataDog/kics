@@ -13,10 +13,6 @@ resource "azurerm_app_service" "negative1" {
     "SOME_KEY" = "some-value"
   }
 
-  auth_settings = {
-    enabled = true
-  }
-
   connection_string {
     name  = "Database"
     type  = "SQLServer"

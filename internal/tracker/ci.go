@@ -38,6 +38,7 @@ type CITracker struct {
 	BagOfFilesParse       map[string]int
 	BagOfFilesFound       map[string]int
 	syncFileMutex         sync.Mutex
+	FoundResources        int
 }
 
 // NewTracker will create a new instance of a tracker with the number of lines to display in results output
@@ -145,4 +146,9 @@ func (c *CITracker) TrackFileParseCountLines(countLines int) {
 // TrackFileIgnoreCountLines - information about the lines ignored of the parsed files
 func (c *CITracker) TrackFileIgnoreCountLines(countLines int) {
 	c.IgnoreCountLines += countLines
+}
+
+// TrackResourceFoundCountLines - information about the resources of the scanned files
+func (c *CITracker) TrackFileFoundCountResources(countResources int) {
+	c.FoundResources += countResources
 }

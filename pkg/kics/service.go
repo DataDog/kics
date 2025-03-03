@@ -44,12 +44,14 @@ type Storage interface {
 // Tracker is the interface that wraps the basic methods: TrackFileFound and TrackFileParse
 // TrackFileFound should increment the number of files to be scanned
 // TrackFileParse should increment the number of files parsed successfully to be scanned
+// TrackFileFoundCountResources should increment the number of resources to be scanned
 type Tracker interface {
 	TrackFileFound(path string)
 	TrackFileParse(path string)
 	TrackFileFoundCountLines(countLines int)
 	TrackFileParseCountLines(countLines int)
 	TrackFileIgnoreCountLines(countLines int)
+	TrackFileFoundCountResources(countResources int)
 }
 
 // Service is a struct that contains a SourceProvider to receive sources, a storage to save and retrieve scanning informations
@@ -133,9 +135,10 @@ func (s *Service) StartScan(
 
 // Content keeps the content of the file and the number of lines
 type Content struct {
-	Content    *[]byte
-	CountLines int
-	IsMinified bool
+	Content        *[]byte
+	CountLines     int
+	IsMinified     bool
+	CountResources int
 }
 
 /*
@@ -169,6 +172,7 @@ func getContent(rc io.Reader, data []byte, maxSizeMB int, filename string) (*Con
 	}
 	c.Content = &content
 	c.CountLines = countLines
+	c.CountResources = GetCountTerraformResources(content)
 
 	c.IsMinified = minified.IsMinified(filename, content)
 	return c, nil

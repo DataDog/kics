@@ -41,6 +41,7 @@ func (s *Service) sink(ctx context.Context, filename, scanID string,
 	content := c.Content
 
 	s.Tracker.TrackFileFoundCountLines(c.CountLines)
+	s.Tracker.TrackFileFoundCountResources(c.CountResources)
 
 	if err != nil {
 		return errors.Wrapf(err, "failed to get file content: %s", filename)

@@ -36,6 +36,7 @@ func TestCITracker(t *testing.T) {
 		ParsedCountLines      int
 		IgnoreCountLines      int
 		lines                 int
+		FoundResources        int
 	}
 	tests := []struct {
 		name   string
@@ -58,6 +59,7 @@ func TestCITracker(t *testing.T) {
 				ParsedCountLines:      1,
 				IgnoreCountLines:      4,
 				lines:                 3,
+				FoundResources:        5,
 			},
 		},
 	}
@@ -79,6 +81,7 @@ func TestCITracker(t *testing.T) {
 			lines:              tt.fields.lines,
 			BagOfFilesParse:    make(map[string]int),
 			BagOfFilesFound:    make(map[string]int),
+			FoundResources:     tt.fields.FoundResources,
 		}
 		t.Run(fmt.Sprintf(tt.name+"_LoadedQueries"), func(t *testing.T) {
 			c.TrackQueryLoad(1)
@@ -144,6 +147,10 @@ func TestCITracker(t *testing.T) {
 			if !reflect.DeepEqual(got, 3) {
 				t.Errorf("GetOutputLines() = %v, want = %v", got, 3)
 			}
+		})
+		t.Run(fmt.Sprintf(tt.name+"_TrackFoundCountResources"), func(t *testing.T) {
+			c.TrackFileFoundCountResources(5)
+			require.Equal(t, 5, c.FoundCountLines)
 		})
 	}
 }
