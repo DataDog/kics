@@ -1,0 +1,12 @@
+{
+  "id": "550e8400-e29b-41d4-a716-446655440000",
+  "descriptionID": "550e8400",
+  "queryName": "Ensure legacy networks do not exist for a project",
+  "severity": "HIGH",
+  "category": "Networking",
+  "descriptionText": "Ensures that no legacy networks with auto_create_subnetworks enabled exist in a project.",
+  "descriptionUrl": "https://cloud.google.com/vpc/docs/vpc#legacy",
+  "platform": "Terraform",
+  "cloudProvider": "GCP",
+  "cwe": "CWE-400"
+}

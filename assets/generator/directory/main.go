@@ -29,8 +29,16 @@ func getInput(prompt, defaultValue string) string {
 }
 
 func main() {
+	homeDir, err := os.UserHomeDir()
+	if err != nil {
+		fmt.Printf("Failed to get home directory: %v \n", err)
+		os.Exit(1)
+	}
+
+	// Construct the full path: ~/dev/kics
+	defaultRepoPath := filepath.Join(homeDir, "dev", "kics")
+
 	// Set default values
-	defaultRepoPath := "~/dev/kics"
 	defaultPlatform := "terraform"
 	defaultProvider := "aws"
 
