@@ -5,7 +5,7 @@
   "severity": "HIGH",
   "category": "Networking",
   "descriptionText": "Ensures that no legacy networks with auto_create_subnetworks enabled exist in a project.",
-  "descriptionUrl": "https://cloud.google.com/vpc/docs/vpc#legacy",
+  "descriptionUrl": "https://cloud.google.com/vpc/docs/legacy",
   "platform": "Terraform",
   "cloudProvider": "GCP",
   "cwe": "CWE-400"
