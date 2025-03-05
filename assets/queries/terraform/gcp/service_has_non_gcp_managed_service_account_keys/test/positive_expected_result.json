@@ -1,0 +1,7 @@
+[
+  {
+    "queryName": "Ensure that there are only GCP-managed service account keys for each service account",
+    "severity": "HIGH",
+    "line": 3
+  }
+]
