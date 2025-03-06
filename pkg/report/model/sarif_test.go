@@ -54,7 +54,7 @@ var sarifTests = []sarifTest{
 				QueryURI:    "https://www.test.com",
 				Severity:    model.SeverityHigh,
 				Files: []model.VulnerableFile{
-					{KeyActualValue: "test", FileName: "test.json", Line: -1},
+					{KeyActualValue: "test", FileName: "test.json", Line: -1, ResourceType: "test_resource_type", ResourceName: "test_resource_name"},
 				},
 				CWE: "",
 			},
@@ -106,7 +106,7 @@ var sarifTests = []sarifTest{
 								},
 							},
 							ResultLevel:      "error",
-							ResultProperties: sarifProperties{"tags": []string{"DATADOG_CATEGORY:"}},
+							ResultProperties: sarifProperties{"tags": []string{"DATADOG_CATEGORY:", "IAC_RESOURCE_TYPE:test_resource_type", "IAC_RESOURCE_NAME:test_resource_name"}},
 							PartialFingerprints: SarifPartialFingerprints{
 								DatadogFingerprint: GetDatadogFingerprintHash(
 									model.SCIInfo{
@@ -172,7 +172,7 @@ var sarifTests = []sarifTest{
 				Category:    "test",
 				Severity:    model.SeverityHigh,
 				Files: []model.VulnerableFile{
-					{KeyActualValue: "test", FileName: "", Line: 1},
+					{KeyActualValue: "test", FileName: "", Line: 1, ResourceType: "test_resource_type", ResourceName: "test_resource_name"},
 				},
 				CWE: "",
 			},
@@ -184,7 +184,7 @@ var sarifTests = []sarifTest{
 				Category:    "test",
 				Severity:    model.SeverityInfo,
 				Files: []model.VulnerableFile{
-					{KeyActualValue: "test", FileName: "", Line: 1},
+					{KeyActualValue: "test", FileName: "", Line: 1, ResourceType: "test_resource_type_2", ResourceName: "test_resource_name_2"},
 				},
 				CWE: "22",
 			},
@@ -274,7 +274,7 @@ var sarifTests = []sarifTest{
 									},
 								},
 							},
-							ResultProperties: sarifProperties{"tags": []string{"DATADOG_CATEGORY:test"}},
+							ResultProperties: sarifProperties{"tags": []string{"DATADOG_CATEGORY:test", "IAC_RESOURCE_TYPE:test_resource_type", "IAC_RESOURCE_NAME:test_resource_name"}},
 							PartialFingerprints: SarifPartialFingerprints{
 								DatadogFingerprint: GetDatadogFingerprintHash(
 									model.SCIInfo{
@@ -307,7 +307,7 @@ var sarifTests = []sarifTest{
 									},
 								},
 							},
-							ResultProperties: sarifProperties{"tags": []string{"DATADOG_CATEGORY:test", "CWE:22"}},
+							ResultProperties: sarifProperties{"tags": []string{"DATADOG_CATEGORY:test", "CWE:22", "IAC_RESOURCE_TYPE:test_resource_type_2", "IAC_RESOURCE_NAME:test_resource_name_2"}},
 							PartialFingerprints: SarifPartialFingerprints{
 								DatadogFingerprint: GetDatadogFingerprintHash(
 									model.SCIInfo{
