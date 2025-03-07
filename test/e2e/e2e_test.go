@@ -20,9 +20,9 @@ func Test_E2EExclusions(t *testing.T) {
 			name:     "no exclusions",
 			testFile: filepath.Join("fixtures", "no-exclusions.tf"),
 			expectedOutput: scan.ScanStats{
-				Violations: 5,
+				Violations: 6,
 				Files:      1,
-				Rules:      1088,
+				Rules:      1126,
 				ViolationBreakdowns: map[string][]string{
 					"LOW":    {"c5b31ab9-0f26-4a49-b8aa-4cc064392f4d", "e592a0c5-5bdb-414c-9066-5dba7cdea370", "c5b31ab9-0f26-4a49-b8aa-4cc064392f4d"},
 					"MEDIUM": {"f861041c-8c9f-4156-acfc-5e6e524f5884", "568a4d22-3517-44a6-a7ad-6a7eed88722c"},
@@ -33,9 +33,9 @@ func Test_E2EExclusions(t *testing.T) {
 			name:     "disabled rule inline",
 			testFile: filepath.Join("fixtures", "inline-disabled-rule.tf"),
 			expectedOutput: scan.ScanStats{
-				Violations: 4,
+				Violations: 5,
 				Files:      1,
-				Rules:      1088,
+				Rules:      1126,
 				ViolationBreakdowns: map[string][]string{
 					"LOW":    {"c5b31ab9-0f26-4a49-b8aa-4cc064392f4d", "c5b31ab9-0f26-4a49-b8aa-4cc064392f4d"},
 					"MEDIUM": {"f861041c-8c9f-4156-acfc-5e6e524f5884", "568a4d22-3517-44a6-a7ad-6a7eed88722c"},

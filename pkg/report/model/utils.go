@@ -14,8 +14,10 @@ import (
 )
 
 const (
-	kicsRuleIDTag = "KICS_RuleID:%s"
-	cweTag        = "CWE:%s"
+	kicsRuleIDTag   = "KICS_RuleID:%s"
+	cweTag          = "CWE:%s"
+	resourceTypeTag = "IAC_RESOURCE_TYPE:%s"
+	resourceNameTag = "IAC_RESOURCE_NAME:%s"
 )
 
 func GetScanDurationTag(summary model.Summary) string {
@@ -50,6 +52,14 @@ func GetKICSRuleIDTag(ruleID string) string {
 
 func GetCWETag(cwe string) string {
 	return fmt.Sprintf(cweTag, cwe)
+}
+
+func GetResourceTypeTag(resourceType string) string {
+	return fmt.Sprintf(resourceTypeTag, resourceType)
+}
+
+func GetResourceNameTag(resourceName string) string {
+	return fmt.Sprintf(resourceNameTag, resourceName)
 }
 
 // stringToHash returns a SHA256 hash of the input string.

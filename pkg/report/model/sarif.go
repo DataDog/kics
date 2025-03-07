@@ -647,7 +647,16 @@ func (sr *sarifReport) BuildSarifIssue(issue *model.QueryResult, sciInfo model.S
 			if line < 1 {
 				line = 1
 			}
-			resourceLocation := issue.Files[idx].ResourceLocation
+			vulnerability := issue.Files[idx]
+
+			resourceType := vulnerability.ResourceType
+			resourceName := vulnerability.ResourceName
+			resourceTypeTag := GetResourceTypeTag(resourceType)
+			resourceNameTag := GetResourceNameTag(resourceName)
+
+			resultTags := append(tags, resourceTypeTag, resourceNameTag)
+
+			resourceLocation := vulnerability.ResourceLocation
 			startLocation := sarifResourceLocation{
 				Line: resourceLocation.ResourceStart.Line,
 				Col:  resourceLocation.ResourceStart.Col,
@@ -688,7 +697,7 @@ func (sr *sarifReport) BuildSarifIssue(issue *model.QueryResult, sciInfo model.S
 					},
 				},
 				ResultProperties: sarifProperties{
-					"tags": tags,
+					"tags": resultTags,
 				},
 				PartialFingerprints: SarifPartialFingerprints{
 					DatadogFingerprint: GetDatadogFingerprintHash(sciInfo, absoluteFilePath, line, issue.QueryID),
