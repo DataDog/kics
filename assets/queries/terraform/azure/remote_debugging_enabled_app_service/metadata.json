@@ -2,7 +2,7 @@
   "id": "e3f7a9b0-c1d2-3e4f-5678-90abcdef1234",
   "queryName": "Ensure web app is not remotely debuggable",
   "severity": "HIGH",
-  "category": "General Security",
+  "category": "Insecure Configurations",
   "descriptionText": "Remote debugging in web apps can expose sensitive information and allow unauthorized access. It should be disabled to reduce the attack surface.",
   "descriptionUrl": "https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/app_service#site_config",
   "platform": "Terraform",
