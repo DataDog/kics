@@ -3,7 +3,7 @@
   "descriptionID": "a1b2c3d4",
   "queryName": "There are non GCP-managed service account keys for a service account",
   "severity": "HIGH",
-  "category": "ENCRYPTION",
+  "category": "Encryption",
   "descriptionText": "Ensures that only GCP-managed service account keys are used, preventing manually created keys that pose security risks.",
   "descriptionUrl": "https://cloud.google.com/iam/docs/best-practices-for-managing-service-account-keys",
   "platform": "Terraform",

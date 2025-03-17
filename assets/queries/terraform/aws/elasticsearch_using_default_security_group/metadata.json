@@ -2,7 +2,7 @@
   "id": "d3e1f5a9-bb45-4c89-b97c-12d34ef56789",
   "queryName": "Elasticsearch Uses Default Security Group",
   "severity": "HIGH",
-  "category": "Networking",
+  "category": "Networking and Firewall",
   "descriptionText": "Ensures that AWS Elasticsearch and OpenSearch domains do not use the default security group. If a security group is not specified, the default SG is used, which could expose the service to unintended access.",
   "descriptionUrl": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/elasticsearch_domain#vpc_options",
   "platform": "Terraform",

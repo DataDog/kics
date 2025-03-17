@@ -2,7 +2,7 @@
   "id": "d2c4b6a8-1234-4f56-9abc-def012345678",
   "queryName": "Dataproc Clusters Has Public IPs",
   "severity": "HIGH",
-  "category": "General Security",
+  "category": "Insecure Configurations",
   "descriptionText": "Dataproc clusters should be configured with 'internal_ip_only' set to true so that they do not have public IP addresses. This prevents unauthorized access from the public internet.",
   "descriptionUrl": "https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/dataproc_cluster",
   "platform": "Terraform",

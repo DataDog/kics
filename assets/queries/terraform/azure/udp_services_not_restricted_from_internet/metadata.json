@@ -2,7 +2,7 @@
   "id": "a3b4c5d6-e7f8-9012-3456-7890abcdef12",
   "queryName": "Ensure that UDP Services are restricted from the Internet",
   "severity": "HIGH",
-  "category": "Networking",
+  "category": "Networking and Firewall",
   "descriptionText": "NSG rules for UDP traffic must restrict inbound access from the public Internet. Allowing UDP inbound from '0.0.0.0/0' poses significant security risks.",
   "descriptionUrl": "https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/network_security_group",
   "platform": "Terraform",
