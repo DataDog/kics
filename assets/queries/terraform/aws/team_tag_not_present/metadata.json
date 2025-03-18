@@ -4,7 +4,7 @@
   "severity": "INFO",
   "category": "Best Practices",
   "descriptionText": "Ensures that every cloud resource has a 'Team' tag for ownership tracking.",
-  "descriptionUrl": "https://your-cloud-policy-docs.com/enforce-team-tag",
+  "descriptionUrl": "",
   "platform": "Terraform",
   "descriptionID": "a2b3c4d5",
   "cloudProvider": "aws",
