@@ -1,12 +1,4 @@
-resource "google_bigtable_instance" "positive2" {
-  name = "marcellus-wallace"
-  timeouts {
-    create = "30m"
-    update = "40m"
-  }
-}
-
-resource "google_compute_instance" "good_example_2" {
+resource "google_compute_instance" "good_example" {
   name         = "good-instance"
   machine_type = "e2-medium"
   zone         = "us-central1-a"
@@ -22,6 +14,7 @@ resource "google_compute_instance" "good_example_2" {
   }
 
   labels = {
+    Team        = "DevOps"
     environment = "prod"
   }
 }
