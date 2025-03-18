@@ -1,4 +1,4 @@
-resource "azurerm_postgresql_server" "good_example" {
+resource "azurerm_postgresql_test" "good_example" {
   name                = "good-postgresql-server"
   location            = "East US"
   resource_group_name = "example-rg"
@@ -8,9 +8,4 @@ resource "azurerm_postgresql_server" "good_example" {
   version                 = "9.6"
   ssl_enforcement_enabled = true
   sku_name                = "B_Gen5_1"
-
-  tags = {
-    team        = "DevOps" # ✅ Correct setting
-    environment = "prod"
-  }
 }

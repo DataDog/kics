@@ -10,7 +10,7 @@ resource "azurerm_postgresql_server" "good_example" {
   sku_name                = "B_Gen5_1"
 
   tags = {
-    team        = "DevOps" # ✅ Correct setting
+    Team        = "DevOps" # ✅ Correct setting
     environment = "prod"
   }
 }
