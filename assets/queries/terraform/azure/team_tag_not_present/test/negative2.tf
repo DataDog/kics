@@ -1,3 +1,5 @@
+# ✅ "team" label is not a valid attribute for this resource type
+
 resource "azurerm_postgresql_test" "good_example" {
   name                = "good-postgresql-server"
   location            = "East US"

@@ -1,3 +1,4 @@
+# ✅ "team" label is not a valid attribute for this resource type
 resource "google_container_cluster" "good_example" {
   name               = "marcellus-wallace"
   location           = "us-central1-a"

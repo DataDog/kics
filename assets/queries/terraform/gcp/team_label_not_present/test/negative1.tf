@@ -14,7 +14,7 @@ resource "google_compute_instance" "good_example" {
   }
 
   labels = {
-    Team        = "DevOps"
+    Team        = "DevOps" # ✅ "Team" tag is present
     environment = "prod"
   }
 }
