@@ -12,7 +12,7 @@ CxPolicy[result] {
     startswith(resource_name, "google_")
 
     # Only consider resources that support labels
-    tf_lib.check_resource_labels_gcp(resource_name)
+    tf_lib.check_gcp_resource_supports_labels(resource_name)
 
     resource_type := input.document[i].resource[resource_name][name]
     common_lib.valid_key(resource_type, "labels")
@@ -50,7 +50,7 @@ CxPolicy[result] {
     startswith(resource_type, "google_")
 
     # Only consider resources that support labels
-    tf_lib.check_resource_labels_gcp(resource_type)
+    tf_lib.check_gcp_resource_supports_labels(resource_type)
 
     resource := input.document[i].resource[resource_type][name]
     not common_lib.valid_key(resource, "labels")

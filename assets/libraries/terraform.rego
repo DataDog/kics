@@ -93,7 +93,7 @@ getSpecInfo(resource) = specInfo { # this one can be also used for the result
 	specInfo := {"spec": spec, "path": "spec"}
 }
 
-check_resource_tags(p) {
+check_aws_resource_supports_tags(p) {
 	resource = {
 		"aws_acm_certificate": "",
 		"aws_acmpca_certificate_authority": "",
@@ -584,7 +584,7 @@ check_key_empty(disk_encryption_key) = key {
 	key := "kms_key_self_link"
 }
 
-check_resource_labels_gcp(p) {
+check_gcp_resource_supports_labels(p) {
 	resource = {
         "google_active_directory_domain": "",
         "google_alloydb_backup": "",
@@ -707,7 +707,7 @@ check_resource_labels_gcp(p) {
 	resource[p]
 }
 
-check_resource_tags_azure(p) {
+check_azure_resource_supports_tags(p) {
 	resource = {
         "azurerm_aadb2c_directory": "",
         "azurerm_active_directory_domain_service": "",

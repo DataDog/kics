@@ -12,7 +12,7 @@ CxPolicy[result] {
     startswith(resource_name, "azurerm_")
 
     # Only consider resources that support tags
-    tf_lib.check_resource_tags_azure(resource_name)
+    tf_lib.check_azure_resource_supports_tags(resource_name)
 
     resource_type := input.document[i].resource[resource_name][name]
     common_lib.valid_key(resource_type, "tags")
@@ -50,7 +50,7 @@ CxPolicy[result] {
     startswith(resource_type, "azurerm_")
 
     # Only consider resources that support tags
-    tf_lib.check_resource_tags_azure(resource_type)
+    tf_lib.check_azure_resource_supports_tags(resource_type)
 
     resource := input.document[i].resource[resource_type][name]
     not common_lib.valid_key(resource, "tags")
