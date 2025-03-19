@@ -4,7 +4,7 @@
   "severity": "MEDIUM",
   "category": "Encryption",
   "descriptionText": "Storage Accounts should enforce the use of HTTPS",
-  "descriptionUrl": "https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/storage_account",
+  "descriptionUrl": "https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/storage_account#https_traffic_only_enabled-1",
   "platform": "Terraform",
   "descriptionID": "ab6688ca",
   "cloudProvider": "azure",
