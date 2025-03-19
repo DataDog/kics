@@ -1,12 +1,12 @@
 {
-  "id": "a1b2c3d4-e5f6-7890-ab12-cd34ef567890",
+  "id": "93f9tyjk-e5f6-7890-ab12-cd34ef567890",
   "queryName": "'ssl_enforcement_enabled' is not set to 'ENABLED' for PostgreSQL Database Server",
   "severity": "HIGH",
   "category": "Networking and Firewall",
   "descriptionText": "PostgreSQL Database Server should have SSL enforcement enabled to ensure secure connections. The 'ssl_enforcement_enabled' attribute must be set to 'ENABLED'.",
   "descriptionUrl": "https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/postgresql_server",
   "platform": "Terraform",
-  "descriptionID": "a1b2c3d4",
+  "descriptionID": "93f9tyjk",
   "cloudProvider": "azure",
   "cwe": "311"
 }

@@ -1,6 +1,6 @@
 {
-  "id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
-  "descriptionID": "a1b2c3d4",
+  "id": "3jh54js8-e5f6-7890-abcd-ef1234567890",
+  "descriptionID": "3jh54js8",
   "queryName": "There are non GCP-managed service account keys for a service account",
   "severity": "HIGH",
   "category": "Encryption",
