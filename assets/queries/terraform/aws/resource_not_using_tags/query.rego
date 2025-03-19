@@ -5,7 +5,7 @@ import data.generic.terraform as tf_lib
 
 CxPolicy[result] {
 	resource := input.document[i].resource[res][name]
-	tf_lib.check_resource_tags(res)
+	tf_lib.check_aws_resource_supports_tags(res)
 
 	check_default_tags == false
 	not common_lib.valid_key(resource, "tags")
@@ -23,7 +23,7 @@ CxPolicy[result] {
 
 CxPolicy[result] {
 	resource := input.document[i].resource[res][name]
-	tf_lib.check_resource_tags(res)
+	tf_lib.check_aws_resource_supports_tags(res)
 
 	check_default_tags == false
 	not check_different_tag(resource.tags)
