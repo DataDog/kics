@@ -171,7 +171,7 @@ type sarifLocation struct {
 type sarifResult struct {
 	ResultRuleID        string                   `json:"ruleId"`
 	ResultRuleIndex     int                      `json:"ruleIndex"`
-	ResultKind          string                   `json:"kind"`
+	ResultKind          string                   `json:"kind,omitempty"`
 	ResultMessage       sarifMessage             `json:"message"`
 	ResultLocations     []sarifLocation          `json:"locations"`
 	PartialFingerprints SarifPartialFingerprints `json:"partialFingerprints,omitempty"`
@@ -629,11 +629,6 @@ func (sr *sarifReport) BuildSarifIssue(issue *model.QueryResult, sciInfo model.S
 		}
 		ruleIndex := sr.buildSarifRule(&metadata, cisDescriptions)
 
-		kind := "fail"
-		if severityLevelEquivalence[issue.Severity] == "none" {
-			kind = "informational"
-		}
-
 		categoryTag := GetCategoryTag(issue.Category)
 		tags := []string{categoryTag}
 		cwe := issue.CWE
@@ -673,13 +668,9 @@ func (sr *sarifReport) BuildSarifIssue(issue *model.QueryResult, sciInfo model.S
 			result := sarifResult{
 				ResultRuleID:    issue.QueryName,
 				ResultRuleIndex: ruleIndex,
-				ResultKind:      kind,
 				ResultLevel:     severityLevelEquivalence[issue.Severity],
 				ResultMessage: sarifMessage{
 					Text: issue.Files[idx].KeyActualValue,
-					MessageProperties: sarifProperties{
-						"platform": issue.Platform,
-					},
 				},
 				ResultLocations: []sarifLocation{
 					{
