@@ -17,7 +17,7 @@ resource "aws_s3_bucket" "positive1" {
 
   versioning {
     # set to false to disable versioning
-    enabled = false
+    enabled = true
   }
   tags = {
     Name = "My bucket"
