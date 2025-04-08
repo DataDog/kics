@@ -16,6 +16,7 @@ resource "aws_s3_bucket" "positive1" {
   acl    = "private"
 
   versioning {
+    # set to false to disable versioning
     enabled = false
   }
   tags = {
