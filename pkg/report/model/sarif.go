@@ -656,14 +656,15 @@ func (sr *sarifReport) BuildSarifIssue(issue *model.QueryResult, sciInfo model.S
 				Line: resourceLocation.ResourceStart.Line,
 				Col:  resourceLocation.ResourceStart.Col,
 			}
+			endLocation := sarifResourceLocation{
+				Line: resourceLocation.ResourceEnd.Line,
+				Col:  resourceLocation.ResourceEnd.Col,
+			}
 
 			if startLocation.Col < 1 {
 				startLocation.Col = 1
 			}
-			// endLocation := sarifResourceLocation{
-			// 	Line: resourceLocation.ResourceEnd.Line,
-			// 	Col:  resourceLocation.ResourceEnd.Col,
-			// }
+
 			absoluteFilePath := strings.ReplaceAll(issue.Files[idx].FileName, "../", "")
 			result := sarifResult{
 				ResultRuleID:    issue.QueryName,
@@ -677,12 +678,10 @@ func (sr *sarifReport) BuildSarifIssue(issue *model.QueryResult, sciInfo model.S
 						PhysicalLocation: sarifPhysicalLocation{
 							ArtifactLocation: sarifArtifactLocation{ArtifactURI: absoluteFilePath},
 							Region: sarifRegion{
-								StartLine:   line,
-								EndLine:     line + 1,
+								StartLine:   startLocation.Line,
+								EndLine:     endLocation.Line,
 								StartColumn: startLocation.Col,
-								EndColumn:   1,
-								// StartResource: startLocation,
-								// EndResource:   endLocation,
+								EndColumn:   endLocation.Col,
 							},
 						},
 					},

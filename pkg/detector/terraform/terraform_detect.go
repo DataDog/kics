@@ -6,6 +6,7 @@
 package terraform
 
 import (
+	"bytes"
 	"fmt"
 	"strconv"
 	"strings"
@@ -101,7 +102,6 @@ func (d DetectKindLine) DetectLine(file *model.FileMetadata, searchKey string,
 }
 
 func parseAndFindTerraformBlock(src []byte, identifyingLine int) (model.ResourceLine, model.ResourceLine, error) {
-	// parse the file into hclwrite.File and hclsyntax.File to allow getting existing tags and lines
 	filePath := "temp.tf"
 	resourceStart := model.ResourceLine{
 		Line: -1,
@@ -114,13 +114,12 @@ func parseAndFindTerraformBlock(src []byte, identifyingLine int) (model.Resource
 
 	hclFile, diagnostics := hclwrite.ParseConfig(src, filePath, hcl.InitialPos)
 	if diagnostics != nil && diagnostics.HasErrors() {
-		hclErrors := diagnostics.Errs()
-		return resourceStart, resourceEnd, fmt.Errorf("failed to parse hcl file %s because of errors %s", filePath, hclErrors)
+		return resourceStart, resourceEnd, fmt.Errorf("failed to parse hcl file %s because of errors %s", filePath, diagnostics.Errs())
 	}
+
 	hclSyntaxFile, diagnostics := hclsyntax.ParseConfig(src, filePath, hcl.InitialPos)
 	if diagnostics != nil && diagnostics.HasErrors() {
-		hclErrors := diagnostics.Errs()
-		return resourceStart, resourceEnd, fmt.Errorf("failed to parse hcl file %s because of errors %s", filePath, hclErrors)
+		return resourceStart, resourceEnd, fmt.Errorf("failed to parse hcl file %s because of errors %s", filePath, diagnostics.Errs())
 	}
 
 	if hclFile == nil || hclSyntaxFile == nil {
@@ -128,18 +127,49 @@ func parseAndFindTerraformBlock(src []byte, identifyingLine int) (model.Resource
 	}
 
 	syntaxBlocks := hclSyntaxFile.Body.(*hclsyntax.Body).Blocks
+	lines := bytes.Split(src, []byte("\n"))
 
 	for _, block := range syntaxBlocks {
-		blockStartLine := block.TypeRange.Start.Line
-		blockEndLine := block.Body.EndRange.End.Line
+		blockStart := block.TypeRange.Start
+		blockEnd := block.Body.EndRange.End
 
-		if blockStartLine <= identifyingLine && identifyingLine <= blockEndLine {
-			resourceStart.Line = blockStartLine
-			resourceStart.Col = block.TypeRange.Start.Column
+		if blockStart.Line <= identifyingLine && identifyingLine <= blockEnd.Line {
+			// The identifying line is inside this block
 
-			resourceEnd.Line = blockEndLine
-			resourceEnd.Col = block.Body.EndRange.End.Column
-			break
+			// Defensive: ensure line exists
+			lineIndex := identifyingLine - 1
+			if lineIndex < 0 || lineIndex >= len(lines) {
+				return resourceStart, resourceEnd, fmt.Errorf("line %d is out of range", identifyingLine)
+			}
+
+			lineContent := lines[lineIndex]
+			startCol := 1                  // Column index in HCL is 1-based
+			endCol := len(lineContent) + 1 // One past the last character
+
+			// if identifying line is the first line of the block we want the range to be the entire resource and not just the first line
+			if blockStart.Line == identifyingLine {
+				startCol = block.TypeRange.Start.Column
+				endCol = block.Body.EndRange.End.Column
+				resourceStart = model.ResourceLine{
+					Line: blockStart.Line,
+					Col:  startCol,
+				}
+				resourceEnd = model.ResourceLine{
+					Line: blockEnd.Line,
+					Col:  endCol,
+				}
+				break
+			} else {
+				resourceStart = model.ResourceLine{
+					Line: identifyingLine,
+					Col:  startCol,
+				}
+				resourceEnd = model.ResourceLine{
+					Line: identifyingLine,
+					Col:  endCol,
+				}
+				break
+			}
 		}
 	}
 
