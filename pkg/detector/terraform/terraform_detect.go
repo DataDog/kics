@@ -102,6 +102,36 @@ func (d DetectKindLine) DetectLine(file *model.FileMetadata, searchKey string,
 	}
 }
 
+type BlockInfo struct {
+	Block   *hclsyntax.Block
+	Depth   int
+	Parent  *hclsyntax.Block
+	IsMatch bool
+}
+
+func findBlockContainingLine(blocks hclsyntax.Blocks, line int, depth int, parent *hclsyntax.Block) *BlockInfo {
+	for _, block := range blocks {
+		start := block.TypeRange.Start.Line
+		end := block.Body.EndRange.End.Line
+
+		if line >= start && line <= end {
+			// Look deeper for nested match
+			nested := findBlockContainingLine(block.Body.Blocks, line, depth+1, block)
+			if nested != nil {
+				return nested
+			}
+			// No deeper match, return this block
+			return &BlockInfo{
+				Block:   block,
+				Depth:   depth,
+				Parent:  parent,
+				IsMatch: true,
+			}
+		}
+	}
+	return nil
+}
+
 func parseAndFindTerraformBlock(src []byte, identifyingLine int) (model.ResourceLine, model.ResourceLine, string, error) {
 	filePath := "temp.tf"
 	lineContent := ""
