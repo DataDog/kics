@@ -10,4 +10,6 @@ module "s3_bucket" {
     enabled = true
   }
 
+
+  block_public_acls = true
 }
