@@ -15,7 +15,6 @@ import (
 	"github.com/Checkmarx/kics/pkg/model"
 	"github.com/hashicorp/hcl/v2"
 	"github.com/hashicorp/hcl/v2/hclsyntax"
-	"github.com/hashicorp/hcl/v2/hclwrite"
 	"github.com/rs/zerolog"
 )
 
@@ -105,80 +104,52 @@ func (d DetectKindLine) DetectLine(file *model.FileMetadata, searchKey string,
 func parseAndFindTerraformBlock(src []byte, identifyingLine int) (model.ResourceLine, model.ResourceLine, string, error) {
 	filePath := "temp.tf"
 	lineContent := ""
-	resourceStart := model.ResourceLine{
-		Line: -1,
-		Col:  -1,
-	}
-	resourceEnd := model.ResourceLine{
-		Line: -1,
-		Col:  -1,
-	}
 
-	hclFile, diagnostics := hclwrite.ParseConfig(src, filePath, hcl.InitialPos)
-	if diagnostics != nil && diagnostics.HasErrors() {
-		return resourceStart, resourceEnd, lineContent, fmt.Errorf("failed to parse hcl file %s because of errors %s", filePath, diagnostics.Errs())
-	}
+	resourceStart := model.ResourceLine{Line: -1, Col: -1}
+	resourceEnd := model.ResourceLine{Line: -1, Col: -1}
 
 	hclSyntaxFile, diagnostics := hclsyntax.ParseConfig(src, filePath, hcl.InitialPos)
 	if diagnostics != nil && diagnostics.HasErrors() {
 		return resourceStart, resourceEnd, lineContent, fmt.Errorf("failed to parse hcl file %s because of errors %s", filePath, diagnostics.Errs())
 	}
 
-	if hclFile == nil || hclSyntaxFile == nil {
-		return resourceStart, resourceEnd, lineContent, fmt.Errorf("failed to parse hcl file %s", filePath)
-	}
-
-	syntaxBlocks := hclSyntaxFile.Body.(*hclsyntax.Body).Blocks
 	lines := bytes.Split(src, []byte("\n"))
 
-	for _, block := range syntaxBlocks {
-		blockStart := block.TypeRange.Start
-		blockEnd := block.Body.EndRange.End
+	var findDeepestBlock func(blocks hclsyntax.Blocks) *hclsyntax.Block
+	findDeepestBlock = func(blocks hclsyntax.Blocks) *hclsyntax.Block {
+		for _, block := range blocks {
+			blockStart := block.TypeRange.Start
+			blockEnd := block.Body.EndRange.End
 
-		if blockStart.Line <= identifyingLine && identifyingLine <= blockEnd.Line {
-			// The identifying line is inside this block
-
-			// Defensive: ensure line exists
-			lineIndex := identifyingLine - 1
-			if lineIndex < 0 || lineIndex >= len(lines) {
-				return resourceStart, resourceEnd, lineContent, fmt.Errorf("line %d is out of range", identifyingLine)
-			}
-
-			lineContentBytes := lines[lineIndex]
-			startCol := 1                       // Column index in HCL is 1-based
-			endCol := len(lineContentBytes) + 1 // One past the last character
-
-			// if identifying line is the first line of the block we want the range to be the entire resource and not just the first line
-			if blockStart.Line == identifyingLine {
-				startCol = block.TypeRange.Start.Column
-				endCol = block.Body.EndRange.End.Column
-				resourceStart = model.ResourceLine{
-					Line: blockStart.Line,
-					Col:  startCol,
+			if blockStart.Line <= identifyingLine && identifyingLine <= blockEnd.Line {
+				// Check nested blocks first
+				nested := findDeepestBlock(block.Body.Blocks)
+				if nested != nil {
+					return nested
 				}
-				resourceEnd = model.ResourceLine{
-					Line: blockEnd.Line,
-					Col:  endCol,
-				}
-				lineContent = string(lineContentBytes)
-				break
-			} else {
-				resourceStart = model.ResourceLine{
-					Line: identifyingLine,
-					Col:  startCol,
-				}
-				resourceEnd = model.ResourceLine{
-					Line: identifyingLine,
-					Col:  endCol,
-				}
-				lineContent = string(lineContentBytes)
-				break
+				return block // No deeper match, return this one
 			}
 		}
+		return nil
 	}
 
-	if resourceStart.Line == -1 || resourceEnd.Line == -1 {
+	rootBlocks := hclSyntaxFile.Body.(*hclsyntax.Body).Blocks
+	targetBlock := findDeepestBlock(rootBlocks)
+
+	if targetBlock == nil {
 		return resourceStart, resourceEnd, lineContent, fmt.Errorf("failed to find block for line %d in file %s", identifyingLine, filePath)
+	}
+
+	blockStart := targetBlock.TypeRange.Start
+	blockEnd := targetBlock.Body.EndRange.End
+
+	resourceStart = model.ResourceLine{Line: blockStart.Line, Col: blockStart.Column}
+	resourceEnd = model.ResourceLine{Line: blockEnd.Line, Col: blockEnd.Column}
+
+	// Defensive: make sure we have the actual line
+	lineIndex := identifyingLine - 1
+	if lineIndex >= 0 && lineIndex < len(lines) {
+		lineContent = string(lines[lineIndex])
 	}
 
 	return resourceStart, resourceEnd, lineContent, nil
