@@ -95,8 +95,8 @@ var sarifTests = []sarifTest{
 						{
 							ResultRuleID:    "test",
 							ResultRuleIndex: 0,
-							ResultKind:      "fail",
-							ResultMessage:   sarifMessage{Text: "test", MessageProperties: sarifProperties{"platform": ""}},
+							ResultKind:      "",
+							ResultMessage:   sarifMessage{Text: "test", MessageProperties: nil},
 							ResultLocations: []sarifLocation{
 								{
 									PhysicalLocation: sarifPhysicalLocation{
@@ -260,17 +260,17 @@ var sarifTests = []sarifTest{
 						{
 							ResultRuleID:    "test",
 							ResultRuleIndex: 0,
-							ResultKind:      "fail",
+							ResultKind:      "",
 							ResultMessage: sarifMessage{
 								Text:              "test",
-								MessageProperties: sarifProperties{"platform": ""},
+								MessageProperties: nil,
 							},
 							ResultLevel: "error",
 							ResultLocations: []sarifLocation{
 								{
 									PhysicalLocation: sarifPhysicalLocation{
 										ArtifactLocation: sarifArtifactLocation{ArtifactURI: ""},
-										Region:           sarifRegion{StartLine: 1, EndLine: 2, EndColumn: 1, StartColumn: 1},
+										Region:           sarifRegion{StartLine: 0, EndLine: 0, EndColumn: 0, StartColumn: 1},
 									},
 								},
 							},
