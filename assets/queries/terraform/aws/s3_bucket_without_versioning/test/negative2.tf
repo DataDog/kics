@@ -1,5 +1,6 @@
 module "s3_bucket" {
-  source = "terraform-aws-modules/s3-bucket/aws"
+
+  restrict_public_buckets = true
 
   version = "3.7.0"
 
