@@ -106,14 +106,12 @@ func parseAndFindTerraformBlock(src []byte, identifyingLine int) (model.Resource
 	filePath := "temp.tf"
 	lineContent := ""
 	resourceStart := model.ResourceLine{
-		Line:    -1,
-		Col:     -1,
-		Content: "",
+		Line: -1,
+		Col:  -1,
 	}
 	resourceEnd := model.ResourceLine{
-		Line:    -1,
-		Col:     -1,
-		Content: "",
+		Line: -1,
+		Col:  -1,
 	}
 
 	hclFile, diagnostics := hclwrite.ParseConfig(src, filePath, hcl.InitialPos)
@@ -149,35 +147,29 @@ func parseAndFindTerraformBlock(src []byte, identifyingLine int) (model.Resource
 			lineContentBytes := lines[lineIndex]
 			startCol := 1                       // Column index in HCL is 1-based
 			endCol := len(lineContentBytes) + 1 // One past the last character
-			startContentBytes := lines[blockStart.Line]
-			endContentBytes := lines[blockEnd.Line]
 
 			// if identifying line is the first line of the block we want the range to be the entire resource and not just the first line
 			if blockStart.Line == identifyingLine {
 				startCol = block.TypeRange.Start.Column
 				endCol = block.Body.EndRange.End.Column
 				resourceStart = model.ResourceLine{
-					Line:    blockStart.Line,
-					Col:     startCol,
-					Content: string(startContentBytes),
+					Line: blockStart.Line,
+					Col:  startCol,
 				}
 				resourceEnd = model.ResourceLine{
-					Line:    blockEnd.Line,
-					Col:     endCol,
-					Content: string(endContentBytes),
+					Line: blockEnd.Line,
+					Col:  endCol,
 				}
 				lineContent = string(lineContentBytes)
 				break
 			} else {
 				resourceStart = model.ResourceLine{
-					Line:    identifyingLine,
-					Col:     startCol,
-					Content: string(startContentBytes),
+					Line: identifyingLine,
+					Col:  startCol,
 				}
 				resourceEnd = model.ResourceLine{
-					Line:    identifyingLine,
-					Col:     endCol,
-					Content: string(endContentBytes),
+					Line: identifyingLine,
+					Col:  endCol,
 				}
 				lineContent = string(lineContentBytes)
 				break

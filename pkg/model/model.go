@@ -121,9 +121,8 @@ type ResourceLocation struct {
 
 // ResourceLine is the line information of the resource with their respective positions
 type ResourceLine struct {
-	Col     int
-	Line    int
-	Content string
+	Col  int
+	Line int
 }
 
 // ExtractedPathObject is the struct that contains the path location of extracted source
