@@ -6,4 +6,6 @@ module "s3_bucket" {
   bucket = "my-s3-bucket"
   acl    = "private"
 
+
+  restrict_public_buckets = true
 }
