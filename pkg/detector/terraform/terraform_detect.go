@@ -133,7 +133,7 @@ func parseAndFindTerraformBlock(src []byte, identifyingLine int) (model.Resource
 
 	for _, block := range syntaxBlocks {
 		blockStart := block.TypeRange.Start
-		blockEnd := block.Body.EndRange.End
+		blockEnd := block.Body.SrcRange.End
 
 		if blockStart.Line <= identifyingLine && identifyingLine <= blockEnd.Line {
 			// The identifying line is inside this block
@@ -151,7 +151,7 @@ func parseAndFindTerraformBlock(src []byte, identifyingLine int) (model.Resource
 			// if identifying line is the first line of the block we want the range to be the entire resource and not just the first line
 			if blockStart.Line == identifyingLine {
 				startCol = block.TypeRange.Start.Column
-				endCol = block.Body.EndRange.End.Column
+				endCol = block.Body.SrcRange.End.Column
 				resourceStart = model.ResourceLine{
 					Line: blockStart.Line,
 					Col:  startCol,
