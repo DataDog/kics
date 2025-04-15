@@ -11,3 +11,4 @@ module "s3_bucket" {
   }
 
 }
+block_public_acls = true
