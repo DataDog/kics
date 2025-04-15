@@ -67,7 +67,7 @@ func (d DetectKindLine) DetectLine(file *model.FileMetadata, searchKey string,
 	if det.FoundAtLeastOne {
 		line := det.CurrentLine + 1
 
-		resourceStart, resourceEnd, err := parseAndFindTerraformBlock([]byte(file.OriginalData), line)
+		resourceStart, resourceEnd, lineContent, err := parseAndFindTerraformBlock([]byte(file.OriginalData), line)
 		if err != nil {
 			fmt.Printf("Failed to parse and find Terraform block for line %d in file %s: %s\n", line, file.FilePath, err)
 			return model.VulnerabilityLines{
@@ -89,6 +89,7 @@ func (d DetectKindLine) DetectLine(file *model.FileMetadata, searchKey string,
 				ResourceStart: resourceStart,
 				ResourceEnd:   resourceEnd,
 			},
+			LineWithVulnerability: lineContent,
 		}
 	}
 
@@ -101,8 +102,9 @@ func (d DetectKindLine) DetectLine(file *model.FileMetadata, searchKey string,
 	}
 }
 
-func parseAndFindTerraformBlock(src []byte, identifyingLine int) (model.ResourceLine, model.ResourceLine, error) {
+func parseAndFindTerraformBlock(src []byte, identifyingLine int) (model.ResourceLine, model.ResourceLine, string, error) {
 	filePath := "temp.tf"
+	lineContent := ""
 	resourceStart := model.ResourceLine{
 		Line: -1,
 		Col:  -1,
@@ -114,16 +116,16 @@ func parseAndFindTerraformBlock(src []byte, identifyingLine int) (model.Resource
 
 	hclFile, diagnostics := hclwrite.ParseConfig(src, filePath, hcl.InitialPos)
 	if diagnostics != nil && diagnostics.HasErrors() {
-		return resourceStart, resourceEnd, fmt.Errorf("failed to parse hcl file %s because of errors %s", filePath, diagnostics.Errs())
+		return resourceStart, resourceEnd, lineContent, fmt.Errorf("failed to parse hcl file %s because of errors %s", filePath, diagnostics.Errs())
 	}
 
 	hclSyntaxFile, diagnostics := hclsyntax.ParseConfig(src, filePath, hcl.InitialPos)
 	if diagnostics != nil && diagnostics.HasErrors() {
-		return resourceStart, resourceEnd, fmt.Errorf("failed to parse hcl file %s because of errors %s", filePath, diagnostics.Errs())
+		return resourceStart, resourceEnd, lineContent, fmt.Errorf("failed to parse hcl file %s because of errors %s", filePath, diagnostics.Errs())
 	}
 
 	if hclFile == nil || hclSyntaxFile == nil {
-		return resourceStart, resourceEnd, fmt.Errorf("failed to parse hcl file %s", filePath)
+		return resourceStart, resourceEnd, lineContent, fmt.Errorf("failed to parse hcl file %s", filePath)
 	}
 
 	syntaxBlocks := hclSyntaxFile.Body.(*hclsyntax.Body).Blocks
@@ -139,12 +141,12 @@ func parseAndFindTerraformBlock(src []byte, identifyingLine int) (model.Resource
 			// Defensive: ensure line exists
 			lineIndex := identifyingLine - 1
 			if lineIndex < 0 || lineIndex >= len(lines) {
-				return resourceStart, resourceEnd, fmt.Errorf("line %d is out of range", identifyingLine)
+				return resourceStart, resourceEnd, lineContent, fmt.Errorf("line %d is out of range", identifyingLine)
 			}
 
-			lineContent := lines[lineIndex]
-			startCol := 1                  // Column index in HCL is 1-based
-			endCol := len(lineContent) + 1 // One past the last character
+			lineContentBytes := lines[lineIndex]
+			startCol := 1                       // Column index in HCL is 1-based
+			endCol := len(lineContentBytes) + 1 // One past the last character
 
 			// if identifying line is the first line of the block we want the range to be the entire resource and not just the first line
 			if blockStart.Line == identifyingLine {
@@ -158,6 +160,7 @@ func parseAndFindTerraformBlock(src []byte, identifyingLine int) (model.Resource
 					Line: blockEnd.Line,
 					Col:  endCol,
 				}
+				lineContent = string(lineContentBytes)
 				break
 			} else {
 				resourceStart = model.ResourceLine{
@@ -168,14 +171,15 @@ func parseAndFindTerraformBlock(src []byte, identifyingLine int) (model.Resource
 					Line: identifyingLine,
 					Col:  endCol,
 				}
+				lineContent = string(lineContentBytes)
 				break
 			}
 		}
 	}
 
 	if resourceStart.Line == -1 || resourceEnd.Line == -1 {
-		return resourceStart, resourceEnd, fmt.Errorf("failed to find block for line %d in file %s", identifyingLine, filePath)
+		return resourceStart, resourceEnd, lineContent, fmt.Errorf("failed to find block for line %d in file %s", identifyingLine, filePath)
 	}
 
-	return resourceStart, resourceEnd, nil
+	return resourceStart, resourceEnd, lineContent, nil
 }

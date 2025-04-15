@@ -12,6 +12,7 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
+	"regexp"
 	"strings"
 	"time"
 
@@ -177,6 +178,7 @@ type sarifResult struct {
 	PartialFingerprints SarifPartialFingerprints `json:"partialFingerprints,omitempty"`
 	ResultLevel         string                   `json:"level"`
 	ResultProperties    sarifProperties          `json:"properties,omitempty"`
+	ResultFixes         []sarifFix               `json:"fixes,omitempty"`
 }
 
 type SarifPartialFingerprints struct {
@@ -196,6 +198,33 @@ type taxonomyDefinitions struct {
 	DefinitionShortDescription cweMessage `json:"shortDescription"`
 	DefinitionFullDescription  cweMessage `json:"fullDescription"`
 	HelpURI                    string     `json:"helpUri,omitempty"`
+}
+
+type sarifFix struct {
+	ArtifactChanges []artifactChange `json:"artifactChanges"`
+	Description     fixMessage       `json:"description"`
+}
+
+type artifactChange struct {
+	ArtifactLocation artifactLocation `json:"artifactLocation"`
+	Replacements     []fixReplacement `json:"replacements"`
+}
+
+type artifactLocation struct {
+	URI string `json:"uri"`
+}
+
+type fixReplacement struct {
+	DeletedRegion   sarifRegion `json:"deletedRegion"`
+	InsertedContent fixContent  `json:"insertedContent,omitempty"`
+}
+
+type fixContent struct {
+	Text string `json:"text"`
+}
+
+type fixMessage struct {
+	Text string `json:"text"`
 }
 
 type cweTaxonomiesWrapper struct {
@@ -693,6 +722,20 @@ func (sr *sarifReport) BuildSarifIssue(issue *model.QueryResult, sciInfo model.S
 					DatadogFingerprint: GetDatadogFingerprintHash(sciInfo, absoluteFilePath, line, issue.QueryID),
 				},
 			}
+			if vulnerability.Remediation != "" && vulnerability.RemediationType != "" {
+				sarifFix, err := TransformToSarifFix(
+					vulnerability,
+					startLocation,
+					endLocation,
+				)
+				if err != nil {
+					// we do not want to fail the whole process if we cannot transform the fix
+					// so we just log the error and continue
+					log.Err(err).Msgf("failed to transform to sarif fix: %v", err)
+				} else {
+					result.ResultFixes = append(result.ResultFixes, sarifFix)
+				}
+			}
 			sr.Runs[0].Results = append(sr.Runs[0].Results, result)
 		}
 		return issue.CWE
@@ -759,4 +802,79 @@ func GetDatadogFingerprintHash(sciInfo model.SCIInfo, filePath string, startLine
 		runTypeRelatedInfo = time.Now().Format("2006/01/02")
 	}
 	return StringToHash(fmt.Sprintf("%s|%s|%s|%s|%d|%s", sciInfo.RunType, runTypeRelatedInfo, sciInfo.RepositoryCommitInfo.RepositoryUrl, filePath, startLine, ruleId))
+}
+
+func TransformToSarifFix(vuln model.VulnerableFile, startLocation sarifResourceLocation, endLocation sarifResourceLocation) (sarifFix, error) {
+	var insertedText string
+
+	switch vuln.RemediationType {
+	case "replacement":
+		var patch map[string]string
+		err := json.Unmarshal([]byte(vuln.Remediation), &patch)
+		if err != nil {
+			return sarifFix{}, fmt.Errorf("invalid remediation format for replacement: %v", err)
+		}
+
+		before := patch["before"]
+		after := patch["after"]
+
+		// Regex to extract key = value (basic HCL format)
+		re := regexp.MustCompile(`(?P<key>\w+)\s*=\s*(?P<value>.+)`)
+		matches := re.FindStringSubmatch(vuln.LineWithVulnerability)
+
+		if len(matches) < 3 {
+			return sarifFix{}, fmt.Errorf("could not parse key-value from line: %s", vuln.LineWithVulnerability)
+		}
+
+		value := strings.TrimSpace(matches[2])
+
+		// Remove quotes if present for comparison
+		cleanedValue := strings.Trim(value, `"`)
+		if cleanedValue != before {
+			return sarifFix{}, fmt.Errorf("line value '%s' does not match 'before' value '%s'", cleanedValue, before)
+		}
+
+		// Preserve formatting by slicing original line using index positions
+		idx := re.FindStringSubmatchIndex(vuln.LineWithVulnerability)
+		if len(idx) < 6 {
+			return sarifFix{}, fmt.Errorf("could not determine exact value location")
+		}
+
+		prefix := vuln.LineWithVulnerability[:idx[4]] // up to value
+		suffix := vuln.LineWithVulnerability[idx[5]:] // after value
+		insertedText = prefix + after + suffix
+
+	case "addition":
+		insertedText = vuln.Remediation
+
+	case "removal":
+		insertedText = "" // no content to insert
+	}
+
+	replacement := fixReplacement{
+		DeletedRegion: sarifRegion{
+			StartLine:   startLocation.Line,
+			StartColumn: startLocation.Col,
+			EndLine:     endLocation.Line,
+			EndColumn:   endLocation.Col,
+		},
+	}
+
+	if insertedText != "" {
+		replacement.InsertedContent = fixContent{Text: insertedText}
+	}
+
+	fix := sarifFix{
+		ArtifactChanges: []artifactChange{
+			{
+				ArtifactLocation: artifactLocation{URI: vuln.FileName},
+				Replacements:     []fixReplacement{replacement},
+			},
+		},
+		Description: fixMessage{
+			Text: fmt.Sprintf("Apply remediation: %s", vuln.Remediation),
+		},
+	}
+
+	return fix, nil
 }
