@@ -10,4 +10,6 @@ module "s3_bucket" {
     mfa_delete = true
   }
 
+
+  enabled = true
 }
