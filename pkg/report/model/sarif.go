@@ -733,6 +733,10 @@ func (sr *sarifReport) BuildSarifIssue(issue *model.QueryResult, sciInfo model.S
 					// so we just log the error and continue
 					log.Err(err).Msgf("failed to transform to sarif fix: %v", err)
 				} else {
+					if vulnerability.RemediationType == "addition" {
+						result.ResultLocations[0].PhysicalLocation.Region.StartLine = endLocation.Line
+						result.ResultLocations[0].PhysicalLocation.Region.EndLine = endLocation.Line + 4
+					}
 					result.ResultFixes = append(result.ResultFixes, sarifFix)
 				}
 			}
@@ -806,6 +810,8 @@ func GetDatadogFingerprintHash(sciInfo model.SCIInfo, filePath string, startLine
 
 func TransformToSarifFix(vuln model.VulnerableFile, startLocation sarifResourceLocation, endLocation sarifResourceLocation) (sarifFix, error) {
 	var insertedText string
+	fixStart := startLocation
+	fixEnd := endLocation
 
 	switch vuln.RemediationType {
 	case "replacement":
@@ -845,7 +851,15 @@ func TransformToSarifFix(vuln model.VulnerableFile, startLocation sarifResourceL
 		insertedText = prefix + after + suffix
 
 	case "addition":
-		insertedText = vuln.Remediation
+		insertedText = fmt.Sprintf("\n  %s\n", vuln.Remediation)
+		fixStart = sarifResourceLocation{
+			Line: endLocation.Line, // we want to insert right before the closing brace
+			Col:  1,
+		}
+		fixEnd = sarifResourceLocation{
+			Line: endLocation.Line,
+			Col:  1,
+		}
 
 	case "removal":
 		insertedText = "" // no content to insert
@@ -853,10 +867,10 @@ func TransformToSarifFix(vuln model.VulnerableFile, startLocation sarifResourceL
 
 	replacement := fixReplacement{
 		DeletedRegion: sarifRegion{
-			StartLine:   startLocation.Line,
-			StartColumn: startLocation.Col,
-			EndLine:     endLocation.Line,
-			EndColumn:   endLocation.Col,
+			StartLine:   fixStart.Line,
+			StartColumn: fixStart.Col,
+			EndLine:     fixEnd.Line,
+			EndColumn:   fixEnd.Col,
 		},
 	}
 
