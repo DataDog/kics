@@ -852,14 +852,14 @@ func TransformToSarifFix(vuln model.VulnerableFile, startLocation sarifResourceL
 
 	case "addition":
 		insertedText = fmt.Sprintf("\n  %s\n", vuln.Remediation)
-		fixStart = sarifResourceLocation{
-			Line: endLocation.Line, // we want to insert right before the closing brace
-			Col:  1,
-		}
-		fixEnd = sarifResourceLocation{
-			Line: endLocation.Line,
-			Col:  1,
-		}
+		// fixStart = sarifResourceLocation{
+		// 	Line: endLocation.Line, // we want to insert right before the closing brace
+		// 	Col:  1,
+		// }
+		// fixEnd = sarifResourceLocation{
+		// 	Line: endLocation.Line,
+		// 	Col:  1,
+		// }
 
 	case "removal":
 		insertedText = "" // no content to insert
