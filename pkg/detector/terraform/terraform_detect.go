@@ -109,29 +109,6 @@ type BlockInfo struct {
 	IsMatch bool
 }
 
-func findBlockContainingLine(blocks hclsyntax.Blocks, line int, depth int, parent *hclsyntax.Block) *BlockInfo {
-	for _, block := range blocks {
-		start := block.TypeRange.Start.Line
-		end := block.Body.EndRange.End.Line
-
-		if line >= start && line <= end {
-			// Look deeper for nested match
-			nested := findBlockContainingLine(block.Body.Blocks, line, depth+1, block)
-			if nested != nil {
-				return nested
-			}
-			// No deeper match, return this block
-			return &BlockInfo{
-				Block:   block,
-				Depth:   depth,
-				Parent:  parent,
-				IsMatch: true,
-			}
-		}
-	}
-	return nil
-}
-
 func parseAndFindTerraformBlock(src []byte, identifyingLine int) (model.ResourceLine, model.ResourceLine, string, error) {
 	filePath := "temp.tf"
 	lineContent := ""
@@ -160,16 +137,6 @@ func parseAndFindTerraformBlock(src []byte, identifyingLine int) (model.Resource
 
 	syntaxBlocks := hclSyntaxFile.Body.(*hclsyntax.Body).Blocks
 	lines := bytes.Split(src, []byte("\n"))
-
-	var isInsideNestedBlock bool
-	match := findBlockContainingLine(syntaxBlocks, identifyingLine, 0, nil)
-	if match != nil {
-		if match.Depth == 0 {
-			isInsideNestedBlock = false
-		} else {
-			isInsideNestedBlock = true
-		}
-	}
 
 	for _, block := range syntaxBlocks {
 		blockStart := block.TypeRange.Start
@@ -203,24 +170,14 @@ func parseAndFindTerraformBlock(src []byte, identifyingLine int) (model.Resource
 				lineContent = string(lineContentBytes)
 				break
 			} else {
-				if isInsideNestedBlock {
-					resourceStart = model.ResourceLine{
-						Line: identifyingLine,
-						Col:  startCol,
-					}
-					resourceEnd = model.ResourceLine{
-						Line: identifyingLine,
-						Col:  endCol,
-					}
-				} else {
-					resourceStart = model.ResourceLine{
-						Line: blockEnd.Line,
-						Col:  1,
-					}
-					resourceEnd = model.ResourceLine{
-						Line: blockEnd.Line,
-						Col:  1,
-					}
+
+				resourceStart = model.ResourceLine{
+					Line: identifyingLine,
+					Col:  startCol,
+				}
+				resourceEnd = model.ResourceLine{
+					Line: identifyingLine,
+					Col:  endCol,
 				}
 				lineContent = string(lineContentBytes)
 				break
