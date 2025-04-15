@@ -143,8 +143,9 @@ type sarifTool struct {
 }
 
 type sarifResourceLocation struct {
-	Line int `json:"line"`
-	Col  int `json:"col"`
+	Line    int    `json:"line"`
+	Col     int    `json:"col"`
+	Content string `json:"content,omitempty"`
 }
 
 type sarifRegion struct {
@@ -152,8 +153,6 @@ type sarifRegion struct {
 	EndLine     int `json:"endLine"`
 	StartColumn int `json:"startColumn"`
 	EndColumn   int `json:"endColumn"`
-	// StartResource sarifResourceLocation `json:"startResource"`
-	// EndResource   sarifResourceLocation `json:"endResource"`
 }
 
 type sarifArtifactLocation struct {
@@ -682,12 +681,14 @@ func (sr *sarifReport) BuildSarifIssue(issue *model.QueryResult, sciInfo model.S
 
 			resourceLocation := vulnerability.ResourceLocation
 			startLocation := sarifResourceLocation{
-				Line: resourceLocation.ResourceStart.Line,
-				Col:  resourceLocation.ResourceStart.Col,
+				Line:    resourceLocation.ResourceStart.Line,
+				Col:     resourceLocation.ResourceStart.Col,
+				Content: resourceLocation.ResourceStart.Content,
 			}
 			endLocation := sarifResourceLocation{
-				Line: resourceLocation.ResourceEnd.Line,
-				Col:  resourceLocation.ResourceEnd.Col,
+				Line:    resourceLocation.ResourceEnd.Line,
+				Col:     resourceLocation.ResourceEnd.Col,
+				Content: resourceLocation.ResourceEnd.Content,
 			}
 
 			if startLocation.Col < 1 {
@@ -849,12 +850,12 @@ func TransformToSarifFix(vuln model.VulnerableFile, startLocation sarifResourceL
 	case "addition":
 		insertedText = fmt.Sprintf("\n  %s\n", vuln.Remediation)
 		fixStart = sarifResourceLocation{
-			Line: fixStart.Line + 1,
-			Col:  1,
+			Line: startLocation.Line,
+			Col:  len(startLocation.Content) + 1,
 		}
 		fixEnd = sarifResourceLocation{
-			Line: fixStart.Line + 1,
-			Col:  1,
+			Line: startLocation.Line,
+			Col:  len(startLocation.Content) + 1,
 		}
 
 	case "removal":
