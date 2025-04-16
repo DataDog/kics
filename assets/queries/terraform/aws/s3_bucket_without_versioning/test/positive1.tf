@@ -20,7 +20,7 @@ resource "aws_s3_bucket" "positive1" {
     Environment = "Dev"
   }
 
-  versioning {
+  versioning {    enabled = true
     enabled = false
   }
 }
