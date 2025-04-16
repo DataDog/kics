@@ -112,14 +112,8 @@ type BlockInfo struct {
 func parseAndFindTerraformBlock(src []byte, identifyingLine int) (model.ResourceLine, model.ResourceLine, string, error) {
 	filePath := "temp.tf"
 	lineContent := ""
-	resourceStart := model.ResourceLine{
-		Line: -1,
-		Col:  -1,
-	}
-	resourceEnd := model.ResourceLine{
-		Line: -1,
-		Col:  -1,
-	}
+	resourceStart := model.ResourceLine{Line: -1, Col: -1}
+	resourceEnd := model.ResourceLine{Line: -1, Col: -1}
 
 	hclFile, diagnostics := hclwrite.ParseConfig(src, filePath, hcl.InitialPos)
 	if diagnostics != nil && diagnostics.HasErrors() {
@@ -138,55 +132,62 @@ func parseAndFindTerraformBlock(src []byte, identifyingLine int) (model.Resource
 	syntaxBlocks := hclSyntaxFile.Body.(*hclsyntax.Body).Blocks
 	lines := bytes.Split(src, []byte("\n"))
 
+	if identifyingLine <= 0 || identifyingLine > len(lines) {
+		return resourceStart, resourceEnd, lineContent, fmt.Errorf("line %d is out of range", identifyingLine)
+	}
+	lineContent = string(lines[identifyingLine-1])
+
+	var matchedBlock *hclsyntax.Block
+	var nestedBlockMatched bool
+
 	for _, block := range syntaxBlocks {
 		blockStart := block.TypeRange.Start
 		blockEnd := block.Body.SrcRange.End
 
 		if blockStart.Line <= identifyingLine && identifyingLine <= blockEnd.Line {
-			// The identifying line is inside this block
-
-			// Defensive: ensure line exists
-			lineIndex := identifyingLine - 1
-			if lineIndex < 0 || lineIndex >= len(lines) {
-				return resourceStart, resourceEnd, lineContent, fmt.Errorf("line %d is out of range", identifyingLine)
+			// Search nested blocks
+			for _, nestedBlock := range block.Body.Blocks {
+				nStart := nestedBlock.TypeRange.Start
+				nEnd := nestedBlock.Body.SrcRange.End
+				if nStart.Line <= identifyingLine && identifyingLine <= nEnd.Line {
+					matchedBlock = nestedBlock
+					nestedBlockMatched = true
+					break
+				}
 			}
-
-			lineContentBytes := lines[lineIndex]
-			startCol := 1                       // Column index in HCL is 1-based
-			endCol := len(lineContentBytes) + 1 // One past the last character
-
-			// if identifying line is the first line of the block we want the range to be the entire resource and not just the first line
-			if blockStart.Line == identifyingLine {
-				startCol = block.TypeRange.Start.Column
-				endCol = block.Body.SrcRange.End.Column
-				resourceStart = model.ResourceLine{
-					Line: blockStart.Line,
-					Col:  startCol,
-				}
-				resourceEnd = model.ResourceLine{
-					Line: blockEnd.Line,
-					Col:  endCol,
-				}
-				lineContent = string(lineContentBytes)
-				break
-			} else {
-
-				resourceStart = model.ResourceLine{
-					Line: identifyingLine,
-					Col:  startCol,
-				}
-				resourceEnd = model.ResourceLine{
-					Line: identifyingLine,
-					Col:  endCol,
-				}
-				lineContent = string(lineContentBytes)
-				break
+			if !nestedBlockMatched {
+				matchedBlock = block
 			}
+			break
 		}
 	}
 
-	if resourceStart.Line == -1 || resourceEnd.Line == -1 {
+	if matchedBlock == nil {
 		return resourceStart, resourceEnd, lineContent, fmt.Errorf("failed to find block for line %d in file %s", identifyingLine, filePath)
+	}
+
+	if nestedBlockMatched {
+		// After opening brace of nested block
+		openBracePos := matchedBlock.OpenBraceRange.Start
+		resourceStart = model.ResourceLine{
+			Line: openBracePos.Line,
+			Col:  openBracePos.Column + 1, // Right after opening brace
+		}
+		resourceEnd = model.ResourceLine{
+			Line: openBracePos.Line,
+			Col:  openBracePos.Column + 1,
+		}
+	} else {
+		// Before closing brace of outer block
+		closeBracePos := matchedBlock.Body.SrcRange.End
+		resourceStart = model.ResourceLine{
+			Line: closeBracePos.Line,
+			Col:  1,
+		}
+		resourceEnd = model.ResourceLine{
+			Line: closeBracePos.Line,
+			Col:  closeBracePos.Column,
+		}
 	}
 
 	return resourceStart, resourceEnd, lineContent, nil
