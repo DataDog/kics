@@ -846,9 +846,14 @@ func TransformToSarifFix(vuln model.VulnerableFile, startLocation sarifResourceL
 			return sarifFix{}, fmt.Errorf("could not determine exact value location")
 		}
 
+		newLine := ""
+		if strings.Contains(after, "=") {
+			newLine = "\n"
+		}
+
 		prefix := vuln.LineWithVulnerability[:idx[4]] // up to value
 		suffix := vuln.LineWithVulnerability[idx[5]:] // after value
-		insertedText = prefix + after + suffix
+		insertedText = newLine + prefix + after + suffix
 
 	case "addition":
 		insertedText = fmt.Sprintf("\n  %s\n", vuln.Remediation)
