@@ -10,4 +10,4 @@ module "s3_bucket" {
     enabled = false
   }
 
-}
+    enabled = true}
