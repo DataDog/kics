@@ -860,7 +860,7 @@ func TransformToSarifFix(vuln model.VulnerableFile, startLocation sarifResourceL
 			Col:  1,
 		}
 
-		if strings.Contains(vuln.LineWithVulnerability, "{") {
+		if strings.Contains(vuln.LineWithVulnerability, "{") && !isTerraformBlockDefinition(vuln.LineWithVulnerability) {
 			fixStart = sarifResourceLocation{
 				Line: vuln.Line,
 				Col:  len(vuln.LineWithVulnerability) + 1,
@@ -903,4 +903,20 @@ func TransformToSarifFix(vuln model.VulnerableFile, startLocation sarifResourceL
 	}
 
 	return fix, nil
+}
+
+// isTerraformBlockDefinition checks if a line looks like a Terraform block definition
+func isTerraformBlockDefinition(line string) bool {
+	// Trim leading/trailing whitespace
+	line = strings.TrimSpace(line)
+
+	// Common Terraform block types (you can expand this list)
+	blockTypes := []string{"resource", "module", "data", "provider", "output", "variable", "locals", "terraform"}
+
+	// Build a regex pattern to match something like: resource "type" "name" {
+	pattern := `^(?i)(` + strings.Join(blockTypes, "|") + `)\s+"[^"]*"(?:\s+"[^"]*")?\s*{`
+
+	re := regexp.MustCompile(pattern)
+
+	return re.MatchString(line)
 }
