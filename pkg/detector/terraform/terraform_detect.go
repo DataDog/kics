@@ -142,17 +142,22 @@ func parseAndFindTerraformBlock(src []byte, identifyingLine int) (model.Resource
 					insertionCol = countLeadingSpacesOrTabs(lines[insertionLine-1]) + 1
 				}
 			} else {
-				// Line is in the top-level block — insert before outer block's closing brace
-				insertionLine = blockEnd.Line
+				// Top-level block — insert before outer block's closing brace
+				insertionLine = blockEnd.Line - 1 // one line before the closing brace
 
-				// Try to infer indentation from the last meaningful attribute or nested block line above the closing brace
-				for i := blockEnd.Line - 1; i > blockStart.Line && i <= len(lines); i-- {
+				// Try to infer indentation from the last meaningful attribute or block line above the brace
+				for i := insertionLine; i > blockStart.Line && i <= len(lines); i-- {
 					trimmed := strings.TrimSpace(string(lines[i-1]))
 					if trimmed == "" || strings.HasPrefix(trimmed, "#") {
 						continue
 					}
 					insertionCol = countLeadingSpacesOrTabs(lines[i-1]) + 1
 					break
+				}
+
+				// Fallback if nothing was found
+				if insertionCol == 0 && insertionLine-1 < len(lines) {
+					insertionCol = countLeadingSpacesOrTabs(lines[insertionLine-1]) + 1
 				}
 			}
 
