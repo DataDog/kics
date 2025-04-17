@@ -129,24 +129,48 @@ func parseAndFindTerraformBlock(src []byte, identifyingLine int) (model.Resource
 		blockEnd := block.Body.SrcRange.End
 
 		if identifyingLine >= blockStart.Line && identifyingLine <= blockEnd.Line {
-			// Determine if identifyingLine is part of a nested structure
+			// Check for nested block or inline object
 			structureName, _, nestedEnd := findContainingStructure(block, identifyingLine)
 
+			var insertionLine int
+			var insertionCol int
+
 			if structureName != "" {
-				// Line is inside a nested block or object attribute (like versioning = { ... })
-				resourceStart = model.ResourceLine{Line: nestedEnd.Line, Col: 1}
-				resourceEnd = model.ResourceLine{Line: nestedEnd.Line, Col: nestedEnd.Column}
+				// Line is inside a nested structure
+				insertionLine = nestedEnd.Line
 			} else {
-				// Line is in the outer block
-				resourceStart = model.ResourceLine{Line: blockEnd.Line, Col: 1}
-				resourceEnd = model.ResourceLine{Line: blockEnd.Line, Col: blockEnd.Column}
+				// Top-level block
+				insertionLine = blockEnd.Line
 			}
+
+			// Find indentation by scanning the actual line
+			if insertionLine-1 >= 0 && insertionLine-1 < len(lines) {
+				insertionLineBytes := lines[insertionLine-1]
+				insertionCol = countLeadingSpacesOrTabs(insertionLineBytes) + 1 // 1-based column
+			} else {
+				insertionCol = 1
+			}
+
+			resourceStart = model.ResourceLine{Line: insertionLine, Col: insertionCol}
+			resourceEnd = model.ResourceLine{Line: insertionLine, Col: insertionCol}
 
 			return resourceStart, resourceEnd, lineContent, nil
 		}
 	}
 
 	return resourceStart, resourceEnd, lineContent, fmt.Errorf("failed to locate block for line %d", identifyingLine)
+}
+
+func countLeadingSpacesOrTabs(line []byte) int {
+	count := 0
+	for _, b := range line {
+		if b == ' ' || b == '\t' {
+			count++
+		} else {
+			break
+		}
+	}
+	return count
 }
 
 // findContainingStructure returns the name, start, and end of a nested block or attribute containing the line.
