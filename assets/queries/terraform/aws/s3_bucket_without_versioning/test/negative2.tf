@@ -10,4 +10,6 @@ module "s3_bucket" {
     enabled = true
   }
 
+  restrict_public_buckets = true
+  
 }
