@@ -869,11 +869,30 @@ func TransformToSarifFix(vuln model.VulnerableFile, startLocation sarifResourceL
 		// Indent based on provided startLocation.Col
 		indent := strings.Repeat(" ", startLocation.Col-1)
 
-		// Support multiline remediation (e.g., blocks or nested maps)
 		remediationLines := strings.Split(vuln.Remediation, "\n")
-		for i, line := range remediationLines {
-			remediationLines[i] = indent + strings.TrimRight(line, " \t")
+
+		// Detect minimum indent in original remediation (if multiline)
+		minIndent := -1
+		for _, line := range remediationLines {
+			trimmed := strings.TrimSpace(line)
+			if trimmed == "" {
+				continue
+			}
+			leading := countLeadingSpacesOrTabs([]byte(line))
+			if minIndent == -1 || leading < minIndent {
+				minIndent = leading
+			}
 		}
+
+		// Normalize and re-indent
+		for i, line := range remediationLines {
+			trimmedLine := strings.TrimRight(line, " \t")
+			if minIndent > 0 && len(trimmedLine) >= minIndent {
+				trimmedLine = trimmedLine[minIndent:] // remove original indent
+			}
+			remediationLines[i] = indent + trimmedLine
+		}
+
 		formattedRemediation := strings.Join(remediationLines, "\n")
 
 		// Indent the closing brace if one gets pushed by this insertion
@@ -922,4 +941,16 @@ func TransformToSarifFix(vuln model.VulnerableFile, startLocation sarifResourceL
 			Text: fmt.Sprintf("Apply remediation: %s", vuln.Remediation),
 		},
 	}, nil
+}
+
+func countLeadingSpacesOrTabs(line []byte) int {
+	count := 0
+	for _, b := range line {
+		if b == ' ' || b == '\t' {
+			count++
+		} else {
+			break
+		}
+	}
+	return count
 }
