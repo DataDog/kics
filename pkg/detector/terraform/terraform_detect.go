@@ -130,16 +130,29 @@ func parseAndFindTerraformBlock(src []byte, identifyingLine int) (model.Resource
 
 		if identifyingLine >= blockStart.Line && identifyingLine <= blockEnd.Line {
 			// Check for nested block or inline object
-			structureName, _, nestedEnd := findContainingStructure(block, identifyingLine)
+			structureName, nestedStart, nestedEnd, isAttribute := findContainingStructure(block, identifyingLine)
 
 			var insertionLine int
 			var insertionCol int
 
 			if structureName != "" {
-				// Line is inside a nested structure — insert before nested's closing brace
 				insertionLine = nestedEnd.Line
-				if insertionLine-1 >= 0 && insertionLine-1 < len(lines) {
-					insertionCol = countLeadingSpacesOrTabs(lines[insertionLine-1]) + 1
+
+				// If it's an attribute like versioning = {}, indent based on last line inside that object
+				if isAttribute {
+					// Look upward to find the last line with real content inside the attribute object
+					for i := insertionLine - 1; i > nestedStart.Line && i <= len(lines); i-- {
+						trimmed := strings.TrimSpace(string(lines[i-1]))
+						if trimmed != "" && !strings.HasPrefix(trimmed, "#") {
+							insertionCol = countLeadingSpacesOrTabs(lines[i-1]) + 1
+							break
+						}
+					}
+				} else {
+					// Normal nested block — use closing brace's line indent
+					if insertionLine-1 >= 0 && insertionLine-1 < len(lines) {
+						insertionCol = countLeadingSpacesOrTabs(lines[insertionLine-1]) + 1
+					}
 				}
 			} else {
 				// Top-level block — insert before outer block's closing brace
@@ -190,15 +203,15 @@ func countLeadingSpacesOrTabs(line []byte) int {
 
 // findContainingStructure returns the name, start, and end of a nested block or attribute containing the line.
 // If the line is not part of a nested block or object-style attribute, it returns empty string and zero positions.
-func findContainingStructure(block *hclsyntax.Block, line int) (string, hcl.Pos, hcl.Pos) {
+func findContainingStructure(block *hclsyntax.Block, line int) (string, hcl.Pos, hcl.Pos, bool) {
 	for _, nested := range block.Body.Blocks {
 		start := nested.TypeRange.Start
 		end := nested.Body.SrcRange.End
 		if line >= start.Line && line <= end.Line {
-			if deeperType, deeperStart, deeperEnd := findContainingStructure(nested, line); deeperType != "" {
-				return deeperType, deeperStart, deeperEnd
+			if deeperType, deeperStart, deeperEnd, isAttr := findContainingStructure(nested, line); deeperType != "" {
+				return deeperType, deeperStart, deeperEnd, isAttr
 			}
-			return nested.Type, start, end
+			return nested.Type, start, end, false
 		}
 	}
 
@@ -207,10 +220,10 @@ func findContainingStructure(block *hclsyntax.Block, line int) (string, hcl.Pos,
 			start := attr.SrcRange.Start
 			end := attr.SrcRange.End
 			if line >= start.Line && line <= end.Line {
-				return name, start, end
+				return name, start, end, true
 			}
 		}
 	}
 
-	return "", hcl.Pos{}, hcl.Pos{}
+	return "", hcl.Pos{}, hcl.Pos{}, false
 }
