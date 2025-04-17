@@ -866,16 +866,16 @@ func TransformToSarifFix(vuln model.VulnerableFile, startLocation sarifResourceL
 		}
 
 	case "addition":
-		// Indent based on provided startLocation.Col
+		// Generate the desired base indent from startLocation.Col
 		indent := strings.Repeat(" ", startLocation.Col-1)
 
+		// Split the remediation into lines
 		remediationLines := strings.Split(vuln.Remediation, "\n")
 
-		// Detect minimum indent in original remediation (if multiline)
+		// Detect minimum leading indentation across non-empty lines
 		minIndent := -1
 		for _, line := range remediationLines {
-			trimmed := strings.TrimSpace(line)
-			if trimmed == "" {
+			if strings.TrimSpace(line) == "" {
 				continue
 			}
 			leading := countLeadingSpacesOrTabs([]byte(line))
@@ -884,22 +884,19 @@ func TransformToSarifFix(vuln model.VulnerableFile, startLocation sarifResourceL
 			}
 		}
 
-		// Normalize and re-indent
+		// Normalize: remove original indent, apply our computed indent
 		for i, line := range remediationLines {
-			trimmedLine := strings.TrimRight(line, " \t")
-			if minIndent > 0 && len(trimmedLine) >= minIndent {
-				trimmedLine = trimmedLine[minIndent:] // remove original indent
+			line = strings.TrimRight(line, " \t")
+			if minIndent > 0 && len(line) >= minIndent {
+				line = line[minIndent:]
 			}
-			remediationLines[i] = indent + trimmedLine
+			remediationLines[i] = indent + line
 		}
 
 		formattedRemediation := strings.Join(remediationLines, "\n")
 
-		// Indent the closing brace if one gets pushed by this insertion
-		closingBraceIndent := indent
-
-		// Final insertedText with leading newline and brace re-indent
-		insertedText = "\n" + formattedRemediation + "\n" + closingBraceIndent
+		// Add leading newline, re-indent closing brace (if applicable)
+		insertedText = "\n" + formattedRemediation + "\n" + indent
 
 		fixStart = sarifResourceLocation{
 			Line: startLocation.Line,
