@@ -137,7 +137,7 @@ func parseAndFindTerraformBlock(src []byte, identifyingLine int) (model.Resource
 
 			if structureName != "" {
 				// Line is inside a nested block or object attribute
-				insertionLine = nestedEnd.Line
+				insertionLine = nestedEnd.Line - 1 // one line before the closing brace
 
 				if isAttribute {
 					// For object-style attributes, infer indent from inner attribute lines
