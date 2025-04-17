@@ -125,54 +125,55 @@ func parseAndFindTerraformBlock(src []byte, identifyingLine int) (model.Resource
 	}
 
 	for _, block := range hclSyntaxFile.Body.(*hclsyntax.Body).Blocks {
-		start := block.TypeRange.Start
-		end := block.Body.SrcRange.End
+		blockStart := block.TypeRange.Start
+		blockEnd := block.Body.SrcRange.End
 
-		if identifyingLine >= start.Line && identifyingLine <= end.Line {
-			// Check if inside nested block
-			nestedBlock, _, nestedEnd := findInnermostBlock(block, identifyingLine)
-			if nestedBlock != nil {
-				// Identifying line is in a nested block → insert before nested block's closing brace
-				resourceStart = model.ResourceLine{
-					Line: nestedEnd.Line,
-					Col:  1,
-				}
-				resourceEnd = model.ResourceLine{
-					Line: nestedEnd.Line,
-					Col:  nestedEnd.Column,
-				}
+		if identifyingLine >= blockStart.Line && identifyingLine <= blockEnd.Line {
+			// Determine if identifyingLine is part of a nested structure
+			structureName, _, nestedEnd := findContainingStructure(block, identifyingLine)
+
+			if structureName != "" {
+				// Line is inside a nested block or object attribute (like versioning = { ... })
+				resourceStart = model.ResourceLine{Line: nestedEnd.Line, Col: 1}
+				resourceEnd = model.ResourceLine{Line: nestedEnd.Line, Col: nestedEnd.Column}
 			} else {
-				// Top-level block → insert before outer block's closing brace
-				resourceStart = model.ResourceLine{
-					Line: end.Line,
-					Col:  1,
-				}
-				resourceEnd = model.ResourceLine{
-					Line: end.Line,
-					Col:  end.Column,
-				}
+				// Line is in the outer block
+				resourceStart = model.ResourceLine{Line: blockEnd.Line, Col: 1}
+				resourceEnd = model.ResourceLine{Line: blockEnd.Line, Col: blockEnd.Column}
 			}
-			break
+
+			return resourceStart, resourceEnd, lineContent, nil
 		}
 	}
 
-	if resourceStart.Line == -1 || resourceEnd.Line == -1 {
-		return resourceStart, resourceEnd, lineContent, fmt.Errorf("failed to locate block for line %d", identifyingLine)
-	}
-
-	return resourceStart, resourceEnd, lineContent, nil
+	return resourceStart, resourceEnd, lineContent, fmt.Errorf("failed to locate block for line %d", identifyingLine)
 }
 
-func findInnermostBlock(block *hclsyntax.Block, line int) (*hclsyntax.Block, hcl.Pos, hcl.Pos) {
+// findContainingStructure returns the name, start, and end of a nested block or attribute containing the line.
+// If the line is not part of a nested block or object-style attribute, it returns empty string and zero positions.
+func findContainingStructure(block *hclsyntax.Block, line int) (string, hcl.Pos, hcl.Pos) {
+	// Check nested blocks first
 	for _, nested := range block.Body.Blocks {
 		start := nested.TypeRange.Start
 		end := nested.Body.SrcRange.End
 		if line >= start.Line && line <= end.Line {
-			if deeper, s, e := findInnermostBlock(nested, line); deeper != nil {
-				return deeper, s, e
+			if deeperType, deeperStart, deeperEnd := findContainingStructure(nested, line); deeperType != "" {
+				return deeperType, deeperStart, deeperEnd
 			}
-			return nested, start, end
+			return nested.Type, start, end
 		}
 	}
-	return nil, hcl.Pos{}, hcl.Pos{}
+
+	// Then check object-style attribute blocks like: versioning = {
+	for name, attr := range block.Body.Attributes {
+		if _, ok := attr.Expr.(*hclsyntax.ObjectConsExpr); ok {
+			start := attr.SrcRange.Start
+			end := attr.SrcRange.End
+			if line >= start.Line && line <= end.Line {
+				return name, start, end
+			}
+		}
+	}
+
+	return "", hcl.Pos{}, hcl.Pos{}
 }
