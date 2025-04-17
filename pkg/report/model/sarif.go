@@ -814,6 +814,7 @@ func TransformToSarifFix(vuln model.VulnerableFile, startLocation sarifResourceL
 	fixEnd := endLocation
 
 	switch vuln.RemediationType {
+
 	case "replacement":
 		var patch map[string]string
 		err := json.Unmarshal([]byte(vuln.Remediation), &patch)
@@ -849,32 +850,35 @@ func TransformToSarifFix(vuln model.VulnerableFile, startLocation sarifResourceL
 		prefix := vuln.LineWithVulnerability[:idx[4]] // up to value
 		suffix := vuln.LineWithVulnerability[idx[5]:] // after value
 		insertedText = prefix + after + suffix
-
-	case "addition":
 		fixStart = sarifResourceLocation{
-			Line: endLocation.Line, // we want to insert right before the closing brace
-			Col:  1,
+			Line: vuln.Line,
+			Col:  startLocation.Col,
 		}
 		fixEnd = sarifResourceLocation{
+			Line: vuln.Line,
+			Col:  len(vuln.LineWithVulnerability) + 1,
+		}
+
+	case "addition":
+		// Insert before closing brace of the relevant block
+		insertedText = fmt.Sprintf("  %s\n", vuln.Remediation)
+		fixStart = sarifResourceLocation{
 			Line: endLocation.Line,
 			Col:  1,
 		}
-
-		if strings.Contains(vuln.LineWithVulnerability, "{") && !isTerraformBlockDefinition(vuln.LineWithVulnerability) {
-			fixStart = sarifResourceLocation{
-				Line: vuln.Line,
-				Col:  len(vuln.LineWithVulnerability) + 1,
-			}
-			fixEnd = sarifResourceLocation{
-				Line: vuln.Line,
-				Col:  len(vuln.LineWithVulnerability) + 1,
-			}
-		}
-
-		insertedText = fmt.Sprintf("\n  %s\n", vuln.Remediation)
+		fixEnd = fixStart
 
 	case "removal":
-		insertedText = "" // no content to insert
+		// Delete the entire line
+		fixStart = sarifResourceLocation{
+			Line: vuln.Line,
+			Col:  1,
+		}
+		fixEnd = sarifResourceLocation{
+			Line: vuln.Line,
+			Col:  len(vuln.LineWithVulnerability) + 1,
+		}
+		insertedText = "" // nothing to insert
 	}
 
 	replacement := fixReplacement{
@@ -885,38 +889,17 @@ func TransformToSarifFix(vuln model.VulnerableFile, startLocation sarifResourceL
 			EndColumn:   fixEnd.Col,
 		},
 	}
-
 	if insertedText != "" {
 		replacement.InsertedContent = fixContent{Text: insertedText}
 	}
 
-	fix := sarifFix{
-		ArtifactChanges: []artifactChange{
-			{
-				ArtifactLocation: artifactLocation{URI: vuln.FileName},
-				Replacements:     []fixReplacement{replacement},
-			},
-		},
+	return sarifFix{
+		ArtifactChanges: []artifactChange{{
+			ArtifactLocation: artifactLocation{URI: vuln.FileName},
+			Replacements:     []fixReplacement{replacement},
+		}},
 		Description: fixMessage{
 			Text: fmt.Sprintf("Apply remediation: %s", vuln.Remediation),
 		},
-	}
-
-	return fix, nil
-}
-
-// isTerraformBlockDefinition checks if a line looks like a Terraform block definition
-func isTerraformBlockDefinition(line string) bool {
-	// Trim leading/trailing whitespace
-	line = strings.TrimSpace(line)
-
-	// Common Terraform block types (you can expand this list)
-	blockTypes := []string{"resource", "module", "data", "provider", "output", "variable", "locals", "terraform"}
-
-	// Build a regex pattern to match something like: resource "type" "name" {
-	pattern := `^(?i)(` + strings.Join(blockTypes, "|") + `)\s+"[^"]*"(?:\s+"[^"]*")?\s*{`
-
-	re := regexp.MustCompile(pattern)
-
-	return re.MatchString(line)
+	}, nil
 }

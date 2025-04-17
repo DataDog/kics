@@ -15,7 +15,6 @@ import (
 	"github.com/Checkmarx/kics/pkg/model"
 	"github.com/hashicorp/hcl/v2"
 	"github.com/hashicorp/hcl/v2/hclsyntax"
-	"github.com/hashicorp/hcl/v2/hclwrite"
 	"github.com/rs/zerolog"
 )
 
@@ -111,83 +110,69 @@ type BlockInfo struct {
 
 func parseAndFindTerraformBlock(src []byte, identifyingLine int) (model.ResourceLine, model.ResourceLine, string, error) {
 	filePath := "temp.tf"
-	lineContent := ""
-	resourceStart := model.ResourceLine{
-		Line: -1,
-		Col:  -1,
+	lines := bytes.Split(src, []byte("\n"))
+	if identifyingLine <= 0 || identifyingLine > len(lines) {
+		return model.ResourceLine{}, model.ResourceLine{}, "", fmt.Errorf("line %d is out of range", identifyingLine)
 	}
-	resourceEnd := model.ResourceLine{
-		Line: -1,
-		Col:  -1,
-	}
+	lineContent := string(lines[identifyingLine-1])
 
-	hclFile, diagnostics := hclwrite.ParseConfig(src, filePath, hcl.InitialPos)
-	if diagnostics != nil && diagnostics.HasErrors() {
-		return resourceStart, resourceEnd, lineContent, fmt.Errorf("failed to parse hcl file %s because of errors %s", filePath, diagnostics.Errs())
-	}
+	resourceStart := model.ResourceLine{Line: -1, Col: -1}
+	resourceEnd := model.ResourceLine{Line: -1, Col: -1}
 
 	hclSyntaxFile, diagnostics := hclsyntax.ParseConfig(src, filePath, hcl.InitialPos)
 	if diagnostics != nil && diagnostics.HasErrors() {
-		return resourceStart, resourceEnd, lineContent, fmt.Errorf("failed to parse hcl file %s because of errors %s", filePath, diagnostics.Errs())
+		return resourceStart, resourceEnd, lineContent, fmt.Errorf("failed to parse hcl file %s: %v", filePath, diagnostics.Errs())
 	}
 
-	if hclFile == nil || hclSyntaxFile == nil {
-		return resourceStart, resourceEnd, lineContent, fmt.Errorf("failed to parse hcl file %s", filePath)
-	}
+	for _, block := range hclSyntaxFile.Body.(*hclsyntax.Body).Blocks {
+		start := block.TypeRange.Start
+		end := block.Body.SrcRange.End
 
-	syntaxBlocks := hclSyntaxFile.Body.(*hclsyntax.Body).Blocks
-	lines := bytes.Split(src, []byte("\n"))
-
-	for _, block := range syntaxBlocks {
-		blockStart := block.TypeRange.Start
-		blockEnd := block.Body.SrcRange.End
-
-		if blockStart.Line <= identifyingLine && identifyingLine <= blockEnd.Line {
-			// The identifying line is inside this block
-
-			// Defensive: ensure line exists
-			lineIndex := identifyingLine - 1
-			if lineIndex < 0 || lineIndex >= len(lines) {
-				return resourceStart, resourceEnd, lineContent, fmt.Errorf("line %d is out of range", identifyingLine)
-			}
-
-			lineContentBytes := lines[lineIndex]
-			startCol := 1                       // Column index in HCL is 1-based
-			endCol := len(lineContentBytes) + 1 // One past the last character
-
-			// if identifying line is the first line of the block we want the range to be the entire resource and not just the first line
-			if blockStart.Line == identifyingLine {
-				startCol = block.TypeRange.Start.Column
-				endCol = block.Body.SrcRange.End.Column
+		if identifyingLine >= start.Line && identifyingLine <= end.Line {
+			// Check if inside nested block
+			nestedBlock, _, nestedEnd := findInnermostBlock(block, identifyingLine)
+			if nestedBlock != nil {
+				// Identifying line is in a nested block → insert before nested block's closing brace
 				resourceStart = model.ResourceLine{
-					Line: blockStart.Line,
-					Col:  startCol,
+					Line: nestedEnd.Line,
+					Col:  1,
 				}
 				resourceEnd = model.ResourceLine{
-					Line: blockEnd.Line,
-					Col:  endCol,
+					Line: nestedEnd.Line,
+					Col:  nestedEnd.Column,
 				}
-				lineContent = string(lineContentBytes)
-				break
 			} else {
-
+				// Top-level block → insert before outer block's closing brace
 				resourceStart = model.ResourceLine{
-					Line: identifyingLine,
-					Col:  startCol,
+					Line: end.Line,
+					Col:  1,
 				}
 				resourceEnd = model.ResourceLine{
-					Line: identifyingLine,
-					Col:  endCol,
+					Line: end.Line,
+					Col:  end.Column,
 				}
-				lineContent = string(lineContentBytes)
-				break
 			}
+			break
 		}
 	}
 
 	if resourceStart.Line == -1 || resourceEnd.Line == -1 {
-		return resourceStart, resourceEnd, lineContent, fmt.Errorf("failed to find block for line %d in file %s", identifyingLine, filePath)
+		return resourceStart, resourceEnd, lineContent, fmt.Errorf("failed to locate block for line %d", identifyingLine)
 	}
 
 	return resourceStart, resourceEnd, lineContent, nil
+}
+
+func findInnermostBlock(block *hclsyntax.Block, line int) (*hclsyntax.Block, hcl.Pos, hcl.Pos) {
+	for _, nested := range block.Body.Blocks {
+		start := nested.TypeRange.Start
+		end := nested.Body.SrcRange.End
+		if line >= start.Line && line <= end.Line {
+			if deeper, s, e := findInnermostBlock(nested, line); deeper != nil {
+				return deeper, s, e
+			}
+			return nested, start, end
+		}
+	}
+	return nil, hcl.Pos{}, hcl.Pos{}
 }
