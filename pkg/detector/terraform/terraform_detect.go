@@ -136,20 +136,20 @@ func parseAndFindTerraformBlock(src []byte, identifyingLine int) (model.Resource
 			var insertionCol int
 
 			if structureName != "" {
+				// Line is inside a nested block or object attribute
 				insertionLine = nestedEnd.Line
 
-				// If it's an attribute like versioning = {}, indent based on last line inside that object
 				if isAttribute {
-					// Look upward to find the last line with real content inside the attribute object
+					// For object-style attributes, infer indent from inner attribute lines
 					for i := insertionLine - 1; i > nestedStart.Line && i <= len(lines); i-- {
 						trimmed := strings.TrimSpace(string(lines[i-1]))
-						if trimmed != "" && !strings.HasPrefix(trimmed, "#") {
+						if trimmed != "" && !strings.HasPrefix(trimmed, "#") && strings.Contains(trimmed, "=") {
 							insertionCol = countLeadingSpacesOrTabs(lines[i-1]) + 1
 							break
 						}
 					}
 				} else {
-					// Normal nested block — use closing brace's line indent
+					// For real nested blocks, use closing brace indent
 					if insertionLine-1 >= 0 && insertionLine-1 < len(lines) {
 						insertionCol = countLeadingSpacesOrTabs(lines[insertionLine-1]) + 1
 					}
@@ -158,19 +158,13 @@ func parseAndFindTerraformBlock(src []byte, identifyingLine int) (model.Resource
 				// Top-level block — insert before outer block's closing brace
 				insertionLine = blockEnd.Line - 1 // one line before the closing brace
 
-				// Try to infer indentation from the last meaningful attribute or block line above the brace
+				// Try to infer indentation from the last meaningful line inside the block
 				for i := insertionLine; i > blockStart.Line && i <= len(lines); i-- {
 					trimmed := strings.TrimSpace(string(lines[i-1]))
-					if trimmed == "" || strings.HasPrefix(trimmed, "#") {
-						continue
+					if trimmed != "" && !strings.HasPrefix(trimmed, "#") {
+						insertionCol = countLeadingSpacesOrTabs(lines[i-1]) + 1
+						break
 					}
-					insertionCol = countLeadingSpacesOrTabs(lines[i-1]) + 1
-					break
-				}
-
-				// Fallback if nothing was found
-				if insertionCol == 0 && insertionLine-1 < len(lines) {
-					insertionCol = countLeadingSpacesOrTabs(lines[insertionLine-1]) + 1
 				}
 			}
 
