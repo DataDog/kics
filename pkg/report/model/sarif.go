@@ -909,6 +909,7 @@ func TransformToSarifFix(vuln model.VulnerableFile, startLocation sarifResourceL
 			EndColumn:   fixEnd.Col,
 		},
 	}
+	// If the insertedText is empty, we don't need to set it
 	if insertedText != "" {
 		replacement.InsertedContent = fixContent{Text: insertedText}
 	}
