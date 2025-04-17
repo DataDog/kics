@@ -22,5 +22,6 @@ resource "aws_s3_bucket" "positive3" {
 
   versioning {
     mfa_delete = true
-  }
+    enabled = true
+}
 }
