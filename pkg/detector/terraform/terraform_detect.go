@@ -15,7 +15,6 @@ import (
 	"github.com/Checkmarx/kics/pkg/model"
 	"github.com/hashicorp/hcl/v2"
 	"github.com/hashicorp/hcl/v2/hclsyntax"
-	"github.com/hashicorp/hcl/v2/hclwrite"
 	"github.com/rs/zerolog"
 )
 
@@ -102,84 +101,123 @@ func (d DetectKindLine) DetectLine(file *model.FileMetadata, searchKey string,
 	}
 }
 
+type BlockInfo struct {
+	Block   *hclsyntax.Block
+	Depth   int
+	Parent  *hclsyntax.Block
+	IsMatch bool
+}
+
 func parseAndFindTerraformBlock(src []byte, identifyingLine int) (model.ResourceLine, model.ResourceLine, string, error) {
 	filePath := "temp.tf"
-	lineContent := ""
-	resourceStart := model.ResourceLine{
-		Line: -1,
-		Col:  -1,
+	lines := bytes.Split(src, []byte("\n"))
+	if identifyingLine <= 0 || identifyingLine > len(lines) {
+		return model.ResourceLine{}, model.ResourceLine{}, "", fmt.Errorf("line %d is out of range", identifyingLine)
 	}
-	resourceEnd := model.ResourceLine{
-		Line: -1,
-		Col:  -1,
-	}
+	lineContent := string(lines[identifyingLine-1])
 
-	hclFile, diagnostics := hclwrite.ParseConfig(src, filePath, hcl.InitialPos)
-	if diagnostics != nil && diagnostics.HasErrors() {
-		return resourceStart, resourceEnd, lineContent, fmt.Errorf("failed to parse hcl file %s because of errors %s", filePath, diagnostics.Errs())
-	}
+	resourceStart := model.ResourceLine{Line: -1, Col: -1}
+	resourceEnd := model.ResourceLine{Line: -1, Col: -1}
 
 	hclSyntaxFile, diagnostics := hclsyntax.ParseConfig(src, filePath, hcl.InitialPos)
 	if diagnostics != nil && diagnostics.HasErrors() {
-		return resourceStart, resourceEnd, lineContent, fmt.Errorf("failed to parse hcl file %s because of errors %s", filePath, diagnostics.Errs())
+		return resourceStart, resourceEnd, lineContent, fmt.Errorf("failed to parse hcl file %s: %v", filePath, diagnostics.Errs())
 	}
 
-	if hclFile == nil || hclSyntaxFile == nil {
-		return resourceStart, resourceEnd, lineContent, fmt.Errorf("failed to parse hcl file %s", filePath)
-	}
-
-	syntaxBlocks := hclSyntaxFile.Body.(*hclsyntax.Body).Blocks
-	lines := bytes.Split(src, []byte("\n"))
-
-	for _, block := range syntaxBlocks {
+	for _, block := range hclSyntaxFile.Body.(*hclsyntax.Body).Blocks {
 		blockStart := block.TypeRange.Start
-		blockEnd := block.Body.EndRange.End
+		blockEnd := block.Body.SrcRange.End
 
-		if blockStart.Line <= identifyingLine && identifyingLine <= blockEnd.Line {
-			// The identifying line is inside this block
+		if identifyingLine >= blockStart.Line && identifyingLine <= blockEnd.Line {
+			// Check for nested block or inline object
+			structureName, nestedStart, nestedEnd, isAttribute := findContainingStructure(block, identifyingLine)
 
-			// Defensive: ensure line exists
-			lineIndex := identifyingLine - 1
-			if lineIndex < 0 || lineIndex >= len(lines) {
-				return resourceStart, resourceEnd, lineContent, fmt.Errorf("line %d is out of range", identifyingLine)
+			var insertionLine int
+			var insertionCol int
+
+			if structureName != "" {
+				// Line is inside a nested block or object attribute
+				insertionLine = nestedEnd.Line - 1 // one line before the closing brace
+
+				if isAttribute {
+					// For object-style attributes, infer indent from inner attribute lines
+					for i := insertionLine - 1; i > nestedStart.Line && i <= len(lines); i-- {
+						trimmed := strings.TrimSpace(string(lines[i-1]))
+						if trimmed != "" && !strings.HasPrefix(trimmed, "#") && strings.Contains(trimmed, "=") {
+							insertionCol = countLeadingSpacesOrTabs(lines[i-1]) + 1
+							break
+						}
+					}
+				} else {
+					// For real nested blocks, use closing brace indent
+					if insertionLine-1 >= 0 && insertionLine-1 < len(lines) {
+						insertionCol = countLeadingSpacesOrTabs(lines[insertionLine-1]) + 1
+					}
+				}
+			} else {
+				// Top-level block — insert before outer block's closing brace
+				insertionLine = blockEnd.Line - 1 // one line before the closing brace
+
+				// Try to infer indentation from the last meaningful line inside the block
+				for i := insertionLine; i > blockStart.Line && i <= len(lines); i-- {
+					trimmed := strings.TrimSpace(string(lines[i-1]))
+					if trimmed != "" && !strings.HasPrefix(trimmed, "#") {
+						insertionCol = countLeadingSpacesOrTabs(lines[i-1]) + 1
+						break
+					}
+				}
 			}
 
-			lineContentBytes := lines[lineIndex]
-			startCol := 1                       // Column index in HCL is 1-based
-			endCol := len(lineContentBytes) + 1 // One past the last character
+			// Fallback if nothing was found
+			if insertionCol == 0 && insertionLine-1 < len(lines) {
+				insertionCol = countLeadingSpacesOrTabs(lines[insertionLine-1]) + 1
+			}
 
-			// if identifying line is the first line of the block we want the range to be the entire resource and not just the first line
-			if blockStart.Line == identifyingLine {
-				startCol = block.TypeRange.Start.Column
-				endCol = block.Body.EndRange.End.Column
-				resourceStart = model.ResourceLine{
-					Line: blockStart.Line,
-					Col:  startCol,
-				}
-				resourceEnd = model.ResourceLine{
-					Line: blockEnd.Line,
-					Col:  endCol,
-				}
-				lineContent = string(lineContentBytes)
-				break
-			} else {
-				resourceStart = model.ResourceLine{
-					Line: identifyingLine,
-					Col:  startCol,
-				}
-				resourceEnd = model.ResourceLine{
-					Line: identifyingLine,
-					Col:  endCol,
-				}
-				lineContent = string(lineContentBytes)
-				break
+			resourceStart = model.ResourceLine{Line: insertionLine, Col: insertionCol}
+			resourceEnd = model.ResourceLine{Line: insertionLine, Col: insertionCol}
+
+			return resourceStart, resourceEnd, lineContent, nil
+		}
+	}
+
+	return resourceStart, resourceEnd, lineContent, fmt.Errorf("failed to locate block for line %d", identifyingLine)
+}
+
+func countLeadingSpacesOrTabs(line []byte) int {
+	count := 0
+	for _, b := range line {
+		if b == ' ' || b == '\t' {
+			count++
+		} else {
+			break
+		}
+	}
+	return count
+}
+
+// findContainingStructure returns the name, start, and end of a nested block or attribute containing the line.
+// If the line is not part of a nested block or object-style attribute, it returns empty string and zero positions.
+func findContainingStructure(block *hclsyntax.Block, line int) (string, hcl.Pos, hcl.Pos, bool) {
+	for _, nested := range block.Body.Blocks {
+		start := nested.TypeRange.Start
+		end := nested.Body.SrcRange.End
+		if line >= start.Line && line <= end.Line {
+			if deeperType, deeperStart, deeperEnd, isAttr := findContainingStructure(nested, line); deeperType != "" {
+				return deeperType, deeperStart, deeperEnd, isAttr
+			}
+			return nested.Type, start, end, false
+		}
+	}
+
+	for name, attr := range block.Body.Attributes {
+		if _, ok := attr.Expr.(*hclsyntax.ObjectConsExpr); ok {
+			start := attr.SrcRange.Start
+			end := attr.SrcRange.End
+			if line >= start.Line && line <= end.Line {
+				return name, start, end, true
 			}
 		}
 	}
 
-	if resourceStart.Line == -1 || resourceEnd.Line == -1 {
-		return resourceStart, resourceEnd, lineContent, fmt.Errorf("failed to find block for line %d in file %s", identifyingLine, filePath)
-	}
-
-	return resourceStart, resourceEnd, lineContent, nil
+	return "", hcl.Pos{}, hcl.Pos{}, false
 }

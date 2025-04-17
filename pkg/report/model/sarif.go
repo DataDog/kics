@@ -733,6 +733,10 @@ func (sr *sarifReport) BuildSarifIssue(issue *model.QueryResult, sciInfo model.S
 					// so we just log the error and continue
 					log.Err(err).Msgf("failed to transform to sarif fix: %v", err)
 				} else {
+					if vulnerability.RemediationType == "addition" {
+						result.ResultLocations[0].PhysicalLocation.Region.StartLine = endLocation.Line
+						result.ResultLocations[0].PhysicalLocation.Region.EndLine = endLocation.Line + 4
+					}
 					result.ResultFixes = append(result.ResultFixes, sarifFix)
 				}
 			}
@@ -806,8 +810,11 @@ func GetDatadogFingerprintHash(sciInfo model.SCIInfo, filePath string, startLine
 
 func TransformToSarifFix(vuln model.VulnerableFile, startLocation sarifResourceLocation, endLocation sarifResourceLocation) (sarifFix, error) {
 	var insertedText string
+	fixStart := startLocation
+	fixEnd := endLocation
 
 	switch vuln.RemediationType {
+
 	case "replacement":
 		var patch map[string]string
 		err := json.Unmarshal([]byte(vuln.Remediation), &patch)
@@ -829,9 +836,15 @@ func TransformToSarifFix(vuln model.VulnerableFile, startLocation sarifResourceL
 		value := strings.TrimSpace(matches[2])
 
 		// Remove quotes if present for comparison
+		wasQuoted := strings.HasPrefix(value, `"`) && strings.HasSuffix(value, `"`)
 		cleanedValue := strings.Trim(value, `"`)
+
 		if cleanedValue != before {
 			return sarifFix{}, fmt.Errorf("line value '%s' does not match 'before' value '%s'", cleanedValue, before)
+		}
+
+		if wasQuoted && !(strings.HasPrefix(after, `"`) && strings.HasSuffix(after, `"`)) {
+			after = `"` + after + `"`
 		}
 
 		// Preserve formatting by slicing original line using index positions
@@ -843,38 +856,70 @@ func TransformToSarifFix(vuln model.VulnerableFile, startLocation sarifResourceL
 		prefix := vuln.LineWithVulnerability[:idx[4]] // up to value
 		suffix := vuln.LineWithVulnerability[idx[5]:] // after value
 		insertedText = prefix + after + suffix
+		fixStart = sarifResourceLocation{
+			Line: vuln.Line,
+			Col:  startLocation.Col,
+		}
+		fixEnd = sarifResourceLocation{
+			Line: vuln.Line,
+			Col:  len(vuln.LineWithVulnerability) + 1,
+		}
 
 	case "addition":
-		insertedText = vuln.Remediation
+		// Indent based on provided startLocation.Col
+		indent := strings.Repeat(" ", startLocation.Col-1)
+
+		// Support multiline remediation (e.g., blocks or nested maps)
+		remediationLines := strings.Split(vuln.Remediation, "\n")
+		for i, line := range remediationLines {
+			remediationLines[i] = indent + strings.TrimRight(line, " \t")
+		}
+		formattedRemediation := strings.Join(remediationLines, "\n")
+
+		// Indent the closing brace if one gets pushed by this insertion
+		closingBraceIndent := indent
+
+		// Final insertedText with leading newline and brace re-indent
+		insertedText = "\n" + formattedRemediation + "\n" + closingBraceIndent
+
+		fixStart = sarifResourceLocation{
+			Line: startLocation.Line,
+			Col:  startLocation.Col,
+		}
+		fixEnd = fixStart
 
 	case "removal":
-		insertedText = "" // no content to insert
+		// Delete the entire line
+		fixStart = sarifResourceLocation{
+			Line: vuln.Line,
+			Col:  1,
+		}
+		fixEnd = sarifResourceLocation{
+			Line: vuln.Line,
+			Col:  len(vuln.LineWithVulnerability) + 1,
+		}
+		insertedText = "" // nothing to insert
 	}
 
 	replacement := fixReplacement{
 		DeletedRegion: sarifRegion{
-			StartLine:   startLocation.Line,
-			StartColumn: startLocation.Col,
-			EndLine:     endLocation.Line,
-			EndColumn:   endLocation.Col,
+			StartLine:   fixStart.Line,
+			StartColumn: fixStart.Col,
+			EndLine:     fixEnd.Line,
+			EndColumn:   fixEnd.Col,
 		},
 	}
-
 	if insertedText != "" {
 		replacement.InsertedContent = fixContent{Text: insertedText}
 	}
 
-	fix := sarifFix{
-		ArtifactChanges: []artifactChange{
-			{
-				ArtifactLocation: artifactLocation{URI: vuln.FileName},
-				Replacements:     []fixReplacement{replacement},
-			},
-		},
+	return sarifFix{
+		ArtifactChanges: []artifactChange{{
+			ArtifactLocation: artifactLocation{URI: vuln.FileName},
+			Replacements:     []fixReplacement{replacement},
+		}},
 		Description: fixMessage{
 			Text: fmt.Sprintf("Apply remediation: %s", vuln.Remediation),
 		},
-	}
-
-	return fix, nil
+	}, nil
 }
