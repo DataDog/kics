@@ -136,19 +136,25 @@ func parseAndFindTerraformBlock(src []byte, identifyingLine int) (model.Resource
 			var insertionCol int
 
 			if structureName != "" {
-				// Line is inside a nested structure
+				// Nested block or object attribute — use its closing brace
 				insertionLine = nestedEnd.Line
 			} else {
-				// Top-level block
+				// Top-level block — insert before outer closing brace
 				insertionLine = blockEnd.Line
+
+				// Try to match indentation of sibling attributes above the current line
+				for i := identifyingLine - 1; i >= blockStart.Line && i-1 < len(lines); i-- {
+					trimmed := strings.TrimSpace(string(lines[i-1]))
+					if strings.Contains(trimmed, "=") && !strings.HasPrefix(trimmed, "#") {
+						insertionCol = countLeadingSpacesOrTabs(lines[i-1]) + 1
+						break
+					}
+				}
 			}
 
-			// Find indentation by scanning the actual line
-			if insertionLine-1 >= 0 && insertionLine-1 < len(lines) {
-				insertionLineBytes := lines[insertionLine-1]
-				insertionCol = countLeadingSpacesOrTabs(insertionLineBytes) + 1 // 1-based column
-			} else {
-				insertionCol = 1
+			// If no indentation was found, fall back to the indent of the insertion line
+			if insertionCol == 0 && insertionLine-1 < len(lines) {
+				insertionCol = countLeadingSpacesOrTabs(lines[insertionLine-1]) + 1
 			}
 
 			resourceStart = model.ResourceLine{Line: insertionLine, Col: insertionCol}
@@ -176,7 +182,6 @@ func countLeadingSpacesOrTabs(line []byte) int {
 // findContainingStructure returns the name, start, and end of a nested block or attribute containing the line.
 // If the line is not part of a nested block or object-style attribute, it returns empty string and zero positions.
 func findContainingStructure(block *hclsyntax.Block, line int) (string, hcl.Pos, hcl.Pos) {
-	// Check nested blocks first
 	for _, nested := range block.Body.Blocks {
 		start := nested.TypeRange.Start
 		end := nested.Body.SrcRange.End
@@ -188,7 +193,6 @@ func findContainingStructure(block *hclsyntax.Block, line int) (string, hcl.Pos,
 		}
 	}
 
-	// Then check object-style attribute blocks like: versioning = {
 	for name, attr := range block.Body.Attributes {
 		if _, ok := attr.Expr.(*hclsyntax.ObjectConsExpr); ok {
 			start := attr.SrcRange.Start

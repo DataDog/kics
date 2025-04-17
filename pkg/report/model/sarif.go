@@ -836,9 +836,15 @@ func TransformToSarifFix(vuln model.VulnerableFile, startLocation sarifResourceL
 		value := strings.TrimSpace(matches[2])
 
 		// Remove quotes if present for comparison
+		wasQuoted := strings.HasPrefix(value, `"`) && strings.HasSuffix(value, `"`)
 		cleanedValue := strings.Trim(value, `"`)
+
 		if cleanedValue != before {
 			return sarifFix{}, fmt.Errorf("line value '%s' does not match 'before' value '%s'", cleanedValue, before)
+		}
+
+		if wasQuoted && !(strings.HasPrefix(after, `"`) && strings.HasSuffix(after, `"`)) {
+			after = `"` + after + `"`
 		}
 
 		// Preserve formatting by slicing original line using index positions
