@@ -129,53 +129,40 @@ func parseAndFindTerraformBlock(src []byte, identifyingLine int) (model.Resource
 		blockEnd := block.Body.SrcRange.End
 
 		if identifyingLine >= blockStart.Line && identifyingLine <= blockEnd.Line {
-			// Check for nested block or inline object
 			structureName, nestedStart, nestedEnd, isAttribute := findContainingStructure(block, identifyingLine)
 
-			var insertionLine int
-			var insertionCol int
+			var insertionLine, insertionCol int
 
 			if structureName != "" {
-				// Line is inside a nested block or object attribute
-				insertionLine = nestedEnd.Line - 1 // one line before the closing brace
-
+				insertionLine = nestedEnd.Line - 1
 				if isAttribute {
-					// For object-style attributes, infer indent from inner attribute lines
 					for i := insertionLine - 1; i > nestedStart.Line && i <= len(lines); i-- {
 						trimmed := strings.TrimSpace(string(lines[i-1]))
 						if trimmed != "" && !strings.HasPrefix(trimmed, "#") && strings.Contains(trimmed, "=") {
-							insertionCol = countLeadingSpacesOrTabs(lines[i-1]) + 1
+							insertionCol = countVisualIndentation(lines[i-1]) + 1
 							break
 						}
 					}
-				} else {
-					// For real nested blocks, use closing brace indent
-					if insertionLine-1 >= 0 && insertionLine-1 < len(lines) {
-						insertionCol = countLeadingSpacesOrTabs(lines[insertionLine-1]) + 1
-					}
+				} else if insertionLine-1 >= 0 && insertionLine-1 < len(lines) {
+					insertionCol = countVisualIndentation(lines[insertionLine-1]) + 1
 				}
 			} else {
-				// Top-level block — insert before outer block's closing brace
-				insertionLine = blockEnd.Line - 1 // one line before the closing brace
-
-				// Try to infer indentation from the last meaningful line inside the block
+				insertionLine = blockEnd.Line - 1
 				for i := insertionLine; i > blockStart.Line && i <= len(lines); i-- {
 					trimmed := strings.TrimSpace(string(lines[i-1]))
 					if trimmed != "" && !strings.HasPrefix(trimmed, "#") {
-						insertionCol = countLeadingSpacesOrTabs(lines[i-1]) + 1
+						insertionCol = countVisualIndentation(lines[i-1]) + 1
 						break
 					}
 				}
 			}
 
-			// Fallback if nothing was found
 			if insertionCol == 0 && insertionLine-1 < len(lines) {
-				insertionCol = countLeadingSpacesOrTabs(lines[insertionLine-1]) + 1
+				insertionCol = countVisualIndentation(lines[insertionLine-1]) + 1
 			}
 
 			resourceStart = model.ResourceLine{Line: insertionLine, Col: insertionCol}
 			resourceEnd = model.ResourceLine{Line: insertionLine, Col: insertionCol}
-
 			return resourceStart, resourceEnd, lineContent, nil
 		}
 	}
@@ -183,20 +170,20 @@ func parseAndFindTerraformBlock(src []byte, identifyingLine int) (model.Resource
 	return resourceStart, resourceEnd, lineContent, fmt.Errorf("failed to locate block for line %d", identifyingLine)
 }
 
-func countLeadingSpacesOrTabs(line []byte) int {
-	count := 0
+func countVisualIndentation(line []byte) int {
+	col := 0
 	for _, b := range line {
-		if b == ' ' || b == '\t' {
-			count++
+		if b == ' ' {
+			col++
+		} else if b == '\t' {
+			col += 2 // standard tab width
 		} else {
 			break
 		}
 	}
-	return count
+	return col
 }
 
-// findContainingStructure returns the name, start, and end of a nested block or attribute containing the line.
-// If the line is not part of a nested block or object-style attribute, it returns empty string and zero positions.
 func findContainingStructure(block *hclsyntax.Block, line int) (string, hcl.Pos, hcl.Pos, bool) {
 	for _, nested := range block.Body.Blocks {
 		start := nested.TypeRange.Start
@@ -208,7 +195,6 @@ func findContainingStructure(block *hclsyntax.Block, line int) (string, hcl.Pos,
 			return nested.Type, start, end, false
 		}
 	}
-
 	for name, attr := range block.Body.Attributes {
 		if _, ok := attr.Expr.(*hclsyntax.ObjectConsExpr); ok {
 			start := attr.SrcRange.Start
@@ -218,6 +204,5 @@ func findContainingStructure(block *hclsyntax.Block, line int) (string, hcl.Pos,
 			}
 		}
 	}
-
 	return "", hcl.Pos{}, hcl.Pos{}, false
 }

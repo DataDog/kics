@@ -814,91 +814,76 @@ func TransformToSarifFix(vuln model.VulnerableFile, startLocation sarifResourceL
 	fixEnd := endLocation
 
 	switch vuln.RemediationType {
-
 	case "replacement":
 		var patch map[string]string
 		err := json.Unmarshal([]byte(vuln.Remediation), &patch)
 		if err != nil {
 			return sarifFix{}, fmt.Errorf("invalid remediation format for replacement: %v", err)
 		}
-
 		before := patch["before"]
 		after := patch["after"]
 
-		// Regex to extract key = value (basic HCL format)
 		re := regexp.MustCompile(`(?P<key>\w+)\s*=\s*(?P<value>.+)`)
 		matches := re.FindStringSubmatch(vuln.LineWithVulnerability)
-
 		if len(matches) < 3 {
 			return sarifFix{}, fmt.Errorf("could not parse key-value from line: %s", vuln.LineWithVulnerability)
 		}
 
 		value := strings.TrimSpace(matches[2])
-
-		// Remove quotes if present for comparison
 		wasQuoted := strings.HasPrefix(value, `"`) && strings.HasSuffix(value, `"`)
 		cleanedValue := strings.Trim(value, `"`)
-
 		if cleanedValue != before {
 			return sarifFix{}, fmt.Errorf("line value '%s' does not match 'before' value '%s'", cleanedValue, before)
 		}
-
 		if wasQuoted && !(strings.HasPrefix(after, `"`) && strings.HasSuffix(after, `"`)) {
 			after = `"` + after + `"`
 		}
 
-		// Preserve formatting by slicing original line using index positions
 		idx := re.FindStringSubmatchIndex(vuln.LineWithVulnerability)
 		if len(idx) < 6 {
 			return sarifFix{}, fmt.Errorf("could not determine exact value location")
 		}
-
-		prefix := vuln.LineWithVulnerability[:idx[4]] // up to value
-		suffix := vuln.LineWithVulnerability[idx[5]:] // after value
+		prefix := vuln.LineWithVulnerability[:idx[4]]
+		suffix := vuln.LineWithVulnerability[idx[5]:]
 		insertedText = prefix + after + suffix
-		fixStart = sarifResourceLocation{
-			Line: vuln.Line,
-			Col:  startLocation.Col,
-		}
-		fixEnd = sarifResourceLocation{
-			Line: vuln.Line,
-			Col:  len(vuln.LineWithVulnerability) + 1,
-		}
+		fixStart = sarifResourceLocation{Line: vuln.Line, Col: startLocation.Col}
+		fixEnd = sarifResourceLocation{Line: vuln.Line, Col: len(vuln.LineWithVulnerability) + 1}
 
 	case "addition":
-		// Indent based on provided startLocation.Col
-		indent := strings.Repeat(" ", startLocation.Col-1)
-
-		// Support multiline remediation (e.g., blocks or nested maps)
+		indentUnit := detectIndentationUnit(vuln.Remediation)
+		indent := strings.Repeat(indentUnit, (startLocation.Col-1)/len(indentUnit))
 		remediationLines := strings.Split(vuln.Remediation, "\n")
+
+		minIndent := -1
+		for _, line := range remediationLines {
+			if strings.TrimSpace(line) == "" {
+				continue
+			}
+			normalized := strings.ReplaceAll(line, "\t", "  ")
+			leading := countVisualIndentation([]byte(normalized))
+			if minIndent == -1 || leading < minIndent {
+				minIndent = leading
+			}
+		}
+
 		for i, line := range remediationLines {
-			remediationLines[i] = indent + strings.TrimRight(line, " \t")
+			line = strings.ReplaceAll(line, "\t", "  ")
+			line = strings.TrimRight(line, " \t")
+			if minIndent > 0 && len(line) >= minIndent {
+				line = line[minIndent:]
+			}
+			remediationLines[i] = indent + line
 		}
+
 		formattedRemediation := strings.Join(remediationLines, "\n")
-
-		// Indent the closing brace if one gets pushed by this insertion
-		closingBraceIndent := indent
-
-		// Final insertedText with leading newline and brace re-indent
-		insertedText = "\n" + formattedRemediation + "\n" + closingBraceIndent
-
-		fixStart = sarifResourceLocation{
-			Line: startLocation.Line,
-			Col:  startLocation.Col,
-		}
+		insertedText = "\n" + formattedRemediation + "\n" + indent
+		fixStart = sarifResourceLocation{Line: startLocation.Line, Col: startLocation.Col}
 		fixEnd = fixStart
 
 	case "removal":
-		// Delete the entire line
-		fixStart = sarifResourceLocation{
-			Line: vuln.Line,
-			Col:  1,
-		}
-		fixEnd = sarifResourceLocation{
-			Line: vuln.Line,
-			Col:  len(vuln.LineWithVulnerability) + 1,
-		}
-		insertedText = "" // nothing to insert
+		fixStart = sarifResourceLocation{Line: vuln.Line, Col: 1}
+		fixEnd = sarifResourceLocation{Line: vuln.Line, Col: len(vuln.LineWithVulnerability) + 1}
+		insertedText = ""
 	}
 
 	replacement := fixReplacement{
@@ -909,7 +894,6 @@ func TransformToSarifFix(vuln model.VulnerableFile, startLocation sarifResourceL
 			EndColumn:   fixEnd.Col,
 		},
 	}
-	// If the insertedText is empty, we don't need to set it
 	if insertedText != "" {
 		replacement.InsertedContent = fixContent{Text: insertedText}
 	}
@@ -919,8 +903,37 @@ func TransformToSarifFix(vuln model.VulnerableFile, startLocation sarifResourceL
 			ArtifactLocation: artifactLocation{URI: vuln.FileName},
 			Replacements:     []fixReplacement{replacement},
 		}},
-		Description: fixMessage{
-			Text: fmt.Sprintf("Apply remediation: %s", vuln.Remediation),
-		},
+		Description: fixMessage{Text: fmt.Sprintf("Apply remediation: %s", vuln.Remediation)},
 	}, nil
+}
+
+func detectIndentationUnit(remediation string) string {
+	lines := strings.Split(remediation, "\n")
+	tabCount := 0
+	spaceCount := 0
+	for _, line := range lines {
+		if strings.HasPrefix(line, "\t") {
+			tabCount++
+		} else if strings.HasPrefix(line, "    ") {
+			spaceCount++
+		}
+	}
+	if tabCount > spaceCount {
+		return "\t"
+	}
+	return "  "
+}
+
+func countVisualIndentation(line []byte) int {
+	col := 0
+	for _, b := range line {
+		if b == ' ' {
+			col++
+		} else if b == '\t' {
+			col += 2 // standard tab width
+		} else {
+			break
+		}
+	}
+	return col
 }
