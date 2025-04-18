@@ -139,26 +139,26 @@ func parseAndFindTerraformBlock(src []byte, identifyingLine int) (model.Resource
 					for i := insertionLine - 1; i > nestedStart.Line && i <= len(lines); i-- {
 						trimmed := strings.TrimSpace(string(lines[i-1]))
 						if trimmed != "" && !strings.HasPrefix(trimmed, "#") && strings.Contains(trimmed, "=") {
-							insertionCol = countVisualIndentation(lines[i-1]) + 1
+							insertionCol = countVisualIndentation(lines[i-1])
 							break
 						}
 					}
 				} else if insertionLine-1 >= 0 && insertionLine-1 < len(lines) {
-					insertionCol = countVisualIndentation(lines[insertionLine-1]) + 1
+					insertionCol = countVisualIndentation(lines[insertionLine-1])
 				}
 			} else {
 				insertionLine = blockEnd.Line - 1
 				for i := insertionLine; i > blockStart.Line && i <= len(lines); i-- {
 					trimmed := strings.TrimSpace(string(lines[i-1]))
 					if trimmed != "" && !strings.HasPrefix(trimmed, "#") {
-						insertionCol = countVisualIndentation(lines[i-1]) + 1
+						insertionCol = countVisualIndentation(lines[i-1])
 						break
 					}
 				}
 			}
 
 			if insertionCol == 0 && insertionLine-1 < len(lines) {
-				insertionCol = countVisualIndentation(lines[insertionLine-1]) + 1
+				insertionCol = countVisualIndentation(lines[insertionLine-1])
 			}
 
 			resourceStart = model.ResourceLine{Line: insertionLine, Col: insertionCol}
