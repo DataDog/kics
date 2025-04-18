@@ -144,7 +144,7 @@ func parseAndFindTerraformBlock(src []byte, identifyingLine int) (model.Resource
 						}
 					}
 				} else if insertionLine-1 >= 0 && insertionLine-1 < len(lines) {
-					insertionCol = countVisualIndentation(lines[insertionLine-1])
+					insertionCol = countVisualIndentation(lines[insertionLine-1]) + 1
 				}
 			} else {
 				insertionLine = blockEnd.Line - 1
@@ -158,7 +158,7 @@ func parseAndFindTerraformBlock(src []byte, identifyingLine int) (model.Resource
 			}
 
 			if insertionCol == 0 && insertionLine-1 < len(lines) {
-				insertionCol = countVisualIndentation(lines[insertionLine-1])
+				insertionCol = countVisualIndentation(lines[insertionLine-1]) + 1
 			}
 
 			resourceStart = model.ResourceLine{Line: insertionLine, Col: insertionCol}
