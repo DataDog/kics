@@ -930,7 +930,7 @@ func countVisualIndentation(line []byte) int {
 		if b == ' ' {
 			col++
 		} else if b == '\t' {
-			col += 2 // standard tab width
+			col++ // standard tab width
 		} else {
 			break
 		}
