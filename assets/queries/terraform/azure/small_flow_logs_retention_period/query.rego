@@ -40,7 +40,7 @@ CxPolicy[result] {
 		"keyExpectedValue": sprintf("'%s.retention_policy' should exist)", [name]),
 		"keyActualValue": sprintf("'%s.retention_policy' doesn't exist)", [name]),
 		"searchLine": common_lib.build_search_line(["resource", "azurerm_network_watcher_flow_log", name], []),
-		"remediation": "retention_policy {\n\t\tenabled = true\n\t\tdays = 90\n\t}\n",
+		"remediation": "retention_policy {\n\tenabled = true\n\tdays = 90\n\t}\n",
 		"remediationType": "addition",
 	}
 }

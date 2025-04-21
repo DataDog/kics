@@ -822,44 +822,83 @@ func TransformToSarifFix(vuln model.VulnerableFile, startLocation sarifResourceL
 			return sarifFix{}, fmt.Errorf("invalid remediation format for replacement: %v", err)
 		}
 
-		before := patch["before"]
-		after := patch["after"]
+		before := strings.TrimSpace(patch["before"])
+		after := strings.TrimSpace(patch["after"])
 
-		// Regex to extract key = value (basic HCL format)
-		re := regexp.MustCompile(`(?P<key>\w+)\s*=\s*(?P<value>.+)`)
+		// Regex to extract 'key = value' format
+		re := regexp.MustCompile(`(?m)["']?(?P<key>\w+)["']?\s*[:=]\s*(?P<value>\[.*?\]|".*?"|true|false|\d+)[,]?\s*`)
 		matches := re.FindStringSubmatch(vuln.LineWithVulnerability)
 
 		if len(matches) < 3 {
 			return sarifFix{}, fmt.Errorf("could not parse key-value from line: %s", vuln.LineWithVulnerability)
 		}
 
+		key := strings.TrimSpace(matches[1])
 		value := strings.TrimSpace(matches[2])
 
-		// Remove quotes if present for comparison
-		wasQuoted := strings.HasPrefix(value, `"`) && strings.HasSuffix(value, `"`)
-		cleanedValue := strings.Trim(value, `"`)
-
-		if cleanedValue != before {
-			return sarifFix{}, fmt.Errorf("line value '%s' does not match 'before' value '%s'", cleanedValue, before)
+		// Strip inline comment (from # or // onward)
+		if idx := strings.IndexAny(value, "#/"); idx != -1 {
+			value = strings.TrimSpace(value[:idx])
 		}
 
+		// Reconstruct the normalized key-value pair
+		fullLine := key + " = " + value
+
+		// Clean "before" for flexible matching
+		normalizedFullLine := normalize(fullLine)
+		normalizedValue := normalize(value)
+		normalizedBefore := normalize(before)
+
+		matched := false
+
+		if strings.Contains(normalizedBefore, "{") && strings.Contains(normalizedBefore, "=") {
+			reInner := regexp.MustCompile(`(?m)(\w+)\s*=\s*(".*?"|\S+)`)
+			for _, inner := range reInner.FindAllString(normalizedBefore, -1) {
+				n := normalize(inner)
+				if n == normalizedFullLine || n == normalizedValue {
+					matched = true
+					break
+				}
+			}
+		} else {
+			matched = normalizedBefore == normalizedFullLine || normalizedBefore == normalizedValue
+		}
+
+		if !matched {
+			return sarifFix{}, fmt.Errorf("line value '%s' does not match 'before' value '%s'", normalizedFullLine, normalizedBefore)
+		}
+
+		// Determine if the after value is quoted if the original was
+		wasQuoted := strings.HasPrefix(value, `"`) && strings.HasSuffix(value, `"`)
 		if wasQuoted && !(strings.HasPrefix(after, `"`) && strings.HasSuffix(after, `"`)) {
 			after = `"` + after + `"`
 		}
 
-		// Preserve formatting by slicing original line using index positions
-		idx := re.FindStringSubmatchIndex(vuln.LineWithVulnerability)
-		if len(idx) < 6 {
+		// Get regex indexes for replacement slicing
+		idxs := re.FindStringSubmatchIndex(vuln.LineWithVulnerability)
+		if len(idxs) < 6 {
 			return sarifFix{}, fmt.Errorf("could not determine exact value location")
 		}
 
-		prefix := vuln.LineWithVulnerability[:idx[4]] // up to value
-		suffix := vuln.LineWithVulnerability[idx[5]:] // after value
-		insertedText = prefix + after + suffix
+		// Determine if 'after' is a full line or just a new value
+		isFullLine := strings.Contains(after, "=")
+
+		if isFullLine {
+			// If after is a full line like "key = newvalue", just replace the whole line
+			insertedText = after
+		} else {
+			// Just replace the value part of the line
+			prefix := vuln.LineWithVulnerability[:idxs[4]] // up to start of value
+			suffix := vuln.LineWithVulnerability[idxs[5]:] // after value
+			insertedText = prefix + after + suffix
+		}
+
+		// Position for SARIF fix
 		fixStart = sarifResourceLocation{
 			Line: vuln.Line,
 			Col:  startLocation.Col,
 		}
+
 		fixEnd = sarifResourceLocation{
 			Line: vuln.Line,
 			Col:  len(vuln.LineWithVulnerability) + 1,
@@ -872,7 +911,7 @@ func TransformToSarifFix(vuln model.VulnerableFile, startLocation sarifResourceL
 		// Support multiline remediation (e.g., blocks or nested maps)
 		remediationLines := strings.Split(vuln.Remediation, "\n")
 		for i, line := range remediationLines {
-			remediationLines[i] = indent + strings.TrimRight(line, " \t")
+			remediationLines[i] = indent + strings.TrimRight(line, "  ")
 		}
 		formattedRemediation := strings.Join(remediationLines, "\n")
 
@@ -923,4 +962,16 @@ func TransformToSarifFix(vuln model.VulnerableFile, startLocation sarifResourceL
 			Text: fmt.Sprintf("Apply remediation: %s", vuln.Remediation),
 		},
 	}, nil
+}
+
+func normalize(s string) string {
+	s = strings.TrimSpace(s)
+	s = strings.ReplaceAll(s, "\r", "")
+	s = strings.ReplaceAll(s, `\"`, `"`)     // Handle escaped quotes
+	s = strings.ReplaceAll(s, `"`, `"`)      // Double safety
+	s = strings.ReplaceAll(s, `“`, `"`)      // Smart quotes (optional)
+	s = strings.ReplaceAll(s, `”`, `"`)      // Smart quotes (optional)
+	s = strings.Join(strings.Fields(s), " ") // normalize extra whitespace
+	s = strings.Trim(s, `"`)
+	return s
 }

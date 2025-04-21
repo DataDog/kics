@@ -19,7 +19,7 @@ CxPolicy[result] {
 		"keyExpectedValue": sprintf("resource.aws_cloudfront_distribution[%s].viewer_certificate' should be defined and not null", [name]),
 		"keyActualValue": sprintf("resource.aws_cloudfront_distribution[%s].viewer_certificate' is undefined or null", [name]),
 		"searchLine": common_lib.build_search_line(["resource", "aws_cloudfront_distribution", name], []),
-		"remediation": "viewer_certificate {\n\t\t cloudfront_default_certificate = false \n\t\t minimum_protocol_version = \"TLSv1.2_2021\"\n\t}",
+		"remediation": "viewer_certificate {\n\tcloudfront_default_certificate = false \n\tminimum_protocol_version = \"TLSv1.2_2021\"\n\t}",
 		"remediationType": "addition",
 	}
 }

@@ -37,7 +37,7 @@ CxPolicy[result] {
 		"issueType": "MissingAttribute",
 		"keyExpectedValue": "aws_dynamodb_table.server_side_encryption.enabled should be set to true",
 		"keyActualValue": "aws_dynamodb_table.server_side_encryption is missing",
-		"remediation": "server_side_encryption {\n\t\t enabled = true \n\t }",
+		"remediation": "server_side_encryption {\n\tenabled = true \n\t }",
 		"remediationType": "addition",
 	}
 }

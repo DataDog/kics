@@ -16,7 +16,7 @@ CxPolicy[result] {
 		"issueType": "MissingAttribute",
 		"keyExpectedValue": "'log_publishing_options' should be defined and not null",
 		"keyActualValue": "'log_publishing_options' is undefined or null",
-		"remediation": "log_publishing_options {\n\t\t enabled = true \n\t}",
+		"remediation": "log_publishing_options {\n\tenabled = true \n\t}",
 		"remediationType": "addition",
 	}
 }

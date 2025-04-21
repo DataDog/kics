@@ -18,7 +18,7 @@ CxPolicy[result] {
 		"issueType": "MissingAttribute",
 		"keyExpectedValue": sprintf("'azurerm_app_service[%s].auth_settings' should be defined", [name]),
 		"keyActualValue": sprintf("'azurerm_app_service[%s].auth_settings' is undefined", [name]),
-		"remediation": "auth_settings {\n\t\tenabled = true\n\t}",
+		"remediation": "auth_settings {\n\tenabled = true\n\t}",
 		"remediationType": "addition",
 	}
 }

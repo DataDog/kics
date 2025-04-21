@@ -17,7 +17,7 @@ CxPolicy[result] {
 		"keyExpectedValue": sprintf("'azurerm_app_service[%s].site_config' should be defined and not null", [name]),
 		"keyActualValue": sprintf("'azurerm_app_service[%s].site_config' is undefined or null", [name]),
 		"searchLine": common_lib.build_search_line(["resource", "azurerm_app_service", name], []),
-		"remediation": "site_config {\n\t\thttp2_enabled = true\n\t}",
+		"remediation": "site_config {\n\thttp2_enabled = true\n\t}",
 		"remediationType": "addition",
 	}
 }

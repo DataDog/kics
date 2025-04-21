@@ -17,7 +17,7 @@ CxPolicy[result] {
 		"keyExpectedValue": "'settings.ip_configuration' should be defined and not null",
 		"keyActualValue": "'settings.ip_configuration' is undefined or null",
 		"searchLine": common_lib.build_search_line(["resource", "google_sql_database_instance", name],["settings"]),
-		"remediation": "ip_configuration {\n\t\trequire_ssl = true\n\t}\n",
+		"remediation": "ip_configuration {\n\trequire_ssl = true\n\t}\n",
 		"remediationType": "addition",
 	}
 }

@@ -15,7 +15,7 @@ CxPolicy[result] {
 		"keyExpectedValue": "google_container_node_pool.management should be defined and not null",
 		"keyActualValue": "google_container_node_pool.management is undefined or null",
 		"searchLine": common_lib.build_search_line(["resource", "google_container_node_pool", name],[]),
-		"remediation": "management {\n\t\tauto_upgrade = true\n\t}\n",
+		"remediation": "management {\n\tauto_upgrade = true\n\t}\n",
 		"remediationType": "addition",
 	}
 }

@@ -41,7 +41,7 @@ CxPolicy[result] {
 		"issueType": "MissingAttribute",
 		"keyExpectedValue": "aws_dynamodb_table.point_in_time_recovery.enabled should be enabled",
 		"keyActualValue": "aws_dynamodb_table.point_in_time_recovery is missing",
-		"remediation": "point_in_time_recovery {\n\t\t enabled = true \n\t}",
+		"remediation": "point_in_time_recovery {\n\tenabled = true \n\t}",
 		"remediationType": "addition",
 	}
 }

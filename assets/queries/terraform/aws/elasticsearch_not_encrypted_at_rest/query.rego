@@ -17,7 +17,7 @@ CxPolicy[result] {
 		"issueType": "MissingAttribute",
 		"keyExpectedValue": "'encrypt_at_rest' should be set and enabled",
 		"keyActualValue": "'encrypt_at_rest' is undefined",
-		"remediation": "encrypt_at_rest {\n\t\t enabled = true \n\t}",
+		"remediation": "encrypt_at_rest {\n\tenabled = true \n\t}",
 		"remediationType": "addition",
 	}
 }

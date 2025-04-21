@@ -17,7 +17,7 @@ CxPolicy[result] {
 		"keyExpectedValue": sprintf("'azurerm_function_app[%s].auth_settings' should be defined and not null", [name]),
 		"keyActualValue": sprintf("'azurerm_function_app[%s].auth_settings' is undefined or null", [name]),
 		"searchLine": common_lib.build_search_line(["resource", "azurerm_function_app", name], []),
-		"remediation": "\nauth_settings {\n\t\tenabled = true\n\t}\n",
+		"remediation": "\nauth_settings {\n\tenabled = true\n\t}\n",
 		"remediationType": "addition",
 	}
 }

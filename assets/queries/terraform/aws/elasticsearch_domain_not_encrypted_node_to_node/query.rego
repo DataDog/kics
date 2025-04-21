@@ -17,7 +17,7 @@ CxPolicy[result] {
 		"issueType": "MissingAttribute",
 		"keyExpectedValue": "The attribute 'node_to_node_encryption' should be set to true",
 		"keyActualValue": "The attribute 'node_to_node_encryption' is undefined",
-		"remediation": "node_to_node_encryption {\n\t\t enabled = true \n\t}",
+		"remediation": "node_to_node_encryption {\n\tenabled = true \n\t}",
 		"remediationType": "addition",
 	}
 }
