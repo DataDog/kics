@@ -862,6 +862,35 @@ func TransformToSarifFix(vuln model.VulnerableFile, startLocation sarifResourceL
 			}
 		} else {
 			matched = normalizedBefore == normalizedFullLine || normalizedBefore == normalizedValue
+
+			// Enhanced: Support matching inside a list
+			if !matched && strings.HasPrefix(normalizedValue, "[") && strings.HasSuffix(normalizedValue, "]") {
+				listText := strings.Trim(normalizedValue, "[] ")
+				listItems := strings.Split(listText, ",")
+
+				newList := make([]string, 0, len(listItems))
+				replaced := false
+
+				for _, item := range listItems {
+					original := strings.TrimSpace(strings.Trim(item, `"`))
+					if normalize(original) == normalizedBefore {
+						replaced = true
+						if strings.HasPrefix(item, `"`) && strings.HasSuffix(item, `"`) {
+							newList = append(newList, `"`+after+`"`)
+						} else {
+							newList = append(newList, after)
+						}
+					} else {
+						newList = append(newList, item)
+					}
+				}
+
+				if replaced {
+					joined := "[" + strings.Join(newList, ", ") + "]"
+					insertedText = strings.Replace(vuln.LineWithVulnerability, value, joined, 1)
+					matched = true
+				}
+			}
 		}
 
 		if !matched {
@@ -883,14 +912,16 @@ func TransformToSarifFix(vuln model.VulnerableFile, startLocation sarifResourceL
 		// Determine if 'after' is a full line or just a new value
 		isFullLine := strings.Contains(after, "=")
 
-		if isFullLine {
-			// If after is a full line like "key = newvalue", just replace the whole line
-			insertedText = after
-		} else {
-			// Just replace the value part of the line
-			prefix := vuln.LineWithVulnerability[:idxs[4]] // up to start of value
-			suffix := vuln.LineWithVulnerability[idxs[5]:] // after value
-			insertedText = prefix + after + suffix
+		if insertedText == "" {
+			if isFullLine {
+				// If after is a full line like "key = newvalue", just replace the whole line
+				insertedText = after
+			} else {
+				// Just replace the value part of the line
+				prefix := vuln.LineWithVulnerability[:idxs[4]] // up to start of value
+				suffix := vuln.LineWithVulnerability[idxs[5]:] // after value
+				insertedText = prefix + after + suffix
+			}
 		}
 
 		// Position for SARIF fix

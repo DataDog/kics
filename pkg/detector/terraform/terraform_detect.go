@@ -45,7 +45,10 @@ func (d DetectKindLine) DetectLine(file *model.FileMetadata, searchKey string,
 	extractedString = detector.GetBracketValues(searchKey, extractedString, "")
 	sKey := searchKey
 	for idx, str := range extractedString {
-		sKey = strings.Replace(sKey, str[0], `{{`+strconv.Itoa(idx)+`}}`, -1)
+		// Only replace raw bracketed values (e.g., [abc]), not placeholders (e.g., [{{var}}])
+		if !strings.Contains(str[0], "{{") {
+			sKey = strings.Replace(sKey, str[0], `{{`+strconv.Itoa(idx)+`}}`, -1)
+		}
 	}
 
 	lines := *file.LinesOriginalData

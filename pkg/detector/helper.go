@@ -92,13 +92,19 @@ func GenerateSubstrings(key string, extracted [][]string, lines []string) (strin
 		key = strings.Replace(key, placeholder, str[0], 1)
 	}
 
-	// Handle resource-style keys like aws_something[resource_name]
+	// Handle resource-style keys like aws_something[resource_name] or [{{label}}]
 	if strings.Contains(key, "[") && strings.HasSuffix(key, "]") {
 		start := strings.Index(key, "[")
 		end := strings.Index(key, "]")
 		if start > 0 && end > start {
 			base := key[:start]
 			bracketValue := key[start+1 : end]
+
+			// Handle bracketed placeholders like [{{label}}]
+			if strings.HasPrefix(bracketValue, "{{") && strings.HasSuffix(bracketValue, "}}") {
+				bracketValue = strings.TrimPrefix(bracketValue, "{{")
+				bracketValue = strings.TrimSuffix(bracketValue, "}}")
+			}
 
 			// Heuristic: If bracketValue is a number, it's likely a list index
 			if index, err := strconv.Atoi(bracketValue); err == nil {
@@ -115,11 +121,26 @@ func GenerateSubstrings(key string, extracted [][]string, lines []string) (strin
 		}
 	}
 
-	// Fallback: no brackets
+	// Fallback: key = value
 	parts := strings.SplitN(key, "=", 2)
 	substr1 = strings.TrimSpace(parts[0])
 	if len(parts) > 1 {
 		substr2 = strings.TrimSpace(parts[1])
+	}
+
+	// If substr2 is still empty, try to extract value from the actual lines
+	if substr2 == "" && substr1 != "" {
+		for _, line := range lines {
+			line = strings.TrimSpace(line)
+			if strings.HasPrefix(line, substr1+" =") {
+				// Extract value after "="
+				parts := strings.SplitN(line, "=", 2)
+				if len(parts) == 2 {
+					substr2 = strings.TrimSpace(parts[1])
+				}
+				break
+			}
+		}
 	}
 
 	return substr1, substr2
