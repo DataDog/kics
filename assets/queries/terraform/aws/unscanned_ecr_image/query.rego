@@ -39,7 +39,7 @@ CxPolicy[result] {
 		"issueType": "MissingAttribute",
 		"keyExpectedValue": sprintf("aws_ecr_repository[%s].image_scanning_configuration should be defined", [name]),
 		"keyActualValue": sprintf("aws_ecr_repository[%s].image_scanning_configuration is undefined", [name]),
-		"remediation": "image_scanning_configuration { \n\t\tscan_on_push = true \n\t}",
+		"remediation": "image_scanning_configuration { \n\tscan_on_push = true \n\t}",
 		"remediationType": "addition",
 	}
 }

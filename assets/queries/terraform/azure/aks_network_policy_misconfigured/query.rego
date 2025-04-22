@@ -59,7 +59,7 @@ CxPolicy[result] {
 		"issueType": "MissingAttribute",
 		"keyExpectedValue": sprintf("'azurerm_kubernetes_cluster[%s].network_profile' should be set", [name]),
 		"keyActualValue": sprintf("'azurerm_kubernetes_cluster[%s].network_profile' is undefined", [name]),
-		"remediation": "network_profile {\n\t\tnetwork_policy = \"azure\"\n\t}",
+		"remediation": "network_profile {\n\tnetwork_policy = \"azure\"\n\t}",
 		"remediationType": "addition",
 	}
 }

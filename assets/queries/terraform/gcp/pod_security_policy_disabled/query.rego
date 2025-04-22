@@ -16,7 +16,7 @@ CxPolicy[result] {
 		"keyExpectedValue": "Attribute 'pod_security_policy_config' should be defined",
 		"keyActualValue": "Attribute 'pod_security_policy_config' is undefined",
 		"searchLine": common_lib.build_search_line(["resource", "google_container_cluster", primary],[]),
-		"remediation": "pod_security_policy_config {\n\t\tenabled = true\n\t}\n",
+		"remediation": "pod_security_policy_config {\n\tenabled = true\n\t}\n",
 		"remediationType": "addition",
 	}
 }

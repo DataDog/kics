@@ -17,7 +17,7 @@ CxPolicy[result] {
 		"keyExpectedValue": "'threat_detection_policy' should exist",
 		"keyActualValue": "'threat_detection_policy' is missing",
 		"searchLine": common_lib.build_search_line(["resource", "azurerm_sql_database" ,name, "threat_detection_policy"], []),
-		"remediation": "threat_detection_policy {\n\t\tstate = \"Enabled\"\n\t}\n",
+		"remediation": "threat_detection_policy {\n\tstate = \"Enabled\"\n\t}\n",
 		"remediationType": "addition",
 	}
 }

@@ -12,6 +12,7 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
+	"regexp"
 	"strings"
 	"time"
 
@@ -177,6 +178,7 @@ type sarifResult struct {
 	PartialFingerprints SarifPartialFingerprints `json:"partialFingerprints,omitempty"`
 	ResultLevel         string                   `json:"level"`
 	ResultProperties    sarifProperties          `json:"properties,omitempty"`
+	ResultFixes         []sarifFix               `json:"fixes,omitempty"`
 }
 
 type SarifPartialFingerprints struct {
@@ -196,6 +198,33 @@ type taxonomyDefinitions struct {
 	DefinitionShortDescription cweMessage `json:"shortDescription"`
 	DefinitionFullDescription  cweMessage `json:"fullDescription"`
 	HelpURI                    string     `json:"helpUri,omitempty"`
+}
+
+type sarifFix struct {
+	ArtifactChanges []artifactChange `json:"artifactChanges"`
+	Description     fixMessage       `json:"description"`
+}
+
+type artifactChange struct {
+	ArtifactLocation artifactLocation `json:"artifactLocation"`
+	Replacements     []fixReplacement `json:"replacements"`
+}
+
+type artifactLocation struct {
+	URI string `json:"uri"`
+}
+
+type fixReplacement struct {
+	DeletedRegion   sarifRegion `json:"deletedRegion"`
+	InsertedContent fixContent  `json:"insertedContent,omitempty"`
+}
+
+type fixContent struct {
+	Text string `json:"text"`
+}
+
+type fixMessage struct {
+	Text string `json:"text"`
 }
 
 type cweTaxonomiesWrapper struct {
@@ -656,14 +685,15 @@ func (sr *sarifReport) BuildSarifIssue(issue *model.QueryResult, sciInfo model.S
 				Line: resourceLocation.ResourceStart.Line,
 				Col:  resourceLocation.ResourceStart.Col,
 			}
+			endLocation := sarifResourceLocation{
+				Line: resourceLocation.ResourceEnd.Line,
+				Col:  resourceLocation.ResourceEnd.Col,
+			}
 
 			if startLocation.Col < 1 {
 				startLocation.Col = 1
 			}
-			// endLocation := sarifResourceLocation{
-			// 	Line: resourceLocation.ResourceEnd.Line,
-			// 	Col:  resourceLocation.ResourceEnd.Col,
-			// }
+
 			absoluteFilePath := strings.ReplaceAll(issue.Files[idx].FileName, "../", "")
 			result := sarifResult{
 				ResultRuleID:    issue.QueryName,
@@ -677,12 +707,10 @@ func (sr *sarifReport) BuildSarifIssue(issue *model.QueryResult, sciInfo model.S
 						PhysicalLocation: sarifPhysicalLocation{
 							ArtifactLocation: sarifArtifactLocation{ArtifactURI: absoluteFilePath},
 							Region: sarifRegion{
-								StartLine:   line,
-								EndLine:     line + 1,
+								StartLine:   startLocation.Line,
+								EndLine:     endLocation.Line,
 								StartColumn: startLocation.Col,
-								EndColumn:   1,
-								// StartResource: startLocation,
-								// EndResource:   endLocation,
+								EndColumn:   endLocation.Col,
 							},
 						},
 					},
@@ -693,6 +721,24 @@ func (sr *sarifReport) BuildSarifIssue(issue *model.QueryResult, sciInfo model.S
 				PartialFingerprints: SarifPartialFingerprints{
 					DatadogFingerprint: GetDatadogFingerprintHash(sciInfo, absoluteFilePath, line, issue.QueryID),
 				},
+			}
+			if vulnerability.Remediation != "" && vulnerability.RemediationType != "" {
+				sarifFix, err := TransformToSarifFix(
+					vulnerability,
+					startLocation,
+					endLocation,
+				)
+				if err != nil {
+					// we do not want to fail the whole process if we cannot transform the fix
+					// so we just log the error and continue
+					log.Err(err).Msgf("failed to transform to sarif fix: %v", err)
+				} else {
+					if vulnerability.RemediationType == "addition" {
+						result.ResultLocations[0].PhysicalLocation.Region.StartLine = endLocation.Line
+						result.ResultLocations[0].PhysicalLocation.Region.EndLine = endLocation.Line + 4
+					}
+					result.ResultFixes = append(result.ResultFixes, sarifFix)
+				}
 			}
 			sr.Runs[0].Results = append(sr.Runs[0].Results, result)
 		}
@@ -760,4 +806,172 @@ func GetDatadogFingerprintHash(sciInfo model.SCIInfo, filePath string, startLine
 		runTypeRelatedInfo = time.Now().Format("2006/01/02")
 	}
 	return StringToHash(fmt.Sprintf("%s|%s|%s|%s|%d|%s", sciInfo.RunType, runTypeRelatedInfo, sciInfo.RepositoryCommitInfo.RepositoryUrl, filePath, startLine, ruleId))
+}
+
+func TransformToSarifFix(vuln model.VulnerableFile, startLocation sarifResourceLocation, endLocation sarifResourceLocation) (sarifFix, error) {
+	var insertedText string
+	fixStart := startLocation
+	fixEnd := endLocation
+
+	switch vuln.RemediationType {
+
+	case "replacement":
+		var patch map[string]string
+		err := json.Unmarshal([]byte(vuln.Remediation), &patch)
+		if err != nil {
+			return sarifFix{}, fmt.Errorf("invalid remediation format for replacement: %v", err)
+		}
+
+		before := strings.TrimSpace(patch["before"])
+		after := strings.TrimSpace(patch["after"])
+
+		// Regex to extract 'key = value' format
+		re := regexp.MustCompile(`(?m)["']?(?P<key>\w+)["']?\s*[:=]\s*(?P<value>\[.*?\]|".*?"|true|false|\d+)[,]?\s*`)
+		matches := re.FindStringSubmatch(vuln.LineWithVulnerability)
+
+		if len(matches) < 3 {
+			return sarifFix{}, fmt.Errorf("could not parse key-value from line: %s", vuln.LineWithVulnerability)
+		}
+
+		key := strings.TrimSpace(matches[1])
+		value := strings.TrimSpace(matches[2])
+
+		// Strip inline comment (from # or // onward)
+		if idx := strings.IndexAny(value, "#/"); idx != -1 {
+			value = strings.TrimSpace(value[:idx])
+		}
+
+		// Reconstruct the normalized key-value pair
+		fullLine := key + " = " + value
+
+		// Clean "before" for flexible matching
+		normalizedFullLine := normalize(fullLine)
+		normalizedValue := normalize(value)
+		normalizedBefore := normalize(before)
+
+		matched := false
+
+		if strings.Contains(normalizedBefore, "{") && strings.Contains(normalizedBefore, "=") {
+			reInner := regexp.MustCompile(`(?m)(\w+)\s*=\s*(".*?"|\S+)`)
+			for _, inner := range reInner.FindAllString(normalizedBefore, -1) {
+				n := normalize(inner)
+				if n == normalizedFullLine || n == normalizedValue {
+					matched = true
+					break
+				}
+			}
+		} else {
+			matched = normalizedBefore == normalizedFullLine || normalizedBefore == normalizedValue
+		}
+
+		if !matched {
+			return sarifFix{}, fmt.Errorf("line value '%s' does not match 'before' value '%s'", normalizedFullLine, normalizedBefore)
+		}
+
+		// Determine if the after value is quoted if the original was
+		wasQuoted := strings.HasPrefix(value, `"`) && strings.HasSuffix(value, `"`)
+		if wasQuoted && !(strings.HasPrefix(after, `"`) && strings.HasSuffix(after, `"`)) {
+			after = `"` + after + `"`
+		}
+
+		// Get regex indexes for replacement slicing
+		idxs := re.FindStringSubmatchIndex(vuln.LineWithVulnerability)
+		if len(idxs) < 6 {
+			return sarifFix{}, fmt.Errorf("could not determine exact value location")
+		}
+
+		// Determine if 'after' is a full line or just a new value
+		isFullLine := strings.Contains(after, "=")
+
+		if isFullLine {
+			// If after is a full line like "key = newvalue", just replace the whole line
+			insertedText = after
+		} else {
+			// Just replace the value part of the line
+			prefix := vuln.LineWithVulnerability[:idxs[4]] // up to start of value
+			suffix := vuln.LineWithVulnerability[idxs[5]:] // after value
+			insertedText = prefix + after + suffix
+		}
+
+		// Position for SARIF fix
+		fixStart = sarifResourceLocation{
+			Line: vuln.Line,
+			Col:  startLocation.Col,
+		}
+
+		fixEnd = sarifResourceLocation{
+			Line: vuln.Line,
+			Col:  len(vuln.LineWithVulnerability) + 1,
+		}
+
+	case "addition":
+		// Indent based on provided startLocation.Col
+		indent := strings.Repeat(" ", startLocation.Col-1)
+
+		// Support multiline remediation (e.g., blocks or nested maps)
+		remediationLines := strings.Split(vuln.Remediation, "\n")
+		for i, line := range remediationLines {
+			remediationLines[i] = indent + strings.TrimRight(line, "  ")
+		}
+		formattedRemediation := strings.Join(remediationLines, "\n")
+
+		// Indent the closing brace if one gets pushed by this insertion
+		closingBraceIndent := indent
+
+		// Final insertedText with leading newline and brace re-indent
+		insertedText = "\n" + formattedRemediation + "\n" + closingBraceIndent
+
+		fixStart = sarifResourceLocation{
+			Line: startLocation.Line,
+			Col:  startLocation.Col,
+		}
+		fixEnd = fixStart
+
+	case "removal":
+		// Delete the entire line
+		fixStart = sarifResourceLocation{
+			Line: vuln.Line,
+			Col:  1,
+		}
+		fixEnd = sarifResourceLocation{
+			Line: vuln.Line,
+			Col:  len(vuln.LineWithVulnerability) + 1,
+		}
+		insertedText = "" // nothing to insert
+	}
+
+	replacement := fixReplacement{
+		DeletedRegion: sarifRegion{
+			StartLine:   fixStart.Line,
+			StartColumn: fixStart.Col,
+			EndLine:     fixEnd.Line,
+			EndColumn:   fixEnd.Col,
+		},
+	}
+	// If the insertedText is empty, we don't need to set it
+	if insertedText != "" {
+		replacement.InsertedContent = fixContent{Text: insertedText}
+	}
+
+	return sarifFix{
+		ArtifactChanges: []artifactChange{{
+			ArtifactLocation: artifactLocation{URI: vuln.FileName},
+			Replacements:     []fixReplacement{replacement},
+		}},
+		Description: fixMessage{
+			Text: fmt.Sprintf("Apply remediation: %s", vuln.Remediation),
+		},
+	}, nil
+}
+
+func normalize(s string) string {
+	s = strings.TrimSpace(s)
+	s = strings.ReplaceAll(s, "\r", "")
+	s = strings.ReplaceAll(s, `\"`, `"`)     // Handle escaped quotes
+	s = strings.ReplaceAll(s, `"`, `"`)      // Double safety
+	s = strings.ReplaceAll(s, `“`, `"`)      // Smart quotes (optional)
+	s = strings.ReplaceAll(s, `”`, `"`)      // Smart quotes (optional)
+	s = strings.Join(strings.Fields(s), " ") // normalize extra whitespace
+	s = strings.Trim(s, `"`)
+	return s
 }

@@ -55,7 +55,7 @@ CxPolicy[result] {
 		"issueType": "MissingAttribute",
 		"keyExpectedValue": "One of 'rule.ebs_block_device.encrypted' should be 'true'",
 		"keyActualValue": "One of 'rule.ebs_block_device' is undefined",
-		"remediation": "ebs_block_device{ \n\t\tencrypted = true\n\t}",
+		"remediation": "ebs_block_device{ \n\tencrypted = true\n\t}",
 		"remediationType": "addition",
 	}
 }

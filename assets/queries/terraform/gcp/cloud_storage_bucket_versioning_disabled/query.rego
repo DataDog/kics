@@ -17,7 +17,7 @@ CxPolicy[result] {
 		"keyExpectedValue": "'versioning' should be defined and not null",
 		"keyActualValue": "'versioning' it undefined or null",
 		"searchLine": common_lib.build_search_line(["resource", "google_storage_bucket", name],[]),
-		"remediation": "versioning {\n\t\tenabled = true\n\t}\n",
+		"remediation": "versioning {\n\tenabled = true\n\t}\n",
 		"remediationType": "addition",
 	}
 }

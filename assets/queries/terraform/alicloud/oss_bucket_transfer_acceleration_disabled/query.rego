@@ -41,7 +41,7 @@ CxPolicy[result] {
 		"keyExpectedValue": "'transfer_acceleration.enabled' should be defined and set to true",
 		"keyActualValue": "'transfer_acceleration' is missing",
 		"searchLine": common_lib.build_search_line(["resource", "alicloud_oss_bucket", name], []),
-		"remediation": "transfer_acceleration{\n\t\tenabled = true\n\t}",
+		"remediation": "transfer_acceleration{\n\tenabled = true\n\t}",
 		"remediationType": "addition",
 	}
 }

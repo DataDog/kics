@@ -25,23 +25,24 @@ type SeveritySummary struct {
 
 // VulnerableFile contains information of a vulnerable file and where the vulnerability was found
 type VulnerableFile struct {
-	FileName         string           `json:"file_name"`
-	SimilarityID     string           `json:"similarity_id"`
-	OldSimilarityID  string           `json:"old_similarity_id,omitempty"`
-	Line             int              `json:"line"`
-	ResourceLocation ResourceLocation `json:"resource_location"`
-	VulnLines        *[]CodeLine      `json:"-"`
-	ResourceType     string           `json:"resource_type,omitempty"`
-	ResourceName     string           `json:"resource_name,omitempty"`
-	IssueType        IssueType        `json:"issue_type"`
-	SearchKey        string           `json:"search_key"`
-	SearchLine       int              `json:"search_line"`
-	SearchValue      string           `json:"search_value"`
-	KeyExpectedValue string           `json:"expected_value"`
-	KeyActualValue   string           `json:"actual_value"`
-	Value            *string          `json:"value,omitempty"`
-	Remediation      string           `json:"remediation,omitempty"`
-	RemediationType  string           `json:"remediation_type,omitempty"`
+	FileName              string           `json:"file_name"`
+	SimilarityID          string           `json:"similarity_id"`
+	OldSimilarityID       string           `json:"old_similarity_id,omitempty"`
+	Line                  int              `json:"line"`
+	ResourceLocation      ResourceLocation `json:"resource_location"`
+	VulnLines             *[]CodeLine      `json:"-"`
+	ResourceType          string           `json:"resource_type,omitempty"`
+	ResourceName          string           `json:"resource_name,omitempty"`
+	IssueType             IssueType        `json:"issue_type"`
+	SearchKey             string           `json:"search_key"`
+	SearchLine            int              `json:"search_line"`
+	SearchValue           string           `json:"search_value"`
+	KeyExpectedValue      string           `json:"expected_value"`
+	KeyActualValue        string           `json:"actual_value"`
+	Value                 *string          `json:"value,omitempty"`
+	Remediation           string           `json:"remediation,omitempty"`
+	RemediationType       string           `json:"remediation_type,omitempty"`
+	LineWithVulnerability string           `json:"line_content,omitempty"`
 }
 
 // QueryResult contains a query that tested positive ID, name, severity and a list of files that tested vulnerable
@@ -217,23 +218,24 @@ func CreateSummary(counters Counters, vulnerabilities []Vulnerability,
 
 		qItem := q[item.QueryID]
 		qItem.Files = append(qItem.Files, VulnerableFile{
-			FileName:         resolvedPath,
-			SimilarityID:     item.SimilarityID,
-			OldSimilarityID:  item.OldSimilarityID,
-			Line:             item.Line,
-			VulnLines:        item.VulnLines,
-			ResourceType:     item.ResourceType,
-			ResourceName:     item.ResourceName,
-			IssueType:        item.IssueType,
-			SearchKey:        item.SearchKey,
-			SearchValue:      item.SearchValue,
-			SearchLine:       item.SearchLine,
-			KeyExpectedValue: item.KeyExpectedValue,
-			KeyActualValue:   item.KeyActualValue,
-			Value:            item.Value,
-			Remediation:      item.Remediation,
-			RemediationType:  item.RemediationType,
-			ResourceLocation: item.ResourceLocation,
+			FileName:              resolvedPath,
+			SimilarityID:          item.SimilarityID,
+			OldSimilarityID:       item.OldSimilarityID,
+			Line:                  item.Line,
+			VulnLines:             item.VulnLines,
+			ResourceType:          item.ResourceType,
+			ResourceName:          item.ResourceName,
+			IssueType:             item.IssueType,
+			SearchKey:             item.SearchKey,
+			SearchValue:           item.SearchValue,
+			SearchLine:            item.SearchLine,
+			KeyExpectedValue:      item.KeyExpectedValue,
+			KeyActualValue:        item.KeyActualValue,
+			Value:                 item.Value,
+			Remediation:           item.Remediation,
+			RemediationType:       item.RemediationType,
+			ResourceLocation:      item.ResourceLocation,
+			LineWithVulnerability: item.LineWithVulnerability,
 		})
 
 		filePaths[resolvedPath] = item.FileName

@@ -18,7 +18,7 @@ CxPolicy[result] {
 		"issueType": "MissingAttribute",
 		"keyExpectedValue": sprintf("aws_globalaccelerator_accelerator[{{%s}}].flow_logs_enabled should be defined and not null", [name]),
 		"keyActualValue": sprintf("aws_globalaccelerator_accelerator[{{%s}}].flow_logs_enabled is undefined or null", [name]),
-		"remediation": "attributes {\n\t\t flow_logs_enabled = true \n\t}",
+		"remediation": "attributes {\n\tflow_logs_enabled = true \n\t}",
 		"remediationType": "addition",
 	}
 }

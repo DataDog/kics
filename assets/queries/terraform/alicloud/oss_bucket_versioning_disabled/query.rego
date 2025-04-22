@@ -41,7 +41,7 @@ CxPolicy[result] {
 		"keyExpectedValue": "'versioning.status' should be defined and set to enabled",
 		"keyActualValue": "'versioning' is missing",
 		"searchLine": common_lib.build_search_line(["resource", "alicloud_oss_bucket", name], []),
-		"remediation": "versioning {\n\t\tstatus = \"Enabled\"\n\t}",
+		"remediation": "versioning {\n\tstatus = \"Enabled\"\n\t}",
         "remediationType": "addition",
 	}
 }

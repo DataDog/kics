@@ -63,7 +63,7 @@ CxPolicy[result] {
 		"keyExpectedValue": "'log_disconnections' parameter should be defined and value should be 'ON' in parametes array",
 		"keyActualValue": "'log_disconnections' parameter is not defined in parametes array",
 		"searchLine": common_lib.build_search_line(["resource", "alicloud_db_instance", name], []),
-		"remediation": "parameters = [{\n\t\tname = \"log_disconnections\"\n\t\tvalue = \"ON\"\n\t}]",
+		"remediation": "parameters = [{\n\tname = \"log_disconnections\"\n\tvalue = \"ON\"\n\t}]",
 		"remediationType": "addition",
 	}
 }

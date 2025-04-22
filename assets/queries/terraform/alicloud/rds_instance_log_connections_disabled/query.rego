@@ -63,7 +63,7 @@ CxPolicy[result] {
 		"keyExpectedValue": "'log_connections' parameter should be defined and value should be 'ON' in parameters array",
 		"keyActualValue": "'log_connections' parameter is not defined in parameters array",
 		"searchLine": common_lib.build_search_line(["resource", "alicloud_db_instance", name], []),
-		"remediation": "parameters = [{\n\t\tname = \"log_connections\"\n\t\tvalue = \"ON\"\n\t}]",
+		"remediation": "parameters = [{\n\tname = \"log_connections\"\n\tvalue = \"ON\"\n\t}]",
 		"remediationType": "addition",
 	}
 }

@@ -39,7 +39,7 @@ CxPolicy[result] {
 		"issueType": "MissingAttribute",
 		"keyExpectedValue": sprintf("aws_lambda_function[%s].tracing_config should be defined and not null", [name]),
 		"keyActualValue": sprintf("aws_lambda_function[%s].tracing_config is undefined or null", [name]),
-		"remediation": "tracing_config {\n\t\tmode = Active\n\t}",
+		"remediation": "tracing_config {\n\tmode = Active\n\t}",
 		"remediationType": "addition",
 	}
 }

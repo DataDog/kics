@@ -37,7 +37,7 @@ CxPolicy[result] {
 		"issueType": "MissingAttribute",
 		"keyExpectedValue": "'aws_redshift_cluster.logging' should be true",
 		"keyActualValue": "'aws_redshift_cluster.logging' is undefined",
-		"remediation": "logging {\n\t\tenable = true \n\t}",
+		"remediation": "logging {\n\tenable = true \n\t}",
 		"remediationType": "addition",
 	}
 }

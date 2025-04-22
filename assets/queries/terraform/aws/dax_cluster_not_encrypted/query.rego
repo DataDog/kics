@@ -36,7 +36,7 @@ CxPolicy[result] {
 		"issueType": "MissingAttribute",
 		"keyExpectedValue": "aws_dax_cluster.server_side_encryption.enabled should be set to true",
 		"keyActualValue": "aws_dax_cluster.server_side_encryption is missing",
-		"remediation": "server_side_encryption {\n\t\tenabled = true\n\t}",
+		"remediation": "server_side_encryption {\n\tenabled = true\n\t}",
 		"remediationType": "addition",
 	}
 }

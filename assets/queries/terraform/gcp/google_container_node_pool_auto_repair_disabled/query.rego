@@ -36,7 +36,7 @@ CxPolicy[result] {
 		"issueType": "MissingAttribute",
 		"keyExpectedValue": sprintf("google_container_node_pool[%s].management.auto_repair should be defined and not null", [name]),
 		"keyActualValue": sprintf("google_container_node_pool[%s].management.auto_repair is undefined or null", [name]),
-		"remediation": "management {\n\t\tauto_repair = true\n\t}\n",
+		"remediation": "management {\n\tauto_repair = true\n\t}\n",
 		"remediationType": "addition",
 	}
 }

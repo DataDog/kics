@@ -16,7 +16,7 @@ CxPolicy[result] {
 		"keyExpectedValue": sprintf("'aws_elb[{{%s}}].access_logs' should be defined and not null", [name]),
 		"keyActualValue": sprintf("'aws_elb[{{%s}}].access_logs' is undefined or null", [name]),
 		"searchLine": common_lib.build_search_line(["resource", "aws_elb", name], []),
-		"remediation": "access_logs {\n\t\tenabled = true\n\t}",
+		"remediation": "access_logs {\n\tenabled = true\n\t}",
 		"remediationType": "addition",
 	}
 }
@@ -57,7 +57,7 @@ CxPolicy[result] {
 		"keyExpectedValue": "'access_logs' should be defined and not null",
 		"keyActualValue": "'access_logs' is undefined or null",
 		"searchLine": common_lib.build_search_line(["module", name], []),
-		"remediation": sprintf("%s {\n\t\tenabled = true\n\t}", [keyToCheck]),
+		"remediation": sprintf("%s {\n\tenabled = true\n\t}", [keyToCheck]),
 		"remediationType": "addition",
 	}
 }
