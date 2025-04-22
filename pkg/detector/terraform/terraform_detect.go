@@ -8,6 +8,7 @@ package terraform
 import (
 	"bytes"
 	"fmt"
+	"regexp"
 	"strconv"
 	"strings"
 
@@ -29,6 +30,9 @@ const (
 // DetectLine searches vulnerability line in terraform files
 func (d DetectKindLine) DetectLine(file *model.FileMetadata, searchKey string,
 	outputLines int, logwithfields *zerolog.Logger) model.VulnerabilityLines {
+	// Sanitize malformed Go formatting artifacts
+	searchKey = sanitizeSearchKey(searchKey)
+
 	det := &detector.DefaultDetectLineResponse{
 		CurrentLine:     0,
 		IsBreak:         false,
@@ -55,7 +59,7 @@ func (d DetectKindLine) DetectLine(file *model.FileMetadata, searchKey string,
 	}
 
 	for _, key := range splitSanitized {
-		substr1, substr2 := detector.GenerateSubstrings(key, extractedString)
+		substr1, substr2 := detector.GenerateSubstrings(key, extractedString, lines)
 		det, _ = det.DetectCurrentLine(substr1, substr2, 0, lines)
 
 		if det.IsBreak {
@@ -106,6 +110,12 @@ type BlockInfo struct {
 	Depth   int
 	Parent  *hclsyntax.Block
 	IsMatch bool
+}
+
+func sanitizeSearchKey(key string) string {
+	// Replace any instance of [%!s(int=N)] with [N]
+	re := regexp.MustCompile(`\[%!s\(int=(\d+)\)\]`)
+	return re.ReplaceAllString(key, "[$1]")
 }
 
 func parseAndFindTerraformBlock(src []byte, identifyingLine int) (model.ResourceLine, model.ResourceLine, string, error) {
