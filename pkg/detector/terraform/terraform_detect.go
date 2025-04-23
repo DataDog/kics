@@ -144,36 +144,14 @@ func parseAndFindTerraformBlock(src []byte, identifyingLine int) (model.Resource
 		blockEnd := block.Body.SrcRange.End
 
 		if identifyingLine >= blockStart.Line && identifyingLine <= blockEnd.Line {
-			// Check for nested block or inline object
-			structureName, nestedStart, nestedEnd, isAttribute := findContainingStructure(block, identifyingLine)
-
 			var insertionLine int
 			var insertionCol int
 
-			if structureName != "" {
-				// Line is inside a nested block or object attribute
-				insertionLine = nestedEnd.Line - 1 // one line before the closing brace
+			if identifyingLine == block.DefRange().Start.Line {
+				// On the block header — insert before the block’s closing brace
+				insertionLine = blockEnd.Line
 
-				if isAttribute {
-					// For object-style attributes, infer indent from inner attribute lines
-					for i := insertionLine - 1; i > nestedStart.Line && i <= len(lines); i-- {
-						trimmed := strings.TrimSpace(string(lines[i-1]))
-						if trimmed != "" && !strings.HasPrefix(trimmed, "#") && strings.Contains(trimmed, "=") {
-							insertionCol = countLeadingSpacesOrTabs(lines[i-1]) + 1
-							break
-						}
-					}
-				} else {
-					// For real nested blocks, use closing brace indent
-					if insertionLine-1 >= 0 && insertionLine-1 < len(lines) {
-						insertionCol = countLeadingSpacesOrTabs(lines[insertionLine-1]) + 1
-					}
-				}
-			} else {
-				// Top-level block — insert before outer block's closing brace
-				insertionLine = blockEnd.Line - 1 // one line before the closing brace
-
-				// Try to infer indentation from the last meaningful line inside the block
+				// Infer indent from last non-empty, non-comment line
 				for i := insertionLine; i > blockStart.Line && i <= len(lines); i-- {
 					trimmed := strings.TrimSpace(string(lines[i-1]))
 					if trimmed != "" && !strings.HasPrefix(trimmed, "#") {
@@ -181,9 +159,38 @@ func parseAndFindTerraformBlock(src []byte, identifyingLine int) (model.Resource
 						break
 					}
 				}
+			} else if identifyingLine > block.DefRange().Start.Line {
+				// Possibly inside a nested block or object attribute
+				structureName, nestedStart, nestedEnd, isAttribute := findContainingStructure(block, identifyingLine)
+
+				if structureName != "" {
+					insertionLine = nestedEnd.Line - 1
+					if isAttribute {
+						for i := insertionLine - 1; i > nestedStart.Line && i <= len(lines); i-- {
+							trimmed := strings.TrimSpace(string(lines[i-1]))
+							if trimmed != "" && !strings.HasPrefix(trimmed, "#") && strings.Contains(trimmed, "=") {
+								insertionCol = countLeadingSpacesOrTabs(lines[i-1]) + 1
+								break
+							}
+						}
+					} else {
+						if insertionLine-1 >= 0 && insertionLine-1 < len(lines) {
+							insertionCol = countLeadingSpacesOrTabs(lines[insertionLine-1]) + 1
+						}
+					}
+				} else {
+					// Default to block-level insertion
+					insertionLine = blockEnd.Line - 1
+					for i := insertionLine; i > blockStart.Line && i <= len(lines); i-- {
+						trimmed := strings.TrimSpace(string(lines[i-1]))
+						if trimmed != "" && !strings.HasPrefix(trimmed, "#") {
+							insertionCol = countLeadingSpacesOrTabs(lines[i-1]) + 1
+							break
+						}
+					}
+				}
 			}
 
-			// Fallback if nothing was found
 			if insertionCol == 0 && insertionLine-1 < len(lines) {
 				insertionCol = countLeadingSpacesOrTabs(lines[insertionLine-1]) + 1
 			}
