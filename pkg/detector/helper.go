@@ -92,32 +92,41 @@ func GenerateSubstrings(key string, extracted [][]string, lines []string) (strin
 		key = strings.Replace(key, placeholder, str[0], 1)
 	}
 
-	// Handle resource-style keys like aws_something[resource_name] or [{{label}}]
+	// Handle [something] or ["key"]
 	if strings.Contains(key, "[") && strings.HasSuffix(key, "]") {
 		start := strings.Index(key, "[")
-		end := strings.Index(key, "]")
+		end := strings.LastIndex(key, "]")
 		if start > 0 && end > start {
 			base := key[:start]
 			bracketValue := key[start+1 : end]
 
-			// Handle bracketed placeholders like [{{label}}]
+			// Strip quotes from map-style keys like ["Name"]
+			bracketValue = strings.Trim(bracketValue, `"'`)
+
+			// Handle placeholders like [{{label}}]
 			if strings.HasPrefix(bracketValue, "{{") && strings.HasSuffix(bracketValue, "}}") {
 				bracketValue = strings.TrimPrefix(bracketValue, "{{")
 				bracketValue = strings.TrimSuffix(bracketValue, "}}")
 			}
 
-			// Heuristic: If bracketValue is a number, it's likely a list index
+			// Handle numeric index
 			if index, err := strconv.Atoi(bracketValue); err == nil {
-				// List index
+				// Use list logic only if this looks like an actual list
+				if looksLikeListAttribute(base, lines) {
+					substr1 = base
+					substr2 = resolveListIndex(base, index, lines)
+					return substr1, substr2
+				}
+				// Otherwise treat it as a block navigation
 				substr1 = base
-				substr2 = resolveListIndex(base, index, lines)
-				return substr1, substr2
-			} else {
-				// Resource label
-				substr1 = base
-				substr2 = bracketValue
+				substr2 = "" // no value needed
 				return substr1, substr2
 			}
+
+			// Resource label or map key
+			substr1 = base
+			substr2 = bracketValue
+			return substr1, substr2
 		}
 	}
 
@@ -128,12 +137,11 @@ func GenerateSubstrings(key string, extracted [][]string, lines []string) (strin
 		substr2 = strings.TrimSpace(parts[1])
 	}
 
-	// If substr2 is still empty, try to extract value from the actual lines
+	// Final fallback: try to resolve value from lines
 	if substr2 == "" && substr1 != "" {
 		for _, line := range lines {
 			line = strings.TrimSpace(line)
 			if strings.HasPrefix(line, substr1+" =") {
-				// Extract value after "="
 				parts := strings.SplitN(line, "=", 2)
 				if len(parts) == 2 {
 					substr2 = strings.TrimSpace(parts[1])
@@ -144,6 +152,16 @@ func GenerateSubstrings(key string, extracted [][]string, lines []string) (strin
 	}
 
 	return substr1, substr2
+}
+
+func looksLikeListAttribute(attrName string, lines []string) bool {
+	for _, line := range lines {
+		line = strings.TrimSpace(line)
+		if strings.HasPrefix(line, attrName+" = [") {
+			return true
+		}
+	}
+	return false
 }
 
 func resolveListIndex(attrName string, index int, lines []string) string {

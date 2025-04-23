@@ -52,7 +52,9 @@ func (d DetectKindLine) DetectLine(file *model.FileMetadata, searchKey string,
 	}
 
 	lines := *file.LinesOriginalData
-	splitSanitized := strings.Split(sKey, ".")
+	splitSanitized := strings.FieldsFunc(sKey, func(r rune) bool {
+		return r == '.' || r == '/'
+	})
 	for index, split := range splitSanitized {
 		if strings.Contains(split, "$ref") {
 			splitSanitized[index] = strings.Join(splitSanitized[index:], ".")
