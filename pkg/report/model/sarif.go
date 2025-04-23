@@ -867,7 +867,7 @@ func TransformToSarifFix(vuln model.VulnerableFile, startLocation sarifResourceL
 			}
 		}
 
-		insertedText := ""
+		insertedText = ""
 		matched := false
 
 		for _, alt := range normalizedAlternatives {
