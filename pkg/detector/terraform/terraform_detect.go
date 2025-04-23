@@ -138,7 +138,6 @@ func parseAndFindTerraformBlock(src []byte, identifyingLine int) (model.Resource
 	if diagnostics != nil && diagnostics.HasErrors() {
 		return resourceStart, resourceEnd, lineContent, fmt.Errorf("failed to parse hcl file %s: %v", filePath, diagnostics.Errs())
 	}
-
 	for _, block := range hclSyntaxFile.Body.(*hclsyntax.Body).Blocks {
 		blockStart := block.TypeRange.Start
 		blockEnd := block.Body.SrcRange.End
