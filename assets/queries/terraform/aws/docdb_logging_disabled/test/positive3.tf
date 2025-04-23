@@ -7,5 +7,7 @@ resource "aws_docdb_cluster" "positive3" {
   preferred_backup_window = "07:00-09:00"
   skip_final_snapshot     = true
 
+  
+  storage_encrypted = true
   enabled_cloudwatch_logs_exports = ["profiler"]
 }
