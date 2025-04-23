@@ -3,5 +3,9 @@ resource "aws_elasticsearch_domain" "good_example" {
 
   vpc_options {
 
+  
+  encrypt_at_rest {
+  	enabled = true
+  	}
   }
 }
