@@ -12,6 +12,8 @@ resource "aws_ecs_task_definition" "service_2" {
       authorization_config {
         access_point_id = aws_efs_access_point.test.id
         iam             = "ENABLED"
+      
+      transit_encryption = "ENABLED"
       }
     }
   }
