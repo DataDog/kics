@@ -1019,7 +1019,7 @@ func TransformToSarifFix(vuln model.VulnerableFile, startLocation sarifResourceL
 
 	case "addition":
 		// Indent based on provided startLocation.Col
-		indent := strings.Repeat(" ", startLocation.Col-1)
+		indent := strings.Repeat(" ", startLocation.Col)
 
 		// Support multiline remediation (e.g., blocks or nested maps)
 		remediationLines := strings.Split(vuln.Remediation, "\n")
@@ -1032,7 +1032,7 @@ func TransformToSarifFix(vuln model.VulnerableFile, startLocation sarifResourceL
 		closingBraceIndent := indent
 
 		// Final insertedText with leading newline and brace re-indent
-		insertedText = "\n" + formattedRemediation + "\n" + closingBraceIndent
+		insertedText = "\n" + formattedRemediation + closingBraceIndent
 
 		fixStart = sarifResourceLocation{
 			Line: startLocation.Line,
