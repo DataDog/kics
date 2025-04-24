@@ -682,30 +682,40 @@ func (sr *sarifReport) BuildSarifIssue(issue *model.QueryResult, sciInfo model.S
 
 			resourceLocation := vulnerability.ResourceLocation
 
-			if resourceLocation.ResourceStart.Line < 1 {
-				resourceLocation.ResourceStart.Line = 1
+			if resourceLocation.Start.Line < 1 {
+				resourceLocation.Start.Line = 1
 			}
-			if resourceLocation.ResourceEnd.Line < 1 {
-				resourceLocation.ResourceEnd.Line = resourceLocation.ResourceStart.Line
+			if resourceLocation.End.Line < 1 {
+				resourceLocation.End.Line = resourceLocation.Start.Line
 			}
-			if resourceLocation.ResourceStart.Col < 1 {
-				resourceLocation.ResourceStart.Col = 1
+			if resourceLocation.Start.Col < 1 {
+				resourceLocation.Start.Col = 1
 			}
-			if resourceLocation.ResourceEnd.Col < 1 {
-				resourceLocation.ResourceEnd.Col = resourceLocation.ResourceStart.Col
-			}
-
-			startLocation := sarifResourceLocation{
-				Line: resourceLocation.ResourceStart.Line,
-				Col:  resourceLocation.ResourceStart.Col,
-			}
-			endLocation := sarifResourceLocation{
-				Line: resourceLocation.ResourceEnd.Line,
-				Col:  resourceLocation.ResourceEnd.Col,
+			if resourceLocation.End.Col < 1 {
+				resourceLocation.End.Col = resourceLocation.Start.Col
 			}
 
-			if startLocation.Col < 1 {
-				startLocation.Col = 1
+			resourceStartLocation := sarifResourceLocation{
+				Line: resourceLocation.Start.Line,
+				Col:  resourceLocation.Start.Col,
+			}
+			resourceEndLocation := sarifResourceLocation{
+				Line: resourceLocation.End.Line,
+				Col:  resourceLocation.End.Col,
+			}
+
+			remediationLocation := vulnerability.RemediationLocation
+			remediationStartLocation := sarifResourceLocation{
+				Line: remediationLocation.Start.Line,
+				Col:  remediationLocation.Start.Col,
+			}
+			remediationEndLocation := sarifResourceLocation{
+				Line: remediationLocation.End.Line,
+				Col:  remediationLocation.End.Col,
+			}
+
+			if resourceStartLocation.Col < 1 {
+				resourceStartLocation.Col = 1
 			}
 
 			absoluteFilePath := strings.ReplaceAll(issue.Files[idx].FileName, "../", "")
@@ -721,10 +731,10 @@ func (sr *sarifReport) BuildSarifIssue(issue *model.QueryResult, sciInfo model.S
 						PhysicalLocation: sarifPhysicalLocation{
 							ArtifactLocation: sarifArtifactLocation{ArtifactURI: absoluteFilePath},
 							Region: sarifRegion{
-								StartLine:   startLocation.Line,
-								EndLine:     endLocation.Line,
-								StartColumn: startLocation.Col,
-								EndColumn:   endLocation.Col,
+								StartLine:   resourceStartLocation.Line,
+								EndLine:     resourceEndLocation.Line,
+								StartColumn: resourceStartLocation.Col,
+								EndColumn:   resourceEndLocation.Col,
 							},
 						},
 					},
@@ -739,8 +749,8 @@ func (sr *sarifReport) BuildSarifIssue(issue *model.QueryResult, sciInfo model.S
 			if vulnerability.Remediation != "" && vulnerability.RemediationType != "" {
 				sarifFix, err := TransformToSarifFix(
 					vulnerability,
-					startLocation,
-					endLocation,
+					remediationStartLocation,
+					remediationEndLocation,
 				)
 				if err != nil {
 					// we do not want to fail the whole process if we cannot transform the fix
@@ -748,8 +758,8 @@ func (sr *sarifReport) BuildSarifIssue(issue *model.QueryResult, sciInfo model.S
 					log.Err(err).Msgf("failed to transform to sarif fix: %v", err)
 				} else {
 					if vulnerability.RemediationType == "addition" {
-						result.ResultLocations[0].PhysicalLocation.Region.StartLine = endLocation.Line
-						result.ResultLocations[0].PhysicalLocation.Region.EndLine = endLocation.Line + 4
+						result.ResultLocations[0].PhysicalLocation.Region.StartLine = resourceEndLocation.Line
+						result.ResultLocations[0].PhysicalLocation.Region.EndLine = resourceEndLocation.Line + 4
 					}
 					result.ResultFixes = append(result.ResultFixes, sarifFix)
 				}

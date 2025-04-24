@@ -42,6 +42,7 @@ type VulnerableFile struct {
 	Value                 *string          `json:"value,omitempty"`
 	Remediation           string           `json:"remediation,omitempty"`
 	RemediationType       string           `json:"remediation_type,omitempty"`
+	RemediationLocation   ResourceLocation `json:"remediation_location,omitempty"`
 	LineWithVulnerability string           `json:"line_content,omitempty"`
 }
 
@@ -236,6 +237,7 @@ func CreateSummary(counters Counters, vulnerabilities []Vulnerability,
 			RemediationType:       item.RemediationType,
 			ResourceLocation:      item.ResourceLocation,
 			LineWithVulnerability: item.LineWithVulnerability,
+			RemediationLocation:   item.RemediationLocation,
 		})
 
 		filePaths[resolvedPath] = item.FileName

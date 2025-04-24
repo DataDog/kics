@@ -75,7 +75,7 @@ func (d DetectKindLine) DetectLine(file *model.FileMetadata, searchKey string,
 	if det.FoundAtLeastOne {
 		line := det.CurrentLine + 1
 
-		resourceStart, resourceEnd, lineContent, err := parseAndFindTerraformBlock([]byte(file.OriginalData), line)
+		resourceStart, resourceEnd, remediationStart, remediationEnd, lineContent, err := parseAndFindTerraformBlock([]byte(file.OriginalData), line)
 		if err != nil {
 			fmt.Printf("Failed to parse and find Terraform block for line %d in file %s: %s\n", line, file.FilePath, err)
 			return model.VulnerabilityLines{
@@ -83,8 +83,12 @@ func (d DetectKindLine) DetectLine(file *model.FileMetadata, searchKey string,
 				VulnLines:    &[]model.CodeLine{},
 				ResolvedFile: file.FilePath,
 				ResourceLocation: model.ResourceLocation{
-					ResourceStart: resourceStart,
-					ResourceEnd:   resourceEnd,
+					Start: resourceStart,
+					End:   resourceEnd,
+				},
+				RemediationLocation: model.ResourceLocation{
+					Start: remediationStart,
+					End:   remediationEnd,
 				},
 			}
 		}
@@ -94,8 +98,12 @@ func (d DetectKindLine) DetectLine(file *model.FileMetadata, searchKey string,
 			VulnLines:    detector.GetAdjacentVulnLines(det.CurrentLine, outputLines, lines),
 			ResolvedFile: file.FilePath,
 			ResourceLocation: model.ResourceLocation{
-				ResourceStart: resourceStart,
-				ResourceEnd:   resourceEnd,
+				Start: resourceStart,
+				End:   resourceEnd,
+			},
+			RemediationLocation: model.ResourceLocation{
+				Start: remediationStart,
+				End:   remediationEnd,
 			},
 			LineWithVulnerability: lineContent,
 		}
@@ -123,21 +131,25 @@ func sanitizeSearchKey(key string) string {
 	return re.ReplaceAllString(key, "[$1]")
 }
 
-func parseAndFindTerraformBlock(src []byte, identifyingLine int) (model.ResourceLine, model.ResourceLine, string, error) {
+func parseAndFindTerraformBlock(src []byte, identifyingLine int) (model.ResourceLine, model.ResourceLine, model.ResourceLine, model.ResourceLine, string, error) {
 	filePath := "temp.tf"
 	lines := bytes.Split(src, []byte("\n"))
 	if identifyingLine <= 0 || identifyingLine > len(lines) {
-		return model.ResourceLine{}, model.ResourceLine{}, "", fmt.Errorf("line %d is out of range", identifyingLine)
+		return model.ResourceLine{}, model.ResourceLine{}, model.ResourceLine{}, model.ResourceLine{}, "", fmt.Errorf("line %d is out of range", identifyingLine)
 	}
 	lineContent := string(lines[identifyingLine-1])
 
 	resourceStart := model.ResourceLine{Line: -1, Col: -1}
 	resourceEnd := model.ResourceLine{Line: -1, Col: -1}
 
+	remediationStart := model.ResourceLine{Line: -1, Col: -1}
+	remediationEnd := model.ResourceLine{Line: -1, Col: -1}
+
 	hclSyntaxFile, diagnostics := hclsyntax.ParseConfig(src, filePath, hcl.InitialPos)
 	if diagnostics != nil && diagnostics.HasErrors() {
-		return resourceStart, resourceEnd, lineContent, fmt.Errorf("failed to parse hcl file %s: %v", filePath, diagnostics.Errs())
+		return resourceStart, resourceEnd, remediationStart, remediationEnd, lineContent, fmt.Errorf("failed to parse hcl file %s: %v", filePath, diagnostics.Errs())
 	}
+
 	for _, block := range hclSyntaxFile.Body.(*hclsyntax.Body).Blocks {
 		blockStart := block.TypeRange.Start
 		blockEnd := block.Body.SrcRange.End
@@ -194,14 +206,16 @@ func parseAndFindTerraformBlock(src []byte, identifyingLine int) (model.Resource
 				insertionCol = countLeadingSpacesOrTabs(lines[insertionLine-1]) + 1
 			}
 
-			resourceStart = model.ResourceLine{Line: insertionLine, Col: insertionCol}
-			resourceEnd = model.ResourceLine{Line: insertionLine, Col: insertionCol}
+			remediationStart = model.ResourceLine{Line: insertionLine, Col: insertionCol}
+			remediationEnd = model.ResourceLine{Line: insertionLine, Col: insertionCol}
+			resourceStart = model.ResourceLine{Line: blockStart.Line, Col: blockStart.Column}
+			resourceEnd = model.ResourceLine{Line: blockEnd.Line, Col: blockEnd.Column}
 
-			return resourceStart, resourceEnd, lineContent, nil
+			return resourceStart, resourceEnd, remediationStart, remediationEnd, lineContent, nil
 		}
 	}
 
-	return resourceStart, resourceEnd, lineContent, fmt.Errorf("failed to locate block for line %d", identifyingLine)
+	return resourceStart, resourceEnd, remediationStart, remediationEnd, lineContent, fmt.Errorf("failed to locate block for line %d", identifyingLine)
 }
 
 func countLeadingSpacesOrTabs(line []byte) int {

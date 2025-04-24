@@ -93,6 +93,7 @@ type VulnerabilityLines struct {
 	LineWithVulnerability string
 	ResolvedFile          string
 	ResourceLocation      ResourceLocation
+	RemediationLocation   ResourceLocation
 }
 
 // CommentCommand represents a command given from a comment
@@ -115,8 +116,8 @@ type CodeLine struct {
 
 // ResourceLocation is the line information of the resource with their respective start and end positions
 type ResourceLocation struct {
-	ResourceStart ResourceLine
-	ResourceEnd   ResourceLine
+	Start ResourceLine
+	End   ResourceLine
 }
 
 // ResourceLine is the line information of the resource with their respective positions
@@ -203,6 +204,7 @@ type Vulnerability struct {
 	CloudProvider         string           `json:"cloud_provider"`
 	Remediation           string           `db:"remediation" json:"remediation"`
 	RemediationType       string           `db:"remediation_type" json:"remediation_type"`
+	RemediationLocation   ResourceLocation `json:"remediationLocation"`
 	QueryDuration         time.Duration    `json:"query_duration"`
 	LineWithVulnerability string           `json:"lineWithVulnerability"`
 }
