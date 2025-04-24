@@ -681,6 +681,20 @@ func (sr *sarifReport) BuildSarifIssue(issue *model.QueryResult, sciInfo model.S
 			resultTags := append(tags, resourceTypeTag, resourceNameTag)
 
 			resourceLocation := vulnerability.ResourceLocation
+
+			if resourceLocation.ResourceStart.Line < 1 {
+				resourceLocation.ResourceStart.Line = 1
+			}
+			if resourceLocation.ResourceEnd.Line < 1 {
+				resourceLocation.ResourceEnd.Line = resourceLocation.ResourceStart.Line
+			}
+			if resourceLocation.ResourceStart.Col < 1 {
+				resourceLocation.ResourceStart.Col = 1
+			}
+			if resourceLocation.ResourceEnd.Col < 1 {
+				resourceLocation.ResourceEnd.Col = resourceLocation.ResourceStart.Col
+			}
+
 			startLocation := sarifResourceLocation{
 				Line: resourceLocation.ResourceStart.Line,
 				Col:  resourceLocation.ResourceStart.Col,
@@ -825,10 +839,8 @@ func TransformToSarifFix(vuln model.VulnerableFile, startLocation sarifResourceL
 		before := strings.TrimSpace(patch["before"])
 		after := strings.TrimSpace(patch["after"])
 
-		// Regex to extract 'key = value' format
 		re := regexp.MustCompile(`(?m)["']?(?P<key>\w+)["']?\s*[:=]\s*(?P<value>\[.*?\]|".*?"|true|false|\d+)[,]?\s*`)
 		matches := re.FindStringSubmatch(vuln.LineWithVulnerability)
-
 		if len(matches) < 3 {
 			return sarifFix{}, fmt.Errorf("could not parse key-value from line: %s", vuln.LineWithVulnerability)
 		}
@@ -836,69 +848,160 @@ func TransformToSarifFix(vuln model.VulnerableFile, startLocation sarifResourceL
 		key := strings.TrimSpace(matches[1])
 		value := strings.TrimSpace(matches[2])
 
-		// Strip inline comment (from # or // onward)
 		if idx := strings.IndexAny(value, "#/"); idx != -1 {
 			value = strings.TrimSpace(value[:idx])
 		}
 
-		// Reconstruct the normalized key-value pair
 		fullLine := key + " = " + value
 
-		// Clean "before" for flexible matching
 		normalizedFullLine := normalize(fullLine)
 		normalizedValue := normalize(value)
-		normalizedBefore := normalize(before)
 
+		// Support multiple 'before' values separated by 'or'
+		normalizedAlternatives := []string{normalize(before)}
+		if strings.Contains(before, " or ") {
+			rawParts := strings.Split(before, " or ")
+			normalizedAlternatives = make([]string, 0, len(rawParts))
+			for _, part := range rawParts {
+				normalizedAlternatives = append(normalizedAlternatives, normalize(strings.TrimSpace(part)))
+			}
+		}
+
+		insertedText = ""
 		matched := false
 
-		if strings.Contains(normalizedBefore, "{") && strings.Contains(normalizedBefore, "=") {
-			reInner := regexp.MustCompile(`(?m)(\w+)\s*=\s*(".*?"|\S+)`)
-			for _, inner := range reInner.FindAllString(normalizedBefore, -1) {
+		for _, alt := range normalizedAlternatives {
+			altKey := ""
+			altValue := alt
+
+			if parts := strings.SplitN(alt, "=", 2); len(parts) == 2 {
+				altKey = normalize(strings.TrimSpace(parts[0]))
+				altValue = normalize(strings.TrimSpace(parts[1]))
+			} else {
+				altValue = normalize(alt)
+			}
+
+			if (alt == normalizedFullLine) ||
+				(altKey == normalize(key) && altValue == normalizedValue) ||
+				strings.Contains(normalizedValue, altValue) ||
+				strings.HasPrefix(normalizedValue, altValue) ||
+				strings.HasPrefix(altValue, normalizedValue) {
+				matched = true
+				break
+			}
+		}
+
+		// Block-style fallback (e.g., nested blocks like metadata_options)
+		if !matched && strings.Contains(normalize(before), "{") && strings.Contains(normalize(before), "=") {
+			reInner := regexp.MustCompile(`(?m)(\w+)\s*=\s*(".*?"|\[.*?\]|\S+)`)
+			for _, inner := range reInner.FindAllString(before, -1) {
 				n := normalize(inner)
-				if n == normalizedFullLine || n == normalizedValue {
-					matched = true
+				for _, alt := range normalizedAlternatives {
+					if n == normalizedFullLine || n == normalizedValue || strings.Contains(normalizedFullLine, n) || strings.Contains(n, alt) {
+						matched = true
+						break
+					}
+				}
+				if matched {
 					break
 				}
 			}
-		} else {
-			matched = normalizedBefore == normalizedFullLine || normalizedBefore == normalizedValue
+		}
+
+		// List-style fallback
+		if !matched && strings.HasPrefix(normalizedValue, "[") && strings.HasSuffix(normalizedValue, "]") {
+			listText := strings.Trim(normalizedValue, "[] ")
+			listItems := strings.Split(listText, ",")
+
+			newList := make([]string, 0, len(listItems))
+			replaced := false
+
+			// Pre-extract values from all alternatives (e.g., extract just "DISABLED" from "key = DISABLED")
+			normalizedAltValues := make([]string, 0, len(normalizedAlternatives))
+			for _, alt := range normalizedAlternatives {
+				parts := strings.SplitN(alt, "=", 2)
+				if len(parts) == 2 {
+					normalizedAltValues = append(normalizedAltValues, strings.TrimSpace(parts[1]))
+				} else {
+					normalizedAltValues = append(normalizedAltValues, strings.TrimSpace(alt))
+				}
+			}
+
+			for _, item := range listItems {
+				itemStripped := strings.TrimSpace(strings.Trim(item, `"`))
+				normOriginal := normalize(itemStripped)
+				replacedItem := false
+
+				for _, altVal := range normalizedAltValues {
+					normAltVal := normalize(altVal)
+
+					if normOriginal == normAltVal ||
+						strings.Contains(normOriginal, normAltVal) ||
+						strings.Contains(normAltVal, normOriginal) {
+						replaced = true
+						replacedItem = true
+						if strings.HasPrefix(item, `"`) && strings.HasSuffix(item, `"`) {
+							newList = append(newList, `"`+after+`"`)
+						} else {
+							newList = append(newList, after)
+						}
+						break
+					}
+				}
+
+				if !replacedItem {
+					newList = append(newList, item)
+				}
+			}
+
+			if replaced {
+				joined := "[" + strings.Join(newList, ", ") + "]"
+				insertedText = strings.Replace(vuln.LineWithVulnerability, value, joined, 1)
+				matched = true
+			} else {
+				// Check if the normalized list as a whole matches one of the alt values
+				for _, altVal := range normalizedAltValues {
+					if normalizedValue == normalize(altVal) {
+						matched = true
+						insertedText = vuln.LineWithVulnerability
+						break
+					}
+				}
+			}
 		}
 
 		if !matched {
-			return sarifFix{}, fmt.Errorf("line value '%s' does not match 'before' value '%s'", normalizedFullLine, normalizedBefore)
+			return sarifFix{}, fmt.Errorf("line value '%s' does not match any of expected values '%s'", normalizedFullLine, strings.Join(normalizedAlternatives, " | "))
 		}
 
-		// Determine if the after value is quoted if the original was
+		// Preserve quotes if necessary
 		wasQuoted := strings.HasPrefix(value, `"`) && strings.HasSuffix(value, `"`)
 		if wasQuoted && !(strings.HasPrefix(after, `"`) && strings.HasSuffix(after, `"`)) {
 			after = `"` + after + `"`
 		}
 
-		// Get regex indexes for replacement slicing
+		// Determine replacement range
 		idxs := re.FindStringSubmatchIndex(vuln.LineWithVulnerability)
 		if len(idxs) < 6 {
 			return sarifFix{}, fmt.Errorf("could not determine exact value location")
 		}
 
-		// Determine if 'after' is a full line or just a new value
 		isFullLine := strings.Contains(after, "=")
 
-		if isFullLine {
-			// If after is a full line like "key = newvalue", just replace the whole line
-			insertedText = after
-		} else {
-			// Just replace the value part of the line
-			prefix := vuln.LineWithVulnerability[:idxs[4]] // up to start of value
-			suffix := vuln.LineWithVulnerability[idxs[5]:] // after value
-			insertedText = prefix + after + suffix
+		if insertedText == "" {
+			if isFullLine {
+				insertedText = after
+			} else {
+				prefix := vuln.LineWithVulnerability[:idxs[4]]
+				suffix := vuln.LineWithVulnerability[idxs[5]:]
+				insertedText = prefix + after + suffix
+			}
 		}
 
-		// Position for SARIF fix
 		fixStart = sarifResourceLocation{
 			Line: vuln.Line,
 			Col:  startLocation.Col,
 		}
-
 		fixEnd = sarifResourceLocation{
 			Line: vuln.Line,
 			Col:  len(vuln.LineWithVulnerability) + 1,

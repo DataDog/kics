@@ -8,6 +8,7 @@ package terraform
 import (
 	"bytes"
 	"fmt"
+	"regexp"
 	"strconv"
 	"strings"
 
@@ -29,6 +30,9 @@ const (
 // DetectLine searches vulnerability line in terraform files
 func (d DetectKindLine) DetectLine(file *model.FileMetadata, searchKey string,
 	outputLines int, logwithfields *zerolog.Logger) model.VulnerabilityLines {
+	// Sanitize malformed Go formatting artifacts
+	searchKey = sanitizeSearchKey(searchKey)
+
 	det := &detector.DefaultDetectLineResponse{
 		CurrentLine:     0,
 		IsBreak:         false,
@@ -41,11 +45,16 @@ func (d DetectKindLine) DetectLine(file *model.FileMetadata, searchKey string,
 	extractedString = detector.GetBracketValues(searchKey, extractedString, "")
 	sKey := searchKey
 	for idx, str := range extractedString {
-		sKey = strings.Replace(sKey, str[0], `{{`+strconv.Itoa(idx)+`}}`, -1)
+		// Only replace raw bracketed values (e.g., [abc]), not placeholders (e.g., [{{var}}])
+		if !strings.Contains(str[0], "{{") {
+			sKey = strings.Replace(sKey, str[0], `{{`+strconv.Itoa(idx)+`}}`, -1)
+		}
 	}
 
 	lines := *file.LinesOriginalData
-	splitSanitized := strings.Split(sKey, ".")
+	splitSanitized := strings.FieldsFunc(sKey, func(r rune) bool {
+		return r == '.' || r == '/'
+	})
 	for index, split := range splitSanitized {
 		if strings.Contains(split, "$ref") {
 			splitSanitized[index] = strings.Join(splitSanitized[index:], ".")
@@ -55,7 +64,7 @@ func (d DetectKindLine) DetectLine(file *model.FileMetadata, searchKey string,
 	}
 
 	for _, key := range splitSanitized {
-		substr1, substr2 := detector.GenerateSubstrings(key, extractedString)
+		substr1, substr2 := detector.GenerateSubstrings(key, extractedString, lines)
 		det, _ = det.DetectCurrentLine(substr1, substr2, 0, lines)
 
 		if det.IsBreak {
@@ -108,6 +117,12 @@ type BlockInfo struct {
 	IsMatch bool
 }
 
+func sanitizeSearchKey(key string) string {
+	// Replace any instance of [%!s(int=N)] with [N]
+	re := regexp.MustCompile(`\[%!s\(int=(\d+)\)\]`)
+	return re.ReplaceAllString(key, "[$1]")
+}
+
 func parseAndFindTerraformBlock(src []byte, identifyingLine int) (model.ResourceLine, model.ResourceLine, string, error) {
 	filePath := "temp.tf"
 	lines := bytes.Split(src, []byte("\n"))
@@ -123,42 +138,19 @@ func parseAndFindTerraformBlock(src []byte, identifyingLine int) (model.Resource
 	if diagnostics != nil && diagnostics.HasErrors() {
 		return resourceStart, resourceEnd, lineContent, fmt.Errorf("failed to parse hcl file %s: %v", filePath, diagnostics.Errs())
 	}
-
 	for _, block := range hclSyntaxFile.Body.(*hclsyntax.Body).Blocks {
 		blockStart := block.TypeRange.Start
 		blockEnd := block.Body.SrcRange.End
 
 		if identifyingLine >= blockStart.Line && identifyingLine <= blockEnd.Line {
-			// Check for nested block or inline object
-			structureName, nestedStart, nestedEnd, isAttribute := findContainingStructure(block, identifyingLine)
-
 			var insertionLine int
 			var insertionCol int
 
-			if structureName != "" {
-				// Line is inside a nested block or object attribute
-				insertionLine = nestedEnd.Line - 1 // one line before the closing brace
+			if identifyingLine == block.DefRange().Start.Line {
+				// On the block header — insert before the block’s closing brace
+				insertionLine = blockEnd.Line
 
-				if isAttribute {
-					// For object-style attributes, infer indent from inner attribute lines
-					for i := insertionLine - 1; i > nestedStart.Line && i <= len(lines); i-- {
-						trimmed := strings.TrimSpace(string(lines[i-1]))
-						if trimmed != "" && !strings.HasPrefix(trimmed, "#") && strings.Contains(trimmed, "=") {
-							insertionCol = countLeadingSpacesOrTabs(lines[i-1]) + 1
-							break
-						}
-					}
-				} else {
-					// For real nested blocks, use closing brace indent
-					if insertionLine-1 >= 0 && insertionLine-1 < len(lines) {
-						insertionCol = countLeadingSpacesOrTabs(lines[insertionLine-1]) + 1
-					}
-				}
-			} else {
-				// Top-level block — insert before outer block's closing brace
-				insertionLine = blockEnd.Line - 1 // one line before the closing brace
-
-				// Try to infer indentation from the last meaningful line inside the block
+				// Infer indent from last non-empty, non-comment line
 				for i := insertionLine; i > blockStart.Line && i <= len(lines); i-- {
 					trimmed := strings.TrimSpace(string(lines[i-1]))
 					if trimmed != "" && !strings.HasPrefix(trimmed, "#") {
@@ -166,9 +158,38 @@ func parseAndFindTerraformBlock(src []byte, identifyingLine int) (model.Resource
 						break
 					}
 				}
+			} else if identifyingLine > block.DefRange().Start.Line {
+				// Possibly inside a nested block or object attribute
+				structureName, nestedStart, nestedEnd, isAttribute := findContainingStructure(block, identifyingLine)
+
+				if structureName != "" {
+					insertionLine = nestedEnd.Line - 1
+					if isAttribute {
+						for i := insertionLine - 1; i > nestedStart.Line && i <= len(lines); i-- {
+							trimmed := strings.TrimSpace(string(lines[i-1]))
+							if trimmed != "" && !strings.HasPrefix(trimmed, "#") && strings.Contains(trimmed, "=") {
+								insertionCol = countLeadingSpacesOrTabs(lines[i-1]) + 1
+								break
+							}
+						}
+					} else {
+						if insertionLine-1 >= 0 && insertionLine-1 < len(lines) {
+							insertionCol = countLeadingSpacesOrTabs(lines[insertionLine-1]) + 1
+						}
+					}
+				} else {
+					// Default to block-level insertion
+					insertionLine = blockEnd.Line - 1
+					for i := insertionLine; i > blockStart.Line && i <= len(lines); i-- {
+						trimmed := strings.TrimSpace(string(lines[i-1]))
+						if trimmed != "" && !strings.HasPrefix(trimmed, "#") {
+							insertionCol = countLeadingSpacesOrTabs(lines[i-1]) + 1
+							break
+						}
+					}
+				}
 			}
 
-			// Fallback if nothing was found
 			if insertionCol == 0 && insertionLine-1 < len(lines) {
 				insertionCol = countLeadingSpacesOrTabs(lines[insertionLine-1]) + 1
 			}
