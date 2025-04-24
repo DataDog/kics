@@ -7,7 +7,9 @@ module "s3_bucket" {
   acl    = "private"
 
   versioning = {
-    mfa_delete = true
+    
+          enabled = true
+mfa_delete = true
   }
 
 }
