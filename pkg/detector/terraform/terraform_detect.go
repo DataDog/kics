@@ -211,7 +211,7 @@ func parseAndFindTerraformBlock(src []byte, identifyingLine int) (model.Resource
 			vulnerabilityStart = model.ResourceLine{Line: blockStart.Line, Col: blockStart.Column}
 			vulnerabilityEnd = model.ResourceLine{Line: blockEnd.Line, Col: blockEnd.Column}
 
-			if remediationStart.Line != vulnerabilityStart.Line {
+			if remediationStart.Line != vulnerabilityEnd.Line {
 				vulnerabilityStart = remediationStart
 				vulnerabilityEnd = remediationEnd
 			}
