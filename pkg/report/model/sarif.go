@@ -12,7 +12,6 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
-	"regexp"
 	"strings"
 	"time"
 
@@ -836,6 +835,28 @@ func TransformToSarifFix(vuln model.VulnerableFile, startLocation sarifResourceL
 	var insertedText string
 	fixStart := startLocation
 	fixEnd := endLocation
+	sourceLines := vuln.ResourceSource
+
+	// Helper to detect indentation
+	detectIndent := func(line string) string {
+		for i, r := range line {
+			if r != ' ' && r != '\t' {
+				return line[:i]
+			}
+		}
+		return ""
+	}
+
+	// Detect base indentation from first non-empty source line
+	baseIndent := ""
+	lines := strings.Split(sourceLines, "\n")
+	for _, line := range lines {
+		trimmed := strings.TrimSpace(line)
+		if trimmed != "" {
+			baseIndent = detectIndent(line)
+			break
+		}
+	}
 
 	switch vuln.RemediationType {
 
@@ -845,197 +866,39 @@ func TransformToSarifFix(vuln model.VulnerableFile, startLocation sarifResourceL
 		if err != nil {
 			return sarifFix{}, fmt.Errorf("invalid remediation format for replacement: %v", err)
 		}
-
-		before := strings.TrimSpace(patch["before"])
 		after := strings.TrimSpace(patch["after"])
 
-		re := regexp.MustCompile(`(?m)["']?(?P<key>\w+)["']?\s*[:=]\s*(?P<value>\[.*?\]|".*?"|true|false|\d+)[,]?\s*`)
-		matches := re.FindStringSubmatch(vuln.LineWithVulnerability)
-		if len(matches) < 3 {
-			return sarifFix{}, fmt.Errorf("could not parse key-value from line: %s", vuln.LineWithVulnerability)
+		// Re-indent `after` content to match block
+		afterLines := strings.Split(after, "\n")
+		for i, line := range afterLines {
+			afterLines[i] = baseIndent + strings.TrimRight(line, " ")
+		}
+		insertedText = strings.Join(afterLines, "\n")
+		if len(insertedText) > 0 && insertedText[len(insertedText)-1] != '\n' {
+			insertedText += "\n"
 		}
 
-		key := strings.TrimSpace(matches[1])
-		value := strings.TrimSpace(matches[2])
-
-		if idx := strings.IndexAny(value, "#/"); idx != -1 {
-			value = strings.TrimSpace(value[:idx])
-		}
-
-		fullLine := key + " = " + value
-
-		normalizedFullLine := normalize(fullLine)
-		normalizedValue := normalize(value)
-
-		// Support multiple 'before' values separated by 'or'
-		normalizedAlternatives := []string{normalize(before)}
-		if strings.Contains(before, " or ") {
-			rawParts := strings.Split(before, " or ")
-			normalizedAlternatives = make([]string, 0, len(rawParts))
-			for _, part := range rawParts {
-				normalizedAlternatives = append(normalizedAlternatives, normalize(strings.TrimSpace(part)))
-			}
-		}
-
-		insertedText = ""
-		matched := false
-
-		for _, alt := range normalizedAlternatives {
-			altKey := ""
-			altValue := alt
-
-			if parts := strings.SplitN(alt, "=", 2); len(parts) == 2 {
-				altKey = normalize(strings.TrimSpace(parts[0]))
-				altValue = normalize(strings.TrimSpace(parts[1]))
-			} else {
-				altValue = normalize(alt)
-			}
-
-			if (alt == normalizedFullLine) ||
-				(altKey == normalize(key) && altValue == normalizedValue) ||
-				strings.Contains(normalizedValue, altValue) ||
-				strings.HasPrefix(normalizedValue, altValue) ||
-				strings.HasPrefix(altValue, normalizedValue) {
-				matched = true
-				break
-			}
-		}
-
-		// Block-style fallback (e.g., nested blocks like metadata_options)
-		if !matched && strings.Contains(normalize(before), "{") && strings.Contains(normalize(before), "=") {
-			reInner := regexp.MustCompile(`(?m)(\w+)\s*=\s*(".*?"|\[.*?\]|\S+)`)
-			for _, inner := range reInner.FindAllString(before, -1) {
-				n := normalize(inner)
-				for _, alt := range normalizedAlternatives {
-					if n == normalizedFullLine || n == normalizedValue || strings.Contains(normalizedFullLine, n) || strings.Contains(n, alt) {
-						matched = true
-						break
-					}
-				}
-				if matched {
-					break
-				}
-			}
-		}
-
-		// List-style fallback
-		if !matched && strings.HasPrefix(normalizedValue, "[") && strings.HasSuffix(normalizedValue, "]") {
-			listText := strings.Trim(normalizedValue, "[] ")
-			listItems := strings.Split(listText, ",")
-
-			newList := make([]string, 0, len(listItems))
-			replaced := false
-
-			// Pre-extract values from all alternatives (e.g., extract just "DISABLED" from "key = DISABLED")
-			normalizedAltValues := make([]string, 0, len(normalizedAlternatives))
-			for _, alt := range normalizedAlternatives {
-				parts := strings.SplitN(alt, "=", 2)
-				if len(parts) == 2 {
-					normalizedAltValues = append(normalizedAltValues, strings.TrimSpace(parts[1]))
-				} else {
-					normalizedAltValues = append(normalizedAltValues, strings.TrimSpace(alt))
-				}
-			}
-
-			for _, item := range listItems {
-				itemStripped := strings.TrimSpace(strings.Trim(item, `"`))
-				normOriginal := normalize(itemStripped)
-				replacedItem := false
-
-				for _, altVal := range normalizedAltValues {
-					normAltVal := normalize(altVal)
-
-					if normOriginal == normAltVal ||
-						strings.Contains(normOriginal, normAltVal) ||
-						strings.Contains(normAltVal, normOriginal) {
-						replaced = true
-						replacedItem = true
-						if strings.HasPrefix(item, `"`) && strings.HasSuffix(item, `"`) {
-							newList = append(newList, `"`+after+`"`)
-						} else {
-							newList = append(newList, after)
-						}
-						break
-					}
-				}
-
-				if !replacedItem {
-					newList = append(newList, item)
-				}
-			}
-
-			if replaced {
-				joined := "[" + strings.Join(newList, ", ") + "]"
-				insertedText = strings.Replace(vuln.LineWithVulnerability, value, joined, 1)
-				matched = true
-			} else {
-				// Check if the normalized list as a whole matches one of the alt values
-				for _, altVal := range normalizedAltValues {
-					if normalizedValue == normalize(altVal) {
-						matched = true
-						insertedText = vuln.LineWithVulnerability
-						break
-					}
-				}
-			}
-		}
-
-		if !matched {
-			return sarifFix{}, fmt.Errorf("line value '%s' does not match any of expected values '%s'", normalizedFullLine, strings.Join(normalizedAlternatives, " | "))
-		}
-
-		// Preserve quotes if necessary
-		wasQuoted := strings.HasPrefix(value, `"`) && strings.HasSuffix(value, `"`)
-		if wasQuoted && !(strings.HasPrefix(after, `"`) && strings.HasSuffix(after, `"`)) {
-			after = `"` + after + `"`
-		}
-
-		// Determine replacement range
-		idxs := re.FindStringSubmatchIndex(vuln.LineWithVulnerability)
-		if len(idxs) < 6 {
-			return sarifFix{}, fmt.Errorf("could not determine exact value location")
-		}
-
-		isFullLine := strings.Contains(after, "=")
-
-		if insertedText == "" {
-			if isFullLine {
-				insertedText = after
-			} else {
-				prefix := vuln.LineWithVulnerability[:idxs[4]]
-				suffix := vuln.LineWithVulnerability[idxs[5]:]
-				insertedText = prefix + after + suffix
-			}
-		}
-
-		fixStart = sarifResourceLocation{
-			Line: vuln.Line,
-			Col:  startLocation.Col,
-		}
-		fixEnd = sarifResourceLocation{
-			Line: vuln.Line,
-			Col:  len(vuln.LineWithVulnerability) + 1,
-		}
+		fixStart = startLocation
+		fixEnd = endLocation
 
 	case "addition":
-		insertedText = formatRemediation(vuln.Remediation, startLocation.Col)
-		fixStart = sarifResourceLocation{
-			Line: startLocation.Line,
-			Col:  startLocation.Col,
+		// Add content with proper indentation
+		insertedLines := strings.Split(vuln.Remediation, "\n")
+		for i, line := range insertedLines {
+			if strings.TrimSpace(line) != "" {
+				insertedLines[i] = strings.Repeat(" ", startLocation.Col-1) + strings.TrimRight(line, " ")
+			}
 		}
-		fixEnd = fixStart
+		insertedText = "\n" + strings.Join(insertedLines, "\n") + "\n"
+
+		fixStart = startLocation
+		fixEnd = startLocation
 
 	case "removal":
-		// Delete the entire line
-		fixStart = sarifResourceLocation{
-			Line: vuln.Line,
-			Col:  1,
-		}
-		fixEnd = sarifResourceLocation{
-			Line: vuln.Line,
-			Col:  len(vuln.LineWithVulnerability) + 1,
-		}
-		insertedText = "" // nothing to insert
+		// Just remove the whole region
+		insertedText = ""
+		fixStart = startLocation
+		fixEnd = endLocation
 	}
 
 	replacement := fixReplacement{
@@ -1046,7 +909,7 @@ func TransformToSarifFix(vuln model.VulnerableFile, startLocation sarifResourceL
 			EndColumn:   fixEnd.Col,
 		},
 	}
-	// If the insertedText is empty, we don't need to set it
+
 	if insertedText != "" {
 		replacement.InsertedContent = fixContent{Text: insertedText}
 	}
@@ -1060,46 +923,4 @@ func TransformToSarifFix(vuln model.VulnerableFile, startLocation sarifResourceL
 			Text: fmt.Sprintf("Apply remediation: %s", vuln.Remediation),
 		},
 	}, nil
-}
-
-// formatRemediation applies consistent 2-space indentation to a remediation block
-// based on the starting column location (e.g., nesting depth).
-func formatRemediation(remediation string, startCol int) string {
-	// Convert tabs to spaces
-	remediation = strings.ReplaceAll(remediation, "\t", "  ")
-
-	// Calculate indentation based on 2-space levels
-	indent := strings.Repeat("  ", startCol)
-
-	// Split and format each line
-	lines := strings.Split(remediation, "\n")
-	for i, line := range lines {
-		trimmed := strings.TrimRight(line, " ")
-		spaceTrimmed := strings.TrimSpace(trimmed)
-		if spaceTrimmed != "" {
-			if (spaceTrimmed == "{") || (spaceTrimmed == "}") {
-				// No indentation for braces
-				lines[i] = trimmed
-			} else {
-				lines[i] = indent + trimmed
-			}
-		} else {
-			lines[i] = ""
-		}
-	}
-
-	// Rejoin with leading and trailing newline
-	return "\n" + strings.Join(lines, "\n") + "\n"
-}
-
-func normalize(s string) string {
-	s = strings.TrimSpace(s)
-	s = strings.ReplaceAll(s, "\r", "")
-	s = strings.ReplaceAll(s, `\"`, `"`)     // Handle escaped quotes
-	s = strings.ReplaceAll(s, `"`, `"`)      // Double safety
-	s = strings.ReplaceAll(s, `“`, `"`)      // Smart quotes (optional)
-	s = strings.ReplaceAll(s, `”`, `"`)      // Smart quotes (optional)
-	s = strings.Join(strings.Fields(s), " ") // normalize extra whitespace
-	s = strings.Trim(s, `"`)
-	return s
 }
