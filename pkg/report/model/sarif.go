@@ -883,10 +883,18 @@ func TransformToSarifFix(vuln model.VulnerableFile, startLocation sarifResourceL
 
 	case "addition":
 		// Add content with proper indentation
-		insertedLines := strings.Split(vuln.Remediation, "\n")
+		// Use baseIndent (block-level indent) + one level deeper
+		innerIndent := baseIndent + "  " // assuming 2-space indentation; adjust if needed
+		normalizedRemediation := normalizeIndentation(vuln.Remediation, 2)
+
+		insertedLines := strings.Split(normalizedRemediation, "\n")
 		for i, line := range insertedLines {
 			if strings.TrimSpace(line) != "" {
-				insertedLines[i] = strings.Repeat(" ", startLocation.Col-1) + strings.TrimRight(line, " ")
+				if strings.TrimSpace(line) == "{" || strings.TrimSpace(line) == "}" {
+					insertedLines[i] = baseIndent + strings.TrimRight(line, " ")
+				} else {
+					insertedLines[i] = innerIndent + strings.TrimRight(line, " ")
+				}
 			}
 		}
 		insertedText = "\n" + strings.Join(insertedLines, "\n") + "\n"
@@ -923,4 +931,17 @@ func TransformToSarifFix(vuln model.VulnerableFile, startLocation sarifResourceL
 			Text: fmt.Sprintf("Apply remediation: %s", vuln.Remediation),
 		},
 	}, nil
+}
+
+func normalizeIndentation(input string, spacesPerTab int) string {
+	lines := strings.Split(input, "\n")
+	tabSpaces := strings.Repeat(" ", spacesPerTab)
+
+	for i, line := range lines {
+		// Replace tabs with spaces and trim trailing whitespace
+		line = strings.ReplaceAll(line, "\t", tabSpaces)
+		lines[i] = strings.TrimRight(line, " \t")
+	}
+
+	return strings.Join(lines, "\n")
 }
