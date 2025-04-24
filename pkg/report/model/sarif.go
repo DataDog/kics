@@ -1018,22 +1018,7 @@ func TransformToSarifFix(vuln model.VulnerableFile, startLocation sarifResourceL
 		}
 
 	case "addition":
-		// Indent based on provided startLocation.Col
-		indent := strings.Repeat("  ", startLocation.Col)
-
-		// Support multiline remediation (e.g., blocks or nested maps)
-		remediationLines := strings.Split(vuln.Remediation, "\n")
-		for i, line := range remediationLines {
-			remediationLines[i] = indent + strings.TrimRight(line, "  ")
-		}
-		formattedRemediation := strings.Join(remediationLines, "\n")
-
-		// // Indent the closing brace if one gets pushed by this insertion
-		// closingBraceIndent := indent
-
-		// Final insertedText with leading newline and brace re-indent
-		insertedText = "\n" + formattedRemediation + "\n"
-
+		insertedText = formatRemediation(vuln.Remediation, startLocation.Col)
 		fixStart = sarifResourceLocation{
 			Line: startLocation.Line,
 			Col:  startLocation.Col,
@@ -1075,6 +1060,36 @@ func TransformToSarifFix(vuln model.VulnerableFile, startLocation sarifResourceL
 			Text: fmt.Sprintf("Apply remediation: %s", vuln.Remediation),
 		},
 	}, nil
+}
+
+// formatRemediation applies consistent 2-space indentation to a remediation block
+// based on the starting column location (e.g., nesting depth).
+func formatRemediation(remediation string, startCol int) string {
+	// Convert tabs to spaces
+	remediation = strings.ReplaceAll(remediation, "\t", "  ")
+
+	// Calculate indentation based on 2-space levels
+	indent := strings.Repeat("  ", startCol)
+
+	// Split and format each line
+	lines := strings.Split(remediation, "\n")
+	for i, line := range lines {
+		trimmed := strings.TrimRight(line, " ")
+		spaceTrimmed := strings.TrimSpace(trimmed)
+		if spaceTrimmed != "" {
+			if (spaceTrimmed == "{") || (spaceTrimmed == "}") {
+				// No indentation for braces
+				lines[i] = trimmed
+			} else {
+				lines[i] = indent + trimmed
+			}
+		} else {
+			lines[i] = ""
+		}
+	}
+
+	// Rejoin with leading and trailing newline
+	return "\n" + strings.Join(lines, "\n") + "\n"
 }
 
 func normalize(s string) string {
