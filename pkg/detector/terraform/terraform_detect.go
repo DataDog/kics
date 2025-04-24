@@ -158,6 +158,15 @@ func parseAndFindTerraformBlock(src []byte, identifyingLine int) (model.Resource
 		blockStart := block.TypeRange.Start
 		blockEnd := block.Body.SrcRange.End
 
+		// Get source lines
+		blockLines := lines[blockStart.Line-1 : blockEnd.Line]
+		var sb strings.Builder
+		for _, line := range blockLines {
+			sb.Write(line)
+			sb.WriteByte('\n')
+		}
+		vulnerabilitySource = sb.String()
+
 		if identifyingLine >= blockStart.Line && identifyingLine <= blockEnd.Line {
 			var insertionLine int
 			var insertionCol int
@@ -206,17 +215,6 @@ func parseAndFindTerraformBlock(src []byte, identifyingLine int) (model.Resource
 				}
 			}
 
-			// Get source lines
-			if vulnerabilityStart.Line > 0 && vulnerabilityEnd.Line <= len(lines) {
-				blockLines := lines[vulnerabilityStart.Line-1 : vulnerabilityEnd.Line]
-				var sb strings.Builder
-				for _, line := range blockLines {
-					sb.Write(line)
-					sb.WriteByte('\n')
-				}
-				vulnerabilitySource = sb.String()
-			}
-
 			if insertionCol == 0 && insertionLine-1 < len(lines) {
 				insertionCol = countLeadingSpacesOrTabs(lines[insertionLine-1]) + 1
 			}
@@ -231,7 +229,7 @@ func parseAndFindTerraformBlock(src []byte, identifyingLine int) (model.Resource
 				vulnerabilityEnd = remediationEnd
 			}
 
-			return vulnerabilityStart, vulnerabilityEnd, remediationStart, remediationEnd, lineContent, "", nil
+			return vulnerabilityStart, vulnerabilityEnd, remediationStart, remediationEnd, lineContent, vulnerabilitySource, nil
 		}
 	}
 
