@@ -69,7 +69,7 @@ func TestDetectTerraformLine(t *testing.T) { //nolint
 						Line:     "",
 					},
 				},
-				ResourceLocation: model.ResourceLocation{
+				VulnerablilityLocation: model.ResourceLocation{
 					ResourceStart: model.ResourceLine{
 						Line: 1,
 						Col:  1,
@@ -106,7 +106,7 @@ func TestDetectTerraformLine(t *testing.T) { //nolint
 						Line:     "",
 					},
 				},
-				ResourceLocation: model.ResourceLocation{
+				VulnerablilityLocation: model.ResourceLocation{
 					ResourceStart: model.ResourceLine{
 						Line: 14,
 						Col:  1,
@@ -143,7 +143,7 @@ func TestDetectTerraformLine(t *testing.T) { //nolint
 						Line:     "    Demo = \"true\"",
 					},
 				},
-				ResourceLocation: model.ResourceLocation{
+				VulnerablilityLocation: model.ResourceLocation{
 					ResourceStart: model.ResourceLine{
 						Line: 23,
 						Col:  1,

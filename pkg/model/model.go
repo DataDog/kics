@@ -88,12 +88,12 @@ type Version struct {
 
 // VulnerabilityLines is the representation of the found line for issue
 type VulnerabilityLines struct {
-	Line                  int
-	VulnLines             *[]CodeLine
-	LineWithVulnerability string
-	ResolvedFile          string
-	ResourceLocation      ResourceLocation
-	RemediationLocation   ResourceLocation
+	Line                   int
+	VulnLines              *[]CodeLine
+	LineWithVulnerability  string
+	ResolvedFile           string
+	VulnerablilityLocation ResourceLocation
+	RemediationLocation    ResourceLocation
 }
 
 // CommentCommand represents a command given from a comment
@@ -189,7 +189,7 @@ type Vulnerability struct {
 	CWE                   string           `db:"cwe" json:"cwe"`
 	Severity              Severity         `json:"severity"`
 	Line                  int              `json:"line"`
-	ResourceLocation      ResourceLocation `json:"resourceLocation"`
+	VulnerabilityLocation ResourceLocation `json:"resourceLocation"`
 	VulnLines             *[]CodeLine      `json:"vulnLines"`
 	ResourceType          string           `db:"resource_type" json:"resourceType"`
 	ResourceName          string           `db:"resource_name" json:"resourceName"`

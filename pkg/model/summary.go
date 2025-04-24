@@ -235,7 +235,7 @@ func CreateSummary(counters Counters, vulnerabilities []Vulnerability,
 			Value:                 item.Value,
 			Remediation:           item.Remediation,
 			RemediationType:       item.RemediationType,
-			ResourceLocation:      item.ResourceLocation,
+			ResourceLocation:      item.VulnerabilityLocation,
 			LineWithVulnerability: item.LineWithVulnerability,
 			RemediationLocation:   item.RemediationLocation,
 		})
