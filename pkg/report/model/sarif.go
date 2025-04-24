@@ -1019,7 +1019,7 @@ func TransformToSarifFix(vuln model.VulnerableFile, startLocation sarifResourceL
 
 	case "addition":
 		// Indent based on provided startLocation.Col
-		indent := strings.Repeat(" ", startLocation.Col)
+		indent := strings.Repeat("  ", startLocation.Col)
 
 		// Support multiline remediation (e.g., blocks or nested maps)
 		remediationLines := strings.Split(vuln.Remediation, "\n")
