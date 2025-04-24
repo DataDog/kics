@@ -1028,11 +1028,11 @@ func TransformToSarifFix(vuln model.VulnerableFile, startLocation sarifResourceL
 		}
 		formattedRemediation := strings.Join(remediationLines, "\n")
 
-		// Indent the closing brace if one gets pushed by this insertion
-		closingBraceIndent := indent
+		// // Indent the closing brace if one gets pushed by this insertion
+		// closingBraceIndent := indent
 
 		// Final insertedText with leading newline and brace re-indent
-		insertedText = "\n" + formattedRemediation + "\n" + closingBraceIndent
+		insertedText = "\n" + formattedRemediation + "\n"
 
 		fixStart = sarifResourceLocation{
 			Line: startLocation.Line,
