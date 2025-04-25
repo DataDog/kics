@@ -1063,7 +1063,7 @@ func TransformToSarifFix(vuln model.VulnerableFile, startLocation sarifResourceL
 	case "addition":
 		// Add content with proper indentation
 		// Use baseIndent (block-level indent) + one level deeper
-		// innerIndent := baseIndent + "  " // assuming 2-space indentation; adjust if needed
+		innerIndent := baseIndent + "  " // assuming 2-space indentation; adjust if needed
 		normalizedRemediation := normalizeIndentation(vuln.Remediation, 2)
 
 		followingIndent := detectIndent(fileLines[startLocation.Line-1])
@@ -1082,7 +1082,7 @@ func TransformToSarifFix(vuln model.VulnerableFile, startLocation sarifResourceL
 				if strings.TrimSpace(line) == "{" || strings.TrimSpace(line) == "}" {
 					insertedLines[i] = baseIndent + strings.TrimRight(line, " ")
 				} else {
-					insertedLines[i] = followingIndent
+					insertedLines[i] = innerIndent + strings.TrimRight(line, " ")
 				}
 			}
 		}
