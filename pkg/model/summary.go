@@ -46,6 +46,7 @@ type VulnerableFile struct {
 	LineWithVulnerability string           `json:"line_content,omitempty"`
 	ResourceSource        string           `json:"resource_source,omitempty"`
 	FileSource            []string         `json:"file_source,omitempty"`
+	BlockLocation         ResourceLocation `json:"block_location,omitempty"`
 }
 
 // QueryResult contains a query that tested positive ID, name, severity and a list of files that tested vulnerable
@@ -242,6 +243,7 @@ func CreateSummary(counters Counters, vulnerabilities []Vulnerability,
 			RemediationLocation:   item.RemediationLocation,
 			ResourceSource:        item.ResourceSource,
 			FileSource:            item.FileSource,
+			BlockLocation:         item.BlockLocation,
 		})
 
 		filePaths[resolvedPath] = item.FileName

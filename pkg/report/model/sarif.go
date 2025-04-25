@@ -1085,6 +1085,11 @@ func TransformToSarifFix(vuln model.VulnerableFile, startLocation sarifResourceL
 				continue
 			}
 
+			// if the line is inside the block and there is no indentation, increase baseIndent
+			if len(insertedLines) == 1 && startLocation.Line > vuln.BlockLocation.Start.Line && endLocation.Line < vuln.BlockLocation.End.Line {
+				nestingLevel++
+			}
+
 			// Set indent: base + (nestingLevel * 2 spaces)
 			currentIndent := baseIndent + strings.Repeat("  ", nestingLevel+1)
 

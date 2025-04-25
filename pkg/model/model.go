@@ -96,6 +96,7 @@ type VulnerabilityLines struct {
 	RemediationLocation    ResourceLocation
 	ResourceSource         string
 	FileSource             []string
+	BlockLocation          ResourceLocation
 }
 
 // CommentCommand represents a command given from a comment
@@ -211,6 +212,7 @@ type Vulnerability struct {
 	LineWithVulnerability string           `json:"lineWithVulnerability"`
 	ResourceSource        string           `json:"resourceSource"`
 	FileSource            []string         `json:"fileSource"`
+	BlockLocation         ResourceLocation `json:"blockLocation"`
 }
 
 // QueryConfig is a struct that contains the fileKind and platform of the rego query

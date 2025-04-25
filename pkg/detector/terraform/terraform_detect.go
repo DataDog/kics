@@ -75,7 +75,7 @@ func (d DetectKindLine) DetectLine(file *model.FileMetadata, searchKey string,
 	if det.FoundAtLeastOne {
 		line := det.CurrentLine + 1
 
-		resourceStart, resourceEnd, remediationStart, remediationEnd, lineContent, resourceSource, err := parseAndFindTerraformBlock([]byte(file.OriginalData), line)
+		resourceStart, resourceEnd, remediationStart, remediationEnd, lineContent, resourceSource, blockStart, blockEnd, err := parseAndFindTerraformBlock([]byte(file.OriginalData), line)
 		if err != nil {
 			fmt.Printf("Failed to parse and find Terraform block for line %d in file %s: %s\n", line, file.FilePath, err)
 			return model.VulnerabilityLines{
@@ -92,6 +92,10 @@ func (d DetectKindLine) DetectLine(file *model.FileMetadata, searchKey string,
 				},
 				ResourceSource: resourceSource,
 				FileSource:     *file.LinesOriginalData,
+				BlockLocation: model.ResourceLocation{
+					Start: blockStart,
+					End:   blockEnd,
+				},
 			}
 		}
 
@@ -110,6 +114,10 @@ func (d DetectKindLine) DetectLine(file *model.FileMetadata, searchKey string,
 			LineWithVulnerability: lineContent,
 			ResourceSource:        resourceSource,
 			FileSource:            *file.LinesOriginalData,
+			BlockLocation: model.ResourceLocation{
+				Start: blockStart,
+				End:   blockEnd,
+			},
 		}
 	}
 
@@ -137,11 +145,11 @@ func sanitizeSearchKey(key string) string {
 	return re.ReplaceAllString(key, "[$1]")
 }
 
-func parseAndFindTerraformBlock(src []byte, identifyingLine int) (model.ResourceLine, model.ResourceLine, model.ResourceLine, model.ResourceLine, string, string, error) {
+func parseAndFindTerraformBlock(src []byte, identifyingLine int) (model.ResourceLine, model.ResourceLine, model.ResourceLine, model.ResourceLine, string, string, model.ResourceLine, model.ResourceLine, error) {
 	filePath := "temp.tf"
 	lines := bytes.Split(src, []byte("\n"))
 	if identifyingLine <= 0 || identifyingLine > len(lines) {
-		return model.ResourceLine{}, model.ResourceLine{}, model.ResourceLine{}, model.ResourceLine{}, "", "", fmt.Errorf("line %d is out of range", identifyingLine)
+		return model.ResourceLine{}, model.ResourceLine{}, model.ResourceLine{}, model.ResourceLine{}, "", "", model.ResourceLine{}, model.ResourceLine{}, fmt.Errorf("line %d is out of range", identifyingLine)
 	}
 	lineContent := string(lines[identifyingLine-1])
 	var vulnerabilitySource string
@@ -152,12 +160,17 @@ func parseAndFindTerraformBlock(src []byte, identifyingLine int) (model.Resource
 	remediationStart := model.ResourceLine{Line: -1, Col: -1}
 	remediationEnd := model.ResourceLine{Line: -1, Col: -1}
 
+	blockLocationStart := model.ResourceLine{Line: -1, Col: -1}
+	blockLocationEnd := model.ResourceLine{Line: -1, Col: -1}
+
 	hclSyntaxFile, diagnostics := hclsyntax.ParseConfig(src, filePath, hcl.InitialPos)
 	if diagnostics != nil && diagnostics.HasErrors() {
-		return vulnerabilityStart, vulnerabilityEnd, remediationStart, remediationEnd, lineContent, "", fmt.Errorf("failed to parse hcl file %s: %v", filePath, diagnostics.Errs())
+		return vulnerabilityStart, vulnerabilityEnd, remediationStart, remediationEnd, lineContent, "", model.ResourceLine{}, model.ResourceLine{}, fmt.Errorf("failed to parse hcl file %s: %v", filePath, diagnostics.Errs())
 	}
 
-	for _, block := range hclSyntaxFile.Body.(*hclsyntax.Body).Blocks {
+	blocks := hclSyntaxFile.Body.(*hclsyntax.Body).Blocks
+
+	for _, block := range blocks {
 		blockStart := block.TypeRange.Start
 		blockEnd := block.Body.SrcRange.End
 
@@ -226,17 +239,19 @@ func parseAndFindTerraformBlock(src []byte, identifyingLine int) (model.Resource
 			remediationEnd = model.ResourceLine{Line: insertionLine, Col: insertionCol}
 			vulnerabilityStart = model.ResourceLine{Line: blockStart.Line, Col: blockStart.Column}
 			vulnerabilityEnd = model.ResourceLine{Line: blockEnd.Line, Col: blockEnd.Column}
+			blockLocationStart = model.ResourceLine{Line: blockStart.Line, Col: blockStart.Column}
+			blockLocationEnd = model.ResourceLine{Line: blockEnd.Line, Col: blockEnd.Column}
 
 			if remediationStart.Line != vulnerabilityEnd.Line {
 				vulnerabilityStart = remediationStart
 				vulnerabilityEnd = remediationEnd
 			}
 
-			return vulnerabilityStart, vulnerabilityEnd, remediationStart, remediationEnd, lineContent, vulnerabilitySource, nil
+			return vulnerabilityStart, vulnerabilityEnd, remediationStart, remediationEnd, lineContent, vulnerabilitySource, blockLocationStart, blockLocationEnd, nil
 		}
 	}
 
-	return vulnerabilityStart, vulnerabilityEnd, remediationStart, remediationEnd, lineContent, vulnerabilitySource, fmt.Errorf("failed to locate block for line %d", identifyingLine)
+	return vulnerabilityStart, vulnerabilityEnd, remediationStart, remediationEnd, lineContent, vulnerabilitySource, blockLocationStart, blockLocationEnd, fmt.Errorf("failed to locate block for line %d", identifyingLine)
 }
 
 func countLeadingSpacesOrTabs(line []byte) int {
