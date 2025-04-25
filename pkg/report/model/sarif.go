@@ -1061,31 +1061,38 @@ func TransformToSarifFix(vuln model.VulnerableFile, startLocation sarifResourceL
 			Col:  len(vuln.LineWithVulnerability) + 1,
 		}
 	case "addition":
-		// Add content with proper indentation
-		// Use baseIndent (block-level indent) + one level deeper
-		innerIndent := baseIndent + "  " // assuming 2-space indentation; adjust if needed
+		// Normalize tabs to 2 spaces and trim right spaces
 		normalizedRemediation := normalizeIndentation(vuln.Remediation, 2)
 
+		// Detect base and following indentation
 		followingIndent := detectIndent(fileLines[startLocation.Line-1])
-		// // Try to get indentation from the first non-empty line after insertion
-		// for i := startLocation.Line - 1; i < len(lines)-1; i++ {
-		// 	nextLine := strings.TrimSpace(lines[i+1])
-		// 	if nextLine != "" {
-		// 		followingIndent = detectIndent(lines[i+1])
-		// 		break
-		// 	}
-		// }
+		innerIndent := baseIndent + "  " // assume 2 spaces deeper initially
 
 		insertedLines := strings.Split(normalizedRemediation, "\n")
+		currentIndent := innerIndent
+
 		for i, line := range insertedLines {
-			if strings.TrimSpace(line) != "" {
-				if strings.TrimSpace(line) == "{" || strings.TrimSpace(line) == "}" {
-					insertedLines[i] = baseIndent + strings.TrimRight(line, " ")
-				} else {
-					insertedLines[i] = innerIndent + strings.TrimRight(line, " ")
-				}
+			trimmed := strings.TrimSpace(line)
+			if trimmed == "" {
+				insertedLines[i] = ""
+				continue
+			}
+
+			// Decrease indent before a closing brace
+			if trimmed == "}" {
+				currentIndent = baseIndent + "  "
+			}
+
+			if trimmed == "{" {
+				// Opening brace stays at the current level
+				insertedLines[i] = baseIndent + strings.TrimRight(line, " ")
+				// Increase indent after an opening brace
+				currentIndent = innerIndent + "  "
+			} else {
+				insertedLines[i] = currentIndent + strings.TrimRight(line, " ")
 			}
 		}
+
 		insertedText = "\n" + strings.Join(insertedLines, "\n") + "\n" + followingIndent
 
 		fixStart = startLocation
