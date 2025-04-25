@@ -1060,41 +1060,54 @@ func TransformToSarifFix(vuln model.VulnerableFile, startLocation sarifResourceL
 			Line: vuln.Line,
 			Col:  len(vuln.LineWithVulnerability) + 1,
 		}
+
 	case "addition":
-		// Normalize tabs to 2 spaces and trim right spaces
+		// Normalize tabs to 2 spaces and clean trailing spaces
 		normalizedRemediation := normalizeIndentation(vuln.Remediation, 2)
 
-		// Detect base and following indentation
-		followingIndent := detectIndent(fileLines[startLocation.Line-1])
-		innerIndent := baseIndent + "  " // assume 2 spaces deeper initially
+		// Safely detect indentation of the following line
+		followingIndent := ""
+		if startLocation.Line-1 >= 0 && startLocation.Line-1 < len(fileLines) {
+			followingIndent = detectIndent(fileLines[startLocation.Line-1])
+		}
 
+		// baseInnerIndent := baseIndent + "  " // base + 2 spaces
 		insertedLines := strings.Split(normalizedRemediation, "\n")
-		currentIndent := innerIndent
 
-		for i, line := range insertedLines {
+		var result []string
+		nestingLevel := 0
+
+		for _, line := range insertedLines {
 			trimmed := strings.TrimSpace(line)
+
 			if trimmed == "" {
-				insertedLines[i] = ""
+				result = append(result, "")
 				continue
 			}
 
-			// Decrease indent before a closing brace
-			if trimmed == "}" {
-				currentIndent = baseIndent + "  "
+			// If the line is a closing brace "}", reduce nesting *before* applying indent
+			if trimmed == "}" && nestingLevel > 0 {
+				nestingLevel--
 			}
 
+			// Set indent: base + (nestingLevel * 2 spaces)
+			currentIndent := baseIndent + strings.Repeat("  ", nestingLevel+1)
+
+			// Braces ("{" or "}") align at the parent indent level
+			if trimmed == "{" || trimmed == "}" {
+				currentIndent = baseIndent + strings.Repeat("  ", nestingLevel)
+			}
+
+			// Build the properly indented line
+			result = append(result, currentIndent+trimmed)
+
+			// If the line is an opening brace "{", increase nesting *after* indenting
 			if trimmed == "{" {
-				// Opening brace stays at the current level
-				insertedLines[i] = baseIndent + strings.TrimRight(line, " ")
-				// Increase indent after an opening brace
-				currentIndent = innerIndent + "  "
-			} else {
-				insertedLines[i] = currentIndent + strings.TrimRight(line, " ")
+				nestingLevel++
 			}
 		}
 
-		insertedText = "\n" + strings.Join(insertedLines, "\n") + "\n" + followingIndent
-
+		insertedText = "\n" + strings.Join(result, "\n") + "\n" + followingIndent
 		fixStart = startLocation
 		fixEnd = startLocation
 
