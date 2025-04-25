@@ -91,6 +91,7 @@ func (d DetectKindLine) DetectLine(file *model.FileMetadata, searchKey string,
 					End:   remediationEnd,
 				},
 				ResourceSource: resourceSource,
+				FileSource:     *file.LinesOriginalData,
 			}
 		}
 
@@ -108,6 +109,7 @@ func (d DetectKindLine) DetectLine(file *model.FileMetadata, searchKey string,
 			},
 			LineWithVulnerability: lineContent,
 			ResourceSource:        resourceSource,
+			FileSource:            *file.LinesOriginalData,
 		}
 	}
 
@@ -118,6 +120,7 @@ func (d DetectKindLine) DetectLine(file *model.FileMetadata, searchKey string,
 		VulnLines:      &[]model.CodeLine{},
 		ResolvedFile:   file.FilePath,
 		ResourceSource: "",
+		FileSource:     *file.LinesOriginalData,
 	}
 }
 

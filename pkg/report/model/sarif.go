@@ -837,6 +837,7 @@ func TransformToSarifFix(vuln model.VulnerableFile, startLocation sarifResourceL
 	fixStart := startLocation
 	fixEnd := endLocation
 	sourceLines := vuln.ResourceSource
+	fileLines := vuln.FileSource
 
 	// Helper to detect indentation
 	detectIndent := func(line string) string {
@@ -1065,15 +1066,15 @@ func TransformToSarifFix(vuln model.VulnerableFile, startLocation sarifResourceL
 		innerIndent := baseIndent + "  " // assuming 2-space indentation; adjust if needed
 		normalizedRemediation := normalizeIndentation(vuln.Remediation, 2)
 
-		var followingIndent string
-		// Try to get indentation from the first non-empty line after insertion
-		for i := startLocation.Line - 1; i < len(lines)-1; i++ {
-			nextLine := strings.TrimSpace(lines[i+1])
-			if nextLine != "" {
-				followingIndent = detectIndent(lines[i+1])
-				break
-			}
-		}
+		followingIndent := detectIndent(fileLines[startLocation.Line-1])
+		// // Try to get indentation from the first non-empty line after insertion
+		// for i := startLocation.Line - 1; i < len(lines)-1; i++ {
+		// 	nextLine := strings.TrimSpace(lines[i+1])
+		// 	if nextLine != "" {
+		// 		followingIndent = detectIndent(lines[i+1])
+		// 		break
+		// 	}
+		// }
 
 		insertedLines := strings.Split(normalizedRemediation, "\n")
 		for i, line := range insertedLines {
