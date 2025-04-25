@@ -1085,11 +1085,6 @@ func TransformToSarifFix(vuln model.VulnerableFile, startLocation sarifResourceL
 				continue
 			}
 
-			// If the line is a closing brace "}", reduce nesting *before* applying indent
-			if trimmed == "}" && nestingLevel > 0 {
-				nestingLevel--
-			}
-
 			// Set indent: base + (nestingLevel * 2 spaces)
 			currentIndent := baseIndent + strings.Repeat("  ", nestingLevel+1)
 
@@ -1102,8 +1097,12 @@ func TransformToSarifFix(vuln model.VulnerableFile, startLocation sarifResourceL
 			result = append(result, currentIndent+trimmed)
 
 			// If the line is an opening brace "{", increase nesting *after* indenting
-			if trimmed == "{" {
+			if strings.Contains(trimmed, "{") {
 				nestingLevel++
+			}
+			// If the line is a closing brace "}", reduce nesting *before* applying indent
+			if trimmed == "}" && nestingLevel > 0 {
+				nestingLevel--
 			}
 		}
 
