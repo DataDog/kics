@@ -1071,7 +1071,6 @@ func TransformToSarifFix(vuln model.VulnerableFile, startLocation sarifResourceL
 			followingIndent = detectIndent(fileLines[startLocation.Line-1])
 		}
 
-		// baseInnerIndent := baseIndent + "  " // base + 2 spaces
 		insertedLines := strings.Split(normalizedRemediation, "\n")
 
 		var result []string
@@ -1085,28 +1084,23 @@ func TransformToSarifFix(vuln model.VulnerableFile, startLocation sarifResourceL
 				continue
 			}
 
-			// if the line is inside the block and there is no indentation, increase baseIndent
-			if len(insertedLines) == 1 && startLocation.Line > vuln.BlockLocation.Start.Line && endLocation.Line < vuln.BlockLocation.End.Line {
-				nestingLevel++
+			isOnlyClosingBrace := trimmed == "}"
+
+			// Safely calculate current indentation BEFORE modifying nesting
+			safeNesting := nestingLevel
+			if isOnlyClosingBrace && nestingLevel > 0 {
+				safeNesting--
 			}
 
-			// Set indent: base + (nestingLevel * 2 spaces)
-			currentIndent := baseIndent + strings.Repeat("  ", nestingLevel+1)
+			currentIndent := baseIndent + strings.Repeat("  ", safeNesting)
 
-			// Braces ("{" or "}") align at the parent indent level
-			if trimmed == "{" || trimmed == "}" {
-				currentIndent = baseIndent + strings.Repeat("  ", nestingLevel)
-			}
-
-			// Build the properly indented line
 			result = append(result, currentIndent+trimmed)
 
-			// If the line is an opening brace "{", increase nesting *after* indenting
+			// Adjust nesting AFTER applying current line
 			if strings.Contains(trimmed, "{") {
 				nestingLevel++
 			}
-			// If the line is a closing brace "}", reduce nesting *before* applying indent
-			if trimmed == "}" && nestingLevel > 0 {
+			if isOnlyClosingBrace && nestingLevel > 0 {
 				nestingLevel--
 			}
 		}

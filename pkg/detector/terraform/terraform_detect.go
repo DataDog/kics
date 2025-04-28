@@ -148,24 +148,24 @@ func sanitizeSearchKey(key string) string {
 func parseAndFindTerraformBlock(src []byte, identifyingLine int) (model.ResourceLine, model.ResourceLine, model.ResourceLine, model.ResourceLine, string, string, model.ResourceLine, model.ResourceLine, error) {
 	filePath := "temp.tf"
 	lines := bytes.Split(src, []byte("\n"))
+
 	if identifyingLine <= 0 || identifyingLine > len(lines) {
 		return model.ResourceLine{}, model.ResourceLine{}, model.ResourceLine{}, model.ResourceLine{}, "", "", model.ResourceLine{}, model.ResourceLine{}, fmt.Errorf("line %d is out of range", identifyingLine)
 	}
+
 	lineContent := string(lines[identifyingLine-1])
 	var vulnerabilitySource string
 
 	vulnerabilityStart := model.ResourceLine{Line: -1, Col: -1}
 	vulnerabilityEnd := model.ResourceLine{Line: -1, Col: -1}
-
 	remediationStart := model.ResourceLine{Line: -1, Col: -1}
 	remediationEnd := model.ResourceLine{Line: -1, Col: -1}
-
 	blockLocationStart := model.ResourceLine{Line: -1, Col: -1}
 	blockLocationEnd := model.ResourceLine{Line: -1, Col: -1}
 
 	hclSyntaxFile, diagnostics := hclsyntax.ParseConfig(src, filePath, hcl.InitialPos)
 	if diagnostics != nil && diagnostics.HasErrors() {
-		return vulnerabilityStart, vulnerabilityEnd, remediationStart, remediationEnd, lineContent, "", model.ResourceLine{}, model.ResourceLine{}, fmt.Errorf("failed to parse hcl file %s: %v", filePath, diagnostics.Errs())
+		return vulnerabilityStart, vulnerabilityEnd, remediationStart, remediationEnd, lineContent, "", blockLocationStart, blockLocationEnd, fmt.Errorf("failed to parse HCL file %s: %v", filePath, diagnostics.Errs())
 	}
 
 	blocks := hclSyntaxFile.Body.(*hclsyntax.Body).Blocks
@@ -174,11 +174,11 @@ func parseAndFindTerraformBlock(src []byte, identifyingLine int) (model.Resource
 		blockStart := block.TypeRange.Start
 		blockEnd := block.Body.SrcRange.End
 
-		// Get source lines
+		// Build the block source
 		blockLines := lines[blockStart.Line-1 : blockEnd.Line]
 		var sb strings.Builder
-		for _, line := range blockLines {
-			sb.Write(line)
+		for _, l := range blockLines {
+			sb.Write(l)
 			sb.WriteByte('\n')
 		}
 		vulnerabilitySource = sb.String()
@@ -187,54 +187,38 @@ func parseAndFindTerraformBlock(src []byte, identifyingLine int) (model.Resource
 			var insertionLine int
 			var insertionCol int
 
-			if identifyingLine == block.DefRange().Start.Line {
-				// On the block header — insert before the block’s closing brace
-				insertionLine = blockEnd.Line
+			// Try to find if inside a nested structure
+			structureName, nestedStart, nestedEnd, _ := findContainingStructure(block, identifyingLine)
 
-				// Infer indent from last non-empty, non-comment line
-				for i := insertionLine; i > blockStart.Line && i <= len(lines); i-- {
-					trimmed := strings.TrimSpace(string(lines[i-1]))
-					if trimmed != "" && !strings.HasPrefix(trimmed, "#") {
-						insertionCol = countLeadingSpacesOrTabs(lines[i-1]) + 1
-						break
-					}
-				}
-			} else if identifyingLine > block.DefRange().Start.Line {
-				// Possibly inside a nested block or object attribute
-				structureName, nestedStart, nestedEnd, isAttribute := findContainingStructure(block, identifyingLine)
-
-				if structureName != "" {
+			if structureName != "" {
+				// ✅ Found a nested structure
+				if identifyingLine == nestedEnd.Line {
+					// CASE 1: End of nested block ➔ insert before its closing brace
 					insertionLine = nestedEnd.Line - 1
-					if isAttribute {
-						for i := insertionLine - 1; i > nestedStart.Line && i <= len(lines); i-- {
-							trimmed := strings.TrimSpace(string(lines[i-1]))
-							if trimmed != "" && !strings.HasPrefix(trimmed, "#") && strings.Contains(trimmed, "=") {
-								insertionCol = countLeadingSpacesOrTabs(lines[i-1]) + 1
-								break
-							}
-						}
-					} else {
-						if insertionLine-1 >= 0 && insertionLine-1 < len(lines) {
-							insertionCol = countLeadingSpacesOrTabs(lines[insertionLine-1]) + 1
-						}
-					}
+				} else if identifyingLine == nestedStart.Line {
+					// CASE 2: Start of nested block ➔ insert after its opening brace
+					insertionLine = nestedStart.Line + 1
 				} else {
-					// Default to block-level insertion
+					// CASE 3: Inside nested block body ➔ insert at current line
+					insertionLine = identifyingLine
+				}
+			} else {
+				// ❌ No nested structure found — we're inside the main block
+				if identifyingLine == blockStart.Line {
+					// CASE 4: At block header ➔ insert before block's closing brace
 					insertionLine = blockEnd.Line - 1
-					for i := insertionLine; i > blockStart.Line && i <= len(lines); i-- {
-						trimmed := strings.TrimSpace(string(lines[i-1]))
-						if trimmed != "" && !strings.HasPrefix(trimmed, "#") {
-							insertionCol = countLeadingSpacesOrTabs(lines[i-1]) + 1
-							break
-						}
-					}
+				} else {
+					// CASE 5: Somewhere in block ➔ insert at current line
+					insertionLine = identifyingLine
 				}
 			}
 
-			if insertionCol == 0 && insertionLine-1 < len(lines) {
+			// Now find correct indentation
+			if insertionLine-1 >= 0 && insertionLine-1 < len(lines) {
 				insertionCol = countLeadingSpacesOrTabs(lines[insertionLine-1]) + 1
 			}
 
+			// Build outputs
 			remediationStart = model.ResourceLine{Line: insertionLine, Col: insertionCol}
 			remediationEnd = model.ResourceLine{Line: insertionLine, Col: insertionCol}
 			vulnerabilityStart = model.ResourceLine{Line: blockStart.Line, Col: blockStart.Column}
@@ -242,6 +226,7 @@ func parseAndFindTerraformBlock(src []byte, identifyingLine int) (model.Resource
 			blockLocationStart = model.ResourceLine{Line: blockStart.Line, Col: blockStart.Column}
 			blockLocationEnd = model.ResourceLine{Line: blockEnd.Line, Col: blockEnd.Column}
 
+			// Special fallback if inserting outside
 			if remediationStart.Line != vulnerabilityEnd.Line {
 				vulnerabilityStart = remediationStart
 				vulnerabilityEnd = remediationEnd
@@ -251,7 +236,7 @@ func parseAndFindTerraformBlock(src []byte, identifyingLine int) (model.Resource
 		}
 	}
 
-	return vulnerabilityStart, vulnerabilityEnd, remediationStart, remediationEnd, lineContent, vulnerabilitySource, blockLocationStart, blockLocationEnd, fmt.Errorf("failed to locate block for line %d", identifyingLine)
+	return model.ResourceLine{}, model.ResourceLine{}, model.ResourceLine{}, model.ResourceLine{}, "", "", model.ResourceLine{}, model.ResourceLine{}, fmt.Errorf("failed to locate block for line %d", identifyingLine)
 }
 
 func countLeadingSpacesOrTabs(line []byte) int {
