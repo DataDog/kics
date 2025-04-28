@@ -1066,6 +1066,14 @@ func TransformToSarifFix(vuln model.VulnerableFile, startLocation sarifResourceL
 		}
 
 		insertedText = "\n" + strings.Join(result, "\n") + "\n"
+		sourceLines := strings.Split(vuln.ResourceSource, "\n")
+
+		if determineIfShouldAppendIndent(sourceLines, startLocation) {
+			insertedText += "\n" + strings.Repeat(" ", startLocation.Col-1)
+		} else {
+			insertedText += "\n"
+		}
+
 		fixStart = startLocation
 		fixEnd = startLocation
 	case "removal":
@@ -1097,6 +1105,28 @@ func TransformToSarifFix(vuln model.VulnerableFile, startLocation sarifResourceL
 			Text: fmt.Sprintf("Apply remediation: %s", vuln.Remediation),
 		},
 	}, nil
+}
+
+// determineIfShouldAppendIndent figures out whether insertedText should append baseIndent
+func determineIfShouldAppendIndent(sourceLines []string, startLocation sarifResourceLocation) bool {
+	if startLocation.Line-1 < 0 || startLocation.Line-1 >= len(sourceLines) {
+		return false
+	}
+
+	line := strings.TrimSpace(sourceLines[startLocation.Line-1])
+
+	if line == "" {
+		// Empty line: treat like body, yes append indent
+		return true
+	}
+
+	if line == "{" || line == "}" || line == "{}" {
+		// Pure structure lines: no extra indent
+		return false
+	}
+
+	// Otherwise assume it's body content
+	return true
 }
 
 func normalizeIndentation(input string, spacesPerTab int) string {
