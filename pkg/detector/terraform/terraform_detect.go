@@ -228,13 +228,13 @@ func parseAndFindTerraformBlock(src []byte, identifyingLine int) (model.Resource
 				}
 			case "nested-start":
 				// 2 spaces deeper than nested block's first line
-				insertionCol = countLeadingSpacesOrTabs(lines[nestedStart.Line-1]) + 3 // +2 spaces, +1 because 1-based column
+				insertionCol = countLeadingSpacesOrTabs(lines[nestedStart.Line-1]) + 2 // +2 spaces, +1 because 1-based column
 			case "nested-body":
 				// Match current line's indentation
 				insertionCol = countLeadingSpacesOrTabs(lines[insertionLine-1]) + 1
 			case "block-start":
 				// 2 spaces deeper than block's first line
-				insertionCol = countLeadingSpacesOrTabs(lines[blockStart.Line-1]) + 3
+				insertionCol = countLeadingSpacesOrTabs(lines[blockStart.Line-1]) + 2
 			case "block-body":
 				// Match current line's indentation
 				insertionCol = countLeadingSpacesOrTabs(lines[insertionLine-1]) + 1

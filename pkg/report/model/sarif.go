@@ -836,7 +836,6 @@ func TransformToSarifFix(vuln model.VulnerableFile, startLocation sarifResourceL
 	var insertedText string
 	fixStart := startLocation
 	fixEnd := endLocation
-	sourceLines := vuln.ResourceSource
 	fileLines := vuln.FileSource
 
 	// Helper to detect indentation
@@ -849,40 +848,7 @@ func TransformToSarifFix(vuln model.VulnerableFile, startLocation sarifResourceL
 		return ""
 	}
 
-	// Detect base indentation from first non-empty source line
-	baseIndent := ""
-	lines := strings.Split(sourceLines, "\n")
-	for _, line := range lines {
-		trimmed := strings.TrimSpace(line)
-		if trimmed != "" {
-			baseIndent = detectIndent(line)
-			break
-		}
-	}
-
 	switch vuln.RemediationType {
-
-	// case "replacement":
-	// 	var patch map[string]string
-	// 	err := json.Unmarshal([]byte(vuln.Remediation), &patch)
-	// 	if err != nil {
-	// 		return sarifFix{}, fmt.Errorf("invalid remediation format for replacement: %v", err)
-	// 	}
-	// 	after := strings.TrimSpace(patch["after"])
-
-	// 	// Re-indent `after` content to match block
-	// 	afterLines := strings.Split(after, "\n")
-	// 	for i, line := range afterLines {
-	// 		afterLines[i] = baseIndent + strings.TrimRight(line, " ")
-	// 	}
-	// 	insertedText = strings.Join(afterLines, "\n")
-	// 	if len(insertedText) > 0 && insertedText[len(insertedText)-1] != '\n' {
-	// 		insertedText += "\n"
-	// 	}
-
-	// 	fixStart = startLocation
-	// 	fixEnd = endLocation
-
 	case "replacement":
 		var patch map[string]string
 		err := json.Unmarshal([]byte(vuln.Remediation), &patch)
@@ -1062,13 +1028,12 @@ func TransformToSarifFix(vuln model.VulnerableFile, startLocation sarifResourceL
 		}
 
 	case "addition":
-		// Normalize tabs to 2 spaces and clean trailing spaces
 		normalizedRemediation := normalizeIndentation(vuln.Remediation, 2)
 
-		// Safely detect indentation of the following line
-		followingIndent := ""
+		// Detect real indentation for insertion context
+		baseIndent := ""
 		if startLocation.Line-1 >= 0 && startLocation.Line-1 < len(fileLines) {
-			followingIndent = detectIndent(fileLines[startLocation.Line-1])
+			baseIndent = detectIndent(fileLines[startLocation.Line-1])
 		}
 
 		insertedLines := strings.Split(normalizedRemediation, "\n")
@@ -1086,7 +1051,6 @@ func TransformToSarifFix(vuln model.VulnerableFile, startLocation sarifResourceL
 
 			isOnlyClosingBrace := trimmed == "}"
 
-			// Safely calculate current indentation BEFORE modifying nesting
 			safeNesting := nestingLevel
 			if isOnlyClosingBrace && nestingLevel > 0 {
 				safeNesting--
@@ -1096,7 +1060,6 @@ func TransformToSarifFix(vuln model.VulnerableFile, startLocation sarifResourceL
 
 			result = append(result, currentIndent+trimmed)
 
-			// Adjust nesting AFTER applying current line
 			if strings.Contains(trimmed, "{") {
 				nestingLevel++
 			}
@@ -1105,7 +1068,7 @@ func TransformToSarifFix(vuln model.VulnerableFile, startLocation sarifResourceL
 			}
 		}
 
-		insertedText = "\n" + strings.Join(result, "\n") + "\n" + followingIndent
+		insertedText = "\n" + strings.Join(result, "\n") + "\n"
 		fixStart = startLocation
 		fixEnd = startLocation
 
