@@ -757,10 +757,10 @@ func (sr *sarifReport) BuildSarifIssue(issue *model.QueryResult, sciInfo model.S
 					// so we just log the error and continue
 					log.Err(err).Msgf("failed to transform to sarif fix: %v", err)
 				} else {
-					if vulnerability.RemediationType == "addition" {
-						result.ResultLocations[0].PhysicalLocation.Region.StartLine = remediationStartLocation.Line
-						result.ResultLocations[0].PhysicalLocation.Region.EndLine = remediationEndLocation.Line
-					}
+					// we want the location displayed in the UI to properly highlight the remediation
+					result.ResultLocations[0].PhysicalLocation.Region.StartLine = remediationStartLocation.Line
+					result.ResultLocations[0].PhysicalLocation.Region.EndLine = remediationEndLocation.Line
+
 					result.ResultFixes = append(result.ResultFixes, sarifFix)
 				}
 			}
