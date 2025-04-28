@@ -191,54 +191,35 @@ func parseAndFindTerraformBlock(src []byte, identifyingLine int) (model.Resource
 
 			if structureName != "" {
 				if identifyingLine == nestedEnd.Line {
-					// CASE 1: End of nested block
 					insertionLine = nestedEnd.Line - 1
 					caseType = "nested-end"
 				} else if identifyingLine == nestedStart.Line {
-					// CASE 2: Start of nested block
 					insertionLine = nestedStart.Line + 1
 					caseType = "nested-start"
 				} else {
-					// CASE 3: Inside nested block
 					insertionLine = identifyingLine
 					caseType = "nested-body"
 				}
 			} else {
 				if identifyingLine == blockStart.Line {
-					// CASE 4: Start of main block
 					insertionLine = blockEnd.Line - 1
 					caseType = "block-start"
 				} else {
-					// CASE 5: Inside main block
 					insertionLine = identifyingLine
 					caseType = "block-body"
 				}
 			}
 
-			// Set the correct column based on caseType
-			switch caseType {
-			case "nested-end":
-				// Find last non-empty line in nested block before closing }
-				for i := insertionLine - 1; i >= nestedStart.Line; i-- {
-					trimmed := strings.TrimSpace(string(lines[i]))
-					if trimmed != "" && !strings.HasPrefix(trimmed, "#") {
-						insertionCol = countLeadingSpacesOrTabs(lines[i]) + 1
-						break
-					}
-				}
-			case "nested-start":
-				// 2 spaces deeper than nested block's first line
-				insertionCol = countLeadingSpacesOrTabs(lines[nestedStart.Line-1]) + 2 // +2 spaces, +1 because 1-based column
-			case "nested-body":
-				// Match current line's indentation
-				insertionCol = countLeadingSpacesOrTabs(lines[insertionLine-1]) + 1
-			case "block-start":
-				// 2 spaces deeper than block's first line
-				insertionCol = countLeadingSpacesOrTabs(lines[blockStart.Line-1]) + 2
-			case "block-body":
-				// Match current line's indentation
-				insertionCol = countLeadingSpacesOrTabs(lines[insertionLine-1]) + 1
-			}
+			// Now use our clean new helper:
+			insertionCol = determineInsertionIndent(
+				toStringLines(lines), // helper needed because you have [][]byte
+				insertionLine,
+				caseType,
+				nestedStart.Line,
+				nestedEnd.Line,
+				blockStart.Line,
+				blockEnd.Line,
+			) + 1 // SARIF Col is 1-indexed
 
 			// Build output
 			remediationStart = model.ResourceLine{Line: insertionLine, Col: insertionCol}
@@ -253,6 +234,14 @@ func parseAndFindTerraformBlock(src []byte, identifyingLine int) (model.Resource
 	}
 
 	return model.ResourceLine{}, model.ResourceLine{}, model.ResourceLine{}, model.ResourceLine{}, "", "", model.ResourceLine{}, model.ResourceLine{}, fmt.Errorf("failed to locate block for line %d", identifyingLine)
+}
+
+func toStringLines(byteLines [][]byte) []string {
+	result := make([]string, len(byteLines))
+	for i, b := range byteLines {
+		result[i] = string(b)
+	}
+	return result
 }
 
 func countLeadingSpacesOrTabs(line []byte) int {
@@ -292,4 +281,31 @@ func findContainingStructure(block *hclsyntax.Block, line int) (string, hcl.Pos,
 	}
 
 	return "", hcl.Pos{}, hcl.Pos{}, false
+}
+
+// determineInsertionIndent determines correct indentation based on insertion case.
+func determineInsertionIndent(lines []string, insertionLine int, caseType string, nestedStart int, nestedEnd int, blockStart int, blockEnd int) int {
+	switch caseType {
+	case "nested-end":
+		// Look upwards inside nested block
+		for i := nestedEnd - 2; i >= nestedStart-1; i-- {
+			trimmed := strings.TrimSpace(lines[i])
+			if trimmed != "" && !strings.HasPrefix(trimmed, "#") {
+				return countLeadingSpacesOrTabs([]byte(lines[i]))
+			}
+		}
+	case "nested-start":
+		// 2 spaces deeper than nested block header
+		return countLeadingSpacesOrTabs([]byte(lines[nestedStart-1])) + 2
+	case "nested-body":
+		// Match current line
+		return countLeadingSpacesOrTabs([]byte(lines[insertionLine-1]))
+	case "block-start":
+		// 2 spaces deeper than block header
+		return countLeadingSpacesOrTabs([]byte(lines[blockStart-1])) + 2
+	case "block-body":
+		// Match current line
+		return countLeadingSpacesOrTabs([]byte(lines[insertionLine-1]))
+	}
+	return 0
 }
