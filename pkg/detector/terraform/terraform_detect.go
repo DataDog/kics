@@ -174,7 +174,6 @@ func parseAndFindTerraformBlock(src []byte, identifyingLine int) (model.Resource
 		blockStart := block.TypeRange.Start
 		blockEnd := block.Body.SrcRange.End
 
-		// Build the block source
 		blockLines := lines[blockStart.Line-1 : blockEnd.Line]
 		var sb strings.Builder
 		for _, l := range blockLines {
@@ -186,51 +185,68 @@ func parseAndFindTerraformBlock(src []byte, identifyingLine int) (model.Resource
 		if identifyingLine >= blockStart.Line && identifyingLine <= blockEnd.Line {
 			var insertionLine int
 			var insertionCol int
+			var caseType string
 
-			// Try to find if inside a nested structure
 			structureName, nestedStart, nestedEnd, _ := findContainingStructure(block, identifyingLine)
 
 			if structureName != "" {
-				// ✅ Found a nested structure
 				if identifyingLine == nestedEnd.Line {
-					// CASE 1: End of nested block ➔ insert before its closing brace
+					// CASE 1: End of nested block
 					insertionLine = nestedEnd.Line - 1
+					caseType = "nested-end"
 				} else if identifyingLine == nestedStart.Line {
-					// CASE 2: Start of nested block ➔ insert after its opening brace
+					// CASE 2: Start of nested block
 					insertionLine = nestedStart.Line + 1
+					caseType = "nested-start"
 				} else {
-					// CASE 3: Inside nested block body ➔ insert at current line
+					// CASE 3: Inside nested block
 					insertionLine = identifyingLine
+					caseType = "nested-body"
 				}
 			} else {
-				// ❌ No nested structure found — we're inside the main block
 				if identifyingLine == blockStart.Line {
-					// CASE 4: At block header ➔ insert before block's closing brace
+					// CASE 4: Start of main block
 					insertionLine = blockEnd.Line - 1
+					caseType = "block-start"
 				} else {
-					// CASE 5: Somewhere in block ➔ insert at current line
+					// CASE 5: Inside main block
 					insertionLine = identifyingLine
+					caseType = "block-body"
 				}
 			}
 
-			// Now find correct indentation
-			if insertionLine-1 >= 0 && insertionLine-1 < len(lines) {
+			// Set the correct column based on caseType
+			switch caseType {
+			case "nested-end":
+				// Find last non-empty line in nested block before closing }
+				for i := insertionLine - 1; i >= nestedStart.Line; i-- {
+					trimmed := strings.TrimSpace(string(lines[i]))
+					if trimmed != "" && !strings.HasPrefix(trimmed, "#") {
+						insertionCol = countLeadingSpacesOrTabs(lines[i]) + 1
+						break
+					}
+				}
+			case "nested-start":
+				// 2 spaces deeper than nested block's first line
+				insertionCol = countLeadingSpacesOrTabs(lines[nestedStart.Line-1]) + 3 // +2 spaces, +1 because 1-based column
+			case "nested-body":
+				// Match current line's indentation
+				insertionCol = countLeadingSpacesOrTabs(lines[insertionLine-1]) + 1
+			case "block-start":
+				// 2 spaces deeper than block's first line
+				insertionCol = countLeadingSpacesOrTabs(lines[blockStart.Line-1]) + 3
+			case "block-body":
+				// Match current line's indentation
 				insertionCol = countLeadingSpacesOrTabs(lines[insertionLine-1]) + 1
 			}
 
-			// Build outputs
+			// Build output
 			remediationStart = model.ResourceLine{Line: insertionLine, Col: insertionCol}
 			remediationEnd = model.ResourceLine{Line: insertionLine, Col: insertionCol}
 			vulnerabilityStart = model.ResourceLine{Line: blockStart.Line, Col: blockStart.Column}
 			vulnerabilityEnd = model.ResourceLine{Line: blockEnd.Line, Col: blockEnd.Column}
 			blockLocationStart = model.ResourceLine{Line: blockStart.Line, Col: blockStart.Column}
 			blockLocationEnd = model.ResourceLine{Line: blockEnd.Line, Col: blockEnd.Column}
-
-			// Special fallback if inserting outside
-			if remediationStart.Line != vulnerabilityEnd.Line {
-				vulnerabilityStart = remediationStart
-				vulnerabilityEnd = remediationEnd
-			}
 
 			return vulnerabilityStart, vulnerabilityEnd, remediationStart, remediationEnd, lineContent, vulnerabilitySource, blockLocationStart, blockLocationEnd, nil
 		}
