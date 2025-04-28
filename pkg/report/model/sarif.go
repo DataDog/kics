@@ -1068,7 +1068,7 @@ func TransformToSarifFix(vuln model.VulnerableFile, startLocation sarifResourceL
 		insertedText = "\n" + strings.Join(result, "\n")
 		sourceLines := strings.Split(vuln.ResourceSource, "\n")
 
-		if determineIfShouldAppendIndent(sourceLines, startLocation) {
+		if determineIfShouldAppendIndent(sourceLines, startLocation, vuln.ResourceLocation, vuln.FileSource) {
 			insertedText += "\n" + strings.Repeat(" ", startLocation.Col-1)
 		} else {
 			insertedText += "\n"
@@ -1108,25 +1108,63 @@ func TransformToSarifFix(vuln model.VulnerableFile, startLocation sarifResourceL
 }
 
 // determineIfShouldAppendIndent figures out whether insertedText should append baseIndent
-func determineIfShouldAppendIndent(sourceLines []string, startLocation sarifResourceLocation) bool {
-	if startLocation.Line-1 < 0 || startLocation.Line-1 >= len(sourceLines) {
+func determineIfShouldAppendIndent(sourceLines []string, startLocation sarifResourceLocation, resourceLocation model.ResourceLocation, fileSource []string) bool {
+	relativeResourceStartLine := findResourceStartLine(fileSource, sourceLines)
+	if relativeResourceStartLine == -1 {
 		return false
 	}
 
-	line := strings.TrimSpace(sourceLines[startLocation.Line-1])
+	if startLocation.Line-1 < 0 || startLocation.Line-1 >= len(fileSource) {
+		return false
+	}
+
+	line := strings.TrimSpace(fileSource[startLocation.Line-1])
 
 	if line == "" {
 		// Empty line: treat like body, yes append indent
 		return true
 	}
 
-	if line == "{" || line == "}" || line == "{}" {
+	if (line == "{" || line == "}" || line == "{}") && (startLocation.Line == resourceLocation.Start.Line+relativeResourceStartLine || startLocation.Line == resourceLocation.End.Line+relativeResourceStartLine) {
 		// Pure structure lines: no extra indent
 		return false
 	}
 
 	// Otherwise assume it's body content
 	return true
+}
+
+// findResourceStartLine searches for where resourceSource starts inside fileSource.
+// Returns the starting line number (1-based), or -1 if not found.
+func findResourceStartLine(fileSource []string, resourceSource []string) int {
+	resourceLines := trimTrailingEmptyLines(resourceSource)
+
+	if len(resourceLines) == 0 {
+		return -1
+	}
+
+	for i := 0; i <= len(fileSource)-len(resourceLines); i++ {
+		match := true
+		for j := 0; j < len(resourceLines); j++ {
+			if strings.TrimSpace(fileSource[i+j]) != strings.TrimSpace(resourceLines[j]) {
+				match = false
+				break
+			}
+		}
+		if match {
+			return i
+		}
+	}
+
+	return -1 // Not found
+}
+
+// trimTrailingEmptyLines removes trailing empty lines from a slice of lines.
+func trimTrailingEmptyLines(lines []string) []string {
+	for len(lines) > 0 && strings.TrimSpace(lines[len(lines)-1]) == "" {
+		lines = lines[:len(lines)-1]
+	}
+	return lines
 }
 
 func normalizeIndentation(input string, spacesPerTab int) string {
