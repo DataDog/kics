@@ -197,7 +197,7 @@ func parseAndFindTerraformBlock(src []byte, identifyingLine int) (model.Resource
 					insertionLine = nestedStart.Line + 1
 					caseType = "nested-start"
 				} else {
-					insertionLine = nestedEnd.Line - 1
+					insertionLine = nestedEnd.Line
 					caseType = "nested-body"
 				}
 			} else {
