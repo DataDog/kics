@@ -761,6 +761,12 @@ func (sr *sarifReport) BuildSarifIssue(issue *model.QueryResult, sciInfo model.S
 					if vulnerability.RemediationType != "addition" || vulnerability.Line != vulnerability.BlockLocation.Start.Line {
 						result.ResultLocations[0].PhysicalLocation.Region.StartLine = remediationStartLocation.Line
 						result.ResultLocations[0].PhysicalLocation.Region.EndLine = remediationEndLocation.Line
+					} else {
+						startLine := remediationStartLocation.Line
+						numLinesInserted := strings.Count(vulnerability.Remediation, "\n") + 1
+						endLine := startLine + numLinesInserted - 1
+						result.ResultLocations[0].PhysicalLocation.Region.StartLine = startLine
+						result.ResultLocations[0].PhysicalLocation.Region.EndLine = endLine
 					}
 
 					result.ResultFixes = append(result.ResultFixes, sarifFix)
