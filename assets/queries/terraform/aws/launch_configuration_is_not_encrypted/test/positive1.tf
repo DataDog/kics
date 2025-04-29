@@ -10,7 +10,11 @@ resource "aws_launch_configuration" "positive1" {
 
   ebs_block_device {
     device_name = "/dev/xvda1"
-  }
+ 
+  metadata_options {
+   http_tokens = \"required\"
+ }
+   }
 }
 
 resource "aws_launch_configuration" "positive2" {
