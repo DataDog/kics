@@ -1021,48 +1021,44 @@ func TransformToSarifFix(vuln model.VulnerableFile, startLocation sarifResourceL
 
 		insertedLines := strings.Split(normalizedRemediation, "\n")
 
-		// Set the base indent directly from startLocation.Col (which is already correct!)
-		baseIndent := strings.Repeat(" ", startLocation.Col)
-
+		baseIndent := strings.Repeat(" ", startLocation.Col-1) // Correct Col to space indent
 		var result []string
 		nestingLevel := 0
 
 		for _, line := range insertedLines {
-			trimmed := line
+			trimmed := strings.TrimSpace(line)
 
 			if trimmed == "" {
-				result = append(result, "")
+				// No extra blank line
 				continue
 			}
 
-			isOnlyClosingBrace := trimmed == "}"
+			isOpeningBrace := strings.HasSuffix(trimmed, "{")
+			isClosingBrace := trimmed == "}"
 
-			safeNesting := nestingLevel
-			if isOnlyClosingBrace && nestingLevel > 0 {
-				safeNesting--
+			// Safely calculate current indentation
+			currentIndent := baseIndent
+
+			if nestingLevel > 0 && !isClosingBrace {
+				currentIndent += strings.Repeat("  ", nestingLevel)
 			}
 
-			// Only indent deeper for lines inside new nested blocks
-			if strings.HasPrefix(trimmed, "}") {
-				safeNesting--
-			}
-			indent := baseIndent
-			if nestingLevel > 0 && !strings.HasPrefix(trimmed, "}") {
-				indent += strings.Repeat("  ", safeNesting)
-			}
-			result = append(result, indent+trimmed)
+			// Append the properly indented line
+			result = append(result, currentIndent+trimmed)
 
-			if strings.Contains(trimmed, "{") {
+			// Adjust nesting AFTER appending
+			if isOpeningBrace {
 				nestingLevel++
 			}
-			if isOnlyClosingBrace && nestingLevel > 0 {
+			if isClosingBrace && nestingLevel > 0 {
 				nestingLevel--
 			}
 		}
 
-		sourceLines := strings.Split(vuln.ResourceSource, "\n")
-
+		// Build insertedText cleanly
 		insertedText = "\n" + strings.Join(result, "\n")
+
+		sourceLines := strings.Split(vuln.ResourceSource, "\n")
 		if determineIfShouldAppendIndent(sourceLines, startLocation, vuln.ResourceLocation, vuln.FileSource) {
 			insertedText += "\n" + strings.Repeat(" ", startLocation.Col-1)
 		} else {
