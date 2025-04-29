@@ -1042,9 +1042,15 @@ func TransformToSarifFix(vuln model.VulnerableFile, startLocation sarifResourceL
 				safeNesting--
 			}
 
-			currentIndent := baseIndent + strings.Repeat("  ", safeNesting)
-
-			result = append(result, currentIndent+trimmed)
+			// Only indent deeper for lines inside new nested blocks
+			if strings.HasPrefix(trimmed, "}") {
+				safeNesting--
+			}
+			indent := baseIndent
+			if nestingLevel > 0 && !strings.HasPrefix(trimmed, "}") {
+				indent += strings.Repeat("  ", safeNesting)
+			}
+			result = append(result, indent+trimmed)
 
 			if strings.Contains(trimmed, "{") {
 				nestingLevel++
