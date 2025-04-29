@@ -210,18 +210,16 @@ func parseAndFindTerraformBlock(src []byte, identifyingLine int) (model.Resource
 				}
 			}
 
-			// Now use our clean new helper:
 			insertionCol = determineInsertionIndent(
-				toStringLines(lines), // helper needed because you have [][]byte
+				toStringLines(lines),
 				insertionLine,
 				caseType,
 				nestedStart.Line,
 				nestedEnd.Line,
 				blockStart.Line,
 				blockEnd.Line,
-			) + 1 // SARIF Col is 1-indexed
+			) + 1
 
-			// Build output
 			remediationStart = model.ResourceLine{Line: insertionLine, Col: insertionCol}
 			remediationEnd = model.ResourceLine{Line: insertionLine, Col: insertionCol}
 			vulnerabilityStart = model.ResourceLine{Line: blockStart.Line, Col: blockStart.Column}
