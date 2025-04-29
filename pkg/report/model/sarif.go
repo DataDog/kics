@@ -1069,7 +1069,11 @@ func TransformToSarifFix(vuln model.VulnerableFile, startLocation sarifResourceL
 		sourceLines := strings.Split(vuln.ResourceSource, "\n")
 
 		if determineIfShouldAppendIndent(sourceLines, startLocation, vuln.ResourceLocation, vuln.FileSource) {
-			insertedText += "\n" + strings.Repeat(" ", startLocation.Col-1)
+			if vuln.Line == vuln.BlockLocation.Start.Line {
+				insertedText += "\n" + strings.Repeat(" ", startLocation.Col)
+			} else {
+				insertedText += "\n" + strings.Repeat(" ", startLocation.Col-1)
+			}
 		} else {
 			insertedText += "\n"
 		}
