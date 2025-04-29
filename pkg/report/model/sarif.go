@@ -1022,7 +1022,7 @@ func TransformToSarifFix(vuln model.VulnerableFile, startLocation sarifResourceL
 		insertedLines := strings.Split(normalizedRemediation, "\n")
 
 		// Set the base indent directly from startLocation.Col (which is already correct!)
-		baseIndent := strings.Repeat(" ", startLocation.Col-1) // because Col is 1-indexed
+		baseIndent := strings.Repeat(" ", startLocation.Col-1)
 
 		var result []string
 		nestingLevel := 0
@@ -1056,14 +1056,9 @@ func TransformToSarifFix(vuln model.VulnerableFile, startLocation sarifResourceL
 
 		sourceLines := strings.Split(vuln.ResourceSource, "\n")
 
+		insertedText = "\n" + strings.Join(result, "\n")
 		if determineIfShouldAppendIndent(sourceLines, startLocation, vuln.ResourceLocation, vuln.FileSource) {
-			if vuln.Line == vuln.BlockLocation.Start.Line {
-				insertedText = "\n" + strings.Repeat(" ", startLocation.Col-1) + strings.Join(result, "\n")
-				insertedText += "\n" + strings.Repeat(" ", startLocation.Col)
-			} else {
-				insertedText = "\n" + strings.Join(result, "\n")
-				insertedText += "\n" + strings.Repeat(" ", startLocation.Col-1)
-			}
+			insertedText += "\n" + strings.Repeat(" ", startLocation.Col-1)
 		} else {
 			insertedText += "\n"
 		}
@@ -1146,7 +1141,7 @@ func findResourceStartLine(fileSource []string, resourceSource []string) int {
 			}
 		}
 		if match {
-			return i
+			return i + 1
 		}
 	}
 
