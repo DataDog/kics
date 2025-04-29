@@ -836,17 +836,6 @@ func TransformToSarifFix(vuln model.VulnerableFile, startLocation sarifResourceL
 	var insertedText string
 	fixStart := startLocation
 	fixEnd := endLocation
-	// fileLines := vuln.FileSource
-
-	// // Helper to detect indentation
-	// detectIndent := func(line string) string {
-	// 	for i, r := range line {
-	// 		if r != ' ' && r != '\t' {
-	// 			return line[:i]
-	// 		}
-	// 	}
-	// 	return ""
-	// }
 
 	switch vuln.RemediationType {
 	case "replacement":
@@ -1039,7 +1028,7 @@ func TransformToSarifFix(vuln model.VulnerableFile, startLocation sarifResourceL
 		nestingLevel := 0
 
 		for _, line := range insertedLines {
-			trimmed := strings.TrimSpace(line)
+			trimmed := line
 
 			if trimmed == "" {
 				result = append(result, "")
