@@ -302,7 +302,7 @@ func determineInsertionIndent(lines []string, insertionLine int, caseType string
 		return countLeadingSpacesOrTabs([]byte(lines[insertionLine-1]))
 	case "block-start":
 		// 2 spaces deeper than block header
-		return countLeadingSpacesOrTabs([]byte(lines[blockStart-1])) + 2
+		return 1
 	case "block-body":
 		// Match current line
 		return countLeadingSpacesOrTabs([]byte(lines[insertionLine-1]))
