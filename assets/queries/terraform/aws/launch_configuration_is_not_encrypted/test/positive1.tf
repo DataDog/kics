@@ -27,7 +27,11 @@ resource "aws_launch_configuration" "positive2" {
     device_name = "/dev/xvda1"
     encrypted = false
   }
+
+metadata_options {
+  http_tokens = \"required\"
 }
+ }
 
 resource "aws_launch_configuration" "positive3" {
   name = "test-launch-config"
