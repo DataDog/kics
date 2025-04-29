@@ -1174,7 +1174,7 @@ func trimTrailingEmptyLines(lines []string) []string {
 
 func normalizeIndentation(input string, spacesPerTab int) string {
 	lines := strings.Split(input, "\n")
-	tabSpaces := strings.Repeat("  ", spacesPerTab)
+	tabSpaces := strings.Repeat(" ", spacesPerTab)
 
 	for i, line := range lines {
 		// Replace tabs with spaces and trim trailing whitespace
