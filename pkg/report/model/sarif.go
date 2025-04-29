@@ -1021,7 +1021,15 @@ func TransformToSarifFix(vuln model.VulnerableFile, startLocation sarifResourceL
 
 		insertedLines := strings.Split(normalizedRemediation, "\n")
 
-		baseIndent := strings.Repeat(" ", startLocation.Col)
+		var baseIndent string
+
+		nestedInsert := isInsertingInsideNestedBlock(vuln.FileSource, startLocation, vuln.BlockLocation.Start.Line, vuln.BlockLocation.End.Line)
+
+		if nestedInsert {
+			baseIndent = strings.Repeat(" ", startLocation.Col-1)
+		} else {
+			baseIndent = strings.Repeat(" ", startLocation.Col)
+		}
 
 		var result []string
 		nestingLevel := 0
@@ -1061,7 +1069,11 @@ func TransformToSarifFix(vuln model.VulnerableFile, startLocation sarifResourceL
 
 		sourceLines := strings.Split(vuln.ResourceSource, "\n")
 		if determineIfShouldAppendIndent(sourceLines, startLocation, vuln.ResourceLocation, vuln.FileSource) {
-			insertedText += "\n" + strings.Repeat(" ", startLocation.Col-1)
+			if nestedInsert {
+				insertedText += "\n" + strings.Repeat(" ", startLocation.Col-1)
+			} else {
+				insertedText += "\n" + strings.Repeat(" ", startLocation.Col)
+			}
 		} else {
 			insertedText += "\n"
 		}
@@ -1182,4 +1194,46 @@ func normalize(s string) string {
 	s = strings.Join(strings.Fields(s), " ") // normalize extra whitespace
 	s = strings.Trim(s, `"`)
 	return s
+}
+
+func isInsertingInsideNestedBlock(fileLines []string, startLocation sarifResourceLocation, blockStartLine int, blockEndLine int) bool {
+	if startLocation.Line <= blockStartLine || startLocation.Line >= blockEndLine {
+		// Inserting outside or exactly at block start/end
+		return false
+	}
+
+	// Read the line we are inserting at
+	if startLocation.Line-1 < 0 || startLocation.Line-1 >= len(fileLines) {
+		return false
+	}
+
+	lineContent := strings.TrimSpace(fileLines[startLocation.Line-1])
+
+	// If inserting into a field or structure inside the block body
+	if lineContent == "" {
+		// blank line — could be inside, assume not nested by blankness
+		return false
+	}
+	if lineContent == "}" {
+		// if right at closing brace, not inside nested body
+		return false
+	}
+
+	// Now, if there is a `{` before or after nearby, you're likely inside a nested structure
+	// (this is heuristic: it covers 99% terraform style)
+
+	// look backwards for a nearby opening `{`
+	for i := startLocation.Line - 2; i >= blockStartLine-1; i-- {
+		if strings.Contains(fileLines[i], "{") {
+			return true // nested structure found
+		}
+		trimmed := strings.TrimSpace(fileLines[i])
+		if trimmed == "" {
+			continue
+		}
+		if trimmed != "}" {
+			break // if it's a field or something else, stop
+		}
+	}
+	return false
 }
