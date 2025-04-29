@@ -7,6 +7,7 @@ package terraform
 
 import (
 	"fmt"
+	"strings"
 	"testing"
 
 	"github.com/Checkmarx/kics/pkg/model"
@@ -70,11 +71,11 @@ func TestDetectTerraformLine(t *testing.T) { //nolint
 					},
 				},
 				VulnerablilityLocation: model.ResourceLocation{
-					ResourceStart: model.ResourceLine{
+					Start: model.ResourceLine{
 						Line: 1,
 						Col:  1,
 					},
-					ResourceEnd: model.ResourceLine{
+					End: model.ResourceLine{
 						Line: 12,
 						Col:  2,
 					},
@@ -107,11 +108,11 @@ func TestDetectTerraformLine(t *testing.T) { //nolint
 					},
 				},
 				VulnerablilityLocation: model.ResourceLocation{
-					ResourceStart: model.ResourceLine{
+					Start: model.ResourceLine{
 						Line: 14,
 						Col:  1,
 					},
-					ResourceEnd: model.ResourceLine{
+					End: model.ResourceLine{
 						Line: 21,
 						Col:  2,
 					},
@@ -144,11 +145,11 @@ func TestDetectTerraformLine(t *testing.T) { //nolint
 					},
 				},
 				VulnerablilityLocation: model.ResourceLocation{
-					ResourceStart: model.ResourceLine{
+					Start: model.ResourceLine{
 						Line: 23,
 						Col:  1,
 					},
-					ResourceEnd: model.ResourceLine{
+					End: model.ResourceLine{
 						Line: 28,
 						Col:  2,
 					},
@@ -173,3 +174,306 @@ func TestDetectTerraformLine(t *testing.T) { //nolint
 		})
 	}
 }
+
+func TestDetectTerraformLineRemediations(t *testing.T) {
+	testCases := []struct {
+		expected  model.VulnerabilityLines
+		searchKey string
+		file      *model.FileMetadata
+	}{
+		{
+			expected: model.VulnerabilityLines{
+				Line: 24,
+				VulnLines: &[]model.CodeLine{
+					{Position: 23, Line: "\tversioning {"},
+					{Position: 24, Line: "\t  enabled = false"},
+					{Position: 25, Line: "\t}"},
+				},
+				VulnerablilityLocation: model.ResourceLocation{
+					Start: model.ResourceLine{Line: 14, Col: 3},
+					End:   model.ResourceLine{Line: 26, Col: 4},
+				},
+				RemediationLocation: model.ResourceLocation{
+					Start: model.ResourceLine{Line: 24, Col: 4},
+					End:   model.ResourceLine{Line: 24, Col: 4},
+				},
+				LineWithVulnerability: "\t  enabled = false",
+				ResolvedFile:          "",
+				ResourceSource:        "  resource \"aws_s3_bucket\" \"positive1\" {\n\tbucket = \"my-tf-test-bucket\"\n\tacl    = \"private\"\n\n\ttags = {\n\t  Name        = \"My bucket\"\n\t  Environment = \"Dev\"\n\t}\n\n\tversioning {\n\t  enabled = false\n\t}\n  }\n",
+				FileSource:            strings.Split(OriginalDataPositive1, "\n"),
+				BlockLocation: model.ResourceLocation{
+					Start: model.ResourceLine{Line: 14, Col: 3},
+					End:   model.ResourceLine{Line: 26, Col: 4},
+				},
+			},
+			searchKey: "aws_s3_bucket[positive1].versioning.enabled",
+			file: &model.FileMetadata{
+				ScanID:            "console",
+				ID:                "positive1.versioning.enabled",
+				Kind:              model.KindTerraform,
+				OriginalData:      OriginalDataPositive1,
+				LinesOriginalData: utils.SplitLines(OriginalDataPositive1),
+			},
+		},
+		{
+			expected: model.VulnerabilityLines{
+				Line: 14,
+				VulnLines: &[]model.CodeLine{
+					{Position: 13, Line: ""},
+					{Position: 14, Line: "  resource \"aws_s3_bucket\" \"positive2\" {"},
+					{Position: 15, Line: "\tbucket = \"my-tf-test-bucket\""},
+				},
+				VulnerablilityLocation: model.ResourceLocation{
+					Start: model.ResourceLine{Line: 14, Col: 3},
+					End:   model.ResourceLine{Line: 22, Col: 4},
+				},
+				RemediationLocation: model.ResourceLocation{
+					Start: model.ResourceLine{Line: 21, Col: 2},
+					End:   model.ResourceLine{Line: 21, Col: 2},
+				},
+				LineWithVulnerability: "  resource \"aws_s3_bucket\" \"positive2\" {",
+				ResolvedFile:          "",
+				ResourceSource:        "  resource \"aws_s3_bucket\" \"positive2\" {\n\tbucket = \"my-tf-test-bucket\"\n\tacl    = \"private\"\n\n\ttags = {\n\t  Name        = \"My bucket\"\n\t  Environment = \"Dev\"\n\t}\n  }\n",
+				FileSource:            strings.Split(OriginalDataPositive2, "\n"),
+				BlockLocation: model.ResourceLocation{
+					Start: model.ResourceLine{Line: 14, Col: 3},
+					End:   model.ResourceLine{Line: 22, Col: 4},
+				},
+			},
+			searchKey: "aws_s3_bucket[positive2]",
+			file: &model.FileMetadata{
+				ScanID:            "console",
+				ID:                "positive2.missing_field",
+				Kind:              model.KindTerraform,
+				OriginalData:      OriginalDataPositive2,
+				LinesOriginalData: utils.SplitLines(OriginalDataPositive2),
+			},
+		},
+		{
+			expected: model.VulnerabilityLines{
+				Line: 23,
+				VulnLines: &[]model.CodeLine{
+					{Position: 22, Line: ""},
+					{Position: 23, Line: "\tversioning {"},
+					{Position: 24, Line: "\t  mfa_delete = true"},
+				},
+				VulnerablilityLocation: model.ResourceLocation{
+					Start: model.ResourceLine{Line: 14, Col: 3},
+					End:   model.ResourceLine{Line: 26, Col: 4},
+				},
+				RemediationLocation: model.ResourceLocation{
+					Start: model.ResourceLine{Line: 24, Col: 4},
+					End:   model.ResourceLine{Line: 24, Col: 4},
+				},
+				LineWithVulnerability: "\tversioning {",
+				ResolvedFile:          "",
+				ResourceSource:        "  resource \"aws_s3_bucket\" \"positive3\" {\n\tbucket = \"my-tf-test-bucket\"\n\tacl    = \"private\"\n\n\ttags = {\n\t  Name        = \"My bucket\"\n\t  Environment = \"Dev\"\n\t}\n\n\tversioning {\n\t  mfa_delete = true\n\t}\n  }\n",
+				FileSource:            strings.Split(OriginalDataPositive3, "\n"),
+				BlockLocation: model.ResourceLocation{
+					Start: model.ResourceLine{Line: 14, Col: 3},
+					End:   model.ResourceLine{Line: 26, Col: 4},
+				},
+			},
+			searchKey: "aws_s3_bucket[positive3].versioning",
+			file: &model.FileMetadata{
+				ScanID:            "console",
+				ID:                "positive3.versioning",
+				Kind:              model.KindTerraform,
+				OriginalData:      OriginalDataPositive3,
+				LinesOriginalData: utils.SplitLines(OriginalDataPositive3),
+			},
+		},
+		{
+			expected: model.VulnerabilityLines{
+				Line: 27,
+				VulnLines: &[]model.CodeLine{
+					{Position: 26, Line: "\tversioning_configuration {"},
+					{Position: 27, Line: "\t  status = \"Suspended\""},
+					{Position: 28, Line: "\t}"},
+				},
+				VulnerablilityLocation: model.ResourceLocation{
+					Start: model.ResourceLine{Line: 23, Col: 3},
+					End:   model.ResourceLine{Line: 29, Col: 4},
+				},
+				RemediationLocation: model.ResourceLocation{
+					Start: model.ResourceLine{Line: 27, Col: 4},
+					End:   model.ResourceLine{Line: 27, Col: 4},
+				},
+				LineWithVulnerability: "\t  status = \"Suspended\"",
+				ResolvedFile:          "",
+				ResourceSource:        "  resource \"aws_s3_bucket_versioning\" \"example\" {\n\tbucket = aws_s3_bucket.b0.id\n\n\tversioning_configuration {\n\t  status = \"Suspended\"\n\t}\n  }\n",
+				FileSource:            strings.Split(OriginalDataPositive7, "\n"),
+				BlockLocation: model.ResourceLocation{
+					Start: model.ResourceLine{Line: 23, Col: 3},
+					End:   model.ResourceLine{Line: 29, Col: 4},
+				},
+			},
+			searchKey: "aws_s3_bucket_versioning[example].versioning_configuration.status",
+			file: &model.FileMetadata{
+				ScanID:            "console",
+				ID:                "positive7.versioning_configuration.status",
+				Kind:              model.KindTerraform,
+				OriginalData:      OriginalDataPositive7,
+				LinesOriginalData: utils.SplitLines(OriginalDataPositive7),
+			},
+		},
+		{
+			expected: model.VulnerabilityLines{
+				Line: 1,
+				VulnLines: &[]model.CodeLine{
+					{Position: 1, Line: "resource \"aws_s3_bucket\" \"no_versioning\" {"},
+					{Position: 2, Line: "\tbucket = \"my-tf-test-bucket\""},
+					{Position: 3, Line: ""},
+				},
+				VulnerablilityLocation: model.ResourceLocation{
+					Start: model.ResourceLine{Line: 1, Col: 1},
+					End:   model.ResourceLine{Line: 7, Col: 4},
+				},
+				RemediationLocation: model.ResourceLocation{
+					Start: model.ResourceLine{Line: 6, Col: 2},
+					End:   model.ResourceLine{Line: 6, Col: 2},
+				},
+				LineWithVulnerability: "resource \"aws_s3_bucket\" \"no_versioning\" {",
+				ResolvedFile:          "",
+				ResourceSource:        "resource \"aws_s3_bucket\" \"no_versioning\" {\n\tbucket = \"my-tf-test-bucket\"\n\n\ttags = {\n\t  Name = \"My bucket\"\n\t}\n  }\n",
+				FileSource:            strings.Split(OriginalDataMissingVersioning, "\n"),
+				BlockLocation: model.ResourceLocation{
+					Start: model.ResourceLine{Line: 1, Col: 1},
+					End:   model.ResourceLine{Line: 7, Col: 4},
+				},
+			},
+			searchKey: "aws_s3_bucket[no_versioning].versioning.enabled",
+			file: &model.FileMetadata{
+				ScanID:            "console",
+				ID:                "missing.versioning.enabled",
+				Kind:              model.KindTerraform,
+				OriginalData:      OriginalDataMissingVersioning,
+				LinesOriginalData: utils.SplitLines(OriginalDataMissingVersioning),
+			},
+		},
+	}
+
+	for i, testCase := range testCases {
+		detector := DetectKindLine{}
+		t.Run(fmt.Sprintf("detectTerraformLine-%d", i), func(t *testing.T) {
+			v := detector.DetectLine(testCase.file, testCase.searchKey, 3, &zerolog.Logger{})
+			require.Equal(t, testCase.expected, v)
+		})
+	}
+}
+
+const OriginalDataPositive1 = `provider "aws" {
+	region = "us-east-1"
+  }
+
+  terraform {
+	required_providers {
+	  aws = {
+		source  = "hashicorp/aws"
+		version = "~> 3.0"
+	  }
+	}
+  }
+
+  resource "aws_s3_bucket" "positive1" {
+	bucket = "my-tf-test-bucket"
+	acl    = "private"
+
+	tags = {
+	  Name        = "My bucket"
+	  Environment = "Dev"
+	}
+
+	versioning {
+	  enabled = false
+	}
+  }`
+
+const OriginalDataPositive2 = `provider "aws" {
+	region = "us-east-1"
+  }
+
+  terraform {
+	required_providers {
+	  aws = {
+		source  = "hashicorp/aws"
+		version = "~> 3.0"
+	  }
+	}
+  }
+
+  resource "aws_s3_bucket" "positive2" {
+	bucket = "my-tf-test-bucket"
+	acl    = "private"
+
+	tags = {
+	  Name        = "My bucket"
+	  Environment = "Dev"
+	}
+  }`
+
+const OriginalDataPositive3 = `provider "aws" {
+	region = "us-east-1"
+  }
+
+  terraform {
+	required_providers {
+	  aws = {
+		source  = "hashicorp/aws"
+		version = "~> 3.0"
+	  }
+	}
+  }
+
+  resource "aws_s3_bucket" "positive3" {
+	bucket = "my-tf-test-bucket"
+	acl    = "private"
+
+	tags = {
+	  Name        = "My bucket"
+	  Environment = "Dev"
+	}
+
+	versioning {
+	  mfa_delete = true
+	}
+  }`
+
+const OriginalDataPositive7 = `terraform {
+	required_providers {
+	  aws = {
+		source = "hashicorp/aws"
+		version = "4.2.0"
+	  }
+	}
+  }
+
+  provider "aws" {
+	# Configuration options
+  }
+
+  resource "aws_s3_bucket" "b0" {
+	bucket = "my-tf-test-bucket"
+
+	tags = {
+	  Name        = "My bucket"
+	  Environment = "Dev"
+	}
+  }
+
+  resource "aws_s3_bucket_versioning" "example" {
+	bucket = aws_s3_bucket.b0.id
+
+	versioning_configuration {
+	  status = "Suspended"
+	}
+  }`
+
+const OriginalDataMissingVersioning = `resource "aws_s3_bucket" "no_versioning" {
+	bucket = "my-tf-test-bucket"
+
+	tags = {
+	  Name = "My bucket"
+	}
+  }
+  `
