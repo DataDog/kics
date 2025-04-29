@@ -1021,7 +1021,8 @@ func TransformToSarifFix(vuln model.VulnerableFile, startLocation sarifResourceL
 
 		insertedLines := strings.Split(normalizedRemediation, "\n")
 
-		baseIndent := strings.Repeat(" ", startLocation.Col-1) // Correct Col to space indent
+		baseIndent := strings.Repeat(" ", startLocation.Col)
+
 		var result []string
 		nestingLevel := 0
 
