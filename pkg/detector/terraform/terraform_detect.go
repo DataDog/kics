@@ -197,7 +197,7 @@ func parseAndFindTerraformBlock(src []byte, identifyingLine int) (model.Resource
 					insertionLine = nestedStart.Line + 1
 					caseType = "nested-start"
 				} else {
-					insertionLine = identifyingLine
+					insertionLine = nestedEnd.Line - 1
 					caseType = "nested-body"
 				}
 			} else {
@@ -302,7 +302,7 @@ func determineInsertionIndent(lines []string, insertionLine int, caseType string
 		return countLeadingSpacesOrTabs([]byte(lines[insertionLine-1]))
 	case "block-start":
 		// 2 spaces deeper than block header
-		return 1
+		return 0
 	case "block-body":
 		// Match current line
 		return countLeadingSpacesOrTabs([]byte(lines[insertionLine-1]))
