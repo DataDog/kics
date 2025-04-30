@@ -235,6 +235,11 @@ func TransformToSarifFix(vuln model.VulnerableFile, startLocation model.SarifRes
 				postIndent = strings.Repeat("  ", nestingLevel)
 			}
 
+			// if nested insert and not closing brace then add the base indent to the following line
+			if nestedInsert && !isClosingBrace {
+				postIndent = baseIndent
+			}
+
 			// Append the properly indented line
 			result = append(result, currentIndent+trimmed)
 
