@@ -67,7 +67,7 @@ func TestDetectTerraformLine(t *testing.T) { //nolint
 									EndColumn:   2,
 								},
 								InsertedContent: model.FixContent{
-									Text: "\n  block_public_acls = true\n  ",
+									Text: "\n  block_public_acls = true\n",
 								},
 							},
 						},
