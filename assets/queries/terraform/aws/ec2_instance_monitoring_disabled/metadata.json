@@ -6,7 +6,6 @@
   "descriptionText": "EC2 Instance should have detailed monitoring enabled. With detailed monitoring enabled data is available in 1-minute periods",
   "descriptionUrl": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/instance#monitoring",
   "platform": "Terraform",
-  "detailedDescriptionText": "EC2 instance detailed monitoring should be enabled to provide more frequent metrics data for your instances (1-minute frequency instead of the default 5-minute period). Enhanced monitoring allows for faster detection of performance issues, more responsive auto-scaling, and improved troubleshooting capabilities. This is particularly important for production workloads and critical applications where rapid detection of problems can minimize impact. Enable detailed monitoring by setting the 'monitoring' attribute to 'true' in your EC2 instance configuration.",
   "descriptionID": "0d5413e6",
   "cloudProvider": "aws",
   "cwe": "778",
