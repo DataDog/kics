@@ -84,7 +84,11 @@ resource "aws_instance" "inst12" {
   vpc_security_group_ids = [aws_default_security_group.dsg2.id]
   subnet_id = aws_subnet.subnet12.id
   ami = data.aws_ami.ubuntu2.id
-  instance_type = "t3.micro"
+ 
+  metadata_options {
+    http_tokens = \"required\"
+  }
+   instance_type = "t3.micro"
 }
 
 resource "aws_lb_target_group_attachment" "attach22" {
