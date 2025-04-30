@@ -9,5 +9,6 @@
   "descriptionID": "e1decb5e",
   "cloudProvider": "azure",
   "cwe": "732",
-  "oldSeverity": "MEDIUM"
+  "oldSeverity": "MEDIUM",
+  "detailedDescriptionText": "Enabling public network access on Azure MariaDB servers exposes the database directly to the internet, significantly increasing the attack surface and risk of unauthorized access attempts. Even with firewall rules in place, publicly accessible databases remain vulnerable to brute force attacks, exploitation of unpatched vulnerabilities, and potential zero-day threats. Organizations should disable public network access and use private endpoints, service endpoints, or VPN connections to establish secure, private connectivity to MariaDB servers, limiting access to authorized networks and reducing the risk of data breaches."
 }

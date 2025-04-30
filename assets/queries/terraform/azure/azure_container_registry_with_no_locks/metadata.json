@@ -8,5 +8,6 @@
   "platform": "Terraform",
   "descriptionID": "adb235b6",
   "cloudProvider": "azure",
-  "cwe": "639"
+  "cwe": "639",
+  "detailedDescriptionText": "Azure Container Registries without resource locks are vulnerable to accidental or malicious deletion, which can cause significant disruption to dependent workloads and deployment pipelines. Without locks, authorized users or compromised credentials could delete critical container repositories containing proprietary images needed for application deployments. Organizations should implement management locks with either CanNotDelete or ReadOnly level to prevent accidental changes or deletions, maintaining availability of critical container images and ensuring business continuity."
 }

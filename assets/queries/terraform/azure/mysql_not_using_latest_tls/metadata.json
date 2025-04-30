@@ -8,5 +8,6 @@
   "platform": "Terraform",
   "descriptionID": "c2a1d4e6",
   "cloudProvider": "azure",
-  "cwe": "311"
+  "cwe": "311",
+  "detailedDescriptionText": "Using outdated TLS versions (1.0 or 1.1) in Azure MySQL servers exposes database connections to known cryptographic vulnerabilities and attack techniques that have been addressed in TLS 1.2. Older TLS protocols have weaknesses in their cipher suites, protocol design, and implementation that could allow attackers to decrypt or manipulate encrypted database traffic. Organizations should enforce TLS 1.2 as the minimum version for all MySQL database connections to ensure strong encryption standards, mitigate known TLS vulnerabilities, and maintain compliance with industry security standards and regulations."
 }

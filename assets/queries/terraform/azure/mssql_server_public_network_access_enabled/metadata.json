@@ -8,5 +8,6 @@
   "platform": "Terraform",
   "descriptionID": "d1ee9c09",
   "cloudProvider": "azure",
-  "cwe": "732"
+  "cwe": "732",
+  "detailedDescriptionText": "Enabling public network access for Azure SQL Server instances exposes database endpoints directly to the internet, creating a significant security risk by expanding the potential attack surface. Even with firewall rules configured, public-facing databases are susceptible to brute force attacks, exploitation of vulnerabilities, and various SQL injection techniques. Organizations should disable public network access and instead implement private endpoints, service endpoints, or VPN connections for secure access, limiting connectivity to authorized networks and significantly reducing the risk of unauthorized access to sensitive data."
 }

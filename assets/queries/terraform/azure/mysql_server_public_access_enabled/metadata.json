@@ -8,5 +8,6 @@
   "platform": "Terraform",
   "descriptionID": "e5c71632",
   "cloudProvider": "azure",
-  "cwe": "732"
+  "cwe": "732",
+  "detailedDescriptionText": "Enabling public network access on Azure MySQL servers exposes database endpoints directly to the internet, significantly increasing the attack surface and risk of unauthorized access attempts. Even with firewall rules in place, publicly accessible databases remain vulnerable to brute force attacks, exploitation of unpatched vulnerabilities, and discovery through port scanning. Organizations should disable public network access and use private endpoints, service endpoints, or VPN connections to establish secure, private connectivity to MySQL servers, limiting access to authorized networks and reducing the risk of data breaches."
 }

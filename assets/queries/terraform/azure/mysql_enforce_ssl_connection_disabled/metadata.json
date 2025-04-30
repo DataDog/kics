@@ -8,5 +8,6 @@
   "platform": "Terraform",
   "descriptionID": "c3f2e1d0",
   "cloudProvider": "azure",
-  "cwe": "311"
+  "cwe": "311",
+  "detailedDescriptionText": "Disabling SSL enforcement on Azure MySQL servers allows database connections to transmit data in plaintext, exposing sensitive information to potential interception and eavesdropping through man-in-the-middle attacks. Without enforced SSL, attackers who gain network access could capture database credentials, query contents, and potentially sensitive personal or financial data during transmission. Organizations should always enable SSL enforcement for MySQL database servers to encrypt data in transit, protect the confidentiality and integrity of communications, and help meet compliance requirements for data protection."
 }

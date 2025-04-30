@@ -8,5 +8,6 @@
   "platform": "Terraform",
   "descriptionID": "93f9tyjk",
   "cloudProvider": "azure",
-  "cwe": "311"
+  "cwe": "311",
+  "detailedDescriptionText": "Disabling SSL enforcement on Azure PostgreSQL servers allows database connections to transmit data in plaintext, exposing sensitive information to potential interception, eavesdropping, and man-in-the-middle attacks. Without enforced encryption, attackers with network access could capture database credentials, query contents, and potentially sensitive data during transmission between clients and the database server. Organizations should always enable SSL enforcement for PostgreSQL database servers to encrypt data in transit, protect the confidentiality and integrity of database communications, and maintain compliance with security standards and regulations for data protection."
 }

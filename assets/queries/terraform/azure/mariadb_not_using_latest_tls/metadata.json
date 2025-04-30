@@ -8,5 +8,6 @@
   "platform": "Terraform",
   "descriptionID": "8f0e6b2d",
   "cloudProvider": "azure",
-  "cwe": "311"
+  "cwe": "311",
+  "detailedDescriptionText": "Using outdated TLS versions in Azure MariaDB servers exposes database communications to potential attacks and vulnerabilities that have been addressed in more recent TLS versions. Earlier TLS versions (1.0 and 1.1) have known security weaknesses that could allow attackers to intercept or manipulate encrypted data between clients and the database server. Organizations should enforce TLS 1.2 as the minimum version for all database communications to ensure strong encryption protocols, maintain compliance with security standards, and protect sensitive data in transit from being compromised."
 }
