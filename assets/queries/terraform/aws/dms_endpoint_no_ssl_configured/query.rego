@@ -24,8 +24,8 @@ CxPolicy[result] {
         "keyExpectedValue": "aws_dms_endpoint.ssl_mode should not be 'none' for non-exempt source endpoints",
         "keyActualValue": sprintf("aws_dms_endpoint.ssl_mode is '%s'", [resource.ssl_mode]),
         "remediation": json.marshal({
-            "before": "ssl_mode = \"none\"",
-            "after": "ssl_mode = \"require\""
+            "before": "none",
+            "after": "require"
         }),
         "remediationType": "replacement"
     }
@@ -57,8 +57,8 @@ CxPolicy[result] {
         "keyExpectedValue": "aws_dms_endpoint.ssl_mode should not be 'none' for non-exempt target endpoints",
         "keyActualValue": sprintf("aws_dms_endpoint.ssl_mode is '%s'", [resource.ssl_mode]),
         "remediation": json.marshal({
-            "before": "ssl_mode = \"none\"",
-            "after": "ssl_mode = \"require\""
+            "before": "none",
+            "after": "require"
         }),
         "remediationType": "replacement"
     }
