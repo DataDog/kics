@@ -97,11 +97,11 @@ var sarifTests = []sarifTest{
 							ResultRuleIndex: 0,
 							ResultKind:      "",
 							ResultMessage:   sarifMessage{Text: "test", MessageProperties: nil},
-							ResultLocations: []sarifLocation{
+							ResultLocations: []SarifLocation{
 								{
 									PhysicalLocation: sarifPhysicalLocation{
 										ArtifactLocation: sarifArtifactLocation{ArtifactURI: "test.json"},
-										Region:           sarifRegion{StartLine: 0, EndLine: 0, StartColumn: 1, EndColumn: 0},
+										Region:           model.SarifRegion{StartLine: 0, EndLine: 0, StartColumn: 1, EndColumn: 0},
 									},
 								},
 							},
@@ -266,11 +266,11 @@ var sarifTests = []sarifTest{
 								MessageProperties: nil,
 							},
 							ResultLevel: "error",
-							ResultLocations: []sarifLocation{
+							ResultLocations: []SarifLocation{
 								{
 									PhysicalLocation: sarifPhysicalLocation{
 										ArtifactLocation: sarifArtifactLocation{ArtifactURI: ""},
-										Region:           sarifRegion{StartLine: 0, EndLine: 0, EndColumn: 0, StartColumn: 1},
+										Region:           model.SarifRegion{StartLine: 0, EndLine: 0, EndColumn: 0, StartColumn: 1},
 									},
 								},
 							},
@@ -299,11 +299,11 @@ var sarifTests = []sarifTest{
 								Text:              "test",
 								MessageProperties: sarifProperties{"platform": ""},
 							},
-							ResultLocations: []sarifLocation{
+							ResultLocations: []SarifLocation{
 								{
 									PhysicalLocation: sarifPhysicalLocation{
 										ArtifactLocation: sarifArtifactLocation{ArtifactURI: ""},
-										Region:           sarifRegion{StartLine: 1, EndLine: 2},
+										Region:           model.SarifRegion{StartLine: 1, EndLine: 2},
 									},
 								},
 							},

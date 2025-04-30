@@ -333,3 +333,42 @@ type ResolvedFile struct {
 	Content      []byte
 	LinesContent *[]string
 }
+
+type SarifResourceLocation struct {
+	Line int `json:"line"`
+	Col  int `json:"col"`
+}
+
+type SarifFix struct {
+	ArtifactChanges []ArtifactChange `json:"artifactChanges"`
+	Description     FixMessage       `json:"description"`
+}
+
+type ArtifactChange struct {
+	ArtifactLocation ArtifactLocation `json:"artifactLocation"`
+	Replacements     []FixReplacement `json:"replacements"`
+}
+
+type ArtifactLocation struct {
+	URI string `json:"uri"`
+}
+
+type FixReplacement struct {
+	DeletedRegion   SarifRegion `json:"deletedRegion"`
+	InsertedContent FixContent  `json:"insertedContent,omitempty"`
+}
+
+type FixContent struct {
+	Text string `json:"text"`
+}
+
+type FixMessage struct {
+	Text string `json:"text"`
+}
+
+type SarifRegion struct {
+	StartLine   int `json:"startLine"`
+	EndLine     int `json:"endLine"`
+	StartColumn int `json:"startColumn"`
+	EndColumn   int `json:"endColumn"`
+}
