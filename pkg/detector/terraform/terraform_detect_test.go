@@ -80,6 +80,30 @@ func TestDetectTerraformLine(t *testing.T) { //nolint
 						Col:  2,
 					},
 				},
+				LineWithVulnerability: "  acl    = \"authenticated-read\"",
+				ResolvedFile:          "",
+				ResourceSource:        "resource \"aws_s3_bucket\" \"bucket\" {\n  bucket = \"innovationweek-fancy2023-bucket-${random_id.bucket_id.hex}\"\n  acl    = \"authenticated-read\"\n\n  versioning {\n    enabled = true\n  }\n\n  tags = {\n    Demo = \"true\"\n  }\n}\n",
+				FileSource:            strings.Split(OriginalData1, "\n"),
+				BlockLocation: model.ResourceLocation{
+					Start: model.ResourceLine{
+						Line: 1,
+						Col:  1,
+					},
+					End: model.ResourceLine{
+						Line: 12,
+						Col:  2,
+					},
+				},
+				RemediationLocation: model.ResourceLocation{
+					Start: model.ResourceLine{
+						Line: 3,
+						Col:  3,
+					},
+					End: model.ResourceLine{
+						Line: 3,
+						Col:  3,
+					},
+				},
 			},
 			searchKey: "aws_s3_bucket[bucket].acl",
 			file: &model.FileMetadata{
@@ -92,8 +116,12 @@ func TestDetectTerraformLine(t *testing.T) { //nolint
 		},
 		{
 			expected: model.VulnerabilityLines{
-				Line: 15,
+				Line: 14,
 				VulnLines: &[]model.CodeLine{
+					{
+						Position: 13,
+						Line:     "",
+					},
 					{
 						Position: 14,
 						Line:     "resource \"aws_s3_bucket\" \"bucket2\" {",
@@ -102,11 +130,8 @@ func TestDetectTerraformLine(t *testing.T) { //nolint
 						Position: 15,
 						Line:     "  bucket = \"innovationweek2-2023-bucket-${random_id.bucket_id.hex}\"",
 					},
-					{
-						Position: 16,
-						Line:     "",
-					},
 				},
+				LineWithVulnerability: "resource \"aws_s3_bucket\" \"bucket2\" {",
 				VulnerablilityLocation: model.ResourceLocation{
 					Start: model.ResourceLine{
 						Line: 14,
@@ -114,6 +139,28 @@ func TestDetectTerraformLine(t *testing.T) { //nolint
 					},
 					End: model.ResourceLine{
 						Line: 21,
+						Col:  2,
+					},
+				},
+				BlockLocation: model.ResourceLocation{
+					Start: model.ResourceLine{
+						Line: 14,
+						Col:  1,
+					},
+					End: model.ResourceLine{
+						Line: 21,
+						Col:  2,
+					},
+				},
+				ResourceSource: "resource \"aws_s3_bucket\" \"bucket2\" {\n  bucket = \"innovationweek2-2023-bucket-${random_id.bucket_id.hex}\"\n\n  tags = {\n    Demo = \"true\"\n    Team = \"infrastructure-as-code\"\n  }\n}\n",
+				FileSource:     strings.Split(OriginalData1, "\n"),
+				RemediationLocation: model.ResourceLocation{
+					Start: model.ResourceLine{
+						Line: 20,
+						Col:  2,
+					},
+					End: model.ResourceLine{
+						Line: 20,
 						Col:  2,
 					},
 				},
@@ -145,6 +192,30 @@ func TestDetectTerraformLine(t *testing.T) { //nolint
 					},
 				},
 				VulnerablilityLocation: model.ResourceLocation{
+					Start: model.ResourceLine{
+						Line: 23,
+						Col:  1,
+					},
+					End: model.ResourceLine{
+						Line: 28,
+						Col:  2,
+					},
+				},
+				LineWithVulnerability: "  tags = {",
+				ResolvedFile:          "",
+				RemediationLocation: model.ResourceLocation{
+					Start: model.ResourceLine{
+						Line: 26,
+						Col:  5,
+					},
+					End: model.ResourceLine{
+						Line: 26,
+						Col:  5,
+					},
+				},
+				ResourceSource: "resource \"aws_s3_bucket\" \"test3\" {\n  bucket = \"iac-remediation-demo-bucket-notags\"\n  tags = {\n    Demo = \"true\"\n  }\n}\n",
+				FileSource:     strings.Split(OriginalData1, "\n"),
+				BlockLocation: model.ResourceLocation{
 					Start: model.ResourceLine{
 						Line: 23,
 						Col:  1,
