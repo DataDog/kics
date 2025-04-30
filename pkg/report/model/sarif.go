@@ -12,12 +12,12 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
-	"regexp"
 	"strings"
 	"time"
 
 	"github.com/Checkmarx/kics/internal/constants"
 	"github.com/Checkmarx/kics/pkg/model"
+	remediationsHelper "github.com/Checkmarx/kics/pkg/report/remediations"
 	"github.com/google/uuid"
 	"github.com/rs/zerolog/log"
 )
@@ -142,30 +142,16 @@ type sarifTool struct {
 	Driver sarifDriver `json:"driver"`
 }
 
-type sarifResourceLocation struct {
-	Line int `json:"line"`
-	Col  int `json:"col"`
-}
-
-type sarifRegion struct {
-	StartLine   int `json:"startLine"`
-	EndLine     int `json:"endLine"`
-	StartColumn int `json:"startColumn"`
-	EndColumn   int `json:"endColumn"`
-	// StartResource sarifResourceLocation `json:"startResource"`
-	// EndResource   sarifResourceLocation `json:"endResource"`
-}
-
 type sarifArtifactLocation struct {
 	ArtifactURI string `json:"uri"`
 }
 
 type sarifPhysicalLocation struct {
 	ArtifactLocation sarifArtifactLocation `json:"artifactLocation"`
-	Region           sarifRegion           `json:"region"`
+	Region           model.SarifRegion     `json:"region"`
 }
 
-type sarifLocation struct {
+type SarifLocation struct {
 	PhysicalLocation sarifPhysicalLocation `json:"physicalLocation"`
 }
 
@@ -174,11 +160,11 @@ type sarifResult struct {
 	ResultRuleIndex     int                      `json:"ruleIndex"`
 	ResultKind          string                   `json:"kind,omitempty"`
 	ResultMessage       sarifMessage             `json:"message"`
-	ResultLocations     []sarifLocation          `json:"locations"`
+	ResultLocations     []SarifLocation          `json:"locations"`
 	PartialFingerprints SarifPartialFingerprints `json:"partialFingerprints,omitempty"`
 	ResultLevel         string                   `json:"level"`
 	ResultProperties    sarifProperties          `json:"properties,omitempty"`
-	ResultFixes         []sarifFix               `json:"fixes,omitempty"`
+	ResultFixes         []model.SarifFix         `json:"fixes,omitempty"`
 }
 
 type SarifPartialFingerprints struct {
@@ -198,33 +184,6 @@ type taxonomyDefinitions struct {
 	DefinitionShortDescription cweMessage `json:"shortDescription"`
 	DefinitionFullDescription  cweMessage `json:"fullDescription"`
 	HelpURI                    string     `json:"helpUri,omitempty"`
-}
-
-type sarifFix struct {
-	ArtifactChanges []artifactChange `json:"artifactChanges"`
-	Description     fixMessage       `json:"description"`
-}
-
-type artifactChange struct {
-	ArtifactLocation artifactLocation `json:"artifactLocation"`
-	Replacements     []fixReplacement `json:"replacements"`
-}
-
-type artifactLocation struct {
-	URI string `json:"uri"`
-}
-
-type fixReplacement struct {
-	DeletedRegion   sarifRegion `json:"deletedRegion"`
-	InsertedContent fixContent  `json:"insertedContent,omitempty"`
-}
-
-type fixContent struct {
-	Text string `json:"text"`
-}
-
-type fixMessage struct {
-	Text string `json:"text"`
 }
 
 type cweTaxonomiesWrapper struct {
@@ -682,30 +641,40 @@ func (sr *sarifReport) BuildSarifIssue(issue *model.QueryResult, sciInfo model.S
 
 			resourceLocation := vulnerability.ResourceLocation
 
-			if resourceLocation.ResourceStart.Line < 1 {
-				resourceLocation.ResourceStart.Line = 1
+			if resourceLocation.Start.Line < 1 {
+				resourceLocation.Start.Line = 1
 			}
-			if resourceLocation.ResourceEnd.Line < 1 {
-				resourceLocation.ResourceEnd.Line = resourceLocation.ResourceStart.Line
+			if resourceLocation.End.Line < 1 {
+				resourceLocation.End.Line = resourceLocation.Start.Line
 			}
-			if resourceLocation.ResourceStart.Col < 1 {
-				resourceLocation.ResourceStart.Col = 1
+			if resourceLocation.Start.Col < 1 {
+				resourceLocation.Start.Col = 1
 			}
-			if resourceLocation.ResourceEnd.Col < 1 {
-				resourceLocation.ResourceEnd.Col = resourceLocation.ResourceStart.Col
-			}
-
-			startLocation := sarifResourceLocation{
-				Line: resourceLocation.ResourceStart.Line,
-				Col:  resourceLocation.ResourceStart.Col,
-			}
-			endLocation := sarifResourceLocation{
-				Line: resourceLocation.ResourceEnd.Line,
-				Col:  resourceLocation.ResourceEnd.Col,
+			if resourceLocation.End.Col < 1 {
+				resourceLocation.End.Col = resourceLocation.Start.Col
 			}
 
-			if startLocation.Col < 1 {
-				startLocation.Col = 1
+			resourceStartLocation := model.SarifResourceLocation{
+				Line: resourceLocation.Start.Line,
+				Col:  resourceLocation.Start.Col,
+			}
+			resourceEndLocation := model.SarifResourceLocation{
+				Line: resourceLocation.End.Line,
+				Col:  resourceLocation.End.Col,
+			}
+
+			remediationLocation := vulnerability.RemediationLocation
+			remediationStartLocation := model.SarifResourceLocation{
+				Line: remediationLocation.Start.Line,
+				Col:  remediationLocation.Start.Col,
+			}
+			remediationEndLocation := model.SarifResourceLocation{
+				Line: remediationLocation.End.Line,
+				Col:  remediationLocation.End.Col,
+			}
+
+			if resourceStartLocation.Col < 1 {
+				resourceStartLocation.Col = 1
 			}
 
 			absoluteFilePath := strings.ReplaceAll(issue.Files[idx].FileName, "../", "")
@@ -716,15 +685,15 @@ func (sr *sarifReport) BuildSarifIssue(issue *model.QueryResult, sciInfo model.S
 				ResultMessage: sarifMessage{
 					Text: issue.Files[idx].KeyActualValue,
 				},
-				ResultLocations: []sarifLocation{
+				ResultLocations: []SarifLocation{
 					{
 						PhysicalLocation: sarifPhysicalLocation{
 							ArtifactLocation: sarifArtifactLocation{ArtifactURI: absoluteFilePath},
-							Region: sarifRegion{
-								StartLine:   startLocation.Line,
-								EndLine:     endLocation.Line,
-								StartColumn: startLocation.Col,
-								EndColumn:   endLocation.Col,
+							Region: model.SarifRegion{
+								StartLine:   resourceStartLocation.Line,
+								EndLine:     resourceEndLocation.Line,
+								StartColumn: resourceStartLocation.Col,
+								EndColumn:   resourceEndLocation.Col,
 							},
 						},
 					},
@@ -737,20 +706,20 @@ func (sr *sarifReport) BuildSarifIssue(issue *model.QueryResult, sciInfo model.S
 				},
 			}
 			if vulnerability.Remediation != "" && vulnerability.RemediationType != "" {
-				sarifFix, err := TransformToSarifFix(
+				sarifFix, err := remediationsHelper.TransformToSarifFix(
 					vulnerability,
-					startLocation,
-					endLocation,
+					remediationStartLocation,
+					remediationEndLocation,
 				)
 				if err != nil {
 					// we do not want to fail the whole process if we cannot transform the fix
 					// so we just log the error and continue
 					log.Err(err).Msgf("failed to transform to sarif fix: %v", err)
 				} else {
-					if vulnerability.RemediationType == "addition" {
-						result.ResultLocations[0].PhysicalLocation.Region.StartLine = endLocation.Line
-						result.ResultLocations[0].PhysicalLocation.Region.EndLine = endLocation.Line + 4
-					}
+					// we want the location displayed in the UI to properly highlight the remediation
+					result.ResultLocations[0].PhysicalLocation.Region.StartLine = remediationStartLocation.Line
+					result.ResultLocations[0].PhysicalLocation.Region.EndLine = remediationEndLocation.Line
+
 					result.ResultFixes = append(result.ResultFixes, sarifFix)
 				}
 			}
@@ -820,261 +789,4 @@ func GetDatadogFingerprintHash(sciInfo model.SCIInfo, filePath string, startLine
 		runTypeRelatedInfo = time.Now().Format("2006/01/02")
 	}
 	return StringToHash(fmt.Sprintf("%s|%s|%s|%s|%d|%s", sciInfo.RunType, runTypeRelatedInfo, sciInfo.RepositoryCommitInfo.RepositoryUrl, filePath, startLine, ruleId))
-}
-
-func TransformToSarifFix(vuln model.VulnerableFile, startLocation sarifResourceLocation, endLocation sarifResourceLocation) (sarifFix, error) {
-	var insertedText string
-	fixStart := startLocation
-	fixEnd := endLocation
-
-	switch vuln.RemediationType {
-
-	case "replacement":
-		var patch map[string]string
-		err := json.Unmarshal([]byte(vuln.Remediation), &patch)
-		if err != nil {
-			return sarifFix{}, fmt.Errorf("invalid remediation format for replacement: %v", err)
-		}
-
-		before := strings.TrimSpace(patch["before"])
-		after := strings.TrimSpace(patch["after"])
-
-		re := regexp.MustCompile(`(?m)["']?(?P<key>\w+)["']?\s*[:=]\s*(?P<value>\[.*?\]|".*?"|true|false|\d+)[,]?\s*`)
-		matches := re.FindStringSubmatch(vuln.LineWithVulnerability)
-		if len(matches) < 3 {
-			return sarifFix{}, fmt.Errorf("could not parse key-value from line: %s", vuln.LineWithVulnerability)
-		}
-
-		key := strings.TrimSpace(matches[1])
-		value := strings.TrimSpace(matches[2])
-
-		if idx := strings.IndexAny(value, "#/"); idx != -1 {
-			value = strings.TrimSpace(value[:idx])
-		}
-
-		fullLine := key + " = " + value
-
-		normalizedFullLine := normalize(fullLine)
-		normalizedValue := normalize(value)
-
-		// Support multiple 'before' values separated by 'or'
-		normalizedAlternatives := []string{normalize(before)}
-		if strings.Contains(before, " or ") {
-			rawParts := strings.Split(before, " or ")
-			normalizedAlternatives = make([]string, 0, len(rawParts))
-			for _, part := range rawParts {
-				normalizedAlternatives = append(normalizedAlternatives, normalize(strings.TrimSpace(part)))
-			}
-		}
-
-		insertedText = ""
-		matched := false
-
-		for _, alt := range normalizedAlternatives {
-			altKey := ""
-			altValue := alt
-
-			if parts := strings.SplitN(alt, "=", 2); len(parts) == 2 {
-				altKey = normalize(strings.TrimSpace(parts[0]))
-				altValue = normalize(strings.TrimSpace(parts[1]))
-			} else {
-				altValue = normalize(alt)
-			}
-
-			if (alt == normalizedFullLine) ||
-				(altKey == normalize(key) && altValue == normalizedValue) ||
-				strings.Contains(normalizedValue, altValue) ||
-				strings.HasPrefix(normalizedValue, altValue) ||
-				strings.HasPrefix(altValue, normalizedValue) {
-				matched = true
-				break
-			}
-		}
-
-		// Block-style fallback (e.g., nested blocks like metadata_options)
-		if !matched && strings.Contains(normalize(before), "{") && strings.Contains(normalize(before), "=") {
-			reInner := regexp.MustCompile(`(?m)(\w+)\s*=\s*(".*?"|\[.*?\]|\S+)`)
-			for _, inner := range reInner.FindAllString(before, -1) {
-				n := normalize(inner)
-				for _, alt := range normalizedAlternatives {
-					if n == normalizedFullLine || n == normalizedValue || strings.Contains(normalizedFullLine, n) || strings.Contains(n, alt) {
-						matched = true
-						break
-					}
-				}
-				if matched {
-					break
-				}
-			}
-		}
-
-		// List-style fallback
-		if !matched && strings.HasPrefix(normalizedValue, "[") && strings.HasSuffix(normalizedValue, "]") {
-			listText := strings.Trim(normalizedValue, "[] ")
-			listItems := strings.Split(listText, ",")
-
-			newList := make([]string, 0, len(listItems))
-			replaced := false
-
-			// Pre-extract values from all alternatives (e.g., extract just "DISABLED" from "key = DISABLED")
-			normalizedAltValues := make([]string, 0, len(normalizedAlternatives))
-			for _, alt := range normalizedAlternatives {
-				parts := strings.SplitN(alt, "=", 2)
-				if len(parts) == 2 {
-					normalizedAltValues = append(normalizedAltValues, strings.TrimSpace(parts[1]))
-				} else {
-					normalizedAltValues = append(normalizedAltValues, strings.TrimSpace(alt))
-				}
-			}
-
-			for _, item := range listItems {
-				itemStripped := strings.TrimSpace(strings.Trim(item, `"`))
-				normOriginal := normalize(itemStripped)
-				replacedItem := false
-
-				for _, altVal := range normalizedAltValues {
-					normAltVal := normalize(altVal)
-
-					if normOriginal == normAltVal ||
-						strings.Contains(normOriginal, normAltVal) ||
-						strings.Contains(normAltVal, normOriginal) {
-						replaced = true
-						replacedItem = true
-						if strings.HasPrefix(item, `"`) && strings.HasSuffix(item, `"`) {
-							newList = append(newList, `"`+after+`"`)
-						} else {
-							newList = append(newList, after)
-						}
-						break
-					}
-				}
-
-				if !replacedItem {
-					newList = append(newList, item)
-				}
-			}
-
-			if replaced {
-				joined := "[" + strings.Join(newList, ", ") + "]"
-				insertedText = strings.Replace(vuln.LineWithVulnerability, value, joined, 1)
-				matched = true
-			} else {
-				// Check if the normalized list as a whole matches one of the alt values
-				for _, altVal := range normalizedAltValues {
-					if normalizedValue == normalize(altVal) {
-						matched = true
-						insertedText = vuln.LineWithVulnerability
-						break
-					}
-				}
-			}
-		}
-
-		if !matched {
-			return sarifFix{}, fmt.Errorf("line value '%s' does not match any of expected values '%s'", normalizedFullLine, strings.Join(normalizedAlternatives, " | "))
-		}
-
-		// Preserve quotes if necessary
-		wasQuoted := strings.HasPrefix(value, `"`) && strings.HasSuffix(value, `"`)
-		if wasQuoted && !(strings.HasPrefix(after, `"`) && strings.HasSuffix(after, `"`)) {
-			after = `"` + after + `"`
-		}
-
-		// Determine replacement range
-		idxs := re.FindStringSubmatchIndex(vuln.LineWithVulnerability)
-		if len(idxs) < 6 {
-			return sarifFix{}, fmt.Errorf("could not determine exact value location")
-		}
-
-		isFullLine := strings.Contains(after, "=")
-
-		if insertedText == "" {
-			if isFullLine {
-				insertedText = after
-			} else {
-				prefix := vuln.LineWithVulnerability[:idxs[4]]
-				suffix := vuln.LineWithVulnerability[idxs[5]:]
-				insertedText = prefix + after + suffix
-			}
-		}
-
-		fixStart = sarifResourceLocation{
-			Line: vuln.Line,
-			Col:  startLocation.Col,
-		}
-		fixEnd = sarifResourceLocation{
-			Line: vuln.Line,
-			Col:  len(vuln.LineWithVulnerability) + 1,
-		}
-
-	case "addition":
-		// Indent based on provided startLocation.Col
-		indent := strings.Repeat(" ", startLocation.Col-1)
-
-		// Support multiline remediation (e.g., blocks or nested maps)
-		remediationLines := strings.Split(vuln.Remediation, "\n")
-		for i, line := range remediationLines {
-			remediationLines[i] = indent + strings.TrimRight(line, "  ")
-		}
-		formattedRemediation := strings.Join(remediationLines, "\n")
-
-		// Indent the closing brace if one gets pushed by this insertion
-		closingBraceIndent := indent
-
-		// Final insertedText with leading newline and brace re-indent
-		insertedText = "\n" + formattedRemediation + "\n" + closingBraceIndent
-
-		fixStart = sarifResourceLocation{
-			Line: startLocation.Line,
-			Col:  startLocation.Col,
-		}
-		fixEnd = fixStart
-
-	case "removal":
-		// Delete the entire line
-		fixStart = sarifResourceLocation{
-			Line: vuln.Line,
-			Col:  1,
-		}
-		fixEnd = sarifResourceLocation{
-			Line: vuln.Line,
-			Col:  len(vuln.LineWithVulnerability) + 1,
-		}
-		insertedText = "" // nothing to insert
-	}
-
-	replacement := fixReplacement{
-		DeletedRegion: sarifRegion{
-			StartLine:   fixStart.Line,
-			StartColumn: fixStart.Col,
-			EndLine:     fixEnd.Line,
-			EndColumn:   fixEnd.Col,
-		},
-	}
-	// If the insertedText is empty, we don't need to set it
-	if insertedText != "" {
-		replacement.InsertedContent = fixContent{Text: insertedText}
-	}
-
-	return sarifFix{
-		ArtifactChanges: []artifactChange{{
-			ArtifactLocation: artifactLocation{URI: vuln.FileName},
-			Replacements:     []fixReplacement{replacement},
-		}},
-		Description: fixMessage{
-			Text: fmt.Sprintf("Apply remediation: %s", vuln.Remediation),
-		},
-	}, nil
-}
-
-func normalize(s string) string {
-	s = strings.TrimSpace(s)
-	s = strings.ReplaceAll(s, "\r", "")
-	s = strings.ReplaceAll(s, `\"`, `"`)     // Handle escaped quotes
-	s = strings.ReplaceAll(s, `"`, `"`)      // Double safety
-	s = strings.ReplaceAll(s, `“`, `"`)      // Smart quotes (optional)
-	s = strings.ReplaceAll(s, `”`, `"`)      // Smart quotes (optional)
-	s = strings.Join(strings.Fields(s), " ") // normalize extra whitespace
-	s = strings.Trim(s, `"`)
-	return s
 }

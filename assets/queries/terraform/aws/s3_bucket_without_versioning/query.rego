@@ -37,7 +37,7 @@ CxPolicy[result] {
         "keyExpectedValue": "'versioning' should be true",
         "keyActualValue": "'versioning' is undefined or null",
         "searchLine": common_lib.build_search_line(["module", name], []),
-        "remediation": sprintf("%s {\n\tenabled = true\n\t}",[keyToCheck]),
+        "remediation": sprintf("%s {\n\tenabled = true\n}",[keyToCheck]),
 		"remediationType": "addition",
     }
 }

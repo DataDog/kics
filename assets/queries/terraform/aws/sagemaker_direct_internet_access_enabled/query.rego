@@ -19,8 +19,8 @@ CxPolicy[result] {
         "keyExpectedValue": "aws_sagemaker_notebook_instance.direct_internet_access should be 'Disabled'",
         "keyActualValue": sprintf("aws_sagemaker_notebook_instance.direct_internet_access is '%s'", [resource.direct_internet_access]),
         "remediation": json.marshal({
-            "before": "direct_internet_access = \"Enabled\"",
-            "after": "direct_internet_access = \"Disabled\""
+            "before": "Enabled",
+            "after": "Disabled"
         }),
         "remediationType": "replacement"
     }

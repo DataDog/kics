@@ -88,11 +88,15 @@ type Version struct {
 
 // VulnerabilityLines is the representation of the found line for issue
 type VulnerabilityLines struct {
-	Line                  int
-	VulnLines             *[]CodeLine
-	LineWithVulnerability string
-	ResolvedFile          string
-	ResourceLocation      ResourceLocation
+	Line                   int
+	VulnLines              *[]CodeLine
+	LineWithVulnerability  string
+	ResolvedFile           string
+	VulnerablilityLocation ResourceLocation
+	RemediationLocation    ResourceLocation
+	ResourceSource         string
+	FileSource             []string
+	BlockLocation          ResourceLocation
 }
 
 // CommentCommand represents a command given from a comment
@@ -115,8 +119,8 @@ type CodeLine struct {
 
 // ResourceLocation is the line information of the resource with their respective start and end positions
 type ResourceLocation struct {
-	ResourceStart ResourceLine
-	ResourceEnd   ResourceLine
+	Start ResourceLine
+	End   ResourceLine
 }
 
 // ResourceLine is the line information of the resource with their respective positions
@@ -188,7 +192,7 @@ type Vulnerability struct {
 	CWE                   string           `db:"cwe" json:"cwe"`
 	Severity              Severity         `json:"severity"`
 	Line                  int              `json:"line"`
-	ResourceLocation      ResourceLocation `json:"resourceLocation"`
+	VulnerabilityLocation ResourceLocation `json:"resourceLocation"`
 	VulnLines             *[]CodeLine      `json:"vulnLines"`
 	ResourceType          string           `db:"resource_type" json:"resourceType"`
 	ResourceName          string           `db:"resource_name" json:"resourceName"`
@@ -203,8 +207,12 @@ type Vulnerability struct {
 	CloudProvider         string           `json:"cloud_provider"`
 	Remediation           string           `db:"remediation" json:"remediation"`
 	RemediationType       string           `db:"remediation_type" json:"remediation_type"`
+	RemediationLocation   ResourceLocation `json:"remediationLocation"`
 	QueryDuration         time.Duration    `json:"query_duration"`
 	LineWithVulnerability string           `json:"lineWithVulnerability"`
+	ResourceSource        string           `json:"resourceSource"`
+	FileSource            []string         `json:"fileSource"`
+	BlockLocation         ResourceLocation `json:"blockLocation"`
 }
 
 // QueryConfig is a struct that contains the fileKind and platform of the rego query
@@ -324,4 +332,43 @@ type ResolvedFile struct {
 	Path         string
 	Content      []byte
 	LinesContent *[]string
+}
+
+type SarifResourceLocation struct {
+	Line int `json:"line"`
+	Col  int `json:"col"`
+}
+
+type SarifFix struct {
+	ArtifactChanges []ArtifactChange `json:"artifactChanges"`
+	Description     FixMessage       `json:"description"`
+}
+
+type ArtifactChange struct {
+	ArtifactLocation ArtifactLocation `json:"artifactLocation"`
+	Replacements     []FixReplacement `json:"replacements"`
+}
+
+type ArtifactLocation struct {
+	URI string `json:"uri"`
+}
+
+type FixReplacement struct {
+	DeletedRegion   SarifRegion `json:"deletedRegion"`
+	InsertedContent FixContent  `json:"insertedContent,omitempty"`
+}
+
+type FixContent struct {
+	Text string `json:"text"`
+}
+
+type FixMessage struct {
+	Text string `json:"text"`
+}
+
+type SarifRegion struct {
+	StartLine   int `json:"startLine"`
+	EndLine     int `json:"endLine"`
+	StartColumn int `json:"startColumn"`
+	EndColumn   int `json:"endColumn"`
 }
