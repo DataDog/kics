@@ -19,8 +19,8 @@ CxPolicy[result] {
         "keyExpectedValue": "aws_neptune_cluster_snapshot.storage_encrypted should be true",
         "keyActualValue": sprintf("aws_neptune_cluster_snapshot.storage_encrypted is '%v'", [resource.storage_encrypted]),
         "remediation": json.marshal({
-            "before": "storage_encrypted = false",
-            "after": "storage_encrypted = true"
+            "before": "false",
+            "after": "true"
         }),
         "remediationType": "replacement"
     }
