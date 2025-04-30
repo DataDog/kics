@@ -9,5 +9,6 @@
   "descriptionID": "beb4558c",
   "cloudProvider": "gcp",
   "cwe": "285",
-  "oldSeverity": "MEDIUM"
+  "oldSeverity": "MEDIUM",
+  "detailedDescriptionText": "Assigning a service account the 'Service Account Token Creator' or 'Service Account User' role allows it to impersonate other service accounts by generating tokens or attaching other service accounts to resources. This capability can be exploited for privilege escalation if the service account is compromised, potentially allowing attackers to access additional resources through identity impersonation. Organizations should strictly limit which identities have these powerful roles, ensure service accounts are properly secured, and regularly audit role assignments to maintain the principle of least privilege."
 }

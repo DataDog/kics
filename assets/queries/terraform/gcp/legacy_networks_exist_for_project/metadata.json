@@ -8,5 +8,6 @@
   "descriptionUrl": "https://cloud.google.com/vpc/docs/legacy",
   "platform": "Terraform",
   "cloudProvider": "GCP",
-  "cwe": "CWE-400"
+  "cwe": "CWE-400",
+  "detailedDescriptionText": "Legacy networks in Google Cloud Platform lack essential security features like firewall rules at the subnet level and present higher security risks compared to VPC networks. These networks use a single global IPv4 address range rather than regional subnets, making network topology more complex and difficult to secure. Organizations should migrate from legacy networks to VPC networks to take advantage of more granular security controls, regional private addressing, and improved network isolation capabilities."
 }

@@ -9,5 +9,6 @@
   "descriptionID": "2b311b42",
   "cloudProvider": "gcp",
   "cwe": "285",
-  "oldSeverity": "MEDIUM"
+  "oldSeverity": "MEDIUM",
+  "detailedDescriptionText": "Granting service accounts the 'Service Account Token Creator' or 'Service Account User' role at the project level creates a significant security risk by allowing the impersonation of any service account in the project. An attacker who compromises a principal with these roles could generate authentication tokens for any service account, effectively gaining all their permissions and potentially leading to privilege escalation. Organizations should follow the principle of least privilege by granting these sensitive roles only to specific service accounts rather than at the project level, and implement proper monitoring and auditing of service account activities."
 }

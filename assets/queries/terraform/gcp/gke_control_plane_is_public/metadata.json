@@ -8,5 +8,6 @@
   "platform": "Terraform",
   "descriptionID": "e2f9b5c7",
   "cloudProvider": "gcp",
-  "cwe": "200"
+  "cwe": "200",
+  "detailedDescriptionText": "Exposing a GKE cluster's control plane (Kubernetes API server) to the public internet creates a significant security risk, as it allows potential attackers to attempt authentication or exploit vulnerabilities from anywhere in the world. The Kubernetes API server is a critical component that controls all cluster operations, and unauthorized access could lead to complete compromise of the cluster and any workloads or data it contains. Organizations should always restrict access to the control plane by configuring master authorized networks with specific trusted CIDR ranges and enable private cluster mode where appropriate to ensure the control plane is only accessible from within the VPC network."
 }

@@ -8,5 +8,6 @@
   "descriptionUrl": "https://cloud.google.com/iam/docs/best-practices-for-managing-service-account-keys",
   "platform": "Terraform",
   "cloudProvider": "GCP",
-  "cwe": "CWE-522"
+  "cwe": "CWE-522",
+  "detailedDescriptionText": "User-managed service account keys in GCP present significant security risks because they are long-lived credentials that can exist outside of Google Cloud's security boundary. These keys are frequently mishandled - embedded in code, stored in insecure locations, or shared among developers - creating multiple avenues for credential compromise and unauthorized access. Organizations should avoid creating user-managed service account keys whenever possible, instead using more secure authentication methods like workload identity federation, impersonation, or short-lived OAuth tokens managed by Google to maintain proper security controls."
 }

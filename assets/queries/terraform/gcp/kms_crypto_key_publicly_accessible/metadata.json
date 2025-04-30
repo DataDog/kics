@@ -8,5 +8,6 @@
   "platform": "Terraform",
   "descriptionID": "b1146d1f",
   "cloudProvider": "gcp",
-  "cwe": "284"
+  "cwe": "284",
+  "detailedDescriptionText": "Making KMS crypto keys accessible to public principals like 'allUsers' or 'allAuthenticatedUsers' creates a severe security vulnerability that could allow unauthorized encryption/decryption operations or key management. Cryptographic keys are highly sensitive security assets that should only be accessible to specifically authorized identities following the principle of least privilege. Organizations must ensure that KMS IAM policies restrict access to only those identities that require it for legitimate business purposes, and should implement monitoring for any changes to key access permissions."
 }

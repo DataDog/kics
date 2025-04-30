@@ -8,5 +8,6 @@
   "platform": "Terraform",
   "descriptionID": "b2d5f3c9",
   "cloudProvider": "gcp",
-  "cwe": "200"
+  "cwe": "200",
+  "detailedDescriptionText": "Cross-database ownership chaining in SQL Server allows users with access to one database to potentially access data in another database without explicit permissions, violating the principle of least privilege. When enabled, it creates a privilege escalation path that malicious users could exploit to gain unauthorized access to sensitive data across database boundaries. Organizations should disable this feature unless specifically required for legacy applications, and instead implement proper authorization controls with explicit permissions and roles to maintain clear separation between database security contexts."
 }

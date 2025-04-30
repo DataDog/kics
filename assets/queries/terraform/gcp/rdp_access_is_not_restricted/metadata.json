@@ -9,5 +9,6 @@
   "descriptionID": "f8156d3b",
   "cloudProvider": "gcp",
   "cwe": "284",
-  "oldSeverity": "MEDIUM"
+  "oldSeverity": "MEDIUM",
+  "detailedDescriptionText": "Allowing unrestricted RDP access (port 3389) in firewall rules exposes Windows instances to brute force attacks, credential theft, and exploitation of RDP vulnerabilities from the entire internet. RDP is a common target for automated scanning and attacks due to its direct access to system resources and potential for full system compromise if credentials are compromised. Organizations should restrict RDP access to specific trusted IP ranges, implement multi-factor authentication, and consider more secure remote access solutions like VPN gateways or bastion hosts with strict authentication requirements."
 }

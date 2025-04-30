@@ -8,5 +8,6 @@
   "platform": "Terraform",
   "descriptionID": "e3f7a9b1",
   "cloudProvider": "gcp",
-  "cwe": "284"
+  "cwe": "284",
+  "detailedDescriptionText": "Granting IAM permissions on Dataproc clusters to public principals like 'allUsers' or 'allAuthenticatedUsers' allows anyone on the internet to access or manage your big data processing environment. This overly permissive access control can lead to unauthorized data access, malicious job submissions, or interference with existing workloads and data. Organizations should implement strict IAM controls that follow the principle of least privilege, allowing only specific authorized users, groups, or service accounts to access Dataproc clusters based on their legitimate operational needs."
 }

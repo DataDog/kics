@@ -9,5 +9,6 @@
   "descriptionID": "6a48f2c6",
   "cloudProvider": "gcp",
   "cwe": "285",
-  "oldSeverity": "MEDIUM"
+  "oldSeverity": "MEDIUM",
+  "detailedDescriptionText": "Disabling uniform bucket-level access on Google Cloud Storage buckets allows the use of legacy ACLs, which create a more complex and potentially error-prone access control model. With legacy ACLs, permissions can be granted at both the bucket and object levels, increasing the risk of misconfiguration and unintended data exposure. Organizations should enable uniform bucket-level access to enforce consistent permissions across all objects in a bucket, simplify access management through IAM, and improve security by eliminating the possibility of conflicting permission settings between bucket and object-level ACLs."
 }

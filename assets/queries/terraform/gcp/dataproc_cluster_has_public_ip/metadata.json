@@ -8,5 +8,6 @@
   "platform": "Terraform",
   "descriptionID": "d2c4b6a8",
   "cloudProvider": "gcp",
-  "cwe": "284"
+  "cwe": "284",
+  "detailedDescriptionText": "Dataproc clusters with public IP addresses are exposed to the internet, creating an attack vector for unauthorized access to your big data processing environment and the data it handles. Directly exposed clusters increase the risk of brute force attacks, exploitation of vulnerabilities in running services, and potential data exfiltration. Organizations should configure Dataproc clusters with internal IP addresses only and use authorized networks, VPN, or Cloud IAP to manage secure access from outside the VPC."
 }

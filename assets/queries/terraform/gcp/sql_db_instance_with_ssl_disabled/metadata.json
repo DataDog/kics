@@ -8,5 +8,6 @@
   "platform": "Terraform",
   "descriptionID": "8983549e",
   "cloudProvider": "gcp",
-  "cwe": "732"
+  "cwe": "732",
+  "detailedDescriptionText": "Disabling SSL/TLS on Cloud SQL instances allows database connections to transmit data in plaintext, making sensitive information vulnerable to interception and eavesdropping through man-in-the-middle attacks. This configuration bypasses a critical security control designed to ensure data confidentiality and integrity as it travels over networks. Organizations should enforce SSL connectivity by setting 'require_ssl' to true for all database instances to encrypt data in transit, protect against unauthorized access, and maintain compliance with security standards and regulations."
 }

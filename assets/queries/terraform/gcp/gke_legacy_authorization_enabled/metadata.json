@@ -8,5 +8,6 @@
   "platform": "Terraform",
   "descriptionID": "a2e814bc",
   "cloudProvider": "gcp",
-  "cwe": "284"
+  "cwe": "284",
+  "detailedDescriptionText": "Legacy Attribute-Based Access Control (ABAC) in GKE provides coarse-grained permissions that don't follow the principle of least privilege, creating significant security risks in your Kubernetes environment. With ABAC enabled, service accounts have excessive permissions that could allow attackers to escalate privileges within the cluster if a pod is compromised. Organizations should disable legacy authorization and use Kubernetes Role-Based Access Control (RBAC) instead, which provides much finer-grained control over permissions and allows for better auditability and compliance with security best practices."
 }

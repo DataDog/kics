@@ -8,5 +8,6 @@
   "platform": "Terraform",
   "descriptionID": "f6a7b8c9",
   "cloudProvider": "gcp",
-  "cwe": "311"
+  "cwe": "311",
+  "detailedDescriptionText": "Publicly accessible container registries expose your Docker images to anyone on the internet, creating significant security and operational risks. Attackers can enumerate your container images, potentially discovering vulnerable or misconfigured applications, proprietary code, or embedded secrets in container layers. Organizations should restrict access to container registries using appropriate IAM controls, ensuring only authorized identities can pull or push images, and implement vulnerability scanning of container images to maintain a secure container supply chain."
 }

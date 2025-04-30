@@ -9,5 +9,6 @@
   "descriptionID": "965c0d1c",
   "cloudProvider": "gcp",
   "cwe": "285",
-  "oldSeverity": "MEDIUM"
+  "oldSeverity": "MEDIUM",
+  "detailedDescriptionText": "Granting administrative roles to service accounts significantly increases security risk by providing extensive permissions that violate the principle of least privilege. If a service account with admin privileges is compromised, attackers gain broad access to manage resources, change configurations, or create other privileged accounts throughout the project. Service accounts should be assigned only the minimal permissions necessary for their intended functions, and administrative actions should be performed by human user accounts with proper authentication, authorization controls, and audit logging."
 }

@@ -8,5 +8,6 @@
   "platform": "Terraform",
   "descriptionID": "7e3c1a2b",
   "cloudProvider": "gcp",
-  "cwe": "284"
+  "cwe": "284",
+  "detailedDescriptionText": "Making Cloud Run services publicly accessible by granting IAM permissions to 'allUsers' or 'allAuthenticatedUsers' exposes your service endpoints to anyone on the internet, creating a significant security risk. This unrestricted access can lead to abuse of your services, potential data leakage, and unauthorized API calls that could impact availability or lead to excessive billing. Instead, Cloud Run services should be secured with proper authentication and authorization controls, limiting access to specific service accounts, user groups, or through Identity-Aware Proxy (IAP) to maintain the principle of least privilege."
 }
