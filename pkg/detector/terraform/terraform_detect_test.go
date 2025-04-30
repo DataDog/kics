@@ -156,11 +156,11 @@ func TestDetectTerraformLine(t *testing.T) { //nolint
 				FileSource:     strings.Split(OriginalData1, "\n"),
 				RemediationLocation: model.ResourceLocation{
 					Start: model.ResourceLine{
-						Line: 20,
+						Line: 16,
 						Col:  2,
 					},
 					End: model.ResourceLine{
-						Line: 20,
+						Line: 16,
 						Col:  2,
 					},
 				},

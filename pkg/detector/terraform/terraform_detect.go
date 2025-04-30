@@ -203,6 +203,14 @@ func parseAndFindTerraformBlock(src []byte, identifyingLine int) (model.Resource
 			} else {
 				if identifyingLine == blockStart.Line {
 					insertionLine = blockEnd.Line - 1
+					for i := insertionLine; i >= blockStart.Line; i-- {
+						_, nestedStart, nestedEnd, isAttr := findContainingStructure(block, i)
+						if isAttr && nestedEnd.Line >= insertionLine {
+							insertionLine = nestedStart.Line - 1
+							continue
+						}
+						break
+					}
 					caseType = "block-start"
 				} else {
 					insertionLine = identifyingLine
