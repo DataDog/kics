@@ -8,5 +8,6 @@
   "platform": "Terraform",
   "descriptionID": "71dab2d1",
   "cloudProvider": "aws",
-  "cwe": "250"
+  "cwe": "250",
+  "detailedDescriptionText": "AWS Batch job definitions should not use privileged container mode unless absolutely necessary.\n\nPrivileged containers have elevated permissions on the host, including access to host devices and the ability to run operations that would normally be restricted. This can lead to container escape vulnerabilities, allowing attackers to gain control of the host system.\n\nAvoid setting 'privileged: true' in container properties unless the specific job requires elevated permissions. If privileged access is needed, limit it to the minimum required capabilities using more granular permissions like specific Linux capabilities rather than full privileged mode."
 }

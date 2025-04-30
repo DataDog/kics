@@ -9,5 +9,6 @@
   "descriptionID": "c145a47f",
   "cloudProvider": "aws",
   "cwe": "668",
-  "oldSeverity": "HIGH"
+  "oldSeverity": "HIGH",
+  "detailedDescriptionText": "RDS database instances should not be publicly accessible over the internet ('publicly_accessible = false').\n\nPublicly accessible databases present a critical security risk, exposing your data to potential brute force attacks, denial of service attempts, and exploitation of database software vulnerabilities.\n\nInstead, keep databases in private subnets and implement a secure access pattern. Application servers can be placed in separate subnets with specific security groups to access the database. For administrative access, use a bastion host, VPN connection, or AWS Systems Manager Session Manager.\n\nApply defense in depth by also implementing encryption, strong authentication, regular patching, and monitoring for suspicious access attempts."
 }

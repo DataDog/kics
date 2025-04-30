@@ -9,5 +9,6 @@
   "descriptionID": "244b5c19",
   "cloudProvider": "aws",
   "cwe": "778",
-  "oldSeverity": "HIGH"
+  "oldSeverity": "HIGH",
+  "detailedDescriptionText": "CloudWatch should have metric filters and alarms configured to detect unauthorized API calls in AWS environments.\n\nWithout proper monitoring for unauthorized API activity, attackers could perform reconnaissance, extract data, or manipulate resources without detection. Early notification of unauthorized access attempts is critical for rapid incident response and mitigation.\n\nImplement CloudWatch metric filters that capture API calls resulting in 'AccessDenied' errors in CloudTrail logs, and create alarms triggered when these events exceed normal thresholds. Configure notifications to send alerts to security personnel who can quickly investigate and respond to potential security incidents."
 }

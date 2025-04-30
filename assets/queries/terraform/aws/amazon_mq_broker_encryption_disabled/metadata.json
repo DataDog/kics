@@ -9,5 +9,6 @@
   "descriptionID": "81fb6220",
   "cloudProvider": "aws",
   "cwe": "311",
-  "oldSeverity": "MEDIUM"
+  "oldSeverity": "MEDIUM",
+  "detailedDescriptionText": "Amazon MQ brokers should always have encryption options properly defined to ensure data protection. When encryption is disabled or not configured for an Amazon MQ broker, messages and data stored on the broker are vulnerable to unauthorized access and could lead to data breaches involving potentially sensitive information.\n\nEncryption is a critical defense layer for message brokers, as they often handle business-critical data, authentication details, and other sensitive information passing between application components. Without encryption, this data is stored in plaintext, making it easily readable if an attacker gains access to the underlying storage.\n\nTo properly secure your Amazon MQ broker, always configure the 'encryption_options' block in your Terraform configuration. You can either use a customer-managed KMS key by specifying 'kms_key_id' and setting 'use_aws_owned_key' to false, or use AWS-owned keys by simply including the 'encryption_options' block (even empty) which will enable encryption with AWS-managed keys by default.\n\nImplementing encryption at rest for your Amazon MQ brokers is not only a security best practice but also helps maintain compliance with various regulatory requirements such as GDPR, HIPAA, PCI DSS, and other standards that mandate the protection of sensitive data."
 }

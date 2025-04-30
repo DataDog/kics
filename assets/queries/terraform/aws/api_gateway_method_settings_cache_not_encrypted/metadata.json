@@ -8,5 +8,6 @@
   "platform": "Terraform",
   "descriptionID": "ceabd70f",
   "cloudProvider": "aws",
-  "cwe": "311"
+  "cwe": "311",
+  "detailedDescriptionText": "API Gateway method caches should be encrypted to protect potentially sensitive data from unauthorized access.\n\nAPI Gateway caches can store sensitive information including request parameters, responses, and authentication tokens. Unencrypted caches risk exposing this data if the underlying storage is compromised or if cache data is improperly accessed.\n\nEnable cache encryption by setting 'cache_data_encrypted = true' in your aws_api_gateway_method_settings resource. This ensures that all data stored in the API Gateway cache is encrypted, providing an additional layer of protection for your API data."
 }

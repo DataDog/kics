@@ -8,5 +8,6 @@
   "platform": "Terraform",
   "descriptionID": "570f99ac",
   "cloudProvider": "aws",
-  "cwe": "311"
+  "cwe": "311",
+  "detailedDescriptionText": "SageMaker endpoint configurations should have encryption enabled to protect sensitive ML model data and predictions.\n\nWithout encryption, data processed through SageMaker endpoints may be vulnerable to unauthorized access if the underlying storage is compromised. SageMaker endpoints often handle sensitive data used for inference, making encryption essential for data protection and regulatory compliance.\n\nEnable encryption by specifying a KMS key ARN in the 'kms_key_arn' attribute of your aws_sagemaker_endpoint_configuration resource. This ensures that all data at rest within the endpoint is encrypted with your chosen key, providing an additional layer of security for your machine learning deployments."
 }

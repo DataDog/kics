@@ -9,5 +9,6 @@
   "descriptionID": "fb93ace4",
   "cloudProvider": "aws",
   "cwe": "311",
-  "oldSeverity": "MEDIUM"
+  "oldSeverity": "MEDIUM",
+  "detailedDescriptionText": "AWS Config rules should be configured to monitor and enforce EBS volume encryption across your environment.\n\nWithout monitoring for unencrypted volumes, organizations risk creating storage that doesn't meet security and compliance requirements. An automated detection mechanism is essential for environments with multiple teams or high volume of resource creation.\n\nEnable Config rules for encrypted volumes by configuring an aws_config_config_rule resource with source.source_identifier set to 'ENCRYPTED_VOLUMES'. This rule continually evaluates EBS volumes and alerts when unencrypted volumes are detected, allowing for remediation and ensuring consistent application of encryption policies."
 }

@@ -8,5 +8,6 @@
   "platform": "Terraform",
   "descriptionID": "d3e1f5a9",
   "cloudProvider": "aws",
-  "cwe": "400"
+  "cwe": "400",
+  "detailedDescriptionText": "Elasticsearch domains should use explicitly defined security groups instead of default security groups to control network access.\n\nDefault security groups often have overly permissive rules that allow inbound traffic from other resources using the same default group. This can inadvertently expose Elasticsearch endpoints to unintended access from other services in the same VPC, potentially allowing unauthorized data access or modification.\n\nExplicitly specify security groups in the vpc_options block of your aws_elasticsearch_domain resource by providing a list of security group IDs. Create purpose-specific security groups that allow only the necessary traffic from authorized sources. Review and audit security group rules regularly to ensure they maintain the principle of least privilege."
 }

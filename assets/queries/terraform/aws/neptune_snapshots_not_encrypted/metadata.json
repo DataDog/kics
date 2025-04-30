@@ -8,5 +8,6 @@
   "platform": "Terraform",
   "descriptionID": "g3l20gd0k",
   "cloudProvider": "aws",
-  "cwe": "319"
+  "cwe": "319",
+  "detailedDescriptionText": "Neptune cluster snapshots should be encrypted to protect sensitive graph data at rest.\n\nUnencrypted database snapshots can expose data if the snapshot storage is compromised or if snapshots are shared with unauthorized parties. Graph databases often contain relationship data that may be highly sensitive from both privacy and business intelligence perspectives.\n\nEnsure Neptune clusters have storage encryption enabled with the 'storage_encrypted = true' parameter, as snapshots inherit the encryption settings from their source clusters. For manual snapshots, verify the source cluster was encrypted. For additional security, specify a customer-managed KMS key using the 'kms_key_id' parameter in the cluster configuration."
 }

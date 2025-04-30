@@ -8,5 +8,6 @@
   "platform": "Terraform",
   "descriptionID": "b01e131b",
   "cloudProvider": "aws",
-  "cwe": "311"
+  "cwe": "311",
+  "detailedDescriptionText": "ECS task definition volumes using EFS should have transit encryption enabled to protect data moving between ECS containers and EFS storage.\n\nWithout transit encryption, data transferred between ECS tasks and EFS volumes could be intercepted and read by unauthorized parties. This is particularly concerning for applications handling sensitive information like personal data, financial records, or proprietary information.\n\nEnable transit encryption by setting 'transit_encryption = \"ENABLED\"' in the volume configuration of your aws_ecs_task_definition resource. Additionally, set 'transit_encryption_port' to specify the port to use for encrypted data, typically port 2999, and ensure your security groups allow traffic on this port."
 }

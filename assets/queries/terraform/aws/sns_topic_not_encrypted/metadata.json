@@ -6,6 +6,7 @@
   "descriptionText": "SNS (Simple Notification Service) Topic should be encrypted",
   "descriptionUrl": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/sns_topic#kms_master_key_id",
   "platform": "Terraform",
+  "detailedDescriptionText": "AWS SNS (Simple Notification Service) topics should be encrypted using KMS to secure sensitive data. Unencrypted SNS topics could expose confidential information if compromised. Enable encryption by setting the 'kms_master_key_id' attribute to protect your message contents while at rest.",
   "descriptionID": "2f15b2d0",
   "cloudProvider": "aws",
   "cwe": "311",

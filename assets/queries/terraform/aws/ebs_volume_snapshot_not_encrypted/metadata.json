@@ -8,5 +8,6 @@
   "platform": "Terraform",
   "descriptionID": "b36765a7",
   "cloudProvider": "aws",
-  "cwe": "311"
+  "cwe": "311",
+  "detailedDescriptionText": "EBS volume snapshots should be encrypted to protect data at rest from unauthorized access.\n\nUnencrypted snapshots expose the same data security risks as unencrypted volumes, but with additional concerns since snapshots may be shared, copied across accounts, or stored for extended periods. Sensitive data in snapshots could be exposed if access controls are misconfigured.\n\nWhen creating EBS snapshots, ensure source volumes are encrypted, as snapshots inherit encryption from their source volumes. For existing unencrypted snapshots, create a copy with encryption enabled. Enable default EBS encryption at the account level to ensure all newly created volumes and their snapshots are automatically encrypted."
 }

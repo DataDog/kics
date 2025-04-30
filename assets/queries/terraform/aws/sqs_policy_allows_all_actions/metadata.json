@@ -9,5 +9,6 @@
   "descriptionID": "afcb58e6",
   "cloudProvider": "aws",
   "cwe": "285",
-  "oldSeverity": "MEDIUM"
+  "oldSeverity": "MEDIUM",
+  "detailedDescriptionText": "Amazon SQS queue policies should not allow all actions ('*') as this significantly increases the risk of unauthorized access and message manipulation.\n\nAllowing all actions means any principal with access to the queue can perform any operation, including sending, receiving, deleting messages, and modifying queue attributes. This violates the principle of least privilege and creates an unnecessarily large attack surface.\n\nRecommended mitigation:\n- Explicitly specify only the required actions in the policy (e.g., 'sqs:SendMessage', 'sqs:ReceiveMessage')\n- Limit actions to specific principals through ARNs rather than using wildcards\n- Use IAM roles with appropriate permissions boundaries instead of overly permissive queue policies\n- Regularly audit queue policies for overly permissive configurations"
 }

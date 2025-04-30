@@ -8,5 +8,6 @@
   "platform": "Terraform",
   "descriptionID": "f0795485",
   "cloudProvider": "aws",
-  "cwe": "710"
+  "cwe": "710",
+  "detailedDescriptionText": "AWS root account should never have active access keys to reduce the risk of unauthorized privileged access.\n\nRoot account access keys provide unrestricted, programmatic access to all resources in your AWS account. If these keys are compromised, attackers gain complete control of your AWS environment with no restrictions, potentially leading to data breaches, resource abuse, and significant financial damage.\n\nRemove any existing root account access keys and avoid creating new ones. Instead, create individual IAM users with appropriate permissions for programmatic access, implement the principle of least privilege, and use IAM roles for applications requiring AWS access. For emergencies requiring root access, use the management console with MFA enabled."
 }

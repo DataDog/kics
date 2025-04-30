@@ -9,5 +9,6 @@
   "descriptionID": "d348a5e7",
   "cloudProvider": "aws",
   "cwe": "155",
-  "oldSeverity": "MEDIUM"
+  "oldSeverity": "MEDIUM",
+  "detailedDescriptionText": "AWS Secrets Manager policies should not use wildcards in Principal or Action elements to prevent unauthorized access to sensitive secrets.\n\nPolicies with wildcards like '*' in Principal or Action fields can grant overly permissive access to your secrets, potentially allowing unintended entities to retrieve, modify, or delete sensitive credentials and configuration information.\n\nSpecify explicit principals (ARNs of specific IAM users, roles, or accounts) and define only the exact actions needed for each principal. For example, limit access to specific actions like 'secretsmanager:GetSecretValue' rather than 'secretsmanager:*', and restrict access to specific services or roles rather than allowing any AWS principal."
 }

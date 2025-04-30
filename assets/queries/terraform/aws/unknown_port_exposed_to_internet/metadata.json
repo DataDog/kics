@@ -8,5 +8,6 @@
   "platform": "Terraform",
   "descriptionID": "e55e747f",
   "cloudProvider": "aws",
-  "cwe": "200"
+  "cwe": "200",
+  "detailedDescriptionText": "Security groups should not allow traffic on non-standard or uncommon ports from the public internet (0.0.0.0/0 or ::/0).\n\nExposing uncommon or unknown ports to the internet creates unnecessary attack vectors, as these ports may run services with unpatched vulnerabilities, weak configurations, or development/debugging interfaces that were never intended for public access.\n\nRestrict security group rules to allow access only to well-known, required ports (such as 80/443 for web services) from public networks. For non-standard or internal services, limit access to specific IP ranges or VPCs. Regularly audit security groups to identify and remove rules allowing traffic to unusual ports from public networks."
 }

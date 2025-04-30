@@ -8,5 +8,6 @@
   "platform": "Terraform",
   "descriptionID": "32b2985e",
   "cloudProvider": "aws",
-  "cwe": "732"
+  "cwe": "732",
+  "detailedDescriptionText": "AWS KMS key policies should follow the principle of least privilege and avoid granting broad permissions.\n\nOverly permissive KMS key policies that grant full access ('kms:*') or use wildcard principals ('*' or 'AWS: *') create significant security risks. Since KMS keys protect sensitive data, compromised access could lead to unauthorized decryption of confidential information across multiple services.\n\nImplement least privilege by specifying only the necessary KMS actions required for each principal. Avoid wildcard principals and instead explicitly list the ARNs of IAM users, roles, or accounts that need access. Consider implementing conditions like source IP restrictions, MFA requirements, or time-based constraints for sensitive key operations."
 }

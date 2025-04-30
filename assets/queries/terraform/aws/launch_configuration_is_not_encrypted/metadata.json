@@ -8,5 +8,6 @@
   "platform": "Terraform",
   "descriptionID": "d11b3649",
   "cloudProvider": "aws",
-  "cwe": "311"
+  "cwe": "311",
+  "detailedDescriptionText": "EC2 launch configuration volumes should be encrypted to protect data stored on EC2 instances.\n\nUnencrypted EBS volumes pose a security risk as data can be accessed directly from the physical storage in case of improper decommissioning, snapshot exposure, or physical theft of the underlying hardware. This is particularly important for instances that may contain sensitive data like customer information, credentials, or business-critical applications.\n\nEnable encryption by setting 'encrypted = true' in the 'ebs_block_device' or 'root_block_device' blocks of your aws_launch_configuration resource. For additional security control, specify a KMS key using the 'kms_key_id' parameter rather than relying on the default AWS managed key."
 }

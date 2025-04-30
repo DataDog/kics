@@ -9,5 +9,6 @@
   "descriptionID": "b4d49d59",
   "cloudProvider": "aws",
   "cwe": "311",
-  "oldSeverity": "MEDIUM"
+  "oldSeverity": "MEDIUM",
+  "detailedDescriptionText": "ElastiCache replication groups should have encryption at rest enabled to protect cached data.\n\nWithout encryption, data stored in Redis or Memcached clusters is vulnerable if the underlying storage is compromised. Cache systems often contain sensitive information like session data, authentication tokens, or transient application state that requires protection.\n\nEnable encryption by setting 'at_rest_encryption_enabled = true' in your aws_elasticache_replication_group resource. Note that enabling encryption at rest may require specific ElastiCache node types and Redis versions, so verify compatibility with your configuration. For Redis clusters, also consider enabling transit encryption for complete data protection."
 }

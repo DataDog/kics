@@ -8,5 +8,6 @@
   "platform": "Terraform",
   "descriptionID": "8eb1d650",
   "cloudProvider": "aws",
-  "cwe": "311"
+  "cwe": "311",
+  "detailedDescriptionText": "Athena workgroups should have encryption enabled to protect query results stored in S3.\n\nWithout encryption, Athena query results may contain sensitive data that could be exposed if the S3 bucket permissions are misconfigured or compromised. Encryption of query results is particularly important when queries access regulated or confidential information.\n\nEnable encryption by adding an 'encryption_configuration' block to your aws_athena_workgroup resource. Specify either 'SSE_S3', 'SSE_KMS', or 'CSE_KMS' as the encryption option, and provide a KMS key ARN when using KMS encryption for enhanced security and control."
 }

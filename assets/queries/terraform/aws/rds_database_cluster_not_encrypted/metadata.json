@@ -8,5 +8,6 @@
   "platform": "Terraform",
   "descriptionID": "c88d0255",
   "cloudProvider": "aws",
-  "cwe": "311"
+  "cwe": "311",
+  "detailedDescriptionText": "RDS database clusters should have storage encryption enabled to protect sensitive data at rest.\n\nUnencrypted database clusters risk exposing sensitive information if the underlying storage is compromised or if backups are improperly secured. Database clusters typically contain sensitive data including personal information, credentials, financial records, and other data requiring protection for both security and regulatory compliance.\n\nEnable encryption by setting 'storage_encrypted = true' in your aws_rds_cluster resource. For enhanced security, specify a customer-managed KMS key using the 'kms_key_id' parameter to maintain control over your encryption keys and support audit capabilities. Note that encryption can only be configured when creating a new cluster."
 }

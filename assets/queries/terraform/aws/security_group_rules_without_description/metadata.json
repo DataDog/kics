@@ -8,5 +8,6 @@
   "platform": "Terraform",
   "descriptionID": "cee242dd",
   "cloudProvider": "aws",
-  "cwe": "710"
+  "cwe": "710",
+  "detailedDescriptionText": "Security group rules should include descriptions to document the purpose and function of each rule.\n\nWithout clear descriptions, security group rules become difficult to audit and maintain, especially in environments with multiple administrators or complex infrastructure. This increases the risk of misconfiguration, unnecessary rules remaining active, and potential security vulnerabilities going unaddressed.\n\nAdd meaningful descriptions to all security group rules to improve documentation, simplify auditing, and enhance team collaboration. Descriptions should indicate the rule's purpose, associated application or service, and any relevant ticket numbers or change references for future traceability."
 }

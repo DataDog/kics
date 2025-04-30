@@ -8,5 +8,6 @@
   "platform": "Terraform",
   "descriptionID": "e6b92744",
   "cloudProvider": "aws",
-  "cwe": "311"
+  "cwe": "311",
+  "detailedDescriptionText": "S3 bucket objects should have server-side encryption enabled to protect sensitive data at rest.\n\nUnencrypted objects stored in S3 are vulnerable if bucket permissions are misconfigured or compromised. Server-side encryption ensures data remains protected even if unauthorized access occurs, helping meet compliance requirements (GDPR, HIPAA, PCI DSS).\n\nEnable encryption by setting the 'server_side_encryption' parameter in your 'aws_s3_bucket_object' resource. Use 'AES256' for S3-managed keys or 'aws:kms' for KMS-managed keys with an optional 'kms_key_id'.\n\nAlternatively, configure bucket-wide default encryption using 'aws_s3_bucket_server_side_encryption_configuration' to ensure all new objects are automatically encrypted."
 }

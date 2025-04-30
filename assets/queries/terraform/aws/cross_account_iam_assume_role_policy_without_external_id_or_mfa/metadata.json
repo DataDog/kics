@@ -9,5 +9,6 @@
   "descriptionID": "18c64b43",
   "cloudProvider": "aws",
   "cwe": "285",
-  "oldSeverity": "MEDIUM"
+  "oldSeverity": "MEDIUM",
+  "detailedDescriptionText": "Cross-account IAM role assumption should require additional security controls like external ID or MFA.\n\nWithout these controls, roles that can be assumed by other AWS accounts create potential security risks through confused deputy problems, where a trusted entity could be manipulated into performing unintended actions. This is particularly important for roles with privileged permissions.\n\nProtect cross-account roles by implementing condition statements in trust policies that require an external ID (unique identifier shared between you and the trusted entity) or enforce MFA authentication. For third-party service integrations, always use an external ID provided by the service. For internal cross-account access, consider requiring both MFA and external ID for sensitive roles."
 }

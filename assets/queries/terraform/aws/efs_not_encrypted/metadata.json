@@ -8,5 +8,6 @@
   "platform": "Terraform",
   "descriptionID": "e4ced70d",
   "cloudProvider": "aws",
-  "cwe": "311"
+  "cwe": "311",
+  "detailedDescriptionText": "AWS EFS file systems should be encrypted to protect sensitive data at rest.\n\nUnencrypted EFS file systems pose a security risk as data stored in them could be accessed if the system is compromised. Encryption provides an additional security layer that helps protect data confidentiality and supports compliance with regulatory requirements.\n\nEnable encryption for EFS by setting the 'encrypted' attribute to 'true' in your aws_efs_file_system resource. For additional security, specify a custom KMS key using the 'kms_key_id' parameter to control the encryption key lifecycle."
 }

@@ -8,5 +8,6 @@
   "platform": "Terraform",
   "descriptionID": "ddaf8c0b",
   "cloudProvider": "aws",
-  "cwe": "668"
+  "cwe": "668",
+  "detailedDescriptionText": "Database security groups should not allow connections from public IP ranges (0.0.0.0/0 or ::/0).\n\nConfiguring database security groups with public CIDR blocks exposes your databases to access attempts from the entire internet. Even with password protection, this significantly increases the risk of brute force attacks, exploitation of vulnerabilities, and unauthorized access to sensitive data.\n\nRestrict access by specifying private IP ranges in your security group ingress rules. Place databases in private subnets and use bastion hosts, VPN connections, or AWS Systems Manager Session Manager for administrative access. For application connectivity, use security groups to allow traffic only from application tier resources."
 }

@@ -8,5 +8,6 @@
   "platform": "Terraform",
   "descriptionID": "aea02d46",
   "cloudProvider": "aws",
-  "cwe": "668"
+  "cwe": "668",
+  "detailedDescriptionText": "Security groups should not allow unrestricted access to Remote Desktop Protocol (TCP port 3389) from the internet.\n\nExposing RDP ports directly to the internet creates a significant security risk as these ports are common targets for brute force attacks and exploitation attempts. Windows Remote Desktop provides administrative access to systems, making it a high-value target for attackers.\n\nRestrict RDP access to specific trusted IP ranges by modifying security group ingress rules. Use a VPN, bastion host, or AWS Systems Manager Session Manager for secure remote administration instead of allowing direct RDP access from the internet. Consider implementing additional protections like just-in-time access and multi-factor authentication for administrative connections."
 }

@@ -9,5 +9,6 @@
   "descriptionID": "5be78364",
   "aggregation": 63,
   "cloudProvider": "aws",
-  "cwe": "200"
+  "cwe": "200",
+  "detailedDescriptionText": "Security groups should not expose sensitive ports (like 20, 21, 23, 25, 110, 143) to the entire network (0.0.0.0/0 or ::/0).\n\nSensitive ports often run legacy protocols with known vulnerabilities or transmit data in plaintext. Exposing these ports to the internet significantly increases the risk of unauthorized access, eavesdropping, and exploitation of vulnerable services.\n\nRestrict access to sensitive ports by limiting CIDR blocks to specific IP ranges that require access. Better yet, avoid using these insecure protocols entirely in favor of their secure alternatives (SFTP instead of FTP, SSH instead of Telnet, IMAPS instead of IMAP, etc.). If legacy protocols must be used, implement additional security controls like VPN access and strict firewall rules."
 }

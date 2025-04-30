@@ -8,5 +8,6 @@
   "platform": "Terraform",
   "descriptionID": "e6f7g8h9",
   "cloudProvider": "aws",
-  "cwe": "319"
+  "cwe": "319",
+  "detailedDescriptionText": "AWS Database Migration Service (DMS) endpoints should have SSL enabled to secure data in transit.\n\nWithout SSL, data transferred between DMS and its source/target endpoints is transmitted in plaintext, potentially exposing sensitive information to eavesdropping or man-in-the-middle attacks. This is particularly risky when migrations occur across public networks.\n\nEnable SSL by setting the 'ssl_mode' parameter to 'verify-ca' or 'verify-full' in your aws_dms_endpoint resource. Provide appropriate certificate information using the 'certificate_arn' parameter to fully authenticate the connection, ensuring data confidentiality and integrity during the migration process."
 }

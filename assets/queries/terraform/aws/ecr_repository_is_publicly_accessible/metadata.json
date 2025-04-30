@@ -9,5 +9,6 @@
   "descriptionID": "5a3ad5ce",
   "cloudProvider": "aws",
   "cwe": "668",
-  "oldSeverity": "MEDIUM"
+  "oldSeverity": "MEDIUM",
+  "detailedDescriptionText": "Amazon ECR repositories should not be configured with policies that grant public access.\n\nPublicly accessible ECR repositories could expose proprietary code, embedded secrets, or vulnerable dependencies to unauthorized users. This creates significant security risks including intellectual property theft, exposure of sensitive configurations, and potential supply chain attacks.\n\nAvoid repository policies with Principal set to '*' or that include broad public access statements. Instead, limit access to specific IAM roles, users, or AWS accounts that need to pull or push images. For sharing images across accounts, use cross-account IAM roles with specific permissions rather than public access."
 }

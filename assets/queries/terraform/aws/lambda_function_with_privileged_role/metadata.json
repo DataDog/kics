@@ -8,5 +8,6 @@
   "platform": "Terraform",
   "descriptionID": "1b3af2f9",
   "cloudProvider": "aws",
-  "cwe": "284"
+  "cwe": "284",
+  "detailedDescriptionText": "AWS Lambda functions should operate with the minimum permissions necessary rather than using privileged roles.\n\nWhen Lambda functions have overly permissive roles (like admin privileges or wildcard permissions), they create a significant security risk. If the function code is compromised or contains vulnerabilities, attackers can exploit these elevated permissions to access sensitive resources across your AWS environment.\n\nImplement the principle of least privilege by creating custom IAM roles for each Lambda function that grant only the specific permissions needed for its operations. Regularly review and audit Lambda execution roles to remove unused permissions, and consider using AWS IAM Access Analyzer to identify overly permissive policies."
 }

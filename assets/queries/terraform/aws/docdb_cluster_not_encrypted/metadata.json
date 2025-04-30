@@ -8,5 +8,6 @@
   "platform": "Terraform",
   "descriptionID": "aaec5c7c",
   "cloudProvider": "aws",
-  "cwe": "311"
+  "cwe": "311",
+  "detailedDescriptionText": "Amazon DocumentDB clusters should have storage encryption enabled to protect sensitive data at rest.\n\nUnencrypted DocumentDB clusters risk exposing sensitive data if the underlying storage media is compromised or improperly decommissioned. DocumentDB often stores structured data that may contain personally identifiable information, credentials, or other sensitive information requiring protection for security and compliance reasons.\n\nEnable encryption by setting 'storage_encrypted = true' in your aws_docdb_cluster resource. For enhanced security, specify a customer-managed KMS key using the 'kms_key_id' parameter to maintain control over your encryption keys. Note that encryption can only be enabled when creating a new cluster."
 }

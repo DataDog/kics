@@ -8,5 +8,6 @@
   "platform": "Terraform",
   "descriptionID": "4db5c45a",
   "cloudProvider": "aws",
-  "cwe": "284"
+  "cwe": "284",
+  "detailedDescriptionText": "S3 buckets with static website hosting enabled can inadvertently expose sensitive content to the public internet.\n\nWhen S3 static website hosting is enabled, the bucket becomes publicly accessible at a predictable URL, potentially exposing stored content. This feature should only be used when content is intentionally meant for public consumption.\n\nTo remediate this risk, disable static website hosting for buckets that don't require it. For legitimate static websites, implement proper access controls, ensure no sensitive data is stored in the bucket, and consider using CloudFront with origin access identity for controlled access."
 }

@@ -9,5 +9,6 @@
   "descriptionID": "e3f9c7a9",
   "aggregation": 2,
   "cloudProvider": "aws",
-  "cwe": "311"
+  "cwe": "311",
+  "detailedDescriptionText": "AWS WorkSpaces volumes should be encrypted to protect user data and prevent unauthorized access.\n\nUnencrypted WorkSpaces volumes can expose sensitive user data if the underlying storage is compromised. Since WorkSpaces often contain personal and confidential information, encryption is critical for data protection and regulatory compliance.\n\nEnable encryption by setting 'root_volume_encryption_enabled' and 'user_volume_encryption_enabled' to 'true' in your aws_workspaces_workspace resource. For stronger security, specify a custom KMS key using the corresponding key ID parameters to maintain control over your encryption keys."
 }

@@ -9,5 +9,6 @@
   "descriptionID": "aa9967ef",
   "cloudProvider": "aws",
   "cwe": "284",
-  "oldSeverity": "LOW"
+  "oldSeverity": "LOW",
+  "detailedDescriptionText": "S3 buckets should consistently enforce access restrictions through both ACLs and public access block settings to avoid security configuration confusion.\n\nInconsistent access control settings create confusion and potential security gaps. When a bucket has public ACLs but also has public access block settings enabled, the explicit permissions may mislead administrators while being functionally blocked.\n\nEnsure bucket configurations are consistent by either properly restricting bucket ACLs or removing unnecessary public access block settings. For most secure configurations, both explicitly set bucket ACLs to private AND enable all public access block settings to provide defense in depth."
 }

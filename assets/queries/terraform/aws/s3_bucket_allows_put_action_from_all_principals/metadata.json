@@ -9,5 +9,6 @@
   "descriptionID": "c38a18db",
   "cloudProvider": "aws",
   "cwe": "732",
-  "oldSeverity": "HIGH"
+  "oldSeverity": "HIGH",
+  "detailedDescriptionText": "S3 bucket policies should not allow PUT actions from all principals ('*' or '{\"AWS\": \"*\"}').\n\nGranting PUT permissions to all principals creates a critical security risk by allowing anyone to upload content to your bucket. This can lead to storage of malicious files, unexpected charges, resource abuse, and potentially compliance violations.\n\nRestrict PUT permissions to specific IAM roles or users by using explicit principal ARNs instead of wildcards. If broader access is required, use pre-signed URLs with expiration times for temporary upload access, or implement authenticated API endpoints that manage uploads securely."
 }

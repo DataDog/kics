@@ -8,5 +8,6 @@
   "platform": "Terraform",
   "descriptionID": "ed220e0d",
   "cloudProvider": "aws",
-  "cwe": "668"
+  "cwe": "668",
+  "detailedDescriptionText": "Network ACLs should not allow unrestricted (0.0.0.0/0) access to RDP port (TCP 3389).\n\nPublicly accessible RDP ports present a significant security risk as they are frequent targets for brute force attacks and exploitation attempts. Windows Remote Desktop provides administrative level access, making it particularly attractive to attackers.\n\nRestrict RDP access to specific trusted IP ranges by replacing the wide open CIDR block with a more restrictive range. For secure remote administration, implement a bastion host or VPN solution rather than exposing RDP ports directly.\n\nConsider using AWS Systems Manager Session Manager to eliminate the need for direct RDP access entirely, providing more secure and auditable remote management capabilities."
 }

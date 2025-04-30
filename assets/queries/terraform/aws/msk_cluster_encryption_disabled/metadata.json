@@ -8,5 +8,6 @@
   "platform": "Terraform",
   "descriptionID": "343faf8d",
   "cloudProvider": "aws",
-  "cwe": "311"
+  "cwe": "311",
+  "detailedDescriptionText": "AWS Managed Streaming for Kafka (MSK) clusters should have encryption enabled both at rest and in transit to protect sensitive data. Without proper encryption, data transmitted through the MSK cluster is vulnerable to unauthorized access and potential data breaches.\n\nWhen configuring an MSK cluster, you should ensure:\n\n1. Encryption at rest is enabled by specifying a KMS key ARN in the 'encryption_at_rest_kms_key_arn' attribute within the 'encryption_info' block.\n\n2. Encryption in transit is properly configured in the 'encryption_in_transit' block:\n   - 'client_broker' should be set to 'TLS' or 'TLS_PLAINTEXT' (though 'TLS' is more secure)\n   - 'in_cluster' should be set to 'true' to encrypt communication between the brokers\n\nMSK clusters without both types of encryption enabled may fail to meet compliance requirements for data protection standards such as GDPR, HIPAA, and PCI DSS. Regular audits of encryption configurations are recommended as part of your security posture management."
 }

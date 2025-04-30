@@ -8,5 +8,6 @@
   "platform": "Terraform",
   "descriptionID": "c90feea8",
   "cloudProvider": "aws",
-  "cwe": "311"
+  "cwe": "311",
+  "detailedDescriptionText": "AWS Athena databases store query results in Amazon S3 buckets, and this data should always be encrypted to protect sensitive information. When Athena database encryption is not configured, any query results stored in S3 are vulnerable to unauthorized access if the S3 bucket permissions are compromised or if the data is accessed through other means.\n\nUnencrypted Athena query results can expose a wide variety of sensitive data, including business intelligence, customer information, financial data, or any other data being analyzed through Athena queries. The lack of encryption violates data protection best practices and may lead to compliance issues with regulations like GDPR, HIPAA, PCI DSS, and other standards that require protection of sensitive data.\n\nTo properly secure your Athena database, always include an 'encryption_configuration' block in your Terraform configuration for AWS Athena database resources. You can choose from encryption options such as 'SSE_S3' (S3 managed keys), 'SSE_KMS' (AWS KMS managed keys), or 'CSE_KMS' (client-side encryption with KMS). For enhanced security and control, 'SSE_KMS' with a customer-managed KMS key is recommended.\n\nImplementing encryption for Athena databases not only provides data protection but also gives you better visibility and control over access to your sensitive data through KMS key policies and CloudTrail logging of encryption key usage."
 }

@@ -9,5 +9,6 @@
   "descriptionID": "65a94cf1",
   "cloudProvider": "aws",
   "cwe": "326",
-  "oldSeverity": "MEDIUM"
+  "oldSeverity": "MEDIUM",
+  "detailedDescriptionText": "Amazon Elasticsearch Service domains should use KMS encryption for enhanced protection of data at rest.\n\nWhile Elasticsearch supports AES-256 encryption by default, using KMS provides additional security benefits including centralized key management, fine-grained access controls, and audit capabilities. KMS encryption is particularly important for domains storing sensitive data or subject to compliance requirements.\n\nEnable KMS encryption by configuring the encrypt_at_rest block in your aws_elasticsearch_domain resource with 'enabled = true' and specifying a KMS key ID in the 'kms_key_id' parameter. This ensures your Elasticsearch data is protected with customer-managed keys that you control."
 }

@@ -8,5 +8,6 @@
   "platform": "Terraform",
   "descriptionID": "59f958c0",
   "cloudProvider": "aws",
-  "cwe": "200"
+  "cwe": "200",
+  "detailedDescriptionText": "AWS SQS queues should not be exposed to all users through overly permissive policies. When an SQS queue policy grants access to all principals ('*'), it creates a significant security risk by allowing anyone to send, receive, or manipulate messages in your queue. This could lead to information disclosure, message injection, denial of service, or data leakage. To mitigate this risk, always restrict queue access to specific and authorized AWS principals, and implement proper conditions to further limit access based on source IP, VPC endpoints, or other contextual factors."
 }

@@ -9,5 +9,6 @@
   "descriptionID": "8dc6c718",
   "cloudProvider": "aws",
   "cwe": "732",
-  "oldSeverity": "HIGH"
+  "oldSeverity": "HIGH",
+  "detailedDescriptionText": "S3 bucket policies should not allow delete actions from all principals ('*' or '{\"AWS\": \"*\"}').\n\nAllowing all principals to delete objects from your bucket creates a critical security risk that can lead to data loss and service disruption. Even with IP filtering, this configuration is vulnerable to spoofing and other attack vectors.\n\nRestrict delete permissions to specific IAM roles or users by specifying explicit ARNs in the principal field. Implement versioning and MFA delete requirements for additional protection of critical data.\n\nFor permission policies, use the principle of least privilege by granting only the permissions required for specific tasks."
 }

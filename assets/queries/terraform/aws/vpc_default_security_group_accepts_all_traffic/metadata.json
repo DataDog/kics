@@ -8,5 +8,6 @@
   "platform": "Terraform",
   "descriptionID": "d79243b5",
   "cloudProvider": "aws",
-  "cwe": "284"
+  "cwe": "284",
+  "detailedDescriptionText": "Default security groups in VPCs should be configured to restrict all inbound and outbound traffic by default.\n\nAWS default security groups allow all outbound traffic and permit all inbound traffic from resources assigned to the same security group. This creates an overly permissive network posture that violates security best practices and increases your attack surface.\n\nExplicitly manage the default security group by using the aws_default_security_group resource to remove all ingress and egress rules. Create purpose-specific security groups with minimal required permissions for your resources instead of using the default group, ensuring each resource has only the network access needed for its function."
 }

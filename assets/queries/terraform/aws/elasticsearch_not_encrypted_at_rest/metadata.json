@@ -9,5 +9,6 @@
   "descriptionID": "c402717e",
   "cloudProvider": "aws",
   "cwe": "311",
-  "oldSeverity": "MEDIUM"
+  "oldSeverity": "MEDIUM",
+  "detailedDescriptionText": "Amazon Elasticsearch Service domains should have encryption at rest enabled to protect sensitive data.\n\nWithout encryption at rest, data stored in Elasticsearch indices is vulnerable to unauthorized access if the underlying storage is compromised. Elasticsearch often contains sensitive information like logs, metrics, and application data that requires protection for security and compliance reasons.\n\nEnable encryption by configuring the encrypt_at_rest block in your aws_elasticsearch_domain resource with 'enabled = true'. For optimal security, also specify a KMS key ID using the 'kms_key_id' parameter to maintain control over your encryption keys and provide additional auditing capabilities."
 }

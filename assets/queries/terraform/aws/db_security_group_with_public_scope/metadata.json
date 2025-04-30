@@ -9,5 +9,6 @@
   "descriptionID": "97108586",
   "cloudProvider": "aws",
   "cwe": "732",
-  "oldSeverity": "HIGH"
+  "oldSeverity": "HIGH",
+  "detailedDescriptionText": "Database security groups must never allow access from the entire internet (0.0.0.0/0 or ::/0).\n\nConfiguring database security groups with public CIDR blocks presents a critical security risk by exposing database ports to the entire internet. Even with password authentication, this significantly increases the risk of brute force attacks, exploitation of vulnerabilities, and unauthorized access to sensitive data.\n\nRestrict access by specifying precise CIDR blocks for only the necessary IP ranges that require database access. Place databases in private subnets and use bastion hosts, VPN connections, or private networking for administrative access. For application connectivity, use security groups to allow traffic only from application tier resources."
 }

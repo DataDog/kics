@@ -8,5 +8,6 @@
   "platform": "Terraform",
   "descriptionID": "f9e5dc62",
   "cloudProvider": "aws",
-  "cwe": "665"
+  "cwe": "665",
+  "detailedDescriptionText": "AWS ElastiCache Redis clusters should use modern, compliant Redis engine versions to maintain security and compliance with PCI DSS requirements. Older Redis versions (below 5.0.0) lack important security features like encryption in transit, improved authentication mechanisms, and protection against various vulnerabilities. Using outdated Redis versions increases your security risk posture and may result in compliance violations. It is strongly recommended to use Redis 5.0.0 or higher to benefit from security improvements, bug fixes, and performance enhancements."
 }

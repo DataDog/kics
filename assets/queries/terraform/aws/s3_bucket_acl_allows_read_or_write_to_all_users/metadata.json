@@ -9,5 +9,6 @@
   "descriptionID": "d535387f",
   "cloudProvider": "aws",
   "cwe": "732",
-  "oldSeverity": "HIGH"
+  "oldSeverity": "HIGH",
+  "detailedDescriptionText": "S3 bucket ACLs should never grant read or write permissions to all users (the 'public-read', 'public-read-write', or 'authenticated-read' canned ACLs).\n\nPublicly accessible S3 buckets pose a critical security risk by potentially exposing sensitive data to anyone on the internet. Writable buckets are particularly dangerous as they can be used to host malicious content, accumulate unexpected charges, or have legitimate data overwritten or deleted.\n\nUse the 'private' ACL for all buckets by default, and implement S3 bucket policies for more granular access control. Enable S3 Block Public Access at both the bucket and account levels to provide an additional layer of protection against accidental public exposure. For content that must be publicly available, consider using CloudFront distributions with origin access identities."
 }

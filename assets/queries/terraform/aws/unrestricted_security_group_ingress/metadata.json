@@ -8,5 +8,6 @@
   "platform": "Terraform",
   "descriptionID": "ce3ee5e0",
   "cloudProvider": "aws",
-  "cwe": "668"
+  "cwe": "668",
+  "detailedDescriptionText": "Security groups should not allow unrestricted inbound access from any IPv4 (0.0.0.0/0) or IPv6 (::/0) address.\n\nUnrestricted security group rules expose your resources to the entire internet, significantly increasing the risk of unauthorized access, brute force attacks, and exploitation of vulnerabilities. This is particularly concerning for administrative interfaces and non-web protocols.\n\nRestrict inbound traffic by limiting source CIDR blocks to specific IP ranges that require access. For public-facing services, consider using AWS WAF, CloudFront, or API Gateway as front-ends with appropriate security controls, and use security groups to allow traffic only from these services rather than directly from the internet."
 }

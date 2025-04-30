@@ -8,5 +8,6 @@
   "platform": "Terraform",
   "descriptionID": "91562f39",
   "cloudProvider": "aws",
-  "cwe": "778"
+  "cwe": "778",
+  "detailedDescriptionText": "Route53 DNS records must be properly defined to ensure DNS resolution works correctly and securely.\n\nMissing or undefined Route53 records can lead to DNS resolution failures, service unavailability, and potential DNS hijacking opportunities for attackers. Proper DNS configuration is essential for both functionality and security.\n\nEnsure all Route53 record resources have properly defined required attributes including 'zone_id', 'name', 'type', and either 'records' or an appropriate alias configuration. Validate that record values point to legitimate resources and follow DNS best practices for your domain naming strategy."
 }

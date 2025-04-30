@@ -8,5 +8,6 @@
   "platform": "Terraform",
   "descriptionID": "54288d64",
   "cloudProvider": "aws",
-  "cwe": "311"
+  "cwe": "311",
+  "detailedDescriptionText": "RDS database storage should be encrypted to protect sensitive data at rest.\n\nUnencrypted database storage puts data at risk if the underlying storage is compromised or if backups are improperly secured. Database instances often contain highly sensitive information including personal data, credentials, and business-critical data that requires protection both for security and compliance reasons.\n\nEnable encryption by setting 'storage_encrypted = true' in your RDS cluster or instance definition. For additional security, specify a custom KMS key using the 'kms_key_id' parameter. Note that enabling encryption can only be done when creating a new RDS instance or by taking a snapshot, encrypting it, and restoring it as a new instance."
 }
