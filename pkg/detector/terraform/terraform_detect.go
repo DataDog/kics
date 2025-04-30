@@ -312,6 +312,14 @@ func determineInsertionIndent(lines []string, insertionLine int, caseType string
 		// Match current line
 		return countLeadingSpacesOrTabs([]byte(lines[insertionLine-1]))
 	case "block-start":
+		// if line being inserted at is not } then we want to insert at the start of the content
+		if strings.TrimSpace(lines[insertionLine-1]) != "}" {
+			nonWhitespaceIndex := firstNonWhitespaceIndex(lines[insertionLine-1])
+			if nonWhitespaceIndex != -1 {
+				return nonWhitespaceIndex
+			}
+		}
+
 		// 2 spaces deeper than block header
 		return 1
 	case "block-body":
@@ -319,4 +327,13 @@ func determineInsertionIndent(lines []string, insertionLine int, caseType string
 		return countLeadingSpacesOrTabs([]byte(lines[insertionLine-1]))
 	}
 	return 0
+}
+
+func firstNonWhitespaceIndex(line string) int {
+	for i, r := range line {
+		if r != ' ' && r != '\t' {
+			return i
+		}
+	}
+	return -1
 }
