@@ -299,8 +299,8 @@ func TestDetectTerraformLineRemediations(t *testing.T) {
 					End:   model.ResourceLine{Line: 22, Col: 4},
 				},
 				RemediationLocation: model.ResourceLocation{
-					Start: model.ResourceLine{Line: 21, Col: 2},
-					End:   model.ResourceLine{Line: 21, Col: 2},
+					Start: model.ResourceLine{Line: 17, Col: 2},
+					End:   model.ResourceLine{Line: 17, Col: 2},
 				},
 				LineWithVulnerability: "  resource \"aws_s3_bucket\" \"positive2\" {",
 				ResolvedFile:          "",
@@ -401,8 +401,8 @@ func TestDetectTerraformLineRemediations(t *testing.T) {
 					End:   model.ResourceLine{Line: 7, Col: 4},
 				},
 				RemediationLocation: model.ResourceLocation{
-					Start: model.ResourceLine{Line: 6, Col: 2},
-					End:   model.ResourceLine{Line: 6, Col: 2},
+					Start: model.ResourceLine{Line: 3, Col: 2},
+					End:   model.ResourceLine{Line: 3, Col: 2},
 				},
 				LineWithVulnerability: "resource \"aws_s3_bucket\" \"no_versioning\" {",
 				ResolvedFile:          "",
