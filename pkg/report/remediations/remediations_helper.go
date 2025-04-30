@@ -206,7 +206,7 @@ func TransformToSarifFix(vuln model.VulnerableFile, startLocation model.SarifRes
 
 		var result []string
 		nestingLevel := 0
-		postIndent := ""
+		postIndent := baseIndent
 
 		for _, line := range insertedLines {
 			trimmed := strings.TrimSpace(line)
