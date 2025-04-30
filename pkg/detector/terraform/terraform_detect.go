@@ -228,6 +228,11 @@ func parseAndFindTerraformBlock(src []byte, identifyingLine int) (model.Resource
 				blockEnd.Line,
 			) + 1
 
+			// if this is block start and the insertion line contains } we want to insert at the end and not at the start
+			if caseType == "block-start" && strings.TrimSpace(string(lines[insertionLine-1])) == "}" {
+				insertionCol = len(lines[insertionLine-1]) + 1
+			}
+
 			remediationStart = model.ResourceLine{Line: insertionLine, Col: insertionCol}
 			remediationEnd = model.ResourceLine{Line: insertionLine, Col: insertionCol}
 			vulnerabilityStart = model.ResourceLine{Line: blockStart.Line, Col: blockStart.Column}

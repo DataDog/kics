@@ -202,11 +202,7 @@ func TransformToSarifFix(vuln model.VulnerableFile, startLocation model.SarifRes
 
 		nestedInsert := isInsertingInsideNestedBlock(vuln.FileSource, startLocation, vuln.BlockLocation.Start.Line, vuln.BlockLocation.End.Line)
 
-		if nestedInsert {
-			baseIndent = strings.Repeat(" ", startLocation.Col-1)
-		} else {
-			baseIndent = strings.Repeat(" ", startLocation.Col)
-		}
+		baseIndent = determineActualBaseIndent(vuln.FileSource, startLocation.Line, vuln.BlockLocation.Start.Line)
 
 		var result []string
 		nestingLevel := 0
@@ -301,31 +297,16 @@ func TransformToSarifFix(vuln model.VulnerableFile, startLocation model.SarifRes
 	return a, nil
 }
 
-// determineIfShouldAppendIndent figures out whether insertedText should append baseIndent
-func determineIfShouldAppendIndent(sourceLines []string, startLocation model.SarifResourceLocation, resourceLocation model.ResourceLocation, fileSource []string) bool {
-	relativeResourceStartLine := findResourceStartLine(fileSource, sourceLines)
-	if relativeResourceStartLine == -1 {
-		return false
+func determineActualBaseIndent(fileLines []string, startLine int, blockStartLine int) string {
+	// Try to find the first non-empty, non-comment line above startLine within block
+	for i := startLine - 1; i >= blockStartLine-1; i-- {
+		line := strings.TrimSpace(fileLines[i])
+		if line == "" || strings.HasPrefix(line, "#") || strings.HasPrefix(line, "//") {
+			continue
+		}
+		return fileLines[i][:len(fileLines[i])-len(strings.TrimLeft(fileLines[i], " \t"))]
 	}
-
-	if startLocation.Line-1 < 0 || startLocation.Line-1 >= len(fileSource) {
-		return false
-	}
-
-	line := strings.TrimSpace(fileSource[startLocation.Line-1])
-
-	if line == "" {
-		// Empty line: treat like body, yes append indent
-		return true
-	}
-
-	if (line == "{" || line == "}" || line == "{}") && (startLocation.Line == resourceLocation.Start.Line+relativeResourceStartLine || startLocation.Line == resourceLocation.End.Line+relativeResourceStartLine) {
-		// Pure structure lines: no extra indent
-		return false
-	}
-
-	// Otherwise assume it's body content
-	return true
+	return "" // default fallback
 }
 
 // findResourceStartLine searches for where resourceSource starts inside fileSource.
