@@ -39,8 +39,8 @@ CxPolicy[result] {
         "keyActualValue": sprintf("metadata_options.http_tokens is '%s'", [metadata_opt.http_tokens]),
         "searchLine": common_lib.build_search_line(["resource", resource_type, name, "metadata_options", "http_tokens"], []),
         "remediation": json.marshal({
-            "before": "metadata_options { http_tokens = \"optional\" }",
-            "after": "metadata_options { http_tokens = \"required\" }"
+            "before": "optional",
+            "after": "required"
         }),
         "remediationType": "replacement"
     }
@@ -69,8 +69,8 @@ CxPolicy[result] {
         "keyActualValue": sprintf("metadata_options.http_tokens is '%s'", [metadata_opt.http_tokens]),
         "searchLine": common_lib.build_search_line(["resource", resource_type, name, "metadata_options", "http_tokens"], []),
         "remediation": json.marshal({
-            "before": "metadata_options { http_tokens = \"optional\" }",
-            "after": "metadata_options { http_tokens = \"required\" }"
+            "before": "optional",
+            "after": "required"
         }),
         "remediationType": "replacement"
     }
