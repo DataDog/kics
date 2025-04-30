@@ -9,5 +9,6 @@
   "descriptionID": "88b26e61",
   "cloudProvider": "aws",
   "cwe": "285",
-  "oldSeverity": "MEDIUM"
+  "oldSeverity": "MEDIUM",
+  "detailedDescriptionText": "Disabling IAM database authentication in Neptune clusters removes a critical security layer that integrates with AWS Identity and Access Management for authentication. Without IAM authentication, database access relies solely on database credentials, which are more susceptible to credential leakage and lack the fine-grained control offered by IAM policies. Enabling IAM authentication provides stronger identity management, simplifies credential rotation, and allows centralized control over who can access your Neptune database through existing AWS IAM roles and policies."
 }

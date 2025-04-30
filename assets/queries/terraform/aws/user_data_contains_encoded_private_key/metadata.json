@@ -8,5 +8,6 @@
   "platform": "Terraform",
   "descriptionID": "e3b3b5c1",
   "cloudProvider": "aws",
-  "cwe": "326"
+  "cwe": "326",
+  "detailedDescriptionText": "Including private keys in EC2 instance user data scripts, even when base64 encoded, creates a significant security risk as this data can be easily decoded and accessed by anyone with instance metadata access. These private keys could grant unauthorized access to critical systems, enable lateral movement within your infrastructure, or compromise sensitive data if exposed. Instead of embedding keys in user data, use more secure methods like AWS Secrets Manager, Systems Manager Parameter Store, or instance roles with temporary credentials to provide instances with the access they need."
 }

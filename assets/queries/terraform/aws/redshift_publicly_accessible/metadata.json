@@ -8,5 +8,6 @@
   "platform": "Terraform",
   "descriptionID": "9a581503",
   "cloudProvider": "aws",
-  "cwe": "668"
+  "cwe": "668",
+  "detailedDescriptionText": "Publicly accessible Redshift clusters expose database endpoints directly to the internet, creating significant security risks including unauthorized access attempts and potential data breaches. Redshift typically contains large volumes of sensitive analytics data and business intelligence, making it an attractive target for attackers. Access to Redshift clusters should be strictly limited to trusted networks through private VPC endpoints, security groups, and proper authentication controls to maintain a strong security posture."
 }

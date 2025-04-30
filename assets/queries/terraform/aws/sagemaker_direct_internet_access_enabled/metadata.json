@@ -8,5 +8,6 @@
   "platform": "Terraform",
   "descriptionID": "f3g4h5i6",
   "cloudProvider": "aws",
-  "cwe": "200"
+  "cwe": "200",
+  "detailedDescriptionText": "Enabling direct internet access on SageMaker notebook instances creates a bidirectional communication channel that exposes the notebook to potential attacks and allows for unauthorized data exfiltration. SageMaker notebooks often contain sensitive intellectual property, machine learning models, and proprietary data that could be compromised if the instance is compromised. Direct internet access should be disabled in favor of more secure alternatives like VPC endpoints, private subnets with controlled NAT gateways, or AWS PrivateLink to minimize the attack surface while still allowing necessary resource access."
 }

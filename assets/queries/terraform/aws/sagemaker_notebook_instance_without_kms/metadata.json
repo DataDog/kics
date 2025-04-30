@@ -8,5 +8,6 @@
   "platform": "Terraform",
   "descriptionID": "4ad34dae",
   "cloudProvider": "aws",
-  "cwe": "326"
+  "cwe": "326",
+  "detailedDescriptionText": "Failing to encrypt SageMaker notebook instances with a customer-managed KMS key leaves sensitive machine learning models, code, and data vulnerable to unauthorized access if the underlying storage is compromised. While AWS provides default encryption, using customer-managed KMS keys provides stronger security controls including the ability to manage key rotation, access policies, and audit key usage. This encryption is particularly important for SageMaker notebooks that often contain proprietary algorithms, intellectual property, and potentially sensitive training data that requires enhanced protection."
 }

@@ -8,5 +8,6 @@
   "platform": "Terraform",
   "descriptionID": "ac4d6034",
   "cloudProvider": "aws",
-  "cwe": "284"
+  "cwe": "284",
+  "detailedDescriptionText": "Making a Neptune Cluster Instance publicly accessible creates a significant security risk by exposing your graph database directly to the internet. Attackers can attempt to exploit vulnerabilities or use brute force attacks against your database endpoint when it's publicly reachable. Neptune instances should only be accessible from within your VPC or through secure VPN connections to maintain proper access controls and protect sensitive graph data from unauthorized access."
 }

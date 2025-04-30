@@ -8,5 +8,6 @@
   "platform": "Terraform",
   "descriptionID": "2bee4895",
   "cloudProvider": "aws",
-  "cwe": "311"
+  "cwe": "311",
+  "detailedDescriptionText": "Unencrypted Redshift clusters store data in plaintext, potentially exposing sensitive information to unauthorized users if storage media is compromised or improperly decommissioned. Redshift often contains large volumes of business-critical data and personally identifiable information, making it a high-value target for attackers. Enabling encryption using AWS KMS adds a critical layer of data protection with minimal performance impact and helps organizations meet regulatory compliance requirements for data privacy and security."
 }

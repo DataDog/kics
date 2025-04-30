@@ -8,5 +8,6 @@
   "platform": "Terraform",
   "descriptionID": "2ac6911f",
   "cloudProvider": "aws",
-  "cwe": "200"
+  "cwe": "200",
+  "detailedDescriptionText": "S3 bucket policies that allow the 'Get' action from all principals ('*') effectively make the bucket content readable by anyone on the internet, creating a significant data exposure risk. This overly permissive configuration can lead to data breaches, especially if the bucket contains sensitive information such as personal data, configuration files, or credentials. Organizations should implement more restrictive access controls that follow the principle of least privilege, granting read access only to specific authenticated principals that have a legitimate need to access the data."
 }

@@ -8,5 +8,6 @@
   "platform": "Terraform",
   "descriptionID": "a63624e5",
   "cloudProvider": "aws",
-  "cwe": "732"
+  "cwe": "732",
+  "detailedDescriptionText": "When S3 bucket ACLs grant read access to 'authenticated-read', any authenticated AWS user worldwide can access the bucket's contents, not just users within your organization. This excessive permission significantly broadens the attack surface and can lead to unauthorized data exposure, particularly if the bucket contains sensitive information. S3 buckets should follow the principle of least privilege by restricting access to only the specific IAM principals that require it, using bucket policies and IAM policies rather than permissive ACLs."
 }

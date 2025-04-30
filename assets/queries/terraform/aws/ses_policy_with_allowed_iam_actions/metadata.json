@@ -9,5 +9,6 @@
   "descriptionID": "3b263662",
   "cloudProvider": "aws",
   "cwe": "284",
-  "oldSeverity": "MEDIUM"
+  "oldSeverity": "MEDIUM",
+  "detailedDescriptionText": "SES policies that allow IAM actions to all principals ('*') create significant security risks by potentially enabling unauthorized senders to use your email identity. This overly permissive configuration could lead to email spoofing, phishing attacks using your domain, or abuse of your SES sending quotas and reputation. Implement more restrictive policies by explicitly specifying the IAM principals that should have permission to send emails through your SES identity, and limit the actions to only those necessary for legitimate use cases."
 }

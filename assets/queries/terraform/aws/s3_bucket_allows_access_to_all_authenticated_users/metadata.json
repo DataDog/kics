@@ -8,5 +8,6 @@
   "platform": "Terraform",
   "descriptionID": "d4e5f6g7",
   "cloudProvider": "aws",
-  "cwe": "284"
+  "cwe": "284",
+  "detailedDescriptionText": "Allowing access to all authenticated AWS users means anyone with an AWS account globally can access your S3 bucket data, not just users within your organization. This overly permissive access control creates a significant data exposure risk and violates the principle of least privilege by granting access far beyond what is typically needed. Organizations should implement more granular access controls using bucket policies and IAM roles that restrict access to only the specific identities that require it, thereby reducing the attack surface and potential for data breaches."
 }

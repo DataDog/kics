@@ -9,5 +9,6 @@
   "descriptionID": "06036045",
   "cloudProvider": "aws",
   "cwe": "311",
-  "oldSeverity": "MEDIUM"
+  "oldSeverity": "MEDIUM",
+  "detailedDescriptionText": "Failure to enable encryption on Neptune database clusters leaves sensitive graph data vulnerable to unauthorized access if the underlying storage is compromised. When encryption is disabled, data stored in the Neptune cluster is kept in plaintext, which could lead to data breaches if an attacker gains access to storage volumes or backups. Enabling storage encryption protects your data at rest using AWS KMS keys and helps meet compliance requirements for data protection with minimal performance impact."
 }
