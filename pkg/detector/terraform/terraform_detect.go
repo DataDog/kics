@@ -229,7 +229,8 @@ func parseAndFindTerraformBlock(src []byte, identifyingLine int) (model.Resource
 			) + 1
 
 			// if this is block start and the insertion line contains } we want to insert at the end and not at the start
-			if caseType == "block-start" && strings.TrimSpace(string(lines[insertionLine-1])) == "}" {
+			trimmedLine := strings.TrimSpace(string(lines[insertionLine-1]))
+			if caseType == "block-start" && (trimmedLine == "}" || isHeredocTerminator(trimmedLine, lines, insertionLine-1)) {
 				insertionCol = len(lines[insertionLine-1]) + 1
 			}
 
@@ -336,4 +337,20 @@ func firstNonWhitespaceIndex(line string) int {
 		}
 	}
 	return -1
+}
+
+func isHeredocTerminator(line string, lines [][]byte, idx int) bool {
+	// Scan backward for heredoc start
+	for i := idx - 1; i >= 0; i-- {
+		text := strings.TrimSpace(string(lines[i]))
+		if strings.Contains(text, "<<") {
+			marker := strings.TrimSpace(strings.SplitAfter(text, "<<")[1])
+			return line == marker
+		}
+		if text != "" && !strings.HasPrefix(text, "#") {
+			// Stop early if we hit unrelated code
+			break
+		}
+	}
+	return false
 }
