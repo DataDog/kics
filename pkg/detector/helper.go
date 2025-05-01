@@ -346,6 +346,10 @@ func (d *DefaultDetectLineResponse) DetectCurrentLine(str1, str2 string, recurse
 	distances := make(map[int]int)
 
 	for i := d.CurrentLine; i < len(lines); i++ {
+		line := strings.TrimSpace(lines[i])
+		if strings.HasPrefix(line, "#") || strings.HasPrefix(line, "//") {
+			continue // skip comments
+		}
 		distances = checkLine(str1, str2, distances, lines[i], i)
 	}
 
