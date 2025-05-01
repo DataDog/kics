@@ -344,12 +344,11 @@ func isHeredocTerminator(line string, lines [][]byte, idx int) bool {
 	for i := idx - 1; i >= 0; i-- {
 		text := strings.TrimSpace(string(lines[i]))
 		if strings.Contains(text, "<<") {
-			marker := strings.TrimSpace(strings.SplitAfter(text, "<<")[1])
-			return line == marker
-		}
-		if text != "" && !strings.HasPrefix(text, "#") {
-			// Stop early if we hit unrelated code
-			break
+			parts := strings.Split(text, "<<")
+			if len(parts) == 2 {
+				marker := strings.TrimSpace(parts[1])
+				return line == marker
+			}
 		}
 	}
 	return false
