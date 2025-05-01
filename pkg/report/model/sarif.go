@@ -641,12 +641,11 @@ func (sr *sarifReport) BuildSarifIssue(issue *model.QueryResult, sciInfo model.S
 
 			resourceLocation := vulnerability.ResourceLocation
 
-			if resourceLocation.Start.Line < 1 {
-				resourceLocation.Start.Line = 1
+			if resourceLocation.Start.Line < 1 || resourceLocation.End.Line < 1 {
+				log.Warn().Msgf("Invalid resource location for file %s", issue.Files[idx].FileName)
+				continue
 			}
-			if resourceLocation.End.Line < 1 {
-				resourceLocation.End.Line = resourceLocation.Start.Line
-			}
+
 			if resourceLocation.Start.Col < 1 {
 				resourceLocation.Start.Col = 1
 			}
