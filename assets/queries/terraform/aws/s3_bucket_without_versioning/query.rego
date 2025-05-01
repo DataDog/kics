@@ -30,8 +30,8 @@ CxPolicy[result] {
 
     result := {
         "documentId": input.document[i].id,
-        "resourceType": "n/a",
-		"resourceName": "n/a",
+        "resourceType": "module",
+		"resourceName": sprintf("%s", [name]),
         "searchKey": sprintf("module[%s]", [name]),
         "issueType": "MissingAttribute",
         "keyExpectedValue": "'versioning' should be true",
@@ -71,8 +71,8 @@ CxPolicy[result] {
 
     result := {
         "documentId": input.document[i].id,
-        "resourceType": "n/a",
-		"resourceName": "n/a",
+        "resourceType": "module",
+		"resourceName": sprintf("%s", [name]),
         "searchKey": sprintf("module[%s].versioning", [name]),
         "issueType": "MissingAttribute",
         "keyExpectedValue": "'versioning.enabled' should be true",
@@ -114,8 +114,8 @@ CxPolicy[result] {
 
     result := {
         "documentId": input.document[i].id,
-        "resourceType": "n/a",
-		"resourceName": "n/a",
+        "resourceType": "module",
+		"resourceName": sprintf("%s", [name]),
         "searchKey": sprintf("module[%s].versioning.enabled", [name]),
         "issueType": "IncorrectValue",
         "keyExpectedValue": "'versioning.enabled' should be true",

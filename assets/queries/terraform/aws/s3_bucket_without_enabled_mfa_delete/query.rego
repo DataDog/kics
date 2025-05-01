@@ -53,8 +53,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "n/a",
-		"resourceName": "n/a",
+		"resourceType": "module",
+		"resourceName": sprintf("%s", [name]),
 		"searchKey": sprintf("module[%s].versioning", [name]),
 		"issueType": "MissingAttribute",
 		"keyExpectedValue": sprintf("'%s' should be set to true", [checkedFields[c]]),
@@ -72,8 +72,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "n/a",
-		"resourceName": "n/a",
+		"resourceType": "module",
+		"resourceName": sprintf("%s", [name]),
 		"searchKey": sprintf("module[%s].versioning.%s", [name, checkedFields[c]]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": sprintf("'%s' should be set to true", [checkedFields[c]]),

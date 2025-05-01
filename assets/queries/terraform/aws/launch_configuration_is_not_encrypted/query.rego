@@ -52,8 +52,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "n/a",
-		"resourceName": "n/a",
+		"resourceType": "module",
+		"resourceName": sprintf("%s", [name]),
 		"searchKey": sprintf("module[%s].%s.encrypted", [name, block]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": "'encrypted' should be true",
@@ -76,8 +76,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "n/a",
-		"resourceName": "n/a",
+		"resourceType": "module",
+		"resourceName": sprintf("%s", [name]),
 		"searchKey": sprintf("module[%s].%s", [name, block]),
 		"issueType": "MissingAttribute",
 		"keyExpectedValue": "'encrypted' should be set",

@@ -24,13 +24,13 @@ CxPolicy[result] {
 CxPolicy[result] {
 	module := input.document[i].module[name]
 	keyToCheck := common_lib.get_module_equivalent_key("aws", module.source, "aws_s3_bucket", "website")
-	
+
 	count(module[keyToCheck]) > 0
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "n/a",
-		"resourceName": "n/a",
+		"resourceType": "module",
+		"resourceName": sprintf("%s", [name]),
 		"searchKey": sprintf("module[%s].website", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": "'website' to not have static websites inside",
@@ -40,9 +40,9 @@ CxPolicy[result] {
 }
 
 # version after TF AWS 4.0
-CxPolicy[result] {	
+CxPolicy[result] {
 	resource := input.document[i].resource.aws_s3_bucket[bucketName]
-	
+
 	tf_lib.has_target_resource(bucketName, "aws_s3_bucket_website_configuration")
 
 	result := {
