@@ -34,6 +34,8 @@ func TransformToSarifFix(vuln model.VulnerableFile, startLocation model.SarifRes
 		key := strings.TrimSpace(matches[1])
 		value := strings.TrimSpace(matches[2])
 
+		leadingWhitespace := vuln.LineWithVulnerability[:len(vuln.LineWithVulnerability)-len(strings.TrimLeft(vuln.LineWithVulnerability, " \t"))]
+
 		if idx := strings.IndexAny(value, "#/"); idx != -1 {
 			value = strings.TrimSpace(value[:idx])
 		}
@@ -176,11 +178,11 @@ func TransformToSarifFix(vuln model.VulnerableFile, startLocation model.SarifRes
 
 		if insertedText == "" {
 			if isFullLine {
-				insertedText = after
+				insertedText = leadingWhitespace + after
 			} else {
 				prefix := vuln.LineWithVulnerability[:idxs[4]]
 				suffix := vuln.LineWithVulnerability[idxs[5]:]
-				insertedText = prefix + after + suffix
+				insertedText = leadingWhitespace + prefix + after + suffix
 			}
 		}
 
