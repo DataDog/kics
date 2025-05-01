@@ -34,7 +34,7 @@ prepare_issue(res1, res2, resource_id, rules_type, rules_key) = issue {
 		"kav": "azurerm_storage_account.public_network_access_enabled is not set (default is 'true')",
 		"kev": "azurerm_storage_account.public_network_access_enabled should be set to 'false'",
 		"searchLine": common_lib.build_search_line(["resource", "azurerm_storage_account", resource_id, "public_network_access_enabled"], []),
-		"searchKey": sprintf("azurerm_storage_account[%s].public_network_access_enabled", [resource_id]),
+		"searchKey": sprintf("azurerm_storage_account[%s]", [resource_id]),
 		"issueType": "MissingAttribute",
 		"remediation": "public_network_access_enabled = false",
 		"remediationType": "addition",
@@ -116,11 +116,15 @@ publicNetworkAccessEnabled(sa) = reason {
 }
 
 aclsDefaultActionAllow(network_rules) = reason {
-	is_null(network_rules)
-	reason := "not defined"
+    not has_key(network_rules, "default_action")
+    reason := "not defined"
 } else = reason {
-	lower(network_rules.default_action) == "allow"
-	reason := "allow"
+    is_null(network_rules)
+    reason := "not defined"
+} else = reason {
+    has_key(network_rules, "default_action")
+    lower(network_rules.default_action) == "allow"
+    reason := "allow"
 }
 
 has_key(x, k) {

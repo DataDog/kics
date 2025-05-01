@@ -64,7 +64,7 @@ func (d DetectKindLine) DetectLine(file *model.FileMetadata, searchKey string,
 	}
 
 	for _, key := range splitSanitized {
-		substr1, substr2 := detector.GenerateSubstrings(key, extractedString, lines)
+		substr1, substr2 := detector.GenerateSubstrings(key, extractedString, lines, det.CurrentLine)
 		det, _ = det.DetectCurrentLine(substr1, substr2, 0, lines)
 
 		if det.IsBreak {
