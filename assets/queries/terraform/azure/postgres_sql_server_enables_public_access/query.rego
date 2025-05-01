@@ -14,16 +14,16 @@ CxPolicy[result] {
         "documentId": input.document[i].id,
         "resourceType": "azurerm_postgresql_server",
         "resourceName": tf_lib.get_resource_name(resource, name),
-        "searchKey": "public_network_access_enabled",
+        "searchKey": sprintf("azurerm_postgresql_server[%s].public_network_access_enabled", [name]),
         "searchLine": common_lib.build_search_line(["resource", "azurerm_postgresql_server", name, "public_network_access_enabled"], []),
         "issueType": "IncorrectValue",
         "keyExpectedValue": "public_network_access_enabled should be false",
         "keyActualValue": sprintf("Found public_network_access_enabled = %v", [access_enabled]),
         "remediation": json.marshal({
-            "before": sprintf("public_network_access_enabled = %v", [access_enabled]),
-            "after": "public_network_access_enabled = false"
+            "before": sprintf("%v", [access_enabled]),
+            "after": "false"
         }),
-        "remediationType": "replacement"
+        "remediationType": "replacement",
     }
 }
 
@@ -36,15 +36,12 @@ CxPolicy[result] {
         "documentId": input.document[i].id,
         "resourceType": "azurerm_postgresql_server",
         "resourceName": tf_lib.get_resource_name(resource, name),
-        "searchKey": "public_network_access_enabled",
+        "searchKey": sprintf("azurerm_postgresql_server[%s]", [name]),
         "searchLine": common_lib.build_search_line(["resource", "azurerm_postgresql_server", name], []),
         "issueType": "MissingValue",
         "keyExpectedValue": "public_network_access_enabled must be present and set to false",
         "keyActualValue": "public_network_access_enabled is missing",
-        "remediation": json.marshal({
-            "before": "Attribute not set",
-            "after": "Add public_network_access_enabled = false"
-        }),
-        "remediationType": "addition"
+        "remediation": "public_network_access_enabled = false",
+		"remediationType": "addition"
     }
 }

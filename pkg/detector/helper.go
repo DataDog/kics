@@ -83,7 +83,7 @@ func GetBracketValues(expr string, list [][]string, restOfString string) [][]str
 // '.' is new line
 // '=' is value in the same line
 // '[]' is in the same line
-func GenerateSubstrings(key string, extracted [][]string, lines []string) (string, string) {
+func GenerateSubstrings(key string, extracted [][]string, lines []string, currentLine int) (string, string) {
 	var substr1, substr2 string
 
 	// Replace placeholders back to bracketed values
@@ -139,7 +139,8 @@ func GenerateSubstrings(key string, extracted [][]string, lines []string) (strin
 
 	// Final fallback: try to resolve value from lines
 	if substr2 == "" && substr1 != "" {
-		for _, line := range lines {
+		for i := currentLine; i < len(lines); i++ {
+			line := lines[i]
 			line = strings.TrimSpace(line)
 			if strings.HasPrefix(line, substr1+" =") {
 				parts := strings.SplitN(line, "=", 2)
@@ -346,6 +347,10 @@ func (d *DefaultDetectLineResponse) DetectCurrentLine(str1, str2 string, recurse
 	distances := make(map[int]int)
 
 	for i := d.CurrentLine; i < len(lines); i++ {
+		line := strings.TrimSpace(lines[i])
+		if strings.HasPrefix(line, "#") || strings.HasPrefix(line, "//") {
+			continue // skip comments
+		}
 		distances = checkLine(str1, str2, distances, lines[i], i)
 	}
 

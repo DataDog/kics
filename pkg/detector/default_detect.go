@@ -50,7 +50,7 @@ func (d defaultDetectLine) DetectLine(file *model.FileMetadata, searchKey string
 	}
 
 	for _, key := range splitSanitized {
-		substr1, substr2 := GenerateSubstrings(key, extractedString, lines)
+		substr1, substr2 := GenerateSubstrings(key, extractedString, lines, detector.CurrentLine)
 
 		// BICEP-specific tweaks in order to make bicep files compatible with ARM queries
 		if file.Kind == "BICEP" {

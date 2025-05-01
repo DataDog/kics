@@ -18,10 +18,7 @@ CxPolicy[result] {
         "issueType": "IncorrectValue",
         "keyExpectedValue": "ssl_enforcement_enabled should be 'ENABLED'",
         "keyActualValue": sprintf("Found ssl_enforcement_enabled = %v", [ssl_value]),
-        "remediation": json.marshal({
-            "before": sprintf("ssl_enforcement_enabled = %v", [ssl_value]),
-            "after": "ssl_enforcement_enabled = \"ENABLED\""
-        }),
-        "remediationType": "replacement"
+        "remediation": "ssl_enforcement_enabled = \"ENABLED\"",
+		"remediationType": "addition"
     }
 }
