@@ -300,6 +300,9 @@ func TransformToSarifFix(vuln model.VulnerableFile, startLocation model.SarifRes
 }
 
 func determineActualBaseIndent(fileLines []string, startLine int, blockStartLine int) string {
+	if startLine == 0 {
+		return ""
+	}
 	// Try to find the first non-empty, non-comment line above startLine within block
 	for i := startLine - 1; i >= blockStartLine-1; i-- {
 		line := strings.TrimSpace(fileLines[i])

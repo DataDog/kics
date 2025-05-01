@@ -31,8 +31,8 @@ CxPolicy[result] {
 	module[keyToCheck] == publicAcl[_]
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "n/a",
-		"resourceName": "n/a",
+		"resourceType": "module",
+		"resourceName": sprintf("%s", [name]),
 		"searchKey": sprintf("module[%s].acl", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": sprintf("module[%s] to not be publicly accessible", [name]),

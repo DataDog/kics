@@ -27,8 +27,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "n/a",
-		"resourceName": "n/a",
+		"resourceType": "module",
+		"resourceName": sprintf("%s", [name]),
 		"searchKey": sprintf("module[%s].%s.Action", [name, keyToCheck]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": sprintf("module[%s].policy.Action should not be a 'Get' action", [name]),

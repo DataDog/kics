@@ -66,8 +66,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "n/a",
-		"resourceName": "n/a",
+		"resourceType": "module",
+		"resourceName": sprintf("%s", [name]),
 		"searchKey": sprintf("module[%s].%s", [name, keyToCheck]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": "One of 'ingress.cidr_blocks' not equal '0.0.0.0/0'",
@@ -139,8 +139,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "n/a",
-		"resourceName": "n/a",
+		"resourceType": "module",
+		"resourceName": sprintf("%s", [name]),
 		"searchKey": sprintf("module[%s].%s", [name, keyToCheck]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": "One of 'ingress.ipv6_cidr_blocks' should not be equal to '::/0'",

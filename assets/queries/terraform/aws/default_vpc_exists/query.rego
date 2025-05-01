@@ -26,8 +26,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "n/a",
-		"resourceName": "n/a",
+		"resourceType": "module",
+		"resourceName": sprintf("%s", [name]),
 		"searchKey": sprintf("%s.%s", [name, keyToCheck]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": "'aws_default_vpc' should not exist",

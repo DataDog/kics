@@ -44,8 +44,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "n/a",
-		"resourceName": "n/a",
+		"resourceType": "module",
+		"resourceName": sprintf("%s", [name]),
 		"searchKey": sprintf("module[%s]", [name]),
 		"issueType": "MissingAttribute",
 		"keyExpectedValue": "'enabled_cloudwatch_logs_exports' should be defined",
@@ -61,8 +61,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "n/a",
-		"resourceName": "n/a",
+		"resourceType": "module",
+		"resourceName": sprintf("%s", [name]),
 		"searchKey": sprintf("module[%s].enabled_cloudwatch_logs_exports", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": "'enabled_cloudwatch_logs_exports' has one or more values",

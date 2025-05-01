@@ -38,8 +38,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "n/a",
-		"resourceName": "n/a",
+		"resourceType": "module",
+		"resourceName": sprintf("%s", [name]),
 		"searchKey": sprintf("module[%s].ebs_optimized", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": "'ebs_optimized' should be set to true",
@@ -85,8 +85,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "n/a",
-		"resourceName": "n/a",
+		"resourceType": "module",
+		"resourceName": sprintf("%s", [name]),
 		"searchKey": sprintf("module[%s]", [name]),
 		"issueType": "MissingAttribute",
 		"keyExpectedValue": "'ebs_optimized' should be set to true",
