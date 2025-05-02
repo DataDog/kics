@@ -116,12 +116,8 @@ func TestDetectTerraformLine(t *testing.T) { //nolint
 		},
 		{
 			expected: model.VulnerabilityLines{
-				Line: 14,
+				Line: 15,
 				VulnLines: &[]model.CodeLine{
-					{
-						Position: 13,
-						Line:     "",
-					},
 					{
 						Position: 14,
 						Line:     "resource \"aws_s3_bucket\" \"bucket2\" {",
@@ -130,8 +126,12 @@ func TestDetectTerraformLine(t *testing.T) { //nolint
 						Position: 15,
 						Line:     "  bucket = \"innovationweek2-2023-bucket-${random_id.bucket_id.hex}\"",
 					},
+					{
+						Position: 16,
+						Line:     "",
+					},
 				},
-				LineWithVulnerability: "resource \"aws_s3_bucket\" \"bucket2\" {",
+				LineWithVulnerability: "  bucket = \"innovationweek2-2023-bucket-${random_id.bucket_id.hex}\"",
 				VulnerablilityLocation: model.ResourceLocation{
 					Start: model.ResourceLine{
 						Line: 14,
@@ -156,12 +156,12 @@ func TestDetectTerraformLine(t *testing.T) { //nolint
 				FileSource:     strings.Split(OriginalData1, "\n"),
 				RemediationLocation: model.ResourceLocation{
 					Start: model.ResourceLine{
-						Line: 16,
-						Col:  2,
+						Line: 15,
+						Col:  3,
 					},
 					End: model.ResourceLine{
-						Line: 16,
-						Col:  2,
+						Line: 15,
+						Col:  3,
 					},
 				},
 			},
@@ -420,6 +420,108 @@ func TestDetectTerraformLineRemediations(t *testing.T) {
 				Kind:              model.KindTerraform,
 				OriginalData:      OriginalDataMissingVersioning,
 				LinesOriginalData: utils.SplitLines(OriginalDataMissingVersioning),
+			},
+		},
+		{
+			expected: model.VulnerabilityLines{
+				Line: 4,
+				VulnLines: &[]model.CodeLine{
+					{Position: 3, Line: "    configuration {"},
+					{Position: 4, Line: "      status = \"Enabled\""},
+					{Position: 5, Line: "    }"},
+				},
+				VulnerablilityLocation: model.ResourceLocation{
+					Start: model.ResourceLine{Col: 1, Line: 1},
+					End:   model.ResourceLine{Col: 2, Line: 7},
+				},
+				RemediationLocation: model.ResourceLocation{
+					Start: model.ResourceLine{Col: 7, Line: 4},
+					End:   model.ResourceLine{Col: 7, Line: 4},
+				},
+				LineWithVulnerability: "      status = \"Enabled\"",
+				ResolvedFile:          "",
+				ResourceSource:        "resource \"aws_s3_bucket\" \"example\" {\n  versioning {\n    configuration {\n      status = \"Enabled\"\n    }\n  }\n}\n",
+				FileSource:            strings.Split("resource \"aws_s3_bucket\" \"example\" {\n  versioning {\n    configuration {\n      status = \"Enabled\"\n    }\n  }\n}\n", "\n"),
+				BlockLocation: model.ResourceLocation{
+					Start: model.ResourceLine{Col: 1, Line: 1},
+					End:   model.ResourceLine{Col: 2, Line: 7},
+				},
+			},
+			searchKey: "aws_s3_bucket[example].versioning.configuration.status",
+			file: &model.FileMetadata{
+				ScanID:            "deep",
+				ID:                "deep-nested",
+				Kind:              model.KindTerraform,
+				OriginalData:      "resource \"aws_s3_bucket\" \"example\" {\n  versioning {\n    configuration {\n      status = \"Enabled\"\n    }\n  }\n}\n",
+				LinesOriginalData: utils.SplitLines("resource \"aws_s3_bucket\" \"example\" {\n  versioning {\n    configuration {\n      status = \"Enabled\"\n    }\n  }\n}\n"),
+			},
+		},
+		{
+			expected: model.VulnerabilityLines{
+				Line: 3,
+				VulnLines: &[]model.CodeLine{
+					{Position: 2, Line: "  statement = [{"},
+					{Position: 3, Line: "    actions = [\"s3:GetObject\"]"},
+					{Position: 4, Line: "  }]"},
+				},
+				VulnerablilityLocation: model.ResourceLocation{
+					Start: model.ResourceLine{Col: 1, Line: 1},
+					End:   model.ResourceLine{Col: 2, Line: 5},
+				},
+				RemediationLocation: model.ResourceLocation{
+					Start: model.ResourceLine{Col: 5, Line: 3},
+					End:   model.ResourceLine{Col: 5, Line: 3},
+				},
+				LineWithVulnerability: "    actions = [\"s3:GetObject\"]",
+				ResolvedFile:          "",
+				ResourceSource:        "resource \"aws_iam_policy_document\" \"example\" {\n  statement = [{\n    actions = [\"s3:GetObject\"]\n  }]\n}\n",
+				FileSource:            strings.Split("resource \"aws_iam_policy_document\" \"example\" {\n  statement = [{\n    actions = [\"s3:GetObject\"]\n  }]\n}\n", "\n"),
+				BlockLocation: model.ResourceLocation{
+					Start: model.ResourceLine{Col: 1, Line: 1},
+					End:   model.ResourceLine{Col: 2, Line: 5},
+				},
+			},
+			searchKey: "aws_iam_policy_document[example].statement[0].actions[0]",
+			file: &model.FileMetadata{
+				ScanID:            "indexing",
+				ID:                "policy.actions",
+				Kind:              model.KindTerraform,
+				OriginalData:      "resource \"aws_iam_policy_document\" \"example\" {\n  statement = [{\n    actions = [\"s3:GetObject\"]\n  }]\n}\n",
+				LinesOriginalData: utils.SplitLines("resource \"aws_iam_policy_document\" \"example\" {\n  statement = [{\n    actions = [\"s3:GetObject\"]\n  }]\n}\n"),
+			},
+		},
+		{
+			expected: model.VulnerabilityLines{
+				Line: 1,
+				VulnLines: &[]model.CodeLine{
+					{Position: 1, Line: "resource \"aws_instance\" \"example\" {"},
+					{Position: 2, Line: "  tags = {"},
+					{Position: 3, Line: "    Name = \"web-server\""},
+				},
+				VulnerablilityLocation: model.ResourceLocation{
+					Start: model.ResourceLine{Col: 1, Line: 1},
+					End:   model.ResourceLine{Col: 2, Line: 5},
+				},
+				RemediationLocation: model.ResourceLocation{
+					Start: model.ResourceLine{Col: 1, Line: 1},
+					End:   model.ResourceLine{Col: 1, Line: 1},
+				},
+				LineWithVulnerability: "resource \"aws_instance\" \"example\" {",
+				ResolvedFile:          "",
+				ResourceSource:        "resource \"aws_instance\" \"example\" {\n  tags = {\n    Name = \"web-server\"\n  }\n}\n",
+				FileSource:            strings.Split("resource \"aws_instance\" \"example\" {\n  tags = {\n    Name = \"web-server\"\n  }\n}\n", "\n"),
+				BlockLocation: model.ResourceLocation{
+					Start: model.ResourceLine{Col: 1, Line: 1},
+					End:   model.ResourceLine{Col: 2, Line: 5},
+				},
+			},
+			searchKey: "aws_instance[example].tags[\"Name\"]",
+			file: &model.FileMetadata{
+				ScanID:            "mapkey",
+				ID:                "tags.name",
+				Kind:              model.KindTerraform,
+				OriginalData:      "resource \"aws_instance\" \"example\" {\n  tags = {\n    Name = \"web-server\"\n  }\n}\n",
+				LinesOriginalData: utils.SplitLines("resource \"aws_instance\" \"example\" {\n  tags = {\n    Name = \"web-server\"\n  }\n}\n"),
 			},
 		},
 	}

@@ -9,7 +9,7 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
-func TestDetectTerraformLine(t *testing.T) { //nolint
+func TestTransformToSarifFixE2E(t *testing.T) { //nolint
 	testCases := []struct {
 		expected      model.SarifFix
 		vuln          model.VulnerableFile
@@ -85,6 +85,203 @@ func TestDetectTerraformLine(t *testing.T) { //nolint
 			v, err := TransformToSarifFix(testCase.vuln, testCase.startLocation, testCase.endLocation)
 			assert.Nil(t, err)
 			require.Equal(t, testCase.expected, v)
+		})
+	}
+}
+
+func TestTransformToSarifFix_Addition(t *testing.T) {
+	vuln := model.VulnerableFile{
+		FileName:        "main.tf",
+		RemediationType: "addition",
+		Remediation:     `tags = {\n  Environment = "dev"\n}`,
+		FileSource: []string{
+			"resource \"aws_s3_bucket\" \"bucket\" {",
+			"  bucket = \"my-bucket\"",
+			"}",
+		},
+		BlockLocation: model.ResourceLocation{Start: model.ResourceLine{Line: 1}, End: model.ResourceLine{Line: 3}},
+	}
+	start := model.SarifResourceLocation{Line: 2, Col: 3}
+	fix, err := TransformToSarifFix(vuln, start, start)
+	require.NoError(t, err)
+	require.Contains(t, fix.ArtifactChanges[0].Replacements[0].InsertedContent.Text, "Environment")
+}
+
+func TestTransformToSarifFix_Removal(t *testing.T) {
+	vuln := model.VulnerableFile{
+		FileName:        "main.tf",
+		RemediationType: "removal",
+		FileSource: []string{
+			"resource \"aws_s3_bucket\" \"bucket\" {",
+			"  acl = \"public-read\"",
+			"}",
+		},
+	}
+	start := model.SarifResourceLocation{Line: 2, Col: 3}
+	end := model.SarifResourceLocation{Line: 2, Col: 25}
+	fix, err := TransformToSarifFix(vuln, start, end)
+	require.NoError(t, err)
+	require.Equal(t, "", fix.ArtifactChanges[0].Replacements[0].InsertedContent.Text)
+}
+
+func TestTransformToSarifFix_Replacement(t *testing.T) {
+	tests := []struct {
+		name     string
+		vuln     model.VulnerableFile
+		start    model.SarifResourceLocation
+		end      model.SarifResourceLocation
+		wantErr  bool
+		expected string // substring expected in the inserted content
+	}{
+		{
+			name: "simple key-value replacement",
+			vuln: model.VulnerableFile{
+				FileName:              "main.tf",
+				RemediationType:       "replacement",
+				Remediation:           `{"before": "acl = \"authenticated-read\"", "after": "private"}`,
+				LineWithVulnerability: `  acl = "authenticated-read"`,
+				RemediationLocation:   model.ResourceLocation{Start: model.ResourceLine{Line: 3, Col: 3}},
+				Line:                  3,
+				FileSource:            []string{"resource \"aws_s3_bucket\" \"bucket\" {", "  bucket = \"my-bucket\"", "  acl = \"authenticated-read\"", "}"},
+				BlockLocation:         model.ResourceLocation{Start: model.ResourceLine{Line: 1}, End: model.ResourceLine{Line: 4}},
+			},
+			start:    model.SarifResourceLocation{Line: 3, Col: 3},
+			end:      model.SarifResourceLocation{Line: 3, Col: 30},
+			wantErr:  false,
+			expected: "private",
+		},
+		{
+			name: "list value without quotes",
+			vuln: model.VulnerableFile{
+				FileName:              "main.tf",
+				RemediationType:       "replacement",
+				Remediation:           `{"before": "features = [PublicAccess]", "after": "PrivateLink"}`,
+				LineWithVulnerability: `  features = [PublicAccess, OtherFeature]`,
+				RemediationLocation:   model.ResourceLocation{Start: model.ResourceLine{Line: 4, Col: 3}},
+				Line:                  4,
+				FileSource: []string{
+					"resource \"example\" \"test\" {",
+					"  name     = \"example\"",
+					"  region   = \"us-east-1\"",
+					"  features = [PublicAccess, OtherFeature]",
+					"}",
+				},
+				BlockLocation: model.ResourceLocation{Start: model.ResourceLine{Line: 1}, End: model.ResourceLine{Line: 5}},
+			},
+			start:    model.SarifResourceLocation{Line: 4, Col: 3},
+			end:      model.SarifResourceLocation{Line: 4, Col: 60},
+			wantErr:  false,
+			expected: "PrivateLink",
+		},
+		{
+			name: "replace multiple matching list items",
+			vuln: model.VulnerableFile{
+				FileName:              "main.tf",
+				RemediationType:       "replacement",
+				Remediation:           `{"before": "access = [\"PublicNetworkAccess\"]", "after": "PrivateLink"}`,
+				LineWithVulnerability: `  access = ["PublicNetworkAccess", "PublicNetworkAccess"]`,
+				RemediationLocation:   model.ResourceLocation{Start: model.ResourceLine{Line: 4, Col: 3}},
+				Line:                  4,
+				FileSource: []string{
+					"resource \"azurerm_example\" \"test\" {",
+					"  name = \"multi\"",
+					"  location = \"eastus\"",
+					"  access = [\"PublicNetworkAccess\", \"PublicNetworkAccess\"]",
+					"}",
+				},
+				BlockLocation: model.ResourceLocation{Start: model.ResourceLine{Line: 1}, End: model.ResourceLine{Line: 5}},
+			},
+			start:    model.SarifResourceLocation{Line: 4, Col: 3},
+			end:      model.SarifResourceLocation{Line: 4, Col: 60},
+			wantErr:  false,
+			expected: "PrivateLink",
+		},
+		{
+			name: "line with inline comment",
+			vuln: model.VulnerableFile{
+				FileName:              "main.tf",
+				RemediationType:       "replacement",
+				Remediation:           `{"before": "acl = \"authenticated-read\"", "after": "private"}`,
+				LineWithVulnerability: `  acl = "authenticated-read" # managed by security team`,
+				RemediationLocation:   model.ResourceLocation{Start: model.ResourceLine{Line: 3, Col: 3}},
+				Line:                  3,
+				FileSource: []string{
+					"resource \"aws_s3_bucket\" \"bucket\" {",
+					"  bucket = \"my-bucket\"",
+					"  acl = \"authenticated-read\" # managed by security team",
+					"}",
+				},
+				BlockLocation: model.ResourceLocation{Start: model.ResourceLine{Line: 1}, End: model.ResourceLine{Line: 4}},
+			},
+			start:    model.SarifResourceLocation{Line: 3, Col: 3},
+			end:      model.SarifResourceLocation{Line: 3, Col: 80},
+			wantErr:  false,
+			expected: "private",
+		},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			fix, err := TransformToSarifFix(tt.vuln, tt.start, tt.end)
+			if tt.wantErr {
+				require.Error(t, err)
+			} else {
+				require.NoError(t, err)
+				require.Contains(t, fix.ArtifactChanges[0].Replacements[0].InsertedContent.Text, tt.expected)
+			}
+		})
+	}
+}
+
+func TestTransformToSarifFix_AddToEmptyBlock(t *testing.T) {
+	vuln := model.VulnerableFile{
+		FileName:        "main.tf",
+		RemediationType: "addition",
+		Remediation:     `tags = {\n  Environment = "prod"\n}`,
+		FileSource: []string{
+			"resource \"aws_s3_bucket\" \"example\" {",
+			"  tags = {}",
+			"}",
+		},
+		BlockLocation: model.ResourceLocation{Start: model.ResourceLine{Line: 1}, End: model.ResourceLine{Line: 3}},
+	}
+	start := model.SarifResourceLocation{Line: 2, Col: 10}
+	fix, err := TransformToSarifFix(vuln, start, start)
+	require.NoError(t, err)
+	require.Contains(t, fix.ArtifactChanges[0].Replacements[0].InsertedContent.Text, "Environment")
+}
+
+func TestTransformToSarifFix_Removal_QuotedUnquoted(t *testing.T) {
+	tests := []model.VulnerableFile{
+		{
+			FileName:        "main.tf",
+			RemediationType: "removal",
+			Line:            2,
+			FileSource: []string{
+				"resource \"aws_s3_bucket\" \"bucket\" {",
+				"  enabled = true",
+				"}",
+			},
+		},
+		{
+			FileName:        "main.tf",
+			RemediationType: "removal",
+			Line:            2,
+			FileSource: []string{
+				"resource \"aws_s3_bucket\" \"bucket\" {",
+				"  enabled = \"true\"",
+				"}",
+			},
+		},
+	}
+
+	for i, vuln := range tests {
+		start := model.SarifResourceLocation{Line: 2, Col: 3}
+		end := model.SarifResourceLocation{Line: 2, Col: 20}
+		t.Run(fmt.Sprintf("removal_case_%d", i), func(t *testing.T) {
+			fix, err := TransformToSarifFix(vuln, start, end)
+			require.NoError(t, err)
+			require.Equal(t, "", fix.ArtifactChanges[0].Replacements[0].InsertedContent.Text)
 		})
 	}
 }
