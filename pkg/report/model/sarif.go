@@ -214,7 +214,7 @@ type SarifRun struct {
 
 // SarifReport represents a usable sarif report reference
 type SarifReport interface {
-	BuildSarifIssue(issue *model.QueryResult, sciInfo model.SCIInfo) string
+	BuildSarifIssue(issue *model.QueryResult, sciInfo model.SCIInfo, includeRemediations bool) string
 	RebuildTaxonomies(cwes []string, guids map[string]string)
 	GetGUIDFromRelationships(idx int, cweID string) string
 	AddTags(summary *model.Summary, diffAware *model.DiffAware) error
@@ -599,7 +599,7 @@ func (sr *sarifReport) RebuildTaxonomies(cwes []string, guids map[string]string)
 }
 
 // BuildSarifIssue creates a new entries in Results (one for each file) and new entry in Rules and Taxonomy if necessary
-func (sr *sarifReport) BuildSarifIssue(issue *model.QueryResult, sciInfo model.SCIInfo) string {
+func (sr *sarifReport) BuildSarifIssue(issue *model.QueryResult, sciInfo model.SCIInfo, includeRemediations bool) string {
 	if len(issue.Files) > 0 {
 		metadata := ruleMetadata{
 			queryID:          issue.QueryID,
@@ -704,22 +704,24 @@ func (sr *sarifReport) BuildSarifIssue(issue *model.QueryResult, sciInfo model.S
 					DatadogFingerprint: GetDatadogFingerprintHash(sciInfo, absoluteFilePath, line, issue.QueryID),
 				},
 			}
-			if vulnerability.Remediation != "" && vulnerability.RemediationType != "" {
-				sarifFix, err := remediationsHelper.TransformToSarifFix(
-					vulnerability,
-					remediationStartLocation,
-					remediationEndLocation,
-				)
-				if err != nil {
-					// we do not want to fail the whole process if we cannot transform the fix
-					// so we just log the error and continue
-					log.Err(err).Msgf("failed to transform to sarif fix: %v", err)
-				} else {
-					// we want the location displayed in the UI to properly highlight the remediation
-					result.ResultLocations[0].PhysicalLocation.Region.StartLine = remediationStartLocation.Line
-					result.ResultLocations[0].PhysicalLocation.Region.EndLine = remediationEndLocation.Line
+			if includeRemediations {
+				if vulnerability.Remediation != "" && vulnerability.RemediationType != "" {
+					sarifFix, err := remediationsHelper.TransformToSarifFix(
+						vulnerability,
+						remediationStartLocation,
+						remediationEndLocation,
+					)
+					if err != nil {
+						// we do not want to fail the whole process if we cannot transform the fix
+						// so we just log the error and continue
+						log.Err(err).Msgf("failed to transform to sarif fix: %v", err)
+					} else {
+						// we want the location displayed in the UI to properly highlight the remediation
+						result.ResultLocations[0].PhysicalLocation.Region.StartLine = remediationStartLocation.Line
+						result.ResultLocations[0].PhysicalLocation.Region.EndLine = remediationEndLocation.Line
 
-					result.ResultFixes = append(result.ResultFixes, sarifFix)
+						result.ResultFixes = append(result.ResultFixes, sarifFix)
+					}
 				}
 			}
 			sr.Runs[0].Results = append(sr.Runs[0].Results, result)

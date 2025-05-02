@@ -31,7 +31,7 @@ import (
 
 const divisor = float32(100000)
 
-var reportGenerators = map[string]func(path, filename string, body interface{}, sciInfo model.SCIInfo) error{
+var reportGenerators = map[string]func(path, filename string, body interface{}, sciInfo model.SCIInfo, includeRemediations bool) error{
 	"json":        report.PrintJSONReport,
 	"sarif":       report.PrintSarifReport,
 	"html":        report.PrintHTMLReport,
@@ -104,7 +104,7 @@ func FileAnalyzer(path string) (string, error) {
 }
 
 // GenerateReport execute each report function to generate report
-func GenerateReport(path, filename string, body interface{}, formats []string, proBarBuilder progress.PbBuilder, sciInfo model.SCIInfo) error {
+func GenerateReport(path, filename string, body interface{}, formats []string, proBarBuilder progress.PbBuilder, sciInfo model.SCIInfo, includeRemediations bool) error {
 	log.Debug().Msgf("helpers.GenerateReport()")
 	metrics.Metric.Start("generate_report")
 
@@ -116,7 +116,7 @@ func GenerateReport(path, filename string, body interface{}, formats []string, p
 
 	for _, format := range formats {
 		format = strings.ToLower(format)
-		if err = reportGenerators[format](path, filename, body, sciInfo); err != nil {
+		if err = reportGenerators[format](path, filename, body, sciInfo, includeRemediations); err != nil {
 			log.Error().Msgf("Failed to generate %s report", format)
 			break
 		}

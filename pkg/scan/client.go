@@ -58,6 +58,7 @@ type Parameters struct {
 	KicsComputeNewSimID         bool
 	PreAnalysisExcludePaths     []string
 	SCIInfo                     model.SCIInfo
+	IncludeRemediations         bool
 }
 
 // Client represents a scan client
@@ -114,6 +115,7 @@ func GetDefaultParameters(rootPath string) *Parameters {
 		UseOldSeverities:            false,
 		MaxResolverDepth:            15,
 		ExcludePlatform:             []string{""},
+		IncludeRemediations:         false,
 	}
 }
 
