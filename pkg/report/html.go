@@ -83,7 +83,7 @@ func getVersion() string {
 }
 
 // PrintHTMLReport creates a report file on HTML format
-func PrintHTMLReport(path, filename string, body interface{}, sciInfo model.SCIInfo) error {
+func PrintHTMLReport(path, filename string, body interface{}, sciInfo model.SCIInfo, includeRemediations bool) error {
 	if !strings.HasSuffix(filename, ".html") {
 		filename += ".html"
 	}
