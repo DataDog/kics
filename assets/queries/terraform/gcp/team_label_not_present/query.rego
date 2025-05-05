@@ -35,12 +35,7 @@ CxPolicy[result] {
         "issueType": "MissingValue",
         "keyExpectedValue": sprintf("Every resource should have labels: %v", [required_labels]),
         "keyActualValue": sprintf("Missing labels: %v", [missing_labels]),
-        "searchLine": common_lib.build_search_line(["resource", resource_name, name, "labels"], []),
-        "remediation": json.marshal({
-            "before": sprintf("labels = {%v}", [labels]),
-            "after": sprintf("labels = {%v}", [labels | required_labels])
-        }),
-        "remediationType": "addition"
+        "searchLine": common_lib.build_search_line(["resource", resource_name, name, "labels"], [])
     }
 }
 
@@ -63,12 +58,7 @@ CxPolicy[result] {
         "issueType": "MissingValue",
         "keyExpectedValue": sprintf("Every resource should have a 'labels' block containing: %v", [required_labels]),
         "keyActualValue": "'labels' block is missing",
-        "searchLine": common_lib.build_search_line(["resource", resource_type, name], []),
-        "remediation": json.marshal({
-            "before": "No 'labels' block",
-            "after": sprintf("labels = %v", [required_labels])
-        }),
-        "remediationType": "addition"
+        "searchLine": common_lib.build_search_line(["resource", resource_type, name], [])
     }
 }
 
