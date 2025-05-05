@@ -8,8 +8,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "n/a",
-		"resourceName": "n/a",
+		"resourceType": "variable",
+		"resourceName": sprintf("%s", variableName),
 		"searchKey": sprintf("variable.{{%s}}", [variableName]),
 		"issueType": "MissingAttribute",
 		"keyExpectedValue": "'type' should be defined and not null",
@@ -23,8 +23,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "n/a",
-		"resourceName": "n/a",
+		"resourceType": "variable",
+		"resourceName": sprintf("%s", variableName),
 		"searchKey": sprintf("variable.{{%s}}.type", [variableName]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": "'type' should not be empty",

@@ -13,7 +13,7 @@ import (
 )
 
 // PrintCodeClimateReport prints the code climate report in the given path and filename with the given body
-func PrintCodeClimateReport(path, filename string, body interface{}, sciInfo model.SCIInfo) error {
+func PrintCodeClimateReport(path, filename string, body interface{}, sciInfo model.SCIInfo, includeRemediations bool) error {
 	if !strings.HasPrefix(filename, "codeclimate") {
 		filename = "codeclimate-" + filename
 	}

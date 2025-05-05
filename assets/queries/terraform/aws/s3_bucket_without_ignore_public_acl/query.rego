@@ -50,8 +50,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "n/a",
-		"resourceName": "n/a",
+		"resourceType": "module",
+		"resourceName": sprintf("%s", [name]),
 		"searchKey": sprintf("module[%s].ignore_public_acls", [name]),
 		"issueType": "MissingAttribute",
 		"keyExpectedValue": "'ignore_public_acls' should equal 'true'",
@@ -70,8 +70,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "n/a",
-		"resourceName": "n/a",
+		"resourceType": "module",
+		"resourceName": sprintf("%s", [name]),
 		"searchKey": sprintf("module[%s].ignore_public_acls", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": "'ignore_public_acls' should equal 'true'",

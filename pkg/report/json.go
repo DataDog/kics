@@ -13,7 +13,7 @@ import (
 const jsonExtension = ".json"
 
 // PrintJSONReport prints on JSON file the summary results
-func PrintJSONReport(path, filename string, body interface{}, sciInfo model.SCIInfo) error {
+func PrintJSONReport(path, filename string, body interface{}, sciInfo model.SCIInfo, includeRemediations bool) error {
 	if body != "" {
 		summary, err := getSummary(body)
 		if err != nil {

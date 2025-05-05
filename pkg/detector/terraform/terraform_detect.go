@@ -6,7 +6,6 @@
 package terraform
 
 import (
-	"bytes"
 	"fmt"
 	"regexp"
 	"strconv"
@@ -19,21 +18,15 @@ import (
 	"github.com/rs/zerolog"
 )
 
-// DetectKindLine defines a kindDetectLine type
-type DetectKindLine struct {
-}
+type DetectKindLine struct{}
 
-const (
-	undetectedVulnerabilityLine = -1
-)
+const undetectedVulnerabilityLine = -1
 
 // DetectLine searches vulnerability line in terraform files
-func (d DetectKindLine) DetectLine(file *model.FileMetadata, searchKey string,
-	outputLines int, logwithfields *zerolog.Logger) model.VulnerabilityLines {
-	// Sanitize malformed Go formatting artifacts
+func (d DetectKindLine) DetectLine(file *model.FileMetadata, searchKey string, outputLines int, log *zerolog.Logger) model.VulnerabilityLines {
 	searchKey = sanitizeSearchKey(searchKey)
 
-	det := &detector.DefaultDetectLineResponse{
+	detection := &detector.DefaultDetectLineResponse{
 		CurrentLine:     0,
 		IsBreak:         false,
 		FoundAtLeastOne: false,
@@ -41,167 +34,205 @@ func (d DetectKindLine) DetectLine(file *model.FileMetadata, searchKey string,
 		ResolvedFiles:   make(map[string]model.ResolvedFileSplit),
 	}
 
-	var extractedString [][]string
-	extractedString = detector.GetBracketValues(searchKey, extractedString, "")
-	sKey := searchKey
-	for idx, str := range extractedString {
-		// Only replace raw bracketed values (e.g., [abc]), not placeholders (e.g., [{{var}}])
-		if !strings.Contains(str[0], "{{") {
-			sKey = strings.Replace(sKey, str[0], `{{`+strconv.Itoa(idx)+`}}`, -1)
+	extracted := detector.GetBracketValues(searchKey, [][]string{}, "")
+	normalizedKey := searchKey
+	for i, match := range extracted {
+		if !strings.Contains(match[0], "{{") {
+			normalizedKey = strings.Replace(normalizedKey, match[0], `{{`+strconv.Itoa(i)+`}}`, -1)
+		}
+	}
+
+	keyParts := strings.FieldsFunc(normalizedKey, func(r rune) bool {
+		return r == '.' || r == '/'
+	})
+	for i, part := range keyParts {
+		if strings.Contains(part, "$ref") {
+			keyParts = append(keyParts[:i+1], keyParts[i+1:]...)
+			break
 		}
 	}
 
 	lines := *file.LinesOriginalData
-	splitSanitized := strings.FieldsFunc(sKey, func(r rune) bool {
-		return r == '.' || r == '/'
-	})
-	for index, split := range splitSanitized {
-		if strings.Contains(split, "$ref") {
-			splitSanitized[index] = strings.Join(splitSanitized[index:], ".")
-			splitSanitized = splitSanitized[:index+1]
+
+	for _, part := range keyParts {
+		s1, s2 := detector.GenerateSubstrings(part, extracted, lines, detection.CurrentLine)
+		detection, _ = detection.DetectCurrentLine(s1, s2, 0, lines)
+		if detection.IsBreak {
 			break
 		}
 	}
 
-	for _, key := range splitSanitized {
-		substr1, substr2 := detector.GenerateSubstrings(key, extractedString, lines)
-		det, _ = det.DetectCurrentLine(substr1, substr2, 0, lines)
-
-		if det.IsBreak {
-			break
-		}
-	}
-
-	if det.FoundAtLeastOne {
-		line := det.CurrentLine + 1
-
-		resourceStart, resourceEnd, lineContent, err := parseAndFindTerraformBlock([]byte(file.OriginalData), line)
+	if detection.FoundAtLeastOne {
+		line := detection.CurrentLine + 1
+		vulnLines, err := locateTerraformBlock([]byte(file.OriginalData), line, lines)
 		if err != nil {
-			fmt.Printf("Failed to parse and find Terraform block for line %d in file %s: %s\n", line, file.FilePath, err)
-			return model.VulnerabilityLines{
-				Line:         undetectedVulnerabilityLine,
-				VulnLines:    &[]model.CodeLine{},
-				ResolvedFile: file.FilePath,
-				ResourceLocation: model.ResourceLocation{
-					ResourceStart: resourceStart,
-					ResourceEnd:   resourceEnd,
-				},
-			}
+			log.Error().Err(err).Msgf("Failed to parse block at line %d in file %s", line, file.FilePath)
+			return buildEmptyVulnerabilityLines(file)
 		}
-
-		return model.VulnerabilityLines{
-			Line:         line,
-			VulnLines:    detector.GetAdjacentVulnLines(det.CurrentLine, outputLines, lines),
-			ResolvedFile: file.FilePath,
-			ResourceLocation: model.ResourceLocation{
-				ResourceStart: resourceStart,
-				ResourceEnd:   resourceEnd,
-			},
-			LineWithVulnerability: lineContent,
-		}
+		vulnLines.Line = line
+		vulnLines.VulnLines = detector.GetAdjacentVulnLines(detection.CurrentLine, outputLines, lines)
+		vulnLines.ResolvedFile = file.FilePath
+		vulnLines.FileSource = lines
+		return vulnLines
 	}
 
-	logwithfields.Warn().Msgf("Failed to detect Terraform line, query response %s", sKey)
-
-	return model.VulnerabilityLines{
-		Line:         undetectedVulnerabilityLine,
-		VulnLines:    &[]model.CodeLine{},
-		ResolvedFile: file.FilePath,
-	}
+	log.Warn().Msgf("Failed to detect Terraform line, query response %s", normalizedKey)
+	return buildEmptyVulnerabilityLines(file)
 }
 
-type BlockInfo struct {
-	Block   *hclsyntax.Block
-	Depth   int
-	Parent  *hclsyntax.Block
-	IsMatch bool
+func buildEmptyVulnerabilityLines(file *model.FileMetadata) model.VulnerabilityLines {
+	return model.VulnerabilityLines{
+		Line:           undetectedVulnerabilityLine,
+		VulnLines:      &[]model.CodeLine{},
+		ResolvedFile:   file.FilePath,
+		ResourceSource: "",
+		FileSource:     *file.LinesOriginalData,
+	}
 }
 
 func sanitizeSearchKey(key string) string {
-	// Replace any instance of [%!s(int=N)] with [N]
 	re := regexp.MustCompile(`\[%!s\(int=(\d+)\)\]`)
 	return re.ReplaceAllString(key, "[$1]")
 }
 
-func parseAndFindTerraformBlock(src []byte, identifyingLine int) (model.ResourceLine, model.ResourceLine, string, error) {
+func locateTerraformBlock(src []byte, identifyingLine int, strLines []string) (model.VulnerabilityLines, error) {
 	filePath := "temp.tf"
-	lines := bytes.Split(src, []byte("\n"))
-	if identifyingLine <= 0 || identifyingLine > len(lines) {
-		return model.ResourceLine{}, model.ResourceLine{}, "", fmt.Errorf("line %d is out of range", identifyingLine)
+
+	if identifyingLine <= 0 || identifyingLine > len(strLines) {
+		return model.VulnerabilityLines{}, fmt.Errorf("line %d is out of range", identifyingLine)
 	}
-	lineContent := string(lines[identifyingLine-1])
 
-	resourceStart := model.ResourceLine{Line: -1, Col: -1}
-	resourceEnd := model.ResourceLine{Line: -1, Col: -1}
-
-	hclSyntaxFile, diagnostics := hclsyntax.ParseConfig(src, filePath, hcl.InitialPos)
-	if diagnostics != nil && diagnostics.HasErrors() {
-		return resourceStart, resourceEnd, lineContent, fmt.Errorf("failed to parse hcl file %s: %v", filePath, diagnostics.Errs())
+	hclFile, diagnostics := hclsyntax.ParseConfig(src, filePath, hcl.InitialPos)
+	if diagnostics.HasErrors() {
+		return model.VulnerabilityLines{}, fmt.Errorf("failed to parse HCL: %v", diagnostics.Errs())
 	}
-	for _, block := range hclSyntaxFile.Body.(*hclsyntax.Body).Blocks {
-		blockStart := block.TypeRange.Start
-		blockEnd := block.Body.SrcRange.End
 
-		if identifyingLine >= blockStart.Line && identifyingLine <= blockEnd.Line {
-			var insertionLine int
-			var insertionCol int
+	body, ok := hclFile.Body.(*hclsyntax.Body)
+	if !ok {
+		return model.VulnerabilityLines{}, fmt.Errorf("unexpected HCL body type")
+	}
 
-			if identifyingLine == block.DefRange().Start.Line {
-				// On the block header — insert before the block’s closing brace
-				insertionLine = blockEnd.Line
+	for _, block := range body.Blocks {
+		start := block.TypeRange.Start
+		end := block.Body.SrcRange.End
+		if identifyingLine >= start.Line && identifyingLine <= end.Line {
+			blockSrc := extractBlockSource(strLines, start.Line, end.Line)
 
-				// Infer indent from last non-empty, non-comment line
-				for i := insertionLine; i > blockStart.Line && i <= len(lines); i-- {
-					trimmed := strings.TrimSpace(string(lines[i-1]))
-					if trimmed != "" && !strings.HasPrefix(trimmed, "#") {
-						insertionCol = countLeadingSpacesOrTabs(lines[i-1]) + 1
-						break
-					}
-				}
-			} else if identifyingLine > block.DefRange().Start.Line {
-				// Possibly inside a nested block or object attribute
-				structureName, nestedStart, nestedEnd, isAttribute := findContainingStructure(block, identifyingLine)
-
-				if structureName != "" {
-					insertionLine = nestedEnd.Line - 1
-					if isAttribute {
-						for i := insertionLine - 1; i > nestedStart.Line && i <= len(lines); i-- {
-							trimmed := strings.TrimSpace(string(lines[i-1]))
-							if trimmed != "" && !strings.HasPrefix(trimmed, "#") && strings.Contains(trimmed, "=") {
-								insertionCol = countLeadingSpacesOrTabs(lines[i-1]) + 1
-								break
-							}
-						}
-					} else {
-						if insertionLine-1 >= 0 && insertionLine-1 < len(lines) {
-							insertionCol = countLeadingSpacesOrTabs(lines[insertionLine-1]) + 1
-						}
-					}
-				} else {
-					// Default to block-level insertion
-					insertionLine = blockEnd.Line - 1
-					for i := insertionLine; i > blockStart.Line && i <= len(lines); i-- {
-						trimmed := strings.TrimSpace(string(lines[i-1]))
-						if trimmed != "" && !strings.HasPrefix(trimmed, "#") {
-							insertionCol = countLeadingSpacesOrTabs(lines[i-1]) + 1
-							break
-						}
-					}
-				}
-			}
-
-			if insertionCol == 0 && insertionLine-1 < len(lines) {
-				insertionCol = countLeadingSpacesOrTabs(lines[insertionLine-1]) + 1
-			}
-
-			resourceStart = model.ResourceLine{Line: insertionLine, Col: insertionCol}
-			resourceEnd = model.ResourceLine{Line: insertionLine, Col: insertionCol}
-
-			return resourceStart, resourceEnd, lineContent, nil
+			insertionLine, insertionCol := calculateInsertionPoint(block, identifyingLine, strLines)
+			return model.VulnerabilityLines{
+				VulnerablilityLocation: model.ResourceLocation{
+					Start: toResourceLine(start),
+					End:   toResourceLine(end),
+				},
+				RemediationLocation: model.ResourceLocation{
+					Start: model.ResourceLine{Line: insertionLine, Col: insertionCol},
+					End:   model.ResourceLine{Line: insertionLine, Col: insertionCol},
+				},
+				BlockLocation: model.ResourceLocation{
+					Start: toResourceLine(start),
+					End:   toResourceLine(end),
+				},
+				LineWithVulnerability: string(strLines[identifyingLine-1]),
+				ResourceSource:        blockSrc,
+			}, nil
 		}
 	}
 
-	return resourceStart, resourceEnd, lineContent, fmt.Errorf("failed to locate block for line %d", identifyingLine)
+	return model.VulnerabilityLines{}, fmt.Errorf("failed to locate block for line %d", identifyingLine)
+}
+
+func toResourceLine(pos hcl.Pos) model.ResourceLine {
+	return model.ResourceLine{Line: pos.Line, Col: pos.Column}
+}
+
+func extractBlockSource(lines []string, start, end int) string {
+	return string(strings.Join(lines[start-1:end], "\n")) + "\n"
+}
+
+func calculateInsertionPoint(block *hclsyntax.Block, line int, lines []string) (int, int) {
+	name, nestedStart, nestedEnd, _ := findContainingStructure(block, line)
+
+	var insertionLine int
+	var caseType string
+
+	if name != "" {
+		switch {
+		case line == nestedEnd.Line:
+			insertionLine = nestedEnd.Line - 1
+			caseType = "nested-end"
+		case line == nestedStart.Line:
+			insertionLine = nestedStart.Line + 1
+			caseType = "nested-start"
+		default:
+			insertionLine = line
+			caseType = "nested-body"
+		}
+	} else {
+		if line == block.TypeRange.Start.Line {
+			insertionLine = block.Body.SrcRange.End.Line - 1
+			for i := insertionLine; i >= block.TypeRange.Start.Line; i-- {
+				_, s, e, attr := findContainingStructure(block, i)
+				if attr && e.Line >= insertionLine {
+					insertionLine = s.Line - 1
+				} else {
+					break
+				}
+			}
+			caseType = "block-start"
+		} else {
+			insertionLine = line
+			caseType = "block-body"
+		}
+	}
+
+	col := determineInsertionIndent(lines, insertionLine, caseType, nestedStart.Line, nestedEnd.Line, block.TypeRange.Start.Line, block.Body.SrcRange.End.Line) + 1
+	trimmed := strings.TrimSpace(lines[insertionLine-1])
+	if caseType == "block-start" && (trimmed == "}" || isHeredocTerminator(trimmed, lines, insertionLine-1)) {
+		col = len(lines[insertionLine-1]) + 1
+	}
+	return insertionLine, col
+}
+
+func findContainingStructure(block *hclsyntax.Block, line int) (string, hcl.Pos, hcl.Pos, bool) {
+	for _, nested := range block.Body.Blocks {
+		if line >= nested.TypeRange.Start.Line && line <= nested.Body.SrcRange.End.Line {
+			if name, s, e, isAttr := findContainingStructure(nested, line); name != "" {
+				return name, s, e, isAttr
+			}
+			return nested.Type, nested.TypeRange.Start, nested.Body.SrcRange.End, false
+		}
+	}
+	for name, attr := range block.Body.Attributes {
+		if _, ok := attr.Expr.(*hclsyntax.ObjectConsExpr); ok {
+			if line >= attr.SrcRange.Start.Line && line <= attr.SrcRange.End.Line {
+				return name, attr.SrcRange.Start, attr.SrcRange.End, true
+			}
+		}
+	}
+	return "", hcl.Pos{}, hcl.Pos{}, false
+}
+
+func determineInsertionIndent(lines []string, insertionLine int, caseType string, nestedStart, nestedEnd, blockStart, blockEnd int) int {
+	switch caseType {
+	case "nested-end":
+		for i := nestedEnd - 2; i >= nestedStart-1; i-- {
+			if trimmed := strings.TrimSpace(lines[i]); trimmed != "" && !strings.HasPrefix(trimmed, "#") {
+				return countLeadingSpacesOrTabs([]byte(lines[i]))
+			}
+		}
+	case "nested-start":
+		return countLeadingSpacesOrTabs([]byte(lines[nestedStart-1])) + 2
+	case "nested-body", "block-body":
+		return countLeadingSpacesOrTabs([]byte(lines[insertionLine-1]))
+	case "block-start":
+		if strings.TrimSpace(lines[insertionLine-1]) != "}" {
+			if idx := firstNonWhitespaceIndex(lines[insertionLine-1]); idx != -1 {
+				return idx
+			}
+		}
+		return 1
+	}
+	return 0
 }
 
 func countLeadingSpacesOrTabs(line []byte) int {
@@ -216,29 +247,25 @@ func countLeadingSpacesOrTabs(line []byte) int {
 	return count
 }
 
-// findContainingStructure returns the name, start, and end of a nested block or attribute containing the line.
-// If the line is not part of a nested block or object-style attribute, it returns empty string and zero positions.
-func findContainingStructure(block *hclsyntax.Block, line int) (string, hcl.Pos, hcl.Pos, bool) {
-	for _, nested := range block.Body.Blocks {
-		start := nested.TypeRange.Start
-		end := nested.Body.SrcRange.End
-		if line >= start.Line && line <= end.Line {
-			if deeperType, deeperStart, deeperEnd, isAttr := findContainingStructure(nested, line); deeperType != "" {
-				return deeperType, deeperStart, deeperEnd, isAttr
-			}
-			return nested.Type, start, end, false
+func firstNonWhitespaceIndex(line string) int {
+	for i, r := range line {
+		if r != ' ' && r != '\t' {
+			return i
 		}
 	}
+	return -1
+}
 
-	for name, attr := range block.Body.Attributes {
-		if _, ok := attr.Expr.(*hclsyntax.ObjectConsExpr); ok {
-			start := attr.SrcRange.Start
-			end := attr.SrcRange.End
-			if line >= start.Line && line <= end.Line {
-				return name, start, end, true
+func isHeredocTerminator(line string, lines []string, idx int) bool {
+	for i := idx - 1; i >= 0; i-- {
+		text := strings.TrimSpace(lines[i])
+		if strings.Contains(text, "<<") {
+			parts := strings.Split(text, "<<")
+			if len(parts) == 2 {
+				marker := strings.TrimSpace(parts[1])
+				return line == marker
 			}
 		}
 	}
-
-	return "", hcl.Pos{}, hcl.Pos{}, false
+	return false
 }

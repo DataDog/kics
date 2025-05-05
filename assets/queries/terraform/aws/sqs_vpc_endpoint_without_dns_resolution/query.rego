@@ -31,11 +31,11 @@ CxPolicy[result] {
 	keyToCheck := common_lib.get_module_equivalent_key("aws", module.source, "aws_vpc", "enable_dns_support")
 
 	module[keyToCheck] == false
-	
+
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "n/a",
-		"resourceName": "n/a",
+		"resourceType": "module",
+		"resourceName": sprintf("%s", [name]),
 		"searchKey": sprintf("module[%s].enable_dns_support", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": "'enable_dns_support' should be set to true or undefined",

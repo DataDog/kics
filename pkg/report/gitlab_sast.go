@@ -13,7 +13,7 @@ import (
 )
 
 // PrintGitlabSASTReport creates a report file on sarif format
-func PrintGitlabSASTReport(path, filename string, body interface{}, sciInfo model.SCIInfo) error {
+func PrintGitlabSASTReport(path, filename string, body interface{}, sciInfo model.SCIInfo, includeRemediations bool) error {
 	filename = strings.ReplaceAll(filename, ".glsast", "")
 	if !strings.HasSuffix(filename, jsonExtension) {
 		filename += jsonExtension
