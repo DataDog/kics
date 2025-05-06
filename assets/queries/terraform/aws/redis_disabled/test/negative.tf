@@ -4,5 +4,7 @@ resource "aws_elasticache_cluster" "negative1" {
   engine               = "redis"
   node_type            = "cache.m4.large"
   num_cache_nodes      = 2
+  
+  snapshot_retention_limit = 5
   port                 = 11211
 }
