@@ -150,22 +150,31 @@ func extractBlockSource(lines []string, start, end int) string {
 }
 
 func calculateInsertionPoint(block *hclsyntax.Block, line int, lines []string) (int, int) {
-	name, nestedStart, nestedEnd, _ := findContainingStructure(block, line)
+	name, nestedStart, nestedEnd, isAttr := findContainingStructure(block, line)
 
 	var insertionLine int
 	var caseType string
 
 	if name != "" {
-		switch {
-		case line == nestedEnd.Line:
-			insertionLine = nestedEnd.Line - 1
-			caseType = "nested-end"
-		case line == nestedStart.Line:
-			insertionLine = nestedStart.Line + 1
-			caseType = "nested-start"
-		default:
-			insertionLine = line
-			caseType = "nested-body"
+		// Detect if this is a function call like merge(...) and avoid inserting inside it
+		lineText := strings.TrimSpace(lines[nestedStart.Line-1])
+		if isAttr && strings.Contains(lineText, "(") && strings.Contains(lineText, "{") {
+			// Likely a function call wrapping a block (e.g., merge(..., { ... }))
+			// We do not want to insert inside the nested structure
+			insertionLine = nestedEnd.Line + 1
+			caseType = "block-body"
+		} else {
+			switch {
+			case line == nestedEnd.Line:
+				insertionLine = nestedEnd.Line - 1
+				caseType = "nested-end"
+			case line == nestedStart.Line:
+				insertionLine = nestedStart.Line + 1
+				caseType = "nested-start"
+			default:
+				insertionLine = line
+				caseType = "nested-body"
+			}
 		}
 	} else {
 		if line == block.TypeRange.Start.Line {
@@ -187,7 +196,7 @@ func calculateInsertionPoint(block *hclsyntax.Block, line int, lines []string) (
 
 	col := determineInsertionIndent(lines, insertionLine, caseType, nestedStart.Line, nestedEnd.Line, block.TypeRange.Start.Line, block.Body.SrcRange.End.Line) + 1
 	trimmed := strings.TrimSpace(lines[insertionLine-1])
-	if caseType == "block-start" && (trimmed == "}" || isHeredocTerminator(trimmed, lines, insertionLine-1)) {
+	if caseType == "block-start" && (strings.Contains(trimmed, "}") || isHeredocTerminator(trimmed, lines, insertionLine-1)) {
 		col = len(lines[insertionLine-1]) + 1
 	}
 	return insertionLine, col
@@ -202,13 +211,20 @@ func findContainingStructure(block *hclsyntax.Block, line int) (string, hcl.Pos,
 			return nested.Type, nested.TypeRange.Start, nested.Body.SrcRange.End, false
 		}
 	}
+
 	for name, attr := range block.Body.Attributes {
-		if _, ok := attr.Expr.(*hclsyntax.ObjectConsExpr); ok {
-			if line >= attr.SrcRange.Start.Line && line <= attr.SrcRange.End.Line {
-				return name, attr.SrcRange.Start, attr.SrcRange.End, true
+		start := attr.SrcRange.Start
+		end := attr.SrcRange.End
+		if line >= start.Line && line <= end.Line {
+			switch attr.Expr.(type) {
+			case *hclsyntax.ObjectConsExpr:
+				return name, start, end, true
+			case *hclsyntax.FunctionCallExpr:
+				return name, start, end, true // allow insertion logic to handle function call detection
 			}
 		}
 	}
+
 	return "", hcl.Pos{}, hcl.Pos{}, false
 }
 
