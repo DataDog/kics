@@ -4,6 +4,7 @@
   "severity": "HIGH",
   "category": "Secret Management",
   "descriptionText": "AWS Access Key should not be hardcoded",
+  "detailedDescriptionText": "Hardcoding AWS access keys in Terraform configuration files poses a significant security risk as these credentials can be exposed if the code is shared, stored in version control systems, or accidentally leaked. This vulnerability could allow unauthorized access to AWS resources, potentially leading to data breaches, resource manipulation, or incurring unexpected costs.\n\nInstead of hardcoding credentials directly in configuration files like `user_data = \"1234567890123456789012345678901234567890$\"`, use more secure approaches such as referencing files (`file(\"scripts/first-boot-http.sh\")`) or utilizing environment variables, AWS IAM roles, or secure secret management solutions. This helps maintain the principle of least privilege and significantly reduces the risk of credential exposure.",
   "descriptionUrl": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/instance",
   "platform": "Terraform",
   "descriptionID": "9e8cbdfb",

@@ -8,5 +8,6 @@
   "platform": "Terraform",
   "descriptionID": "88ca11bc",
   "cloudProvider": "aws",
-  "cwe": "311"
+  "cwe": "311",
+  "detailedDescriptionText": "AWS DB Instance storage encryption is essential for protecting sensitive data stored in databases from unauthorized access if the storage is compromised. When left unencrypted, database contents may be accessible to attackers who gain access to the underlying storage, potentially exposing confidential information such as personal data, financial records, or authentication credentials. To properly secure your database, set 'storage_encrypted = true' in your AWS DB Instance configuration or specify a KMS key using 'kms_key_id' parameter. Example of secure configuration: ```terraform\nresource \"aws_db_instance\" \"secure_example\" {\n  # ... other configuration ...\n  storage_encrypted = true\n  # Optionally specify KMS key\n  # kms_key_id = aws_kms_key.my_key.key_id\n}\n```"
 }

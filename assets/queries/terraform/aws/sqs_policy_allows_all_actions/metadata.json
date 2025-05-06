@@ -9,5 +9,6 @@
   "descriptionID": "afcb58e6",
   "cloudProvider": "aws",
   "cwe": "285",
-  "oldSeverity": "MEDIUM"
+  "oldSeverity": "MEDIUM",
+  "detailedDescriptionText": "When SQS policies use the wildcard (*) for actions, they grant excessive permissions that violate the principle of least privilege, potentially allowing unauthorized entities to perform any operation on the queue. This vulnerability creates a significant security risk where attackers could read sensitive messages, delete messages, or modify queue configurations if they gain access. Instead of using wildcards, specify only the required actions as shown in the secure example: `\"Action\": \"sqs:SendMessage\"` rather than the insecure `\"Action\": \"*\"`."
 }
