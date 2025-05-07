@@ -18,5 +18,7 @@ resource "aws_elasticache_replication_group" "redis" {
   engine                     = "redis"
   engine_version             = "6.x"
   automatic_failover_enabled = false
-  
+ 
+  at_rest_encryption_enabled = true
+   
 }
