@@ -13,6 +13,10 @@ resource "aws_instance" "positive1" {
 
   instance_type = "t2.micro"
 
+  
+  metadata_options {
+    http_tokens = \"required\"
+  }
   vpc_security_group_ids = [ aws_security_group.used_sg.id ]
 }
 
