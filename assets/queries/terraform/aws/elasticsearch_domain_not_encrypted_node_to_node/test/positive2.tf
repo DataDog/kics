@@ -14,6 +14,10 @@ resource "aws_elasticsearch_domain" "positive1" {
     enabled = false
   }
 
+  encrypt_at_rest {
+    enabled = true
+  }
+  
   tags = {
     Domain = "TestDomain"
   }
