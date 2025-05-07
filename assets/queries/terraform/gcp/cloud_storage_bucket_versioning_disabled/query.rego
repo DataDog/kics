@@ -15,7 +15,7 @@ CxPolicy[result] {
 		"searchKey": sprintf("google_storage_bucket[%s]", [name]),
 		"issueType": "MissingAttribute",
 		"keyExpectedValue": "'versioning' should be defined and not null",
-		"keyActualValue": "'versioning' it undefined or null",
+		"keyActualValue": "'versioning' is undefined or null",
 		"searchLine": common_lib.build_search_line(["resource", "google_storage_bucket", name],[]),
 		"remediation": "versioning {\n\tenabled = true\n\t}\n",
 		"remediationType": "addition",
