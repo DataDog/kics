@@ -9,5 +9,6 @@
   "descriptionID": "63935af4",
   "cloudProvider": "aws",
   "cwe": "798",
-  "oldSeverity": "MEDIUM"
+  "oldSeverity": "MEDIUM",
+  "detailedDescriptionText": "Hardcoding AWS access keys in Lambda function environment variables poses a significant security risk as they can be exposed through version control systems, logs, or to anyone with access to the infrastructure code. If these credentials are compromised, attackers can gain unauthorized access to AWS resources, potentially leading to data breaches, resource manipulation, or service disruption. Instead of hardcoding access keys like `foo = \"AKIAIOSFODNN7EXAMAAA\"`, use a secure approach by either referencing AWS IAM roles that grant the necessary permissions to your Lambda function or storing sensitive credentials in AWS Secrets Manager or Parameter Store and retrieving them at runtime, as shown in the secure example: `foo = \"test\"`."
 }
