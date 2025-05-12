@@ -4,10 +4,14 @@
   "severity": "HIGH",
   "category": "Access Control",
   "descriptionText": "Neptune Cluster Instance should not be publicly accessible",
-  "detailedDescriptionText": "Amazon Neptune cluster instances should not be publicly accessible to minimize the risk of unauthorized access to sensitive graph data. When a Neptune instance is publicly accessible, it can be accessed directly from the internet, potentially exposing it to attacks and unauthorized access attempts. To properly secure Neptune instances, set the 'publicly_accessible' attribute to 'false' as shown in the following example: \n```\nresource \"aws_neptune_cluster_instance\" \"example\" {\n  // ... other configurations\n  publicly_accessible = false\n}\n```",
   "descriptionUrl": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/neptune_cluster_instance#publicly_accessible",
   "platform": "Terraform",
   "descriptionID": "ac4d6034",
   "cloudProvider": "aws",
-  "cwe": "284"
+  "cwe": "284",
+  "override": {
+    "detailedDescriptionText": {
+      "descriptionText": "Amazon Neptune cluster instances should not be publicly accessible to minimize the risk of unauthorized access to sensitive graph data. When a Neptune instance is publicly accessible, it can be accessed directly from the internet, potentially exposing it to attacks and unauthorized access attempts. To properly secure Neptune instances, set the 'publicly_accessible' attribute to 'false' as shown in the following example: \n```\nresource \"aws_neptune_cluster_instance\" \"example\" {\n  // ... other configurations\n  publicly_accessible = false\n}\n```"
+    }
+  }
 }
