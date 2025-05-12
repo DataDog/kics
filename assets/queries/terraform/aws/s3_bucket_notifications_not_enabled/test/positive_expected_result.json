@@ -1,0 +1,7 @@
+[
+  {
+    "queryName": "Ensure S3 buckets have event notifications enabled",
+    "severity": "MEDIUM",
+    "line": 1
+  }
+]
