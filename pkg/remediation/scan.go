@@ -228,6 +228,7 @@ func initScan(queryID string) (*engine.Inspector, error) {
 		ParallelScanFlag:            0,
 		MaxFileSizeFlag:             5,
 		UseOldSeverities:            false,
+		UseDetailedDescriptionText:  false,
 		MaxResolverDepth:            15,
 		ExcludePlatform:             []string{""},
 	}
@@ -275,6 +276,7 @@ func initScan(queryID string) (*engine.Inspector, error) {
 		make(map[string]bool),
 		c.ScanParams.QueryExecTimeout,
 		c.ScanParams.UseOldSeverities,
+		c.ScanParams.UseDetailedDescriptionText,
 		false,
 		c.ScanParams.ParallelScanFlag,
 		c.ScanParams.KicsComputeNewSimID,

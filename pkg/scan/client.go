@@ -54,6 +54,7 @@ type Parameters struct {
 	ParallelScanFlag            int
 	MaxFileSizeFlag             int
 	UseOldSeverities            bool
+	UseDetailedDescriptionText  bool
 	MaxResolverDepth            int
 	KicsComputeNewSimID         bool
 	PreAnalysisExcludePaths     []string
@@ -113,6 +114,7 @@ func GetDefaultParameters(rootPath string) *Parameters {
 		ParallelScanFlag:            0,
 		MaxFileSizeFlag:             5,
 		UseOldSeverities:            false,
+		UseDetailedDescriptionText:  false,
 		MaxResolverDepth:            15,
 		ExcludePlatform:             []string{""},
 		IncludeRemediations:         false,
