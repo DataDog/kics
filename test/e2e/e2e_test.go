@@ -60,6 +60,7 @@ func Test_E2EExclusions(t *testing.T) {
 						Branch:        "test/branch",
 					},
 				},
+				true,
 			)
 			require.Equal(t, tt.expectedOutput.Violations, metadata.Stats.Violations)
 			require.Equal(t, tt.expectedOutput.Files, metadata.Stats.Files)

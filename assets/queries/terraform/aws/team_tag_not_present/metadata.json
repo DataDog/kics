@@ -4,7 +4,7 @@
   "severity": "INFO",
   "category": "Best Practices",
   "descriptionText": "Ensures that every cloud resource has a 'Team' tag for ownership tracking.",
-  "descriptionUrl": "",
+  "descriptionUrl": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/guides/resource-tagging",
   "platform": "Terraform",
   "descriptionID": "a2b3c4d5",
   "cloudProvider": "aws",

@@ -552,7 +552,7 @@ resourceFieldName = {
 	"aws_elasticache_cluster": "cluster_id",
 }
 
-get_resource_name(resource, resourceDefinitionName) = name {
+compute_raw_resource_name(resource, resourceDefinitionName) = name {
 	name := resource["name"]
 } else = name {
 	name := resource["display_name"]
@@ -565,6 +565,16 @@ get_resource_name(resource, resourceDefinitionName) = name {
 	name := common_lib.get_tag_name_if_exists(resource)
 } else = name {
 	name := resourceDefinitionName
+}
+
+get_resource_name(resource, resourceDefinitionName) = final_name {
+    name := compute_raw_resource_name(resource, resourceDefinitionName)
+    contains(name, ".")
+    final_name := resourceDefinitionName
+} else = final_name {
+    name := compute_raw_resource_name(resource, resourceDefinitionName)
+    not contains(name, ".")
+    final_name := name
 }
 
 get_specific_resource_name(resource, resourceType, resourceDefinitionName) = name {

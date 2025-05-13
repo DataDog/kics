@@ -1,0 +1,12 @@
+{
+  "id": "f317c3c2-58e5-4aa7-bb8e-3a7f6bcd274a",
+  "queryName": "AMI Most Recent Without Owner or Filter",
+  "severity": "HIGH",
+  "category": "Access Control",
+  "descriptionText": "Avoid using the aws_ami data source with most_recent = true unless an 'owners' attribute or a specific filter like 'owner-id', 'owner-alias', or 'image-id' is set. Omitting these may result in unintended AMIs being selected.",
+  "descriptionUrl": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/ami",
+  "platform": "Terraform",
+  "descriptionID": "f317c3c2",
+  "cloudProvider": "aws",
+  "cwe": "346"
+}

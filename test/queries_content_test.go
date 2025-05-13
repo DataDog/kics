@@ -201,7 +201,7 @@ func testQueryHasGoodReturnParams(t *testing.T, entry queryEntry) { //nolint
 	inspector, err := engine.NewInspector(
 		ctx,
 		queriesSource,
-		func(ctx *engine.QueryContext, trk engine.Tracker, v interface{}, detector *detector.DetectLine, useOldSeverities bool, kicsComputeNewSimID bool, queryDuration time.Duration) (*model.Vulnerability, error) {
+		func(ctx *engine.QueryContext, trk engine.Tracker, v interface{}, detector *detector.DetectLine, useOldSeverities bool, useDetailedDescriptionText bool, kicsComputeNewSimID bool, queryDuration time.Duration) (*model.Vulnerability, error) {
 			m, ok := v.(map[string]interface{})
 			require.True(t, ok)
 
@@ -267,6 +267,7 @@ func testQueryHasGoodReturnParams(t *testing.T, entry queryEntry) { //nolint
 		map[string]bool{},
 		60,
 		true,
+		false,
 		true,
 		1,
 		false,

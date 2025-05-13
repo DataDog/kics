@@ -4,11 +4,15 @@
   "severity": "CRITICAL",
   "category": "Access Control",
   "descriptionText": "S3 Buckets should not allow WRITE_ACP permission to the S3 Bucket Access Control List in order to prevent AWS accounts or IAM users to modify access control permissions to the bucket.",
-  "detailedDescriptionText": "The WRITE_ACP permission on an S3 bucket allows external entities to modify the bucket's Access Control Lists, which could lead to unauthorized access to your data. If exploited, an attacker could grant themselves or others full access to your bucket contents, potentially resulting in data leaks or tampering with critical information. Instead of using WRITE_ACP permissions, you should use 'READ' or 'READ_ACP' as shown in the secure example: `permission = \"READ\"` or `permission = \"READ_ACP\"`, avoiding the insecure pattern: `permission = \"WRITE_ACP\"`.",
   "descriptionUrl": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_acl",
   "platform": "Terraform",
   "descriptionID": "addee63f",
   "cloudProvider": "aws",
   "cwe": "732",
-  "oldSeverity": "HIGH"
+  "oldSeverity": "HIGH",
+  "override": {
+    "detailedDescriptionText": {
+      "descriptionText": "The WRITE_ACP permission on an S3 bucket allows external entities to modify the bucket's Access Control Lists, which could lead to unauthorized access to your data. If exploited, an attacker could grant themselves or others full access to your bucket contents, potentially resulting in data leaks or tampering with critical information. Instead of using WRITE_ACP permissions, you should use 'READ' or 'READ_ACP' as shown in the secure example: `permission = \"READ\"` or `permission = \"READ_ACP\"`, avoiding the insecure pattern: `permission = \"WRITE_ACP\"`."
+    }
+  }
 }

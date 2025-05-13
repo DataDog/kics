@@ -6,23 +6,24 @@ import data.generic.terraform as tf_lib
 # Required tags to be enforced across all Terraform resources
 required_tags := {"Team"}
 
-# Case where "tags" exists but required tags are missing
+# Case where "tags" block exists but required tags are missing (including merge({...}, {...}))
 CxPolicy[result] {
-    # Only consider resources whose type begins with "aws_"
     startswith(resource_name, "aws_")
-
-    # Only consider resources that support tags
     tf_lib.check_aws_resource_supports_tags(resource_name)
 
     resource_type := input.document[i].resource[resource_name][name]
     common_lib.valid_key(resource_type, "tags")
 
     tags := resource_type.tags
+
+    # Determine all tag keys (including merge scenarios)
+    all_tag_keys := get_all_tag_keys(tags)
+
     missing_labels := {
         req_lower |
-        req := required_tags[_]               # iterate over each required tag
-        req_lower := lower(req)               # store a lowercase version
-        not valid_key_ignore_case(tags, req)  # keep it if NOT found in tags ignoring case
+        req := required_tags[_]
+        req_lower := lower(req)
+        not key_in_set_ignore_case(req, all_tag_keys)
     }
 
     count(missing_labels) > 0
@@ -62,8 +63,31 @@ CxPolicy[result] {
     }
 }
 
-valid_key_ignore_case(tags, key) {
-  some k
-  lower(k) == lower(key)
-  tags[k]  # ensures `k` is an actual key in `tags`
+# Handles merge(...) and normal map by extracting all tag keys
+get_all_tag_keys(tags) = keys {
+    # Case: tags is a plain object
+    type_name(tags) == "object"
+    keys := {k | tags[k]}
+} else = keys {
+    # Case: tags is a merge() function call
+    is_merge_call(tags)
+    keys := {
+        merged_key |
+        some i
+        part := tags.function_args[i]
+        type_name(part) == "object"
+        part[merged_key]
+    }
+}
+
+# Helper: check if `tags` is a merge(...) function call
+is_merge_call(tags) {
+    tags.function == "merge"
+    tags.function_args
+}
+
+# Case-insensitive key match
+key_in_set_ignore_case(key, keyset) {
+    k := keyset[_]
+    lower(k) == lower(key)
 }
