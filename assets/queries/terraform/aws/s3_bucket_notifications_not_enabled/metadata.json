@@ -1,0 +1,12 @@
+{
+  "id": "df2a1e36-dbb9-4c01-a56d-4b885fe83de1",
+  "descriptionID": "df2a1e36",
+  "queryName": "Ensure S3 buckets have event notifications enabled",
+  "severity": "MEDIUM",
+  "category": "observability",
+  "descriptionText": "S3 buckets should be configured with event notifications to allow automated monitoring, logging, or workflows on object changes.",
+  "descriptionUrl": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/NotificationHowTo.html",
+  "platform": "Terraform",
+  "cloudProvider": "aws",
+  "cwe": "CWE-200"
+}
