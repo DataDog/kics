@@ -178,17 +178,18 @@ func TestNewInspector(t *testing.T) { //nolint
 		Aggregation: 1,
 	})
 	type args struct {
-		ctx                 context.Context
-		source              source.QueriesSource
-		vb                  VulnerabilityBuilder
-		tracker             Tracker
-		queryFilter         source.QueryInspectorParameters
-		excludeResults      map[string]bool
-		queryExecTimeout    int
-		needsLog            bool
-		useOldSeverities    bool
-		numWorkers          int
-		kicsComputeNewSimID bool
+		ctx                        context.Context
+		source                     source.QueriesSource
+		vb                         VulnerabilityBuilder
+		tracker                    Tracker
+		queryFilter                source.QueryInspectorParameters
+		excludeResults             map[string]bool
+		queryExecTimeout           int
+		needsLog                   bool
+		useOldSeverities           bool
+		useDetailedDescriptionText bool
+		numWorkers                 int
+		kicsComputeNewSimID        bool
 	}
 	tests := []struct {
 		name    string
@@ -238,6 +239,7 @@ func TestNewInspector(t *testing.T) { //nolint
 				tt.args.excludeResults,
 				tt.args.queryExecTimeout,
 				tt.args.useOldSeverities,
+				tt.args.useDetailedDescriptionText,
 				tt.args.needsLog,
 				tt.args.numWorkers,
 				tt.args.kicsComputeNewSimID,
@@ -552,7 +554,7 @@ func newQueryContext(ctx context.Context) QueryContext {
 func newInspectorInstance(t *testing.T, queryPath []string, kicsComputeNewSimID bool) *Inspector {
 	querySource := source.NewFilesystemSource(queryPath, []string{""}, []string{""}, filepath.FromSlash("./assets/libraries"), true)
 	var vb = func(ctx *QueryContext, tracker Tracker, v interface{},
-		detector *detector.DetectLine, useOldSeverity bool, kicsComputeNewSimID bool, queryDuration time.Duration) (*model.Vulnerability, error) {
+		detector *detector.DetectLine, useOldSeverity bool, useDetailedDescriptionText bool, kicsComputeNewSimID bool, queryDuration time.Duration) (*model.Vulnerability, error) {
 		return &model.Vulnerability{}, nil
 	}
 	ins, err := NewInspector(
@@ -562,7 +564,7 @@ func newInspectorInstance(t *testing.T, queryPath []string, kicsComputeNewSimID 
 		&tracker.CITracker{},
 		&source.QueryInspectorParameters{},
 		map[string]bool{}, 60,
-		false, true, 1,
+		false, false, true, 1,
 		kicsComputeNewSimID,
 	)
 	require.NoError(t, err)

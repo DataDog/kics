@@ -62,7 +62,7 @@ type QueryLoader struct {
 
 // VulnerabilityBuilder represents a function that will build a vulnerability
 type VulnerabilityBuilder func(ctx *QueryContext, tracker Tracker, v interface{},
-	detector *detector.DetectLine, useOldSeverities bool, kicsComputeNewSimID bool, queryDuration time.Duration) (*model.Vulnerability, error)
+	detector *detector.DetectLine, useOldSeverities bool, useDetailedDescriptionText bool, kicsComputeNewSimID bool, queryDuration time.Duration) (*model.Vulnerability, error)
 
 // PreparedQuery includes the opaQuery and its metadata
 type PreparedQuery struct {
@@ -80,12 +80,13 @@ type Inspector struct {
 	excludeResults map[string]bool
 	detector       *detector.DetectLine
 
-	enableCoverageReport bool
-	coverageReport       cover.Report
-	queryExecTimeout     time.Duration
-	useOldSeverities     bool
-	numWorkers           int
-	kicsComputeNewSimID  bool
+	enableCoverageReport       bool
+	coverageReport             cover.Report
+	queryExecTimeout           time.Duration
+	useOldSeverities           bool
+	useDetailedDescriptionText bool
+	numWorkers                 int
+	kicsComputeNewSimID        bool
 }
 
 // QueryContext contains the context where the query is executed, which scan it belongs, basic information of query,
@@ -125,6 +126,7 @@ func NewInspector(
 	excludeResults map[string]bool,
 	queryTimeout int,
 	useOldSeverities bool,
+	useDetailedDescriptionText bool,
 	needsLog bool,
 	numWorkers int,
 	kicsComputeNewSimID bool,
@@ -178,16 +180,17 @@ func NewInspector(
 	}
 
 	return &Inspector{
-		QueryLoader:         &queryLoader,
-		vb:                  vb,
-		tracker:             tracker,
-		failedQueries:       failedQueries,
-		excludeResults:      excludeResults,
-		detector:            lineDetector,
-		queryExecTimeout:    queryExecTimeout,
-		useOldSeverities:    useOldSeverities,
-		numWorkers:          adjustNumWorkers(numWorkers),
-		kicsComputeNewSimID: kicsComputeNewSimID,
+		QueryLoader:                &queryLoader,
+		vb:                         vb,
+		tracker:                    tracker,
+		failedQueries:              failedQueries,
+		excludeResults:             excludeResults,
+		detector:                   lineDetector,
+		queryExecTimeout:           queryExecTimeout,
+		useOldSeverities:           useOldSeverities,
+		useDetailedDescriptionText: useDetailedDescriptionText,
+		numWorkers:                 adjustNumWorkers(numWorkers),
+		kicsComputeNewSimID:        kicsComputeNewSimID,
 	}, nil
 }
 
@@ -480,7 +483,7 @@ func (c *Inspector) DecodeQueryResults(
 }
 
 func getVulnerabilitiesFromQuery(ctx *QueryContext, c *Inspector, queryResultItem interface{}, queryDuration time.Duration) (*model.Vulnerability, bool) {
-	vulnerability, err := c.vb(ctx, c.tracker, queryResultItem, c.detector, c.useOldSeverities, c.kicsComputeNewSimID, queryDuration)
+	vulnerability, err := c.vb(ctx, c.tracker, queryResultItem, c.detector, c.useOldSeverities, c.useDetailedDescriptionText, c.kicsComputeNewSimID, queryDuration)
 	if err != nil && err.Error() == ErrNoResult.Error() {
 		// Ignoring bad results
 		return nil, false

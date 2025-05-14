@@ -77,6 +77,7 @@ func (c *Client) initScan(ctx context.Context) (*executeScanParameters, error) {
 		c.ExcludeResultsMap,
 		c.ScanParams.QueryExecTimeout,
 		c.ScanParams.UseOldSeverities,
+		c.ScanParams.UseDetailedDescriptionText,
 		true,
 		c.ScanParams.ParallelScanFlag,
 		c.ScanParams.KicsComputeNewSimID,

@@ -8,5 +8,10 @@
   "descriptionUrl": "https://cloud.google.com/iam/docs/best-practices-for-managing-service-account-keys",
   "platform": "Terraform",
   "cloudProvider": "GCP",
-  "cwe": "CWE-522"
+  "cwe": "CWE-522",
+  "override": {
+    "detailedDescriptionText": {
+      "descriptionText": "Service account keys provide access to GCP resources, and manually created keys introduce significant security risks as they can be leaked, shared inappropriately, or remain active indefinitely without rotation. GCP-managed service account keys follow security best practices by default, with automatic key rotation and secure storage handled by Google. To ensure security, avoid manually specifying key data in your Terraform configuration like `public_key_data = \"dummy-key\"` and instead rely on GCP's managed keys by omitting this attribute."
+    }
+  }
 }
