@@ -2,6 +2,13 @@
 	{
 		"queryName": "Cloud DNS Without DNSSEC",
 		"severity": "MEDIUM",
-		"line": 10
+		"line": 10,
+    "fileName": "positive.tf"
+	},
+  {
+		"queryName": "Cloud DNS Without DNSSEC",
+		"severity": "MEDIUM",
+		"line": 10,
+    "fileName": "positive1.tf"
 	}
 ]
