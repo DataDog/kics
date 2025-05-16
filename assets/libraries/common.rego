@@ -39,14 +39,41 @@ resolve_path(pathItem) = resolved {
 	true
 }
 
-json_unmarshal(s) = result {
-	s == null
-	result := json.unmarshal("{}")
+json_unmarshal(s) = s {
+  is_object(s)
+}
+
+json_unmarshal(s) = s {
+  is_array(s)
 }
 
 json_unmarshal(s) = result {
-	s != null
-	result := json.unmarshal(s)
+  s == null
+  result := json.unmarshal("{}")
+}
+
+json_unmarshal(s) = result {
+  s != null
+  is_string(s)
+  startswith(s, "jsonencode(")
+  endswith(s, ")")
+
+  raw := substring(s, count("jsonencode("), count(s) - count("jsonencode(") - 1)
+  json_text := terraform_to_json(raw)
+  result := json.unmarshal(json_text)
+}
+
+json_unmarshal(s) = result {
+  s != null
+  is_string(s)
+  not startswith(s, "jsonencode(")
+  result := json.unmarshal(s)
+}
+
+terraform_to_json(s) = out {
+  step1 := regex.replace(s, "(\\b\\w+\\b)\\s*=", "\"${1}\":")
+  step2 := regex.replace(step1, "#.*", "") # Remove inline comments
+  out := regex.replace(step2, ",\\s*]", "]") # Remove trailing commas
 }
 
 calc_IP_value(ip) = result {

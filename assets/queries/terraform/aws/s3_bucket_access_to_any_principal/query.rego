@@ -43,10 +43,13 @@ CxPolicy[result] {
 }
 
 access_to_any_principal(policyValue) {
-	policy := common_lib.json_unmarshal(policyValue)
-	st := common_lib.get_statement(policy)
-	statement := st[_]
+  policy := common_lib.json_unmarshal(policyValue)
 
-	common_lib.is_allow_effect(statement)
-	tf_lib.anyPrincipal(statement)
+  st := common_lib.get_statement(policy)
+  statement := st[_]
+
+  common_lib.is_allow_effect(statement)
+  tf_lib.anyPrincipal(statement)
+
+  keys := [k | k := key; _ := policy[k]]
 }
