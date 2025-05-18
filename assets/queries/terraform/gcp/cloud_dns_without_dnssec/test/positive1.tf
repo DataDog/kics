@@ -5,7 +5,7 @@ resource "google_dns_managed_zone" "target" {
 
   lifecycle {
     ignore_changes = [
-      # Ignore changes to DNSSEC, since these resourceswere changed
+      # Ignore changes to DNSSEC, since these resources were changed
       # outside of this terraform configuration
       dnssec_config,
     ]
