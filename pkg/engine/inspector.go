@@ -10,6 +10,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"reflect"
 
 	"runtime"
 	"strings"
@@ -22,6 +23,8 @@ import (
 	"github.com/Checkmarx/kics/pkg/detector/terraform"
 	"github.com/Checkmarx/kics/pkg/engine/source"
 	"github.com/Checkmarx/kics/pkg/model"
+	"github.com/hashicorp/hcl/v2"
+	"github.com/hashicorp/hcl/v2/hclsyntax"
 	"github.com/open-policy-agent/opa/ast"
 	"github.com/open-policy-agent/opa/cover"
 	"github.com/open-policy-agent/opa/rego"
@@ -30,6 +33,7 @@ import (
 	"github.com/open-policy-agent/opa/util"
 	"github.com/pkg/errors"
 	"github.com/rs/zerolog/log"
+	"github.com/zclconf/go-cty/cty"
 )
 
 // Default values for inspector
@@ -393,6 +397,8 @@ func (c *Inspector) doRun(ctx *QueryContext) (vulns []model.Vulnerability, err e
 			log.Err(err).Msg(errMessage)
 		}
 	}()
+	*ctx.payload = c.TransformJsonencodeInPayload(*ctx.payload)
+
 	options := []rego.EvalOption{rego.EvalParsedInput(*ctx.payload)}
 
 	var cov *cover.Cover
@@ -420,10 +426,48 @@ func (c *Inspector) doRun(ctx *QueryContext) (vulns []model.Vulnerability, err e
 			ctx.Query.Metadata.Query: module,
 		})
 	}
+
 	queryDuration := time.Since(queryStart)
 	timeoutCtxToDecode, cancelDecode := context.WithTimeout(ctx.Ctx, c.queryExecTimeout)
 	defer cancelDecode()
 	return c.DecodeQueryResults(ctx, timeoutCtxToDecode, results, queryDuration)
+}
+
+func (c *Inspector) TransformJsonencodeInPayload(value ast.Value) ast.Value {
+	switch v := value.(type) {
+	case ast.Object:
+		newObj := ast.NewObject()
+		_ = v.Iter(func(k *ast.Term, val *ast.Term) error {
+			newVal := c.TransformJsonencodeInPayload(val.Value)
+			newObj.Insert(k, ast.NewTerm(newVal))
+			return nil
+		})
+		return newObj
+
+	case *ast.Array:
+		terms := []*ast.Term{}
+		for i := 0; i < v.Len(); i++ {
+			elem := v.Elem(i)
+			transformed := c.TransformJsonencodeInPayload(elem.Value)
+			terms = append(terms, ast.NewTerm(transformed))
+		}
+		return ast.NewArray(terms...)
+
+	case ast.String:
+		str := string(v)
+		if strings.Contains(str, "jsonencode(") {
+			parsed, err := parseJsonencodeHCL(str)
+			if err == nil {
+				return parsed
+			} else {
+				return v
+			}
+		}
+		return v
+
+	default:
+		return v
+	}
 }
 
 // DecodeQueryResults decodes the results into []model.Vulnerability
@@ -637,4 +681,150 @@ func (q QueryLoader) LoadQuery(ctx context.Context, query *model.QueryMetadata) 
 
 		return &opaQuery, nil
 	}
+}
+
+func parseJsonencodeHCL(input string) (ast.Value, error) {
+	input = strings.TrimSpace(input)
+
+	// Remove Terraform interpolation
+	if strings.HasPrefix(input, "${") && strings.HasSuffix(input, "}") {
+		input = strings.TrimPrefix(input, "${")
+		input = strings.TrimSuffix(input, "}")
+	}
+
+	// Validate jsonencode(...) format
+	const prefix = "jsonencode("
+	const suffix = ")"
+
+	if !strings.HasPrefix(input, prefix) || !strings.HasSuffix(input, suffix) {
+		return nil, fmt.Errorf("expected jsonencode(...) format, got: %s", input)
+	}
+
+	// Extract inner expression
+	inner := strings.TrimSuffix(strings.TrimPrefix(input, prefix), suffix)
+
+	expr, diags := hclsyntax.ParseExpression([]byte(inner), "inline_expr.hcl", hcl.Pos{Line: 1, Column: 1})
+	if diags.HasErrors() {
+		return nil, fmt.Errorf("HCL parse error: %s", diags.Error())
+	}
+
+	val, err := expressionToAST(expr)
+	if err != nil {
+		return nil, fmt.Errorf("expression to AST failed: %w", err)
+	}
+
+	return val, nil
+}
+
+// Converts HCL expression to OPA ast.Value
+func expressionToAST(expr hclsyntax.Expression) (ast.Value, error) {
+	switch e := expr.(type) {
+
+	case *hclsyntax.LiteralValueExpr:
+		return literalToAst(e)
+
+	case *hclsyntax.TemplateExpr:
+		result := ""
+		for _, part := range e.Parts {
+			switch p := part.(type) {
+			case *hclsyntax.LiteralValueExpr:
+				if p.Val.Type().Equals(cty.String) {
+					result += p.Val.AsString()
+				}
+			default:
+				result += "${...}"
+			}
+		}
+		return ast.String(result), nil
+
+	case *hclsyntax.TemplateWrapExpr:
+		return expressionToAST(e.Wrapped)
+
+	case *hclsyntax.ScopeTraversalExpr:
+		return ast.String(e.Traversal.RootName()), nil
+
+	case *hclsyntax.TupleConsExpr:
+		terms := []*ast.Term{}
+		for _, item := range e.Exprs {
+			v, err := expressionToAST(item)
+			if err != nil {
+				v = ast.String("__UNRESOLVED__")
+			}
+			terms = append(terms, ast.NewTerm(v))
+		}
+		return ast.NewArray(terms...), nil
+
+	case *hclsyntax.ObjectConsExpr:
+		obj := ast.NewObject()
+		for _, item := range e.Items {
+			keyExpr := normalizeKeyExpr(item.KeyExpr)
+			keyVal, err := expressionToAST(keyExpr)
+			if err != nil {
+				continue
+			}
+			strKey, ok := keyVal.(ast.String)
+			if !ok {
+				continue
+			}
+			valVal, err := expressionToAST(item.ValueExpr)
+			if err != nil {
+				valVal = ast.String("__UNRESOLVED__")
+			}
+			obj.Insert(ast.NewTerm(strKey), ast.NewTerm(valVal))
+		}
+		return obj, nil
+
+	case *hclsyntax.ObjectConsKeyExpr:
+		return expressionToAST(e.UnwrapExpression())
+
+	default:
+		return ast.String("__UNSUPPORTED_EXPR__"), nil
+	}
+}
+
+// Converts HCL literal values to ast.Value
+func literalToAst(expr *hclsyntax.LiteralValueExpr) (ast.Value, error) {
+	val := expr.Val
+	switch {
+	case val.Type().Equals(cty.String):
+		return ast.String(val.AsString()), nil
+
+	case val.Type().Equals(cty.Number):
+		bf := val.AsBigFloat()
+		f64, _ := bf.Float64()
+		return ast.NumberTerm(json.Number(fmt.Sprintf("%v", f64))).Value, nil
+
+	case val.Type().Equals(cty.Bool):
+		return ast.Boolean(val.True()), nil
+
+	case val.IsNull():
+		return ast.Null{}, nil
+
+	default:
+		return ast.String("__UNSUPPORTED_LITERAL__"), nil
+	}
+}
+
+func normalizeKeyExpr(expr hclsyntax.Expression) hclsyntax.Expression {
+	switch e := expr.(type) {
+	case *hclsyntax.TemplateWrapExpr:
+		return normalizeKeyExpr(e.Wrapped)
+	case *hclsyntax.ParenthesesExpr:
+		return normalizeKeyExpr(e.Expression)
+	}
+
+	v := reflect.ValueOf(expr)
+	if v.Kind() == reflect.Ptr && !v.IsNil() {
+		elem := v.Elem()
+		if elem.Kind() == reflect.Struct {
+			field := elem.FieldByName("KeyExpr")
+			if field.IsValid() && field.CanInterface() {
+				if unwrapped, ok := field.Interface().(hclsyntax.Expression); ok {
+					return normalizeKeyExpr(unwrapped)
+				}
+			}
+		}
+	}
+
+	return expr
 }

@@ -64,22 +64,32 @@ getProtocolList(protocol) = protocols {
 
 # Checks if any principal are allowed in a policy
 anyPrincipal(statement) {
-	contains(statement.Principal, "*")
+  # Case: Principal = "*"
+  statement.Principal == "*"
 }
 
 anyPrincipal(statement) {
-	contains(statement.Principal[_], "*")
+  # Case: Principal = {"AWS": "*"}
+  is_string(statement.Principal.AWS)
+  statement.Principal.AWS == "*"
 }
 
 anyPrincipal(statement) {
-	is_string(statement.Principal.AWS)
-	contains(statement.Principal.AWS, "*")
+  # Case: Principal = {"AWS": ["*"]}
+  is_array(statement.Principal.AWS)
+  "*" == statement.Principal.AWS[_]
 }
 
 anyPrincipal(statement) {
-	is_array(statement.Principal.AWS)
-	some i
-	contains(statement.Principal.AWS[i], "*")
+  # Case: Principal = {"Service": "*"}  (uncommon, but valid)
+  is_string(statement.Principal.Service)
+  statement.Principal.Service == "*"
+}
+
+anyPrincipal(statement) {
+  # Case: Principal = {"Service": ["*"]}
+  is_array(statement.Principal.Service)
+  "*" == statement.Principal.Service[_]
 }
 
 getSpecInfo(resource) = specInfo { # this one can be also used for the result
