@@ -54,7 +54,7 @@ CxPolicy[result] {
         "issueType": "MissingAttribute",
         "keyExpectedValue": "'settings.database_flags.skip_show_database' must be present",
         "keyActualValue": "'database_flags' block is missing",
-        "remediation": "database_flags {\n\tname  = \"skip_show_database\"\n\tvalue = \"on\"\n\t}",
+        "remediation": "database_flags {\n\tname  = \"skip_show_database\"\n\tvalue = \"on\"\n}",
         "remediationType": "addition"
     }
 }
@@ -78,7 +78,7 @@ CxPolicy[result] {
         "issueType": "MissingValue",
         "keyExpectedValue": "'settings.database_flags.skip_show_database' must be present",
         "keyActualValue": "'skip_show_database' flag is missing",
-        "remediation": "database_flags {\n\tname  = \"skip_show_database\"\n\tvalue = \"on\"\n\t}",
+        "remediation": "database_flags {\n\tname  = \"skip_show_database\"\n\tvalue = \"on\"\n}",
         "remediationType": "addition"
     }
 }
