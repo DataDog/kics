@@ -159,7 +159,11 @@ func buildAdditionFix(vuln model.VulnerableFile, startLocation model.SarifResour
 			indent += strings.Repeat("  ", nestingLevel)
 		}
 		if closing {
-			postIndent = strings.Repeat("  ", nestingLevel)
+			if len(strings.Repeat("  ", nestingLevel)) > len(baseIndent) {
+				postIndent = strings.Repeat("  ", nestingLevel)
+			} else {
+				postIndent = baseIndent
+			}
 		}
 		if nested && !closing {
 			postIndent = baseIndent
