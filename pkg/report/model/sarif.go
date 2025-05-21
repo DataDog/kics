@@ -784,5 +784,5 @@ func (sr *sarifReport) ResolveFilepaths(basePath string) error {
 }
 
 func GetDatadogFingerprintHash(sciInfo model.SCIInfo, filePath string, startLine int, ruleId string) string {
-	return StringToHash(fmt.Sprintf("%s|%s|%s|%s|%d|%s", sciInfo.RunType, sciInfo.RepositoryCommitInfo.CommitSHA, sciInfo.RepositoryCommitInfo.RepositoryUrl, filePath, startLine, ruleId))
+	return StringToHash(fmt.Sprintf("%s|%s|%d|%s", sciInfo.RepositoryCommitInfo.RepositoryUrl, filePath, startLine, ruleId))
 }
