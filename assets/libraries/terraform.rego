@@ -578,13 +578,7 @@ compute_raw_resource_name(resource, resourceDefinitionName) = name {
 }
 
 get_resource_name(resource, resourceDefinitionName) = final_name {
-    name := compute_raw_resource_name(resource, resourceDefinitionName)
-    contains(name, ".")
     final_name := resourceDefinitionName
-} else = final_name {
-    name := compute_raw_resource_name(resource, resourceDefinitionName)
-    not contains(name, ".")
-    final_name := name
 }
 
 get_specific_resource_name(resource, resourceType, resourceDefinitionName) = name {
