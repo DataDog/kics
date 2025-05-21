@@ -24,16 +24,16 @@ CxPolicy[result] {
         "documentId": input.document[i].id,
         "resourceType": "google_sql_database_instance",
         "resourceName": tf_lib.get_resource_name(resource, name),
-        "searchKey": sprintf("google_sql_database_instance[%s].settings.database_flags.skip_show_database", [name]),
-        "searchLine": common_lib.build_search_line(["resource", "google_sql_database_instance", name], ["settings", "database_flags", "skip_show_database"]),
-        "issueType": "MissingValue",
-        "keyExpectedValue": "'settings.database_flags.skip_show_database' must be present",
-        "keyActualValue": "'skip_show_database' flag is missing",
+        "searchKey": sprintf("google_sql_database_instance[%s].settings.database_flags.skip_show_database.value", [name]),
+        "searchLine": common_lib.build_search_line(["resource", "google_sql_database_instance", name], ["settings", "database_flags", "skip_show_database", "value"]),
+        "issueType": "IncorrectValue",
+        "keyExpectedValue": "'settings.database_flags.skip_show_database' must be on",
+        "keyActualValue": "'skip_show_database' flag is off",
         "remediation": json.marshal({
-            "before": "database_flags without 'skip_show_database'",
-            "after":  "Add { name = \"skip_show_database\", value = \"<desired_value>\" } to settings.database_flags"
+            "before": "off",
+            "after":  "on"
         }),
-        "remediationType": "addition"
+        "remediationType": "replacement"
     }
 }
 
@@ -49,15 +49,12 @@ CxPolicy[result] {
         "documentId": input.document[i].id,
         "resourceType": "google_sql_database_instance",
         "resourceName": tf_lib.get_resource_name(resource, name),
-        "searchKey": sprintf("google_sql_database_instance[%s].settings.database_flags", [name]),
+        "searchKey": sprintf("google_sql_database_instance[%s].settings", [name]),
         "searchLine": common_lib.build_search_line(["resource", "google_sql_database_instance", name], ["settings", "database_flags"]),
-        "issueType": "MissingValue",
+        "issueType": "MissingAttribute",
         "keyExpectedValue": "'settings.database_flags.skip_show_database' must be present",
         "keyActualValue": "'database_flags' block is missing",
-        "remediation": json.marshal({
-            "before": "No database_flags block",
-            "after": "Add database_flags block with { name = \"skip_show_database\", value = \"<desired_value>\" }"
-        }),
+        "remediation": "database_flags {\n\tname  = \"skip_show_database\"\n\tvalue = \"on\"\n}",
         "remediationType": "addition"
     }
 }
@@ -76,15 +73,12 @@ CxPolicy[result] {
         "documentId": input.document[i].id,
         "resourceType": "google_sql_database_instance",
         "resourceName": tf_lib.get_resource_name(resource, name),
-        "searchKey": sprintf("google_sql_database_instance[%s].settings.database_flags", [name]),
+        "searchKey": sprintf("google_sql_database_instance[%s].settings", [name]),
         "searchLine": common_lib.build_search_line(["resource", "google_sql_database_instance", name], ["settings", "database_flags", "skip_show_database"]),
         "issueType": "MissingValue",
         "keyExpectedValue": "'settings.database_flags.skip_show_database' must be present",
         "keyActualValue": "'skip_show_database' flag is missing",
-        "remediation": json.marshal({
-            "before": "database_flags missing 'skip_show_database'",
-            "after": "Add { name = \"skip_show_database\", value = \"<desired_value>\" } to settings.database_flags"
-        }),
+        "remediation": "database_flags {\n\tname  = \"skip_show_database\"\n\tvalue = \"on\"\n}",
         "remediationType": "addition"
     }
 }
