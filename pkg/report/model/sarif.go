@@ -13,7 +13,6 @@ import (
 	"os"
 	"path/filepath"
 	"strings"
-	"time"
 
 	"github.com/Checkmarx/kics/internal/constants"
 	"github.com/Checkmarx/kics/pkg/model"
@@ -785,9 +784,5 @@ func (sr *sarifReport) ResolveFilepaths(basePath string) error {
 }
 
 func GetDatadogFingerprintHash(sciInfo model.SCIInfo, filePath string, startLine int, ruleId string) string {
-	runTypeRelatedInfo := sciInfo.RepositoryCommitInfo.CommitSHA
-	if sciInfo.RunType == "full_scan" {
-		runTypeRelatedInfo = time.Now().Format("2006/01/02")
-	}
-	return StringToHash(fmt.Sprintf("%s|%s|%s|%s|%d|%s", sciInfo.RunType, runTypeRelatedInfo, sciInfo.RepositoryCommitInfo.RepositoryUrl, filePath, startLine, ruleId))
+	return StringToHash(fmt.Sprintf("%s|%s|%s|%s|%d|%s", sciInfo.RunType, sciInfo.RepositoryCommitInfo.CommitSHA, sciInfo.RepositoryCommitInfo.RepositoryUrl, filePath, startLine, ruleId))
 }
