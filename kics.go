@@ -4,7 +4,7 @@
  * This product includes software developed at Datadog (https://www.datadoghq.com)  Copyright 2024 Datadog, Inc.
  */
 
-package kics
+package main
 
 import (
 	"path/filepath"
@@ -14,6 +14,23 @@ import (
 	"github.com/Checkmarx/kics/pkg/scan"
 	"github.com/rs/zerolog/log"
 )
+
+func main() {
+	inputPaths := []string{"assets/queries/terraform/gcp/sql_database_instance_does_not_have_skip_show_database/test/positive.tf"}
+	outputPath := "/Users/bahar.shah/dev/kics"
+	sci := model.SCIInfo{
+		DiffAware: model.DiffAware{
+			Enabled: false,
+		},
+		RunType: "code_update",
+		RepositoryCommitInfo: model.RepositoryCommitInfo{
+			RepositoryUrl: "github.com/blah",
+			Branch:        "main",
+			CommitSHA:     "1234567890",
+		},
+	}
+	ExecuteKICSScan(inputPaths, outputPath, sci, true, true)
+}
 
 func ExecuteKICSScan(inputPaths []string, outputPath string, sciInfo model.SCIInfo, includeRemediations bool, useDetailedDescriptionText bool) (scan.ScanMetadata, string) {
 	params := scan.GetDefaultParameters(outputPath)
