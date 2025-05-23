@@ -21,7 +21,7 @@ hide:
 -   **Severity:** <span style="color:#bb2124">High</span>
 -   **Category:** Encryption
 -   **CWE:** Ongoing
--   **URL:** [Github](https://github.com/Checkmarx/kics/tree/master/assets/queries/terraform/gcp/kms_crypto_key_publicly_accessible)
+-   **URL:** [Github](https://github.com/DataDog/kics/tree/master/assets/queries/terraform/gcp/kms_crypto_key_publicly_accessible)
 
 ### Description
 KMS Crypto Key should not be publicly accessible. In other words, the KMS Crypto Key policy should not set 'allUsers' or 'allAuthenticatedUsers' in the attribute 'member'/'members'<br>

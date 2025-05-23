@@ -21,7 +21,7 @@ hide:
 -   **Severity:** <span style="color:#ff7213">Medium</span>
 -   **Category:** Networking and Firewall
 -   **CWE:** Ongoing
--   **URL:** [Github](https://github.com/Checkmarx/kics/tree/master/assets/queries/terraform/gcp/ssh_access_is_not_restricted)
+-   **URL:** [Github](https://github.com/DataDog/kics/tree/master/assets/queries/terraform/gcp/ssh_access_is_not_restricted)
 
 ### Description
 Google Firewall should not allow SSH access (port 22) from the Internet (public CIDR block) to ensure the principle of least privileges<br>

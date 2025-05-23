@@ -21,7 +21,7 @@ hide:
 -   **Severity:** <span style="color:#edd57e">Low</span>
 -   **Category:** Best Practices
 -   **CWE:** Ongoing
--   **URL:** [Github](https://github.com/Checkmarx/kics/tree/master/assets/queries/terraform/databricks/use_lts_spark_version)
+-   **URL:** [Github](https://github.com/DataDog/kics/tree/master/assets/queries/terraform/databricks/use_lts_spark_version)
 
 ### Description
 Spark Version is not a Long-term Support<br>

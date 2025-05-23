@@ -21,7 +21,7 @@ hide:
 -   **Severity:** <span style="color:#ff7213">Medium</span>
 -   **Category:** Observability
 -   **CWE:** Ongoing
--   **URL:** [Github](https://github.com/Checkmarx/kics/tree/master/assets/queries/terraform/azure/log_retention_is_not_set)
+-   **URL:** [Github](https://github.com/DataDog/kics/tree/master/assets/queries/terraform/azure/log_retention_is_not_set)
 
 ### Description
 Make sure that for PostgreSQL Database, server parameter 'log_retention' is set to 'ON'<br>

@@ -21,7 +21,7 @@ hide:
 -   **Severity:** <span style="color:#bb2124">High</span>
 -   **Category:** Encryption
 -   **CWE:** Ongoing
--   **URL:** [Github](https://github.com/Checkmarx/kics/tree/master/assets/queries/terraform/aws/aurora_with_disabled_at_rest_encryption)
+-   **URL:** [Github](https://github.com/DataDog/kics/tree/master/assets/queries/terraform/aws/aurora_with_disabled_at_rest_encryption)
 
 ### Description
 Amazon Aurora does not have encryption for data at rest enabled. To prevent such a scenario, update the attribute 'StorageEncrypted' to 'true'.<br>

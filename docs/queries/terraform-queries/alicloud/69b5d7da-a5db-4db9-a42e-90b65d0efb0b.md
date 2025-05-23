@@ -21,7 +21,7 @@ hide:
 -   **Severity:** <span style="color:#bb2124">High</span>
 -   **Category:** Observability
 -   **CWE:** Ongoing
--   **URL:** [Github](https://github.com/Checkmarx/kics/tree/master/assets/queries/terraform/alicloud/actiontrail_trail_oss_bucket_is_publicly_accessible)
+-   **URL:** [Github](https://github.com/DataDog/kics/tree/master/assets/queries/terraform/alicloud/actiontrail_trail_oss_bucket_is_publicly_accessible)
 
 ### Description
 ActionTrail Trail OSS Bucket should not be publicly accessible<br>

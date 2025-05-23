@@ -21,7 +21,7 @@ hide:
 -   **Severity:** <span style="color:#ff7213">Medium</span>
 -   **Category:** Best Practices
 -   **CWE:** Ongoing
--   **URL:** [Github](https://github.com/Checkmarx/kics/tree/master/assets/queries/terraform/azure/key_vault_secrets_content_type_undefined)
+-   **URL:** [Github](https://github.com/DataDog/kics/tree/master/assets/queries/terraform/azure/key_vault_secrets_content_type_undefined)
 
 ### Description
 Key Vault Secrets should have set Content Type<br>

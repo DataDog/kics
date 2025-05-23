@@ -21,7 +21,7 @@ hide:
 -   **Severity:** <span style="color:#ff7213">Medium</span>
 -   **Category:** Encryption
 -   **CWE:** Ongoing
--   **URL:** [Github](https://github.com/Checkmarx/kics/tree/master/assets/queries/terraform/aws/elasticache_replication_group_not_encrypted_at_transit)
+-   **URL:** [Github](https://github.com/DataDog/kics/tree/master/assets/queries/terraform/aws/elasticache_replication_group_not_encrypted_at_transit)
 
 ### Description
 ElastiCache Replication Group encryption should be enabled at Transit<br>

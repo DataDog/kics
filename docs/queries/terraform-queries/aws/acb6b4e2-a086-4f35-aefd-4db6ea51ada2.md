@@ -21,7 +21,7 @@ hide:
 -   **Severity:** <span style="color:#ff7213">Medium</span>
 -   **Category:** Observability
 -   **CWE:** Ongoing
--   **URL:** [Github](https://github.com/Checkmarx/kics/tree/master/assets/queries/terraform/aws/elasticsearch_logs_disabled)
+-   **URL:** [Github](https://github.com/DataDog/kics/tree/master/assets/queries/terraform/aws/elasticsearch_logs_disabled)
 
 ### Description
 AWS Elasticsearch should have logs enabled<br>

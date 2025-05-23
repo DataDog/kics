@@ -21,7 +21,7 @@ hide:
 -   **Severity:** <span style="color:#ff7213">Medium</span>
 -   **Category:** Access Control
 -   **CWE:** Ongoing
--   **URL:** [Github](https://github.com/Checkmarx/kics/tree/master/assets/queries/terraform/aws/policy_without_principal)
+-   **URL:** [Github](https://github.com/DataDog/kics/tree/master/assets/queries/terraform/aws/policy_without_principal)
 
 ### Description
 All policies, except IAM identity-based policies, should have the 'Principal' element defined<br>

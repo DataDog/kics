@@ -21,7 +21,7 @@ hide:
 -   **Severity:** <span style="color:#edd57e">Low</span>
 -   **Category:** Access Control
 -   **CWE:** Ongoing
--   **URL:** [Github](https://github.com/Checkmarx/kics/tree/master/assets/queries/terraform/alicloud/ram_security_preference_not_enforce_mfa)
+-   **URL:** [Github](https://github.com/DataDog/kics/tree/master/assets/queries/terraform/alicloud/ram_security_preference_not_enforce_mfa)
 
 ### Description
 RAM Security preferences should enforce MFA login for RAM users<br>

@@ -21,7 +21,7 @@ hide:
 -   **Severity:** <span style="color:#ff7213">Medium</span>
 -   **Category:** Observability
 -   **CWE:** Ongoing
--   **URL:** [Github](https://github.com/Checkmarx/kics/tree/master/assets/queries/terraform/aws/redshift_cluster_logging_disabled)
+-   **URL:** [Github](https://github.com/DataDog/kics/tree/master/assets/queries/terraform/aws/redshift_cluster_logging_disabled)
 
 ### Description
 Make sure Logging is enabled for Redshift Cluster<br>

@@ -21,7 +21,7 @@ hide:
 -   **Severity:** <span style="color:#ff0000">Critical</span>
 -   **Category:** Insecure Configurations
 -   **CWE:** Ongoing
--   **URL:** [Github](https://github.com/Checkmarx/kics/tree/master/assets/queries/terraform/gcp/sql_db_instance_is_publicly_accessible)
+-   **URL:** [Github](https://github.com/DataDog/kics/tree/master/assets/queries/terraform/gcp/sql_db_instance_is_publicly_accessible)
 
 ### Description
 Cloud SQL instances should not be publicly accessible.<br>

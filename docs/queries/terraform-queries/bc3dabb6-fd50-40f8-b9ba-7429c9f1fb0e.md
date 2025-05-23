@@ -21,7 +21,7 @@ hide:
 -   **Severity:** <span style="color:#edd57e">Low</span>
 -   **Category:** Best Practices
 -   **CWE:** Ongoing
--   **URL:** [Github](https://github.com/Checkmarx/kics/tree/master/assets/queries/terraform/kubernetes/metadata_label_is_invalid)
+-   **URL:** [Github](https://github.com/DataDog/kics/tree/master/assets/queries/terraform/kubernetes/metadata_label_is_invalid)
 
 ### Description
 Check if any label in the metadata is invalid.<br>

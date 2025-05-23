@@ -21,7 +21,7 @@ hide:
 -   **Severity:** <span style="color:#ff7213">Medium</span>
 -   **Category:** Best Practices
 -   **CWE:** Ongoing
--   **URL:** [Github](https://github.com/Checkmarx/kics/tree/master/assets/queries/terraform/databricks/use_spark_submit_task)
+-   **URL:** [Github](https://github.com/DataDog/kics/tree/master/assets/queries/terraform/databricks/use_spark_submit_task)
 
 ### Description
 Job's Task Is spark_submit_task<br>

@@ -21,7 +21,7 @@ hide:
 -   **Severity:** <span style="color:#ff7213">Medium</span>
 -   **Category:** Encryption
 -   **CWE:** Ongoing
--   **URL:** [Github](https://github.com/Checkmarx/kics/tree/master/assets/queries/terraform/tencentcloud/clb_instance_log_setting_disabled)
+-   **URL:** [Github](https://github.com/DataDog/kics/tree/master/assets/queries/terraform/tencentcloud/clb_instance_log_setting_disabled)
 
 ### Description
 CLB Instance should set log enabled<br>

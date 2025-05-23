@@ -21,7 +21,7 @@ hide:
 -   **Severity:** <span style="color:#edd57e">Low</span>
 -   **Category:** Insecure Configurations
 -   **CWE:** Ongoing
--   **URL:** [Github](https://github.com/Checkmarx/kics/tree/master/assets/queries/terraform/kubernetes/image_pull_policy_of_container_is_not_always)
+-   **URL:** [Github](https://github.com/DataDog/kics/tree/master/assets/queries/terraform/kubernetes/image_pull_policy_of_container_is_not_always)
 
 ### Description
 Image Pull Policy of the container must be defined and set to Always<br>

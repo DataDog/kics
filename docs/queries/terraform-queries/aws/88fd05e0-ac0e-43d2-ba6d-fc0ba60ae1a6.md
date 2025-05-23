@@ -21,7 +21,7 @@ hide:
 -   **Severity:** <span style="color:#ff7213">Medium</span>
 -   **Category:** Encryption
 -   **CWE:** Ongoing
--   **URL:** [Github](https://github.com/Checkmarx/kics/tree/master/assets/queries/terraform/aws/iam_database_auth_not_enabled)
+-   **URL:** [Github](https://github.com/DataDog/kics/tree/master/assets/queries/terraform/aws/iam_database_auth_not_enabled)
 
 ### Description
 IAM Database Auth Enabled should be configured to true when using compatible engine and version<br>

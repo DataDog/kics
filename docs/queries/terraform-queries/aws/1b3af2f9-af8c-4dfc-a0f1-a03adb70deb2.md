@@ -21,7 +21,7 @@ hide:
 -   **Severity:** <span style="color:#bb2124">High</span>
 -   **Category:** Insecure Configurations
 -   **CWE:** Ongoing
--   **URL:** [Github](https://github.com/Checkmarx/kics/tree/master/assets/queries/terraform/aws/lambda_function_with_privileged_role)
+-   **URL:** [Github](https://github.com/DataDog/kics/tree/master/assets/queries/terraform/aws/lambda_function_with_privileged_role)
 
 ### Description
 It is not advisable for AWS Lambda Functions to have privileged permissions.<br>
