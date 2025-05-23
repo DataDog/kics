@@ -11,7 +11,7 @@
   "cwe": "311",
   "override": {
     "detailedDescriptionText": {
-      "descriptionText": "Amazon SageMaker endpoint configurations should have encryption enabled using a KMS key to protect sensitive data at rest. Without proper encryption, data stored within SageMaker endpoints may be vulnerable to unauthorized access if the underlying storage is compromised. This represents a significant security risk as machine learning endpoints often process and store sensitive information.\n\nTo address this vulnerability, specify the `kms_key_arn` attribute in your SageMaker endpoint configuration. For example, the secure implementation uses:\n```\nresource \"aws_sagemaker_endpoint_configuration\" \"example\" {\n  # other configuration\n  kms_key_arn = \"aws_kms_key.example.arn\"\n}\n```\nwhile the insecure version omits this critical encryption setting."
+      "descriptionText": "Amazon SageMaker endpoint configurations should have encryption enabled using a KMS key to protect sensitive data at rest. Without proper encryption, data stored within SageMaker endpoints may be vulnerable to unauthorized access if the underlying storage is compromised. This represents a significant security risk as machine learning endpoints often process and store sensitive information.\n\nTo address this vulnerability, specify the `kms_key_arn` attribute in your SageMaker endpoint configuration. For example, the secure implementation uses:\n```\nresource \"aws_sagemaker_endpoint_configuration\" \"example\" {\n  // other configuration\n  kms_key_arn = \"aws_kms_key.example.arn\"\n}\n```\nwhile the insecure version omits this critical encryption setting."
     }
   }
 }
