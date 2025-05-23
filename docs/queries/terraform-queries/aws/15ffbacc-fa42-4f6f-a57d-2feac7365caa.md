@@ -5,16 +5,6 @@ hide:
   navigation: true
 ---
 
-<style>
-  .highlight .hll {
-    background-color: #ff171742;
-  }
-  .md-content {
-    max-width: 1100px;
-    margin: 0 auto;
-  }
-</style>
-
 -   **Query id:** 15ffbacc-fa42-4f6f-a57d-2feac7365caa
 -   **Query name:** Redshift Cluster Logging Disabled
 -   **Platform:** Terraform

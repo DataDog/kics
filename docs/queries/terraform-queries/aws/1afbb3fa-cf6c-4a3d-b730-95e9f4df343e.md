@@ -5,16 +5,6 @@ hide:
   navigation: true
 ---
 
-<style>
-  .highlight .hll {
-    background-color: #ff171742;
-  }
-  .md-content {
-    max-width: 1100px;
-    margin: 0 auto;
-  }
-</style>
-
 -   **Query id:** 1afbb3fa-cf6c-4a3d-b730-95e9f4df343e
 -   **Query name:** ElastiCache Replication Group Not Encrypted At Transit
 -   **Platform:** Terraform

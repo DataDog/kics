@@ -5,16 +5,6 @@ hide:
   navigation: true
 ---
 
-<style>
-  .highlight .hll {
-    background-color: #ff171742;
-  }
-  .md-content {
-    max-width: 1100px;
-    margin: 0 auto;
-  }
-</style>
-
 -   **Query id:** f8e08a38-fc6e-4915-abbe-a7aadf1d59ef
 -   **Query name:** Key Vault Secrets Content Type Undefined
 -   **Platform:** Terraform

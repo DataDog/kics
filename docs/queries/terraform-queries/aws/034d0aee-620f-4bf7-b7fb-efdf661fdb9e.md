@@ -5,16 +5,6 @@ hide:
   navigation: true
 ---
 
-<style>
-  .highlight .hll {
-    background-color: #ff171742;
-  }
-  .md-content {
-    max-width: 1100px;
-    margin: 0 auto;
-  }
-</style>
-
 -   **Query id:** 034d0aee-620f-4bf7-b7fb-efdf661fdb9e
 -   **Query name:** Group With Privilege Escalation By Actions 'lambda:CreateFunction' And 'iam:PassRole' And 'lambda:InvokeFunction'
 -   **Platform:** Terraform

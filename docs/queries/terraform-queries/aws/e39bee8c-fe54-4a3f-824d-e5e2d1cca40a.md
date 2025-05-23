@@ -5,16 +5,6 @@ hide:
   navigation: true
 ---
 
-<style>
-  .highlight .hll {
-    background-color: #ff171742;
-  }
-  .md-content {
-    max-width: 1100px;
-    margin: 0 auto;
-  }
-</style>
-
 -   **Query id:** e39bee8c-fe54-4a3f-824d-e5e2d1cca40a
 -   **Query name:** IAM Role Policy passRole Allows All
 -   **Platform:** Terraform

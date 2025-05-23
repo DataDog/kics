@@ -5,16 +5,6 @@ hide:
   navigation: true
 ---
 
-<style>
-  .highlight .hll {
-    background-color: #ff171742;
-  }
-  .md-content {
-    max-width: 1100px;
-    margin: 0 auto;
-  }
-</style>
-
 -   **Query id:** 69b5d7da-a5db-4db9-a42e-90b65d0efb0b
 -   **Query name:** ActionTrail Trail OSS Bucket is Publicly Accessible
 -   **Platform:** Terraform

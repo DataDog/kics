@@ -5,16 +5,6 @@ hide:
   navigation: true
 ---
 
-<style>
-  .highlight .hll {
-    background-color: #ff171742;
-  }
-  .md-content {
-    max-width: 1100px;
-    margin: 0 auto;
-  }
-</style>
-
 -   **Query id:** aa737abf-6b1d-4aba-95aa-5c160bd7f96e
 -   **Query name:** Image Pull Policy Of The Container Is Not Set To Always
 -   **Platform:** Terraform

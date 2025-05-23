@@ -5,16 +5,6 @@ hide:
   navigation: true
 ---
 
-<style>
-  .highlight .hll {
-    background-color: #ff171742;
-  }
-  .md-content {
-    max-width: 1100px;
-    margin: 0 auto;
-  }
-</style>
-
 -   **Query id:** f465fff1-0a0f-457d-aa4d-1bddb6f204ff
 -   **Query name:** Role With Privilege Escalation By Actions 'iam:AttachRolePolicy'
 -   **Platform:** Terraform

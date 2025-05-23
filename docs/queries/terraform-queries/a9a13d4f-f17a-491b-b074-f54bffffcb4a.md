@@ -5,16 +5,6 @@ hide:
   navigation: true
 ---
 
-<style>
-  .highlight .hll {
-    background-color: #ff171742;
-  }
-  .md-content {
-    max-width: 1100px;
-    margin: 0 auto;
-  }
-</style>
-
 -   **Query id:** a9a13d4f-f17a-491b-b074-f54bffffcb4a
 -   **Query name:** Service Account Token Automount Not Disabled
 -   **Platform:** Terraform

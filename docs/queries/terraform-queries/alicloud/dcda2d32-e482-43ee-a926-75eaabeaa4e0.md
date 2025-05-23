@@ -5,16 +5,6 @@ hide:
   navigation: true
 ---
 
-<style>
-  .highlight .hll {
-    background-color: #ff171742;
-  }
-  .md-content {
-    max-width: 1100px;
-    margin: 0 auto;
-  }
-</style>
-
 -   **Query id:** dcda2d32-e482-43ee-a926-75eaabeaa4e0
 -   **Query name:** RAM Security Preference Not Enforce MFA Login
 -   **Platform:** Terraform

@@ -5,16 +5,6 @@ hide:
   navigation: true
 ---
 
-<style>
-  .highlight .hll {
-    background-color: #ff171742;
-  }
-  .md-content {
-    max-width: 1100px;
-    margin: 0 auto;
-  }
-</style>
-
 -   **Query id:** 375cdab9-3f94-4ae0-b1e3-8fbdf9cdf4d7
 -   **Query name:** Beta - Job's Task is Legacy (spark_submit_task)
 -   **Platform:** Terraform

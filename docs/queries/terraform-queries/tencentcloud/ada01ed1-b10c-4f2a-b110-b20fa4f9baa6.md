@@ -5,16 +5,6 @@ hide:
   navigation: true
 ---
 
-<style>
-  .highlight .hll {
-    background-color: #ff171742;
-  }
-  .md-content {
-    max-width: 1100px;
-    margin: 0 auto;
-  }
-</style>
-
 -   **Query id:** ada01ed1-b10c-4f2a-b110-b20fa4f9baa6
 -   **Query name:** Beta - CLB Instance Log Setting Disabled
 -   **Platform:** Terraform

@@ -5,16 +5,6 @@ hide:
   navigation: true
 ---
 
-<style>
-  .highlight .hll {
-    background-color: #ff171742;
-  }
-  .md-content {
-    max-width: 1100px;
-    margin: 0 auto;
-  }
-</style>
-
 -   **Query id:** ffb02aca-0d12-475e-b77c-a726f7aeff4b
 -   **Query name:** Log Retention Is Not Set
 -   **Platform:** Terraform

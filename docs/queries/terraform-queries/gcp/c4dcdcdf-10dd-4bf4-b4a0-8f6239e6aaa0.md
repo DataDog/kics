@@ -5,16 +5,6 @@ hide:
   navigation: true
 ---
 
-<style>
-  .highlight .hll {
-    background-color: #ff171742;
-  }
-  .md-content {
-    max-width: 1100px;
-    margin: 0 auto;
-  }
-</style>
-
 -   **Query id:** c4dcdcdf-10dd-4bf4-b4a0-8f6239e6aaa0
 -   **Query name:** SSH Access Is Not Restricted
 -   **Platform:** Terraform

@@ -5,16 +5,6 @@ hide:
   navigation: true
 ---
 
-<style>
-  .highlight .hll {
-    background-color: #ff171742;
-  }
-  .md-content {
-    max-width: 1100px;
-    margin: 0 auto;
-  }
-</style>
-
 -   **Query id:** 1a690d1d-0ae7-49fa-b2db-b75ae0dd1d3e
 -   **Query name:** Aurora With Disabled at Rest Encryption
 -   **Platform:** Terraform

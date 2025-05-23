@@ -5,16 +5,6 @@ hide:
   navigation: true
 ---
 
-<style>
-  .highlight .hll {
-    background-color: #ff171742;
-  }
-  .md-content {
-    max-width: 1100px;
-    margin: 0 auto;
-  }
-</style>
-
 -   **Query id:** bbe3dd3d-fea9-4b68-a785-cfabe2bbbc54
 -   **Query name:** Policy Without Principal
 -   **Platform:** Terraform

@@ -5,16 +5,6 @@ hide:
   navigation: true
 ---
 
-<style>
-  .highlight .hll {
-    background-color: #ff171742;
-  }
-  .md-content {
-    max-width: 1100px;
-    margin: 0 auto;
-  }
-</style>
-
 -   **Query id:** bc3dabb6-fd50-40f8-b9ba-7429c9f1fb0e
 -   **Query name:** Metadata Label Is Invalid
 -   **Platform:** Terraform

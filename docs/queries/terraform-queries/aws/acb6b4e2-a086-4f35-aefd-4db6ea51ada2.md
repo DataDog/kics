@@ -5,16 +5,6 @@ hide:
   navigation: true
 ---
 
-<style>
-  .highlight .hll {
-    background-color: #ff171742;
-  }
-  .md-content {
-    max-width: 1100px;
-    margin: 0 auto;
-  }
-</style>
-
 -   **Query id:** acb6b4e2-a086-4f35-aefd-4db6ea51ada2
 -   **Query name:** Elasticsearch Log Disabled
 -   **Platform:** Terraform

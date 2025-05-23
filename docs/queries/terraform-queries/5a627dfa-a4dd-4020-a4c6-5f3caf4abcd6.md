@@ -5,16 +5,6 @@ hide:
   navigation: true
 ---
 
-<style>
-  .highlight .hll {
-    background-color: #ff171742;
-  }
-  .md-content {
-    max-width: 1100px;
-    margin: 0 auto;
-  }
-</style>
-
 -   **Query id:** 5a627dfa-a4dd-4020-a4c6-5f3caf4abcd6
 -   **Query name:** Beta - Check use no LTS Spark Version
 -   **Platform:** Terraform

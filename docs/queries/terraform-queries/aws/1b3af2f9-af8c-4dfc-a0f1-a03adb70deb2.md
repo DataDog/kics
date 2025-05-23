@@ -5,16 +5,6 @@ hide:
   navigation: true
 ---
 
-<style>
-  .highlight .hll {
-    background-color: #ff171742;
-  }
-  .md-content {
-    max-width: 1100px;
-    margin: 0 auto;
-  }
-</style>
-
 -   **Query id:** 1b3af2f9-af8c-4dfc-a0f1-a03adb70deb2
 -   **Query name:** Lambda Function With Privileged Role
 -   **Platform:** Terraform

@@ -5,16 +5,6 @@ hide:
   navigation: true
 ---
 
-<style>
-  .highlight .hll {
-    background-color: #ff171742;
-  }
-  .md-content {
-    max-width: 1100px;
-    margin: 0 auto;
-  }
-</style>
-
 -   **Query id:** 16cc87d1-dd47-4f46-b3ce-4dfcac8fd2f5
 -   **Query name:** KMS Crypto Key is Publicly Accessible
 -   **Platform:** Terraform

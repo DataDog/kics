@@ -5,16 +5,6 @@ hide:
   navigation: true
 ---
 
-<style>
-  .highlight .hll {
-    background-color: #ff171742;
-  }
-  .md-content {
-    max-width: 1100px;
-    margin: 0 auto;
-  }
-</style>
-
 -   **Query id:** 88fd05e0-ac0e-43d2-ba6d-fc0ba60ae1a6
 -   **Query name:** IAM Database Auth Not Enabled
 -   **Platform:** Terraform

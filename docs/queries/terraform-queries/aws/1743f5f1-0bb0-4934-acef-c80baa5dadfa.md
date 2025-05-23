@@ -5,16 +5,6 @@ hide:
   navigation: true
 ---
 
-<style>
-  .highlight .hll {
-    background-color: #ff171742;
-  }
-  .md-content {
-    max-width: 1100px;
-    margin: 0 auto;
-  }
-</style>
-
 -   **Query id:** 1743f5f1-0bb0-4934-acef-c80baa5dadfa
 -   **Query name:** User With Privilege Escalation By Actions 'iam:CreatePolicyVersion'
 -   **Platform:** Terraform
