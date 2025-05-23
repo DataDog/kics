@@ -11,7 +11,7 @@
   "cwe": "284",
   "override": {
     "detailedDescriptionText": {
-      "descriptionText": "AWS S3 static website hosting allows serving content directly from buckets without additional authentication, potentially exposing sensitive data to the internet. When enabled via the 'website' block, the bucket content becomes accessible through the website endpoint, bypassing S3's access controls and increasing attack surface. Attackers could access unintended data if bucket policies are misconfigured or files are incorrectly permissioned.\n\nSecure configuration example:\n```\nresource \"aws_s3_bucket\" \"secure_example\" {\n  bucket = \"s3-website-test.hashicorp.com\"\n  acl    = \"public-read\"\n  # No website configuration block\n}\n```\n\nInstead, consider using CloudFront distribution with proper access controls and HTTPS to securely serve website content."
+      "descriptionText": "AWS S3 static website hosting allows serving content directly from buckets without additional authentication, potentially exposing sensitive data to the internet. When enabled via the 'website' block, the bucket content becomes accessible through the website endpoint, bypassing S3's access controls and increasing attack surface. Attackers could access unintended data if bucket policies are misconfigured or files are incorrectly permissioned.\n\nSecure configuration example:\n```\nresource \"aws_s3_bucket\" \"secure_example\" {\n  bucket = \"s3-website-test.hashicorp.com\"\n  acl    = \"public-read\"\n  // No website configuration block\n}\n```\n\nInstead, consider using CloudFront distribution with proper access controls and HTTPS to securely serve website content."
     }
   }
 }
