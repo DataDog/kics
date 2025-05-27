@@ -1,0 +1,73 @@
+---
+title: "Elasticsearch Log Disabled"
+meta:
+  name: "aws/elasticsearch_logs_disabled"
+  id: "acb6b4e2-a086-4f35-aefd-4db6ea51ada2"
+  cloud_provider: "aws"
+  severity: "MEDIUM"
+  category: "Observability"
+---
+
+## Metadata
+**Name:** `aws/elasticsearch_logs_disabled`
+
+**Id:** `acb6b4e2-a086-4f35-aefd-4db6ea51ada2`
+
+**Cloud Provider:** aws
+
+**Severity:** Medium
+
+**Category:** Observability
+
+## Description
+AWS Elasticsearch should have logs enabled
+
+#### Learn More
+
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/elasticsearch_domain#log_publishing_options)
+
+## Non-Compliant Code Examples
+```terraform
+resource "aws_elasticsearch_domain" "positive2" {
+  domain_name           = "example"
+  elasticsearch_version = "1.5"
+
+  cluster_config {
+    instance_type = "r4.large.elasticsearch"
+  }
+
+  snapshot_options {
+    automated_snapshot_start_hour = 23
+  }
+
+  tags = {
+    Domain = "TestDomain"
+  }
+}
+
+```
+
+```terraform
+resource "aws_elasticsearch_domain" "positive1" {
+
+  log_publishing_options {
+    cloudwatch_log_group_arn = aws_cloudwatch_log_group.example.arn
+    log_type                 = "INDEX_SLOW_LOGS"
+    enabled                  = false
+  }
+}
+
+```
+
+## Compliant Code Examples
+```terraform
+resource "aws_elasticsearch_domain" "negative1" {
+
+  log_publishing_options {
+    cloudwatch_log_group_arn = aws_cloudwatch_log_group.example.arn
+    log_type                 = "INDEX_SLOW_LOGS"
+    enabled                  = true //for default its true
+  }
+}
+
+```
