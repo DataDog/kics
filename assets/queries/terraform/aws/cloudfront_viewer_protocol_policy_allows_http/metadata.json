@@ -9,5 +9,10 @@
   "descriptionID": "3547cd5a",
   "cloudProvider": "aws",
   "cwe": "319",
-  "oldSeverity": "HIGH"
+  "oldSeverity": "HIGH",
+  "override": {
+    "detailedDescriptionText": {
+      "descriptionText": "This check ensures that the connection between Amazon CloudFront and the viewer is encrypted by verifying the `viewer_protocol_policy` attribute. If set to `allow-all` (e.g., `viewer_protocol_policy = \"allow-all\"`), CloudFront can serve content over both HTTP and HTTPS, leaving data in transit vulnerable to interception or man-in-the-middle attacks. To address this, the attribute should be set to `https-only` in all cache behaviors (e.g., `viewer_protocol_policy = \"https-only\"`), ensuring all communications between CloudFront and the end user are encrypted, thus preserving the confidentiality and integrity of the data."
+    }
+  }
 }

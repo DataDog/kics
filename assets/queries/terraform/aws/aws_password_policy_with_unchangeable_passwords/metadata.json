@@ -9,5 +9,10 @@
   "descriptionID": "8163d3cf",
   "cloudProvider": "aws",
   "cwe": "521",
-  "oldSeverity": "MEDIUM"
+  "oldSeverity": "MEDIUM",
+  "override": {
+    "detailedDescriptionText": {
+      "descriptionText": "This check evaluates whether the AWS IAM account password policy allows users to change their own passwords by ensuring the attribute `allow_users_to_change_password` is set to `true`. If this is set to `false`, as in `allow_users_to_change_password = false`, users are prevented from updating their passwords, which can lead to stale or compromised credentials remaining in active use. This increases the risk of unauthorized account access, as users are unable to maintain password hygiene or respond quickly to potential credential exposures."
+    }
+  }
 }
