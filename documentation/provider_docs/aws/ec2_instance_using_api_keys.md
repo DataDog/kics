@@ -1,0 +1,549 @@
+---
+title: "EC2 Instance Using API Keys"
+meta:
+  name: "aws/ec2_instance_using_api_keys"
+  id: "0b93729a-d882-4803-bdc3-ac429a21f158"
+  cloud_provider: "aws"
+  severity: "LOW"
+  category: "Access Control"
+---
+
+## Metadata
+**Name:** `aws/ec2_instance_using_api_keys`
+
+**Id:** `0b93729a-d882-4803-bdc3-ac429a21f158`
+
+**Cloud Provider:** aws
+
+**Severity:** Low
+
+**Category:** Access Control
+
+## Description
+EC2 instances should use roles to be granted access to other AWS services
+
+#### Learn More
+
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/instance#iam_instance_profile)
+
+## Non-Compliant Code Examples
+```terraform
+provider "aws" {
+  region = "us-east-1"
+}
+
+resource "aws_instance" "positive6" {
+  ami           = "ami-005e54dee72cc1d00" # us-west-2
+  instance_type = "t2.micro"
+
+  tags = {
+    Name = "test"
+  }
+
+  user_data = <<EOT
+#cloud-config
+repo_update: true
+repo_upgrade: all
+
+packages:
+ - awscli
+
+runcmd:
+ - [ sh, -c, "echo export AWS_ACCESS_KEY_ID=my-key-id >> ~/.bashrc" ]
+ - [ sh, -c, "echo export AWS_SECRET_ACCESS_KEY=my-secret >> ~/.bashrc" ]
+EOT
+
+  credit_specification {
+    cpu_credits = "unlimited"
+  }
+}
+
+```
+
+```terraform
+module "ec2_instance" {
+  source  = "terraform-aws-modules/ec2-instance/aws"
+  version = "~> 3.0"
+
+  name = "single-instance"
+
+  ami                    = "ami-ebd02392"
+  instance_type          = "t2.micro"
+  key_name               = "user1"
+  monitoring             = true
+  vpc_security_group_ids = ["sg-12345678"]
+  subnet_id              = "subnet-eddcdzz4"
+
+  user_data_base64 = var.init_aws_cli
+
+
+  tags = {
+    Terraform   = "true"
+    Environment = "dev"
+  }
+}
+
+```
+
+```terraform
+provider "aws" {
+  region = "us-east-1"
+}
+
+resource "aws_instance" "positive2" {
+  ami           = "ami-005e54dee72cc1d00" # us-west-2
+  instance_type = "t2.micro"
+
+  tags = {
+    Name = "test"
+  }
+
+  user_data = <<EOT
+#!/bin/bash
+apt-get install -y awscli
+cat << EOF > ~/.aws/config
+[default]
+aws_access_key_id = somekey
+aws_secret_access_key = somesecret
+EOF
+EOT
+
+  credit_specification {
+    cpu_credits = "unlimited"
+  }
+}
+
+```
+
+```terraform
+provider "aws" {
+  region = "us-east-1"
+}
+
+resource "aws_instance" "positive3" {
+  ami           = "ami-005e54dee72cc1d00" # us-west-2
+  instance_type = "t2.micro"
+
+  tags = {
+    Name = "test"
+  }
+
+  user_data = <<EOT
+#!/bin/bash
+apt-get install -y awscli
+cat << EOF > ~/.aws/credentials
+[default]
+aws_access_key_id = somekey
+aws_secret_access_key = somesecret
+EOF
+EOT
+
+  credit_specification {
+    cpu_credits = "unlimited"
+  }
+}
+
+```
+
+```terraform
+provider "aws" {
+  region = "us-east-1"
+}
+
+resource "aws_instance" "positive7" {
+  ami           = "ami-005e54dee72cc1d00" # us-west-2
+  instance_type = "t2.micro"
+
+  tags = {
+    Name = "test"
+  }
+
+  provisioner "remote-exec" {
+    inline = [
+      "wget -O - http://config.remote.server.com/aws-credentials > ~/.aws/credentials;"
+    ]
+  }
+
+  credit_specification {
+    cpu_credits = "unlimited"
+  }
+}
+
+```
+
+```terraform
+module "ec2_instance" {
+  source  = "terraform-aws-modules/ec2-instance/aws"
+  version = "~> 3.0"
+
+  name = "single-instance"
+
+  ami                    = "ami-ebd02392"
+  instance_type          = "t2.micro"
+  key_name               = "user1"
+  monitoring             = true
+  vpc_security_group_ids = ["sg-12345678"]
+  subnet_id              = "subnet-eddcdzz4"
+
+  user_data = <<EOF
+#!/bin/bash
+apt-get install -y awscli
+export AWS_ACCESS_KEY_ID=your_access_key_id_here
+export AWS_SECRET_ACCESS_KEY=your_secret_access_key_here
+EOF
+
+
+  tags = {
+    Terraform   = "true"
+    Environment = "dev"
+  }
+}
+
+```
+
+```terraform
+provider "aws" {
+  region = "us-east-1"
+}
+
+resource "aws_instance" "positive8" {
+  ami           = "ami-005e54dee72cc1d00" # us-west-2
+  instance_type = "t2.micro"
+
+  tags = {
+    Name = "test"
+  }
+
+  provisioner "file" {
+    source      = "conf/aws-credentials"
+    destination = "~/.aws/credentials"
+  }
+}
+
+```
+
+```terraform
+provider "aws" {
+  region = "us-east-1"
+}
+
+resource "aws_instance" "positive9" {
+  ami           = "ami-005e54dee72cc1d00" # us-west-2
+  instance_type = "t2.micro"
+
+  tags = {
+    Name = "test"
+  }
+
+  provisioner "remote-exec" {
+    inline = [
+      "echo export AWS_ACCESS_KEY_ID=my-key-id >> ~/.bashrc",
+      "echo export AWS_SECRET_ACCESS_KEY=my-secret >> ~/.bashrc"
+    ]
+  }
+
+  credit_specification {
+    cpu_credits = "unlimited"
+  }
+}
+
+```
+
+```terraform
+provider "aws" {
+  region = "us-east-1"
+}
+
+resource "aws_instance" "positive4" {
+  ami           = "ami-005e54dee72cc1d00" # us-west-2
+  instance_type = "t2.micro"
+
+  tags = {
+    Name = "test"
+  }
+
+  user_data_base64 = var.init_aws_cli
+
+  credit_specification {
+    cpu_credits = "unlimited"
+  }
+}
+
+```
+
+```terraform
+module "ec2_instance" {
+  source  = "terraform-aws-modules/ec2-instance/aws"
+  version = "~> 3.0"
+
+  name = "single-instance"
+
+  ami                    = "ami-ebd02392"
+  instance_type          = "t2.micro"
+  key_name               = "user1"
+  monitoring             = true
+  vpc_security_group_ids = ["sg-12345678"]
+  subnet_id              = "subnet-eddcdzz4"
+
+  user_data_base64 = base64encode("apt-get install -y awscli; export AWS_ACCESS_KEY_ID=your_access_key_id_here; export AWS_SECRET_ACCESS_KEY=your_secret_access_key_here")
+
+
+  tags = {
+    Terraform   = "true"
+    Environment = "dev"
+  }
+}
+
+```
+
+```terraform
+provider "aws" {
+  region = "us-east-1"
+}
+
+resource "aws_instance" "positive5" {
+  ami           = "ami-005e54dee72cc1d00" # us-west-2
+  instance_type = "t2.micro"
+
+  tags = {
+    Name = "test"
+  }
+
+  user_data_base64 = base64encode("apt-get install -y awscli; export AWS_ACCESS_KEY_ID=your_access_key_id_here; export AWS_SECRET_ACCESS_KEY=your_secret_access_key_here")
+
+  credit_specification {
+    cpu_credits = "unlimited"
+  }
+}
+
+```
+
+```terraform
+provider "aws" {
+  region = "us-east-1"
+}
+
+resource "aws_instance" "positive1" {
+  ami           = "ami-005e54dee72cc1d00" # us-west-2
+  instance_type = "t2.micro"
+
+  tags = {
+    Name = "test"
+  }
+
+  user_data = <<EOF
+#!/bin/bash
+apt-get install -y awscli
+export AWS_ACCESS_KEY_ID=your_access_key_id_here
+export AWS_SECRET_ACCESS_KEY=your_secret_access_key_here
+EOF
+
+  credit_specification {
+    cpu_credits = "unlimited"
+  }
+}
+
+```
+
+## Compliant Code Examples
+```terraform
+provider "aws" {
+  region = "us-east-1"
+}
+
+resource "aws_iam_role_policy_attachment" "test_attach" {
+  roles      = [aws_iam_role.test_role.name]
+  policy_arn = aws_iam_policy.test_policy.arn
+}
+
+resource "aws_iam_policy" "test_policy" {
+  name = "test_policy"
+  description = "test policy"
+  path = "/"
+  policy = <<EOF
+{
+  "Version": "2012-10-17",
+  "Statement": [
+      {
+          "Action": [
+              "s3:Get*",
+              "s3:List*"
+          ],
+          "Effect": "Allow",
+          "Resource": "*"
+      }
+  ]
+}
+EOF
+}
+
+resource "aws_iam_role" "test_role" {
+  name = "test_role"
+  path = "/"
+
+  assume_role_policy = <<EOF
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Action": "sts:AssumeRole",
+            "Principal": {
+               "Service": "ec2.amazonaws.com"
+            },
+            "Effect": "Allow",
+            "Sid": ""
+        }
+    ]
+}
+EOF
+}
+
+resource "aws_iam_instance_profile" "test_profile" {
+  name = "test_profile"
+  role = aws_iam_role.role.name
+}
+
+resource "aws_instance" "negative3" {
+  ami           = "ami-005e54dee72cc1d00" # us-west-2
+  instance_type = "t2.micro"
+
+  tags = {
+    Name = "test"
+  }
+
+  iam_instance_profile = aws_iam_instance_profile.test_profile.name
+
+  credit_specification {
+    cpu_credits = "unlimited"
+  }
+
+  user_data = <<-EOF
+    #!/bin/bash
+    apt-get update
+  EOF
+}
+
+```
+
+```terraform
+module "ec2_instance" {
+  source  = "terraform-aws-modules/ec2-instance/aws"
+  version = "~> 3.0"
+
+  name = "single-instance"
+
+  ami                    = "ami-ebd02392"
+  instance_type          = "t2.micro"
+  key_name               = "user1"
+  monitoring             = true
+  vpc_security_group_ids = ["sg-12345678"]
+  subnet_id              = "subnet-eddcdzz4"
+
+  tags = {
+    Terraform   = "true"
+    Environment = "dev"
+  }
+}
+
+```
+
+```terraform
+provider "aws" {
+  region = "us-east-1"
+}
+
+resource "aws_iam_role_policy_attachment" "test_attach" {
+  roles      = [aws_iam_role.test_role.name]
+  policy_arn = aws_iam_policy.test_policy.arn
+}
+
+resource "aws_iam_policy" "test_policy" {
+  name = "test_policy"
+  description = "test policy"
+  path = "/"
+  policy = <<EOF
+{
+  "Version": "2012-10-17",
+  "Statement": [
+      {
+          "Action": [
+              "s3:Get*",
+              "s3:List*"
+          ],
+          "Effect": "Allow",
+          "Resource": "*"
+      }
+  ]
+}
+EOF
+}
+
+resource "aws_iam_role" "test_role" {
+  name = "test_role"
+  path = "/"
+
+  assume_role_policy = <<EOF
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Action": "sts:AssumeRole",
+            "Principal": {
+               "Service": "ec2.amazonaws.com"
+            },
+            "Effect": "Allow",
+            "Sid": ""
+        }
+    ]
+}
+EOF
+}
+
+resource "aws_iam_instance_profile" "test_profile" {
+  name = "test_profile"
+  role = aws_iam_role.role.name
+}
+
+resource "aws_instance" "negative1" {
+  ami           = "ami-005e54dee72cc1d00" # us-west-2
+  instance_type = "t2.micro"
+
+  tags = {
+    Name = "test"
+  }
+
+  iam_instance_profile = aws_iam_instance_profile.test_profile.name
+
+  credit_specification {
+    cpu_credits = "unlimited"
+  }
+}
+
+```
+
+```terraform
+module "ec2_instance" {
+  source  = "terraform-aws-modules/ec2-instance/aws"
+  version = "~> 3.0"
+
+  name = "single-instance"
+
+  ami                    = "ami-ebd02392"
+  instance_type          = "t2.micro"
+  key_name               = "user1"
+  monitoring             = true
+  vpc_security_group_ids = ["sg-12345678"]
+  subnet_id              = "subnet-eddcdzz4"
+
+  tags = {
+    Terraform   = "true"
+    Environment = "dev"
+  }
+
+  user_data = <<-EOF
+    #!/bin/bash
+    apt-get update
+  EOF
+}
+
+```
