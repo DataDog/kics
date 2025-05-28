@@ -8,5 +8,10 @@
   "platform": "Terraform",
   "descriptionID": "36d82ecd",
   "cloudProvider": "gcp",
-  "cwe": "266"
+  "cwe": "266",
+  "override": {
+    "detailedDescriptionText": {
+      "descriptionText": "Assigning both the `roles/cloudkms.admin` and `roles/cloudkms.cryptoKeyDecrypter` IAM roles to the same member on a Google Cloud project gives that user full administrative control over Cloud KMS keys as well as the ability to decrypt data. This combination of permissions allows a single user to both manage (create, destroy, and modify) cryptographic keys and decrypt sensitive information, greatly increasing the risk of unauthorized data access or key misuse. To minimize risk, ensure that these roles are assigned to separate members as shown below:\n\n```\ndata \"google_iam_policy\" \"secure_example\" {\n  binding {\n    role = \"roles/cloudkms.admin\"\n    members = [\"user:jane@example.com\"]\n  }\n  binding {\n    role = \"roles/cloudkms.cryptoKeyDecrypter\"\n    members = [\"user:jane2@example.com\"]\n  }\n}\n```"
+    }
+  }
 }

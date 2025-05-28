@@ -8,5 +8,10 @@
   "platform": "Terraform",
   "descriptionID": "743324e3",
   "cloudProvider": "azure",
-  "cwe": "778"
+  "cwe": "778",
+  "override": {
+    "detailedDescriptionText": {
+      "descriptionText": "The PostgreSQL server parameter `log_connections` should be set to `ON` to ensure that all connection attempts, whether successful or not, are logged. Without this setting, unauthorized or suspicious connection attempts can go undetected, making it difficult to identify potential security incidents or troubleshoot access issues. For a secure configuration in Terraform, set the `value` attribute to `\"on\"` as shown below:\n\n```\nresource \"azurerm_postgresql_configuration\" \"secure\" {\n    name                = \"log_connections\"\n    resource_group_name = data.azurerm_resource_group.example.name\n    server_name         = azurerm_postgresql_server.example.name\n    value               = \"on\"\n}\n```"
+    }
+  }
 }

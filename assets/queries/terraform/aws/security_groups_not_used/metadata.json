@@ -8,5 +8,10 @@
   "platform": "Terraform",
   "descriptionID": "eff2383a",
   "cloudProvider": "aws",
-  "cwe": "284"
+  "cwe": "284",
+  "override": {
+    "detailedDescriptionText": {
+      "descriptionText": "This check ensures that AWS load balancers are associated with appropriate security groups, which control network traffic to and from the resource. When the `security_groups` attribute is omitted from an `aws_lb` resource—such as:\n\n```\nresource \"aws_lb\" \"test\" {\n  name = \"test\"\n  load_balancer_type = \"application\"\n  subnets = [aws_subnet.subnet1.id, aws_subnet.subnet2.id]\n  internal = true\n}\n```\n\n—the load balancer may become exposed to unrestricted network access, increasing the risk of unauthorized access or attacks. By explicitly defining `security_groups`, as shown below, you can restrict inbound and outbound traffic to only trusted sources:\n\n```\nresource \"aws_lb\" \"test\" {\n  name = \"test\"\n  load_balancer_type = \"application\"\n  subnets = [aws_subnet.subnet1.id, aws_subnet.subnet2.id]\n  internal = true\n  security_groups = [aws_security_group.allow_tls.id]\n}\n```"
+    }
+  }
 }

@@ -8,5 +8,10 @@
   "platform": "Terraform",
   "descriptionID": "ddd0f677",
   "cloudProvider": "aws",
-  "cwe": "284"
+  "cwe": "284",
+  "override": {
+    "detailedDescriptionText": {
+      "descriptionText": "An SNS topic policy should not use both `\"Effect\": \"Allow\"` and the `\"NotAction\"` attribute together, as this grants permission to all actions except those explicitly denied, significantly increasing the potential attack surface. This misconfiguration can unintentionally allow broad access to the SNS topic, which may be exploited by attackers to perform unauthorized actions. To secure the policy, use the `\"Action\"` attribute alongside `\"Effect\": \"Allow\"`, as shown below:\n\n```\n{\n  \"Statement\": [\n    {\n      \"Effect\": \"Allow\",\n      \"Action\": \"s3:DeleteBucket\",\n      \"Resource\": \"arn:aws:s3:::*\"\n    }\n  ]\n}\n```"
+    }
+  }
 }

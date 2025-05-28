@@ -9,5 +9,10 @@
   "descriptionID": "8f1137db",
   "cloudProvider": "azure",
   "cwe": "778",
-  "oldSeverity": "HIGH"
+  "oldSeverity": "HIGH",
+  "override": {
+    "detailedDescriptionText": {
+      "descriptionText": "Enabling 'Threat Detection' for Azure SQL Database helps identify anomalous activities and potential security threats by alerting administrators when suspicious activity is detected. When the `threat_detection_policy` block is set to `state = \"Disabled\"` or omitted entirely, as in: \n\n```\nthreat_detection_policy {\n  state = \"Disabled\"\n}\n```\n\nthreat detection is not active, increasing the risk that unusual access patterns or potential SQL injection attacks go unnoticed, potentially leading to data breaches or data loss. To secure your deployment, ensure `threat_detection_policy` is set to `state = \"Enabled\"`:\n\n```\nthreat_detection_policy {\n  state = \"Enabled\"\n}\n```\nIf left unaddressed, disabling this feature may allow attackers to exploit vulnerabilities in your database environment undetected."
+    }
+  }
 }

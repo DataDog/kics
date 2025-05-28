@@ -8,5 +8,10 @@
   "platform": "Terraform",
   "descriptionID": "65a3bf94",
   "cloudProvider": "gcp",
-  "cwe": "1395"
+  "cwe": "1395",
+  "override": {
+    "detailedDescriptionText": {
+      "descriptionText": "Running outdated versions of Google Kubernetes Engine (GKE) exposes clusters to unpatched security vulnerabilities and known exploits that attackers can leverage to compromise workloads or gain unauthorized access. Terraform configurations should specify the `min_master_version` and `node_version` attributes with values such as `\"latest\"` or a supported, up-to-date release to ensure that the cluster automatically receives important security patches. For example, a secure configuration would be:\n\n```\nresource \"google_container_cluster\" \"example\" {\n  min_master_version = \"latest\"\n}\n```"
+    }
+  }
 }

@@ -9,5 +9,10 @@
   "descriptionID": "38b85c45",
   "cloudProvider": "aws",
   "cwe": "778",
-  "oldSeverity": "MEDIUM"
+  "oldSeverity": "MEDIUM",
+  "override": {
+    "detailedDescriptionText": {
+      "descriptionText": "This check ensures that a log metric filter and alarm are configured to monitor changes to AWS Organizations within CloudWatch. Without a properly configured metric filter and alarm, critical events such as the creation, deletion, or modification of organizational accounts and policies may go undetected. This lack of visibility increases the risk of malicious or unauthorized changes going unnoticed, which could compromise the security and governance of the entire AWS environment. Left unaddressed, this misconfiguration may allow threat actors to make unauthorized changes to the organization structure, potentially leading to privilege escalation or data exfiltration."
+    }
+  }
 }

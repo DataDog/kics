@@ -8,5 +8,10 @@
   "platform": "Terraform",
   "descriptionID": "1b2dbbea",
   "cloudProvider": "gcp",
-  "cwe": "284"
+  "cwe": "284",
+  "override": {
+    "detailedDescriptionText": {
+      "descriptionText": "Granting a service account excessive privileges such as `roles/admin`, `roles/editor`, `roles/owner`, or any write-level roles can expose the environment to the risk of privilege escalation or unintended modifications. This misconfiguration is seen in Terraform when bindings like:\n\n```\nbinding {\n  role = \"roles/editor\"\n  members = [\n    \"serviceAccount:jane@example.com\",\n  ]\n}\n```\n\nare used, allowing the service account broad permissions over resources. Least privilege should be enforced by granting only the required roles, such as in the secure example:\n\n```\nbinding {\n  role = \"roles/apigee.runtimeAgent\"\n  members = [\n    \"user:jane@example.com\",\n  ]\n}\n```\n\nFailing to restrict service account privileges may allow attackers or compromised services to make unauthorized changes, leading to data exposure or resource compromise."
+    }
+  }
 }

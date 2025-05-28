@@ -9,5 +9,10 @@
   "descriptionID": "72ee1fe2",
   "cloudProvider": "aws",
   "cwe": "326",
-  "oldSeverity": "HIGH"
+  "oldSeverity": "HIGH",
+  "override": {
+    "detailedDescriptionText": {
+      "descriptionText": "This check verifies whether Amazon CloudFront distributions are configured to use secure TLS protocols and ciphers by examining the `viewer_certificate` block and its `minimum_protocol_version` attribute. CloudFront distributions that specify weak or outdated protocol versions, such as `SSLv3` (e.g., `minimum_protocol_version = \"SSLv3\"`), expose transmitted data to vulnerabilities like man-in-the-middle attacks and eavesdropping, because these protocols have known security flaws and are no longer considered safe. Failing to enforce secure cipher suites can allow attackers to decrypt, tamper with, or intercept sensitive information in transit between CloudFront and clients. To mitigate this risk, the attribute should be set to a secure value (such as \"TLSv1.2_2019\" or higher), or by using the default CloudFront certificate which enforces modern standards."
+    }
+  }
 }
