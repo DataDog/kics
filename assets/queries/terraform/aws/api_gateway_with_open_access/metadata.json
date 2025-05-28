@@ -8,5 +8,10 @@
   "platform": "Terraform",
   "descriptionID": "1a1dc17c",
   "cloudProvider": "aws",
-  "cwe": "284"
+  "cwe": "284",
+  "override": {
+    "detailedDescriptionText": {
+      "descriptionText": "API Gateway methods should restrict the `authorization` type to prevent unauthenticated access, except for the `OPTIONS` method used in CORS preflight requests. If you configure an API Gateway method such as:\n\n```\nresource \"aws_api_gateway_method\" \"example\" {\n  http_method   = \"GET\"\n  authorization = \"NONE\"\n  // ...\n}\n```\n\nwithout specifying authorization, it allows open, unauthenticated access to your API, increasing the risk of data exposure and abuse. Proper configuration requires setting `authorization = \"NONE\"` only for the `OPTIONS` method, for example:\n\n```\nresource \"aws_api_gateway_method\" \"example\" {\n  http_method   = \"OPTIONS\"\n  authorization = \"NONE\"\n  // ...\n}\n```\n\nThis ensures that only preflight CORS requests remain unauthenticated, while all other methods require proper authorization, reducing the attack surface of your API."
+    }
+  }
 }

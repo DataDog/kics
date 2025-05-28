@@ -9,5 +9,10 @@
   "descriptionID": "c08cb91b",
   "cloudProvider": "azure",
   "cwe": "693",
-  "oldSeverity": "MEDIUM"
+  "oldSeverity": "MEDIUM",
+  "override": {
+    "detailedDescriptionText": {
+      "descriptionText": "Azure Virtual Networks should have a DDoS Protection Plan enabled to safeguard against distributed denial-of-service attacks that can overwhelm and disrupt services hosted in the cloud. Without the `ddos_protection_plan` block configured with `enable = true` in the `azurerm_virtual_network` resource, as shown below, the network remains vulnerable to these attacks, potentially resulting in service downtime and extensive business impact.\n\n```\nddos_protection_plan {\n  id     = azurerm_network_ddos_protection_plan.example.id\n  enable = true\n}\n```\n\nEnabling DDoS protection ensures automatic detection and mitigation of DDoS attacks, helping protect application availability and data integrity in the Azure environment."
+    }
+  }
 }

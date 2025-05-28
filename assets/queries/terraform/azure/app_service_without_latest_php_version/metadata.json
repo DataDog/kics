@@ -8,5 +8,10 @@
   "platform": "Terraform",
   "descriptionID": "0054cbe3",
   "cloudProvider": "azure",
-  "cwe": "665"
+  "cwe": "665",
+  "override": {
+    "detailedDescriptionText": {
+      "descriptionText": "Web apps using outdated PHP versions expose themselves to known security vulnerabilities and miss critical security fixes and performance improvements available in newer releases. For example, specifying `php_version = \"7.3\"` in a Terraform `azurerm_app_service` resource leaves the application open to exploits that are resolved in later PHP versions. To mitigate risk, always configure the `site_config` block to use a recent, supported PHP version, such as:\n\n```\nsite_config {\n  php_version = \"8.1\"\n}\n```\nThis ensures the application benefits from the latest patches and features."
+    }
+  }
 }

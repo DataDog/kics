@@ -9,5 +9,10 @@
   "descriptionID": "ecd42771",
   "cloudProvider": "azure",
   "cwe": "778",
-  "oldSeverity": "MEDIUM"
+  "oldSeverity": "MEDIUM",
+  "override": {
+    "detailedDescriptionText": {
+      "descriptionText": "Auditing logs for Azure MSSQL Servers should be retained for more than 90 days to support monitoring and forensic investigations. When the `retention_in_days` attribute in the `extended_auditing_policy` block is set to a value less than 91, such as:\n\n```\nextended_auditing_policy {\n  ...\n  retention_in_days = 6\n}\n```\n\nimportant event logs may be deleted too soon, increasing the risk of missing or incomplete audit trails in the event of a breach or regulatory review. A secure configuration sets `retention_in_days` to 91 or higher, for example:\n\n```\nextended_auditing_policy {\n  ...\n  retention_in_days = 91\n}\n```"
+    }
+  }
 }
