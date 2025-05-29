@@ -3,7 +3,7 @@
   "queryName": "Redshift Cluster Logging Disabled",
   "severity": "MEDIUM",
   "category": "Observability",
-  "descriptionText": "Make sure Logging is enabled for Redshift Cluster",
+  "descriptionText": "Amazon Redshift clusters should have logging enabled to ensure that audit and diagnostic data, such as query execution and connection attempts, are recorded and stored for security and compliance purposes. If the `logging` block is omitted, or the attribute `enable` is set to `false` in the Redshift cluster Terraform resource, as shown below,\n\n```\nresource \"aws_redshift_cluster\" \"example\" {\n  // ... other configuration ...\n  logging {\n      enable = false\n  }\n}\n```\n\ncritical events may go unrecorded, making it difficult to detect unauthorized access or investigate security incidents. Enabling logging with\n\n```\nlogging {\n    enable = true\n    bucket_name = \"nameOfAnExistingS3Bucket\"\n}\n```\n\nhelps ensure that activity is continuously monitored and available for review in the case of an incident.",
   "descriptionUrl": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/redshift_cluster#enable",
   "platform": "Terraform",
   "descriptionID": "458fe7a3",
@@ -11,7 +11,8 @@
   "cwe": "778",
   "override": {
     "detailedDescriptionText": {
-      "descriptionText": "Amazon Redshift clusters should have logging enabled to ensure that audit and diagnostic data, such as query execution and connection attempts, are recorded and stored for security and compliance purposes. If the `logging` block is omitted, or the attribute `enable` is set to `false` in the Redshift cluster Terraform resource, as shown below,\n\n```\nresource \"aws_redshift_cluster\" \"example\" {\n  // ... other configuration ...\n  logging {\n      enable = false\n  }\n}\n```\n\ncritical events may go unrecorded, making it difficult to detect unauthorized access or investigate security incidents. Enabling logging with\n\n```\nlogging {\n    enable = true\n    bucket_name = \"nameOfAnExistingS3Bucket\"\n}\n```\n\nhelps ensure that activity is continuously monitored and available for review in the case of an incident."
+      "descriptionText": "Make sure Logging is enabled for Redshift Cluster"
     }
-  }
+  },
+  "oldDescriptionText": "Make sure Logging is enabled for Redshift Cluster"
 }

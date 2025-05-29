@@ -3,7 +3,7 @@
   "queryName": "ElastiCache Replication Group Not Encrypted At Transit",
   "severity": "MEDIUM",
   "category": "Encryption",
-  "descriptionText": "ElastiCache Replication Group encryption should be enabled at Transit",
+  "descriptionText": "When `transit_encryption_enabled` is not set to `true` in the `aws_elasticache_replication_group` resource, data transmitted between ElastiCache nodes is not encrypted, increasing the risk of data interception or unauthorized access while data is in motion. Without encryption in transit, sensitive information can be exposed to attackers with network access, potentially leading to data breaches. Enabling transit encryption ensures all traffic between nodes is protected, safeguarding against eavesdropping and man-in-the-middle attacks.",
   "descriptionUrl": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/elasticache_replication_group#transit_encryption_enabled",
   "platform": "Terraform",
   "descriptionID": "40f92e86",
@@ -11,7 +11,8 @@
   "cwe": "311",
   "override": {
     "detailedDescriptionText": {
-      "descriptionText": "When `transit_encryption_enabled` is not set to `true` in the `aws_elasticache_replication_group` resource, data transmitted between ElastiCache nodes is not encrypted, increasing the risk of data interception or unauthorized access while data is in motion. Without encryption in transit, sensitive information can be exposed to attackers with network access, potentially leading to data breaches. Enabling transit encryption ensures all traffic between nodes is protected, safeguarding against eavesdropping and man-in-the-middle attacks."
+      "descriptionText": "ElastiCache Replication Group encryption should be enabled at Transit"
     }
-  }
+  },
+  "oldDescriptionText": "ElastiCache Replication Group encryption should be enabled at Transit"
 }

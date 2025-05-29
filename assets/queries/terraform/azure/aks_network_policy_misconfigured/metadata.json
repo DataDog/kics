@@ -3,7 +3,7 @@
   "queryName": "AKS Network Policy Misconfigured",
   "severity": "LOW",
   "category": "Insecure Configurations",
-  "descriptionText": "Azure Kubernetes Service should have the proper network policy configuration to ensure the principle of least privileges, which means that 'network_profile.network_policy' should be defined",
+  "descriptionText": "Azure Kubernetes Service (AKS) clusters should have a proper network policy configured using the `network_profile.network_policy` attribute to enforce the principle of least privilege and restrict unnecessary network traffic between pods. If this attribute is omitted or misconfigured, as shown below, it leaves the cluster vulnerable to unrestricted communication between pods, increasing the risk of lateral movement and exposure if one pod is compromised.\n\nUnsecure example:\n\n```\nnetwork_profile {\n  // network_policy not defined\n}\n```\n\nA secure AKS configuration explicitly sets a network policy, for example:\n\n```\nnetwork_profile {\n  network_policy = \"azure\"\n}\n```\nWithout strict network policies, attackers could exploit insecure inter-pod communications to access sensitive resources or escalate privileges within the Kubernetes environment.",
   "descriptionUrl": "https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/kubernetes_cluster",
   "platform": "Terraform",
   "descriptionID": "7708dadb",
@@ -12,7 +12,8 @@
   "oldSeverity": "MEDIUM",
   "override": {
     "detailedDescriptionText": {
-      "descriptionText": "Azure Kubernetes Service (AKS) clusters should have a proper network policy configured using the `network_profile.network_policy` attribute to enforce the principle of least privilege and restrict unnecessary network traffic between pods. If this attribute is omitted or misconfigured, as shown below, it leaves the cluster vulnerable to unrestricted communication between pods, increasing the risk of lateral movement and exposure if one pod is compromised.\n\nUnsecure example:\n\n```\nnetwork_profile {\n  // network_policy not defined\n}\n```\n\nA secure AKS configuration explicitly sets a network policy, for example:\n\n```\nnetwork_profile {\n  network_policy = \"azure\"\n}\n```\nWithout strict network policies, attackers could exploit insecure inter-pod communications to access sensitive resources or escalate privileges within the Kubernetes environment."
+      "descriptionText": "Azure Kubernetes Service should have the proper network policy configuration to ensure the principle of least privileges, which means that 'network_profile.network_policy' should be defined"
     }
-  }
+  },
+  "oldDescriptionText": "Azure Kubernetes Service should have the proper network policy configuration to ensure the principle of least privileges, which means that 'network_profile.network_policy' should be defined"
 }

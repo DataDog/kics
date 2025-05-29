@@ -3,7 +3,7 @@
   "queryName": "SQS Queue Exposed",
   "severity": "HIGH",
   "category": "Access Control",
-  "descriptionText": "Checks if the SQS Queue is exposed",
+  "descriptionText": "An SQS Queue is considered exposed when its policy allows access from any principal by setting 'Principal' to '*'. This creates a security vulnerability where unauthorized users can send messages to your queue, potentially leading to information disclosure or denial of service attacks.\n\nTo secure your SQS queue, avoid using wildcard principals in your policy statements. Instead, explicitly specify the ARNs of services or resources that should have access to the queue, as shown in the following secure example:\n\n```\n{\n  \"Statement\": [\n    {\n      \"Effect\": \"Allow\",\n      \"Action\": \"sqs:SendMessage\",\n      \"Resource\": \"${aws_sqs_queue.q.arn}\",\n      \"Condition\": {\n        \"ArnEquals\": {\n          \"aws:SourceArn\": \"${aws_sns_topic.example.arn}\"\n        }\n      }\n    }\n  ]\n}\n```",
   "descriptionUrl": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/sqs_queue#policy",
   "platform": "Terraform",
   "descriptionID": "59f958c0",
@@ -11,7 +11,8 @@
   "cwe": "200",
   "override": {
     "detailedDescriptionText": {
-      "descriptionText": "An SQS Queue is considered exposed when its policy allows access from any principal by setting 'Principal' to '*'. This creates a security vulnerability where unauthorized users can send messages to your queue, potentially leading to information disclosure or denial of service attacks.\n\nTo secure your SQS queue, avoid using wildcard principals in your policy statements. Instead, explicitly specify the ARNs of services or resources that should have access to the queue, as shown in the following secure example:\n\n```\n{\n  \"Statement\": [\n    {\n      \"Effect\": \"Allow\",\n      \"Action\": \"sqs:SendMessage\",\n      \"Resource\": \"${aws_sqs_queue.q.arn}\",\n      \"Condition\": {\n        \"ArnEquals\": {\n          \"aws:SourceArn\": \"${aws_sns_topic.example.arn}\"\n        }\n      }\n    }\n  ]\n}\n```"
+      "descriptionText": "Checks if the SQS Queue is exposed"
     }
-  }
+  },
+  "oldDescriptionText": "Checks if the SQS Queue is exposed"
 }

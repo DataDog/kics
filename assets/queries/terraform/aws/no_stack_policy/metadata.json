@@ -3,7 +3,7 @@
   "queryName": "No Stack Policy",
   "severity": "MEDIUM",
   "category": "Resource Management",
-  "descriptionText": "AWS CloudFormation Stack should have a stack policy in order to protect stack resources from update actions",
+  "descriptionText": "AWS CloudFormation stacks should implement a stack policy, set using the `policy_body` or `policy_url` attributes in Terraform, to restrict which actions can modify or delete critical resources within the stack. Without a stack policy, any update operation could unintentionally overwrite, disrupt, or remove essential resources, increasing the risk of accidental outages or security issues. Properly configuring a stack policy helps enforce change management controls and reduces the attack surface for unauthorized or accidental actions.",
   "descriptionUrl": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudformation_stack",
   "platform": "Terraform",
   "descriptionID": "7ad97901",
@@ -11,7 +11,8 @@
   "cwe": "829",
   "override": {
     "detailedDescriptionText": {
-      "descriptionText": "AWS CloudFormation stacks should implement a stack policy, set using the `policy_body` or `policy_url` attributes in Terraform, to restrict which actions can modify or delete critical resources within the stack. Without a stack policy, any update operation could unintentionally overwrite, disrupt, or remove essential resources, increasing the risk of accidental outages or security issues. Properly configuring a stack policy helps enforce change management controls and reduces the attack surface for unauthorized or accidental actions."
+      "descriptionText": "AWS CloudFormation Stack should have a stack policy in order to protect stack resources from update actions"
     }
-  }
+  },
+  "oldDescriptionText": "AWS CloudFormation Stack should have a stack policy in order to protect stack resources from update actions"
 }

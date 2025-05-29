@@ -3,7 +3,7 @@
   "queryName": "Unknown Port Exposed To Internet",
   "severity": "HIGH",
   "category": "Networking and Firewall",
-  "descriptionText": "AWS Security Group should not have an unknown port exposed to the entire Internet",
+  "descriptionText": "This check identifies AWS Security Groups with ingress rules that allow traffic from the internet (0.0.0.0/0) on non-standard ports, which significantly increases your attack surface. When security groups allow uncommon ports to be accessed from anywhere on the internet, it exposes your resources to potential unauthorized access and exploitation from malicious actors globally. To secure your configuration, restrict ingress rules to specific IP ranges or use standard ports only, as shown in the example below:\n\n```\ningress {\n  from_port   = 443\n  to_port     = 443\n  protocol    = \"tcp\"\n  cidr_blocks = [\"192.168.0.0/24\", \"192.162.0.0/24\"]\n}\n```\n\nAvoid insecure configurations like: `cidr_blocks = [\"0.0.0.0/0\"]` for non-standard port ranges.",
   "descriptionUrl": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group",
   "platform": "Terraform",
   "descriptionID": "e55e747f",
@@ -11,7 +11,8 @@
   "cwe": "200",
   "override": {
     "detailedDescriptionText": {
-      "descriptionText": "This check identifies AWS Security Groups with ingress rules that allow traffic from the internet (0.0.0.0/0) on non-standard ports, which significantly increases your attack surface. When security groups allow uncommon ports to be accessed from anywhere on the internet, it exposes your resources to potential unauthorized access and exploitation from malicious actors globally. To secure your configuration, restrict ingress rules to specific IP ranges or use standard ports only, as shown in the example below:\n\n```\ningress {\n  from_port   = 443\n  to_port     = 443\n  protocol    = \"tcp\"\n  cidr_blocks = [\"192.168.0.0/24\", \"192.162.0.0/24\"]\n}\n```\n\nAvoid insecure configurations like: `cidr_blocks = [\"0.0.0.0/0\"]` for non-standard port ranges."
+      "descriptionText": "AWS Security Group should not have an unknown port exposed to the entire Internet"
     }
-  }
+  },
+  "oldDescriptionText": "AWS Security Group should not have an unknown port exposed to the entire Internet"
 }

@@ -3,7 +3,7 @@
   "queryName": "CloudWatch AWS Organizations Changes Missing Alarm",
   "severity": "INFO",
   "category": "Observability",
-  "descriptionText": "Ensure a log metric filter and alarm exist for AWS organizations changes",
+  "descriptionText": "This check ensures that a log metric filter and alarm are configured to monitor changes to AWS Organizations within CloudWatch. Without a properly configured metric filter and alarm, critical events such as the creation, deletion, or modification of organizational accounts and policies may go undetected. This lack of visibility increases the risk of malicious or unauthorized changes going unnoticed, which could compromise the security and governance of the entire AWS environment. Left unaddressed, this misconfiguration may allow threat actors to make unauthorized changes to the organization structure, potentially leading to privilege escalation or data exfiltration.",
   "descriptionUrl": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudwatch_log_metric_filter#pattern",
   "platform": "Terraform",
   "descriptionID": "38b85c45",
@@ -12,7 +12,8 @@
   "oldSeverity": "MEDIUM",
   "override": {
     "detailedDescriptionText": {
-      "descriptionText": "This check ensures that a log metric filter and alarm are configured to monitor changes to AWS Organizations within CloudWatch. Without a properly configured metric filter and alarm, critical events such as the creation, deletion, or modification of organizational accounts and policies may go undetected. This lack of visibility increases the risk of malicious or unauthorized changes going unnoticed, which could compromise the security and governance of the entire AWS environment. Left unaddressed, this misconfiguration may allow threat actors to make unauthorized changes to the organization structure, potentially leading to privilege escalation or data exfiltration."
+      "descriptionText": "Ensure a log metric filter and alarm exist for AWS organizations changes"
     }
-  }
+  },
+  "oldDescriptionText": "Ensure a log metric filter and alarm exist for AWS organizations changes"
 }

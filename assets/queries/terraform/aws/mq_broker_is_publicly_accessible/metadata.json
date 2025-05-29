@@ -3,7 +3,7 @@
   "queryName": "MQ Broker Is Publicly Accessible",
   "severity": "HIGH",
   "category": "Insecure Configurations",
-  "descriptionText": "Check if any MQ Broker is not publicly accessible",
+  "descriptionText": "This check verifies if AWS MQ Brokers have the 'publicly_accessible' attribute set to true, which makes them accessible from the internet. When an MQ Broker is publicly accessible, it increases the attack surface and exposure to potential unauthorized access, potentially leading to data breaches or service disruption. To secure your MQ Broker, omit the 'publicly_accessible' attribute or explicitly set it to false, as shown below:\n\n```\nresource \"aws_mq_broker\" \"secure_broker\" {\n  broker_name = \"example\"\n  engine_type = \"ActiveMQ\"\n  // Other configurations\n  \n  // Either omit this line completely or set to false\n  publicly_accessible = false\n}\n```",
   "descriptionUrl": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/mq_broker",
   "platform": "Terraform",
   "descriptionID": "8ac7fe7e",
@@ -12,7 +12,8 @@
   "oldSeverity": "MEDIUM",
   "override": {
     "detailedDescriptionText": {
-      "descriptionText": "This check verifies if AWS MQ Brokers have the 'publicly_accessible' attribute set to true, which makes them accessible from the internet. When an MQ Broker is publicly accessible, it increases the attack surface and exposure to potential unauthorized access, potentially leading to data breaches or service disruption. To secure your MQ Broker, omit the 'publicly_accessible' attribute or explicitly set it to false, as shown below:\n\n```\nresource \"aws_mq_broker\" \"secure_broker\" {\n  broker_name = \"example\"\n  engine_type = \"ActiveMQ\"\n  // Other configurations\n  \n  // Either omit this line completely or set to false\n  publicly_accessible = false\n}\n```"
+      "descriptionText": "Check if any MQ Broker is not publicly accessible"
     }
-  }
+  },
+  "oldDescriptionText": "Check if any MQ Broker is not publicly accessible"
 }

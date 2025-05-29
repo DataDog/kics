@@ -3,7 +3,7 @@
   "queryName": "Trusted Microsoft Services Not Enabled",
   "severity": "MEDIUM",
   "category": "Networking and Firewall",
-  "descriptionText": "Trusted Microsoft Services should be enabled for Storage Account access",
+  "descriptionText": "Trusted Microsoft Services should be enabled for Storage Account access to ensure that Azure resources such as Azure Backup, Azure Monitor, and others can securely interact with the Storage Account without exposing it more broadly. When the `bypass` attribute in `azurerm_storage_account` or `azurerm_storage_account_network_rules` is not set to include `\"AzureServices\"`, essential Azure services may be denied access or administrators may set overly permissive network rules, increasing the attack surface. Securely configuring your storage account should look like:\n\n```\nnetwork_rules {\n  default_action = \"Deny\"\n  bypass         = [\"AzureServices\"]\n}\n```\n\nFailing to enable Trusted Microsoft Services can hinder platform functionality or lead to weaker network restrictions that unnecessarily expose the storage account to risk.",
   "descriptionUrl": "https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/storage_account#bypass",
   "platform": "Terraform",
   "descriptionID": "2d2af667",
@@ -12,7 +12,8 @@
   "oldSeverity": "HIGH",
   "override": {
     "detailedDescriptionText": {
-      "descriptionText": "Trusted Microsoft Services should be enabled for Storage Account access to ensure that Azure resources such as Azure Backup, Azure Monitor, and others can securely interact with the Storage Account without exposing it more broadly. When the `bypass` attribute in `azurerm_storage_account` or `azurerm_storage_account_network_rules` is not set to include `\"AzureServices\"`, essential Azure services may be denied access or administrators may set overly permissive network rules, increasing the attack surface. Securely configuring your storage account should look like:\n\n```\nnetwork_rules {\n  default_action = \"Deny\"\n  bypass         = [\"AzureServices\"]\n}\n```\n\nFailing to enable Trusted Microsoft Services can hinder platform functionality or lead to weaker network restrictions that unnecessarily expose the storage account to risk."
+      "descriptionText": "Trusted Microsoft Services should be enabled for Storage Account access"
     }
-  }
+  },
+  "oldDescriptionText": "Trusted Microsoft Services should be enabled for Storage Account access"
 }

@@ -3,7 +3,7 @@
   "queryName": "Secretsmanager Secret Encrypted With AWS Managed Key",
   "severity": "MEDIUM",
   "category": "Encryption",
-  "descriptionText": "Secrets Manager secret should be encrypted with customer-managed KMS keys instead of AWS managed keys",
+  "descriptionText": "AWS Secrets Manager secrets should be encrypted with customer-managed KMS keys rather than the default AWS managed keys. Relying on AWS managed keys limits an organization's ability to control, rotate, and audit encryption keys, which are important factors in enforcing robust security policies and compliance requirements. Without customer-managed KMS keys, there may be a greater risk of unauthorized access or insufficient key lifecycle management. If left unaddressed, sensitive information stored in Secrets Manager could be compromised due to weaker or less transparent key management practices.",
   "descriptionUrl": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/secretsmanager_secret#kms_key_id",
   "platform": "Terraform",
   "descriptionID": "f2d67513",
@@ -11,7 +11,8 @@
   "cwe": "326",
   "override": {
     "detailedDescriptionText": {
-      "descriptionText": "AWS Secrets Manager secrets should be encrypted with customer-managed KMS keys rather than the default AWS managed keys. Relying on AWS managed keys limits an organization's ability to control, rotate, and audit encryption keys, which are important factors in enforcing robust security policies and compliance requirements. Without customer-managed KMS keys, there may be a greater risk of unauthorized access or insufficient key lifecycle management. If left unaddressed, sensitive information stored in Secrets Manager could be compromised due to weaker or less transparent key management practices."
+      "descriptionText": "Secrets Manager secret should be encrypted with customer-managed KMS keys instead of AWS managed keys"
     }
-  }
+  },
+  "oldDescriptionText": "Secrets Manager secret should be encrypted with customer-managed KMS keys instead of AWS managed keys"
 }

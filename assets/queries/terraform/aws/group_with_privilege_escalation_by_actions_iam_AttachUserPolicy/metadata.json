@@ -3,7 +3,7 @@
   "queryName": "Group With Privilege Escalation By Actions 'iam:AttachUserPolicy'",
   "severity": "MEDIUM",
   "category": "Access Control",
-  "descriptionText": "Group with privilege escalation by actions 'iam:AttachUserPolicy' and Resource set to '*'. For more information see https://rhinosecuritylabs.com/aws/aws-privilege-escalation-methods-mitigation/.",
+  "descriptionText": "Granting a group the `iam:AttachUserPolicy` action with `\"Resource\": \"*\"` in Terraform, as shown by the attribute and policy below, allows any group member to attach arbitrary IAM policies to any user in the AWS account. This creates a serious privilege escalation vulnerability, as users with this permission can grant themselves or others higher privileges, including administrative access, bypassing intended security controls. If left unaddressed, attackers could exploit this misconfiguration to gain unrestricted access or take over AWS resources.\n\n```\npolicy = jsonencode({\n  Version = \"2012-10-17\"\n  Statement = [\n    {\n      Action = [\n        \"iam:AttachUserPolicy\",\n      ]\n      Effect   = \"Allow\"\n      Resource = \"*\"\n    },\n  ]\n})\n```",
   "descriptionUrl": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_group_policy#policy",
   "platform": "Terraform",
   "descriptionID": "25a0ad8b",
@@ -11,7 +11,8 @@
   "cwe": "269",
   "override": {
     "detailedDescriptionText": {
-      "descriptionText": "Granting a group the `iam:AttachUserPolicy` action with `\"Resource\": \"*\"` in Terraform, as shown by the attribute and policy below, allows any group member to attach arbitrary IAM policies to any user in the AWS account. This creates a serious privilege escalation vulnerability, as users with this permission can grant themselves or others higher privileges, including administrative access, bypassing intended security controls. If left unaddressed, attackers could exploit this misconfiguration to gain unrestricted access or take over AWS resources.\n\n```\npolicy = jsonencode({\n  Version = \"2012-10-17\"\n  Statement = [\n    {\n      Action = [\n        \"iam:AttachUserPolicy\",\n      ]\n      Effect   = \"Allow\"\n      Resource = \"*\"\n    },\n  ]\n})\n```"
+      "descriptionText": "Group with privilege escalation by actions 'iam:AttachUserPolicy' and Resource set to '*'. For more information see https://rhinosecuritylabs.com/aws/aws-privilege-escalation-methods-mitigation/."
     }
-  }
+  },
+  "oldDescriptionText": "Group with privilege escalation by actions 'iam:AttachUserPolicy' and Resource set to '*'. For more information see https://rhinosecuritylabs.com/aws/aws-privilege-escalation-methods-mitigation/."
 }

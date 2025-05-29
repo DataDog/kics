@@ -3,7 +3,7 @@
   "queryName": "Team Tag Missing",
   "severity": "INFO",
   "category": "Best Practices",
-  "descriptionText": "Ensures that every cloud resource has a 'Team' tag for ownership tracking.",
+  "descriptionText": "This check ensures that every cloud resource defined in Terraform includes a \"Team\" tag within the `tags` attribute, which is critical for tracking resource ownership and accountability. Without a \"Team\" tag (e.g., `tags = { Environment = \"Production\" }`), it becomes difficult to determine resource owners, leading to challenges in cost allocation, incident response, and lifecycle management. If left unaddressed, the absence of this tag can result in unmanaged resources remaining active, increasing the risk of security vulnerabilities and unnecessary expenses.",
   "descriptionUrl": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/guides/resource-tagging",
   "platform": "Terraform",
   "descriptionID": "a2b3c4d5",
@@ -11,7 +11,8 @@
   "cwe": "200",
   "override": {
     "detailedDescriptionText": {
-      "descriptionText": "This check ensures that every cloud resource defined in Terraform includes a \"Team\" tag within the `tags` attribute, which is critical for tracking resource ownership and accountability. Without a \"Team\" tag (e.g., `tags = { Environment = \"Production\" }`), it becomes difficult to determine resource owners, leading to challenges in cost allocation, incident response, and lifecycle management. If left unaddressed, the absence of this tag can result in unmanaged resources remaining active, increasing the risk of security vulnerabilities and unnecessary expenses."
+      "descriptionText": "Ensures that every cloud resource has a 'Team' tag for ownership tracking."
     }
-  }
+  },
+  "oldDescriptionText": "Ensures that every cloud resource has a 'Team' tag for ownership tracking."
 }

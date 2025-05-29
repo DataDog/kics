@@ -3,7 +3,7 @@
   "queryName": "Redis Not Updated Regularly",
   "severity": "MEDIUM",
   "category": "Insecure Configurations",
-  "descriptionText": "Redis Cache is not configured to be updated regularly with security and operational updates",
+  "descriptionText": "Configuring an Azure Redis Cache without a regular patch schedule leaves the service vulnerable to missing important security and operational updates, increasing the risk of exploitation by attackers targeting known vulnerabilities. By using the `patch_schedule` block in Terraform, such as:\n\n```\npatch_schedule {\n    day_of_week     = \"Thursday\"\n    start_hour_utc  = 7\n}\n```\n\norganizations can ensure updates are applied in a timely manner, minimizing the attack surface and helping maintain service reliability and compliance. Failure to address this may result in exposure to security threats or outages due to unpatched software flaws.",
   "descriptionUrl": "https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/redis_cache#patch_schedule",
   "platform": "Terraform",
   "descriptionID": "a9726898",
@@ -12,7 +12,8 @@
   "oldSeverity": "HIGH",
   "override": {
     "detailedDescriptionText": {
-      "descriptionText": "Configuring an Azure Redis Cache without a regular patch schedule leaves the service vulnerable to missing important security and operational updates, increasing the risk of exploitation by attackers targeting known vulnerabilities. By using the `patch_schedule` block in Terraform, such as:\n\n```\npatch_schedule {\n    day_of_week     = \"Thursday\"\n    start_hour_utc  = 7\n}\n```\n\norganizations can ensure updates are applied in a timely manner, minimizing the attack surface and helping maintain service reliability and compliance. Failure to address this may result in exposure to security threats or outages due to unpatched software flaws."
+      "descriptionText": "Redis Cache is not configured to be updated regularly with security and operational updates"
     }
-  }
+  },
+  "oldDescriptionText": "Redis Cache is not configured to be updated regularly with security and operational updates"
 }

@@ -3,7 +3,7 @@
   "queryName": "WAF Is Disabled For Azure Application Gateway",
   "severity": "MEDIUM",
   "category": "Networking and Firewall",
-  "descriptionText": "Check if Web Application Firewall is disabled or not configured for Azure's Application Gateway.",
+  "descriptionText": "This check ensures that the Azure Application Gateway has its Web Application Firewall (WAF) correctly configured and enabled, as indicated by the `waf_configuration { enabled = true }` attribute in Terraform. If WAF is not enabled or omitted from the configuration, the application gateway is left unprotected against common web attacks, such as SQL injection and cross-site scripting, increasing the risk of a successful attack. To mitigate this vulnerability, always configure WAF with `enabled = true` as shown below:\n\n```\nresource \"azurerm_application_gateway\" \"example\" {\n  // ... other settings ...\n  waf_configuration {\n    enabled = true\n  }\n}\n```",
   "descriptionUrl": "https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/application_gateway",
   "platform": "Terraform",
   "descriptionID": "97c222ec",
@@ -11,7 +11,8 @@
   "cwe": "693",
   "override": {
     "detailedDescriptionText": {
-      "descriptionText": "This check ensures that the Azure Application Gateway has its Web Application Firewall (WAF) correctly configured and enabled, as indicated by the `waf_configuration { enabled = true }` attribute in Terraform. If WAF is not enabled or omitted from the configuration, the application gateway is left unprotected against common web attacks, such as SQL injection and cross-site scripting, increasing the risk of a successful attack. To mitigate this vulnerability, always configure WAF with `enabled = true` as shown below:\n\n```\nresource \"azurerm_application_gateway\" \"example\" {\n  // ... other settings ...\n  waf_configuration {\n    enabled = true\n  }\n}\n```"
+      "descriptionText": "Check if Web Application Firewall is disabled or not configured for Azure's Application Gateway."
     }
-  }
+  },
+  "oldDescriptionText": "Check if Web Application Firewall is disabled or not configured for Azure's Application Gateway."
 }

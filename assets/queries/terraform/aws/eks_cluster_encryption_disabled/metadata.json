@@ -3,7 +3,7 @@
   "queryName": "EKS Cluster Encryption Disabled",
   "severity": "HIGH",
   "category": "Encryption",
-  "descriptionText": "EKS Cluster should be encrypted",
+  "descriptionText": "Amazon EKS clusters store sensitive information including certificate authorities and service account tokens. When encryption is disabled, this sensitive data is stored in plaintext, potentially exposing it to unauthorized access and data breaches. Enabling encryption using KMS keys for EKS clusters adds an essential layer of security by encrypting Kubernetes secrets stored in etcd.\n\nInsecure example without encryption:\n```\nresource \"aws_eks_cluster\" \"positive1\" {\n  depends_on = [aws_cloudwatch_log_group.example]\n  name = var.cluster_name\n  // Missing encryption_config block\n}\n```\n\nSecure example with encryption enabled:\n```\nresource \"aws_eks_cluster\" \"negative1\" {\n  depends_on = [aws_cloudwatch_log_group.example]\n  name = var.cluster_name\n\n  encryption_config {\n    resources = [\"secrets\"]\n    provider {\n      key_arn = \"your-kms-key-arn\"\n    }\n  }\n}\n```",
   "descriptionUrl": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/eks_cluster#encryption_config",
   "platform": "Terraform",
   "descriptionID": "0a928b22",
@@ -11,7 +11,8 @@
   "cwe": "311",
   "override": {
     "detailedDescriptionText": {
-      "descriptionText": "Amazon EKS clusters store sensitive information including certificate authorities and service account tokens. When encryption is disabled, this sensitive data is stored in plaintext, potentially exposing it to unauthorized access and data breaches. Enabling encryption using KMS keys for EKS clusters adds an essential layer of security by encrypting Kubernetes secrets stored in etcd.\n\nInsecure example without encryption:\n```\nresource \"aws_eks_cluster\" \"positive1\" {\n  depends_on = [aws_cloudwatch_log_group.example]\n  name = var.cluster_name\n  // Missing encryption_config block\n}\n```\n\nSecure example with encryption enabled:\n```\nresource \"aws_eks_cluster\" \"negative1\" {\n  depends_on = [aws_cloudwatch_log_group.example]\n  name = var.cluster_name\n\n  encryption_config {\n    resources = [\"secrets\"]\n    provider {\n      key_arn = \"your-kms-key-arn\"\n    }\n  }\n}\n```"
+      "descriptionText": "EKS Cluster should be encrypted"
     }
-  }
+  },
+  "oldDescriptionText": "EKS Cluster should be encrypted"
 }
