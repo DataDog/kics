@@ -2,7 +2,7 @@ resource "aws_cloudwatch_metric_alarm" "cis_unauthorized_api_calls_cw_alarm" {
   alarm_name                = "CIS-3.1-UnauthorizedAPICalls"
   comparison_operator       = "GreaterThanOrEqualToThreshold"
   evaluation_periods        = "1"
-  metric_name               = "XXXX NOT YOUR FILTER XXXX"
+  metric_name               = aws_cloudwatch_log_metric_filter.cis_unauthorized_api_calls_metric_filter.id
   namespace                 = "CIS_Metric_Alarm_Namespace"
   period                    = "300"
   statistic                 = "Sum"
