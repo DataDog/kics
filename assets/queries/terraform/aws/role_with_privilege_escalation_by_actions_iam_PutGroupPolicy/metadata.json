@@ -3,15 +3,11 @@
   "queryName": "Role With Privilege Escalation By Actions 'iam:PutGroupPolicy'",
   "severity": "MEDIUM",
   "category": "Access Control",
-  "descriptionText": "Role with privilege escalation by actions 'iam:PutGroupPolicy' and Resource set to '*'. For more information see https://rhinosecuritylabs.com/aws/aws-privilege-escalation-methods-mitigation/.",
+  "descriptionText": "Granting the `iam:PutGroupPolicy` action with the `Resource` value set to `\"*\"` in an IAM policy, as shown below, allows the role to attach arbitrary permissions to any IAM group in the account:\n\n```\npolicy = jsonencode({\n  Version = \"2012-10-17\"\n  Statement = [\n    {\n      Action = [\n        \"iam:PutGroupPolicy\",\n      ]\n      Effect   = \"Allow\"\n      Resource = \"*\"\n    },\n  ]\n})\n```\n\nThis powerful permission can be abused for privilege escalation, as a malicious user assuming this role could grant themselves or others elevated privileges by attaching highly permissive group policies. To mitigate this risk, limit the scope of the `Resource` attribute to only the intended groups and restrict allowed actions to only those necessary for the role’s function.",
   "descriptionUrl": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy#policy",
   "platform": "Terraform",
   "descriptionID": "ce1bbaeb",
   "cloudProvider": "aws",
   "cwe": "269",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Granting the `iam:PutGroupPolicy` action with the `Resource` value set to `\"*\"` in an IAM policy, as shown below, allows the role to attach arbitrary permissions to any IAM group in the account:\n\n```\npolicy = jsonencode({\n  Version = \"2012-10-17\"\n  Statement = [\n    {\n      Action = [\n        \"iam:PutGroupPolicy\",\n      ]\n      Effect   = \"Allow\"\n      Resource = \"*\"\n    },\n  ]\n})\n```\n\nThis powerful permission can be abused for privilege escalation, as a malicious user assuming this role could grant themselves or others elevated privileges by attaching highly permissive group policies. To mitigate this risk, limit the scope of the `Resource` attribute to only the intended groups and restrict allowed actions to only those necessary for the role’s function."
-    }
-  }
+  "oldDescriptionText": "Role with privilege escalation by actions 'iam:PutGroupPolicy' and Resource set to '*'. For more information see https://rhinosecuritylabs.com/aws/aws-privilege-escalation-methods-mitigation/."
 }

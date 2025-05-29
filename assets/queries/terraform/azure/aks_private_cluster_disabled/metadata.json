@@ -3,16 +3,12 @@
   "queryName": "AKS Private Cluster Disabled",
   "severity": "MEDIUM",
   "category": "Insecure Configurations",
-  "descriptionText": "Azure Kubernetes Service (AKS) API should not be exposed to the internet",
+  "descriptionText": "The Azure Kubernetes Service (AKS) API server should not be exposed directly to the internet, as this increases the risk of unauthorized access and potential exploitation of the cluster. When the `private_cluster_enabled` attribute is set to `false`, as shown below, the AKS API endpoint is accessible publicly, allowing threat actors to attempt brute force or other attacks:\n\n```\nresource \"azurerm_kubernetes_cluster\" \"example\" {\n  // ...\n  private_cluster_enabled = false\n}\n```\n\nTo mitigate this risk, the attribute should be set to `true`, ensuring the API server is only accessible from internal networks and reducing the attack surface:\n\n```\nresource \"azurerm_kubernetes_cluster\" \"example\" {\n  // ...\n  private_cluster_enabled = true\n}\n```",
   "descriptionUrl": "https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/kubernetes_cluster#private_cluster_enabled",
   "platform": "Terraform",
   "descriptionID": "3ec5eed5",
   "cloudProvider": "azure",
   "cwe": "732",
   "oldSeverity": "HIGH",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "The Azure Kubernetes Service (AKS) API server should not be exposed directly to the internet, as this increases the risk of unauthorized access and potential exploitation of the cluster. When the `private_cluster_enabled` attribute is set to `false`, as shown below, the AKS API endpoint is accessible publicly, allowing threat actors to attempt brute force or other attacks:\n\n```\nresource \"azurerm_kubernetes_cluster\" \"example\" {\n  // ...\n  private_cluster_enabled = false\n}\n```\n\nTo mitigate this risk, the attribute should be set to `true`, ensuring the API server is only accessible from internal networks and reducing the attack surface:\n\n```\nresource \"azurerm_kubernetes_cluster\" \"example\" {\n  // ...\n  private_cluster_enabled = true\n}\n```"
-    }
-  }
+  "oldDescriptionText": "Azure Kubernetes Service (AKS) API should not be exposed to the internet"
 }

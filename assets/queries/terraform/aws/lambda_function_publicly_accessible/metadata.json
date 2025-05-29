@@ -3,15 +3,11 @@
   "queryName": "Lambda Function Publicly Accessible",
   "severity": "HIGH",
   "category": "Access Control",
-  "descriptionText": "Lambda functions should not be publicly accessible.",
+  "descriptionText": "AWS Lambda permissions with a principal value of '*' allow any AWS account or user to invoke the function, making it publicly accessible. This creates a significant security risk as unauthorized parties can trigger your Lambda function, potentially accessing sensitive data or consuming your AWS resources. To secure Lambda functions, specify the exact AWS account ARN in the principal field (e.g., 'arn:aws:iam::123456789012:root') rather than using the wildcard '*'. Compare the secure configuration:\n```\nprincipal = \"arn:aws:iam::123456789012:root\"\n```\nversus the insecure configuration:\n```\nprincipal = \"*\"\n```",
   "descriptionUrl": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/lambda_function",
   "platform": "Terraform",
   "descriptionID": "1btsf2f9",
   "cloudProvider": "aws",
   "cwe": "200",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "AWS Lambda permissions with a principal value of '*' allow any AWS account or user to invoke the function, making it publicly accessible. This creates a significant security risk as unauthorized parties can trigger your Lambda function, potentially accessing sensitive data or consuming your AWS resources. To secure Lambda functions, specify the exact AWS account ARN in the principal field (e.g., 'arn:aws:iam::123456789012:root') rather than using the wildcard '*'. Compare the secure configuration:\n```\nprincipal = \"arn:aws:iam::123456789012:root\"\n```\nversus the insecure configuration:\n```\nprincipal = \"*\"\n```"
-    }
-  }
+  "oldDescriptionText": "Lambda functions should not be publicly accessible."
 }

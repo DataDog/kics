@@ -3,15 +3,11 @@
   "queryName": "User With Privilege Escalation By Actions 'lambda:UpdateFunctionCode'",
   "severity": "MEDIUM",
   "category": "Access Control",
-  "descriptionText": "User with privilege escalation by actions 'lambda:UpdateFunctionCode' and Resource set to '*'. For more information see https://rhinosecuritylabs.com/aws/aws-privilege-escalation-methods-mitigation/.",
+  "descriptionText": "This configuration grants a user the \"lambda:UpdateFunctionCode\" permission with the resource set to \"*\", allowing them to update the code of any Lambda function in the AWS account. Attackers or unauthorized users with this privilege can replace the code of existing Lambda functions with malicious code, which may be executed in response to legitimate triggers or schedules. This type of privilege escalation can allow an attacker to gain unauthorized access to sensitive data, further compromise the AWS environment, or establish persistent backdoors within serverless resources. If left unaddressed, this vulnerability exposes the environment to substantial risk of code injection, data exfiltration, and lateral movement within the AWS account.",
   "descriptionUrl": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_user_policy#policy",
   "platform": "Terraform",
   "descriptionID": "f5d372a0",
   "cloudProvider": "aws",
   "cwe": "269",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "This configuration grants a user the \"lambda:UpdateFunctionCode\" permission with the resource set to \"*\", allowing them to update the code of any Lambda function in the AWS account. Attackers or unauthorized users with this privilege can replace the code of existing Lambda functions with malicious code, which may be executed in response to legitimate triggers or schedules. This type of privilege escalation can allow an attacker to gain unauthorized access to sensitive data, further compromise the AWS environment, or establish persistent backdoors within serverless resources. If left unaddressed, this vulnerability exposes the environment to substantial risk of code injection, data exfiltration, and lateral movement within the AWS account."
-    }
-  }
+  "oldDescriptionText": "User with privilege escalation by actions 'lambda:UpdateFunctionCode' and Resource set to '*'. For more information see https://rhinosecuritylabs.com/aws/aws-privilege-escalation-methods-mitigation/."
 }

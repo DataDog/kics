@@ -3,16 +3,12 @@
   "queryName": "RDS Associated with Public Subnet",
   "severity": "CRITICAL",
   "category": "Networking and Firewall",
-  "descriptionText": "RDS should not run in public subnet",
+  "descriptionText": "Amazon RDS instances should not be associated with public subnets to prevent potential unauthorized access from the internet. When an RDS instance is placed in a subnet group containing a public subnet (with a CIDR like 0.0.0.0/0), it creates an attack vector for malicious actors to exploit your database. \n\nInstead, RDS instances should only be deployed in private subnets with specific CIDR blocks. In the secure example, subnets use specific CIDR blocks like '172.2.0.0/24' and '176.2.0.0/24', while the vulnerable example uses '0.0.0.0/0' which allows traffic from any IP address. Properly securing your database network configuration helps prevent data breaches and unauthorized access to sensitive information.",
   "descriptionUrl": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/db_instance#db_subnet_group_name",
   "platform": "Terraform",
   "descriptionID": "425d310e",
   "cloudProvider": "aws",
   "cwe": "200",
   "oldSeverity": "HIGH",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Amazon RDS instances should not be associated with public subnets to prevent potential unauthorized access from the internet. When an RDS instance is placed in a subnet group containing a public subnet (with a CIDR like 0.0.0.0/0), it creates an attack vector for malicious actors to exploit your database. \n\nInstead, RDS instances should only be deployed in private subnets with specific CIDR blocks. In the secure example, subnets use specific CIDR blocks like '172.2.0.0/24' and '176.2.0.0/24', while the vulnerable example uses '0.0.0.0/0' which allows traffic from any IP address. Properly securing your database network configuration helps prevent data breaches and unauthorized access to sensitive information."
-    }
-  }
+  "oldDescriptionText": "RDS should not run in public subnet"
 }

@@ -3,16 +3,12 @@
   "queryName": "AMI Not Encrypted",
   "severity": "MEDIUM",
   "category": "Encryption",
-  "descriptionText": "AWS AMI Encryption is not enabled",
+  "descriptionText": "Amazon Machine Images (AMIs) created without EBS encryption can result in sensitive data stored on volumes being exposed if the underlying storage is compromised. To mitigate this, AMI resources should have the `encrypted = true` attribute set within each `ebs_block_device` block to ensure all data at rest is protected.\n\nFor example, a secure Terraform configuration would look like:\n\n```\nresource \"aws_ami\" \"secure\" {\n  name                = \"terraform-example\"\n  virtualization_type = \"hvm\"\n  root_device_name    = \"/dev/xvda\"\n\n  ebs_block_device {\n    device_name = \"/dev/xvda\"\n    snapshot_id = \"snap-xxxxxxxx\"\n    volume_size = 8\n    encrypted   = true\n  }\n}\n```",
   "descriptionUrl": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/ami",
   "platform": "Terraform",
   "descriptionID": "248fe368",
   "cloudProvider": "aws",
   "cwe": "311",
   "oldSeverity": "HIGH",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Amazon Machine Images (AMIs) created without EBS encryption can result in sensitive data stored on volumes being exposed if the underlying storage is compromised. To mitigate this, AMI resources should have the `encrypted = true` attribute set within each `ebs_block_device` block to ensure all data at rest is protected.\n\nFor example, a secure Terraform configuration would look like:\n\n```\nresource \"aws_ami\" \"secure\" {\n  name                = \"terraform-example\"\n  virtualization_type = \"hvm\"\n  root_device_name    = \"/dev/xvda\"\n\n  ebs_block_device {\n    device_name = \"/dev/xvda\"\n    snapshot_id = \"snap-xxxxxxxx\"\n    volume_size = 8\n    encrypted   = true\n  }\n}\n```"
-    }
-  }
+  "oldDescriptionText": "AWS AMI Encryption is not enabled"
 }

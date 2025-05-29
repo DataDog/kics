@@ -3,15 +3,11 @@
   "queryName": "Root Account Has Active Access Keys",
   "severity": "HIGH",
   "category": "Insecure Configurations",
-  "descriptionText": "The AWS Root Account must not have active access keys associated, which means if there are access keys associated to the Root Account, they must be inactive.",
+  "descriptionText": "The AWS Root Account has unrestricted access to all resources in an AWS account, making it a high-value target for attackers. Having active access keys for the root account creates a significant security risk, as compromised keys could lead to complete account takeover and unauthorized access to all AWS services and resources. Best security practice requires using IAM users with appropriate permissions instead of the root account for daily operations and programmatic access.\n\nInsecure example:\n```terraform\nresource \"aws_iam_access_key\" \"positive1\" {\n  user    = \"root\"\n  pgp_key = \"keybase:some_person_that_exists\"\n}\n```\n\nSecure example:\n```terraform\nresource \"aws_iam_access_key\" \"negative1\" {\n  user    = aws_iam_user.lb.name\n  pgp_key = \"keybase:some_person_that_exists\"\n}\n```",
   "descriptionUrl": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_access_key",
   "platform": "Terraform",
   "descriptionID": "f0795485",
   "cloudProvider": "aws",
   "cwe": "710",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "The AWS Root Account has unrestricted access to all resources in an AWS account, making it a high-value target for attackers. Having active access keys for the root account creates a significant security risk, as compromised keys could lead to complete account takeover and unauthorized access to all AWS services and resources. Best security practice requires using IAM users with appropriate permissions instead of the root account for daily operations and programmatic access.\n\nInsecure example:\n```terraform\nresource \"aws_iam_access_key\" \"positive1\" {\n  user    = \"root\"\n  pgp_key = \"keybase:some_person_that_exists\"\n}\n```\n\nSecure example:\n```terraform\nresource \"aws_iam_access_key\" \"negative1\" {\n  user    = aws_iam_user.lb.name\n  pgp_key = \"keybase:some_person_that_exists\"\n}\n```"
-    }
-  }
+  "oldDescriptionText": "The AWS Root Account must not have active access keys associated, which means if there are access keys associated to the Root Account, they must be inactive."
 }

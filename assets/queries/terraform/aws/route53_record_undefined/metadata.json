@@ -3,15 +3,11 @@
   "queryName": "Route53 Record Undefined",
   "severity": "HIGH",
   "category": "Networking and Firewall",
-  "descriptionText": "Check if Record is set",
+  "descriptionText": "This check verifies that Route53 record resources have defined values in the 'records' array. Empty record arrays in Route53 configurations may result in DNS resolution failures, causing service disruptions and potentially breaking application functionality that depends on proper name resolution.\n\nA properly configured Route53 record should include appropriate values in the records array as shown in the secure example below:\n\n```terraform\nrecords = [\n  aws_route53_zone.example.name_servers[0],\n  aws_route53_zone.example.name_servers[1],\n  aws_route53_zone.example.name_servers[2],\n  aws_route53_zone.example.name_servers[3],\n]\n```\n\nInsecure configurations leave the records array empty:\n\n```terraform\nrecords = [\n  \n]\n```",
   "descriptionUrl": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record",
   "platform": "Terraform",
   "descriptionID": "91562f39",
   "cloudProvider": "aws",
   "cwe": "778",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "This check verifies that Route53 record resources have defined values in the 'records' array. Empty record arrays in Route53 configurations may result in DNS resolution failures, causing service disruptions and potentially breaking application functionality that depends on proper name resolution.\n\nA properly configured Route53 record should include appropriate values in the records array as shown in the secure example below:\n\n```terraform\nrecords = [\n  aws_route53_zone.example.name_servers[0],\n  aws_route53_zone.example.name_servers[1],\n  aws_route53_zone.example.name_servers[2],\n  aws_route53_zone.example.name_servers[3],\n]\n```\n\nInsecure configurations leave the records array empty:\n\n```terraform\nrecords = [\n  \n]\n```"
-    }
-  }
+  "oldDescriptionText": "Check if Record is set"
 }

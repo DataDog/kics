@@ -3,16 +3,12 @@
   "queryName": "Legacy Client Certificate Auth Enabled",
   "severity": "LOW",
   "category": "Insecure Configurations",
-  "descriptionText": "Kubernetes Clusters must use the default OAuth authentication, which means 'master_auth' must either be undefined or have 'client_certificate_config' with the attribute 'issue_client_certificate' equal to false",
+  "descriptionText": "Kubernetes clusters in Google Kubernetes Engine (GKE) should use the default OAuth authentication, ensuring that client certificates are not issued for cluster authentication. This is enforced in Terraform by setting `master_auth.client_certificate_config.issue_client_certificate` to `false` or by omitting the attribute entirely. Allowing client certificate issuance (`issue_client_certificate = true`) increases the cluster’s attack surface by enabling users to authenticate with potentially compromised or unmanaged certificates, potentially leading to unauthorized access.\n\nFor a secure configuration, ensure the relevant block in Terraform looks like:\n\n```\nmaster_auth {\n  client_certificate_config {\n    issue_client_certificate = false\n  }\n}\n```\nor is simply omitted.",
   "descriptionUrl": "https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/container_cluster",
   "platform": "Terraform",
   "descriptionID": "94728b0c",
   "cloudProvider": "gcp",
   "cwe": "299",
   "oldSeverity": "HIGH",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Kubernetes clusters in Google Kubernetes Engine (GKE) should use the default OAuth authentication, ensuring that client certificates are not issued for cluster authentication. This is enforced in Terraform by setting `master_auth.client_certificate_config.issue_client_certificate` to `false` or by omitting the attribute entirely. Allowing client certificate issuance (`issue_client_certificate = true`) increases the cluster’s attack surface by enabling users to authenticate with potentially compromised or unmanaged certificates, potentially leading to unauthorized access.\n\nFor a secure configuration, ensure the relevant block in Terraform looks like:\n\n```\nmaster_auth {\n  client_certificate_config {\n    issue_client_certificate = false\n  }\n}\n```\nor is simply omitted."
-    }
-  }
+  "oldDescriptionText": "Kubernetes Clusters must use the default OAuth authentication, which means 'master_auth' must either be undefined or have 'client_certificate_config' with the attribute 'issue_client_certificate' equal to false"
 }

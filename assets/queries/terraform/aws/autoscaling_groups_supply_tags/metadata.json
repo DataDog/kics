@@ -3,15 +3,11 @@
   "queryName": "Autoscaling Groups Supply Tags",
   "severity": "LOW",
   "category": "Availability",
-  "descriptionText": "Autoscaling groups should supply tags to configurate",
+  "descriptionText": "Autoscaling groups in AWS should be configured with appropriate tags to ensure proper resource management, cost allocation, and identification. When the `tags` attribute is omitted, as in\n\n```\nresource \"aws_autoscaling_group\" \"example\" {\n  name                 = \"foobar3-terraform-test\"\n  max_size             = 5\n  min_size             = 2\n  launch_configuration = aws_launch_configuration.foobar.name\n  vpc_zone_identifier  = [aws_subnet.example1.id, aws_subnet.example2.id]\n}\n```\n\nit becomes difficult to track and manage autoscaling resources, increasing the risk of orphaned or mismanaged infrastructure. Adding descriptive tags, as shown below, helps enforce governance, simplifies operations, and supports effective monitoring:\n\n```\nresource \"aws_autoscaling_group\" \"example\" {\n  // ... other configuration ...\n  tags = [\n    {\n      \"key\"                 = \"environment\"\n      \"value\"               = \"production\"\n      \"propagate_at_launch\" = true\n    }\n  ]\n}\n```",
   "descriptionUrl": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/autoscaling_group#tag-and-tags",
   "platform": "Terraform",
   "descriptionID": "83cb6386",
   "cloudProvider": "aws",
   "cwe": "665",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Autoscaling groups in AWS should be configured with appropriate tags to ensure proper resource management, cost allocation, and identification. When the `tags` attribute is omitted, as in\n\n```\nresource \"aws_autoscaling_group\" \"example\" {\n  name                 = \"foobar3-terraform-test\"\n  max_size             = 5\n  min_size             = 2\n  launch_configuration = aws_launch_configuration.foobar.name\n  vpc_zone_identifier  = [aws_subnet.example1.id, aws_subnet.example2.id]\n}\n```\n\nit becomes difficult to track and manage autoscaling resources, increasing the risk of orphaned or mismanaged infrastructure. Adding descriptive tags, as shown below, helps enforce governance, simplifies operations, and supports effective monitoring:\n\n```\nresource \"aws_autoscaling_group\" \"example\" {\n  // ... other configuration ...\n  tags = [\n    {\n      \"key\"                 = \"environment\"\n      \"value\"               = \"production\"\n      \"propagate_at_launch\" = true\n    }\n  ]\n}\n```"
-    }
-  }
+  "oldDescriptionText": "Autoscaling groups should supply tags to configurate"
 }

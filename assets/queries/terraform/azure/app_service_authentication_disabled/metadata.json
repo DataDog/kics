@@ -3,16 +3,12 @@
   "queryName": "App Service Authentication Disabled",
   "severity": "MEDIUM",
   "category": "Access Control",
-  "descriptionText": "Azure App Service authentication settings should be enabled",
+  "descriptionText": "Azure App Service authentication settings should be enabled to ensure that access to the application is restricted to authenticated users. Without enabling the `auth_settings { enabled = true }` block in Terraform, anyone can anonymously access the app, which exposes it to unauthorized access and potential misuse of sensitive data or resources. Properly configuring authentication securely helps mitigate risks from attacks such as data exfiltration, account takeover, or service abuse.\n\n```\nauth_settings = {\n  enabled = true\n}\n```",
   "descriptionUrl": "https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/app_service#enabled",
   "platform": "Terraform",
   "descriptionID": "ec37a064",
   "cloudProvider": "azure",
   "cwe": "285",
   "oldSeverity": "INFO",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Azure App Service authentication settings should be enabled to ensure that access to the application is restricted to authenticated users. Without enabling the `auth_settings { enabled = true }` block in Terraform, anyone can anonymously access the app, which exposes it to unauthorized access and potential misuse of sensitive data or resources. Properly configuring authentication securely helps mitigate risks from attacks such as data exfiltration, account takeover, or service abuse.\n\n```\nauth_settings = {\n  enabled = true\n}\n```"
-    }
-  }
+  "oldDescriptionText": "Azure App Service authentication settings should be enabled"
 }

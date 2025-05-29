@@ -3,15 +3,11 @@
   "queryName": "Role With Privilege Escalation By Actions 'iam:PutRolePolicy'",
   "severity": "MEDIUM",
   "category": "Access Control",
-  "descriptionText": "Role with privilege escalation by actions 'iam:PutRolePolicy' and Resource set to '*'. For more information see https://rhinosecuritylabs.com/aws/aws-privilege-escalation-methods-mitigation/.",
+  "descriptionText": "Granting a role the `iam:PutRolePolicy` action with the `Resource` set to `\"*\"` in Terraform, as in the following configuration,\n\n```\npolicy = jsonencode({\n  Version = \"2012-10-17\"\n  Statement = [\n    {\n      Action = [\n        \"iam:PutRolePolicy\",\n      ]\n      Effect   = \"Allow\"\n      Resource = \"*\"\n    },\n  ]\n})\n```\n\nallows any principal with this role to attach arbitrary permissions to any IAM role, leading to potential privilege escalation. An attacker could exploit this to grant themselves or others broad or administrative permissions, compromising the security of the AWS environment. It is critical to scope IAM permissions as narrowly as possible, restricting both actions and resources to mitigate this risk.",
   "descriptionUrl": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy#policy",
   "platform": "Terraform",
   "descriptionID": "2d361444",
   "cloudProvider": "aws",
   "cwe": "269",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Granting a role the `iam:PutRolePolicy` action with the `Resource` set to `\"*\"` in Terraform, as in the following configuration,\n\n```\npolicy = jsonencode({\n  Version = \"2012-10-17\"\n  Statement = [\n    {\n      Action = [\n        \"iam:PutRolePolicy\",\n      ]\n      Effect   = \"Allow\"\n      Resource = \"*\"\n    },\n  ]\n})\n```\n\nallows any principal with this role to attach arbitrary permissions to any IAM role, leading to potential privilege escalation. An attacker could exploit this to grant themselves or others broad or administrative permissions, compromising the security of the AWS environment. It is critical to scope IAM permissions as narrowly as possible, restricting both actions and resources to mitigate this risk."
-    }
-  }
+  "oldDescriptionText": "Role with privilege escalation by actions 'iam:PutRolePolicy' and Resource set to '*'. For more information see https://rhinosecuritylabs.com/aws/aws-privilege-escalation-methods-mitigation/."
 }

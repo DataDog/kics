@@ -3,15 +3,11 @@
   "queryName": "ECR Image Tag Not Immutable",
   "severity": "MEDIUM",
   "category": "Insecure Configurations",
-  "descriptionText": "ECR should have an image tag be immutable. This prevents image tags from being overwritten.",
+  "descriptionText": "To ensure the integrity of container images, Amazon Elastic Container Registry (ECR) repositories should have image tag immutability enabled by setting `image_tag_mutability` to `IMMUTABLE`. When image tags are set as mutable, existing image tags can be overwritten with new images, which may enable attackers or unauthorized users to replace trusted container images with malicious ones without changing the tag reference. This vulnerability can compromise the supply chain, leading to the deployment of untrusted or harmful workloads in production environments. Enforcing image tag immutability helps maintain a consistent and auditable history of deployed images, preventing accidental or intentional tampering of container tags.",
   "descriptionUrl": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/ecr_repository",
   "platform": "Terraform",
   "descriptionID": "1cc5d4e2",
   "cloudProvider": "aws",
   "cwe": "710",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "To ensure the integrity of container images, Amazon Elastic Container Registry (ECR) repositories should have image tag immutability enabled by setting `image_tag_mutability` to `IMMUTABLE`. When image tags are set as mutable, existing image tags can be overwritten with new images, which may enable attackers or unauthorized users to replace trusted container images with malicious ones without changing the tag reference. This vulnerability can compromise the supply chain, leading to the deployment of untrusted or harmful workloads in production environments. Enforcing image tag immutability helps maintain a consistent and auditable history of deployed images, preventing accidental or intentional tampering of container tags."
-    }
-  }
+  "oldDescriptionText": "ECR should have an image tag be immutable. This prevents image tags from being overwritten."
 }

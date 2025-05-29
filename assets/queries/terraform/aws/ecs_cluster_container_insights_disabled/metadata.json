@@ -3,15 +3,11 @@
   "queryName": "ECS Cluster with Container Insights Disabled",
   "severity": "LOW",
   "category": "Observability",
-  "descriptionText": "ECS Cluster should enable container insights",
+  "descriptionText": "ECS clusters should have the `containerInsights` setting enabled to provide enhanced monitoring and observability for container workloads. Without enabling container insights, as in the configuration below:\n\n```\nresource \"aws_ecs_cluster\" \"foo\" {\n  name = \"white-hart\"\n}\n```\n\ncritical metrics and logs about cluster and task performance will not be collected, making it more difficult to detect anomalies, troubleshoot issues, and ensure operational health. Enabling container insights by specifying:\n\n```\nsetting {\n  name  = \"containerInsights\"\n  value = \"enabled\"\n}\n```\n\nhelps provide visibility into resource utilization, failures, and capacity planning, reducing operational risk.",
   "descriptionUrl": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/ecs_cluster#setting",
   "platform": "Terraform",
   "descriptionID": "b48a7a70",
   "cloudProvider": "aws",
   "cwe": "778",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "ECS clusters should have the `containerInsights` setting enabled to provide enhanced monitoring and observability for container workloads. Without enabling container insights, as in the configuration below:\n\n```\nresource \"aws_ecs_cluster\" \"foo\" {\n  name = \"white-hart\"\n}\n```\n\ncritical metrics and logs about cluster and task performance will not be collected, making it more difficult to detect anomalies, troubleshoot issues, and ensure operational health. Enabling container insights by specifying:\n\n```\nsetting {\n  name  = \"containerInsights\"\n  value = \"enabled\"\n}\n```\n\nhelps provide visibility into resource utilization, failures, and capacity planning, reducing operational risk."
-    }
-  }
+  "oldDescriptionText": "ECS Cluster should enable container insights"
 }

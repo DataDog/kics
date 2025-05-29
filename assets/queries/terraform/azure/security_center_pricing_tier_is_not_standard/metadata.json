@@ -3,15 +3,11 @@
   "queryName": "Security Center Pricing Tier Is Not Standard",
   "severity": "MEDIUM",
   "category": "Insecure Configurations",
-  "descriptionText": "Make sure that the 'Standard' pricing tiers were selected.",
+  "descriptionText": "Selecting the appropriate pricing tier for Azure Security Center is crucial for ensuring comprehensive security monitoring and protection. If the `tier` attribute in the `azurerm_security_center_subscription_pricing` resource is set to `\"Free\"`, as shown below:\n\n```\nresource \"azurerm_security_center_subscription_pricing\" \"example\" {\n   tier = \"Free\"\n}\n```\n\nthe configuration provides only limited security features and monitoring capabilities, leaving the environment more vulnerable to threats. Upgrading to the `\"Standard\"` tier, as recommended:\n\n```\nresource \"azurerm_security_center_subscription_pricing\" \"example\" {\n   tier = \"Standard\"\n}\n```\n\nenables advanced security features such as threat detection and automated response, significantly reducing the risk of undetected attacks and data breaches.",
   "descriptionUrl": "https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/security_center_subscription_pricing",
   "platform": "Terraform",
   "descriptionID": "6a9ab071",
   "cloudProvider": "azure",
   "cwe": "665",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Selecting the appropriate pricing tier for Azure Security Center is crucial for ensuring comprehensive security monitoring and protection. If the `tier` attribute in the `azurerm_security_center_subscription_pricing` resource is set to `\"Free\"`, as shown below:\n\n```\nresource \"azurerm_security_center_subscription_pricing\" \"example\" {\n   tier = \"Free\"\n}\n```\n\nthe configuration provides only limited security features and monitoring capabilities, leaving the environment more vulnerable to threats. Upgrading to the `\"Standard\"` tier, as recommended:\n\n```\nresource \"azurerm_security_center_subscription_pricing\" \"example\" {\n   tier = \"Standard\"\n}\n```\n\nenables advanced security features such as threat detection and automated response, significantly reducing the risk of undetected attacks and data breaches."
-    }
-  }
+  "oldDescriptionText": "Make sure that the 'Standard' pricing tiers were selected."
 }

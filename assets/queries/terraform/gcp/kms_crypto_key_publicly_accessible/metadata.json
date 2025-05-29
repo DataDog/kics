@@ -3,15 +3,11 @@
   "queryName": "KMS Crypto Key is Publicly Accessible",
   "severity": "HIGH",
   "category": "Encryption",
-  "descriptionText": "KMS Crypto Key should not be publicly accessible. In other words, the KMS Crypto Key policy should not set 'allUsers' or 'allAuthenticatedUsers' in the attribute 'member'/'members'",
+  "descriptionText": "Google Cloud KMS Crypto Keys provide cryptographic functionality for encrypting and decrypting sensitive data in Google Cloud. When KMS Crypto Key IAM policies include 'allUsers' or 'allAuthenticatedUsers', they become publicly accessible, creating a serious security vulnerability that could lead to unauthorized access to encryption capabilities, data breaches, or compromised encrypted information.\n\nInsecure configuration example:\n```\ndata \"google_iam_policy\" {\n  binding {\n    role = \"roles/cloudkms.cryptoKeyEncrypter\"\n    members = [\"allUsers\"]\n  }\n}\n```\n\nSecure configuration with specific user access:\n```\ndata \"google_iam_policy\" {\n  binding {\n    role = \"roles/cloudkms.cryptoKeyEncrypter\"\n    members = [\n      \"user:jane@example.com\",\n    ]\n  }\n}\n```",
   "descriptionUrl": "https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/google_kms_crypto_key_iam#google_kms_crypto_key_iam_policy",
   "platform": "Terraform",
   "descriptionID": "b1146d1f",
   "cloudProvider": "gcp",
   "cwe": "284",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Google Cloud KMS Crypto Keys provide cryptographic functionality for encrypting and decrypting sensitive data in Google Cloud. When KMS Crypto Key IAM policies include 'allUsers' or 'allAuthenticatedUsers', they become publicly accessible, creating a serious security vulnerability that could lead to unauthorized access to encryption capabilities, data breaches, or compromised encrypted information.\n\nInsecure configuration example:\n```\ndata \"google_iam_policy\" {\n  binding {\n    role = \"roles/cloudkms.cryptoKeyEncrypter\"\n    members = [\"allUsers\"]\n  }\n}\n```\n\nSecure configuration with specific user access:\n```\ndata \"google_iam_policy\" {\n  binding {\n    role = \"roles/cloudkms.cryptoKeyEncrypter\"\n    members = [\n      \"user:jane@example.com\",\n    ]\n  }\n}\n```"
-    }
-  }
+  "oldDescriptionText": "KMS Crypto Key should not be publicly accessible. In other words, the KMS Crypto Key policy should not set 'allUsers' or 'allAuthenticatedUsers' in the attribute 'member'/'members'"
 }

@@ -3,16 +3,12 @@
   "queryName": "Unscanned ECR Image",
   "severity": "LOW",
   "category": "Observability",
-  "descriptionText": "Checks if the ECR Image has been scanned",
+  "descriptionText": "This check verifies whether Amazon Elastic Container Registry (ECR) repositories are configured to scan container images on push by setting the `scan_on_push` attribute to `true` in the `image_scanning_configuration` block. Without image scanning enabled, as in `image_scanning_configuration { scan_on_push = false }`, malicious or vulnerable software can be uploaded and distributed without detection, increasing the risk of security breaches. Enabling image scanning ensures that newly pushed images are automatically checked for vulnerabilities, helping to prevent the deployment of insecure containers.",
   "descriptionUrl": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/ecr_repository#scan_on_push",
   "platform": "Terraform",
   "descriptionID": "791b37b8",
   "cloudProvider": "aws",
   "cwe": "1021",
   "oldSeverity": "MEDIUM",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "This check verifies whether Amazon Elastic Container Registry (ECR) repositories are configured to scan container images on push by setting the `scan_on_push` attribute to `true` in the `image_scanning_configuration` block. Without image scanning enabled, as in `image_scanning_configuration { scan_on_push = false }`, malicious or vulnerable software can be uploaded and distributed without detection, increasing the risk of security breaches. Enabling image scanning ensures that newly pushed images are automatically checked for vulnerabilities, helping to prevent the deployment of insecure containers."
-    }
-  }
+  "oldDescriptionText": "Checks if the ECR Image has been scanned"
 }

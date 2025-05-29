@@ -3,16 +3,12 @@
   "queryName": "IAM Policies With Full Privileges",
   "severity": "MEDIUM",
   "category": "Access Control",
-  "descriptionText": "IAM policies shouldn't allow full administrative privileges (for all resources)",
+  "descriptionText": "IAM policies should never allow full administrative privileges (for all resources), as this is achieved by setting the `\"Action\"` to `\"*\"` and the `\"Resource\"` to `\"*\"`, as shown below:\n\n```\n\"Statement\": [\n  {\n    \"Effect\": \"Allow\",\n    \"Action\": [\"*\"],\n    \"Resource\": \"*\"\n  }\n]\n```\n\nGranting such broad permissions bypasses the principle of least privilege, enabling any user or service with this policy to perform any action on any AWS resource. If left unaddressed, this misconfiguration can lead to privilege escalation, data exfiltration, resource manipulation, or complete account compromise in the event of credential leakage.",
   "descriptionUrl": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy",
   "platform": "Terraform",
   "descriptionID": "7f603399",
   "cloudProvider": "aws",
   "cwe": "284",
   "oldSeverity": "HIGH",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "IAM policies should never allow full administrative privileges (for all resources), as this is achieved by setting the `\"Action\"` to `\"*\"` and the `\"Resource\"` to `\"*\"`, as shown below:\n\n```\n\"Statement\": [\n  {\n    \"Effect\": \"Allow\",\n    \"Action\": [\"*\"],\n    \"Resource\": \"*\"\n  }\n]\n```\n\nGranting such broad permissions bypasses the principle of least privilege, enabling any user or service with this policy to perform any action on any AWS resource. If left unaddressed, this misconfiguration can lead to privilege escalation, data exfiltration, resource manipulation, or complete account compromise in the event of credential leakage."
-    }
-  }
+  "oldDescriptionText": "IAM policies shouldn't allow full administrative privileges (for all resources)"
 }

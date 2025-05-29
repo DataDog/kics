@@ -3,15 +3,11 @@
   "queryName": "AMI Most Recent Without Owner or Filter",
   "severity": "HIGH",
   "category": "Access Control",
-  "descriptionText": "Avoid using the aws_ami data source with most_recent = true unless an 'owners' attribute or a specific filter like 'owner-id', 'owner-alias', or 'image-id' is set. Omitting these may result in unintended AMIs being selected.",
+  "descriptionText": "When using the `aws_ami` data source in Terraform with `most_recent = true`, omitting the `owners` attribute or specific filters such as `owner-id`, `owner-alias`, or `image-id` can cause Terraform to select AMIs from unknown or unauthorized sources. This increases the risk of deploying instances from untrusted or potentially malicious AMIs, which may introduce security vulnerabilities or unexpected behavior in your infrastructure. To mitigate this risk, always specify an explicit owner or unique identifier when querying for the most recent AMI.\n\nExample of unsecure configuration:\n\n```\ndata \"aws_ami\" \"ubuntu\" {\n  most_recent = true\n\n  filter {\n    name   = \"name\"\n    values = [\"ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server-*\"]\n  }\n}\n```\n\nExample of secure configuration:\n\n```\ndata \"aws_ami\" \"ubuntu\" {\n  most_recent = true\n  owners      = [\"099720109477\"] // Canonical\n\n  filter {\n    name   = \"name\"\n    values = [\"ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server-*\"]\n  }\n}\n```",
   "descriptionUrl": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/ami",
   "platform": "Terraform",
   "descriptionID": "f317c3c2",
   "cloudProvider": "aws",
   "cwe": "346",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "When using the `aws_ami` data source in Terraform with `most_recent = true`, omitting the `owners` attribute or specific filters such as `owner-id`, `owner-alias`, or `image-id` can cause Terraform to select AMIs from unknown or unauthorized sources. This increases the risk of deploying instances from untrusted or potentially malicious AMIs, which may introduce security vulnerabilities or unexpected behavior in your infrastructure. To mitigate this risk, always specify an explicit owner or unique identifier when querying for the most recent AMI.\n\nExample of unsecure configuration:\n\n```\ndata \"aws_ami\" \"ubuntu\" {\n  most_recent = true\n\n  filter {\n    name   = \"name\"\n    values = [\"ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server-*\"]\n  }\n}\n```\n\nExample of secure configuration:\n\n```\ndata \"aws_ami\" \"ubuntu\" {\n  most_recent = true\n  owners      = [\"099720109477\"] // Canonical\n\n  filter {\n    name   = \"name\"\n    values = [\"ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server-*\"]\n  }\n}\n```"
-    }
-  }
+  "oldDescriptionText": "Avoid using the aws_ami data source with most_recent = true unless an 'owners' attribute or a specific filter like 'owner-id', 'owner-alias', or 'image-id' is set. Omitting these may result in unintended AMIs being selected."
 }

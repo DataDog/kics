@@ -3,15 +3,11 @@
   "queryName": "IP Forwarding Enabled",
   "severity": "MEDIUM",
   "category": "Networking and Firewall",
-  "descriptionText": "Instances must not have IP forwarding enabled, which means the attribute 'can_ip_forward' must not be true",
+  "descriptionText": "This check ensures that the `can_ip_forward` attribute for Google Compute Engine instances is set to `false`, preventing instances from forwarding packets that are not addressed to themselves. If `can_ip_forward` is set to `true`, as shown below, the instance could be misused as a routing or proxy device, increasing the risk of data exfiltration or man-in-the-middle attacks:\n\n```\nresource \"google_compute_instance\" \"appserver\" {\n  name           = \"primary-application-server\"\n  machine_type   = \"e2-medium\"\n  can_ip_forward = true\n  ...\n}\n```\n\nTo mitigate this risk, configure the attribute as `false`:\n\n```\nresource \"google_compute_instance\" \"appserver\" {\n  name           = \"primary-application-server\"\n  machine_type   = \"e2-medium\"\n  can_ip_forward = false\n  ...\n}\n```\nDisabling IP forwarding hardens network boundaries and reduces the attack surface of the cloud environment.",
   "descriptionUrl": "https://registry.terraform.io/providers/hashicorp/google/latest/docs/data-sources/compute_instance",
   "platform": "Terraform",
   "descriptionID": "2c1a3242",
   "cloudProvider": "gcp",
   "cwe": "1188",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "This check ensures that the `can_ip_forward` attribute for Google Compute Engine instances is set to `false`, preventing instances from forwarding packets that are not addressed to themselves. If `can_ip_forward` is set to `true`, as shown below, the instance could be misused as a routing or proxy device, increasing the risk of data exfiltration or man-in-the-middle attacks:\n\n```\nresource \"google_compute_instance\" \"appserver\" {\n  name           = \"primary-application-server\"\n  machine_type   = \"e2-medium\"\n  can_ip_forward = true\n  ...\n}\n```\n\nTo mitigate this risk, configure the attribute as `false`:\n\n```\nresource \"google_compute_instance\" \"appserver\" {\n  name           = \"primary-application-server\"\n  machine_type   = \"e2-medium\"\n  can_ip_forward = false\n  ...\n}\n```\nDisabling IP forwarding hardens network boundaries and reduces the attack surface of the cloud environment."
-    }
-  }
+  "oldDescriptionText": "Instances must not have IP forwarding enabled, which means the attribute 'can_ip_forward' must not be true"
 }
