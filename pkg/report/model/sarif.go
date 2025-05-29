@@ -24,8 +24,8 @@ import (
 var categoriesNotFound = make(map[string]bool)
 
 var severityLevelEquivalence = map[model.Severity]string{
-	"INFO":     "info",
-	"LOW":      "info",
+	"INFO":     "none",
+	"LOW":      "none",
 	"MEDIUM":   "note",
 	"HIGH":     "warning",
 	"CRITICAL": "error",
