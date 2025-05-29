@@ -3,7 +3,7 @@
   "queryName": "EKS node group remote access disabled",
   "severity": "MEDIUM",
   "category": "Networking and Firewall",
-  "descriptionText": "EKS node group remote access is disabled when 'SourceSecurityGroups' is missing",
+  "descriptionText": "This check ensures that when configuring remote access for an AWS EKS node group, the `source_security_group_ids` attribute is specified. If this parameter is omitted, the EC2 instances in the EKS node group can potentially be accessed via SSH from any IP address, which significantly increases the risk of unauthorized access. By not restricting SSH access to a specific set of trusted security groups, the node group becomes more vulnerable to brute force attacks and other security threats. Properly configuring the `source_security_group_ids` limits remote access to only those network sources that are explicitly permitted, thereby reducing the node group’s attack surface.",
   "descriptionUrl": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/eks_node_group#remote_access",
   "platform": "Terraform",
   "descriptionID": "6d42a06d",
@@ -12,7 +12,8 @@
   "oldSeverity": "HIGH",
   "override": {
     "detailedDescriptionText": {
-      "descriptionText": "This check ensures that when configuring remote access for an AWS EKS node group, the `source_security_group_ids` attribute is specified. If this parameter is omitted, the EC2 instances in the EKS node group can potentially be accessed via SSH from any IP address, which significantly increases the risk of unauthorized access. By not restricting SSH access to a specific set of trusted security groups, the node group becomes more vulnerable to brute force attacks and other security threats. Properly configuring the `source_security_group_ids` limits remote access to only those network sources that are explicitly permitted, thereby reducing the node group’s attack surface."
+      "descriptionText": "EKS node group remote access is disabled when 'SourceSecurityGroups' is missing"
     }
-  }
+  },
+  "oldDescriptionText": "EKS node group remote access is disabled when 'SourceSecurityGroups' is missing"
 }

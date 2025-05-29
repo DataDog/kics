@@ -3,7 +3,7 @@
   "queryName": "CloudTrail Log Files Not Encrypted With KMS",
   "severity": "LOW",
   "category": "Encryption",
-  "descriptionText": "Logs delivered by CloudTrail should be encrypted using KMS to increase security of your CloudTrail",
+  "descriptionText": "CloudTrail logs contain sensitive information about account activity and should be protected from unauthorized access. If the `kms_key_id` attribute is not specified in the `aws_cloudtrail` resource block, as shown in:\n\n```\nresource \"aws_cloudtrail\" \"positive1\" {\n  name           = \"npositive_1\"\n  s3_bucket_name = \"bucketlog_1\"\n}\n```\n\nthen the logs stored in S3 are not encrypted with a customer-managed KMS key, leaving them vulnerable to exposure or tampering. Using the `kms_key_id` attribute, as in:\n\n```\nresource \"aws_cloudtrail\" \"negative1\" {\n  name           = \"negative1\"\n  s3_bucket_name = \"bucketlog1\"\n  kms_key_id     = \"arn:aws:kms:us-east-2:123456789012:key/12345678-1234-1234-1234-123456789012\"\n}\n```\n\nensures that the logs are protected with strong encryption, reducing the risk of unauthorized access and helping meet compliance requirements.",
   "descriptionUrl": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudtrail#kms_key_id",
   "platform": "Terraform",
   "descriptionID": "ee8a4d47",
@@ -11,7 +11,8 @@
   "cwe": "326",
   "override": {
     "detailedDescriptionText": {
-      "descriptionText": "CloudTrail logs contain sensitive information about account activity and should be protected from unauthorized access. If the `kms_key_id` attribute is not specified in the `aws_cloudtrail` resource block, as shown in:\n\n```\nresource \"aws_cloudtrail\" \"positive1\" {\n  name           = \"npositive_1\"\n  s3_bucket_name = \"bucketlog_1\"\n}\n```\n\nthen the logs stored in S3 are not encrypted with a customer-managed KMS key, leaving them vulnerable to exposure or tampering. Using the `kms_key_id` attribute, as in:\n\n```\nresource \"aws_cloudtrail\" \"negative1\" {\n  name           = \"negative1\"\n  s3_bucket_name = \"bucketlog1\"\n  kms_key_id     = \"arn:aws:kms:us-east-2:123456789012:key/12345678-1234-1234-1234-123456789012\"\n}\n```\n\nensures that the logs are protected with strong encryption, reducing the risk of unauthorized access and helping meet compliance requirements."
+      "descriptionText": "Logs delivered by CloudTrail should be encrypted using KMS to increase security of your CloudTrail"
     }
-  }
+  },
+  "oldDescriptionText": "Logs delivered by CloudTrail should be encrypted using KMS to increase security of your CloudTrail"
 }

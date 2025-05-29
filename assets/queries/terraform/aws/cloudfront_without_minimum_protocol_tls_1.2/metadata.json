@@ -3,7 +3,7 @@
   "queryName": "CloudFront Without Minimum Protocol TLS 1.2",
   "severity": "MEDIUM",
   "category": "Insecure Configurations",
-  "descriptionText": "CloudFront Minimum Protocol version should be at least TLS 1.2",
+  "descriptionText": "Amazon CloudFront distributions should enforce a minimum TLS protocol version of at least TLS 1.2 to ensure secure encryption between clients and CloudFront. Allowing earlier versions such as TLS 1.0 or TLS 1.1 exposes distributions to known vulnerabilities and weak ciphers, increasing the risk of data interception and man-in-the-middle attacks. This can be securely enforced in Terraform using the `viewer_certificate` block with `minimum_protocol_version = \"TLSv1.2_2018\"` or higher, as shown below:\n\n```\nviewer_certificate {\n  cloudfront_default_certificate = false\n  minimum_protocol_version = \"TLSv1.2_2018\"\n}\n```",
   "descriptionUrl": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudfront_distribution",
   "platform": "Terraform",
   "descriptionID": "0b620722",
@@ -12,7 +12,8 @@
   "oldSeverity": "HIGH",
   "override": {
     "detailedDescriptionText": {
-      "descriptionText": "Amazon CloudFront distributions should enforce a minimum TLS protocol version of at least TLS 1.2 to ensure secure encryption between clients and CloudFront. Allowing earlier versions such as TLS 1.0 or TLS 1.1 exposes distributions to known vulnerabilities and weak ciphers, increasing the risk of data interception and man-in-the-middle attacks. This can be securely enforced in Terraform using the `viewer_certificate` block with `minimum_protocol_version = \"TLSv1.2_2018\"` or higher, as shown below:\n\n```\nviewer_certificate {\n  cloudfront_default_certificate = false\n  minimum_protocol_version = \"TLSv1.2_2018\"\n}\n```"
+      "descriptionText": "CloudFront Minimum Protocol version should be at least TLS 1.2"
     }
-  }
+  },
+  "oldDescriptionText": "CloudFront Minimum Protocol version should be at least TLS 1.2"
 }

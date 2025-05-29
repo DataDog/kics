@@ -3,7 +3,7 @@
   "queryName": "DNSSEC Using RSASHA1",
   "severity": "MEDIUM",
   "category": "Encryption",
-  "descriptionText": "DNSSEC should not use the RSASHA1 algorithm, which means if, within the 'dnssec_config' block, the 'default_key_specs' block exists with the 'algorithm' field is 'rsasha1' which is bad.",
+  "descriptionText": "DNSSEC should not use the RSASHA1 algorithm, which is considered weak and vulnerable to cryptographic attacks. If a `dnssec_config` block contains a `default_key_specs` attribute with `algorithm = \"rsasha1\"`, attackers may be able to exploit known weaknesses in this algorithm to forge DNS records, potentially redirecting users to malicious sites or causing other security issues. Instead, use a stronger algorithm such as `rsasha256`:\n\n```\ndnssec_config {\n    default_key_specs {\n        algorithm = \"rsasha256\"\n    }\n}\n```",
   "descriptionUrl": "https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/dns_managed_zone#algorithm",
   "platform": "Terraform",
   "descriptionID": "07664c32",
@@ -12,7 +12,8 @@
   "oldSeverity": "HIGH",
   "override": {
     "detailedDescriptionText": {
-      "descriptionText": "DNSSEC should not use the RSASHA1 algorithm, which is considered weak and vulnerable to cryptographic attacks. If a `dnssec_config` block contains a `default_key_specs` attribute with `algorithm = \"rsasha1\"`, attackers may be able to exploit known weaknesses in this algorithm to forge DNS records, potentially redirecting users to malicious sites or causing other security issues. Instead, use a stronger algorithm such as `rsasha256`:\n\n```\ndnssec_config {\n    default_key_specs {\n        algorithm = \"rsasha256\"\n    }\n}\n```"
+      "descriptionText": "DNSSEC should not use the RSASHA1 algorithm, which means if, within the 'dnssec_config' block, the 'default_key_specs' block exists with the 'algorithm' field is 'rsasha1' which is bad."
     }
-  }
+  },
+  "oldDescriptionText": "DNSSEC should not use the RSASHA1 algorithm, which means if, within the 'dnssec_config' block, the 'default_key_specs' block exists with the 'algorithm' field is 'rsasha1' which is bad."
 }

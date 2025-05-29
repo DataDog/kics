@@ -3,7 +3,7 @@
   "queryName": "ElastiCache Nodes Not Created Across Multi AZ",
   "severity": "MEDIUM",
   "category": "Availability",
-  "descriptionText": "ElastiCache Nodes should be created across multi az, which means 'az_mode' should be set to 'cross-az' in multi nodes cluster",
+  "descriptionText": "When configuring AWS ElastiCache clusters with multiple nodes, it is important to distribute nodes across multiple Availability Zones (AZs) by setting the `az_mode` attribute to `\"cross-az\"`. Failing to do so—such as by omitting the `az_mode` attribute or explicitly setting it to `\"single-az\"`—means all nodes run in a single AZ, increasing the risk of service disruption if that AZ experiences an outage. For example, a secure Terraform configuration would explicitly set:\n\n```\nresource \"aws_elasticache_cluster\" \"example\" {\n  cluster_id    = \"cluster-example\"\n  engine        = \"memcached\"\n  num_cache_nodes = 3\n  az_mode       = \"cross-az\"\n}\n```\n\nDistributing cache nodes across multiple AZs increases fault tolerance and availability for ElastiCache clusters.",
   "descriptionUrl": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/elasticache_cluster",
   "platform": "Terraform",
   "descriptionID": "1bbfe45b",
@@ -11,7 +11,8 @@
   "cwe": "284",
   "override": {
     "detailedDescriptionText": {
-      "descriptionText": "When configuring AWS ElastiCache clusters with multiple nodes, it is important to distribute nodes across multiple Availability Zones (AZs) by setting the `az_mode` attribute to `\"cross-az\"`. Failing to do so—such as by omitting the `az_mode` attribute or explicitly setting it to `\"single-az\"`—means all nodes run in a single AZ, increasing the risk of service disruption if that AZ experiences an outage. For example, a secure Terraform configuration would explicitly set:\n\n```\nresource \"aws_elasticache_cluster\" \"example\" {\n  cluster_id    = \"cluster-example\"\n  engine        = \"memcached\"\n  num_cache_nodes = 3\n  az_mode       = \"cross-az\"\n}\n```\n\nDistributing cache nodes across multiple AZs increases fault tolerance and availability for ElastiCache clusters."
+      "descriptionText": "ElastiCache Nodes should be created across multi az, which means 'az_mode' should be set to 'cross-az' in multi nodes cluster"
     }
-  }
+  },
+  "oldDescriptionText": "ElastiCache Nodes should be created across multi az, which means 'az_mode' should be set to 'cross-az' in multi nodes cluster"
 }

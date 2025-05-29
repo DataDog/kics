@@ -3,7 +3,7 @@
   "queryName": "Auto Scaling Group With No Associated ELB",
   "severity": "MEDIUM",
   "category": "Availability",
-  "descriptionText": "AWS Auto Scaling Groups must have associated ELBs to ensure high availability and improve application performance. This means the attribute 'load_balancers' must be defined and not empty.",
+  "descriptionText": "AWS Auto Scaling Groups (ASGs) should have associated Elastic Load Balancers (ELBs) to ensure high availability and efficient distribution of incoming traffic. Without specifying the `load_balancers` attribute, for example:\n\n```\nresource \"aws_autoscaling_group\" \"bar\" {\n  ...\n  // missing `load_balancers`\n}\n```\n\ninstances launched by the ASG may become inaccessible or experience uneven traffic distribution, leading to reduced reliability and performance. To remediate this, the `load_balancers` attribute should be defined as in the secure example below:\n\n```\nresource \"aws_autoscaling_group\" \"bar3\" {\n  ...\n  load_balancers = [\"elb_1\"]\n}\n```",
   "descriptionUrl": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/autoscaling_group#load_balancers",
   "platform": "Terraform",
   "descriptionID": "268307dd",
@@ -11,7 +11,8 @@
   "cwe": "400",
   "override": {
     "detailedDescriptionText": {
-      "descriptionText": "AWS Auto Scaling Groups (ASGs) should have associated Elastic Load Balancers (ELBs) to ensure high availability and efficient distribution of incoming traffic. Without specifying the `load_balancers` attribute, for example:\n\n```\nresource \"aws_autoscaling_group\" \"bar\" {\n  ...\n  // missing `load_balancers`\n}\n```\n\ninstances launched by the ASG may become inaccessible or experience uneven traffic distribution, leading to reduced reliability and performance. To remediate this, the `load_balancers` attribute should be defined as in the secure example below:\n\n```\nresource \"aws_autoscaling_group\" \"bar3\" {\n  ...\n  load_balancers = [\"elb_1\"]\n}\n```"
+      "descriptionText": "AWS Auto Scaling Groups must have associated ELBs to ensure high availability and improve application performance. This means the attribute 'load_balancers' must be defined and not empty."
     }
-  }
+  },
+  "oldDescriptionText": "AWS Auto Scaling Groups must have associated ELBs to ensure high availability and improve application performance. This means the attribute 'load_balancers' must be defined and not empty."
 }

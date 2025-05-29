@@ -3,7 +3,7 @@
   "queryName": "Azure Cognitive Search Public Network Access Enabled",
   "severity": "MEDIUM",
   "category": "Networking and Firewall",
-  "descriptionText": "Public Network Access should be disabled for Azure Cognitive Search",
+  "descriptionText": "Allowing public network access to Azure Cognitive Search exposes the service to the internet, increasing the risk of unauthorized access and data exposure. In Terraform, this is controlled by the `public_network_access_enabled` attribute; setting this attribute to `true` permits public connections, while setting it to `false` restricts access to trusted, private networks only. For example, a secure configuration would be:\n\n```\nresource \"azurerm_search_service\" \"example\" {\n  name                          = \"example-search-service\"\n  resource_group_name           = azurerm_resource_group.example.name\n  location                      = azurerm_resource_group.example.location\n  sku                           = \"standard\"\n  public_network_access_enabled = false\n}\n```\n\nLeaving public access enabled may allow attackers to enumerate, access, or exfiltrate sensitive search indexes and data.",
   "descriptionUrl": "https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/search_service#public_network_access_enabled",
   "platform": "Terraform",
   "descriptionID": "d4766039",
@@ -11,7 +11,8 @@
   "cwe": "732",
   "override": {
     "detailedDescriptionText": {
-      "descriptionText": "Allowing public network access to Azure Cognitive Search exposes the service to the internet, increasing the risk of unauthorized access and data exposure. In Terraform, this is controlled by the `public_network_access_enabled` attribute; setting this attribute to `true` permits public connections, while setting it to `false` restricts access to trusted, private networks only. For example, a secure configuration would be:\n\n```\nresource \"azurerm_search_service\" \"example\" {\n  name                          = \"example-search-service\"\n  resource_group_name           = azurerm_resource_group.example.name\n  location                      = azurerm_resource_group.example.location\n  sku                           = \"standard\"\n  public_network_access_enabled = false\n}\n```\n\nLeaving public access enabled may allow attackers to enumerate, access, or exfiltrate sensitive search indexes and data."
+      "descriptionText": "Public Network Access should be disabled for Azure Cognitive Search"
     }
-  }
+  },
+  "oldDescriptionText": "Public Network Access should be disabled for Azure Cognitive Search"
 }

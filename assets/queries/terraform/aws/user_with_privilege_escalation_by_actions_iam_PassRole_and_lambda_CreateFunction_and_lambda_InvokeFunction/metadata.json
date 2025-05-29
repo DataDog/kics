@@ -3,7 +3,7 @@
   "queryName": "User With Privilege Escalation By Actions 'lambda:CreateFunction' And 'iam:PassRole' And 'lambda:InvokeFunction'",
   "severity": "MEDIUM",
   "category": "Access Control",
-  "descriptionText": "User with privilege escalation by actions 'lambda:CreateFunction' and 'iam:PassRole' and 'lambda:InvokeFunction' and Resource set to '*'. For more information see https://rhinosecuritylabs.com/aws/aws-privilege-escalation-methods-mitigation/.",
+  "descriptionText": "Granting a user the permissions `'lambda:CreateFunction'`, `'lambda:InvokeFunction'`, and `'iam:PassRole'` with the `Resource` set to `\"*\"` allows them to create and execute Lambda functions under any IAM role, potentially escalating their privileges in the AWS environment. This misconfiguration means the user can attach highly privileged roles to their Lambda functions and run them, effectively gaining any permissions those roles have—including full administrative access—without approval or oversight. If left unaddressed, this could lead to complete compromise of AWS resources, data theft, or account takeover.",
   "descriptionUrl": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_user_policy#policy",
   "platform": "Terraform",
   "descriptionID": "da252d8a",
@@ -11,7 +11,8 @@
   "cwe": "269",
   "override": {
     "detailedDescriptionText": {
-      "descriptionText": "Granting a user the permissions `'lambda:CreateFunction'`, `'lambda:InvokeFunction'`, and `'iam:PassRole'` with the `Resource` set to `\"*\"` allows them to create and execute Lambda functions under any IAM role, potentially escalating their privileges in the AWS environment. This misconfiguration means the user can attach highly privileged roles to their Lambda functions and run them, effectively gaining any permissions those roles have—including full administrative access—without approval or oversight. If left unaddressed, this could lead to complete compromise of AWS resources, data theft, or account takeover."
+      "descriptionText": "User with privilege escalation by actions 'lambda:CreateFunction' and 'iam:PassRole' and 'lambda:InvokeFunction' and Resource set to '*'. For more information see https://rhinosecuritylabs.com/aws/aws-privilege-escalation-methods-mitigation/."
     }
-  }
+  },
+  "oldDescriptionText": "User with privilege escalation by actions 'lambda:CreateFunction' and 'iam:PassRole' and 'lambda:InvokeFunction' and Resource set to '*'. For more information see https://rhinosecuritylabs.com/aws/aws-privilege-escalation-methods-mitigation/."
 }

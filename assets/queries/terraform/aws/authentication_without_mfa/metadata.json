@@ -3,7 +3,7 @@
   "queryName": "Authentication Without MFA",
   "severity": "LOW",
   "category": "Access Control",
-  "descriptionText": "Users should authenticate with MFA (Multi-factor Authentication) to ensure an extra layer of protection when authenticating",
+  "descriptionText": "Requiring users to authenticate using Multi-Factor Authentication (MFA) provides an extra layer of security beyond just a password, reducing the risk of unauthorized access if credentials are compromised. In Terraform, this can be enforced by using an IAM policy with a condition such as `\"aws:MultiFactorAuthPresent\": \"true\"`, which restricts permissions like `sts:AssumeRole` to only those sessions where MFA has been verified. Without this condition, as shown in the following policy snippet, the user may be able to access sensitive AWS resources without MFA: \n\n```\n\"Condition\": {\n  \"BoolIfExists\": {\n    \"aws:MultiFactorAuthPresent\": \"false\"\n  }\n}\n```\n\nIf left unaddressed, this misconfiguration could allow attackers with access to the user's credentials to escalate privileges or access critical resources without needing a second authentication factor, significantly increasing the risk of account compromise or data breach.",
   "descriptionUrl": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_user_policy",
   "platform": "Terraform",
   "descriptionID": "0db1a4b2",
@@ -12,7 +12,8 @@
   "oldSeverity": "HIGH",
   "override": {
     "detailedDescriptionText": {
-      "descriptionText": "Requiring users to authenticate using Multi-Factor Authentication (MFA) provides an extra layer of security beyond just a password, reducing the risk of unauthorized access if credentials are compromised. In Terraform, this can be enforced by using an IAM policy with a condition such as `\"aws:MultiFactorAuthPresent\": \"true\"`, which restricts permissions like `sts:AssumeRole` to only those sessions where MFA has been verified. Without this condition, as shown in the following policy snippet, the user may be able to access sensitive AWS resources without MFA: \n\n```\n\"Condition\": {\n  \"BoolIfExists\": {\n    \"aws:MultiFactorAuthPresent\": \"false\"\n  }\n}\n```\n\nIf left unaddressed, this misconfiguration could allow attackers with access to the user's credentials to escalate privileges or access critical resources without needing a second authentication factor, significantly increasing the risk of account compromise or data breach."
+      "descriptionText": "Users should authenticate with MFA (Multi-factor Authentication) to ensure an extra layer of protection when authenticating"
     }
-  }
+  },
+  "oldDescriptionText": "Users should authenticate with MFA (Multi-factor Authentication) to ensure an extra layer of protection when authenticating"
 }

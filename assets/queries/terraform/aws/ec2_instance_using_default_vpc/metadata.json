@@ -3,7 +3,7 @@
   "queryName": "EC2 Instance Using Default VPC",
   "severity": "LOW",
   "category": "Networking and Firewall",
-  "descriptionText": "EC2 Instances should not be configured under a default VPC network",
+  "descriptionText": "This check ensures that Amazon EC2 instances are not deployed within the default VPC (`aws_vpc.default`) in AWS environments. Default VPCs are automatically created by AWS and often have broader, pre-configured network permissions and less restrictive security controls, increasing the attack surface and risk of unauthorized access. By explicitly defining and using custom VPCs (e.g., `aws_vpc.main`), organizations can enforce tailored network segmentation and security group rules, reducing the likelihood of exploitation due to overly permissive defaults.",
   "descriptionUrl": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/instance#subnet_id",
   "platform": "Terraform",
   "descriptionID": "7e2909e5",
@@ -11,7 +11,8 @@
   "cwe": "200",
   "override": {
     "detailedDescriptionText": {
-      "descriptionText": "This check ensures that Amazon EC2 instances are not deployed within the default VPC (`aws_vpc.default`) in AWS environments. Default VPCs are automatically created by AWS and often have broader, pre-configured network permissions and less restrictive security controls, increasing the attack surface and risk of unauthorized access. By explicitly defining and using custom VPCs (e.g., `aws_vpc.main`), organizations can enforce tailored network segmentation and security group rules, reducing the likelihood of exploitation due to overly permissive defaults."
+      "descriptionText": "EC2 Instances should not be configured under a default VPC network"
     }
-  }
+  },
+  "oldDescriptionText": "EC2 Instances should not be configured under a default VPC network"
 }

@@ -3,7 +3,7 @@
   "queryName": "Public and Private EC2 Share Role",
   "severity": "MEDIUM",
   "category": "Access Control",
-  "descriptionText": "Public and private EC2 istances should not share the same role.",
+  "descriptionText": "Public and private EC2 instances should not share the same IAM role. Assigning the same IAM role to both public and private instances greatly increases the blast radius in the event of a compromise. If an attacker gains control over a public EC2 instance, they could leverage the shared role’s permissions to access sensitive AWS resources with the same privileges as a private, internal instance, possibly leading to data breaches and lateral movement within your AWS environment. Isolating IAM roles for public and private instances helps minimize risk by ensuring that externally exposed instances have only the minimal permissions required.",
   "descriptionUrl": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/instance#iam_instance_profile",
   "platform": "Terraform",
   "descriptionID": "4639db5f",
@@ -11,7 +11,8 @@
   "cwe": "250",
   "override": {
     "detailedDescriptionText": {
-      "descriptionText": "Public and private EC2 instances should not share the same IAM role. Assigning the same IAM role to both public and private instances greatly increases the blast radius in the event of a compromise. If an attacker gains control over a public EC2 instance, they could leverage the shared role’s permissions to access sensitive AWS resources with the same privileges as a private, internal instance, possibly leading to data breaches and lateral movement within your AWS environment. Isolating IAM roles for public and private instances helps minimize risk by ensuring that externally exposed instances have only the minimal permissions required."
+      "descriptionText": "Public and private EC2 istances should not share the same role."
     }
-  }
+  },
+  "oldDescriptionText": "Public and private EC2 istances should not share the same role."
 }

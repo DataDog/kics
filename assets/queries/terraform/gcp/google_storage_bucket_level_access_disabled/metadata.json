@@ -3,7 +3,7 @@
   "queryName": "Google Storage Bucket Level Access Disabled",
   "severity": "HIGH",
   "category": "Insecure Configurations",
-  "descriptionText": "Google Storage Bucket Level Access should be enabled",
+  "descriptionText": "Google Storage Bucket Level Access controls access to objects at the bucket level rather than allowing fine-grained permissions at the object level. When disabled, Access Control Lists (ACLs) can be used to grant permissions to individual objects, increasing the risk of accidental exposure or misconfiguration that could lead to unauthorized access to sensitive data.\n\nEnabling uniform bucket-level access simplifies permissions management and helps ensure consistent access control across all objects in a bucket. To secure your configuration, set 'uniform_bucket_level_access = true' in your google_storage_bucket resource as shown:\n\n```\nresource \"google_storage_bucket\" \"secure_bucket\" {\n  name          = \"image-store.com\"\n  location      = \"EU\"\n  \n  uniform_bucket_level_access = true\n  \n  // other configuration...\n}\n```",
   "descriptionUrl": "https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/storage_bucket",
   "platform": "Terraform",
   "descriptionID": "6a48f2c6",
@@ -12,7 +12,8 @@
   "oldSeverity": "MEDIUM",
   "override": {
     "detailedDescriptionText": {
-      "descriptionText": "Google Storage Bucket Level Access controls access to objects at the bucket level rather than allowing fine-grained permissions at the object level. When disabled, Access Control Lists (ACLs) can be used to grant permissions to individual objects, increasing the risk of accidental exposure or misconfiguration that could lead to unauthorized access to sensitive data.\n\nEnabling uniform bucket-level access simplifies permissions management and helps ensure consistent access control across all objects in a bucket. To secure your configuration, set 'uniform_bucket_level_access = true' in your google_storage_bucket resource as shown:\n\n```\nresource \"google_storage_bucket\" \"secure_bucket\" {\n  name          = \"image-store.com\"\n  location      = \"EU\"\n  \n  uniform_bucket_level_access = true\n  \n  // other configuration...\n}\n```"
+      "descriptionText": "Google Storage Bucket Level Access should be enabled"
     }
-  }
+  },
+  "oldDescriptionText": "Google Storage Bucket Level Access should be enabled"
 }

@@ -3,7 +3,7 @@
   "queryName": "IAM Access Key Is Exposed",
   "severity": "MEDIUM",
   "category": "Access Control",
-  "descriptionText": "IAM Access Key should not be active for root users",
+  "descriptionText": "IAM access keys should never be created or kept active for AWS root user accounts, as specified by the `user = \"root\"` and `status = \"Active\"` attributes in a Terraform `aws_iam_access_key` resource block. Allowing active access keys for root users significantly increases the attack surface and exposes highly privileged credentials to potential misuse or compromise, since the root account has unrestricted control over the entire AWS environment. To ensure security, root accounts should have all access keys disabled, for example:\n\n```\nresource \"aws_iam_access_key\" \"secure_root\" {\n  user   = \"root\"\n  status = \"Inactive\"\n}\n```",
   "descriptionUrl": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_access_key",
   "platform": "Terraform",
   "descriptionID": "99b02242",
@@ -11,7 +11,8 @@
   "cwe": "200",
   "override": {
     "detailedDescriptionText": {
-      "descriptionText": "IAM access keys should never be created or kept active for AWS root user accounts, as specified by the `user = \"root\"` and `status = \"Active\"` attributes in a Terraform `aws_iam_access_key` resource block. Allowing active access keys for root users significantly increases the attack surface and exposes highly privileged credentials to potential misuse or compromise, since the root account has unrestricted control over the entire AWS environment. To ensure security, root accounts should have all access keys disabled, for example:\n\n```\nresource \"aws_iam_access_key\" \"secure_root\" {\n  user   = \"root\"\n  status = \"Inactive\"\n}\n```"
+      "descriptionText": "IAM Access Key should not be active for root users"
     }
-  }
+  },
+  "oldDescriptionText": "IAM Access Key should not be active for root users"
 }

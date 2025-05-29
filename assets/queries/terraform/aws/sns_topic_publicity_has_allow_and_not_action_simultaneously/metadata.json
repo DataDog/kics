@@ -3,7 +3,7 @@
   "queryName": "SNS Topic Publicity Has Allow and NotAction Simultaneously",
   "severity": "MEDIUM",
   "category": "Access Control",
-  "descriptionText": "SNS topic Publicity should not have 'Effect: Allow' and argument 'NotAction' at the same time. If it has 'Effect: Allow', the argument stated should be 'Action'.",
+  "descriptionText": "An SNS topic policy should not use both `\"Effect\": \"Allow\"` and the `\"NotAction\"` attribute together, as this grants permission to all actions except those explicitly denied, significantly increasing the potential attack surface. This misconfiguration can unintentionally allow broad access to the SNS topic, which may be exploited by attackers to perform unauthorized actions. To secure the policy, use the `\"Action\"` attribute alongside `\"Effect\": \"Allow\"`, as shown below:\n\n```\n{\n  \"Statement\": [\n    {\n      \"Effect\": \"Allow\",\n      \"Action\": \"s3:DeleteBucket\",\n      \"Resource\": \"arn:aws:s3:::*\"\n    }\n  ]\n}\n```",
   "descriptionUrl": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/sns_topic_policy",
   "platform": "Terraform",
   "descriptionID": "ddd0f677",
@@ -11,7 +11,8 @@
   "cwe": "284",
   "override": {
     "detailedDescriptionText": {
-      "descriptionText": "An SNS topic policy should not use both `\"Effect\": \"Allow\"` and the `\"NotAction\"` attribute together, as this grants permission to all actions except those explicitly denied, significantly increasing the potential attack surface. This misconfiguration can unintentionally allow broad access to the SNS topic, which may be exploited by attackers to perform unauthorized actions. To secure the policy, use the `\"Action\"` attribute alongside `\"Effect\": \"Allow\"`, as shown below:\n\n```\n{\n  \"Statement\": [\n    {\n      \"Effect\": \"Allow\",\n      \"Action\": \"s3:DeleteBucket\",\n      \"Resource\": \"arn:aws:s3:::*\"\n    }\n  ]\n}\n```"
+      "descriptionText": "SNS topic Publicity should not have 'Effect: Allow' and argument 'NotAction' at the same time. If it has 'Effect: Allow', the argument stated should be 'Action'."
     }
-  }
+  },
+  "oldDescriptionText": "SNS topic Publicity should not have 'Effect: Allow' and argument 'NotAction' at the same time. If it has 'Effect: Allow', the argument stated should be 'Action'."
 }

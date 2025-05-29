@@ -3,7 +3,7 @@
   "queryName": "API Gateway Method Settings Cache Not Encrypted",
   "severity": "HIGH",
   "category": "Encryption",
-  "descriptionText": "API Gateway Method Settings Cache should be encrypted",
+  "descriptionText": "When caching is enabled for API Gateway methods, sensitive data may be stored in the cache. If cache encryption is not enabled, this data remains vulnerable to unauthorized access, potentially exposing sensitive information. The 'cache_data_encrypted' attribute should be explicitly set to 'true' in the settings block of API Gateway method settings whenever caching is enabled.\n\nSecure example:\n```terraform\nsettings {\n  metrics_enabled = true\n  logging_level = \"INFO\"\n  caching_enabled = true\n  cache_data_encrypted = true\n}\n```\n\nInsecure example:\n```terraform\nsettings {\n  metrics_enabled = true\n  logging_level = \"INFO\"\n  caching_enabled = true\n  cache_data_encrypted = false  // or omitting this field\n}\n```",
   "descriptionUrl": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/api_gateway_method_settings#cache_data_encrypted",
   "platform": "Terraform",
   "descriptionID": "ceabd70f",
@@ -11,7 +11,8 @@
   "cwe": "311",
   "override": {
     "detailedDescriptionText": {
-      "descriptionText": "When caching is enabled for API Gateway methods, sensitive data may be stored in the cache. If cache encryption is not enabled, this data remains vulnerable to unauthorized access, potentially exposing sensitive information. The 'cache_data_encrypted' attribute should be explicitly set to 'true' in the settings block of API Gateway method settings whenever caching is enabled.\n\nSecure example:\n```terraform\nsettings {\n  metrics_enabled = true\n  logging_level = \"INFO\"\n  caching_enabled = true\n  cache_data_encrypted = true\n}\n```\n\nInsecure example:\n```terraform\nsettings {\n  metrics_enabled = true\n  logging_level = \"INFO\"\n  caching_enabled = true\n  cache_data_encrypted = false  // or omitting this field\n}\n```"
+      "descriptionText": "API Gateway Method Settings Cache should be encrypted"
     }
-  }
+  },
+  "oldDescriptionText": "API Gateway Method Settings Cache should be encrypted"
 }

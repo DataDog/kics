@@ -3,7 +3,7 @@
   "queryName": "Email Alerts Disabled",
   "severity": "MEDIUM",
   "category": "Observability",
-  "descriptionText": "Make sure that alerts notifications are set to 'On' in the Azure Security Center Contact",
+  "descriptionText": "Azure Security Center contact alert notifications should be enabled to ensure that designated security contacts receive email alerts about security issues or threats in your Azure environment. If the `alert_notifications` attribute is set to `false`, such as in \n\n```\nresource \"azurerm_security_center_contact\" \"example\" {\n    email = \"contact@example.com\"\n    phone = \"+1-555-555-5555\"\n    alert_notifications = false\n}\n```\n\ncritical security incidents could go unnoticed, increasing the risk of delayed response to threats. Setting `alert_notifications = true` ensures timely awareness and response to potential security incidents.",
   "descriptionUrl": "https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/security_center_contact",
   "platform": "Terraform",
   "descriptionID": "23aadb20",
@@ -11,7 +11,8 @@
   "cwe": "778",
   "override": {
     "detailedDescriptionText": {
-      "descriptionText": "Azure Security Center contact alert notifications should be enabled to ensure that designated security contacts receive email alerts about security issues or threats in your Azure environment. If the `alert_notifications` attribute is set to `false`, such as in \n\n```\nresource \"azurerm_security_center_contact\" \"example\" {\n    email = \"contact@example.com\"\n    phone = \"+1-555-555-5555\"\n    alert_notifications = false\n}\n```\n\ncritical security incidents could go unnoticed, increasing the risk of delayed response to threats. Setting `alert_notifications = true` ensures timely awareness and response to potential security incidents."
+      "descriptionText": "Make sure that alerts notifications are set to 'On' in the Azure Security Center Contact"
     }
-  }
+  },
+  "oldDescriptionText": "Make sure that alerts notifications are set to 'On' in the Azure Security Center Contact"
 }

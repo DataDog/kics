@@ -3,7 +3,7 @@
   "queryName": "IAM Policies Attached To User",
   "severity": "MEDIUM",
   "category": "Access Control",
-  "descriptionText": "IAM policies should be attached only to groups or roles",
+  "descriptionText": "IAM policies should be attached only to groups or roles to promote centralized permission management and reduce the risk of granting excessive privileges to individual users. Assigning an IAM policy directly to a user, as shown below with the `users` attribute, can increase the risk of credentials compromise or accidental permission escalation:\n\n```\nresource \"aws_iam_policy_attachment\" \"positive1_3\" {\n  name = \"excess_policy\"\n  users = [aws_iam_user.user.name]\n  policy = <<EOF\n  ...\nEOF\n}\n```\n\nIf left unaddressed, this practice can lead to difficulties in auditing permissions and increases the attack surface, as any compromise of a single user account could grant broad and unrestricted access to resources.",
   "descriptionUrl": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_policy_attachment",
   "platform": "Terraform",
   "descriptionID": "32ec58ec",
@@ -11,7 +11,8 @@
   "cwe": "284",
   "override": {
     "detailedDescriptionText": {
-      "descriptionText": "IAM policies should be attached only to groups or roles to promote centralized permission management and reduce the risk of granting excessive privileges to individual users. Assigning an IAM policy directly to a user, as shown below with the `users` attribute, can increase the risk of credentials compromise or accidental permission escalation:\n\n```\nresource \"aws_iam_policy_attachment\" \"positive1_3\" {\n  name = \"excess_policy\"\n  users = [aws_iam_user.user.name]\n  policy = <<EOF\n  ...\nEOF\n}\n```\n\nIf left unaddressed, this practice can lead to difficulties in auditing permissions and increases the attack surface, as any compromise of a single user account could grant broad and unrestricted access to resources."
+      "descriptionText": "IAM policies should be attached only to groups or roles"
     }
-  }
+  },
+  "oldDescriptionText": "IAM policies should be attached only to groups or roles"
 }
