@@ -6,10 +6,10 @@ CxPolicy[result] {
 	resource := input.document[i].resource.azurerm_network_security_rule[var0]
 	upper(resource.access) == "ALLOW"
 	upper(resource.direction) == "INBOUND"
-	
+
 	isRelevantProtocol(resource.protocol)
 	isRelevantPort(resource.destination_port_range)
-	isRelevantAddressPrefix(resource.source_address_prefix)
+    hasRelevantSourceAddress(resource)
 
 	result := {
 		"documentId": input.document[i].id,
@@ -41,6 +41,20 @@ else = allow {
 	allow = true
 }
 
+hasRelevantSourceAddress(resource) {
+	isRelevantAddressPrefix(resource.source_address_prefix)
+}
+
+hasRelevantSourceAddress(resource) {
+	isRelevantAddressPrefixes(resource.source_address_prefixes)
+}
+
+isRelevantAddressPrefixes(prefixes) = allow {
+    some prefix
+    isRelevantAddressPrefix(prefixes[prefix])
+    allow = true
+}
+
 isRelevantAddressPrefix(prefix) = allow {
 	prefix == "*"
 	allow = true
@@ -57,11 +71,11 @@ else = allow {
 }
 
 else = allow {
-	prefix == "internet"
+	lower(prefix) == "internet"
 	allow = true
 }
 
 else = allow {
-	prefix == "any"
+	lower(prefix) == "any"
 	allow = true
 }
