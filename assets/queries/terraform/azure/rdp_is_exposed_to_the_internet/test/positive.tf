@@ -165,3 +165,17 @@ resource "azurerm_network_security_rule" "positive12" {
   resource_group_name         = azurerm_resource_group.example.name
   network_security_group_name = azurerm_network_security_group.example.name
 }
+
+resource "azurerm_network_security_rule" "positive13" {
+  name                        = "inbound"
+  priority                    = 1010
+  direction                   = "Inbound"
+  access                      = "Allow"
+  protocol                    = "*"
+  source_port_range           = "*"
+  destination_port_range      = "1024-49151"
+  destination_address_prefix  = "*"
+  resource_group_name         = local.vnet_name
+  network_security_group_name = azurerm_network_security_group.edge_infra.name
+  source_address_prefix       = "Internet"
+}
