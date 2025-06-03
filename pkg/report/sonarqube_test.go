@@ -55,7 +55,7 @@ func TestPrintSonarQubeReport(t *testing.T) {
 			if err := os.MkdirAll(tt.args.path, os.ModePerm); err != nil {
 				t.Fatal(err)
 			}
-			if err := PrintSonarQubeReport(tt.args.path, tt.args.filename, tt.args.body, model.SCIInfo{}, false); (err != nil) != tt.wantErr {
+			if err := PrintSonarQubeReport(tt.args.path, tt.args.filename, tt.args.body, model.SCIInfo{}); (err != nil) != tt.wantErr {
 				t.Errorf("PrintSonarQubeReport() error = %v, wantErr %v", err, tt.wantErr)
 			}
 			require.FileExists(t, filepath.Join(tt.args.path, "sonarqube-"+tt.args.filename+".json"))

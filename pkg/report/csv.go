@@ -13,7 +13,7 @@ import (
 )
 
 // PrintCSVReport prints the CSV report in the given path and filename with the given body
-func PrintCSVReport(path, filename string, body interface{}, sciInfo model.SCIInfo, includeRemediations bool) error {
+func PrintCSVReport(path, filename string, body interface{}, sciInfo model.SCIInfo) error {
 	if !strings.HasSuffix(filename, ".csv") {
 		filename += ".csv"
 	}

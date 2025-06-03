@@ -15,13 +15,11 @@ import (
 	"github.com/rs/zerolog/log"
 )
 
-func ExecuteKICSScan(inputPaths []string, outputPath string, sciInfo model.SCIInfo, includeRemediations bool, useDetailedDescriptionText bool) (scan.ScanMetadata, string) {
+func ExecuteKICSScan(inputPaths []string, outputPath string, sciInfo model.SCIInfo) (scan.ScanMetadata, string) {
 	params := scan.GetDefaultParameters(outputPath)
 	params.Path = inputPaths
 	params.OutputPath = outputPath
 	params.SCIInfo = sciInfo
-	params.IncludeRemediations = includeRemediations
-	params.UseDetailedDescriptionText = useDetailedDescriptionText
 	metadata, err := console.ExecuteScan(params)
 	if err != nil {
 		log.Fatal().Int64(

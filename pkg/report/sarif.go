@@ -13,7 +13,7 @@ import (
 )
 
 // PrintSarifReport creates a report file on sarif format, fetching the ID and GUID from relationships to be inputted to taxonomies field
-func PrintSarifReport(path, filename string, body interface{}, sciInfo model.SCIInfo, includeRemediations bool) error {
+func PrintSarifReport(path, filename string, body interface{}, sciInfo model.SCIInfo) error {
 	if !strings.HasSuffix(filename, ".sarif") {
 		filename += ".sarif"
 	}
@@ -27,7 +27,7 @@ func PrintSarifReport(path, filename string, body interface{}, sciInfo model.SCI
 		auxID := []string{}
 		auxGUID := map[string]string{}
 		for idx := range summary.Queries {
-			x := sarifReport.BuildSarifIssue(&summary.Queries[idx], sciInfo, includeRemediations)
+			x := sarifReport.BuildSarifIssue(&summary.Queries[idx], sciInfo)
 			if x != "" {
 				auxID = append(auxID, x)
 				guid := sarifReport.GetGUIDFromRelationships(idx, x)

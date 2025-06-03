@@ -13,7 +13,7 @@ import (
 )
 
 // PrintASFFReport prints the ASFF report in the given path and filename with the given body
-func PrintASFFReport(path, filename string, body interface{}, sciInfo model.SCIInfo, includeRemediations bool) error {
+func PrintASFFReport(path, filename string, body interface{}, sciInfo model.SCIInfo) error {
 	if !strings.HasPrefix(filename, "asff-") {
 		filename = "asff-" + filename
 	}
