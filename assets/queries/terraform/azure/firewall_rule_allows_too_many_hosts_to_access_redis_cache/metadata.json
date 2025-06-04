@@ -9,10 +9,5 @@
   "descriptionID": "6ac1bc00",
   "cloudProvider": "azure",
   "cwe": "284",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Check if any firewall rule allows too many hosts to access Redis Cache"
-    }
-  },
   "oldDescriptionText": "Check if any firewall rule allows too many hosts to access Redis Cache"
 }

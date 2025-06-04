@@ -10,10 +10,5 @@
   "cloudProvider": "aws",
   "cwe": "668",
   "oldSeverity": "HIGH",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "RDS must not be defined with public interface, which means the field 'publicly_accessible' should not be set to 'true' (default is 'false')."
-    }
-  },
   "oldDescriptionText": "RDS must not be defined with public interface, which means the field 'publicly_accessible' should not be set to 'true' (default is 'false')."
 }

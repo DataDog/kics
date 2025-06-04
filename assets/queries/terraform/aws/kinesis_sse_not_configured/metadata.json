@@ -9,10 +9,5 @@
   "descriptionID": "fce3b812",
   "cloudProvider": "aws",
   "cwe": "311",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "AWS Kinesis Server data at rest should have Server Side Encryption (SSE) enabled"
-    }
-  },
   "oldDescriptionText": "AWS Kinesis Server data at rest should have Server Side Encryption (SSE) enabled"
 }

@@ -10,10 +10,5 @@
   "cloudProvider": "azure",
   "cwe": "693",
   "oldSeverity": "MEDIUM",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Virtual Network should have DDoS Protection Plan enabled"
-    }
-  },
   "oldDescriptionText": "Virtual Network should have DDoS Protection Plan enabled"
 }

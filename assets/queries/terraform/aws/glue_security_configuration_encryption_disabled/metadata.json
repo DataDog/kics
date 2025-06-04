@@ -9,10 +9,5 @@
   "descriptionID": "839261d5",
   "cloudProvider": "aws",
   "cwe": "311",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Glue Security Configuration Encryption should have 'cloudwatch_encryption', 'job_bookmarks_encryption' and 's3_encryption' enabled"
-    }
-  },
   "oldDescriptionText": "Glue Security Configuration Encryption should have 'cloudwatch_encryption', 'job_bookmarks_encryption' and 's3_encryption' enabled"
 }

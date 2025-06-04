@@ -9,10 +9,5 @@
   "descriptionID": "387e9522",
   "cloudProvider": "aws",
   "cwe": "284",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Any IAM User should not have more than one access key since it increases the risk of unauthorized access and compromise credentials"
-    }
-  },
   "oldDescriptionText": "Any IAM User should not have more than one access key since it increases the risk of unauthorized access and compromise credentials"
 }

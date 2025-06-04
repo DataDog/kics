@@ -9,10 +9,5 @@
   "descriptionID": "f7414ebe",
   "cloudProvider": "aws",
   "cwe": "778",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Checks if CloudWatch Metrics is Enabled"
-    }
-  },
   "oldDescriptionText": "Checks if CloudWatch Metrics is Enabled"
 }

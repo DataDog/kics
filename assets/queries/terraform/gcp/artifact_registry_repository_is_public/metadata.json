@@ -9,10 +9,5 @@
   "descriptionID": "a7b8c9d0",
   "cloudProvider": "gcp",
   "cwe": "284",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Artifact Registry repositories must not be publicly accessible. IAM members or bindings should not use public principals such as 'allUsers' or 'allAuthenticatedUsers'."
-    }
-  },
   "oldDescriptionText": "Artifact Registry repositories must not be publicly accessible. IAM members or bindings should not use public principals such as 'allUsers' or 'allAuthenticatedUsers'."
 }

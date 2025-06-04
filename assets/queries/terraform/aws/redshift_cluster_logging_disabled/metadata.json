@@ -9,10 +9,5 @@
   "descriptionID": "458fe7a3",
   "cloudProvider": "aws",
   "cwe": "778",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Make sure Logging is enabled for Redshift Cluster"
-    }
-  },
   "oldDescriptionText": "Make sure Logging is enabled for Redshift Cluster"
 }

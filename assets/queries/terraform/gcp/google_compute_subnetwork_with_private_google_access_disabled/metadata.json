@@ -9,10 +9,5 @@
   "descriptionID": "87e8a4f7",
   "cloudProvider": "gcp",
   "cwe": "732",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Google Compute Subnetwork should have Private Google Access enabled, which means 'private_ip_google_access' should be set to true"
-    }
-  },
   "oldDescriptionText": "Google Compute Subnetwork should have Private Google Access enabled, which means 'private_ip_google_access' should be set to true"
 }

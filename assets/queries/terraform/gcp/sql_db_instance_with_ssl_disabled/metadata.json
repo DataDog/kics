@@ -9,10 +9,5 @@
   "descriptionID": "8983549e",
   "cloudProvider": "gcp",
   "cwe": "732",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Cloud SQL Database Instance should have SSL enabled"
-    }
-  },
   "oldDescriptionText": "Cloud SQL Database Instance should have SSL enabled"
 }

@@ -9,10 +9,5 @@
   "descriptionID": "48b9d186",
   "cloudProvider": "aws",
   "cwe": "778",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "AWS CloudWatch Logs for APIs should be enabled and using the naming convention described in documentation"
-    }
-  },
   "oldDescriptionText": "AWS CloudWatch Logs for APIs should be enabled and using the naming convention described in documentation"
 }

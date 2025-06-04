@@ -11,10 +11,5 @@
   "cloudProvider": "aws",
   "cwe": "200",
   "oldSeverity": "MEDIUM",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "A sensitive port, such as port 23 or port 110, is open for a wide private network in either TCP or UDP protocol"
-    }
-  },
   "oldDescriptionText": "A sensitive port, such as port 23 or port 110, is open for a wide private network in either TCP or UDP protocol"
 }

@@ -9,10 +9,5 @@
   "descriptionID": "3a60c60e",
   "cloudProvider": "aws",
   "cwe": "284",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "VPC Peering Route Table should restrict CIDR"
-    }
-  },
   "oldDescriptionText": "VPC Peering Route Table should restrict CIDR"
 }

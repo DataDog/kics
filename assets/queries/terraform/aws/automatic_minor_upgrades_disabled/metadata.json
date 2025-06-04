@@ -9,10 +9,5 @@
   "descriptionID": "240cddcc",
   "cloudProvider": "aws",
   "cwe": "665",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "RDS instance should have automatic minor upgrades enabled, which means the attribute 'auto_minor_version_upgrade' must be set to true."
-    }
-  },
   "oldDescriptionText": "RDS instance should have automatic minor upgrades enabled, which means the attribute 'auto_minor_version_upgrade' must be set to true."
 }

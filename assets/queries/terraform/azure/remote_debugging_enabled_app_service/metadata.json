@@ -9,10 +9,5 @@
   "descriptionID": "e3f7a9b0",
   "cloudProvider": "azure",
   "cwe": "285",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Remote debugging in web apps can expose sensitive information and allow unauthorized access. It should be disabled to reduce the attack surface."
-    }
-  },
   "oldDescriptionText": "Remote debugging in web apps can expose sensitive information and allow unauthorized access. It should be disabled to reduce the attack surface."
 }

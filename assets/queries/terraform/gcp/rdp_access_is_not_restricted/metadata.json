@@ -10,10 +10,5 @@
   "cloudProvider": "gcp",
   "cwe": "284",
   "oldSeverity": "MEDIUM",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Check if the Google compute firewall allows unrestricted RDP access. Allowed ports should not contain RDP port 3389"
-    }
-  },
   "oldDescriptionText": "Check if the Google compute firewall allows unrestricted RDP access. Allowed ports should not contain RDP port 3389"
 }

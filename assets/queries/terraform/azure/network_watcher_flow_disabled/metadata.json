@@ -10,10 +10,5 @@
   "cloudProvider": "azure",
   "cwe": "779",
   "oldSeverity": "HIGH",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Check if enable field in the resource azurerm_network_watcher_flow_log is false."
-    }
-  },
   "oldDescriptionText": "Check if enable field in the resource azurerm_network_watcher_flow_log is false."
 }

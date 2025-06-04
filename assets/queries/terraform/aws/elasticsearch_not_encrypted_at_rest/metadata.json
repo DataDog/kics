@@ -10,10 +10,5 @@
   "cloudProvider": "aws",
   "cwe": "311",
   "oldSeverity": "MEDIUM",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Check if ElasticSearch encryption is disabled at Rest"
-    }
-  },
   "oldDescriptionText": "Check if ElasticSearch encryption is disabled at Rest"
 }

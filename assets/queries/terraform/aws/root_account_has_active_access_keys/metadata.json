@@ -9,10 +9,5 @@
   "descriptionID": "f0795485",
   "cloudProvider": "aws",
   "cwe": "710",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "The AWS Root Account must not have active access keys associated, which means if there are access keys associated to the Root Account, they must be inactive."
-    }
-  },
   "oldDescriptionText": "The AWS Root Account must not have active access keys associated, which means if there are access keys associated to the Root Account, they must be inactive."
 }

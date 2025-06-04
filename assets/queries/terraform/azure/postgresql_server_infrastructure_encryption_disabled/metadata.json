@@ -9,10 +9,5 @@
   "descriptionID": "b982dca0",
   "cloudProvider": "azure",
   "cwe": "",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "PostgreSQL Server Infrastructure Encryption should be enabled"
-    }
-  },
   "oldDescriptionText": "PostgreSQL Server Infrastructure Encryption should be enabled"
 }

@@ -9,10 +9,5 @@
   "descriptionID": "fc66d737",
   "cloudProvider": "aws",
   "cwe": "404",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Make sure that retain_stack is enabled to keep the Stack and it's associated resources during resource destruction"
-    }
-  },
   "oldDescriptionText": "Make sure that retain_stack is enabled to keep the Stack and it's associated resources during resource destruction"
 }

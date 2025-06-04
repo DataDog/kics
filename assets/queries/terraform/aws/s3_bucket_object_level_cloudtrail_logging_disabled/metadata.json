@@ -9,10 +9,5 @@
   "descriptionID": "e80b4f8a",
   "cloudProvider": "aws",
   "cwe": "778",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "S3 Bucket object-level CloudTrail logging should be enabled for read and write events"
-    }
-  },
   "oldDescriptionText": "S3 Bucket object-level CloudTrail logging should be enabled for read and write events"
 }

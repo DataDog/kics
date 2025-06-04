@@ -10,10 +10,5 @@
   "cloudProvider": "azure",
   "cwe": "284",
   "oldSeverity": "HIGH",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Role Assignment should limit guest user permissions"
-    }
-  },
   "oldDescriptionText": "Role Assignment should limit guest user permissions"
 }

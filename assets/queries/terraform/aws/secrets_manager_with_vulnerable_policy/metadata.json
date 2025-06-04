@@ -10,10 +10,5 @@
   "cloudProvider": "aws",
   "cwe": "155",
   "oldSeverity": "MEDIUM",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Secrets Manager policy should avoid wildcard in 'Principal' and 'Action'"
-    }
-  },
   "oldDescriptionText": "Secrets Manager policy should avoid wildcard in 'Principal' and 'Action'"
 }

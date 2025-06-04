@@ -9,10 +9,5 @@
   "descriptionID": "e154bb5e",
   "cloudProvider": "aws",
   "cwe": "326",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "AWS Kinesis Streams and metadata should be protected with KMS"
-    }
-  },
   "oldDescriptionText": "AWS Kinesis Streams and metadata should be protected with KMS"
 }

@@ -9,10 +9,5 @@
   "descriptionID": "b36765a7",
   "cloudProvider": "aws",
   "cwe": "311",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "The value on AWS EBS Volume Snapshot Encryptation must be true"
-    }
-  },
   "oldDescriptionText": "The value on AWS EBS Volume Snapshot Encryptation must be true"
 }

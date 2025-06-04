@@ -10,10 +10,5 @@
   "cloudProvider": "azure",
   "cwe": "778",
   "oldSeverity": "MEDIUM",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Check if PostgreSQL Database Server retains logs for less than 3 Days"
-    }
-  },
   "oldDescriptionText": "Check if PostgreSQL Database Server retains logs for less than 3 Days"
 }

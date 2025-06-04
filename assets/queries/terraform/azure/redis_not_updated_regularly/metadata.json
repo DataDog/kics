@@ -10,10 +10,5 @@
   "cloudProvider": "azure",
   "cwe": "912",
   "oldSeverity": "HIGH",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Redis Cache is not configured to be updated regularly with security and operational updates"
-    }
-  },
   "oldDescriptionText": "Redis Cache is not configured to be updated regularly with security and operational updates"
 }

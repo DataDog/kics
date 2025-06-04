@@ -9,10 +9,5 @@
   "descriptionID": "e0526e1b",
   "cloudProvider": "aws",
   "cwe": "778",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "AWS Elasticsearch should have logs enabled"
-    }
-  },
   "oldDescriptionText": "AWS Elasticsearch should have logs enabled"
 }

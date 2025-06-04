@@ -9,10 +9,5 @@
   "descriptionID": "fb6080ac",
   "cloudProvider": "aws",
   "cwe": "155",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "REST API policy should avoid wildcard in 'Action' and 'Principal'"
-    }
-  },
   "oldDescriptionText": "REST API policy should avoid wildcard in 'Action' and 'Principal'"
 }

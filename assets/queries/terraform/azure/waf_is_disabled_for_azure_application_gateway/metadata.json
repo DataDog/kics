@@ -9,10 +9,5 @@
   "descriptionID": "97c222ec",
   "cloudProvider": "azure",
   "cwe": "693",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Check if Web Application Firewall is disabled or not configured for Azure's Application Gateway."
-    }
-  },
   "oldDescriptionText": "Check if Web Application Firewall is disabled or not configured for Azure's Application Gateway."
 }

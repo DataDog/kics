@@ -9,10 +9,5 @@
   "descriptionID": "f6a7b8c9",
   "cloudProvider": "gcp",
   "cwe": "311",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Container Registry repositories must not be publicly accessible. Public principals such as 'allUsers' or 'allAuthenticatedUsers' should not be assigned in IAM member or binding configurations associated with the repository."
-    }
-  },
   "oldDescriptionText": "Container Registry repositories must not be publicly accessible. Public principals such as 'allUsers' or 'allAuthenticatedUsers' should not be assigned in IAM member or binding configurations associated with the repository."
 }

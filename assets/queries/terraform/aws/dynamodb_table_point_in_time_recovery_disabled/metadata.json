@@ -10,10 +10,5 @@
   "cloudProvider": "aws",
   "cwe": "754",
   "oldSeverity": "MEDIUM",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "It's considered a best practice to have point in time recovery enabled for DynamoDB Table"
-    }
-  },
   "oldDescriptionText": "It's considered a best practice to have point in time recovery enabled for DynamoDB Table"
 }

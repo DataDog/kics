@@ -10,10 +10,5 @@
   "cloudProvider": "gcp",
   "cwe": "778",
   "oldSeverity": "HIGH",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Kubernetes Engine Clusters must have Stackdriver Logging enabled, which means the attribute 'logging_service' must be defined and different from 'none'"
-    }
-  },
   "oldDescriptionText": "Kubernetes Engine Clusters must have Stackdriver Logging enabled, which means the attribute 'logging_service' must be defined and different from 'none'"
 }

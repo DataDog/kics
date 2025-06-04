@@ -9,10 +9,5 @@
   "descriptionID": "1f20399a",
   "cloudProvider": "aws",
   "cwe": "284",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Allowing to run lambda function using public API Gateway"
-    }
-  },
   "oldDescriptionText": "Allowing to run lambda function using public API Gateway"
 }

@@ -10,10 +10,5 @@
   "cloudProvider": "aws",
   "cwe": "284",
   "oldSeverity": "MEDIUM",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Check if any MQ Broker is not publicly accessible"
-    }
-  },
   "oldDescriptionText": "Check if any MQ Broker is not publicly accessible"
 }

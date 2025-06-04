@@ -9,10 +9,5 @@
   "descriptionID": "e3dc1b2d",
   "cloudProvider": "aws",
   "cwe": "311",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Elasticsearch Domain encryption should be enabled node to node"
-    }
-  },
   "oldDescriptionText": "Elasticsearch Domain encryption should be enabled node to node"
 }

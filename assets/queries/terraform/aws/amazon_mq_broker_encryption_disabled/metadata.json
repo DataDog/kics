@@ -10,10 +10,5 @@
   "cloudProvider": "aws",
   "cwe": "311",
   "oldSeverity": "MEDIUM",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "AmazonMQ Broker should have Encryption Options defined"
-    }
-  },
   "oldDescriptionText": "AmazonMQ Broker should have Encryption Options defined"
 }

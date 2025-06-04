@@ -9,10 +9,5 @@
   "descriptionID": "2ac6911f",
   "cloudProvider": "aws",
   "cwe": "200",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "S3 Buckets must not allow Get Action From All Principals, as to prevent leaking private information to the entire internet or allow unauthorized data tampering / deletion. This means the 'Effect' must not be 'Allow' when the 'Action' is Get, for all Principals."
-    }
-  },
   "oldDescriptionText": "S3 Buckets must not allow Get Action From All Principals, as to prevent leaking private information to the entire internet or allow unauthorized data tampering / deletion. This means the 'Effect' must not be 'Allow' when the 'Action' is Get, for all Principals."
 }

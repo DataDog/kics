@@ -10,10 +10,5 @@
   "cloudProvider": "aws",
   "cwe": "326",
   "oldSeverity": "MEDIUM",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "API Gateway should have valid compression, which means attribute 'minimum_compression_size' should be set and its value should be greater than -1 and smaller than 10485760."
-    }
-  },
   "oldDescriptionText": "API Gateway should have valid compression, which means attribute 'minimum_compression_size' should be set and its value should be greater than -1 and smaller than 10485760."
 }

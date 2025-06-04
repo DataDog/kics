@@ -9,10 +9,5 @@
   "descriptionID": "b01e131b",
   "cloudProvider": "aws",
   "cwe": "311",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "AWS ECS Task Definition EFS data in transit between AWS ECS host and AWS EFS server should be encrypted"
-    }
-  },
   "oldDescriptionText": "AWS ECS Task Definition EFS data in transit between AWS ECS host and AWS EFS server should be encrypted"
 }

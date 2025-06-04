@@ -10,10 +10,5 @@
   "cloudProvider": "aws",
   "cwe": "710",
   "oldSeverity": "MEDIUM",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "SQS VPC Endpoint should have DNS resolution enabled"
-    }
-  },
   "oldDescriptionText": "SQS VPC Endpoint should have DNS resolution enabled"
 }

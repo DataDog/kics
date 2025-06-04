@@ -9,10 +9,5 @@
   "descriptionID": "d2c4b6a8",
   "cloudProvider": "gcp",
   "cwe": "284",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Dataproc clusters should be configured with 'internal_ip_only' set to true so that they do not have public IP addresses. This prevents unauthorized access from the public internet."
-    }
-  },
   "oldDescriptionText": "Dataproc clusters should be configured with 'internal_ip_only' set to true so that they do not have public IP addresses. This prevents unauthorized access from the public internet."
 }

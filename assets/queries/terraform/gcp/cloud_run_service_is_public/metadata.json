@@ -9,10 +9,5 @@
   "descriptionID": "7e3c1a2b",
   "cloudProvider": "gcp",
   "cwe": "284",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Cloud Run services must not be publicly accessible. IAM members or bindings should not use public principals like 'allUsers' or 'allAuthenticatedUsers'."
-    }
-  },
   "oldDescriptionText": "Cloud Run services must not be publicly accessible. IAM members or bindings should not use public principals like 'allUsers' or 'allAuthenticatedUsers'."
 }

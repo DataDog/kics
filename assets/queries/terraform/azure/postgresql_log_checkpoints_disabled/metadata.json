@@ -9,10 +9,5 @@
   "descriptionID": "06d14345",
   "cloudProvider": "azure",
   "cwe": "778",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Make sure that for Postgre SQL Database Server, parameter 'log_checkpoints' is set to 'ON'"
-    }
-  },
   "oldDescriptionText": "Make sure that for Postgre SQL Database Server, parameter 'log_checkpoints' is set to 'ON'"
 }

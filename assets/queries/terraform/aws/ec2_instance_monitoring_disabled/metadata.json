@@ -10,10 +10,5 @@
   "cloudProvider": "aws",
   "cwe": "778",
   "oldSeverity": "INFO",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "EC2 Instance should have detailed monitoring enabled. With detailed monitoring enabled data is available in 1-minute periods"
-    }
-  },
   "oldDescriptionText": "EC2 Instance should have detailed monitoring enabled. With detailed monitoring enabled data is available in 1-minute periods"
 }

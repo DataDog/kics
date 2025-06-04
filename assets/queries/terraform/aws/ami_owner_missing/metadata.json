@@ -9,10 +9,5 @@
   "descriptionID": "f317c3c2",
   "cloudProvider": "aws",
   "cwe": "346",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Avoid using the aws_ami data source with most_recent = true unless an 'owners' attribute or a specific filter like 'owner-id', 'owner-alias', or 'image-id' is set. Omitting these may result in unintended AMIs being selected."
-    }
-  },
   "oldDescriptionText": "Avoid using the aws_ami data source with most_recent = true unless an 'owners' attribute or a specific filter like 'owner-id', 'owner-alias', or 'image-id' is set. Omitting these may result in unintended AMIs being selected."
 }

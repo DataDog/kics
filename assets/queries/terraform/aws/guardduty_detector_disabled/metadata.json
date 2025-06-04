@@ -9,10 +9,5 @@
   "descriptionID": "0a3448be",
   "cloudProvider": "aws",
   "cwe": "778",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Make sure that Amazon GuardDuty is Enabled"
-    }
-  },
   "oldDescriptionText": "Make sure that Amazon GuardDuty is Enabled"
 }

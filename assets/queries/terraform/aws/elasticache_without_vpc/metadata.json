@@ -9,10 +9,5 @@
   "descriptionID": "cf79a8df",
   "cloudProvider": "aws",
   "cwe": "284",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "ElastiCache should be launched in a Virtual Private Cloud (VPC)"
-    }
-  },
   "oldDescriptionText": "ElastiCache should be launched in a Virtual Private Cloud (VPC)"
 }

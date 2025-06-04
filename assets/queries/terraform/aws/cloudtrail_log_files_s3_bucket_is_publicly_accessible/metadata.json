@@ -9,10 +9,5 @@
   "descriptionID": "2f7c6ca4",
   "cloudProvider": "aws",
   "cwe": "668",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "CloudTrail Log Files S3 Bucket should not be publicly accessible"
-    }
-  },
   "oldDescriptionText": "CloudTrail Log Files S3 Bucket should not be publicly accessible"
 }

@@ -9,10 +9,5 @@
   "descriptionID": "28422817",
   "cloudProvider": "aws",
   "cwe": "732",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "AWS IAM Users should not have access to console"
-    }
-  },
   "oldDescriptionText": "AWS IAM Users should not have access to console"
 }

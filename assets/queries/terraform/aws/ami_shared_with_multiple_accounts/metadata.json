@@ -9,10 +9,5 @@
   "descriptionID": "3dfbf99b",
   "cloudProvider": "aws",
   "cwe": "284",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Limits access to AWS AMIs by checking if more than one account is using the same image"
-    }
-  },
   "oldDescriptionText": "Limits access to AWS AMIs by checking if more than one account is using the same image"
 }

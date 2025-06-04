@@ -9,10 +9,5 @@
   "descriptionID": "e3b3b5c1",
   "cloudProvider": "aws",
   "cwe": "326",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "User Data should not contain a base64 encoded private key. If so, anyone can decode the private key easily"
-    }
-  },
   "oldDescriptionText": "User Data should not contain a base64 encoded private key. If so, anyone can decode the private key easily"
 }

@@ -9,10 +9,5 @@
   "descriptionID": "e2f9b5c7",
   "cloudProvider": "gcp",
   "cwe": "200",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Google Kubernetes Engine (GKE) control plane should not be accessible from the public internet. Restricting access to known IP ranges prevents unauthorized access."
-    }
-  },
   "oldDescriptionText": "Google Kubernetes Engine (GKE) control plane should not be accessible from the public internet. Restricting access to known IP ranges prevents unauthorized access."
 }

@@ -10,10 +10,5 @@
   "cloudProvider": "aws",
   "cwe": "732",
   "oldSeverity": "LOW",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "EC2 instances should not use default security group(s)"
-    }
-  },
   "oldDescriptionText": "EC2 instances should not use default security group(s)"
 }

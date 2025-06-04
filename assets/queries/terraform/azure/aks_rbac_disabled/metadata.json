@@ -9,10 +9,5 @@
   "descriptionID": "d27166a7",
   "cloudProvider": "azure",
   "cwe": "285",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Azure Container Service (AKS) instance should have role-based access control (RBAC) enabled"
-    }
-  },
   "oldDescriptionText": "Azure Container Service (AKS) instance should have role-based access control (RBAC) enabled"
 }

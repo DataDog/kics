@@ -9,10 +9,5 @@
   "descriptionID": "d3f8e9c1",
   "cloudProvider": "gcp",
   "cwe": "284",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "The firewall should not allow ingress from 0.0.0.0/0 on port 21 (FTP). Unrestricted access can lead to unauthorized access."
-    }
-  },
   "oldDescriptionText": "The firewall should not allow ingress from 0.0.0.0/0 on port 21 (FTP). Unrestricted access can lead to unauthorized access."
 }

@@ -9,10 +9,5 @@
   "descriptionID": "bts2c3d4",
   "cloudProvider": "aws",
   "cwe": "521",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Ensures that the AWS IAM password policy requires at least one symbol. Without this setting, passwords may be easier to guess, leading to security vulnerabilities."
-    }
-  },
   "oldDescriptionText": "Ensures that the AWS IAM password policy requires at least one symbol. Without this setting, passwords may be easier to guess, leading to security vulnerabilities."
 }

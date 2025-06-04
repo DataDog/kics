@@ -10,10 +10,5 @@
   "cloudProvider": "gcp",
   "cwe": "778",
   "oldSeverity": "HIGH",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Audit Logging Configuration is defective"
-    }
-  },
   "oldDescriptionText": "Audit Logging Configuration is defective"
 }

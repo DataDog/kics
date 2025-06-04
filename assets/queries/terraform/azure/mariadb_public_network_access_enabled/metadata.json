@@ -10,10 +10,5 @@
   "cloudProvider": "azure",
   "cwe": "732",
   "oldSeverity": "MEDIUM",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "MariaDB Server Public Network Access should be disabled"
-    }
-  },
   "oldDescriptionText": "MariaDB Server Public Network Access should be disabled"
 }

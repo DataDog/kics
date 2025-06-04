@@ -10,10 +10,5 @@
   "cloudProvider": "aws",
   "cwe": "778",
   "oldSeverity": "HIGH",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Ensure a log metric filter and alarm exist for root acount usage"
-    }
-  },
   "oldDescriptionText": "Ensure a log metric filter and alarm exist for root acount usage"
 }

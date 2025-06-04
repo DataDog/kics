@@ -9,10 +9,5 @@
   "descriptionID": "a8b7c6d5",
   "cloudProvider": "gcp",
   "cwe": "200",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "SQL Database Instances should include the 'skip_show_database' flag in their settings to prevent unintended exposure of database details. Its absence indicates a potential misconfiguration."
-    }
-  },
   "oldDescriptionText": "SQL Database Instances should include the 'skip_show_database' flag in their settings to prevent unintended exposure of database details. Its absence indicates a potential misconfiguration."
 }

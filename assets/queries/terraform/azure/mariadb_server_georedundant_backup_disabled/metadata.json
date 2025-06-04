@@ -9,10 +9,5 @@
   "descriptionID": "f9f97af4",
   "cloudProvider": "azure",
   "cwe": "799",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "MariaDB Server Geo-redundant Backup should be enabled"
-    }
-  },
   "oldDescriptionText": "MariaDB Server Geo-redundant Backup should be enabled"
 }

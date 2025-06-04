@@ -10,10 +10,5 @@
   "cloudProvider": "azure",
   "cwe": "285",
   "oldSeverity": "MEDIUM",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Azure Virtual Network subnet must be configured with a Network Security Group, which means the attribute 'security_group' must be defined and not empty"
-    }
-  },
   "oldDescriptionText": "Azure Virtual Network subnet must be configured with a Network Security Group, which means the attribute 'security_group' must be defined and not empty"
 }

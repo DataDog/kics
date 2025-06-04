@@ -9,10 +9,5 @@
   "descriptionID": "4639db5f",
   "cloudProvider": "aws",
   "cwe": "250",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Public and private EC2 istances should not share the same role."
-    }
-  },
   "oldDescriptionText": "Public and private EC2 istances should not share the same role."
 }

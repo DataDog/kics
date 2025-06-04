@@ -9,10 +9,5 @@
   "descriptionID": "a2b3c4d5",
   "cloudProvider": "aws",
   "cwe": "200",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Ensures that every cloud resource has a 'Team' tag for ownership tracking."
-    }
-  },
   "oldDescriptionText": "Ensures that every cloud resource has a 'Team' tag for ownership tracking."
 }

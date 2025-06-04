@@ -10,10 +10,5 @@
   "cloudProvider": "azure",
   "cwe": "285",
   "oldSeverity": "HIGH",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Azure App Service should have managed identity enabled"
-    }
-  },
   "oldDescriptionText": "Azure App Service should have managed identity enabled"
 }

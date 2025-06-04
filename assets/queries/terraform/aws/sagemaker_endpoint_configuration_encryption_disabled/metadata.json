@@ -9,10 +9,5 @@
   "descriptionID": "570f99ac",
   "cloudProvider": "aws",
   "cwe": "311",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Sagemaker endpoint configuration should encrypt data"
-    }
-  },
   "oldDescriptionText": "Sagemaker endpoint configuration should encrypt data"
 }

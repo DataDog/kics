@@ -9,10 +9,5 @@
   "descriptionID": "2967cde6",
   "cloudProvider": "gcp",
   "cwe": "732",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Google Compute Engine VM instances should not enable serial ports. When enabled, anyone can access your VM, if they know the username, project ID, SSH key, instance name and zone"
-    }
-  },
   "oldDescriptionText": "Google Compute Engine VM instances should not enable serial ports. When enabled, anyone can access your VM, if they know the username, project ID, SSH key, instance name and zone"
 }

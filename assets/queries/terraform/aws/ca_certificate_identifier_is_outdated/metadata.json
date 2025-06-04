@@ -10,10 +10,5 @@
   "cloudProvider": "aws",
   "cwe": "295",
   "oldSeverity": "HIGH",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "The CA certificate Identifier must be 'rds-ca-2019'."
-    }
-  },
   "oldDescriptionText": "The CA certificate Identifier must be 'rds-ca-2019'."
 }

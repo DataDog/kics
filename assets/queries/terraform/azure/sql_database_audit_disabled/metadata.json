@@ -10,10 +10,5 @@
   "cloudProvider": "azure",
   "cwe": "778",
   "oldSeverity": "HIGH",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Ensure that 'Threat Detection' is enabled for Azure SQL Database"
-    }
-  },
   "oldDescriptionText": "Ensure that 'Threat Detection' is enabled for Azure SQL Database"
 }

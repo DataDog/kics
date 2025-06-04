@@ -9,10 +9,5 @@
   "descriptionID": "890cf9a4",
   "cloudProvider": "azure",
   "cwe": "1188",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Network Interfaces IP Forwarding should be disabled"
-    }
-  },
   "oldDescriptionText": "Network Interfaces IP Forwarding should be disabled"
 }

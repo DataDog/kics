@@ -9,10 +9,5 @@
   "descriptionID": "9a581503",
   "cloudProvider": "aws",
   "cwe": "668",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "AWS Redshift Clusters must not be publicly accessible. Check if 'publicly_accessible' field is true or undefined (default is true)"
-    }
-  },
   "oldDescriptionText": "AWS Redshift Clusters must not be publicly accessible. Check if 'publicly_accessible' field is true or undefined (default is true)"
 }

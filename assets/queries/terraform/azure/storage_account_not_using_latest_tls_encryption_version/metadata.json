@@ -9,10 +9,5 @@
   "descriptionID": "a38872a7",
   "cloudProvider": "azure",
   "cwe": "326",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Ensure Storage Account is using the latest version of TLS encryption"
-    }
-  },
   "oldDescriptionText": "Ensure Storage Account is using the latest version of TLS encryption"
 }

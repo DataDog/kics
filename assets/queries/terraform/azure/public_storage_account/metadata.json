@@ -9,10 +9,5 @@
   "descriptionID": "88948514",
   "cloudProvider": "azure",
   "cwe": "285",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Storage Account should not be public to grant the principle of least privileges"
-    }
-  },
   "oldDescriptionText": "Storage Account should not be public to grant the principle of least privileges"
 }

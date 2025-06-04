@@ -9,10 +9,5 @@
   "descriptionID": "a5480b6e",
   "cloudProvider": "aws",
   "cwe": "285",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "API Gateway Deployment should have API Gateway UsagePlan defined and associated."
-    }
-  },
   "oldDescriptionText": "API Gateway Deployment should have API Gateway UsagePlan defined and associated."
 }

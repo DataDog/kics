@@ -9,10 +9,5 @@
   "descriptionID": "68898cf7",
   "cloudProvider": "gcp",
   "cwe": "1188",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Google Compute Network should not use default firewall rule"
-    }
-  },
   "oldDescriptionText": "Google Compute Network should not use default firewall rule"
 }

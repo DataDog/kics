@@ -9,10 +9,5 @@
   "descriptionID": "b443babe",
   "cloudProvider": "aws",
   "cwe": "155",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Lambda Permission Principal should not contain a wildcard."
-    }
-  },
   "oldDescriptionText": "Lambda Permission Principal should not contain a wildcard."
 }

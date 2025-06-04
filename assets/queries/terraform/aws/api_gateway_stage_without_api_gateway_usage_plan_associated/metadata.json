@@ -9,10 +9,5 @@
   "descriptionID": "72d08d94",
   "cloudProvider": "aws",
   "cwe": "285",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "API Gateway Stage should have API Gateway UsagePlan defined and associated."
-    }
-  },
   "oldDescriptionText": "API Gateway Stage should have API Gateway UsagePlan defined and associated."
 }

@@ -9,10 +9,5 @@
   "descriptionID": "3e7eea78",
   "cloudProvider": "aws",
   "cwe": "311",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Amazon Aurora does not have encryption for data at rest enabled. To prevent such a scenario, update the attribute 'StorageEncrypted' to 'true'."
-    }
-  },
   "oldDescriptionText": "Amazon Aurora does not have encryption for data at rest enabled. To prevent such a scenario, update the attribute 'StorageEncrypted' to 'true'."
 }

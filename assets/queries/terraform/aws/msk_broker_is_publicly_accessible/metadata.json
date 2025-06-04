@@ -9,10 +9,5 @@
   "descriptionID": "6ad9c2af",
   "cloudProvider": "aws",
   "cwe": "284",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Public AWS MSK allows anyone to interact with the Apache Kafka broker, therefore increasing the opportunity for malicious activity. To prevent such a scenario, it is recommended for AWS MSK to not be publicly accessible"
-    }
-  },
   "oldDescriptionText": "Public AWS MSK allows anyone to interact with the Apache Kafka broker, therefore increasing the opportunity for malicious activity. To prevent such a scenario, it is recommended for AWS MSK to not be publicly accessible"
 }

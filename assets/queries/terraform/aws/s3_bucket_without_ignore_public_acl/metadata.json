@@ -10,10 +10,5 @@
   "cloudProvider": "aws",
   "cwe": "284",
   "oldSeverity": "LOW",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "S3 bucket without ignore public ACL"
-    }
-  },
   "oldDescriptionText": "S3 bucket without ignore public ACL"
 }

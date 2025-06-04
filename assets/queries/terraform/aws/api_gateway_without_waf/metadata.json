@@ -9,10 +9,5 @@
   "descriptionID": "bfefa118",
   "cloudProvider": "aws",
   "cwe": "778",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "API Gateway should have WAF (Web Application Firewall) enabled"
-    }
-  },
   "oldDescriptionText": "API Gateway should have WAF (Web Application Firewall) enabled"
 }

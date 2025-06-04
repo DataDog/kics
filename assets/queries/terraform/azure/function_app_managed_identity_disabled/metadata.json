@@ -9,10 +9,5 @@
   "descriptionID": "37e5ef3f",
   "cloudProvider": "azure",
   "cwe": "284",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Azure Function App should have managed identity enabled"
-    }
-  },
   "oldDescriptionText": "Azure Function App should have managed identity enabled"
 }

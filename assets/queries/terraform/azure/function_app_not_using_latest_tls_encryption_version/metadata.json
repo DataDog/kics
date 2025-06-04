@@ -10,10 +10,5 @@
   "cloudProvider": "azure",
   "cwe": "326",
   "oldSeverity": "HIGH",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Ensure Function App is using the latest version of TLS encryption"
-    }
-  },
   "oldDescriptionText": "Ensure Function App is using the latest version of TLS encryption"
 }

@@ -9,10 +9,5 @@
   "descriptionID": "a5613650",
   "cloudProvider": "azure",
   "cwe": "285",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Default Azure Storage Account network access should be set to Deny"
-    }
-  },
   "oldDescriptionText": "Default Azure Storage Account network access should be set to Deny"
 }

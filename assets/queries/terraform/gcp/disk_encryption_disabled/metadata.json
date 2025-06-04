@@ -9,10 +9,5 @@
   "descriptionID": "33fb7fa7",
   "cloudProvider": "gcp",
   "cwe": "311",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "VM disks for critical VMs must be encrypted with Customer Supplied Encryption Keys (CSEK) or with Customer-managed encryption keys (CMEK), which means the attribute 'disk_encryption_key' must be defined and its sub attributes 'raw_key' or 'kms_key_self_link' must also be defined"
-    }
-  },
   "oldDescriptionText": "VM disks for critical VMs must be encrypted with Customer Supplied Encryption Keys (CSEK) or with Customer-managed encryption keys (CMEK), which means the attribute 'disk_encryption_key' must be defined and its sub attributes 'raw_key' or 'kms_key_self_link' must also be defined"
 }

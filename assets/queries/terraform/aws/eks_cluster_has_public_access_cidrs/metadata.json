@@ -10,10 +10,5 @@
   "cloudProvider": "aws",
   "cwe": "284",
   "oldSeverity": "HIGH",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Amazon EKS public endpoint is enables and accessible to all: 0.0.0.0/0\""
-    }
-  },
   "oldDescriptionText": "Amazon EKS public endpoint is enables and accessible to all: 0.0.0.0/0\""
 }

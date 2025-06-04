@@ -10,10 +10,5 @@
   "cloudProvider": "azure",
   "cwe": "285",
   "oldSeverity": "HIGH",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "The IP range filter should be defined to secure the data stored"
-    }
-  },
   "oldDescriptionText": "The IP range filter should be defined to secure the data stored"
 }

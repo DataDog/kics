@@ -9,10 +9,5 @@
   "descriptionID": "c7f8e9a1",
   "cloudProvider": "azure",
   "cwe": "311",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "PostgreSQL Database Server should disable public network access by setting public_network_access_enabled to false. This prevents unauthorized access to the database from the public internet."
-    }
-  },
   "oldDescriptionText": "PostgreSQL Database Server should disable public network access by setting public_network_access_enabled to false. This prevents unauthorized access to the database from the public internet."
 }

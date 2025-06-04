@@ -10,10 +10,5 @@
   "cloudProvider": "azure",
   "cwe": "665",
   "oldSeverity": "HIGH",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "PostgreSQL Server Threat Detection Policy should be enabled"
-    }
-  },
   "oldDescriptionText": "PostgreSQL Server Threat Detection Policy should be enabled"
 }

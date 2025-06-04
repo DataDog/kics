@@ -10,10 +10,5 @@
   "cloudProvider": "azure",
   "cwe": "754",
   "oldSeverity": "HIGH",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Make sure that on PostgreSQL Geo Redundant Backups is enabled"
-    }
-  },
   "oldDescriptionText": "Make sure that on PostgreSQL Geo Redundant Backups is enabled"
 }

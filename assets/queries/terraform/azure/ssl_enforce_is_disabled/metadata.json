@@ -10,10 +10,5 @@
   "cloudProvider": "azure",
   "cwe": "319",
   "oldSeverity": "HIGH",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Make sure that for PosgreSQL, the 'Enforce SSL connection' is set to 'ENABLED'"
-    }
-  },
   "oldDescriptionText": "Make sure that for PosgreSQL, the 'Enforce SSL connection' is set to 'ENABLED'"
 }

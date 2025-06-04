@@ -10,10 +10,5 @@
   "cloudProvider": "gcp",
   "cwe": "1188",
   "oldSeverity": "HIGH",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Kubernetes nodes must have auto upgrades set to true, which means Node 'auto_upgrade' should be enabled for Kubernetes Clusters"
-    }
-  },
   "oldDescriptionText": "Kubernetes nodes must have auto upgrades set to true, which means Node 'auto_upgrade' should be enabled for Kubernetes Clusters"
 }

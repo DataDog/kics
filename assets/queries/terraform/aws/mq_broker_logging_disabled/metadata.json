@@ -9,10 +9,5 @@
   "descriptionID": "cdf2b416",
   "cloudProvider": "aws",
   "cwe": "778",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Check if MQ Brokers don't have logging enabled in any of the two options possible (audit and general)."
-    }
-  },
   "oldDescriptionText": "Check if MQ Brokers don't have logging enabled in any of the two options possible (audit and general)."
 }

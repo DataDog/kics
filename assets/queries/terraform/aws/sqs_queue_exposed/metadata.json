@@ -9,10 +9,5 @@
   "descriptionID": "59f958c0",
   "cloudProvider": "aws",
   "cwe": "200",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Checks if the SQS Queue is exposed"
-    }
-  },
   "oldDescriptionText": "Checks if the SQS Queue is exposed"
 }

@@ -10,10 +10,5 @@
   "cloudProvider": "aws",
   "cwe": "285",
   "oldSeverity": "MEDIUM",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Neptune Cluster should have IAM Database Authentication enabled"
-    }
-  },
   "oldDescriptionText": "Neptune Cluster should have IAM Database Authentication enabled"
 }

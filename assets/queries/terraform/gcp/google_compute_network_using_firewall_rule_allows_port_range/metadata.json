@@ -9,10 +9,5 @@
   "descriptionID": "7289eebd",
   "cloudProvider": "gcp",
   "cwe": "285",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Google Compute Network should not use a firewall rule that allows port range"
-    }
-  },
   "oldDescriptionText": "Google Compute Network should not use a firewall rule that allows port range"
 }

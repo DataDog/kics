@@ -9,10 +9,5 @@
   "descriptionID": "c6b6fc2e",
   "cloudProvider": "aws",
   "cwe": "311",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Glue Data Catalog Encryption Settings should have 'connection_password_encryption' and 'encryption_at_rest' enabled"
-    }
-  },
   "oldDescriptionText": "Glue Data Catalog Encryption Settings should have 'connection_password_encryption' and 'encryption_at_rest' enabled"
 }

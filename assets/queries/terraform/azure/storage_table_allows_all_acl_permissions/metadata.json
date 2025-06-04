@@ -9,10 +9,5 @@
   "descriptionID": "01751e5a",
   "cloudProvider": "azure",
   "cwe": "732",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Azure Storage Table should not allow all ACL (Access Control List) permissions - r (read), w (write), d (delete), and l (list)."
-    }
-  },
   "oldDescriptionText": "Azure Storage Table should not allow all ACL (Access Control List) permissions - r (read), w (write), d (delete), and l (list)."
 }

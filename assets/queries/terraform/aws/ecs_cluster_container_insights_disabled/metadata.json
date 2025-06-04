@@ -9,10 +9,5 @@
   "descriptionID": "b48a7a70",
   "cloudProvider": "aws",
   "cwe": "778",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "ECS Cluster should enable container insights"
-    }
-  },
   "oldDescriptionText": "ECS Cluster should enable container insights"
 }

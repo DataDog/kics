@@ -9,10 +9,5 @@
   "descriptionID": "f0d8781f",
   "cloudProvider": "aws",
   "cwe": "200",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "The DB snapshot is public. This means that anyone can access the snapshot and restore the database. This can lead to unauthorized access to sensitive data."
-    }
-  },
   "oldDescriptionText": "The DB snapshot is public. This means that anyone can access the snapshot and restore the database. This can lead to unauthorized access to sensitive data."
 }

@@ -9,10 +9,5 @@
   "descriptionID": "d1ee9c09",
   "cloudProvider": "azure",
   "cwe": "732",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "MSSQL Server public network access should be disabled"
-    }
-  },
   "oldDescriptionText": "MSSQL Server public network access should be disabled"
 }

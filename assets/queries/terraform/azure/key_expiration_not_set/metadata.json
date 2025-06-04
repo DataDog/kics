@@ -10,10 +10,5 @@
   "cloudProvider": "azure",
   "cwe": "521",
   "oldSeverity": "HIGH",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Make sure that for all keys the expiration date is set"
-    }
-  },
   "oldDescriptionText": "Make sure that for all keys the expiration date is set"
 }

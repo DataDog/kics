@@ -9,10 +9,5 @@
   "descriptionID": "2c27e24e",
   "cloudProvider": "azure",
   "cwe": "284",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Azure Active Directory must be used for authentication for Service Fabric"
-    }
-  },
   "oldDescriptionText": "Azure Active Directory must be used for authentication for Service Fabric"
 }

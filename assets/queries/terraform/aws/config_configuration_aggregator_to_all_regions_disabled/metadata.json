@@ -10,10 +10,5 @@
   "cloudProvider": "aws",
   "cwe": "285",
   "oldSeverity": "MEDIUM",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "AWS Config Configuration Aggregator All Regions must be set to True"
-    }
-  },
   "oldDescriptionText": "AWS Config Configuration Aggregator All Regions must be set to True"
 }

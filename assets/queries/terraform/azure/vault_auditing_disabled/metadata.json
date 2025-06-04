@@ -10,10 +10,5 @@
   "cloudProvider": "azure",
   "cwe": "778",
   "oldSeverity": "HIGH",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Ensure that logging for Azure KeyVault is 'Enabled'"
-    }
-  },
   "oldDescriptionText": "Ensure that logging for Azure KeyVault is 'Enabled'"
 }

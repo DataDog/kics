@@ -9,10 +9,5 @@
   "descriptionID": "4eb880dd",
   "cloudProvider": "azure",
   "cwe": "778",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "SQL Server alert email should be enabled"
-    }
-  },
   "oldDescriptionText": "SQL Server alert email should be enabled"
 }

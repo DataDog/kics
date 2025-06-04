@@ -9,10 +9,5 @@
   "platform": "Terraform",
   "cloudProvider": "GCP",
   "cwe": "CWE-400",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Ensures that no legacy networks with auto_create_subnetworks enabled exist in a project."
-    }
-  },
   "oldDescriptionText": "Ensures that no legacy networks with auto_create_subnetworks enabled exist in a project."
 }

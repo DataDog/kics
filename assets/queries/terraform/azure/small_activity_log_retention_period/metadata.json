@@ -10,10 +10,5 @@
   "cloudProvider": "azure",
   "cwe": "778",
   "oldSeverity": "MEDIUM",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Ensure that Activity Log Retention is set 365 days or greater"
-    }
-  },
   "oldDescriptionText": "Ensure that Activity Log Retention is set 365 days or greater"
 }

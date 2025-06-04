@@ -9,10 +9,5 @@
   "descriptionID": "7560e4d2",
   "cloudProvider": "aws",
   "cwe": "693",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "It's considered a best practice when using Application Load Balancers to drop invalid header fields"
-    }
-  },
   "oldDescriptionText": "It's considered a best practice when using Application Load Balancers to drop invalid header fields"
 }

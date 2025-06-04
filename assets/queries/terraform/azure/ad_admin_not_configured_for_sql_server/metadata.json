@@ -10,10 +10,5 @@
   "cloudProvider": "azure",
   "cwe": "732",
   "oldSeverity": "HIGH",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "The Active Directory Administrator is not configured for a SQL server"
-    }
-  },
   "oldDescriptionText": "The Active Directory Administrator is not configured for a SQL server"
 }

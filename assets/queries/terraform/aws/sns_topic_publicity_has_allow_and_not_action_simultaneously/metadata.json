@@ -9,10 +9,5 @@
   "descriptionID": "ddd0f677",
   "cloudProvider": "aws",
   "cwe": "284",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "SNS topic Publicity should not have 'Effect: Allow' and argument 'NotAction' at the same time. If it has 'Effect: Allow', the argument stated should be 'Action'."
-    }
-  },
   "oldDescriptionText": "SNS topic Publicity should not have 'Effect: Allow' and argument 'NotAction' at the same time. If it has 'Effect: Allow', the argument stated should be 'Action'."
 }

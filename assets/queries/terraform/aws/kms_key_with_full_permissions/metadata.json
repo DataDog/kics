@@ -9,10 +9,5 @@
   "descriptionID": "32b2985e",
   "cloudProvider": "aws",
   "cwe": "732",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Checks if the policy is vulnerable and needs updating."
-    }
-  },
   "oldDescriptionText": "Checks if the policy is vulnerable and needs updating."
 }

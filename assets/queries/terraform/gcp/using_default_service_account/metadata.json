@@ -9,10 +9,5 @@
   "descriptionID": "5c3e219f",
   "cloudProvider": "gcp",
   "cwe": "250",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Instances should not be configured to use the Default Service Account, that has full access to all Cloud APIs, which means the attribute 'service_account' and its sub attribute 'email' must be defined. Additionally, 'email' must not be empty and must also not be a default Google Compute Engine service account."
-    }
-  },
   "oldDescriptionText": "Instances should not be configured to use the Default Service Account, that has full access to all Cloud APIs, which means the attribute 'service_account' and its sub attribute 'email' must be defined. Additionally, 'email' must not be empty and must also not be a default Google Compute Engine service account."
 }

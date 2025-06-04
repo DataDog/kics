@@ -9,10 +9,5 @@
   "descriptionID": "f9e5dc62",
   "cloudProvider": "aws",
   "cwe": "665",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Check if the redis version is compliant with the necessary AWS PCI DSS requirements"
-    }
-  },
   "oldDescriptionText": "Check if the redis version is compliant with the necessary AWS PCI DSS requirements"
 }

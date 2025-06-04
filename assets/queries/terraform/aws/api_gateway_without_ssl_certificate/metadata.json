@@ -9,10 +9,5 @@
   "descriptionID": "6d4941dc",
   "cloudProvider": "aws",
   "cwe": "295",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "SSL Client Certificate should be enabled"
-    }
-  },
   "oldDescriptionText": "SSL Client Certificate should be enabled"
 }

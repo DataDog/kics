@@ -9,10 +9,5 @@
   "descriptionID": "a96dc1b9",
   "cloudProvider": "azure",
   "cwe": "284",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Role Definition should not allow custom role creation (Microsoft.Authorization/roleDefinitions/write)"
-    }
-  },
   "oldDescriptionText": "Role Definition should not allow custom role creation (Microsoft.Authorization/roleDefinitions/write)"
 }

@@ -10,10 +10,5 @@
   "cloudProvider": "aws",
   "cwe": "285",
   "oldSeverity": "MEDIUM",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Cross-Account IAM Assume Role Policy should require external ID or MFA to protect cross-account access"
-    }
-  },
   "oldDescriptionText": "Cross-Account IAM Assume Role Policy should require external ID or MFA to protect cross-account access"
 }

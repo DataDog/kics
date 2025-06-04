@@ -9,10 +9,5 @@
   "platform": "Terraform",
   "cloudProvider": "GCP",
   "cwe": "CWE-522",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Ensures that only GCP-managed service account keys are used, preventing manually created keys that pose security risks."
-    }
-  },
   "oldDescriptionText": "Ensures that only GCP-managed service account keys are used, preventing manually created keys that pose security risks."
 }

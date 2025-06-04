@@ -9,10 +9,5 @@
   "descriptionID": "2bee4895",
   "cloudProvider": "aws",
   "cwe": "311",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "AWS Redshift Cluster should be encrypted. Check if 'encrypted' field is false or undefined (default is false)"
-    }
-  },
   "oldDescriptionText": "AWS Redshift Cluster should be encrypted. Check if 'encrypted' field is false or undefined (default is false)"
 }

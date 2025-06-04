@@ -10,10 +10,5 @@
   "cloudProvider": "aws",
   "cwe": "284",
   "oldSeverity": "HIGH",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "IAM policies shouldn't allow full administrative privileges (for all resources)"
-    }
-  },
   "oldDescriptionText": "IAM policies shouldn't allow full administrative privileges (for all resources)"
 }

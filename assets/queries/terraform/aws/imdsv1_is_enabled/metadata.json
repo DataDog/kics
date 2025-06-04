@@ -9,10 +9,5 @@
   "descriptionID": "f1g2h3i4",
   "cloudProvider": "aws",
   "cwe": "284",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Ensures that AWS Instance Metadata Service Version 1 (IMDSv1) is disabled. IMDSv1 is vulnerable to SSRF attacks and should be replaced with IMDSv2 with session tokens required."
-    }
-  },
   "oldDescriptionText": "Ensures that AWS Instance Metadata Service Version 1 (IMDSv1) is disabled. IMDSv1 is vulnerable to SSRF attacks and should be replaced with IMDSv2 with session tokens required."
 }

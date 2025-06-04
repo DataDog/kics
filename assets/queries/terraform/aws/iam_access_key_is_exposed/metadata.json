@@ -9,10 +9,5 @@
   "descriptionID": "99b02242",
   "cloudProvider": "aws",
   "cwe": "200",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "IAM Access Key should not be active for root users"
-    }
-  },
   "oldDescriptionText": "IAM Access Key should not be active for root users"
 }

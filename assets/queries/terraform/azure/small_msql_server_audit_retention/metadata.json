@@ -10,10 +10,5 @@
   "cloudProvider": "azure",
   "cwe": "778",
   "oldSeverity": "MEDIUM",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Make sure for SQL Servers that Auditing Retention is greater than 90 days"
-    }
-  },
   "oldDescriptionText": "Make sure for SQL Servers that Auditing Retention is greater than 90 days"
 }

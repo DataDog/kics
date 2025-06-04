@@ -9,10 +9,5 @@
   "descriptionID": "e55e747f",
   "cloudProvider": "aws",
   "cwe": "200",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "AWS Security Group should not have an unknown port exposed to the entire Internet"
-    }
-  },
   "oldDescriptionText": "AWS Security Group should not have an unknown port exposed to the entire Internet"
 }

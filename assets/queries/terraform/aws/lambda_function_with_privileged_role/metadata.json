@@ -9,10 +9,5 @@
   "descriptionID": "1b3af2f9",
   "cloudProvider": "aws",
   "cwe": "284",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "It is not advisable for AWS Lambda Functions to have privileged permissions."
-    }
-  },
   "oldDescriptionText": "It is not advisable for AWS Lambda Functions to have privileged permissions."
 }

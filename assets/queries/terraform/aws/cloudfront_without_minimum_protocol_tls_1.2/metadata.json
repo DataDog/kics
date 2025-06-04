@@ -10,10 +10,5 @@
   "cloudProvider": "aws",
   "cwe": "326",
   "oldSeverity": "HIGH",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "CloudFront Minimum Protocol version should be at least TLS 1.2"
-    }
-  },
   "oldDescriptionText": "CloudFront Minimum Protocol version should be at least TLS 1.2"
 }

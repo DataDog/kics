@@ -9,10 +9,5 @@
   "descriptionID": "61db62a1",
   "cloudProvider": "aws",
   "cwe": "155",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Glue policy should avoid wildcard in 'principals' and 'actions'"
-    }
-  },
   "oldDescriptionText": "Glue policy should avoid wildcard in 'principals' and 'actions'"
 }

@@ -9,10 +9,5 @@
   "descriptionID": "cce2787f",
   "cloudProvider": "aws",
   "cwe": "665",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "RDS Cluster backup retention period should be specifically defined"
-    }
-  },
   "oldDescriptionText": "RDS Cluster backup retention period should be specifically defined"
 }

@@ -9,10 +9,5 @@
   "descriptionID": "7614ce3b",
   "cloudProvider": "aws",
   "cwe": "710",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "S3 bucket should have versioning enabled"
-    }
-  },
   "oldDescriptionText": "S3 bucket should have versioning enabled"
 }

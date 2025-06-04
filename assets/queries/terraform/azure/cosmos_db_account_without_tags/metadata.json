@@ -10,10 +10,5 @@
   "cloudProvider": "azure",
   "cwe": "665",
   "oldSeverity": "MEDIUM",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Cosmos DB Account must have a mapping of tags."
-    }
-  },
   "oldDescriptionText": "Cosmos DB Account must have a mapping of tags."
 }

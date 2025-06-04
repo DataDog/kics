@@ -10,10 +10,5 @@
   "cloudProvider": "aws",
   "cwe": "285",
   "oldSeverity": "MEDIUM",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Dynamodb VPC Endpoint should be associated with Route Table Association"
-    }
-  },
   "oldDescriptionText": "Dynamodb VPC Endpoint should be associated with Route Table Association"
 }

@@ -10,10 +10,5 @@
   "cloudProvider": "aws",
   "cwe": "693",
   "oldSeverity": "LOW",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Application Load Balancer should have deletion protection enabled"
-    }
-  },
   "oldDescriptionText": "Application Load Balancer should have deletion protection enabled"
 }

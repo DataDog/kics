@@ -9,10 +9,5 @@
   "descriptionID": "4b9307cd",
   "cloudProvider": "gcp",
   "cwe": "284",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "VM Instance should block project-wide SSH keys"
-    }
-  },
   "oldDescriptionText": "VM Instance should block project-wide SSH keys"
 }

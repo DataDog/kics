@@ -9,10 +9,5 @@
   "descriptionID": "e478b54b",
   "cloudProvider": "aws",
   "cwe": "319",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Amazon Simple Queue Service (SQS) queue should protect the contents of their messages using Server-Side Encryption (SSE)"
-    }
-  },
   "oldDescriptionText": "Amazon Simple Queue Service (SQS) queue should protect the contents of their messages using Server-Side Encryption (SSE)"
 }

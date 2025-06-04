@@ -9,10 +9,5 @@
   "descriptionID": "e8f4d3c2",
   "cloudProvider": "azure",
   "cwe": "200",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "All Azure resources must include a 'team' tag in their tags block to ensure proper ownership and accountability."
-    }
-  },
   "oldDescriptionText": "All Azure resources must include a 'team' tag in their tags block to ensure proper ownership and accountability."
 }

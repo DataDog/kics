@@ -9,10 +9,5 @@
   "descriptionID": "7e2909e5",
   "cloudProvider": "aws",
   "cwe": "200",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "EC2 Instances should not be configured under a default VPC network"
-    }
-  },
   "oldDescriptionText": "EC2 Instances should not be configured under a default VPC network"
 }

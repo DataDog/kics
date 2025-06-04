@@ -9,10 +9,5 @@
   "descriptionID": "261d4fc3",
   "cloudProvider": "aws",
   "cwe": "693",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "AWS Key Management Service (KMS) must only possess usable Customer Master Keys (CMK), which means the CMKs must have the attribute 'is_enabled' set to true"
-    }
-  },
   "oldDescriptionText": "AWS Key Management Service (KMS) must only possess usable Customer Master Keys (CMK), which means the CMKs must have the attribute 'is_enabled' set to true"
 }

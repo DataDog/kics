@@ -9,10 +9,5 @@
   "descriptionID": "c1eed330",
   "cloudProvider": "aws",
   "cwe": "284",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "API Gateway REST API should have an API Gateway Authorizer"
-    }
-  },
   "oldDescriptionText": "API Gateway REST API should have an API Gateway Authorizer"
 }

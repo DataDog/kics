@@ -9,10 +9,5 @@
   "descriptionID": "0ebd9005",
   "cloudProvider": "aws",
   "cwe": "754",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "ElastiCache Redis cluster should have 'snapshot_retention_limit' higher than 0"
-    }
-  },
   "oldDescriptionText": "ElastiCache Redis cluster should have 'snapshot_retention_limit' higher than 0"
 }

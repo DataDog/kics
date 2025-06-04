@@ -9,10 +9,5 @@
   "descriptionID": "6a9ab071",
   "cloudProvider": "azure",
   "cwe": "665",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Make sure that the 'Standard' pricing tiers were selected."
-    }
-  },
   "oldDescriptionText": "Make sure that the 'Standard' pricing tiers were selected."
 }

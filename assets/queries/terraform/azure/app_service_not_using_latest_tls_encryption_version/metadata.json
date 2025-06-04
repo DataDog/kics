@@ -10,10 +10,5 @@
   "cloudProvider": "azure",
   "cwe": "326",
   "oldSeverity": "HIGH",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Ensure App Service is using the latest version of TLS encryption"
-    }
-  },
   "oldDescriptionText": "Ensure App Service is using the latest version of TLS encryption"
 }

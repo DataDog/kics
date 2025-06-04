@@ -10,10 +10,5 @@
   "cloudProvider": "azure",
   "cwe": "311",
   "oldSeverity": "LOW",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "App Service should have 'http2_enabled' enabled"
-    }
-  },
   "oldDescriptionText": "App Service should have 'http2_enabled' enabled"
 }

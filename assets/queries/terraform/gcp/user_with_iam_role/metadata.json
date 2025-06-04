@@ -9,10 +9,5 @@
   "descriptionID": "256939e9",
   "cloudProvider": "gcp",
   "cwe": "284",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "As a best practice, it is better to assign an IAM Role to a group than to a user"
-    }
-  },
   "oldDescriptionText": "As a best practice, it is better to assign an IAM Role to a group than to a user"
 }

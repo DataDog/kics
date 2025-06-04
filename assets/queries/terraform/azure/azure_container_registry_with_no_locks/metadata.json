@@ -9,10 +9,5 @@
   "descriptionID": "adb235b6",
   "cloudProvider": "azure",
   "cwe": "639",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Azurerm Container Registry should contain associated locks, which means 'azurerm_management_lock.scope' should be associated with 'azurerm_container_registry'"
-    }
-  },
   "oldDescriptionText": "Azurerm Container Registry should contain associated locks, which means 'azurerm_management_lock.scope' should be associated with 'azurerm_container_registry'"
 }
