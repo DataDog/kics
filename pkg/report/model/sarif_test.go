@@ -54,7 +54,17 @@ var sarifTests = []sarifTest{
 				QueryURI:    "https://www.test.com",
 				Severity:    model.SeverityHigh,
 				Files: []model.VulnerableFile{
-					{KeyActualValue: "test", FileName: "test.json", Line: -1, ResourceType: "test_resource_type", ResourceName: "test_resource_name"},
+					{
+						KeyActualValue: "test",
+						FileName:       "test.json",
+						Line:           1,
+						ResourceType:   "test_resource_type",
+						ResourceName:   "test_resource_name",
+						ResourceLocation: model.ResourceLocation{
+							Start: model.ResourceLine{Line: 1, Col: 1},
+							End:   model.ResourceLine{Line: 1, Col: 2},
+						},
+					},
 				},
 				CWE: "",
 			},
@@ -69,7 +79,7 @@ var sarifTests = []sarifTest{
 									RuleID:               "test",
 									RuleName:             "test",
 									RuleShortDescription: sarifMessage{Text: "test"},
-									RuleFullDescription:  sarifMessage{Text: "[1] test description"},
+									RuleFullDescription:  sarifMessage{Text: "test description\nRule ID: [1]"},
 									DefaultConfiguration: sarifConfiguration{
 										Level: "error",
 									},
@@ -101,11 +111,11 @@ var sarifTests = []sarifTest{
 								{
 									PhysicalLocation: sarifPhysicalLocation{
 										ArtifactLocation: sarifArtifactLocation{ArtifactURI: "test.json"},
-										Region:           model.SarifRegion{StartLine: 0, EndLine: 0, StartColumn: 1, EndColumn: 0},
+										Region:           model.SarifRegion{StartLine: 1, EndLine: 1, StartColumn: 1, EndColumn: 2},
 									},
 								},
 							},
-							ResultLevel:      "error",
+							ResultLevel:      "warning",
 							ResultProperties: sarifProperties{"tags": []string{"DATADOG_CATEGORY:", "IAC_RESOURCE_TYPE:test_resource_type", "IAC_RESOURCE_NAME:test_resource_name"}},
 							PartialFingerprints: SarifPartialFingerprints{
 								DatadogFingerprint: GetDatadogFingerprintHash(
@@ -118,7 +128,8 @@ var sarifTests = []sarifTest{
 										},
 									},
 									"test.json",
-									1,
+									"test_resource_type",
+									"test_resource_name",
 									"1",
 								),
 							},
@@ -172,7 +183,17 @@ var sarifTests = []sarifTest{
 				Category:    "test",
 				Severity:    model.SeverityHigh,
 				Files: []model.VulnerableFile{
-					{KeyActualValue: "test", FileName: "", Line: 1, ResourceType: "test_resource_type", ResourceName: "test_resource_name"},
+					{
+						KeyActualValue: "test",
+						FileName:       "",
+						Line:           1,
+						ResourceType:   "test_resource_type",
+						ResourceName:   "test_resource_name",
+						ResourceLocation: model.ResourceLocation{
+							Start: model.ResourceLine{Line: 1, Col: 1},
+							End:   model.ResourceLine{Line: 1, Col: 2},
+						},
+					},
 				},
 				CWE: "",
 			},
@@ -184,7 +205,17 @@ var sarifTests = []sarifTest{
 				Category:    "test",
 				Severity:    model.SeverityInfo,
 				Files: []model.VulnerableFile{
-					{KeyActualValue: "test", FileName: "", Line: 1, ResourceType: "test_resource_type_2", ResourceName: "test_resource_name_2"},
+					{
+						KeyActualValue: "test",
+						FileName:       "",
+						Line:           1,
+						ResourceType:   "test_resource_type_2",
+						ResourceName:   "test_resource_name_2",
+						ResourceLocation: model.ResourceLocation{
+							Start: model.ResourceLine{Line: 1, Col: 1},
+							End:   model.ResourceLine{Line: 1, Col: 2},
+						},
+					},
 				},
 				CWE: "22",
 			},
@@ -199,7 +230,7 @@ var sarifTests = []sarifTest{
 									RuleID:               "test",
 									RuleName:             "test",
 									RuleShortDescription: sarifMessage{Text: "test"},
-									RuleFullDescription:  sarifMessage{Text: "[test] test description"},
+									RuleFullDescription:  sarifMessage{Text: "test description\nRule ID: [test]"},
 									DefaultConfiguration: sarifConfiguration{
 										Level: "error",
 									},
@@ -222,7 +253,7 @@ var sarifTests = []sarifTest{
 									RuleID:               "test info",
 									RuleName:             "test info",
 									RuleShortDescription: sarifMessage{Text: "test"},
-									RuleFullDescription:  sarifMessage{Text: "test description"},
+									RuleFullDescription:  sarifMessage{Text: "test description/nRule ID: [test info]"},
 									DefaultConfiguration: sarifConfiguration{
 										Level: "none",
 									},
@@ -265,12 +296,12 @@ var sarifTests = []sarifTest{
 								Text:              "test",
 								MessageProperties: nil,
 							},
-							ResultLevel: "error",
+							ResultLevel: "warning",
 							ResultLocations: []SarifLocation{
 								{
 									PhysicalLocation: sarifPhysicalLocation{
 										ArtifactLocation: sarifArtifactLocation{ArtifactURI: ""},
-										Region:           model.SarifRegion{StartLine: 0, EndLine: 0, EndColumn: 0, StartColumn: 1},
+										Region:           model.SarifRegion{StartLine: 1, EndLine: 1, EndColumn: 2, StartColumn: 1},
 									},
 								},
 							},
@@ -286,7 +317,8 @@ var sarifTests = []sarifTest{
 										},
 									},
 									"",
-									1,
+									"test_resource_type",
+									"test_resource_name",
 									"test",
 								),
 							},
@@ -319,7 +351,8 @@ var sarifTests = []sarifTest{
 										},
 									},
 									"",
-									1,
+									"test_resource_type_2",
+									"test_resource_name_2",
 									"test info",
 								),
 							},
@@ -368,6 +401,138 @@ var sarifTests = []sarifTest{
 			},
 		},
 	},
+	{
+		name: "Should create one occurrence with remediation startLine",
+		vq: []model.QueryResult{
+			{
+				QueryName:   "test",
+				QueryID:     "1",
+				Description: "test description",
+				QueryURI:    "https://www.test.com",
+				Severity:    model.SeverityHigh,
+				Files: []model.VulnerableFile{
+					{
+						KeyActualValue: "test",
+						FileName:       "test.json",
+						Line:           1,
+						ResourceType:   "test_resource_type",
+						ResourceName:   "test_resource_name",
+						ResourceLocation: model.ResourceLocation{
+							Start: model.ResourceLine{Line: 1, Col: 1},
+							End:   model.ResourceLine{Line: 5, Col: 2},
+						},
+						RemediationLocation: model.ResourceLocation{
+							Start: model.ResourceLine{Line: 2, Col: 1},
+							End:   model.ResourceLine{Line: 3, Col: 2},
+						},
+					},
+				},
+				CWE: "",
+			},
+		},
+		want: sarifReport{
+			Runs: []SarifRun{
+				{
+					Tool: sarifTool{
+						Driver: sarifDriver{
+							Rules: []sarifRule{
+								{
+									RuleID:               "test",
+									RuleName:             "test",
+									RuleShortDescription: sarifMessage{Text: "test"},
+									RuleFullDescription:  sarifMessage{Text: "test description\nRule ID: [1]"},
+									DefaultConfiguration: sarifConfiguration{
+										Level: "error",
+									},
+									HelpURI: "https://www.test.com",
+									Relationships: []sarifRelationship{
+										{
+											Relationship: sarifDescriptorReference{
+												ReferenceID:    "CAT000",
+												ReferenceIndex: 0,
+												ToolComponent: sarifComponentReference{
+													ComponentReferenceGUID:  "58cdcc6f-fe41-4724-bfb3-131a93df4c3f",
+													ComponentReferenceName:  "Categories",
+													ComponentReferenceIndex: targetTemplate.ToolComponent.ComponentReferenceIndex,
+												},
+											},
+										},
+									},
+								},
+							},
+						},
+					},
+					Results: []sarifResult{
+						{
+							ResultRuleID:    "test",
+							ResultRuleIndex: 0,
+							ResultKind:      "",
+							ResultMessage:   sarifMessage{Text: "test", MessageProperties: nil},
+							ResultLocations: []SarifLocation{
+								{
+									PhysicalLocation: sarifPhysicalLocation{
+										ArtifactLocation: sarifArtifactLocation{ArtifactURI: "test.json"},
+										Region:           model.SarifRegion{StartLine: 2, EndLine: 3, StartColumn: 1, EndColumn: 2},
+									},
+								},
+							},
+							ResultLevel:      "warning",
+							ResultProperties: sarifProperties{"tags": []string{"DATADOG_CATEGORY:", "IAC_RESOURCE_TYPE:test_resource_type", "IAC_RESOURCE_NAME:test_resource_name"}},
+							PartialFingerprints: SarifPartialFingerprints{
+								DatadogFingerprint: GetDatadogFingerprintHash(
+									model.SCIInfo{
+										RunType: "",
+										RepositoryCommitInfo: model.RepositoryCommitInfo{
+											RepositoryUrl: "",
+											Branch:        "",
+											CommitSHA:     "",
+										},
+									},
+									"test.json",
+									"test_resource_type",
+									"test_resource_name",
+									"1",
+								),
+							},
+						},
+					},
+					Taxonomies: []sarifTaxonomy{
+						{
+							TaxonomyGUID:             "58cdcc6f-fe41-4724-bfb3-131a93df4c3f",
+							TaxonomyName:             "Categories",
+							TaxonomyFullDescription:  sarifMessage{Text: "Category is not defined"},
+							TaxonomyShortDescription: sarifMessage{Text: "Category is not defined"},
+							TaxonomyDefinitions: []taxonomyDefinitions{
+								{
+									DefinitionGUID:             "",
+									DefinitionName:             "Undefined Category",
+									DefinitionID:               "CAT000",
+									DefinitionShortDescription: cweMessage{Text: "Category is not defined"},
+									DefinitionFullDescription:  cweMessage{Text: "Category is not defined"},
+									HelpURI:                    "",
+								},
+							},
+						},
+						{
+							TaxonomyGUID:                              "1489b0c4-d7ce-4d31-af66-6382a01202e3",
+							TaxonomyName:                              "CWE",
+							TaxonomyFullDescription:                   sarifMessage{Text: "The MITRE Common Weakness Enumeration"},
+							TaxonomyShortDescription:                  sarifMessage{Text: "The MITRE Common Weakness Enumeration"},
+							TaxonomyDownloadURI:                       "https://cwe.mitre.org/data/published/cwe_v4.13.pdf",
+							TaxonomyIsComprehensive:                   true,
+							TaxonomyLanguage:                          "en",
+							TaxonomyMinRequiredLocDataSemanticVersion: "4.13",
+							TaxonomyOrganization:                      "MITRE",
+							TaxonomyRealeaseDateUtc:                   "2023-10-26",
+							TaxonomyDefinitions: []taxonomyDefinitions{
+								{},
+							},
+						},
+					},
+				},
+			},
+		},
+	},
 }
 
 func TestBuildSarifIssue(t *testing.T) {
@@ -397,6 +562,9 @@ func TestBuildSarifIssue(t *testing.T) {
 				}
 				require.Equal(t, tt.want.Runs[0].Results[0], result.Runs[0].Results[0])
 				require.Equal(t, tt.want.Runs[0].Tool.Driver.Rules[0].RuleFullDescription.Text, result.Runs[0].Tool.Driver.Rules[0].RuleFullDescription.Text)
+
+				// for every result in the run we want to check that the location matches the expected location
+				require.Equal(t, tt.want.Runs[0].Results[0].ResultLocations[0].PhysicalLocation.ArtifactLocation.ArtifactURI, result.Runs[0].Results[0].ResultLocations[0].PhysicalLocation.ArtifactLocation.ArtifactURI)
 			}
 		})
 	}
