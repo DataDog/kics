@@ -1,0 +1,76 @@
+---
+title: "Pod Security Policy Disabled"
+meta:
+  name: "gcp/pod_security_policy_disabled"
+  id: "9192e0f9-eca5-4056-9282-ae2a736a4088"
+  cloud_provider: "gcp"
+  severity: "MEDIUM"
+  category: "Insecure Configurations"
+---
+
+## Metadata
+**Name:** `gcp/pod_security_policy_disabled`
+
+**Id:** `9192e0f9-eca5-4056-9282-ae2a736a4088`
+
+**Cloud Provider:** gcp
+
+**Severity:** Medium
+
+**Category:** Insecure Configurations
+
+## Description
+Kubernetes Clusters must have Pod Security Policy controller enabled, which means there must be a 'pod_security_policy_config' with the 'enabled' attribute equal to true
+
+#### Learn More
+
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/container_cluster)
+
+## Non-Compliant Code Examples
+```terraform
+#this is a problematic code where the query should report a result(s)
+resource "google_container_cluster" "positive1" {
+  name               = "marcellus-wallace"
+  location           = "us-central1-a"
+  initial_node_count = 3
+
+  timeouts {
+    create = "30m"
+    update = "40m"
+  }
+}
+
+resource "google_container_cluster" "positive2" {
+  name               = "marcellus-wallace"
+  location           = "us-central1-a"
+  initial_node_count = 3
+  pod_security_policy_config {
+        enabled = false
+  }
+
+  timeouts {
+    create = "30m"
+    update = "40m"
+  }
+}
+
+```
+
+## Compliant Code Examples
+```terraform
+#this code is a correct code for which the query should not find any result
+resource "google_container_cluster" "negative1" {
+  name               = "marcellus-wallace"
+  location           = "us-central1-a"
+  initial_node_count = 3
+  pod_security_policy_config {
+        enabled = "true"
+  }
+
+  timeouts {
+    create = "30m"
+    update = "40m"
+  }
+}
+
+```
