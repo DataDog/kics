@@ -9,10 +9,5 @@
   "descriptionID": "ec305dde",
   "cloudProvider": "aws",
   "cwe": "295",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "The certificate should use a RSA key with a length equal to or higher than 256 bytes"
-    }
-  },
   "oldDescriptionText": "The certificate should use a RSA key with a length equal to or higher than 256 bytes"
 }

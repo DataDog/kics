@@ -10,10 +10,5 @@
   "cloudProvider": "aws",
   "cwe": "155",
   "oldSeverity": "HIGH",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "EFS (Elastic File System) policy should avoid wildcard in 'Action' and 'Principal'."
-    }
-  },
   "oldDescriptionText": "EFS (Elastic File System) policy should avoid wildcard in 'Action' and 'Principal'."
 }

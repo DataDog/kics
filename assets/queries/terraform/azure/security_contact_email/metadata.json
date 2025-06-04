@@ -9,10 +9,5 @@
   "descriptionID": "8632da7c",
   "cloudProvider": "azure",
   "cwe": "778",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Security Contact Email should be defined"
-    }
-  },
   "oldDescriptionText": "Security Contact Email should be defined"
 }

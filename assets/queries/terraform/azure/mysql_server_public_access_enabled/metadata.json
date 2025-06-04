@@ -9,10 +9,5 @@
   "descriptionID": "e5c71632",
   "cloudProvider": "azure",
   "cwe": "732",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "MySQL Server public access should be disabled"
-    }
-  },
   "oldDescriptionText": "MySQL Server public access should be disabled"
 }

@@ -10,10 +10,5 @@
   "cloudProvider": "aws",
   "cwe": "284",
   "oldSeverity": "MEDIUM",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Redshift Cluster should be configured in VPC (Virtual Private Cloud)"
-    }
-  },
   "oldDescriptionText": "Redshift Cluster should be configured in VPC (Virtual Private Cloud)"
 }

@@ -9,10 +9,5 @@
   "descriptionID": "09db2d52",
   "cloudProvider": "aws",
   "cwe": "665",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "AWS services resource tags are an essential part of managing components. As a best practice, the field 'tags' should have additional tags defined other than 'Name'"
-    }
-  },
   "oldDescriptionText": "AWS services resource tags are an essential part of managing components. As a best practice, the field 'tags' should have additional tags defined other than 'Name'"
 }

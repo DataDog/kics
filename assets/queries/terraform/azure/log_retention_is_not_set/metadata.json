@@ -9,10 +9,5 @@
   "descriptionID": "e14a3a02",
   "cloudProvider": "azure",
   "cwe": "778",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Make sure that for PostgreSQL Database, server parameter 'log_retention' is set to 'ON'"
-    }
-  },
   "oldDescriptionText": "Make sure that for PostgreSQL Database, server parameter 'log_retention' is set to 'ON'"
 }

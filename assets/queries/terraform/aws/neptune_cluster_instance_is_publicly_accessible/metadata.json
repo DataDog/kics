@@ -9,10 +9,5 @@
   "descriptionID": "ac4d6034",
   "cloudProvider": "aws",
   "cwe": "284",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Neptune Cluster Instance should not be publicly accessible"
-    }
-  },
   "oldDescriptionText": "Neptune Cluster Instance should not be publicly accessible"
 }

@@ -9,10 +9,5 @@
   "descriptionID": "d4766039",
   "cloudProvider": "azure",
   "cwe": "732",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Public Network Access should be disabled for Azure Cognitive Search"
-    }
-  },
   "oldDescriptionText": "Public Network Access should be disabled for Azure Cognitive Search"
 }

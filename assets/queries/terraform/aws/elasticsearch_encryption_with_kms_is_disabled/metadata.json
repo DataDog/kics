@@ -10,10 +10,5 @@
   "cloudProvider": "aws",
   "cwe": "326",
   "oldSeverity": "MEDIUM",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Check if any ElasticSearch domain isn't encrypted with KMS."
-    }
-  },
   "oldDescriptionText": "Check if any ElasticSearch domain isn't encrypted with KMS."
 }

@@ -10,10 +10,5 @@
   "cloudProvider": "gcp",
   "cwe": "285",
   "oldSeverity": "MEDIUM",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Google Storage Bucket Level Access should be enabled"
-    }
-  },
   "oldDescriptionText": "Google Storage Bucket Level Access should be enabled"
 }

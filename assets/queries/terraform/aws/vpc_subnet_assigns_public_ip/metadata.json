@@ -9,10 +9,5 @@
   "descriptionID": "2b7ea60d",
   "cloudProvider": "aws",
   "cwe": "732",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "VPC Subnet should not assign public IP"
-    }
-  },
   "oldDescriptionText": "VPC Subnet should not assign public IP"
 }

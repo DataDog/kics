@@ -10,10 +10,5 @@
   "cloudProvider": "azure",
   "cwe": "284",
   "oldSeverity": "HIGH",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "No Network Security Group is attached to the Virtual Machine"
-    }
-  },
   "oldDescriptionText": "No Network Security Group is attached to the Virtual Machine"
 }

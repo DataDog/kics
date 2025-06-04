@@ -9,10 +9,5 @@
   "descriptionID": "b2d5f3c9",
   "cloudProvider": "gcp",
   "cwe": "200",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "SQL Server instances should have 'cross db ownership chaining' set to 'off' to prevent unauthorized privilege escalation between databases."
-    }
-  },
   "oldDescriptionText": "SQL Server instances should have 'cross db ownership chaining' set to 'off' to prevent unauthorized privilege escalation between databases."
 }

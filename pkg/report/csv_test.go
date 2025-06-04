@@ -47,7 +47,7 @@ func TestPrintCSVReport(t *testing.T) {
 				t.Fatal(err)
 			}
 
-			err := PrintCSVReport(test.caseTest.path, test.caseTest.filename, test.caseTest.summary, model.SCIInfo{}, false)
+			err := PrintCSVReport(test.caseTest.path, test.caseTest.filename, test.caseTest.summary, model.SCIInfo{})
 			require.NoError(t, err)
 
 			require.FileExists(t, filepath.Join(test.caseTest.path, test.caseTest.filename+".csv"))

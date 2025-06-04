@@ -10,10 +10,5 @@
   "cloudProvider": "aws",
   "cwe": "311",
   "oldSeverity": "HIGH",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "CodeBuild Project should be encrypted with customer-managed KMS keys instead of AWS managed keys"
-    }
-  },
   "oldDescriptionText": "CodeBuild Project should be encrypted with customer-managed KMS keys instead of AWS managed keys"
 }

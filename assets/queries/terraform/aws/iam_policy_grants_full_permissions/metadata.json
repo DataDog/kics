@@ -9,10 +9,5 @@
   "descriptionID": "f20cf2cf",
   "cloudProvider": "aws",
   "cwe": "732",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "IAM policy should not grant full permissions to resources from the get-go, instead of granting permissions gradually as necessary."
-    }
-  },
   "oldDescriptionText": "IAM policy should not grant full permissions to resources from the get-go, instead of granting permissions gradually as necessary."
 }

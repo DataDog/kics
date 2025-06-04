@@ -9,10 +9,5 @@
   "descriptionID": "8f0e6b2d",
   "cloudProvider": "azure",
   "cwe": "311",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Azure MariaDB servers must enforce SSL with TLS 1.2. The ssl_enforcement_enabled flag must be set to 'true' and, if specified, ssl_minimal_tls_version_enforced must be 'TLS1_2'."
-    }
-  },
   "oldDescriptionText": "Azure MariaDB servers must enforce SSL with TLS 1.2. The ssl_enforcement_enabled flag must be set to 'true' and, if specified, ssl_minimal_tls_version_enforced must be 'TLS1_2'."
 }

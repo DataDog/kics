@@ -10,10 +10,5 @@
   "cloudProvider": "azure",
   "cwe": "732",
   "oldSeverity": "HIGH",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Admin user is enabled for Container Registry"
-    }
-  },
   "oldDescriptionText": "Admin user is enabled for Container Registry"
 }

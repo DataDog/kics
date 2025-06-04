@@ -10,10 +10,5 @@
   "cloudProvider": "azure",
   "cwe": "319",
   "oldSeverity": "LOW",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Function App should have 'http2_enabled' enabled"
-    }
-  },
   "oldDescriptionText": "Function App should have 'http2_enabled' enabled"
 }

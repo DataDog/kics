@@ -9,10 +9,5 @@
   "descriptionID": "93f9tyjk",
   "cloudProvider": "azure",
   "cwe": "311",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "PostgreSQL Database Server should have SSL enforcement enabled to ensure secure connections. The 'ssl_enforcement_enabled' attribute must be set to 'ENABLED'."
-    }
-  },
   "oldDescriptionText": "PostgreSQL Database Server should have SSL enforcement enabled to ensure secure connections. The 'ssl_enforcement_enabled' attribute must be set to 'ENABLED'."
 }

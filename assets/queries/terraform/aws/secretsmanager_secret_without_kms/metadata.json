@@ -9,10 +9,5 @@
   "descriptionID": "c9c95b59",
   "cloudProvider": "aws",
   "cwe": "326",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "AWS Secretmanager should use AWS KMS customer master key (CMK) to encrypt the secret values in the versions stored in the secret"
-    }
-  },
   "oldDescriptionText": "AWS Secretmanager should use AWS KMS customer master key (CMK) to encrypt the secret values in the versions stored in the secret"
 }

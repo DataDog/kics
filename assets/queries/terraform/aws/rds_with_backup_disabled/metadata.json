@@ -9,10 +9,5 @@
   "descriptionID": "73fdfe55",
   "cloudProvider": "aws",
   "cwe": "754",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Make sure the AWS RDS configuration has automatic backup configured. If the retention period is equal to 0 there is no backup"
-    }
-  },
   "oldDescriptionText": "Make sure the AWS RDS configuration has automatic backup configured. If the retention period is equal to 0 there is no backup"
 }

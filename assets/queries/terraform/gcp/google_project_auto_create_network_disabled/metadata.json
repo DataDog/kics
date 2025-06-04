@@ -9,10 +9,5 @@
   "descriptionID": "9bcdbe82",
   "cloudProvider": "gcp",
   "cwe": "799",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Verifies if the Google Project Auto Create Network is Disabled"
-    }
-  },
   "oldDescriptionText": "Verifies if the Google Project Auto Create Network is Disabled"
 }

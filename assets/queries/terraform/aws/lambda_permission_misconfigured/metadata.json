@@ -9,10 +9,5 @@
   "descriptionID": "8fb6f06e",
   "cloudProvider": "aws",
   "cwe": "710",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Lambda permission may be misconfigured if the action field is not filled in by 'lambda:InvokeFunction'"
-    }
-  },
   "oldDescriptionText": "Lambda permission may be misconfigured if the action field is not filled in by 'lambda:InvokeFunction'"
 }

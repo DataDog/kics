@@ -10,10 +10,5 @@
   "cloudProvider": "azure",
   "cwe": "665",
   "oldSeverity": "HIGH",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Azure App Service should only enforce FTPS when 'ftps_state' is enabled"
-    }
-  },
   "oldDescriptionText": "Azure App Service should only enforce FTPS when 'ftps_state' is enabled"
 }

@@ -8,10 +8,5 @@
   "platform": "Terraform",
   "descriptionID": "7sdj7dsj8",
   "cloudProvider": "gcp",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Pub/Sub Topics must not be publicly accessible. IAM members or bindings should not use 'allUsers' or 'allAuthenticatedUsers'."
-    }
-  },
   "oldDescriptionText": "Pub/Sub Topics must not be publicly accessible. IAM members or bindings should not use 'allUsers' or 'allAuthenticatedUsers'."
 }

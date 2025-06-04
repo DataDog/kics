@@ -10,10 +10,5 @@
   "cloudProvider": "aws",
   "cwe": "732",
   "oldSeverity": "HIGH",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "SSO policies should be configured to grant limited administrative privileges, rather than full access to all resources. This approach allows for better security and control over the resources being accessed."
-    }
-  },
   "oldDescriptionText": "SSO policies should be configured to grant limited administrative privileges, rather than full access to all resources. This approach allows for better security and control over the resources being accessed."
 }

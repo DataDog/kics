@@ -9,10 +9,5 @@
   "descriptionID": "ceabd70f",
   "cloudProvider": "aws",
   "cwe": "311",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "API Gateway Method Settings Cache should be encrypted"
-    }
-  },
   "oldDescriptionText": "API Gateway Method Settings Cache should be encrypted"
 }

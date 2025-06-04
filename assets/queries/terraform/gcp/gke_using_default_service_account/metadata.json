@@ -9,10 +9,5 @@
   "descriptionID": "efe7e7b0",
   "cloudProvider": "gcp",
   "cwe": "250",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Kubernetes Engine Clusters should not be configured to use the default service account"
-    }
-  },
   "oldDescriptionText": "Kubernetes Engine Clusters should not be configured to use the default service account"
 }

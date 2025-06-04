@@ -10,10 +10,5 @@
   "cloudProvider": "aws",
   "cwe": "665",
   "oldSeverity": "MEDIUM",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "ECS Service should have at least 1 task running"
-    }
-  },
   "oldDescriptionText": "ECS Service should have at least 1 task running"
 }

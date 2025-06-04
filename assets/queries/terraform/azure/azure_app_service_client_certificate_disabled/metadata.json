@@ -10,10 +10,5 @@
   "cloudProvider": "azure",
   "cwe": "295",
   "oldSeverity": "HIGH",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Azure App Service client certificate should be enabled"
-    }
-  },
   "oldDescriptionText": "Azure App Service client certificate should be enabled"
 }

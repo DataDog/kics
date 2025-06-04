@@ -10,10 +10,5 @@
   "cloudProvider": "gcp",
   "cwe": "732",
   "oldSeverity": "HIGH",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "A VM instance is configured to use the default service account with full access to all Cloud APIs"
-    }
-  },
   "oldDescriptionText": "A VM instance is configured to use the default service account with full access to all Cloud APIs"
 }

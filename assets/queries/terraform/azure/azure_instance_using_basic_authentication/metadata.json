@@ -10,10 +10,5 @@
   "cloudProvider": "azure",
   "cwe": "284",
   "oldSeverity": "HIGH",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Azure Instances should use SSH Key instead of basic authentication"
-    }
-  },
   "oldDescriptionText": "Azure Instances should use SSH Key instead of basic authentication"
 }

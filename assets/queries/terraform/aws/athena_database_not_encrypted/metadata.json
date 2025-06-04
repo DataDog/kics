@@ -9,10 +9,5 @@
   "descriptionID": "c90feea8",
   "cloudProvider": "aws",
   "cwe": "311",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "AWS Athena Database data in S3 should be encrypted"
-    }
-  },
   "oldDescriptionText": "AWS Athena Database data in S3 should be encrypted"
 }

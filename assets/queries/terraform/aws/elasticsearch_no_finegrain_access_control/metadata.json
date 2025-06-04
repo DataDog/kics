@@ -9,10 +9,5 @@
   "descriptionID": "b4c6d7e8",
   "cloudProvider": "aws",
   "cwe": "284",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Ensures that AWS OpenSearch and Elasticsearch domains have fine-grained access control enabled. Without this setting, access permissions cannot be enforced at a granular level, potentially leading to unauthorized access."
-    }
-  },
   "oldDescriptionText": "Ensures that AWS OpenSearch and Elasticsearch domains have fine-grained access control enabled. Without this setting, access permissions cannot be enforced at a granular level, potentially leading to unauthorized access."
 }

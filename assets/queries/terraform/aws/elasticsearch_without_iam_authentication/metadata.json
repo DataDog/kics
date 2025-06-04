@@ -9,10 +9,5 @@
   "descriptionID": "7677c71c",
   "cloudProvider": "aws",
   "cwe": "285",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "AWS Elasticsearch should ensure IAM Authentication"
-    }
-  },
   "oldDescriptionText": "AWS Elasticsearch should ensure IAM Authentication"
 }

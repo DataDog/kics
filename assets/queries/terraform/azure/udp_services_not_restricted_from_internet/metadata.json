@@ -9,10 +9,5 @@
   "descriptionID": "a3b4c5d6",
   "cloudProvider": "azure",
   "cwe": "284",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "NSG rules for UDP traffic must restrict inbound access from the public Internet. Allowing UDP inbound from '0.0.0.0/0' poses significant security risks."
-    }
-  },
   "oldDescriptionText": "NSG rules for UDP traffic must restrict inbound access from the public Internet. Allowing UDP inbound from '0.0.0.0/0' poses significant security risks."
 }

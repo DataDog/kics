@@ -9,10 +9,5 @@
   "descriptionID": "d0a1b2c3",
   "cloudProvider": "gcp",
   "cwe": "284",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Firewall rules must not allow ingress from 0.0.0.0/0 on port 3306 (MySQL) to prevent unauthorized access."
-    }
-  },
   "oldDescriptionText": "Firewall rules must not allow ingress from 0.0.0.0/0 on port 3306 (MySQL) to prevent unauthorized access."
 }

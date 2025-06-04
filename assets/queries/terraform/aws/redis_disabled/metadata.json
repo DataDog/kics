@@ -10,10 +10,5 @@
   "cloudProvider": "aws",
   "cwe": "665",
   "oldSeverity": "MEDIUM",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "ElastiCache should have Redis enabled, since it covers Compliance Certifications such as FedRAMP, HIPAA, and PCI DSS. For more information, take a look at 'https://docs.aws.amazon.com/AmazonElastiCache/latest/mem-ug/SelectEngine.html'"
-    }
-  },
   "oldDescriptionText": "ElastiCache should have Redis enabled, since it covers Compliance Certifications such as FedRAMP, HIPAA, and PCI DSS. For more information, take a look at 'https://docs.aws.amazon.com/AmazonElastiCache/latest/mem-ug/SelectEngine.html'"
 }

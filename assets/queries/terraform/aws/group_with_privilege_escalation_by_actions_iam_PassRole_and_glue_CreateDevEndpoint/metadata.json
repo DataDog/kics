@@ -9,10 +9,5 @@
   "descriptionID": "59598729",
   "cloudProvider": "aws",
   "cwe": "269",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Group with privilege escalation by actions 'glue:CreateDevEndpoint' and 'iam:PassRole' and Resource set to '*'. For more information see https://rhinosecuritylabs.com/aws/aws-privilege-escalation-methods-mitigation/."
-    }
-  },
   "oldDescriptionText": "Group with privilege escalation by actions 'glue:CreateDevEndpoint' and 'iam:PassRole' and Resource set to '*'. For more information see https://rhinosecuritylabs.com/aws/aws-privilege-escalation-methods-mitigation/."
 }

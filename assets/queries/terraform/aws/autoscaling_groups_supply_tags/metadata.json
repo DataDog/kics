@@ -9,10 +9,5 @@
   "descriptionID": "83cb6386",
   "cloudProvider": "aws",
   "cwe": "665",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Autoscaling groups should supply tags to configurate"
-    }
-  },
   "oldDescriptionText": "Autoscaling groups should supply tags to configurate"
 }

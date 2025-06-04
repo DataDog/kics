@@ -9,10 +9,5 @@
   "descriptionID": "71dab2d1",
   "cloudProvider": "aws",
   "cwe": "250",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Batch Job Definition should not have Privileged Container Properties"
-    }
-  },
   "oldDescriptionText": "Batch Job Definition should not have Privileged Container Properties"
 }

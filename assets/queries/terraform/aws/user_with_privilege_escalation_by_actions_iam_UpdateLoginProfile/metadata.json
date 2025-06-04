@@ -9,10 +9,5 @@
   "descriptionID": "559f74f0",
   "cloudProvider": "aws",
   "cwe": "269",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "User with privilege escalation by actions 'iam:UpdateLoginProfile' and Resource set to '*'. For more information see https://rhinosecuritylabs.com/aws/aws-privilege-escalation-methods-mitigation/."
-    }
-  },
   "oldDescriptionText": "User with privilege escalation by actions 'iam:UpdateLoginProfile' and Resource set to '*'. For more information see https://rhinosecuritylabs.com/aws/aws-privilege-escalation-methods-mitigation/."
 }

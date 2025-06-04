@@ -9,10 +9,5 @@
   "descriptionID": "a63624e5",
   "cloudProvider": "aws",
   "cwe": "732",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "S3 Buckets should not be readable to any authenticated user"
-    }
-  },
   "oldDescriptionText": "S3 Buckets should not be readable to any authenticated user"
 }

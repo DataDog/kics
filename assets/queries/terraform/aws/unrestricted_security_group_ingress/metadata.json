@@ -9,10 +9,5 @@
   "descriptionID": "ce3ee5e0",
   "cloudProvider": "aws",
   "cwe": "668",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Security groups allow ingress from 0.0.0.0:0 and/or ::/0"
-    }
-  },
   "oldDescriptionText": "Security groups allow ingress from 0.0.0.0:0 and/or ::/0"
 }

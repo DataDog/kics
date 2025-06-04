@@ -10,10 +10,5 @@
   "cloudProvider": "azure",
   "cwe": "668",
   "oldSeverity": "HIGH",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Port 22 (SSH) is exposed to the internet"
-    }
-  },
   "oldDescriptionText": "Port 22 (SSH) is exposed to the internet"
 }

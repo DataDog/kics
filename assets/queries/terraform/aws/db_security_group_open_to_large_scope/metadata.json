@@ -9,10 +9,5 @@
   "descriptionID": "cd091033",
   "cloudProvider": "aws",
   "cwe": "200",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "The IP address in a DB Security Group must not have more than 256 hosts."
-    }
-  },
   "oldDescriptionText": "The IP address in a DB Security Group must not have more than 256 hosts."
 }

@@ -10,10 +10,5 @@
   "cloudProvider": "aws",
   "cwe": "778",
   "oldSeverity": "LOW",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Amazon EKS control plane logging don't enabled for all log types"
-    }
-  },
   "oldDescriptionText": "Amazon EKS control plane logging don't enabled for all log types"
 }

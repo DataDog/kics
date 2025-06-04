@@ -9,10 +9,5 @@
   "descriptionID": "b7160c8c",
   "cloudProvider": "azure",
   "cwe": "319",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Redis Cache resources should not allow non-SSL connections"
-    }
-  },
   "oldDescriptionText": "Redis Cache resources should not allow non-SSL connections"
 }

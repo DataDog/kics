@@ -10,10 +10,5 @@
   "cloudProvider": "aws",
   "cwe": "521",
   "oldSeverity": "MEDIUM",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "No password expiration policy"
-    }
-  },
   "oldDescriptionText": "No password expiration policy"
 }

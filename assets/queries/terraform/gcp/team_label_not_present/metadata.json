@@ -8,10 +8,5 @@
   "platform": "Terraform",
   "descriptionID": "b2b3c4d5",
   "cloudProvider": "gcp",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Ensures that every cloud resource has a 'team' label for ownership tracking."
-    }
-  },
   "oldDescriptionText": "Ensures that every cloud resource has a 'team' label for ownership tracking."
 }

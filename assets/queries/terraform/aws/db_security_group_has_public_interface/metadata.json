@@ -9,10 +9,5 @@
   "descriptionID": "ddaf8c0b",
   "cloudProvider": "aws",
   "cwe": "668",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "The CIDR IP should not be a public interface"
-    }
-  },
   "oldDescriptionText": "The CIDR IP should not be a public interface"
 }

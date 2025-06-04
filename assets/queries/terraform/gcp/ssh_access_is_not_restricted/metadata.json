@@ -9,10 +9,5 @@
   "descriptionID": "c0e4fb6f",
   "cloudProvider": "gcp",
   "cwe": "732",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Google Firewall should not allow SSH access (port 22) from the Internet (public CIDR block) to ensure the principle of least privileges"
-    }
-  },
   "oldDescriptionText": "Google Firewall should not allow SSH access (port 22) from the Internet (public CIDR block) to ensure the principle of least privileges"
 }

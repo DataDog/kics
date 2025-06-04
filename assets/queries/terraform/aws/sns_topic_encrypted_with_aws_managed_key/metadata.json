@@ -9,10 +9,5 @@
   "descriptionID": "ecb127ec",
   "cloudProvider": "aws",
   "cwe": "326",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "SNS (Simple Notification Service) Topic should be encrypted with customer-managed KMS keys instead of AWS managed keys"
-    }
-  },
   "oldDescriptionText": "SNS (Simple Notification Service) Topic should be encrypted with customer-managed KMS keys instead of AWS managed keys"
 }

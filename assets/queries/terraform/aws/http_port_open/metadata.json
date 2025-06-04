@@ -10,10 +10,5 @@
   "cloudProvider": "aws",
   "cwe": "319",
   "oldSeverity": "HIGH",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "The HTTP port is open to the internet in a Security Group"
-    }
-  },
   "oldDescriptionText": "The HTTP port is open to the internet in a Security Group"
 }

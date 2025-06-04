@@ -9,10 +9,5 @@
   "descriptionID": "2e7d55e6",
   "cloudProvider": "aws",
   "cwe": "311",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "VPC should have a Network Firewall associated"
-    }
-  },
   "oldDescriptionText": "VPC should have a Network Firewall associated"
 }

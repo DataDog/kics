@@ -9,10 +9,5 @@
   "descriptionID": "de601959",
   "cloudProvider": "aws",
   "cwe": "778",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Ensure a log metric filter and alarm exist for route table changes"
-    }
-  },
   "oldDescriptionText": "Ensure a log metric filter and alarm exist for route table changes"
 }

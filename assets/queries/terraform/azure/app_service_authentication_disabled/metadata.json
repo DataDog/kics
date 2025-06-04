@@ -10,10 +10,5 @@
   "cloudProvider": "azure",
   "cwe": "285",
   "oldSeverity": "INFO",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Azure App Service authentication settings should be enabled"
-    }
-  },
   "oldDescriptionText": "Azure App Service authentication settings should be enabled"
 }

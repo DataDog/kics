@@ -9,10 +9,5 @@
   "descriptionID": "21b8be3f",
   "cloudProvider": "azure",
   "cwe": "732",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Port 3389 (Remote Desktop) is exposed to the internet"
-    }
-  },
   "oldDescriptionText": "Port 3389 (Remote Desktop) is exposed to the internet"
 }

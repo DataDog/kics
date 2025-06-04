@@ -10,10 +10,5 @@
   "cloudProvider": "azure",
   "cwe": "319",
   "oldSeverity": "HIGH",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Storage Accounts should enforce the use of HTTPS"
-    }
-  },
   "oldDescriptionText": "Storage Accounts should enforce the use of HTTPS"
 }

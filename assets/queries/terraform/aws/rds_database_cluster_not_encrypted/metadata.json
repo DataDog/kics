@@ -9,10 +9,5 @@
   "descriptionID": "c88d0255",
   "cloudProvider": "aws",
   "cwe": "311",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "RDS Database Cluster Encryption should be enabled"
-    }
-  },
   "oldDescriptionText": "RDS Database Cluster Encryption should be enabled"
 }

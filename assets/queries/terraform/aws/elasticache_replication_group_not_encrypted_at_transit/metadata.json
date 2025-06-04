@@ -9,10 +9,5 @@
   "descriptionID": "40f92e86",
   "cloudProvider": "aws",
   "cwe": "311",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "ElastiCache Replication Group encryption should be enabled at Transit"
-    }
-  },
   "oldDescriptionText": "ElastiCache Replication Group encryption should be enabled at Transit"
 }

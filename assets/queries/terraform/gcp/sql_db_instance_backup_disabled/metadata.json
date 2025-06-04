@@ -10,10 +10,5 @@
   "cloudProvider": "gcp",
   "cwe": "799",
   "oldSeverity": "HIGH",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Checks if backup configuration is enabled for all Cloud SQL Database instances"
-    }
-  },
   "oldDescriptionText": "Checks if backup configuration is enabled for all Cloud SQL Database instances"
 }

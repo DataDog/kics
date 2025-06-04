@@ -9,10 +9,5 @@
   "descriptionID": "ee8a4d47",
   "cloudProvider": "aws",
   "cwe": "326",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Logs delivered by CloudTrail should be encrypted using KMS to increase security of your CloudTrail"
-    }
-  },
   "oldDescriptionText": "Logs delivered by CloudTrail should be encrypted using KMS to increase security of your CloudTrail"
 }

@@ -9,10 +9,5 @@
   "descriptionID": "a0cc649c",
   "cloudProvider": "gcp",
   "cwe": "284",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Check if any VM instance disables OSLogin"
-    }
-  },
   "oldDescriptionText": "Check if any VM instance disables OSLogin"
 }

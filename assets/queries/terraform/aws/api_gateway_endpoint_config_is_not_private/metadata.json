@@ -9,10 +9,5 @@
   "descriptionID": "baf9a6d6",
   "cloudProvider": "aws",
   "cwe": "285",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "The API Endpoint type in API Gateway should be set to PRIVATE so it's not exposed to the public internet"
-    }
-  },
   "oldDescriptionText": "The API Endpoint type in API Gateway should be set to PRIVATE so it's not exposed to the public internet"
 }

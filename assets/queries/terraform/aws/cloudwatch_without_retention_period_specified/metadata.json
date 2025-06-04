@@ -10,10 +10,5 @@
   "cloudProvider": "aws",
   "cwe": "778",
   "oldSeverity": "MEDIUM",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "AWS CloudWatch Log groups should have retention days specified"
-    }
-  },
   "oldDescriptionText": "AWS CloudWatch Log groups should have retention days specified"
 }

@@ -9,10 +9,5 @@
   "descriptionID": "3f384e51",
   "cloudProvider": "azure",
   "cwe": "779",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Check if the Kubernetes Dashboard is enabled."
-    }
-  },
   "oldDescriptionText": "Check if the Kubernetes Dashboard is enabled."
 }

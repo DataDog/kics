@@ -9,10 +9,5 @@
   "descriptionID": "d183d853",
   "cloudProvider": "azure",
   "cwe": "778",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Make sure that for PostgreSQL Database, server parameter 'log_disconnections' is set to 'ON'"
-    }
-  },
   "oldDescriptionText": "Make sure that for PostgreSQL Database, server parameter 'log_disconnections' is set to 'ON'"
 }

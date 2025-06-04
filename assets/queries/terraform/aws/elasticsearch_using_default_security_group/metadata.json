@@ -9,10 +9,5 @@
   "descriptionID": "d3e1f5a9",
   "cloudProvider": "aws",
   "cwe": "400",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Ensures that AWS Elasticsearch and OpenSearch domains do not use the default security group. If a security group is not specified, the default SG is used, which could expose the service to unintended access."
-    }
-  },
   "oldDescriptionText": "Ensures that AWS Elasticsearch and OpenSearch domains do not use the default security group. If a security group is not specified, the default SG is used, which could expose the service to unintended access."
 }

@@ -10,10 +10,5 @@
   "cloudProvider": "aws",
   "cwe": "732",
   "oldSeverity": "HIGH",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "S3 Buckets must not allow Put Action From All Principals, as to prevent leaking private information to the entire internet or allow unauthorized data tampering / deletion. This means the 'Effect' must not be 'Allow' when the 'Action' is Put, for all Principals."
-    }
-  },
   "oldDescriptionText": "S3 Buckets must not allow Put Action From All Principals, as to prevent leaking private information to the entire internet or allow unauthorized data tampering / deletion. This means the 'Effect' must not be 'Allow' when the 'Action' is Put, for all Principals."
 }

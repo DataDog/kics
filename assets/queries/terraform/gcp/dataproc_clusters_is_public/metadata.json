@@ -9,10 +9,5 @@
   "descriptionID": "e3f7a9b1",
   "cloudProvider": "gcp",
   "cwe": "284",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Dataproc clusters must not be publicly accessible. Public principals (allUsers, allAuthenticatedUsers) should not be allowed as IAM members or in IAM bindings."
-    }
-  },
   "oldDescriptionText": "Dataproc clusters must not be publicly accessible. Public principals (allUsers, allAuthenticatedUsers) should not be allowed as IAM members or in IAM bindings."
 }

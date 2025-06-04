@@ -10,10 +10,5 @@
   "cloudProvider": "aws",
   "cwe": "778",
   "oldSeverity": "HIGH",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "AWS KMS Key should have a valid deletion window"
-    }
-  },
   "oldDescriptionText": "AWS KMS Key should have a valid deletion window"
 }

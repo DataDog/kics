@@ -9,10 +9,5 @@
   "descriptionID": "d79243b5",
   "cloudProvider": "aws",
   "cwe": "284",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Default Security Group attached to every VPC should restrict all traffic"
-    }
-  },
   "oldDescriptionText": "Default Security Group attached to every VPC should restrict all traffic"
 }

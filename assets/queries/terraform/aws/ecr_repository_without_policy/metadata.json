@@ -9,10 +9,5 @@
   "descriptionID": "cb9636f6",
   "cloudProvider": "aws",
   "cwe": "710",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "ECR Repository should have Policies attached to it"
-    }
-  },
   "oldDescriptionText": "ECR Repository should have Policies attached to it"
 }

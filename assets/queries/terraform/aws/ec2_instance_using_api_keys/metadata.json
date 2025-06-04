@@ -9,10 +9,5 @@
   "descriptionID": "ffd8ce80",
   "cloudProvider": "aws",
   "cwe": "284",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "EC2 instances should use roles to be granted access to other AWS services"
-    }
-  },
   "oldDescriptionText": "EC2 instances should use roles to be granted access to other AWS services"
 }

@@ -9,10 +9,5 @@
   "descriptionID": "f3g4h5i6",
   "cloudProvider": "aws",
   "cwe": "200",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Ensures that direct internet access is disabled for Amazon SageMaker Notebook Instances. Allowing direct internet access could expose the instance to unauthorized access or data exfiltration."
-    }
-  },
   "oldDescriptionText": "Ensures that direct internet access is disabled for Amazon SageMaker Notebook Instances. Allowing direct internet access could expose the instance to unauthorized access or data exfiltration."
 }

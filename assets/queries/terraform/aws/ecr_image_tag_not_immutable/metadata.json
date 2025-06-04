@@ -9,10 +9,5 @@
   "descriptionID": "1cc5d4e2",
   "cloudProvider": "aws",
   "cwe": "710",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "ECR should have an image tag be immutable. This prevents image tags from being overwritten."
-    }
-  },
   "oldDescriptionText": "ECR should have an image tag be immutable. This prevents image tags from being overwritten."
 }

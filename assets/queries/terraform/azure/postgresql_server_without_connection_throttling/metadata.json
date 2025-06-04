@@ -9,10 +9,5 @@
   "descriptionID": "6f6649db",
   "cloudProvider": "azure",
   "cwe": "770",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Ensure that Connection Throttling is set for the PostgreSQL server"
-    }
-  },
   "oldDescriptionText": "Ensure that Connection Throttling is set for the PostgreSQL server"
 }

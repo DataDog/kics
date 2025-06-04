@@ -9,10 +9,5 @@
   "descriptionID": "689ef05b",
   "cloudProvider": "gcp",
   "cwe": "788",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "This query checks if logs are enabled for a Google Compute Subnetwork resource."
-    }
-  },
   "oldDescriptionText": "This query checks if logs are enabled for a Google Compute Subnetwork resource."
 }

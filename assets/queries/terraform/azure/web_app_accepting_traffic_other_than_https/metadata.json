@@ -10,10 +10,5 @@
   "cloudProvider": "azure",
   "cwe": "319",
   "oldSeverity": "HIGH",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Web app should only accept HTTPS traffic in Azure Web App Service."
-    }
-  },
   "oldDescriptionText": "Web app should only accept HTTPS traffic in Azure Web App Service."
 }

@@ -9,10 +9,5 @@
   "descriptionID": "ed220e0d",
   "cloudProvider": "aws",
   "cwe": "668",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "'RDP' (TCP:3389) should not be public in AWS Network ACL"
-    }
-  },
   "oldDescriptionText": "'RDP' (TCP:3389) should not be public in AWS Network ACL"
 }

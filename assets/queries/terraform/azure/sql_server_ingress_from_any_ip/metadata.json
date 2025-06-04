@@ -10,10 +10,5 @@
   "cloudProvider": "azure",
   "cwe": "668",
   "oldSeverity": "HIGH",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Check if all IPs are allowed, check from start 0.0.0.0 to end 255.255.255.255."
-    }
-  },
   "oldDescriptionText": "Check if all IPs are allowed, check from start 0.0.0.0 to end 255.255.255.255."
 }

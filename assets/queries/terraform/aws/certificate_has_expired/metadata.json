@@ -9,10 +9,5 @@
   "descriptionID": "998f52fe",
   "cloudProvider": "aws",
   "cwe": "298",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Expired SSL/TLS certificates should be removed"
-    }
-  },
   "oldDescriptionText": "Expired SSL/TLS certificates should be removed"
 }

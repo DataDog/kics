@@ -9,10 +9,5 @@
   "descriptionID": "aea02d46",
   "cloudProvider": "aws",
   "cwe": "668",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "The Remote Desktop port is open to the internet in a Security Group"
-    }
-  },
   "oldDescriptionText": "The Remote Desktop port is open to the internet in a Security Group"
 }

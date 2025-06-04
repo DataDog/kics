@@ -9,10 +9,5 @@
   "descriptionID": "a9b8c7d6",
   "cloudProvider": "gcp",
   "cwe": "284",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "BigQuery tables must not be publicly accessible. Public principals like 'allUsers' or 'allAuthenticatedUsers' should not be assigned as IAM members or bindings, as this may expose sensitive data."
-    }
-  },
   "oldDescriptionText": "BigQuery tables must not be publicly accessible. Public principals like 'allUsers' or 'allAuthenticatedUsers' should not be assigned as IAM members or bindings, as this may expose sensitive data."
 }

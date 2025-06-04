@@ -9,10 +9,5 @@
   "descriptionID": "edbcd7bc",
   "cloudProvider": "aws",
   "cwe": "319",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "S3 Bucket policy should not accept HTTP Requests"
-    }
-  },
   "oldDescriptionText": "S3 Bucket policy should not accept HTTP Requests"
 }

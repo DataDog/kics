@@ -9,10 +9,5 @@
   "descriptionID": "e28c5797",
   "cloudProvider": "aws",
   "cwe": "778",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "API Gateway Deployment should have access log setting defined when connected to an API Gateway Stage."
-    }
-  },
   "oldDescriptionText": "API Gateway Deployment should have access log setting defined when connected to an API Gateway Stage."
 }

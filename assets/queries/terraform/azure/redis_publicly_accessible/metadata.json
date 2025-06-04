@@ -10,10 +10,5 @@
   "cloudProvider": "azure",
   "cwe": "285",
   "oldSeverity": "HIGH",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Firewall rule allowing unrestricted access to Redis from other Azure sources"
-    }
-  },
   "oldDescriptionText": "Firewall rule allowing unrestricted access to Redis from other Azure sources"
 }

@@ -9,10 +9,5 @@
   "descriptionID": "f0be3ea8",
   "cloudProvider": "azure",
   "cwe": "778",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Make sure that for MSSQL Servers, that 'Auditing' is set to 'On'"
-    }
-  },
   "oldDescriptionText": "Make sure that for MSSQL Servers, that 'Auditing' is set to 'On'"
 }

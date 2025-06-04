@@ -9,10 +9,5 @@
   "descriptionID": "d218356d",
   "cloudProvider": "aws",
   "cwe": "285",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Check if default security group does not restrict all inbound and outbound traffic."
-    }
-  },
   "oldDescriptionText": "Check if default security group does not restrict all inbound and outbound traffic."
 }

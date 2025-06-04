@@ -540,7 +540,7 @@ func TestBuildSarifIssue(t *testing.T) {
 		t.Run(tt.name, func(t *testing.T) {
 			result := NewSarifReport().(*sarifReport)
 			for _, vq := range tt.vq {
-				result.BuildSarifIssue(&vq, model.SCIInfo{}, true)
+				result.BuildSarifIssue(&vq, model.SCIInfo{})
 			}
 			require.Equal(t, len(tt.want.Runs[0].Results), len(result.Runs[0].Results))
 			require.Equal(t, len(tt.want.Runs[0].Tool.Driver.Rules), len(result.Runs[0].Tool.Driver.Rules))

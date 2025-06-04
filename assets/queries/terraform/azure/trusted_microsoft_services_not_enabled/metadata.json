@@ -10,10 +10,5 @@
   "cloudProvider": "azure",
   "cwe": "284",
   "oldSeverity": "HIGH",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Trusted Microsoft Services should be enabled for Storage Account access"
-    }
-  },
   "oldDescriptionText": "Trusted Microsoft Services should be enabled for Storage Account access"
 }

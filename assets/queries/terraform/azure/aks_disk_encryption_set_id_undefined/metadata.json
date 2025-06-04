@@ -10,10 +10,5 @@
   "cloudProvider": "azure",
   "cwe": "311",
   "oldSeverity": "MEDIUM",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Azure Container Service (AKS) should use Disk Encryption Set ID in supported types of disk"
-    }
-  },
   "oldDescriptionText": "Azure Container Service (AKS) should use Disk Encryption Set ID in supported types of disk"
 }

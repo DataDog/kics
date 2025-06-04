@@ -9,10 +9,5 @@
   "descriptionID": "0503dc3c",
   "cloudProvider": "aws",
   "cwe": "732",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "ECS Services must not have Admin roles, which means the attribute 'iam_role' must not be an admin role"
-    }
-  },
   "oldDescriptionText": "ECS Services must not have Admin roles, which means the attribute 'iam_role' must not be an admin role"
 }

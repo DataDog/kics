@@ -9,10 +9,5 @@
   "descriptionID": "bc535d27",
   "cloudProvider": "aws",
   "cwe": "710",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "It's considered a best practice for AWS Security Group to have a description"
-    }
-  },
   "oldDescriptionText": "It's considered a best practice for AWS Security Group to have a description"
 }

@@ -9,10 +9,5 @@
   "descriptionID": "81321ef4",
   "cloudProvider": "aws",
   "cwe": "732",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "IAM role policy that allow full administrative privileges (for all resources)"
-    }
-  },
   "oldDescriptionText": "IAM role policy that allow full administrative privileges (for all resources)"
 }

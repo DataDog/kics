@@ -9,10 +9,5 @@
   "descriptionID": "27c7da5e",
   "cloudProvider": "gcp",
   "cwe": "326",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "This query confirms if Google Compute SSL Policy Weak Chyper Suits is Enabled, to do so we need to check if TLS is TLS_1_2, because other version have Weak Chypers"
-    }
-  },
   "oldDescriptionText": "This query confirms if Google Compute SSL Policy Weak Chyper Suits is Enabled, to do so we need to check if TLS is TLS_1_2, because other version have Weak Chypers"
 }

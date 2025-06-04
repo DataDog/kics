@@ -9,10 +9,5 @@
   "descriptionID": "e96d149c",
   "cloudProvider": "aws",
   "cwe": "311",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "ECR repositories should be encrypted with customer-managed keys to meet stricter security and compliance requirements on access control, monitoring, and key rotation"
-    }
-  },
   "oldDescriptionText": "ECR repositories should be encrypted with customer-managed keys to meet stricter security and compliance requirements on access control, monitoring, and key rotation"
 }

@@ -9,10 +9,5 @@
   "descriptionID": "7ad97901",
   "cloudProvider": "aws",
   "cwe": "829",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "AWS CloudFormation Stack should have a stack policy in order to protect stack resources from update actions"
-    }
-  },
   "oldDescriptionText": "AWS CloudFormation Stack should have a stack policy in order to protect stack resources from update actions"
 }

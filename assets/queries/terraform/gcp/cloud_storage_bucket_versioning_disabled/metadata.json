@@ -10,10 +10,5 @@
   "cloudProvider": "gcp",
   "cwe": "710",
   "oldSeverity": "HIGH",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Cloud Storage Bucket should have versioning enabled"
-    }
-  },
   "oldDescriptionText": "Cloud Storage Bucket should have versioning enabled"
 }

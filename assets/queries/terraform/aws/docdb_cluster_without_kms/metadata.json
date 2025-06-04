@@ -9,10 +9,5 @@
   "descriptionID": "35efd407",
   "cloudProvider": "aws",
   "cwe": "326",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "AWS DOCDB Cluster should be encrypted with a KMS encryption key"
-    }
-  },
   "oldDescriptionText": "AWS DOCDB Cluster should be encrypted with a KMS encryption key"
 }

@@ -10,10 +10,5 @@
   "cloudProvider": "aws",
   "cwe": "778",
   "oldSeverity": "INFO",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "RDS does not have any kind of logger"
-    }
-  },
   "oldDescriptionText": "RDS does not have any kind of logger"
 }

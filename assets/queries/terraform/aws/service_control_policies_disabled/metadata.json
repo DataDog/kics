@@ -9,10 +9,5 @@
   "descriptionID": "0fbcc152",
   "cloudProvider": "aws",
   "cwe": "284",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Check if the Amazon Organizations ensure that all features are enabled to achieve full control over the use of AWS services and actions across multiple AWS accounts using Service Control Policies (SCPs)."
-    }
-  },
   "oldDescriptionText": "Check if the Amazon Organizations ensure that all features are enabled to achieve full control over the use of AWS services and actions across multiple AWS accounts using Service Control Policies (SCPs)."
 }

@@ -9,10 +9,5 @@
   "descriptionID": "df6d2dcb",
   "cloudProvider": "azure",
   "cwe": "710",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Azure Container Service (AKS) should use Azure Policies Add-On"
-    }
-  },
   "oldDescriptionText": "Azure Container Service (AKS) should use Azure Policies Add-On"
 }

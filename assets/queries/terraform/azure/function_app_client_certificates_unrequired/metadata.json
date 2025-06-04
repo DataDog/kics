@@ -9,10 +9,5 @@
   "descriptionID": "436752d7",
   "cloudProvider": "azure",
   "cwe": "295",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Azure Function App should have 'client_cert_mode' set to required"
-    }
-  },
   "oldDescriptionText": "Azure Function App should have 'client_cert_mode' set to required"
 }

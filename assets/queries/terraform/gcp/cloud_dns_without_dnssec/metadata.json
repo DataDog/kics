@@ -9,10 +9,5 @@
   "descriptionID": "5598ed06",
   "cloudProvider": "gcp",
   "cwe": "350",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "DNSSEC must be enabled for Cloud DNS"
-    }
-  },
   "oldDescriptionText": "DNSSEC must be enabled for Cloud DNS"
 }

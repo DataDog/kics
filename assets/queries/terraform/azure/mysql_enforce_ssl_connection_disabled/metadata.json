@@ -9,10 +9,5 @@
   "descriptionID": "c3f2e1d0",
   "cloudProvider": "azure",
   "cwe": "311",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "MySQL Database Server should have SSL enforcement enabled to ensure secure connections. The 'ssl_enforcement_enabled' attribute must be set to 'ENABLED'."
-    }
-  },
   "oldDescriptionText": "MySQL Database Server should have SSL enforcement enabled to ensure secure connections. The 'ssl_enforcement_enabled' attribute must be set to 'ENABLED'."
 }

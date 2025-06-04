@@ -9,10 +9,5 @@
   "descriptionID": "1d528dfd",
   "cloudProvider": "aws",
   "cwe": "778",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "CloudTrail log file validation should be enabled to determine whether a log file has not been tampered"
-    }
-  },
   "oldDescriptionText": "CloudTrail log file validation should be enabled to determine whether a log file has not been tampered"
 }

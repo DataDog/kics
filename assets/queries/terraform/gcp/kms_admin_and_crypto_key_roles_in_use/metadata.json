@@ -9,10 +9,5 @@
   "descriptionID": "36d82ecd",
   "cloudProvider": "gcp",
   "cwe": "266",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Google Project IAM Policy should not assign a KMS admin role and CryptoKey role to the same member"
-    }
-  },
   "oldDescriptionText": "Google Project IAM Policy should not assign a KMS admin role and CryptoKey role to the same member"
 }

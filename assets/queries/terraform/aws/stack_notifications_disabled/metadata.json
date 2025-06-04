@@ -9,10 +9,5 @@
   "descriptionID": "f9826281",
   "cloudProvider": "aws",
   "cwe": "778",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "AWS CloudFormation should have stack notifications enabled to be notified when an event occurs"
-    }
-  },
   "oldDescriptionText": "AWS CloudFormation should have stack notifications enabled to be notified when an event occurs"
 }

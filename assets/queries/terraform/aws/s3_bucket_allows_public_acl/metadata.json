@@ -9,10 +9,5 @@
   "descriptionID": "7b8886c1",
   "cloudProvider": "aws",
   "cwe": "284",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "S3 bucket allows public ACL"
-    }
-  },
   "oldDescriptionText": "S3 bucket allows public ACL"
 }

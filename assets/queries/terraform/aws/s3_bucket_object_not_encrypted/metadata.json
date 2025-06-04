@@ -9,10 +9,5 @@
   "descriptionID": "e6b92744",
   "cloudProvider": "aws",
   "cwe": "311",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "S3 Bucket Object should have server-side encryption enabled"
-    }
-  },
   "oldDescriptionText": "S3 Bucket Object should have server-side encryption enabled"
 }

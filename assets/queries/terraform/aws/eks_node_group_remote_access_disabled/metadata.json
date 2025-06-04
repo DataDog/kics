@@ -10,10 +10,5 @@
   "cloudProvider": "aws",
   "cwe": "668",
   "oldSeverity": "HIGH",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "EKS node group remote access is disabled when 'SourceSecurityGroups' is missing"
-    }
-  },
   "oldDescriptionText": "EKS node group remote access is disabled when 'SourceSecurityGroups' is missing"
 }

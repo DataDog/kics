@@ -9,10 +9,5 @@
   "descriptionID": "65a3bf94",
   "cloudProvider": "gcp",
   "cwe": "1395",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Running outdated versions of Google Kubernetes Engine (GKE) can expose it to known vulnerabilities and attacks. To reduce these risks, it is recommended to ensure that GKE is always running the latest version."
-    }
-  },
   "oldDescriptionText": "Running outdated versions of Google Kubernetes Engine (GKE) can expose it to known vulnerabilities and attacks. To reduce these risks, it is recommended to ensure that GKE is always running the latest version."
 }

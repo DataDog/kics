@@ -9,10 +9,5 @@
   "descriptionID": "a84ac10d",
   "cloudProvider": "azure",
   "cwe": "693",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Azure Front Door WAF should be enabled"
-    }
-  },
   "oldDescriptionText": "Azure Front Door WAF should be enabled"
 }

@@ -10,10 +10,5 @@
   "cloudProvider": "azure",
   "cwe": "668",
   "oldSeverity": "HIGH",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Firewall rule allowing unrestricted access to Redis from the Internet"
-    }
-  },
   "oldDescriptionText": "Firewall rule allowing unrestricted access to Redis from the Internet"
 }

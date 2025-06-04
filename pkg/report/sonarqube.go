@@ -13,7 +13,7 @@ import (
 )
 
 // PrintSonarQubeReport prints the SonarQube report in the given path and filename with the given body
-func PrintSonarQubeReport(path, filename string, body interface{}, sciInfo model.SCIInfo, includeRemediations bool) error {
+func PrintSonarQubeReport(path, filename string, body interface{}, sciInfo model.SCIInfo) error {
 	if !strings.HasSuffix(filename, ".json") {
 		filename += ".json"
 	}

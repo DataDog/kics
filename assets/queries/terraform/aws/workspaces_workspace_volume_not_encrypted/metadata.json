@@ -10,10 +10,5 @@
   "aggregation": 2,
   "cloudProvider": "aws",
   "cwe": "311",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "AWS Workspaces Workspace data stored in volumes should be encrypted"
-    }
-  },
   "oldDescriptionText": "AWS Workspaces Workspace data stored in volumes should be encrypted"
 }

@@ -9,10 +9,5 @@
   "descriptionID": "cb5081a0",
   "cloudProvider": "gcp",
   "cwe": "732",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "BigQuery dataset is anonymously or publicly accessible"
-    }
-  },
   "oldDescriptionText": "BigQuery dataset is anonymously or publicly accessible"
 }

@@ -9,10 +9,5 @@
   "descriptionID": "8f6e1fa8",
   "cloudProvider": "azure",
   "cwe": "311",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Ensure that the encryption is active on the disk"
-    }
-  },
   "oldDescriptionText": "Ensure that the encryption is active on the disk"
 }

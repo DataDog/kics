@@ -9,10 +9,5 @@
   "descriptionID": "39487293",
   "cloudProvider": "gcp",
   "cwe": "693",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Google Container Node Pool Auto Repair should be enabled. This service periodically checks for failing nodes and repairs them to ensure a smooth running state."
-    }
-  },
   "oldDescriptionText": "Google Container Node Pool Auto Repair should be enabled. This service periodically checks for failing nodes and repairs them to ensure a smooth running state."
 }

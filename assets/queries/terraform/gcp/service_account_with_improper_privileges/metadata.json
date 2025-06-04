@@ -9,10 +9,5 @@
   "descriptionID": "1b2dbbea",
   "cloudProvider": "gcp",
   "cwe": "284",
-  "override": {
-    "detailedDescriptionText": {
-      "descriptionText": "Service account should not have improper privileges like admin, editor, owner, or write roles"
-    }
-  },
   "oldDescriptionText": "Service account should not have improper privileges like admin, editor, owner, or write roles"
 }
