@@ -675,6 +675,11 @@ func (sr *sarifReport) BuildSarifIssue(issue *model.QueryResult, sciInfo model.S
 				resourceStartLocation.Col = 1
 			}
 
+			if remediationStartLocation.Line >= resourceStartLocation.Line && remediationEndLocation.Line <= resourceEndLocation.Line {
+				resourceStartLocation = remediationStartLocation
+				resourceEndLocation = remediationEndLocation
+			}
+
 			absoluteFilePath := strings.ReplaceAll(issue.Files[idx].FileName, "../", "")
 			result := sarifResult{
 				ResultRuleID:    issue.QueryName,
