@@ -15,6 +15,6 @@ resource "aws_s3_bucket" "example3" {
   bucket = "my-tf-example-bucket-3"
 }
 
-resource "aws_s3_bucket" "example" {
-  bucket = "my-tf-example-bucket-2"
+resource "aws_s3_bucket" "example2" {
+  bucket = "my-tf-example-bucket"
 }
