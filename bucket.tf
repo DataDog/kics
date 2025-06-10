@@ -11,6 +11,10 @@ provider "aws" {
   # Configuration options
 }
 
+resource "aws_s3_bucket" "example3" {
+  bucket = "my-tf-example-bucket-3"
+}
+
 resource "aws_s3_bucket" "example4" {
   bucket = "my-tf-example-bucket-4"
 }
