@@ -7,10 +7,10 @@ terraform {
   }
 }
 
-resource "aws_s3_bucket" "example5" {
-  bucket = "my-tf-example-bucket5"
-}
-
 provider "aws" {
   # Configuration options
+}
+
+resource "aws_s3_bucket" "example" {
+  bucket = "my-tf-example-bucket"
 }
