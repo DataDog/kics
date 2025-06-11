@@ -33,3 +33,9 @@ resource "aws_elasticsearch_domain" "bad_example4" {
     internal_user_database_enabled = true
   }
 }
+
+resource "aws_elasticsearch_domain" "bad_example5" {
+  domain_name = "example"
+
+                                              # ❌ No advanced_security_options block
+}
