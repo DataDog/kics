@@ -12,7 +12,7 @@ CxPolicy[result] {
     resource_type := domains[_]
     resource := input.document[i].resource[resource_type][name]
 
-    common_lib.valid_key(resource, "advanced_security_options")
+    not common_lib.valid_key(resource, "advanced_security_options")
 
     result := {
         "documentId": input.document[i].id,
