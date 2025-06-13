@@ -28,13 +28,19 @@ def get_code_snippets(test_dir):
     compliant, non_compliant = [], []
     i, j = 0
     for tf_file in glob.glob(str(test_dir / "negative*.tf")):
+        if i > 2:
+            break
         code = read_file_contents(tf_file)
         if code:
             compliant.append(f"```terraform\n{code}\n```")
+        i += 1
     for tf_file in glob.glob(str(test_dir / "positive*.tf")):
+        if j > 2:
+            break
         code = read_file_contents(tf_file)
         if code:
             non_compliant.append(f"```terraform\n{code}\n```")
+        j += 1
     return compliant, non_compliant
 
 def build_markdown(rule_path, metadata, cloud_provider):
