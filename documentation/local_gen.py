@@ -14,6 +14,7 @@ def parse_args():
     parser.add_argument("--providers-json", type=str, required=True, help="JSON file listing providers to document")
     parser.add_argument("--output-dir", type=str, default="provider_docs", help="Directory for generated markdown files")
     parser.add_argument("--list-json", type=str, default="list.json", help="Path to write list.json")
+    parser.add_argument("--max-examples", type=int, default=3, help="Max number of compliant and non-compliant examples to add to each markdown")
     return parser.parse_args()
 
 def read_file_contents(filepath):
@@ -24,20 +25,26 @@ def read_file_contents(filepath):
         print(f"Warning: Failed to read {filepath}: {e}")
         return ""
 
-def get_code_snippets(test_dir):
+def get_code_snippets(test_dir, max_examples):
     compliant, non_compliant = [], []
-    i, j = 0
+    i, j = 0, 0
     for tf_file in glob.glob(str(test_dir / "negative*.tf")):
+        if i == max_examples:
+            break
         code = read_file_contents(tf_file)
         if code:
             compliant.append(f"```terraform\n{code}\n```")
+        i += 1
     for tf_file in glob.glob(str(test_dir / "positive*.tf")):
+        if j == max_examples:
+            break
         code = read_file_contents(tf_file)
         if code:
             non_compliant.append(f"```terraform\n{code}\n```")
+        j += 1
     return compliant, non_compliant
 
-def build_markdown(rule_path, metadata, cloud_provider):
+def build_markdown(rule_path, metadata, cloud_provider, max_examples):
     rule_name = rule_path.name
     title = metadata.get("queryName", "Untitled Rule")
     rule_id = metadata.get("id", "unknown-id")
@@ -50,7 +57,7 @@ def build_markdown(rule_path, metadata, cloud_provider):
         or metadata.get("descriptionText", "No description provided.")
     )
     description_url = metadata.get("descriptionUrl")
-    compliant, non_compliant = get_code_snippets(rule_path / "test")
+    compliant, non_compliant = get_code_snippets(rule_path / "test", max_examples)
     meta_name = f"{cloud_provider}/{rule_name}"
 
     markdown = f"""---
@@ -84,6 +91,7 @@ def main():
     input_dir = args.input_dir
     output_dir = Path(args.output_dir)
     list_json_path = args.list_json
+    max_examples = args.max_examples
 
     if output_dir.exists():
         shutil.rmtree(output_dir)
@@ -137,7 +145,7 @@ def main():
                 "short_description": rule_desc
             })
 
-            md_content = build_markdown(rule_dir, metadata, provider)
+            md_content = build_markdown(rule_dir, metadata, provider, max_examples)
             output_file = output_provider_path / f"{rule_name}.md"
             with open(output_file, "w", encoding='utf-8') as f:
                 f.write(md_content)
