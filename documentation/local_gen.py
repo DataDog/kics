@@ -10,8 +10,8 @@ from pathlib import Path
 
 def parse_args():
     parser = argparse.ArgumentParser(description="Generate documentation from metadata.json and test files")
-    parser.add_argument("input_dir", type=Path, help="Base directory containing provider subfolders")
-    parser.add_argument("--providers-json", type=str, required=True, help="JSON file listing providers to document")
+    parser.add_argument("input_dir", type=Path, help="Base directory containing all the rules")
+    parser.add_argument("--resources-json", type=str, required=True, help="JSON file listing resources to document")
     parser.add_argument("--output-dir", type=str, default="provider_docs", help="Directory for generated markdown files")
     parser.add_argument("--list-json", type=str, default="list.json", help="Path to write list.json")
     parser.add_argument("--max-examples", type=int, default=3, help="Max number of compliant and non-compliant examples to add to each markdown")
@@ -86,6 +86,62 @@ meta:
         markdown += "\n\n## Compliant Code Examples\n" + "\n\n".join(compliant)
     return markdown
 
+def load_list(path):
+    try:
+        with open(path, 'r') as f:
+            return json.load(f)
+    except Exception as e:
+        print(f"Error loading providers JSON: {e}")
+        sys.exit(1)
+
+def process_provider(provider, resource_type, input_dir, output_dir, max_examples, list_json_data):
+    provider_path = input_dir / resource_type / provider
+    if not provider_path.is_dir():
+        print(f"Warning: Missing provider path: {provider_path}")
+        return
+
+    output_provider_path = output_dir / resource_type / provider
+    output_provider_path.mkdir(parents=True, exist_ok=True)
+
+    provider_entry = {
+        "name": provider,
+        "short_description": f"{provider.upper()} Rules",
+        "rules": []
+    }
+
+    for rule_dir in provider_path.iterdir():
+        if not rule_dir.is_dir():
+            continue
+
+        metadata_file = rule_dir / "metadata.json"
+        if not metadata_file.exists():
+            print(f"Skipping {rule_dir.name} — missing metadata.json")
+            continue
+
+        try:
+            with open(metadata_file, 'r', encoding='utf-8') as f:
+                metadata = json.load(f)
+        except Exception as e:
+            print(f"Failed to parse metadata for {rule_dir}: {e}")
+            continue
+
+        rule_name = rule_dir.name
+        rule_desc = metadata.get("queryName", "No description provided")
+
+        provider_entry["rules"].append({
+            "name": rule_name,
+            "short_description": rule_desc
+        })
+
+        md_content = build_markdown(rule_dir, metadata, provider, max_examples)
+        output_file = output_provider_path / f"{rule_name}.md"
+        with open(output_file, "w", encoding='utf-8') as f:
+            f.write(md_content)
+        print(f"Generated: {output_file}")
+
+    provider_entry["rules"].sort(key=lambda r: r["name"])
+    list_json_data.append(provider_entry)
+
 def main():
     args = parse_args()
     input_dir = args.input_dir
@@ -97,62 +153,27 @@ def main():
         shutil.rmtree(output_dir)
     output_dir.mkdir(parents=True, exist_ok=True)
 
-    try:
-        with open(args.providers_json, 'r') as f:
-            provider_list = json.load(f)
-    except Exception as e:
-        print(f"Error loading providers JSON: {e}")
-        sys.exit(1)
+    resource_type_dict = load_list(args.resources_json)
 
     list_json_data = []
-
-    for provider in provider_list:
-        provider_path = input_dir / provider
-        if not provider_path.is_dir():
-            print(f"Warning: Missing provider path: {provider_path}")
+    
+    for resource_type, providers in resource_type_dict.items():
+        resource_path = input_dir / resource_type
+        if not resource_path.is_dir():
+            if resource_type != "default": print(f"Warning: Missing resource path: {resource_path}")
             continue
 
-        output_provider_path = output_dir / provider
-        output_provider_path.mkdir(parents=True, exist_ok=True)
-
-        provider_entry = {
-            "name": provider,
-            "short_description": f"{provider.upper()} Rules",
-            "rules": []
+        resource_entry = {
+            "name": resource_type,
+            "providers" : []
         }
+        list_json_data.append(resource_entry)
 
-        for rule_dir in provider_path.iterdir():
-            if not rule_dir.is_dir():
-                continue
-
-            metadata_file = rule_dir / "metadata.json"
-            if not metadata_file.exists():
-                print(f"Skipping {rule_dir.name} — missing metadata.json")
-                continue
-
-            try:
-                with open(metadata_file, 'r', encoding='utf-8') as f:
-                    metadata = json.load(f)
-            except Exception as e:
-                print(f"Failed to parse metadata for {rule_dir}: {e}")
-                continue
-
-            rule_name = rule_dir.name
-            rule_desc = metadata.get("queryName", "No description provided")
-
-            provider_entry["rules"].append({
-                "name": rule_name,
-                "short_description": rule_desc
-            })
-
-            md_content = build_markdown(rule_dir, metadata, provider, max_examples)
-            output_file = output_provider_path / f"{rule_name}.md"
-            with open(output_file, "w", encoding='utf-8') as f:
-                f.write(md_content)
-            print(f"Generated: {output_file}")
-
-        provider_entry["rules"].sort(key=lambda r: r["name"])
-        list_json_data.append(provider_entry)
+        providers = providers if len(providers) > 0 else resource_type_dict["default"]
+        for provider in providers:
+            process_provider(provider, resource_type, input_dir, output_dir, max_examples, list_json_data[-1]["providers"])
+        
+        list_json_data[-1]["providers"].sort(key=lambda p: p["name"])
 
     list_json_data.sort(key=lambda p: p["name"])
 
