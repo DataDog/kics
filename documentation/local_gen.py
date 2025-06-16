@@ -5,13 +5,19 @@
 # ]
 # ///
 
-import os, sys, json, glob, argparse, shutil
+import os
+import sys
+import json
+import glob
+import argparse
+import shutil
+from itertools import islice
 from pathlib import Path
 
 def parse_args():
     parser = argparse.ArgumentParser(description="Generate documentation from metadata.json and test files")
     parser.add_argument("input_dir", type=Path, help="Base directory containing all the rules")
-    parser.add_argument("--resources-json", type=str, required=True, help="JSON file listing resources to document")
+    parser.add_argument("--resources-json", type=str, required=True, help="JSON file listing resources and providers to document")
     parser.add_argument("--output-dir", type=str, default="provider_docs", help="Directory for generated markdown files")
     parser.add_argument("--list-json", type=str, default="list.json", help="Path to write list.json")
     parser.add_argument("--max-examples", type=int, default=3, help="Max number of compliant and non-compliant examples to add to each markdown")
@@ -19,32 +25,23 @@ def parse_args():
 
 def read_file_contents(filepath):
     try:
-        with open(filepath, 'r', encoding='utf-8') as f:
+        with open(filepath, "r", encoding="utf-8") as f:
             return f.read()
     except Exception as e:
         print(f"Warning: Failed to read {filepath}: {e}")
         return ""
 
-def get_code_snippets(test_dir, max_examples):
+def get_code_snippets(test_dir, resource_type, max_examples):
     compliant, non_compliant = [], []
-    i, j = 0, 0
-    for tf_file in glob.glob(str(test_dir / "negative*.tf")):
-        if i == max_examples:
-            break
-        code = read_file_contents(tf_file)
-        if code:
-            compliant.append(f"```terraform\n{code}\n```")
-        i += 1
-    for tf_file in glob.glob(str(test_dir / "positive*.tf")):
-        if j == max_examples:
-            break
-        code = read_file_contents(tf_file)
-        if code:
-            non_compliant.append(f"```terraform\n{code}\n```")
-        j += 1
+    for tf_file in islice(glob.iglob(str(test_dir / "negative*.tf")), max_examples):
+        if (code := read_file_contents(tf_file)):
+            compliant.append(f"```{resource_type}\n{code}\n```")
+    for tf_file in islice(glob.iglob(str(test_dir / "positive*.tf")), max_examples):
+        if (code := read_file_contents(tf_file)):
+            non_compliant.append(f"```{resource_type}\n{code}\n```")
     return compliant, non_compliant
 
-def build_markdown(rule_path, metadata, cloud_provider, max_examples):
+def build_markdown(rule_path, metadata, cloud_provider, resource_type, max_examples):
     rule_name = rule_path.name
     title = metadata.get("queryName", "Untitled Rule")
     rule_id = metadata.get("id", "unknown-id")
@@ -57,7 +54,7 @@ def build_markdown(rule_path, metadata, cloud_provider, max_examples):
         or metadata.get("descriptionText", "No description provided.")
     )
     description_url = metadata.get("descriptionUrl")
-    compliant, non_compliant = get_code_snippets(rule_path / "test", max_examples)
+    compliant, non_compliant = get_code_snippets(rule_path / "test", resource_type, max_examples)
     meta_name = f"{cloud_provider}/{rule_name}"
 
     markdown = f"""---
@@ -80,19 +77,18 @@ meta:
 """
     if description_url:
         markdown += f"\n#### Learn More\n\n - [Provider Reference]({description_url})\n"
-    if non_compliant:
-        markdown += "\n## Non-Compliant Code Examples\n" + "\n\n".join(non_compliant)
     if compliant:
         markdown += "\n\n## Compliant Code Examples\n" + "\n\n".join(compliant)
+    if non_compliant:
+        markdown += "\n## Non-Compliant Code Examples\n" + "\n\n".join(non_compliant)
     return markdown
 
 def load_list(path):
     try:
-        with open(path, 'r') as f:
+        with open(path, "r") as f:
             return json.load(f)
     except Exception as e:
-        print(f"Error loading providers JSON: {e}")
-        sys.exit(1)
+        sys.exit(f"Error loading providers JSON: {e}")
 
 def process_provider(provider, resource_type, input_dir, output_dir, max_examples, list_json_data):
     provider_path = input_dir / resource_type / provider
@@ -119,7 +115,7 @@ def process_provider(provider, resource_type, input_dir, output_dir, max_example
             continue
 
         try:
-            with open(metadata_file, 'r', encoding='utf-8') as f:
+            with open(metadata_file, "r", encoding="utf-8") as f:
                 metadata = json.load(f)
         except Exception as e:
             print(f"Failed to parse metadata for {rule_dir}: {e}")
@@ -135,7 +131,7 @@ def process_provider(provider, resource_type, input_dir, output_dir, max_example
 
         md_content = build_markdown(rule_dir, metadata, provider, resource_type, max_examples)
         output_file = output_provider_path / f"{rule_name}.md"
-        with open(output_file, "w", encoding='utf-8') as f:
+        with open(output_file, "w", encoding="utf-8") as f:
             f.write(md_content)
         print(f"Generated: {output_file}")
 
