@@ -1,0 +1,55 @@
+name: Run Python Script and Create PR
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - assets/queries/*  # 👈 Replace this
+
+jobs:
+  run-script-and-pr:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt  # Skip if you don't have any
+
+      - name: Run Python script
+        run: python generate_files.py
+
+      - name: Configure git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Commit changes
+        run: |
+          git add generated_output/*
+          git diff --cached --quiet || git commit -m "Auto-generate files"
+
+      - name: Push changes to new branch
+        run: |
+          BRANCH="auto/gen-$(date +%s)"
+          git checkout -b $BRANCH
+          git push origin $BRANCH
+
+      - name: Create Pull Request
+        id: cpr
+        uses: peter-evans/create-pull-request@v6
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: "Auto-generate files"
+          title: "Auto-generated files"
+          body: "This PR was created automatically by a GitHub Action."
+          branch: $BRANCH
+
