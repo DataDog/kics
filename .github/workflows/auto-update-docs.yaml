@@ -49,6 +49,6 @@ jobs:
           commit-message: "Auto-generate files"
           title: "Auto-generated files"
           body: "This PR was created automatically by a GitHub Action."
-          branch: ${{ env.BRANCH_NAME }}
-          base: main
+          base: ${{ env.BRANCH_NAME }}
+          branch: main
 
