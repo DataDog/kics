@@ -10,6 +10,9 @@ on:
 jobs:
   run-script-and-pr:
     runs-on: ubuntu-latest
+    env:
+      BRANCH_NAME: auto/gen-${{ github.run_id }}  # or use date +%s if preferred
+
 
     steps:
       - name: Checkout repository
@@ -35,9 +38,8 @@ jobs:
 
       - name: Push changes to new branch
         run: |
-          BRANCH="auto/gen-$(date +%s)"
-          git checkout -b $BRANCH
-          git push origin $BRANCH
+          git checkout -b $BRANCH_NAME
+          git push origin $BRANCH_NAME
 
       - name: Create Pull Request
         id: cpr
@@ -47,5 +49,5 @@ jobs:
           commit-message: "Auto-generate files"
           title: "Auto-generated files"
           body: "This PR was created automatically by a GitHub Action."
-          branch: $BRANCH
+          branch: ${{ env.BRANCH_NAME }}
 
