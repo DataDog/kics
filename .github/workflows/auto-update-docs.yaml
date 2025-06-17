@@ -30,7 +30,7 @@ jobs:
 
       - name: Commit changes
         run: |
-          git add generated_output/*
+          git add .
           git diff --cached --quiet || git commit -m "Auto-generate files"
 
       - name: Push changes to new branch
