@@ -5,7 +5,7 @@ on:
     branches:
       - main
     paths:
-      - assets/queries/*  # 👈 Replace this
+      - assets/queries/**  # 👈 Replace this
 
 jobs:
   run-script-and-pr:
