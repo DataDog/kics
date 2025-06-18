@@ -1,0 +1,61 @@
+---
+title: "EBS Volume Encryption Disabled"
+meta:
+  name: "terraform/ebs_volume_encryption_disabled"
+  id: "cc997676-481b-4e93-aa81-d19f8c5e9b12"
+  cloud_provider: "terraform"
+  severity: "HIGH"
+  category: "Encryption"
+---
+## Metadata
+**Name:** `terraform/ebs_volume_encryption_disabled`
+**Id:** `cc997676-481b-4e93-aa81-d19f8c5e9b12`
+**Cloud Provider:** terraform
+**Severity:** High
+**Category:** Encryption
+## Description
+This check verifies that Amazon Elastic Block Store (EBS) volumes have encryption enabled. EBS volumes store data in an unencrypted format by default, which could expose sensitive information if the volume is compromised. When encryption is enabled, all data stored at rest on the volume, disk I/O, and snapshots created from the volume are encrypted, providing an additional layer of data protection. To enable encryption, set the 'encrypted' parameter to 'true' in your EBS volume configuration. For example: resource "aws_ebs_volume" "secure_example" { availability_zone = "us-west-2a", size = 40, encrypted = true }. Leaving encryption disabled can lead to data exposure risks and may violate compliance requirements for sensitive data protection.
+
+#### Learn More
+
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/ebs_volume#encrypted)
+
+## Non-Compliant Code Examples
+```aws
+resource "aws_ebs_volume" "positive1" {
+  availability_zone = "us-west-2a"
+  size              = 40
+  encrypted         = false
+
+  tags = {
+    Name = "HelloWorld"
+  }
+}
+
+```
+
+```aws
+resource "aws_ebs_volume" "positive2" {
+  availability_zone = "us-west-2a"
+  size              = 40
+
+  tags = {
+    Name = "HelloWorld"
+  }
+}
+
+```
+
+## Compliant Code Examples
+```aws
+resource "aws_ebs_volume" "negative1" {
+  availability_zone = "us-west-2a"
+  size              = 40
+  encrypted         = true
+
+  tags = {
+    Name = "HelloWorld"
+  }
+}
+
+```
