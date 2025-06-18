@@ -5,13 +5,13 @@ on:
     branches:
       - main
     paths:
-      - assets/queries/**  # 👈 Replace this
+      - assets/queries/**
 
 jobs:
   run-script-and-pr:
     runs-on: ubuntu-latest
     env:
-      BRANCH_NAME: auto/gen-${{ github.run_id }}  # or use date +%s if preferred
+      BRANCH_NAME: auto/gen-${{ github.run_id }} 
 
 
     steps:
