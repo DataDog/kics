@@ -29,7 +29,7 @@ jobs:
           ls documentation
 
       - name: Run Python script
-        run: python documentation/local_gen.py assets/queries/ --resources-json "resources.json" --output-dir "./" --list-json "./list.json" 
+        run: python documentation/local_gen.py assets/queries/ --resources-json "documentation/resources.json"
 
       - name: Configure git
         run: |
