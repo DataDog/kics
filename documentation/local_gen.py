@@ -11,6 +11,7 @@ import json
 import glob
 import argparse
 import shutil
+import yaml
 from itertools import islice
 from pathlib import Path
 
@@ -20,6 +21,7 @@ def parse_args():
     parser.add_argument("--resources-json", type=str, required=True, help="JSON file listing resources and providers to document")
     parser.add_argument("--output-dir", type=str, default="provider_docs", help="Directory for generated markdown files")
     parser.add_argument("--list-json", type=str, default="list.json", help="Path to write list.json")
+    parser.add_argument("--frontmatter-yaml", type=str, default="frontmatter.yaml", help="Path to write frontmatter.yaml")
     parser.add_argument("--max-examples", type=int, default=3, help="Max number of compliant and non-compliant examples to add to each markdown")
     return parser.parse_args()
 
@@ -90,7 +92,7 @@ def load_list(path):
     except Exception as e:
         sys.exit(f"Error loading providers JSON: {e}")
 
-def process_provider(provider, resource_type, input_dir, output_dir, max_examples, list_json_data):
+def process_provider(provider, resource_type, input_dir, output_dir, max_examples, list_json_data, dict_frontmatter):
     provider_path = input_dir / resource_type / provider
     if not provider_path.is_dir():
         print(f"Warning: Missing provider path: {provider_path}")
@@ -104,6 +106,8 @@ def process_provider(provider, resource_type, input_dir, output_dir, max_example
         "short_description": f"{provider.upper()} Rules",
         "rules": []
     }
+
+    dict_frontmatter[provider] = {}
 
     for rule_dir in provider_path.iterdir():
         if not rule_dir.is_dir():
@@ -129,6 +133,11 @@ def process_provider(provider, resource_type, input_dir, output_dir, max_example
             "short_description": rule_desc
         })
 
+        dict_frontmatter[provider][rule_name] = {
+            "title": rule_desc,
+            "description": rule_desc
+        }
+
         md_content = build_markdown(rule_dir, metadata, provider, resource_type, max_examples)
         output_file = output_provider_path / f"{rule_name}.md"
         with open(output_file, "w", encoding="utf-8") as f:
@@ -143,6 +152,7 @@ def main():
     input_dir = args.input_dir
     output_dir = Path(args.output_dir)
     list_json_path = args.list_json
+    dict_yaml_path = args.frontmatter_yaml
     max_examples = args.max_examples
 
     if output_dir.exists():
@@ -152,6 +162,7 @@ def main():
     resource_type_dict = load_list(args.resources_json)
 
     list_json_data = []
+    dict_yaml_data = {"rules":{}}
     
     for resource_type, providers in resource_type_dict.items():
         resource_path = input_dir / resource_type
@@ -164,14 +175,22 @@ def main():
             "providers" : []
         }
         list_json_data.append(resource_entry)
+        dict_yaml_data["rules"][resource_type] = {}
 
         providers = providers if len(providers) > 0 else resource_type_dict["default"]
         for provider in providers:
-            process_provider(provider, resource_type, input_dir, output_dir, max_examples, list_json_data[-1]["providers"])
+            process_provider(provider, resource_type, input_dir, output_dir, max_examples, list_json_data[-1]["providers"], dict_yaml_data["rules"][resource_type])
         
         list_json_data[-1]["providers"].sort(key=lambda p: p["name"])
 
     list_json_data.sort(key=lambda p: p["name"])
+
+    try:
+        with open(dict_yaml_path, "w", encoding="utf-8") as f:
+            yaml.dump(dict_yaml_data, f)
+        print(f"Generated frontmatter yaml: {dict_yaml_path}")
+    except:
+        sys.exit("Failed to write frontmatter.yaml")
 
     try:
         with open(list_json_path, "w", encoding="utf-8") as f:
