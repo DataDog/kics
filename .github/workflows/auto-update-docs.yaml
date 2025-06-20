@@ -55,3 +55,13 @@ jobs:
           branch: main
           sign-commits: true
 
+      - name: Notify Slack
+        uses: slackapi/slack-github-action@v1.24.0
+        with:
+          payload: |
+            {
+              "channel": "#test_iac_docs_update_pr",
+              "text": "📢 New auto-generated PR created: <${{ steps.cpr.outputs.pull-request-url }}"
+            }
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
