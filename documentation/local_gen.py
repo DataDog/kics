@@ -49,12 +49,7 @@ def build_markdown(rule_path, metadata, cloud_provider, resource_type, max_examp
     rule_id = metadata.get("id", "unknown-id")
     severity = metadata.get("severity", "INFO").upper()
     category = metadata.get("category", "Unknown")
-    description = (
-        metadata.get("override", {})
-                .get("detailedDescriptionText", {})
-                .get("descriptionText")
-        or metadata.get("descriptionText", "No description provided.")
-    )
+    description = metadata.get("descriptionText", "No description provided.")
     description_url = metadata.get("descriptionUrl")
     compliant, non_compliant = get_code_snippets(rule_path / "test", resource_type, max_examples)
     meta_name = f"{cloud_provider}/{rule_name}"
