@@ -1,3 +1,7 @@
+resource "aws_s3_bucket" "example" {
+  bucket = "my-tf-example-bucket"
+}
+
 terraform {
   required_providers {
     aws = {
@@ -9,8 +13,4 @@ terraform {
 
 provider "aws" {
   # Configuration options
-}
-
-resource "aws_s3_bucket" "example3" {
-  bucket = "my-tf-example-bucket3"
 }
