@@ -1,0 +1,9 @@
+{
+  "default": 
+    [
+      "aws",
+      "azure",
+      "gcp"
+    ],
+  "terraform":[]
+}
