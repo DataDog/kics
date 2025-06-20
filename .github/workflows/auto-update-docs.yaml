@@ -31,24 +31,12 @@ jobs:
       - name: Run Python script
         run: python documentation/local_gen.py assets/queries/ --resources-json "documentation/resources.json"
 
-      - name: Configure git
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-
-      - name: Import GPG key
-        id: import-gpg
-        uses: crazy-max/ghaction-import-gpg@v4
-        with:
-          gpg_private_key: ${{ secrets.GPG_PRIVATE_KEY }}
-          passphrase: ${{ secrets.PASSPHRASE }}
-          git_user_signingkey: true
-          git_commit_gpgsign: true
-
       - name: Commit changes
-        run: |
-          git add .
-          git diff --cached --quiet || git commit -m "Auto-generate files"
+        uses: iarekylew00t/verified-bot-commit@v1
+        with:
+          message: 'feat: Some changes'
+          files: |
+            **
 
       - name: Push changes to new branch
         run: |
