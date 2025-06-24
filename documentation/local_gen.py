@@ -5,7 +5,6 @@
 # ]
 # ///
 
-import os
 import sys
 import json
 import glob
@@ -15,11 +14,14 @@ import yaml
 from itertools import islice
 from pathlib import Path
 
+
+NO_DESC = "No description provided"
+
 def parse_args():
     parser = argparse.ArgumentParser(description="Generate documentation from metadata.json and test files")
     parser.add_argument("input_dir", type=Path, help="Base directory containing all the rules")
     parser.add_argument("--resources-json", type=str, required=True, help="JSON file listing resources and providers to document")
-    parser.add_argument("--output-dir", type=str, default="provider_docs", help="Directory for generated markdown files")
+    parser.add_argument("--output-dir", type=str, default="rules", help="Directory for generated markdown files")
     parser.add_argument("--list-json", type=str, default="list.json", help="Path to write list.json")
     parser.add_argument("--frontmatter-yaml", type=str, default="frontmatter.yaml", help="Path to write frontmatter.yaml")
     parser.add_argument("--max-examples", type=int, default=3, help="Max number of compliant and non-compliant examples to add to each markdown")
@@ -36,10 +38,10 @@ def read_file_contents(filepath):
 def get_code_snippets(test_dir, resource_type, max_examples):
     compliant, non_compliant = [], []
     for tf_file in islice(glob.iglob(str(test_dir / "negative*.tf")), max_examples):
-        if (code := read_file_contents(tf_file)):
+        if (code := read_file_contents(tf_file).replace('```', '\\`\\`\\`')):
             compliant.append(f"```{resource_type}\n{code}\n```")
     for tf_file in islice(glob.iglob(str(test_dir / "positive*.tf")), max_examples):
-        if (code := read_file_contents(tf_file)):
+        if (code := read_file_contents(tf_file).replace('```', '\\`\\`\\`')):
             non_compliant.append(f"```{resource_type}\n{code}\n```")
     return compliant, non_compliant
 
@@ -121,7 +123,9 @@ def process_provider(provider, resource_type, input_dir, output_dir, max_example
             continue
 
         rule_name = rule_dir.name
-        rule_desc = metadata.get("queryName", "No description provided")
+        rule_desc = metadata.get("queryName", NO_DESC)
+        if rule_desc == NO_DESC:
+            print(f"No description for {rule_name}")
 
         provider_entry["rules"].append({
             "name": rule_name,
@@ -146,8 +150,8 @@ def main():
     args = parse_args()
     input_dir = args.input_dir
     output_dir = Path(args.output_dir)
-    list_json_path = args.list_json
-    dict_yaml_path = args.frontmatter_yaml
+    list_json_path = Path(args.list_json)
+    dict_yaml_path = Path(args.frontmatter_yaml)
     max_examples = args.max_examples
 
     if output_dir.exists():
@@ -184,7 +188,7 @@ def main():
         with open(dict_yaml_path, "w", encoding="utf-8") as f:
             yaml.dump(dict_yaml_data, f)
         print(f"Generated frontmatter yaml: {dict_yaml_path}")
-    except:
+    except Exception as e:
         sys.exit("Failed to write frontmatter.yaml")
 
     try:
