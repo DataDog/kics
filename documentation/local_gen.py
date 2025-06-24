@@ -1,10 +1,3 @@
-#!/usr/bin/env -S uv run --script
-# /// script
-# dependencies = [
-#   "ruamel.yaml",
-# ]
-# ///
-
 import sys
 import json
 import glob
