@@ -22,6 +22,7 @@ import (
 	"github.com/Checkmarx/kics/pkg/detector/helm"
 	"github.com/Checkmarx/kics/pkg/detector/terraform"
 	"github.com/Checkmarx/kics/pkg/engine/source"
+	"github.com/Checkmarx/kics/pkg/engine/utils"
 	"github.com/Checkmarx/kics/pkg/model"
 	"github.com/hashicorp/hcl/v2"
 	"github.com/hashicorp/hcl/v2/hclsyntax"
@@ -276,6 +277,20 @@ func (c *Inspector) Inspect(
 
 	var vulnerabilities []model.Vulnerability
 	vulnerabilities = make([]model.Vulnerability, 0)
+
+	// Step 1: Parse Terraform modules
+	parsedModules, err := utils.ParseTerraformModules(files)
+	if err != nil {
+		log.Warn().Err(err).Msg("Failed to parse Terraform modules")
+	}
+
+	// Step 2: Enrich modules with parsed variables
+	rootDir := "." // or infer from files.RootDir, etc.
+	enrichedModules := utils.ParseAllModuleVariables(parsedModules, rootDir)
+
+	// Step 3: Build Rego input
+	combinedFiles.Modules = utils.ConvertParsedModulesToModelModules(enrichedModules)
+
 	var p interface{}
 
 	payload, err := json.Marshal(combinedFiles)
