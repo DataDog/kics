@@ -1,5 +1,5 @@
 module "mybucket" {
-  source = "../../../../../../modules/aws-simple-bucket"
+  source = "../"
 
   bucket_name = "dd-mybucket-eric-aws-simple-test-001"
 }
