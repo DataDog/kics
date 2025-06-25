@@ -1,3 +1,10 @@
+resource "aws_s3_bucket" "example4" {
+  bucket = "my-tf-example-bucket4"
+  versioning {
+    enabled = false
+  }
+}
+
 terraform {
   required_providers {
     aws = {
@@ -9,11 +16,4 @@ terraform {
 
 provider "aws" {
   # Configuration options
-}
-
-resource "aws_s3_bucket" "example" {
-  bucket = "my-tf-example-bucket"
-  versioning {
-    enabled = false
-  }
 }
