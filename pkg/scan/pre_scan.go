@@ -16,6 +16,7 @@ type ConfigParameters struct {
 	ExcludeQueries    []string
 	ExcludeResults    []string
 	ExcludeSeverities []string
+	IncludeQueries    []string
 }
 
 func setupConfigFile(rootPath string) (bool, error) {
@@ -80,6 +81,9 @@ func initializeConfig(rootPath string) (ConfigParameters, error) {
 	}
 	if v.Get("exclude-severities") != nil {
 		configParams.ExcludeSeverities = v.GetStringSlice("exclude-severities")
+	}
+	if v.Get("include-queries") != nil {
+		configParams.IncludeQueries = v.GetStringSlice("include-queries")
 	}
 
 	return configParams, nil

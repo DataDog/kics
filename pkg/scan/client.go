@@ -89,7 +89,7 @@ func GetDefaultParameters(rootPath string) *Parameters {
 		ExcludeSeverities:           configParams.ExcludeSeverities,
 		ExcludePaths:                configParams.ExcludePaths,
 		ExperimentalQueries:         false,
-		IncludeQueries:              []string{},
+		IncludeQueries:              configParams.IncludeQueries,
 		InputData:                   "",
 		OutputName:                  "kics-result.sarif",
 		PayloadPath:                 "",
