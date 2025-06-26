@@ -3,6 +3,7 @@ package utils
 import (
 	"fmt"
 	"log"
+	"maps"
 	"os"
 	"path/filepath"
 	"regexp"
@@ -12,6 +13,7 @@ import (
 	"github.com/Checkmarx/kics/pkg/model"
 	"github.com/hashicorp/hcl/v2"
 	"github.com/hashicorp/hcl/v2/hclsyntax"
+	"github.com/hashicorp/hcl/v2/hclwrite"
 	"github.com/zclconf/go-cty/cty"
 )
 
@@ -423,4 +425,103 @@ func ConvertParsedModulesToModelModules(mods []ParsedModule) []model.Module {
 		})
 	}
 	return result
+}
+
+func generateEquivalentMap(modulePath string) ([]string, map[string]string, error) {
+	inputs := make(map[string]bool)
+	attrs := make(map[string]string)
+	resourceTypesMap := make(map[string]bool)
+	err := filepath.Walk(
+		modulePath,
+		func(path string, info os.FileInfo, err error) error {
+			if err != nil {
+				log.Printf("Failed to walk module source directory: %s", path)
+				return err
+			}
+
+			if info.IsDir() {
+				log.Printf("Skipping directory: %s", path)
+				return nil
+			}
+
+			contents, err := os.ReadFile(path)
+			if err != nil {
+				log.Printf("Failed to read file: %s", path)
+				return err
+			}
+
+			hclFile, diag := hclwrite.ParseConfig(contents, "", hcl.InitialPos)
+			if diag.HasErrors() {
+				return fmt.Errorf("error parsing input Terraform block: %s", diag.Error())
+			}
+
+			for _, block := range hclFile.Body().Blocks() {
+				if block.Type() == "variable" {
+					inputs[block.Labels()[0]] = true
+				} else if block.Type() == "resource" {
+					resourceTypesMap[block.Labels()[0]] = true
+
+					res := getVariableAttributes(block)
+					maps.Copy(attrs, res)
+				}
+			}
+
+			return nil
+		},
+	)
+	if err != nil {
+		log.Printf("Failed to walk module source directory")
+		return nil, nil, err
+	}
+
+	// Ensure the variable referenced are found as module input
+	attributesMapping := make(map[string]string)
+	for attr, ref := range attrs {
+		if _, ok := inputs[ref]; !ok {
+			log.Printf("Failed to find input variable referenced by var.%s", ref)
+		}
+
+		attributesMapping[attr] = ref
+	}
+
+	resourceTypes := make([]string, 0, len(resourceTypesMap))
+	for k := range resourceTypesMap {
+		resourceTypes = append(resourceTypes, k)
+	}
+
+	return resourceTypes, attributesMapping, nil
+}
+
+func getVariableAttributes(block *hclwrite.Block) map[string]string {
+	attributeToVariableMap := make(map[string]string)
+	for name, attr := range block.Body().Attributes() {
+		value := string(attr.Expr().BuildTokens(nil).Bytes())
+		if !isVariableReference(value) {
+			continue
+		}
+
+		if varName := parseVariableReference(value); varName != "" {
+			attributeToVariableMap[name] = varName
+		}
+	}
+
+	// TODO: Handle nested blocks too?
+	// for _, nestedBlock := range block.Body().Blocks() {
+	// 	getVariableAttributes(nestedBlock)
+	// }
+	return attributeToVariableMap
+}
+
+func isVariableReference(s string) bool {
+	return strings.Contains(s, "var.")
+}
+
+var reVarRef = regexp.MustCompile(`var\.(\w+)`)
+
+func parseVariableReference(s string) string {
+	match := reVarRef.FindStringSubmatch(s)
+	if len(match) > 1 {
+		return match[1]
+	}
+	return ""
 }
