@@ -55,13 +55,11 @@ jobs:
           branch: main
           sign-commits: true
 
-      - name: Notify Slack
-        uses: slackapi/slack-github-action@v1.24.0
+      - name: Send GitHub Action data to a Slack workflow
+        uses: slackapi/slack-github-action@v2.1.0
         with:
+          payload-delimiter: "_"
+          webhook: ${{ secrets.SLACK_WEBHOOK_URL }}
+          webhook-type: webhook-trigger
           payload: |
-            {
-              "channel": "#test_iac_docs_update_pr",
-              "text": "📢 New auto-generated PR created: <${{ steps.cpr.outputs.pull-request-url }}"
-            }
-        env:
-          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+            PR_url: "${{ steps.cpr.outputs.pull-request-url }}"
