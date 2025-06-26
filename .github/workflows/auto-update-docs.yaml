@@ -30,6 +30,9 @@ jobs:
 
       - name: Checkout to new branch
         run: git checkout -b ${{ env.BRANCH_NAME }}
+      
+      - name: Push branch
+        run: git push origin ${{ env.BRANCH_NAME }}
 
       - name: Run Python script
         run: python documentation/local_gen.py assets/queries/ --resources-json "documentation/resources.json"
@@ -41,9 +44,6 @@ jobs:
           files: |
             **
           ref: "heads/${{ env.BRANCH_NAME }}"
-      
-      - name: Push branch
-        run: git push origin ${{ env.BRANCH_NAME }}
 
       - name: Create pull request and get URL
         id: create_pr
