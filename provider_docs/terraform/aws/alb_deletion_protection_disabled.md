@@ -1,5 +1,5 @@
 ---
-title: "ALB Deletion Protection Disableddddddddddddddd"
+title: "ALB Deletion Protection Disabledddddddddddddddd"
 meta:
   name: "terraform/alb_deletion_protection_disabled"
   id: "afecd1f1-6378-4f7e-bb3b-60c35801fdd4"
