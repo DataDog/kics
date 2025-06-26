@@ -42,7 +42,7 @@ jobs:
           commit_prefix: "[AUTO]"
           commit_message: "Automatic commit"
           force: false
-          target_branch: update/version
+          target_branch: $BRANCH_NAME
       
       - name: Push branch
         run: git push origin $BRANCH_NAME
