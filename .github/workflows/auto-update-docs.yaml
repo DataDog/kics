@@ -34,15 +34,11 @@ jobs:
       - name: Run Python script
         run: python documentation/local_gen.py assets/queries/ --resources-json "documentation/resources.json"
 
-      - name: Run the Action
-        uses: devops-infra/action-commit-push@master
+      - name: Commit & Push changes
+        uses: actions-js/push@master
         with:
-          github_token: "${{ secrets.GITHUB_TOKEN }}"
-          add_timestamp: true
-          commit_prefix: "[AUTO]"
-          commit_message: "Automatic commit"
-          force: false
-          target_branch: ${{ env.BRANCH_NAME }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ env.BRANCH_NAME }}
       
       - name: Push branch
         run: git push origin ${{ env.BRANCH_NAME }}
