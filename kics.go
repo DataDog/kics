@@ -15,14 +15,14 @@ import (
 	"github.com/rs/zerolog/log"
 )
 
-func ExecuteKICSScan(inputPaths []string, outputPath string, sciInfo model.SCIInfo) (scan.ScanMetadata, string) {
+func ExecuteKICSScan(inputPaths []string, outputPath string, sciInfo model.SCIInfo) (scan.ScanMetadata, string, error) {
 	params := scan.GetDefaultParameters(outputPath)
 	params.Path = inputPaths
 	params.OutputPath = outputPath
 	params.SCIInfo = sciInfo
 	metadata, err := console.ExecuteScan(params)
 	if err != nil {
-		log.Fatal().Int64(
+		log.Error().Int64(
 			"org", sciInfo.OrgId,
 		).Str(
 			"branch", sciInfo.RepositoryCommitInfo.Branch,
@@ -31,7 +31,7 @@ func ExecuteKICSScan(inputPaths []string, outputPath string, sciInfo model.SCIIn
 		).Str(
 			"repository", sciInfo.RepositoryCommitInfo.RepositoryUrl,
 		).Msgf("failed to execute scan: %v", err)
-		return scan.ScanMetadata{}, ""
+		return scan.ScanMetadata{}, "", err
 	}
 
 	log.Info().Int64(
@@ -47,6 +47,5 @@ func ExecuteKICSScan(inputPaths []string, outputPath string, sciInfo model.SCIIn
 	)
 
 	resultsFile := filepath.Join(outputPath, params.OutputName)
-	return metadata, resultsFile
-
+	return metadata, resultsFile, nil
 }
