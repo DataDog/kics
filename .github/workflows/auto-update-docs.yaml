@@ -51,8 +51,8 @@ jobs:
           commit-message: "Auto-generate files"
           title: "Auto-generated files"
           body: "This PR was created automatically by a GitHub Action."
-          base: main
-          branch: ${{ env.BRANCH_NAME }}
+          base: ${{ env.BRANCH_NAME }}
+          branch: main
           sign-commits: true
 
       - name: Send GitHub Action data to a Slack workflow
