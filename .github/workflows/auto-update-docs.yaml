@@ -28,6 +28,9 @@ jobs:
           ls
           ls documentation
 
+      - name: Checkout to new branch
+        run: git checkout -b $BRANCH_NAME
+
       - name: Run Python script
         run: python documentation/local_gen.py assets/queries/ --resources-json "documentation/resources.json"
 
@@ -37,11 +40,9 @@ jobs:
           message: 'feat: Some changes'
           files: |
             **
-
-      - name: Push changes to new branch
-        run: |
-          git checkout -b $BRANCH_NAME
-          git push origin $BRANCH_NAME
+      
+      - name: Push branch
+        run: git push origin $BRANCH_NAME
 
       - name: Create Pull Request
         id: cpr
