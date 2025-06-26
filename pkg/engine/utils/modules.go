@@ -1,8 +1,9 @@
 package utils
 
 import (
+	"errors"
 	"fmt"
-	"log"
+	"maps"
 	"os"
 	"path/filepath"
 	"regexp"
@@ -12,22 +13,29 @@ import (
 	"github.com/Checkmarx/kics/pkg/model"
 	"github.com/hashicorp/hcl/v2"
 	"github.com/hashicorp/hcl/v2/hclsyntax"
+	"github.com/hashicorp/hcl/v2/hclwrite"
+	"github.com/rs/zerolog/log"
 	"github.com/zclconf/go-cty/cty"
 )
 
 type ParsedModule struct {
-	Name          string
-	Source        string
-	Version       string
-	IsLocal       bool
-	SourceType    string // local, git, registry, etc.
-	RegistryScope string // public, private, or "" (non-registry)
-	Variables     map[string]string
+	Name           string
+	Source         string
+	Version        string
+	IsLocal        bool
+	SourceType     string // local, git, registry, etc.
+	RegistryScope  string // public, private, or "" (non-registry)
+	AttributesData map[string]ModuleAttributesInfo
 }
 
 type ModuleParseResult struct {
 	Module ParsedModule
 	Error  error
+}
+
+type ModuleAttributesInfo struct {
+	Resources []string          `json:"resources"`
+	Inputs    map[string]string `json:"inputs"`
 }
 
 var registryPattern = regexp.MustCompile(`^[a-z0-9\-]+/[a-z0-9\-]+/[a-z0-9\-]+$`)
@@ -56,13 +64,13 @@ func ParseTerraformModules(files model.FileMetadatas) (map[string]ParsedModule, 
 
 		hclFile, diags := hclsyntax.ParseConfig([]byte(file.Content), filePath, hcl.Pos{Line: 1, Column: 1})
 		if diags.HasErrors() {
-			log.Printf("Skipping file %s due to HCL parse errors: %s", filePath, diags.Error())
+			log.Warn().Msgf("Skipping file %s due to HCL parse errors: %s", filePath, diags.Error())
 			continue
 		}
 
 		body, ok := hclFile.Body.(*hclsyntax.Body)
 		if !ok {
-			log.Printf("Unexpected body type in %s", filePath)
+			log.Error().Msgf("Unexpected body type in %s", filePath)
 			continue
 		}
 
@@ -113,7 +121,7 @@ func ParseTerraformModules(files model.FileMetadatas) (map[string]ParsedModule, 
 						mod.Source = filepath.Clean(absPath)
 						err := ValidateModuleSource(mod.Source)
 						if err != nil {
-							log.Printf("Invalid local module source %q: %v", mod.Source, err)
+							log.Warn().Msgf("Invalid local module source %q: %v", mod.Source, err)
 							continue
 						}
 					}
@@ -136,7 +144,7 @@ func ValidateModuleSource(absPath string) error {
 	// Attempt to read the directory contents
 	entries, err := os.ReadDir(absPath)
 	if err != nil {
-		log.Printf("Module source path %q is not accessible: %v", absPath, err)
+		log.Error().Msgf("Module source path %q is not accessible: %v", absPath, err)
 		return fmt.Errorf("module source path %q is not accessible: %w", absPath, err)
 	}
 
@@ -150,7 +158,7 @@ func ValidateModuleSource(absPath string) error {
 	}
 
 	if !valid {
-		log.Printf("Module at %s does not contain any .tf files", absPath)
+		log.Warn().Msgf("Module at %s does not contain any .tf files", absPath)
 		return fmt.Errorf("module at %s does not contain any .tf files", absPath)
 	}
 	return nil
@@ -373,11 +381,13 @@ func ParseAllModuleVariables(modules map[string]ParsedModule, rootDir string) []
 					continue
 				}
 				modulePath := ResolveModulePath(mod.Source, rootDir)
-				err := fmt.Errorf("not implemented for %s", modulePath) // Placeholder for actual variable extraction logic
 
-				// TODO: Implement ExtractModuleVariables to extract variables from the module path
-				// vars, err := ExtractModuleVariables(modulePath)
-				// mod.Variables = vars
+				attributesData, err := generateEquivalentMap(modulePath)
+				if err != nil {
+					log.Warn().Msg("Failed to generate equivalent map")
+				} else {
+					mod.AttributesData = attributesData
+				}
 				output <- ModuleParseResult{Module: mod, Error: err}
 			}
 		}()
@@ -401,7 +411,7 @@ func ParseAllModuleVariables(modules map[string]ParsedModule, rootDir string) []
 	finalModules := make([]ParsedModule, 0, len(modules))
 	for res := range output {
 		if res.Error != nil {
-			log.Printf("Warning: failed to parse module %s: %v", res.Module.Name, res.Error)
+			log.Warn().Msgf("Failed to parse module %s: %v", res.Module.Name, res.Error)
 		}
 		finalModules = append(finalModules, res.Module)
 	}
@@ -409,18 +419,130 @@ func ParseAllModuleVariables(modules map[string]ParsedModule, rootDir string) []
 	return finalModules
 }
 
-func ConvertParsedModulesToModelModules(mods []ParsedModule) []model.Module {
-	result := make([]model.Module, 0, len(mods))
-	for _, m := range mods {
-		result = append(result, model.Module{
-			"name":          m.Name,
-			"source":        m.Source,
-			"version":       m.Version,
-			"isLocal":       m.IsLocal,
-			"sourceType":    m.SourceType,
-			"registryScope": m.RegistryScope,
-			"variables":     "", // Placeholder for variables, should be populated if needed
-		})
+func generateEquivalentMap(modulePath string) (map[string]ModuleAttributesInfo, error) {
+	equivalentMap := make(map[string]ModuleAttributesInfo)
+	resourceTypesMap := make(map[string]map[string]bool)
+
+	entries, err := os.ReadDir(modulePath)
+	if err != nil {
+		log.Error().Msgf("Failed to read module source directory: %s", modulePath)
+		return nil, err
 	}
-	return result
+
+	for _, entry := range entries {
+		path := filepath.Join(modulePath, entry.Name())
+
+		if entry.IsDir() {
+			log.Debug().Msgf("Skipping directory: %s", path)
+			continue
+		}
+
+		contents, err := os.ReadFile(path)
+		if err != nil {
+			log.Error().Msgf("Failed to read file: %s", path)
+			return nil, err
+		}
+
+		hclFile, diag := hclwrite.ParseConfig(contents, "", hcl.InitialPos)
+		if diag.HasErrors() {
+			return nil, fmt.Errorf("error parsing input Terraform block in file %s: %s", path, diag.Error())
+		}
+
+		for _, block := range hclFile.Body().Blocks() {
+			if block.Type() != "resource" {
+				continue
+			}
+
+			if len(block.Labels()) < 1 {
+				log.Warn().Msgf("Skipping malformed resource block with no labels in file %s", path)
+				continue
+			}
+
+			resourceType := block.Labels()[0]
+			provider, err := GetProviderFromResourceType(resourceType)
+			if err != nil {
+				log.Warn().Msgf("Failed to get provider from resource type '%s' in file %s: %v", resourceType, path, err)
+				continue
+			}
+
+			// Store resource type to the set
+			if _, ok := resourceTypesMap[provider]; !ok {
+				resourceTypesMap[provider] = make(map[string]bool)
+			}
+			resourceTypesMap[provider][resourceType] = true
+
+			// Create or update the module info object for current provider
+			modInfo, ok := equivalentMap[provider]
+			if !ok {
+				modInfo = ModuleAttributesInfo{
+					Resources: []string{},
+					Inputs:    make(map[string]string),
+				}
+			}
+
+			// Update inputs mapping with all attributes referencing a variable
+			maps.Copy(modInfo.Inputs, getVariableAttributes(block))
+
+			// Assign the updated modInfo back to the map
+			equivalentMap[provider] = modInfo
+		}
+	}
+
+	// After iterating through all files and blocks, populate the unique resources slice
+	for provider, typesSet := range resourceTypesMap {
+		modInfo := equivalentMap[provider]
+		for rt := range typesSet {
+			modInfo.Resources = append(modInfo.Resources, rt)
+		}
+		equivalentMap[provider] = modInfo
+	}
+
+	return equivalentMap, nil
+}
+
+func getVariableAttributes(block *hclwrite.Block) map[string]string {
+	attributeToVariableMap := make(map[string]string)
+	for name, attr := range block.Body().Attributes() {
+		value := string(attr.Expr().BuildTokens(nil).Bytes())
+		if !isVariableReference(value) {
+			continue
+		}
+
+		if varName := parseVariableReference(value); varName != "" {
+			attributeToVariableMap[name] = varName
+		}
+	}
+
+	// Handle nested blocks too
+	for _, nestedBlock := range block.Body().Blocks() {
+		maps.Copy(attributeToVariableMap, getVariableAttributes(nestedBlock))
+	}
+	return attributeToVariableMap
+}
+
+func isVariableReference(s string) bool {
+	return strings.Contains(s, "var.")
+}
+
+var reVarRef = regexp.MustCompile(`^var\.(\w+)$`)
+
+func parseVariableReference(s string) string {
+	match := reVarRef.FindStringSubmatch(strings.TrimSpace(s))
+	if len(match) > 1 {
+		return match[1]
+	}
+	return ""
+}
+
+// GetProviderFromResourceType extracts the provider name from a Terraform resource type.
+// For example: "aws_s3_bucket" → "aws", "azurerm_network_interface" → "azurerm"
+func GetProviderFromResourceType(resourceType string) (string, error) {
+	if resourceType == "" {
+		return "", errors.New("resource type cannot be empty")
+	}
+	parts := strings.SplitN(resourceType, "_", 2)
+	if len(parts) < 2 {
+		return "", errors.New("invalid Terraform resource type format")
+	}
+	return parts[0], nil
 }

@@ -284,14 +284,10 @@ func (m FileMetadatas) ToMap() map[string]FileMetadata {
 // Documents
 type Documents struct {
 	Documents []Document `json:"document"`
-	Modules   []Module   `json:"modules,omitempty"`
 }
 
 // Document
 type Document map[string]interface{}
-
-// Module
-type Module map[string]interface{}
 
 // Combine merge documents from FileMetadatas using the ID as reference for Document ID and FileName as reference for file
 func (m FileMetadatas) Combine(lineInfo bool) Documents {
