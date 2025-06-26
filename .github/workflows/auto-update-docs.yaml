@@ -34,12 +34,16 @@ jobs:
       - name: Run Python script
         run: python documentation/local_gen.py assets/queries/ --resources-json "documentation/resources.json"
 
+      - name: check branch
+        run: git branch
+        
       - name: Commit changes
         uses: iarekylew00t/verified-bot-commit@v1
         with:
           message: 'feat: Some changes'
           files: |
             **
+      
       
       - name: Push branch
         run: git push origin $BRANCH_NAME
