@@ -26,6 +26,7 @@ type ParsedModule struct {
 	SourceType    string // local, git, registry, etc.
 	RegistryScope string // public, private, or "" (non-registry)
 	Variables     map[string]string
+	ResourceTypes []string
 }
 
 type ModuleParseResult struct {
@@ -376,11 +377,14 @@ func ParseAllModuleVariables(modules map[string]ParsedModule, rootDir string) []
 					continue
 				}
 				modulePath := ResolveModulePath(mod.Source, rootDir)
-				err := fmt.Errorf("not implemented for %s", modulePath) // Placeholder for actual variable extraction logic
 
-				// TODO: Implement ExtractModuleVariables to extract variables from the module path
-				// vars, err := ExtractModuleVariables(modulePath)
-				// mod.Variables = vars
+				resourceTypes, attrToVar, err := generateEquivalentMap(modulePath)
+				if err != nil {
+					log.Printf("Warning: failed to generate equivalent map")
+				} else {
+					mod.Variables = attrToVar
+					mod.ResourceTypes = resourceTypes
+				}
 				output <- ModuleParseResult{Module: mod, Error: err}
 			}
 		}()
@@ -422,7 +426,8 @@ func ConvertParsedModulesToModelModules(mods []ParsedModule) []model.Module {
 			"isLocal":       m.IsLocal,
 			"sourceType":    m.SourceType,
 			"registryScope": m.RegistryScope,
-			"variables":     "", // Placeholder for variables, should be populated if needed
+			"variables":     m.Variables,
+			"resourceTypes": m.ResourceTypes,
 		})
 	}
 	return result
@@ -506,10 +511,10 @@ func getVariableAttributes(block *hclwrite.Block) map[string]string {
 		}
 	}
 
-	// TODO: Handle nested blocks too?
-	// for _, nestedBlock := range block.Body().Blocks() {
-	// 	getVariableAttributes(nestedBlock)
-	// }
+	// Handle nested blocks too
+	for _, nestedBlock := range block.Body().Blocks() {
+		maps.Copy(attributeToVariableMap, getVariableAttributes(nestedBlock))
+	}
 	return attributeToVariableMap
 }
 
@@ -517,7 +522,7 @@ func isVariableReference(s string) bool {
 	return strings.Contains(s, "var.")
 }
 
-var reVarRef = regexp.MustCompile(`var\.(\w+)`)
+var reVarRef = regexp.MustCompile(`^var\.(\w+)$`)
 
 func parseVariableReference(s string) string {
 	match := reVarRef.FindStringSubmatch(s)
