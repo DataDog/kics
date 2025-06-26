@@ -11,7 +11,7 @@ jobs:
   run-script-and-pr:
     runs-on: ubuntu-latest
     env:
-      BRANCH_NAME: auto/gen-${{ github.run_id }} 
+      BRANCH_NAME: auto.gen-${{ github.run_id }} 
 
 
     steps:
