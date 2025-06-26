@@ -8,7 +8,7 @@
         "rules": [
           {
             "name": "alb_deletion_protection_disabled",
-            "short_description": "ALB Deletion Protection Disabledddddddddddddddd"
+            "short_description": "ALB Deletion Protection Disableddddddddddddddddd"
           },
           {
             "name": "alb_is_not_integrated_with_waf",
