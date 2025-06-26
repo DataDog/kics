@@ -40,6 +40,7 @@ jobs:
           message: 'feat: Some changes'
           files: |
             **
+          ref: "heads/${{ env.BRANCH_NAME }}"
       
       - name: Push branch
         run: git push origin ${{ env.BRANCH_NAME }}
