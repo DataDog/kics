@@ -34,11 +34,15 @@ jobs:
       - name: Run Python script
         run: python documentation/local_gen.py assets/queries/ --resources-json "documentation/resources.json"
 
-      - name: check branch
-        run: git branch
-
-      - name: Commit changes
-        run: git commit -m "some changes"
+      - name: Run the Action
+        uses: devops-infra/action-commit-push@master
+        with:
+          github_token: "${{ secrets.GITHUB_TOKEN }}"
+          add_timestamp: true
+          commit_prefix: "[AUTO]"
+          commit_message: "Automatic commit"
+          force: false
+          target_branch: update/version
       
       - name: Push branch
         run: git push origin $BRANCH_NAME
