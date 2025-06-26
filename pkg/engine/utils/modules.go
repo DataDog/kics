@@ -1,6 +1,7 @@
 package utils
 
 import (
+	"errors"
 	"fmt"
 	"log"
 	"maps"
@@ -524,4 +525,17 @@ func parseVariableReference(s string) string {
 		return match[1]
 	}
 	return ""
+}
+
+// GetProviderFromResourceType extracts the provider name from a Terraform resource type.
+// For example: "aws_s3_bucket" → "aws", "azurerm_network_interface" → "azurerm"
+func GetProviderFromResourceType(resourceType string) (string, error) {
+	if resourceType == "" {
+		return "", errors.New("resource type cannot be empty")
+	}
+	parts := strings.SplitN(resourceType, "_", 2)
+	if len(parts) < 2 {
+		return "", errors.New("invalid Terraform resource type format")
+	}
+	return parts[0], nil
 }

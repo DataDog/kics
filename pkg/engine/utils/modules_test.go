@@ -8,6 +8,7 @@ import (
 	"testing"
 
 	"github.com/Checkmarx/kics/pkg/model"
+	"github.com/stretchr/testify/require"
 )
 
 func prepareMockModule(t *testing.T, baseDir, moduleName string, files map[string]string) string {
@@ -410,6 +411,63 @@ func TestDetectModuleSourceTypeWithScope(t *testing.T) {
 			if gotType != tt.wantType || gotScope != tt.wantScope {
 				t.Errorf("DetectModuleSourceType(%q) = (%q, %q), want (%q, %q)",
 					tt.source, gotType, gotScope, tt.wantType, tt.wantScope)
+			}
+		})
+	}
+}
+
+func TestGetProviderFromResourceType(t *testing.T) {
+	tests := []struct {
+		name      string
+		input     string
+		expected  string
+		expectErr bool
+	}{
+		{
+			name:     "Valid AWS resource",
+			input:    "aws_s3_bucket",
+			expected: "aws",
+		},
+		{
+			name:     "Valid Azure resource",
+			input:    "azurerm_network_interface",
+			expected: "azurerm",
+		},
+		{
+			name:     "Valid GCP resource",
+			input:    "google_compute_instance",
+			expected: "google",
+		},
+		{
+			name:      "Invalid empty input",
+			input:     "",
+			expectErr: true,
+		},
+		{
+			name:      "Invalid no underscore",
+			input:     "aws",
+			expectErr: true,
+		},
+		{
+			name:     "Custom provider",
+			input:    "customprovider_widget",
+			expected: "customprovider",
+		},
+		{
+			name:     "Short input with underscore",
+			input:    "a_b",
+			expected: "a",
+		},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			provider, err := GetProviderFromResourceType(tt.input)
+			if tt.expectErr {
+				require.Error(t, err)
+			} else {
+				require.NoError(t, err)
+				require.Equal(t, tt.expected, provider)
 			}
 		})
 	}
