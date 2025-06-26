@@ -36,14 +36,9 @@ jobs:
 
       - name: check branch
         run: git branch
-        
+
       - name: Commit changes
-        uses: iarekylew00t/verified-bot-commit@v1
-        with:
-          message: 'feat: Some changes'
-          files: |
-            **
-      
+        run: git commit -m "some changes"
       
       - name: Push branch
         run: git push origin $BRANCH_NAME
