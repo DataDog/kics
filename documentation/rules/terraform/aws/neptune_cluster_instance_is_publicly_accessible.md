@@ -10,13 +10,21 @@ meta:
   category: "Access Control"
 ---
 ## Metadata
+
 **Name:** `aws/neptune_cluster_instance_is_publicly_accessible`
+
 **Query Name** `Neptune Cluster Instance is Publicly Accessible`
+
 **Id:** `9ba198e0-fef4-464a-8a4d-75ea55300de7`
+
 **Cloud Provider:** aws
+
 **Platform** Terraform
+
 **Severity:** High
+
 **Category:** Access Control
+
 ## Description
 Amazon Neptune cluster instances should not be publicly accessible to minimize the risk of unauthorized access to sensitive graph data. When a Neptune instance is publicly accessible, it can be accessed directly from the internet, potentially exposing it to attacks and unauthorized access attempts. To properly secure Neptune instances, set the 'publicly_accessible' attribute to 'false' as shown in the following example: 
 ```

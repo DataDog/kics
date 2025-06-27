@@ -10,13 +10,21 @@ meta:
   category: "Access Control"
 ---
 ## Metadata
+
 **Name:** `aws/msk_broker_is_publicly_accessible`
+
 **Query Name** `MSK Broker Is Publicly Accessible`
+
 **Id:** `54378d69-dd7c-4b08-a43e-80d563396857`
+
 **Cloud Provider:** aws
+
 **Platform** Terraform
+
 **Severity:** High
+
 **Category:** Access Control
+
 ## Description
 Amazon MSK (Managed Streaming for Kafka) clusters with public accessibility enabled allow connections from the internet, which significantly expands the attack surface and increases the risk of unauthorized access to sensitive data streams. When MSK brokers are publicly accessible, they can be targeted by malicious actors who may attempt to intercept data, perform denial-of-service attacks, or exploit vulnerabilities to gain deeper access to your infrastructure. 
 

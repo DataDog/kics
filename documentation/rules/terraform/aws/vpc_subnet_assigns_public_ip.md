@@ -10,13 +10,21 @@ meta:
   category: "Networking and Firewall"
 ---
 ## Metadata
+
 **Name:** `aws/vpc_subnet_assigns_public_ip`
+
 **Query Name** `VPC Subnet Assigns Public IP`
+
 **Id:** `52f04a44-6bfa-4c41-b1d3-4ae99a2de05c`
+
 **Cloud Provider:** aws
+
 **Platform** Terraform
+
 **Severity:** Medium
+
 **Category:** Networking and Firewall
+
 ## Description
 This check ensures that AWS VPC subnets do not automatically assign public IP addresses by verifying the value of the `map_public_ip_on_launch` attribute. If this attribute is set to `true`, as shown in `map_public_ip_on_launch = true`, instances launched in the subnet will receive public IPs by default, potentially exposing them to the public internet. Leaving this misconfiguration unaddressed increases the risk of unauthorized access, data breaches, and external attacks.
 

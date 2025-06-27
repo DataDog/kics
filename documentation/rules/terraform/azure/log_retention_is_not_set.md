@@ -10,13 +10,21 @@ meta:
   category: "Observability"
 ---
 ## Metadata
+
 **Name:** `azure/log_retention_is_not_set`
+
 **Query Name** `Log Retention Is Not Set`
+
 **Id:** `ffb02aca-0d12-475e-b77c-a726f7aeff4b`
+
 **Cloud Provider:** azure
+
 **Platform** Terraform
+
 **Severity:** Medium
+
 **Category:** Observability
+
 ## Description
 The `log_retention` server parameter in Azure PostgreSQL determines whether database logs are retained, which is essential for auditing and troubleshooting purposes. If this parameter is set to `OFF` as shown below, log data will not be persisted, potentially hindering investigations into security incidents or operational issues:
 

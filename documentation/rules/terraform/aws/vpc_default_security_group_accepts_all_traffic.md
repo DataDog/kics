@@ -10,13 +10,21 @@ meta:
   category: "Networking and Firewall"
 ---
 ## Metadata
+
 **Name:** `aws/vpc_default_security_group_accepts_all_traffic`
+
 **Query Name** `VPC Default Security Group Accepts All Traffic`
+
 **Id:** `9a4ef195-74b9-4c58-b8ed-2b2fe4353a75`
+
 **Cloud Provider:** aws
+
 **Platform** Terraform
+
 **Severity:** High
+
 **Category:** Networking and Firewall
+
 ## Description
 Default Security Groups are automatically created when a VPC is created and allow all inbound traffic from resources assigned to the same security group and all outbound traffic by default when explicitly configured with open rules. This creates a significant security vulnerability as it allows unrestricted network access between resources, potentially enabling lateral movement during a breach. 
 

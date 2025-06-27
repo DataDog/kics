@@ -10,13 +10,21 @@ meta:
   category: "Availability"
 ---
 ## Metadata
+
 **Name:** `aws/ecs_service_without_running_tasks`
+
 **Query Name** `ECS Service Without Running Tasks`
+
 **Id:** `91f16d09-689e-4926-aca7-155157f634ed`
+
 **Cloud Provider:** aws
+
 **Platform** Terraform
+
 **Severity:** Low
+
 **Category:** Availability
+
 ## Description
 The ECS Service should have at least one task running, which is defined by the `desired_count` attribute in the Terraform configuration. An unsafe configuration, such as:
 

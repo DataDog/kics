@@ -10,13 +10,21 @@ meta:
   category: "Networking and Firewall"
 ---
 ## Metadata
+
 **Name:** `azure/postgres_enforce_ssl_connection_disabled`
+
 **Query Name** `'ssl_enforcement_enabled' is not set to 'ENABLED' for PostgreSQL Database Server`
+
 **Id:** `93f9tyjk-e5f6-7890-ab12-cd34ef567890`
+
 **Cloud Provider:** azure
+
 **Platform** Terraform
+
 **Severity:** High
+
 **Category:** Networking and Firewall
+
 ## Description
 SSL/TLS encryption is essential for PostgreSQL Database Servers to protect sensitive data during transmission between the client and server. When 'ssl_enforcement_enabled' is not set to 'ENABLED', data transferred between clients and the database is vulnerable to eavesdropping, man-in-the-middle attacks, and data tampering. This security vulnerability could lead to unauthorized access and data exposure.
 

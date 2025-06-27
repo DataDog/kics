@@ -10,13 +10,21 @@ meta:
   category: "Secret Management"
 ---
 ## Metadata
+
 **Name:** `azure/key_expiration_not_set`
+
 **Query Name** `Key Expiration Not Set`
+
 **Id:** `4d080822-5ee2-49a4-8984-68f3d4c890fc`
+
 **Cloud Provider:** azure
+
 **Platform** Terraform
+
 **Severity:** Medium
+
 **Category:** Secret Management
+
 ## Description
 To ensure cryptographic hygiene and limit risk exposure, all keys managed by Azure Key Vault should have an explicit expiration date set using the `expiration_date` attribute. Without an expiration, keys may remain valid indefinitely, increasing the likelihood of unauthorized access or misuse if the key is ever compromised. For example, a secure configuration includes `expiration_date`, as shown below:
 

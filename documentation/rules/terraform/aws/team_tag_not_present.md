@@ -10,13 +10,21 @@ meta:
   category: "Best Practices"
 ---
 ## Metadata
+
 **Name:** `aws/team_tag_not_present`
+
 **Query Name** `Team Tag Missing`
+
 **Id:** `a2b3c4d5-e6f7-8901-gh23-ijkl456m7890`
+
 **Cloud Provider:** aws
+
 **Platform** Terraform
+
 **Severity:** Info
+
 **Category:** Best Practices
+
 ## Description
 This check ensures that every cloud resource defined in Terraform includes a "Team" tag within the `tags` attribute, which is critical for tracking resource ownership and accountability. Without a "Team" tag (e.g., `tags = { Environment = "Production" }`), it becomes difficult to determine resource owners, leading to challenges in cost allocation, incident response, and lifecycle management. If left unaddressed, the absence of this tag can result in unmanaged resources remaining active, increasing the risk of security vulnerabilities and unnecessary expenses.
 

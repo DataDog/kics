@@ -10,13 +10,21 @@ meta:
   category: "Networking and Firewall"
 ---
 ## Metadata
+
 **Name:** `aws/elasticache_without_vpc`
+
 **Query Name** `ElastiCache Without VPC`
+
 **Id:** `8c849af7-a399-46f7-a34c-32d3dc96f1fc`
+
 **Cloud Provider:** aws
+
 **Platform** Terraform
+
 **Severity:** Low
+
 **Category:** Networking and Firewall
+
 ## Description
 Amazon ElastiCache clusters should be launched within a Virtual Private Cloud (VPC) to ensure that network access is restricted and controlled. When the `subnet_group_name` attribute is omitted, as shown below, ElastiCache is deployed outside a VPC, making it potentially accessible over the public internet and exposing sensitive cached data to unauthorized actors:
 

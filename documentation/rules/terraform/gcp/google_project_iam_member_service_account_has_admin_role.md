@@ -10,13 +10,21 @@ meta:
   category: "Access Control"
 ---
 ## Metadata
+
 **Name:** `gcp/google_project_iam_member_service_account_has_admin_role`
+
 **Query Name** `Google Project IAM Member Service Account Has Admin Role`
+
 **Id:** `84d36481-fd63-48cb-838e-635c44806ec2`
+
 **Cloud Provider:** gcp
+
 **Platform** Terraform
+
 **Severity:** High
+
 **Category:** Access Control
+
 ## Description
 This query identifies when a service account is granted an administrative role in a Google Cloud project, which violates the principle of least privilege. Service accounts with administrative permissions like 'roles/iam.serviceAccountAdmin' can create and manage other service accounts, potentially leading to privilege escalation attacks and unauthorized access across your Google Cloud environment.
 

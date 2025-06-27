@@ -10,13 +10,21 @@ meta:
   category: "Insecure Configurations"
 ---
 ## Metadata
+
 **Name:** `aws/redshift_publicly_accessible`
+
 **Query Name** `Redshift Publicly Accessible`
+
 **Id:** `af173fde-95ea-4584-b904-bb3923ac4bda`
+
 **Cloud Provider:** aws
+
 **Platform** Terraform
+
 **Severity:** High
+
 **Category:** Insecure Configurations
+
 ## Description
 Amazon Redshift clusters with public accessibility enabled can be accessed from the internet, creating a significant security risk by potentially exposing sensitive data to unauthorized users. By default, the 'publicly_accessible' parameter is set to true if not explicitly defined, meaning your cluster is publicly accessible unless you specifically configure otherwise. To secure your Redshift cluster, always set 'publicly_accessible = false' as shown below:
 

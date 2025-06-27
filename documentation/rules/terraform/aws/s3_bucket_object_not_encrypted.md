@@ -10,13 +10,21 @@ meta:
   category: "Encryption"
 ---
 ## Metadata
+
 **Name:** `aws/s3_bucket_object_not_encrypted`
+
 **Query Name** `S3 Bucket Object Not Encrypted`
+
 **Id:** `5fb49a69-8d46-4495-a2f8-9c8c622b2b6e`
+
 **Cloud Provider:** aws
+
 **Platform** Terraform
+
 **Severity:** High
+
 **Category:** Encryption
+
 ## Description
 This check verifies that S3 bucket objects have server-side encryption enabled to protect sensitive data at rest. Unencrypted S3 objects could expose confidential information if unauthorized access occurs, potentially leading to data breaches and compliance violations. Server-side encryption is a critical security control that should be implemented for all objects stored in S3 buckets.
 

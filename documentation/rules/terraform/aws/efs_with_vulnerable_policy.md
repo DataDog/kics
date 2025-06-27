@@ -10,13 +10,21 @@ meta:
   category: "Access Control"
 ---
 ## Metadata
+
 **Name:** `aws/efs_with_vulnerable_policy`
+
 **Query Name** `EFS With Vulnerable Policy`
+
 **Id:** `fae52418-bb8b-4ac2-b287-0b9082d6a3fd`
+
 **Cloud Provider:** aws
+
 **Platform** Terraform
+
 **Severity:** Medium
+
 **Category:** Access Control
+
 ## Description
 AWS EFS file system policies should avoid the use of wildcards (`*`) in the `Action` and `Principal` fields, as shown below, because this grants broad permissions to all users and all actions:
 

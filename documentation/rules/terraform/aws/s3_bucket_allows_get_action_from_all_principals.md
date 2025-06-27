@@ -10,13 +10,21 @@ meta:
   category: "Access Control"
 ---
 ## Metadata
+
 **Name:** `aws/s3_bucket_allows_get_action_from_all_principals`
+
 **Query Name** `S3 Bucket Allows Get Action From All Principals`
+
 **Id:** `1df37f4b-7197-45ce-83f8-9994d2fcf885`
+
 **Cloud Provider:** aws
+
 **Platform** Terraform
+
 **Severity:** High
+
 **Category:** Access Control
+
 ## Description
 When S3 bucket policies allow the GetObject action from all principals (using 'Principal': '*' or 'Principal': {'AWS': '*'}), they expose private data to anyone on the internet, creating a significant data breach risk. This vulnerability could lead to unauthorized access to sensitive information, intellectual property theft, or compliance violations with regulations like GDPR or HIPAA. Instead of using permissive policies like:
 ```

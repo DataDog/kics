@@ -10,13 +10,21 @@ meta:
   category: "Networking and Firewall"
 ---
 ## Metadata
+
 **Name:** `aws/default_security_groups_with_unrestricted_traffic`
+
 **Query Name** `Default Security Groups With Unrestricted Traffic`
+
 **Id:** `46883ce1-dc3e-4b17-9195-c6a601624c73`
+
 **Cloud Provider:** aws
+
 **Platform** Terraform
+
 **Severity:** High
+
 **Category:** Networking and Firewall
+
 ## Description
 Default security groups in AWS act as the initial line of defense for EC2 instances, but when configured to allow unrestricted traffic (0.0.0.0/0 for IPv4 or ::/0 for IPv6), they expose resources to potential attacks from any source on the internet. This vulnerability creates an attack surface that allows malicious actors to potentially access your instances, leading to unauthorized access, data breaches, or service disruption. To mitigate this risk, always configure security groups with specific CIDR blocks that only permit traffic from trusted sources, as shown in the following secure example:
 

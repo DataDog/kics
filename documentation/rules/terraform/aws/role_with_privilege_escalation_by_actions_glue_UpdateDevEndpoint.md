@@ -10,13 +10,21 @@ meta:
   category: "Access Control"
 ---
 ## Metadata
+
 **Name:** `aws/role_with_privilege_escalation_by_actions_glue_UpdateDevEndpoint`
+
 **Query Name** `Role With Privilege Escalation By Actions 'glue:UpdateDevEndpoint'`
+
 **Id:** `eda48c88-2b7d-4e34-b6ca-04c0194aee17`
+
 **Cloud Provider:** aws
+
 **Platform** Terraform
+
 **Severity:** Medium
+
 **Category:** Access Control
+
 ## Description
 Granting the `glue:UpdateDevEndpoint` permission with the `Resource` set to `"*"` in an AWS IAM role introduces a privilege escalation risk. The `glue:UpdateDevEndpoint` action allows modification of existing AWS Glue DevEndpoints, including the ability to attach arbitrary IAM roles to these endpoints. An attacker with this permission could attach a role with higher privileges to a DevEndpoint and then use that role's credentials to perform unauthorized actions, bypassing intended security boundaries. If not addressed, this can lead to full account compromise or access to sensitive information by escalating the attacker's privileges within the AWS environment.
 

@@ -10,13 +10,21 @@ meta:
   category: "Insecure Configurations"
 ---
 ## Metadata
+
 **Name:** `gcp/gke_legacy_authorization_enabled`
+
 **Query Name** `GKE Legacy Authorization Enabled`
+
 **Id:** `5baa92d2-d8ee-4c75-88a4-52d9d8bb8067`
+
 **Cloud Provider:** gcp
+
 **Platform** Terraform
+
 **Severity:** High
+
 **Category:** Insecure Configurations
+
 ## Description
 Legacy Authorization (ABAC) in GKE grants all authenticated users with full cluster administrator privileges, which violates the principle of least privilege and creates significant security risks. When enabled, any authenticated user can perform any operation on any resource in the cluster, potentially leading to unauthorized access, data breaches, and complete cluster compromise. To secure your GKE cluster, ensure 'enable_legacy_abac' is set to false as shown below:
 

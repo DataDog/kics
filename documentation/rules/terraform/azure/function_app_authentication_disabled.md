@@ -10,13 +10,21 @@ meta:
   category: "Access Control"
 ---
 ## Metadata
+
 **Name:** `azure/function_app_authentication_disabled`
+
 **Query Name** `Function App Authentication Disabled`
+
 **Id:** `e65a0733-94a0-4826-82f4-df529f4c593f`
+
 **Cloud Provider:** azure
+
 **Platform** Terraform
+
 **Severity:** Medium
+
 **Category:** Access Control
+
 ## Description
 Azure Function App authentication settings should be enabled to ensure that only authorized users and services can access the deployed function endpoints. Leaving authentication (`auth_settings { enabled = true }`) disabled, as shown below, permits unauthenticated, potentially malicious access to the function app, increasing the risk of data exposure or unauthorized actions:
 

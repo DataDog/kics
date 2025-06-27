@@ -10,13 +10,21 @@ meta:
   category: "Best Practices"
 ---
 ## Metadata
+
 **Name:** `aws/alb_not_dropping_invalid_headers`
+
 **Query Name** `ALB Not Dropping Invalid Headers`
+
 **Id:** `6e3fd2ed-5c83-4c68-9679-7700d224d379`
+
 **Cloud Provider:** aws
+
 **Platform** Terraform
+
 **Severity:** Medium
+
 **Category:** Best Practices
+
 ## Description
 It is recommended to set the `drop_invalid_header_fields` attribute to `true` in AWS Application Load Balancer (`aws_alb`) resources. If this attribute is omitted or set to `false`, as in the examples below:
 

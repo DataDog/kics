@@ -10,13 +10,21 @@ meta:
   category: "Insecure Configurations"
 ---
 ## Metadata
+
 **Name:** `azure/security_center_pricing_tier_is_not_standard`
+
 **Query Name** `Security Center Pricing Tier Is Not Standard`
+
 **Id:** `819d50fd-1cdf-45c3-9936-be408aaad93e`
+
 **Cloud Provider:** azure
+
 **Platform** Terraform
+
 **Severity:** Medium
+
 **Category:** Insecure Configurations
+
 ## Description
 Selecting the appropriate pricing tier for Azure Security Center is crucial for ensuring comprehensive security monitoring and protection. If the `tier` attribute in the `azurerm_security_center_subscription_pricing` resource is set to `"Free"`, as shown below:
 

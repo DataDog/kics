@@ -10,13 +10,21 @@ meta:
   category: "Access Control"
 ---
 ## Metadata
+
 **Name:** `aws/user_with_privilege_escalation_by_actions_iam_PassRole_and_ec2_RunInstances`
+
 **Query Name** `User With Privilege Escalation By Actions 'ec2:RunInstances' And 'iam:PassRole'`
+
 **Id:** `89561b03-cb35-44a9-a7e9-8356e71606f4`
+
 **Cloud Provider:** aws
+
 **Platform** Terraform
+
 **Severity:** Medium
+
 **Category:** Access Control
+
 ## Description
 Granting a user the permissions `'ec2:RunInstances'` and `'iam:PassRole'` with the resource set to `'*'` allows them to launch EC2 instances and attach any IAM role, potentially escalating their privileges beyond intended limits. 
 

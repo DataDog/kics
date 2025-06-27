@@ -10,13 +10,21 @@ meta:
   category: "Observability"
 ---
 ## Metadata
+
 **Name:** `aws/s3_bucket_object_level_cloudtrail_logging_disabled`
+
 **Query Name** `S3 Bucket Object Level CloudTrail Logging Disabled`
+
 **Id:** `a8fc2180-b3ac-4c93-bd0d-a55b974e4b07`
+
 **Cloud Provider:** aws
+
 **Platform** Terraform
+
 **Severity:** Medium
+
 **Category:** Observability
+
 ## Description
 S3 bucket object-level CloudTrail logging should be enabled for both read and write events by specifying `read_write_type = "All"` in the `event_selector` block. Without this, only management events may be logged, leaving access or changes to individual objects unmonitored. If left unaddressed, this misconfiguration can result in undetected data exfiltration or unauthorized access, as malicious or accidental activities at the object level within the bucket would not be captured in CloudTrail logs.
 

@@ -10,13 +10,21 @@ meta:
   category: "Observability"
 ---
 ## Metadata
+
 **Name:** `azure/postgresql_log_disconnections_not_set`
+
 **Query Name** `PostgreSQL Log Disconnections Not Set`
+
 **Id:** `07f7134f-9f37-476e-8664-670c218e4702`
+
 **Cloud Provider:** azure
+
 **Platform** Terraform
+
 **Severity:** Medium
+
 **Category:** Observability
+
 ## Description
 The PostgreSQL server parameter `log_disconnections` controls whether session disconnections are logged, which is important for auditing and monitoring database activity. If this parameter is set to `"off"`, as shown in the configuration below, database disconnect events will not be recorded, making it significantly harder to detect unauthorized access or troubleshoot potential security incidents.
 

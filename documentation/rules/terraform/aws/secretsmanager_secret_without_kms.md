@@ -10,13 +10,21 @@ meta:
   category: "Encryption"
 ---
 ## Metadata
+
 **Name:** `aws/secretsmanager_secret_without_kms`
+
 **Query Name** `Secretsmanager Secret Without KMS`
+
 **Id:** `a2f548f2-188c-4fff-b172-e9a6acb216bd`
+
 **Cloud Provider:** aws
+
 **Platform** Terraform
+
 **Severity:** Medium
+
 **Category:** Encryption
+
 ## Description
 By default, AWS Secrets Manager encrypts secrets using the default AWS managed key, which may not provide the desired level of control over key rotation, access policies, or auditability. Without explicitly specifying a `kms_key_id` in your Terraform resource, as shown below, secrets will not use a customer-managed AWS KMS key (CMK) for encryption:
 

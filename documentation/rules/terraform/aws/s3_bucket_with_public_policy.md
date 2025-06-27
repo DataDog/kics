@@ -10,13 +10,21 @@ meta:
   category: "Access Control"
 ---
 ## Metadata
+
 **Name:** `aws/s3_bucket_with_public_policy`
+
 **Query Name** `S3 Bucket Allows Public Policy`
+
 **Id:** `1a4bc881-9f69-4d44-8c9a-d37d08f54c50`
+
 **Cloud Provider:** aws
+
 **Platform** Terraform
+
 **Severity:** High
+
 **Category:** Access Control
+
 ## Description
 S3 buckets should block public policies to prevent unauthorized access to bucket contents. When the 'block_public_policy' attribute is set to false or not defined in the aws_s3_bucket_public_access_block resource, attackers could potentially attach public policies to the bucket, exposing sensitive data to the internet. To secure your S3 bucket, ensure that block_public_policy is set to true as shown in the secure example:
 

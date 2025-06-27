@@ -10,13 +10,21 @@ meta:
   category: "Insecure Configurations"
 ---
 ## Metadata
+
 **Name:** `azure/aks_network_policy_misconfigured`
+
 **Query Name** `AKS Network Policy Misconfigured`
+
 **Id:** `f5342045-b935-402d-adf1-8dbbd09c0eef`
+
 **Cloud Provider:** azure
+
 **Platform** Terraform
+
 **Severity:** Low
+
 **Category:** Insecure Configurations
+
 ## Description
 Azure Kubernetes Service (AKS) clusters should have a proper network policy configured using the `network_profile.network_policy` attribute to enforce the principle of least privilege and restrict unnecessary network traffic between pods. If this attribute is omitted or misconfigured, as shown below, it leaves the cluster vulnerable to unrestricted communication between pods, increasing the risk of lateral movement and exposure if one pod is compromised.
 

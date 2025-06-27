@@ -10,13 +10,21 @@ meta:
   category: "Encryption"
 ---
 ## Metadata
+
 **Name:** `aws/elasticsearch_domain_not_encrypted_node_to_node`
+
 **Query Name** `Elasticsearch Domain Not Encrypted Node To Node`
+
 **Id:** `967eb3e6-26fc-497d-8895-6428beb6e8e2`
+
 **Cloud Provider:** aws
+
 **Platform** Terraform
+
 **Severity:** Medium
+
 **Category:** Encryption
+
 ## Description
 Enabling node-to-node encryption for an Elasticsearch domain ensures that data transferred between nodes in the Elasticsearch cluster is securely encrypted, preventing unauthorized access to data in transit. Without this configuration, as in the example where the `node_to_node_encryption` block is omitted, sensitive data could be intercepted by attackers during communication between cluster nodes. The secure configuration requires adding the block:
 

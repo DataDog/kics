@@ -10,13 +10,21 @@ meta:
   category: "Access Control"
 ---
 ## Metadata
+
 **Name:** `aws/s3_bucket_allows_public_acl`
+
 **Query Name** `S3 Bucket Allows Public ACL`
+
 **Id:** `d0cc8694-fcad-43ff-ac86-32331d7e867f`
+
 **Cloud Provider:** aws
+
 **Platform** Terraform
+
 **Severity:** Medium
+
 **Category:** Access Control
+
 ## Description
 Allowing public ACLs on an S3 bucket (`block_public_acls = false`) in Terraform configurations can expose the bucket and its contents to unauthorized public access, increasing the risk of data leakage or compromise. When public ACLs are permitted, anyone on the internet may be able to read from or write to the bucket, depending on the ACL applied. To mitigate this risk, the attribute `block_public_acls` should be set to `true` in the `aws_s3_bucket_public_access_block` resource, ensuring that public access via ACLs is blocked by default.
 

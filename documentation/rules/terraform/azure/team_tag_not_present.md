@@ -10,13 +10,21 @@ meta:
   category: "Best Practices"
 ---
 ## Metadata
+
 **Name:** `azure/team_tag_not_present`
+
 **Query Name** `Ensure that cloud resource has a 'team' tag`
+
 **Id:** `e8f4d3c2-b1a0-4e5f-8d7c-9a0b1c2d3e4f`
+
 **Cloud Provider:** azure
+
 **Platform** Terraform
+
 **Severity:** Info
+
 **Category:** Best Practices
+
 ## Description
 To ensure proper resource ownership and management accountability in Azure environments, all resources should include a `team` tag within their `tags` block. Without this tag, as shown below, it becomes difficult to identify who is responsible for the resource, increasing the risk of unmanaged assets, security oversights, and operational inefficiencies:
 

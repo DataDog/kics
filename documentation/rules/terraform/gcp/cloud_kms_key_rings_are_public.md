@@ -10,13 +10,21 @@ meta:
   category: "Encryption"
 ---
 ## Metadata
+
 **Name:** `gcp/cloud_kms_key_rings_are_public`
+
 **Query Name** `Cloud KMS Key Ring is anonymously or publicly accessible`
+
 **Id:** `d4e5f6g7-h8i9-0jkl-mnop-qrstuvwx1234`
+
 **Cloud Provider:** gcp
+
 **Platform** Terraform
+
 **Severity:** High
+
 **Category:** Encryption
+
 ## Description
 Cloud KMS Key Rings store and manage cryptographic keys used for data encryption in Google Cloud, and making them publicly accessible creates severe security risks that could lead to unauthorized access to sensitive encrypted data. When IAM policies grant permissions to 'allUsers' or 'allAuthenticatedUsers', it allows anyone on the internet or any authenticated Google account to access and potentially use these cryptographic keys. To properly secure key rings, ensure IAM members are specific identities (like `user:someone@example.com`) rather than public principals (`allUsers` or `allAuthenticatedUsers`), as shown in this secure example: `member = "user:someone@example.com"` versus the insecure pattern: `member = "allUsers"` or `members = ["allAuthenticatedUsers", "user:someone@example.com"]`.
 

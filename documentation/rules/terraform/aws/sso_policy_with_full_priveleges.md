@@ -10,13 +10,21 @@ meta:
   category: "Access Control"
 ---
 ## Metadata
+
 **Name:** `aws/sso_policy_with_full_priveleges`
+
 **Query Name** `SSO Policy with full privileges`
+
 **Id:** `132a8c31-9837-4203-9fd1-15ca210c7b73`
+
 **Cloud Provider:** aws
+
 **Platform** Terraform
+
 **Severity:** Medium
+
 **Category:** Access Control
+
 ## Description
 Single Sign-On (SSO) policies should be configured to grant only the specific administrative privileges necessary, rather than granting unrestricted access to all AWS resources. If the inline policy uses broad permissions such as `"Action": ["*"]` and `"Resource": ["*"]`, as seen in the example below, it grants users full administrative rights, bypassing the principles of least privilege:
 

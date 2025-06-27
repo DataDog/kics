@@ -10,13 +10,21 @@ meta:
   category: "Encryption"
 ---
 ## Metadata
+
 **Name:** `aws/workspaces_workspace_volume_not_encrypted`
+
 **Query Name** `Workspaces Workspace Volume Not Encrypted`
+
 **Id:** `b9033580-6886-401a-8631-5f19f5bb24c7`
+
 **Cloud Provider:** aws
+
 **Platform** Terraform
+
 **Severity:** High
+
 **Category:** Encryption
+
 ## Description
 AWS Workspaces provides virtual desktop infrastructure in the cloud with both root and user volumes that should be encrypted to protect sensitive data from unauthorized access. When these volumes are not encrypted, workspace data including user files, system configurations, and application data are vulnerable to exposure if the storage media is compromised or improperly decommissioned. To properly secure your Workspaces, both 'root_volume_encryption_enabled' and 'user_volume_encryption_enabled' attributes must be set to true as shown in the following example:
 

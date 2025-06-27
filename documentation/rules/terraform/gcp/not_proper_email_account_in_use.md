@@ -10,13 +10,21 @@ meta:
   category: "Insecure Configurations"
 ---
 ## Metadata
+
 **Name:** `gcp/not_proper_email_account_in_use`
+
 **Query Name** `Not Proper Email Account In Use`
+
 **Id:** `9356962e-4a4f-4d06-ac59-dc8008775eaa`
+
 **Cloud Provider:** gcp
+
 **Platform** Terraform
+
 **Severity:** Low
+
 **Category:** Insecure Configurations
+
 ## Description
 Using personal Gmail accounts instead of corporate credentials in IAM bindings, such as in the configuration below,
 

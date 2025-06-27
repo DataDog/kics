@@ -10,13 +10,21 @@ meta:
   category: "Networking and Firewall"
 ---
 ## Metadata
+
 **Name:** `azure/waf_is_disabled_for_azure_application_gateway`
+
 **Query Name** `WAF Is Disabled For Azure Application Gateway`
+
 **Id:** `2e48d91c-50e4-45c8-9312-27b625868a72`
+
 **Cloud Provider:** azure
+
 **Platform** Terraform
+
 **Severity:** Medium
+
 **Category:** Networking and Firewall
+
 ## Description
 This check ensures that the Azure Application Gateway has its Web Application Firewall (WAF) correctly configured and enabled, as indicated by the `waf_configuration { enabled = true }` attribute in Terraform. If WAF is not enabled or omitted from the configuration, the application gateway is left unprotected against common web attacks, such as SQL injection and cross-site scripting, increasing the risk of a successful attack. To mitigate this vulnerability, always configure WAF with `enabled = true` as shown below:
 

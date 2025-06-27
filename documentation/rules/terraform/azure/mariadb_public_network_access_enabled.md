@@ -10,13 +10,21 @@ meta:
   category: "Networking and Firewall"
 ---
 ## Metadata
+
 **Name:** `azure/mariadb_public_network_access_enabled`
+
 **Query Name** `MariaDB Server Public Network Access Enabled`
+
 **Id:** `7f0a8696-7159-4337-ad0d-8a3ab4a78195`
+
 **Cloud Provider:** azure
+
 **Platform** Terraform
+
 **Severity:** High
+
 **Category:** Networking and Firewall
+
 ## Description
 Azure MariaDB Server with public network access enabled allows direct connections from the internet, significantly increasing the risk of unauthorized access and potential data breaches. Attackers can attempt brute force attacks against your database credentials or exploit vulnerabilities if the server is publicly accessible. To properly secure your MariaDB Server, you should disable public network access by setting the 'public_network_access_enabled' attribute to 'false', as shown in the secure configuration example:
 

@@ -10,13 +10,21 @@ meta:
   category: "Insecure Defaults"
 ---
 ## Metadata
+
 **Name:** `aws/default_vpc_exists`
+
 **Query Name** `Default VPC Exists`
+
 **Id:** `96ed3526-0179-4c73-b1b2-372fde2e0d13`
+
 **Cloud Provider:** aws
+
 **Platform** Terraform
+
 **Severity:** Medium
+
 **Category:** Insecure Defaults
+
 ## Description
 Using the default VPC in AWS is not recommended, as it is a shared environment with default configurations that may not align with an organization's security and networking requirements. Resources created in the default VPC are more susceptible to unintended access, misconfiguration, or exposure. To mitigate this risk, it is best to define a custom VPC, such as:
 

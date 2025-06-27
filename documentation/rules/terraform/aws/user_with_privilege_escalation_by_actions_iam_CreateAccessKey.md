@@ -10,13 +10,21 @@ meta:
   category: "Access Control"
 ---
 ## Metadata
+
 **Name:** `aws/user_with_privilege_escalation_by_actions_iam_CreateAccessKey`
+
 **Query Name** `User With Privilege Escalation By Actions 'iam:CreateAccessKey'`
+
 **Id:** `113208f2-a886-4526-9ecc-f3218600e12c`
+
 **Cloud Provider:** aws
+
 **Platform** Terraform
+
 **Severity:** Medium
+
 **Category:** Access Control
+
 ## Description
 Granting a user the `iam:CreateAccessKey` action with a resource set to `"*"` allows that user to create access keys for any IAM user in the AWS account. This over-privileged configuration, as shown below, introduces a privilege escalation risk, as the user could generate access keys for higher-privileged users and gain unauthorized access to sensitive resources:
 

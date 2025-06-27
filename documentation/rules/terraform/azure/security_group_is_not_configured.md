@@ -10,13 +10,21 @@ meta:
   category: "Insecure Configurations"
 ---
 ## Metadata
+
 **Name:** `azure/security_group_is_not_configured`
+
 **Query Name** `Security Group is Not Configured`
+
 **Id:** `5c822443-e1ea-46b8-84eb-758ec602e844`
+
 **Cloud Provider:** azure
+
 **Platform** Terraform
+
 **Severity:** High
+
 **Category:** Insecure Configurations
+
 ## Description
 Network Security Groups (NSGs) in Azure provide filtering of network traffic to and from Azure resources within an Azure Virtual Network. When a subnet is not configured with an NSG, it lacks essential security controls that filter inbound and outbound traffic, potentially exposing resources to unauthorized access and network-based attacks. 
 

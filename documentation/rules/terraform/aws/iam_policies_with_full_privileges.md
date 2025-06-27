@@ -10,13 +10,21 @@ meta:
   category: "Access Control"
 ---
 ## Metadata
+
 **Name:** `aws/iam_policies_with_full_privileges`
+
 **Query Name** `IAM Policies With Full Privileges`
+
 **Id:** `2f37c4a3-58b9-4afe-8a87-d7f1d2286f84`
+
 **Cloud Provider:** aws
+
 **Platform** Terraform
+
 **Severity:** Medium
+
 **Category:** Access Control
+
 ## Description
 IAM policies should never allow full administrative privileges (for all resources), as this is achieved by setting the `"Action"` to `"*"` and the `"Resource"` to `"*"`, as shown below:
 

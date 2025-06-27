@@ -10,13 +10,21 @@ meta:
   category: "Insecure Configurations"
 ---
 ## Metadata
+
 **Name:** `aws/api_gateway_without_security_policy`
+
 **Query Name** `API Gateway Without Security Policy`
+
 **Id:** `4e1cc5d3-2811-4fb2-861c-ee9b3cb7f90b`
+
 **Cloud Provider:** aws
+
 **Platform** Terraform
+
 **Severity:** Medium
+
 **Category:** Insecure Configurations
+
 ## Description
 The AWS API Gateway custom domain resource should have a security policy explicitly defined to enforce the use of strong encryption protocols. By omitting the `security_policy` attribute or leaving it unset, as shown below:
 

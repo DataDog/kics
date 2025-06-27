@@ -10,13 +10,21 @@ meta:
   category: "Resource Management"
 ---
 ## Metadata
+
 **Name:** `gcp/service_account_with_improper_privileges`
+
 **Query Name** `Service Account with Improper Privileges`
+
 **Id:** `cefdad16-0dd5-4ac5-8ed2-a37502c78672`
+
 **Cloud Provider:** gcp
+
 **Platform** Terraform
+
 **Severity:** Medium
+
 **Category:** Resource Management
+
 ## Description
 Granting a service account excessive privileges such as `roles/admin`, `roles/editor`, `roles/owner`, or any write-level roles can expose the environment to the risk of privilege escalation or unintended modifications. This misconfiguration is seen in Terraform when bindings like:
 

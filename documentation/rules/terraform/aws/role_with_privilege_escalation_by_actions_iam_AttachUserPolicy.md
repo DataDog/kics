@@ -10,13 +10,21 @@ meta:
   category: "Access Control"
 ---
 ## Metadata
+
 **Name:** `aws/role_with_privilege_escalation_by_actions_iam_AttachUserPolicy`
+
 **Query Name** `Role With Privilege Escalation By Actions 'iam:AttachUserPolicy'`
+
 **Id:** `7c96920c-6fd0-449d-9a52-0aa431b6beaf`
+
 **Cloud Provider:** aws
+
 **Platform** Terraform
+
 **Severity:** Medium
+
 **Category:** Access Control
+
 ## Description
 Allowing an IAM role the action `iam:AttachUserPolicy` with a wildcard resource (`Resource = "*"`) grants broad privileges, enabling the role to attach any managed policy to any user in the AWS account. This constitutes a significant privilege escalation risk, as it allows users or roles with this permission to grant themselves or others additional permissions, potentially escalating to administrative access. To mitigate this risk, restrict the `Resource` attribute to specific ARNs and only grant necessary actions, as in the following secure example:
 

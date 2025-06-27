@@ -10,13 +10,21 @@ meta:
   category: "Encryption"
 ---
 ## Metadata
+
 **Name:** `azure/storage_account_not_using_latest_tls_encryption_version`
+
 **Query Name** `Storage Account Not Using Latest TLS Encryption Version`
+
 **Id:** `8263f146-5e03-43e0-9cfe-db960d56d1e7`
+
 **Cloud Provider:** azure
+
 **Platform** Terraform
+
 **Severity:** Medium
+
 **Category:** Encryption
+
 ## Description
 To ensure data transmitted to and from Azure Storage Accounts remains protected, it is important to enforce the use of the latest supported TLS encryption protocol. If the `min_tls_version` attribute is set to an outdated protocol such as `"TLS1_1"`, as seen below, the storage account may be vulnerable to known security exploits:
 

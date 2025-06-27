@@ -10,13 +10,21 @@ meta:
   category: "Encryption"
 ---
 ## Metadata
+
 **Name:** `aws/ecr_repository_not_encrypted`
+
 **Query Name** `ECR Repository Not Encrypted With CMK`
+
 **Id:** `0e32d561-4b5a-4664-a6e3-a3fa85649157`
+
 **Cloud Provider:** aws
+
 **Platform** Terraform
+
 **Severity:** Low
+
 **Category:** Encryption
+
 ## Description
 Amazon Elastic Container Registry (ECR) repositories should use customer-managed AWS KMS keys for encryption to ensure stronger access control, auditing, and compliance with organizational security requirements. By default, ECR repositories may only use AES256 encryption or omit the `encryption_configuration` block, which limits key management capabilities and centralized control over key lifecycle and access policies. A secure Terraform configuration example specifies a KMS key:
 

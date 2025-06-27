@@ -10,13 +10,21 @@ meta:
   category: "Access Control"
 ---
 ## Metadata
+
 **Name:** `aws/elasticsearch_without_iam_authentication`
+
 **Query Name** `Elasticsearch Without IAM Authentication`
+
 **Id:** `e7530c3c-b7cf-4149-8db9-d037a0b5268e`
+
 **Cloud Provider:** aws
+
 **Platform** Terraform
+
 **Severity:** Medium
+
 **Category:** Access Control
+
 ## Description
 AWS Elasticsearch domains should enforce IAM authentication to restrict access to authorized users only. Without proper IAM policies—such as using `"Principal": "*"` in the `aws_elasticsearch_domain_policy` resource—unauthorized users could gain access to sensitive data by connecting from approved IP addresses. To mitigate this risk, the `Principal` field should be set to reference specific IAM principals, as shown below:
 

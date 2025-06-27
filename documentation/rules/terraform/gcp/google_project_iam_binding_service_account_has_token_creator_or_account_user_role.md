@@ -10,13 +10,21 @@ meta:
   category: "Access Control"
 ---
 ## Metadata
+
 **Name:** `gcp/google_project_iam_binding_service_account_has_token_creator_or_account_user_role`
+
 **Query Name** `Google Project IAM Binding Service Account has Token Creator or Account User Role`
+
 **Id:** `617ef6ff-711e-4bd7-94ae-e965911b1b40`
+
 **Cloud Provider:** gcp
+
 **Platform** Terraform
+
 **Severity:** High
+
 **Category:** Access Control
+
 ## Description
 This check identifies if a Google Project IAM binding grants 'serviceAccountTokenCreator' or 'serviceAccountUser' roles, which provide excessive privileges to service accounts. These roles allow the specified members to impersonate service accounts, creating security risks through privilege escalation paths and potential lateral movement across your GCP environment.
 

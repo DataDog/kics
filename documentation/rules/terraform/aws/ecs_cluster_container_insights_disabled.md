@@ -10,13 +10,21 @@ meta:
   category: "Observability"
 ---
 ## Metadata
+
 **Name:** `aws/ecs_cluster_container_insights_disabled`
+
 **Query Name** `ECS Cluster with Container Insights Disabled`
+
 **Id:** `97cb0688-369a-4d26-b1f7-86c4c91231bc`
+
 **Cloud Provider:** aws
+
 **Platform** Terraform
+
 **Severity:** Low
+
 **Category:** Observability
+
 ## Description
 ECS clusters should have the `containerInsights` setting enabled to provide enhanced monitoring and observability for container workloads. Without enabling container insights, as in the configuration below:
 

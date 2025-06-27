@@ -10,13 +10,21 @@ meta:
   category: "Best Practices"
 ---
 ## Metadata
+
 **Name:** `aws/cognito_userpool_without_mfa`
+
 **Query Name** `Cognito UserPool Without MFA`
+
 **Id:** `ec28bf61-a474-4dbe-b414-6dd3a067d6f0`
+
 **Cloud Provider:** aws
+
 **Platform** Terraform
+
 **Severity:** Low
+
 **Category:** Best Practices
+
 ## Description
 AWS Cognito User Pools should have Multi-Factor Authentication (MFA) enabled to enhance the security of user accounts. If the `mfa_configuration` attribute is set to `"OFF"` or left undefined, as in 
 

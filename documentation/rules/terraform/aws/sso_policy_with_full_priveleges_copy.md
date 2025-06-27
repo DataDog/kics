@@ -10,13 +10,21 @@ meta:
   category: "Access Control"
 ---
 ## Metadata
+
 **Name:** `aws/sso_policy_with_full_priveleges_copy`
+
 **Query Name** `SSO Identity User Unsafe Creation`
+
 **Id:** `4003118b-046b-4640-b200-b8c7a4c8b89f`
+
 **Cloud Provider:** aws
+
 **Platform** Terraform
+
 **Severity:** Medium
+
 **Category:** Access Control
+
 ## Description
 Using the `aws_identitystore_user` resource in Terraform to create AWS SSO users directly can result in misalignment between your AWS identities and external Identity Providers (IdPs) such as Active Directory. Because these users are not automatically synchronized with external directories, this configuration can introduce inconsistencies, orphaned accounts, or the risk of unauthorized access if users are not properly managed or deprovisioned. If left unaddressed, this may compromise the integrity of access controls and leave your AWS environment vulnerable to privilege escalation or account misuse.
 

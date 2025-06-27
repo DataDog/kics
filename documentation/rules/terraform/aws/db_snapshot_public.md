@@ -10,13 +10,21 @@ meta:
   category: "Access Control"
 ---
 ## Metadata
+
 **Name:** `aws/db_snapshot_public`
+
 **Query Name** `DB Snapshot Is Public`
+
 **Id:** `f0d8781f-1991-4958-9917-d39283b168a0`
+
 **Cloud Provider:** aws
+
 **Platform** Terraform
+
 **Severity:** High
+
 **Category:** Access Control
+
 ## Description
 AWS DB Snapshots contain a complete copy of your database, including all its data structures, stored procedures, and sensitive information. When a DB snapshot is made public by setting 'shared_accounts' to include 'all', anyone with an AWS account can access and restore your database, potentially exposing confidential data or intellectual property. To mitigate this risk, always keep your DB snapshots private by ensuring the 'shared_accounts' attribute is either not specified or set to an empty array. Compare the secure configuration: `shared_accounts = []` with the vulnerable configuration: `shared_accounts = ["all"]`. Implementing proper access controls for DB snapshots is essential for protecting sensitive data and maintaining compliance with data protection regulations.
 

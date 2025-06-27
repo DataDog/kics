@@ -10,13 +10,21 @@ meta:
   category: "Networking and Firewall"
 ---
 ## Metadata
+
 **Name:** `azure/network_interfaces_with_public_ip`
+
 **Query Name** `Network Interfaces With Public IP`
+
 **Id:** `c1573577-e494-4417-8854-7e119368dc8b`
+
 **Cloud Provider:** azure
+
 **Platform** Terraform
+
 **Severity:** Medium
+
 **Category:** Networking and Firewall
+
 ## Description
 Exposing network interfaces with a public IP address in Terraform (`public_ip_address_id` attribute set) can introduce significant security risks, as it enables direct access from the internet to associated resources, increasing the attack surface for unauthorized access and attacks. If a public IP is required, additional controls and security baselines should be strictly enforced to minimize exposure. To enhance security, network interfaces should be defined without the `public_ip_address_id` field, as shown below:
 

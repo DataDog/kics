@@ -10,13 +10,21 @@ meta:
   category: "Networking and Firewall"
 ---
 ## Metadata
+
 **Name:** `gcp/google_compute_network_using_default_firewall_rule`
+
 **Query Name** `Google Compute Network Using Default Firewall Rule`
+
 **Id:** `40abce54-95b1-478c-8e5f-ea0bf0bb0e33`
+
 **Cloud Provider:** gcp
+
 **Platform** Terraform
+
 **Severity:** Medium
+
 **Category:** Networking and Firewall
+
 ## Description
 Google Compute Network resources should avoid using the default firewall rule, as it typically allows overly permissive access to network resources and does not restrict traffic according to least-privilege principles. If left unaddressed, using the default firewall may expose internal resources to unauthorized external access, increasing the risk of lateral movement or compromise within a project. Instead, firewall rules should be defined explicitly with restricted protocols, source ranges, and tags, as shown below:
 

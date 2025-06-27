@@ -10,13 +10,21 @@ meta:
   category: "Access Control"
 ---
 ## Metadata
+
 **Name:** `gcp/artifact_registry_repository_is_public`
+
 **Query Name** `Artifact Registry Repo Is Public`
+
 **Id:** `a7b8c9d0-e1f2-3a4b-5c6d-7e8f90123456`
+
 **Cloud Provider:** gcp
+
 **Platform** Terraform
+
 **Severity:** High
+
 **Category:** Access Control
+
 ## Description
 Google Cloud Artifact Registry repositories store container images, language packages, and other artifacts that may contain sensitive code or data. When IAM bindings or members include public principals like 'allUsers' or 'allAuthenticatedUsers', these artifacts become accessible to anyone on the internet or any authenticated Google account, respectively, potentially exposing proprietary code or sensitive configurations.
 

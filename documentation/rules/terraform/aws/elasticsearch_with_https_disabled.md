@@ -10,13 +10,21 @@ meta:
   category: "Networking and Firewall"
 ---
 ## Metadata
+
 **Name:** `aws/elasticsearch_with_https_disabled`
+
 **Query Name** `Elasticsearch with HTTPS disabled`
+
 **Id:** `2e9e0729-66d5-4148-9d39-5e6fb4bf2a4e`
+
 **Cloud Provider:** aws
+
 **Platform** Terraform
+
 **Severity:** Medium
+
 **Category:** Networking and Firewall
+
 ## Description
 Amazon Elasticsearch domains should enforce HTTPS by setting the `enforce_https` attribute to `true` in the `domain_endpoint_options` block. If `enforce_https` is left set to `false`, as shown below, communication with the Elasticsearch domain can occur over unencrypted HTTP, exposing data to interception and increasing the risk of man-in-the-middle attacks.
 

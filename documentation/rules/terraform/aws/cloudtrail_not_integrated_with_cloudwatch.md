@@ -10,13 +10,21 @@ meta:
   category: "Observability"
 ---
 ## Metadata
+
 **Name:** `aws/cloudtrail_not_integrated_with_cloudwatch`
+
 **Query Name** `CloudTrail Not Integrated With CloudWatch`
+
 **Id:** `17b30f8f-8dfb-4597-adf6-57600b6cf25e`
+
 **Cloud Provider:** aws
+
 **Platform** Terraform
+
 **Severity:** Low
+
 **Category:** Observability
+
 ## Description
 Integrating AWS CloudTrail with CloudWatch Logs is essential for real-time monitoring and alerting on account activity. If the `cloud_watch_logs_group_arn` and `cloud_watch_logs_role_arn` attributes are not set in the `aws_cloudtrail` resource, as in the following insecure configuration:
 

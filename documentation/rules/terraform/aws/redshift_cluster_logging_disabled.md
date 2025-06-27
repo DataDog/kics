@@ -10,13 +10,21 @@ meta:
   category: "Observability"
 ---
 ## Metadata
+
 **Name:** `aws/redshift_cluster_logging_disabled`
+
 **Query Name** `Redshift Cluster Logging Disabled`
+
 **Id:** `15ffbacc-fa42-4f6f-a57d-2feac7365caa`
+
 **Cloud Provider:** aws
+
 **Platform** Terraform
+
 **Severity:** Medium
+
 **Category:** Observability
+
 ## Description
 Amazon Redshift clusters should have logging enabled to ensure that audit and diagnostic data, such as query execution and connection attempts, are recorded and stored for security and compliance purposes. If the `logging` block is omitted, or the attribute `enable` is set to `false` in the Redshift cluster Terraform resource, as shown below,
 

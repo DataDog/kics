@@ -10,13 +10,21 @@ meta:
   category: "Access Control"
 ---
 ## Metadata
+
 **Name:** `aws/user_with_privilege_escalation_by_actions_iam_SetDefaultPolicyVersion`
+
 **Query Name** `User With Privilege Escalation By Actions 'iam:SetDefaultPolicyVersion'`
+
 **Id:** `43a41523-386a-4cb1-becb-42af6b414433`
+
 **Cloud Provider:** aws
+
 **Platform** Terraform
+
 **Severity:** Medium
+
 **Category:** Access Control
+
 ## Description
 Granting the `iam:SetDefaultPolicyVersion` action with a resource of `"*"` allows a user to set any version of any IAM policy as the default, including attaching more permissive versions to roles or users. This creates a serious privilege escalation risk, as an attacker with these permissions could assign themselves or others elevated privileges by setting a policy version that permits broader or unauthorized access. If left unaddressed, this vulnerability could lead to full account compromise or unapproved actions throughout the AWS environment.
 

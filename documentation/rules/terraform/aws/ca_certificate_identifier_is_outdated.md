@@ -10,13 +10,21 @@ meta:
   category: "Encryption"
 ---
 ## Metadata
+
 **Name:** `aws/ca_certificate_identifier_is_outdated`
+
 **Query Name** `CA Certificate Identifier Is Outdated`
+
 **Id:** `9f40c07e-699e-4410-8856-3ba0f2e3a2dd`
+
 **Cloud Provider:** aws
+
 **Platform** Terraform
+
 **Severity:** Medium
+
 **Category:** Encryption
+
 ## Description
 AWS RDS instances require the use of a trusted and up-to-date Certificate Authority (CA) certificate for encrypted connections. If the `ca_cert_identifier` attribute is set to an outdated value like `"rds-ca-2015"` instead of the recommended `"rds-ca-2019"`, as shown below:
 

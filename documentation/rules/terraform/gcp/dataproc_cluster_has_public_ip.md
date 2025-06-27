@@ -10,13 +10,21 @@ meta:
   category: "Insecure Configurations"
 ---
 ## Metadata
+
 **Name:** `gcp/dataproc_cluster_has_public_ip`
+
 **Query Name** `Dataproc Clusters Has Public IPs`
+
 **Id:** `d2c4b6a8-1234-4f56-9abc-def012345678`
+
 **Cloud Provider:** gcp
+
 **Platform** Terraform
+
 **Severity:** High
+
 **Category:** Insecure Configurations
+
 ## Description
 Google Cloud Dataproc clusters with public IP addresses are directly accessible from the internet, creating an expanded attack surface that could be exploited by malicious actors. When 'internal_ip_only' is set to false or omitted, clusters receive both internal and external IP addresses, potentially exposing sensitive data processing operations and administrative interfaces to unauthorized access.
 

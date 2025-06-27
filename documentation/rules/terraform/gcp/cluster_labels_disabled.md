@@ -10,13 +10,21 @@ meta:
   category: "Insecure Configurations"
 ---
 ## Metadata
+
 **Name:** `gcp/cluster_labels_disabled`
+
 **Query Name** `Cluster Labels Disabled`
+
 **Id:** `65c1bc7a-4835-4ac4-a2b6-13d310b0648d`
+
 **Cloud Provider:** gcp
+
 **Platform** Terraform
+
 **Severity:** Low
+
 **Category:** Insecure Configurations
+
 ## Description
 Kubernetes clusters should be configured with labels by defining the `resource_labels` attribute in the `google_container_cluster` resource. Missing cluster labels make it harder to organize, identify, and apply policies to Kubernetes environments, potentially leading to management issues and security policy gaps. To mitigate this, clusters must include the `resource_labels` block as shown below:
 

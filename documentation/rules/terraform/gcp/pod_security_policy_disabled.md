@@ -10,13 +10,21 @@ meta:
   category: "Insecure Configurations"
 ---
 ## Metadata
+
 **Name:** `gcp/pod_security_policy_disabled`
+
 **Query Name** `Pod Security Policy Disabled`
+
 **Id:** `9192e0f9-eca5-4056-9282-ae2a736a4088`
+
 **Cloud Provider:** gcp
+
 **Platform** Terraform
+
 **Severity:** Medium
+
 **Category:** Insecure Configurations
+
 ## Description
 Kubernetes clusters managed by Terraform should have the Pod Security Policy (PSP) controller enabled by setting the `pod_security_policy_config { enabled = true }` attribute in the `google_container_cluster` resource. Enabling PSP helps enforce fine-grained security controls over pod behavior, reducing the risk of privilege escalation or unauthorized access within your cluster. If left unconfigured or disabled, as in `pod_security_policy_config { enabled = false }`, workloads in the cluster may bypass key security restrictions, increasing the potential attack surface. 
 

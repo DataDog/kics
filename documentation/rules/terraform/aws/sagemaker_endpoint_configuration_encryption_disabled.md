@@ -10,13 +10,21 @@ meta:
   category: "Encryption"
 ---
 ## Metadata
+
 **Name:** `aws/sagemaker_endpoint_configuration_encryption_disabled`
+
 **Query Name** `Sagemaker Endpoint Configuration Encryption Disabled`
+
 **Id:** `58b35504-0287-4154-bf69-02c0573deab8`
+
 **Cloud Provider:** aws
+
 **Platform** Terraform
+
 **Severity:** High
+
 **Category:** Encryption
+
 ## Description
 Amazon SageMaker endpoint configurations should have encryption enabled using a KMS key to protect sensitive data at rest. Without proper encryption, data stored within SageMaker endpoints may be vulnerable to unauthorized access if the underlying storage is compromised. This represents a significant security risk as machine learning endpoints often process and store sensitive information.
 

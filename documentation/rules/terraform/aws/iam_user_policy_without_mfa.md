@@ -10,13 +10,21 @@ meta:
   category: "Insecure Configurations"
 ---
 ## Metadata
+
 **Name:** `aws/iam_user_policy_without_mfa`
+
 **Query Name** `IAM User Policy Without MFA`
+
 **Id:** `b5681959-6c09-4f55-b42b-c40fa12d03ec`
+
 **Cloud Provider:** aws
+
 **Platform** Terraform
+
 **Severity:** Low
+
 **Category:** Insecure Configurations
+
 ## Description
 This check verifies that the AWS root user is required to authenticate using multi-factor authentication (MFA). If the root user is not protected with MFA, as in a policy lacking a condition on `"aws:MultiFactorAuthPresent"`, unauthorized users with access to the root credentials could compromise the entire AWS account. Enforcing MFA by adding a policy condition such as
 

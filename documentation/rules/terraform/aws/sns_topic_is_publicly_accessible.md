@@ -10,13 +10,21 @@ meta:
   category: "Access Control"
 ---
 ## Metadata
+
 **Name:** `aws/sns_topic_is_publicly_accessible`
+
 **Query Name** `SNS Topic is Publicly Accessible`
+
 **Id:** `b26d2b7e-60f6-413d-a3a1-a57db24aa2b3`
+
 **Cloud Provider:** aws
+
 **Platform** Terraform
+
 **Severity:** Critical
+
 **Category:** Access Control
+
 ## Description
 This check verifies that Amazon SNS Topic policies do not allow public access by having wildcard principals in their IAM policies. When an SNS Topic policy includes a principal with wildcard ('*') or allows anonymous access, it makes the topic publicly accessible to any AWS account, potentially exposing sensitive information or allowing unauthorized message publishing/consumption.
 

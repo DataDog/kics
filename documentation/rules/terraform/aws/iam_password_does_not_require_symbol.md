@@ -10,13 +10,21 @@ meta:
   category: "Best Practices"
 ---
 ## Metadata
+
 **Name:** `aws/iam_password_does_not_require_symbol`
+
 **Query Name** `IAM Password Policy Does Not Require Symbol`
+
 **Id:** `bts2c3d4-e5f6-7890-ab12-cd34ef567890`
+
 **Cloud Provider:** aws
+
 **Platform** Terraform
+
 **Severity:** Medium
+
 **Category:** Best Practices
+
 ## Description
 This check ensures that the AWS IAM account password policy enforces the use of at least one symbol in user passwords by setting `require_symbols = true`. If `require_symbols` is set to `false`, as shown below:
 

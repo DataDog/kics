@@ -10,13 +10,21 @@ meta:
   category: "Networking and Firewall"
 ---
 ## Metadata
+
 **Name:** `gcp/gke_control_plane_is_public`
+
 **Query Name** `GKE Control Plane Is Public`
+
 **Id:** `e2f9b5c7-8d3a-4a5f-93b0-78aeb39d7e09`
+
 **Cloud Provider:** gcp
+
 **Platform** Terraform
+
 **Severity:** High
+
 **Category:** Networking and Firewall
+
 ## Description
 Google Kubernetes Engine (GKE) control plane is the management layer that controls the Kubernetes cluster. When the control plane is publicly accessible, it increases the attack surface and risk of unauthorized access to your cluster's management functionality. Exposing the control plane to the public internet (using '0.0.0.0/0' CIDR block) allows potential attackers to attempt brute force attacks or exploit vulnerabilities in the API server.
 

@@ -10,13 +10,21 @@ meta:
   category: "Networking and Firewall"
 ---
 ## Metadata
+
 **Name:** `aws/unrestricted_security_group_ingress`
+
 **Query Name** `Unrestricted Security Group Ingress`
+
 **Id:** `4728cd65-a20c-49da-8b31-9c08b423e4db`
+
 **Cloud Provider:** aws
+
 **Platform** Terraform
+
 **Severity:** High
+
 **Category:** Networking and Firewall
+
 ## Description
 This check identifies AWS security group rules that allow unrestricted inbound traffic from any IP address (0.0.0.0/0 for IPv4 or ::/0 for IPv6). Such configurations create a significant security vulnerability by exposing your resources to potential unauthorized access from anywhere on the internet, increasing the risk of data breaches and attacks.
 

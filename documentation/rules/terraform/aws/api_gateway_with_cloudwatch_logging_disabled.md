@@ -10,13 +10,21 @@ meta:
   category: "Observability"
 ---
 ## Metadata
+
 **Name:** `aws/api_gateway_with_cloudwatch_logging_disabled`
+
 **Query Name** `API Gateway With CloudWatch Logging Disabled`
+
 **Id:** `982aa526-6970-4c59-8b9b-2ce7e019fe36`
+
 **Cloud Provider:** aws
+
 **Platform** Terraform
+
 **Severity:** Medium
+
 **Category:** Observability
+
 ## Description
 Enabling AWS CloudWatch Logs for API Gateway stages is critical for capturing execution logs and monitoring API access and activity. If the log group name is misconfigured and does not follow the required naming convention, such as using an incorrect variable (`${var.stage_names}` instead of `${var.stage_name}`), logs may not be associated correctly with their respective API Gateway stages, resulting in reduced visibility and hampering incident response efforts. The `aws_cloudwatch_log_group` resource should have its `name` attribute follow the pattern `"API-Gateway-Execution-Logs_${aws_api_gateway_rest_api.example.id}/${var.stage_name}"` to ensure proper alignment with AWS best practices and support effective auditing and troubleshooting.
 

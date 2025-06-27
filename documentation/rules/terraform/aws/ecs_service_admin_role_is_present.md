@@ -10,13 +10,21 @@ meta:
   category: "Access Control"
 ---
 ## Metadata
+
 **Name:** `aws/ecs_service_admin_role_is_present`
+
 **Query Name** `ECS Service Admin Role Is Present`
+
 **Id:** `3206240f-2e87-4e58-8d24-3e19e7c83d7c`
+
 **Cloud Provider:** aws
+
 **Platform** Terraform
+
 **Severity:** High
+
 **Category:** Access Control
+
 ## Description
 This check ensures that Amazon ECS Services are not configured with administrative roles, which could grant excessive permissions and violate the principle of least privilege. When an ECS Service has an admin role, it can perform any action within AWS, potentially allowing attackers to escalate privileges if the service is compromised. Instead of using an admin role like 'iam_role = "admin"', you should create a specific role with only the necessary permissions and reference it using its ARN as shown in the secure example: 'iam_role = aws_iam_role.foo.arn'.
 

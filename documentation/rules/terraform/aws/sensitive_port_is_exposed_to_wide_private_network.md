@@ -10,13 +10,21 @@ meta:
   category: "Networking and Firewall"
 ---
 ## Metadata
+
 **Name:** `aws/sensitive_port_is_exposed_to_wide_private_network`
+
 **Query Name** `Sensitive Port Is Exposed To Wide Private Network`
+
 **Id:** `92fe237e-074c-4262-81a4-2077acb928c1`
+
 **Cloud Provider:** aws
+
 **Platform** Terraform
+
 **Severity:** Low
+
 **Category:** Networking and Firewall
+
 ## Description
 Leaving sensitive ports such as port 23 (Telnet) or port 110 (POP3) open to a wide private network via insecure security group rules can expose resources to unnecessary risk, as these ports are frequently targeted by attackers seeking to exploit legacy or weakly protected protocols. In Terraform, a misconfiguration like:
 

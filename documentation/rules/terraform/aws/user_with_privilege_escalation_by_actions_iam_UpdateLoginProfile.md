@@ -10,13 +10,21 @@ meta:
   category: "Access Control"
 ---
 ## Metadata
+
 **Name:** `aws/user_with_privilege_escalation_by_actions_iam_UpdateLoginProfile`
+
 **Query Name** `User With Privilege Escalation By Actions 'iam:UpdateLoginProfile'`
+
 **Id:** `6deb34e2-5d9c-499a-801b-ea6d9eda894f`
+
 **Cloud Provider:** aws
+
 **Platform** Terraform
+
 **Severity:** Medium
+
 **Category:** Access Control
+
 ## Description
 Allowing a user the `iam:UpdateLoginProfile` permission with the `Resource` set to `"*"` in Terraform, as in:
 

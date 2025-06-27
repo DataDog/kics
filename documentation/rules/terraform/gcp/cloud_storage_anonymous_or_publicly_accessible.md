@@ -10,13 +10,21 @@ meta:
   category: "Access Control"
 ---
 ## Metadata
+
 **Name:** `gcp/cloud_storage_anonymous_or_publicly_accessible`
+
 **Query Name** `Cloud Storage Anonymous or Publicly Accessible`
+
 **Id:** `a6cd52a1-3056-4910-96a5-894de9f3f3b3`
+
 **Cloud Provider:** gcp
+
 **Platform** Terraform
+
 **Severity:** Critical
+
 **Category:** Access Control
+
 ## Description
 Cloud Storage Buckets configured with anonymous or public access create significant security risks by allowing anyone on the internet to access potentially sensitive data. When 'allUsers' is included in IAM bindings, it grants access to anyone, while 'allAuthenticatedUsers' grants access to anyone with a Google account, both creating overly permissive access controls that violate the principle of least privilege.
 

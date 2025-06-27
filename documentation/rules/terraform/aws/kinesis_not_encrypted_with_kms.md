@@ -10,13 +10,21 @@ meta:
   category: "Encryption"
 ---
 ## Metadata
+
 **Name:** `aws/kinesis_not_encrypted_with_kms`
+
 **Query Name** `Kinesis Not Encrypted With KMS`
+
 **Id:** `862fe4bf-3eec-4767-a517-40f378886b88`
+
 **Cloud Provider:** aws
+
 **Platform** Terraform
+
 **Severity:** High
+
 **Category:** Encryption
+
 ## Description
 AWS Kinesis Streams contain potentially sensitive data that should be encrypted at rest using AWS KMS to enhance security. When Kinesis streams are not encrypted with KMS, data stored in them is vulnerable to unauthorized access if the underlying storage is compromised. To properly secure Kinesis streams, both the encryption_type must be set to 'KMS' and a valid kms_key_id must be specified, as shown in the following example:
 

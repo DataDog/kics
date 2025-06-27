@@ -10,13 +10,21 @@ meta:
   category: "Access Control"
 ---
 ## Metadata
+
 **Name:** `aws/group_with_privilege_escalation_by_actions_iam_CreatePolicyVersion`
+
 **Query Name** `Group With Privilege Escalation By Actions 'iam:CreatePolicyVersion'`
+
 **Id:** `ec49cbfd-fae4-45f3-81b1-860526d66e3f`
+
 **Cloud Provider:** aws
+
 **Platform** Terraform
+
 **Severity:** Medium
+
 **Category:** Access Control
+
 ## Description
 This check examines IAM group policies in Terraform configurations for the presence of overly permissive privileges, specifically the use of the `iam:CreatePolicyVersion` action with `Resource` set to `"*"`. Granting this permission allows group members to create new versions of any IAM managed policy, including those they do not own, enabling potential privilege escalation. An attacker with these rights could alter existing policies to grant themselves or others elevated permissions, thereby gaining unauthorized access to sensitive AWS resources. If left unaddressed, this misconfiguration poses a significant risk to the security and integrity of your AWS environment, as it breaks the principle of least privilege and could lead to full account compromise.
 

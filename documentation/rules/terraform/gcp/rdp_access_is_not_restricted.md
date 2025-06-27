@@ -10,13 +10,21 @@ meta:
   category: "Networking and Firewall"
 ---
 ## Metadata
+
 **Name:** `gcp/rdp_access_is_not_restricted`
+
 **Query Name** `RDP Access Is Not Restricted`
+
 **Id:** `678fd659-96f2-454a-a2a0-c2571f83a4a3`
+
 **Cloud Provider:** gcp
+
 **Platform** Terraform
+
 **Severity:** High
+
 **Category:** Networking and Firewall
+
 ## Description
 This check verifies if Google Compute firewall rules allow unrestricted RDP access by examining if port 3389 (the default RDP port) is openly accessible from the internet. When firewall rules allow RDP traffic from '0.0.0.0/0' (all IPv4) or '::/0' (all IPv6), it significantly increases the risk of brute force attacks, unauthorized access, and potential system compromise.
 

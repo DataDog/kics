@@ -10,13 +10,21 @@ meta:
   category: "Observability"
 ---
 ## Metadata
+
 **Name:** `azure/small_activity_log_retention_period`
+
 **Query Name** `Small Activity Log Retention Period`
+
 **Id:** `2b856bf9-8e8c-4005-875f-303a8cba3918`
+
 **Cloud Provider:** azure
+
 **Platform** Terraform
+
 **Severity:** Low
+
 **Category:** Observability
+
 ## Description
 This check ensures that the `retention_policy.days` attribute for the `azurerm_monitor_log_profile` resource in Terraform is set to 365 days or greater. Insufficient log retention (for example, `days = 7` or leaving the value unset) can result in the loss of valuable activity logs, limiting the ability to investigate incidents or meet audit requirements. To address this, configure the retention policy to at least 365 days as shown below:
 

@@ -10,13 +10,21 @@ meta:
   category: "Observability"
 ---
 ## Metadata
+
 **Name:** `aws/cloudwatch_root_account_use_alarm_missing`
+
 **Query Name** `CloudWatch Root Account Use Missing`
+
 **Id:** `8b1b1e67-6248-4dca-bbad-93486bb181c0`
+
 **Cloud Provider:** aws
+
 **Platform** Terraform
+
 **Severity:** Medium
+
 **Category:** Observability
+
 ## Description
 This check ensures that a log metric filter and alarm are in place to detect AWS root account usage, as this account has full privileges and its use is strongly discouraged. Without correctly associating the alarm with the relevant metric (for example, by setting `metric_name` to the correct log metric filter ID), unauthorized or unintended root account actions may go unnoticed, increasing the risk of privilege escalation or account compromise. A secure configuration will explicitly set `metric_name = aws_cloudwatch_log_metric_filter.cis_root_account_use_metric_filter.id` to guarantee effective alerting on root account activity.
 

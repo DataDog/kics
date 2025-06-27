@@ -10,13 +10,21 @@ meta:
   category: "Secret Management"
 ---
 ## Metadata
+
 **Name:** `gcp/high_google_kms_crypto_key_rotation_period`
+
 **Query Name** `High Google KMS Crypto Key Rotation Period`
+
 **Id:** `d8c57c4e-bf6f-4e32-a2bf-8643532de77b`
+
 **Cloud Provider:** gcp
+
 **Platform** Terraform
+
 **Severity:** Medium
+
 **Category:** Secret Management
+
 ## Description
 It is important to configure Key Management Service (KMS) encryption keys with a `rotation_period` of 90 days or less to limit the blast radius if a key is ever compromised. Failure to set a short rotation period, or omitting the `rotation_period` attribute entirely, increases risk by allowing the same encryption key to remain in use for extended periods, making it a more valuable and longer-lived target if leaked or compromised. Properly securing this setting in Terraform involves specifying the `rotation_period` attribute within the `google_kms_crypto_key` resource, for example:
 

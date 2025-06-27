@@ -10,13 +10,21 @@ meta:
   category: "Access Control"
 ---
 ## Metadata
+
 **Name:** `aws/sqs_queue_exposed`
+
 **Query Name** `SQS Queue Exposed`
+
 **Id:** `abb06e5f-ef9a-4a99-98c6-376d396bfcdf`
+
 **Cloud Provider:** aws
+
 **Platform** Terraform
+
 **Severity:** High
+
 **Category:** Access Control
+
 ## Description
 An SQS Queue is considered exposed when its policy allows access from any principal by setting 'Principal' to '*'. This creates a security vulnerability where unauthorized users can send messages to your queue, potentially leading to information disclosure or denial of service attacks.
 

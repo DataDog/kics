@@ -10,13 +10,21 @@ meta:
   category: "Encryption"
 ---
 ## Metadata
+
 **Name:** `aws/eks_cluster_encryption_disabled`
+
 **Query Name** `EKS Cluster Encryption Disabled`
+
 **Id:** `63ebcb19-2739-4d3f-aa5c-e8bbb9b85281`
+
 **Cloud Provider:** aws
+
 **Platform** Terraform
+
 **Severity:** High
+
 **Category:** Encryption
+
 ## Description
 Amazon EKS clusters store sensitive information including certificate authorities and service account tokens. When encryption is disabled, this sensitive data is stored in plaintext, potentially exposing it to unauthorized access and data breaches. Enabling encryption using KMS keys for EKS clusters adds an essential layer of security by encrypting Kubernetes secrets stored in etcd.
 

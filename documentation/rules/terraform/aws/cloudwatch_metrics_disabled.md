@@ -10,13 +10,21 @@ meta:
   category: "Observability"
 ---
 ## Metadata
+
 **Name:** `aws/cloudwatch_metrics_disabled`
+
 **Query Name** `CloudWatch Metrics Disabled`
+
 **Id:** `081069cb-588b-4ce1-884c-2a1ce3029fe5`
+
 **Cloud Provider:** aws
+
 **Platform** Terraform
+
 **Severity:** Medium
+
 **Category:** Observability
+
 ## Description
 This check determines whether Amazon API Gateway stages are properly configured to enable CloudWatch Metrics, by verifying that the `metrics_enabled` attribute is set to `true` within the `settings` block. If `metrics_enabled` is set to `false` or omitted, CloudWatch Metrics will not capture API Gateway performance data, such as error rates, latency, or request counts. This lack of monitoring inhibits an organization’s ability to detect misuse, troubleshoot issues, or respond to anomalous behaviors in their API environments. Without timely visibility into API activity, misconfigurations or security incidents may go unnoticed, increasing operational and security risks.
 

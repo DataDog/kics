@@ -10,13 +10,21 @@ meta:
   category: "Access Control"
 ---
 ## Metadata
+
 **Name:** `azure/storage_container_is_publicly_accessible`
+
 **Query Name** `Storage Container Is Publicly Accessible`
+
 **Id:** `dd5230f8-a577-4bbb-b7ac-f2c2fe7d5299`
+
 **Cloud Provider:** azure
+
 **Platform** Terraform
+
 **Severity:** High
+
 **Category:** Access Control
+
 ## Description
 When a storage container in Azure Blob Storage has 'container_access_type' set to 'blob' or 'container', it enables anonymous public access to the data stored within. This configuration creates a significant security risk as it allows anyone with the container URL to access, view, and potentially download the stored data without authentication, potentially leading to sensitive data exposure or unauthorized data access.
 

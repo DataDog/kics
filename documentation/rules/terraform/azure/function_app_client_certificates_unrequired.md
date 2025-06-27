@@ -10,13 +10,21 @@ meta:
   category: "Insecure Configurations"
 ---
 ## Metadata
+
 **Name:** `azure/function_app_client_certificates_unrequired`
+
 **Query Name** `Function App Client Certificates Unrequired`
+
 **Id:** `9bb3c639-5edf-458c-8ee5-30c17c7d671d`
+
 **Cloud Provider:** azure
+
 **Platform** Terraform
+
 **Severity:** Medium
+
 **Category:** Insecure Configurations
+
 ## Description
 Azure Function Apps should require client certificates for incoming requests by setting the `client_cert_mode` attribute to `"Required"`. Without this setting, as seen below, the Function App allows unauthenticated traffic, increasing the risk of unauthorized access to sensitive business logic or data processed by the Function App:
 

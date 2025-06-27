@@ -10,13 +10,21 @@ meta:
   category: "Insecure Configurations"
 ---
 ## Metadata
+
 **Name:** `gcp/pubsub_topic_is_public`
+
 **Query Name** `Pub/Sub Topics are anonymously or publicly accessible`
+
 **Id:** `7sdj7dsj8-f348-4f95-845c-1090e41a615c`
+
 **Cloud Provider:** gcp
+
 **Platform** Terraform
+
 **Severity:** Medium
+
 **Category:** Insecure Configurations
+
 ## Description
 Google Cloud Pub/Sub Topics should not be configured to allow public access by assigning IAM roles to the special IAM principals `allUsers` or `allAuthenticatedUsers`. Granting roles to these principals, as in the example below,
 

@@ -10,13 +10,21 @@ meta:
   category: "Encryption"
 ---
 ## Metadata
+
 **Name:** `aws/elb_using_insecure_protocols`
+
 **Query Name** `ELB Using Insecure Protocols`
+
 **Id:** `126c1788-23c2-4a10-906c-ef179f4f96ec`
+
 **Cloud Provider:** aws
+
 **Platform** Terraform
+
 **Severity:** Medium
+
 **Category:** Encryption
+
 ## Description
 Elastic Load Balancer (ELB) security policies should not enable insecure protocols such as SSLv3, TLSv1, or TLSv1.1, as these older protocols are vulnerable to well-known exploits that can compromise the confidentiality and integrity of data transmitted between clients and the load balancer. In Terraform, this means avoiding policy attributes like `name = "Protocol-SSLv3"` or `name = "Protocol-TLSv1"` with a value of `"true"`. A secure configuration should explicitly allow only newer protocols such as TLSv1.2, for example:
 

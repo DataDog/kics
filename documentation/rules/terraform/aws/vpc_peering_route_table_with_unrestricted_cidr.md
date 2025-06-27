@@ -10,13 +10,21 @@ meta:
   category: "Networking and Firewall"
 ---
 ## Metadata
+
 **Name:** `aws/vpc_peering_route_table_with_unrestricted_cidr`
+
 **Query Name** `VPC Peering Route Table with Unrestricted CIDR`
+
 **Id:** `b3a41501-f712-4c4f-81e5-db9a7dc0e34e`
+
 **Cloud Provider:** aws
+
 **Platform** Terraform
+
 **Severity:** High
+
 **Category:** Networking and Firewall
+
 ## Description
 VPC Peering Route Tables with unrestricted CIDR blocks (0.0.0.0/0) create a significant security vulnerability by allowing all IP addresses to route through the VPC peering connection. This configuration effectively bypasses network isolation between VPCs and exposes your resources to potential unauthorized access from any IP address that can reach the peering connection.
 

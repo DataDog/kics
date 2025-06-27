@@ -10,13 +10,21 @@ meta:
   category: "Resource Management"
 ---
 ## Metadata
+
 **Name:** `azure/sql_database_audit_disabled`
+
 **Query Name** `SQL Database Audit Disabled`
+
 **Id:** `83a229ba-483e-47c6-8db7-dc96969bce5a`
+
 **Cloud Provider:** azure
+
 **Platform** Terraform
+
 **Severity:** Medium
+
 **Category:** Resource Management
+
 ## Description
 Enabling 'Threat Detection' for Azure SQL Database helps identify anomalous activities and potential security threats by alerting administrators when suspicious activity is detected. When the `threat_detection_policy` block is set to `state = "Disabled"` or omitted entirely, as in: 
 

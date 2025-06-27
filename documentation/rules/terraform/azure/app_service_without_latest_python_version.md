@@ -10,13 +10,21 @@ meta:
   category: "Best Practices"
 ---
 ## Metadata
+
 **Name:** `azure/app_service_without_latest_python_version`
+
 **Query Name** `App Service Without Latest Python Version`
+
 **Id:** `cc4aaa9d-1070-461a-b519-04e00f42db8a`
+
 **Cloud Provider:** azure
+
 **Platform** Terraform
+
 **Severity:** Low
+
 **Category:** Best Practices
+
 ## Description
 It is recommended to specify the latest supported Python version for the `python_version` attribute in the `site_config` block of the `azurerm_app_service` resource. Using outdated Python versions, such as `"python_version = \"2.7\""`, exposes your application to known security vulnerabilities and lacks important features and security updates available in newer releases. To reduce risk, configure the resource with an up-to-date version, for example:
 

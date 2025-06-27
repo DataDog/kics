@@ -10,13 +10,21 @@ meta:
   category: "Observability"
 ---
 ## Metadata
+
 **Name:** `azure/small_postgresql_db_server_log_retention_period`
+
 **Query Name** `Small PostgreSQL DB Server Log Retention Period`
+
 **Id:** `261a83f8-dd72-4e8c-b5e1-ebf06e8fe606`
+
 **Cloud Provider:** azure
+
 **Platform** Terraform
+
 **Severity:** Low
+
 **Category:** Observability
+
 ## Description
 This check verifies whether the `log_retention_days` configuration for an Azure PostgreSQL Database Server retains logs for at least 3 days. Insufficient log retention, such as setting `value = 2` in the Terraform resource
 

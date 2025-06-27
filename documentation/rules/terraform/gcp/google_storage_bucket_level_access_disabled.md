@@ -10,13 +10,21 @@ meta:
   category: "Insecure Configurations"
 ---
 ## Metadata
+
 **Name:** `gcp/google_storage_bucket_level_access_disabled`
+
 **Query Name** `Google Storage Bucket Level Access Disabled`
+
 **Id:** `bb0db090-5509-4853-a827-75ced0b3caa0`
+
 **Cloud Provider:** gcp
+
 **Platform** Terraform
+
 **Severity:** High
+
 **Category:** Insecure Configurations
+
 ## Description
 Google Storage Bucket Level Access controls access to objects at the bucket level rather than allowing fine-grained permissions at the object level. When disabled, Access Control Lists (ACLs) can be used to grant permissions to individual objects, increasing the risk of accidental exposure or misconfiguration that could lead to unauthorized access to sensitive data.
 

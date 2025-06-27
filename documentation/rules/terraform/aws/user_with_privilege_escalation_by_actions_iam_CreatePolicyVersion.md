@@ -10,13 +10,21 @@ meta:
   category: "Access Control"
 ---
 ## Metadata
+
 **Name:** `aws/user_with_privilege_escalation_by_actions_iam_CreatePolicyVersion`
+
 **Query Name** `User With Privilege Escalation By Actions 'iam:CreatePolicyVersion'`
+
 **Id:** `1743f5f1-0bb0-4934-acef-c80baa5dadfa`
+
 **Cloud Provider:** aws
+
 **Platform** Terraform
+
 **Severity:** Medium
+
 **Category:** Access Control
+
 ## Description
 Allowing a user the `iam:CreatePolicyVersion` action with the resource set to `"*"` in Terraform, as shown in the policy statement below, enables them to update any IAM policy in the AWS account. This privilege can be exploited for privilege escalation, as the user could create a new policy version attaching elevated permissions to themselves or others.
 

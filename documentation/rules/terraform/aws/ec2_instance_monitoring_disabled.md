@@ -10,13 +10,21 @@ meta:
   category: "Observability"
 ---
 ## Metadata
+
 **Name:** `aws/ec2_instance_monitoring_disabled`
+
 **Query Name** `EC2 Instance Monitoring Disabled`
+
 **Id:** `23b70e32-032e-4fa6-ba5c-82f56b9980e6`
+
 **Cloud Provider:** aws
+
 **Platform** Terraform
+
 **Severity:** Medium
+
 **Category:** Observability
+
 ## Description
 Enabling detailed monitoring on EC2 instances ensures that Amazon CloudWatch captures metrics every minute, rather than the default five-minute interval. This is achieved in Terraform by setting the `monitoring` attribute to `true` within the `aws_instance` resource. Without detailed monitoring (`monitoring = false` or omitted), operational visibility is significantly reduced, which can delay the detection of performance issues, outages, or security incidents. If this vulnerability is left unaddressed, administrators may miss critical events or be unable to react promptly to changes in resource behavior, potentially leading to service disruptions or undiagnosed anomalies.
 

@@ -10,13 +10,21 @@ meta:
   category: "Access Control"
 ---
 ## Metadata
+
 **Name:** `aws/authentication_without_mfa`
+
 **Query Name** `Authentication Without MFA`
+
 **Id:** `3ddfa124-6407-4845-a501-179f90c65097`
+
 **Cloud Provider:** aws
+
 **Platform** Terraform
+
 **Severity:** Low
+
 **Category:** Access Control
+
 ## Description
 Requiring users to authenticate using Multi-Factor Authentication (MFA) provides an extra layer of security beyond just a password, reducing the risk of unauthorized access if credentials are compromised. In Terraform, this can be enforced by using an IAM policy with a condition such as `"aws:MultiFactorAuthPresent": "true"`, which restricts permissions like `sts:AssumeRole` to only those sessions where MFA has been verified. Without this condition, as shown in the following policy snippet, the user may be able to access sensitive AWS resources without MFA: 
 

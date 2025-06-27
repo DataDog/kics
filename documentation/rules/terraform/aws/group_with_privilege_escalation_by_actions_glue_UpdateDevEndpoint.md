@@ -10,13 +10,21 @@ meta:
   category: "Access Control"
 ---
 ## Metadata
+
 **Name:** `aws/group_with_privilege_escalation_by_actions_glue_UpdateDevEndpoint`
+
 **Query Name** `Group With Privilege Escalation By Actions 'glue:UpdateDevEndpoint'`
+
 **Id:** `8f3c16b3-354d-45db-8ad5-5066778a9485`
+
 **Cloud Provider:** aws
+
 **Platform** Terraform
+
 **Severity:** Medium
+
 **Category:** Access Control
+
 ## Description
 This check identifies IAM group policies that grant the `glue:UpdateDevEndpoint` action with the resource set to `"*"`, as shown in the following insecure example:
 

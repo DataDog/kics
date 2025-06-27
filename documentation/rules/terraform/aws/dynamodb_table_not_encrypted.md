@@ -10,13 +10,21 @@ meta:
   category: "Encryption"
 ---
 ## Metadata
+
 **Name:** `aws/dynamodb_table_not_encrypted`
+
 **Query Name** `DynamoDB Table Not Encrypted`
+
 **Id:** `ce089fd4-1406-47bd-8aad-c259772bb294`
+
 **Cloud Provider:** aws
+
 **Platform** Terraform
+
 **Severity:** High
+
 **Category:** Encryption
+
 ## Description
 This check verifies if AWS DynamoDB Tables are configured with server-side encryption to protect sensitive data at rest. Without encryption, stored data is vulnerable to unauthorized access if the database storage is compromised. To properly secure your DynamoDB table, you must include a 'server_side_encryption' block with 'enabled = true' as shown below:
 

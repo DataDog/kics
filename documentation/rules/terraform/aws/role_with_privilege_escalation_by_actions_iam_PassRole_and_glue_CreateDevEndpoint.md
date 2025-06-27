@@ -10,13 +10,21 @@ meta:
   category: "Access Control"
 ---
 ## Metadata
+
 **Name:** `aws/role_with_privilege_escalation_by_actions_iam_PassRole_and_glue_CreateDevEndpoint`
+
 **Query Name** `Role With Privilege Escalation By Actions 'glue:CreateDevEndpoint' And 'iam:PassRole'`
+
 **Id:** `0a592060-8166-49f5-8e65-99ac6dce9871`
+
 **Cloud Provider:** aws
+
 **Platform** Terraform
+
 **Severity:** Medium
+
 **Category:** Access Control
+
 ## Description
 Granting an AWS IAM role permissions for both `glue:CreateDevEndpoint` and `iam:PassRole` with the `Resource` attribute set to `"*"` allows for privilege escalation within an AWS environment. With these permissions, a user or attacker could create Glue DevEndpoints and assign any AWS IAM role to the endpoint, effectively running arbitrary code with higher privileges by passing roles they may not otherwise have access to. The use of the `"iam:PassRole"` action combined with a resource wildcard means that the role can be used to assign any role in the account, potentially including administrative or sensitive roles. If left unaddressed, this misconfiguration can lead to an attacker gaining full control over AWS resources, resulting in data breaches or the compromise of critical cloud infrastructure.
 

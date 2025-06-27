@@ -10,13 +10,21 @@ meta:
   category: "Access Control"
 ---
 ## Metadata
+
 **Name:** `aws/group_with_privilege_escalation_by_actions_iam_AddUserToGroup`
+
 **Query Name** `Group With Privilege Escalation By Actions 'iam:AddUserToGroup'`
+
 **Id:** `970ed7a2-0aca-4425-acf1-0453c9ecbca1`
+
 **Cloud Provider:** aws
+
 **Platform** Terraform
+
 **Severity:** Medium
+
 **Category:** Access Control
+
 ## Description
 Granting the `iam:AddUserToGroup` action with the `Resource` attribute set to `*` in an AWS IAM policy allows any user to add themselves or any other user to any IAM group within the AWS account. This wide permission can enable unauthorized privilege escalation, as users could gain access to groups with higher-level privileges, potentially bypassing intended access controls. If left unaddressed, attackers or compromised users may escalate their privileges and gain broader access to sensitive resources, severely impacting the security of the environment. To mitigate this risk, restrict the `Resource` field to specific group ARNs and ensure only trusted users have the ability to manage IAM group memberships.
 

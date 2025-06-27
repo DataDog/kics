@@ -10,13 +10,21 @@ meta:
   category: "Encryption"
 ---
 ## Metadata
+
 **Name:** `aws/config_rule_for_encrypted_volumes_is_disabled`
+
 **Query Name** `Config Rule For Encrypted Volumes Disabled`
+
 **Id:** `abdb29d4-5ca1-4e91-800b-b3569bbd788c`
+
 **Cloud Provider:** aws
+
 **Platform** Terraform
+
 **Severity:** High
+
 **Category:** Encryption
+
 ## Description
 This check verifies if AWS Config rules include the ENCRYPTED_VOLUMES source identifier, which monitors whether EBS volumes that are attached to EC2 instances are encrypted. Without this rule in place, organizations may unknowingly deploy unencrypted EBS volumes, potentially exposing sensitive data to unauthorized access in case of data breaches or improper access controls. 
 

@@ -10,13 +10,21 @@ meta:
   category: "Encryption"
 ---
 ## Metadata
+
 **Name:** `azure/mariadb_not_using_latest_tls`
+
 **Query Name** `Ensure Azure MariaDB server is using latest TLS (1.2)`
+
 **Id:** `8f0e6b2d-3c9a-4f1e-8d2a-7b6c5d4e3f21`
+
 **Cloud Provider:** azure
+
 **Platform** Terraform
+
 **Severity:** High
+
 **Category:** Encryption
+
 ## Description
 Using outdated TLS versions in Azure MariaDB servers exposes your database to known vulnerabilities and encryption weaknesses, potentially allowing attackers to intercept and decrypt sensitive data. Without proper SSL enforcement and TLS 1.2 (or higher) configuration, your database communications remain susceptible to man-in-the-middle attacks and other security exploits that have been addressed in newer TLS versions. 
 

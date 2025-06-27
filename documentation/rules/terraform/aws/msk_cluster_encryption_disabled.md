@@ -10,13 +10,21 @@ meta:
   category: "Encryption"
 ---
 ## Metadata
+
 **Name:** `aws/msk_cluster_encryption_disabled`
+
 **Query Name** `MSK Cluster Encryption Disabled`
+
 **Id:** `6db52fa6-d4da-4608-908a-89f0c59e743e`
+
 **Cloud Provider:** aws
+
 **Platform** Terraform
+
 **Severity:** High
+
 **Category:** Encryption
+
 ## Description
 Amazon MSK Clusters store sensitive data that should be protected both at rest and in transit through encryption. When encryption is disabled, data may be exposed to unauthorized users during storage or transmission, creating significant security vulnerabilities. To properly secure an MSK cluster, you should specify both encryption_at_rest_kms_key_arn (for data at rest) and encryption_in_transit with client_broker set to 'TLS' and in_cluster set to true (for data in transit). Here's a secure example:
 

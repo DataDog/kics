@@ -10,13 +10,21 @@ meta:
   category: "Observability"
 ---
 ## Metadata
+
 **Name:** `azure/postgresql_log_checkpoints_disabled`
+
 **Query Name** `PostgreSQL Log Checkpoints Disabled`
+
 **Id:** `3790d386-be81-4dcf-9850-eaa7df6c10d9`
+
 **Cloud Provider:** azure
+
 **Platform** Terraform
+
 **Severity:** Medium
+
 **Category:** Observability
+
 ## Description
 The PostgreSQL `log_checkpoints` parameter controls whether checkpoint activities are logged, which is critical for monitoring and troubleshooting database performance and reliability. If `log_checkpoints` is set to `off`, important information about checkpoint events will not be recorded, making it more difficult to detect or respond to potential issues or attacks. To mitigate this risk, the parameter should be enabled as shown below:
 

@@ -10,13 +10,21 @@ meta:
   category: "Access Control"
 ---
 ## Metadata
+
 **Name:** `aws/public_and_private_ec2_share_role`
+
 **Query Name** `Public and Private EC2 Share Role`
+
 **Id:** `c53c7a89-f9d7-4c7b-8b66-8a555be99593`
+
 **Cloud Provider:** aws
+
 **Platform** Terraform
+
 **Severity:** Medium
+
 **Category:** Access Control
+
 ## Description
 Public and private EC2 instances should not share the same IAM role. Assigning the same IAM role to both public and private instances greatly increases the blast radius in the event of a compromise. If an attacker gains control over a public EC2 instance, they could leverage the shared role’s permissions to access sensitive AWS resources with the same privileges as a private, internal instance, possibly leading to data breaches and lateral movement within your AWS environment. Isolating IAM roles for public and private instances helps minimize risk by ensuring that externally exposed instances have only the minimal permissions required.
 

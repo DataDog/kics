@@ -10,13 +10,21 @@ meta:
   category: "Best Practices"
 ---
 ## Metadata
+
 **Name:** `aws/automatic_minor_upgrades_disabled`
+
 **Query Name** `Automatic Minor Upgrades Disabled`
+
 **Id:** `3b6d777b-76e3-4133-80a3-0d6f667ade7f`
+
 **Cloud Provider:** aws
+
 **Platform** Terraform
+
 **Severity:** Low
+
 **Category:** Best Practices
+
 ## Description
 RDS instances in AWS should have automatic minor version upgrades enabled by setting the `auto_minor_version_upgrade` attribute to `true`. This ensures that the database receives timely security patches and important bug fixes without manual intervention. If this attribute is set to `false`, as shown in the following configuration,
 

@@ -10,13 +10,21 @@ meta:
   category: "Encryption"
 ---
 ## Metadata
+
 **Name:** `aws/glue_data_catalog_encryption_disabled`
+
 **Query Name** `Glue Data Catalog Encryption Disabled`
+
 **Id:** `01d50b14-e933-4c99-b314-6d08cd37ad35`
+
 **Cloud Provider:** aws
+
 **Platform** Terraform
+
 **Severity:** High
+
 **Category:** Encryption
+
 ## Description
 AWS Glue Data Catalog contains metadata about AWS resources and should be properly encrypted to protect sensitive information. When encryption is disabled for connection passwords or data at rest, it could expose sensitive connection credentials and metadata to unauthorized access, potentially leading to data breaches or unauthorized resource access. Enabling both connection password encryption (with return_connection_password_encrypted set to true) and encryption at rest with SSE-KMS ensures that all sensitive metadata is properly protected with AWS KMS keys.
 

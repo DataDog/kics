@@ -10,13 +10,21 @@ meta:
   category: "Access Control"
 ---
 ## Metadata
+
 **Name:** `aws/elasticsearch_domain_with_vulnerable_policy`
+
 **Query Name** `Elasticsearch Domain With Vulnerable Policy`
+
 **Id:** `16c4216a-50d3-4785-bfb2-4adb5144a8ba`
+
 **Cloud Provider:** aws
+
 **Platform** Terraform
+
 **Severity:** Medium
+
 **Category:** Access Control
+
 ## Description
 When configuring an `aws_elasticsearch_domain_policy`, using a wildcard (`*`) for the `Action` and `Principal` fields—such as `"Action": "es:*"` and `"Principal": "*"`—grants unrestricted access to the Elasticsearch domain, allowing any identity to perform any action. This broad permission model introduces a significant security vulnerability, as it may expose sensitive data and allow unauthorized users to modify or delete resources. To mitigate this risk, explicitly define trusted principals and limit actions using specific permissions in the policy document.
 

@@ -10,13 +10,21 @@ meta:
   category: "Best Practices"
 ---
 ## Metadata
+
 **Name:** `gcp/team_label_not_present`
+
 **Query Name** `team label missing`
+
 **Id:** `b2b3c4d5-e6f7-8901-gh23-ijkl456m7890`
+
 **Cloud Provider:** gcp
+
 **Platform** Terraform
+
 **Severity:** Info
+
 **Category:** Best Practices
+
 ## Description
 To ensure accountability and efficient resource management, every cloud resource should include a `team` label identifying ownership. Without this label, as shown in the example below, resources may lack clear ownership, making it difficult to track responsibility for maintenance, cost allocation, or incident response:
 

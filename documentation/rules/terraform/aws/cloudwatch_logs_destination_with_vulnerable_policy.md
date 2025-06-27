@@ -10,13 +10,21 @@ meta:
   category: "Access Control"
 ---
 ## Metadata
+
 **Name:** `aws/cloudwatch_logs_destination_with_vulnerable_policy`
+
 **Query Name** `CloudWatch Logs Destination With Vulnerable Policy`
+
 **Id:** `db0ec4c4-852c-46a2-b4f3-7ec13cdb12a8`
+
 **Cloud Provider:** aws
+
 **Platform** Terraform
+
 **Severity:** Low
+
 **Category:** Access Control
+
 ## Description
 CloudWatch Logs destination policies should not use wildcards ('*') in the 'principals' or 'actions' fields, as this can inadvertently grant broad permissions. When wildcards are used, any AWS principal may gain permission to perform any logs-related actions, increasing the risk of unauthorized access or data exfiltration. Attackers or unintentional actors could potentially send or retrieve log data, modify log subscriptions, or disrupt monitoring workflows. Restricting both 'principals' and 'actions' to only necessary accounts and actions protects log data integrity and helps maintain the security of monitoring operations.
 

@@ -10,13 +10,21 @@ meta:
   category: "Access Control"
 ---
 ## Metadata
+
 **Name:** `aws/role_with_privilege_escalation_by_actions_iam_CreateLoginProfile`
+
 **Query Name** `Role With Privilege Escalation By Actions 'iam:CreateLoginProfile'`
+
 **Id:** `9a205ba3-0dd1-42eb-8d54-2ffec836b51a`
+
 **Cloud Provider:** aws
+
 **Platform** Terraform
+
 **Severity:** Medium
+
 **Category:** Access Control
+
 ## Description
 This check identifies if an AWS IAM role policy grants the `iam:CreateLoginProfile` action with a `Resource` set to `"*"`, as shown below:
 

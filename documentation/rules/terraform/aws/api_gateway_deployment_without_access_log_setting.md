@@ -10,13 +10,21 @@ meta:
   category: "Observability"
 ---
 ## Metadata
+
 **Name:** `aws/api_gateway_deployment_without_access_log_setting`
+
 **Query Name** `API Gateway Deployment Without Access Log Setting`
+
 **Id:** `625abc0e-f980-4ac9-a775-f7519ee34296`
+
 **Cloud Provider:** aws
+
 **Platform** Terraform
+
 **Severity:** Medium
+
 **Category:** Observability
+
 ## Description
 API Gateway deployments should have `access_log_settings` defined for each connected API Gateway Stage to ensure proper logging of API requests and responses. Without these settings, as shown below, critical API activity may go unlogged, making it difficult to track access patterns, detect malicious requests, or troubleshoot operational issues:
 

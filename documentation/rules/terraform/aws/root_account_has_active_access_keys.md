@@ -10,13 +10,21 @@ meta:
   category: "Insecure Configurations"
 ---
 ## Metadata
+
 **Name:** `aws/root_account_has_active_access_keys`
+
 **Query Name** `Root Account Has Active Access Keys`
+
 **Id:** `970d224d-b42a-416b-81f9-8f4dfe70c4bc`
+
 **Cloud Provider:** aws
+
 **Platform** Terraform
+
 **Severity:** High
+
 **Category:** Insecure Configurations
+
 ## Description
 The AWS Root Account has unrestricted access to all resources in an AWS account, making it a high-value target for attackers. Having active access keys for the root account creates a significant security risk, as compromised keys could lead to complete account takeover and unauthorized access to all AWS services and resources. Best security practice requires using IAM users with appropriate permissions instead of the root account for daily operations and programmatic access.
 

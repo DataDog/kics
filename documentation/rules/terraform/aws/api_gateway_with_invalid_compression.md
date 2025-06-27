@@ -10,13 +10,21 @@ meta:
   category: "Encryption"
 ---
 ## Metadata
+
 **Name:** `aws/api_gateway_with_invalid_compression`
+
 **Query Name** `API Gateway With Invalid Compression`
+
 **Id:** `ed35928e-195c-4405-a252-98ccb664ab7b`
+
 **Cloud Provider:** aws
+
 **Platform** Terraform
+
 **Severity:** Low
+
 **Category:** Encryption
+
 ## Description
 This check ensures that the `minimum_compression_size` attribute is set to a value greater than -1 and less than 10485760 for the `aws_api_gateway_rest_api` resource, enabling proper payload compression. Without valid configuration, API data transfer can be inefficient, leading to increased bandwidth costs and a slower experience for API consumers. Setting a secure configuration like
 

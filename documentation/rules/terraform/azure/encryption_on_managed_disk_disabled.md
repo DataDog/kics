@@ -10,13 +10,21 @@ meta:
   category: "Encryption"
 ---
 ## Metadata
+
 **Name:** `azure/encryption_on_managed_disk_disabled`
+
 **Query Name** `Encryption On Managed Disk Disabled`
+
 **Id:** `a99130ab-4c0e-43aa-97f8-78d4fcb30024`
+
 **Cloud Provider:** azure
+
 **Platform** Terraform
+
 **Severity:** Medium
+
 **Category:** Encryption
+
 ## Description
 When creating Azure managed disks with Terraform, it is important to ensure that encryption is enabled to protect data at rest. If the `encryption_settings` block either has `enabled = false` or is omitted entirely, as in:
 

@@ -10,13 +10,21 @@ meta:
   category: "Observability"
 ---
 ## Metadata
+
 **Name:** `gcp/iam_audit_not_properly_configured`
+
 **Query Name** `IAM Audit Not Properly Configured`
+
 **Id:** `89fe890f-b480-460c-8b6b-7d8b1468adb4`
+
 **Cloud Provider:** gcp
+
 **Platform** Terraform
+
 **Severity:** Low
+
 **Category:** Observability
+
 ## Description
 A defective audit logging configuration in Terraform, as defined by the `google_project_iam_audit_config` resource, can lead to incomplete or incorrect logging of critical activities within your cloud environment. For example, omitting required `log_type` values or specifying exempted members, as shown below, allows certain user actions to go unrecorded, potentially bypassing audit trails and hampering incident investigations:
 

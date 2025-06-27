@@ -10,13 +10,21 @@ meta:
   category: "Encryption"
 ---
 ## Metadata
+
 **Name:** `aws/athena_database_not_encrypted`
+
 **Query Name** `Athena Database Not Encrypted`
+
 **Id:** `b2315cae-b110-4426-81e0-80bb8640cdd3`
+
 **Cloud Provider:** aws
+
 **Platform** Terraform
+
 **Severity:** High
+
 **Category:** Encryption
+
 ## Description
 AWS Athena Databases store query results in S3 buckets, and when not encrypted, sensitive data may be exposed to unauthorized access, potentially leading to data breaches and compliance violations. Encryption at rest protects this data using keys managed either by AWS or customer-managed KMS keys. To secure your implementation, add an encryption_configuration block to your aws_athena_database resource as shown below:
 

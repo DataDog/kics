@@ -10,13 +10,21 @@ meta:
   category: "Best Practices"
 ---
 ## Metadata
+
 **Name:** `azure/sql_server_alert_email_disabled`
+
 **Query Name** `SQL Server Alert Email Disabled`
+
 **Id:** `55975007-f6e7-4134-83c3-298f1fe4b519`
+
 **Cloud Provider:** azure
+
 **Platform** Terraform
+
 **Severity:** Info
+
 **Category:** Best Practices
+
 ## Description
 SQL Server alert email should be enabled to ensure that administrators are promptly notified of suspicious activities or potential security threats, such as SQL injection or data exfiltration attempts. Without setting the `email_account_admins` attribute to `true` in the `azurerm_mssql_server_security_alert_policy` resource, critical security alerts may go unnoticed, delaying incident response and potentially increasing the risk of a successful attack. A secure configuration is shown below:
 

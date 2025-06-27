@@ -10,13 +10,21 @@ meta:
   category: "Insecure Defaults"
 ---
 ## Metadata
+
 **Name:** `azure/default_azure_storage_account_network_access_is_too_permissive`
+
 **Query Name** `Default Azure Storage Account Network Access Is Too Permissive`
+
 **Id:** `a5613650-32ec-4975-a305-31af783153ea`
+
 **Cloud Provider:** azure
+
 **Platform** Terraform
+
 **Severity:** Medium
+
 **Category:** Insecure Defaults
+
 ## Description
 Azure Storage Accounts should have their default network access action set to `Deny` to prevent unauthorized or public access to storage resources. If the `network_rules { default_action = "Allow" }` attribute is used (as shown below), storage accounts can be accessed from any network by default, increasing the risk of data breaches or unauthorized data manipulation.
 

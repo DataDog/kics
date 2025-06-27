@@ -10,13 +10,21 @@ meta:
   category: "Build Process"
 ---
 ## Metadata
+
 **Name:** `azure/cosmos_db_account_without_tags`
+
 **Query Name** `Cosmos DB Account Without Tags`
+
 **Id:** `56dad03e-e94f-4dd6-93a4-c253a03ff7a0`
+
 **Cloud Provider:** azure
+
 **Platform** Terraform
+
 **Severity:** Low
+
 **Category:** Build Process
+
 ## Description
 Cosmos DB accounts should be configured with appropriate tags to ensure resources are identifiable, manageable, and auditable within an Azure environment. Without tags, as shown below, critical contextual information—such as environment, owner, or cost center—is missing, making resource management and cost tracking difficult:
 

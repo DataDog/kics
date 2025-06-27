@@ -10,13 +10,21 @@ meta:
   category: "Secret Management"
 ---
 ## Metadata
+
 **Name:** `aws/hardcoded_aws_access_key`
+
 **Query Name** `Hardcoded AWS Access Key`
+
 **Id:** `d7b9d850-3e06-4a75-852f-c46c2e92240b`
+
 **Cloud Provider:** aws
+
 **Platform** Terraform
+
 **Severity:** High
+
 **Category:** Secret Management
+
 ## Description
 Hardcoding AWS access keys in Terraform configuration files poses a significant security risk as these credentials can be exposed if the code is shared, stored in version control systems, or accidentally leaked. This vulnerability could allow unauthorized access to AWS resources, potentially leading to data breaches, resource manipulation, or incurring unexpected costs.
 

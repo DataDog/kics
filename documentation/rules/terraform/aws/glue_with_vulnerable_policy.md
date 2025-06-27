@@ -10,13 +10,21 @@ meta:
   category: "Access Control"
 ---
 ## Metadata
+
 **Name:** `aws/glue_with_vulnerable_policy`
+
 **Query Name** `Glue With Vulnerable Policy`
+
 **Id:** `d25edb51-07fb-4a73-97d4-41cecdc53a22`
+
 **Cloud Provider:** aws
+
 **Platform** Terraform
+
 **Severity:** Medium
+
 **Category:** Access Control
+
 ## Description
 Resource-based policies for AWS Glue should not use wildcard values (`"*"`) in the `principals` or `actions` attributes, as shown in the example below:
 

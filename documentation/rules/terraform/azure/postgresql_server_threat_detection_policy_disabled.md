@@ -10,13 +10,21 @@ meta:
   category: "Resource Management"
 ---
 ## Metadata
+
 **Name:** `azure/postgresql_server_threat_detection_policy_disabled`
+
 **Query Name** `PostgreSQL Server Threat Detection Policy Disabled`
+
 **Id:** `c407c3cf-c409-4b29-b590-db5f4138d332`
+
 **Cloud Provider:** azure
+
 **Platform** Terraform
+
 **Severity:** Medium
+
 **Category:** Resource Management
+
 ## Description
 PostgreSQL Server Threat Detection Policy should be enabled to ensure the server can detect anomalous activities and potential security threats, such as SQL injection or brute-force attacks. When the `threat_detection_policy { enabled = false }` attribute is set, suspicious behaviors will not be identified or logged, leaving the server vulnerable to undetected compromises. Enabling threat detection with
 

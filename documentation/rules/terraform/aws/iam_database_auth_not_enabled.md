@@ -10,13 +10,21 @@ meta:
   category: "Encryption"
 ---
 ## Metadata
+
 **Name:** `aws/iam_database_auth_not_enabled`
+
 **Query Name** `IAM Database Auth Not Enabled`
+
 **Id:** `88fd05e0-ac0e-43d2-ba6d-fc0ba60ae1a6`
+
 **Cloud Provider:** aws
+
 **Platform** Terraform
+
 **Severity:** Medium
+
 **Category:** Encryption
+
 ## Description
 When provisioning an AWS RDS instance with Terraform, the `iam_database_authentication_enabled` attribute determines whether IAM database authentication is enabled. Failing to set `iam_database_authentication_enabled = true` on a compatible database engine means the database will rely solely on traditional static username and password authentication, increasing the risk of credential compromise and making access control harder to manage centrally. Enabling this attribute, as shown below, leverages AWS IAM to enforce strong authentication and fine-grained, auditable access policies:
 

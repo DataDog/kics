@@ -10,13 +10,21 @@ meta:
   category: "Networking and Firewall"
 ---
 ## Metadata
+
 **Name:** `azure/sql_server_ingress_from_any_ip`
+
 **Query Name** `SQLServer Ingress From Any IP`
+
 **Id:** `25c0ea09-f1c5-4380-b055-3b83863f2bb8`
+
 **Cloud Provider:** azure
+
 **Platform** Terraform
+
 **Severity:** Critical
+
 **Category:** Networking and Firewall
+
 ## Description
 This check identifies Azure SQL Server firewall rules that allow access from any IP address (0.0.0.0 to 255.255.255.255), which creates a significant security vulnerability by exposing your database to the entire internet. Such unrestricted access increases the risk of unauthorized access, data breaches, and potential exfiltration of sensitive information stored in your SQL databases.
 

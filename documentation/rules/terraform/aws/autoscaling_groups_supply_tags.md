@@ -10,13 +10,21 @@ meta:
   category: "Availability"
 ---
 ## Metadata
+
 **Name:** `aws/autoscaling_groups_supply_tags`
+
 **Query Name** `Autoscaling Groups Supply Tags`
+
 **Id:** `ba48df05-eaa1-4d64-905e-4a4b051e7587`
+
 **Cloud Provider:** aws
+
 **Platform** Terraform
+
 **Severity:** Low
+
 **Category:** Availability
+
 ## Description
 Autoscaling groups in AWS should be configured with appropriate tags to ensure proper resource management, cost allocation, and identification. When the `tags` attribute is omitted, as in
 

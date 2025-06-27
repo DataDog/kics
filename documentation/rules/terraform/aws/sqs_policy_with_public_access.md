@@ -10,13 +10,21 @@ meta:
   category: "Access Control"
 ---
 ## Metadata
+
 **Name:** `aws/sqs_policy_with_public_access`
+
 **Query Name** `SQS Policy With Public Access`
+
 **Id:** `730675f9-52ed-49b6-8ead-0acb5dd7df7f`
+
 **Cloud Provider:** aws
+
 **Platform** Terraform
+
 **Severity:** Medium
+
 **Category:** Access Control
+
 ## Description
 This check looks for overly permissive `Action` statements and wildcard `"Principal": "*"` in AWS SQS queue policies, which may grant broad permissions to any user. If left unaddressed, this misconfiguration can allow unauthorized parties to perform any action on the queue, including viewing, deleting, or sending messages, which poses risks such as data leakage or denial of service. To reduce the attack surface, always scope the `Principal` attribute in policy documents to trusted AWS identities instead of using `"*"` or `{"AWS": "*"}`.
 

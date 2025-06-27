@@ -10,13 +10,21 @@ meta:
   category: "Insecure Configurations"
 ---
 ## Metadata
+
 **Name:** `aws/cloudfront_without_minimum_protocol_tls_1.2`
+
 **Query Name** `CloudFront Without Minimum Protocol TLS 1.2`
+
 **Id:** `00e5e55e-c2ff-46b3-a757-a7a1cd802456`
+
 **Cloud Provider:** aws
+
 **Platform** Terraform
+
 **Severity:** Medium
+
 **Category:** Insecure Configurations
+
 ## Description
 Amazon CloudFront distributions should enforce a minimum TLS protocol version of at least TLS 1.2 to ensure secure encryption between clients and CloudFront. Allowing earlier versions such as TLS 1.0 or TLS 1.1 exposes distributions to known vulnerabilities and weak ciphers, increasing the risk of data interception and man-in-the-middle attacks. This can be securely enforced in Terraform using the `viewer_certificate` block with `minimum_protocol_version = "TLSv1.2_2018"` or higher, as shown below:
 

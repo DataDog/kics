@@ -10,13 +10,21 @@ meta:
   category: "Resource Management"
 ---
 ## Metadata
+
 **Name:** `aws/api_gateway_stage_without_api_gateway_usage_plan_associated`
+
 **Query Name** `API Gateway Stage Without API Gateway UsagePlan Associated`
+
 **Id:** `c999cf62-0920-40f8-8dda-0caccd66ed7e`
+
 **Cloud Provider:** aws
+
 **Platform** Terraform
+
 **Severity:** Low
+
 **Category:** Resource Management
+
 ## Description
 API Gateway stages should always be associated with an API Gateway UsagePlan, which enforces throttling and quota limits for clients accessing your APIs. Without a defined `aws_api_gateway_usage_plan` resource and its association via the `api_stages` block, as shown below,
 

@@ -10,13 +10,21 @@ meta:
   category: "Encryption"
 ---
 ## Metadata
+
 **Name:** `aws/neptune_database_cluster_encryption_disabled`
+
 **Query Name** `Neptune Database Cluster Encryption Disabled`
+
 **Id:** `98d59056-f745-4ef5-8613-32bca8d40b7e`
+
 **Cloud Provider:** aws
+
 **Platform** Terraform
+
 **Severity:** High
+
 **Category:** Encryption
+
 ## Description
 Amazon Neptune is a fully managed graph database service that makes it easy to build and run applications working with highly connected datasets. When Neptune database cluster storage encryption is disabled, sensitive data stored in these clusters is vulnerable to unauthorized access if the underlying storage is compromised. Without encryption, data is stored in plaintext, posing a significant security risk.
 

@@ -10,13 +10,21 @@ meta:
   category: "Access Control"
 ---
 ## Metadata
+
 **Name:** `aws/s3_bucket_allows_access_to_all_authenticated_users`
+
 **Query Name** `S3 Bucket Allows Authenticated Users Access`
+
 **Id:** `d4e5f6g7-h8i9-0jkl-1234-mn567opq8901`
+
 **Cloud Provider:** aws
+
 **Platform** Terraform
+
 **Severity:** High
+
 **Category:** Access Control
+
 ## Description
 This check verifies if AWS S3 bucket ACLs are configured to prevent access from all authenticated AWS users. When an S3 bucket grants access to the 'AuthenticatedUsers' group, it allows any AWS account holder worldwide to access your data, not just users within your organization. This significantly increases the risk of unauthorized data access, potential data breaches, and violation of data governance policies.
 

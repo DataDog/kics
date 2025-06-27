@@ -10,13 +10,21 @@ meta:
   category: "Insecure Configurations"
 ---
 ## Metadata
+
 **Name:** `azure/azure_container_registry_with_no_locks`
+
 **Query Name** `Azure Container Registry With No Locks`
+
 **Id:** `a187ac47-8163-42ce-8a63-c115236be6fb`
+
 **Cloud Provider:** azure
+
 **Platform** Terraform
+
 **Severity:** High
+
 **Category:** Insecure Configurations
+
 ## Description
 Azure Container Registry without proper management locks is vulnerable to accidental deletion or modification, which can lead to service disruptions, data loss, and potentially severe business impact. Management locks provide an additional layer of protection by preventing unauthorized or unintended changes to critical resources. To properly secure an Azure Container Registry, ensure the management lock's scope correctly references the container registry resource as shown below:
 

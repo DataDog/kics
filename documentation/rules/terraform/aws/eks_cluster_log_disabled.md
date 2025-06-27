@@ -10,13 +10,21 @@ meta:
   category: "Observability"
 ---
 ## Metadata
+
 **Name:** `aws/eks_cluster_log_disabled`
+
 **Query Name** `EKS cluster logging is not enabled`
+
 **Id:** `37304d3f-f852-40b8-ae3f-725e87a7cedf`
+
 **Cloud Provider:** aws
+
 **Platform** Terraform
+
 **Severity:** Medium
+
 **Category:** Observability
+
 ## Description
 Amazon EKS control plane logging should be enabled to capture important events and API calls within the Kubernetes control plane. Without explicit configuration of the `enabled_cluster_log_types` attribute, as shown below, critical logs like API, audit, and authenticator events will not be sent to CloudWatch, making it difficult to monitor cluster activity or investigate potential security incidents.
 

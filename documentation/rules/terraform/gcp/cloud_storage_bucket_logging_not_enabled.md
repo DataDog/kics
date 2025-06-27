@@ -10,13 +10,21 @@ meta:
   category: "Observability"
 ---
 ## Metadata
+
 **Name:** `gcp/cloud_storage_bucket_logging_not_enabled`
+
 **Query Name** `Cloud Storage Bucket Logging Not Enabled`
+
 **Id:** `d6cabc3a-d57e-48c2-b341-bf3dd4f4a120`
+
 **Cloud Provider:** gcp
+
 **Platform** Terraform
+
 **Severity:** Medium
+
 **Category:** Observability
+
 ## Description
 Cloud storage buckets should have logging enabled to capture access and usage data for auditing and monitoring purposes. If the `logging` block is not configured in the Terraform resource, such as  
 

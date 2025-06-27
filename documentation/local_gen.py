@@ -63,13 +63,21 @@ meta:
   category: "{category}"
 ---
 ## Metadata
+
 **Name:** `{meta_name}`
+
 **Query Name** `{display_name}`
+
 **Id:** `{rule_id}`
+
 **Cloud Provider:** {cloud_provider}
+
 **Platform** {platform}
+
 **Severity:** {severity.capitalize()}
+
 **Category:** {category}
+
 ## Description
 {description}
 """

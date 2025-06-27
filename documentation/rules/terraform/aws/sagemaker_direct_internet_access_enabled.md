@@ -10,13 +10,21 @@ meta:
   category: "Networking and Firewall"
 ---
 ## Metadata
+
 **Name:** `aws/sagemaker_direct_internet_access_enabled`
+
 **Query Name** `SageMaker Notebook Internet Access Enabled`
+
 **Id:** `f3g4h5i6-j7k8-9lmn-0opq-12345abcdefg`
+
 **Cloud Provider:** aws
+
 **Platform** Terraform
+
 **Severity:** High
+
 **Category:** Networking and Firewall
+
 ## Description
 Amazon SageMaker Notebook Instances with direct internet access enabled create potential security vulnerabilities by allowing unauthorized outbound connections and possible data exfiltration channels. When enabled, malicious code or compromised notebooks can directly communicate with external servers, bypassing network security controls and potentially leaking sensitive information or intellectual property. To secure SageMaker Notebook Instances, you should explicitly disable direct internet access as shown in the following example:
 

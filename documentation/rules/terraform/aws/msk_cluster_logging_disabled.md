@@ -10,13 +10,21 @@ meta:
   category: "Observability"
 ---
 ## Metadata
+
 **Name:** `aws/msk_cluster_logging_disabled`
+
 **Query Name** `MSK Cluster Logging Disabled`
+
 **Id:** `2f56b7ab-7fba-4e93-82f0-247e5ddeb239`
+
 **Cloud Provider:** aws
+
 **Platform** Terraform
+
 **Severity:** Medium
+
 **Category:** Observability
+
 ## Description
 Amazon MSK cluster broker logging should be enabled to capture important audit and troubleshooting information. If the `logging_info.broker_logs.cloudwatch_logs.enabled` attribute is set to `false` or omitted, as shown below, critical activity and error logs from the MSK brokers will not be captured: 
 

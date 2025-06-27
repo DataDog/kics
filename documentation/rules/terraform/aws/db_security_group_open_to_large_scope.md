@@ -10,13 +10,21 @@ meta:
   category: "Networking and Firewall"
 ---
 ## Metadata
+
 **Name:** `aws/db_security_group_open_to_large_scope`
+
 **Query Name** `DB Security Group Open To Large Scope`
+
 **Id:** `4f615f3e-fb9c-4fad-8b70-2e9f781806ce`
+
 **Cloud Provider:** aws
+
 **Platform** Terraform
+
 **Severity:** High
+
 **Category:** Networking and Firewall
+
 ## Description
 This check ensures that DB Security Groups aren't configured with overly broad CIDR ranges that could expose your database to unnecessary network access. When a CIDR block with more than 256 hosts (such as /24 or lower) is configured in the ingress rules, it increases the attack surface and potential for unauthorized access to your database instances.
 

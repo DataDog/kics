@@ -10,13 +10,21 @@ meta:
   category: "Insecure Configurations"
 ---
 ## Metadata
+
 **Name:** `aws/alb_deletion_protection_disabled`
+
 **Query Name** `ALB Deletion Protection Disabled`
+
 **Id:** `afecd1f1-6378-4f7e-bb3b-60c35801fdd4`
+
 **Cloud Provider:** aws
+
 **Platform** Terraform
+
 **Severity:** Medium
+
 **Category:** Insecure Configurations
+
 ## Description
 Enabling deletion protection for an Application Load Balancer (ALB) helps prevent accidental or unauthorized deletion of the ALB resource, which could cause significant downtime or impact application availability. If the `enable_deletion_protection` attribute is set to `false`, as shown below, malicious or inadvertent actions could destroy the ALB and disrupt traffic flow to critical applications:
 

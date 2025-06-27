@@ -10,13 +10,21 @@ meta:
   category: "Encryption"
 ---
 ## Metadata
+
 **Name:** `aws/rds_storage_not_encrypted`
+
 **Query Name** `RDS Storage Not Encrypted`
+
 **Id:** `3199c26c-7871-4cb3-99c2-10a59244ce7f`
+
 **Cloud Provider:** aws
+
 **Platform** Terraform
+
 **Severity:** High
+
 **Category:** Encryption
+
 ## Description
 Amazon RDS storage encryption provides an additional layer of data protection by securing your data from unauthorized access to the underlying storage. When RDS storage is not encrypted, sensitive data stored in your databases could be exposed if the underlying storage is compromised. To properly secure your RDS clusters, set the 'storage_encrypted' attribute to 'true' as shown in the secure example:
 

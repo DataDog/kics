@@ -10,13 +10,21 @@ meta:
   category: "Access Control"
 ---
 ## Metadata
+
 **Name:** `gcp/kms_admin_and_crypto_key_roles_in_use`
+
 **Query Name** `KMS Admin and CryptoKey Roles In Use`
+
 **Id:** `92e4464a-4139-4d57-8742-b5acc0347680`
+
 **Cloud Provider:** gcp
+
 **Platform** Terraform
+
 **Severity:** Medium
+
 **Category:** Access Control
+
 ## Description
 Assigning both the `roles/cloudkms.admin` and `roles/cloudkms.cryptoKeyDecrypter` IAM roles to the same member on a Google Cloud project gives that user full administrative control over Cloud KMS keys as well as the ability to decrypt data. This combination of permissions allows a single user to both manage (create, destroy, and modify) cryptographic keys and decrypt sensitive information, greatly increasing the risk of unauthorized data access or key misuse. To minimize risk, ensure that these roles are assigned to separate members as shown below:
 

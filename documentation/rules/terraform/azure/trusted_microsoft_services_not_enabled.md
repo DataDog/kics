@@ -10,13 +10,21 @@ meta:
   category: "Networking and Firewall"
 ---
 ## Metadata
+
 **Name:** `azure/trusted_microsoft_services_not_enabled`
+
 **Query Name** `Trusted Microsoft Services Not Enabled`
+
 **Id:** `5400f379-a347-4bdd-a032-446465fdcc6f`
+
 **Cloud Provider:** azure
+
 **Platform** Terraform
+
 **Severity:** Medium
+
 **Category:** Networking and Firewall
+
 ## Description
 Trusted Microsoft Services should be enabled for Storage Account access to ensure that Azure resources such as Azure Backup, Azure Monitor, and others can securely interact with the Storage Account without exposing it more broadly. When the `bypass` attribute in `azurerm_storage_account` or `azurerm_storage_account_network_rules` is not set to include `"AzureServices"`, essential Azure services may be denied access or administrators may set overly permissive network rules, increasing the attack surface. Securely configuring your storage account should look like:
 

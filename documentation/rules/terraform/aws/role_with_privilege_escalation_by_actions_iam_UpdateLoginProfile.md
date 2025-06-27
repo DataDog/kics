@@ -10,13 +10,21 @@ meta:
   category: "Access Control"
 ---
 ## Metadata
+
 **Name:** `aws/role_with_privilege_escalation_by_actions_iam_UpdateLoginProfile`
+
 **Query Name** `Role With Privilege Escalation By Actions 'iam:UpdateLoginProfile'`
+
 **Id:** `35ccf766-0e4d-41ed-9ec4-2dab155082b4`
+
 **Cloud Provider:** aws
+
 **Platform** Terraform
+
 **Severity:** Medium
+
 **Category:** Access Control
+
 ## Description
 Granting the `iam:UpdateLoginProfile` action with the `Resource` attribute set to `"*"` in an IAM policy allows a role or user to change the login passwords of any IAM user in the AWS account. This creates a privilege escalation vulnerability, as a user with this permission could take over other accounts and gain unauthorized access to critical resources. 
 

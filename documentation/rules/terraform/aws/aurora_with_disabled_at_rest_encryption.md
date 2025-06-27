@@ -10,13 +10,21 @@ meta:
   category: "Encryption"
 ---
 ## Metadata
+
 **Name:** `aws/aurora_with_disabled_at_rest_encryption`
+
 **Query Name** `Aurora With Disabled at Rest Encryption`
+
 **Id:** `1a690d1d-0ae7-49fa-b2db-b75ae0dd1d3e`
+
 **Cloud Provider:** aws
+
 **Platform** Terraform
+
 **Severity:** High
+
 **Category:** Encryption
+
 ## Description
 Amazon Aurora clusters should have encryption at rest enabled to protect sensitive data stored in the database. When storage_encrypted is set to false or omitted, data stored in the underlying storage is vulnerable to unauthorized access if the storage media is compromised or improperly disposed of. Enabling encryption at rest helps maintain data confidentiality and supports compliance with regulatory requirements for data protection. To address this vulnerability, set the storage_encrypted attribute to true in your aws_rds_cluster resource as shown in the secure example:
 

@@ -10,13 +10,21 @@ meta:
   category: "Access Control"
 ---
 ## Metadata
+
 **Name:** `aws/policy_without_principal`
+
 **Query Name** `Policy Without Principal`
+
 **Id:** `bbe3dd3d-fea9-4b68-a785-cfabe2bbbc54`
+
 **Cloud Provider:** aws
+
 **Platform** Terraform
+
 **Severity:** Medium
+
 **Category:** Access Control
+
 ## Description
 When defining resource-based policies in AWS using Terraform, the `Principal` element must be explicitly set to specify which users, roles, or accounts are permitted to access the resource. If the `Principal` element is omitted in policies other than IAM identity-based policies, the permissions may unintentionally allow access to any AWS user, potentially enabling unauthorized or malicious actions on the resource. For example, a secure policy includes the `"Principal"` attribute, restricting permissions to specific users:
 

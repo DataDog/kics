@@ -10,13 +10,21 @@ meta:
   category: "Encryption"
 ---
 ## Metadata
+
 **Name:** `aws/glue_security_configuration_encryption_disabled`
+
 **Query Name** `Glue Security Configuration Encryption Disabled`
+
 **Id:** `ad5b4e97-2850-4adf-be17-1d293e0b85ee`
+
 **Cloud Provider:** aws
+
 **Platform** Terraform
+
 **Severity:** High
+
 **Category:** Encryption
+
 ## Description
 AWS Glue Security Configuration requires proper encryption settings for all three components (CloudWatch, job bookmarks, and S3) with valid KMS key ARNs to ensure comprehensive data protection. When any of these components lacks proper encryption configuration or is missing the required KMS key ARN, it creates security vulnerabilities that could expose sensitive data. The impact of this misconfiguration includes potential unauthorized access to data, compliance violations, and increased risk of data breaches.
 

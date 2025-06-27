@@ -10,13 +10,21 @@ meta:
   category: "Best Practices"
 ---
 ## Metadata
+
 **Name:** `aws/misconfigured_password_policy_expiration`
+
 **Query Name** `Misconfigured Password Policy Expiration`
+
 **Id:** `ce60d060-efb8-4bfd-9cf7-ff8945d00d90`
+
 **Cloud Provider:** aws
+
 **Platform** Terraform
+
 **Severity:** Low
+
 **Category:** Best Practices
+
 ## Description
 A password expiration policy enforces regular password changes, reducing the risk of compromised credentials being exploited over long periods. If the `aws_iam_account_password_policy` resource does not set the `max_password_age` attribute, as shown below,
 

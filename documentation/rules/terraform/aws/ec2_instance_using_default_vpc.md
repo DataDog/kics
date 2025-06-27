@@ -10,13 +10,21 @@ meta:
   category: "Networking and Firewall"
 ---
 ## Metadata
+
 **Name:** `aws/ec2_instance_using_default_vpc`
+
 **Query Name** `EC2 Instance Using Default VPC`
+
 **Id:** `7e4a6e76-568d-43ef-8c4e-36dea481bff1`
+
 **Cloud Provider:** aws
+
 **Platform** Terraform
+
 **Severity:** Low
+
 **Category:** Networking and Firewall
+
 ## Description
 This check ensures that Amazon EC2 instances are not deployed within the default VPC (`aws_vpc.default`) in AWS environments. Default VPCs are automatically created by AWS and often have broader, pre-configured network permissions and less restrictive security controls, increasing the attack surface and risk of unauthorized access. By explicitly defining and using custom VPCs (e.g., `aws_vpc.main`), organizations can enforce tailored network segmentation and security group rules, reducing the likelihood of exploitation due to overly permissive defaults.
 

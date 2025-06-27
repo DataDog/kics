@@ -10,13 +10,21 @@ meta:
   category: "Observability"
 ---
 ## Metadata
+
 **Name:** `aws/stack_notifications_disabled`
+
 **Query Name** `Stack Notifications Disabled`
+
 **Id:** `b72d0026-f649-4c91-a9ea-15d8f681ac09`
+
 **Cloud Provider:** aws
+
 **Platform** Terraform
+
 **Severity:** Medium
+
 **Category:** Observability
+
 ## Description
 Enabling stack notifications in AWS CloudFormation ensures that administrators are promptly informed about critical events such as stack creation, updates, or failures. Without specifying the `notification_arns` attribute in the Terraform resource, as shown below, important operational or security changes may go unnoticed, potentially delaying response to incidents or failures:
 

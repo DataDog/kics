@@ -10,13 +10,21 @@ meta:
   category: "Encryption"
 ---
 ## Metadata
+
 **Name:** `aws/elasticsearch_not_encrypted_at_rest`
+
 **Query Name** `ElasticSearch Not Encrypted At Rest`
+
 **Id:** `24e16922-4330-4e9d-be8a-caa90299466a`
+
 **Cloud Provider:** aws
+
 **Platform** Terraform
+
 **Severity:** High
+
 **Category:** Encryption
+
 ## Description
 This check ensures that AWS ElasticSearch domains have encryption at rest enabled, which protects sensitive data stored in ElasticSearch indices from unauthorized access if physical storage is compromised. Without encryption at rest, data stored in ElasticSearch is vulnerable to exposure if someone gains access to the underlying storage media, potentially leading to data breaches and compliance violations.
 

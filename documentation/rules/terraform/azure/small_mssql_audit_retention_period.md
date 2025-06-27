@@ -10,13 +10,21 @@ meta:
   category: "Observability"
 ---
 ## Metadata
+
 **Name:** `azure/small_mssql_audit_retention_period`
+
 **Query Name** `Small MSSQL Audit Retention Period`
+
 **Id:** `9c301481-e6ec-44f7-8a49-8ec63e2969ea`
+
 **Cloud Provider:** azure
+
 **Platform** Terraform
+
 **Severity:** Low
+
 **Category:** Observability
+
 ## Description
 Auditing logs for Azure MSSQL Servers should be retained for more than 90 days to support monitoring and forensic investigations. When the `retention_in_days` attribute in the `extended_auditing_policy` block is set to a value less than 91, such as:
 

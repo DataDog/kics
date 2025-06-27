@@ -10,13 +10,21 @@ meta:
   category: "Observability"
 ---
 ## Metadata
+
 **Name:** `gcp/stackdriver_monitoring_disabled`
+
 **Query Name** `Stackdriver Monitoring Disabled`
+
 **Id:** `30e8dfd2-3591-4d19-8d11-79e93106c93d`
+
 **Cloud Provider:** gcp
+
 **Platform** Terraform
+
 **Severity:** Medium
+
 **Category:** Observability
+
 ## Description
 Kubernetes Engine Clusters must have Stackdriver Monitoring enabled by setting the `monitoring_service` attribute to `"monitoring.googleapis.com/kubernetes"` or leaving it undefined, which allows Google Cloud’s default monitoring. Disabling monitoring by setting `monitoring_service = "none"` leaves clusters without visibility into performance, health, or security events, increasing the risk of undetected failures or malicious activity. 
 

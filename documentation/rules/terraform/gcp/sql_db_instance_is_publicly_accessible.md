@@ -10,13 +10,21 @@ meta:
   category: "Insecure Configurations"
 ---
 ## Metadata
+
 **Name:** `gcp/sql_db_instance_is_publicly_accessible`
+
 **Query Name** `SQL DB Instance Publicly Accessible`
+
 **Id:** `b187edca-b81e-4fdc-aff4-aab57db45edb`
+
 **Cloud Provider:** gcp
+
 **Platform** Terraform
+
 **Severity:** Critical
+
 **Category:** Insecure Configurations
+
 ## Description
 A Google Cloud SQL instance becomes publicly accessible when it has public IP addressing enabled without proper network restrictions, creating a potential attack vector for unauthorized access. This can occur through ipv4_enabled being set to true (default) or by configuring authorized_networks with overly permissive CIDR ranges like '0.0.0.0/0' which allows connections from any IP address. To secure Cloud SQL instances, either disable public IP by setting ipv4_enabled to false and specifying a private_network (e.g., `ipv4_enabled = false` and `private_network = "your-network-id"`) or restrict authorized_networks to specific trusted IP ranges (e.g., `authorized_networks { name = "trusted-network", value = "10.0.0.0/24" }`) rather than using '0.0.0.0/0'.
 

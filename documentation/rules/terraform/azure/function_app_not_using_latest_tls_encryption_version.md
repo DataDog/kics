@@ -10,13 +10,21 @@ meta:
   category: "Encryption"
 ---
 ## Metadata
+
 **Name:** `azure/function_app_not_using_latest_tls_encryption_version`
+
 **Query Name** `Function App Not Using Latest TLS Encryption Version`
+
 **Id:** `45fc717a-bd86-415c-bdd8-677901be1aa6`
+
 **Cloud Provider:** azure
+
 **Platform** Terraform
+
 **Severity:** Medium
+
 **Category:** Encryption
+
 ## Description
 Azure Function Apps should be configured to use the latest supported TLS version to ensure encrypted communications and protect data in transit. If the `min_tls_version` attribute is set to an outdated value such as `1.1`, as in:
 

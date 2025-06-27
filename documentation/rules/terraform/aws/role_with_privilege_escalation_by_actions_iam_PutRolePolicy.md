@@ -10,13 +10,21 @@ meta:
   category: "Access Control"
 ---
 ## Metadata
+
 **Name:** `aws/role_with_privilege_escalation_by_actions_iam_PutRolePolicy`
+
 **Query Name** `Role With Privilege Escalation By Actions 'iam:PutRolePolicy'`
+
 **Id:** `eb64f1e9-f67d-4e35-8a3c-3d6a2f9efea7`
+
 **Cloud Provider:** aws
+
 **Platform** Terraform
+
 **Severity:** Medium
+
 **Category:** Access Control
+
 ## Description
 Granting a role the `iam:PutRolePolicy` action with the `Resource` set to `"*"` in Terraform, as in the following configuration,
 

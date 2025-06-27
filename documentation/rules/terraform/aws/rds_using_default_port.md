@@ -10,13 +10,21 @@ meta:
   category: "Networking and Firewall"
 ---
 ## Metadata
+
 **Name:** `aws/rds_using_default_port`
+
 **Query Name** `RDS Using Default Port`
+
 **Id:** `bca7cc4d-b3a4-4345-9461-eb69c68fcd26`
+
 **Cloud Provider:** aws
+
 **Platform** Terraform
+
 **Severity:** Low
+
 **Category:** Networking and Firewall
+
 ## Description
 Databases provisioned using Amazon RDS should not be configured to use default ports—for example, MySQL/Aurora/MariaDB (3306), PostgreSQL (5432), Oracle (1521), or SQL Server (1433)—as these are well-known and commonly targeted by attackers during automated scans and brute-force attacks. By specifying the port attribute (e.g., `port = 3306`) in a Terraform configuration, the database remains easily discoverable by attackers who search for open default ports, increasing the risk of unauthorized access and exploitation. Altering the port to a non-standard value (e.g., `port = 3307`) reduces the likelihood of automated attacks by introducing a layer of obscurity, helping to protect the database from opportunistic threats. If left unaddressed, using the default port can lead to a higher exposure risk and potential data breaches, even if other security controls are in place.
 

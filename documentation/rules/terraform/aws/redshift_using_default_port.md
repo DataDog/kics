@@ -10,13 +10,21 @@ meta:
   category: "Networking and Firewall"
 ---
 ## Metadata
+
 **Name:** `aws/redshift_using_default_port`
+
 **Query Name** `Redshift Using Default Port`
+
 **Id:** `41abc6cc-dde1-4217-83d3-fb5f0cc09d8f`
+
 **Cloud Provider:** aws
+
 **Platform** Terraform
+
 **Severity:** Low
+
 **Category:** Networking and Firewall
+
 ## Description
 Amazon Redshift clusters listen on a default port (`5439`) unless otherwise specified using the `port` attribute in Terraform. Using the default port increases the risk of brute-force and automated attacks, as malicious actors frequently scan for commonly used service ports. Setting a custom port adds an obscurity layer by making the service less predictable to attackers, thereby reducing its exposure to opportunistic network attacks.
 

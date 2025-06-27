@@ -10,13 +10,21 @@ meta:
   category: "Networking and Firewall"
 ---
 ## Metadata
+
 **Name:** `aws/db_security_group_with_public_scope`
+
 **Query Name** `DB Security Group With Public Scope`
+
 **Id:** `1e0ef61b-ad85-4518-a3d3-85eaad164885`
+
 **Cloud Provider:** aws
+
 **Platform** Terraform
+
 **Severity:** Critical
+
 **Category:** Networking and Firewall
+
 ## Description
 AWS DB Security Groups with overly permissive ingress rules (0.0.0.0/0 or ::/0) expose database instances to potential unauthorized access from any IP address on the internet. This critical security vulnerability could lead to data breaches, unauthorized data manipulation, or complete database compromise. Instead of using public CIDR ranges, restrict access to specific IP ranges that require database connectivity.
 

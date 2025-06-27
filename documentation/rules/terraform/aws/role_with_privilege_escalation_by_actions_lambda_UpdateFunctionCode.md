@@ -10,13 +10,21 @@ meta:
   category: "Access Control"
 ---
 ## Metadata
+
 **Name:** `aws/role_with_privilege_escalation_by_actions_lambda_UpdateFunctionCode`
+
 **Query Name** `Role With Privilege Escalation By Actions 'lambda:UpdateFunctionCode'`
+
 **Id:** `c583f0f9-7dfd-476b-a056-f47c62b47b46`
+
 **Cloud Provider:** aws
+
 **Platform** Terraform
+
 **Severity:** Medium
+
 **Category:** Access Control
+
 ## Description
 Granting an IAM role permission for the `lambda:UpdateFunctionCode` action with a resource set to `"*"` allows the role to update the code of any Lambda function in the AWS account, opening the door for privilege escalation. An attacker with this permission could alter Lambda function code to obtain higher privileges or execute unauthorized actions, potentially compromising the security of the entire AWS environment. To mitigate this risk, restrict the `Resource` attribute to only the specific Lambda functions that need to be updated and avoid using the wildcard `"*"`.
 

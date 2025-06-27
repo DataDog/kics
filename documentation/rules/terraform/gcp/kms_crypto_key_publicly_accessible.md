@@ -10,13 +10,21 @@ meta:
   category: "Encryption"
 ---
 ## Metadata
+
 **Name:** `gcp/kms_crypto_key_publicly_accessible`
+
 **Query Name** `KMS Crypto Key is Publicly Accessible`
+
 **Id:** `16cc87d1-dd47-4f46-b3ce-4dfcac8fd2f5`
+
 **Cloud Provider:** gcp
+
 **Platform** Terraform
+
 **Severity:** High
+
 **Category:** Encryption
+
 ## Description
 Google Cloud KMS Crypto Keys provide cryptographic functionality for encrypting and decrypting sensitive data in Google Cloud. When KMS Crypto Key IAM policies include 'allUsers' or 'allAuthenticatedUsers', they become publicly accessible, creating a serious security vulnerability that could lead to unauthorized access to encryption capabilities, data breaches, or compromised encrypted information.
 

@@ -10,13 +10,21 @@ meta:
   category: "Access Control"
 ---
 ## Metadata
+
 **Name:** `aws/group_with_privilege_escalation_by_actions_iam_PassRole_and_lambda_CreateFunction_and_lambda_InvokeFunction`
+
 **Query Name** `Group With Privilege Escalation By Actions 'lambda:CreateFunction' And 'iam:PassRole' And 'lambda:InvokeFunction'`
+
 **Id:** `034d0aee-620f-4bf7-b7fb-efdf661fdb9e`
+
 **Cloud Provider:** aws
+
 **Platform** Terraform
+
 **Severity:** Medium
+
 **Category:** Access Control
+
 ## Description
 This configuration allows an IAM group to escalate privileges by combining `lambda:CreateFunction`, `iam:PassRole`, and `lambda:InvokeFunction` permissions, all with the overly broad `Resource = "*"`. Attackers or unauthorized users with this access can create, invoke, and assign any role to Lambda functions, potentially gaining permissions beyond their intended scope and compromising the entire AWS account. To prevent this, restrict `iam:PassRole` and Lambda actions to specific, necessary resources and ensure that the policy does not broadly grant privileges as shown below:
 

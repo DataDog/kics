@@ -10,13 +10,21 @@ meta:
   category: "Insecure Configurations"
 ---
 ## Metadata
+
 **Name:** `aws/kms_key_with_full_permissions`
+
 **Query Name** `KMS Key With Vulnerable Policy`
+
 **Id:** `7ebc9038-0bde-479a-acc4-6ed7b6758899`
+
 **Cloud Provider:** aws
+
 **Platform** Terraform
+
 **Severity:** High
+
 **Category:** Insecure Configurations
+
 ## Description
 This check identifies AWS KMS keys with overly permissive policies that grant full access to all AWS services or users. KMS keys with policies allowing 'kms:*' actions to all principals ('AWS:*') create a significant security risk, potentially allowing unauthorized users to access, modify, or delete encrypted data across your AWS environment.
 

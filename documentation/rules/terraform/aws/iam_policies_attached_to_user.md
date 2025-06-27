@@ -10,13 +10,21 @@ meta:
   category: "Access Control"
 ---
 ## Metadata
+
 **Name:** `aws/iam_policies_attached_to_user`
+
 **Query Name** `IAM Policies Attached To User`
+
 **Id:** `b4378389-a9aa-44ee-91e7-ef183f11079e`
+
 **Cloud Provider:** aws
+
 **Platform** Terraform
+
 **Severity:** Medium
+
 **Category:** Access Control
+
 ## Description
 IAM policies should be attached only to groups or roles to promote centralized permission management and reduce the risk of granting excessive privileges to individual users. Assigning an IAM policy directly to a user, as shown below with the `users` attribute, can increase the risk of credentials compromise or accidental permission escalation:
 

@@ -10,13 +10,21 @@ meta:
   category: "Observability"
 ---
 ## Metadata
+
 **Name:** `aws/vpc_flowlogs_disabled`
+
 **Query Name** `VPC FlowLogs Disabled`
+
 **Id:** `f83121ea-03da-434f-9277-9cd247ab3047`
+
 **Cloud Provider:** aws
+
 **Platform** Terraform
+
 **Severity:** Medium
+
 **Category:** Observability
+
 ## Description
 Enabling VPC Flow Logs ensures that all network traffic within a Virtual Private Cloud (VPC) is captured and monitored for security and compliance purposes. Without the `vpc_id` attribute set for each `aws_flow_log` resource, as shown below, critical visibility into network traffic can be lost, making it difficult to detect suspicious activity or troubleshoot networking issues. To ensure accountability and monitoring, every VPC resource should have an associated flow log defined as follows:
 

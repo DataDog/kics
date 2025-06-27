@@ -10,13 +10,21 @@ meta:
   category: "Networking and Firewall"
 ---
 ## Metadata
+
 **Name:** `azure/sensitive_port_is_exposed_to_small_public_network`
+
 **Query Name** `Sensitive Port Is Exposed To Small Public Network`
+
 **Id:** `e9dee01f-2505-4df2-b9bf-7804d1fd9082`
+
 **Cloud Provider:** azure
+
 **Platform** Terraform
+
 **Severity:** Medium
+
 **Category:** Networking and Firewall
+
 ## Description
 Allowing sensitive ports, such as port 23 (Telnet) or port 110 (POP3), to be open on public-facing network security groups exposes your resources to potential attacks that target these outdated and insecure protocols. Attackers can exploit these open ports to gain unauthorized access, intercept unencrypted communications, or conduct brute-force attacks against your infrastructure. To mitigate this risk, network security rules should explicitly deny traffic on sensitive ports, as in the following secure configuration:
 

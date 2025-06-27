@@ -10,13 +10,21 @@ meta:
   category: "Best Practices"
 ---
 ## Metadata
+
 **Name:** `aws/ec2_not_ebs_optimized`
+
 **Query Name** `EC2 Not EBS Optimized`
+
 **Id:** `60224630-175a-472a-9e23-133827040766`
+
 **Cloud Provider:** aws
+
 **Platform** Terraform
+
 **Severity:** Info
+
 **Category:** Best Practices
+
 ## Description
 Ensuring that an EC2 instance uses EBS optimization is important for maximizing the performance of attached EBS volumes, as this setting reduces contention between EBS I/O and other instance traffic. If the `ebs_optimized` attribute is not enabled, disk operations may experience degraded performance, leading to slower application response times and potential reliability issues under load. To remediate this, set `ebs_optimized = true` in your instance configuration as shown below:
 

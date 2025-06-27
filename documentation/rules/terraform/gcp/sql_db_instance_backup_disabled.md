@@ -10,13 +10,21 @@ meta:
   category: "Backup"
 ---
 ## Metadata
+
 **Name:** `gcp/sql_db_instance_backup_disabled`
+
 **Query Name** `SQL DB Instance Backup Disabled`
+
 **Id:** `cf3c7631-cd1e-42f3-8801-a561214a6e79`
+
 **Cloud Provider:** gcp
+
 **Platform** Terraform
+
 **Severity:** Medium
+
 **Category:** Backup
+
 ## Description
 This check verifies whether automated backups are enabled for all Google Cloud SQL database instances by ensuring the `backup_configuration` block has the `enabled = true` attribute. Without automated backups, as shown below:
 

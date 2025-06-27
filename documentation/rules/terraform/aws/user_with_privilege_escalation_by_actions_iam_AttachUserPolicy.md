@@ -10,13 +10,21 @@ meta:
   category: "Access Control"
 ---
 ## Metadata
+
 **Name:** `aws/user_with_privilege_escalation_by_actions_iam_AttachUserPolicy`
+
 **Query Name** `User With Privilege Escalation By Actions 'iam:AttachUserPolicy'`
+
 **Id:** `70cb518c-d990-46f6-bc05-44a5041493d6`
+
 **Cloud Provider:** aws
+
 **Platform** Terraform
+
 **Severity:** Medium
+
 **Category:** Access Control
+
 ## Description
 This check identifies IAM policies that permit the action `iam:AttachUserPolicy` with the `Resource` field set to `"*"`. Granting this permission to a user, as shown below, allows them to attach any AWS managed or custom policy to any user, which can lead to privilege escalation and potential compromise of the AWS environment.
 

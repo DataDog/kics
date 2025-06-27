@@ -10,13 +10,21 @@ meta:
   category: "Networking and Firewall"
 ---
 ## Metadata
+
 **Name:** `aws/route53_record_undefined`
+
 **Query Name** `Route53 Record Undefined`
+
 **Id:** `25db74bf-fa3b-44da-934e-8c3e005c0453`
+
 **Cloud Provider:** aws
+
 **Platform** Terraform
+
 **Severity:** High
+
 **Category:** Networking and Firewall
+
 ## Description
 This check verifies that Route53 record resources have defined values in the 'records' array. Empty record arrays in Route53 configurations may result in DNS resolution failures, causing service disruptions and potentially breaking application functionality that depends on proper name resolution.
 

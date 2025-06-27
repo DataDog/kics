@@ -10,13 +10,21 @@ meta:
   category: "Encryption"
 ---
 ## Metadata
+
 **Name:** `aws/dax_cluster_not_encrypted`
+
 **Query Name** `DAX Cluster Not Encrypted`
+
 **Id:** `f11aec39-858f-4b6f-b946-0a1bf46c0c87`
+
 **Cloud Provider:** aws
+
 **Platform** Terraform
+
 **Severity:** High
+
 **Category:** Encryption
+
 ## Description
 This check verifies that AWS DAX (DynamoDB Accelerator) clusters have server-side encryption enabled to protect data at rest. Without encryption, sensitive data stored in DAX clusters could be exposed if unauthorized access to the storage media occurs, potentially leading to data breaches and compliance violations.
 

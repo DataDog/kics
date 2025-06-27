@@ -10,13 +10,21 @@ meta:
   category: "Observability"
 ---
 ## Metadata
+
 **Name:** `aws/cloudwatch_aws_config_configuration_changes_alarm_missing`
+
 **Query Name** `CloudWatch AWS Config Configuration Changes Alarm Missing`
+
 **Id:** `5b8d7527-de8e-4114-b9dd-9d988f1f418f`
+
 **Cloud Provider:** aws
+
 **Platform** Terraform
+
 **Severity:** Medium
+
 **Category:** Observability
+
 ## Description
 A log metric filter and alarm should be configured in AWS CloudWatch to detect changes to AWS Config settings, such as stopping the configuration recorder or modifying delivery channels. Without properly linking the `aws_cloudwatch_log_metric_filter` and the `aws_cloudwatch_metric_alarm`—for example, by incorrectly setting the `metric_name` in the alarm—the system may fail to alert administrators to unauthorized or unintended configuration changes. This could result in undetected activity that undermines compliance or security auditing, potentially exposing the environment to security risks. 
 

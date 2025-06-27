@@ -10,13 +10,21 @@ meta:
   category: "Best Practices"
 ---
 ## Metadata
+
 **Name:** `aws/password_without_reuse_prevention`
+
 **Query Name** `Password Without Reuse Prevention`
+
 **Id:** `89806cdc-9c2e-4bd1-a0dc-53f339bcfb2a`
+
 **Cloud Provider:** aws
+
 **Platform** Terraform
+
 **Severity:** Low
+
 **Category:** Best Practices
+
 ## Description
 This check ensures that the IAM account password policy's `password_reuse_prevention` attribute is set to at least 24, preventing users from reusing any of their last 24 passwords. Without this configuration, as seen when `password_reuse_prevention = 20` or when the attribute is omitted, users may repeatedly cycle through a small set of previously used passwords, increasing the risk of password-related attacks. Configuring a secure password policy such as:
 

@@ -10,13 +10,21 @@ meta:
   category: "Access Control"
 ---
 ## Metadata
+
 **Name:** `aws/lambda_permission_principal_is_wildcard`
+
 **Query Name** `Lambda Permission Principal Is Wildcard`
+
 **Id:** `e08ed7eb-f3ef-494d-9d22-2e3db756a347`
+
 **Cloud Provider:** aws
+
 **Platform** Terraform
+
 **Severity:** Medium
+
 **Category:** Access Control
+
 ## Description
 Lambda function permissions should not define the `principal` attribute with a wildcard (`*`) value. Using a wildcard as the principal allows any AWS account or service to invoke the Lambda function, significantly increasing the risk of unauthorized access or unintentional exposure. Instead, the `principal` should be set to the specific AWS service or account that requires access, such as `events.amazonaws.com`, to enforce strict access controls and limit potential abuse.
 

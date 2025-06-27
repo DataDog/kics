@@ -10,13 +10,21 @@ meta:
   category: "Insecure Configurations"
 ---
 ## Metadata
+
 **Name:** `gcp/dataproc_clusters_is_public`
+
 **Query Name** `Dataproc Clusters Publicly Accessible`
+
 **Id:** `e3f7a9b1-c2d3-4e5f-8901-23456789abcd`
+
 **Cloud Provider:** gcp
+
 **Platform** Terraform
+
 **Severity:** High
+
 **Category:** Insecure Configurations
+
 ## Description
 Google Cloud Dataproc clusters should not be publicly accessible as this could allow unauthorized access to sensitive data and resources. When IAM bindings or members include public principals like 'allUsers' or 'allAuthenticatedUsers', the Dataproc cluster becomes exposed to anyone on the internet or any authenticated Google account, respectively. To secure Dataproc clusters, use specific identities in IAM policies instead of public principals. For example, use `members = ["user:someone@example.com", "group:admins@example.com"]` instead of `members = ["allAuthenticatedUsers", "user:someone@example.com"]` or `member = "allUsers"`. Limiting access to specific users and groups significantly reduces the attack surface and helps maintain the principle of least privilege.
 

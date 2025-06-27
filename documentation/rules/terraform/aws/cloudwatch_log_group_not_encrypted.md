@@ -10,13 +10,21 @@ meta:
   category: "Encryption"
 ---
 ## Metadata
+
 **Name:** `aws/cloudwatch_log_group_not_encrypted`
+
 **Query Name** `CloudWatch Log Group Without KMS`
+
 **Id:** `0afbcfe9-d341-4b92-a64c-7e6de0543879`
+
 **Cloud Provider:** aws
+
 **Platform** Terraform
+
 **Severity:** Medium
+
 **Category:** Encryption
+
 ## Description
 AWS CloudWatch Log groups should use KMS encryption to protect sensitive log data at rest. When the `aws_cloudwatch_log_group` resource is defined without the `kms_key_id` attribute, as in:
 

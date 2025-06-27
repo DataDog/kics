@@ -10,13 +10,21 @@ meta:
   category: "Access Control"
 ---
 ## Metadata
+
 **Name:** `azure/role_assignment_not_limit_guest_users_permissions`
+
 **Query Name** `Role Assignment Not Limit Guest User Permissions`
+
 **Id:** `8e75e431-449f-49e9-b56a-c8f1378025cf`
+
 **Cloud Provider:** azure
+
 **Platform** Terraform
+
 **Severity:** Medium
+
 **Category:** Access Control
+
 ## Description
 Role assignments in Terraform should strictly limit permissions granted to guest users. If the `actions` attribute in the `azurerm_role_definition` resource is set to `["*"]`, guest users receive unrestricted permissions within the scope, potentially allowing them to perform any action, escalate privileges, or exfiltrate data. It is recommended to set `actions = []` and `not_actions = ["*"]` to ensure that guest users have no actionable privileges, thereby protecting critical resources from unauthorized access.
 

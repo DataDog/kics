@@ -10,13 +10,21 @@ meta:
   category: "Insecure Configurations"
 ---
 ## Metadata
+
 **Name:** `aws/api_gateway_without_ssl_certificate`
+
 **Query Name** `API Gateway Without SSL Certificate`
+
 **Id:** `0b4869fc-a842-4597-aa00-1294df425440`
+
 **Cloud Provider:** aws
+
 **Platform** Terraform
+
 **Severity:** Medium
+
 **Category:** Insecure Configurations
+
 ## Description
 When configuring an `aws_api_gateway_stage` resource in Terraform, the `client_certificate_id` attribute should be set to enable SSL client certificate authentication. Without specifying `client_certificate_id`, clients can access your API Gateway stage without presenting a valid client-side certificate, leaving the API vulnerable to unauthorized access. Enabling this attribute, as shown below, ensures that only clients with a valid certificate can establish SSL connections:
 

@@ -10,13 +10,21 @@ meta:
   category: "Access Control"
 ---
 ## Metadata
+
 **Name:** `aws/ec2_instance_using_api_keys`
+
 **Query Name** `EC2 Instance Using API Keys`
+
 **Id:** `0b93729a-d882-4803-bdc3-ac429a21f158`
+
 **Cloud Provider:** aws
+
 **Platform** Terraform
+
 **Severity:** Low
+
 **Category:** Access Control
+
 ## Description
 EC2 instances should use IAM roles to be granted access to other AWS services. Storing AWS credentials directly in user data or on the instance, for example with environment variables like `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` as shown below, exposes sensitive credentials to anyone with access to the instance or the AWS console:
 

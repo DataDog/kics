@@ -10,13 +10,21 @@ meta:
   category: "Networking and Firewall"
 ---
 ## Metadata
+
 **Name:** `aws/sensitive_port_is_exposed_to_entire_network`
+
 **Query Name** `Sensitive Port Is Exposed To Entire Network`
+
 **Id:** `381c3f2a-ef6f-4eff-99f7-b169cda3422c`
+
 **Cloud Provider:** aws
+
 **Platform** Terraform
+
 **Severity:** High
+
 **Category:** Networking and Firewall
+
 ## Description
 This vulnerability occurs when security groups allow inbound traffic to sensitive ports (such as SSH, RDP, database, or administrative service ports) from the entire internet (0.0.0.0/0 or /0). Exposing sensitive ports to the internet creates a significant security risk as it allows potential attackers from anywhere to attempt connections, potentially leading to unauthorized access, data breaches, or service exploitation.
 

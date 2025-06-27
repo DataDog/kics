@@ -10,13 +10,21 @@ meta:
   category: "Build Process"
 ---
 ## Metadata
+
 **Name:** `aws/stack_without_template`
+
 **Query Name** `Stack Without Template`
+
 **Id:** `91bea7b8-0c31-4863-adc9-93f6177266c4`
+
 **Cloud Provider:** aws
+
 **Platform** Terraform
+
 **Severity:** Low
+
 **Category:** Build Process
+
 ## Description
 This check ensures that the `aws_cloudformation_stack` resource in Terraform includes either the `template_url` or `template_body` attribute, which defines the CloudFormation template to be deployed. Omitting both of these attributes results in stacks being created without an actual CloudFormation template, leaving the stack incomplete and potentially non-functional. If left unaddressed, this misconfiguration can lead to failed deployments and gaps in infrastructure automation, increasing operational risks.
 

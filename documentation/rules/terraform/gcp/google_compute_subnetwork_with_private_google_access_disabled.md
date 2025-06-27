@@ -10,13 +10,21 @@ meta:
   category: "Networking and Firewall"
 ---
 ## Metadata
+
 **Name:** `gcp/google_compute_subnetwork_with_private_google_access_disabled`
+
 **Query Name** `Google Compute Subnetwork with Private Google Access Disabled`
+
 **Id:** `ee7b93c1-b3f8-4a3b-9588-146d481814f5`
+
 **Cloud Provider:** gcp
+
 **Platform** Terraform
+
 **Severity:** Low
+
 **Category:** Networking and Firewall
+
 ## Description
 Enabling Private Google Access for a Google Compute Subnetwork by setting the `private_ip_google_access` attribute to `true` allows resources with only internal IP addresses to access Google APIs and services securely, without requiring external IP addresses. If this setting is not enabled, resources within the subnetwork are unable to directly reach Google services without public internet routes, increasing the risk of misconfigurations that may expose internal resources or disrupt service communications. To address this, ensure the configuration includes `private_ip_google_access = true`:
 

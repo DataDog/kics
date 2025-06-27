@@ -10,13 +10,21 @@ meta:
   category: "Networking and Firewall"
 ---
 ## Metadata
+
 **Name:** `azure/ssh_is_exposed_to_the_internet`
+
 **Query Name** `SSH Is Exposed To The Internet`
+
 **Id:** `3e3c175e-aadf-4e2b-a464-3fdac5748d24`
+
 **Cloud Provider:** azure
+
 **Platform** Terraform
+
 **Severity:** Medium
+
 **Category:** Networking and Firewall
+
 ## Description
 Allowing inbound access to port 22 (SSH) from any source address (e.g., `source_address_prefix = "*"`, `source_address_prefix = "/0"`, or `source_address_prefix = "internet"`) exposes the server to the public internet, making it highly susceptible to brute force attacks and unauthorized access. If left unaddressed, this misconfiguration significantly increases the risk of remote compromise and could result in full administrative control by attackers. To mitigate this risk, restrict SSH access to specific trusted IP addresses and deny all others, for example:
 

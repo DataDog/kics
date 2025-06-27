@@ -10,13 +10,21 @@ meta:
   category: "Insecure Configurations"
 ---
 ## Metadata
+
 **Name:** `aws/ecs_task_definition_network_mode_not_recommended`
+
 **Query Name** `ECS Task Definition Network Mode Not Recommended`
+
 **Id:** `9f4a9409-9c60-4671-be96-9716dbf63db1`
+
 **Cloud Provider:** aws
+
 **Platform** Terraform
+
 **Severity:** Medium
+
 **Category:** Insecure Configurations
+
 ## Description
 This check ensures that the `network_mode` attribute in an AWS ECS Task Definition is set to `awsvpc`. When `network_mode` is set to any value other than `awsvpc`, such as `none`, the tasks do not leverage the enhanced network security and isolation features provided by AWS VPCs. Without `awsvpc`, the container tasks may lack granular control over network traffic, security group assignment, and enforcement of network policies, making them more exposed to lateral movement and attacks within the cluster. If left unaddressed, this misconfiguration could lead to unauthorized access or unintended network exposure of container workloads, increasing the risk of compromise.
 

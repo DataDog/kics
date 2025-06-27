@@ -10,13 +10,21 @@ meta:
   category: "Access Control"
 ---
 ## Metadata
+
 **Name:** `aws/amazon_dms_replication_instance_is_publicly_accessible`
+
 **Query Name** `Amazon DMS Replication Instance Is Publicly Accessible`
+
 **Id:** `030d3b18-1821-45b4-9e08-50efbe7becbb`
+
 **Cloud Provider:** aws
+
 **Platform** Terraform
+
 **Severity:** Critical
+
 **Category:** Access Control
+
 ## Description
 Amazon DMS Replication Instances with 'publicly_accessible' set to 'true' expose their endpoints to the public internet, significantly increasing the attack surface and potential for unauthorized access to sensitive migration data. This configuration can lead to data breaches, as DMS instances may contain credentials, connection strings, and other sensitive information needed for database migration. To mitigate this risk, always set 'publicly_accessible' to false (or omit it since false is the default) and use private networking with proper security groups as shown in the negative example: 'resource "aws_dms_replication_instance" "test" { ... }' where the publicly_accessible attribute is not specified.
 

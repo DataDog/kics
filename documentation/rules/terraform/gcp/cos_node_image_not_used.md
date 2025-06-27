@@ -10,13 +10,21 @@ meta:
   category: "Insecure Configurations"
 ---
 ## Metadata
+
 **Name:** `gcp/cos_node_image_not_used`
+
 **Query Name** `COS Node Image Not Used`
+
 **Id:** `8a893e46-e267-485a-8690-51f39951de58`
+
 **Cloud Provider:** gcp
+
 **Platform** Terraform
+
 **Severity:** Low
+
 **Category:** Insecure Configurations
+
 ## Description
 The node image type should be set to Container-Optimized OS (COS) to enhance security and streamline workloads in Google Kubernetes Engine (GKE). Using other image types, such as `WINDOWS_LTSC` or failing to specify the `image_type` attribute, can introduce unnecessary vulnerabilities or increase the attack surface by including unneeded components. To ensure nodes use a hardened and minimal OS, configure the `image_type` field in your node pool's `node_config` block to `"COS"` or `"COS_CONTAINERD"`:
 

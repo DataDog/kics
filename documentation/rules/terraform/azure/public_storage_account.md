@@ -10,13 +10,21 @@ meta:
   category: "Access Control"
 ---
 ## Metadata
+
 **Name:** `azure/public_storage_account`
+
 **Query Name** `Public Storage Account`
+
 **Id:** `17f75827-0684-48f4-8747-61129c7e4198`
+
 **Cloud Provider:** azure
+
 **Platform** Terraform
+
 **Severity:** High
+
 **Category:** Access Control
+
 ## Description
 Public Azure Storage Accounts represent a significant security risk as they potentially expose sensitive data to unauthorized access from the internet. When storage accounts have their default_action set to 'Allow' or include overly permissive IP rules (0.0.0.0/0), attackers can potentially access, exfiltrate, or manipulate stored data including PII, credentials, or business-critical information.
 

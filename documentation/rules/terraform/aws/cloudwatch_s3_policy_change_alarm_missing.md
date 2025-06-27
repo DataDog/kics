@@ -10,13 +10,21 @@ meta:
   category: "Observability"
 ---
 ## Metadata
+
 **Name:** `aws/cloudwatch_s3_policy_change_alarm_missing`
+
 **Query Name** `CloudWatch S3 policy Change Alarm Missing`
+
 **Id:** `27c6a499-895a-4dc7-9617-5c485218db13`
+
 **Cloud Provider:** aws
+
 **Platform** Terraform
+
 **Severity:** Medium
+
 **Category:** Observability
+
 ## Description
 This check ensures that a CloudWatch log metric filter and corresponding alarm are in place to monitor S3 bucket policy changes, such as modifications to ACLs or bucket policies. Without the correct configuration, unauthorized changes to S3 bucket permissions could go unnoticed, increasing the risk of data exposure or policy misconfiguration. For example, the `aws_cloudwatch_metric_alarm` should reference the correct metric filter:
 

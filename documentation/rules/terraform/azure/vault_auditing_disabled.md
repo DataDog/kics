@@ -10,13 +10,21 @@ meta:
   category: "Observability"
 ---
 ## Metadata
+
 **Name:** `azure/vault_auditing_disabled`
+
 **Query Name** `Vault Auditing Disabled`
+
 **Id:** `38c71c00-c177-4cd7-8d36-cd1007cdb190`
+
 **Cloud Provider:** azure
+
 **Platform** Terraform
+
 **Severity:** Medium
+
 **Category:** Observability
+
 ## Description
 Enabling logging for Azure Key Vault ensures that all access and management activities are captured and can be monitored for unauthorized or anomalous activity. Without logging enabled—such as omitting a `azurerm_monitor_diagnostic_setting` resource—critical security events and access records would not be recorded, making it difficult to detect potential breaches or comply with audit requirements. A secure configuration includes adding a diagnostic setting, for example:
 

@@ -10,13 +10,21 @@ meta:
   category: "Encryption"
 ---
 ## Metadata
+
 **Name:** `gcp/google_compute_ssl_policy_weak_cipher_in_use`
+
 **Query Name** `Google Compute SSL Policy Weak Cipher In Use`
+
 **Id:** `14a457f0-473d-4d1d-9e37-6d99b355b336`
+
 **Cloud Provider:** gcp
+
 **Platform** Terraform
+
 **Severity:** Medium
+
 **Category:** Encryption
+
 ## Description
 This check determines whether Google Compute SSL policies enforce strong TLS versions by verifying that the `min_tls_version` attribute is set to `"TLS_1_2"`. Allowing lower TLS versions, such as `"TLS_1_1"`, exposes services to vulnerabilities associated with outdated cryptographic algorithms and weak cipher suites, increasing the risk of data breaches and interception. For example, the following secure configuration ensures strong encryption by setting `min_tls_version` to `"TLS_1_2"`:
 

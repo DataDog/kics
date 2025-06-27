@@ -10,13 +10,21 @@ meta:
   category: "Observability"
 ---
 ## Metadata
+
 **Name:** `gcp/google_compute_subnetwork_logging_disabled`
+
 **Query Name** `Google Compute Subnetwork Logging Disabled`
+
 **Id:** `40430747-442d-450a-a34f-dc57149f4609`
+
 **Cloud Provider:** gcp
+
 **Platform** Terraform
+
 **Severity:** Medium
+
 **Category:** Observability
+
 ## Description
 This check verifies whether VPC flow logs are enabled for a `google_compute_subnetwork` resource by ensuring a `log_config` block is included in the Terraform configuration. Without flow logs enabled, as shown below, critical network traffic information is not captured, making it difficult to monitor, detect, or investigate suspicious activity within the network.  
 

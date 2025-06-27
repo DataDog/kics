@@ -10,13 +10,21 @@ meta:
   category: "Access Control"
 ---
 ## Metadata
+
 **Name:** `aws/cross_account_iam_assume_role_policy_without_external_id_or_mfa`
+
 **Query Name** `Cross-Account IAM Assume Role Policy Without ExternalId or MFA`
+
 **Id:** `09c35abf-5852-4622-ac7a-b987b331232e`
+
 **Cloud Provider:** aws
+
 **Platform** Terraform
+
 **Severity:** High
+
 **Category:** Access Control
+
 ## Description
 When creating cross-account IAM roles, it's crucial to implement additional security measures like External ID or Multi-Factor Authentication (MFA) to prevent unauthorized cross-account access. Without these safeguards, your resources become vulnerable to confused deputy attacks, where a malicious third party could trick your role into performing actions they shouldn't be authorized to do. To secure your configuration, add a Condition block to your assume role policy that requires either an External ID (as shown in the example below) or MFA validation:
 

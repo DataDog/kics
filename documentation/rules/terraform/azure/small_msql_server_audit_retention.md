@@ -10,13 +10,21 @@ meta:
   category: "Observability"
 ---
 ## Metadata
+
 **Name:** `azure/small_msql_server_audit_retention`
+
 **Query Name** `Small MSSQL Server Audit Retention`
+
 **Id:** `59acb56b-2b10-4c2c-ba38-f2223c3f5cfc`
+
 **Cloud Provider:** azure
+
 **Platform** Terraform
+
 **Severity:** Low
+
 **Category:** Observability
+
 ## Description
 SQL Server auditing logs should be retained for more than 90 days to ensure sufficient historical data is available for security investigations and compliance requirements. When the `retention_in_days` attribute in the `extended_auditing_policy` block is set below 91, such as in the following Terraform snippet, essential audit records may be lost due to premature log deletion:
 

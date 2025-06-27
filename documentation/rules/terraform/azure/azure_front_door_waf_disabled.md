@@ -10,13 +10,21 @@ meta:
   category: "Networking and Firewall"
 ---
 ## Metadata
+
 **Name:** `azure/azure_front_door_waf_disabled`
+
 **Query Name** `Azure Front Door WAF Disabled`
+
 **Id:** `835a4f2f-df43-437d-9943-545ccfc55961`
+
 **Cloud Provider:** azure
+
 **Platform** Terraform
+
 **Severity:** Low
+
 **Category:** Networking and Firewall
+
 ## Description
 Azure Front Door should have a Web Application Firewall (WAF) enabled to protect applications from common web vulnerabilities and attacks such as SQL injection and cross-site scripting. If the `web_application_firewall_policy_link_id` attribute is not configured for the `frontend_endpoint` block, malicious traffic can reach backend resources without any inspection or filtering, increasing the risk of exploitation. To address this, ensure that WAF is linked as shown below:
 

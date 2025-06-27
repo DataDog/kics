@@ -10,13 +10,21 @@ meta:
   category: "Access Control"
 ---
 ## Metadata
+
 **Name:** `aws/s3_bucket_allows_delete_action_from_all_principals`
+
 **Query Name** `S3 Bucket Allows Delete Action From All Principals`
+
 **Id:** `ffdf4b37-7703-4dfe-a682-9d2e99bc6c09`
+
 **Cloud Provider:** aws
+
 **Platform** Terraform
+
 **Severity:** Critical
+
 **Category:** Access Control
+
 ## Description
 This vulnerability occurs when an S3 bucket policy allows the delete action from all principals (*), which can lead to unauthorized deletion of data and potential data loss or service disruption. Even when IP address conditions are applied, allowing delete actions from all principals presents a significant security risk as it could be exploited if the IP restriction is bypassed or misconfigured.
 

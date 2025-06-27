@@ -10,13 +10,21 @@ meta:
   category: "Best Practices"
 ---
 ## Metadata
+
 **Name:** `aws/iam_password_does_not_require_number`
+
 **Query Name** `IAM Password Policy Does Not Require Numbers`
+
 **Id:** `bts2c3d4-e5f6-7890-ab12-cd34ef567890`
+
 **Cloud Provider:** aws
+
 **Platform** Terraform
+
 **Severity:** Medium
+
 **Category:** Best Practices
+
 ## Description
 This check ensures that the AWS IAM account password policy enforces the use of at least one symbol in user passwords by verifying that the `require_symbols` attribute is set to `true` in the `aws_iam_account_password_policy` resource. If this setting is not enabled, as shown in the configuration `require_symbols = false`, users may set simple passwords that lack special characters, making them easier for attackers to guess or crack using brute-force techniques.
 

@@ -10,13 +10,21 @@ meta:
   category: "Observability"
 ---
 ## Metadata
+
 **Name:** `azure/mssql_server_auditing_disabled`
+
 **Query Name** `MSSQL Server Auditing Disabled`
+
 **Id:** `609839ae-bd81-4375-9910-5bce72ae7b92`
+
 **Cloud Provider:** azure
+
 **Platform** Terraform
+
 **Severity:** Medium
+
 **Category:** Observability
+
 ## Description
 Auditing should be enabled for MSSQL servers to ensure that access and activity logs are generated and retained for security monitoring and incident response. Without the `azurerm_mssql_server_extended_auditing_policy` resource configured, suspicious activities or potential breaches may go undetected, increasing the risk of data compromise. Ensuring auditing is on can be achieved by adding a resource like:
 

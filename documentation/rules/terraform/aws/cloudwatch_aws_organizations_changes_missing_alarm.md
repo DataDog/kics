@@ -10,13 +10,21 @@ meta:
   category: "Observability"
 ---
 ## Metadata
+
 **Name:** `aws/cloudwatch_aws_organizations_changes_missing_alarm`
+
 **Query Name** `CloudWatch AWS Organizations Changes Missing Alarm`
+
 **Id:** `38b85c45-e772-4de8-a247-69619ca137b3`
+
 **Cloud Provider:** aws
+
 **Platform** Terraform
+
 **Severity:** Info
+
 **Category:** Observability
+
 ## Description
 This check ensures that a log metric filter and alarm are configured to monitor changes to AWS Organizations within CloudWatch. Without a properly configured metric filter and alarm, critical events such as the creation, deletion, or modification of organizational accounts and policies may go undetected. This lack of visibility increases the risk of malicious or unauthorized changes going unnoticed, which could compromise the security and governance of the entire AWS environment. Left unaddressed, this misconfiguration may allow threat actors to make unauthorized changes to the organization structure, potentially leading to privilege escalation or data exfiltration.
 

@@ -10,13 +10,21 @@ meta:
   category: "Observability"
 ---
 ## Metadata
+
 **Name:** `aws/cloudwatch_changes_to_nacl_alarm_missing`
+
 **Query Name** `CloudWatch Changes To NACL Alarm Missing`
+
 **Id:** `0a8e8dc5-b6fc-44fc-b5a1-969ec950f9b0`
+
 **Cloud Provider:** aws
+
 **Platform** Terraform
+
 **Severity:** Medium
+
 **Category:** Observability
+
 ## Description
 This check ensures that a log metric filter and an associated CloudWatch alarm are configured to monitor changes to AWS Network Access Control Lists (NACLs). Without properly linking the metric alarm to the log metric filter—such as setting the `metric_name` in `aws_cloudwatch_metric_alarm` to the correct filter like `${aws_cloudwatch_log_metric_filter.cis_changes_nacl.id}`—malicious or accidental modifications to NACLs may go undetected, increasing the risk of unauthorized network access or compromised security postures. A secure example is:
 

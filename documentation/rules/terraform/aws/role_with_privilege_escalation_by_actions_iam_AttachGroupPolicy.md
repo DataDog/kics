@@ -10,13 +10,21 @@ meta:
   category: "Access Control"
 ---
 ## Metadata
+
 **Name:** `aws/role_with_privilege_escalation_by_actions_iam_AttachGroupPolicy`
+
 **Query Name** `Role With Privilege Escalation By Actions 'iam:AttachGroupPolicy'`
+
 **Id:** `f906113d-cdc0-415a-ba60-609cc6daaf4d`
+
 **Cloud Provider:** aws
+
 **Platform** Terraform
+
 **Severity:** Medium
+
 **Category:** Access Control
+
 ## Description
 Granting the action `iam:AttachGroupPolicy` with the resource set to `*` in an AWS IAM role allows the entity to attach any group policy to any group in the AWS account, providing a path to privilege escalation. An attacker with this permission could leverage it to assign powerful permissions to groups they control or are a member of, thereby elevating their own privileges or those of other malicious accounts. If left unaddressed, this misconfiguration can result in unauthorized access or complete compromise of AWS resources, posing a serious security risk. It is critical to restrict the `iam:AttachGroupPolicy` action to specific, trusted resources and avoid using overly broad permissions in IAM policies.
 
