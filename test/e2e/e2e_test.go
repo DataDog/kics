@@ -46,7 +46,7 @@ func Test_E2EExclusions(t *testing.T) {
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			metadata, _ := kics.ExecuteKICSScan(
+			metadata, _, err := kics.ExecuteKICSScan(
 				[]string{tt.testFile},
 				"",
 				model.SCIInfo{
@@ -61,6 +61,7 @@ func Test_E2EExclusions(t *testing.T) {
 					},
 				},
 			)
+			require.NoError(t, err)
 			require.Equal(t, tt.expectedOutput.Violations, metadata.Stats.Violations)
 			require.Equal(t, tt.expectedOutput.Files, metadata.Stats.Files)
 			require.Equal(t, tt.expectedOutput.Rules, metadata.Stats.Rules)
