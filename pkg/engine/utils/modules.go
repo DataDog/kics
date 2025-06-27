@@ -19,19 +19,23 @@ import (
 )
 
 type ParsedModule struct {
-	Name          string
-	Source        string
-	Version       string
-	IsLocal       bool
-	SourceType    string // local, git, registry, etc.
-	RegistryScope string // public, private, or "" (non-registry)
-	Variables     map[string]string
-	ResourceTypes []string
+	Name           string
+	Source         string
+	Version        string
+	IsLocal        bool
+	SourceType     string // local, git, registry, etc.
+	RegistryScope  string // public, private, or "" (non-registry)
+	AttributesData map[string]ModuleAttributesInfo
 }
 
 type ModuleParseResult struct {
 	Module ParsedModule
 	Error  error
+}
+
+type ModuleAttributesInfo struct {
+	Resources []string
+	Inputs    map[string]string
 }
 
 var registryPattern = regexp.MustCompile(`^[a-z0-9\-]+/[a-z0-9\-]+/[a-z0-9\-]+$`)
@@ -378,12 +382,11 @@ func ParseAllModuleVariables(modules map[string]ParsedModule, rootDir string) []
 				}
 				modulePath := ResolveModulePath(mod.Source, rootDir)
 
-				resourceTypes, attrToVar, err := generateEquivalentMap(modulePath)
+				attributesData, err := generateEquivalentMap(modulePath)
 				if err != nil {
 					log.Printf("Warning: failed to generate equivalent map")
 				} else {
-					mod.Variables = attrToVar
-					mod.ResourceTypes = resourceTypes
+					mod.AttributesData = attributesData
 				}
 				output <- ModuleParseResult{Module: mod, Error: err}
 			}
@@ -426,17 +429,16 @@ func ConvertParsedModulesToModelModules(mods []ParsedModule) []model.Module {
 			"isLocal":       m.IsLocal,
 			"sourceType":    m.SourceType,
 			"registryScope": m.RegistryScope,
-			"variables":     m.Variables,
-			"resourceTypes": m.ResourceTypes,
+			"attributesData":     m.AttributesData,
 		})
 	}
 	return result
 }
 
-func generateEquivalentMap(modulePath string) ([]string, map[string]string, error) {
-	inputs := make(map[string]bool)
-	attrs := make(map[string]string)
-	resourceTypesMap := make(map[string]bool)
+func generateEquivalentMap(modulePath string) (map[string]ModuleAttributesInfo, error) {
+	equivalentMap := make(map[string]ModuleAttributesInfo)
+	resourceTypesMap := make(map[string]map[string]bool)
+
 	err := filepath.Walk(
 		modulePath,
 		func(path string, info os.FileInfo, err error) error {
@@ -462,14 +464,37 @@ func generateEquivalentMap(modulePath string) ([]string, map[string]string, erro
 			}
 
 			for _, block := range hclFile.Body().Blocks() {
-				if block.Type() == "variable" {
-					inputs[block.Labels()[0]] = true
-				} else if block.Type() == "resource" {
-					resourceTypesMap[block.Labels()[0]] = true
-
-					res := getVariableAttributes(block)
-					maps.Copy(attrs, res)
+				if block.Type() != "resource" {
+					continue
 				}
+
+				resourceType := block.Labels()[0]
+				provider, err := GetProviderFromResourceType(resourceType)
+				if err != nil {
+					log.Printf("Warning: Failed get provider from resource type '%s'", resourceType)
+					continue
+				}
+
+				// Store resource type to the set
+				if m, ok := resourceTypesMap[provider]; !ok {
+					resourceTypesMap[provider] = make(map[string]bool)
+					resourceTypesMap[provider][resourceType] = true
+				} else {
+					m[resourceType] = true
+				}
+
+				// Create the module info object if not already in the mapping
+				modInfo, ok := equivalentMap[provider]
+				if !ok {
+					modInfo = ModuleAttributesInfo{
+						Resources: []string{},
+						Inputs:    make(map[string]string),
+					}
+					equivalentMap[provider] = modInfo
+				}
+
+				// Update inputs mapping with all attributes referencing a variable
+				maps.Copy(modInfo.Inputs, getVariableAttributes(block))
 			}
 
 			return nil
@@ -477,25 +502,17 @@ func generateEquivalentMap(modulePath string) ([]string, map[string]string, erro
 	)
 	if err != nil {
 		log.Printf("Failed to walk module source directory")
-		return nil, nil, err
+		return nil, err
 	}
 
-	// Ensure the variable referenced are found as module input
-	attributesMapping := make(map[string]string)
-	for attr, ref := range attrs {
-		if _, ok := inputs[ref]; !ok {
-			log.Printf("Failed to find input variable referenced by var.%s", ref)
+	for provider := range resourceTypesMap {
+		m := equivalentMap[provider]
+		for resourceType := range resourceTypesMap[provider] {
+			m.Resources = append(m.Resources, resourceType)
 		}
-
-		attributesMapping[attr] = ref
 	}
 
-	resourceTypes := make([]string, 0, len(resourceTypesMap))
-	for k := range resourceTypesMap {
-		resourceTypes = append(resourceTypes, k)
-	}
-
-	return resourceTypes, attributesMapping, nil
+	return equivalentMap, nil
 }
 
 func getVariableAttributes(block *hclwrite.Block) map[string]string {
