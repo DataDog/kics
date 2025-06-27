@@ -4,10 +4,11 @@
   "severity": "LOW",
   "category": "Availability",
   "descriptionText": "ECS Service should have at least 1 task running",
-  "descriptionUrl": "https://docs.ansible.com/ansible/latest/collections/community/aws/ecs_service_module.html#ansible-collections-community-aws-ecs-service-module",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/ansible/aws/ecs_service_without_running_tasks",
   "platform": "Ansible",
   "descriptionID": "dce30fcb",
   "cloudProvider": "aws",
   "cwe": "",
-  "oldSeverity": "MEDIUM"
+  "oldSeverity": "MEDIUM",
+  "providerUrl": "https://docs.ansible.com/ansible/latest/collections/community/aws/ecs_service_module.html#ansible-collections-community-aws-ecs-service-module"
 }

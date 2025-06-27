@@ -4,11 +4,12 @@
   "severity": "MEDIUM",
   "category": "Observability",
   "descriptionText": "Amazon EKS control plane logging should be enabled to capture important events and API calls within the Kubernetes control plane. Without explicit configuration of the `enabled_cluster_log_types` attribute, as shown below, critical logs like API, audit, and authenticator events will not be sent to CloudWatch, making it difficult to monitor cluster activity or investigate potential security incidents.\n\nA secure configuration example sets\n\n```\nenabled_cluster_log_types = [\"api\", \"audit\", \"authenticator\", \"controllerManager\", \"scheduler\"]\n```\nin the `aws_eks_cluster` resource to ensure comprehensive logging and auditing capabilities.",
-  "descriptionUrl": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/eks_cluster#enabled_cluster_log_types",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/terraform/aws/eks_cluster_log_disabled",
   "platform": "Terraform",
   "descriptionID": "80a41f88",
   "cloudProvider": "aws",
   "cwe": "778",
   "oldSeverity": "LOW",
-  "oldDescriptionText": "Amazon EKS control plane logging is not enabled"
+  "oldDescriptionText": "Amazon EKS control plane logging is not enabled",
+  "providerUrl": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/eks_cluster#enabled_cluster_log_types"
 }

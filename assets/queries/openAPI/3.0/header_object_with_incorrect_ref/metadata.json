@@ -4,8 +4,9 @@
   "severity": "INFO",
   "category": "Structure and Semantics",
   "descriptionText": "Header Object reference must always point to '#/components/headers'",
-  "descriptionUrl": "https://swagger.io/specification/#responses-object",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/openAPI/3.0/header_object_with_incorrect_ref",
   "platform": "OpenAPI",
   "descriptionID": "c3f2fe74",
-  "cwe": ""
+  "cwe": "",
+  "providerUrl": "https://swagger.io/specification/#responses-object"
 }

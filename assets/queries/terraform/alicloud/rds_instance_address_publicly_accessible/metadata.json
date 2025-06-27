@@ -4,10 +4,11 @@
   "severity": "CRITICAL",
   "category": "Insecure Configurations",
   "descriptionText": "The field 'address' should not be set to '0.0.0.0/0'",
-  "descriptionUrl": "https://registry.terraform.io/providers/aliyun/alicloud/latest/docs/resources/db_instance#address",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/terraform/alicloud/rds_instance_address_publicly_accessible",
   "platform": "Terraform",
   "descriptionID": "d23dc3f9",
   "cloudProvider": "alicloud",
   "cwe": "668",
-  "oldSeverity": "HIGH"
+  "oldSeverity": "HIGH",
+  "providerUrl": "https://registry.terraform.io/providers/aliyun/alicloud/latest/docs/resources/db_instance#address"
 }

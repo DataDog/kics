@@ -4,8 +4,9 @@
   "severity": "LOW",
   "category": "Observability",
   "descriptionText": "ECS Cluster should enable container insights",
-  "descriptionUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecs-cluster.html#cfn-ecs-cluster-clustersettings",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/cloudFormation/aws/ecs_cluster_container_insights_disabled",
   "platform": "CloudFormation",
   "descriptionID": "1751124e",
-  "cloudProvider": "aws"
+  "cloudProvider": "aws",
+  "providerUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecs-cluster.html#cfn-ecs-cluster-clustersettings"
 }

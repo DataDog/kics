@@ -4,9 +4,10 @@
   "severity": "MEDIUM",
   "category": "Observability",
   "descriptionText": "Bucket should have versioning enabled",
-  "descriptionUrl": "https://cloud.google.com/storage/docs/json_api/v1/buckets",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/googleDeploymentManager/gcp/bucket_without_versioning",
   "platform": "GoogleDeploymentManager",
   "descriptionID": "97c49cde",
   "cloudProvider": "gcp",
-  "cwe": ""
+  "cwe": "",
+  "providerUrl": "https://cloud.google.com/storage/docs/json_api/v1/buckets"
 }

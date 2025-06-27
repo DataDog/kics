@@ -4,10 +4,11 @@
   "severity": "LOW",
   "category": "Best Practices",
   "descriptionText": "IAM password should have the required minimum length",
-  "descriptionUrl": "https://docs.ansible.com/ansible/latest/collections/community/aws/iam_password_policy_module.html",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/ansible/aws/iam_password_without_minimum_length",
   "platform": "Ansible",
   "descriptionID": "b1066765",
   "cloudProvider": "aws",
   "cwe": "",
-  "oldSeverity": "MEDIUM"
+  "oldSeverity": "MEDIUM",
+  "providerUrl": "https://docs.ansible.com/ansible/latest/collections/community/aws/iam_password_policy_module.html"
 }

@@ -4,9 +4,10 @@
   "severity": "HIGH",
   "category": "Insecure Configurations",
   "descriptionText": "Azurerm Container Registry should contain associated locks, which means 'azure_rm_lock.managed_resource_id' or 'azure_rm_lock.resource_group' association should be defined",
-  "descriptionUrl": "https://docs.ansible.com/ansible/latest/collections/azure/azcollection/azure_rm_lock_module.html",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/ansible/azure/azure_container_registry_with_no_locks",
   "platform": "Ansible",
   "descriptionID": "7489a85f",
   "cloudProvider": "azure",
-  "cwe": ""
+  "cwe": "",
+  "providerUrl": "https://docs.ansible.com/ansible/latest/collections/azure/azcollection/azure_rm_lock_module.html"
 }

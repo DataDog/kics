@@ -4,9 +4,10 @@
   "severity": "MEDIUM",
   "category": "Insecure Defaults",
   "descriptionText": "A Kubernetes Pod should have a Service Account defined so to restrict Kubernetes API access, which means the attribute 'service_account_name' should be defined and not empty.",
-  "descriptionUrl": "https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/pod#service_account_name",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/terraform/kubernetes/service_account_name_undefined_or_empty",
   "platform": "Terraform",
   "descriptionID": "ce3648b0",
   "cwe": "665",
-  "cloudProvider": "common"
+  "cloudProvider": "common",
+  "providerUrl": "https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/pod#service_account_name"
 }

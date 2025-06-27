@@ -4,9 +4,10 @@
   "severity": "LOW",
   "category": "Encryption",
   "descriptionText": "Logs delivered by CloudTrail should be encrypted using KMS to increase security of your CloudTrail",
-  "descriptionUrl": "https://docs.ansible.com/ansible/latest/collections/community/aws/cloudtrail_module.html",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/ansible/aws/cloudtrail_log_files_not_encrypted_with_kms",
   "platform": "Ansible",
   "descriptionID": "d3b81fde",
   "cloudProvider": "aws",
-  "cwe": ""
+  "cwe": "",
+  "providerUrl": "https://docs.ansible.com/ansible/latest/collections/community/aws/cloudtrail_module.html"
 }

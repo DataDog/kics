@@ -4,10 +4,11 @@
   "severity": "LOW",
   "category": "Build Process",
   "descriptionText": "Cosmos DB Account must have a mapping of tags.",
-  "descriptionUrl": "https://docs.ansible.com/ansible/latest/collections/azure/azcollection/azure_rm_cosmosdbaccount_module.html",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/ansible/azure/cosmosdb_account_without_tags",
   "platform": "Ansible",
   "descriptionID": "8469d3ac",
   "cloudProvider": "azure",
   "cwe": "",
-  "oldSeverity": "MEDIUM"
+  "oldSeverity": "MEDIUM",
+  "providerUrl": "https://docs.ansible.com/ansible/latest/collections/azure/azcollection/azure_rm_cosmosdbaccount_module.html"
 }

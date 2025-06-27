@@ -4,9 +4,10 @@
   "severity": "LOW",
   "category": "Secret Management",
   "descriptionText": "Container should not use secrets as environment variables",
-  "descriptionUrl": "https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/pod#secret_key_ref",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/terraform/kubernetes/secrets_as_environment_variables",
   "platform": "Terraform",
   "descriptionID": "f5c43d1e",
   "cwe": "526",
-  "cloudProvider": "common"
+  "cloudProvider": "common",
+  "providerUrl": "https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/pod#secret_key_ref"
 }

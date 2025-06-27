@@ -4,11 +4,12 @@
   "severity": "MEDIUM",
   "category": "Networking and Firewall",
   "descriptionText": "Enabling the Amazon EKS public endpoint and allowing access from all IP addresses (0.0.0.0/0) exposes the Kubernetes cluster's API server to the entire internet. This configuration creates a significant security risk, as it allows unauthorized parties to attempt authentication or exploit vulnerabilities in the API server from anywhere in the world. If left unaddressed, this could lead to unauthorized access, data breaches, or disruption of workloads orchestrated by the cluster. Limiting public access to trusted IP address ranges greatly reduces the attack surface and helps safeguard sensitive operations and cluster resources.",
-  "descriptionUrl": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/eks_cluster",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/terraform/aws/eks_cluster_has_public_access_cidrs",
   "platform": "Terraform",
   "descriptionID": "9579b0ff",
   "cloudProvider": "aws",
   "cwe": "284",
   "oldSeverity": "HIGH",
-  "oldDescriptionText": "Amazon EKS public endpoint is enables and accessible to all: 0.0.0.0/0\""
+  "oldDescriptionText": "Amazon EKS public endpoint is enables and accessible to all: 0.0.0.0/0\"",
+  "providerUrl": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/eks_cluster"
 }

@@ -4,9 +4,10 @@
   "severity": "MEDIUM",
   "category": "Resource Management",
   "descriptionText": "ROS Stack should have a stack policy in order to protect stack resources from and during update actions",
-  "descriptionUrl": "https://registry.terraform.io/providers/aliyun/alicloud/latest/docs/resources/ros_stack",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/terraform/alicloud/no_ros_stack_policy",
   "platform": "Terraform",
   "descriptionID": "199b3f61",
   "cloudProvider": "alicloud",
-  "cwe": "829"
+  "cwe": "829",
+  "providerUrl": "https://registry.terraform.io/providers/aliyun/alicloud/latest/docs/resources/ros_stack"
 }

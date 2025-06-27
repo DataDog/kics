@@ -4,9 +4,10 @@
   "severity": "LOW",
   "category": "Resource Management",
   "descriptionText": "API Gateway Stage should have API Gateway UsagePlan defined and associated.",
-  "descriptionUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apigateway-stage.html",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/cloudFormation/aws/api_gateway_stage_without_api_gateway_usage_plan_associated",
   "platform": "CloudFormation",
   "descriptionID": "ad012827",
   "cloudProvider": "aws",
-  "cwe": ""
+  "cwe": "",
+  "providerUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apigateway-stage.html"
 }

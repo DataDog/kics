@@ -4,8 +4,9 @@
   "severity": "MEDIUM",
   "category": "Encryption",
   "descriptionText": "The Scheme list of Operation Object should only allow 'HTTPS' protocol to ensure an encrypted connection",
-  "descriptionUrl": "https://swagger.io/specification/v2/#operationObject",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/openAPI/2.0/path_scheme_accepts_http",
   "platform": "OpenAPI",
   "descriptionID": "4ac6f671",
-  "cwe": ""
+  "cwe": "",
+  "providerUrl": "https://swagger.io/specification/v2/#operationObject"
 }

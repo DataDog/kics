@@ -4,7 +4,7 @@
   "severity": "INFO",
   "category": "Structure and Semantics",
   "descriptionText": "All path should be unique, if has more than one operation, all operations should be part of same Path Object",
-  "descriptionUrl": "https://swagger.io/specification/#path-item-object",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/openAPI/general/path_ambiguous",
   "platform": "OpenAPI",
   "descriptionID": "41e6873a",
   "aggregation": 2,
@@ -16,5 +16,6 @@
       "descriptionText": ""
     }
   },
-  "cwe": ""
+  "cwe": "",
+  "providerUrl": "https://swagger.io/specification/#path-item-object"
 }

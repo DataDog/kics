@@ -4,10 +4,11 @@
   "severity": "HIGH",
   "category": "Encryption",
   "descriptionText": "Check if AWS config rules do not identify Encrypted Volumes as a source.",
-  "descriptionUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-config-configrule.html#cfn-config-configrule-source",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/cloudFormation/aws/config_rule_for_encryption_volumes_disabled",
   "platform": "CloudFormation",
   "descriptionID": "d0026f39",
   "cloudProvider": "aws",
   "cwe": "",
-  "oldSeverity": "MEDIUM"
+  "oldSeverity": "MEDIUM",
+  "providerUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-config-configrule.html#cfn-config-configrule-source"
 }

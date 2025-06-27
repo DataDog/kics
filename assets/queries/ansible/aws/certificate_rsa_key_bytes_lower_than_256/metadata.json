@@ -4,9 +4,10 @@
   "severity": "MEDIUM",
   "category": "Insecure Configurations",
   "descriptionText": "The certificate should use a RSA key with a length equal to or higher than 256 bytes",
-  "descriptionUrl": "https://docs.ansible.com/ansible/2.10/collections/community/aws/aws_acm_module.html",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/ansible/aws/certificate_rsa_key_bytes_lower_than_256",
   "platform": "Ansible",
   "descriptionID": "97dc7eba",
   "cloudProvider": "aws",
-  "cwe": ""
+  "cwe": "",
+  "providerUrl": "https://docs.ansible.com/ansible/2.10/collections/community/aws/aws_acm_module.html"
 }

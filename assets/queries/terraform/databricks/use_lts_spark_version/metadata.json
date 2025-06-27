@@ -4,10 +4,11 @@
   "severity": "LOW",
   "category": "Best Practices",
   "descriptionText": "Spark Version is not a Long-term Support",
-  "descriptionUrl": "https://registry.terraform.io/providers/databricks/databricks/latest/docs/data-sources/spark_version",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/terraform/databricks/use_lts_spark_version",
   "platform": "Terraform",
   "descriptionID": "fdaa059f",
   "cloudProvider": "common",
   "cwe": "807",
-  "oldSeverity": "MEDIUM"
+  "oldSeverity": "MEDIUM",
+  "providerUrl": "https://registry.terraform.io/providers/databricks/databricks/latest/docs/data-sources/spark_version"
 }

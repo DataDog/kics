@@ -4,10 +4,11 @@
   "severity": "LOW",
   "category": "Best Practices",
   "descriptionText": "Azure SQL Server's Admin account login must avoid using names like 'Admin', that are too predictable, which means the attribute 'admin_username' must be set to a name that is not easy to predict",
-  "descriptionUrl": "https://docs.ansible.com/ansible/latest/collections/azure/azcollection/azure_rm_sqlserver_module.html",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/ansible/azure/sql_server_predictable_admin_account_name",
   "platform": "Ansible",
   "descriptionID": "8526646e",
   "cloudProvider": "azure",
   "cwe": "",
-  "oldSeverity": "MEDIUM"
+  "oldSeverity": "MEDIUM",
+  "providerUrl": "https://docs.ansible.com/ansible/latest/collections/azure/azcollection/azure_rm_sqlserver_module.html"
 }

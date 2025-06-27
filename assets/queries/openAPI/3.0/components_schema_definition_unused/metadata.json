@@ -4,8 +4,9 @@
   "severity": "INFO",
   "category": "Best Practices",
   "descriptionText": "Components schemas definitions should be referenced or removed from Open API definition",
-  "descriptionUrl": "https://swagger.io/specification/#components-object",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/openAPI/3.0/components_schema_definition_unused",
   "platform": "OpenAPI",
   "descriptionID": "5cdc0f3b",
-  "cwe": ""
+  "cwe": "",
+  "providerUrl": "https://swagger.io/specification/#components-object"
 }

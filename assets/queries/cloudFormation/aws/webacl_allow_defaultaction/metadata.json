@@ -4,9 +4,10 @@
   "severity": "HIGH",
   "category": "Insecure Defaults",
   "descriptionText": "WebAcl DefaultAction should not be ALLOW",
-  "descriptionUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-waf-webacl.html",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/cloudFormation/aws/webacl_allow_defaultaction",
   "platform": "CloudFormation",
   "descriptionID": "e4327168",
   "cloudProvider": "aws",
-  "cwe": ""
+  "cwe": "",
+  "providerUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-waf-webacl.html"
 }

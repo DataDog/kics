@@ -4,9 +4,10 @@
   "severity": "HIGH",
   "category": "Encryption",
   "descriptionText": "tde_status parameter should be Enabled for supported RDS instances",
-  "descriptionUrl": "https://registry.terraform.io/providers/aliyun/alicloud/latest/docs/resources/db_instance#tde_status",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/terraform/alicloud/rds_instance_tde_status_disabled",
   "platform": "Terraform",
   "descriptionID": "ae8fb315",
   "cloudProvider": "alicloud",
-  "cwe": "326"
+  "cwe": "326",
+  "providerUrl": "https://registry.terraform.io/providers/aliyun/alicloud/latest/docs/resources/db_instance#tde_status"
 }

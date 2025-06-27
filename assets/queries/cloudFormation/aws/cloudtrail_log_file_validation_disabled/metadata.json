@@ -4,9 +4,10 @@
   "severity": "LOW",
   "category": "Observability",
   "descriptionText": "CloudTrail log file validation should be enabled to determine whether a log file has not been tampered",
-  "descriptionUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudtrail-trail.html#cfn-cloudtrail-trail-enablelogfilevalidation",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/cloudFormation/aws/cloudtrail_log_file_validation_disabled",
   "platform": "CloudFormation",
   "descriptionID": "66ab1b20",
   "cloudProvider": "aws",
-  "cwe": ""
+  "cwe": "",
+  "providerUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudtrail-trail.html#cfn-cloudtrail-trail-enablelogfilevalidation"
 }

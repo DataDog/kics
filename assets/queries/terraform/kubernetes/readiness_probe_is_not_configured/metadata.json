@@ -4,9 +4,10 @@
   "severity": "MEDIUM",
   "category": "Availability",
   "descriptionText": "Check if Readiness Probe is not configured.",
-  "descriptionUrl": "https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/pod#readiness_probe",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/terraform/kubernetes/readiness_probe_is_not_configured",
   "platform": "Terraform",
   "descriptionID": "a333fe96",
   "cwe": "754",
-  "cloudProvider": "common"
+  "cloudProvider": "common",
+  "providerUrl": "https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/pod#readiness_probe"
 }

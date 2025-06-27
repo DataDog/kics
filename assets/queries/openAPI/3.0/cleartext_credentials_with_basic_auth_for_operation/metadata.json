@@ -4,9 +4,10 @@
   "severity": "MEDIUM",
   "category": "Access Control",
   "descriptionText": "Cleartext credentials over unencrypted channel should not be accepted for the operation",
-  "descriptionUrl": "https://swagger.io/specification/#operation-object",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/openAPI/3.0/cleartext_credentials_with_basic_auth_for_operation",
   "platform": "OpenAPI",
   "descriptionID": "dc667769",
   "cwe": "",
-  "oldSeverity": "HIGH"
+  "oldSeverity": "HIGH",
+  "providerUrl": "https://swagger.io/specification/#operation-object"
 }

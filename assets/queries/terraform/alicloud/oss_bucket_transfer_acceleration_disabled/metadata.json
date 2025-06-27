@@ -4,9 +4,10 @@
   "severity": "LOW",
   "category": "Availability",
   "descriptionText": "OSS Bucket should have transfer acceleration enabled",
-  "descriptionUrl": "https://registry.terraform.io/providers/aliyun/alicloud/latest/docs/resources/oss_bucket#transfer_acceleration",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/terraform/alicloud/oss_bucket_transfer_acceleration_disabled",
   "platform": "Terraform",
   "descriptionID": "19899aaa",
   "cloudProvider": "alicloud",
-  "cwe": "693"
+  "cwe": "693",
+  "providerUrl": "https://registry.terraform.io/providers/aliyun/alicloud/latest/docs/resources/oss_bucket#transfer_acceleration"
 }

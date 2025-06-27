@@ -4,9 +4,10 @@
   "severity": "MEDIUM",
   "category": "Backup",
   "descriptionText": "The retain_stacks should be enabled to keep the Stack upon deleting the stack instance from the stack group",
-  "descriptionUrl": "https://registry.terraform.io/providers/aliyun/alicloud/latest/docs/resources/ros_stack_instance#retain_stacks",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/terraform/alicloud/ros_stack_retention_disabled",
   "platform": "Terraform",
   "descriptionID": "7d4885db",
   "cloudProvider": "alicloud",
-  "cwe": "788"
+  "cwe": "788",
+  "providerUrl": "https://registry.terraform.io/providers/aliyun/alicloud/latest/docs/resources/ros_stack_instance#retain_stacks"
 }

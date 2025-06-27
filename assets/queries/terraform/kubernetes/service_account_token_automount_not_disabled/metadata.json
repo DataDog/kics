@@ -4,9 +4,10 @@
   "severity": "MEDIUM",
   "category": "Insecure Defaults",
   "descriptionText": "Service Account Tokens are automatically mounted even if not necessary",
-  "descriptionUrl": "https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/pod#automount_service_account_token",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/terraform/kubernetes/service_account_token_automount_not_disabled",
   "platform": "Terraform",
   "descriptionID": "9674e7f6",
   "cwe": "665",
-  "cloudProvider": "common"
+  "cloudProvider": "common",
+  "providerUrl": "https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/pod#automount_service_account_token"
 }

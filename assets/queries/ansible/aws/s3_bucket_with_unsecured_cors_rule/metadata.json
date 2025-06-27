@@ -4,10 +4,11 @@
   "severity": "MEDIUM",
   "category": "Insecure Configurations",
   "descriptionText": "If the CORS (Cross-Origin Resource Sharing) rule is defined in an S3 bucket, it should be secure",
-  "descriptionUrl": "https://docs.ansible.com/ansible/latest/collections/community/aws/aws_s3_cors_module.html#parameter-rules",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/ansible/aws/s3_bucket_with_unsecured_cors_rule",
   "platform": "Ansible",
   "descriptionID": "c700f52b",
   "cloudProvider": "aws",
   "cwe": "",
-  "oldSeverity": "HIGH"
+  "oldSeverity": "HIGH",
+  "providerUrl": "https://docs.ansible.com/ansible/latest/collections/community/aws/aws_s3_cors_module.html#parameter-rules"
 }

@@ -4,7 +4,7 @@
   "severity": "HIGH",
   "category": "Access Control",
   "descriptionText": "Security object for operations, if defined, must define a security scheme, otherwise it should be considered an error",
-  "descriptionUrl": "https://swagger.io/specification/#operation-object",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/openAPI/general/security_operations_empty_array",
   "platform": "OpenAPI",
   "descriptionID": "f2d6f7fc",
   "aggregation": 2,
@@ -16,5 +16,6 @@
       "descriptionText": ""
     }
   },
-  "cwe": ""
+  "cwe": "",
+  "providerUrl": "https://swagger.io/specification/#operation-object"
 }

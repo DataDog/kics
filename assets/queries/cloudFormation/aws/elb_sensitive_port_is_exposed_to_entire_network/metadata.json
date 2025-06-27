@@ -4,10 +4,11 @@
   "severity": "HIGH",
   "category": "Networking and Firewall",
   "descriptionText": "The load balancer of the application with a sensitive port connection is exposed to the entire internet.",
-  "descriptionUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-elb.html",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/cloudFormation/aws/elb_sensitive_port_is_exposed_to_entire_network",
   "platform": "CloudFormation",
   "descriptionID": "f26797b1",
   "aggregation": 183,
   "cloudProvider": "aws",
-  "cwe": ""
+  "cwe": "",
+  "providerUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-elb.html"
 }

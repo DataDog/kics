@@ -4,9 +4,10 @@
   "severity": "MEDIUM",
   "category": "Secret Management",
   "descriptionText": "VM Instance should block project-wide SSH keys",
-  "descriptionUrl": "https://cloud.google.com/compute/docs/reference/rest/v1/instances",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/googleDeploymentManager/gcp/project_wide_ssh_keys_are_enabled_in_vm_instances",
   "platform": "GoogleDeploymentManager",
   "descriptionID": "5e36c46d",
   "cloudProvider": "gcp",
-  "cwe": ""
+  "cwe": "",
+  "providerUrl": "https://cloud.google.com/compute/docs/reference/rest/v1/instances"
 }

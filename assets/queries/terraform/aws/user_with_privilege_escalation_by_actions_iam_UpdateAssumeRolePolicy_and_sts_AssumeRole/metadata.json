@@ -4,10 +4,11 @@
   "severity": "MEDIUM",
   "category": "Access Control",
   "descriptionText": "Granting an IAM user permissions to both `iam:UpdateAssumeRolePolicy` and `sts:AssumeRole` with the resource set to `\"*\"` allows that user to escalate their privileges by modifying the trust policies of IAM roles and then assuming those roles. This configuration effectively enables the user to grant themselves access to any role and associated permissions in the AWS account, bypassing intended security controls. If left unaddressed, this vulnerability could lead to full account compromise, data exfiltration, or malicious activity performed under elevated permissions.",
-  "descriptionUrl": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_user_policy#policy",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/terraform/aws/user_with_privilege_escalation_by_actions_iam_UpdateAssumeRolePolicy_and_sts_AssumeRole",
   "platform": "Terraform",
   "descriptionID": "7ab86e7e",
   "cloudProvider": "aws",
   "cwe": "269",
-  "oldDescriptionText": "User with privilege escalation by actions 'iam:UpdateAssumeRolePolicy' and 'sts:AssumeRole' and Resource set to '*'. For more information see https://rhinosecuritylabs.com/aws/aws-privilege-escalation-methods-mitigation/."
+  "oldDescriptionText": "User with privilege escalation by actions 'iam:UpdateAssumeRolePolicy' and 'sts:AssumeRole' and Resource set to '*'. For more information see https://rhinosecuritylabs.com/aws/aws-privilege-escalation-methods-mitigation/.",
+  "providerUrl": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_user_policy#policy"
 }

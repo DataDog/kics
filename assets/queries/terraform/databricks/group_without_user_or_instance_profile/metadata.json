@@ -4,9 +4,10 @@
   "severity": "LOW",
   "category": "Access Control",
   "descriptionText": "Databricks Group should have at least one user or one instance profile associated",
-  "descriptionUrl": "https://registry.terraform.io/providers/databricks/databricks/latest/docs/resources/group",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/terraform/databricks/group_without_user_or_instance_profile",
   "platform": "Terraform",
   "descriptionID": "4bb78f12",
   "cloudProvider": "common",
-  "cwe": "284"
+  "cwe": "284",
+  "providerUrl": "https://registry.terraform.io/providers/databricks/databricks/latest/docs/resources/group"
 }

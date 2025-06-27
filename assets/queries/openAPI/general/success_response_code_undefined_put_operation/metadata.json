@@ -4,7 +4,7 @@
   "severity": "LOW",
   "category": "Networking and Firewall",
   "descriptionText": "Put should define at least one success response (200, 201, 202 or 204)",
-  "descriptionUrl": "https://swagger.io/specification/#operation-object",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/openAPI/general/success_response_code_undefined_put_operation",
   "platform": "OpenAPI",
   "descriptionID": "4929871f",
   "aggregation": 2,
@@ -17,5 +17,6 @@
     }
   },
   "cwe": "",
-  "oldSeverity": "MEDIUM"
+  "oldSeverity": "MEDIUM",
+  "providerUrl": "https://swagger.io/specification/#operation-object"
 }

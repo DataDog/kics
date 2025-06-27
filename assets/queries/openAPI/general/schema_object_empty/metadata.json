@@ -4,7 +4,7 @@
   "severity": "MEDIUM",
   "category": "Insecure Configurations",
   "descriptionText": "The Schema Object should not be empty to avoid accepting any JSON values",
-  "descriptionUrl": "https://swagger.io/specification/#schema-object",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/openAPI/general/schema_object_empty",
   "platform": "OpenAPI",
   "descriptionID": "561c9140",
   "aggregation": 2,
@@ -16,5 +16,6 @@
       "descriptionText": ""
     }
   },
-  "cwe": ""
+  "cwe": "",
+  "providerUrl": "https://swagger.io/specification/#schema-object"
 }

@@ -4,7 +4,7 @@
   "severity": "INFO",
   "category": "Best Practices",
   "descriptionText": "Required properties receive value from requests, which makes unnecessary declare a default value",
-  "descriptionUrl": "https://swagger.io/specification/#schema-object",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/openAPI/general/required_property_default_value",
   "platform": "OpenAPI",
   "descriptionID": "84476388",
   "aggregation": 2,
@@ -16,5 +16,6 @@
       "descriptionText": ""
     }
   },
-  "cwe": ""
+  "cwe": "",
+  "providerUrl": "https://swagger.io/specification/#schema-object"
 }

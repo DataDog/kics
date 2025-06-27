@@ -4,7 +4,7 @@
   "severity": "INFO",
   "category": "Structure and Semantics",
   "descriptionText": "Parameters properties 'name' and 'in' should have unique combinations",
-  "descriptionUrl": "https://swagger.io/specification/#parameters-object",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/openAPI/general/parameters_name_in_not_unique",
   "platform": "OpenAPI",
   "descriptionID": "c55d0bc8",
   "aggregation": 2,
@@ -16,5 +16,6 @@
       "descriptionText": ""
     }
   },
-  "cwe": ""
+  "cwe": "",
+  "providerUrl": "https://swagger.io/specification/#parameters-object"
 }

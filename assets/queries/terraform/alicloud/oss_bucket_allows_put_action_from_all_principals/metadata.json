@@ -4,10 +4,11 @@
   "severity": "CRITICAL",
   "category": "Access Control",
   "descriptionText": "OSS Bucket should not allow put action from all principals, as to prevent leaking private information to the entire internet or allow unauthorized data tampering/deletion. This means the 'Effect' must not be 'Allow' when the 'Action' contains 'Put', for all Principals.",
-  "descriptionUrl": "https://registry.terraform.io/providers/aliyun/alicloud/latest/docs/resources/oss_bucket#policy",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/terraform/alicloud/oss_bucket_allows_put_action_from_all_principals",
   "platform": "Terraform",
   "descriptionID": "14d65676",
   "cloudProvider": "alicloud",
   "cwe": "732",
-  "oldSeverity": "HIGH"
+  "oldSeverity": "HIGH",
+  "providerUrl": "https://registry.terraform.io/providers/aliyun/alicloud/latest/docs/resources/oss_bucket#policy"
 }

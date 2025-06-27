@@ -4,10 +4,11 @@
   "severity": "HIGH",
   "category": "Secret Management",
   "descriptionText": "DirectoryService SimpleAD password must not be a plaintext string or a Ref to a Parameter with a Default value.",
-  "descriptionUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-directoryservice-simplead.html",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/cloudFormation/aws/directory_service_simple_ad_password_exposed",
   "platform": "CloudFormation",
   "descriptionID": "fc2c7fb8",
   "cloudProvider": "aws",
   "cwe": "",
-  "oldSeverity": "MEDIUM"
+  "oldSeverity": "MEDIUM",
+  "providerUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-directoryservice-simplead.html"
 }
