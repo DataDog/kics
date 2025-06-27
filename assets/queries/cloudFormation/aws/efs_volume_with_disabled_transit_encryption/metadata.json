@@ -4,10 +4,11 @@
   "severity": "MEDIUM",
   "category": "Encryption",
   "descriptionText": "Amazon EFS volume does not have encryption for data at transit enabled. To prevent such a scenario, enable the attribute 'TransitEncryption'",
-  "descriptionUrl": "https://docs.aws.amazon.com/AmazonECS/latest/developerguide/efs-volumes.html",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/cloudFormation/aws/efs_volume_with_disabled_transit_encryption",
   "platform": "CloudFormation",
   "descriptionID": "99f92ea6",
   "cloudProvider": "aws",
   "cwe": "",
-  "oldSeverity": "HIGH"
+  "oldSeverity": "HIGH",
+  "providerUrl": "https://docs.aws.amazon.com/AmazonECS/latest/developerguide/efs-volumes.html"
 }

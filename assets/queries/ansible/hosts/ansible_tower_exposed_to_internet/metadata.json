@@ -4,9 +4,10 @@
   "severity": "MEDIUM",
   "category": "Best Practices",
   "descriptionText": "Avoid exposing Ansible Tower to the public internet, effectively reducing the potential attack surface of your deployment",
-  "descriptionUrl": "https://docs.ansible.com/ansible-tower/latest/html/administration/security_best_practices.html#understand-the-architecture-of-ansible-and-tower",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/ansible/hosts/ansible_tower_exposed_to_internet",
   "platform": "Ansible",
   "descriptionID": "657a8b1d",
   "cloudProvider": "common",
-  "cwe": ""
+  "cwe": "",
+  "providerUrl": "https://docs.ansible.com/ansible-tower/latest/html/administration/security_best_practices.html#understand-the-architecture-of-ansible-and-tower"
 }

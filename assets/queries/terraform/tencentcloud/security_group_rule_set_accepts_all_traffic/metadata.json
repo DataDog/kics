@@ -4,9 +4,10 @@
   "severity": "HIGH",
   "category": "Networking and Firewall",
   "descriptionText": "Security Group Rule Set accepts all traffic",
-  "descriptionUrl": "https://registry.terraform.io/providers/tencentcloudstack/tencentcloud/latest/docs/resources/security_group_rule_set#ingress",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/terraform/tencentcloud/security_group_rule_set_accepts_all_traffic",
   "platform": "Terraform",
   "descriptionID": "24df00d9",
   "cloudProvider": "tencentcloud",
-  "cwe": "285"
+  "cwe": "285",
+  "providerUrl": "https://registry.terraform.io/providers/tencentcloudstack/tencentcloud/latest/docs/resources/security_group_rule_set#ingress"
 }

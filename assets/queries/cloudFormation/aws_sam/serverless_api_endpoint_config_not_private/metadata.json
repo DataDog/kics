@@ -4,9 +4,10 @@
   "severity": "MEDIUM",
   "category": "Networking and Firewall",
   "descriptionText": "AWS Serverless API should set API Endpoint Config type to 'PRIVATE'. This way, it's not exposed to the public internet",
-  "descriptionUrl": "https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/sam-resource-api.html#sam-api-endpointconfiguration",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/cloudFormation/aws_sam/serverless_api_endpoint_config_not_private",
   "platform": "CloudFormation",
   "descriptionID": "f86c03cc",
   "cloudProvider": "aws",
-  "cwe": ""
+  "cwe": "",
+  "providerUrl": "https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/sam-resource-api.html#sam-api-endpointconfiguration"
 }

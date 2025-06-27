@@ -4,10 +4,11 @@
   "severity": "CRITICAL",
   "category": "Networking and Firewall",
   "descriptionText": "Check if all IPs are allowed, check from start 0.0.0.0 to end 255.255.255.255.",
-  "descriptionUrl": "https://docs.ansible.com/ansible/latest/collections/azure/azcollection/azure_rm_sqlfirewallrule_module.html",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/ansible/azure/sql_server_ingress_from_any_ip",
   "platform": "Ansible",
   "descriptionID": "ea086cca",
   "cloudProvider": "azure",
   "cwe": "",
-  "oldSeverity": "HIGH"
+  "oldSeverity": "HIGH",
+  "providerUrl": "https://docs.ansible.com/ansible/latest/collections/azure/azcollection/azure_rm_sqlfirewallrule_module.html"
 }

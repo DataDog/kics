@@ -4,10 +4,11 @@
   "severity": "HIGH",
   "category": "Insecure Configurations",
   "descriptionText": "Cloud Run services with IAM bindings or members that include public principals like 'allUsers' or 'allAuthenticatedUsers' expose your service to anyone on the internet, which creates a significant security risk. When a Cloud Run service is publicly accessible, it could lead to unauthorized access, data breaches, or exploitation of vulnerabilities within your application. Instead of using public principals, you should restrict access to specific users or service accounts as shown in this secure example: `members = [\"user:someone@example.com\", \"group:admins@example.com\"]` rather than the insecure approach: `members = [\"allAuthenticatedUsers\", \"user:someone@example.com\"]`.",
-  "descriptionUrl": "https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/cloud_run_service_iam_member",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/terraform/gcp/cloud_run_service_is_public",
   "platform": "Terraform",
   "descriptionID": "7e3c1a2b",
   "cloudProvider": "gcp",
   "cwe": "284",
-  "oldDescriptionText": "Cloud Run services must not be publicly accessible. IAM members or bindings should not use public principals like 'allUsers' or 'allAuthenticatedUsers'."
+  "oldDescriptionText": "Cloud Run services must not be publicly accessible. IAM members or bindings should not use public principals like 'allUsers' or 'allAuthenticatedUsers'.",
+  "providerUrl": "https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/cloud_run_service_iam_member"
 }

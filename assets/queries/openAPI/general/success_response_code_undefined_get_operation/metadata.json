@@ -4,7 +4,7 @@
   "severity": "LOW",
   "category": "Networking and Firewall",
   "descriptionText": "Get should define at least one success response (200 or 202)",
-  "descriptionUrl": "https://swagger.io/specification/#operation-object",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/openAPI/general/success_response_code_undefined_get_operation",
   "platform": "OpenAPI",
   "descriptionID": "dd31a235",
   "aggregation": 2,
@@ -17,5 +17,6 @@
     }
   },
   "cwe": "",
-  "oldSeverity": "MEDIUM"
+  "oldSeverity": "MEDIUM",
+  "providerUrl": "https://swagger.io/specification/#operation-object"
 }

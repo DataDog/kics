@@ -4,9 +4,10 @@
   "severity": "MEDIUM",
   "category": "Build Process",
   "descriptionText": "Alicloud ROS Stack should have a template defined through the attribute template_url or attribute template_body",
-  "descriptionUrl": "https://registry.terraform.io/providers/aliyun/alicloud/latest/docs/resources/ros_stack",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/terraform/alicloud/ros_stack_without_template",
   "platform": "Terraform",
   "descriptionID": "29378f62",
   "cloudProvider": "aws",
-  "cwe": "20"
+  "cwe": "20",
+  "providerUrl": "https://registry.terraform.io/providers/aliyun/alicloud/latest/docs/resources/ros_stack"
 }

@@ -4,9 +4,10 @@
   "severity": "MEDIUM",
   "category": "Access Control",
   "descriptionText": "In order to perform an action as a different user with the become_user, 'become' must be defined and set to 'true'",
-  "descriptionUrl": "https://docs.ansible.com/ansible/latest/plugins/become.html",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/ansible/config/privilege_escalation_using_become_plugin",
   "platform": "Ansible",
   "descriptionID": "00396668",
   "cloudProvider": "common",
-  "cwe": ""
+  "cwe": "",
+  "providerUrl": "https://docs.ansible.com/ansible/latest/plugins/become.html"
 }

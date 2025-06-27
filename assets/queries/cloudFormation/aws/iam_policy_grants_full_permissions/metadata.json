@@ -4,9 +4,10 @@
   "severity": "HIGH",
   "category": "Access Control",
   "descriptionText": "IAM policy should not grant full permissions to resources from the get-go, instead of granting permissions gradually as necessary.",
-  "descriptionUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-policy.html",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/cloudFormation/aws/iam_policy_grants_full_permissions",
   "platform": "CloudFormation",
   "descriptionID": "d4158e76",
   "cloudProvider": "aws",
-  "cwe": ""
+  "cwe": "",
+  "providerUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-policy.html"
 }

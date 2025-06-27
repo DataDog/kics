@@ -4,11 +4,12 @@
   "severity": "MEDIUM",
   "category": "Insecure Configurations",
   "descriptionText": "App Service FTPS enforcement should be configured by setting the `ftps_state` attribute to `\"FtpsOnly\"` in the `site_config` block for the `azurerm_app_service` resource. Allowing `\"AllAllowed\"` in this setting permits both unencrypted FTP and encrypted FTPS connections, exposing sensitive data to potential interception or tampering during transit. To ensure data confidentiality and compliance, always use:\n\n```\nftps_state = \"FtpsOnly\"\n```\nwhich enforces encrypted connections to the Azure App Service.",
-  "descriptionUrl": "https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/app_service#ftps_state",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/terraform/azure/app_service_ftps_enforce_disabled",
   "platform": "Terraform",
   "descriptionID": "a1ada318",
   "cloudProvider": "azure",
   "cwe": "665",
   "oldSeverity": "HIGH",
-  "oldDescriptionText": "Azure App Service should only enforce FTPS when 'ftps_state' is enabled"
+  "oldDescriptionText": "Azure App Service should only enforce FTPS when 'ftps_state' is enabled",
+  "providerUrl": "https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/app_service#ftps_state"
 }

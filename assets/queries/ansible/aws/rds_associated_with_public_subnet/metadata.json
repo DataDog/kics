@@ -4,10 +4,11 @@
   "severity": "CRITICAL",
   "category": "Networking and Firewall",
   "descriptionText": "RDS should not run in public subnet",
-  "descriptionUrl": "https://docs.ansible.com/ansible/latest/collections/community/aws/rds_instance_module.html#parameter-db_subnet_group_name",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/ansible/aws/rds_associated_with_public_subnet",
   "platform": "Ansible",
   "descriptionID": "89ed6e35",
   "cloudProvider": "aws",
   "cwe": "",
-  "oldSeverity": "HIGH"
+  "oldSeverity": "HIGH",
+  "providerUrl": "https://docs.ansible.com/ansible/latest/collections/community/aws/rds_instance_module.html#parameter-db_subnet_group_name"
 }

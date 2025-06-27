@@ -4,9 +4,10 @@
   "severity": "HIGH",
   "category": "Encryption",
   "descriptionText": "ECS Launch Template should have the data in the disk encrypted. To encrypt the data, the 'encrypted' argument should be set to true.",
-  "descriptionUrl": "https://registry.terraform.io/providers/aliyun/alicloud/latest/docs/resources/launch_template#encrypted",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/terraform/alicloud/launch_template_is_not_encrypted",
   "platform": "Terraform",
   "descriptionID": "e9336717",
   "cloudProvider": "alicloud",
-  "cwe": "311"
+  "cwe": "311",
+  "providerUrl": "https://registry.terraform.io/providers/aliyun/alicloud/latest/docs/resources/launch_template#encrypted"
 }

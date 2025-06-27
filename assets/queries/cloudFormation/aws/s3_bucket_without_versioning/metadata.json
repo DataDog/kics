@@ -4,9 +4,10 @@
   "severity": "MEDIUM",
   "category": "Backup",
   "descriptionText": "S3 bucket should have versioning enabled",
-  "descriptionUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket.html",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/cloudFormation/aws/s3_bucket_without_versioning",
   "platform": "CloudFormation",
   "descriptionID": "fe2c56b9",
   "cloudProvider": "aws",
-  "cwe": ""
+  "cwe": "",
+  "providerUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket.html"
 }

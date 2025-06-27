@@ -4,9 +4,10 @@
   "severity": "HIGH",
   "category": "Access Control",
   "descriptionText": "S3 bucket allows public policy",
-  "descriptionUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket-publicaccessblockconfiguration.html",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/cloudFormation/aws/s3_bucket_with_public_policy",
   "platform": "CloudFormation",
   "descriptionID": "bfe99abf",
   "cloudProvider": "aws",
-  "cwe": ""
+  "cwe": "",
+  "providerUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket-publicaccessblockconfiguration.html"
 }

@@ -4,9 +4,10 @@
   "severity": "HIGH",
   "category": "Encryption",
   "descriptionText": "NAS File System must be encrypted",
-  "descriptionUrl": "https://registry.terraform.io/providers/aliyun/alicloud/latest/docs/resources/nas_file_system#encrypt_type",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/terraform/alicloud/nas_file_system_not_encrypted",
   "platform": "Terraform",
   "descriptionID": "fb3675d5",
   "cloudProvider": "alicloud",
-  "cwe": "311"
+  "cwe": "311",
+  "providerUrl": "https://registry.terraform.io/providers/aliyun/alicloud/latest/docs/resources/nas_file_system#encrypt_type"
 }

@@ -4,9 +4,10 @@
   "severity": "LOW",
   "category": "Build Process",
   "descriptionText": "Checks if DynamoDB Table Billing Mode is set to either PAY_PER_REQUEST or PROVISIONED",
-  "descriptionUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-dynamodb-table.html#cfn-dynamodb-table-attributedef",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/cloudFormation/aws/dynamodb_with_table_billing_mode_not_recommended",
   "platform": "CloudFormation",
   "descriptionID": "2a9dc4de",
   "cloudProvider": "aws",
-  "cwe": ""
+  "cwe": "",
+  "providerUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-dynamodb-table.html#cfn-dynamodb-table-attributedef"
 }

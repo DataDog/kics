@@ -4,9 +4,10 @@
   "severity": "INFO",
   "category": "Best Practices",
   "descriptionText": "It's considered a best practice for AWS Security Group to have a description",
-  "descriptionUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-security-group.html",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/cloudFormation/aws/security_group_rule_without_description",
   "platform": "CloudFormation",
   "descriptionID": "f7c62b11",
   "cloudProvider": "aws",
-  "cwe": ""
+  "cwe": "",
+  "providerUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-security-group.html"
 }

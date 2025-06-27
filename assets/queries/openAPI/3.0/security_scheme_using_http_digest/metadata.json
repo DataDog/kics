@@ -4,9 +4,10 @@
   "severity": "LOW",
   "category": "Access Control",
   "descriptionText": "Security Scheme HTTP should not be using digest authentication",
-  "descriptionUrl": "https://swagger.io/specification/#security-scheme-object",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/openAPI/3.0/security_scheme_using_http_digest",
   "platform": "OpenAPI",
   "descriptionID": "2e962b5c",
   "cwe": "",
-  "oldSeverity": "MEDIUM"
+  "oldSeverity": "MEDIUM",
+  "providerUrl": "https://swagger.io/specification/#security-scheme-object"
 }

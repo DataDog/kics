@@ -4,9 +4,10 @@
   "severity": "LOW",
   "category": "Supply-Chain",
   "descriptionText": "Image must be defined and not be empty or equal to latest.",
-  "descriptionUrl": "https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/pod#image",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/terraform/kubernetes/invalid_image",
   "platform": "Terraform",
   "descriptionID": "56713716",
   "cwe": "665",
-  "cloudProvider": "common"
+  "cloudProvider": "common",
+  "providerUrl": "https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/pod#image"
 }

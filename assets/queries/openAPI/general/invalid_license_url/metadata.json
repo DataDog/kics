@@ -4,7 +4,7 @@
   "severity": "INFO",
   "category": "Best Practices",
   "descriptionText": "License Object URL should be a valid URL",
-  "descriptionUrl": "https://swagger.io/specification/#license-object",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/openAPI/general/invalid_license_url",
   "platform": "OpenAPI",
   "descriptionID": "d5d073df",
   "aggregation": 2,
@@ -16,5 +16,6 @@
       "descriptionText": ""
     }
   },
-  "cwe": ""
+  "cwe": "",
+  "providerUrl": "https://swagger.io/specification/#license-object"
 }

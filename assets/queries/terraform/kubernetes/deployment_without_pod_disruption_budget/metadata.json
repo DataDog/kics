@@ -4,9 +4,10 @@
   "severity": "LOW",
   "category": "Availability",
   "descriptionText": "Deployments should be assigned with a PodDisruptionBudget to ensure high availability",
-  "descriptionUrl": "https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/deployment#selector",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/terraform/kubernetes/deployment_without_pod_disruption_budget",
   "platform": "Terraform",
   "descriptionID": "add58c0c",
   "cwe": "400",
-  "cloudProvider": "common"
+  "cloudProvider": "common",
+  "providerUrl": "https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/deployment#selector"
 }

@@ -4,10 +4,11 @@
   "severity": "MEDIUM",
   "category": "Access Control",
   "descriptionText": "Cloud Storage Bucket is anonymously or publicly accessible",
-  "descriptionUrl": "https://cloud.google.com/storage/docs/json_api/v1/bucketAccessControls",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/googleDeploymentManager/gcp/cloud_storage_bucket_is_publicly_accessible",
   "platform": "GoogleDeploymentManager",
   "descriptionID": "f767772d",
   "cloudProvider": "gcp",
   "cwe": "",
-  "oldSeverity": "HIGH"
+  "oldSeverity": "HIGH",
+  "providerUrl": "https://cloud.google.com/storage/docs/json_api/v1/bucketAccessControls"
 }

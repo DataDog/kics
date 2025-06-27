@@ -4,10 +4,11 @@
   "severity": "HIGH",
   "category": "Encryption",
   "descriptionText": "EBS volumes should be encrypted",
-  "descriptionUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ebs-volume.html",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/cloudFormation/aws/ebs_volume_encryption_disabled",
   "platform": "CloudFormation",
   "descriptionID": "8a51c141",
   "cloudProvider": "aws",
   "cwe": "",
-  "oldSeverity": "MEDIUM"
+  "oldSeverity": "MEDIUM",
+  "providerUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ebs-volume.html"
 }

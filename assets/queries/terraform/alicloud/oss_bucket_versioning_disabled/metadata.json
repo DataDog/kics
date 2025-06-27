@@ -4,9 +4,10 @@
   "severity": "MEDIUM",
   "category": "Backup",
   "descriptionText": "OSS Bucket should have versioning enabled",
-  "descriptionUrl": "https://registry.terraform.io/providers/aliyun/alicloud/latest/docs/resources/oss_bucket#versioning",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/terraform/alicloud/oss_bucket_versioning_disabled",
   "platform": "Terraform",
   "descriptionID": "749f1287",
   "cloudProvider": "alicloud",
-  "cwe": "710"
+  "cwe": "710",
+  "providerUrl": "https://registry.terraform.io/providers/aliyun/alicloud/latest/docs/resources/oss_bucket#versioning"
 }

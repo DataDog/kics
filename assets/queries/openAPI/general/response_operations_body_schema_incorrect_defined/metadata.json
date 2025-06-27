@@ -4,7 +4,7 @@
   "severity": "LOW",
   "category": "Networking and Firewall",
   "descriptionText": "If a response is head or its code is 204 or 304, it shouldn't have a content defined",
-  "descriptionUrl": "https://swagger.io/docs/specification/describing-responses/",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/openAPI/general/response_operations_body_schema_incorrect_defined",
   "platform": "OpenAPI",
   "descriptionID": "309e8e76",
   "aggregation": 2,
@@ -17,5 +17,6 @@
     }
   },
   "cwe": "",
-  "oldSeverity": "MEDIUM"
+  "oldSeverity": "MEDIUM",
+  "providerUrl": "https://swagger.io/docs/specification/describing-responses/"
 }

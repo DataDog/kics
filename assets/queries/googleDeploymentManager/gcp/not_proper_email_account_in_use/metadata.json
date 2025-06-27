@@ -4,10 +4,11 @@
   "severity": "LOW",
   "category": "Insecure Configurations",
   "descriptionText": "Gmail accounts are being used instead of corporate credentials",
-  "descriptionUrl": "https://cloud.google.com/deployment-manager/docs/configuration/set-access-control-resources",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/googleDeploymentManager/gcp/not_proper_email_account_in_use",
   "platform": "GoogleDeploymentManager",
   "descriptionID": "a21b8df4",
   "cloudProvider": "gcp",
   "cwe": "",
-  "oldSeverity": "HIGH"
+  "oldSeverity": "HIGH",
+  "providerUrl": "https://cloud.google.com/deployment-manager/docs/configuration/set-access-control-resources"
 }

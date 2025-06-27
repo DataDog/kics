@@ -4,9 +4,10 @@
   "severity": "LOW",
   "category": "Observability",
   "descriptionText": "VPC resources should have Flow Log enabled",
-  "descriptionUrl": "https://registry.terraform.io/providers/tencentcloudstack/tencentcloud/latest/docs/resources/vpc_flow_log_config#enable",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/terraform/tencentcloud/vpc_flow_log_disabled",
   "platform": "Terraform",
   "descriptionID": "46e139af",
   "cloudProvider": "tencentcloud",
-  "cwe": "778"
+  "cwe": "778",
+  "providerUrl": "https://registry.terraform.io/providers/tencentcloudstack/tencentcloud/latest/docs/resources/vpc_flow_log_config#enable"
 }
