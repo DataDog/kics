@@ -3,14 +3,18 @@ title: "CloudTrail SNS Topic Name Undefined"
 meta:
   name: "aws/cloudtrail_sns_topic_name_undefined"
   id: "482b7d26-0bdb-4b5f-bf6f-545826c0a3dd"
+  display_name: "CloudTrail SNS Topic Name Undefined"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "LOW"
   category: "Observability"
 ---
 ## Metadata
 **Name:** `aws/cloudtrail_sns_topic_name_undefined`
+**Query Name** `CloudTrail SNS Topic Name Undefined`
 **Id:** `482b7d26-0bdb-4b5f-bf6f-545826c0a3dd`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Low
 **Category:** Observability
 ## Description

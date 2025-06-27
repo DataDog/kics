@@ -3,14 +3,18 @@ title: "Google Compute Subnetwork with Private Google Access Disabled"
 meta:
   name: "gcp/google_compute_subnetwork_with_private_google_access_disabled"
   id: "ee7b93c1-b3f8-4a3b-9588-146d481814f5"
+  display_name: "Google Compute Subnetwork with Private Google Access Disabled"
   cloud_provider: "gcp"
+  platform: "Terraform"
   severity: "LOW"
   category: "Networking and Firewall"
 ---
 ## Metadata
 **Name:** `gcp/google_compute_subnetwork_with_private_google_access_disabled`
+**Query Name** `Google Compute Subnetwork with Private Google Access Disabled`
 **Id:** `ee7b93c1-b3f8-4a3b-9588-146d481814f5`
 **Cloud Provider:** gcp
+**Platform** Terraform
 **Severity:** Low
 **Category:** Networking and Firewall
 ## Description

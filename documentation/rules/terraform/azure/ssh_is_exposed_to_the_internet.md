@@ -3,14 +3,18 @@ title: "SSH Is Exposed To The Internet"
 meta:
   name: "azure/ssh_is_exposed_to_the_internet"
   id: "3e3c175e-aadf-4e2b-a464-3fdac5748d24"
+  display_name: "SSH Is Exposed To The Internet"
   cloud_provider: "azure"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Networking and Firewall"
 ---
 ## Metadata
 **Name:** `azure/ssh_is_exposed_to_the_internet`
+**Query Name** `SSH Is Exposed To The Internet`
 **Id:** `3e3c175e-aadf-4e2b-a464-3fdac5748d24`
 **Cloud Provider:** azure
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Networking and Firewall
 ## Description

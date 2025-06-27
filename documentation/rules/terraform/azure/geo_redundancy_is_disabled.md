@@ -3,14 +3,18 @@ title: "Geo Redundancy Is Disabled"
 meta:
   name: "azure/geo_redundancy_is_disabled"
   id: "8b042c30-e441-453f-b162-7696982ebc58"
+  display_name: "Geo Redundancy Is Disabled"
   cloud_provider: "azure"
+  platform: "Terraform"
   severity: "LOW"
   category: "Backup"
 ---
 ## Metadata
 **Name:** `azure/geo_redundancy_is_disabled`
+**Query Name** `Geo Redundancy Is Disabled`
 **Id:** `8b042c30-e441-453f-b162-7696982ebc58`
 **Cloud Provider:** azure
+**Platform** Terraform
 **Severity:** Low
 **Category:** Backup
 ## Description

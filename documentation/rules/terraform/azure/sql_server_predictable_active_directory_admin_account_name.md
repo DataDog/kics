@@ -3,14 +3,18 @@ title: "SQL Server Predictable Active Directory Account Name"
 meta:
   name: "azure/sql_server_predictable_active_directory_admin_account_name"
   id: "bcd3fc01-5902-4f2a-b05a-227f9bbf5450"
+  display_name: "SQL Server Predictable Active Directory Account Name"
   cloud_provider: "azure"
+  platform: "Terraform"
   severity: "LOW"
   category: "Best Practices"
 ---
 ## Metadata
 **Name:** `azure/sql_server_predictable_active_directory_admin_account_name`
+**Query Name** `SQL Server Predictable Active Directory Account Name`
 **Id:** `bcd3fc01-5902-4f2a-b05a-227f9bbf5450`
 **Cloud Provider:** azure
+**Platform** Terraform
 **Severity:** Low
 **Category:** Best Practices
 ## Description

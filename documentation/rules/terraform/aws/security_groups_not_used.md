@@ -3,14 +3,18 @@ title: "Security Group Not Used"
 meta:
   name: "aws/security_groups_not_used"
   id: "4849211b-ac39-479e-ae78-5694d506cb24"
+  display_name: "Security Group Not Used"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "INFO"
   category: "Access Control"
 ---
 ## Metadata
 **Name:** `aws/security_groups_not_used`
+**Query Name** `Security Group Not Used`
 **Id:** `4849211b-ac39-479e-ae78-5694d506cb24`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Info
 **Category:** Access Control
 ## Description

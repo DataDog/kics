@@ -3,14 +3,18 @@ title: "Dashboard Is Enabled"
 meta:
   name: "azure/dashboard_is_enabled"
   id: "61c3cb8b-0715-47e4-b788-86dde40dd2db"
+  display_name: "Dashboard Is Enabled"
   cloud_provider: "azure"
+  platform: "Terraform"
   severity: "LOW"
   category: "Insecure Configurations"
 ---
 ## Metadata
 **Name:** `azure/dashboard_is_enabled`
+**Query Name** `Dashboard Is Enabled`
 **Id:** `61c3cb8b-0715-47e4-b788-86dde40dd2db`
 **Cloud Provider:** azure
+**Platform** Terraform
 **Severity:** Low
 **Category:** Insecure Configurations
 ## Description

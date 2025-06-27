@@ -3,14 +3,18 @@ title: "Unrestricted Security Group Ingress"
 meta:
   name: "aws/unrestricted_security_group_ingress"
   id: "4728cd65-a20c-49da-8b31-9c08b423e4db"
+  display_name: "Unrestricted Security Group Ingress"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "HIGH"
   category: "Networking and Firewall"
 ---
 ## Metadata
 **Name:** `aws/unrestricted_security_group_ingress`
+**Query Name** `Unrestricted Security Group Ingress`
 **Id:** `4728cd65-a20c-49da-8b31-9c08b423e4db`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** High
 **Category:** Networking and Firewall
 ## Description

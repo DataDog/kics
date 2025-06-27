@@ -3,14 +3,18 @@ title: "Pod Security Policy Disabled"
 meta:
   name: "gcp/pod_security_policy_disabled"
   id: "9192e0f9-eca5-4056-9282-ae2a736a4088"
+  display_name: "Pod Security Policy Disabled"
   cloud_provider: "gcp"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Insecure Configurations"
 ---
 ## Metadata
 **Name:** `gcp/pod_security_policy_disabled`
+**Query Name** `Pod Security Policy Disabled`
 **Id:** `9192e0f9-eca5-4056-9282-ae2a736a4088`
 **Cloud Provider:** gcp
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Insecure Configurations
 ## Description

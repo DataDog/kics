@@ -3,14 +3,18 @@ title: "Azure App Service Client Certificate Disabled"
 meta:
   name: "azure/azure_app_service_client_certificate_disabled"
   id: "a81573f9-3691-4d83-88a0-7d4af63e17a3"
+  display_name: "Azure App Service Client Certificate Disabled"
   cloud_provider: "azure"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Insecure Configurations"
 ---
 ## Metadata
 **Name:** `azure/azure_app_service_client_certificate_disabled`
+**Query Name** `Azure App Service Client Certificate Disabled`
 **Id:** `a81573f9-3691-4d83-88a0-7d4af63e17a3`
 **Cloud Provider:** azure
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Insecure Configurations
 ## Description

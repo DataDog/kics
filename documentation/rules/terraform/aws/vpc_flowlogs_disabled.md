@@ -3,14 +3,18 @@ title: "VPC FlowLogs Disabled"
 meta:
   name: "aws/vpc_flowlogs_disabled"
   id: "f83121ea-03da-434f-9277-9cd247ab3047"
+  display_name: "VPC FlowLogs Disabled"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Observability"
 ---
 ## Metadata
 **Name:** `aws/vpc_flowlogs_disabled`
+**Query Name** `VPC FlowLogs Disabled`
 **Id:** `f83121ea-03da-434f-9277-9cd247ab3047`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Observability
 ## Description

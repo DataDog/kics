@@ -3,14 +3,18 @@ title: "EKS Cluster Encryption Disabled"
 meta:
   name: "aws/eks_cluster_encryption_disabled"
   id: "63ebcb19-2739-4d3f-aa5c-e8bbb9b85281"
+  display_name: "EKS Cluster Encryption Disabled"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "HIGH"
   category: "Encryption"
 ---
 ## Metadata
 **Name:** `aws/eks_cluster_encryption_disabled`
+**Query Name** `EKS Cluster Encryption Disabled`
 **Id:** `63ebcb19-2739-4d3f-aa5c-e8bbb9b85281`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** High
 **Category:** Encryption
 ## Description

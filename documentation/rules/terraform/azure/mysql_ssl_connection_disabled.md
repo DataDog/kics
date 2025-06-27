@@ -3,14 +3,18 @@ title: "MySQL SSL Connection Disabled"
 meta:
   name: "azure/mysql_ssl_connection_disabled"
   id: "73e42469-3a86-4f39-ad78-098f325b4e9f"
+  display_name: "MySQL SSL Connection Disabled"
   cloud_provider: "azure"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Encryption"
 ---
 ## Metadata
 **Name:** `azure/mysql_ssl_connection_disabled`
+**Query Name** `MySQL SSL Connection Disabled`
 **Id:** `73e42469-3a86-4f39-ad78-098f325b4e9f`
 **Cloud Provider:** azure
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Encryption
 ## Description

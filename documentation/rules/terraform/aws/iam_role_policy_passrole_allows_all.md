@@ -3,14 +3,18 @@ title: "IAM Role Policy passRole Allows All"
 meta:
   name: "aws/iam_role_policy_passrole_allows_all"
   id: "e39bee8c-fe54-4a3f-824d-e5e2d1cca40a"
+  display_name: "IAM Role Policy passRole Allows All"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"
 ---
 ## Metadata
 **Name:** `aws/iam_role_policy_passrole_allows_all`
+**Query Name** `IAM Role Policy passRole Allows All`
 **Id:** `e39bee8c-fe54-4a3f-824d-e5e2d1cca40a`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Access Control
 ## Description

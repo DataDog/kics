@@ -3,14 +3,18 @@ title: "Security Contact Email"
 meta:
   name: "azure/security_contact_email"
   id: "34664094-59e0-4524-b69f-deaa1a68cce3"
+  display_name: "Security Contact Email"
   cloud_provider: "azure"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Best Practices"
 ---
 ## Metadata
 **Name:** `azure/security_contact_email`
+**Query Name** `Security Contact Email`
 **Id:** `34664094-59e0-4524-b69f-deaa1a68cce3`
 **Cloud Provider:** azure
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Best Practices
 ## Description

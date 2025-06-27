@@ -3,14 +3,18 @@ title: "ECS Task Definition Volume Not Encrypted"
 meta:
   name: "aws/ecs_task_definition_volume_not_encrypted"
   id: "4d46ff3b-7160-41d1-a310-71d6d370b08f"
+  display_name: "ECS Task Definition Volume Not Encrypted"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "HIGH"
   category: "Encryption"
 ---
 ## Metadata
 **Name:** `aws/ecs_task_definition_volume_not_encrypted`
+**Query Name** `ECS Task Definition Volume Not Encrypted`
 **Id:** `4d46ff3b-7160-41d1-a310-71d6d370b08f`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** High
 **Category:** Encryption
 ## Description

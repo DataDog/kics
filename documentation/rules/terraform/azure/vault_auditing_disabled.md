@@ -3,14 +3,18 @@ title: "Vault Auditing Disabled"
 meta:
   name: "azure/vault_auditing_disabled"
   id: "38c71c00-c177-4cd7-8d36-cd1007cdb190"
+  display_name: "Vault Auditing Disabled"
   cloud_provider: "azure"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Observability"
 ---
 ## Metadata
 **Name:** `azure/vault_auditing_disabled`
+**Query Name** `Vault Auditing Disabled`
 **Id:** `38c71c00-c177-4cd7-8d36-cd1007cdb190`
 **Cloud Provider:** azure
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Observability
 ## Description

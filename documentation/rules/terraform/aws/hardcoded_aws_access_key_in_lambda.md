@@ -3,14 +3,18 @@ title: "Hardcoded AWS Access Key In Lambda"
 meta:
   name: "aws/hardcoded_aws_access_key_in_lambda"
   id: "1402afd8-a95c-4e84-8b0b-6fb43758e6ce"
+  display_name: "Hardcoded AWS Access Key In Lambda"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "HIGH"
   category: "Secret Management"
 ---
 ## Metadata
 **Name:** `aws/hardcoded_aws_access_key_in_lambda`
+**Query Name** `Hardcoded AWS Access Key In Lambda`
 **Id:** `1402afd8-a95c-4e84-8b0b-6fb43758e6ce`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** High
 **Category:** Secret Management
 ## Description

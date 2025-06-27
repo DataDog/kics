@@ -3,14 +3,18 @@ title: "Ensure that UDP Services are restricted from the Internet"
 meta:
   name: "azure/udp_services_not_restricted_from_internet"
   id: "a3b4c5d6-e7f8-9012-3456-7890abcdef12"
+  display_name: "Ensure that UDP Services are restricted from the Internet"
   cloud_provider: "azure"
+  platform: "Terraform"
   severity: "HIGH"
   category: "Networking and Firewall"
 ---
 ## Metadata
 **Name:** `azure/udp_services_not_restricted_from_internet`
+**Query Name** `Ensure that UDP Services are restricted from the Internet`
 **Id:** `a3b4c5d6-e7f8-9012-3456-7890abcdef12`
 **Cloud Provider:** azure
+**Platform** Terraform
 **Severity:** High
 **Category:** Networking and Firewall
 ## Description

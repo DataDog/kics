@@ -3,14 +3,18 @@ title: "Elasticsearch Domain With Vulnerable Policy"
 meta:
   name: "aws/elasticsearch_domain_with_vulnerable_policy"
   id: "16c4216a-50d3-4785-bfb2-4adb5144a8ba"
+  display_name: "Elasticsearch Domain With Vulnerable Policy"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"
 ---
 ## Metadata
 **Name:** `aws/elasticsearch_domain_with_vulnerable_policy`
+**Query Name** `Elasticsearch Domain With Vulnerable Policy`
 **Id:** `16c4216a-50d3-4785-bfb2-4adb5144a8ba`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Access Control
 ## Description

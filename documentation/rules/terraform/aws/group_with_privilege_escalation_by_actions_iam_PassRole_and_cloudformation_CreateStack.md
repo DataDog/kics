@@ -3,14 +3,18 @@ title: "Group With Privilege Escalation By Actions 'cloudformation:CreateStack' 
 meta:
   name: "aws/group_with_privilege_escalation_by_actions_iam_PassRole_and_cloudformation_CreateStack"
   id: "9b0ffadc-a61f-4c2a-b1e6-68fab60f6267"
+  display_name: "Group With Privilege Escalation By Actions 'cloudformation:CreateStack' And 'iam:PassRole'"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"
 ---
 ## Metadata
 **Name:** `aws/group_with_privilege_escalation_by_actions_iam_PassRole_and_cloudformation_CreateStack`
+**Query Name** `Group With Privilege Escalation By Actions 'cloudformation:CreateStack' And 'iam:PassRole'`
 **Id:** `9b0ffadc-a61f-4c2a-b1e6-68fab60f6267`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Access Control
 ## Description

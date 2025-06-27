@@ -3,14 +3,18 @@ title: "CloudTrail Log Files S3 Bucket is Publicly Accessible"
 meta:
   name: "aws/cloudtrail_log_files_s3_bucket_is_publicly_accessible"
   id: "bd0088a5-c133-4b20-b129-ec9968b16ef3"
+  display_name: "CloudTrail Log Files S3 Bucket is Publicly Accessible"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "HIGH"
   category: "Observability"
 ---
 ## Metadata
 **Name:** `aws/cloudtrail_log_files_s3_bucket_is_publicly_accessible`
+**Query Name** `CloudTrail Log Files S3 Bucket is Publicly Accessible`
 **Id:** `bd0088a5-c133-4b20-b129-ec9968b16ef3`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** High
 **Category:** Observability
 ## Description

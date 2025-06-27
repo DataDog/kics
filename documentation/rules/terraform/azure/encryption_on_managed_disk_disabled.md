@@ -3,14 +3,18 @@ title: "Encryption On Managed Disk Disabled"
 meta:
   name: "azure/encryption_on_managed_disk_disabled"
   id: "a99130ab-4c0e-43aa-97f8-78d4fcb30024"
+  display_name: "Encryption On Managed Disk Disabled"
   cloud_provider: "azure"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Encryption"
 ---
 ## Metadata
 **Name:** `azure/encryption_on_managed_disk_disabled`
+**Query Name** `Encryption On Managed Disk Disabled`
 **Id:** `a99130ab-4c0e-43aa-97f8-78d4fcb30024`
 **Cloud Provider:** azure
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Encryption
 ## Description

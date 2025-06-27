@@ -3,14 +3,18 @@ title: "RDS Without Logging"
 meta:
   name: "aws/rds_without_logging"
   id: "8d7f7b8c-6c7c-40f8-baa6-62006c6c7b56"
+  display_name: "RDS Without Logging"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Observability"
 ---
 ## Metadata
 **Name:** `aws/rds_without_logging`
+**Query Name** `RDS Without Logging`
 **Id:** `8d7f7b8c-6c7c-40f8-baa6-62006c6c7b56`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Observability
 ## Description

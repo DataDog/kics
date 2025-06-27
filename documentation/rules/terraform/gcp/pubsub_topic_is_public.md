@@ -3,14 +3,18 @@ title: "Pub/Sub Topics are anonymously or publicly accessible"
 meta:
   name: "gcp/pubsub_topic_is_public"
   id: "7sdj7dsj8-f348-4f95-845c-1090e41a615c"
+  display_name: "Pub/Sub Topics are anonymously or publicly accessible"
   cloud_provider: "gcp"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Insecure Configurations"
 ---
 ## Metadata
 **Name:** `gcp/pubsub_topic_is_public`
+**Query Name** `Pub/Sub Topics are anonymously or publicly accessible`
 **Id:** `7sdj7dsj8-f348-4f95-845c-1090e41a615c`
 **Cloud Provider:** gcp
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Insecure Configurations
 ## Description

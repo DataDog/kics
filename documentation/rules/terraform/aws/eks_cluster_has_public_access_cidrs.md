@@ -3,14 +3,18 @@ title: "EKS Cluster Has Public Access CIDRs"
 meta:
   name: "aws/eks_cluster_has_public_access_cidrs"
   id: "61cf9883-1752-4768-b18c-0d57f2737709"
+  display_name: "EKS Cluster Has Public Access CIDRs"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Networking and Firewall"
 ---
 ## Metadata
 **Name:** `aws/eks_cluster_has_public_access_cidrs`
+**Query Name** `EKS Cluster Has Public Access CIDRs`
 **Id:** `61cf9883-1752-4768-b18c-0d57f2737709`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Networking and Firewall
 ## Description

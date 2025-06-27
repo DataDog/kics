@@ -3,14 +3,18 @@ title: "Role With Privilege Escalation By Actions 'lambda:CreateFunction' And 'i
 meta:
   name: "aws/role_with_privilege_escalation_by_actions_iam_PassRole_and_lambda_CreateFunction_lambda_InvokeFunction"
   id: "fa62ac4f-f5b9-45b9-97c1-625c8b6253ca"
+  display_name: "Role With Privilege Escalation By Actions 'lambda:CreateFunction' And 'iam:PassRole' And 'lambda:InvokeFunction'"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"
 ---
 ## Metadata
 **Name:** `aws/role_with_privilege_escalation_by_actions_iam_PassRole_and_lambda_CreateFunction_lambda_InvokeFunction`
+**Query Name** `Role With Privilege Escalation By Actions 'lambda:CreateFunction' And 'iam:PassRole' And 'lambda:InvokeFunction'`
 **Id:** `fa62ac4f-f5b9-45b9-97c1-625c8b6253ca`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Access Control
 ## Description

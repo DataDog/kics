@@ -3,14 +3,18 @@ title: "Certificate Has Expired"
 meta:
   name: "aws/certificate_has_expired"
   id: "c3831315-5ae6-4fa8-b458-3d4d5ab7a3f6"
+  display_name: "Certificate Has Expired"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"
 ---
 ## Metadata
 **Name:** `aws/certificate_has_expired`
+**Query Name** `Certificate Has Expired`
 **Id:** `c3831315-5ae6-4fa8-b458-3d4d5ab7a3f6`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Access Control
 ## Description

@@ -3,14 +3,18 @@ title: "MSSQL Server Auditing Disabled"
 meta:
   name: "azure/mssql_server_auditing_disabled"
   id: "609839ae-bd81-4375-9910-5bce72ae7b92"
+  display_name: "MSSQL Server Auditing Disabled"
   cloud_provider: "azure"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Observability"
 ---
 ## Metadata
 **Name:** `azure/mssql_server_auditing_disabled`
+**Query Name** `MSSQL Server Auditing Disabled`
 **Id:** `609839ae-bd81-4375-9910-5bce72ae7b92`
 **Cloud Provider:** azure
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Observability
 ## Description

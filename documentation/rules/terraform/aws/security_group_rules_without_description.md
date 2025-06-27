@@ -3,14 +3,18 @@ title: "Security Group Rule Without Description"
 meta:
   name: "aws/security_group_rules_without_description"
   id: "68eb4bf3-f9bf-463d-b5cf-e029bb446d2e"
+  display_name: "Security Group Rule Without Description"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "INFO"
   category: "Best Practices"
 ---
 ## Metadata
 **Name:** `aws/security_group_rules_without_description`
+**Query Name** `Security Group Rule Without Description`
 **Id:** `68eb4bf3-f9bf-463d-b5cf-e029bb446d2e`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Info
 **Category:** Best Practices
 ## Description

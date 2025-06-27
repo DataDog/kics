@@ -3,14 +3,18 @@ title: "IAM Role Allows All Principals To Assume"
 meta:
   name: "aws/iam_role_allows_all_principals_to_assume"
   id: "12b7e704-37f0-4d1e-911a-44bf60c48c21"
+  display_name: "IAM Role Allows All Principals To Assume"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"
 ---
 ## Metadata
 **Name:** `aws/iam_role_allows_all_principals_to_assume`
+**Query Name** `IAM Role Allows All Principals To Assume`
 **Id:** `12b7e704-37f0-4d1e-911a-44bf60c48c21`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Access Control
 ## Description

@@ -3,14 +3,18 @@ title: "MSK Broker Is Publicly Accessible"
 meta:
   name: "aws/msk_broker_is_publicly_accessible"
   id: "54378d69-dd7c-4b08-a43e-80d563396857"
+  display_name: "MSK Broker Is Publicly Accessible"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "HIGH"
   category: "Access Control"
 ---
 ## Metadata
 **Name:** `aws/msk_broker_is_publicly_accessible`
+**Query Name** `MSK Broker Is Publicly Accessible`
 **Id:** `54378d69-dd7c-4b08-a43e-80d563396857`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** High
 **Category:** Access Control
 ## Description

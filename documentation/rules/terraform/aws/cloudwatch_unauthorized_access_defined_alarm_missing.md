@@ -3,14 +3,18 @@ title: "CloudWatch Unauthorized Access Alarm Missing"
 meta:
   name: "aws/cloudwatch_unauthorized_access_defined_alarm_missing"
   id: "4c18a45b-4ab1-4790-9f83-399ac695f1e5"
+  display_name: "CloudWatch Unauthorized Access Alarm Missing"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "CRITICAL"
   category: "Observability"
 ---
 ## Metadata
 **Name:** `aws/cloudwatch_unauthorized_access_defined_alarm_missing`
+**Query Name** `CloudWatch Unauthorized Access Alarm Missing`
 **Id:** `4c18a45b-4ab1-4790-9f83-399ac695f1e5`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Critical
 **Category:** Observability
 ## Description

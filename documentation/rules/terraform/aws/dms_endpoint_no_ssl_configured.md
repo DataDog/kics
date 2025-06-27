@@ -3,14 +3,18 @@ title: "DMS Endpoints Without SSL"
 meta:
   name: "aws/dms_endpoint_no_ssl_configured"
   id: "e6f7g8h9-i0j1-4klm-56no-7890pqrstu12"
+  display_name: "DMS Endpoints Without SSL"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "HIGH"
   category: "Networking and Firewall"
 ---
 ## Metadata
 **Name:** `aws/dms_endpoint_no_ssl_configured`
+**Query Name** `DMS Endpoints Without SSL`
 **Id:** `e6f7g8h9-i0j1-4klm-56no-7890pqrstu12`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** High
 **Category:** Networking and Firewall
 ## Description

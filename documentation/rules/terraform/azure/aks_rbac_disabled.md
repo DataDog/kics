@@ -3,14 +3,18 @@ title: "AKS RBAC Disabled"
 meta:
   name: "azure/aks_rbac_disabled"
   id: "86f92117-eed8-4614-9c6c-b26da20ff37f"
+  display_name: "AKS RBAC Disabled"
   cloud_provider: "azure"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"
 ---
 ## Metadata
 **Name:** `azure/aks_rbac_disabled`
+**Query Name** `AKS RBAC Disabled`
 **Id:** `86f92117-eed8-4614-9c6c-b26da20ff37f`
 **Cloud Provider:** azure
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Access Control
 ## Description

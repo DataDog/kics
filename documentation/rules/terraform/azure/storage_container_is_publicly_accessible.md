@@ -3,14 +3,18 @@ title: "Storage Container Is Publicly Accessible"
 meta:
   name: "azure/storage_container_is_publicly_accessible"
   id: "dd5230f8-a577-4bbb-b7ac-f2c2fe7d5299"
+  display_name: "Storage Container Is Publicly Accessible"
   cloud_provider: "azure"
+  platform: "Terraform"
   severity: "HIGH"
   category: "Access Control"
 ---
 ## Metadata
 **Name:** `azure/storage_container_is_publicly_accessible`
+**Query Name** `Storage Container Is Publicly Accessible`
 **Id:** `dd5230f8-a577-4bbb-b7ac-f2c2fe7d5299`
 **Cloud Provider:** azure
+**Platform** Terraform
 **Severity:** High
 **Category:** Access Control
 ## Description

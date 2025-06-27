@@ -3,14 +3,18 @@ title: "Function App Managed Identity Disabled"
 meta:
   name: "azure/function_app_managed_identity_disabled"
   id: "c87749b3-ff10-41f5-9df2-c421e8151759"
+  display_name: "Function App Managed Identity Disabled"
   cloud_provider: "azure"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Insecure Configurations"
 ---
 ## Metadata
 **Name:** `azure/function_app_managed_identity_disabled`
+**Query Name** `Function App Managed Identity Disabled`
 **Id:** `c87749b3-ff10-41f5-9df2-c421e8151759`
 **Cloud Provider:** azure
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Insecure Configurations
 ## Description

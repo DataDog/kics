@@ -3,14 +3,18 @@ title: "Redshift Publicly Accessible"
 meta:
   name: "aws/redshift_publicly_accessible"
   id: "af173fde-95ea-4584-b904-bb3923ac4bda"
+  display_name: "Redshift Publicly Accessible"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "HIGH"
   category: "Insecure Configurations"
 ---
 ## Metadata
 **Name:** `aws/redshift_publicly_accessible`
+**Query Name** `Redshift Publicly Accessible`
 **Id:** `af173fde-95ea-4584-b904-bb3923ac4bda`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** High
 **Category:** Insecure Configurations
 ## Description

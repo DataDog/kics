@@ -3,14 +3,18 @@ title: "IAM Role With Full Privileges"
 meta:
   name: "aws/iam_role_with_full_privileges"
   id: "b1ffa705-19a3-4b73-b9d0-0c97d0663842"
+  display_name: "IAM Role With Full Privileges"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "HIGH"
   category: "Access Control"
 ---
 ## Metadata
 **Name:** `aws/iam_role_with_full_privileges`
+**Query Name** `IAM Role With Full Privileges`
 **Id:** `b1ffa705-19a3-4b73-b9d0-0c97d0663842`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** High
 **Category:** Access Control
 ## Description

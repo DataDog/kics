@@ -3,14 +3,18 @@ title: "KMS Key With No Deletion Window"
 meta:
   name: "aws/kms_key_with_no_deletion_window"
   id: "0b530315-0ea4-497f-b34c-4ff86268f59d"
+  display_name: "KMS Key With No Deletion Window"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "LOW"
   category: "Observability"
 ---
 ## Metadata
 **Name:** `aws/kms_key_with_no_deletion_window`
+**Query Name** `KMS Key With No Deletion Window`
 **Id:** `0b530315-0ea4-497f-b34c-4ff86268f59d`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Low
 **Category:** Observability
 ## Description

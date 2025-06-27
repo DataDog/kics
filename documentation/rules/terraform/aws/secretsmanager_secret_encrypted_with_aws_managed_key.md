@@ -3,14 +3,18 @@ title: "Secretsmanager Secret Encrypted With AWS Managed Key"
 meta:
   name: "aws/secretsmanager_secret_encrypted_with_aws_managed_key"
   id: "b0d3ef3f-845d-4b1b-83d6-63a5a380375f"
+  display_name: "Secretsmanager Secret Encrypted With AWS Managed Key"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Encryption"
 ---
 ## Metadata
 **Name:** `aws/secretsmanager_secret_encrypted_with_aws_managed_key`
+**Query Name** `Secretsmanager Secret Encrypted With AWS Managed Key`
 **Id:** `b0d3ef3f-845d-4b1b-83d6-63a5a380375f`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Encryption
 ## Description

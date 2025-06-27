@@ -3,14 +3,18 @@ title: "Azure Container Registry With No Locks"
 meta:
   name: "azure/azure_container_registry_with_no_locks"
   id: "a187ac47-8163-42ce-8a63-c115236be6fb"
+  display_name: "Azure Container Registry With No Locks"
   cloud_provider: "azure"
+  platform: "Terraform"
   severity: "HIGH"
   category: "Insecure Configurations"
 ---
 ## Metadata
 **Name:** `azure/azure_container_registry_with_no_locks`
+**Query Name** `Azure Container Registry With No Locks`
 **Id:** `a187ac47-8163-42ce-8a63-c115236be6fb`
 **Cloud Provider:** azure
+**Platform** Terraform
 **Severity:** High
 **Category:** Insecure Configurations
 ## Description

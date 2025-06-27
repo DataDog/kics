@@ -3,14 +3,18 @@ title: "Function App Client Certificates Unrequired"
 meta:
   name: "azure/function_app_client_certificates_unrequired"
   id: "9bb3c639-5edf-458c-8ee5-30c17c7d671d"
+  display_name: "Function App Client Certificates Unrequired"
   cloud_provider: "azure"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Insecure Configurations"
 ---
 ## Metadata
 **Name:** `azure/function_app_client_certificates_unrequired`
+**Query Name** `Function App Client Certificates Unrequired`
 **Id:** `9bb3c639-5edf-458c-8ee5-30c17c7d671d`
 **Cloud Provider:** azure
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Insecure Configurations
 ## Description

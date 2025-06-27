@@ -3,14 +3,18 @@ title: "Stackdriver Logging Disabled"
 meta:
   name: "gcp/stackdriver_logging_disabled"
   id: "4c7ebcb2-eae2-461e-bc83-456ee2d4f694"
+  display_name: "Stackdriver Logging Disabled"
   cloud_provider: "gcp"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Observability"
 ---
 ## Metadata
 **Name:** `gcp/stackdriver_logging_disabled`
+**Query Name** `Stackdriver Logging Disabled`
 **Id:** `4c7ebcb2-eae2-461e-bc83-456ee2d4f694`
 **Cloud Provider:** gcp
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Observability
 ## Description

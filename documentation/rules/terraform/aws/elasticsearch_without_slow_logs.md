@@ -3,14 +3,18 @@ title: "ElasticSearch Without Slow Logs"
 meta:
   name: "aws/elasticsearch_without_slow_logs"
   id: "e979fcbc-df6c-422d-9458-c33d65e71c45"
+  display_name: "ElasticSearch Without Slow Logs"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "LOW"
   category: "Observability"
 ---
 ## Metadata
 **Name:** `aws/elasticsearch_without_slow_logs`
+**Query Name** `ElasticSearch Without Slow Logs`
 **Id:** `e979fcbc-df6c-422d-9458-c33d65e71c45`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Low
 **Category:** Observability
 ## Description

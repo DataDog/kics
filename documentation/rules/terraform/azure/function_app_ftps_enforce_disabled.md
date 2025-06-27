@@ -3,14 +3,18 @@ title: "Function App FTPS Enforce Disabled"
 meta:
   name: "azure/function_app_ftps_enforce_disabled"
   id: "9dab0179-433d-4dff-af8f-0091025691df"
+  display_name: "Function App FTPS Enforce Disabled"
   cloud_provider: "azure"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Insecure Configurations"
 ---
 ## Metadata
 **Name:** `azure/function_app_ftps_enforce_disabled`
+**Query Name** `Function App FTPS Enforce Disabled`
 **Id:** `9dab0179-433d-4dff-af8f-0091025691df`
 **Cloud Provider:** azure
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Insecure Configurations
 ## Description

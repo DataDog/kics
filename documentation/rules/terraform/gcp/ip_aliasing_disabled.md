@@ -3,14 +3,18 @@ title: "IP Aliasing Disabled"
 meta:
   name: "gcp/ip_aliasing_disabled"
   id: "c606ba1d-d736-43eb-ac24-e16108f3a9e0"
+  display_name: "IP Aliasing Disabled"
   cloud_provider: "gcp"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Insecure Configurations"
 ---
 ## Metadata
 **Name:** `gcp/ip_aliasing_disabled`
+**Query Name** `IP Aliasing Disabled`
 **Id:** `c606ba1d-d736-43eb-ac24-e16108f3a9e0`
 **Cloud Provider:** gcp
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Insecure Configurations
 ## Description

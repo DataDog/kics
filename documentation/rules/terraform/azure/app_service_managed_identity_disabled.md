@@ -3,14 +3,18 @@ title: "App Service Managed Identity Disabled"
 meta:
   name: "azure/app_service_managed_identity_disabled"
   id: "b61cce4b-0cc4-472b-8096-15617a6d769b"
+  display_name: "App Service Managed Identity Disabled"
   cloud_provider: "azure"
+  platform: "Terraform"
   severity: "LOW"
   category: "Resource Management"
 ---
 ## Metadata
 **Name:** `azure/app_service_managed_identity_disabled`
+**Query Name** `App Service Managed Identity Disabled`
 **Id:** `b61cce4b-0cc4-472b-8096-15617a6d769b`
 **Cloud Provider:** azure
+**Platform** Terraform
 **Severity:** Low
 **Category:** Resource Management
 ## Description

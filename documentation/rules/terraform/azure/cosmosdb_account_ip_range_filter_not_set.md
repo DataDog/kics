@@ -3,14 +3,18 @@ title: "CosmosDB Account IP Range Filter Not Set"
 meta:
   name: "azure/cosmosdb_account_ip_range_filter_not_set"
   id: "c2a3efb6-8a58-481c-82f2-bfddf34bb4b7"
+  display_name: "CosmosDB Account IP Range Filter Not Set"
   cloud_provider: "azure"
+  platform: "Terraform"
   severity: "CRITICAL"
   category: "Networking and Firewall"
 ---
 ## Metadata
 **Name:** `azure/cosmosdb_account_ip_range_filter_not_set`
+**Query Name** `CosmosDB Account IP Range Filter Not Set`
 **Id:** `c2a3efb6-8a58-481c-82f2-bfddf34bb4b7`
 **Cloud Provider:** azure
+**Platform** Terraform
 **Severity:** Critical
 **Category:** Networking and Firewall
 ## Description

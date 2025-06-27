@@ -3,14 +3,18 @@ title: "DB Security Group With Public Scope"
 meta:
   name: "aws/db_security_group_with_public_scope"
   id: "1e0ef61b-ad85-4518-a3d3-85eaad164885"
+  display_name: "DB Security Group With Public Scope"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "CRITICAL"
   category: "Networking and Firewall"
 ---
 ## Metadata
 **Name:** `aws/db_security_group_with_public_scope`
+**Query Name** `DB Security Group With Public Scope`
 **Id:** `1e0ef61b-ad85-4518-a3d3-85eaad164885`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Critical
 **Category:** Networking and Firewall
 ## Description

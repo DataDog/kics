@@ -3,14 +3,18 @@ title: "Group With Privilege Escalation By Actions 'iam:PutUserPolicy'"
 meta:
   name: "aws/group_with_privilege_escalation_by_actions_iam_PutUserPolicy"
   id: "60263b4a-6801-4587-911d-919c37ed733b"
+  display_name: "Group With Privilege Escalation By Actions 'iam:PutUserPolicy'"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"
 ---
 ## Metadata
 **Name:** `aws/group_with_privilege_escalation_by_actions_iam_PutUserPolicy`
+**Query Name** `Group With Privilege Escalation By Actions 'iam:PutUserPolicy'`
 **Id:** `60263b4a-6801-4587-911d-919c37ed733b`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Access Control
 ## Description

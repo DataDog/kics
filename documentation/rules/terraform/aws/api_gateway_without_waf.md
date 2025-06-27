@@ -3,14 +3,18 @@ title: "API Gateway without WAF"
 meta:
   name: "aws/api_gateway_without_waf"
   id: "a186e82c-1078-4a7b-85d8-579561fde884"
+  display_name: "API Gateway without WAF"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Networking and Firewall"
 ---
 ## Metadata
 **Name:** `aws/api_gateway_without_waf`
+**Query Name** `API Gateway without WAF`
 **Id:** `a186e82c-1078-4a7b-85d8-579561fde884`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Networking and Firewall
 ## Description

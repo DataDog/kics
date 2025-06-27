@@ -3,14 +3,18 @@ title: "ElastiCache Replication Group Not Encrypted At Rest"
 meta:
   name: "aws/elasticache_replication_group_not_encrypted_at_rest"
   id: "76976de7-c7b1-4f64-a94f-90c1345914c2"
+  display_name: "ElastiCache Replication Group Not Encrypted At Rest"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "HIGH"
   category: "Encryption"
 ---
 ## Metadata
 **Name:** `aws/elasticache_replication_group_not_encrypted_at_rest`
+**Query Name** `ElastiCache Replication Group Not Encrypted At Rest`
 **Id:** `76976de7-c7b1-4f64-a94f-90c1345914c2`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** High
 **Category:** Encryption
 ## Description

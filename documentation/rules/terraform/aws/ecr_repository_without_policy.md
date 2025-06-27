@@ -3,14 +3,18 @@ title: "ECR Repository Without Policy"
 meta:
   name: "aws/ecr_repository_without_policy"
   id: "69e7c320-b65d-41bb-be02-d63ecc0bcc9d"
+  display_name: "ECR Repository Without Policy"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "LOW"
   category: "Best Practices"
 ---
 ## Metadata
 **Name:** `aws/ecr_repository_without_policy`
+**Query Name** `ECR Repository Without Policy`
 **Id:** `69e7c320-b65d-41bb-be02-d63ecc0bcc9d`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Low
 **Category:** Best Practices
 ## Description

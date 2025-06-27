@@ -3,14 +3,18 @@ title: "COS Node Image Not Used"
 meta:
   name: "gcp/cos_node_image_not_used"
   id: "8a893e46-e267-485a-8690-51f39951de58"
+  display_name: "COS Node Image Not Used"
   cloud_provider: "gcp"
+  platform: "Terraform"
   severity: "LOW"
   category: "Insecure Configurations"
 ---
 ## Metadata
 **Name:** `gcp/cos_node_image_not_used`
+**Query Name** `COS Node Image Not Used`
 **Id:** `8a893e46-e267-485a-8690-51f39951de58`
 **Cloud Provider:** gcp
+**Platform** Terraform
 **Severity:** Low
 **Category:** Insecure Configurations
 ## Description

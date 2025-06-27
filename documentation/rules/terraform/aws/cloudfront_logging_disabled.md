@@ -3,14 +3,18 @@ title: "CloudFront Logging Disabled"
 meta:
   name: "aws/cloudfront_logging_disabled"
   id: "94690d79-b3b0-43de-b656-84ebef5753e5"
+  display_name: "CloudFront Logging Disabled"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Observability"
 ---
 ## Metadata
 **Name:** `aws/cloudfront_logging_disabled`
+**Query Name** `CloudFront Logging Disabled`
 **Id:** `94690d79-b3b0-43de-b656-84ebef5753e5`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Observability
 ## Description

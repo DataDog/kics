@@ -3,14 +3,18 @@ title: "ElastiCache Redis Cluster Without Backup"
 meta:
   name: "aws/elasticache_redis_cluster_without_backup"
   id: "8fdb08a0-a868-4fdf-9c27-ccab0237f1ab"
+  display_name: "ElastiCache Redis Cluster Without Backup"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Backup"
 ---
 ## Metadata
 **Name:** `aws/elasticache_redis_cluster_without_backup`
+**Query Name** `ElastiCache Redis Cluster Without Backup`
 **Id:** `8fdb08a0-a868-4fdf-9c27-ccab0237f1ab`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Backup
 ## Description

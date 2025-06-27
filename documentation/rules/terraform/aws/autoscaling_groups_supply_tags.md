@@ -3,14 +3,18 @@ title: "Autoscaling Groups Supply Tags"
 meta:
   name: "aws/autoscaling_groups_supply_tags"
   id: "ba48df05-eaa1-4d64-905e-4a4b051e7587"
+  display_name: "Autoscaling Groups Supply Tags"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "LOW"
   category: "Availability"
 ---
 ## Metadata
 **Name:** `aws/autoscaling_groups_supply_tags`
+**Query Name** `Autoscaling Groups Supply Tags`
 **Id:** `ba48df05-eaa1-4d64-905e-4a4b051e7587`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Low
 **Category:** Availability
 ## Description

@@ -3,14 +3,18 @@ title: "Remote Desktop Port Open To Internet"
 meta:
   name: "aws/remote_desktop_port_open_to_internet"
   id: "151187cb-0efc-481c-babd-ad24e3c9bc22"
+  display_name: "Remote Desktop Port Open To Internet"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "HIGH"
   category: "Networking and Firewall"
 ---
 ## Metadata
 **Name:** `aws/remote_desktop_port_open_to_internet`
+**Query Name** `Remote Desktop Port Open To Internet`
 **Id:** `151187cb-0efc-481c-babd-ad24e3c9bc22`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** High
 **Category:** Networking and Firewall
 ## Description

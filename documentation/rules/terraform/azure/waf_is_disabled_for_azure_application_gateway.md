@@ -3,14 +3,18 @@ title: "WAF Is Disabled For Azure Application Gateway"
 meta:
   name: "azure/waf_is_disabled_for_azure_application_gateway"
   id: "2e48d91c-50e4-45c8-9312-27b625868a72"
+  display_name: "WAF Is Disabled For Azure Application Gateway"
   cloud_provider: "azure"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Networking and Firewall"
 ---
 ## Metadata
 **Name:** `azure/waf_is_disabled_for_azure_application_gateway`
+**Query Name** `WAF Is Disabled For Azure Application Gateway`
 **Id:** `2e48d91c-50e4-45c8-9312-27b625868a72`
 **Cloud Provider:** azure
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Networking and Firewall
 ## Description

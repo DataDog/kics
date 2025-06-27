@@ -3,14 +3,18 @@ title: "Service Account with Improper Privileges"
 meta:
   name: "gcp/service_account_with_improper_privileges"
   id: "cefdad16-0dd5-4ac5-8ed2-a37502c78672"
+  display_name: "Service Account with Improper Privileges"
   cloud_provider: "gcp"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Resource Management"
 ---
 ## Metadata
 **Name:** `gcp/service_account_with_improper_privileges`
+**Query Name** `Service Account with Improper Privileges`
 **Id:** `cefdad16-0dd5-4ac5-8ed2-a37502c78672`
 **Cloud Provider:** gcp
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Resource Management
 ## Description

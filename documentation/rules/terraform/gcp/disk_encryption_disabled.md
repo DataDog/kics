@@ -3,14 +3,18 @@ title: "Disk Encryption Disabled"
 meta:
   name: "gcp/disk_encryption_disabled"
   id: "b1d51728-7270-4991-ac2f-fc26e2695b38"
+  display_name: "Disk Encryption Disabled"
   cloud_provider: "gcp"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Encryption"
 ---
 ## Metadata
 **Name:** `gcp/disk_encryption_disabled`
+**Query Name** `Disk Encryption Disabled`
 **Id:** `b1d51728-7270-4991-ac2f-fc26e2695b38`
 **Cloud Provider:** gcp
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Encryption
 ## Description

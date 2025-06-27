@@ -3,14 +3,18 @@ title: "Container Registry Repo Is Public"
 meta:
   name: "gcp/container_registry_repository_is_public"
   id: "f6a7b8c9-d0e1-2345-f678-90abcdef1234"
+  display_name: "Container Registry Repo Is Public"
   cloud_provider: "gcp"
+  platform: "Terraform"
   severity: "HIGH"
   category: "Insecure Configurations"
 ---
 ## Metadata
 **Name:** `gcp/container_registry_repository_is_public`
+**Query Name** `Container Registry Repo Is Public`
 **Id:** `f6a7b8c9-d0e1-2345-f678-90abcdef1234`
 **Cloud Provider:** gcp
+**Platform** Terraform
 **Severity:** High
 **Category:** Insecure Configurations
 ## Description

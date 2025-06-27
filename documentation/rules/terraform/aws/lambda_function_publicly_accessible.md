@@ -3,14 +3,18 @@ title: "Lambda Function Publicly Accessible"
 meta:
   name: "aws/lambda_function_publicly_accessible"
   id: "1btsf2f9-af8c-4dfc-a0f1-a03adb70deb2"
+  display_name: "Lambda Function Publicly Accessible"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "HIGH"
   category: "Access Control"
 ---
 ## Metadata
 **Name:** `aws/lambda_function_publicly_accessible`
+**Query Name** `Lambda Function Publicly Accessible`
 **Id:** `1btsf2f9-af8c-4dfc-a0f1-a03adb70deb2`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** High
 **Category:** Access Control
 ## Description

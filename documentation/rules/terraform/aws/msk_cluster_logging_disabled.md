@@ -3,14 +3,18 @@ title: "MSK Cluster Logging Disabled"
 meta:
   name: "aws/msk_cluster_logging_disabled"
   id: "2f56b7ab-7fba-4e93-82f0-247e5ddeb239"
+  display_name: "MSK Cluster Logging Disabled"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Observability"
 ---
 ## Metadata
 **Name:** `aws/msk_cluster_logging_disabled`
+**Query Name** `MSK Cluster Logging Disabled`
 **Id:** `2f56b7ab-7fba-4e93-82f0-247e5ddeb239`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Observability
 ## Description

@@ -3,14 +3,18 @@ title: "Admin User Enabled For Container Registry"
 meta:
   name: "azure/admin_user_enabled_for_container_registry"
   id: "b897dfbf-322c-45a8-b67c-1e698beeaa51"
+  display_name: "Admin User Enabled For Container Registry"
   cloud_provider: "azure"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"
 ---
 ## Metadata
 **Name:** `azure/admin_user_enabled_for_container_registry`
+**Query Name** `Admin User Enabled For Container Registry`
 **Id:** `b897dfbf-322c-45a8-b67c-1e698beeaa51`
 **Cloud Provider:** azure
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Access Control
 ## Description

@@ -3,14 +3,18 @@ title: "Key Vault Secrets Content Type Undefined"
 meta:
   name: "azure/key_vault_secrets_content_type_undefined"
   id: "f8e08a38-fc6e-4915-abbe-a7aadf1d59ef"
+  display_name: "Key Vault Secrets Content Type Undefined"
   cloud_provider: "azure"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Best Practices"
 ---
 ## Metadata
 **Name:** `azure/key_vault_secrets_content_type_undefined`
+**Query Name** `Key Vault Secrets Content Type Undefined`
 **Id:** `f8e08a38-fc6e-4915-abbe-a7aadf1d59ef`
 **Cloud Provider:** azure
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Best Practices
 ## Description

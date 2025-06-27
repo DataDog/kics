@@ -3,14 +3,18 @@ title: "Redshift Not Encrypted"
 meta:
   name: "aws/redshift_not_encrypted"
   id: "cfdcabb0-fc06-427c-865b-c59f13e898ce"
+  display_name: "Redshift Not Encrypted"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "HIGH"
   category: "Encryption"
 ---
 ## Metadata
 **Name:** `aws/redshift_not_encrypted`
+**Query Name** `Redshift Not Encrypted`
 **Id:** `cfdcabb0-fc06-427c-865b-c59f13e898ce`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** High
 **Category:** Encryption
 ## Description

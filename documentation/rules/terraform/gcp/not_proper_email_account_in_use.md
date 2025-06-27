@@ -3,14 +3,18 @@ title: "Not Proper Email Account In Use"
 meta:
   name: "gcp/not_proper_email_account_in_use"
   id: "9356962e-4a4f-4d06-ac59-dc8008775eaa"
+  display_name: "Not Proper Email Account In Use"
   cloud_provider: "gcp"
+  platform: "Terraform"
   severity: "LOW"
   category: "Insecure Configurations"
 ---
 ## Metadata
 **Name:** `gcp/not_proper_email_account_in_use`
+**Query Name** `Not Proper Email Account In Use`
 **Id:** `9356962e-4a4f-4d06-ac59-dc8008775eaa`
 **Cloud Provider:** gcp
+**Platform** Terraform
 **Severity:** Low
 **Category:** Insecure Configurations
 ## Description

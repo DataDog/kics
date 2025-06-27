@@ -3,14 +3,18 @@ title: "API Gateway Method Settings Cache Not Encrypted"
 meta:
   name: "aws/api_gateway_method_settings_cache_not_encrypted"
   id: "b7c9a40c-23e4-4a2d-8d39-a3352f10f288"
+  display_name: "API Gateway Method Settings Cache Not Encrypted"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "HIGH"
   category: "Encryption"
 ---
 ## Metadata
 **Name:** `aws/api_gateway_method_settings_cache_not_encrypted`
+**Query Name** `API Gateway Method Settings Cache Not Encrypted`
 **Id:** `b7c9a40c-23e4-4a2d-8d39-a3352f10f288`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** High
 **Category:** Encryption
 ## Description

@@ -3,14 +3,18 @@ title: "Shield Advanced Not In Use"
 meta:
   name: "aws/shield_advanced_not_in_use"
   id: "084c6686-2a70-4710-91b1-000393e54c12"
+  display_name: "Shield Advanced Not In Use"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "LOW"
   category: "Networking and Firewall"
 ---
 ## Metadata
 **Name:** `aws/shield_advanced_not_in_use`
+**Query Name** `Shield Advanced Not In Use`
 **Id:** `084c6686-2a70-4710-91b1-000393e54c12`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Low
 **Category:** Networking and Firewall
 ## Description

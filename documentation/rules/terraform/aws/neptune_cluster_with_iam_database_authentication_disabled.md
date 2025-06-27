@@ -3,14 +3,18 @@ title: "Neptune Cluster With IAM Database Authentication Disabled"
 meta:
   name: "aws/neptune_cluster_with_iam_database_authentication_disabled"
   id: "c91d7ea0-d4d1-403b-8fe1-c9961ac082c5"
+  display_name: "Neptune Cluster With IAM Database Authentication Disabled"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "HIGH"
   category: "Access Control"
 ---
 ## Metadata
 **Name:** `aws/neptune_cluster_with_iam_database_authentication_disabled`
+**Query Name** `Neptune Cluster With IAM Database Authentication Disabled`
 **Id:** `c91d7ea0-d4d1-403b-8fe1-c9961ac082c5`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** High
 **Category:** Access Control
 ## Description

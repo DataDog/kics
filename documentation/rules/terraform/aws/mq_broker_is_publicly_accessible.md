@@ -3,14 +3,18 @@ title: "MQ Broker Is Publicly Accessible"
 meta:
   name: "aws/mq_broker_is_publicly_accessible"
   id: "4eb5f791-c861-4afd-9f94-f2a6a3fe49cb"
+  display_name: "MQ Broker Is Publicly Accessible"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "HIGH"
   category: "Insecure Configurations"
 ---
 ## Metadata
 **Name:** `aws/mq_broker_is_publicly_accessible`
+**Query Name** `MQ Broker Is Publicly Accessible`
 **Id:** `4eb5f791-c861-4afd-9f94-f2a6a3fe49cb`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** High
 **Category:** Insecure Configurations
 ## Description

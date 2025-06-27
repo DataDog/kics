@@ -3,14 +3,18 @@ title: "IAM Password Policy Does Not Require Symbol"
 meta:
   name: "aws/iam_password_does_not_require_symbol"
   id: "bts2c3d4-e5f6-7890-ab12-cd34ef567890"
+  display_name: "IAM Password Policy Does Not Require Symbol"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Best Practices"
 ---
 ## Metadata
 **Name:** `aws/iam_password_does_not_require_symbol`
+**Query Name** `IAM Password Policy Does Not Require Symbol`
 **Id:** `bts2c3d4-e5f6-7890-ab12-cd34ef567890`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Best Practices
 ## Description

@@ -3,14 +3,18 @@ title: "DOCDB Cluster Without KMS"
 meta:
   name: "aws/docdb_cluster_without_kms"
   id: "4766d3ea-241c-4ee6-93ff-c380c996bd1a"
+  display_name: "DOCDB Cluster Without KMS"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "HIGH"
   category: "Encryption"
 ---
 ## Metadata
 **Name:** `aws/docdb_cluster_without_kms`
+**Query Name** `DOCDB Cluster Without KMS`
 **Id:** `4766d3ea-241c-4ee6-93ff-c380c996bd1a`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** High
 **Category:** Encryption
 ## Description

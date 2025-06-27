@@ -3,14 +3,18 @@ title: "CloudWatch Logging Disabled"
 meta:
   name: "aws/cloudwatch_logging_disabled"
   id: "7dbba512-e244-42dc-98bb-422339827967"
+  display_name: "CloudWatch Logging Disabled"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Observability"
 ---
 ## Metadata
 **Name:** `aws/cloudwatch_logging_disabled`
+**Query Name** `CloudWatch Logging Disabled`
 **Id:** `7dbba512-e244-42dc-98bb-422339827967`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Observability
 ## Description

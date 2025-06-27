@@ -3,14 +3,18 @@ title: "GKE Control Plane Is Public"
 meta:
   name: "gcp/gke_control_plane_is_public"
   id: "e2f9b5c7-8d3a-4a5f-93b0-78aeb39d7e09"
+  display_name: "GKE Control Plane Is Public"
   cloud_provider: "gcp"
+  platform: "Terraform"
   severity: "HIGH"
   category: "Networking and Firewall"
 ---
 ## Metadata
 **Name:** `gcp/gke_control_plane_is_public`
+**Query Name** `GKE Control Plane Is Public`
 **Id:** `e2f9b5c7-8d3a-4a5f-93b0-78aeb39d7e09`
 **Cloud Provider:** gcp
+**Platform** Terraform
 **Severity:** High
 **Category:** Networking and Firewall
 ## Description

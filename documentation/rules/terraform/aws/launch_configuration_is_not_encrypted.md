@@ -3,14 +3,18 @@ title: "Launch Configuration Is Not Encrypted"
 meta:
   name: "aws/launch_configuration_is_not_encrypted"
   id: "4de9de27-254e-424f-bd70-4c1e95790838"
+  display_name: "Launch Configuration Is Not Encrypted"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "HIGH"
   category: "Encryption"
 ---
 ## Metadata
 **Name:** `aws/launch_configuration_is_not_encrypted`
+**Query Name** `Launch Configuration Is Not Encrypted`
 **Id:** `4de9de27-254e-424f-bd70-4c1e95790838`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** High
 **Category:** Encryption
 ## Description

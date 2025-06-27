@@ -3,14 +3,18 @@ title: "AWS Password Policy With Unchangeable Passwords"
 meta:
   name: "aws/aws_password_policy_with_unchangeable_passwords"
   id: "9ef7d25d-9764-4224-9968-fa321c56ef76"
+  display_name: "AWS Password Policy With Unchangeable Passwords"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "LOW"
   category: "Insecure Configurations"
 ---
 ## Metadata
 **Name:** `aws/aws_password_policy_with_unchangeable_passwords`
+**Query Name** `AWS Password Policy With Unchangeable Passwords`
 **Id:** `9ef7d25d-9764-4224-9968-fa321c56ef76`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Low
 **Category:** Insecure Configurations
 ## Description

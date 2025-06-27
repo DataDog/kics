@@ -3,14 +3,18 @@ title: "S3 Bucket Without Versioning"
 meta:
   name: "aws/s3_bucket_without_versioning"
   id: "568a4d22-3517-44a6-a7ad-6a7eed88722c"
+  display_name: "S3 Bucket Without Versioning"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Backup"
 ---
 ## Metadata
 **Name:** `aws/s3_bucket_without_versioning`
+**Query Name** `S3 Bucket Without Versioning`
 **Id:** `568a4d22-3517-44a6-a7ad-6a7eed88722c`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Backup
 ## Description

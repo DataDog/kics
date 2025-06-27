@@ -3,14 +3,18 @@ title: "BigQuery Table Is Public"
 meta:
   name: "gcp/bigquery_table_is_public"
   id: "a9b8c7d6-e5f4-3210-abcd-1234567890ab"
+  display_name: "BigQuery Table Is Public"
   cloud_provider: "gcp"
+  platform: "Terraform"
   severity: "HIGH"
   category: "Insecure Configurations"
 ---
 ## Metadata
 **Name:** `gcp/bigquery_table_is_public`
+**Query Name** `BigQuery Table Is Public`
 **Id:** `a9b8c7d6-e5f4-3210-abcd-1234567890ab`
 **Cloud Provider:** gcp
+**Platform** Terraform
 **Severity:** High
 **Category:** Insecure Configurations
 ## Description

@@ -3,14 +3,18 @@ title: "RDS Storage Not Encrypted"
 meta:
   name: "aws/rds_storage_not_encrypted"
   id: "3199c26c-7871-4cb3-99c2-10a59244ce7f"
+  display_name: "RDS Storage Not Encrypted"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "HIGH"
   category: "Encryption"
 ---
 ## Metadata
 **Name:** `aws/rds_storage_not_encrypted`
+**Query Name** `RDS Storage Not Encrypted`
 **Id:** `3199c26c-7871-4cb3-99c2-10a59244ce7f`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** High
 **Category:** Encryption
 ## Description

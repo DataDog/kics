@@ -3,14 +3,18 @@ title: "S3 Bucket ACL Allows Read to Any Authenticated User"
 meta:
   name: "aws/s3_bucket_acl_allows_read_to_any_authenticated_user"
   id: "57b9893d-33b1-4419-bcea-a717ea87e139"
+  display_name: "S3 Bucket ACL Allows Read to Any Authenticated User"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "HIGH"
   category: "Access Control"
 ---
 ## Metadata
 **Name:** `aws/s3_bucket_acl_allows_read_to_any_authenticated_user`
+**Query Name** `S3 Bucket ACL Allows Read to Any Authenticated User`
 **Id:** `57b9893d-33b1-4419-bcea-a717ea87e139`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** High
 **Category:** Access Control
 ## Description

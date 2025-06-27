@@ -3,14 +3,18 @@ title: "S3 Bucket Allows Authenticated Users Access"
 meta:
   name: "aws/s3_bucket_allows_access_to_all_authenticated_users"
   id: "d4e5f6g7-h8i9-0jkl-1234-mn567opq8901"
+  display_name: "S3 Bucket Allows Authenticated Users Access"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "HIGH"
   category: "Access Control"
 ---
 ## Metadata
 **Name:** `aws/s3_bucket_allows_access_to_all_authenticated_users`
+**Query Name** `S3 Bucket Allows Authenticated Users Access`
 **Id:** `d4e5f6g7-h8i9-0jkl-1234-mn567opq8901`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** High
 **Category:** Access Control
 ## Description

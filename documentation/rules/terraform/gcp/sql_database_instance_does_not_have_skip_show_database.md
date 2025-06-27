@@ -3,14 +3,18 @@ title: "Ensure SQL Database Instance Has Skip Show Database Flag"
 meta:
   name: "gcp/sql_database_instance_does_not_have_skip_show_database"
   id: "a8b7c6d5-e4f3-2109-8a7b-6c5d4e3f2109"
+  display_name: "Ensure SQL Database Instance Has Skip Show Database Flag"
   cloud_provider: "gcp"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Insecure Configurations"
 ---
 ## Metadata
 **Name:** `gcp/sql_database_instance_does_not_have_skip_show_database`
+**Query Name** `Ensure SQL Database Instance Has Skip Show Database Flag`
 **Id:** `a8b7c6d5-e4f3-2109-8a7b-6c5d4e3f2109`
 **Cloud Provider:** gcp
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Insecure Configurations
 ## Description

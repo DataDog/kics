@@ -3,14 +3,18 @@ title: "Key Expiration Not Set"
 meta:
   name: "azure/key_expiration_not_set"
   id: "4d080822-5ee2-49a4-8984-68f3d4c890fc"
+  display_name: "Key Expiration Not Set"
   cloud_provider: "azure"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Secret Management"
 ---
 ## Metadata
 **Name:** `azure/key_expiration_not_set`
+**Query Name** `Key Expiration Not Set`
 **Id:** `4d080822-5ee2-49a4-8984-68f3d4c890fc`
 **Cloud Provider:** azure
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Secret Management
 ## Description

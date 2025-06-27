@@ -3,14 +3,18 @@ title: "Authentication Without MFA"
 meta:
   name: "aws/authentication_without_mfa"
   id: "3ddfa124-6407-4845-a501-179f90c65097"
+  display_name: "Authentication Without MFA"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "LOW"
   category: "Access Control"
 ---
 ## Metadata
 **Name:** `aws/authentication_without_mfa`
+**Query Name** `Authentication Without MFA`
 **Id:** `3ddfa124-6407-4845-a501-179f90c65097`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Low
 **Category:** Access Control
 ## Description

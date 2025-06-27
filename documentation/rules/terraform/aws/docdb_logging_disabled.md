@@ -3,14 +3,18 @@ title: "DocDB Logging Is Disabled"
 meta:
   name: "aws/docdb_logging_disabled"
   id: "56f6a008-1b14-4af4-b9b2-ab7cf7e27641"
+  display_name: "DocDB Logging Is Disabled"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Observability"
 ---
 ## Metadata
 **Name:** `aws/docdb_logging_disabled`
+**Query Name** `DocDB Logging Is Disabled`
 **Id:** `56f6a008-1b14-4af4-b9b2-ab7cf7e27641`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Observability
 ## Description

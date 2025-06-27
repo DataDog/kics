@@ -3,14 +3,18 @@ title: "Small Activity Log Retention Period"
 meta:
   name: "azure/small_activity_log_retention_period"
   id: "2b856bf9-8e8c-4005-875f-303a8cba3918"
+  display_name: "Small Activity Log Retention Period"
   cloud_provider: "azure"
+  platform: "Terraform"
   severity: "LOW"
   category: "Observability"
 ---
 ## Metadata
 **Name:** `azure/small_activity_log_retention_period`
+**Query Name** `Small Activity Log Retention Period`
 **Id:** `2b856bf9-8e8c-4005-875f-303a8cba3918`
 **Cloud Provider:** azure
+**Platform** Terraform
 **Severity:** Low
 **Category:** Observability
 ## Description

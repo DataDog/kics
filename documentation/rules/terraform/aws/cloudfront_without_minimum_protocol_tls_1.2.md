@@ -3,14 +3,18 @@ title: "CloudFront Without Minimum Protocol TLS 1.2"
 meta:
   name: "aws/cloudfront_without_minimum_protocol_tls_1.2"
   id: "00e5e55e-c2ff-46b3-a757-a7a1cd802456"
+  display_name: "CloudFront Without Minimum Protocol TLS 1.2"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Insecure Configurations"
 ---
 ## Metadata
 **Name:** `aws/cloudfront_without_minimum_protocol_tls_1.2`
+**Query Name** `CloudFront Without Minimum Protocol TLS 1.2`
 **Id:** `00e5e55e-c2ff-46b3-a757-a7a1cd802456`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Insecure Configurations
 ## Description

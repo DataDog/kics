@@ -3,14 +3,18 @@ title: "EFS Not Encrypted"
 meta:
   name: "aws/efs_not_encrypted"
   id: "48207659-729f-4b5c-9402-f884257d794f"
+  display_name: "EFS Not Encrypted"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "HIGH"
   category: "Encryption"
 ---
 ## Metadata
 **Name:** `aws/efs_not_encrypted`
+**Query Name** `EFS Not Encrypted`
 **Id:** `48207659-729f-4b5c-9402-f884257d794f`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** High
 **Category:** Encryption
 ## Description

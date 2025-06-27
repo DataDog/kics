@@ -3,14 +3,18 @@ title: "CloudWatch Root Account Use Missing"
 meta:
   name: "aws/cloudwatch_root_account_use_alarm_missing"
   id: "8b1b1e67-6248-4dca-bbad-93486bb181c0"
+  display_name: "CloudWatch Root Account Use Missing"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Observability"
 ---
 ## Metadata
 **Name:** `aws/cloudwatch_root_account_use_alarm_missing`
+**Query Name** `CloudWatch Root Account Use Missing`
 **Id:** `8b1b1e67-6248-4dca-bbad-93486bb181c0`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Observability
 ## Description

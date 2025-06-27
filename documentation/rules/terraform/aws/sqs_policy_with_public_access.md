@@ -3,14 +3,18 @@ title: "SQS Policy With Public Access"
 meta:
   name: "aws/sqs_policy_with_public_access"
   id: "730675f9-52ed-49b6-8ead-0acb5dd7df7f"
+  display_name: "SQS Policy With Public Access"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"
 ---
 ## Metadata
 **Name:** `aws/sqs_policy_with_public_access`
+**Query Name** `SQS Policy With Public Access`
 **Id:** `730675f9-52ed-49b6-8ead-0acb5dd7df7f`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Access Control
 ## Description

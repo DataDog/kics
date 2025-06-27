@@ -3,14 +3,18 @@ title: "S3 Bucket With All Permissions"
 meta:
   name: "aws/s3_bucket_with_all_permissions"
   id: "a4966c4f-9141-48b8-a564-ffe9959945bc"
+  display_name: "S3 Bucket With All Permissions"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "CRITICAL"
   category: "Access Control"
 ---
 ## Metadata
 **Name:** `aws/s3_bucket_with_all_permissions`
+**Query Name** `S3 Bucket With All Permissions`
 **Id:** `a4966c4f-9141-48b8-a564-ffe9959945bc`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Critical
 **Category:** Access Control
 ## Description

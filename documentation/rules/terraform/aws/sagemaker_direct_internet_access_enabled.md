@@ -3,14 +3,18 @@ title: "SageMaker Notebook Internet Access Enabled"
 meta:
   name: "aws/sagemaker_direct_internet_access_enabled"
   id: "f3g4h5i6-j7k8-9lmn-0opq-12345abcdefg"
+  display_name: "SageMaker Notebook Internet Access Enabled"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "HIGH"
   category: "Networking and Firewall"
 ---
 ## Metadata
 **Name:** `aws/sagemaker_direct_internet_access_enabled`
+**Query Name** `SageMaker Notebook Internet Access Enabled`
 **Id:** `f3g4h5i6-j7k8-9lmn-0opq-12345abcdefg`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** High
 **Category:** Networking and Firewall
 ## Description

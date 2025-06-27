@@ -3,14 +3,18 @@ title: "S3 Bucket Without Enabled MFA Delete"
 meta:
   name: "aws/s3_bucket_without_enabled_mfa_delete"
   id: "c5b31ab9-0f26-4a49-b8aa-4cc064392f4d"
+  display_name: "S3 Bucket Without Enabled MFA Delete"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "LOW"
   category: "Insecure Configurations"
 ---
 ## Metadata
 **Name:** `aws/s3_bucket_without_enabled_mfa_delete`
+**Query Name** `S3 Bucket Without Enabled MFA Delete`
 **Id:** `c5b31ab9-0f26-4a49-b8aa-4cc064392f4d`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Low
 **Category:** Insecure Configurations
 ## Description

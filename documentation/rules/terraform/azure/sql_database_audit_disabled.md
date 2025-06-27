@@ -3,14 +3,18 @@ title: "SQL Database Audit Disabled"
 meta:
   name: "azure/sql_database_audit_disabled"
   id: "83a229ba-483e-47c6-8db7-dc96969bce5a"
+  display_name: "SQL Database Audit Disabled"
   cloud_provider: "azure"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Resource Management"
 ---
 ## Metadata
 **Name:** `azure/sql_database_audit_disabled`
+**Query Name** `SQL Database Audit Disabled`
 **Id:** `83a229ba-483e-47c6-8db7-dc96969bce5a`
 **Cloud Provider:** azure
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Resource Management
 ## Description

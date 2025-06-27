@@ -3,14 +3,18 @@ title: "Secure Ciphers Disabled"
 meta:
   name: "aws/secure_ciphers_disabled"
   id: "5c0003fb-9aa0-42c1-9da3-eb0e332bef21"
+  display_name: "Secure Ciphers Disabled"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Encryption"
 ---
 ## Metadata
 **Name:** `aws/secure_ciphers_disabled`
+**Query Name** `Secure Ciphers Disabled`
 **Id:** `5c0003fb-9aa0-42c1-9da3-eb0e332bef21`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Encryption
 ## Description

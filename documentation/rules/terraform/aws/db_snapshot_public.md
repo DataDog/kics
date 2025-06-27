@@ -3,14 +3,18 @@ title: "DB Snapshot Is Public"
 meta:
   name: "aws/db_snapshot_public"
   id: "f0d8781f-1991-4958-9917-d39283b168a0"
+  display_name: "DB Snapshot Is Public"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "HIGH"
   category: "Access Control"
 ---
 ## Metadata
 **Name:** `aws/db_snapshot_public`
+**Query Name** `DB Snapshot Is Public`
 **Id:** `f0d8781f-1991-4958-9917-d39283b168a0`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** High
 **Category:** Access Control
 ## Description

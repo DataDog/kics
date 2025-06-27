@@ -3,14 +3,18 @@ title: "Ensure legacy networks do not exist for a project"
 meta:
   name: "gcp/legacy_networks_exist_for_project"
   id: "550e8400-e29b-41d4-a716-446655440000"
+  display_name: "Ensure legacy networks do not exist for a project"
   cloud_provider: "gcp"
+  platform: "Terraform"
   severity: "HIGH"
   category: "Networking and Firewall"
 ---
 ## Metadata
 **Name:** `gcp/legacy_networks_exist_for_project`
+**Query Name** `Ensure legacy networks do not exist for a project`
 **Id:** `550e8400-e29b-41d4-a716-446655440000`
 **Cloud Provider:** gcp
+**Platform** Terraform
 **Severity:** High
 **Category:** Networking and Firewall
 ## Description

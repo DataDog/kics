@@ -3,14 +3,18 @@ title: "SQS Queue Exposed"
 meta:
   name: "aws/sqs_queue_exposed"
   id: "abb06e5f-ef9a-4a99-98c6-376d396bfcdf"
+  display_name: "SQS Queue Exposed"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "HIGH"
   category: "Access Control"
 ---
 ## Metadata
 **Name:** `aws/sqs_queue_exposed`
+**Query Name** `SQS Queue Exposed`
 **Id:** `abb06e5f-ef9a-4a99-98c6-376d396bfcdf`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** High
 **Category:** Access Control
 ## Description

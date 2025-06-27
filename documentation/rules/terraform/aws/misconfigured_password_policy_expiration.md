@@ -3,14 +3,18 @@ title: "Misconfigured Password Policy Expiration"
 meta:
   name: "aws/misconfigured_password_policy_expiration"
   id: "ce60d060-efb8-4bfd-9cf7-ff8945d00d90"
+  display_name: "Misconfigured Password Policy Expiration"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "LOW"
   category: "Best Practices"
 ---
 ## Metadata
 **Name:** `aws/misconfigured_password_policy_expiration`
+**Query Name** `Misconfigured Password Policy Expiration`
 **Id:** `ce60d060-efb8-4bfd-9cf7-ff8945d00d90`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Low
 **Category:** Best Practices
 ## Description

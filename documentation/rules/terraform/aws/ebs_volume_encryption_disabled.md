@@ -3,14 +3,18 @@ title: "EBS Volume Encryption Disabled"
 meta:
   name: "aws/ebs_volume_encryption_disabled"
   id: "cc997676-481b-4e93-aa81-d19f8c5e9b12"
+  display_name: "EBS Volume Encryption Disabled"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "HIGH"
   category: "Encryption"
 ---
 ## Metadata
 **Name:** `aws/ebs_volume_encryption_disabled`
+**Query Name** `EBS Volume Encryption Disabled`
 **Id:** `cc997676-481b-4e93-aa81-d19f8c5e9b12`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** High
 **Category:** Encryption
 ## Description

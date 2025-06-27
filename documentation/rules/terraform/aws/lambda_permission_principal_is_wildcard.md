@@ -3,14 +3,18 @@ title: "Lambda Permission Principal Is Wildcard"
 meta:
   name: "aws/lambda_permission_principal_is_wildcard"
   id: "e08ed7eb-f3ef-494d-9d22-2e3db756a347"
+  display_name: "Lambda Permission Principal Is Wildcard"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"
 ---
 ## Metadata
 **Name:** `aws/lambda_permission_principal_is_wildcard`
+**Query Name** `Lambda Permission Principal Is Wildcard`
 **Id:** `e08ed7eb-f3ef-494d-9d22-2e3db756a347`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Access Control
 ## Description

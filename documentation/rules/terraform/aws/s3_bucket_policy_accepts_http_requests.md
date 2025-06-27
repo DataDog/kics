@@ -3,14 +3,18 @@ title: "S3 Bucket Policy Accepts HTTP Requests"
 meta:
   name: "aws/s3_bucket_policy_accepts_http_requests"
   id: "4bc4dd4c-7d8d-405e-a0fb-57fa4c31b4d9"
+  display_name: "S3 Bucket Policy Accepts HTTP Requests"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Encryption"
 ---
 ## Metadata
 **Name:** `aws/s3_bucket_policy_accepts_http_requests`
+**Query Name** `S3 Bucket Policy Accepts HTTP Requests`
 **Id:** `4bc4dd4c-7d8d-405e-a0fb-57fa4c31b4d9`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Encryption
 ## Description

@@ -3,14 +3,18 @@ title: "GKE Using Default Service Account"
 meta:
   name: "gcp/gke_using_default_service_account"
   id: "1c8eef02-17b1-4a3e-b01d-dcc3292d2c38"
+  display_name: "GKE Using Default Service Account"
   cloud_provider: "gcp"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Insecure Defaults"
 ---
 ## Metadata
 **Name:** `gcp/gke_using_default_service_account`
+**Query Name** `GKE Using Default Service Account`
 **Id:** `1c8eef02-17b1-4a3e-b01d-dcc3292d2c38`
 **Cloud Provider:** gcp
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Insecure Defaults
 ## Description

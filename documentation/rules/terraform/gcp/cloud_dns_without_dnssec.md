@@ -3,14 +3,18 @@ title: "Cloud DNS Without DNSSEC"
 meta:
   name: "gcp/cloud_dns_without_dnssec"
   id: "5ef61c88-bbb4-4725-b1df-55d23c9676bb"
+  display_name: "Cloud DNS Without DNSSEC"
   cloud_provider: "gcp"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Insecure Configurations"
 ---
 ## Metadata
 **Name:** `gcp/cloud_dns_without_dnssec`
+**Query Name** `Cloud DNS Without DNSSEC`
 **Id:** `5ef61c88-bbb4-4725-b1df-55d23c9676bb`
 **Cloud Provider:** gcp
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Insecure Configurations
 ## Description

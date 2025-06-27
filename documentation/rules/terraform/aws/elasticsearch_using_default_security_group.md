@@ -3,14 +3,18 @@ title: "Elasticsearch Uses Default Security Group"
 meta:
   name: "aws/elasticsearch_using_default_security_group"
   id: "d3e1f5a9-bb45-4c89-b97c-12d34ef56789"
+  display_name: "Elasticsearch Uses Default Security Group"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "HIGH"
   category: "Networking and Firewall"
 ---
 ## Metadata
 **Name:** `aws/elasticsearch_using_default_security_group`
+**Query Name** `Elasticsearch Uses Default Security Group`
 **Id:** `d3e1f5a9-bb45-4c89-b97c-12d34ef56789`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** High
 **Category:** Networking and Firewall
 ## Description

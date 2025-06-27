@@ -3,14 +3,18 @@ title: "Function App HTTP2 Disabled"
 meta:
   name: "azure/function_app_http2_disabled"
   id: "ace823d1-4432-4dee-945b-cdf11a5a6bd0"
+  display_name: "Function App HTTP2 Disabled"
   cloud_provider: "azure"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Insecure Configurations"
 ---
 ## Metadata
 **Name:** `azure/function_app_http2_disabled`
+**Query Name** `Function App HTTP2 Disabled`
 **Id:** `ace823d1-4432-4dee-945b-cdf11a5a6bd0`
 **Cloud Provider:** azure
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Insecure Configurations
 ## Description

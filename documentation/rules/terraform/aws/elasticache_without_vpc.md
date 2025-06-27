@@ -3,14 +3,18 @@ title: "ElastiCache Without VPC"
 meta:
   name: "aws/elasticache_without_vpc"
   id: "8c849af7-a399-46f7-a34c-32d3dc96f1fc"
+  display_name: "ElastiCache Without VPC"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "LOW"
   category: "Networking and Firewall"
 ---
 ## Metadata
 **Name:** `aws/elasticache_without_vpc`
+**Query Name** `ElastiCache Without VPC`
 **Id:** `8c849af7-a399-46f7-a34c-32d3dc96f1fc`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Low
 **Category:** Networking and Firewall
 ## Description

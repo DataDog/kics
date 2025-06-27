@@ -3,14 +3,18 @@ title: "VM Not Attached To Network"
 meta:
   name: "azure/vm_not_attached_to_network"
   id: "bbf6b3df-4b65-4f87-82cc-da9f30f8c033"
+  display_name: "VM Not Attached To Network"
   cloud_provider: "azure"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Insecure Configurations"
 ---
 ## Metadata
 **Name:** `azure/vm_not_attached_to_network`
+**Query Name** `VM Not Attached To Network`
 **Id:** `bbf6b3df-4b65-4f87-82cc-da9f30f8c033`
 **Cloud Provider:** azure
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Insecure Configurations
 ## Description

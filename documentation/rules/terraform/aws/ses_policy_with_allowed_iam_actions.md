@@ -3,14 +3,18 @@ title: "SES Policy With Allowed IAM Actions"
 meta:
   name: "aws/ses_policy_with_allowed_iam_actions"
   id: "34b921bd-90a0-402e-a0a5-dc73371fd963"
+  display_name: "SES Policy With Allowed IAM Actions"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "HIGH"
   category: "Access Control"
 ---
 ## Metadata
 **Name:** `aws/ses_policy_with_allowed_iam_actions`
+**Query Name** `SES Policy With Allowed IAM Actions`
 **Id:** `34b921bd-90a0-402e-a0a5-dc73371fd963`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** High
 **Category:** Access Control
 ## Description

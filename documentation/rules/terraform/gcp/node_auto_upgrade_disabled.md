@@ -3,14 +3,18 @@ title: "Node Auto Upgrade Disabled"
 meta:
   name: "gcp/node_auto_upgrade_disabled"
   id: "b139213e-7d24-49c2-8025-c18faa21ecaa"
+  display_name: "Node Auto Upgrade Disabled"
   cloud_provider: "gcp"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Resource Management"
 ---
 ## Metadata
 **Name:** `gcp/node_auto_upgrade_disabled`
+**Query Name** `Node Auto Upgrade Disabled`
 **Id:** `b139213e-7d24-49c2-8025-c18faa21ecaa`
 **Cloud Provider:** gcp
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Resource Management
 ## Description

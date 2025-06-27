@@ -3,14 +3,18 @@ title: "S3 Bucket Access to Any Principal"
 meta:
   name: "aws/s3_bucket_access_to_any_principal"
   id: "7af43613-6bb9-4a0e-8c4d-1314b799425e"
+  display_name: "S3 Bucket Access to Any Principal"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "CRITICAL"
   category: "Access Control"
 ---
 ## Metadata
 **Name:** `aws/s3_bucket_access_to_any_principal`
+**Query Name** `S3 Bucket Access to Any Principal`
 **Id:** `7af43613-6bb9-4a0e-8c4d-1314b799425e`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Critical
 **Category:** Access Control
 ## Description

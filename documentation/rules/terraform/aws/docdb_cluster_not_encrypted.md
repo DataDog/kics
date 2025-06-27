@@ -3,14 +3,18 @@ title: "DOCDB Cluster Not Encrypted"
 meta:
   name: "aws/docdb_cluster_not_encrypted"
   id: "bc1f9009-84a0-490f-ae09-3e0ea6d74ad6"
+  display_name: "DOCDB Cluster Not Encrypted"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "HIGH"
   category: "Encryption"
 ---
 ## Metadata
 **Name:** `aws/docdb_cluster_not_encrypted`
+**Query Name** `DOCDB Cluster Not Encrypted`
 **Id:** `bc1f9009-84a0-490f-ae09-3e0ea6d74ad6`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** High
 **Category:** Encryption
 ## Description

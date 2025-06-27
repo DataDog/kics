@@ -3,14 +3,18 @@ title: "KMS Key With Vulnerable Policy"
 meta:
   name: "aws/kms_key_with_full_permissions"
   id: "7ebc9038-0bde-479a-acc4-6ed7b6758899"
+  display_name: "KMS Key With Vulnerable Policy"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "HIGH"
   category: "Insecure Configurations"
 ---
 ## Metadata
 **Name:** `aws/kms_key_with_full_permissions`
+**Query Name** `KMS Key With Vulnerable Policy`
 **Id:** `7ebc9038-0bde-479a-acc4-6ed7b6758899`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** High
 **Category:** Insecure Configurations
 ## Description

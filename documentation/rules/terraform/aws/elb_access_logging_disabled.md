@@ -3,14 +3,18 @@ title: "ELB Access Log Disabled"
 meta:
   name: "aws/elb_access_logging_disabled"
   id: "20018359-6fd7-4d05-ab26-d4dffccbdf79"
+  display_name: "ELB Access Log Disabled"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Observability"
 ---
 ## Metadata
 **Name:** `aws/elb_access_logging_disabled`
+**Query Name** `ELB Access Log Disabled`
 **Id:** `20018359-6fd7-4d05-ab26-d4dffccbdf79`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Observability
 ## Description

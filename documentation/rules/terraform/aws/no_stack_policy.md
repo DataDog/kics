@@ -3,14 +3,18 @@ title: "No Stack Policy"
 meta:
   name: "aws/no_stack_policy"
   id: "2f01fb2d-828a-499d-b98e-b83747305052"
+  display_name: "No Stack Policy"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Resource Management"
 ---
 ## Metadata
 **Name:** `aws/no_stack_policy`
+**Query Name** `No Stack Policy`
 **Id:** `2f01fb2d-828a-499d-b98e-b83747305052`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Resource Management
 ## Description

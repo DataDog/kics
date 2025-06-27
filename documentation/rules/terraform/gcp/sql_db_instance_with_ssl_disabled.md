@@ -3,14 +3,18 @@ title: "SQL DB Instance With SSL Disabled"
 meta:
   name: "gcp/sql_db_instance_with_ssl_disabled"
   id: "02474449-71aa-40a1-87ae-e14497747b00"
+  display_name: "SQL DB Instance With SSL Disabled"
   cloud_provider: "gcp"
+  platform: "Terraform"
   severity: "HIGH"
   category: "Encryption"
 ---
 ## Metadata
 **Name:** `gcp/sql_db_instance_with_ssl_disabled`
+**Query Name** `SQL DB Instance With SSL Disabled`
 **Id:** `02474449-71aa-40a1-87ae-e14497747b00`
 **Cloud Provider:** gcp
+**Platform** Terraform
 **Severity:** High
 **Category:** Encryption
 ## Description

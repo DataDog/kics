@@ -3,14 +3,18 @@ title: "Neptune Database Cluster Encryption Disabled"
 meta:
   name: "aws/neptune_database_cluster_encryption_disabled"
   id: "98d59056-f745-4ef5-8613-32bca8d40b7e"
+  display_name: "Neptune Database Cluster Encryption Disabled"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "HIGH"
   category: "Encryption"
 ---
 ## Metadata
 **Name:** `aws/neptune_database_cluster_encryption_disabled`
+**Query Name** `Neptune Database Cluster Encryption Disabled`
 **Id:** `98d59056-f745-4ef5-8613-32bca8d40b7e`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** High
 **Category:** Encryption
 ## Description

@@ -3,14 +3,18 @@ title: "Redshift Using Default Port"
 meta:
   name: "aws/redshift_using_default_port"
   id: "41abc6cc-dde1-4217-83d3-fb5f0cc09d8f"
+  display_name: "Redshift Using Default Port"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "LOW"
   category: "Networking and Firewall"
 ---
 ## Metadata
 **Name:** `aws/redshift_using_default_port`
+**Query Name** `Redshift Using Default Port`
 **Id:** `41abc6cc-dde1-4217-83d3-fb5f0cc09d8f`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Low
 **Category:** Networking and Firewall
 ## Description

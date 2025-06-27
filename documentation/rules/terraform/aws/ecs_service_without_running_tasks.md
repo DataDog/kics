@@ -3,14 +3,18 @@ title: "ECS Service Without Running Tasks"
 meta:
   name: "aws/ecs_service_without_running_tasks"
   id: "91f16d09-689e-4926-aca7-155157f634ed"
+  display_name: "ECS Service Without Running Tasks"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "LOW"
   category: "Availability"
 ---
 ## Metadata
 **Name:** `aws/ecs_service_without_running_tasks`
+**Query Name** `ECS Service Without Running Tasks`
 **Id:** `91f16d09-689e-4926-aca7-155157f634ed`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Low
 **Category:** Availability
 ## Description

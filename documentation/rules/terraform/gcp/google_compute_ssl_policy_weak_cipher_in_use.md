@@ -3,14 +3,18 @@ title: "Google Compute SSL Policy Weak Cipher In Use"
 meta:
   name: "gcp/google_compute_ssl_policy_weak_cipher_in_use"
   id: "14a457f0-473d-4d1d-9e37-6d99b355b336"
+  display_name: "Google Compute SSL Policy Weak Cipher In Use"
   cloud_provider: "gcp"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Encryption"
 ---
 ## Metadata
 **Name:** `gcp/google_compute_ssl_policy_weak_cipher_in_use`
+**Query Name** `Google Compute SSL Policy Weak Cipher In Use`
 **Id:** `14a457f0-473d-4d1d-9e37-6d99b355b336`
 **Cloud Provider:** gcp
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Encryption
 ## Description

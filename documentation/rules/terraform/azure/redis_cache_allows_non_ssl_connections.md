@@ -3,14 +3,18 @@ title: "Redis Cache Allows Non SSL Connections"
 meta:
   name: "azure/redis_cache_allows_non_ssl_connections"
   id: "e29a75e6-aba3-4896-b42d-b87818c16b58"
+  display_name: "Redis Cache Allows Non SSL Connections"
   cloud_provider: "azure"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Insecure Configurations"
 ---
 ## Metadata
 **Name:** `azure/redis_cache_allows_non_ssl_connections`
+**Query Name** `Redis Cache Allows Non SSL Connections`
 **Id:** `e29a75e6-aba3-4896-b42d-b87818c16b58`
 **Cloud Provider:** azure
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Insecure Configurations
 ## Description

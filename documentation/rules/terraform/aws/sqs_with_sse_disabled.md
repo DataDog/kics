@@ -3,14 +3,18 @@ title: "SQS With SSE Disabled"
 meta:
   name: "aws/sqs_with_sse_disabled"
   id: "6e8849c1-3aa7-40e3-9063-b85ee300f29f"
+  display_name: "SQS With SSE Disabled"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Encryption"
 ---
 ## Metadata
 **Name:** `aws/sqs_with_sse_disabled`
+**Query Name** `SQS With SSE Disabled`
 **Id:** `6e8849c1-3aa7-40e3-9063-b85ee300f29f`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Encryption
 ## Description

@@ -3,14 +3,18 @@ title: "Stack Notifications Disabled"
 meta:
   name: "aws/stack_notifications_disabled"
   id: "b72d0026-f649-4c91-a9ea-15d8f681ac09"
+  display_name: "Stack Notifications Disabled"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Observability"
 ---
 ## Metadata
 **Name:** `aws/stack_notifications_disabled`
+**Query Name** `Stack Notifications Disabled`
 **Id:** `b72d0026-f649-4c91-a9ea-15d8f681ac09`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Observability
 ## Description

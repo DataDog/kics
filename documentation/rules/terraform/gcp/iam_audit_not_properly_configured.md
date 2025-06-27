@@ -3,14 +3,18 @@ title: "IAM Audit Not Properly Configured"
 meta:
   name: "gcp/iam_audit_not_properly_configured"
   id: "89fe890f-b480-460c-8b6b-7d8b1468adb4"
+  display_name: "IAM Audit Not Properly Configured"
   cloud_provider: "gcp"
+  platform: "Terraform"
   severity: "LOW"
   category: "Observability"
 ---
 ## Metadata
 **Name:** `gcp/iam_audit_not_properly_configured`
+**Query Name** `IAM Audit Not Properly Configured`
 **Id:** `89fe890f-b480-460c-8b6b-7d8b1468adb4`
 **Cloud Provider:** gcp
+**Platform** Terraform
 **Severity:** Low
 **Category:** Observability
 ## Description

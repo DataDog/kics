@@ -3,14 +3,18 @@ title: "Redshift Cluster Logging Disabled"
 meta:
   name: "aws/redshift_cluster_logging_disabled"
   id: "15ffbacc-fa42-4f6f-a57d-2feac7365caa"
+  display_name: "Redshift Cluster Logging Disabled"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Observability"
 ---
 ## Metadata
 **Name:** `aws/redshift_cluster_logging_disabled`
+**Query Name** `Redshift Cluster Logging Disabled`
 **Id:** `15ffbacc-fa42-4f6f-a57d-2feac7365caa`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Observability
 ## Description

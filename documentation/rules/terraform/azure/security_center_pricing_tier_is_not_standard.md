@@ -3,14 +3,18 @@ title: "Security Center Pricing Tier Is Not Standard"
 meta:
   name: "azure/security_center_pricing_tier_is_not_standard"
   id: "819d50fd-1cdf-45c3-9936-be408aaad93e"
+  display_name: "Security Center Pricing Tier Is Not Standard"
   cloud_provider: "azure"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Insecure Configurations"
 ---
 ## Metadata
 **Name:** `azure/security_center_pricing_tier_is_not_standard`
+**Query Name** `Security Center Pricing Tier Is Not Standard`
 **Id:** `819d50fd-1cdf-45c3-9936-be408aaad93e`
 **Cloud Provider:** azure
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Insecure Configurations
 ## Description

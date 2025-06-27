@@ -3,14 +3,18 @@ title: "Glue With Vulnerable Policy"
 meta:
   name: "aws/glue_with_vulnerable_policy"
   id: "d25edb51-07fb-4a73-97d4-41cecdc53a22"
+  display_name: "Glue With Vulnerable Policy"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"
 ---
 ## Metadata
 **Name:** `aws/glue_with_vulnerable_policy`
+**Query Name** `Glue With Vulnerable Policy`
 **Id:** `d25edb51-07fb-4a73-97d4-41cecdc53a22`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Access Control
 ## Description

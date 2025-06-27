@@ -3,14 +3,18 @@ title: "Public and Private EC2 Share Role"
 meta:
   name: "aws/public_and_private_ec2_share_role"
   id: "c53c7a89-f9d7-4c7b-8b66-8a555be99593"
+  display_name: "Public and Private EC2 Share Role"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"
 ---
 ## Metadata
 **Name:** `aws/public_and_private_ec2_share_role`
+**Query Name** `Public and Private EC2 Share Role`
 **Id:** `c53c7a89-f9d7-4c7b-8b66-8a555be99593`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Access Control
 ## Description

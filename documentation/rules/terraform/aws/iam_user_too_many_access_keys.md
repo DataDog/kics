@@ -3,14 +3,18 @@ title: "IAM User Has Too Many Access Keys"
 meta:
   name: "aws/iam_user_too_many_access_keys"
   id: "3561130e-9c5f-485b-9e16-2764c82763e5"
+  display_name: "IAM User Has Too Many Access Keys"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Insecure Configurations"
 ---
 ## Metadata
 **Name:** `aws/iam_user_too_many_access_keys`
+**Query Name** `IAM User Has Too Many Access Keys`
 **Id:** `3561130e-9c5f-485b-9e16-2764c82763e5`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Insecure Configurations
 ## Description

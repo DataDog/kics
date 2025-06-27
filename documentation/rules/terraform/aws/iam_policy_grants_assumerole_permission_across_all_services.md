@@ -3,14 +3,18 @@ title: "IAM Policy Grants 'AssumeRole' Permission Across All Services"
 meta:
   name: "aws/iam_policy_grants_assumerole_permission_across_all_services"
   id: "bcdcbdc6-a350-4855-ae7c-d1e6436f7c97"
+  display_name: "IAM Policy Grants 'AssumeRole' Permission Across All Services"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"
 ---
 ## Metadata
 **Name:** `aws/iam_policy_grants_assumerole_permission_across_all_services`
+**Query Name** `IAM Policy Grants 'AssumeRole' Permission Across All Services`
 **Id:** `bcdcbdc6-a350-4855-ae7c-d1e6436f7c97`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Access Control
 ## Description

@@ -3,14 +3,18 @@ title: "Network Policy Disabled"
 meta:
   name: "gcp/network_policy_disabled"
   id: "11e7550e-c4b6-472e-adff-c698f157cdd7"
+  display_name: "Network Policy Disabled"
   cloud_provider: "gcp"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Insecure Configurations"
 ---
 ## Metadata
 **Name:** `gcp/network_policy_disabled`
+**Query Name** `Network Policy Disabled`
 **Id:** `11e7550e-c4b6-472e-adff-c698f157cdd7`
 **Cloud Provider:** gcp
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Insecure Configurations
 ## Description

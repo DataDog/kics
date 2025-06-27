@@ -3,14 +3,18 @@ title: "AmazonMQ Broker Encryption Disabled"
 meta:
   name: "aws/amazon_mq_broker_encryption_disabled"
   id: "3db3f534-e3a3-487f-88c7-0a9fbf64b702"
+  display_name: "AmazonMQ Broker Encryption Disabled"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "HIGH"
   category: "Encryption"
 ---
 ## Metadata
 **Name:** `aws/amazon_mq_broker_encryption_disabled`
+**Query Name** `AmazonMQ Broker Encryption Disabled`
 **Id:** `3db3f534-e3a3-487f-88c7-0a9fbf64b702`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** High
 **Category:** Encryption
 ## Description

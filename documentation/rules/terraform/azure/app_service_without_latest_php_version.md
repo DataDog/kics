@@ -3,14 +3,18 @@ title: "App Service Without Latest PHP Version"
 meta:
   name: "azure/app_service_without_latest_php_version"
   id: "96fe318e-d631-4156-99fa-9080d57280ae"
+  display_name: "App Service Without Latest PHP Version"
   cloud_provider: "azure"
+  platform: "Terraform"
   severity: "LOW"
   category: "Best Practices"
 ---
 ## Metadata
 **Name:** `azure/app_service_without_latest_php_version`
+**Query Name** `App Service Without Latest PHP Version`
 **Id:** `96fe318e-d631-4156-99fa-9080d57280ae`
 **Cloud Provider:** azure
+**Platform** Terraform
 **Severity:** Low
 **Category:** Best Practices
 ## Description

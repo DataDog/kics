@@ -3,14 +3,18 @@ title: "Google Compute Subnetwork Logging Disabled"
 meta:
   name: "gcp/google_compute_subnetwork_logging_disabled"
   id: "40430747-442d-450a-a34f-dc57149f4609"
+  display_name: "Google Compute Subnetwork Logging Disabled"
   cloud_provider: "gcp"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Observability"
 ---
 ## Metadata
 **Name:** `gcp/google_compute_subnetwork_logging_disabled`
+**Query Name** `Google Compute Subnetwork Logging Disabled`
 **Id:** `40430747-442d-450a-a34f-dc57149f4609`
 **Cloud Provider:** gcp
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Observability
 ## Description

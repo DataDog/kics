@@ -3,14 +3,18 @@ title: "Redis Not Updated Regularly"
 meta:
   name: "azure/redis_not_updated_regularly"
   id: "b947809d-dd2f-4de9-b724-04d101c515aa"
+  display_name: "Redis Not Updated Regularly"
   cloud_provider: "azure"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Insecure Configurations"
 ---
 ## Metadata
 **Name:** `azure/redis_not_updated_regularly`
+**Query Name** `Redis Not Updated Regularly`
 **Id:** `b947809d-dd2f-4de9-b724-04d101c515aa`
 **Cloud Provider:** azure
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Insecure Configurations
 ## Description

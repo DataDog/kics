@@ -3,14 +3,18 @@ title: "Storage Table Allows All ACL Permissions"
 meta:
   name: "azure/storage_table_allows_all_acl_permissions"
   id: "3ac3e75c-6374-4a32-8ba0-6ed69bda404e"
+  display_name: "Storage Table Allows All ACL Permissions"
   cloud_provider: "azure"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"
 ---
 ## Metadata
 **Name:** `azure/storage_table_allows_all_acl_permissions`
+**Query Name** `Storage Table Allows All ACL Permissions`
 **Id:** `3ac3e75c-6374-4a32-8ba0-6ed69bda404e`
 **Cloud Provider:** azure
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Access Control
 ## Description

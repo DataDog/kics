@@ -3,14 +3,18 @@ title: "CloudWatch Log Group Without KMS"
 meta:
   name: "aws/cloudwatch_log_group_not_encrypted"
   id: "0afbcfe9-d341-4b92-a64c-7e6de0543879"
+  display_name: "CloudWatch Log Group Without KMS"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Encryption"
 ---
 ## Metadata
 **Name:** `aws/cloudwatch_log_group_not_encrypted`
+**Query Name** `CloudWatch Log Group Without KMS`
 **Id:** `0afbcfe9-d341-4b92-a64c-7e6de0543879`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Encryption
 ## Description

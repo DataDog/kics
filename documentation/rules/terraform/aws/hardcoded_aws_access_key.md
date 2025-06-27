@@ -3,14 +3,18 @@ title: "Hardcoded AWS Access Key"
 meta:
   name: "aws/hardcoded_aws_access_key"
   id: "d7b9d850-3e06-4a75-852f-c46c2e92240b"
+  display_name: "Hardcoded AWS Access Key"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "HIGH"
   category: "Secret Management"
 ---
 ## Metadata
 **Name:** `aws/hardcoded_aws_access_key`
+**Query Name** `Hardcoded AWS Access Key`
 **Id:** `d7b9d850-3e06-4a75-852f-c46c2e92240b`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** High
 **Category:** Secret Management
 ## Description

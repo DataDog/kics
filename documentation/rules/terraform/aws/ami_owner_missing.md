@@ -3,14 +3,18 @@ title: "AMI Most Recent Without Owner or Filter"
 meta:
   name: "aws/ami_owner_missing"
   id: "f317c3c2-58e5-4aa7-bb8e-3a7f6bcd274a"
+  display_name: "AMI Most Recent Without Owner or Filter"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "HIGH"
   category: "Access Control"
 ---
 ## Metadata
 **Name:** `aws/ami_owner_missing`
+**Query Name** `AMI Most Recent Without Owner or Filter`
 **Id:** `f317c3c2-58e5-4aa7-bb8e-3a7f6bcd274a`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** High
 **Category:** Access Control
 ## Description

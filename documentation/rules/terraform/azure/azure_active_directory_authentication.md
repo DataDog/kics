@@ -3,14 +3,18 @@ title: "Azure Active Directory Authentication"
 meta:
   name: "azure/azure_active_directory_authentication"
   id: "a21c8da9-41bf-40cf-941d-330cf0d11fc7"
+  display_name: "Azure Active Directory Authentication"
   cloud_provider: "azure"
+  platform: "Terraform"
   severity: "LOW"
   category: "Access Control"
 ---
 ## Metadata
 **Name:** `azure/azure_active_directory_authentication`
+**Query Name** `Azure Active Directory Authentication`
 **Id:** `a21c8da9-41bf-40cf-941d-330cf0d11fc7`
 **Cloud Provider:** azure
+**Platform** Terraform
 **Severity:** Low
 **Category:** Access Control
 ## Description

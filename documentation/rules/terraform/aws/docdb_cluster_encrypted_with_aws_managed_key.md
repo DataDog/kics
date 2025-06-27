@@ -3,14 +3,18 @@ title: "DOCDB Cluster Encrypted With AWS Managed Key"
 meta:
   name: "aws/docdb_cluster_encrypted_with_aws_managed_key"
   id: "2134641d-30a4-4b16-8ffc-2cd4c4ffd15d"
+  display_name: "DOCDB Cluster Encrypted With AWS Managed Key"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "LOW"
   category: "Encryption"
 ---
 ## Metadata
 **Name:** `aws/docdb_cluster_encrypted_with_aws_managed_key`
+**Query Name** `DOCDB Cluster Encrypted With AWS Managed Key`
 **Id:** `2134641d-30a4-4b16-8ffc-2cd4c4ffd15d`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Low
 **Category:** Encryption
 ## Description

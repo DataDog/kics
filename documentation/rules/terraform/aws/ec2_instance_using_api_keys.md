@@ -3,14 +3,18 @@ title: "EC2 Instance Using API Keys"
 meta:
   name: "aws/ec2_instance_using_api_keys"
   id: "0b93729a-d882-4803-bdc3-ac429a21f158"
+  display_name: "EC2 Instance Using API Keys"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "LOW"
   category: "Access Control"
 ---
 ## Metadata
 **Name:** `aws/ec2_instance_using_api_keys`
+**Query Name** `EC2 Instance Using API Keys`
 **Id:** `0b93729a-d882-4803-bdc3-ac429a21f158`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Low
 **Category:** Access Control
 ## Description

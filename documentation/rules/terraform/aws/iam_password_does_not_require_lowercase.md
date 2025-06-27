@@ -3,14 +3,18 @@ title: "IAM Password Policy Does Not Require Lowercase Letter"
 meta:
   name: "aws/iam_password_does_not_require_lowercase"
   id: "a1b2c3d4-e5f6-7890-ab12-cd34ef567890"
+  display_name: "IAM Password Policy Does Not Require Lowercase Letter"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Best Practices"
 ---
 ## Metadata
 **Name:** `aws/iam_password_does_not_require_lowercase`
+**Query Name** `IAM Password Policy Does Not Require Lowercase Letter`
 **Id:** `a1b2c3d4-e5f6-7890-ab12-cd34ef567890`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Best Practices
 ## Description

@@ -3,14 +3,18 @@ title: "Sagemaker Notebook Instance Without KMS"
 meta:
   name: "aws/sagemaker_notebook_instance_without_kms"
   id: "f3674e0c-f6be-43fa-b71c-bf346d1aed99"
+  display_name: "Sagemaker Notebook Instance Without KMS"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "HIGH"
   category: "Encryption"
 ---
 ## Metadata
 **Name:** `aws/sagemaker_notebook_instance_without_kms`
+**Query Name** `Sagemaker Notebook Instance Without KMS`
 **Id:** `f3674e0c-f6be-43fa-b71c-bf346d1aed99`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** High
 **Category:** Encryption
 ## Description

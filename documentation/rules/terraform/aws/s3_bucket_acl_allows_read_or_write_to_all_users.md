@@ -3,14 +3,18 @@ title: "S3 Bucket ACL Allows Read Or Write to All Users"
 meta:
   name: "aws/s3_bucket_acl_allows_read_or_write_to_all_users"
   id: "38c5ee0d-7f22-4260-ab72-5073048df100"
+  display_name: "S3 Bucket ACL Allows Read Or Write to All Users"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "CRITICAL"
   category: "Access Control"
 ---
 ## Metadata
 **Name:** `aws/s3_bucket_acl_allows_read_or_write_to_all_users`
+**Query Name** `S3 Bucket ACL Allows Read Or Write to All Users`
 **Id:** `38c5ee0d-7f22-4260-ab72-5073048df100`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Critical
 **Category:** Access Control
 ## Description

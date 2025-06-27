@@ -3,14 +3,18 @@ title: "Cloudwatch Security Group Changes Alarm Missing"
 meta:
   name: "aws/cloudwatch_security_group_changes_alarm_missing"
   id: "4beaf898-9f8b-4237-89e2-5ffdc7ee6006"
+  display_name: "Cloudwatch Security Group Changes Alarm Missing"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Observability"
 ---
 ## Metadata
 **Name:** `aws/cloudwatch_security_group_changes_alarm_missing`
+**Query Name** `Cloudwatch Security Group Changes Alarm Missing`
 **Id:** `4beaf898-9f8b-4237-89e2-5ffdc7ee6006`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Observability
 ## Description

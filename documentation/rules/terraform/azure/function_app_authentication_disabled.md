@@ -3,14 +3,18 @@ title: "Function App Authentication Disabled"
 meta:
   name: "azure/function_app_authentication_disabled"
   id: "e65a0733-94a0-4826-82f4-df529f4c593f"
+  display_name: "Function App Authentication Disabled"
   cloud_provider: "azure"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"
 ---
 ## Metadata
 **Name:** `azure/function_app_authentication_disabled`
+**Query Name** `Function App Authentication Disabled`
 **Id:** `e65a0733-94a0-4826-82f4-df529f4c593f`
 **Cloud Provider:** azure
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Access Control
 ## Description

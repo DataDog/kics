@@ -3,14 +3,18 @@ title: "EC2 Instance Has Public IP"
 meta:
   name: "aws/ec2_instance_has_public_ip"
   id: "5a2486aa-facf-477d-a5c1-b010789459ce"
+  display_name: "EC2 Instance Has Public IP"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Networking and Firewall"
 ---
 ## Metadata
 **Name:** `aws/ec2_instance_has_public_ip`
+**Query Name** `EC2 Instance Has Public IP`
 **Id:** `5a2486aa-facf-477d-a5c1-b010789459ce`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Networking and Firewall
 ## Description

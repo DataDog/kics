@@ -3,14 +3,18 @@ title: "Stackdriver Monitoring Disabled"
 meta:
   name: "gcp/stackdriver_monitoring_disabled"
   id: "30e8dfd2-3591-4d19-8d11-79e93106c93d"
+  display_name: "Stackdriver Monitoring Disabled"
   cloud_provider: "gcp"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Observability"
 ---
 ## Metadata
 **Name:** `gcp/stackdriver_monitoring_disabled`
+**Query Name** `Stackdriver Monitoring Disabled`
 **Id:** `30e8dfd2-3591-4d19-8d11-79e93106c93d`
 **Cloud Provider:** gcp
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Observability
 ## Description

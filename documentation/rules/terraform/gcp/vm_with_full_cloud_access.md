@@ -3,14 +3,18 @@ title: "VM With Full Cloud Access"
 meta:
   name: "gcp/vm_with_full_cloud_access"
   id: "bc280331-27b9-4acb-a010-018e8098aa5d"
+  display_name: "VM With Full Cloud Access"
   cloud_provider: "gcp"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"
 ---
 ## Metadata
 **Name:** `gcp/vm_with_full_cloud_access`
+**Query Name** `VM With Full Cloud Access`
 **Id:** `bc280331-27b9-4acb-a010-018e8098aa5d`
 **Cloud Provider:** gcp
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Access Control
 ## Description

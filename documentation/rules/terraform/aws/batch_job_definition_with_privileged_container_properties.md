@@ -3,14 +3,18 @@ title: "Batch Job Definition With Privileged Container Properties"
 meta:
   name: "aws/batch_job_definition_with_privileged_container_properties"
   id: "66cd88ac-9ddf-424a-b77e-e55e17630bee"
+  display_name: "Batch Job Definition With Privileged Container Properties"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "HIGH"
   category: "Insecure Configurations"
 ---
 ## Metadata
 **Name:** `aws/batch_job_definition_with_privileged_container_properties`
+**Query Name** `Batch Job Definition With Privileged Container Properties`
 **Id:** `66cd88ac-9ddf-424a-b77e-e55e17630bee`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** High
 **Category:** Insecure Configurations
 ## Description

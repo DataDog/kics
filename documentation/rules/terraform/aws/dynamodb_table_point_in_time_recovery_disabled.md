@@ -3,14 +3,18 @@ title: "DynamoDB Table Point In Time Recovery Disabled"
 meta:
   name: "aws/dynamodb_table_point_in_time_recovery_disabled"
   id: "741f1291-47ac-4a85-a07b-3d32a9d6bd3e"
+  display_name: "DynamoDB Table Point In Time Recovery Disabled"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "INFO"
   category: "Best Practices"
 ---
 ## Metadata
 **Name:** `aws/dynamodb_table_point_in_time_recovery_disabled`
+**Query Name** `DynamoDB Table Point In Time Recovery Disabled`
 **Id:** `741f1291-47ac-4a85-a07b-3d32a9d6bd3e`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Info
 **Category:** Best Practices
 ## Description

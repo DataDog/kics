@@ -3,14 +3,18 @@ title: "Dynamodb VPC Endpoint Without Route Table Association"
 meta:
   name: "aws/dynamodb_vpc_endpoint_without_route_table_association"
   id: "0bc534c5-13d1-4353-a7fe-b8665d5c1d7d"
+  display_name: "Dynamodb VPC Endpoint Without Route Table Association"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "LOW"
   category: "Networking and Firewall"
 ---
 ## Metadata
 **Name:** `aws/dynamodb_vpc_endpoint_without_route_table_association`
+**Query Name** `Dynamodb VPC Endpoint Without Route Table Association`
 **Id:** `0bc534c5-13d1-4353-a7fe-b8665d5c1d7d`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Low
 **Category:** Networking and Firewall
 ## Description

@@ -3,14 +3,18 @@ title: "Private Cluster Disabled"
 meta:
   name: "gcp/private_cluster_disabled"
   id: "6ccb85d7-0420-4907-9380-50313f80946b"
+  display_name: "Private Cluster Disabled"
   cloud_provider: "gcp"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Insecure Configurations"
 ---
 ## Metadata
 **Name:** `gcp/private_cluster_disabled`
+**Query Name** `Private Cluster Disabled`
 **Id:** `6ccb85d7-0420-4907-9380-50313f80946b`
 **Cloud Provider:** gcp
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Insecure Configurations
 ## Description

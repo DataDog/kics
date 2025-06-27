@@ -3,14 +3,18 @@ title: "Google Project IAM Member Service Account has Token Creator or Account U
 meta:
   name: "gcp/google_project_iam_member_service_account_has_token_creator_or_account_user_role"
   id: "c68b4e6d-4e01-4ca1-b256-1e18e875785c"
+  display_name: "Google Project IAM Member Service Account has Token Creator or Account User Role"
   cloud_provider: "gcp"
+  platform: "Terraform"
   severity: "HIGH"
   category: "Access Control"
 ---
 ## Metadata
 **Name:** `gcp/google_project_iam_member_service_account_has_token_creator_or_account_user_role`
+**Query Name** `Google Project IAM Member Service Account has Token Creator or Account User Role`
 **Id:** `c68b4e6d-4e01-4ca1-b256-1e18e875785c`
 **Cloud Provider:** gcp
+**Platform** Terraform
 **Severity:** High
 **Category:** Access Control
 ## Description

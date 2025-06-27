@@ -3,14 +3,18 @@ title: "Cloud KMS Key Ring is anonymously or publicly accessible"
 meta:
   name: "gcp/cloud_kms_key_rings_are_public"
   id: "d4e5f6g7-h8i9-0jkl-mnop-qrstuvwx1234"
+  display_name: "Cloud KMS Key Ring is anonymously or publicly accessible"
   cloud_provider: "gcp"
+  platform: "Terraform"
   severity: "HIGH"
   category: "Encryption"
 ---
 ## Metadata
 **Name:** `gcp/cloud_kms_key_rings_are_public`
+**Query Name** `Cloud KMS Key Ring is anonymously or publicly accessible`
 **Id:** `d4e5f6g7-h8i9-0jkl-mnop-qrstuvwx1234`
 **Cloud Provider:** gcp
+**Platform** Terraform
 **Severity:** High
 **Category:** Encryption
 ## Description

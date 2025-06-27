@@ -3,14 +3,18 @@ title: "CDN Configuration Is Missing"
 meta:
   name: "aws/cdn_configuration_is_missing"
   id: "1bc367f6-901d-4870-ad0c-71d79762ef52"
+  display_name: "CDN Configuration Is Missing"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "LOW"
   category: "Best Practices"
 ---
 ## Metadata
 **Name:** `aws/cdn_configuration_is_missing`
+**Query Name** `CDN Configuration Is Missing`
 **Id:** `1bc367f6-901d-4870-ad0c-71d79762ef52`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Low
 **Category:** Best Practices
 ## Description

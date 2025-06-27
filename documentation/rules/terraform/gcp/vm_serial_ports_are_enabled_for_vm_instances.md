@@ -3,14 +3,18 @@ title: "Serial Ports Are Enabled For VM Instances"
 meta:
   name: "gcp/vm_serial_ports_are_enabled_for_vm_instances"
   id: "97fa667a-d05b-4f16-9071-58b939f34751"
+  display_name: "Serial Ports Are Enabled For VM Instances"
   cloud_provider: "gcp"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Networking and Firewall"
 ---
 ## Metadata
 **Name:** `gcp/vm_serial_ports_are_enabled_for_vm_instances`
+**Query Name** `Serial Ports Are Enabled For VM Instances`
 **Id:** `97fa667a-d05b-4f16-9071-58b939f34751`
 **Cloud Provider:** gcp
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Networking and Firewall
 ## Description

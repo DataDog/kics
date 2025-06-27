@@ -3,14 +3,18 @@ title: "Storage Share File Allows All ACL Permissions"
 meta:
   name: "azure/storage_share_file_allows_all_acl_permissions"
   id: "48bbe0fd-57e4-4678-a4a1-119e79c90fc3"
+  display_name: "Storage Share File Allows All ACL Permissions"
   cloud_provider: "azure"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"
 ---
 ## Metadata
 **Name:** `azure/storage_share_file_allows_all_acl_permissions`
+**Query Name** `Storage Share File Allows All ACL Permissions`
 **Id:** `48bbe0fd-57e4-4678-a4a1-119e79c90fc3`
 **Cloud Provider:** azure
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Access Control
 ## Description

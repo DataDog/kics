@@ -3,14 +3,18 @@ title: "'ssl_enforcement_enabled' is not set to 'ENABLED' for PostgreSQL Databas
 meta:
   name: "azure/postgres_enforce_ssl_connection_disabled"
   id: "93f9tyjk-e5f6-7890-ab12-cd34ef567890"
+  display_name: "'ssl_enforcement_enabled' is not set to 'ENABLED' for PostgreSQL Database Server"
   cloud_provider: "azure"
+  platform: "Terraform"
   severity: "HIGH"
   category: "Networking and Firewall"
 ---
 ## Metadata
 **Name:** `azure/postgres_enforce_ssl_connection_disabled`
+**Query Name** `'ssl_enforcement_enabled' is not set to 'ENABLED' for PostgreSQL Database Server`
 **Id:** `93f9tyjk-e5f6-7890-ab12-cd34ef567890`
 **Cloud Provider:** azure
+**Platform** Terraform
 **Severity:** High
 **Category:** Networking and Firewall
 ## Description

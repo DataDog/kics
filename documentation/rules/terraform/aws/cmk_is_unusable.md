@@ -3,14 +3,18 @@ title: "CMK Is Unusable"
 meta:
   name: "aws/cmk_is_unusable"
   id: "7350fa23-dcf7-4938-916d-6a60b0c73b50"
+  display_name: "CMK Is Unusable"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Availability"
 ---
 ## Metadata
 **Name:** `aws/cmk_is_unusable`
+**Query Name** `CMK Is Unusable`
 **Id:** `7350fa23-dcf7-4938-916d-6a60b0c73b50`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Availability
 ## Description

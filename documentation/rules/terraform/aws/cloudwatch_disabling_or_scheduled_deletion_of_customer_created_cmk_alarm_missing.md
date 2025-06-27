@@ -3,14 +3,18 @@ title: "CloudWatch Disabling Or Scheduled Deletion Of Customer Created CMK Alarm
 meta:
   name: "aws/cloudwatch_disabling_or_scheduled_deletion_of_customer_created_cmk_alarm_missing"
   id: "56a585f5-555c-48b2-8395-e64e4740a9cf"
+  display_name: "CloudWatch Disabling Or Scheduled Deletion Of Customer Created CMK Alarm Missing"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Observability"
 ---
 ## Metadata
 **Name:** `aws/cloudwatch_disabling_or_scheduled_deletion_of_customer_created_cmk_alarm_missing`
+**Query Name** `CloudWatch Disabling Or Scheduled Deletion Of Customer Created CMK Alarm Missing`
 **Id:** `56a585f5-555c-48b2-8395-e64e4740a9cf`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Observability
 ## Description

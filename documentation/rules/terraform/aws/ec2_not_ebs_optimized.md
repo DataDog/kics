@@ -3,14 +3,18 @@ title: "EC2 Not EBS Optimized"
 meta:
   name: "aws/ec2_not_ebs_optimized"
   id: "60224630-175a-472a-9e23-133827040766"
+  display_name: "EC2 Not EBS Optimized"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "INFO"
   category: "Best Practices"
 ---
 ## Metadata
 **Name:** `aws/ec2_not_ebs_optimized`
+**Query Name** `EC2 Not EBS Optimized`
 **Id:** `60224630-175a-472a-9e23-133827040766`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Info
 **Category:** Best Practices
 ## Description

@@ -3,14 +3,18 @@ title: "Artifact Registry Repo Is Public"
 meta:
   name: "gcp/artifact_registry_repository_is_public"
   id: "a7b8c9d0-e1f2-3a4b-5c6d-7e8f90123456"
+  display_name: "Artifact Registry Repo Is Public"
   cloud_provider: "gcp"
+  platform: "Terraform"
   severity: "HIGH"
   category: "Access Control"
 ---
 ## Metadata
 **Name:** `gcp/artifact_registry_repository_is_public`
+**Query Name** `Artifact Registry Repo Is Public`
 **Id:** `a7b8c9d0-e1f2-3a4b-5c6d-7e8f90123456`
 **Cloud Provider:** gcp
+**Platform** Terraform
 **Severity:** High
 **Category:** Access Control
 ## Description

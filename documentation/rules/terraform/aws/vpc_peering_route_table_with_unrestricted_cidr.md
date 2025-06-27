@@ -3,14 +3,18 @@ title: "VPC Peering Route Table with Unrestricted CIDR"
 meta:
   name: "aws/vpc_peering_route_table_with_unrestricted_cidr"
   id: "b3a41501-f712-4c4f-81e5-db9a7dc0e34e"
+  display_name: "VPC Peering Route Table with Unrestricted CIDR"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "HIGH"
   category: "Networking and Firewall"
 ---
 ## Metadata
 **Name:** `aws/vpc_peering_route_table_with_unrestricted_cidr`
+**Query Name** `VPC Peering Route Table with Unrestricted CIDR`
 **Id:** `b3a41501-f712-4c4f-81e5-db9a7dc0e34e`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** High
 **Category:** Networking and Firewall
 ## Description

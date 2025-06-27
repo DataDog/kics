@@ -3,14 +3,18 @@ title: "Configuration Aggregator to All Regions Disabled"
 meta:
   name: "aws/config_configuration_aggregator_to_all_regions_disabled"
   id: "ac5a0bc0-a54c-45aa-90c3-15f7703b9132"
+  display_name: "Configuration Aggregator to All Regions Disabled"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "LOW"
   category: "Observability"
 ---
 ## Metadata
 **Name:** `aws/config_configuration_aggregator_to_all_regions_disabled`
+**Query Name** `Configuration Aggregator to All Regions Disabled`
 **Id:** `ac5a0bc0-a54c-45aa-90c3-15f7703b9132`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Low
 **Category:** Observability
 ## Description

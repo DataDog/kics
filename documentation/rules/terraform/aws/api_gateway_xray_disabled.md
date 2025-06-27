@@ -3,14 +3,18 @@ title: "API Gateway X-Ray Disabled"
 meta:
   name: "aws/api_gateway_xray_disabled"
   id: "5813ef56-fa94-406a-b35d-977d4a56ff2b"
+  display_name: "API Gateway X-Ray Disabled"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "LOW"
   category: "Observability"
 ---
 ## Metadata
 **Name:** `aws/api_gateway_xray_disabled`
+**Query Name** `API Gateway X-Ray Disabled`
 **Id:** `5813ef56-fa94-406a-b35d-977d4a56ff2b`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Low
 **Category:** Observability
 ## Description

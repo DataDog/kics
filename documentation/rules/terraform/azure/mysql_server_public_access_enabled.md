@@ -3,14 +3,18 @@ title: "MySQL Server Public Access Enabled"
 meta:
   name: "azure/mysql_server_public_access_enabled"
   id: "f118890b-2468-42b1-9ce9-af35146b425b"
+  display_name: "MySQL Server Public Access Enabled"
   cloud_provider: "azure"
+  platform: "Terraform"
   severity: "HIGH"
   category: "Networking and Firewall"
 ---
 ## Metadata
 **Name:** `azure/mysql_server_public_access_enabled`
+**Query Name** `MySQL Server Public Access Enabled`
 **Id:** `f118890b-2468-42b1-9ce9-af35146b425b`
 **Cloud Provider:** azure
+**Platform** Terraform
 **Severity:** High
 **Category:** Networking and Firewall
 ## Description

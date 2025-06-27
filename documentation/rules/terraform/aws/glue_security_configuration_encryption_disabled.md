@@ -3,14 +3,18 @@ title: "Glue Security Configuration Encryption Disabled"
 meta:
   name: "aws/glue_security_configuration_encryption_disabled"
   id: "ad5b4e97-2850-4adf-be17-1d293e0b85ee"
+  display_name: "Glue Security Configuration Encryption Disabled"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "HIGH"
   category: "Encryption"
 ---
 ## Metadata
 **Name:** `aws/glue_security_configuration_encryption_disabled`
+**Query Name** `Glue Security Configuration Encryption Disabled`
 **Id:** `ad5b4e97-2850-4adf-be17-1d293e0b85ee`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** High
 **Category:** Encryption
 ## Description

@@ -3,14 +3,18 @@ title: "ECR Repository Is Publicly Accessible"
 meta:
   name: "aws/ecr_repository_is_publicly_accessible"
   id: "e86e26fc-489e-44f0-9bcd-97305e4ba69a"
+  display_name: "ECR Repository Is Publicly Accessible"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "CRITICAL"
   category: "Access Control"
 ---
 ## Metadata
 **Name:** `aws/ecr_repository_is_publicly_accessible`
+**Query Name** `ECR Repository Is Publicly Accessible`
 **Id:** `e86e26fc-489e-44f0-9bcd-97305e4ba69a`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Critical
 **Category:** Access Control
 ## Description

@@ -3,14 +3,18 @@ title: "CA Certificate Identifier Is Outdated"
 meta:
   name: "aws/ca_certificate_identifier_is_outdated"
   id: "9f40c07e-699e-4410-8856-3ba0f2e3a2dd"
+  display_name: "CA Certificate Identifier Is Outdated"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Encryption"
 ---
 ## Metadata
 **Name:** `aws/ca_certificate_identifier_is_outdated`
+**Query Name** `CA Certificate Identifier Is Outdated`
 **Id:** `9f40c07e-699e-4410-8856-3ba0f2e3a2dd`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Encryption
 ## Description

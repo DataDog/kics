@@ -3,14 +3,18 @@ title: "S3 Bucket Allows Delete Action From All Principals"
 meta:
   name: "aws/s3_bucket_allows_delete_action_from_all_principals"
   id: "ffdf4b37-7703-4dfe-a682-9d2e99bc6c09"
+  display_name: "S3 Bucket Allows Delete Action From All Principals"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "CRITICAL"
   category: "Access Control"
 ---
 ## Metadata
 **Name:** `aws/s3_bucket_allows_delete_action_from_all_principals`
+**Query Name** `S3 Bucket Allows Delete Action From All Principals`
 **Id:** `ffdf4b37-7703-4dfe-a682-9d2e99bc6c09`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Critical
 **Category:** Access Control
 ## Description

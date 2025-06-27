@@ -3,14 +3,18 @@ title: "Amazon DMS Replication Instance Is Publicly Accessible"
 meta:
   name: "aws/amazon_dms_replication_instance_is_publicly_accessible"
   id: "030d3b18-1821-45b4-9e08-50efbe7becbb"
+  display_name: "Amazon DMS Replication Instance Is Publicly Accessible"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "CRITICAL"
   category: "Access Control"
 ---
 ## Metadata
 **Name:** `aws/amazon_dms_replication_instance_is_publicly_accessible`
+**Query Name** `Amazon DMS Replication Instance Is Publicly Accessible`
 **Id:** `030d3b18-1821-45b4-9e08-50efbe7becbb`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Critical
 **Category:** Access Control
 ## Description

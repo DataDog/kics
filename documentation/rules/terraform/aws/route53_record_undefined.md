@@ -3,14 +3,18 @@ title: "Route53 Record Undefined"
 meta:
   name: "aws/route53_record_undefined"
   id: "25db74bf-fa3b-44da-934e-8c3e005c0453"
+  display_name: "Route53 Record Undefined"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "HIGH"
   category: "Networking and Firewall"
 ---
 ## Metadata
 **Name:** `aws/route53_record_undefined`
+**Query Name** `Route53 Record Undefined`
 **Id:** `25db74bf-fa3b-44da-934e-8c3e005c0453`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** High
 **Category:** Networking and Firewall
 ## Description

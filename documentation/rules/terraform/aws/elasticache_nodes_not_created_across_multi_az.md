@@ -3,14 +3,18 @@ title: "ElastiCache Nodes Not Created Across Multi AZ"
 meta:
   name: "aws/elasticache_nodes_not_created_across_multi_az"
   id: "6db03a91-f933-4f13-ab38-a8b87a7de54d"
+  display_name: "ElastiCache Nodes Not Created Across Multi AZ"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Availability"
 ---
 ## Metadata
 **Name:** `aws/elasticache_nodes_not_created_across_multi_az`
+**Query Name** `ElastiCache Nodes Not Created Across Multi AZ`
 **Id:** `6db03a91-f933-4f13-ab38-a8b87a7de54d`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Availability
 ## Description

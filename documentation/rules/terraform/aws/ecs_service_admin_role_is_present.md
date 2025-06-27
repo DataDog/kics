@@ -3,14 +3,18 @@ title: "ECS Service Admin Role Is Present"
 meta:
   name: "aws/ecs_service_admin_role_is_present"
   id: "3206240f-2e87-4e58-8d24-3e19e7c83d7c"
+  display_name: "ECS Service Admin Role Is Present"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "HIGH"
   category: "Access Control"
 ---
 ## Metadata
 **Name:** `aws/ecs_service_admin_role_is_present`
+**Query Name** `ECS Service Admin Role Is Present`
 **Id:** `3206240f-2e87-4e58-8d24-3e19e7c83d7c`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** High
 **Category:** Access Control
 ## Description

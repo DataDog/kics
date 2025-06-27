@@ -3,14 +3,18 @@ title: "CloudWatch Route Table Changes Alarm Missing"
 meta:
   name: "aws/cloudwatch_route_table_changes_alarm_missing"
   id: "2285e608-ddbc-47f3-ba54-ce7121e31216"
+  display_name: "CloudWatch Route Table Changes Alarm Missing"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "LOW"
   category: "Observability"
 ---
 ## Metadata
 **Name:** `aws/cloudwatch_route_table_changes_alarm_missing`
+**Query Name** `CloudWatch Route Table Changes Alarm Missing`
 **Id:** `2285e608-ddbc-47f3-ba54-ce7121e31216`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Low
 **Category:** Observability
 ## Description

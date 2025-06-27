@@ -3,14 +3,18 @@ title: "Unscanned ECR Image"
 meta:
   name: "aws/unscanned_ecr_image"
   id: "9630336b-3fed-4096-8173-b9afdfe346a7"
+  display_name: "Unscanned ECR Image"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "LOW"
   category: "Observability"
 ---
 ## Metadata
 **Name:** `aws/unscanned_ecr_image`
+**Query Name** `Unscanned ECR Image`
 **Id:** `9630336b-3fed-4096-8173-b9afdfe346a7`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Low
 **Category:** Observability
 ## Description

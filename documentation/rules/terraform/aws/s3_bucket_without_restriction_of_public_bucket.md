@@ -3,14 +3,18 @@ title: "S3 Bucket Without Restriction Of Public Bucket"
 meta:
   name: "aws/s3_bucket_without_restriction_of_public_bucket"
   id: "1ec253ab-c220-4d63-b2de-5b40e0af9293"
+  display_name: "S3 Bucket Without Restriction Of Public Bucket"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Insecure Configurations"
 ---
 ## Metadata
 **Name:** `aws/s3_bucket_without_restriction_of_public_bucket`
+**Query Name** `S3 Bucket Without Restriction Of Public Bucket`
 **Id:** `1ec253ab-c220-4d63-b2de-5b40e0af9293`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Insecure Configurations
 ## Description

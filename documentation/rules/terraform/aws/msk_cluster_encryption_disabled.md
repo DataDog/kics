@@ -3,14 +3,18 @@ title: "MSK Cluster Encryption Disabled"
 meta:
   name: "aws/msk_cluster_encryption_disabled"
   id: "6db52fa6-d4da-4608-908a-89f0c59e743e"
+  display_name: "MSK Cluster Encryption Disabled"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "HIGH"
   category: "Encryption"
 ---
 ## Metadata
 **Name:** `aws/msk_cluster_encryption_disabled`
+**Query Name** `MSK Cluster Encryption Disabled`
 **Id:** `6db52fa6-d4da-4608-908a-89f0c59e743e`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** High
 **Category:** Encryption
 ## Description

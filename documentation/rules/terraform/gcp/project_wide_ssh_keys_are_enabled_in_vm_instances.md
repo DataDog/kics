@@ -3,14 +3,18 @@ title: "Project-wide SSH Keys Are Enabled In VM Instances"
 meta:
   name: "gcp/project_wide_ssh_keys_are_enabled_in_vm_instances"
   id: "3e4d5ce6-3280-4027-8010-c26eeea1ec01"
+  display_name: "Project-wide SSH Keys Are Enabled In VM Instances"
   cloud_provider: "gcp"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Secret Management"
 ---
 ## Metadata
 **Name:** `gcp/project_wide_ssh_keys_are_enabled_in_vm_instances`
+**Query Name** `Project-wide SSH Keys Are Enabled In VM Instances`
 **Id:** `3e4d5ce6-3280-4027-8010-c26eeea1ec01`
 **Cloud Provider:** gcp
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Secret Management
 ## Description

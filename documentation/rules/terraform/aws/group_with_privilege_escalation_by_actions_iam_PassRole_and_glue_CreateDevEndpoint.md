@@ -3,14 +3,18 @@ title: "Group With Privilege Escalation By Actions 'glue:CreateDevEndpoint' And 
 meta:
   name: "aws/group_with_privilege_escalation_by_actions_iam_PassRole_and_glue_CreateDevEndpoint"
   id: "7d544dad-8a6c-431c-84c1-5f07fe9afc0e"
+  display_name: "Group With Privilege Escalation By Actions 'glue:CreateDevEndpoint' And 'iam:PassRole'"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"
 ---
 ## Metadata
 **Name:** `aws/group_with_privilege_escalation_by_actions_iam_PassRole_and_glue_CreateDevEndpoint`
+**Query Name** `Group With Privilege Escalation By Actions 'glue:CreateDevEndpoint' And 'iam:PassRole'`
 **Id:** `7d544dad-8a6c-431c-84c1-5f07fe9afc0e`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Access Control
 ## Description

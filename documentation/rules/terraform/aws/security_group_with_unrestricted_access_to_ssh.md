@@ -3,14 +3,18 @@ title: "Security Group With Unrestricted Access To SSH"
 meta:
   name: "aws/security_group_with_unrestricted_access_to_ssh"
   id: "65905cec-d691-4320-b320-2000436cb696"
+  display_name: "Security Group With Unrestricted Access To SSH"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Networking and Firewall"
 ---
 ## Metadata
 **Name:** `aws/security_group_with_unrestricted_access_to_ssh`
+**Query Name** `Security Group With Unrestricted Access To SSH`
 **Id:** `65905cec-d691-4320-b320-2000436cb696`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Networking and Firewall
 ## Description

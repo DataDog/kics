@@ -3,14 +3,18 @@ title: "Cloud Storage Bucket Versioning Disabled"
 meta:
   name: "gcp/cloud_storage_bucket_versioning_disabled"
   id: "e7e961ac-d17e-4413-84bc-8a1fbe242944"
+  display_name: "Cloud Storage Bucket Versioning Disabled"
   cloud_provider: "gcp"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Observability"
 ---
 ## Metadata
 **Name:** `gcp/cloud_storage_bucket_versioning_disabled`
+**Query Name** `Cloud Storage Bucket Versioning Disabled`
 **Id:** `e7e961ac-d17e-4413-84bc-8a1fbe242944`
 **Cloud Provider:** gcp
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Observability
 ## Description

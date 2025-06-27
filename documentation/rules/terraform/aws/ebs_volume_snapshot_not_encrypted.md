@@ -3,14 +3,18 @@ title: "EBS Volume Snapshot Not Encrypted"
 meta:
   name: "aws/ebs_volume_snapshot_not_encrypted"
   id: "e6b4b943-6883-47a9-9739-7ada9568f8ca"
+  display_name: "EBS Volume Snapshot Not Encrypted"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "HIGH"
   category: "Encryption"
 ---
 ## Metadata
 **Name:** `aws/ebs_volume_snapshot_not_encrypted`
+**Query Name** `EBS Volume Snapshot Not Encrypted`
 **Id:** `e6b4b943-6883-47a9-9739-7ada9568f8ca`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** High
 **Category:** Encryption
 ## Description

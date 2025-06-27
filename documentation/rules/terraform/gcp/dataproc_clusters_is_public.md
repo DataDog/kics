@@ -3,14 +3,18 @@ title: "Dataproc Clusters Publicly Accessible"
 meta:
   name: "gcp/dataproc_clusters_is_public"
   id: "e3f7a9b1-c2d3-4e5f-8901-23456789abcd"
+  display_name: "Dataproc Clusters Publicly Accessible"
   cloud_provider: "gcp"
+  platform: "Terraform"
   severity: "HIGH"
   category: "Insecure Configurations"
 ---
 ## Metadata
 **Name:** `gcp/dataproc_clusters_is_public`
+**Query Name** `Dataproc Clusters Publicly Accessible`
 **Id:** `e3f7a9b1-c2d3-4e5f-8901-23456789abcd`
 **Cloud Provider:** gcp
+**Platform** Terraform
 **Severity:** High
 **Category:** Insecure Configurations
 ## Description

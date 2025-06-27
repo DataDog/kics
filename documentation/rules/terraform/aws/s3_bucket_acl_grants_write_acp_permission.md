@@ -3,14 +3,18 @@ title: "S3 Bucket ACL Grants WRITE_ACP Permission"
 meta:
   name: "aws/s3_bucket_acl_grants_write_acp_permission"
   id: "64a222aa-7793-4e40-915f-4b302c76e4d4"
+  display_name: "S3 Bucket ACL Grants WRITE_ACP Permission"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "CRITICAL"
   category: "Access Control"
 ---
 ## Metadata
 **Name:** `aws/s3_bucket_acl_grants_write_acp_permission`
+**Query Name** `S3 Bucket ACL Grants WRITE_ACP Permission`
 **Id:** `64a222aa-7793-4e40-915f-4b302c76e4d4`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Critical
 **Category:** Access Control
 ## Description

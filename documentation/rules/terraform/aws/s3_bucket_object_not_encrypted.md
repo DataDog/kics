@@ -3,14 +3,18 @@ title: "S3 Bucket Object Not Encrypted"
 meta:
   name: "aws/s3_bucket_object_not_encrypted"
   id: "5fb49a69-8d46-4495-a2f8-9c8c622b2b6e"
+  display_name: "S3 Bucket Object Not Encrypted"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "HIGH"
   category: "Encryption"
 ---
 ## Metadata
 **Name:** `aws/s3_bucket_object_not_encrypted`
+**Query Name** `S3 Bucket Object Not Encrypted`
 **Id:** `5fb49a69-8d46-4495-a2f8-9c8c622b2b6e`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** High
 **Category:** Encryption
 ## Description

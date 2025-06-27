@@ -3,14 +3,18 @@ title: "Default Security Groups With Unrestricted Traffic"
 meta:
   name: "aws/default_security_groups_with_unrestricted_traffic"
   id: "46883ce1-dc3e-4b17-9195-c6a601624c73"
+  display_name: "Default Security Groups With Unrestricted Traffic"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "HIGH"
   category: "Networking and Firewall"
 ---
 ## Metadata
 **Name:** `aws/default_security_groups_with_unrestricted_traffic`
+**Query Name** `Default Security Groups With Unrestricted Traffic`
 **Id:** `46883ce1-dc3e-4b17-9195-c6a601624c73`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** High
 **Category:** Networking and Firewall
 ## Description

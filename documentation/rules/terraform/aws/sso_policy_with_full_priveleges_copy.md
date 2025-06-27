@@ -3,14 +3,18 @@ title: "SSO Identity User Unsafe Creation"
 meta:
   name: "aws/sso_policy_with_full_priveleges_copy"
   id: "4003118b-046b-4640-b200-b8c7a4c8b89f"
+  display_name: "SSO Identity User Unsafe Creation"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"
 ---
 ## Metadata
 **Name:** `aws/sso_policy_with_full_priveleges_copy`
+**Query Name** `SSO Identity User Unsafe Creation`
 **Id:** `4003118b-046b-4640-b200-b8c7a4c8b89f`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Access Control
 ## Description

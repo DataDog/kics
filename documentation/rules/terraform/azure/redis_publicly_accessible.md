@@ -3,14 +3,18 @@ title: "Redis Publicly Accessible"
 meta:
   name: "azure/redis_publicly_accessible"
   id: "5089d055-53ff-421b-9482-a5267bdce629"
+  display_name: "Redis Publicly Accessible"
   cloud_provider: "azure"
+  platform: "Terraform"
   severity: "CRITICAL"
   category: "Networking and Firewall"
 ---
 ## Metadata
 **Name:** `azure/redis_publicly_accessible`
+**Query Name** `Redis Publicly Accessible`
 **Id:** `5089d055-53ff-421b-9482-a5267bdce629`
 **Cloud Provider:** azure
+**Platform** Terraform
 **Severity:** Critical
 **Category:** Networking and Firewall
 ## Description

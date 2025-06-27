@@ -3,14 +3,18 @@ title: "SSO Policy with full privileges"
 meta:
   name: "aws/sso_policy_with_full_priveleges"
   id: "132a8c31-9837-4203-9fd1-15ca210c7b73"
+  display_name: "SSO Policy with full privileges"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"
 ---
 ## Metadata
 **Name:** `aws/sso_policy_with_full_priveleges`
+**Query Name** `SSO Policy with full privileges`
 **Id:** `132a8c31-9837-4203-9fd1-15ca210c7b73`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Access Control
 ## Description

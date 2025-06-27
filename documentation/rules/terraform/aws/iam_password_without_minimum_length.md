@@ -3,14 +3,18 @@ title: "IAM Password Without Minimum Length"
 meta:
   name: "aws/iam_password_without_minimum_length"
   id: "1bc1c685-e593-450e-88fb-19db4c82aa1d"
+  display_name: "IAM Password Without Minimum Length"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "LOW"
   category: "Best Practices"
 ---
 ## Metadata
 **Name:** `aws/iam_password_without_minimum_length`
+**Query Name** `IAM Password Without Minimum Length`
 **Id:** `1bc1c685-e593-450e-88fb-19db4c82aa1d`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Low
 **Category:** Best Practices
 ## Description

@@ -3,14 +3,18 @@ title: "Using Default Service Account"
 meta:
   name: "gcp/using_default_service_account"
   id: "3cb4af0b-056d-4fb1-8b95-fdc4593625ff"
+  display_name: "Using Default Service Account"
   cloud_provider: "gcp"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Insecure Defaults"
 ---
 ## Metadata
 **Name:** `gcp/using_default_service_account`
+**Query Name** `Using Default Service Account`
 **Id:** `3cb4af0b-056d-4fb1-8b95-fdc4593625ff`
 **Cloud Provider:** gcp
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Insecure Defaults
 ## Description

@@ -3,14 +3,18 @@ title: "PostgreSQL Log Disconnections Not Set"
 meta:
   name: "azure/postgresql_log_disconnections_not_set"
   id: "07f7134f-9f37-476e-8664-670c218e4702"
+  display_name: "PostgreSQL Log Disconnections Not Set"
   cloud_provider: "azure"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Observability"
 ---
 ## Metadata
 **Name:** `azure/postgresql_log_disconnections_not_set`
+**Query Name** `PostgreSQL Log Disconnections Not Set`
 **Id:** `07f7134f-9f37-476e-8664-670c218e4702`
 **Cloud Provider:** azure
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Observability
 ## Description

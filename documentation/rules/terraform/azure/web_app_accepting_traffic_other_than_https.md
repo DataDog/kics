@@ -3,14 +3,18 @@ title: "Web App Accepting Traffic Other Than HTTPS"
 meta:
   name: "azure/web_app_accepting_traffic_other_than_https"
   id: "11e9a948-c6c3-4a0f-8dcf-b5cf1763cdbe"
+  display_name: "Web App Accepting Traffic Other Than HTTPS"
   cloud_provider: "azure"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Insecure Configurations"
 ---
 ## Metadata
 **Name:** `azure/web_app_accepting_traffic_other_than_https`
+**Query Name** `Web App Accepting Traffic Other Than HTTPS`
 **Id:** `11e9a948-c6c3-4a0f-8dcf-b5cf1763cdbe`
 **Cloud Provider:** azure
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Insecure Configurations
 ## Description

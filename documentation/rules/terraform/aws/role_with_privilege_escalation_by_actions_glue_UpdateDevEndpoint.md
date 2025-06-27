@@ -3,14 +3,18 @@ title: "Role With Privilege Escalation By Actions 'glue:UpdateDevEndpoint'"
 meta:
   name: "aws/role_with_privilege_escalation_by_actions_glue_UpdateDevEndpoint"
   id: "eda48c88-2b7d-4e34-b6ca-04c0194aee17"
+  display_name: "Role With Privilege Escalation By Actions 'glue:UpdateDevEndpoint'"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"
 ---
 ## Metadata
 **Name:** `aws/role_with_privilege_escalation_by_actions_glue_UpdateDevEndpoint`
+**Query Name** `Role With Privilege Escalation By Actions 'glue:UpdateDevEndpoint'`
 **Id:** `eda48c88-2b7d-4e34-b6ca-04c0194aee17`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Access Control
 ## Description

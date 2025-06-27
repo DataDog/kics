@@ -3,14 +3,18 @@ title: "IAM Policies Attached To User"
 meta:
   name: "aws/iam_policies_attached_to_user"
   id: "b4378389-a9aa-44ee-91e7-ef183f11079e"
+  display_name: "IAM Policies Attached To User"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"
 ---
 ## Metadata
 **Name:** `aws/iam_policies_attached_to_user`
+**Query Name** `IAM Policies Attached To User`
 **Id:** `b4378389-a9aa-44ee-91e7-ef183f11079e`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Access Control
 ## Description

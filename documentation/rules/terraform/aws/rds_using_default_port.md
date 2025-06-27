@@ -3,14 +3,18 @@ title: "RDS Using Default Port"
 meta:
   name: "aws/rds_using_default_port"
   id: "bca7cc4d-b3a4-4345-9461-eb69c68fcd26"
+  display_name: "RDS Using Default Port"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "LOW"
   category: "Networking and Firewall"
 ---
 ## Metadata
 **Name:** `aws/rds_using_default_port`
+**Query Name** `RDS Using Default Port`
 **Id:** `bca7cc4d-b3a4-4345-9461-eb69c68fcd26`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Low
 **Category:** Networking and Firewall
 ## Description

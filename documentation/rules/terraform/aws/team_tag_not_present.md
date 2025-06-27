@@ -3,14 +3,18 @@ title: "Team Tag Missing"
 meta:
   name: "aws/team_tag_not_present"
   id: "a2b3c4d5-e6f7-8901-gh23-ijkl456m7890"
+  display_name: "Team Tag Missing"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "INFO"
   category: "Best Practices"
 ---
 ## Metadata
 **Name:** `aws/team_tag_not_present`
+**Query Name** `Team Tag Missing`
 **Id:** `a2b3c4d5-e6f7-8901-gh23-ijkl456m7890`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Info
 **Category:** Best Practices
 ## Description

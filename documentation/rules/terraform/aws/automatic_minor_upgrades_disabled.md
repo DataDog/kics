@@ -3,14 +3,18 @@ title: "Automatic Minor Upgrades Disabled"
 meta:
   name: "aws/automatic_minor_upgrades_disabled"
   id: "3b6d777b-76e3-4133-80a3-0d6f667ade7f"
+  display_name: "Automatic Minor Upgrades Disabled"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "LOW"
   category: "Best Practices"
 ---
 ## Metadata
 **Name:** `aws/automatic_minor_upgrades_disabled`
+**Query Name** `Automatic Minor Upgrades Disabled`
 **Id:** `3b6d777b-76e3-4133-80a3-0d6f667ade7f`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Low
 **Category:** Best Practices
 ## Description

@@ -3,14 +3,18 @@ title: "Role With Privilege Escalation By Actions 'iam:UpdateAssumeRolePolicy' A
 meta:
   name: "aws/role_with_privilege_escalation_by_actions_iam_UpdateAssumeRolePolicy_and_sts_AssumeRole"
   id: "f1173d8c-3264-4148-9fdb-61181e031b51"
+  display_name: "Role With Privilege Escalation By Actions 'iam:UpdateAssumeRolePolicy' And 'sts:AssumeRole'"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"
 ---
 ## Metadata
 **Name:** `aws/role_with_privilege_escalation_by_actions_iam_UpdateAssumeRolePolicy_and_sts_AssumeRole`
+**Query Name** `Role With Privilege Escalation By Actions 'iam:UpdateAssumeRolePolicy' And 'sts:AssumeRole'`
 **Id:** `f1173d8c-3264-4148-9fdb-61181e031b51`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Access Control
 ## Description

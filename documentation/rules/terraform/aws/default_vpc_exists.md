@@ -3,14 +3,18 @@ title: "Default VPC Exists"
 meta:
   name: "aws/default_vpc_exists"
   id: "96ed3526-0179-4c73-b1b2-372fde2e0d13"
+  display_name: "Default VPC Exists"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Insecure Defaults"
 ---
 ## Metadata
 **Name:** `aws/default_vpc_exists`
+**Query Name** `Default VPC Exists`
 **Id:** `96ed3526-0179-4c73-b1b2-372fde2e0d13`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Insecure Defaults
 ## Description

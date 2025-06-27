@@ -3,14 +3,18 @@ title: "Secret Expiration Not Set"
 meta:
   name: "azure/secret_expiration_not_set"
   id: "dfa20ffa-f476-428f-a490-424b41e91c7f"
+  display_name: "Secret Expiration Not Set"
   cloud_provider: "azure"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Secret Management"
 ---
 ## Metadata
 **Name:** `azure/secret_expiration_not_set`
+**Query Name** `Secret Expiration Not Set`
 **Id:** `dfa20ffa-f476-428f-a490-424b41e91c7f`
 **Cloud Provider:** azure
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Secret Management
 ## Description

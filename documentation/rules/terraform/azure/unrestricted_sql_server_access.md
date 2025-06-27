@@ -3,14 +3,18 @@ title: "Unrestricted SQL Server Access"
 meta:
   name: "azure/unrestricted_sql_server_access"
   id: "d7ba74da-2da0-4d4b-83c8-2fd72a3f6c28"
+  display_name: "Unrestricted SQL Server Access"
   cloud_provider: "azure"
+  platform: "Terraform"
   severity: "CRITICAL"
   category: "Networking and Firewall"
 ---
 ## Metadata
 **Name:** `azure/unrestricted_sql_server_access`
+**Query Name** `Unrestricted SQL Server Access`
 **Id:** `d7ba74da-2da0-4d4b-83c8-2fd72a3f6c28`
 **Cloud Provider:** azure
+**Platform** Terraform
 **Severity:** Critical
 **Category:** Networking and Firewall
 ## Description

@@ -3,14 +3,18 @@ title: "CloudWatch Management Console Auth Failed Alarm Missing"
 meta:
   name: "aws/cloudwatch_management_console_auth_failed_alarm_missing"
   id: "5864d189-ee9a-4009-ac0c-8a582e6b7919"
+  display_name: "CloudWatch Management Console Auth Failed Alarm Missing"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Observability"
 ---
 ## Metadata
 **Name:** `aws/cloudwatch_management_console_auth_failed_alarm_missing`
+**Query Name** `CloudWatch Management Console Auth Failed Alarm Missing`
 **Id:** `5864d189-ee9a-4009-ac0c-8a582e6b7919`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Observability
 ## Description

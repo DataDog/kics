@@ -3,14 +3,18 @@ title: "Group With Privilege Escalation By Actions 'lambda:UpdateFunctionCode'"
 meta:
   name: "aws/group_with_privilege_escalation_by_actions_lambda_UpdateFunctionCode"
   id: "571254d8-aa6a-432e-9725-535d3ef04d69"
+  display_name: "Group With Privilege Escalation By Actions 'lambda:UpdateFunctionCode'"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"
 ---
 ## Metadata
 **Name:** `aws/group_with_privilege_escalation_by_actions_lambda_UpdateFunctionCode`
+**Query Name** `Group With Privilege Escalation By Actions 'lambda:UpdateFunctionCode'`
 **Id:** `571254d8-aa6a-432e-9725-535d3ef04d69`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Access Control
 ## Description

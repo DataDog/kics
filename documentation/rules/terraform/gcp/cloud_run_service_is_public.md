@@ -3,14 +3,18 @@ title: "Cloud Run Service Is Public"
 meta:
   name: "gcp/cloud_run_service_is_public"
   id: "7e3c1a2b-9d4f-4c8e-8a5b-0f1e2d3c4b6a"
+  display_name: "Cloud Run Service Is Public"
   cloud_provider: "gcp"
+  platform: "Terraform"
   severity: "HIGH"
   category: "Insecure Configurations"
 ---
 ## Metadata
 **Name:** `gcp/cloud_run_service_is_public`
+**Query Name** `Cloud Run Service Is Public`
 **Id:** `7e3c1a2b-9d4f-4c8e-8a5b-0f1e2d3c4b6a`
 **Cloud Provider:** gcp
+**Platform** Terraform
 **Severity:** High
 **Category:** Insecure Configurations
 ## Description

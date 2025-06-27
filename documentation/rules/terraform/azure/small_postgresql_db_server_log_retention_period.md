@@ -3,14 +3,18 @@ title: "Small PostgreSQL DB Server Log Retention Period"
 meta:
   name: "azure/small_postgresql_db_server_log_retention_period"
   id: "261a83f8-dd72-4e8c-b5e1-ebf06e8fe606"
+  display_name: "Small PostgreSQL DB Server Log Retention Period"
   cloud_provider: "azure"
+  platform: "Terraform"
   severity: "LOW"
   category: "Observability"
 ---
 ## Metadata
 **Name:** `azure/small_postgresql_db_server_log_retention_period`
+**Query Name** `Small PostgreSQL DB Server Log Retention Period`
 **Id:** `261a83f8-dd72-4e8c-b5e1-ebf06e8fe606`
 **Cloud Provider:** azure
+**Platform** Terraform
 **Severity:** Low
 **Category:** Observability
 ## Description

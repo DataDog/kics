@@ -3,14 +3,18 @@ title: "EFS With Vulnerable Policy"
 meta:
   name: "aws/efs_with_vulnerable_policy"
   id: "fae52418-bb8b-4ac2-b287-0b9082d6a3fd"
+  display_name: "EFS With Vulnerable Policy"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"
 ---
 ## Metadata
 **Name:** `aws/efs_with_vulnerable_policy`
+**Query Name** `EFS With Vulnerable Policy`
 **Id:** `fae52418-bb8b-4ac2-b287-0b9082d6a3fd`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Access Control
 ## Description

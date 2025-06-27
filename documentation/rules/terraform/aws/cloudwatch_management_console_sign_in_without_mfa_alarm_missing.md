@@ -3,14 +3,18 @@ title: "CloudWatch Console Sign-in Without MFA Alarm Missing"
 meta:
   name: "aws/cloudwatch_management_console_sign_in_without_mfa_alarm_missing"
   id: "44ceb4fa-0897-4fd2-b676-30e7a58f2933"
+  display_name: "CloudWatch Console Sign-in Without MFA Alarm Missing"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "LOW"
   category: "Observability"
 ---
 ## Metadata
 **Name:** `aws/cloudwatch_management_console_sign_in_without_mfa_alarm_missing`
+**Query Name** `CloudWatch Console Sign-in Without MFA Alarm Missing`
 **Id:** `44ceb4fa-0897-4fd2-b676-30e7a58f2933`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Low
 **Category:** Observability
 ## Description

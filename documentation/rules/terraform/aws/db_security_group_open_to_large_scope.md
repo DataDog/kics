@@ -3,14 +3,18 @@ title: "DB Security Group Open To Large Scope"
 meta:
   name: "aws/db_security_group_open_to_large_scope"
   id: "4f615f3e-fb9c-4fad-8b70-2e9f781806ce"
+  display_name: "DB Security Group Open To Large Scope"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "HIGH"
   category: "Networking and Firewall"
 ---
 ## Metadata
 **Name:** `aws/db_security_group_open_to_large_scope`
+**Query Name** `DB Security Group Open To Large Scope`
 **Id:** `4f615f3e-fb9c-4fad-8b70-2e9f781806ce`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** High
 **Category:** Networking and Firewall
 ## Description

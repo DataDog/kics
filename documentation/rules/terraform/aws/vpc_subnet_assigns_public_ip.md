@@ -3,14 +3,18 @@ title: "VPC Subnet Assigns Public IP"
 meta:
   name: "aws/vpc_subnet_assigns_public_ip"
   id: "52f04a44-6bfa-4c41-b1d3-4ae99a2de05c"
+  display_name: "VPC Subnet Assigns Public IP"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Networking and Firewall"
 ---
 ## Metadata
 **Name:** `aws/vpc_subnet_assigns_public_ip`
+**Query Name** `VPC Subnet Assigns Public IP`
 **Id:** `52f04a44-6bfa-4c41-b1d3-4ae99a2de05c`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Networking and Firewall
 ## Description

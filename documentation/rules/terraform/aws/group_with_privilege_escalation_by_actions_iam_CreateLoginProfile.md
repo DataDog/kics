@@ -3,14 +3,18 @@ title: "Group With Privilege Escalation By Actions 'iam:CreateLoginProfile'"
 meta:
   name: "aws/group_with_privilege_escalation_by_actions_iam_CreateLoginProfile"
   id: "04c686f1-e0cd-4812-88e1-4e038410074c"
+  display_name: "Group With Privilege Escalation By Actions 'iam:CreateLoginProfile'"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"
 ---
 ## Metadata
 **Name:** `aws/group_with_privilege_escalation_by_actions_iam_CreateLoginProfile`
+**Query Name** `Group With Privilege Escalation By Actions 'iam:CreateLoginProfile'`
 **Id:** `04c686f1-e0cd-4812-88e1-4e038410074c`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Access Control
 ## Description

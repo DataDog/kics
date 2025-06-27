@@ -3,14 +3,18 @@ title: "CloudWatch Network Gateways Changes Alarm Missing"
 meta:
   name: "aws/cloudwatch_network_gateways_changes_alarm_missing"
   id: "6b6874fe-4c2f-4eea-8b90-7cceaa4a125e"
+  display_name: "CloudWatch Network Gateways Changes Alarm Missing"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "LOW"
   category: "Observability"
 ---
 ## Metadata
 **Name:** `aws/cloudwatch_network_gateways_changes_alarm_missing`
+**Query Name** `CloudWatch Network Gateways Changes Alarm Missing`
 **Id:** `6b6874fe-4c2f-4eea-8b90-7cceaa4a125e`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Low
 **Category:** Observability
 ## Description

@@ -3,14 +3,18 @@ title: "Missing Cluster Log Types"
 meta:
   name: "aws/missing_cluster_log_types"
   id: "66f130d9-b81d-4e8e-9b08-da74b9c891df"
+  display_name: "Missing Cluster Log Types"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Observability"
 ---
 ## Metadata
 **Name:** `aws/missing_cluster_log_types`
+**Query Name** `Missing Cluster Log Types`
 **Id:** `66f130d9-b81d-4e8e-9b08-da74b9c891df`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Observability
 ## Description

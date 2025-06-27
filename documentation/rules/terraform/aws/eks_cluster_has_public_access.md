@@ -3,14 +3,18 @@ title: "EKS Cluster Has Public Access"
 meta:
   name: "aws/eks_cluster_has_public_access"
   id: "42f4b905-3736-4213-bfe9-c0660518cda8"
+  display_name: "EKS Cluster Has Public Access"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Insecure Configurations"
 ---
 ## Metadata
 **Name:** `aws/eks_cluster_has_public_access`
+**Query Name** `EKS Cluster Has Public Access`
 **Id:** `42f4b905-3736-4213-bfe9-c0660518cda8`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Insecure Configurations
 ## Description

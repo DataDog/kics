@@ -3,14 +3,18 @@ title: "RDP Is Exposed To The Internet"
 meta:
   name: "azure/rdp_is_exposed_to_the_internet"
   id: "efbf6449-5ec5-4cfe-8f15-acc51e0d787c"
+  display_name: "RDP Is Exposed To The Internet"
   cloud_provider: "azure"
+  platform: "Terraform"
   severity: "HIGH"
   category: "Networking and Firewall"
 ---
 ## Metadata
 **Name:** `azure/rdp_is_exposed_to_the_internet`
+**Query Name** `RDP Is Exposed To The Internet`
 **Id:** `efbf6449-5ec5-4cfe-8f15-acc51e0d787c`
 **Cloud Provider:** azure
+**Platform** Terraform
 **Severity:** High
 **Category:** Networking and Firewall
 ## Description

@@ -3,14 +3,18 @@ title: "API Gateway Method Does Not Contains An API Key"
 meta:
   name: "aws/api_gateway_method_does_not_contains_an_api_key"
   id: "671211c5-5d2a-4e97-8867-30fc28b02216"
+  display_name: "API Gateway Method Does Not Contains An API Key"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"
 ---
 ## Metadata
 **Name:** `aws/api_gateway_method_does_not_contains_an_api_key`
+**Query Name** `API Gateway Method Does Not Contains An API Key`
 **Id:** `671211c5-5d2a-4e97-8867-30fc28b02216`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Access Control
 ## Description

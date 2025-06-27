@@ -3,14 +3,18 @@ title: "Azure Cognitive Search Public Network Access Enabled"
 meta:
   name: "azure/azure_cognitive_search_public_network_access_enabled"
   id: "4a9e0f00-0765-4f72-a0d4-d31110b78279"
+  display_name: "Azure Cognitive Search Public Network Access Enabled"
   cloud_provider: "azure"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Networking and Firewall"
 ---
 ## Metadata
 **Name:** `azure/azure_cognitive_search_public_network_access_enabled`
+**Query Name** `Azure Cognitive Search Public Network Access Enabled`
 **Id:** `4a9e0f00-0765-4f72-a0d4-d31110b78279`
 **Cloud Provider:** azure
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Networking and Firewall
 ## Description

@@ -3,14 +3,18 @@ title: "SQL Server Predictable Admin Account Name"
 meta:
   name: "azure/sql_server_predictable_admin_account_name"
   id: "2ab6de9a-0136-415c-be92-79d2e4fd750f"
+  display_name: "SQL Server Predictable Admin Account Name"
   cloud_provider: "azure"
+  platform: "Terraform"
   severity: "LOW"
   category: "Best Practices"
 ---
 ## Metadata
 **Name:** `azure/sql_server_predictable_admin_account_name`
+**Query Name** `SQL Server Predictable Admin Account Name`
 **Id:** `2ab6de9a-0136-415c-be92-79d2e4fd750f`
 **Cloud Provider:** azure
+**Platform** Terraform
 **Severity:** Low
 **Category:** Best Practices
 ## Description

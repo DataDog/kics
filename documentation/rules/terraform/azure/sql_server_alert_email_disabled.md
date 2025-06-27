@@ -3,14 +3,18 @@ title: "SQL Server Alert Email Disabled"
 meta:
   name: "azure/sql_server_alert_email_disabled"
   id: "55975007-f6e7-4134-83c3-298f1fe4b519"
+  display_name: "SQL Server Alert Email Disabled"
   cloud_provider: "azure"
+  platform: "Terraform"
   severity: "INFO"
   category: "Best Practices"
 ---
 ## Metadata
 **Name:** `azure/sql_server_alert_email_disabled`
+**Query Name** `SQL Server Alert Email Disabled`
 **Id:** `55975007-f6e7-4134-83c3-298f1fe4b519`
 **Cloud Provider:** azure
+**Platform** Terraform
 **Severity:** Info
 **Category:** Best Practices
 ## Description

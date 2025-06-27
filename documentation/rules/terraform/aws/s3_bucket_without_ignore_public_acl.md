@@ -3,14 +3,18 @@ title: "S3 Bucket Without Ignore Public ACL"
 meta:
   name: "aws/s3_bucket_without_ignore_public_acl"
   id: "4fa66806-0dd9-4f8d-9480-3174d39c7c91"
+  display_name: "S3 Bucket Without Ignore Public ACL"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Insecure Configurations"
 ---
 ## Metadata
 **Name:** `aws/s3_bucket_without_ignore_public_acl`
+**Query Name** `S3 Bucket Without Ignore Public ACL`
 **Id:** `4fa66806-0dd9-4f8d-9480-3174d39c7c91`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Insecure Configurations
 ## Description

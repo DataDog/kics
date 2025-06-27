@@ -3,14 +3,18 @@ title: "Unknown Port Exposed To Internet"
 meta:
   name: "aws/unknown_port_exposed_to_internet"
   id: "590d878b-abdc-428f-895a-e2b68a0e1998"
+  display_name: "Unknown Port Exposed To Internet"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "HIGH"
   category: "Networking and Firewall"
 ---
 ## Metadata
 **Name:** `aws/unknown_port_exposed_to_internet`
+**Query Name** `Unknown Port Exposed To Internet`
 **Id:** `590d878b-abdc-428f-895a-e2b68a0e1998`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** High
 **Category:** Networking and Firewall
 ## Description

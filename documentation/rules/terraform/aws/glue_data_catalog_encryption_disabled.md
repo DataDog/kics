@@ -3,14 +3,18 @@ title: "Glue Data Catalog Encryption Disabled"
 meta:
   name: "aws/glue_data_catalog_encryption_disabled"
   id: "01d50b14-e933-4c99-b314-6d08cd37ad35"
+  display_name: "Glue Data Catalog Encryption Disabled"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "HIGH"
   category: "Encryption"
 ---
 ## Metadata
 **Name:** `aws/glue_data_catalog_encryption_disabled`
+**Query Name** `Glue Data Catalog Encryption Disabled`
 **Id:** `01d50b14-e933-4c99-b314-6d08cd37ad35`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** High
 **Category:** Encryption
 ## Description

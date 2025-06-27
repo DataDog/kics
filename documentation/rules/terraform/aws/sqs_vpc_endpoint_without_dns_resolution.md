@@ -3,14 +3,18 @@ title: "SQS VPC Endpoint Without DNS Resolution"
 meta:
   name: "aws/sqs_vpc_endpoint_without_dns_resolution"
   id: "e9b7acf9-9ba0-4837-a744-31e7df1e434d"
+  display_name: "SQS VPC Endpoint Without DNS Resolution"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "LOW"
   category: "Networking and Firewall"
 ---
 ## Metadata
 **Name:** `aws/sqs_vpc_endpoint_without_dns_resolution`
+**Query Name** `SQS VPC Endpoint Without DNS Resolution`
 **Id:** `e9b7acf9-9ba0-4837-a744-31e7df1e434d`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Low
 **Category:** Networking and Firewall
 ## Description

@@ -3,14 +3,18 @@ title: "Lambda Functions Without X-Ray Tracing"
 meta:
   name: "aws/lambda_functions_without_x-ray_tracing"
   id: "8152e0cf-d2f0-47ad-96d5-d003a76eabd1"
+  display_name: "Lambda Functions Without X-Ray Tracing"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "LOW"
   category: "Observability"
 ---
 ## Metadata
 **Name:** `aws/lambda_functions_without_x-ray_tracing`
+**Query Name** `Lambda Functions Without X-Ray Tracing`
 **Id:** `8152e0cf-d2f0-47ad-96d5-d003a76eabd1`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Low
 **Category:** Observability
 ## Description

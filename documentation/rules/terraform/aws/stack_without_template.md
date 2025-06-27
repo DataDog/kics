@@ -3,14 +3,18 @@ title: "Stack Without Template"
 meta:
   name: "aws/stack_without_template"
   id: "91bea7b8-0c31-4863-adc9-93f6177266c4"
+  display_name: "Stack Without Template"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "LOW"
   category: "Build Process"
 ---
 ## Metadata
 **Name:** `aws/stack_without_template`
+**Query Name** `Stack Without Template`
 **Id:** `91bea7b8-0c31-4863-adc9-93f6177266c4`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Low
 **Category:** Build Process
 ## Description

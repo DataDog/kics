@@ -3,14 +3,18 @@ title: "Cloud Storage Bucket Is Publicly Accessible"
 meta:
   name: "gcp/cloud_storage_bucket_is_publicly_accessible"
   id: "c010082c-76e0-4b91-91d9-6e8439e455dd"
+  display_name: "Cloud Storage Bucket Is Publicly Accessible"
   cloud_provider: "gcp"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"
 ---
 ## Metadata
 **Name:** `gcp/cloud_storage_bucket_is_publicly_accessible`
+**Query Name** `Cloud Storage Bucket Is Publicly Accessible`
 **Id:** `c010082c-76e0-4b91-91d9-6e8439e455dd`
 **Cloud Provider:** gcp
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Access Control
 ## Description

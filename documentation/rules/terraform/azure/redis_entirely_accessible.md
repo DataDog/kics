@@ -3,14 +3,18 @@ title: "Redis Entirely Accessible"
 meta:
   name: "azure/redis_entirely_accessible"
   id: "fd8da341-6760-4450-b26c-9f6d8850575e"
+  display_name: "Redis Entirely Accessible"
   cloud_provider: "azure"
+  platform: "Terraform"
   severity: "CRITICAL"
   category: "Networking and Firewall"
 ---
 ## Metadata
 **Name:** `azure/redis_entirely_accessible`
+**Query Name** `Redis Entirely Accessible`
 **Id:** `fd8da341-6760-4450-b26c-9f6d8850575e`
 **Cloud Provider:** azure
+**Platform** Terraform
 **Severity:** Critical
 **Category:** Networking and Firewall
 ## Description

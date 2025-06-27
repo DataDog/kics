@@ -3,14 +3,18 @@ title: "S3 Bucket Allows Put Action From All Principals"
 meta:
   name: "aws/s3_bucket_allows_put_action_from_all_principals"
   id: "d24c0755-c028-44b1-b503-8e719c898832"
+  display_name: "S3 Bucket Allows Put Action From All Principals"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "CRITICAL"
   category: "Access Control"
 ---
 ## Metadata
 **Name:** `aws/s3_bucket_allows_put_action_from_all_principals`
+**Query Name** `S3 Bucket Allows Put Action From All Principals`
 **Id:** `d24c0755-c028-44b1-b503-8e719c898832`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Critical
 **Category:** Access Control
 ## Description

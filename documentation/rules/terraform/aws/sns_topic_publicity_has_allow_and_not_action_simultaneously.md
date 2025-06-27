@@ -3,14 +3,18 @@ title: "SNS Topic Publicity Has Allow and NotAction Simultaneously"
 meta:
   name: "aws/sns_topic_publicity_has_allow_and_not_action_simultaneously"
   id: "5ea624e4-c8b1-4bb3-87a4-4235a776adcc"
+  display_name: "SNS Topic Publicity Has Allow and NotAction Simultaneously"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"
 ---
 ## Metadata
 **Name:** `aws/sns_topic_publicity_has_allow_and_not_action_simultaneously`
+**Query Name** `SNS Topic Publicity Has Allow and NotAction Simultaneously`
 **Id:** `5ea624e4-c8b1-4bb3-87a4-4235a776adcc`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Access Control
 ## Description

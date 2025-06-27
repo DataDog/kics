@@ -3,14 +3,18 @@ title: "EMR Without VPC"
 meta:
   name: "aws/emr_without_vpc"
   id: "2b3c8a6d-9856-43e6-ab1d-d651094f03b4"
+  display_name: "EMR Without VPC"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "LOW"
   category: "Networking and Firewall"
 ---
 ## Metadata
 **Name:** `aws/emr_without_vpc`
+**Query Name** `EMR Without VPC`
 **Id:** `2b3c8a6d-9856-43e6-ab1d-d651094f03b4`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Low
 **Category:** Networking and Firewall
 ## Description

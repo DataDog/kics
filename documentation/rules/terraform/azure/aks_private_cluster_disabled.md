@@ -3,14 +3,18 @@ title: "AKS Private Cluster Disabled"
 meta:
   name: "azure/aks_private_cluster_disabled"
   id: "599318f2-6653-4569-9e21-041d06c63a89"
+  display_name: "AKS Private Cluster Disabled"
   cloud_provider: "azure"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Insecure Configurations"
 ---
 ## Metadata
 **Name:** `azure/aks_private_cluster_disabled`
+**Query Name** `AKS Private Cluster Disabled`
 **Id:** `599318f2-6653-4569-9e21-041d06c63a89`
 **Cloud Provider:** azure
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Insecure Configurations
 ## Description

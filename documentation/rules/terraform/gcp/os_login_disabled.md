@@ -3,14 +3,18 @@ title: "OSLogin Disabled"
 meta:
   name: "gcp/os_login_disabled"
   id: "32ecd6eb-0711-421f-9627-1a28d9eff217"
+  display_name: "OSLogin Disabled"
   cloud_provider: "gcp"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"
 ---
 ## Metadata
 **Name:** `gcp/os_login_disabled`
+**Query Name** `OSLogin Disabled`
 **Id:** `32ecd6eb-0711-421f-9627-1a28d9eff217`
 **Cloud Provider:** gcp
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Access Control
 ## Description

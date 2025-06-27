@@ -3,14 +3,18 @@ title: "Google Compute Network Using Firewall Rule that Allows Port Range"
 meta:
   name: "gcp/google_compute_network_using_firewall_rule_allows_port_range"
   id: "e6f61c37-106b-449f-a5bb-81bfcaceb8b4"
+  display_name: "Google Compute Network Using Firewall Rule that Allows Port Range"
   cloud_provider: "gcp"
+  platform: "Terraform"
   severity: "LOW"
   category: "Networking and Firewall"
 ---
 ## Metadata
 **Name:** `gcp/google_compute_network_using_firewall_rule_allows_port_range`
+**Query Name** `Google Compute Network Using Firewall Rule that Allows Port Range`
 **Id:** `e6f61c37-106b-449f-a5bb-81bfcaceb8b4`
 **Cloud Provider:** gcp
+**Platform** Terraform
 **Severity:** Low
 **Category:** Networking and Firewall
 ## Description

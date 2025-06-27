@@ -3,14 +3,18 @@ title: "Lambda With Vulnerable Policy"
 meta:
   name: "aws/lambda_with_vulnerable_policy"
   id: "ad9dabc7-7839-4bae-a957-aa9120013f39"
+  display_name: "Lambda With Vulnerable Policy"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "HIGH"
   category: "Access Control"
 ---
 ## Metadata
 **Name:** `aws/lambda_with_vulnerable_policy`
+**Query Name** `Lambda With Vulnerable Policy`
 **Id:** `ad9dabc7-7839-4bae-a957-aa9120013f39`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** High
 **Category:** Access Control
 ## Description

@@ -3,14 +3,18 @@ title: "Cloudwatch Cloudtrail Configuration Changes Alarm Missing"
 meta:
   name: "aws/cloudwatch_cloudtrail_configuration_changes_alarm_missing"
   id: "0f6cbf69-41bb-47dc-93f3-3844640bf480"
+  display_name: "Cloudwatch Cloudtrail Configuration Changes Alarm Missing"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Observability"
 ---
 ## Metadata
 **Name:** `aws/cloudwatch_cloudtrail_configuration_changes_alarm_missing`
+**Query Name** `Cloudwatch Cloudtrail Configuration Changes Alarm Missing`
 **Id:** `0f6cbf69-41bb-47dc-93f3-3844640bf480`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Observability
 ## Description

@@ -3,14 +3,18 @@ title: "ALB Is Not Integrated With WAF"
 meta:
   name: "aws/alb_is_not_integrated_with_waf"
   id: "0afa6ab8-a047-48cf-be07-93a2f8c34cf7"
+  display_name: "ALB Is Not Integrated With WAF"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Networking and Firewall"
 ---
 ## Metadata
 **Name:** `aws/alb_is_not_integrated_with_waf`
+**Query Name** `ALB Is Not Integrated With WAF`
 **Id:** `0afa6ab8-a047-48cf-be07-93a2f8c34cf7`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Networking and Firewall
 ## Description

@@ -3,14 +3,18 @@ title: "ECS Task Definition Network Mode Not Recommended"
 meta:
   name: "aws/ecs_task_definition_network_mode_not_recommended"
   id: "9f4a9409-9c60-4671-be96-9716dbf63db1"
+  display_name: "ECS Task Definition Network Mode Not Recommended"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Insecure Configurations"
 ---
 ## Metadata
 **Name:** `aws/ecs_task_definition_network_mode_not_recommended`
+**Query Name** `ECS Task Definition Network Mode Not Recommended`
 **Id:** `9f4a9409-9c60-4671-be96-9716dbf63db1`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Insecure Configurations
 ## Description

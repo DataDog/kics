@@ -3,14 +3,18 @@ title: "Small Flow Logs Retention Period"
 meta:
   name: "azure/small_flow_logs_retention_period"
   id: "7750fcca-dd03-4d38-b663-4b70289bcfd4"
+  display_name: "Small Flow Logs Retention Period"
   cloud_provider: "azure"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Insecure Configurations"
 ---
 ## Metadata
 **Name:** `azure/small_flow_logs_retention_period`
+**Query Name** `Small Flow Logs Retention Period`
 **Id:** `7750fcca-dd03-4d38-b663-4b70289bcfd4`
 **Cloud Provider:** azure
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Insecure Configurations
 ## Description

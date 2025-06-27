@@ -3,14 +3,18 @@ title: "CloudTrail Multi Region Disabled"
 meta:
   name: "aws/cloudtrail_multi_region_disabled"
   id: "8173d5eb-96b5-4aa6-a71b-ecfa153c123d"
+  display_name: "CloudTrail Multi Region Disabled"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "LOW"
   category: "Observability"
 ---
 ## Metadata
 **Name:** `aws/cloudtrail_multi_region_disabled`
+**Query Name** `CloudTrail Multi Region Disabled`
 **Id:** `8173d5eb-96b5-4aa6-a71b-ecfa153c123d`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Low
 **Category:** Observability
 ## Description

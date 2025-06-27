@@ -3,14 +3,18 @@ title: "Google compute firewall ingress allows unrestricted FTP access"
 meta:
   name: "gcp/firewall_ingress_allows_unrestricted_ftp_access"
   id: "d3f8e9c1-7a2b-4d5f-90e2-123456789abc"
+  display_name: "Google compute firewall ingress allows unrestricted FTP access"
   cloud_provider: "gcp"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Networking and Firewall"
 ---
 ## Metadata
 **Name:** `gcp/firewall_ingress_allows_unrestricted_ftp_access`
+**Query Name** `Google compute firewall ingress allows unrestricted FTP access`
 **Id:** `d3f8e9c1-7a2b-4d5f-90e2-123456789abc`
 **Cloud Provider:** gcp
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Networking and Firewall
 ## Description

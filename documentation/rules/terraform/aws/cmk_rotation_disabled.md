@@ -3,14 +3,18 @@ title: "CMK Rotation Disabled"
 meta:
   name: "aws/cmk_rotation_disabled"
   id: "22fbfeac-7b5a-421a-8a27-7a2178bb910b"
+  display_name: "CMK Rotation Disabled"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "LOW"
   category: "Observability"
 ---
 ## Metadata
 **Name:** `aws/cmk_rotation_disabled`
+**Query Name** `CMK Rotation Disabled`
 **Id:** `22fbfeac-7b5a-421a-8a27-7a2178bb910b`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Low
 **Category:** Observability
 ## Description

@@ -3,14 +3,18 @@ title: "Azure Front Door WAF Disabled"
 meta:
   name: "azure/azure_front_door_waf_disabled"
   id: "835a4f2f-df43-437d-9943-545ccfc55961"
+  display_name: "Azure Front Door WAF Disabled"
   cloud_provider: "azure"
+  platform: "Terraform"
   severity: "LOW"
   category: "Networking and Firewall"
 ---
 ## Metadata
 **Name:** `azure/azure_front_door_waf_disabled`
+**Query Name** `Azure Front Door WAF Disabled`
 **Id:** `835a4f2f-df43-437d-9943-545ccfc55961`
 **Cloud Provider:** azure
+**Platform** Terraform
 **Severity:** Low
 **Category:** Networking and Firewall
 ## Description

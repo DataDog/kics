@@ -3,14 +3,18 @@ title: "API Gateway Without Configured Authorizer"
 meta:
   name: "aws/api_gateway_without_configured_authorizer"
   id: "0a96ce49-4163-4ee6-8169-eb3b0797d694"
+  display_name: "API Gateway Without Configured Authorizer"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"
 ---
 ## Metadata
 **Name:** `aws/api_gateway_without_configured_authorizer`
+**Query Name** `API Gateway Without Configured Authorizer`
 **Id:** `0a96ce49-4163-4ee6-8169-eb3b0797d694`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Access Control
 ## Description

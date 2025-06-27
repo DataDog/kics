@@ -3,14 +3,18 @@ title: "SSO Permission With Inadequate User Session Duration"
 meta:
   name: "aws/sso_permission_with_inadequate_user_session_duration"
   id: "ce9dfce0-5fc8-433b-944a-3b16153111a8"
+  display_name: "SSO Permission With Inadequate User Session Duration"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "LOW"
   category: "Access Control"
 ---
 ## Metadata
 **Name:** `aws/sso_permission_with_inadequate_user_session_duration`
+**Query Name** `SSO Permission With Inadequate User Session Duration`
 **Id:** `ce9dfce0-5fc8-433b-944a-3b16153111a8`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Low
 **Category:** Access Control
 ## Description

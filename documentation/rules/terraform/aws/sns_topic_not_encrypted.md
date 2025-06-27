@@ -3,14 +3,18 @@ title: "SNS Topic Not Encrypted"
 meta:
   name: "aws/sns_topic_not_encrypted"
   id: "28545147-2fc6-42d5-a1f9-cf226658e591"
+  display_name: "SNS Topic Not Encrypted"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "HIGH"
   category: "Encryption"
 ---
 ## Metadata
 **Name:** `aws/sns_topic_not_encrypted`
+**Query Name** `SNS Topic Not Encrypted`
 **Id:** `28545147-2fc6-42d5-a1f9-cf226658e591`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** High
 **Category:** Encryption
 ## Description

@@ -3,14 +3,18 @@ title: "ECR Image Tag Not Immutable"
 meta:
   name: "aws/ecr_image_tag_not_immutable"
   id: "d1846b12-20c5-4d45-8798-fc35b79268eb"
+  display_name: "ECR Image Tag Not Immutable"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Insecure Configurations"
 ---
 ## Metadata
 **Name:** `aws/ecr_image_tag_not_immutable`
+**Query Name** `ECR Image Tag Not Immutable`
 **Id:** `d1846b12-20c5-4d45-8798-fc35b79268eb`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Insecure Configurations
 ## Description

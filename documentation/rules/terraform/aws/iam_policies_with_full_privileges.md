@@ -3,14 +3,18 @@ title: "IAM Policies With Full Privileges"
 meta:
   name: "aws/iam_policies_with_full_privileges"
   id: "2f37c4a3-58b9-4afe-8a87-d7f1d2286f84"
+  display_name: "IAM Policies With Full Privileges"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"
 ---
 ## Metadata
 **Name:** `aws/iam_policies_with_full_privileges`
+**Query Name** `IAM Policies With Full Privileges`
 **Id:** `2f37c4a3-58b9-4afe-8a87-d7f1d2286f84`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Access Control
 ## Description

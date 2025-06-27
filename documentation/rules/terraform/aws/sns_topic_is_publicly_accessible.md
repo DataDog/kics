@@ -3,14 +3,18 @@ title: "SNS Topic is Publicly Accessible"
 meta:
   name: "aws/sns_topic_is_publicly_accessible"
   id: "b26d2b7e-60f6-413d-a3a1-a57db24aa2b3"
+  display_name: "SNS Topic is Publicly Accessible"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "CRITICAL"
   category: "Access Control"
 ---
 ## Metadata
 **Name:** `aws/sns_topic_is_publicly_accessible`
+**Query Name** `SNS Topic is Publicly Accessible`
 **Id:** `b26d2b7e-60f6-413d-a3a1-a57db24aa2b3`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Critical
 **Category:** Access Control
 ## Description

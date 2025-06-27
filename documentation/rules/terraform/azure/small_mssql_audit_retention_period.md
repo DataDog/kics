@@ -3,14 +3,18 @@ title: "Small MSSQL Audit Retention Period"
 meta:
   name: "azure/small_mssql_audit_retention_period"
   id: "9c301481-e6ec-44f7-8a49-8ec63e2969ea"
+  display_name: "Small MSSQL Audit Retention Period"
   cloud_provider: "azure"
+  platform: "Terraform"
   severity: "LOW"
   category: "Observability"
 ---
 ## Metadata
 **Name:** `azure/small_mssql_audit_retention_period`
+**Query Name** `Small MSSQL Audit Retention Period`
 **Id:** `9c301481-e6ec-44f7-8a49-8ec63e2969ea`
 **Cloud Provider:** azure
+**Platform** Terraform
 **Severity:** Low
 **Category:** Observability
 ## Description

@@ -3,14 +3,18 @@ title: "Redis Disabled"
 meta:
   name: "aws/redis_disabled"
   id: "4bd15dd9-8d5e-4008-8532-27eb0c3706d3"
+  display_name: "Redis Disabled"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "LOW"
   category: "Insecure Configurations"
 ---
 ## Metadata
 **Name:** `aws/redis_disabled`
+**Query Name** `Redis Disabled`
 **Id:** `4bd15dd9-8d5e-4008-8532-27eb0c3706d3`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Low
 **Category:** Insecure Configurations
 ## Description

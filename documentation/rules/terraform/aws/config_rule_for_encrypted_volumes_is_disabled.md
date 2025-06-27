@@ -3,14 +3,18 @@ title: "Config Rule For Encrypted Volumes Disabled"
 meta:
   name: "aws/config_rule_for_encrypted_volumes_is_disabled"
   id: "abdb29d4-5ca1-4e91-800b-b3569bbd788c"
+  display_name: "Config Rule For Encrypted Volumes Disabled"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "HIGH"
   category: "Encryption"
 ---
 ## Metadata
 **Name:** `aws/config_rule_for_encrypted_volumes_is_disabled`
+**Query Name** `Config Rule For Encrypted Volumes Disabled`
 **Id:** `abdb29d4-5ca1-4e91-800b-b3569bbd788c`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** High
 **Category:** Encryption
 ## Description

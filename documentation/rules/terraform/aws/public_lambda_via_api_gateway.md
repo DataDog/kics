@@ -3,14 +3,18 @@ title: "Public Lambda via API Gateway"
 meta:
   name: "aws/public_lambda_via_api_gateway"
   id: "3ef8696c-e4ae-4872-92c7-520bb44dfe77"
+  display_name: "Public Lambda via API Gateway"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"
 ---
 ## Metadata
 **Name:** `aws/public_lambda_via_api_gateway`
+**Query Name** `Public Lambda via API Gateway`
 **Id:** `3ef8696c-e4ae-4872-92c7-520bb44dfe77`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Access Control
 ## Description

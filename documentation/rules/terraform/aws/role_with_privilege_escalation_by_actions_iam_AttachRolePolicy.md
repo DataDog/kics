@@ -3,14 +3,18 @@ title: "Role With Privilege Escalation By Actions 'iam:AttachRolePolicy'"
 meta:
   name: "aws/role_with_privilege_escalation_by_actions_iam_AttachRolePolicy"
   id: "f465fff1-0a0f-457d-aa4d-1bddb6f204ff"
+  display_name: "Role With Privilege Escalation By Actions 'iam:AttachRolePolicy'"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"
 ---
 ## Metadata
 **Name:** `aws/role_with_privilege_escalation_by_actions_iam_AttachRolePolicy`
+**Query Name** `Role With Privilege Escalation By Actions 'iam:AttachRolePolicy'`
 **Id:** `f465fff1-0a0f-457d-aa4d-1bddb6f204ff`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Access Control
 ## Description

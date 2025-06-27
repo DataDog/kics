@@ -3,14 +3,18 @@ title: "IAM Group Without Users"
 meta:
   name: "aws/iam_group_without_users"
   id: "fc101ca7-c9dd-4198-a1eb-0fbe92e80044"
+  display_name: "IAM Group Without Users"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"
 ---
 ## Metadata
 **Name:** `aws/iam_group_without_users`
+**Query Name** `IAM Group Without Users`
 **Id:** `fc101ca7-c9dd-4198-a1eb-0fbe92e80044`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Access Control
 ## Description

@@ -3,14 +3,18 @@ title: "Cluster Labels Disabled"
 meta:
   name: "gcp/cluster_labels_disabled"
   id: "65c1bc7a-4835-4ac4-a2b6-13d310b0648d"
+  display_name: "Cluster Labels Disabled"
   cloud_provider: "gcp"
+  platform: "Terraform"
   severity: "LOW"
   category: "Insecure Configurations"
 ---
 ## Metadata
 **Name:** `gcp/cluster_labels_disabled`
+**Query Name** `Cluster Labels Disabled`
 **Id:** `65c1bc7a-4835-4ac4-a2b6-13d310b0648d`
 **Cloud Provider:** gcp
+**Platform** Terraform
 **Severity:** Low
 **Category:** Insecure Configurations
 ## Description

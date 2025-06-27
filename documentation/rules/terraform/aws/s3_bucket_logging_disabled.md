@@ -3,14 +3,18 @@ title: "S3 Bucket Logging Disabled"
 meta:
   name: "aws/s3_bucket_logging_disabled"
   id: "f861041c-8c9f-4156-acfc-5e6e524f5884"
+  display_name: "S3 Bucket Logging Disabled"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Observability"
 ---
 ## Metadata
 **Name:** `aws/s3_bucket_logging_disabled`
+**Query Name** `S3 Bucket Logging Disabled`
 **Id:** `f861041c-8c9f-4156-acfc-5e6e524f5884`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Observability
 ## Description

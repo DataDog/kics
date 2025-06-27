@@ -3,14 +3,18 @@ title: "IAM Access Key Is Exposed"
 meta:
   name: "aws/iam_access_key_is_exposed"
   id: "7081f85c-b94d-40fd-8b45-a4f1cac75e46"
+  display_name: "IAM Access Key Is Exposed"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"
 ---
 ## Metadata
 **Name:** `aws/iam_access_key_is_exposed`
+**Query Name** `IAM Access Key Is Exposed`
 **Id:** `7081f85c-b94d-40fd-8b45-a4f1cac75e46`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Access Control
 ## Description

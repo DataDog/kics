@@ -3,14 +3,18 @@ title: "SQL DB Instance Backup Disabled"
 meta:
   name: "gcp/sql_db_instance_backup_disabled"
   id: "cf3c7631-cd1e-42f3-8801-a561214a6e79"
+  display_name: "SQL DB Instance Backup Disabled"
   cloud_provider: "gcp"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Backup"
 ---
 ## Metadata
 **Name:** `gcp/sql_db_instance_backup_disabled`
+**Query Name** `SQL DB Instance Backup Disabled`
 **Id:** `cf3c7631-cd1e-42f3-8801-a561214a6e79`
 **Cloud Provider:** gcp
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Backup
 ## Description

@@ -3,14 +3,18 @@ title: "PostgreSQL Log Duration Not Set"
 meta:
   name: "azure/postgresql_log_duration_not_set"
   id: "16e0879a-c4ae-4ff8-a67d-a2eed5d67b8f"
+  display_name: "PostgreSQL Log Duration Not Set"
   cloud_provider: "azure"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Observability"
 ---
 ## Metadata
 **Name:** `azure/postgresql_log_duration_not_set`
+**Query Name** `PostgreSQL Log Duration Not Set`
 **Id:** `16e0879a-c4ae-4ff8-a67d-a2eed5d67b8f`
 **Cloud Provider:** azure
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Observability
 ## Description

@@ -42,8 +42,10 @@ def build_markdown(rule_path, metadata, cloud_provider, resource_type, max_examp
     rule_name = rule_path.name
     title = metadata.get("queryName", "Untitled Rule")
     rule_id = metadata.get("id", "unknown-id")
+    display_name = metadata.get("queryName", "no-name")
+    platform = metadata.get("platform", "unknown")
     severity = metadata.get("severity", "INFO").upper()
-    category = metadata.get("category", "Unknown")
+    category = metadata.get("category", "unknown")
     description = metadata.get("descriptionText", "No description provided.")
     description_url = metadata.get("descriptionUrl")
     compliant, non_compliant = get_code_snippets(rule_path / "test", resource_type, max_examples)
@@ -54,14 +56,18 @@ title: {json.dumps(title)}
 meta:
   name: "{meta_name}"
   id: "{rule_id}"
+  display_name: "{display_name}"
   cloud_provider: "{cloud_provider}"
+  platform: "{platform}"
   severity: "{severity}"
   category: "{category}"
 ---
 ## Metadata
 **Name:** `{meta_name}`
+**Query Name** `{display_name}`
 **Id:** `{rule_id}`
 **Cloud Provider:** {cloud_provider}
+**Platform** {platform}
 **Severity:** {severity.capitalize()}
 **Category:** {category}
 ## Description

@@ -3,14 +3,18 @@ title: "Dataproc Clusters Has Public IPs"
 meta:
   name: "gcp/dataproc_cluster_has_public_ip"
   id: "d2c4b6a8-1234-4f56-9abc-def012345678"
+  display_name: "Dataproc Clusters Has Public IPs"
   cloud_provider: "gcp"
+  platform: "Terraform"
   severity: "HIGH"
   category: "Insecure Configurations"
 ---
 ## Metadata
 **Name:** `gcp/dataproc_cluster_has_public_ip`
+**Query Name** `Dataproc Clusters Has Public IPs`
 **Id:** `d2c4b6a8-1234-4f56-9abc-def012345678`
 **Cloud Provider:** gcp
+**Platform** Terraform
 **Severity:** High
 **Category:** Insecure Configurations
 ## Description

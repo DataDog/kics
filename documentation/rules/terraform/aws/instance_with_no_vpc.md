@@ -3,14 +3,18 @@ title: "Instance With No VPC"
 meta:
   name: "aws/instance_with_no_vpc"
   id: "a31a5a29-718a-4ff4-8001-a69e5e4d029e"
+  display_name: "Instance With No VPC"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "LOW"
   category: "Insecure Configurations"
 ---
 ## Metadata
 **Name:** `aws/instance_with_no_vpc`
+**Query Name** `Instance With No VPC`
 **Id:** `a31a5a29-718a-4ff4-8001-a69e5e4d029e`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Low
 **Category:** Insecure Configurations
 ## Description

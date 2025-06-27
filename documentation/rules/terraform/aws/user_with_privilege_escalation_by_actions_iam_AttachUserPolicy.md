@@ -3,14 +3,18 @@ title: "User With Privilege Escalation By Actions 'iam:AttachUserPolicy'"
 meta:
   name: "aws/user_with_privilege_escalation_by_actions_iam_AttachUserPolicy"
   id: "70cb518c-d990-46f6-bc05-44a5041493d6"
+  display_name: "User With Privilege Escalation By Actions 'iam:AttachUserPolicy'"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"
 ---
 ## Metadata
 **Name:** `aws/user_with_privilege_escalation_by_actions_iam_AttachUserPolicy`
+**Query Name** `User With Privilege Escalation By Actions 'iam:AttachUserPolicy'`
 **Id:** `70cb518c-d990-46f6-bc05-44a5041493d6`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Access Control
 ## Description

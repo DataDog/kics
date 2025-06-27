@@ -3,14 +3,18 @@ title: "CloudTrail Log Files S3 Bucket with Logging Disabled"
 meta:
   name: "aws/cloudtrail_log_files_s3_bucket_with_logging_disabled"
   id: "ee9e50e8-b2ed-4176-ad42-8fc0cf7593f4"
+  display_name: "CloudTrail Log Files S3 Bucket with Logging Disabled"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Observability"
 ---
 ## Metadata
 **Name:** `aws/cloudtrail_log_files_s3_bucket_with_logging_disabled`
+**Query Name** `CloudTrail Log Files S3 Bucket with Logging Disabled`
 **Id:** `ee9e50e8-b2ed-4176-ad42-8fc0cf7593f4`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Observability
 ## Description

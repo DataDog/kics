@@ -3,14 +3,18 @@ title: "No Password Policy Enabled"
 meta:
   name: "aws/no_password_policy_enabled"
   id: "b592ffd4-0577-44b6-bd35-8c5ee81b5918"
+  display_name: "No Password Policy Enabled"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Insecure Configurations"
 ---
 ## Metadata
 **Name:** `aws/no_password_policy_enabled`
+**Query Name** `No Password Policy Enabled`
 **Id:** `b592ffd4-0577-44b6-bd35-8c5ee81b5918`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Insecure Configurations
 ## Description

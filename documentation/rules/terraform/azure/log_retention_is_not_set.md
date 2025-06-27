@@ -3,14 +3,18 @@ title: "Log Retention Is Not Set"
 meta:
   name: "azure/log_retention_is_not_set"
   id: "ffb02aca-0d12-475e-b77c-a726f7aeff4b"
+  display_name: "Log Retention Is Not Set"
   cloud_provider: "azure"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Observability"
 ---
 ## Metadata
 **Name:** `azure/log_retention_is_not_set`
+**Query Name** `Log Retention Is Not Set`
 **Id:** `ffb02aca-0d12-475e-b77c-a726f7aeff4b`
 **Cloud Provider:** azure
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Observability
 ## Description

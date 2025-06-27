@@ -3,14 +3,18 @@ title: "EKS node group remote access disabled"
 meta:
   name: "aws/eks_node_group_remote_access_disabled"
   id: "ba40ace1-a047-483c-8a8d-bc2d3a67a82d"
+  display_name: "EKS node group remote access disabled"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Networking and Firewall"
 ---
 ## Metadata
 **Name:** `aws/eks_node_group_remote_access_disabled`
+**Query Name** `EKS node group remote access disabled`
 **Id:** `ba40ace1-a047-483c-8a8d-bc2d3a67a82d`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Networking and Firewall
 ## Description

@@ -3,14 +3,18 @@ title: "Neptune Cluster Snapshot Not Encrypted"
 meta:
   name: "aws/neptune_snapshots_not_encrypted"
   id: "g3l20gd0k-e5f6-7890-ab12-cd34ef567890"
+  display_name: "Neptune Cluster Snapshot Not Encrypted"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "HIGH"
   category: "Encryption"
 ---
 ## Metadata
 **Name:** `aws/neptune_snapshots_not_encrypted`
+**Query Name** `Neptune Cluster Snapshot Not Encrypted`
 **Id:** `g3l20gd0k-e5f6-7890-ab12-cd34ef567890`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** High
 **Category:** Encryption
 ## Description

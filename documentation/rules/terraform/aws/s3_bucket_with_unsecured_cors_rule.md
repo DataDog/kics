@@ -3,14 +3,18 @@ title: "S3 Bucket with Unsecured CORS Rule"
 meta:
   name: "aws/s3_bucket_with_unsecured_cors_rule"
   id: "98a8f708-121b-455b-ae2f-da3fb59d17e1"
+  display_name: "S3 Bucket with Unsecured CORS Rule"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Insecure Configurations"
 ---
 ## Metadata
 **Name:** `aws/s3_bucket_with_unsecured_cors_rule`
+**Query Name** `S3 Bucket with Unsecured CORS Rule`
 **Id:** `98a8f708-121b-455b-ae2f-da3fb59d17e1`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Insecure Configurations
 ## Description

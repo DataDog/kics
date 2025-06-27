@@ -3,14 +3,18 @@ title: "User With Privilege Escalation By Actions 'iam:UpdateLoginProfile'"
 meta:
   name: "aws/user_with_privilege_escalation_by_actions_iam_UpdateLoginProfile"
   id: "6deb34e2-5d9c-499a-801b-ea6d9eda894f"
+  display_name: "User With Privilege Escalation By Actions 'iam:UpdateLoginProfile'"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"
 ---
 ## Metadata
 **Name:** `aws/user_with_privilege_escalation_by_actions_iam_UpdateLoginProfile`
+**Query Name** `User With Privilege Escalation By Actions 'iam:UpdateLoginProfile'`
 **Id:** `6deb34e2-5d9c-499a-801b-ea6d9eda894f`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Access Control
 ## Description

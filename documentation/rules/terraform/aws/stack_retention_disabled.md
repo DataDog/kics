@@ -3,14 +3,18 @@ title: "Stack Retention Disabled"
 meta:
   name: "aws/stack_retention_disabled"
   id: "6e0e2f68-3fd9-4cd8-a5e4-e2213ef0df97"
+  display_name: "Stack Retention Disabled"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Backup"
 ---
 ## Metadata
 **Name:** `aws/stack_retention_disabled`
+**Query Name** `Stack Retention Disabled`
 **Id:** `6e0e2f68-3fd9-4cd8-a5e4-e2213ef0df97`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Backup
 ## Description

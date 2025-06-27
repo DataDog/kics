@@ -3,14 +3,18 @@ title: "OSLogin Is Disabled For VM Instance"
 meta:
   name: "gcp/os_login_is_disabled_for_vm_instance"
   id: "d0b4d550-c001-46c3-bbdb-d5d75d33f05f"
+  display_name: "OSLogin Is Disabled For VM Instance"
   cloud_provider: "gcp"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Insecure Configurations"
 ---
 ## Metadata
 **Name:** `gcp/os_login_is_disabled_for_vm_instance`
+**Query Name** `OSLogin Is Disabled For VM Instance`
 **Id:** `d0b4d550-c001-46c3-bbdb-d5d75d33f05f`
 **Cloud Provider:** gcp
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Insecure Configurations
 ## Description

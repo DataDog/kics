@@ -3,14 +3,18 @@ title: "API Gateway Deployment Without Access Log Setting"
 meta:
   name: "aws/api_gateway_deployment_without_access_log_setting"
   id: "625abc0e-f980-4ac9-a775-f7519ee34296"
+  display_name: "API Gateway Deployment Without Access Log Setting"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Observability"
 ---
 ## Metadata
 **Name:** `aws/api_gateway_deployment_without_access_log_setting`
+**Query Name** `API Gateway Deployment Without Access Log Setting`
 **Id:** `625abc0e-f980-4ac9-a775-f7519ee34296`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Observability
 ## Description

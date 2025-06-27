@@ -3,14 +3,18 @@ title: "Ensure that cloud resource has a 'team' tag"
 meta:
   name: "azure/team_tag_not_present"
   id: "e8f4d3c2-b1a0-4e5f-8d7c-9a0b1c2d3e4f"
+  display_name: "Ensure that cloud resource has a 'team' tag"
   cloud_provider: "azure"
+  platform: "Terraform"
   severity: "INFO"
   category: "Best Practices"
 ---
 ## Metadata
 **Name:** `azure/team_tag_not_present`
+**Query Name** `Ensure that cloud resource has a 'team' tag`
 **Id:** `e8f4d3c2-b1a0-4e5f-8d7c-9a0b1c2d3e4f`
 **Cloud Provider:** azure
+**Platform** Terraform
 **Severity:** Info
 **Category:** Best Practices
 ## Description

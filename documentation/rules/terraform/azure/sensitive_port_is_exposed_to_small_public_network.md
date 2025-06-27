@@ -3,14 +3,18 @@ title: "Sensitive Port Is Exposed To Small Public Network"
 meta:
   name: "azure/sensitive_port_is_exposed_to_small_public_network"
   id: "e9dee01f-2505-4df2-b9bf-7804d1fd9082"
+  display_name: "Sensitive Port Is Exposed To Small Public Network"
   cloud_provider: "azure"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Networking and Firewall"
 ---
 ## Metadata
 **Name:** `azure/sensitive_port_is_exposed_to_small_public_network`
+**Query Name** `Sensitive Port Is Exposed To Small Public Network`
 **Id:** `e9dee01f-2505-4df2-b9bf-7804d1fd9082`
 **Cloud Provider:** azure
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Networking and Firewall
 ## Description

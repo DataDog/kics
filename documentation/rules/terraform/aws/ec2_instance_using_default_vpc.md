@@ -3,14 +3,18 @@ title: "EC2 Instance Using Default VPC"
 meta:
   name: "aws/ec2_instance_using_default_vpc"
   id: "7e4a6e76-568d-43ef-8c4e-36dea481bff1"
+  display_name: "EC2 Instance Using Default VPC"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "LOW"
   category: "Networking and Firewall"
 ---
 ## Metadata
 **Name:** `aws/ec2_instance_using_default_vpc`
+**Query Name** `EC2 Instance Using Default VPC`
 **Id:** `7e4a6e76-568d-43ef-8c4e-36dea481bff1`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Low
 **Category:** Networking and Firewall
 ## Description

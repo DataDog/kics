@@ -3,14 +3,18 @@ title: "Vulnerable Default SSL Certificate"
 meta:
   name: "aws/vulnerable_default_ssl_certificate"
   id: "3a1e94df-6847-4c0e-a3b6-6c6af4e128ef"
+  display_name: "Vulnerable Default SSL Certificate"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Insecure Defaults"
 ---
 ## Metadata
 **Name:** `aws/vulnerable_default_ssl_certificate`
+**Query Name** `Vulnerable Default SSL Certificate`
 **Id:** `3a1e94df-6847-4c0e-a3b6-6c6af4e128ef`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Insecure Defaults
 ## Description

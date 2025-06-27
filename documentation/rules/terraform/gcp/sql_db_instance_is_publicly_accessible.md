@@ -3,14 +3,18 @@ title: "SQL DB Instance Publicly Accessible"
 meta:
   name: "gcp/sql_db_instance_is_publicly_accessible"
   id: "b187edca-b81e-4fdc-aff4-aab57db45edb"
+  display_name: "SQL DB Instance Publicly Accessible"
   cloud_provider: "gcp"
+  platform: "Terraform"
   severity: "CRITICAL"
   category: "Insecure Configurations"
 ---
 ## Metadata
 **Name:** `gcp/sql_db_instance_is_publicly_accessible`
+**Query Name** `SQL DB Instance Publicly Accessible`
 **Id:** `b187edca-b81e-4fdc-aff4-aab57db45edb`
 **Cloud Provider:** gcp
+**Platform** Terraform
 **Severity:** Critical
 **Category:** Insecure Configurations
 ## Description

@@ -3,14 +3,18 @@ title: "App Service HTTP2 Disabled"
 meta:
   name: "azure/app_service_http2_disabled"
   id: "525b53be-62ed-4244-b4df-41aecfcb4071"
+  display_name: "App Service HTTP2 Disabled"
   cloud_provider: "azure"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Insecure Configurations"
 ---
 ## Metadata
 **Name:** `azure/app_service_http2_disabled`
+**Query Name** `App Service HTTP2 Disabled`
 **Id:** `525b53be-62ed-4244-b4df-41aecfcb4071`
 **Cloud Provider:** azure
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Insecure Configurations
 ## Description

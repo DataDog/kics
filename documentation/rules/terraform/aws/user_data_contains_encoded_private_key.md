@@ -3,14 +3,18 @@ title: "User Data Contains Encoded Private Key"
 meta:
   name: "aws/user_data_contains_encoded_private_key"
   id: "443488f5-c734-460b-a36d-5b3f330174dc"
+  display_name: "User Data Contains Encoded Private Key"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "HIGH"
   category: "Encryption"
 ---
 ## Metadata
 **Name:** `aws/user_data_contains_encoded_private_key`
+**Query Name** `User Data Contains Encoded Private Key`
 **Id:** `443488f5-c734-460b-a36d-5b3f330174dc`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** High
 **Category:** Encryption
 ## Description

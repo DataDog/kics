@@ -3,14 +3,18 @@ title: "S3 Static Website Host Enabled"
 meta:
   name: "aws/s3_static_website_host_enabled"
   id: "42bb6b7f-6d54-4428-b707-666f669d94fb"
+  display_name: "S3 Static Website Host Enabled"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "HIGH"
   category: "Insecure Configurations"
 ---
 ## Metadata
 **Name:** `aws/s3_static_website_host_enabled`
+**Query Name** `S3 Static Website Host Enabled`
 **Id:** `42bb6b7f-6d54-4428-b707-666f669d94fb`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** High
 **Category:** Insecure Configurations
 ## Description

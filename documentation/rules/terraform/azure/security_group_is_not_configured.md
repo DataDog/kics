@@ -3,14 +3,18 @@ title: "Security Group is Not Configured"
 meta:
   name: "azure/security_group_is_not_configured"
   id: "5c822443-e1ea-46b8-84eb-758ec602e844"
+  display_name: "Security Group is Not Configured"
   cloud_provider: "azure"
+  platform: "Terraform"
   severity: "HIGH"
   category: "Insecure Configurations"
 ---
 ## Metadata
 **Name:** `azure/security_group_is_not_configured`
+**Query Name** `Security Group is Not Configured`
 **Id:** `5c822443-e1ea-46b8-84eb-758ec602e844`
 **Cloud Provider:** azure
+**Platform** Terraform
 **Severity:** High
 **Category:** Insecure Configurations
 ## Description

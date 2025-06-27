@@ -3,14 +3,18 @@ title: "IP Forwarding Enabled"
 meta:
   name: "gcp/ip_forwarding_enabled"
   id: "f34c0c25-47b4-41eb-9c79-249b4dd47b89"
+  display_name: "IP Forwarding Enabled"
   cloud_provider: "gcp"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Networking and Firewall"
 ---
 ## Metadata
 **Name:** `gcp/ip_forwarding_enabled`
+**Query Name** `IP Forwarding Enabled`
 **Id:** `f34c0c25-47b4-41eb-9c79-249b4dd47b89`
 **Cloud Provider:** gcp
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Networking and Firewall
 ## Description

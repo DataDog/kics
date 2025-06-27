@@ -3,14 +3,18 @@ title: "Workspaces Workspace Volume Not Encrypted"
 meta:
   name: "aws/workspaces_workspace_volume_not_encrypted"
   id: "b9033580-6886-401a-8631-5f19f5bb24c7"
+  display_name: "Workspaces Workspace Volume Not Encrypted"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "HIGH"
   category: "Encryption"
 ---
 ## Metadata
 **Name:** `aws/workspaces_workspace_volume_not_encrypted`
+**Query Name** `Workspaces Workspace Volume Not Encrypted`
 **Id:** `b9033580-6886-401a-8631-5f19f5bb24c7`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** High
 **Category:** Encryption
 ## Description

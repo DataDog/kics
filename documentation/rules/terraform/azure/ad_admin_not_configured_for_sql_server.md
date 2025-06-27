@@ -3,14 +3,18 @@ title: "AD Admin Not Configured For SQL Server"
 meta:
   name: "azure/ad_admin_not_configured_for_sql_server"
   id: "a3a055d2-9a2e-4cc9-b9fb-12850a1a3a4b"
+  display_name: "AD Admin Not Configured For SQL Server"
   cloud_provider: "azure"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Insecure Configurations"
 ---
 ## Metadata
 **Name:** `azure/ad_admin_not_configured_for_sql_server`
+**Query Name** `AD Admin Not Configured For SQL Server`
 **Id:** `a3a055d2-9a2e-4cc9-b9fb-12850a1a3a4b`
 **Cloud Provider:** azure
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Insecure Configurations
 ## Description

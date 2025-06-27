@@ -3,14 +3,18 @@ title: "API Gateway With CloudWatch Logging Disabled"
 meta:
   name: "aws/api_gateway_with_cloudwatch_logging_disabled"
   id: "982aa526-6970-4c59-8b9b-2ce7e019fe36"
+  display_name: "API Gateway With CloudWatch Logging Disabled"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Observability"
 ---
 ## Metadata
 **Name:** `aws/api_gateway_with_cloudwatch_logging_disabled`
+**Query Name** `API Gateway With CloudWatch Logging Disabled`
 **Id:** `982aa526-6970-4c59-8b9b-2ce7e019fe36`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Observability
 ## Description

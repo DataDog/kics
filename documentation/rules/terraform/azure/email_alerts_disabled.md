@@ -3,14 +3,18 @@ title: "Email Alerts Disabled"
 meta:
   name: "azure/email_alerts_disabled"
   id: "9db38e87-f6aa-4b5e-a1ec-7266df259409"
+  display_name: "Email Alerts Disabled"
   cloud_provider: "azure"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Observability"
 ---
 ## Metadata
 **Name:** `azure/email_alerts_disabled`
+**Query Name** `Email Alerts Disabled`
 **Id:** `9db38e87-f6aa-4b5e-a1ec-7266df259409`
 **Cloud Provider:** azure
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Observability
 ## Description

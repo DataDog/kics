@@ -3,14 +3,18 @@ title: "Neptune Logging Is Disabled"
 meta:
   name: "aws/neptune_logging_disabled"
   id: "45cff7b6-3b80-40c1-ba7b-2cf480678bb8"
+  display_name: "Neptune Logging Is Disabled"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Observability"
 ---
 ## Metadata
 **Name:** `aws/neptune_logging_disabled`
+**Query Name** `Neptune Logging Is Disabled`
 **Id:** `45cff7b6-3b80-40c1-ba7b-2cf480678bb8`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Observability
 ## Description

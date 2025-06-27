@@ -3,14 +3,18 @@ title: "Secrets Manager With Vulnerable Policy"
 meta:
   name: "aws/secrets_manager_with_vulnerable_policy"
   id: "fa00ce45-386d-4718-8392-fb485e1f3c5b"
+  display_name: "Secrets Manager With Vulnerable Policy"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "HIGH"
   category: "Access Control"
 ---
 ## Metadata
 **Name:** `aws/secrets_manager_with_vulnerable_policy`
+**Query Name** `Secrets Manager With Vulnerable Policy`
 **Id:** `fa00ce45-386d-4718-8392-fb485e1f3c5b`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** High
 **Category:** Access Control
 ## Description

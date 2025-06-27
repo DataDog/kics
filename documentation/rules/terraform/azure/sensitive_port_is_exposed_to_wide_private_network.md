@@ -3,14 +3,18 @@ title: "Sensitive Port Is Exposed To Wide Private Network"
 meta:
   name: "azure/sensitive_port_is_exposed_to_wide_private_network"
   id: "c6c7b33d-d7f6-4ab8-8c82-ca0431ecdb7e"
+  display_name: "Sensitive Port Is Exposed To Wide Private Network"
   cloud_provider: "azure"
+  platform: "Terraform"
   severity: "LOW"
   category: "Networking and Firewall"
 ---
 ## Metadata
 **Name:** `azure/sensitive_port_is_exposed_to_wide_private_network`
+**Query Name** `Sensitive Port Is Exposed To Wide Private Network`
 **Id:** `c6c7b33d-d7f6-4ab8-8c82-ca0431ecdb7e`
 **Cloud Provider:** azure
+**Platform** Terraform
 **Severity:** Low
 **Category:** Networking and Firewall
 ## Description

@@ -3,14 +3,18 @@ title: "RDP Access Is Not Restricted"
 meta:
   name: "gcp/rdp_access_is_not_restricted"
   id: "678fd659-96f2-454a-a2a0-c2571f83a4a3"
+  display_name: "RDP Access Is Not Restricted"
   cloud_provider: "gcp"
+  platform: "Terraform"
   severity: "HIGH"
   category: "Networking and Firewall"
 ---
 ## Metadata
 **Name:** `gcp/rdp_access_is_not_restricted`
+**Query Name** `RDP Access Is Not Restricted`
 **Id:** `678fd659-96f2-454a-a2a0-c2571f83a4a3`
 **Cloud Provider:** gcp
+**Platform** Terraform
 **Severity:** High
 **Category:** Networking and Firewall
 ## Description

@@ -3,14 +3,18 @@ title: "Cognito UserPool Without MFA"
 meta:
   name: "aws/cognito_userpool_without_mfa"
   id: "ec28bf61-a474-4dbe-b414-6dd3a067d6f0"
+  display_name: "Cognito UserPool Without MFA"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "LOW"
   category: "Best Practices"
 ---
 ## Metadata
 **Name:** `aws/cognito_userpool_without_mfa`
+**Query Name** `Cognito UserPool Without MFA`
 **Id:** `ec28bf61-a474-4dbe-b414-6dd3a067d6f0`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Low
 **Category:** Best Practices
 ## Description

@@ -3,14 +3,18 @@ title: "Outdated GKE Version"
 meta:
   name: "gcp/outdated_gke_version"
   id: "128df7ec-f185-48bc-8913-ce756a3ccb85"
+  display_name: "Outdated GKE Version"
   cloud_provider: "gcp"
+  platform: "Terraform"
   severity: "LOW"
   category: "Best Practices"
 ---
 ## Metadata
 **Name:** `gcp/outdated_gke_version`
+**Query Name** `Outdated GKE Version`
 **Id:** `128df7ec-f185-48bc-8913-ce756a3ccb85`
 **Cloud Provider:** gcp
+**Platform** Terraform
 **Severity:** Low
 **Category:** Best Practices
 ## Description

@@ -3,14 +3,18 @@ title: "API Gateway Without SSL Certificate"
 meta:
   name: "aws/api_gateway_without_ssl_certificate"
   id: "0b4869fc-a842-4597-aa00-1294df425440"
+  display_name: "API Gateway Without SSL Certificate"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Insecure Configurations"
 ---
 ## Metadata
 **Name:** `aws/api_gateway_without_ssl_certificate`
+**Query Name** `API Gateway Without SSL Certificate`
 **Id:** `0b4869fc-a842-4597-aa00-1294df425440`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Insecure Configurations
 ## Description

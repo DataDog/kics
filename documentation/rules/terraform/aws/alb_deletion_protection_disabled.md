@@ -3,14 +3,18 @@ title: "ALB Deletion Protection Disabled"
 meta:
   name: "aws/alb_deletion_protection_disabled"
   id: "afecd1f1-6378-4f7e-bb3b-60c35801fdd4"
+  display_name: "ALB Deletion Protection Disabled"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Insecure Configurations"
 ---
 ## Metadata
 **Name:** `aws/alb_deletion_protection_disabled`
+**Query Name** `ALB Deletion Protection Disabled`
 **Id:** `afecd1f1-6378-4f7e-bb3b-60c35801fdd4`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Insecure Configurations
 ## Description

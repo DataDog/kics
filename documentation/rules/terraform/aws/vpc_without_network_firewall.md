@@ -3,14 +3,18 @@ title: "VPC Without Network Firewall"
 meta:
   name: "aws/vpc_without_network_firewall"
   id: "fd632aaf-b8a1-424d-a4d1-0de22fd3247a"
+  display_name: "VPC Without Network Firewall"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Networking and Firewall"
 ---
 ## Metadata
 **Name:** `aws/vpc_without_network_firewall`
+**Query Name** `VPC Without Network Firewall`
 **Id:** `fd632aaf-b8a1-424d-a4d1-0de22fd3247a`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Networking and Firewall
 ## Description

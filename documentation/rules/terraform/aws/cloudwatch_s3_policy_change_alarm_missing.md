@@ -3,14 +3,18 @@ title: "CloudWatch S3 policy Change Alarm Missing"
 meta:
   name: "aws/cloudwatch_s3_policy_change_alarm_missing"
   id: "27c6a499-895a-4dc7-9617-5c485218db13"
+  display_name: "CloudWatch S3 policy Change Alarm Missing"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Observability"
 ---
 ## Metadata
 **Name:** `aws/cloudwatch_s3_policy_change_alarm_missing`
+**Query Name** `CloudWatch S3 policy Change Alarm Missing`
 **Id:** `27c6a499-895a-4dc7-9617-5c485218db13`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Observability
 ## Description

@@ -3,14 +3,18 @@ title: "API Gateway Stage Without API Gateway UsagePlan Associated"
 meta:
   name: "aws/api_gateway_stage_without_api_gateway_usage_plan_associated"
   id: "c999cf62-0920-40f8-8dda-0caccd66ed7e"
+  display_name: "API Gateway Stage Without API Gateway UsagePlan Associated"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "LOW"
   category: "Resource Management"
 ---
 ## Metadata
 **Name:** `aws/api_gateway_stage_without_api_gateway_usage_plan_associated`
+**Query Name** `API Gateway Stage Without API Gateway UsagePlan Associated`
 **Id:** `c999cf62-0920-40f8-8dda-0caccd66ed7e`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Low
 **Category:** Resource Management
 ## Description

@@ -3,14 +3,18 @@ title: "ELB Using Insecure Protocols"
 meta:
   name: "aws/elb_using_insecure_protocols"
   id: "126c1788-23c2-4a10-906c-ef179f4f96ec"
+  display_name: "ELB Using Insecure Protocols"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Encryption"
 ---
 ## Metadata
 **Name:** `aws/elb_using_insecure_protocols`
+**Query Name** `ELB Using Insecure Protocols`
 **Id:** `126c1788-23c2-4a10-906c-ef179f4f96ec`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Encryption
 ## Description

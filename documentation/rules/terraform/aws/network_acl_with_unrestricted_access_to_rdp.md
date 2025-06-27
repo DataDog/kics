@@ -3,14 +3,18 @@ title: "Network ACL With Unrestricted Access To RDP"
 meta:
   name: "aws/network_acl_with_unrestricted_access_to_rdp"
   id: "a20be318-cac7-457b-911d-04cc6e812c25"
+  display_name: "Network ACL With Unrestricted Access To RDP"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "HIGH"
   category: "Networking and Firewall"
 ---
 ## Metadata
 **Name:** `aws/network_acl_with_unrestricted_access_to_rdp`
+**Query Name** `Network ACL With Unrestricted Access To RDP`
 **Id:** `a20be318-cac7-457b-911d-04cc6e812c25`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** High
 **Category:** Networking and Firewall
 ## Description

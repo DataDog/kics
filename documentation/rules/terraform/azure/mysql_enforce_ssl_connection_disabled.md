@@ -3,14 +3,18 @@ title: "'ssl_enforcement_enabled' is not set to 'ENABLED' for MySQL Database Ser
 meta:
   name: "azure/mysql_enforce_ssl_connection_disabled"
   id: "c3f2e1d0-b9a8-7c6d-5e4f-3210fedcba98"
+  display_name: "'ssl_enforcement_enabled' is not set to 'ENABLED' for MySQL Database Server"
   cloud_provider: "azure"
+  platform: "Terraform"
   severity: "HIGH"
   category: "Networking and Firewall"
 ---
 ## Metadata
 **Name:** `azure/mysql_enforce_ssl_connection_disabled`
+**Query Name** `'ssl_enforcement_enabled' is not set to 'ENABLED' for MySQL Database Server`
 **Id:** `c3f2e1d0-b9a8-7c6d-5e4f-3210fedcba98`
 **Cloud Provider:** azure
+**Platform** Terraform
 **Severity:** High
 **Category:** Networking and Firewall
 ## Description

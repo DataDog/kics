@@ -3,14 +3,18 @@ title: "Function App Not Using Latest TLS Encryption Version"
 meta:
   name: "azure/function_app_not_using_latest_tls_encryption_version"
   id: "45fc717a-bd86-415c-bdd8-677901be1aa6"
+  display_name: "Function App Not Using Latest TLS Encryption Version"
   cloud_provider: "azure"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Encryption"
 ---
 ## Metadata
 **Name:** `azure/function_app_not_using_latest_tls_encryption_version`
+**Query Name** `Function App Not Using Latest TLS Encryption Version`
 **Id:** `45fc717a-bd86-415c-bdd8-677901be1aa6`
 **Cloud Provider:** azure
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Encryption
 ## Description

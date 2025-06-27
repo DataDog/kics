@@ -3,14 +3,18 @@ title: "DynamoDB Table Not Encrypted"
 meta:
   name: "aws/dynamodb_table_not_encrypted"
   id: "ce089fd4-1406-47bd-8aad-c259772bb294"
+  display_name: "DynamoDB Table Not Encrypted"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "HIGH"
   category: "Encryption"
 ---
 ## Metadata
 **Name:** `aws/dynamodb_table_not_encrypted`
+**Query Name** `DynamoDB Table Not Encrypted`
 **Id:** `ce089fd4-1406-47bd-8aad-c259772bb294`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** High
 **Category:** Encryption
 ## Description

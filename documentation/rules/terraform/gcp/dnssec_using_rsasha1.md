@@ -3,14 +3,18 @@ title: "DNSSEC Using RSASHA1"
 meta:
   name: "gcp/dnssec_using_rsasha1"
   id: "ccc3100c-0fdd-4a5e-9908-c10107291860"
+  display_name: "DNSSEC Using RSASHA1"
   cloud_provider: "gcp"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Encryption"
 ---
 ## Metadata
 **Name:** `gcp/dnssec_using_rsasha1`
+**Query Name** `DNSSEC Using RSASHA1`
 **Id:** `ccc3100c-0fdd-4a5e-9908-c10107291860`
 **Cloud Provider:** gcp
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Encryption
 ## Description

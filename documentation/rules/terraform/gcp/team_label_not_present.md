@@ -3,14 +3,18 @@ title: "team label missing"
 meta:
   name: "gcp/team_label_not_present"
   id: "b2b3c4d5-e6f7-8901-gh23-ijkl456m7890"
+  display_name: "team label missing"
   cloud_provider: "gcp"
+  platform: "Terraform"
   severity: "INFO"
   category: "Best Practices"
 ---
 ## Metadata
 **Name:** `gcp/team_label_not_present`
+**Query Name** `team label missing`
 **Id:** `b2b3c4d5-e6f7-8901-gh23-ijkl456m7890`
 **Cloud Provider:** gcp
+**Platform** Terraform
 **Severity:** Info
 **Category:** Best Practices
 ## Description

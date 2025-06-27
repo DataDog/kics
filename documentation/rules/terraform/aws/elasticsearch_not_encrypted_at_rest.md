@@ -3,14 +3,18 @@ title: "ElasticSearch Not Encrypted At Rest"
 meta:
   name: "aws/elasticsearch_not_encrypted_at_rest"
   id: "24e16922-4330-4e9d-be8a-caa90299466a"
+  display_name: "ElasticSearch Not Encrypted At Rest"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "HIGH"
   category: "Encryption"
 ---
 ## Metadata
 **Name:** `aws/elasticsearch_not_encrypted_at_rest`
+**Query Name** `ElasticSearch Not Encrypted At Rest`
 **Id:** `24e16922-4330-4e9d-be8a-caa90299466a`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** High
 **Category:** Encryption
 ## Description

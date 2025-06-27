@@ -3,14 +3,18 @@ title: "SQL Analysis Services Port 2383 (TCP) Is Publicly Accessible"
 meta:
   name: "aws/sql_analysis_services_port_2383_is_publicly_accessible"
   id: "54c417bf-c762-48b9-9d31-b3d87047e3f0"
+  display_name: "SQL Analysis Services Port 2383 (TCP) Is Publicly Accessible"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Networking and Firewall"
 ---
 ## Metadata
 **Name:** `aws/sql_analysis_services_port_2383_is_publicly_accessible`
+**Query Name** `SQL Analysis Services Port 2383 (TCP) Is Publicly Accessible`
 **Id:** `54c417bf-c762-48b9-9d31-b3d87047e3f0`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Networking and Firewall
 ## Description

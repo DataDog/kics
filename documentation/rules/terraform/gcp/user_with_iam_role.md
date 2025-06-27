@@ -3,14 +3,18 @@ title: "User with IAM Role"
 meta:
   name: "gcp/user_with_iam_role"
   id: "704fcc44-a58f-4af5-82e2-93f2a58ef918"
+  display_name: "User with IAM Role"
   cloud_provider: "gcp"
+  platform: "Terraform"
   severity: "LOW"
   category: "Access Control"
 ---
 ## Metadata
 **Name:** `gcp/user_with_iam_role`
+**Query Name** `User with IAM Role`
 **Id:** `704fcc44-a58f-4af5-82e2-93f2a58ef918`
 **Cloud Provider:** gcp
+**Platform** Terraform
 **Severity:** Low
 **Category:** Access Control
 ## Description

@@ -3,14 +3,18 @@ title: "RDS With Backup Disabled"
 meta:
   name: "aws/rds_with_backup_disabled"
   id: "1dc73fb4-5b51-430c-8c5f-25dcf9090b02"
+  display_name: "RDS With Backup Disabled"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Backup"
 ---
 ## Metadata
 **Name:** `aws/rds_with_backup_disabled`
+**Query Name** `RDS With Backup Disabled`
 **Id:** `1dc73fb4-5b51-430c-8c5f-25dcf9090b02`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Backup
 ## Description

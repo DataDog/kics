@@ -3,14 +3,18 @@ title: "SQLServer Ingress From Any IP"
 meta:
   name: "azure/sql_server_ingress_from_any_ip"
   id: "25c0ea09-f1c5-4380-b055-3b83863f2bb8"
+  display_name: "SQLServer Ingress From Any IP"
   cloud_provider: "azure"
+  platform: "Terraform"
   severity: "CRITICAL"
   category: "Networking and Firewall"
 ---
 ## Metadata
 **Name:** `azure/sql_server_ingress_from_any_ip`
+**Query Name** `SQLServer Ingress From Any IP`
 **Id:** `25c0ea09-f1c5-4380-b055-3b83863f2bb8`
 **Cloud Provider:** azure
+**Platform** Terraform
 **Severity:** Critical
 **Category:** Networking and Firewall
 ## Description

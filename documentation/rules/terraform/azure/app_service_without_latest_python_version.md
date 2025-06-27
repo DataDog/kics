@@ -3,14 +3,18 @@ title: "App Service Without Latest Python Version"
 meta:
   name: "azure/app_service_without_latest_python_version"
   id: "cc4aaa9d-1070-461a-b519-04e00f42db8a"
+  display_name: "App Service Without Latest Python Version"
   cloud_provider: "azure"
+  platform: "Terraform"
   severity: "LOW"
   category: "Best Practices"
 ---
 ## Metadata
 **Name:** `azure/app_service_without_latest_python_version`
+**Query Name** `App Service Without Latest Python Version`
 **Id:** `cc4aaa9d-1070-461a-b519-04e00f42db8a`
 **Cloud Provider:** azure
+**Platform** Terraform
 **Severity:** Low
 **Category:** Best Practices
 ## Description

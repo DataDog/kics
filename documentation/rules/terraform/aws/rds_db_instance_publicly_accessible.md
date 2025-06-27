@@ -3,14 +3,18 @@ title: "RDS DB Instance Publicly Accessible"
 meta:
   name: "aws/rds_db_instance_publicly_accessible"
   id: "35113e6f-2c6b-414d-beec-7a9482d3b2d1"
+  display_name: "RDS DB Instance Publicly Accessible"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "CRITICAL"
   category: "Insecure Configurations"
 ---
 ## Metadata
 **Name:** `aws/rds_db_instance_publicly_accessible`
+**Query Name** `RDS DB Instance Publicly Accessible`
 **Id:** `35113e6f-2c6b-414d-beec-7a9482d3b2d1`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Critical
 **Category:** Insecure Configurations
 ## Description

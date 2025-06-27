@@ -3,14 +3,18 @@ title: "Cloud Storage Anonymous or Publicly Accessible"
 meta:
   name: "gcp/cloud_storage_anonymous_or_publicly_accessible"
   id: "a6cd52a1-3056-4910-96a5-894de9f3f3b3"
+  display_name: "Cloud Storage Anonymous or Publicly Accessible"
   cloud_provider: "gcp"
+  platform: "Terraform"
   severity: "CRITICAL"
   category: "Access Control"
 ---
 ## Metadata
 **Name:** `gcp/cloud_storage_anonymous_or_publicly_accessible`
+**Query Name** `Cloud Storage Anonymous or Publicly Accessible`
 **Id:** `a6cd52a1-3056-4910-96a5-894de9f3f3b3`
 **Cloud Provider:** gcp
+**Platform** Terraform
 **Severity:** Critical
 **Category:** Access Control
 ## Description

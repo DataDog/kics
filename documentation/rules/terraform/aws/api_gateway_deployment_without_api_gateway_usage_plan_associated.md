@@ -3,14 +3,18 @@ title: "API Gateway Deployment Without API Gateway UsagePlan Associated"
 meta:
   name: "aws/api_gateway_deployment_without_api_gateway_usage_plan_associated"
   id: "b3a59b8e-94a3-403e-b6e2-527abaf12034"
+  display_name: "API Gateway Deployment Without API Gateway UsagePlan Associated"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "LOW"
   category: "Observability"
 ---
 ## Metadata
 **Name:** `aws/api_gateway_deployment_without_api_gateway_usage_plan_associated`
+**Query Name** `API Gateway Deployment Without API Gateway UsagePlan Associated`
 **Id:** `b3a59b8e-94a3-403e-b6e2-527abaf12034`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Low
 **Category:** Observability
 ## Description

@@ -3,14 +3,18 @@ title: "PostgreSQL Server Threat Detection Policy Disabled"
 meta:
   name: "azure/postgresql_server_threat_detection_policy_disabled"
   id: "c407c3cf-c409-4b29-b590-db5f4138d332"
+  display_name: "PostgreSQL Server Threat Detection Policy Disabled"
   cloud_provider: "azure"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Resource Management"
 ---
 ## Metadata
 **Name:** `azure/postgresql_server_threat_detection_policy_disabled`
+**Query Name** `PostgreSQL Server Threat Detection Policy Disabled`
 **Id:** `c407c3cf-c409-4b29-b590-db5f4138d332`
 **Cloud Provider:** azure
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Resource Management
 ## Description

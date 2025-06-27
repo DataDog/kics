@@ -3,14 +3,18 @@ title: "Neptune Cluster Instance is Publicly Accessible"
 meta:
   name: "aws/neptune_cluster_instance_is_publicly_accessible"
   id: "9ba198e0-fef4-464a-8a4d-75ea55300de7"
+  display_name: "Neptune Cluster Instance is Publicly Accessible"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "HIGH"
   category: "Access Control"
 ---
 ## Metadata
 **Name:** `aws/neptune_cluster_instance_is_publicly_accessible`
+**Query Name** `Neptune Cluster Instance is Publicly Accessible`
 **Id:** `9ba198e0-fef4-464a-8a4d-75ea55300de7`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** High
 **Category:** Access Control
 ## Description

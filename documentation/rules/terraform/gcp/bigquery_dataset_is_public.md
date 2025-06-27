@@ -3,14 +3,18 @@ title: "BigQuery Dataset Is Public"
 meta:
   name: "gcp/bigquery_dataset_is_public"
   id: "e576ce44-dd03-4022-a8c0-3906acca2ab4"
+  display_name: "BigQuery Dataset Is Public"
   cloud_provider: "gcp"
+  platform: "Terraform"
   severity: "HIGH"
   category: "Access Control"
 ---
 ## Metadata
 **Name:** `gcp/bigquery_dataset_is_public`
+**Query Name** `BigQuery Dataset Is Public`
 **Id:** `e576ce44-dd03-4022-a8c0-3906acca2ab4`
 **Cloud Provider:** gcp
+**Platform** Terraform
 **Severity:** High
 **Category:** Access Control
 ## Description

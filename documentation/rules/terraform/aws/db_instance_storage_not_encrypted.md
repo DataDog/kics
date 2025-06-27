@@ -3,14 +3,18 @@ title: "DB Instance Storage Not Encrypted"
 meta:
   name: "aws/db_instance_storage_not_encrypted"
   id: "08bd0760-8752-44e1-9779-7bb369b2b4e4"
+  display_name: "DB Instance Storage Not Encrypted"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "HIGH"
   category: "Encryption"
 ---
 ## Metadata
 **Name:** `aws/db_instance_storage_not_encrypted`
+**Query Name** `DB Instance Storage Not Encrypted`
 **Id:** `08bd0760-8752-44e1-9779-7bb369b2b4e4`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** High
 **Category:** Encryption
 ## Description

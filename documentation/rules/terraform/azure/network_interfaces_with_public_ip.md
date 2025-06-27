@@ -3,14 +3,18 @@ title: "Network Interfaces With Public IP"
 meta:
   name: "azure/network_interfaces_with_public_ip"
   id: "c1573577-e494-4417-8854-7e119368dc8b"
+  display_name: "Network Interfaces With Public IP"
   cloud_provider: "azure"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Networking and Firewall"
 ---
 ## Metadata
 **Name:** `azure/network_interfaces_with_public_ip`
+**Query Name** `Network Interfaces With Public IP`
 **Id:** `c1573577-e494-4417-8854-7e119368dc8b`
 **Cloud Provider:** azure
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Networking and Firewall
 ## Description

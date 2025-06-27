@@ -3,14 +3,18 @@ title: "Resource Not Using Tags"
 meta:
   name: "aws/resource_not_using_tags"
   id: "e38a8e0a-b88b-4902-b3fe-b0fcb17d5c10"
+  display_name: "Resource Not Using Tags"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "INFO"
   category: "Best Practices"
 ---
 ## Metadata
 **Name:** `aws/resource_not_using_tags`
+**Query Name** `Resource Not Using Tags`
 **Id:** `e38a8e0a-b88b-4902-b3fe-b0fcb17d5c10`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Info
 **Category:** Best Practices
 ## Description

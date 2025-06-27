@@ -3,14 +3,18 @@ title: "SSM Session Transit Encryption Disabled"
 meta:
   name: "aws/ssm_session_transit_encryption_disabled"
   id: "ce60cc6b-6831-4bd7-84a2-cc7f8ee71433"
+  display_name: "SSM Session Transit Encryption Disabled"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Encryption"
 ---
 ## Metadata
 **Name:** `aws/ssm_session_transit_encryption_disabled`
+**Query Name** `SSM Session Transit Encryption Disabled`
 **Id:** `ce60cc6b-6831-4bd7-84a2-cc7f8ee71433`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Encryption
 ## Description

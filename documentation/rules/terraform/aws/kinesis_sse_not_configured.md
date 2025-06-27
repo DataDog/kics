@@ -3,14 +3,18 @@ title: "Kinesis SSE Not Configured"
 meta:
   name: "aws/kinesis_sse_not_configured"
   id: "5c6dd5e7-1fe0-4cae-8f81-4c122717cef3"
+  display_name: "Kinesis SSE Not Configured"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "HIGH"
   category: "Encryption"
 ---
 ## Metadata
 **Name:** `aws/kinesis_sse_not_configured`
+**Query Name** `Kinesis SSE Not Configured`
 **Id:** `5c6dd5e7-1fe0-4cae-8f81-4c122717cef3`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** High
 **Category:** Encryption
 ## Description

@@ -3,14 +3,18 @@ title: "SSH Access Is Not Restricted"
 meta:
   name: "gcp/ssh_access_is_not_restricted"
   id: "c4dcdcdf-10dd-4bf4-b4a0-8f6239e6aaa0"
+  display_name: "SSH Access Is Not Restricted"
   cloud_provider: "gcp"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Networking and Firewall"
 ---
 ## Metadata
 **Name:** `gcp/ssh_access_is_not_restricted`
+**Query Name** `SSH Access Is Not Restricted`
 **Id:** `c4dcdcdf-10dd-4bf4-b4a0-8f6239e6aaa0`
 **Cloud Provider:** gcp
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Networking and Firewall
 ## Description

@@ -3,14 +3,18 @@ title: "MariaDB Server Public Network Access Enabled"
 meta:
   name: "azure/mariadb_public_network_access_enabled"
   id: "7f0a8696-7159-4337-ad0d-8a3ab4a78195"
+  display_name: "MariaDB Server Public Network Access Enabled"
   cloud_provider: "azure"
+  platform: "Terraform"
   severity: "HIGH"
   category: "Networking and Firewall"
 ---
 ## Metadata
 **Name:** `azure/mariadb_public_network_access_enabled`
+**Query Name** `MariaDB Server Public Network Access Enabled`
 **Id:** `7f0a8696-7159-4337-ad0d-8a3ab4a78195`
 **Cloud Provider:** azure
+**Platform** Terraform
 **Severity:** High
 **Category:** Networking and Firewall
 ## Description

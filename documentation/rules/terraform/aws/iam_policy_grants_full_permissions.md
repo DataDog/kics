@@ -3,14 +3,18 @@ title: "IAM Policy Grants Full Permissions"
 meta:
   name: "aws/iam_policy_grants_full_permissions"
   id: "575a2155-6af1-4026-b1af-d5bc8fe2a904"
+  display_name: "IAM Policy Grants Full Permissions"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "HIGH"
   category: "Access Control"
 ---
 ## Metadata
 **Name:** `aws/iam_policy_grants_full_permissions`
+**Query Name** `IAM Policy Grants Full Permissions`
 **Id:** `575a2155-6af1-4026-b1af-d5bc8fe2a904`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** High
 **Category:** Access Control
 ## Description

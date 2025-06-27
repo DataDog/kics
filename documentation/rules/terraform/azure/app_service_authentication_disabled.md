@@ -3,14 +3,18 @@ title: "App Service Authentication Disabled"
 meta:
   name: "azure/app_service_authentication_disabled"
   id: "c7fc1481-2899-4490-bbd8-544a3a61a2f3"
+  display_name: "App Service Authentication Disabled"
   cloud_provider: "azure"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"
 ---
 ## Metadata
 **Name:** `azure/app_service_authentication_disabled`
+**Query Name** `App Service Authentication Disabled`
 **Id:** `c7fc1481-2899-4490-bbd8-544a3a61a2f3`
 **Cloud Provider:** azure
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Access Control
 ## Description

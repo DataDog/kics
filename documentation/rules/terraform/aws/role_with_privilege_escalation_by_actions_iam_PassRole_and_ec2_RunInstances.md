@@ -3,14 +3,18 @@ title: "Role With Privilege Escalation By Actions 'ec2:RunInstances' And 'iam:Pa
 meta:
   name: "aws/role_with_privilege_escalation_by_actions_iam_PassRole_and_ec2_RunInstances"
   id: "30b88745-eebe-4ecb-a3a9-5cf886e96204"
+  display_name: "Role With Privilege Escalation By Actions 'ec2:RunInstances' And 'iam:PassRole'"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"
 ---
 ## Metadata
 **Name:** `aws/role_with_privilege_escalation_by_actions_iam_PassRole_and_ec2_RunInstances`
+**Query Name** `Role With Privilege Escalation By Actions 'ec2:RunInstances' And 'iam:PassRole'`
 **Id:** `30b88745-eebe-4ecb-a3a9-5cf886e96204`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Access Control
 ## Description

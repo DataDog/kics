@@ -3,14 +3,18 @@ title: "Role With Privilege Escalation By Actions 'iam:SetDefaultPolicyVersion'"
 meta:
   name: "aws/role_with_privilege_escalation_by_actions_iam_SetDefaultPolicyVersion"
   id: "118281d0-6471-422e-a7c5-051bc667926e"
+  display_name: "Role With Privilege Escalation By Actions 'iam:SetDefaultPolicyVersion'"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"
 ---
 ## Metadata
 **Name:** `aws/role_with_privilege_escalation_by_actions_iam_SetDefaultPolicyVersion`
+**Query Name** `Role With Privilege Escalation By Actions 'iam:SetDefaultPolicyVersion'`
 **Id:** `118281d0-6471-422e-a7c5-051bc667926e`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Access Control
 ## Description

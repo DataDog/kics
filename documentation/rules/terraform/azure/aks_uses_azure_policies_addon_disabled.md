@@ -3,14 +3,18 @@ title: "AKS Uses Azure Policies Add-On Disabled"
 meta:
   name: "azure/aks_uses_azure_policies_addon_disabled"
   id: "43789711-161b-4708-b5bb-9d1c626f7492"
+  display_name: "AKS Uses Azure Policies Add-On Disabled"
   cloud_provider: "azure"
+  platform: "Terraform"
   severity: "LOW"
   category: "Best Practices"
 ---
 ## Metadata
 **Name:** `azure/aks_uses_azure_policies_addon_disabled`
+**Query Name** `AKS Uses Azure Policies Add-On Disabled`
 **Id:** `43789711-161b-4708-b5bb-9d1c626f7492`
 **Cloud Provider:** azure
+**Platform** Terraform
 **Severity:** Low
 **Category:** Best Practices
 ## Description

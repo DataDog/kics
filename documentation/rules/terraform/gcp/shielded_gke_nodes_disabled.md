@@ -3,14 +3,18 @@ title: "Shielded GKE Nodes Disabled"
 meta:
   name: "gcp/shielded_gke_nodes_disabled"
   id: "579a0727-9c29-4d58-8195-fc5802a8bdb4"
+  display_name: "Shielded GKE Nodes Disabled"
   cloud_provider: "gcp"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Insecure Configurations"
 ---
 ## Metadata
 **Name:** `gcp/shielded_gke_nodes_disabled`
+**Query Name** `Shielded GKE Nodes Disabled`
 **Id:** `579a0727-9c29-4d58-8195-fc5802a8bdb4`
 **Cloud Provider:** gcp
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Insecure Configurations
 ## Description

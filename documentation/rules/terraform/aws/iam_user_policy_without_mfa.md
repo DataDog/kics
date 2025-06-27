@@ -3,14 +3,18 @@ title: "IAM User Policy Without MFA"
 meta:
   name: "aws/iam_user_policy_without_mfa"
   id: "b5681959-6c09-4f55-b42b-c40fa12d03ec"
+  display_name: "IAM User Policy Without MFA"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "LOW"
   category: "Insecure Configurations"
 ---
 ## Metadata
 **Name:** `aws/iam_user_policy_without_mfa`
+**Query Name** `IAM User Policy Without MFA`
 **Id:** `b5681959-6c09-4f55-b42b-c40fa12d03ec`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Low
 **Category:** Insecure Configurations
 ## Description

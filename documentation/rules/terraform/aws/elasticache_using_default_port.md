@@ -3,14 +3,18 @@ title: "ElastiCache Using Default Port"
 meta:
   name: "aws/elasticache_using_default_port"
   id: "5d89db57-8b51-4b38-bb76-b9bd42bd40f0"
+  display_name: "ElastiCache Using Default Port"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "LOW"
   category: "Networking and Firewall"
 ---
 ## Metadata
 **Name:** `aws/elasticache_using_default_port`
+**Query Name** `ElastiCache Using Default Port`
 **Id:** `5d89db57-8b51-4b38-bb76-b9bd42bd40f0`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Low
 **Category:** Networking and Firewall
 ## Description

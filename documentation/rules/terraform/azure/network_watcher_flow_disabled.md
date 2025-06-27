@@ -3,14 +3,18 @@ title: "Network Watcher Flow Disabled"
 meta:
   name: "azure/network_watcher_flow_disabled"
   id: "b90842e5-6779-44d4-9760-972f4c03ba1c"
+  display_name: "Network Watcher Flow Disabled"
   cloud_provider: "azure"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Insecure Configurations"
 ---
 ## Metadata
 **Name:** `azure/network_watcher_flow_disabled`
+**Query Name** `Network Watcher Flow Disabled`
 **Id:** `b90842e5-6779-44d4-9760-972f4c03ba1c`
 **Cloud Provider:** azure
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Insecure Configurations
 ## Description

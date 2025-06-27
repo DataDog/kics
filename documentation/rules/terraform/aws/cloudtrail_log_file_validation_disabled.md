@@ -3,14 +3,18 @@ title: "CloudTrail Log File Validation Disabled"
 meta:
   name: "aws/cloudtrail_log_file_validation_disabled"
   id: "52ffcfa6-6c70-4ea6-8376-d828d3961669"
+  display_name: "CloudTrail Log File Validation Disabled"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "LOW"
   category: "Observability"
 ---
 ## Metadata
 **Name:** `aws/cloudtrail_log_file_validation_disabled`
+**Query Name** `CloudTrail Log File Validation Disabled`
 **Id:** `52ffcfa6-6c70-4ea6-8376-d828d3961669`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Low
 **Category:** Observability
 ## Description

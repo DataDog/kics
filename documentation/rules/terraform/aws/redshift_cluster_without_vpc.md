@@ -3,14 +3,18 @@ title: "Redshift Cluster Without VPC"
 meta:
   name: "aws/redshift_cluster_without_vpc"
   id: "0a494a6a-ebe2-48a0-9d77-cf9d5125e1b3"
+  display_name: "Redshift Cluster Without VPC"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "LOW"
   category: "Insecure Configurations"
 ---
 ## Metadata
 **Name:** `aws/redshift_cluster_without_vpc`
+**Query Name** `Redshift Cluster Without VPC`
 **Id:** `0a494a6a-ebe2-48a0-9d77-cf9d5125e1b3`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Low
 **Category:** Insecure Configurations
 ## Description

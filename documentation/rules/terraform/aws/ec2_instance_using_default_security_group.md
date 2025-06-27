@@ -3,14 +3,18 @@ title: "EC2 Instance Using Default Security Group"
 meta:
   name: "aws/ec2_instance_using_default_security_group"
   id: "f1adc521-f79a-4d71-b55b-a68294687432"
+  display_name: "EC2 Instance Using Default Security Group"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"
 ---
 ## Metadata
 **Name:** `aws/ec2_instance_using_default_security_group`
+**Query Name** `EC2 Instance Using Default Security Group`
 **Id:** `f1adc521-f79a-4d71-b55b-a68294687432`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Access Control
 ## Description

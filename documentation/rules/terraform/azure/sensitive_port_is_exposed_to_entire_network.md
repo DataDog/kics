@@ -3,14 +3,18 @@ title: "Sensitive Port Is Exposed To Entire Network"
 meta:
   name: "azure/sensitive_port_is_exposed_to_entire_network"
   id: "594c198b-4d79-41b8-9b36-fde13348b619"
+  display_name: "Sensitive Port Is Exposed To Entire Network"
   cloud_provider: "azure"
+  platform: "Terraform"
   severity: "HIGH"
   category: "Networking and Firewall"
 ---
 ## Metadata
 **Name:** `azure/sensitive_port_is_exposed_to_entire_network`
+**Query Name** `Sensitive Port Is Exposed To Entire Network`
 **Id:** `594c198b-4d79-41b8-9b36-fde13348b619`
 **Cloud Provider:** azure
+**Platform** Terraform
 **Severity:** High
 **Category:** Networking and Firewall
 ## Description

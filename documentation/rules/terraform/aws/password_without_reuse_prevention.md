@@ -3,14 +3,18 @@ title: "Password Without Reuse Prevention"
 meta:
   name: "aws/password_without_reuse_prevention"
   id: "89806cdc-9c2e-4bd1-a0dc-53f339bcfb2a"
+  display_name: "Password Without Reuse Prevention"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "LOW"
   category: "Best Practices"
 ---
 ## Metadata
 **Name:** `aws/password_without_reuse_prevention`
+**Query Name** `Password Without Reuse Prevention`
 **Id:** `89806cdc-9c2e-4bd1-a0dc-53f339bcfb2a`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Low
 **Category:** Best Practices
 ## Description

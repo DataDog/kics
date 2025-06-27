@@ -3,14 +3,18 @@ title: "SQS Policy Allows All Actions"
 meta:
   name: "aws/sqs_policy_allows_all_actions"
   id: "816ea8cf-d589-442d-a917-2dd0ce0e45e3"
+  display_name: "SQS Policy Allows All Actions"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "HIGH"
   category: "Access Control"
 ---
 ## Metadata
 **Name:** `aws/sqs_policy_allows_all_actions`
+**Query Name** `SQS Policy Allows All Actions`
 **Id:** `816ea8cf-d589-442d-a917-2dd0ce0e45e3`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** High
 **Category:** Access Control
 ## Description

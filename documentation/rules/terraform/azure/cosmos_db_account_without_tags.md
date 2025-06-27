@@ -3,14 +3,18 @@ title: "Cosmos DB Account Without Tags"
 meta:
   name: "azure/cosmos_db_account_without_tags"
   id: "56dad03e-e94f-4dd6-93a4-c253a03ff7a0"
+  display_name: "Cosmos DB Account Without Tags"
   cloud_provider: "azure"
+  platform: "Terraform"
   severity: "LOW"
   category: "Build Process"
 ---
 ## Metadata
 **Name:** `azure/cosmos_db_account_without_tags`
+**Query Name** `Cosmos DB Account Without Tags`
 **Id:** `56dad03e-e94f-4dd6-93a4-c253a03ff7a0`
 **Cloud Provider:** azure
+**Platform** Terraform
 **Severity:** Low
 **Category:** Build Process
 ## Description

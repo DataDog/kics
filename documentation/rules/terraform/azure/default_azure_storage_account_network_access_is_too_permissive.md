@@ -3,14 +3,18 @@ title: "Default Azure Storage Account Network Access Is Too Permissive"
 meta:
   name: "azure/default_azure_storage_account_network_access_is_too_permissive"
   id: "a5613650-32ec-4975-a305-31af783153ea"
+  display_name: "Default Azure Storage Account Network Access Is Too Permissive"
   cloud_provider: "azure"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Insecure Defaults"
 ---
 ## Metadata
 **Name:** `azure/default_azure_storage_account_network_access_is_too_permissive`
+**Query Name** `Default Azure Storage Account Network Access Is Too Permissive`
 **Id:** `a5613650-32ec-4975-a305-31af783153ea`
 **Cloud Provider:** azure
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Insecure Defaults
 ## Description

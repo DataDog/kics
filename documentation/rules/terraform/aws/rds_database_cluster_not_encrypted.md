@@ -3,14 +3,18 @@ title: "RDS Database Cluster not Encrypted"
 meta:
   name: "aws/rds_database_cluster_not_encrypted"
   id: "656880aa-1388-488f-a6d4-8f73c23149b2"
+  display_name: "RDS Database Cluster not Encrypted"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "HIGH"
   category: "Encryption"
 ---
 ## Metadata
 **Name:** `aws/rds_database_cluster_not_encrypted`
+**Query Name** `RDS Database Cluster not Encrypted`
 **Id:** `656880aa-1388-488f-a6d4-8f73c23149b2`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** High
 **Category:** Encryption
 ## Description

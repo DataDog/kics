@@ -3,14 +3,18 @@ title: "S3 Bucket Allows Get Action From All Principals"
 meta:
   name: "aws/s3_bucket_allows_get_action_from_all_principals"
   id: "1df37f4b-7197-45ce-83f8-9994d2fcf885"
+  display_name: "S3 Bucket Allows Get Action From All Principals"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "HIGH"
   category: "Access Control"
 ---
 ## Metadata
 **Name:** `aws/s3_bucket_allows_get_action_from_all_principals`
+**Query Name** `S3 Bucket Allows Get Action From All Principals`
 **Id:** `1df37f4b-7197-45ce-83f8-9994d2fcf885`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** High
 **Category:** Access Control
 ## Description

@@ -3,14 +3,18 @@ title: "Global Accelerator Flow Logs Disabled"
 meta:
   name: "aws/global_accelerator_flow_logs_disabled"
   id: "96e8183b-e985-457b-90cd-61c0503a3369"
+  display_name: "Global Accelerator Flow Logs Disabled"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Observability"
 ---
 ## Metadata
 **Name:** `aws/global_accelerator_flow_logs_disabled`
+**Query Name** `Global Accelerator Flow Logs Disabled`
 **Id:** `96e8183b-e985-457b-90cd-61c0503a3369`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Observability
 ## Description

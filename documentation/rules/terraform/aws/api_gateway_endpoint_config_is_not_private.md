@@ -3,14 +3,18 @@ title: "API Gateway Endpoint Config is Not Private"
 meta:
   name: "aws/api_gateway_endpoint_config_is_not_private"
   id: "6b2739db-9c49-4db7-b980-7816e0c248c1"
+  display_name: "API Gateway Endpoint Config is Not Private"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Networking and Firewall"
 ---
 ## Metadata
 **Name:** `aws/api_gateway_endpoint_config_is_not_private`
+**Query Name** `API Gateway Endpoint Config is Not Private`
 **Id:** `6b2739db-9c49-4db7-b980-7816e0c248c1`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Networking and Firewall
 ## Description

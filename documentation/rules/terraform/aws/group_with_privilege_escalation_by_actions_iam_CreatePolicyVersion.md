@@ -3,14 +3,18 @@ title: "Group With Privilege Escalation By Actions 'iam:CreatePolicyVersion'"
 meta:
   name: "aws/group_with_privilege_escalation_by_actions_iam_CreatePolicyVersion"
   id: "ec49cbfd-fae4-45f3-81b1-860526d66e3f"
+  display_name: "Group With Privilege Escalation By Actions 'iam:CreatePolicyVersion'"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"
 ---
 ## Metadata
 **Name:** `aws/group_with_privilege_escalation_by_actions_iam_CreatePolicyVersion`
+**Query Name** `Group With Privilege Escalation By Actions 'iam:CreatePolicyVersion'`
 **Id:** `ec49cbfd-fae4-45f3-81b1-860526d66e3f`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Access Control
 ## Description

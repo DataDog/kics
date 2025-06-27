@@ -3,14 +3,18 @@ title: "KMS Crypto Key is Publicly Accessible"
 meta:
   name: "gcp/kms_crypto_key_publicly_accessible"
   id: "16cc87d1-dd47-4f46-b3ce-4dfcac8fd2f5"
+  display_name: "KMS Crypto Key is Publicly Accessible"
   cloud_provider: "gcp"
+  platform: "Terraform"
   severity: "HIGH"
   category: "Encryption"
 ---
 ## Metadata
 **Name:** `gcp/kms_crypto_key_publicly_accessible`
+**Query Name** `KMS Crypto Key is Publicly Accessible`
 **Id:** `16cc87d1-dd47-4f46-b3ce-4dfcac8fd2f5`
 **Cloud Provider:** gcp
+**Platform** Terraform
 **Severity:** High
 **Category:** Encryption
 ## Description

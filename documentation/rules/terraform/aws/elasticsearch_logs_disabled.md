@@ -3,14 +3,18 @@ title: "Elasticsearch Log Disabled"
 meta:
   name: "aws/elasticsearch_logs_disabled"
   id: "acb6b4e2-a086-4f35-aefd-4db6ea51ada2"
+  display_name: "Elasticsearch Log Disabled"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Observability"
 ---
 ## Metadata
 **Name:** `aws/elasticsearch_logs_disabled`
+**Query Name** `Elasticsearch Log Disabled`
 **Id:** `acb6b4e2-a086-4f35-aefd-4db6ea51ada2`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Observability
 ## Description

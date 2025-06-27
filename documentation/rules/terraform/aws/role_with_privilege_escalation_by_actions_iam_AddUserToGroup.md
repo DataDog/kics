@@ -3,14 +3,18 @@ title: "Role With Privilege Escalation By Actions 'iam:AddUserToGroup'"
 meta:
   name: "aws/role_with_privilege_escalation_by_actions_iam_AddUserToGroup"
   id: "b8a31292-509d-4b61-bc40-13b167db7e9c"
+  display_name: "Role With Privilege Escalation By Actions 'iam:AddUserToGroup'"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"
 ---
 ## Metadata
 **Name:** `aws/role_with_privilege_escalation_by_actions_iam_AddUserToGroup`
+**Query Name** `Role With Privilege Escalation By Actions 'iam:AddUserToGroup'`
 **Id:** `b8a31292-509d-4b61-bc40-13b167db7e9c`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Access Control
 ## Description

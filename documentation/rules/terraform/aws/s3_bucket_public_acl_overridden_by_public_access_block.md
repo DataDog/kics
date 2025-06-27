@@ -3,14 +3,18 @@ title: "S3 Bucket Public ACL Overridden By Public Access Block"
 meta:
   name: "aws/s3_bucket_public_acl_overridden_by_public_access_block"
   id: "bf878b1a-7418-4de3-b13c-3a86cf894920"
+  display_name: "S3 Bucket Public ACL Overridden By Public Access Block"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "HIGH"
   category: "Access Control"
 ---
 ## Metadata
 **Name:** `aws/s3_bucket_public_acl_overridden_by_public_access_block`
+**Query Name** `S3 Bucket Public ACL Overridden By Public Access Block`
 **Id:** `bf878b1a-7418-4de3-b13c-3a86cf894920`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** High
 **Category:** Access Control
 ## Description

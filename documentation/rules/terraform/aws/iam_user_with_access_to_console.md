@@ -3,14 +3,18 @@ title: "IAM User With Access To Console"
 meta:
   name: "aws/iam_user_with_access_to_console"
   id: "9ec311bf-dfd9-421f-8498-0b063c8bc552"
+  display_name: "IAM User With Access To Console"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"
 ---
 ## Metadata
 **Name:** `aws/iam_user_with_access_to_console`
+**Query Name** `IAM User With Access To Console`
 **Id:** `9ec311bf-dfd9-421f-8498-0b063c8bc552`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Access Control
 ## Description

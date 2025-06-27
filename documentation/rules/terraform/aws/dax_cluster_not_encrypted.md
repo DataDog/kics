@@ -3,14 +3,18 @@ title: "DAX Cluster Not Encrypted"
 meta:
   name: "aws/dax_cluster_not_encrypted"
   id: "f11aec39-858f-4b6f-b946-0a1bf46c0c87"
+  display_name: "DAX Cluster Not Encrypted"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "HIGH"
   category: "Encryption"
 ---
 ## Metadata
 **Name:** `aws/dax_cluster_not_encrypted`
+**Query Name** `DAX Cluster Not Encrypted`
 **Id:** `f11aec39-858f-4b6f-b946-0a1bf46c0c87`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** High
 **Category:** Encryption
 ## Description

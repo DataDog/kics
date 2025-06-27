@@ -3,14 +3,18 @@ title: "IMDSv1 Enabled"
 meta:
   name: "aws/imdsv1_is_enabled"
   id: "f1g2h3i4-j5k6-7lmn-8opq-9012rstuvwxy"
+  display_name: "IMDSv1 Enabled"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "HIGH"
   category: "Best Practices"
 ---
 ## Metadata
 **Name:** `aws/imdsv1_is_enabled`
+**Query Name** `IMDSv1 Enabled`
 **Id:** `f1g2h3i4-j5k6-7lmn-8opq-9012rstuvwxy`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** High
 **Category:** Best Practices
 ## Description

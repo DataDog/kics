@@ -3,14 +3,18 @@ title: "Elasticsearch Domain Not Encrypted Node To Node"
 meta:
   name: "aws/elasticsearch_domain_not_encrypted_node_to_node"
   id: "967eb3e6-26fc-497d-8895-6428beb6e8e2"
+  display_name: "Elasticsearch Domain Not Encrypted Node To Node"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Encryption"
 ---
 ## Metadata
 **Name:** `aws/elasticsearch_domain_not_encrypted_node_to_node`
+**Query Name** `Elasticsearch Domain Not Encrypted Node To Node`
 **Id:** `967eb3e6-26fc-497d-8895-6428beb6e8e2`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Encryption
 ## Description

@@ -3,14 +3,18 @@ title: "RDS Associated with Public Subnet"
 meta:
   name: "aws/rds_associated_with_public_subnet"
   id: "2f737336-b18a-4602-8ea0-b200312e1ac1"
+  display_name: "RDS Associated with Public Subnet"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "CRITICAL"
   category: "Networking and Firewall"
 ---
 ## Metadata
 **Name:** `aws/rds_associated_with_public_subnet`
+**Query Name** `RDS Associated with Public Subnet`
 **Id:** `2f737336-b18a-4602-8ea0-b200312e1ac1`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Critical
 **Category:** Networking and Firewall
 ## Description

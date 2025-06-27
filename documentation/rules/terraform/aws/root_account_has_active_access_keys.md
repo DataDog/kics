@@ -3,14 +3,18 @@ title: "Root Account Has Active Access Keys"
 meta:
   name: "aws/root_account_has_active_access_keys"
   id: "970d224d-b42a-416b-81f9-8f4dfe70c4bc"
+  display_name: "Root Account Has Active Access Keys"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "HIGH"
   category: "Insecure Configurations"
 ---
 ## Metadata
 **Name:** `aws/root_account_has_active_access_keys`
+**Query Name** `Root Account Has Active Access Keys`
 **Id:** `970d224d-b42a-416b-81f9-8f4dfe70c4bc`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** High
 **Category:** Insecure Configurations
 ## Description

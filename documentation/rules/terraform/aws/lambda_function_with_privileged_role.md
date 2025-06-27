@@ -3,14 +3,18 @@ title: "Lambda Function With Privileged Role"
 meta:
   name: "aws/lambda_function_with_privileged_role"
   id: "1b3af2f9-af8c-4dfc-a0f1-a03adb70deb2"
+  display_name: "Lambda Function With Privileged Role"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "HIGH"
   category: "Insecure Configurations"
 ---
 ## Metadata
 **Name:** `aws/lambda_function_with_privileged_role`
+**Query Name** `Lambda Function With Privileged Role`
 **Id:** `1b3af2f9-af8c-4dfc-a0f1-a03adb70deb2`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** High
 **Category:** Insecure Configurations
 ## Description

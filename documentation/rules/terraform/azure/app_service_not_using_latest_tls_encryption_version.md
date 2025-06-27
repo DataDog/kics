@@ -3,14 +3,18 @@ title: "App Service Not Using Latest TLS Encryption Version"
 meta:
   name: "azure/app_service_not_using_latest_tls_encryption_version"
   id: "b7b9d1c7-2d3b-49b4-b867-ebbe68d0b643"
+  display_name: "App Service Not Using Latest TLS Encryption Version"
   cloud_provider: "azure"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Encryption"
 ---
 ## Metadata
 **Name:** `azure/app_service_not_using_latest_tls_encryption_version`
+**Query Name** `App Service Not Using Latest TLS Encryption Version`
 **Id:** `b7b9d1c7-2d3b-49b4-b867-ebbe68d0b643`
 **Cloud Provider:** azure
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Encryption
 ## Description

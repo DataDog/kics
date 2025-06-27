@@ -3,14 +3,18 @@ title: "Lambda Permission Misconfigured"
 meta:
   name: "aws/lambda_permission_misconfigured"
   id: "75ec6890-83af-4bf1-9f16-e83726df0bd0"
+  display_name: "Lambda Permission Misconfigured"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "LOW"
   category: "Best Practices"
 ---
 ## Metadata
 **Name:** `aws/lambda_permission_misconfigured`
+**Query Name** `Lambda Permission Misconfigured`
 **Id:** `75ec6890-83af-4bf1-9f16-e83726df0bd0`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Low
 **Category:** Best Practices
 ## Description

@@ -3,14 +3,18 @@ title: "There are non GCP-managed service account keys for a service account"
 meta:
   name: "gcp/service_has_non_gcp_managed_service_account_keys"
   id: "3jh54js8-e5f6-7890-abcd-ef1234567890"
+  display_name: "There are non GCP-managed service account keys for a service account"
   cloud_provider: "gcp"
+  platform: "Terraform"
   severity: "HIGH"
   category: "Encryption"
 ---
 ## Metadata
 **Name:** `gcp/service_has_non_gcp_managed_service_account_keys`
+**Query Name** `There are non GCP-managed service account keys for a service account`
 **Id:** `3jh54js8-e5f6-7890-abcd-ef1234567890`
 **Cloud Provider:** gcp
+**Platform** Terraform
 **Severity:** High
 **Category:** Encryption
 ## Description

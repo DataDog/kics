@@ -3,14 +3,18 @@ title: "Certificate RSA Key Bytes Lower Than 256"
 meta:
   name: "aws/certificate_rsa_key_bytes_lower_than_256"
   id: "874d68a3-bfbe-4a4b-aaa0-9e74d7da634b"
+  display_name: "Certificate RSA Key Bytes Lower Than 256"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Insecure Configurations"
 ---
 ## Metadata
 **Name:** `aws/certificate_rsa_key_bytes_lower_than_256`
+**Query Name** `Certificate RSA Key Bytes Lower Than 256`
 **Id:** `874d68a3-bfbe-4a4b-aaa0-9e74d7da634b`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Insecure Configurations
 ## Description

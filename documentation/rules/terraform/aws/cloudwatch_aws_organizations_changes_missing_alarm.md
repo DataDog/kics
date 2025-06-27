@@ -3,14 +3,18 @@ title: "CloudWatch AWS Organizations Changes Missing Alarm"
 meta:
   name: "aws/cloudwatch_aws_organizations_changes_missing_alarm"
   id: "38b85c45-e772-4de8-a247-69619ca137b3"
+  display_name: "CloudWatch AWS Organizations Changes Missing Alarm"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "INFO"
   category: "Observability"
 ---
 ## Metadata
 **Name:** `aws/cloudwatch_aws_organizations_changes_missing_alarm`
+**Query Name** `CloudWatch AWS Organizations Changes Missing Alarm`
 **Id:** `38b85c45-e772-4de8-a247-69619ca137b3`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Info
 **Category:** Observability
 ## Description

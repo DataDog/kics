@@ -3,14 +3,18 @@ title: "EFS Without KMS"
 meta:
   name: "aws/efs_without_kms"
   id: "25d251f3-f348-4f95-845c-1090e41a615c"
+  display_name: "EFS Without KMS"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "LOW"
   category: "Encryption"
 ---
 ## Metadata
 **Name:** `aws/efs_without_kms`
+**Query Name** `EFS Without KMS`
 **Id:** `25d251f3-f348-4f95-845c-1090e41a615c`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Low
 **Category:** Encryption
 ## Description

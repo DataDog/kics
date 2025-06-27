@@ -3,14 +3,18 @@ title: "MSSQL Server Public Network Access Enabled"
 meta:
   name: "azure/mssql_server_public_network_access_enabled"
   id: "ade36cf4-329f-4830-a83d-9db72c800507"
+  display_name: "MSSQL Server Public Network Access Enabled"
   cloud_provider: "azure"
+  platform: "Terraform"
   severity: "HIGH"
   category: "Networking and Firewall"
 ---
 ## Metadata
 **Name:** `azure/mssql_server_public_network_access_enabled`
+**Query Name** `MSSQL Server Public Network Access Enabled`
 **Id:** `ade36cf4-329f-4830-a83d-9db72c800507`
 **Cloud Provider:** azure
+**Platform** Terraform
 **Severity:** High
 **Category:** Networking and Firewall
 ## Description

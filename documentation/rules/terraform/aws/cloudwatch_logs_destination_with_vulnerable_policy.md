@@ -3,14 +3,18 @@ title: "CloudWatch Logs Destination With Vulnerable Policy"
 meta:
   name: "aws/cloudwatch_logs_destination_with_vulnerable_policy"
   id: "db0ec4c4-852c-46a2-b4f3-7ec13cdb12a8"
+  display_name: "CloudWatch Logs Destination With Vulnerable Policy"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "LOW"
   category: "Access Control"
 ---
 ## Metadata
 **Name:** `aws/cloudwatch_logs_destination_with_vulnerable_policy`
+**Query Name** `CloudWatch Logs Destination With Vulnerable Policy`
 **Id:** `db0ec4c4-852c-46a2-b4f3-7ec13cdb12a8`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Low
 **Category:** Access Control
 ## Description

@@ -3,14 +3,18 @@ title: "Redis Not Compliant"
 meta:
   name: "aws/redis_not_compliant"
   id: "254c932d-e3bf-44b2-bc9d-eb5fdb09f8d4"
+  display_name: "Redis Not Compliant"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "HIGH"
   category: "Encryption"
 ---
 ## Metadata
 **Name:** `aws/redis_not_compliant`
+**Query Name** `Redis Not Compliant`
 **Id:** `254c932d-e3bf-44b2-bc9d-eb5fdb09f8d4`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** High
 **Category:** Encryption
 ## Description

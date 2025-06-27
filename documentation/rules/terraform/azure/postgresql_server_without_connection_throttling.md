@@ -3,14 +3,18 @@ title: "PostgreSQL Server Without Connection Throttling"
 meta:
   name: "azure/postgresql_server_without_connection_throttling"
   id: "2b3c671f-1b76-4741-8789-ed1fe0785dc4"
+  display_name: "PostgreSQL Server Without Connection Throttling"
   cloud_provider: "azure"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Observability"
 ---
 ## Metadata
 **Name:** `azure/postgresql_server_without_connection_throttling`
+**Query Name** `PostgreSQL Server Without Connection Throttling`
 **Id:** `2b3c671f-1b76-4741-8789-ed1fe0785dc4`
 **Cloud Provider:** azure
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Observability
 ## Description

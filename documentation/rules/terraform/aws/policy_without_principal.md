@@ -3,14 +3,18 @@ title: "Policy Without Principal"
 meta:
   name: "aws/policy_without_principal"
   id: "bbe3dd3d-fea9-4b68-a785-cfabe2bbbc54"
+  display_name: "Policy Without Principal"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"
 ---
 ## Metadata
 **Name:** `aws/policy_without_principal`
+**Query Name** `Policy Without Principal`
 **Id:** `bbe3dd3d-fea9-4b68-a785-cfabe2bbbc54`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Access Control
 ## Description

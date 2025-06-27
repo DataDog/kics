@@ -3,14 +3,18 @@ title: "GuardDuty Detector Disabled"
 meta:
   name: "aws/guardduty_detector_disabled"
   id: "704dadd3-54fc-48ac-b6a0-02f170011473"
+  display_name: "GuardDuty Detector Disabled"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Observability"
 ---
 ## Metadata
 **Name:** `aws/guardduty_detector_disabled`
+**Query Name** `GuardDuty Detector Disabled`
 **Id:** `704dadd3-54fc-48ac-b6a0-02f170011473`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Observability
 ## Description

@@ -3,14 +3,18 @@ title: "DB Security Group Has Public Interface"
 meta:
   name: "aws/db_security_group_has_public_interface"
   id: "f0d8781f-99bf-4958-9917-d39283b168a0"
+  display_name: "DB Security Group Has Public Interface"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "HIGH"
   category: "Insecure Configurations"
 ---
 ## Metadata
 **Name:** `aws/db_security_group_has_public_interface`
+**Query Name** `DB Security Group Has Public Interface`
 **Id:** `f0d8781f-99bf-4958-9917-d39283b168a0`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** High
 **Category:** Insecure Configurations
 ## Description

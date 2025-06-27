@@ -3,14 +3,18 @@ title: "ELB Using Weak Ciphers"
 meta:
   name: "aws/elb_using_weak_ciphers"
   id: "4a800e14-c94a-442d-9067-5a2e9f6c0a4c"
+  display_name: "ELB Using Weak Ciphers"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "HIGH"
   category: "Encryption"
 ---
 ## Metadata
 **Name:** `aws/elb_using_weak_ciphers`
+**Query Name** `ELB Using Weak Ciphers`
 **Id:** `4a800e14-c94a-442d-9067-5a2e9f6c0a4c`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** High
 **Category:** Encryption
 ## Description

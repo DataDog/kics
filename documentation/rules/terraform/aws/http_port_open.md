@@ -3,14 +3,18 @@ title: "HTTP Port Open To Internet"
 meta:
   name: "aws/http_port_open"
   id: "ffac8a12-322e-42c1-b9b9-81ff85c39ef7"
+  display_name: "HTTP Port Open To Internet"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Networking and Firewall"
 ---
 ## Metadata
 **Name:** `aws/http_port_open`
+**Query Name** `HTTP Port Open To Internet`
 **Id:** `ffac8a12-322e-42c1-b9b9-81ff85c39ef7`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Networking and Firewall
 ## Description

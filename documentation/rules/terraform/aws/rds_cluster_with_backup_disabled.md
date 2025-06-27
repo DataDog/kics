@@ -3,14 +3,18 @@ title: "RDS Cluster With Backup Disabled"
 meta:
   name: "aws/rds_cluster_with_backup_disabled"
   id: "e542bd46-58c4-4e0f-a52a-1fb4f9548e02"
+  display_name: "RDS Cluster With Backup Disabled"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Backup"
 ---
 ## Metadata
 **Name:** `aws/rds_cluster_with_backup_disabled`
+**Query Name** `RDS Cluster With Backup Disabled`
 **Id:** `e542bd46-58c4-4e0f-a52a-1fb4f9548e02`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Backup
 ## Description

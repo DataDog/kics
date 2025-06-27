@@ -3,14 +3,18 @@ title: "Role Definition Allows Custom Role Creation"
 meta:
   name: "azure/role_definition_allows_custom_role_creation"
   id: "3fa5900f-9aac-4982-96b2-a6143d9c99fb"
+  display_name: "Role Definition Allows Custom Role Creation"
   cloud_provider: "azure"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"
 ---
 ## Metadata
 **Name:** `azure/role_definition_allows_custom_role_creation`
+**Query Name** `Role Definition Allows Custom Role Creation`
 **Id:** `3fa5900f-9aac-4982-96b2-a6143d9c99fb`
 **Cloud Provider:** azure
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Access Control
 ## Description

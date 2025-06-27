@@ -3,14 +3,18 @@ title: "ALB Listening on HTTP"
 meta:
   name: "aws/alb_listening_on_http"
   id: "de7f5e83-da88-4046-871f-ea18504b1d43"
+  display_name: "ALB Listening on HTTP"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Networking and Firewall"
 ---
 ## Metadata
 **Name:** `aws/alb_listening_on_http`
+**Query Name** `ALB Listening on HTTP`
 **Id:** `de7f5e83-da88-4046-871f-ea18504b1d43`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** Medium
 **Category:** Networking and Firewall
 ## Description

@@ -3,14 +3,18 @@ title: "VPC Default Security Group Accepts All Traffic"
 meta:
   name: "aws/vpc_default_security_group_accepts_all_traffic"
   id: "9a4ef195-74b9-4c58-b8ed-2b2fe4353a75"
+  display_name: "VPC Default Security Group Accepts All Traffic"
   cloud_provider: "aws"
+  platform: "Terraform"
   severity: "HIGH"
   category: "Networking and Firewall"
 ---
 ## Metadata
 **Name:** `aws/vpc_default_security_group_accepts_all_traffic`
+**Query Name** `VPC Default Security Group Accepts All Traffic`
 **Id:** `9a4ef195-74b9-4c58-b8ed-2b2fe4353a75`
 **Cloud Provider:** aws
+**Platform** Terraform
 **Severity:** High
 **Category:** Networking and Firewall
 ## Description
