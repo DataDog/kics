@@ -34,8 +34,8 @@ type ModuleParseResult struct {
 }
 
 type ModuleAttributesInfo struct {
-	Resources []string
-	Inputs    map[string]string
+	Resources []string          `json:"resources"`
+	Inputs    map[string]string `json:"inputs"`
 }
 
 var registryPattern = regexp.MustCompile(`^[a-z0-9\-]+/[a-z0-9\-]+/[a-z0-9\-]+$`)
@@ -417,22 +417,6 @@ func ParseAllModuleVariables(modules map[string]ParsedModule, rootDir string) []
 	}
 
 	return finalModules
-}
-
-func ConvertParsedModulesToModelModules(mods []ParsedModule) []model.Module {
-	result := make([]model.Module, 0, len(mods))
-	for _, m := range mods {
-		result = append(result, model.Module{
-			"name":          m.Name,
-			"source":        m.Source,
-			"version":       m.Version,
-			"isLocal":       m.IsLocal,
-			"sourceType":    m.SourceType,
-			"registryScope": m.RegistryScope,
-			"attributesData":     m.AttributesData,
-		})
-	}
-	return result
 }
 
 func generateEquivalentMap(modulePath string) (map[string]ModuleAttributesInfo, error) {
