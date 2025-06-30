@@ -423,77 +423,78 @@ func generateEquivalentMap(modulePath string) (map[string]ModuleAttributesInfo, 
 	equivalentMap := make(map[string]ModuleAttributesInfo)
 	resourceTypesMap := make(map[string]map[string]bool)
 
-	err := filepath.Walk(
-		modulePath,
-		func(path string, info os.FileInfo, err error) error {
-			if err != nil {
-				log.Error().Msgf("Failed to walk module source directory: %s", path)
-				return err
-			}
-
-			if info.IsDir() {
-				log.Debug().Msgf("Skipping directory: %s", path)
-				return nil
-			}
-
-			contents, err := os.ReadFile(path)
-			if err != nil {
-				log.Error().Msgf("Failed to read file: %s", path)
-				return err
-			}
-
-			hclFile, diag := hclwrite.ParseConfig(contents, "", hcl.InitialPos)
-			if diag.HasErrors() {
-				return fmt.Errorf("error parsing input Terraform block: %s", diag.Error())
-			}
-
-			for _, block := range hclFile.Body().Blocks() {
-				if block.Type() != "resource" {
-					continue
-				}
-
-				resourceType := block.Labels()[0]
-				provider, err := GetProviderFromResourceType(resourceType)
-				if err != nil {
-					log.Warn().Msgf("Failed get provider from resource type '%s'", resourceType)
-					continue
-				}
-
-				// Store resource type to the set
-				if m, ok := resourceTypesMap[provider]; !ok {
-					resourceTypesMap[provider] = make(map[string]bool)
-					resourceTypesMap[provider][resourceType] = true
-				} else {
-					m[resourceType] = true
-				}
-
-				// Create the module info object if not already in the mapping
-				modInfo, ok := equivalentMap[provider]
-				if !ok {
-					modInfo = ModuleAttributesInfo{
-						Resources: []string{},
-						Inputs:    make(map[string]string),
-					}
-					equivalentMap[provider] = modInfo
-				}
-
-				// Update inputs mapping with all attributes referencing a variable
-				maps.Copy(modInfo.Inputs, getVariableAttributes(block))
-			}
-
-			return nil
-		},
-	)
+	entries, err := os.ReadDir(modulePath)
 	if err != nil {
-		log.Error().Msg("Failed to walk module source directory")
+		log.Error().Msgf("Failed to read module source directory: %s", modulePath)
 		return nil, err
 	}
 
-	for provider := range resourceTypesMap {
-		m := equivalentMap[provider]
-		for resourceType := range resourceTypesMap[provider] {
-			m.Resources = append(m.Resources, resourceType)
+	for _, entry := range entries {
+		path := filepath.Join(modulePath, entry.Name())
+
+		if entry.IsDir() {
+			log.Debug().Msgf("Skipping directory: %s", path)
+			continue
 		}
+
+		contents, err := os.ReadFile(path)
+		if err != nil {
+			log.Error().Msgf("Failed to read file: %s", path)
+			return nil, err
+		}
+
+		hclFile, diag := hclwrite.ParseConfig(contents, "", hcl.InitialPos)
+		if diag.HasErrors() {
+			return nil, fmt.Errorf("error parsing input Terraform block in file %s: %s", path, diag.Error())
+		}
+
+		for _, block := range hclFile.Body().Blocks() {
+			if block.Type() != "resource" {
+				continue
+			}
+
+			if len(block.Labels()) < 1 {
+				log.Warn().Msgf("Skipping malformed resource block with no labels in file %s", path)
+				continue
+			}
+
+			resourceType := block.Labels()[0]
+			provider, err := GetProviderFromResourceType(resourceType)
+			if err != nil {
+				log.Warn().Msgf("Failed to get provider from resource type '%s' in file %s: %v", resourceType, path, err)
+				continue
+			}
+
+			// Store resource type to the set
+			if _, ok := resourceTypesMap[provider]; !ok {
+				resourceTypesMap[provider] = make(map[string]bool)
+			}
+			resourceTypesMap[provider][resourceType] = true
+
+			// Create or update the module info object for current provider
+			modInfo, ok := equivalentMap[provider]
+			if !ok {
+				modInfo = ModuleAttributesInfo{
+					Resources: []string{},
+					Inputs:    make(map[string]string),
+				}
+			}
+
+			// Update inputs mapping with all attributes referencing a variable
+			maps.Copy(modInfo.Inputs, getVariableAttributes(block))
+
+			// Assign the updated modInfo back to the map
+			equivalentMap[provider] = modInfo
+		}
+	}
+
+	// After iterating through all files and blocks, populate the unique resources slice
+	for provider, typesSet := range resourceTypesMap {
+		modInfo := equivalentMap[provider]
+		for rt := range typesSet {
+			modInfo.Resources = append(modInfo.Resources, rt)
+		}
+		equivalentMap[provider] = modInfo
 	}
 
 	return equivalentMap, nil
