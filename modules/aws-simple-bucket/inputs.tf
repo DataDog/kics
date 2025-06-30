@@ -3,7 +3,8 @@ variable "bucket_name" {
   type        = string
 }
 
-variable "turn_on_versioning" {
-  description = "Whether we activate versioning on this bucket"
-  type        = bool
+variable "versioning_config" {
+  description = "versioning configuration"
+  type        = map(string)
+  default     = {}
 }
