@@ -527,7 +527,7 @@ func isVariableReference(s string) bool {
 var reVarRef = regexp.MustCompile(`^var\.(\w+)$`)
 
 func parseVariableReference(s string) string {
-	match := reVarRef.FindStringSubmatch(s)
+	match := reVarRef.FindStringSubmatch(strings.TrimSpace(s))
 	if len(match) > 1 {
 		return match[1]
 	}
