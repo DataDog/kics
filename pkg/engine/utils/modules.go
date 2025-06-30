@@ -3,7 +3,6 @@ package utils
 import (
 	"errors"
 	"fmt"
-	"log"
 	"maps"
 	"os"
 	"path/filepath"
@@ -15,6 +14,7 @@ import (
 	"github.com/hashicorp/hcl/v2"
 	"github.com/hashicorp/hcl/v2/hclsyntax"
 	"github.com/hashicorp/hcl/v2/hclwrite"
+	"github.com/rs/zerolog/log"
 	"github.com/zclconf/go-cty/cty"
 )
 
@@ -64,13 +64,13 @@ func ParseTerraformModules(files model.FileMetadatas) (map[string]ParsedModule, 
 
 		hclFile, diags := hclsyntax.ParseConfig([]byte(file.Content), filePath, hcl.Pos{Line: 1, Column: 1})
 		if diags.HasErrors() {
-			log.Printf("Skipping file %s due to HCL parse errors: %s", filePath, diags.Error())
+			log.Warn().Msgf("Skipping file %s due to HCL parse errors: %s", filePath, diags.Error())
 			continue
 		}
 
 		body, ok := hclFile.Body.(*hclsyntax.Body)
 		if !ok {
-			log.Printf("Unexpected body type in %s", filePath)
+			log.Error().Msgf("Unexpected body type in %s", filePath)
 			continue
 		}
 
@@ -121,7 +121,7 @@ func ParseTerraformModules(files model.FileMetadatas) (map[string]ParsedModule, 
 						mod.Source = filepath.Clean(absPath)
 						err := ValidateModuleSource(mod.Source)
 						if err != nil {
-							log.Printf("Invalid local module source %q: %v", mod.Source, err)
+							log.Warn().Msgf("Invalid local module source %q: %v", mod.Source, err)
 							continue
 						}
 					}
@@ -144,7 +144,7 @@ func ValidateModuleSource(absPath string) error {
 	// Attempt to read the directory contents
 	entries, err := os.ReadDir(absPath)
 	if err != nil {
-		log.Printf("Module source path %q is not accessible: %v", absPath, err)
+		log.Error().Msgf("Module source path %q is not accessible: %v", absPath, err)
 		return fmt.Errorf("module source path %q is not accessible: %w", absPath, err)
 	}
 
@@ -158,7 +158,7 @@ func ValidateModuleSource(absPath string) error {
 	}
 
 	if !valid {
-		log.Printf("Module at %s does not contain any .tf files", absPath)
+		log.Warn().Msgf("Module at %s does not contain any .tf files", absPath)
 		return fmt.Errorf("module at %s does not contain any .tf files", absPath)
 	}
 	return nil
@@ -384,7 +384,7 @@ func ParseAllModuleVariables(modules map[string]ParsedModule, rootDir string) []
 
 				attributesData, err := generateEquivalentMap(modulePath)
 				if err != nil {
-					log.Printf("Warning: failed to generate equivalent map")
+					log.Warn().Msg("Failed to generate equivalent map")
 				} else {
 					mod.AttributesData = attributesData
 				}
@@ -411,7 +411,7 @@ func ParseAllModuleVariables(modules map[string]ParsedModule, rootDir string) []
 	finalModules := make([]ParsedModule, 0, len(modules))
 	for res := range output {
 		if res.Error != nil {
-			log.Printf("Warning: failed to parse module %s: %v", res.Module.Name, res.Error)
+			log.Warn().Msgf("Failed to parse module %s: %v", res.Module.Name, res.Error)
 		}
 		finalModules = append(finalModules, res.Module)
 	}
@@ -427,18 +427,18 @@ func generateEquivalentMap(modulePath string) (map[string]ModuleAttributesInfo, 
 		modulePath,
 		func(path string, info os.FileInfo, err error) error {
 			if err != nil {
-				log.Printf("Failed to walk module source directory: %s", path)
+				log.Error().Msgf("Failed to walk module source directory: %s", path)
 				return err
 			}
 
 			if info.IsDir() {
-				log.Printf("Skipping directory: %s", path)
+				log.Debug().Msgf("Skipping directory: %s", path)
 				return nil
 			}
 
 			contents, err := os.ReadFile(path)
 			if err != nil {
-				log.Printf("Failed to read file: %s", path)
+				log.Error().Msgf("Failed to read file: %s", path)
 				return err
 			}
 
@@ -455,7 +455,7 @@ func generateEquivalentMap(modulePath string) (map[string]ModuleAttributesInfo, 
 				resourceType := block.Labels()[0]
 				provider, err := GetProviderFromResourceType(resourceType)
 				if err != nil {
-					log.Printf("Warning: Failed get provider from resource type '%s'", resourceType)
+					log.Warn().Msgf("Failed get provider from resource type '%s'", resourceType)
 					continue
 				}
 
@@ -485,7 +485,7 @@ func generateEquivalentMap(modulePath string) (map[string]ModuleAttributesInfo, 
 		},
 	)
 	if err != nil {
-		log.Printf("Failed to walk module source directory")
+		log.Error().Msg("Failed to walk module source directory")
 		return nil, err
 	}
 
