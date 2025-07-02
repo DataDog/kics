@@ -5,28 +5,29 @@ meta:
   id: "6ccb85d7-0420-4907-9380-50313f80946b"
   display_name: "Private Cluster Disabled"
   cloud_provider: "gcp"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Insecure Configurations"
 ---
 ## Metadata
 
-**Name:** `gcp/private_cluster_disabled`
-
-**Query Name** `Private Cluster Disabled`
-
 **Id:** `6ccb85d7-0420-4907-9380-50313f80946b`
 
 **Cloud Provider:** gcp
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** Medium
 
 **Category:** Insecure Configurations
 
-## Description
-Kubernetes clusters should be created with private clusters enabled by configuring the `private_cluster_config` block and setting both `enable_private_nodes` and `enable_private_endpoint` to `true`. Failing to do so allows access to the cluster’s control plane and nodes from public networks, increasing exposure to potential attacks and unauthorized access. A secure configuration in Terraform looks like:
+#### Learn More
+
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/container_cluster)
+
+### Description
+
+ Kubernetes clusters should be created with private clusters enabled by configuring the `private_cluster_config` block and setting both `enable_private_nodes` and `enable_private_endpoint` to `true`. Failing to do so allows access to the cluster’s control plane and nodes from public networks, increasing exposure to potential attacks and unauthorized access. A secure configuration in Terraform looks like:
 
 ```
 resource "google_container_cluster" "secure" {
@@ -39,10 +40,6 @@ resource "google_container_cluster" "secure" {
   }
 }
 ```
-
-#### Learn More
-
- - [Provider Reference](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/container_cluster)
 
 
 ## Compliant Code Examples

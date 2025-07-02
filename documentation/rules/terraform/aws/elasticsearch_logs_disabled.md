@@ -5,32 +5,29 @@ meta:
   id: "acb6b4e2-a086-4f35-aefd-4db6ea51ada2"
   display_name: "Elasticsearch Log Disabled"
   cloud_provider: "aws"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Observability"
 ---
 ## Metadata
 
-**Name:** `aws/elasticsearch_logs_disabled`
-
-**Query Name** `Elasticsearch Log Disabled`
-
 **Id:** `acb6b4e2-a086-4f35-aefd-4db6ea51ada2`
 
 **Cloud Provider:** aws
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** Medium
 
 **Category:** Observability
 
-## Description
-Elasticsearch domains in AWS should have logging enabled to capture important audit and performance data. The attribute `enabled` within the `log_publishing_options` block should be set to `true` to ensure that logs, such as `"INDEX_SLOW_LOGS"`, are published to the associated CloudWatch log group. If log publishing is disabled (e.g. `enabled = false`), critical operational and security events may go undetected, making it difficult to troubleshoot issues, monitor for suspicious activity, or meet compliance requirements. Failing to enable logging increases the risk of undetected data breaches or operational failures due to limited visibility into Elasticsearch domain activity.
-
 #### Learn More
 
  - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/elasticsearch_domain#log_publishing_options)
+
+### Description
+
+ Elasticsearch domains in AWS should have logging enabled to capture important audit and performance data. The attribute `enabled` within the `log_publishing_options` block should be set to `true` to ensure that logs, such as `"INDEX_SLOW_LOGS"`, are published to the associated CloudWatch log group. If log publishing is disabled (e.g. `enabled = false`), critical operational and security events may go undetected, making it difficult to troubleshoot issues, monitor for suspicious activity, or meet compliance requirements. Failing to enable logging increases the risk of undetected data breaches or operational failures due to limited visibility into Elasticsearch domain activity.
 
 
 ## Compliant Code Examples

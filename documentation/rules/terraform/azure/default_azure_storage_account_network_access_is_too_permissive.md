@@ -5,28 +5,29 @@ meta:
   id: "a5613650-32ec-4975-a305-31af783153ea"
   display_name: "Default Azure Storage Account Network Access Is Too Permissive"
   cloud_provider: "azure"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Insecure Defaults"
 ---
 ## Metadata
 
-**Name:** `azure/default_azure_storage_account_network_access_is_too_permissive`
-
-**Query Name** `Default Azure Storage Account Network Access Is Too Permissive`
-
 **Id:** `a5613650-32ec-4975-a305-31af783153ea`
 
 **Cloud Provider:** azure
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** Medium
 
 **Category:** Insecure Defaults
 
-## Description
-Azure Storage Accounts should have their default network access action set to `Deny` to prevent unauthorized or public access to storage resources. If the `network_rules { default_action = "Allow" }` attribute is used (as shown below), storage accounts can be accessed from any network by default, increasing the risk of data breaches or unauthorized data manipulation.
+#### Learn More
+
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/storage_account_network_rules#default_action)
+
+### Description
+
+ Azure Storage Accounts should have their default network access action set to `Deny` to prevent unauthorized or public access to storage resources. If the `network_rules { default_action = "Allow" }` attribute is used (as shown below), storage accounts can be accessed from any network by default, increasing the risk of data breaches or unauthorized data manipulation.
 
 ```
 network_rules {
@@ -35,10 +36,6 @@ network_rules {
 ```
 
 To mitigate this risk, configure `network_rules { default_action = "Deny" }`, ensuring only explicitly allowed networks and IPs can access the storage account.
-
-#### Learn More
-
- - [Provider Reference](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/storage_account_network_rules#default_action)
 
 
 ## Compliant Code Examples

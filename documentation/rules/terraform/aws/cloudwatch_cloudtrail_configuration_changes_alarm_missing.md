@@ -5,32 +5,29 @@ meta:
   id: "0f6cbf69-41bb-47dc-93f3-3844640bf480"
   display_name: "Cloudwatch Cloudtrail Configuration Changes Alarm Missing"
   cloud_provider: "aws"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Observability"
 ---
 ## Metadata
 
-**Name:** `aws/cloudwatch_cloudtrail_configuration_changes_alarm_missing`
-
-**Query Name** `Cloudwatch Cloudtrail Configuration Changes Alarm Missing`
-
 **Id:** `0f6cbf69-41bb-47dc-93f3-3844640bf480`
 
 **Cloud Provider:** aws
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** Medium
 
 **Category:** Observability
 
-## Description
-This check ensures that a CloudWatch log metric filter and corresponding alarm are correctly configured to monitor for changes to AWS CloudTrail settings, such as create, update, or delete operations. If the `aws_cloudwatch_metric_alarm` does not reference the proper metric filter (for example, if the `metric_name` is not set to `aws_cloudwatch_log_metric_filter.cis_cloudtrail_config_change_metric_filter.id` but instead uses an incorrect value), critical modifications to CloudTrail could go undetected. This misconfiguration can lead to a lack of visibility into potentially malicious activities, such as disabling or modifying CloudTrail to conceal unauthorized actions, ultimately undermining auditability and security monitoring.
-
 #### Learn More
 
  - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudwatch_log_metric_filter#pattern)
+
+### Description
+
+ This check ensures that a CloudWatch log metric filter and corresponding alarm are correctly configured to monitor for changes to AWS CloudTrail settings, such as create, update, or delete operations. If the `aws_cloudwatch_metric_alarm` does not reference the proper metric filter (for example, if the `metric_name` is not set to `aws_cloudwatch_log_metric_filter.cis_cloudtrail_config_change_metric_filter.id` but instead uses an incorrect value), critical modifications to CloudTrail could go undetected. This misconfiguration can lead to a lack of visibility into potentially malicious activities, such as disabling or modifying CloudTrail to conceal unauthorized actions, ultimately undermining auditability and security monitoring.
 
 
 ## Compliant Code Examples

@@ -5,28 +5,29 @@ meta:
   id: "94fbe150-27e3-4eba-9ca6-af32865e4503"
   display_name: "User With Privilege Escalation By Actions 'glue:CreateDevEndpoint' And 'iam:PassRole'"
   cloud_provider: "aws"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"
 ---
 ## Metadata
 
-**Name:** `aws/user_with_privilege_escalation_by_actions_iam_PassRole_and_glue_CreateDevEndpoint`
-
-**Query Name** `User With Privilege Escalation By Actions 'glue:CreateDevEndpoint' And 'iam:PassRole'`
-
 **Id:** `94fbe150-27e3-4eba-9ca6-af32865e4503`
 
 **Cloud Provider:** aws
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** Medium
 
 **Category:** Access Control
 
-## Description
-Granting an IAM user permissions for both `glue:CreateDevEndpoint` and `iam:PassRole` actions with the `Resource` set to `"*"` allows that user to create a Glue development endpoint and attach any role in the account, including those with elevated privileges. This misconfiguration enables privilege escalation, meaning the user could effectively gain administrator-level access or perform unauthorized actions across the AWS environment. To prevent this, restrict the actions and resources in IAM policies and avoid using wildcard `"*"` permissions, as in the secure example below:
+#### Learn More
+
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_user_policy#policy)
+
+### Description
+
+ Granting an IAM user permissions for both `glue:CreateDevEndpoint` and `iam:PassRole` actions with the `Resource` set to `"*"` allows that user to create a Glue development endpoint and attach any role in the account, including those with elevated privileges. This misconfiguration enables privilege escalation, meaning the user could effectively gain administrator-level access or perform unauthorized actions across the AWS environment. To prevent this, restrict the actions and resources in IAM policies and avoid using wildcard `"*"` permissions, as in the secure example below:
 
 ```
 resource "aws_iam_user_policy" "inline_policy_limited" {
@@ -47,10 +48,6 @@ resource "aws_iam_user_policy" "inline_policy_limited" {
   })
 }
 ```
-
-#### Learn More
-
- - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_user_policy#policy)
 
 
 ## Compliant Code Examples

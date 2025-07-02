@@ -5,28 +5,29 @@ meta:
   id: "3790d386-be81-4dcf-9850-eaa7df6c10d9"
   display_name: "PostgreSQL Log Checkpoints Disabled"
   cloud_provider: "azure"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Observability"
 ---
 ## Metadata
 
-**Name:** `azure/postgresql_log_checkpoints_disabled`
-
-**Query Name** `PostgreSQL Log Checkpoints Disabled`
-
 **Id:** `3790d386-be81-4dcf-9850-eaa7df6c10d9`
 
 **Cloud Provider:** azure
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** Medium
 
 **Category:** Observability
 
-## Description
-The PostgreSQL `log_checkpoints` parameter controls whether checkpoint activities are logged, which is critical for monitoring and troubleshooting database performance and reliability. If `log_checkpoints` is set to `off`, important information about checkpoint events will not be recorded, making it more difficult to detect or respond to potential issues or attacks. To mitigate this risk, the parameter should be enabled as shown below:
+#### Learn More
+
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/postgresql_configuration)
+
+### Description
+
+ The PostgreSQL `log_checkpoints` parameter controls whether checkpoint activities are logged, which is critical for monitoring and troubleshooting database performance and reliability. If `log_checkpoints` is set to `off`, important information about checkpoint events will not be recorded, making it more difficult to detect or respond to potential issues or attacks. To mitigate this risk, the parameter should be enabled as shown below:
 
 ```
 resource "azurerm_postgresql_configuration" "secure_example" {
@@ -38,10 +39,6 @@ resource "azurerm_postgresql_configuration" "secure_example" {
 ```
 
 Failing to enable this logging may leave administrators unaware of problems that can impact data durability or signal malicious activity, increasing the risk of unnoticed outages or data loss.
-
-#### Learn More
-
- - [Provider Reference](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/postgresql_configuration)
 
 
 ## Compliant Code Examples

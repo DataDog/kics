@@ -5,28 +5,29 @@ meta:
   id: "d24c0755-c028-44b1-b503-8e719c898832"
   display_name: "S3 Bucket Allows Put Action From All Principals"
   cloud_provider: "aws"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "CRITICAL"
   category: "Access Control"
 ---
 ## Metadata
 
-**Name:** `aws/s3_bucket_allows_put_action_from_all_principals`
-
-**Query Name** `S3 Bucket Allows Put Action From All Principals`
-
 **Id:** `d24c0755-c028-44b1-b503-8e719c898832`
 
 **Cloud Provider:** aws
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** Critical
 
 **Category:** Access Control
 
-## Description
-When an S3 bucket policy allows PUT actions from all principals ('*'), it creates a significant security risk by permitting anyone on the internet to upload files to your bucket. This vulnerability can lead to data tampering, malicious file uploads, increased storage costs, and potentially serve as an attack vector for distributing malware or other harmful content through your infrastructure. To secure your S3 bucket, explicitly deny open PUT permissions as shown below, or restrict access to specific principals:
+#### Learn More
+
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_policy)
+
+### Description
+
+ When an S3 bucket policy allows PUT actions from all principals ('*'), it creates a significant security risk by permitting anyone on the internet to upload files to your bucket. This vulnerability can lead to data tampering, malicious file uploads, increased storage costs, and potentially serve as an attack vector for distributing malware or other harmful content through your infrastructure. To secure your S3 bucket, explicitly deny open PUT permissions as shown below, or restrict access to specific principals:
 
 ```hcl
 // Insecure configuration
@@ -46,10 +47,6 @@ Statement: [
   }
 ]
 ```
-
-#### Learn More
-
- - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_policy)
 
 
 ## Compliant Code Examples

@@ -5,32 +5,29 @@ meta:
   id: "568a4d22-3517-44a6-a7ad-6a7eed88722c"
   display_name: "S3 Bucket Without Versioning"
   cloud_provider: "aws"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Backup"
 ---
 ## Metadata
 
-**Name:** `aws/s3_bucket_without_versioning`
-
-**Query Name** `S3 Bucket Without Versioning`
-
 **Id:** `568a4d22-3517-44a6-a7ad-6a7eed88722c`
 
 **Cloud Provider:** aws
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** Medium
 
 **Category:** Backup
 
-## Description
-Amazon S3 buckets should have versioning enabled to protect against accidental or malicious deletion and overwriting of objects. Without versioning (`versioning { enabled = false }`), deleted or overwritten files cannot be recovered, potentially leading to permanent data loss or loss of critical information. Enabling versioning (`versioning { enabled = true }`) allows you to preserve, retrieve, and restore every version of every object stored in the bucket, significantly improving data resiliency.
-
 #### Learn More
 
  - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket#versioning)
+
+### Description
+
+ Amazon S3 buckets should have versioning enabled to protect against accidental or malicious deletion and overwriting of objects. Without versioning (`versioning { enabled = false }`), deleted or overwritten files cannot be recovered, potentially leading to permanent data loss or loss of critical information. Enabling versioning (`versioning { enabled = true }`) allows you to preserve, retrieve, and restore every version of every object stored in the bucket, significantly improving data resiliency.
 
 
 ## Compliant Code Examples

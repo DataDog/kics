@@ -5,28 +5,29 @@ meta:
   id: "bbe3dd3d-fea9-4b68-a785-cfabe2bbbc54"
   display_name: "Policy Without Principal"
   cloud_provider: "aws"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"
 ---
 ## Metadata
 
-**Name:** `aws/policy_without_principal`
-
-**Query Name** `Policy Without Principal`
-
 **Id:** `bbe3dd3d-fea9-4b68-a785-cfabe2bbbc54`
 
 **Cloud Provider:** aws
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** Medium
 
 **Category:** Access Control
 
-## Description
-When defining resource-based policies in AWS using Terraform, the `Principal` element must be explicitly set to specify which users, roles, or accounts are permitted to access the resource. If the `Principal` element is omitted in policies other than IAM identity-based policies, the permissions may unintentionally allow access to any AWS user, potentially enabling unauthorized or malicious actions on the resource. For example, a secure policy includes the `"Principal"` attribute, restricting permissions to specific users:
+#### Learn More
+
+ - [Provider Reference](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_principal.html)
+
+### Description
+
+ When defining resource-based policies in AWS using Terraform, the `Principal` element must be explicitly set to specify which users, roles, or accounts are permitted to access the resource. If the `Principal` element is omitted in policies other than IAM identity-based policies, the permissions may unintentionally allow access to any AWS user, potentially enabling unauthorized or malicious actions on the resource. For example, a secure policy includes the `"Principal"` attribute, restricting permissions to specific users:
 
 ```
 "Principal": {
@@ -37,10 +38,6 @@ When defining resource-based policies in AWS using Terraform, the `Principal` el
 }
 ```
 Neglecting to define the `Principal` in resource-based policies significantly increases the risk of unauthorized access or privilege escalation.
-
-#### Learn More
-
- - [Provider Reference](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_principal.html)
 
 
 ## Compliant Code Examples

@@ -5,28 +5,29 @@ meta:
   id: "a186e82c-1078-4a7b-85d8-579561fde884"
   display_name: "API Gateway without WAF"
   cloud_provider: "aws"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Networking and Firewall"
 ---
 ## Metadata
 
-**Name:** `aws/api_gateway_without_waf`
-
-**Query Name** `API Gateway without WAF`
-
 **Id:** `a186e82c-1078-4a7b-85d8-579561fde884`
 
 **Cloud Provider:** aws
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** Medium
 
 **Category:** Networking and Firewall
 
-## Description
-This check ensures that AWS API Gateway stages are protected by an associated Web Application Firewall (WAF) using the `aws_wafregional_web_acl_association` resource. Without a WAF enabled, exposed API endpoints are left unprotected against common web threats such as SQL injection, cross-site scripting (XSS), and other HTTP-based attacks, increasing the risk of data breaches or service disruption. To secure your API Gateway, associate a WAF Web ACL to your stage as shown below:
+#### Learn More
+
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/wafregional_web_acl_association#resource_arn)
+
+### Description
+
+ This check ensures that AWS API Gateway stages are protected by an associated Web Application Firewall (WAF) using the `aws_wafregional_web_acl_association` resource. Without a WAF enabled, exposed API endpoints are left unprotected against common web threats such as SQL injection, cross-site scripting (XSS), and other HTTP-based attacks, increasing the risk of data breaches or service disruption. To secure your API Gateway, associate a WAF Web ACL to your stage as shown below:
 
 ```
 resource "aws_wafregional_web_acl_association" "association" {
@@ -34,10 +35,6 @@ resource "aws_wafregional_web_acl_association" "association" {
   web_acl_id   = aws_wafregional_web_acl.foo.id
 }
 ```
-
-#### Learn More
-
- - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/wafregional_web_acl_association#resource_arn)
 
 
 ## Compliant Code Examples

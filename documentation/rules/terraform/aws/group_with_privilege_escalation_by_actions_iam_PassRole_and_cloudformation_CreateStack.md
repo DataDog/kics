@@ -5,32 +5,29 @@ meta:
   id: "9b0ffadc-a61f-4c2a-b1e6-68fab60f6267"
   display_name: "Group With Privilege Escalation By Actions 'cloudformation:CreateStack' And 'iam:PassRole'"
   cloud_provider: "aws"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"
 ---
 ## Metadata
 
-**Name:** `aws/group_with_privilege_escalation_by_actions_iam_PassRole_and_cloudformation_CreateStack`
-
-**Query Name** `Group With Privilege Escalation By Actions 'cloudformation:CreateStack' And 'iam:PassRole'`
-
 **Id:** `9b0ffadc-a61f-4c2a-b1e6-68fab60f6267`
 
 **Cloud Provider:** aws
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** Medium
 
 **Category:** Access Control
 
-## Description
-Allowing an IAM group broad permissions with `"cloudformation:CreateStack"` and `"iam:PassRole"` actions on all resources (`"Resource": "*"`) enables privilege escalation. With these permissions, a user can create a CloudFormation stack that provisions new IAM users, roles, or policies with elevated privileges and then use `iam:PassRole` to assume those roles, effectively bypassing intended access controls. If left unaddressed, attackers could gain unauthorized access to sensitive AWS resources or take full control of the account.
-
 #### Learn More
 
  - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_group_policy#policy)
+
+### Description
+
+ Allowing an IAM group broad permissions with `"cloudformation:CreateStack"` and `"iam:PassRole"` actions on all resources (`"Resource": "*"`) enables privilege escalation. With these permissions, a user can create a CloudFormation stack that provisions new IAM users, roles, or policies with elevated privileges and then use `iam:PassRole` to assume those roles, effectively bypassing intended access controls. If left unaddressed, attackers could gain unauthorized access to sensitive AWS resources or take full control of the account.
 
 
 ## Compliant Code Examples

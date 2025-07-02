@@ -5,28 +5,29 @@ meta:
   id: "56a585f5-555c-48b2-8395-e64e4740a9cf"
   display_name: "CloudWatch Disabling Or Scheduled Deletion Of Customer Created CMK Alarm Missing"
   cloud_provider: "aws"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Observability"
 ---
 ## Metadata
 
-**Name:** `aws/cloudwatch_disabling_or_scheduled_deletion_of_customer_created_cmk_alarm_missing`
-
-**Query Name** `CloudWatch Disabling Or Scheduled Deletion Of Customer Created CMK Alarm Missing`
-
 **Id:** `56a585f5-555c-48b2-8395-e64e4740a9cf`
 
 **Cloud Provider:** aws
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** Medium
 
 **Category:** Observability
 
-## Description
-A log metric filter and corresponding alarm should be in place to detect when a customer master key (CMK) in AWS KMS is disabled or scheduled for deletion, as these actions may indicate unauthorized or risky changes to encryption controls. Without proper alerting, malicious or accidental actions targeting CMKs may go unnoticed, putting sensitive encrypted data at risk of compromise or loss. A secure Terraform example ensures the `aws_cloudwatch_metric_alarm` uses the metric created by the `aws_cloudwatch_log_metric_filter` to trigger alerts:
+#### Learn More
+
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudwatch_log_metric_filter#pattern)
+
+### Description
+
+ A log metric filter and corresponding alarm should be in place to detect when a customer master key (CMK) in AWS KMS is disabled or scheduled for deletion, as these actions may indicate unauthorized or risky changes to encryption controls. Without proper alerting, malicious or accidental actions targeting CMKs may go unnoticed, putting sensitive encrypted data at risk of compromise or loss. A secure Terraform example ensures the `aws_cloudwatch_metric_alarm` uses the metric created by the `aws_cloudwatch_log_metric_filter` to trigger alerts:
 
 ```
 resource "aws_cloudwatch_metric_alarm" "disable_delete_cmk" {
@@ -34,10 +35,6 @@ resource "aws_cloudwatch_metric_alarm" "disable_delete_cmk" {
   // other attributes...
 }
 ```
-
-#### Learn More
-
- - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudwatch_log_metric_filter#pattern)
 
 
 ## Compliant Code Examples

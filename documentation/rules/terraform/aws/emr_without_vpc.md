@@ -5,32 +5,29 @@ meta:
   id: "2b3c8a6d-9856-43e6-ab1d-d651094f03b4"
   display_name: "EMR Without VPC"
   cloud_provider: "aws"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "LOW"
   category: "Networking and Firewall"
 ---
 ## Metadata
 
-**Name:** `aws/emr_without_vpc`
-
-**Query Name** `EMR Without VPC`
-
 **Id:** `2b3c8a6d-9856-43e6-ab1d-d651094f03b4`
 
 **Cloud Provider:** aws
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** Low
 
 **Category:** Networking and Firewall
 
-## Description
-This check ensures that Amazon Elastic MapReduce (EMR) clusters are deployed within a Virtual Private Cloud (VPC) by specifying a `subnet_id` in the Terraform resource. Launching EMR clusters without associating them to a VPC, as shown by omitting the `subnet_id` attribute in the `aws_emr_cluster` resource, exposes the cluster to public networks and increases the risk of unauthorized access or data compromise. By deploying EMR clusters in a VPC, network access control can be properly enforced through security groups and network ACLs, limiting exposure to only trusted sources. Failure to launch EMR clusters inside a VPC can lead to serious security vulnerabilities, including unauthorized data access, data exfiltration, or service disruption.
-
 #### Learn More
 
  - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/emr_cluster#subnet_id)
+
+### Description
+
+ This check ensures that Amazon Elastic MapReduce (EMR) clusters are deployed within a Virtual Private Cloud (VPC) by specifying a `subnet_id` in the Terraform resource. Launching EMR clusters without associating them to a VPC, as shown by omitting the `subnet_id` attribute in the `aws_emr_cluster` resource, exposes the cluster to public networks and increases the risk of unauthorized access or data compromise. By deploying EMR clusters in a VPC, network access control can be properly enforced through security groups and network ACLs, limiting exposure to only trusted sources. Failure to launch EMR clusters inside a VPC can lead to serious security vulnerabilities, including unauthorized data access, data exfiltration, or service disruption.
 
 
 ## Compliant Code Examples

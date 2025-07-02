@@ -5,28 +5,29 @@ meta:
   id: "42bb6b7f-6d54-4428-b707-666f669d94fb"
   display_name: "S3 Static Website Host Enabled"
   cloud_provider: "aws"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "HIGH"
   category: "Insecure Configurations"
 ---
 ## Metadata
 
-**Name:** `aws/s3_static_website_host_enabled`
-
-**Query Name** `S3 Static Website Host Enabled`
-
 **Id:** `42bb6b7f-6d54-4428-b707-666f669d94fb`
 
 **Cloud Provider:** aws
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** High
 
 **Category:** Insecure Configurations
 
-## Description
-AWS S3 static website hosting allows serving content directly from buckets without additional authentication, potentially exposing sensitive data to the internet. When enabled via the 'website' block, the bucket content becomes accessible through the website endpoint, bypassing S3's access controls and increasing attack surface. Attackers could access unintended data if bucket policies are misconfigured or files are incorrectly permissioned.
+#### Learn More
+
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket#website)
+
+### Description
+
+ AWS S3 static website hosting allows serving content directly from buckets without additional authentication, potentially exposing sensitive data to the internet. When enabled via the 'website' block, the bucket content becomes accessible through the website endpoint, bypassing S3's access controls and increasing attack surface. Attackers could access unintended data if bucket policies are misconfigured or files are incorrectly permissioned.
 
 Secure configuration example:
 ```
@@ -38,10 +39,6 @@ resource "aws_s3_bucket" "secure_example" {
 ```
 
 Instead, consider using CloudFront distribution with proper access controls and HTTPS to securely serve website content.
-
-#### Learn More
-
- - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket#website)
 
 
 ## Compliant Code Examples

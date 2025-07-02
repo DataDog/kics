@@ -5,28 +5,29 @@ meta:
   id: "0a70d5f3-1ecd-4c8e-9292-928fc9a8c4f1"
   display_name: "MariaDB Server Geo-redundant Backup Disabled"
   cloud_provider: "azure"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "LOW"
   category: "Backup"
 ---
 ## Metadata
 
-**Name:** `azure/mariadb_server_georedundant_backup_disabled`
-
-**Query Name** `MariaDB Server Geo-redundant Backup Disabled`
-
 **Id:** `0a70d5f3-1ecd-4c8e-9292-928fc9a8c4f1`
 
 **Cloud Provider:** azure
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** Low
 
 **Category:** Backup
 
-## Description
-MariaDB Servers deployed in Azure should have geo-redundant backup enabled by setting the `geo_redundant_backup_enabled` attribute to `true`. Without geo-redundant backups, your database backups are stored only within the primary region, making them vulnerable to regional outages or disasters that could lead to data loss. Enabling geo-redundant backups ensures that your backups are replicated to a paired Azure region and increases your ability to restore data in the event of a regional failure.
+#### Learn More
+
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/mariadb_server#geo_redundant_backup_enabled)
+
+### Description
+
+ MariaDB Servers deployed in Azure should have geo-redundant backup enabled by setting the `geo_redundant_backup_enabled` attribute to `true`. Without geo-redundant backups, your database backups are stored only within the primary region, making them vulnerable to regional outages or disasters that could lead to data loss. Enabling geo-redundant backups ensures that your backups are replicated to a paired Azure region and increases your ability to restore data in the event of a regional failure.
 
 ```hcl
 resource "azurerm_mariadb_server" "secure_example" {
@@ -34,10 +35,6 @@ resource "azurerm_mariadb_server" "secure_example" {
   geo_redundant_backup_enabled = true
 }
 ```
-
-#### Learn More
-
- - [Provider Reference](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/mariadb_server#geo_redundant_backup_enabled)
 
 
 ## Compliant Code Examples

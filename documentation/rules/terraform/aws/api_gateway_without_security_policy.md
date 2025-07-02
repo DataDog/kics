@@ -5,28 +5,29 @@ meta:
   id: "4e1cc5d3-2811-4fb2-861c-ee9b3cb7f90b"
   display_name: "API Gateway Without Security Policy"
   cloud_provider: "aws"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Insecure Configurations"
 ---
 ## Metadata
 
-**Name:** `aws/api_gateway_without_security_policy`
-
-**Query Name** `API Gateway Without Security Policy`
-
 **Id:** `4e1cc5d3-2811-4fb2-861c-ee9b3cb7f90b`
 
 **Cloud Provider:** aws
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** Medium
 
 **Category:** Insecure Configurations
 
-## Description
-The AWS API Gateway custom domain resource should have a security policy explicitly defined to enforce the use of strong encryption protocols. By omitting the `security_policy` attribute or leaving it unset, as shown below:
+#### Learn More
+
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/api_gateway_domain_name#security_policy)
+
+### Description
+
+ The AWS API Gateway custom domain resource should have a security policy explicitly defined to enforce the use of strong encryption protocols. By omitting the `security_policy` attribute or leaving it unset, as shown below:
 
 ```
 resource "aws_api_gateway_domain_name" "example" {
@@ -42,10 +43,6 @@ resource "aws_api_gateway_domain_name" "example" {
   security_policy = "TLS_1_2"
 }
 ```
-
-#### Learn More
-
- - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/api_gateway_domain_name#security_policy)
 
 
 ## Compliant Code Examples

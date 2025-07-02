@@ -5,38 +5,35 @@ meta:
   id: "3b6d777b-76e3-4133-80a3-0d6f667ade7f"
   display_name: "Automatic Minor Upgrades Disabled"
   cloud_provider: "aws"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "LOW"
   category: "Best Practices"
 ---
 ## Metadata
 
-**Name:** `aws/automatic_minor_upgrades_disabled`
-
-**Query Name** `Automatic Minor Upgrades Disabled`
-
 **Id:** `3b6d777b-76e3-4133-80a3-0d6f667ade7f`
 
 **Cloud Provider:** aws
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** Low
 
 **Category:** Best Practices
 
-## Description
-RDS instances in AWS should have automatic minor version upgrades enabled by setting the `auto_minor_version_upgrade` attribute to `true`. This ensures that the database receives timely security patches and important bug fixes without manual intervention. If this attribute is set to `false`, as shown in the following configuration,
+#### Learn More
+
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/db_instance#auto_minor_version_upgrade)
+
+### Description
+
+ RDS instances in AWS should have automatic minor version upgrades enabled by setting the `auto_minor_version_upgrade` attribute to `true`. This ensures that the database receives timely security patches and important bug fixes without manual intervention. If this attribute is set to `false`, as shown in the following configuration,
 
 ```
 auto_minor_version_upgrade = false
 ```
 
 the RDS instance will not automatically apply minor updates, potentially leaving it exposed to vulnerabilities and unsupported bugs until manually updated. This increases the risk of security incidents and database outages due to missed critical patches.
-
-#### Learn More
-
- - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/db_instance#auto_minor_version_upgrade)
 
 
 ## Compliant Code Examples

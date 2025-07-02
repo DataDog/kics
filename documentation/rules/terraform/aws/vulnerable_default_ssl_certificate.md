@@ -5,28 +5,29 @@ meta:
   id: "3a1e94df-6847-4c0e-a3b6-6c6af4e128ef"
   display_name: "Vulnerable Default SSL Certificate"
   cloud_provider: "aws"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Insecure Defaults"
 ---
 ## Metadata
 
-**Name:** `aws/vulnerable_default_ssl_certificate`
-
-**Query Name** `Vulnerable Default SSL Certificate`
-
 **Id:** `3a1e94df-6847-4c0e-a3b6-6c6af4e128ef`
 
 **Cloud Provider:** aws
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** Medium
 
 **Category:** Insecure Defaults
 
-## Description
-CloudFront web distributions should use custom SSL certificates, specified by setting the `viewer_certificate` block with the `acm_certificate_arn` and not the `cloudfront_default_certificate = true` attribute. Relying on the default CloudFront SSL certificate means content is only secured by the default CloudFront domain, which cannot use custom domain names and exposes the distribution to all clients without proper access restrictions. If left unaddressed, this can allow unintended public access and prevent granular control over who can securely access your content via custom domains.
+#### Learn More
+
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudfront_distribution)
+
+### Description
+
+ CloudFront web distributions should use custom SSL certificates, specified by setting the `viewer_certificate` block with the `acm_certificate_arn` and not the `cloudfront_default_certificate = true` attribute. Relying on the default CloudFront SSL certificate means content is only secured by the default CloudFront domain, which cannot use custom domain names and exposes the distribution to all clients without proper access restrictions. If left unaddressed, this can allow unintended public access and prevent granular control over who can securely access your content via custom domains.
 
 A secure configuration example is:
 
@@ -37,10 +38,6 @@ viewer_certificate {
   minimum_protocol_version = "TLSv1.2_2018"
 }
 ```
-
-#### Learn More
-
- - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudfront_distribution)
 
 
 ## Compliant Code Examples

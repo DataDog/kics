@@ -5,28 +5,29 @@ meta:
   id: "7ebc9038-0bde-479a-acc4-6ed7b6758899"
   display_name: "KMS Key With Vulnerable Policy"
   cloud_provider: "aws"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "HIGH"
   category: "Insecure Configurations"
 ---
 ## Metadata
 
-**Name:** `aws/kms_key_with_full_permissions`
-
-**Query Name** `KMS Key With Vulnerable Policy`
-
 **Id:** `7ebc9038-0bde-479a-acc4-6ed7b6758899`
 
 **Cloud Provider:** aws
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** High
 
 **Category:** Insecure Configurations
 
-## Description
-This check identifies AWS KMS keys with overly permissive policies that grant full access to all AWS services or users. KMS keys with policies allowing 'kms:*' actions to all principals ('AWS:*') create a significant security risk, potentially allowing unauthorized users to access, modify, or delete encrypted data across your AWS environment.
+#### Learn More
+
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/kms_key)
+
+### Description
+
+ This check identifies AWS KMS keys with overly permissive policies that grant full access to all AWS services or users. KMS keys with policies allowing 'kms:*' actions to all principals ('AWS:*') create a significant security risk, potentially allowing unauthorized users to access, modify, or delete encrypted data across your AWS environment.
 
 Vulnerable policies typically include a statement with 'Effect:Allow', 'Principal:{"AWS":"*"}', and 'Action:["kms:*"]' as shown in this insecure example:
 ```
@@ -47,10 +48,6 @@ Secure your KMS keys by using least privilege principles: restrict access to spe
   "Resource":"*"
 }]
 ```
-
-#### Learn More
-
- - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/kms_key)
 
 
 ## Compliant Code Examples

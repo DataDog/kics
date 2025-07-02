@@ -5,28 +5,29 @@ meta:
   id: "b1ffa705-19a3-4b73-b9d0-0c97d0663842"
   display_name: "IAM Role With Full Privileges"
   cloud_provider: "aws"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "HIGH"
   category: "Access Control"
 ---
 ## Metadata
 
-**Name:** `aws/iam_role_with_full_privileges`
-
-**Query Name** `IAM Role With Full Privileges`
-
 **Id:** `b1ffa705-19a3-4b73-b9d0-0c97d0663842`
 
 **Cloud Provider:** aws
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** High
 
 **Category:** Access Control
 
-## Description
-IAM roles with full administrative privileges (using wildcard actions like '*') grant unrestricted access to AWS resources, creating a significant security risk. If compromised, these roles could be exploited to access sensitive data, modify infrastructure, or launch attacks across your entire AWS environment. Instead of using wildcard permissions in the action field, specify only the required permissions as shown in the secure example:
+#### Learn More
+
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role)
+
+### Description
+
+ IAM roles with full administrative privileges (using wildcard actions like '*') grant unrestricted access to AWS resources, creating a significant security risk. If compromised, these roles could be exploited to access sensitive data, modify infrastructure, or launch attacks across your entire AWS environment. Instead of using wildcard permissions in the action field, specify only the required permissions as shown in the secure example:
 
 ```
 "Action": ["some:action"]
@@ -37,10 +38,6 @@ Rather than the insecure approach:
 ```
 "Action": ["*"] or "Action": "*"
 ```
-
-#### Learn More
-
- - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role)
 
 
 ## Compliant Code Examples

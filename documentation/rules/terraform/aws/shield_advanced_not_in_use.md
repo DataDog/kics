@@ -5,28 +5,29 @@ meta:
   id: "084c6686-2a70-4710-91b1-000393e54c12"
   display_name: "Shield Advanced Not In Use"
   cloud_provider: "aws"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "LOW"
   category: "Networking and Firewall"
 ---
 ## Metadata
 
-**Name:** `aws/shield_advanced_not_in_use`
-
-**Query Name** `Shield Advanced Not In Use`
-
 **Id:** `084c6686-2a70-4710-91b1-000393e54c12`
 
 **Cloud Provider:** aws
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** Low
 
 **Category:** Networking and Firewall
 
-## Description
-AWS Shield Advanced provides enhanced protection against distributed denial-of-service (DDoS) attacks for critical AWS resources such as Amazon Route 53 hosted zones, AWS Global Accelerator accelerators, Elastic IP addresses, Elastic Load Balancers, and Amazon CloudFront distributions. Without Shield Advanced enabled, these resources are vulnerable to large-scale DDoS attacks, which can lead to downtime, degraded performance, and increased mitigation costs. To secure these resources in Terraform, use the `aws_shield_protection` resource with the correct `resource_arn`, for example:
+#### Learn More
+
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/shield_protection#resource_arn)
+
+### Description
+
+ AWS Shield Advanced provides enhanced protection against distributed denial-of-service (DDoS) attacks for critical AWS resources such as Amazon Route 53 hosted zones, AWS Global Accelerator accelerators, Elastic IP addresses, Elastic Load Balancers, and Amazon CloudFront distributions. Without Shield Advanced enabled, these resources are vulnerable to large-scale DDoS attacks, which can lead to downtime, degraded performance, and increased mitigation costs. To secure these resources in Terraform, use the `aws_shield_protection` resource with the correct `resource_arn`, for example:
 
 ```
 resource "aws_shield_protection" "example" {
@@ -38,10 +39,6 @@ resource "aws_shield_protection" "example" {
   }
 }
 ```
-
-#### Learn More
-
- - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/shield_protection#resource_arn)
 
 
 ## Compliant Code Examples

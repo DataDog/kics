@@ -5,32 +5,29 @@ meta:
   id: "bcdcbdc6-a350-4855-ae7c-d1e6436f7c97"
   display_name: "IAM Policy Grants 'AssumeRole' Permission Across All Services"
   cloud_provider: "aws"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"
 ---
 ## Metadata
 
-**Name:** `aws/iam_policy_grants_assumerole_permission_across_all_services`
-
-**Query Name** `IAM Policy Grants 'AssumeRole' Permission Across All Services`
-
 **Id:** `bcdcbdc6-a350-4855-ae7c-d1e6436f7c97`
 
 **Cloud Provider:** aws
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** Medium
 
 **Category:** Access Control
 
-## Description
-IAM Policies should not grant the 'AssumeRole' permission across all services by using wildcard principals, such as `"AWS": "*"`. Allowing any AWS account or principal to assume a role poses a significant security risk, as it removes any restriction over who can gain the role's permissions. If left unaddressed, this misconfiguration could enable unauthorized users or malicious actors to assume sensitive roles and gain elevated privileges within your AWS environment, resulting in potential data loss, privilege escalation, or compromise of critical cloud resources. Restricting the principals allowed to assume a role to only trusted services or accounts is essential for maintaining a secure cloud infrastructure.
-
 #### Learn More
 
  - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role)
+
+### Description
+
+ IAM Policies should not grant the 'AssumeRole' permission across all services by using wildcard principals, such as `"AWS": "*"`. Allowing any AWS account or principal to assume a role poses a significant security risk, as it removes any restriction over who can gain the role's permissions. If left unaddressed, this misconfiguration could enable unauthorized users or malicious actors to assume sensitive roles and gain elevated privileges within your AWS environment, resulting in potential data loss, privilege escalation, or compromise of critical cloud resources. Restricting the principals allowed to assume a role to only trusted services or accounts is essential for maintaining a secure cloud infrastructure.
 
 
 ## Compliant Code Examples

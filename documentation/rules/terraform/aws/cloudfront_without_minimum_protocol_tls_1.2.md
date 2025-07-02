@@ -5,28 +5,29 @@ meta:
   id: "00e5e55e-c2ff-46b3-a757-a7a1cd802456"
   display_name: "CloudFront Without Minimum Protocol TLS 1.2"
   cloud_provider: "aws"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Insecure Configurations"
 ---
 ## Metadata
 
-**Name:** `aws/cloudfront_without_minimum_protocol_tls_1.2`
-
-**Query Name** `CloudFront Without Minimum Protocol TLS 1.2`
-
 **Id:** `00e5e55e-c2ff-46b3-a757-a7a1cd802456`
 
 **Cloud Provider:** aws
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** Medium
 
 **Category:** Insecure Configurations
 
-## Description
-Amazon CloudFront distributions should enforce a minimum TLS protocol version of at least TLS 1.2 to ensure secure encryption between clients and CloudFront. Allowing earlier versions such as TLS 1.0 or TLS 1.1 exposes distributions to known vulnerabilities and weak ciphers, increasing the risk of data interception and man-in-the-middle attacks. This can be securely enforced in Terraform using the `viewer_certificate` block with `minimum_protocol_version = "TLSv1.2_2018"` or higher, as shown below:
+#### Learn More
+
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudfront_distribution)
+
+### Description
+
+ Amazon CloudFront distributions should enforce a minimum TLS protocol version of at least TLS 1.2 to ensure secure encryption between clients and CloudFront. Allowing earlier versions such as TLS 1.0 or TLS 1.1 exposes distributions to known vulnerabilities and weak ciphers, increasing the risk of data interception and man-in-the-middle attacks. This can be securely enforced in Terraform using the `viewer_certificate` block with `minimum_protocol_version = "TLSv1.2_2018"` or higher, as shown below:
 
 ```
 viewer_certificate {
@@ -34,10 +35,6 @@ viewer_certificate {
   minimum_protocol_version = "TLSv1.2_2018"
 }
 ```
-
-#### Learn More
-
- - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudfront_distribution)
 
 
 ## Compliant Code Examples

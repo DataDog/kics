@@ -5,28 +5,29 @@ meta:
   id: "f317c3c2-58e5-4aa7-bb8e-3a7f6bcd274a"
   display_name: "AMI Most Recent Without Owner or Filter"
   cloud_provider: "aws"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "HIGH"
   category: "Access Control"
 ---
 ## Metadata
 
-**Name:** `aws/ami_owner_missing`
-
-**Query Name** `AMI Most Recent Without Owner or Filter`
-
 **Id:** `f317c3c2-58e5-4aa7-bb8e-3a7f6bcd274a`
 
 **Cloud Provider:** aws
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** High
 
 **Category:** Access Control
 
-## Description
-When using the `aws_ami` data source in Terraform with `most_recent = true`, omitting the `owners` attribute or specific filters such as `owner-id`, `owner-alias`, or `image-id` can cause Terraform to select AMIs from unknown or unauthorized sources. This increases the risk of deploying instances from untrusted or potentially malicious AMIs, which may introduce security vulnerabilities or unexpected behavior in your infrastructure. To mitigate this risk, always specify an explicit owner or unique identifier when querying for the most recent AMI.
+#### Learn More
+
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/ami)
+
+### Description
+
+ When using the `aws_ami` data source in Terraform with `most_recent = true`, omitting the `owners` attribute or specific filters such as `owner-id`, `owner-alias`, or `image-id` can cause Terraform to select AMIs from unknown or unauthorized sources. This increases the risk of deploying instances from untrusted or potentially malicious AMIs, which may introduce security vulnerabilities or unexpected behavior in your infrastructure. To mitigate this risk, always specify an explicit owner or unique identifier when querying for the most recent AMI.
 
 Example of unsecure configuration:
 
@@ -54,10 +55,6 @@ data "aws_ami" "ubuntu" {
   }
 }
 ```
-
-#### Learn More
-
- - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/ami)
 
 
 ## Compliant Code Examples

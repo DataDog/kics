@@ -5,28 +5,29 @@ meta:
   id: "bb0db090-5509-4853-a827-75ced0b3caa0"
   display_name: "Google Storage Bucket Level Access Disabled"
   cloud_provider: "gcp"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "HIGH"
   category: "Insecure Configurations"
 ---
 ## Metadata
 
-**Name:** `gcp/google_storage_bucket_level_access_disabled`
-
-**Query Name** `Google Storage Bucket Level Access Disabled`
-
 **Id:** `bb0db090-5509-4853-a827-75ced0b3caa0`
 
 **Cloud Provider:** gcp
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** High
 
 **Category:** Insecure Configurations
 
-## Description
-Google Storage Bucket Level Access controls access to objects at the bucket level rather than allowing fine-grained permissions at the object level. When disabled, Access Control Lists (ACLs) can be used to grant permissions to individual objects, increasing the risk of accidental exposure or misconfiguration that could lead to unauthorized access to sensitive data.
+#### Learn More
+
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/storage_bucket)
+
+### Description
+
+ Google Storage Bucket Level Access controls access to objects at the bucket level rather than allowing fine-grained permissions at the object level. When disabled, Access Control Lists (ACLs) can be used to grant permissions to individual objects, increasing the risk of accidental exposure or misconfiguration that could lead to unauthorized access to sensitive data.
 
 Enabling uniform bucket-level access simplifies permissions management and helps ensure consistent access control across all objects in a bucket. To secure your configuration, set 'uniform_bucket_level_access = true' in your google_storage_bucket resource as shown:
 
@@ -40,10 +41,6 @@ resource "google_storage_bucket" "secure_bucket" {
   // other configuration...
 }
 ```
-
-#### Learn More
-
- - [Provider Reference](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/storage_bucket)
 
 
 ## Compliant Code Examples

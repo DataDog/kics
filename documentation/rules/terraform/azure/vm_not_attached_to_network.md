@@ -5,28 +5,29 @@ meta:
   id: "bbf6b3df-4b65-4f87-82cc-da9f30f8c033"
   display_name: "VM Not Attached To Network"
   cloud_provider: "azure"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Insecure Configurations"
 ---
 ## Metadata
 
-**Name:** `azure/vm_not_attached_to_network`
-
-**Query Name** `VM Not Attached To Network`
-
 **Id:** `bbf6b3df-4b65-4f87-82cc-da9f30f8c033`
 
 **Cloud Provider:** azure
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** Medium
 
 **Category:** Insecure Configurations
 
-## Description
-Attaching a Network Security Group (NSG) to a Virtual Machine in Azure is essential for defining and restricting inbound and outbound traffic. Without an NSG, as in the configuration below where `network_interface_ids` is set to an empty list and no NSG is associated, the virtual machine is left exposed to unrestricted network access, increasing the risk of unauthorized access and potential security breaches.
+#### Learn More
+
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/virtual_machine#network_interface_ids)
+
+### Description
+
+ Attaching a Network Security Group (NSG) to a Virtual Machine in Azure is essential for defining and restricting inbound and outbound traffic. Without an NSG, as in the configuration below where `network_interface_ids` is set to an empty list and no NSG is associated, the virtual machine is left exposed to unrestricted network access, increasing the risk of unauthorized access and potential security breaches.
 
 ```
 resource "azurerm_virtual_machine" "example" {
@@ -60,10 +61,6 @@ resource "azurerm_network_interface_security_group_association" "example" {
 ```
 
 Neglecting to configure and attach an NSG can result in unrestricted network exposure for the VM, leading to increased vulnerability to attacks, unauthorized access, and data breaches.
-
-#### Learn More
-
- - [Provider Reference](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/virtual_machine#network_interface_ids)
 
 
 ## Compliant Code Examples

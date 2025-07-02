@@ -5,28 +5,29 @@ meta:
   id: "56f6a008-1b14-4af4-b9b2-ab7cf7e27641"
   display_name: "DocDB Logging Is Disabled"
   cloud_provider: "aws"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Observability"
 ---
 ## Metadata
 
-**Name:** `aws/docdb_logging_disabled`
-
-**Query Name** `DocDB Logging Is Disabled`
-
 **Id:** `56f6a008-1b14-4af4-b9b2-ab7cf7e27641`
 
 **Cloud Provider:** aws
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** Medium
 
 **Category:** Observability
 
-## Description
-Enabling logging for Amazon DocumentDB clusters helps ensure that database activity is captured and monitored, allowing for the detection of anomalous behavior and aiding in incident investigations. If logging is not enabled by omitting the `enabled_cloudwatch_logs_exports` attribute, critical events and queries may go unrecorded, making it difficult to audit access or troubleshoot security events. To enforce secure configurations, the `aws_docdb_cluster` resource should specify the desired log exports, such as in the example below:
+#### Learn More
+
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/docdb_cluster#enabled_cloudwatch_logs_exports)
+
+### Description
+
+ Enabling logging for Amazon DocumentDB clusters helps ensure that database activity is captured and monitored, allowing for the detection of anomalous behavior and aiding in incident investigations. If logging is not enabled by omitting the `enabled_cloudwatch_logs_exports` attribute, critical events and queries may go unrecorded, making it difficult to audit access or troubleshoot security events. To enforce secure configurations, the `aws_docdb_cluster` resource should specify the desired log exports, such as in the example below:
 
 ```
 resource "aws_docdb_cluster" "example" {
@@ -41,10 +42,6 @@ resource "aws_docdb_cluster" "example" {
   enabled_cloudwatch_logs_exports = ["profiler", "audit"]
 }
 ```
-
-#### Learn More
-
- - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/docdb_cluster#enabled_cloudwatch_logs_exports)
 
 
 ## Compliant Code Examples

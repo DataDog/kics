@@ -5,28 +5,29 @@ meta:
   id: "0a8e8dc5-b6fc-44fc-b5a1-969ec950f9b0"
   display_name: "CloudWatch Changes To NACL Alarm Missing"
   cloud_provider: "aws"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Observability"
 ---
 ## Metadata
 
-**Name:** `aws/cloudwatch_changes_to_nacl_alarm_missing`
-
-**Query Name** `CloudWatch Changes To NACL Alarm Missing`
-
 **Id:** `0a8e8dc5-b6fc-44fc-b5a1-969ec950f9b0`
 
 **Cloud Provider:** aws
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** Medium
 
 **Category:** Observability
 
-## Description
-This check ensures that a log metric filter and an associated CloudWatch alarm are configured to monitor changes to AWS Network Access Control Lists (NACLs). Without properly linking the metric alarm to the log metric filter—such as setting the `metric_name` in `aws_cloudwatch_metric_alarm` to the correct filter like `${aws_cloudwatch_log_metric_filter.cis_changes_nacl.id}`—malicious or accidental modifications to NACLs may go undetected, increasing the risk of unauthorized network access or compromised security postures. A secure example is:
+#### Learn More
+
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudwatch_log_metric_filter#pattern)
+
+### Description
+
+ This check ensures that a log metric filter and an associated CloudWatch alarm are configured to monitor changes to AWS Network Access Control Lists (NACLs). Without properly linking the metric alarm to the log metric filter—such as setting the `metric_name` in `aws_cloudwatch_metric_alarm` to the correct filter like `${aws_cloudwatch_log_metric_filter.cis_changes_nacl.id}`—malicious or accidental modifications to NACLs may go undetected, increasing the risk of unauthorized network access or compromised security postures. A secure example is:
 
 ```
 resource "aws_cloudwatch_metric_alarm" "cis_changes_nacl" {
@@ -36,10 +37,6 @@ resource "aws_cloudwatch_metric_alarm" "cis_changes_nacl" {
 ```
 
 which ensures the alarm triggers on relevant NACL changes and notifies security teams promptly.
-
-#### Learn More
-
- - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudwatch_log_metric_filter#pattern)
 
 
 ## Compliant Code Examples

@@ -5,28 +5,29 @@ meta:
   id: "f5342045-b935-402d-adf1-8dbbd09c0eef"
   display_name: "AKS Network Policy Misconfigured"
   cloud_provider: "azure"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "LOW"
   category: "Insecure Configurations"
 ---
 ## Metadata
 
-**Name:** `azure/aks_network_policy_misconfigured`
-
-**Query Name** `AKS Network Policy Misconfigured`
-
 **Id:** `f5342045-b935-402d-adf1-8dbbd09c0eef`
 
 **Cloud Provider:** azure
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** Low
 
 **Category:** Insecure Configurations
 
-## Description
-Azure Kubernetes Service (AKS) clusters should have a proper network policy configured using the `network_profile.network_policy` attribute to enforce the principle of least privilege and restrict unnecessary network traffic between pods. If this attribute is omitted or misconfigured, as shown below, it leaves the cluster vulnerable to unrestricted communication between pods, increasing the risk of lateral movement and exposure if one pod is compromised.
+#### Learn More
+
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/kubernetes_cluster)
+
+### Description
+
+ Azure Kubernetes Service (AKS) clusters should have a proper network policy configured using the `network_profile.network_policy` attribute to enforce the principle of least privilege and restrict unnecessary network traffic between pods. If this attribute is omitted or misconfigured, as shown below, it leaves the cluster vulnerable to unrestricted communication between pods, increasing the risk of lateral movement and exposure if one pod is compromised.
 
 Unsecure example:
 
@@ -44,10 +45,6 @@ network_profile {
 }
 ```
 Without strict network policies, attackers could exploit insecure inter-pod communications to access sensitive resources or escalate privileges within the Kubernetes environment.
-
-#### Learn More
-
- - [Provider Reference](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/kubernetes_cluster)
 
 
 ## Compliant Code Examples

@@ -5,28 +5,29 @@ meta:
   id: "4a9e0f00-0765-4f72-a0d4-d31110b78279"
   display_name: "Azure Cognitive Search Public Network Access Enabled"
   cloud_provider: "azure"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Networking and Firewall"
 ---
 ## Metadata
 
-**Name:** `azure/azure_cognitive_search_public_network_access_enabled`
-
-**Query Name** `Azure Cognitive Search Public Network Access Enabled`
-
 **Id:** `4a9e0f00-0765-4f72-a0d4-d31110b78279`
 
 **Cloud Provider:** azure
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** Medium
 
 **Category:** Networking and Firewall
 
-## Description
-Allowing public network access to Azure Cognitive Search exposes the service to the internet, increasing the risk of unauthorized access and data exposure. In Terraform, this is controlled by the `public_network_access_enabled` attribute; setting this attribute to `true` permits public connections, while setting it to `false` restricts access to trusted, private networks only. For example, a secure configuration would be:
+#### Learn More
+
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/search_service#public_network_access_enabled)
+
+### Description
+
+ Allowing public network access to Azure Cognitive Search exposes the service to the internet, increasing the risk of unauthorized access and data exposure. In Terraform, this is controlled by the `public_network_access_enabled` attribute; setting this attribute to `true` permits public connections, while setting it to `false` restricts access to trusted, private networks only. For example, a secure configuration would be:
 
 ```
 resource "azurerm_search_service" "example" {
@@ -39,10 +40,6 @@ resource "azurerm_search_service" "example" {
 ```
 
 Leaving public access enabled may allow attackers to enumerate, access, or exfiltrate sensitive search indexes and data.
-
-#### Learn More
-
- - [Provider Reference](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/search_service#public_network_access_enabled)
 
 
 ## Compliant Code Examples

@@ -5,28 +5,29 @@ meta:
   id: "1b44e234-3d73-41a8-9954-0b154135280e"
   display_name: "Shielded VM Disabled"
   cloud_provider: "gcp"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Insecure Configurations"
 ---
 ## Metadata
 
-**Name:** `gcp/shielded_vm_disabled`
-
-**Query Name** `Shielded VM Disabled`
-
 **Id:** `1b44e234-3d73-41a8-9954-0b154135280e`
 
 **Cloud Provider:** gcp
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** Medium
 
 **Category:** Insecure Configurations
 
-## Description
-Compute instances must be configured with Shielded VM enabled to provide enhanced security against rootkits and other persistent threats. This requires defining the `shielded_instance_config` block with all sub-attributes—`enable_secure_boot`, `enable_vtpm`, and `enable_integrity_monitoring`—set to `true`. Failure to enable these features, as shown below, can leave virtual machines vulnerable to unauthorized modifications, tampering, or attacks that compromise the integrity and confidentiality of the system.
+#### Learn More
+
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/compute_instance#shielded_instance_config)
+
+### Description
+
+ Compute instances must be configured with Shielded VM enabled to provide enhanced security against rootkits and other persistent threats. This requires defining the `shielded_instance_config` block with all sub-attributes—`enable_secure_boot`, `enable_vtpm`, and `enable_integrity_monitoring`—set to `true`. Failure to enable these features, as shown below, can leave virtual machines vulnerable to unauthorized modifications, tampering, or attacks that compromise the integrity and confidentiality of the system.
 
 ```
 data "google_compute_instance" "appserver" {
@@ -39,10 +40,6 @@ data "google_compute_instance" "appserver" {
   }
 }
 ```
-
-#### Learn More
-
- - [Provider Reference](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/compute_instance#shielded_instance_config)
 
 
 ## Compliant Code Examples

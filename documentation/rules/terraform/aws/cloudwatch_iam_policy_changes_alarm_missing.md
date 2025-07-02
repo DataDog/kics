@@ -5,32 +5,29 @@ meta:
   id: "eaaba502-2f94-411a-a3c2-83d63cc1776d"
   display_name: "CloudWatch IAM Policy Changes Alarm Missing"
   cloud_provider: "aws"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "LOW"
   category: "Observability"
 ---
 ## Metadata
 
-**Name:** `aws/cloudwatch_iam_policy_changes_alarm_missing`
-
-**Query Name** `CloudWatch IAM Policy Changes Alarm Missing`
-
 **Id:** `eaaba502-2f94-411a-a3c2-83d63cc1776d`
 
 **Cloud Provider:** aws
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** Low
 
 **Category:** Observability
 
-## Description
-This check ensures that a CloudWatch log metric filter and a corresponding alarm are in place to monitor for IAM policy changes, as recommended by security best practices. If the `aws_cloudwatch_metric_alarm` resource's `metric_name` attribute does not correctly reference the log metric filter (e.g., set to a placeholder like `"XXXX NOT YOUR FILTER XXXX"` instead of `aws_cloudwatch_log_metric_filter.cis_iam_policy_change.id`), IAM policy alterations may go undetected. Without proper monitoring and alerting, unauthorized or accidental changes to IAM policies could occur without notice, potentially leading to privilege escalation or unauthorized access within your AWS environment.
-
 #### Learn More
 
  - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudwatch_log_metric_filter#pattern)
+
+### Description
+
+ This check ensures that a CloudWatch log metric filter and a corresponding alarm are in place to monitor for IAM policy changes, as recommended by security best practices. If the `aws_cloudwatch_metric_alarm` resource's `metric_name` attribute does not correctly reference the log metric filter (e.g., set to a placeholder like `"XXXX NOT YOUR FILTER XXXX"` instead of `aws_cloudwatch_log_metric_filter.cis_iam_policy_change.id`), IAM policy alterations may go undetected. Without proper monitoring and alerting, unauthorized or accidental changes to IAM policies could occur without notice, potentially leading to privilege escalation or unauthorized access within your AWS environment.
 
 
 ## Compliant Code Examples

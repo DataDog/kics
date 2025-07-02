@@ -5,28 +5,29 @@ meta:
   id: "61c3cb8b-0715-47e4-b788-86dde40dd2db"
   display_name: "Dashboard Is Enabled"
   cloud_provider: "azure"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "LOW"
   category: "Insecure Configurations"
 ---
 ## Metadata
 
-**Name:** `azure/dashboard_is_enabled`
-
-**Query Name** `Dashboard Is Enabled`
-
 **Id:** `61c3cb8b-0715-47e4-b788-86dde40dd2db`
 
 **Cloud Provider:** azure
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** Low
 
 **Category:** Insecure Configurations
 
-## Description
-This check verifies if the Kubernetes Dashboard add-on is enabled in the cluster configuration by examining the `addon_profile` block and specifically whether `kube_dashboard { enabled = true }` has been set. Enabling the Kubernetes Dashboard can expose sensitive cluster information and administrative controls via a web interface, increasing the risk of unauthorized access if not properly secured or restricted. For better security, the dashboard should be disabled by setting `enabled = false`:
+#### Learn More
+
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/kubernetes_cluster)
+
+### Description
+
+ This check verifies if the Kubernetes Dashboard add-on is enabled in the cluster configuration by examining the `addon_profile` block and specifically whether `kube_dashboard { enabled = true }` has been set. Enabling the Kubernetes Dashboard can expose sensitive cluster information and administrative controls via a web interface, increasing the risk of unauthorized access if not properly secured or restricted. For better security, the dashboard should be disabled by setting `enabled = false`:
 
 ```
 addon_profile {
@@ -36,10 +37,6 @@ addon_profile {
 }
 ```
 This reduces the potential attack surface and protects against possible privilege escalation or data exposure vulnerabilities.
-
-#### Learn More
-
- - [Provider Reference](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/kubernetes_cluster)
 
 
 ## Compliant Code Examples

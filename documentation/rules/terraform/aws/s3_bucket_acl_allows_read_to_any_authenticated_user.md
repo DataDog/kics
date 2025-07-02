@@ -5,28 +5,29 @@ meta:
   id: "57b9893d-33b1-4419-bcea-a717ea87e139"
   display_name: "S3 Bucket ACL Allows Read to Any Authenticated User"
   cloud_provider: "aws"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "HIGH"
   category: "Access Control"
 ---
 ## Metadata
 
-**Name:** `aws/s3_bucket_acl_allows_read_to_any_authenticated_user`
-
-**Query Name** `S3 Bucket ACL Allows Read to Any Authenticated User`
-
 **Id:** `57b9893d-33b1-4419-bcea-a717ea87e139`
 
 **Cloud Provider:** aws
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** High
 
 **Category:** Access Control
 
-## Description
-This check identifies S3 buckets that use the 'authenticated-read' ACL, which grants read access to any authenticated AWS user, regardless of their account. This configuration creates a significant security risk as it exposes your data to all authenticated AWS users worldwide, potentially leading to unauthorized data access and information disclosure. 
+#### Learn More
+
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket#acl)
+
+### Description
+
+ This check identifies S3 buckets that use the 'authenticated-read' ACL, which grants read access to any authenticated AWS user, regardless of their account. This configuration creates a significant security risk as it exposes your data to all authenticated AWS users worldwide, potentially leading to unauthorized data access and information disclosure. 
 
 Secure configuration example:
 ```
@@ -43,10 +44,6 @@ resource "aws_s3_bucket" "example" {
   acl    = "authenticated-read"
 }
 ```
-
-#### Learn More
-
- - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket#acl)
 
 
 ## Compliant Code Examples

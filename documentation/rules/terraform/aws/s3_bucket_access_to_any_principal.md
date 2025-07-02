@@ -5,28 +5,29 @@ meta:
   id: "7af43613-6bb9-4a0e-8c4d-1314b799425e"
   display_name: "S3 Bucket Access to Any Principal"
   cloud_provider: "aws"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "CRITICAL"
   category: "Access Control"
 ---
 ## Metadata
 
-**Name:** `aws/s3_bucket_access_to_any_principal`
-
-**Query Name** `S3 Bucket Access to Any Principal`
-
 **Id:** `7af43613-6bb9-4a0e-8c4d-1314b799425e`
 
 **Cloud Provider:** aws
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** Critical
 
 **Category:** Access Control
 
-## Description
-When an S3 bucket policy allows access to all AWS principals ('*'), it creates a significant security vulnerability by potentially exposing sensitive data to anyone on the internet. Malicious actors could access, modify, or delete your data, leading to data breaches, regulatory violations, and reputational damage. To secure your S3 bucket, avoid using '*' in the Principal field with an Allow effect. Instead, explicitly specify authorized principals or use a Deny effect as shown below:
+#### Learn More
+
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_policy)
+
+### Description
+
+ When an S3 bucket policy allows access to all AWS principals ('*'), it creates a significant security vulnerability by potentially exposing sensitive data to anyone on the internet. Malicious actors could access, modify, or delete your data, leading to data breaches, regulatory violations, and reputational damage. To secure your S3 bucket, avoid using '*' in the Principal field with an Allow effect. Instead, explicitly specify authorized principals or use a Deny effect as shown below:
 
 ```
 "Statement": [
@@ -41,10 +42,6 @@ When an S3 bucket policy allows access to all AWS principals ('*'), it creates a
   }
 ]
 ```
-
-#### Learn More
-
- - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_policy)
 
 
 ## Compliant Code Examples

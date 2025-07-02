@@ -5,32 +5,29 @@ meta:
   id: "e3f7a9b0-c1d2-3e4f-5678-90abcdef1234"
   display_name: "Ensure web app is not remotely debuggable"
   cloud_provider: "azure"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "HIGH"
   category: "Insecure Configurations"
 ---
 ## Metadata
 
-**Name:** `azure/remote_debugging_enabled_app_service`
-
-**Query Name** `Ensure web app is not remotely debuggable`
-
 **Id:** `e3f7a9b0-c1d2-3e4f-5678-90abcdef1234`
 
 **Cloud Provider:** azure
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** High
 
 **Category:** Insecure Configurations
 
-## Description
-Remote debugging in Azure app services creates a direct channel into your application which can be exploited by attackers to access sensitive data, execute arbitrary code, or gain unauthorized system access. When enabled, it significantly expands your attack surface by exposing debugging interfaces that should never be accessible in production environments. To secure your application, ensure remote debugging is explicitly disabled in your Terraform configuration by setting `remote_debugging_enabled = [false]` in the site_config block, as shown in this secure example: ```resource "azurerm_app_service" "good_example" { site_config { remote_debugging_enabled = [false] } }```.
-
 #### Learn More
 
  - [Provider Reference](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/app_service#site_config)
+
+### Description
+
+ Remote debugging in Azure app services creates a direct channel into your application which can be exploited by attackers to access sensitive data, execute arbitrary code, or gain unauthorized system access. When enabled, it significantly expands your attack surface by exposing debugging interfaces that should never be accessible in production environments. To secure your application, ensure remote debugging is explicitly disabled in your Terraform configuration by setting `remote_debugging_enabled = [false]` in the site_config block, as shown in this secure example: ```resource "azurerm_app_service" "good_example" { site_config { remote_debugging_enabled = [false] } }```.
 
 
 ## Compliant Code Examples

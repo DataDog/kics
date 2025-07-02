@@ -5,28 +5,29 @@ meta:
   id: "8bfbf7ab-d5e8-4100-8618-798956e101e0"
   display_name: "User With Privilege Escalation By Actions 'iam:PutGroupPolicy'"
   cloud_provider: "aws"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"
 ---
 ## Metadata
 
-**Name:** `aws/user_with_privilege_escalation_by_actions_iam_PutGroupPolicy`
-
-**Query Name** `User With Privilege Escalation By Actions 'iam:PutGroupPolicy'`
-
 **Id:** `8bfbf7ab-d5e8-4100-8618-798956e101e0`
 
 **Cloud Provider:** aws
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** Medium
 
 **Category:** Access Control
 
-## Description
-Granting an IAM user the `iam:PutGroupPolicy` action with `"Resource": "*"` allows them to attach arbitrary inline policies to any IAM group in the AWS account, leading to potential privilege escalation. With this permission, a user could assign powerful or administrative permissions to groups they belong to, effectively bypassing intended security boundaries. To prevent this, it's important to restrict IAM user actions to the minimum necessary and avoid using wildcards in sensitive permissions, as shown below:
+#### Learn More
+
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_user_policy#policy)
+
+### Description
+
+ Granting an IAM user the `iam:PutGroupPolicy` action with `"Resource": "*"` allows them to attach arbitrary inline policies to any IAM group in the AWS account, leading to potential privilege escalation. With this permission, a user could assign powerful or administrative permissions to groups they belong to, effectively bypassing intended security boundaries. To prevent this, it's important to restrict IAM user actions to the minimum necessary and avoid using wildcards in sensitive permissions, as shown below:
 
 ```
 policy = jsonencode({
@@ -42,10 +43,6 @@ policy = jsonencode({
   ]
 })
 ```
-
-#### Learn More
-
- - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_user_policy#policy)
 
 
 ## Compliant Code Examples

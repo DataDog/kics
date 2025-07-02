@@ -5,28 +5,29 @@ meta:
   id: "b5681959-6c09-4f55-b42b-c40fa12d03ec"
   display_name: "IAM User Policy Without MFA"
   cloud_provider: "aws"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "LOW"
   category: "Insecure Configurations"
 ---
 ## Metadata
 
-**Name:** `aws/iam_user_policy_without_mfa`
-
-**Query Name** `IAM User Policy Without MFA`
-
 **Id:** `b5681959-6c09-4f55-b42b-c40fa12d03ec`
 
 **Cloud Provider:** aws
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** Low
 
 **Category:** Insecure Configurations
 
-## Description
-This check verifies that the AWS root user is required to authenticate using multi-factor authentication (MFA). If the root user is not protected with MFA, as in a policy lacking a condition on `"aws:MultiFactorAuthPresent"`, unauthorized users with access to the root credentials could compromise the entire AWS account. Enforcing MFA by adding a policy condition such as
+#### Learn More
+
+ - [Provider Reference](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_mfa_configure-api-require.html)
+
+### Description
+
+ This check verifies that the AWS root user is required to authenticate using multi-factor authentication (MFA). If the root user is not protected with MFA, as in a policy lacking a condition on `"aws:MultiFactorAuthPresent"`, unauthorized users with access to the root credentials could compromise the entire AWS account. Enforcing MFA by adding a policy condition such as
 
 ```
 "Condition": {
@@ -37,10 +38,6 @@ This check verifies that the AWS root user is required to authenticate using mul
 ```
 
 significantly reduces the risk of credential theft, unauthorized privilege escalation, and account takeovers.
-
-#### Learn More
-
- - [Provider Reference](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_mfa_configure-api-require.html)
 
 
 ## Compliant Code Examples

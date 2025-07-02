@@ -5,28 +5,29 @@ meta:
   id: "a3b4c5d6-e7f8-9012-3456-7890abcdef12"
   display_name: "Ensure that UDP Services are restricted from the Internet"
   cloud_provider: "azure"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "HIGH"
   category: "Networking and Firewall"
 ---
 ## Metadata
 
-**Name:** `azure/udp_services_not_restricted_from_internet`
-
-**Query Name** `Ensure that UDP Services are restricted from the Internet`
-
 **Id:** `a3b4c5d6-e7f8-9012-3456-7890abcdef12`
 
 **Cloud Provider:** azure
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** High
 
 **Category:** Networking and Firewall
 
-## Description
-Network Security Group (NSG) rules that allow unrestricted UDP traffic from the internet (0.0.0.0/0) create significant security vulnerabilities in Azure environments. UDP is a connectionless protocol that doesn't provide built-in security controls, making services using it particularly susceptible to DDoS attacks, packet spoofing, and unauthorized access when exposed publicly. Instead of using broad source address prefixes like '0.0.0.0/0', restrict inbound UDP traffic to specific IP ranges or CIDR blocks that require access.
+#### Learn More
+
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/network_security_group)
+
+### Description
+
+ Network Security Group (NSG) rules that allow unrestricted UDP traffic from the internet (0.0.0.0/0) create significant security vulnerabilities in Azure environments. UDP is a connectionless protocol that doesn't provide built-in security controls, making services using it particularly susceptible to DDoS attacks, packet spoofing, and unauthorized access when exposed publicly. Instead of using broad source address prefixes like '0.0.0.0/0', restrict inbound UDP traffic to specific IP ranges or CIDR blocks that require access.
 
 Secure example:
 ```
@@ -45,10 +46,6 @@ security_rule {
   destination_port_range    = "53"
 }
 ```
-
-#### Learn More
-
- - [Provider Reference](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/network_security_group)
 
 
 ## Compliant Code Examples

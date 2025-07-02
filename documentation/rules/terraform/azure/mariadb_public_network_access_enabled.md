@@ -5,28 +5,29 @@ meta:
   id: "7f0a8696-7159-4337-ad0d-8a3ab4a78195"
   display_name: "MariaDB Server Public Network Access Enabled"
   cloud_provider: "azure"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "HIGH"
   category: "Networking and Firewall"
 ---
 ## Metadata
 
-**Name:** `azure/mariadb_public_network_access_enabled`
-
-**Query Name** `MariaDB Server Public Network Access Enabled`
-
 **Id:** `7f0a8696-7159-4337-ad0d-8a3ab4a78195`
 
 **Cloud Provider:** azure
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** High
 
 **Category:** Networking and Firewall
 
-## Description
-Azure MariaDB Server with public network access enabled allows direct connections from the internet, significantly increasing the risk of unauthorized access and potential data breaches. Attackers can attempt brute force attacks against your database credentials or exploit vulnerabilities if the server is publicly accessible. To properly secure your MariaDB Server, you should disable public network access by setting the 'public_network_access_enabled' attribute to 'false', as shown in the secure configuration example:
+#### Learn More
+
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/mariadb_server#public_network_access_enabled)
+
+### Description
+
+ Azure MariaDB Server with public network access enabled allows direct connections from the internet, significantly increasing the risk of unauthorized access and potential data breaches. Attackers can attempt brute force attacks against your database credentials or exploit vulnerabilities if the server is publicly accessible. To properly secure your MariaDB Server, you should disable public network access by setting the 'public_network_access_enabled' attribute to 'false', as shown in the secure configuration example:
 
 ```
 resource "azurerm_mariadb_server" "example" {
@@ -36,10 +37,6 @@ resource "azurerm_mariadb_server" "example" {
 ```
 
 Instead, use private endpoints, service endpoints, or VPN connections to access your database securely.
-
-#### Learn More
-
- - [Provider Reference](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/mariadb_server#public_network_access_enabled)
 
 
 ## Compliant Code Examples

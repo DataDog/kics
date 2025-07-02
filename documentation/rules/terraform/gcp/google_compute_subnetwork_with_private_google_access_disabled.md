@@ -5,28 +5,29 @@ meta:
   id: "ee7b93c1-b3f8-4a3b-9588-146d481814f5"
   display_name: "Google Compute Subnetwork with Private Google Access Disabled"
   cloud_provider: "gcp"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "LOW"
   category: "Networking and Firewall"
 ---
 ## Metadata
 
-**Name:** `gcp/google_compute_subnetwork_with_private_google_access_disabled`
-
-**Query Name** `Google Compute Subnetwork with Private Google Access Disabled`
-
 **Id:** `ee7b93c1-b3f8-4a3b-9588-146d481814f5`
 
 **Cloud Provider:** gcp
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** Low
 
 **Category:** Networking and Firewall
 
-## Description
-Enabling Private Google Access for a Google Compute Subnetwork by setting the `private_ip_google_access` attribute to `true` allows resources with only internal IP addresses to access Google APIs and services securely, without requiring external IP addresses. If this setting is not enabled, resources within the subnetwork are unable to directly reach Google services without public internet routes, increasing the risk of misconfigurations that may expose internal resources or disrupt service communications. To address this, ensure the configuration includes `private_ip_google_access = true`:
+#### Learn More
+
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/compute_subnetwork#private_ip_google_access)
+
+### Description
+
+ Enabling Private Google Access for a Google Compute Subnetwork by setting the `private_ip_google_access` attribute to `true` allows resources with only internal IP addresses to access Google APIs and services securely, without requiring external IP addresses. If this setting is not enabled, resources within the subnetwork are unable to directly reach Google services without public internet routes, increasing the risk of misconfigurations that may expose internal resources or disrupt service communications. To address this, ensure the configuration includes `private_ip_google_access = true`:
 
 ```
 resource "google_compute_subnetwork" "example" {
@@ -37,10 +38,6 @@ resource "google_compute_subnetwork" "example" {
   private_ip_google_access = true
 }
 ```
-
-#### Learn More
-
- - [Provider Reference](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/compute_subnetwork#private_ip_google_access)
 
 
 ## Compliant Code Examples

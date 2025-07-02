@@ -5,28 +5,29 @@ meta:
   id: "482b7d26-0bdb-4b5f-bf6f-545826c0a3dd"
   display_name: "CloudTrail SNS Topic Name Undefined"
   cloud_provider: "aws"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "LOW"
   category: "Observability"
 ---
 ## Metadata
 
-**Name:** `aws/cloudtrail_sns_topic_name_undefined`
-
-**Query Name** `CloudTrail SNS Topic Name Undefined`
-
 **Id:** `482b7d26-0bdb-4b5f-bf6f-545826c0a3dd`
 
 **Cloud Provider:** aws
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** Low
 
 **Category:** Observability
 
-## Description
-This check verifies whether an Amazon CloudTrail resource is configured to send logs to an SNS topic by setting the `sns_topic_name` attribute. Without specifying `sns_topic_name`, CloudTrail will not publish notifications of log file delivery events to Amazon SNS, which could result in missed alerts or delayed incident response. To address this, you should configure CloudTrail with an SNS topic, as shown below:
+#### Learn More
+
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudtrail)
+
+### Description
+
+ This check verifies whether an Amazon CloudTrail resource is configured to send logs to an SNS topic by setting the `sns_topic_name` attribute. Without specifying `sns_topic_name`, CloudTrail will not publish notifications of log file delivery events to Amazon SNS, which could result in missed alerts or delayed incident response. To address this, you should configure CloudTrail with an SNS topic, as shown below:
 
 ```
 resource "aws_cloudtrail" "example" {
@@ -34,10 +35,6 @@ resource "aws_cloudtrail" "example" {
   sns_topic_name = "some-topic"
 }
 ```
-
-#### Learn More
-
- - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudtrail)
 
 
 ## Compliant Code Examples

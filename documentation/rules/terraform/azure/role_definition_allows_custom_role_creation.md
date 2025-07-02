@@ -5,28 +5,29 @@ meta:
   id: "3fa5900f-9aac-4982-96b2-a6143d9c99fb"
   display_name: "Role Definition Allows Custom Role Creation"
   cloud_provider: "azure"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"
 ---
 ## Metadata
 
-**Name:** `azure/role_definition_allows_custom_role_creation`
-
-**Query Name** `Role Definition Allows Custom Role Creation`
-
 **Id:** `3fa5900f-9aac-4982-96b2-a6143d9c99fb`
 
 **Cloud Provider:** azure
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** Medium
 
 **Category:** Access Control
 
-## Description
-Allowing the `Microsoft.Authorization/roleDefinitions/write` action in a custom Azure role definition grants users the ability to create, modify, or delete role definitions within the assigned scope. This level of permission can lead to privilege escalation, where a malicious or compromised user can create overly permissive roles or alter existing ones. To mitigate this risk, custom roles should be limited to `Microsoft.Authorization/roleDefinitions/read`, as shown below:
+#### Learn More
+
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/role_definition#actions)
+
+### Description
+
+ Allowing the `Microsoft.Authorization/roleDefinitions/write` action in a custom Azure role definition grants users the ability to create, modify, or delete role definitions within the assigned scope. This level of permission can lead to privilege escalation, where a malicious or compromised user can create overly permissive roles or alter existing ones. To mitigate this risk, custom roles should be limited to `Microsoft.Authorization/roleDefinitions/read`, as shown below:
 
 ```
 permissions {
@@ -36,10 +37,6 @@ permissions {
 ```
 
 Restricting write access helps protect against unauthorized changes to role definitions and reduces the attack surface for privilege escalation.
-
-#### Learn More
-
- - [Provider Reference](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/role_definition#actions)
 
 
 ## Compliant Code Examples

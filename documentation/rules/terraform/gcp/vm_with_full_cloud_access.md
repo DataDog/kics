@@ -5,28 +5,29 @@ meta:
   id: "bc280331-27b9-4acb-a010-018e8098aa5d"
   display_name: "VM With Full Cloud Access"
   cloud_provider: "gcp"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"
 ---
 ## Metadata
 
-**Name:** `gcp/vm_with_full_cloud_access`
-
-**Query Name** `VM With Full Cloud Access`
-
 **Id:** `bc280331-27b9-4acb-a010-018e8098aa5d`
 
 **Cloud Provider:** gcp
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** Medium
 
 **Category:** Access Control
 
-## Description
-If a Google Compute Engine VM instance is configured to use the default service account with `cloud-platform` scope (full access to all Cloud APIs), any process running on that instance can interact with all enabled Google Cloud services in the project, significantly increasing the risk of privilege escalation or unintended data exposure. For example, the following configuration is insecure:
+#### Learn More
+
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/compute_instance#scopes)
+
+### Description
+
+ If a Google Compute Engine VM instance is configured to use the default service account with `cloud-platform` scope (full access to all Cloud APIs), any process running on that instance can interact with all enabled Google Cloud services in the project, significantly increasing the risk of privilege escalation or unintended data exposure. For example, the following configuration is insecure:
 
 ```
 service_account {
@@ -43,10 +44,6 @@ service_account {
 ```
 
 Leaving excessive permissions unaddressed can allow attackers or compromised applications to gain broad and unnecessary access across your cloud environment.
-
-#### Learn More
-
- - [Provider Reference](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/compute_instance#scopes)
 
 
 ## Compliant Code Examples

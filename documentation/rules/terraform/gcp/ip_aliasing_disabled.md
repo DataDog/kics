@@ -5,28 +5,29 @@ meta:
   id: "c606ba1d-d736-43eb-ac24-e16108f3a9e0"
   display_name: "IP Aliasing Disabled"
   cloud_provider: "gcp"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Insecure Configurations"
 ---
 ## Metadata
 
-**Name:** `gcp/ip_aliasing_disabled`
-
-**Query Name** `IP Aliasing Disabled`
-
 **Id:** `c606ba1d-d736-43eb-ac24-e16108f3a9e0`
 
 **Cloud Provider:** gcp
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** Medium
 
 **Category:** Insecure Configurations
 
-## Description
-Kubernetes clusters on Google Kubernetes Engine (GKE) should be created with Alias IP ranges enabled by defining the `ip_allocation_policy` block and setting the `networking_mode` attribute to `"VPC_NATIVE"`. Without these settings, as shown in the example below, the cluster may fall back to legacy networking modes, which do not provide the same isolation or scalability benefits and increase the risk of network conflicts and unauthorized access:
+#### Learn More
+
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/container_cluster)
+
+### Description
+
+ Kubernetes clusters on Google Kubernetes Engine (GKE) should be created with Alias IP ranges enabled by defining the `ip_allocation_policy` block and setting the `networking_mode` attribute to `"VPC_NATIVE"`. Without these settings, as shown in the example below, the cluster may fall back to legacy networking modes, which do not provide the same isolation or scalability benefits and increase the risk of network conflicts and unauthorized access:
 
 ```
 resource "google_container_cluster" "example" {
@@ -50,10 +51,6 @@ resource "google_container_cluster" "example" {
 ```
 
 Failure to enforce alias IP allocation can lead to reduced network segmentation and potentially exposes pods and services to unintended network access.
-
-#### Learn More
-
- - [Provider Reference](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/container_cluster)
 
 
 ## Compliant Code Examples

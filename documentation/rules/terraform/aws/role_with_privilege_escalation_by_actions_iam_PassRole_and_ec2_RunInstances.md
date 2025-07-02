@@ -5,32 +5,29 @@ meta:
   id: "30b88745-eebe-4ecb-a3a9-5cf886e96204"
   display_name: "Role With Privilege Escalation By Actions 'ec2:RunInstances' And 'iam:PassRole'"
   cloud_provider: "aws"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"
 ---
 ## Metadata
 
-**Name:** `aws/role_with_privilege_escalation_by_actions_iam_PassRole_and_ec2_RunInstances`
-
-**Query Name** `Role With Privilege Escalation By Actions 'ec2:RunInstances' And 'iam:PassRole'`
-
 **Id:** `30b88745-eebe-4ecb-a3a9-5cf886e96204`
 
 **Cloud Provider:** aws
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** Medium
 
 **Category:** Access Control
 
-## Description
-Granting an IAM role permissions for both `ec2:RunInstances` and `iam:PassRole` with their `Resource` attribute set to `"*"` enables a privilege escalation pathway in AWS. This configuration allows any user or entity assuming the role to launch new EC2 instances and assign any IAM role in the account to those instances, including roles with more expansive permissions. As a result, attackers can potentially gain administrative access by launching an instance with a privileged role, bypassing the originally intended limitations. If left unaddressed, this misconfiguration can result in full compromise of the AWS account’s resources, leading to data loss, service disruption, or unauthorized access to sensitive workloads.
-
 #### Learn More
 
  - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy#policy)
+
+### Description
+
+ Granting an IAM role permissions for both `ec2:RunInstances` and `iam:PassRole` with their `Resource` attribute set to `"*"` enables a privilege escalation pathway in AWS. This configuration allows any user or entity assuming the role to launch new EC2 instances and assign any IAM role in the account to those instances, including roles with more expansive permissions. As a result, attackers can potentially gain administrative access by launching an instance with a privileged role, bypassing the originally intended limitations. If left unaddressed, this misconfiguration can result in full compromise of the AWS account’s resources, leading to data loss, service disruption, or unauthorized access to sensitive workloads.
 
 
 ## Compliant Code Examples

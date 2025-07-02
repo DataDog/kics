@@ -5,28 +5,29 @@ meta:
   id: "a81573f9-3691-4d83-88a0-7d4af63e17a3"
   display_name: "Azure App Service Client Certificate Disabled"
   cloud_provider: "azure"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Insecure Configurations"
 ---
 ## Metadata
 
-**Name:** `azure/azure_app_service_client_certificate_disabled`
-
-**Query Name** `Azure App Service Client Certificate Disabled`
-
 **Id:** `a81573f9-3691-4d83-88a0-7d4af63e17a3`
 
 **Cloud Provider:** azure
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** Medium
 
 **Category:** Insecure Configurations
 
-## Description
-Enabling client certificates for Azure App Service ensures that only authenticated clients can access the application by requiring a client SSL certificate in all HTTPS requests. If the `client_cert_enabled` attribute is not set to `true`, unauthorized users could potentially connect to the service, increasing the risk of data leaks or abuse. To secure the App Service, always configure the resource as follows:
+#### Learn More
+
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/app_service#client_cert_enabled)
+
+### Description
+
+ Enabling client certificates for Azure App Service ensures that only authenticated clients can access the application by requiring a client SSL certificate in all HTTPS requests. If the `client_cert_enabled` attribute is not set to `true`, unauthorized users could potentially connect to the service, increasing the risk of data leaks or abuse. To secure the App Service, always configure the resource as follows:
 
 ```
 resource "azurerm_app_service" "example" {
@@ -34,10 +35,6 @@ resource "azurerm_app_service" "example" {
   client_cert_enabled = true
 }
 ```
-
-#### Learn More
-
- - [Provider Reference](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/app_service#client_cert_enabled)
 
 
 ## Compliant Code Examples

@@ -5,32 +5,29 @@ meta:
   id: "5c0003fb-9aa0-42c1-9da3-eb0e332bef21"
   display_name: "Secure Ciphers Disabled"
   cloud_provider: "aws"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Encryption"
 ---
 ## Metadata
 
-**Name:** `aws/secure_ciphers_disabled`
-
-**Query Name** `Secure Ciphers Disabled`
-
 **Id:** `5c0003fb-9aa0-42c1-9da3-eb0e332bef21`
 
 **Cloud Provider:** aws
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** Medium
 
 **Category:** Encryption
 
-## Description
-This check verifies whether Amazon CloudFront distributions are configured to use secure TLS protocols and ciphers by examining the `viewer_certificate` block and its `minimum_protocol_version` attribute. CloudFront distributions that specify weak or outdated protocol versions, such as `SSLv3` (e.g., `minimum_protocol_version = "SSLv3"`), expose transmitted data to vulnerabilities like man-in-the-middle attacks and eavesdropping, because these protocols have known security flaws and are no longer considered safe. Failing to enforce secure cipher suites can allow attackers to decrypt, tamper with, or intercept sensitive information in transit between CloudFront and clients. To mitigate this risk, the attribute should be set to a secure value (such as "TLSv1.2_2019" or higher), or by using the default CloudFront certificate which enforces modern standards.
-
 #### Learn More
 
  - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudfront_distribution)
+
+### Description
+
+ This check verifies whether Amazon CloudFront distributions are configured to use secure TLS protocols and ciphers by examining the `viewer_certificate` block and its `minimum_protocol_version` attribute. CloudFront distributions that specify weak or outdated protocol versions, such as `SSLv3` (e.g., `minimum_protocol_version = "SSLv3"`), expose transmitted data to vulnerabilities like man-in-the-middle attacks and eavesdropping, because these protocols have known security flaws and are no longer considered safe. Failing to enforce secure cipher suites can allow attackers to decrypt, tamper with, or intercept sensitive information in transit between CloudFront and clients. To mitigate this risk, the attribute should be set to a secure value (such as "TLSv1.2_2019" or higher), or by using the default CloudFront certificate which enforces modern standards.
 
 
 ## Compliant Code Examples

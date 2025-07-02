@@ -5,34 +5,31 @@ meta:
   id: "4728cd65-a20c-49da-8b31-9c08b423e4db"
   display_name: "Unrestricted Security Group Ingress"
   cloud_provider: "aws"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "HIGH"
   category: "Networking and Firewall"
 ---
 ## Metadata
 
-**Name:** `aws/unrestricted_security_group_ingress`
-
-**Query Name** `Unrestricted Security Group Ingress`
-
 **Id:** `4728cd65-a20c-49da-8b31-9c08b423e4db`
 
 **Cloud Provider:** aws
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** High
 
 **Category:** Networking and Firewall
 
-## Description
-This check identifies AWS security group rules that allow unrestricted inbound traffic from any IP address (0.0.0.0/0 for IPv4 or ::/0 for IPv6). Such configurations create a significant security vulnerability by exposing your resources to potential unauthorized access from anywhere on the internet, increasing the risk of data breaches and attacks.
-
-Restricting inbound traffic to specific, trusted IP addresses or CIDR ranges is a security best practice that follows the principle of least privilege. Instead of using wide-open rules like `cidr_blocks = ["0.0.0.0/0"]`, configure your security groups with specific CIDR blocks as shown in the secure example: `cidr_blocks = ["0.0.2.0/0"]` or more targeted ranges like corporate IP addresses.
-
 #### Learn More
 
  - [Provider Reference](https://www.terraform.io/docs/providers/aws/r/security_group.html)
+
+### Description
+
+ This check identifies AWS security group rules that allow unrestricted inbound traffic from any IP address (0.0.0.0/0 for IPv4 or ::/0 for IPv6). Such configurations create a significant security vulnerability by exposing your resources to potential unauthorized access from anywhere on the internet, increasing the risk of data breaches and attacks.
+
+Restricting inbound traffic to specific, trusted IP addresses or CIDR ranges is a security best practice that follows the principle of least privilege. Instead of using wide-open rules like `cidr_blocks = ["0.0.0.0/0"]`, configure your security groups with specific CIDR blocks as shown in the secure example: `cidr_blocks = ["0.0.2.0/0"]` or more targeted ranges like corporate IP addresses.
 
 
 ## Compliant Code Examples

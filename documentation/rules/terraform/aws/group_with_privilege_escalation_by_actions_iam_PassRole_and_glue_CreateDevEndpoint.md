@@ -5,32 +5,29 @@ meta:
   id: "7d544dad-8a6c-431c-84c1-5f07fe9afc0e"
   display_name: "Group With Privilege Escalation By Actions 'glue:CreateDevEndpoint' And 'iam:PassRole'"
   cloud_provider: "aws"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"
 ---
 ## Metadata
 
-**Name:** `aws/group_with_privilege_escalation_by_actions_iam_PassRole_and_glue_CreateDevEndpoint`
-
-**Query Name** `Group With Privilege Escalation By Actions 'glue:CreateDevEndpoint' And 'iam:PassRole'`
-
 **Id:** `7d544dad-8a6c-431c-84c1-5f07fe9afc0e`
 
 **Cloud Provider:** aws
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** Medium
 
 **Category:** Access Control
 
-## Description
-Granting an IAM group the permissions `glue:CreateDevEndpoint` and `iam:PassRole` with the `Resource` field set to `*` creates a significant privilege escalation risk. With these permissions, a user can create an AWS Glue Development Endpoint while passing any IAM role of their choosing, effectively allowing them to assume roles with higher privileges than originally authorized. If this misconfiguration is left unaddressed, attackers or unprivileged users could leverage this pathway to gain full administrative access over the AWS environment, bypassing the intended separation of duties. To minimize this risk, always restrict the `Resource` field to specific, intended roles and endpoints, and avoid using `"Resource": "*"` in sensitive IAM policy configurations.
-
 #### Learn More
 
  - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_group_policy#policy)
+
+### Description
+
+ Granting an IAM group the permissions `glue:CreateDevEndpoint` and `iam:PassRole` with the `Resource` field set to `*` creates a significant privilege escalation risk. With these permissions, a user can create an AWS Glue Development Endpoint while passing any IAM role of their choosing, effectively allowing them to assume roles with higher privileges than originally authorized. If this misconfiguration is left unaddressed, attackers or unprivileged users could leverage this pathway to gain full administrative access over the AWS environment, bypassing the intended separation of duties. To minimize this risk, always restrict the `Resource` field to specific, intended roles and endpoints, and avoid using `"Resource": "*"` in sensitive IAM policy configurations.
 
 
 ## Compliant Code Examples

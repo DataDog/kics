@@ -5,28 +5,29 @@ meta:
   id: "84d36481-fd63-48cb-838e-635c44806ec2"
   display_name: "Google Project IAM Member Service Account Has Admin Role"
   cloud_provider: "gcp"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "HIGH"
   category: "Access Control"
 ---
 ## Metadata
 
-**Name:** `gcp/google_project_iam_member_service_account_has_admin_role`
-
-**Query Name** `Google Project IAM Member Service Account Has Admin Role`
-
 **Id:** `84d36481-fd63-48cb-838e-635c44806ec2`
 
 **Cloud Provider:** gcp
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** High
 
 **Category:** Access Control
 
-## Description
-This query identifies when a service account is granted an administrative role in a Google Cloud project, which violates the principle of least privilege. Service accounts with administrative permissions like 'roles/iam.serviceAccountAdmin' can create and manage other service accounts, potentially leading to privilege escalation attacks and unauthorized access across your Google Cloud environment.
+#### Learn More
+
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/google_project_iam#google_project_iam_member)
+
+### Description
+
+ This query identifies when a service account is granted an administrative role in a Google Cloud project, which violates the principle of least privilege. Service accounts with administrative permissions like 'roles/iam.serviceAccountAdmin' can create and manage other service accounts, potentially leading to privilege escalation attacks and unauthorized access across your Google Cloud environment.
 
 Instead of using administrative roles, assign more specific, limited roles that provide only the permissions required for the service account to function. For example:
 
@@ -45,10 +46,6 @@ resource "google_project_iam_member" "secure" {
   member  = "serviceAccount:my-app@appspot.gserviceacccount.com"
 }
 ```
-
-#### Learn More
-
- - [Provider Reference](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/google_project_iam#google_project_iam_member)
 
 
 ## Compliant Code Examples

@@ -5,32 +5,29 @@ meta:
   id: "20018359-6fd7-4d05-ab26-d4dffccbdf79"
   display_name: "ELB Access Log Disabled"
   cloud_provider: "aws"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Observability"
 ---
 ## Metadata
 
-**Name:** `aws/elb_access_logging_disabled`
-
-**Query Name** `ELB Access Log Disabled`
-
 **Id:** `20018359-6fd7-4d05-ab26-d4dffccbdf79`
 
 **Cloud Provider:** aws
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** Medium
 
 **Category:** Observability
 
-## Description
-Elastic Load Balancers (ELBs) should have access logging enabled by setting the `enabled` attribute to `true` within the `access_logs` block. Disabling ELB access logs (for example, with `enabled = false`) can make it difficult to investigate errors, identify suspicious activity, or audit access to applications behind the load balancer. Without these logs, incident response and troubleshooting are significantly hindered, increasing the risk of undetected security incidents or prolonged outages.
-
 #### Learn More
 
  - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/elb#enabled)
+
+### Description
+
+ Elastic Load Balancers (ELBs) should have access logging enabled by setting the `enabled` attribute to `true` within the `access_logs` block. Disabling ELB access logs (for example, with `enabled = false`) can make it difficult to investigate errors, identify suspicious activity, or audit access to applications behind the load balancer. Without these logs, incident response and troubleshooting are significantly hindered, increasing the risk of undetected security incidents or prolonged outages.
 
 
 ## Compliant Code Examples

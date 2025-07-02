@@ -5,38 +5,35 @@ meta:
   id: "c7fc1481-2899-4490-bbd8-544a3a61a2f3"
   display_name: "App Service Authentication Disabled"
   cloud_provider: "azure"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"
 ---
 ## Metadata
 
-**Name:** `azure/app_service_authentication_disabled`
-
-**Query Name** `App Service Authentication Disabled`
-
 **Id:** `c7fc1481-2899-4490-bbd8-544a3a61a2f3`
 
 **Cloud Provider:** azure
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** Medium
 
 **Category:** Access Control
 
-## Description
-Azure App Service authentication settings should be enabled to ensure that access to the application is restricted to authenticated users. Without enabling the `auth_settings { enabled = true }` block in Terraform, anyone can anonymously access the app, which exposes it to unauthorized access and potential misuse of sensitive data or resources. Properly configuring authentication securely helps mitigate risks from attacks such as data exfiltration, account takeover, or service abuse.
+#### Learn More
+
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/app_service#enabled)
+
+### Description
+
+ Azure App Service authentication settings should be enabled to ensure that access to the application is restricted to authenticated users. Without enabling the `auth_settings { enabled = true }` block in Terraform, anyone can anonymously access the app, which exposes it to unauthorized access and potential misuse of sensitive data or resources. Properly configuring authentication securely helps mitigate risks from attacks such as data exfiltration, account takeover, or service abuse.
 
 ```
 auth_settings = {
   enabled = true
 }
 ```
-
-#### Learn More
-
- - [Provider Reference](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/app_service#enabled)
 
 
 ## Compliant Code Examples

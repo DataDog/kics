@@ -5,34 +5,31 @@ meta:
   id: "d7b9d850-3e06-4a75-852f-c46c2e92240b"
   display_name: "Hardcoded AWS Access Key"
   cloud_provider: "aws"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "HIGH"
   category: "Secret Management"
 ---
 ## Metadata
 
-**Name:** `aws/hardcoded_aws_access_key`
-
-**Query Name** `Hardcoded AWS Access Key`
-
 **Id:** `d7b9d850-3e06-4a75-852f-c46c2e92240b`
 
 **Cloud Provider:** aws
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** High
 
 **Category:** Secret Management
 
-## Description
-Hardcoding AWS access keys in Terraform configuration files poses a significant security risk as these credentials can be exposed if the code is shared, stored in version control systems, or accidentally leaked. This vulnerability could allow unauthorized access to AWS resources, potentially leading to data breaches, resource manipulation, or incurring unexpected costs.
-
-Instead of hardcoding credentials directly in configuration files like `user_data = "1234567890123456789012345678901234567890$"`, use more secure approaches such as referencing files (`file("scripts/first-boot-http.sh")`) or utilizing environment variables, AWS IAM roles, or secure secret management solutions. This helps maintain the principle of least privilege and significantly reduces the risk of credential exposure.
-
 #### Learn More
 
  - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/instance)
+
+### Description
+
+ Hardcoding AWS access keys in Terraform configuration files poses a significant security risk as these credentials can be exposed if the code is shared, stored in version control systems, or accidentally leaked. This vulnerability could allow unauthorized access to AWS resources, potentially leading to data breaches, resource manipulation, or incurring unexpected costs.
+
+Instead of hardcoding credentials directly in configuration files like `user_data = "1234567890123456789012345678901234567890$"`, use more secure approaches such as referencing files (`file("scripts/first-boot-http.sh")`) or utilizing environment variables, AWS IAM roles, or secure secret management solutions. This helps maintain the principle of least privilege and significantly reduces the risk of credential exposure.
 
 
 ## Compliant Code Examples

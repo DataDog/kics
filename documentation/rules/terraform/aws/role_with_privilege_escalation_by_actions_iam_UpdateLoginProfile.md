@@ -5,28 +5,29 @@ meta:
   id: "35ccf766-0e4d-41ed-9ec4-2dab155082b4"
   display_name: "Role With Privilege Escalation By Actions 'iam:UpdateLoginProfile'"
   cloud_provider: "aws"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"
 ---
 ## Metadata
 
-**Name:** `aws/role_with_privilege_escalation_by_actions_iam_UpdateLoginProfile`
-
-**Query Name** `Role With Privilege Escalation By Actions 'iam:UpdateLoginProfile'`
-
 **Id:** `35ccf766-0e4d-41ed-9ec4-2dab155082b4`
 
 **Cloud Provider:** aws
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** Medium
 
 **Category:** Access Control
 
-## Description
-Granting the `iam:UpdateLoginProfile` action with the `Resource` attribute set to `"*"` in an IAM policy allows a role or user to change the login passwords of any IAM user in the AWS account. This creates a privilege escalation vulnerability, as a user with this permission could take over other accounts and gain unauthorized access to critical resources. 
+#### Learn More
+
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy#policy)
+
+### Description
+
+ Granting the `iam:UpdateLoginProfile` action with the `Resource` attribute set to `"*"` in an IAM policy allows a role or user to change the login passwords of any IAM user in the AWS account. This creates a privilege escalation vulnerability, as a user with this permission could take over other accounts and gain unauthorized access to critical resources. 
 
 To prevent this, use least-privilege access—for example, restricting allowed actions and resource scope, as in:
 
@@ -50,10 +51,6 @@ resource "aws_iam_user_policy" "inline_policy_run_instances2" {
 }
 ```
 This sample policy grants only read-only access to EC2 information, rather than sensitive IAM actions.
-
-#### Learn More
-
- - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy#policy)
 
 
 ## Compliant Code Examples

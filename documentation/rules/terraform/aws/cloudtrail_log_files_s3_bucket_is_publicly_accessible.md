@@ -5,28 +5,29 @@ meta:
   id: "bd0088a5-c133-4b20-b129-ec9968b16ef3"
   display_name: "CloudTrail Log Files S3 Bucket is Publicly Accessible"
   cloud_provider: "aws"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "HIGH"
   category: "Observability"
 ---
 ## Metadata
 
-**Name:** `aws/cloudtrail_log_files_s3_bucket_is_publicly_accessible`
-
-**Query Name** `CloudTrail Log Files S3 Bucket is Publicly Accessible`
-
 **Id:** `bd0088a5-c133-4b20-b129-ec9968b16ef3`
 
 **Cloud Provider:** aws
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** High
 
 **Category:** Observability
 
-## Description
-This check identifies when CloudTrail logs are being stored in an S3 bucket that is publicly accessible, which creates a significant security risk. CloudTrail logs contain sensitive information about API calls and activities in your AWS environment that could be exposed to unauthorized parties if stored in a public bucket. To remediate this issue, ensure your S3 bucket has its ACL set to private instead of public-read as shown in the example below:
+#### Learn More
+
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudtrail#s3_bucket_name)
+
+### Description
+
+ This check identifies when CloudTrail logs are being stored in an S3 bucket that is publicly accessible, which creates a significant security risk. CloudTrail logs contain sensitive information about API calls and activities in your AWS environment that could be exposed to unauthorized parties if stored in a public bucket. To remediate this issue, ensure your S3 bucket has its ACL set to private instead of public-read as shown in the example below:
 
 ```
 resource "aws_s3_bucket" "b" {
@@ -34,10 +35,6 @@ resource "aws_s3_bucket" "b" {
   acl    = "private"  // Correct setting instead of "public-read"
 }
 ```
-
-#### Learn More
-
- - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudtrail#s3_bucket_name)
 
 
 ## Compliant Code Examples

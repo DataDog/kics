@@ -5,28 +5,29 @@ meta:
   id: "f3674e0c-f6be-43fa-b71c-bf346d1aed99"
   display_name: "Sagemaker Notebook Instance Without KMS"
   cloud_provider: "aws"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "HIGH"
   category: "Encryption"
 ---
 ## Metadata
 
-**Name:** `aws/sagemaker_notebook_instance_without_kms`
-
-**Query Name** `Sagemaker Notebook Instance Without KMS`
-
 **Id:** `f3674e0c-f6be-43fa-b71c-bf346d1aed99`
 
 **Cloud Provider:** aws
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** High
 
 **Category:** Encryption
 
-## Description
-AWS SageMaker Notebook Instances should be configured with a KMS key for encryption at rest to protect sensitive data and machine learning artifacts. Without proper encryption, confidential information stored in these notebooks may be exposed to unauthorized access, potentially leading to data breaches and compliance violations. To secure your SageMaker Notebook Instance, specify the 'kms_key_id' attribute in your Terraform configuration, as shown below:
+#### Learn More
+
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/sagemaker_notebook_instance#kms_key_id)
+
+### Description
+
+ AWS SageMaker Notebook Instances should be configured with a KMS key for encryption at rest to protect sensitive data and machine learning artifacts. Without proper encryption, confidential information stored in these notebooks may be exposed to unauthorized access, potentially leading to data breaches and compliance violations. To secure your SageMaker Notebook Instance, specify the 'kms_key_id' attribute in your Terraform configuration, as shown below:
 
 ```
 resource "aws_sagemaker_notebook_instance" "ni" {
@@ -36,10 +37,6 @@ resource "aws_sagemaker_notebook_instance" "ni" {
   kms_key_id    = "arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"
 }
 ```
-
-#### Learn More
-
- - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/sagemaker_notebook_instance#kms_key_id)
 
 
 ## Compliant Code Examples

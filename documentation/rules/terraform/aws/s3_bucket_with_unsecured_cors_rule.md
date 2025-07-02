@@ -5,32 +5,29 @@ meta:
   id: "98a8f708-121b-455b-ae2f-da3fb59d17e1"
   display_name: "S3 Bucket with Unsecured CORS Rule"
   cloud_provider: "aws"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Insecure Configurations"
 ---
 ## Metadata
 
-**Name:** `aws/s3_bucket_with_unsecured_cors_rule`
-
-**Query Name** `S3 Bucket with Unsecured CORS Rule`
-
 **Id:** `98a8f708-121b-455b-ae2f-da3fb59d17e1`
 
 **Cloud Provider:** aws
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** Medium
 
 **Category:** Insecure Configurations
 
-## Description
-When defining a CORS (Cross-Origin Resource Sharing) rule in an S3 bucket, it is important to ensure that the `allowed_headers` attribute is not overly permissive, such as setting `allowed_headers = ["*"]`. Allowing all headers to be accepted from any origin can expose the bucket to potential cross-origin attacks, enabling malicious sites to interact with S3 resources in unintended ways. This misconfiguration increases the risk of data exfiltration or manipulation by allowing arbitrary clients to send any HTTP headers, which can compromise sensitive data and security controls. To mitigate this vulnerability, it is recommended to specify only the necessary headers in `allowed_headers` and restrict origins to trusted domains.
-
 #### Learn More
 
  - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket#cors_rule)
+
+### Description
+
+ When defining a CORS (Cross-Origin Resource Sharing) rule in an S3 bucket, it is important to ensure that the `allowed_headers` attribute is not overly permissive, such as setting `allowed_headers = ["*"]`. Allowing all headers to be accepted from any origin can expose the bucket to potential cross-origin attacks, enabling malicious sites to interact with S3 resources in unintended ways. This misconfiguration increases the risk of data exfiltration or manipulation by allowing arbitrary clients to send any HTTP headers, which can compromise sensitive data and security controls. To mitigate this vulnerability, it is recommended to specify only the necessary headers in `allowed_headers` and restrict origins to trusted domains.
 
 
 ## Compliant Code Examples

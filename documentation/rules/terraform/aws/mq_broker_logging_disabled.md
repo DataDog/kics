@@ -5,32 +5,29 @@ meta:
   id: "31245f98-a6a9-4182-9fc1-45482b9d030a"
   display_name: "MQ Broker Logging Disabled"
   cloud_provider: "aws"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Observability"
 ---
 ## Metadata
 
-**Name:** `aws/mq_broker_logging_disabled`
-
-**Query Name** `MQ Broker Logging Disabled`
-
 **Id:** `31245f98-a6a9-4182-9fc1-45482b9d030a`
 
 **Cloud Provider:** aws
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** Medium
 
 **Category:** Observability
 
-## Description
-This check ensures that AWS MQ Brokers have both audit and general logging enabled in their configuration. Logging is essential for capturing critical security events and operational information, which aids in monitoring, troubleshooting, and forensic analysis. If logging is not enabled, malicious activity or configuration issues may go undetected, significantly increasing the risk of security breaches and data loss. Unaddressed, the lack of logging impedes compliance efforts and can hinder incident response due to an absence of necessary audit trails.
-
 #### Learn More
 
  - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/mq_broker)
+
+### Description
+
+ This check ensures that AWS MQ Brokers have both audit and general logging enabled in their configuration. Logging is essential for capturing critical security events and operational information, which aids in monitoring, troubleshooting, and forensic analysis. If logging is not enabled, malicious activity or configuration issues may go undetected, significantly increasing the risk of security breaches and data loss. Unaddressed, the lack of logging impedes compliance efforts and can hinder incident response due to an absence of necessary audit trails.
 
 
 ## Compliant Code Examples

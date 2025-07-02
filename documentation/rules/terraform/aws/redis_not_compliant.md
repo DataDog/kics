@@ -5,28 +5,29 @@ meta:
   id: "254c932d-e3bf-44b2-bc9d-eb5fdb09f8d4"
   display_name: "Redis Not Compliant"
   cloud_provider: "aws"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "HIGH"
   category: "Encryption"
 ---
 ## Metadata
 
-**Name:** `aws/redis_not_compliant`
-
-**Query Name** `Redis Not Compliant`
-
 **Id:** `254c932d-e3bf-44b2-bc9d-eb5fdb09f8d4`
 
 **Cloud Provider:** aws
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** High
 
 **Category:** Encryption
 
-## Description
-This check ensures that AWS ElastiCache Redis clusters are using versions that comply with PCI DSS requirements. Older Redis versions (prior to 5.0.0) lack important security features such as encryption in transit, improved authentication, and vulnerability patches required for PCI DSS compliance. Using non-compliant Redis versions could lead to data breaches, non-compliance penalties, and compromise of sensitive information stored in the cache.
+#### Learn More
+
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/elasticache_cluster#engine_version)
+
+### Description
+
+ This check ensures that AWS ElastiCache Redis clusters are using versions that comply with PCI DSS requirements. Older Redis versions (prior to 5.0.0) lack important security features such as encryption in transit, improved authentication, and vulnerability patches required for PCI DSS compliance. Using non-compliant Redis versions could lead to data breaches, non-compliance penalties, and compromise of sensitive information stored in the cache.
 
 Non-compliant example:
 ```terraform
@@ -47,10 +48,6 @@ resource "aws_elasticache_cluster" "example" {
   // ... other configuration
 }
 ```
-
-#### Learn More
-
- - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/elasticache_cluster#engine_version)
 
 
 ## Compliant Code Examples

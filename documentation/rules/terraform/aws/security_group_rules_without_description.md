@@ -5,32 +5,29 @@ meta:
   id: "68eb4bf3-f9bf-463d-b5cf-e029bb446d2e"
   display_name: "Security Group Rule Without Description"
   cloud_provider: "aws"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "INFO"
   category: "Best Practices"
 ---
 ## Metadata
 
-**Name:** `aws/security_group_rules_without_description`
-
-**Query Name** `Security Group Rule Without Description`
-
 **Id:** `68eb4bf3-f9bf-463d-b5cf-e029bb446d2e`
 
 **Cloud Provider:** aws
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** Info
 
 **Category:** Best Practices
 
-## Description
-All rules within an AWS Security Group should have descriptive text provided for each rule. Including a `description` for both `ingress` and `egress` rules makes it easier to understand the purpose and intent behind each rule, improving the maintainability and auditability of your security configurations. Without descriptive annotations, security teams may struggle to identify the rationale for specific rules, increasing the risk of misconfigurations or inadvertent exposure of resources. Leaving descriptions blank can lead to confusion, make incident response more difficult, and may undermine compliance efforts that require clear documentation of network security controls.
-
 #### Learn More
 
  - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group#description)
+
+### Description
+
+ All rules within an AWS Security Group should have descriptive text provided for each rule. Including a `description` for both `ingress` and `egress` rules makes it easier to understand the purpose and intent behind each rule, improving the maintainability and auditability of your security configurations. Without descriptive annotations, security teams may struggle to identify the rationale for specific rules, increasing the risk of misconfigurations or inadvertent exposure of resources. Leaving descriptions blank can lead to confusion, make incident response more difficult, and may undermine compliance efforts that require clear documentation of network security controls.
 
 
 ## Compliant Code Examples

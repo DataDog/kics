@@ -5,28 +5,29 @@ meta:
   id: "7c96920c-6fd0-449d-9a52-0aa431b6beaf"
   display_name: "Role With Privilege Escalation By Actions 'iam:AttachUserPolicy'"
   cloud_provider: "aws"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"
 ---
 ## Metadata
 
-**Name:** `aws/role_with_privilege_escalation_by_actions_iam_AttachUserPolicy`
-
-**Query Name** `Role With Privilege Escalation By Actions 'iam:AttachUserPolicy'`
-
 **Id:** `7c96920c-6fd0-449d-9a52-0aa431b6beaf`
 
 **Cloud Provider:** aws
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** Medium
 
 **Category:** Access Control
 
-## Description
-Allowing an IAM role the action `iam:AttachUserPolicy` with a wildcard resource (`Resource = "*"`) grants broad privileges, enabling the role to attach any managed policy to any user in the AWS account. This constitutes a significant privilege escalation risk, as it allows users or roles with this permission to grant themselves or others additional permissions, potentially escalating to administrative access. To mitigate this risk, restrict the `Resource` attribute to specific ARNs and only grant necessary actions, as in the following secure example:
+#### Learn More
+
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy#policy)
+
+### Description
+
+ Allowing an IAM role the action `iam:AttachUserPolicy` with a wildcard resource (`Resource = "*"`) grants broad privileges, enabling the role to attach any managed policy to any user in the AWS account. This constitutes a significant privilege escalation risk, as it allows users or roles with this permission to grant themselves or others additional permissions, potentially escalating to administrative access. To mitigate this risk, restrict the `Resource` attribute to specific ARNs and only grant necessary actions, as in the following secure example:
 
 ```
 resource "aws_iam_user" "cosmic2" {
@@ -51,10 +52,6 @@ resource "aws_iam_user_policy" "inline_policy_run_instances2" {
   })
 }
 ```
-
-#### Learn More
-
- - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy#policy)
 
 
 ## Compliant Code Examples

@@ -5,37 +5,34 @@ meta:
   id: "bcd3fc01-5902-4f2a-b05a-227f9bbf5450"
   display_name: "SQL Server Predictable Active Directory Account Name"
   cloud_provider: "azure"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "LOW"
   category: "Best Practices"
 ---
 ## Metadata
 
-**Name:** `azure/sql_server_predictable_active_directory_admin_account_name`
-
-**Query Name** `SQL Server Predictable Active Directory Account Name`
-
 **Id:** `bcd3fc01-5902-4f2a-b05a-227f9bbf5450`
 
 **Cloud Provider:** azure
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** Low
 
 **Category:** Best Practices
 
-## Description
-Azure SQL Servers should not use predictable Active Directory Administrator account names, such as 'Admin', for the `login` attribute, as this increases the risk of brute-force or dictionary attacks. By setting `login = "Admin"` or similar easily-guessed usernames, attackers can more easily target accounts for unauthorized access. To enhance security, use a unique and hard-to-guess login name, such as:
+#### Learn More
+
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/sql_active_directory_administrator)
+
+### Description
+
+ Azure SQL Servers should not use predictable Active Directory Administrator account names, such as 'Admin', for the `login` attribute, as this increases the risk of brute-force or dictionary attacks. By setting `login = "Admin"` or similar easily-guessed usernames, attackers can more easily target accounts for unauthorized access. To enhance security, use a unique and hard-to-guess login name, such as:
 
 ```
 login = "NotEasyToPredictAdmin"
 ```
 This helps reduce the likelihood of successful account compromise.
-
-#### Learn More
-
- - [Provider Reference](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/sql_active_directory_administrator)
 
 
 ## Compliant Code Examples

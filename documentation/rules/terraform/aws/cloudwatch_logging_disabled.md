@@ -5,28 +5,29 @@ meta:
   id: "7dbba512-e244-42dc-98bb-422339827967"
   display_name: "CloudWatch Logging Disabled"
   cloud_provider: "aws"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Observability"
 ---
 ## Metadata
 
-**Name:** `aws/cloudwatch_logging_disabled`
-
-**Query Name** `CloudWatch Logging Disabled`
-
 **Id:** `7dbba512-e244-42dc-98bb-422339827967`
 
 **Cloud Provider:** aws
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** Medium
 
 **Category:** Observability
 
-## Description
-This check verifies whether Amazon Route53 hosted zones have CloudWatch logging enabled by ensuring an `aws_route53_query_log` resource is associated with the hosted zone and correctly configured. Without query logging, DNS queries to the hosted zone are not captured, making it difficult to detect potential misuse, troubleshoot DNS issues, or comply with audit requirements. Enable logging using the `aws_route53_query_log` resource, and specify the `cloudwatch_log_group_arn` and `zone_id` attributes, as in:
+#### Learn More
+
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_query_log)
+
+### Description
+
+ This check verifies whether Amazon Route53 hosted zones have CloudWatch logging enabled by ensuring an `aws_route53_query_log` resource is associated with the hosted zone and correctly configured. Without query logging, DNS queries to the hosted zone are not captured, making it difficult to detect potential misuse, troubleshoot DNS issues, or comply with audit requirements. Enable logging using the `aws_route53_query_log` resource, and specify the `cloudwatch_log_group_arn` and `zone_id` attributes, as in:
 
 ```
 resource "aws_route53_query_log" "example_com" {
@@ -34,10 +35,6 @@ resource "aws_route53_query_log" "example_com" {
   zone_id                  = aws_route53_zone.example_com.zone_id
 }
 ```
-
-#### Learn More
-
- - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_query_log)
 
 
 ## Compliant Code Examples

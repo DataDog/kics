@@ -5,32 +5,29 @@ meta:
   id: "f6a7b8c9-d0e1-2345-f678-90abcdef1234"
   display_name: "Container Registry Repo Is Public"
   cloud_provider: "gcp"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "HIGH"
   category: "Insecure Configurations"
 ---
 ## Metadata
 
-**Name:** `gcp/container_registry_repository_is_public`
-
-**Query Name** `Container Registry Repo Is Public`
-
 **Id:** `f6a7b8c9-d0e1-2345-f678-90abcdef1234`
 
 **Cloud Provider:** gcp
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** High
 
 **Category:** Insecure Configurations
 
-## Description
-Allowing public access to Container Registry repositories creates significant security risks by exposing potentially sensitive container images and artifacts to anyone on the internet. When IAM configurations include public principals like 'allUsers' or 'allAuthenticatedUsers', it bypasses access controls and may lead to data exfiltration, intellectual property theft, or deployment of compromised containers. Instead of using public principals (e.g., `member = "allUsers"` or `members = ["allAuthenticatedUsers", ...]`), implement proper access controls by explicitly specifying authorized users and groups, such as `members = ["user:someone@example.com", "group:admins@example.com"]` to ensure only legitimate users can access your container registry resources.
-
 #### Learn More
 
  - [Provider Reference](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/container_registry)
+
+### Description
+
+ Allowing public access to Container Registry repositories creates significant security risks by exposing potentially sensitive container images and artifacts to anyone on the internet. When IAM configurations include public principals like 'allUsers' or 'allAuthenticatedUsers', it bypasses access controls and may lead to data exfiltration, intellectual property theft, or deployment of compromised containers. Instead of using public principals (e.g., `member = "allUsers"` or `members = ["allAuthenticatedUsers", ...]`), implement proper access controls by explicitly specifying authorized users and groups, such as `members = ["user:someone@example.com", "group:admins@example.com"]` to ensure only legitimate users can access your container registry resources.
 
 
 ## Compliant Code Examples

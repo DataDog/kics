@@ -5,28 +5,29 @@ meta:
   id: "91f16d09-689e-4926-aca7-155157f634ed"
   display_name: "ECS Service Without Running Tasks"
   cloud_provider: "aws"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "LOW"
   category: "Availability"
 ---
 ## Metadata
 
-**Name:** `aws/ecs_service_without_running_tasks`
-
-**Query Name** `ECS Service Without Running Tasks`
-
 **Id:** `91f16d09-689e-4926-aca7-155157f634ed`
 
 **Cloud Provider:** aws
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** Low
 
 **Category:** Availability
 
-## Description
-The ECS Service should have at least one task running, which is defined by the `desired_count` attribute in the Terraform configuration. An unsafe configuration, such as:
+#### Learn More
+
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/ecs_service)
+
+### Description
+
+ The ECS Service should have at least one task running, which is defined by the `desired_count` attribute in the Terraform configuration. An unsafe configuration, such as:
 
 ```
 resource "aws_ecs_service" "positive1" {
@@ -37,10 +38,6 @@ resource "aws_ecs_service" "positive1" {
 ```
 
 leaves the service without any running tasks, meaning the application will be unavailable and unable to process user requests. Failure to set an appropriate value for `desired_count` can lead to outages and an inability to meet service availability or business requirements.
-
-#### Learn More
-
- - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/ecs_service)
 
 
 ## Compliant Code Examples

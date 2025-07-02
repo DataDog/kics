@@ -5,28 +5,29 @@ meta:
   id: "a6cd52a1-3056-4910-96a5-894de9f3f3b3"
   display_name: "Cloud Storage Anonymous or Publicly Accessible"
   cloud_provider: "gcp"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "CRITICAL"
   category: "Access Control"
 ---
 ## Metadata
 
-**Name:** `gcp/cloud_storage_anonymous_or_publicly_accessible`
-
-**Query Name** `Cloud Storage Anonymous or Publicly Accessible`
-
 **Id:** `a6cd52a1-3056-4910-96a5-894de9f3f3b3`
 
 **Cloud Provider:** gcp
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** Critical
 
 **Category:** Access Control
 
-## Description
-Cloud Storage Buckets configured with anonymous or public access create significant security risks by allowing anyone on the internet to access potentially sensitive data. When 'allUsers' is included in IAM bindings, it grants access to anyone, while 'allAuthenticatedUsers' grants access to anyone with a Google account, both creating overly permissive access controls that violate the principle of least privilege.
+#### Learn More
+
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/storage_bucket_iam#google_storage_bucket_iam_binding)
+
+### Description
+
+ Cloud Storage Buckets configured with anonymous or public access create significant security risks by allowing anyone on the internet to access potentially sensitive data. When 'allUsers' is included in IAM bindings, it grants access to anyone, while 'allAuthenticatedUsers' grants access to anyone with a Google account, both creating overly permissive access controls that violate the principle of least privilege.
 
 Insecure configuration example:
 ```
@@ -45,10 +46,6 @@ resource "google_storage_bucket_iam_binding" "secure" {
   members = ["user:jane@example.com"]
 }
 ```
-
-#### Learn More
-
- - [Provider Reference](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/storage_bucket_iam#google_storage_bucket_iam_binding)
 
 
 ## Compliant Code Examples

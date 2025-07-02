@@ -5,28 +5,29 @@ meta:
   id: "0fd7d920-4711-46bd-aff2-d307d82cd8b7"
   display_name: "User With Privilege Escalation By Actions 'iam:CreateLoginProfile'"
   cloud_provider: "aws"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"
 ---
 ## Metadata
 
-**Name:** `aws/user_with_privilege_escalation_by_actions_iam_CreateLoginProfile`
-
-**Query Name** `User With Privilege Escalation By Actions 'iam:CreateLoginProfile'`
-
 **Id:** `0fd7d920-4711-46bd-aff2-d307d82cd8b7`
 
 **Cloud Provider:** aws
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** Medium
 
 **Category:** Access Control
 
-## Description
-Allowing users the `iam:CreateLoginProfile` action with the `Resource` set to `"*"` in AWS IAM policies permits them to set a password for any IAM user, thereby enabling direct console access. This creates a privilege escalation vulnerability, as the user can potentially assign login profiles to high-privilege accounts, leading to unauthorized access and control over critical AWS resources. To mitigate this risk, restrict the `Resource` to specific user ARNs and avoid assigning broad permissions, as shown in a secure Terraform configuration:
+#### Learn More
+
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_user_policy#policy)
+
+### Description
+
+ Allowing users the `iam:CreateLoginProfile` action with the `Resource` set to `"*"` in AWS IAM policies permits them to set a password for any IAM user, thereby enabling direct console access. This creates a privilege escalation vulnerability, as the user can potentially assign login profiles to high-privilege accounts, leading to unauthorized access and control over critical AWS resources. To mitigate this risk, restrict the `Resource` to specific user ARNs and avoid assigning broad permissions, as shown in a secure Terraform configuration:
 
 ```
 policy = jsonencode({
@@ -42,10 +43,6 @@ policy = jsonencode({
   ]
 })
 ```
-
-#### Learn More
-
- - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_user_policy#policy)
 
 
 ## Compliant Code Examples

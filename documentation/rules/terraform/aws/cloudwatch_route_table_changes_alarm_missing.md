@@ -5,32 +5,29 @@ meta:
   id: "2285e608-ddbc-47f3-ba54-ce7121e31216"
   display_name: "CloudWatch Route Table Changes Alarm Missing"
   cloud_provider: "aws"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "LOW"
   category: "Observability"
 ---
 ## Metadata
 
-**Name:** `aws/cloudwatch_route_table_changes_alarm_missing`
-
-**Query Name** `CloudWatch Route Table Changes Alarm Missing`
-
 **Id:** `2285e608-ddbc-47f3-ba54-ce7121e31216`
 
 **Cloud Provider:** aws
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** Low
 
 **Category:** Observability
 
-## Description
-This check ensures that a CloudWatch log metric filter and corresponding alarm are configured to detect and alert on changes to AWS VPC route tables. Without associating the alarm's `metric_name` with the correct CloudWatch log metric filter, as in `metric_name = "XXXX NOT YOUR FILTER XXXX"`, changes to route tables may go unmonitored, potentially allowing unauthorized modifications to routing paths without triggering any notifications. This oversight increases the risk of undetected network misconfigurations or malicious activity that could compromise the integrity and security of cloud network traffic flows.
-
 #### Learn More
 
  - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudwatch_log_metric_filter#pattern)
+
+### Description
+
+ This check ensures that a CloudWatch log metric filter and corresponding alarm are configured to detect and alert on changes to AWS VPC route tables. Without associating the alarm's `metric_name` with the correct CloudWatch log metric filter, as in `metric_name = "XXXX NOT YOUR FILTER XXXX"`, changes to route tables may go unmonitored, potentially allowing unauthorized modifications to routing paths without triggering any notifications. This oversight increases the risk of undetected network misconfigurations or malicious activity that could compromise the integrity and security of cloud network traffic flows.
 
 
 ## Compliant Code Examples

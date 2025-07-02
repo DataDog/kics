@@ -5,36 +5,33 @@ meta:
   id: "bf878b1a-7418-4de3-b13c-3a86cf894920"
   display_name: "S3 Bucket Public ACL Overridden By Public Access Block"
   cloud_provider: "aws"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "HIGH"
   category: "Access Control"
 ---
 ## Metadata
 
-**Name:** `aws/s3_bucket_public_acl_overridden_by_public_access_block`
-
-**Query Name** `S3 Bucket Public ACL Overridden By Public Access Block`
-
 **Id:** `bf878b1a-7418-4de3-b13c-3a86cf894920`
 
 **Cloud Provider:** aws
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** High
 
 **Category:** Access Control
 
-## Description
-This check identifies S3 buckets that have been configured with public ACLs but are simultaneously protected by bucket-level public access block settings that override those ACLs. This configuration creates a security risk through misleading access controls, where developers might assume the bucket is public (based on ACL settings) when it's actually restricted by the public access block. To properly secure S3 buckets, ensure consistency between your ACL settings and public access block configuration. For example, an insecure configuration might include a public ACL with restrictive public access block settings: ```acl = "public-read-write"
+#### Learn More
+
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_public_access_block#bucket)
+
+### Description
+
+ This check identifies S3 buckets that have been configured with public ACLs but are simultaneously protected by bucket-level public access block settings that override those ACLs. This configuration creates a security risk through misleading access controls, where developers might assume the bucket is public (based on ACL settings) when it's actually restricted by the public access block. To properly secure S3 buckets, ensure consistency between your ACL settings and public access block configuration. For example, an insecure configuration might include a public ACL with restrictive public access block settings: ```acl = "public-read-write"
 block_public_acls = true
 ignore_public_acls = true```. A more transparent configuration would align these settings: ```acl = "public-read-write"
 block_public_acls = false
 ignore_public_acls = false```.
-
-#### Learn More
-
- - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_public_access_block#bucket)
 
 
 ## Compliant Code Examples

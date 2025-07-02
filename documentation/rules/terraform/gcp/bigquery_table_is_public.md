@@ -5,28 +5,29 @@ meta:
   id: "a9b8c7d6-e5f4-3210-abcd-1234567890ab"
   display_name: "BigQuery Table Is Public"
   cloud_provider: "gcp"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "HIGH"
   category: "Insecure Configurations"
 ---
 ## Metadata
 
-**Name:** `gcp/bigquery_table_is_public`
-
-**Query Name** `BigQuery Table Is Public`
-
 **Id:** `a9b8c7d6-e5f4-3210-abcd-1234567890ab`
 
 **Cloud Provider:** gcp
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** High
 
 **Category:** Insecure Configurations
 
-## Description
-When BigQuery tables are configured with public access through IAM members or bindings using principals like 'allUsers' or 'allAuthenticatedUsers', they expose potentially sensitive data to anyone on the internet or any authenticated Google account. This significantly increases the risk of data breaches, unauthorized access, and compliance violations related to data privacy regulations.
+#### Learn More
+
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/bigquery_table_iam_member)
+
+### Description
+
+ When BigQuery tables are configured with public access through IAM members or bindings using principals like 'allUsers' or 'allAuthenticatedUsers', they expose potentially sensitive data to anyone on the internet or any authenticated Google account. This significantly increases the risk of data breaches, unauthorized access, and compliance violations related to data privacy regulations.
 
 To secure BigQuery tables, always restrict access to specific authenticated users, service accounts, or groups instead of using public principals. For example, use `user:someone@example.com` instead of `allUsers` or `allAuthenticatedUsers` as shown in this comparison:
 
@@ -47,10 +48,6 @@ resource "google_bigquery_table_iam_member" "secure_example" {
   role       = "roles/bigquery.dataViewer"
 }
 ```
-
-#### Learn More
-
- - [Provider Reference](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/bigquery_table_iam_member)
 
 
 ## Compliant Code Examples

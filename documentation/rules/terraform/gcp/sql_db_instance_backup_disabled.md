@@ -5,28 +5,29 @@ meta:
   id: "cf3c7631-cd1e-42f3-8801-a561214a6e79"
   display_name: "SQL DB Instance Backup Disabled"
   cloud_provider: "gcp"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Backup"
 ---
 ## Metadata
 
-**Name:** `gcp/sql_db_instance_backup_disabled`
-
-**Query Name** `SQL DB Instance Backup Disabled`
-
 **Id:** `cf3c7631-cd1e-42f3-8801-a561214a6e79`
 
 **Cloud Provider:** gcp
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** Medium
 
 **Category:** Backup
 
-## Description
-This check verifies whether automated backups are enabled for all Google Cloud SQL database instances by ensuring the `backup_configuration` block has the `enabled = true` attribute. Without automated backups, as shown below:
+#### Learn More
+
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/sql_database_instance)
+
+### Description
+
+ This check verifies whether automated backups are enabled for all Google Cloud SQL database instances by ensuring the `backup_configuration` block has the `enabled = true` attribute. Without automated backups, as shown below:
 
 ```
 settings {
@@ -47,10 +48,6 @@ settings {
 ```
 
 ensures that point-in-time recovery is possible and critical business data can be restored when needed.
-
-#### Learn More
-
- - [Provider Reference](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/sql_database_instance)
 
 
 ## Compliant Code Examples

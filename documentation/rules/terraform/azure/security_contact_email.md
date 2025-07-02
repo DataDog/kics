@@ -5,28 +5,29 @@ meta:
   id: "34664094-59e0-4524-b69f-deaa1a68cce3"
   display_name: "Security Contact Email"
   cloud_provider: "azure"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Best Practices"
 ---
 ## Metadata
 
-**Name:** `azure/security_contact_email`
-
-**Query Name** `Security Contact Email`
-
 **Id:** `34664094-59e0-4524-b69f-deaa1a68cce3`
 
 **Cloud Provider:** azure
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** Medium
 
 **Category:** Best Practices
 
-## Description
-Defining a security contact email in the `azurerm_security_center_contact` resource is essential for ensuring that security alerts and notifications from Azure are sent to the correct personnel. If the `email` attribute is omitted, as shown below, important security incidents may go unnoticed, increasing the risk of delayed responses to threats:
+#### Learn More
+
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/security_center_contact#email)
+
+### Description
+
+ Defining a security contact email in the `azurerm_security_center_contact` resource is essential for ensuring that security alerts and notifications from Azure are sent to the correct personnel. If the `email` attribute is omitted, as shown below, important security incidents may go unnoticed, increasing the risk of delayed responses to threats:
 
 ```
 resource "azurerm_security_center_contact" "insecure" {
@@ -46,10 +47,6 @@ resource "azurerm_security_center_contact" "secure" {
   alerts_to_admins    = true
 }
 ```
-
-#### Learn More
-
- - [Provider Reference](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/security_center_contact#email)
 
 
 ## Compliant Code Examples

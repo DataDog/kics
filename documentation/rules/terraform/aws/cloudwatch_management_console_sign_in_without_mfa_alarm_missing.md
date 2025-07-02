@@ -5,32 +5,29 @@ meta:
   id: "44ceb4fa-0897-4fd2-b676-30e7a58f2933"
   display_name: "CloudWatch Console Sign-in Without MFA Alarm Missing"
   cloud_provider: "aws"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "LOW"
   category: "Observability"
 ---
 ## Metadata
 
-**Name:** `aws/cloudwatch_management_console_sign_in_without_mfa_alarm_missing`
-
-**Query Name** `CloudWatch Console Sign-in Without MFA Alarm Missing`
-
 **Id:** `44ceb4fa-0897-4fd2-b676-30e7a58f2933`
 
 **Cloud Provider:** aws
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** Low
 
 **Category:** Observability
 
-## Description
-This check ensures that a CloudWatch log metric filter and alarm are properly configured to detect AWS Management Console sign-ins that occur without multi-factor authentication (MFA), using log patterns such as `{ ($.eventName = "ConsoleLogin") && ($.additionalEventData.MFAUsed != "Yes") }`. Without this monitoring, administrators may be unaware of insecure single-factor logins to the management console, increasing the risk of unauthorized or compromised account access. If left unaddressed, attackers or malicious insiders could exploit accounts lacking MFA to gain elevated access, potentially resulting in data breaches or unauthorized changes to AWS resources.
-
 #### Learn More
 
  - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudwatch_log_metric_filter#pattern)
+
+### Description
+
+ This check ensures that a CloudWatch log metric filter and alarm are properly configured to detect AWS Management Console sign-ins that occur without multi-factor authentication (MFA), using log patterns such as `{ ($.eventName = "ConsoleLogin") && ($.additionalEventData.MFAUsed != "Yes") }`. Without this monitoring, administrators may be unaware of insecure single-factor logins to the management console, increasing the risk of unauthorized or compromised account access. If left unaddressed, attackers or malicious insiders could exploit accounts lacking MFA to gain elevated access, potentially resulting in data breaches or unauthorized changes to AWS resources.
 
 
 ## Compliant Code Examples

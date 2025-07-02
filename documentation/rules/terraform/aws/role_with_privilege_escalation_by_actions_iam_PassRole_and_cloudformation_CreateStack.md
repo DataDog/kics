@@ -5,32 +5,29 @@ meta:
   id: "be2aa235-bd93-4b68-978a-1cc65d49082f"
   display_name: "Role With Privilege Escalation By Actions 'cloudformation:CreateStack' And 'iam:PassRole'"
   cloud_provider: "aws"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"
 ---
 ## Metadata
 
-**Name:** `aws/role_with_privilege_escalation_by_actions_iam_PassRole_and_cloudformation_CreateStack`
-
-**Query Name** `Role With Privilege Escalation By Actions 'cloudformation:CreateStack' And 'iam:PassRole'`
-
 **Id:** `be2aa235-bd93-4b68-978a-1cc65d49082f`
 
 **Cloud Provider:** aws
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** Medium
 
 **Category:** Access Control
 
-## Description
-Granting an IAM role permissions for both `cloudformation:CreateStack` and `iam:PassRole` actions with the resource set to `"*"` allows users with this role to launch CloudFormation stacks that assume any IAM role in the account, leading to privilege escalation. This vulnerability means an attacker could potentially create resources with elevated privileges or gain full administrative access to the AWS environment. To mitigate this, avoid assigning overly permissive policies; restrict `iam:PassRole` and `cloudformation:CreateStack` to only trusted roles and explicitly specify the allowed resource ARNs in the policy's `Resource` attribute.
-
 #### Learn More
 
  - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy#policy)
+
+### Description
+
+ Granting an IAM role permissions for both `cloudformation:CreateStack` and `iam:PassRole` actions with the resource set to `"*"` allows users with this role to launch CloudFormation stacks that assume any IAM role in the account, leading to privilege escalation. This vulnerability means an attacker could potentially create resources with elevated privileges or gain full administrative access to the AWS environment. To mitigate this, avoid assigning overly permissive policies; restrict `iam:PassRole` and `cloudformation:CreateStack` to only trusted roles and explicitly specify the allowed resource ARNs in the policy's `Resource` attribute.
 
 
 ## Compliant Code Examples

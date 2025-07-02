@@ -5,28 +5,29 @@ meta:
   id: "d3e1f5a9-bb45-4c89-b97c-12d34ef56789"
   display_name: "Elasticsearch Uses Default Security Group"
   cloud_provider: "aws"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "HIGH"
   category: "Networking and Firewall"
 ---
 ## Metadata
 
-**Name:** `aws/elasticsearch_using_default_security_group`
-
-**Query Name** `Elasticsearch Uses Default Security Group`
-
 **Id:** `d3e1f5a9-bb45-4c89-b97c-12d34ef56789`
 
 **Cloud Provider:** aws
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** High
 
 **Category:** Networking and Firewall
 
-## Description
-AWS Elasticsearch and OpenSearch domains should have explicitly assigned security groups rather than using the default security group. When no security group is specified or an empty list is provided, the default security group is automatically assigned, which typically allows broad inbound/outbound traffic within the VPC and potentially exposes the service to unintended access from other resources. This vulnerability could lead to unauthorized access to sensitive data, potential data breaches, or service disruption.
+#### Learn More
+
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/elasticsearch_domain#vpc_options)
+
+### Description
+
+ AWS Elasticsearch and OpenSearch domains should have explicitly assigned security groups rather than using the default security group. When no security group is specified or an empty list is provided, the default security group is automatically assigned, which typically allows broad inbound/outbound traffic within the VPC and potentially exposes the service to unintended access from other resources. This vulnerability could lead to unauthorized access to sensitive data, potential data breaches, or service disruption.
 
 To remediate this issue, always specify at least one security group ID in the security_group_ids list:
 
@@ -41,10 +42,6 @@ resource "aws_elasticsearch_domain" "good_example" {
 ```
 
 Avoid empty security group lists or omitting the security_group_ids attribute.
-
-#### Learn More
-
- - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/elasticsearch_domain#vpc_options)
 
 
 ## Compliant Code Examples

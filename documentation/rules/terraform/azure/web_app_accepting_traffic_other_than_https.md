@@ -5,28 +5,29 @@ meta:
   id: "11e9a948-c6c3-4a0f-8dcf-b5cf1763cdbe"
   display_name: "Web App Accepting Traffic Other Than HTTPS"
   cloud_provider: "azure"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Insecure Configurations"
 ---
 ## Metadata
 
-**Name:** `azure/web_app_accepting_traffic_other_than_https`
-
-**Query Name** `Web App Accepting Traffic Other Than HTTPS`
-
 **Id:** `11e9a948-c6c3-4a0f-8dcf-b5cf1763cdbe`
 
 **Cloud Provider:** azure
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** Medium
 
 **Category:** Insecure Configurations
 
-## Description
-This check ensures that Azure Web App Services are configured to accept only HTTPS traffic by setting the `https_only` attribute to `true`. Allowing HTTP traffic by setting `https_only = false` exposes the web application to potential security risks, including interception of sensitive data through unencrypted connections. To enforce secure communications, configure your Terraform resource as follows:
+#### Learn More
+
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/app_service#https_only)
+
+### Description
+
+ This check ensures that Azure Web App Services are configured to accept only HTTPS traffic by setting the `https_only` attribute to `true`. Allowing HTTP traffic by setting `https_only = false` exposes the web application to potential security risks, including interception of sensitive data through unencrypted connections. To enforce secure communications, configure your Terraform resource as follows:
 
 ```
 resource "azurerm_app_service" "example" {
@@ -49,10 +50,6 @@ resource "azurerm_app_service" "example" {
   }
 }
 ```
-
-#### Learn More
-
- - [Provider Reference](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/app_service#https_only)
 
 
 ## Compliant Code Examples

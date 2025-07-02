@@ -5,28 +5,29 @@ meta:
   id: "dafe30ec-325d-4516-85d1-e8e6776f012c"
   display_name: "Azure Instance Using Basic Authentication"
   cloud_provider: "azure"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Best Practices"
 ---
 ## Metadata
 
-**Name:** `azure/azure_instance_using_basic_authentication`
-
-**Query Name** `Azure Instance Using Basic Authentication`
-
 **Id:** `dafe30ec-325d-4516-85d1-e8e6776f012c`
 
 **Cloud Provider:** azure
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** Medium
 
 **Category:** Best Practices
 
-## Description
-Allowing basic password authentication for Azure virtual machines introduces a significant security risk, as passwords can be easily guessed, brute-forced, or leaked. When `disable_password_authentication = false` is set in the `os_profile_linux_config` block, as shown below, the VM permits password-based SSH logins:
+#### Learn More
+
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/linux_virtual_machine#admin_ssh_key)
+
+### Description
+
+ Allowing basic password authentication for Azure virtual machines introduces a significant security risk, as passwords can be easily guessed, brute-forced, or leaked. When `disable_password_authentication = false` is set in the `os_profile_linux_config` block, as shown below, the VM permits password-based SSH logins:
 
 ```
 os_profile_linux_config {
@@ -44,10 +45,6 @@ admin_ssh_key {
 ```
 
 Failure to enforce SSH key authentication can lead to unauthorized access, data breaches, or compromise of critical resources.
-
-#### Learn More
-
- - [Provider Reference](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/linux_virtual_machine#admin_ssh_key)
 
 
 ## Compliant Code Examples

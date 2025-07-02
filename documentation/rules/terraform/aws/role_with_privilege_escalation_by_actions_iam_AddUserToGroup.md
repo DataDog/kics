@@ -5,28 +5,29 @@ meta:
   id: "b8a31292-509d-4b61-bc40-13b167db7e9c"
   display_name: "Role With Privilege Escalation By Actions 'iam:AddUserToGroup'"
   cloud_provider: "aws"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"
 ---
 ## Metadata
 
-**Name:** `aws/role_with_privilege_escalation_by_actions_iam_AddUserToGroup`
-
-**Query Name** `Role With Privilege Escalation By Actions 'iam:AddUserToGroup'`
-
 **Id:** `b8a31292-509d-4b61-bc40-13b167db7e9c`
 
 **Cloud Provider:** aws
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** Medium
 
 **Category:** Access Control
 
-## Description
-Granting the `iam:AddUserToGroup` action with a `Resource` value of `"*"` in an IAM role—such as in the example below—allows any user or role assigned this policy to add themselves or any user to any IAM group in the account.
+#### Learn More
+
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy#policy)
+
+### Description
+
+ Granting the `iam:AddUserToGroup` action with a `Resource` value of `"*"` in an IAM role—such as in the example below—allows any user or role assigned this policy to add themselves or any user to any IAM group in the account.
 
 ```
 resource "aws_iam_role_policy" "test_inline_policy" {
@@ -47,10 +48,6 @@ resource "aws_iam_role_policy" "test_inline_policy" {
 ```
 
 This configuration creates a privilege escalation risk, as users may gain unauthorized permissions by adding themselves to groups with higher privileges, potentially leading to account compromise. Limiting both the allowed action and narrowing the resources by specifying particular group ARNs greatly reduces this attack surface.
-
-#### Learn More
-
- - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy#policy)
 
 
 ## Compliant Code Examples

@@ -5,28 +5,29 @@ meta:
   id: "db78d14b-10e5-4e6e-84b1-dace6327b1ec"
   display_name: "Group With Privilege Escalation By Actions 'iam:AttachUserPolicy'"
   cloud_provider: "aws"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"
 ---
 ## Metadata
 
-**Name:** `aws/group_with_privilege_escalation_by_actions_iam_AttachUserPolicy`
-
-**Query Name** `Group With Privilege Escalation By Actions 'iam:AttachUserPolicy'`
-
 **Id:** `db78d14b-10e5-4e6e-84b1-dace6327b1ec`
 
 **Cloud Provider:** aws
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** Medium
 
 **Category:** Access Control
 
-## Description
-Granting a group the `iam:AttachUserPolicy` action with `"Resource": "*"` in Terraform, as shown by the attribute and policy below, allows any group member to attach arbitrary IAM policies to any user in the AWS account. This creates a serious privilege escalation vulnerability, as users with this permission can grant themselves or others higher privileges, including administrative access, bypassing intended security controls. If left unaddressed, attackers could exploit this misconfiguration to gain unrestricted access or take over AWS resources.
+#### Learn More
+
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_group_policy#policy)
+
+### Description
+
+ Granting a group the `iam:AttachUserPolicy` action with `"Resource": "*"` in Terraform, as shown by the attribute and policy below, allows any group member to attach arbitrary IAM policies to any user in the AWS account. This creates a serious privilege escalation vulnerability, as users with this permission can grant themselves or others higher privileges, including administrative access, bypassing intended security controls. If left unaddressed, attackers could exploit this misconfiguration to gain unrestricted access or take over AWS resources.
 
 ```
 policy = jsonencode({
@@ -42,10 +43,6 @@ policy = jsonencode({
   ]
 })
 ```
-
-#### Learn More
-
- - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_group_policy#policy)
 
 
 ## Compliant Code Examples

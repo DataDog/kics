@@ -5,32 +5,29 @@ meta:
   id: "9d0d4512-1959-43a2-a17f-72360ff06d1b"
   display_name: "CloudWatch VPC Changes Alarm Missing"
   cloud_provider: "aws"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Observability"
 ---
 ## Metadata
 
-**Name:** `aws/cloudwatch_vpc_changes_alarm_missing`
-
-**Query Name** `CloudWatch VPC Changes Alarm Missing`
-
 **Id:** `9d0d4512-1959-43a2-a17f-72360ff06d1b`
 
 **Cloud Provider:** aws
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** Medium
 
 **Category:** Observability
 
-## Description
-To ensure proper monitoring and alerting of changes to Virtual Private Cloud (VPC) configurations, a log metric filter and corresponding CloudWatch alarm should be configured to detect and notify administrators of events such as `CreateVpc`, `DeleteVpc`, or `ModifyVpcAttribute`. If the `metric_name` attribute in the `aws_cloudwatch_metric_alarm` resource does not reference the correct log metric filter (for example, `metric_name = "XXXX NOT YOUR FILTER XXXX"`), the alarm will not trigger on actual VPC changes, leaving unauthorized or accidental modifications undetected. This misconfiguration undermines security monitoring efforts and increases the risk of undetected changes that could impact network segmentation, access control, or data exposure.
-
 #### Learn More
 
  - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudwatch_log_metric_filter#pattern)
+
+### Description
+
+ To ensure proper monitoring and alerting of changes to Virtual Private Cloud (VPC) configurations, a log metric filter and corresponding CloudWatch alarm should be configured to detect and notify administrators of events such as `CreateVpc`, `DeleteVpc`, or `ModifyVpcAttribute`. If the `metric_name` attribute in the `aws_cloudwatch_metric_alarm` resource does not reference the correct log metric filter (for example, `metric_name = "XXXX NOT YOUR FILTER XXXX"`), the alarm will not trigger on actual VPC changes, leaving unauthorized or accidental modifications undetected. This misconfiguration undermines security monitoring efforts and increases the risk of undetected changes that could impact network segmentation, access control, or data exposure.
 
 
 ## Compliant Code Examples

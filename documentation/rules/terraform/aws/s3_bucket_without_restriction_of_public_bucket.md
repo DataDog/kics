@@ -5,28 +5,29 @@ meta:
   id: "1ec253ab-c220-4d63-b2de-5b40e0af9293"
   display_name: "S3 Bucket Without Restriction Of Public Bucket"
   cloud_provider: "aws"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Insecure Configurations"
 ---
 ## Metadata
 
-**Name:** `aws/s3_bucket_without_restriction_of_public_bucket`
-
-**Query Name** `S3 Bucket Without Restriction Of Public Bucket`
-
 **Id:** `1ec253ab-c220-4d63-b2de-5b40e0af9293`
 
 **Cloud Provider:** aws
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** Medium
 
 **Category:** Insecure Configurations
 
-## Description
-This check verifies whether public access to an Amazon S3 bucket is properly restricted using the `restrict_public_buckets` attribute within the `aws_s3_bucket_public_access_block` resource. If `restrict_public_buckets` is set to `false` or omitted, as shown below, the bucket may still be publicly accessible through policies, even if other public access blocks are enabled:
+#### Learn More
+
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_public_access_block)
+
+### Description
+
+ This check verifies whether public access to an Amazon S3 bucket is properly restricted using the `restrict_public_buckets` attribute within the `aws_s3_bucket_public_access_block` resource. If `restrict_public_buckets` is set to `false` or omitted, as shown below, the bucket may still be publicly accessible through policies, even if other public access blocks are enabled:
 
 ```
 resource "aws_s3_bucket_public_access_block" "example" {
@@ -48,10 +49,6 @@ resource "aws_s3_bucket_public_access_block" "example" {
 }
 ```
 Failure to enforce this protection may lead to unauthorized access to sensitive data stored in S3, resulting in data breaches and compliance violations.
-
-#### Learn More
-
- - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_public_access_block)
 
 
 ## Compliant Code Examples

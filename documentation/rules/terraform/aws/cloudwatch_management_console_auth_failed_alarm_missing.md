@@ -5,38 +5,35 @@ meta:
   id: "5864d189-ee9a-4009-ac0c-8a582e6b7919"
   display_name: "CloudWatch Management Console Auth Failed Alarm Missing"
   cloud_provider: "aws"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Observability"
 ---
 ## Metadata
 
-**Name:** `aws/cloudwatch_management_console_auth_failed_alarm_missing`
-
-**Query Name** `CloudWatch Management Console Auth Failed Alarm Missing`
-
 **Id:** `5864d189-ee9a-4009-ac0c-8a582e6b7919`
 
 **Cloud Provider:** aws
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** Medium
 
 **Category:** Observability
 
-## Description
-This check ensures that a CloudWatch log metric filter and corresponding alarm are properly configured to monitor AWS Management Console authentication failures. Without a correct association between the metric alarm (`aws_cloudwatch_metric_alarm.metric_name`) and the log metric filter (for example, `aws_cloudwatch_metric_filter.cis_console_authn_failure_metric_filter.id`), failed login events may go undetected, leaving the environment vulnerable to brute-force attacks or unauthorized access attempts. A secure Terraform configuration links the alarm to the appropriate metric filter, as shown below:
+#### Learn More
+
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudwatch_log_metric_filter#pattern)
+
+### Description
+
+ This check ensures that a CloudWatch log metric filter and corresponding alarm are properly configured to monitor AWS Management Console authentication failures. Without a correct association between the metric alarm (`aws_cloudwatch_metric_alarm.metric_name`) and the log metric filter (for example, `aws_cloudwatch_metric_filter.cis_console_authn_failure_metric_filter.id`), failed login events may go undetected, leaving the environment vulnerable to brute-force attacks or unauthorized access attempts. A secure Terraform configuration links the alarm to the appropriate metric filter, as shown below:
 
 ```
 metric_name = aws_cloudwatch_log_metric_filter.cis_console_authn_failure_metric_filter.id
 ```
 
 This enables timely alerting on suspicious authentication failures, reducing the risk of compromised credentials going unnoticed.
-
-#### Learn More
-
- - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudwatch_log_metric_filter#pattern)
 
 
 ## Compliant Code Examples

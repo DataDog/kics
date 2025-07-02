@@ -5,32 +5,29 @@ meta:
   id: "61cf9883-1752-4768-b18c-0d57f2737709"
   display_name: "EKS Cluster Has Public Access CIDRs"
   cloud_provider: "aws"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Networking and Firewall"
 ---
 ## Metadata
 
-**Name:** `aws/eks_cluster_has_public_access_cidrs`
-
-**Query Name** `EKS Cluster Has Public Access CIDRs`
-
 **Id:** `61cf9883-1752-4768-b18c-0d57f2737709`
 
 **Cloud Provider:** aws
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** Medium
 
 **Category:** Networking and Firewall
 
-## Description
-Enabling the Amazon EKS public endpoint and allowing access from all IP addresses (0.0.0.0/0) exposes the Kubernetes cluster's API server to the entire internet. This configuration creates a significant security risk, as it allows unauthorized parties to attempt authentication or exploit vulnerabilities in the API server from anywhere in the world. If left unaddressed, this could lead to unauthorized access, data breaches, or disruption of workloads orchestrated by the cluster. Limiting public access to trusted IP address ranges greatly reduces the attack surface and helps safeguard sensitive operations and cluster resources.
-
 #### Learn More
 
  - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/eks_cluster)
+
+### Description
+
+ Enabling the Amazon EKS public endpoint and allowing access from all IP addresses (0.0.0.0/0) exposes the Kubernetes cluster's API server to the entire internet. This configuration creates a significant security risk, as it allows unauthorized parties to attempt authentication or exploit vulnerabilities in the API server from anywhere in the world. If left unaddressed, this could lead to unauthorized access, data breaches, or disruption of workloads orchestrated by the cluster. Limiting public access to trusted IP address ranges greatly reduces the attack surface and helps safeguard sensitive operations and cluster resources.
 
 
 ## Compliant Code Examples

@@ -5,28 +5,29 @@ meta:
   id: "60263b4a-6801-4587-911d-919c37ed733b"
   display_name: "Group With Privilege Escalation By Actions 'iam:PutUserPolicy'"
   cloud_provider: "aws"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"
 ---
 ## Metadata
 
-**Name:** `aws/group_with_privilege_escalation_by_actions_iam_PutUserPolicy`
-
-**Query Name** `Group With Privilege Escalation By Actions 'iam:PutUserPolicy'`
-
 **Id:** `60263b4a-6801-4587-911d-919c37ed733b`
 
 **Cloud Provider:** aws
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** Medium
 
 **Category:** Access Control
 
-## Description
-Allowing the action `iam:PutUserPolicy` on the `Resource` set to `"*"` in an inline group policy grants members of that group the ability to attach arbitrary permissions to any IAM user in the AWS account. This privilege escalation vulnerability could allow an attacker or compromised group member to grant themselves administrative access, bypass intended access controls, or compromise the entire AWS environment. To mitigate this risk, restrict the `iam:PutUserPolicy` action to specific users or resources and avoid policies with wildcard resources where possible, as shown below in a secure example:
+#### Learn More
+
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_group_policy#policy)
+
+### Description
+
+ Allowing the action `iam:PutUserPolicy` on the `Resource` set to `"*"` in an inline group policy grants members of that group the ability to attach arbitrary permissions to any IAM user in the AWS account. This privilege escalation vulnerability could allow an attacker or compromised group member to grant themselves administrative access, bypass intended access controls, or compromise the entire AWS environment. To mitigate this risk, restrict the `iam:PutUserPolicy` action to specific users or resources and avoid policies with wildcard resources where possible, as shown below in a secure example:
 
 ```
 resource "aws_iam_user" "cosmic2" {
@@ -51,10 +52,6 @@ resource "aws_iam_user_policy" "inline_policy_run_instances2" {
   })
 }
 ```
-
-#### Learn More
-
- - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_group_policy#policy)
 
 
 ## Compliant Code Examples

@@ -5,28 +5,29 @@ meta:
   id: "30e8dfd2-3591-4d19-8d11-79e93106c93d"
   display_name: "Stackdriver Monitoring Disabled"
   cloud_provider: "gcp"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Observability"
 ---
 ## Metadata
 
-**Name:** `gcp/stackdriver_monitoring_disabled`
-
-**Query Name** `Stackdriver Monitoring Disabled`
-
 **Id:** `30e8dfd2-3591-4d19-8d11-79e93106c93d`
 
 **Cloud Provider:** gcp
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** Medium
 
 **Category:** Observability
 
-## Description
-Kubernetes Engine Clusters must have Stackdriver Monitoring enabled by setting the `monitoring_service` attribute to `"monitoring.googleapis.com/kubernetes"` or leaving it undefined, which allows Google Cloud’s default monitoring. Disabling monitoring by setting `monitoring_service = "none"` leaves clusters without visibility into performance, health, or security events, increasing the risk of undetected failures or malicious activity. 
+#### Learn More
+
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/container_cluster#monitoring_service)
+
+### Description
+
+ Kubernetes Engine Clusters must have Stackdriver Monitoring enabled by setting the `monitoring_service` attribute to `"monitoring.googleapis.com/kubernetes"` or leaving it undefined, which allows Google Cloud’s default monitoring. Disabling monitoring by setting `monitoring_service = "none"` leaves clusters without visibility into performance, health, or security events, increasing the risk of undetected failures or malicious activity. 
 
 Secure configuration should look like:
 
@@ -39,10 +40,6 @@ resource "google_container_cluster" "example" {
 }
 ```
 If left unaddressed, this misconfiguration can prevent prompt detection and remediation of operational or security incidents, potentially leading to service outages or breaches.
-
-#### Learn More
-
- - [Provider Reference](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/container_cluster#monitoring_service)
 
 
 ## Compliant Code Examples

@@ -5,28 +5,29 @@ meta:
   id: "0c10d7da-85c4-4d62-b2a8-d6c104f1bd77"
   display_name: "User With Privilege Escalation By Actions 'iam:PutUserPolicy'"
   cloud_provider: "aws"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"
 ---
 ## Metadata
 
-**Name:** `aws/user_with_privilege_escalation_by_actions_iam_PutUserPolicy`
-
-**Query Name** `User With Privilege Escalation By Actions 'iam:PutUserPolicy'`
-
 **Id:** `0c10d7da-85c4-4d62-b2a8-d6c104f1bd77`
 
 **Cloud Provider:** aws
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** Medium
 
 **Category:** Access Control
 
-## Description
-Granting a user the `iam:PutUserPolicy` action with a Resource value of `"*"` allows that user to attach any policy to any IAM user, including themselves. This creates a privilege escalation vulnerability, as the user could grant themselves administrative permissions or access otherwise restricted resources. To mitigate this risk, permission sets should be strictly defined and limited; for example, only allowing non-privileged actions such as:
+#### Learn More
+
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_user_policy#policy)
+
+### Description
+
+ Granting a user the `iam:PutUserPolicy` action with a Resource value of `"*"` allows that user to attach any policy to any IAM user, including themselves. This creates a privilege escalation vulnerability, as the user could grant themselves administrative permissions or access otherwise restricted resources. To mitigate this risk, permission sets should be strictly defined and limited; for example, only allowing non-privileged actions such as:
 
 ```
 policy = jsonencode({
@@ -43,10 +44,6 @@ policy = jsonencode({
 })
 ```
 Limiting permissions in this way reduces the risk of unauthorized privilege escalation.
-
-#### Learn More
-
- - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_user_policy#policy)
 
 
 ## Compliant Code Examples

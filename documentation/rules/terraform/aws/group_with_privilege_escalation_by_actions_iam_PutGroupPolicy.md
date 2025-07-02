@@ -5,28 +5,29 @@ meta:
   id: "e77c89f6-9c85-49ea-b95b-5f960fe5be92"
   display_name: "Group With Privilege Escalation By Actions 'iam:PutGroupPolicy'"
   cloud_provider: "aws"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"
 ---
 ## Metadata
 
-**Name:** `aws/group_with_privilege_escalation_by_actions_iam_PutGroupPolicy`
-
-**Query Name** `Group With Privilege Escalation By Actions 'iam:PutGroupPolicy'`
-
 **Id:** `e77c89f6-9c85-49ea-b95b-5f960fe5be92`
 
 **Cloud Provider:** aws
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** Medium
 
 **Category:** Access Control
 
-## Description
-This check identifies IAM group policies that grant the action `iam:PutGroupPolicy` with a resource set to `"*"`, allowing anyone in the group to attach arbitrary inline policies to any IAM group. This presents a privilege escalation risk, as users with this permission could assign themselves broader or unauthorized permissions by updating policies on other groups. To mitigate this, restrict the `Action` and `Resource` fields in policies and avoid assigning sensitive permissions to groups broadly.
+#### Learn More
+
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_group_policy#policy)
+
+### Description
+
+ This check identifies IAM group policies that grant the action `iam:PutGroupPolicy` with a resource set to `"*"`, allowing anyone in the group to attach arbitrary inline policies to any IAM group. This presents a privilege escalation risk, as users with this permission could assign themselves broader or unauthorized permissions by updating policies on other groups. To mitigate this, restrict the `Action` and `Resource` fields in policies and avoid assigning sensitive permissions to groups broadly.
 
 A secure Terraform configuration should limit permissions to only what is necessary, for example:
 
@@ -49,10 +50,6 @@ resource "aws_iam_user_policy" "inline_policy_run_instances2" {
   })
 }
 ```
-
-#### Learn More
-
- - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_group_policy#policy)
 
 
 ## Compliant Code Examples

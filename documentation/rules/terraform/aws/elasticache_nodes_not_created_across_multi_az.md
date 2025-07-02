@@ -5,28 +5,29 @@ meta:
   id: "6db03a91-f933-4f13-ab38-a8b87a7de54d"
   display_name: "ElastiCache Nodes Not Created Across Multi AZ"
   cloud_provider: "aws"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Availability"
 ---
 ## Metadata
 
-**Name:** `aws/elasticache_nodes_not_created_across_multi_az`
-
-**Query Name** `ElastiCache Nodes Not Created Across Multi AZ`
-
 **Id:** `6db03a91-f933-4f13-ab38-a8b87a7de54d`
 
 **Cloud Provider:** aws
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** Medium
 
 **Category:** Availability
 
-## Description
-When configuring AWS ElastiCache clusters with multiple nodes, it is important to distribute nodes across multiple Availability Zones (AZs) by setting the `az_mode` attribute to `"cross-az"`. Failing to do so—such as by omitting the `az_mode` attribute or explicitly setting it to `"single-az"`—means all nodes run in a single AZ, increasing the risk of service disruption if that AZ experiences an outage. For example, a secure Terraform configuration would explicitly set:
+#### Learn More
+
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/elasticache_cluster)
+
+### Description
+
+ When configuring AWS ElastiCache clusters with multiple nodes, it is important to distribute nodes across multiple Availability Zones (AZs) by setting the `az_mode` attribute to `"cross-az"`. Failing to do so—such as by omitting the `az_mode` attribute or explicitly setting it to `"single-az"`—means all nodes run in a single AZ, increasing the risk of service disruption if that AZ experiences an outage. For example, a secure Terraform configuration would explicitly set:
 
 ```
 resource "aws_elasticache_cluster" "example" {
@@ -38,10 +39,6 @@ resource "aws_elasticache_cluster" "example" {
 ```
 
 Distributing cache nodes across multiple AZs increases fault tolerance and availability for ElastiCache clusters.
-
-#### Learn More
-
- - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/elasticache_cluster)
 
 
 ## Compliant Code Examples

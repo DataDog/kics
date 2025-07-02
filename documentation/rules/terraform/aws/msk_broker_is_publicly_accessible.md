@@ -5,28 +5,29 @@ meta:
   id: "54378d69-dd7c-4b08-a43e-80d563396857"
   display_name: "MSK Broker Is Publicly Accessible"
   cloud_provider: "aws"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "HIGH"
   category: "Access Control"
 ---
 ## Metadata
 
-**Name:** `aws/msk_broker_is_publicly_accessible`
-
-**Query Name** `MSK Broker Is Publicly Accessible`
-
 **Id:** `54378d69-dd7c-4b08-a43e-80d563396857`
 
 **Cloud Provider:** aws
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** High
 
 **Category:** Access Control
 
-## Description
-Amazon MSK (Managed Streaming for Kafka) clusters with public accessibility enabled allow connections from the internet, which significantly expands the attack surface and increases the risk of unauthorized access to sensitive data streams. When MSK brokers are publicly accessible, they can be targeted by malicious actors who may attempt to intercept data, perform denial-of-service attacks, or exploit vulnerabilities to gain deeper access to your infrastructure. 
+#### Learn More
+
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/msk_cluster#public_access)
+
+### Description
+
+ Amazon MSK (Managed Streaming for Kafka) clusters with public accessibility enabled allow connections from the internet, which significantly expands the attack surface and increases the risk of unauthorized access to sensitive data streams. When MSK brokers are publicly accessible, they can be targeted by malicious actors who may attempt to intercept data, perform denial-of-service attacks, or exploit vulnerabilities to gain deeper access to your infrastructure. 
 
 To secure your MSK cluster, configure the public_access type as 'DISABLED' rather than 'SERVICE_PROVIDED_EIPS' as shown below:
 
@@ -41,10 +42,6 @@ broker_node_group_info {
 ```
 
 For additional security, implement network ACLs, security groups, and private VPC endpoints to control access to your MSK resources.
-
-#### Learn More
-
- - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/msk_cluster#public_access)
 
 
 ## Compliant Code Examples

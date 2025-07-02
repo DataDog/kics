@@ -5,28 +5,29 @@ meta:
   id: "eb64f1e9-f67d-4e35-8a3c-3d6a2f9efea7"
   display_name: "Role With Privilege Escalation By Actions 'iam:PutRolePolicy'"
   cloud_provider: "aws"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"
 ---
 ## Metadata
 
-**Name:** `aws/role_with_privilege_escalation_by_actions_iam_PutRolePolicy`
-
-**Query Name** `Role With Privilege Escalation By Actions 'iam:PutRolePolicy'`
-
 **Id:** `eb64f1e9-f67d-4e35-8a3c-3d6a2f9efea7`
 
 **Cloud Provider:** aws
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** Medium
 
 **Category:** Access Control
 
-## Description
-Granting a role the `iam:PutRolePolicy` action with the `Resource` set to `"*"` in Terraform, as in the following configuration,
+#### Learn More
+
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy#policy)
+
+### Description
+
+ Granting a role the `iam:PutRolePolicy` action with the `Resource` set to `"*"` in Terraform, as in the following configuration,
 
 ```
 policy = jsonencode({
@@ -44,10 +45,6 @@ policy = jsonencode({
 ```
 
 allows any principal with this role to attach arbitrary permissions to any IAM role, leading to potential privilege escalation. An attacker could exploit this to grant themselves or others broad or administrative permissions, compromising the security of the AWS environment. It is critical to scope IAM permissions as narrowly as possible, restricting both actions and resources to mitigate this risk.
-
-#### Learn More
-
- - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy#policy)
 
 
 ## Compliant Code Examples

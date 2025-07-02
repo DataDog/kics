@@ -5,34 +5,31 @@ meta:
   id: "2f737336-b18a-4602-8ea0-b200312e1ac1"
   display_name: "RDS Associated with Public Subnet"
   cloud_provider: "aws"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "CRITICAL"
   category: "Networking and Firewall"
 ---
 ## Metadata
 
-**Name:** `aws/rds_associated_with_public_subnet`
-
-**Query Name** `RDS Associated with Public Subnet`
-
 **Id:** `2f737336-b18a-4602-8ea0-b200312e1ac1`
 
 **Cloud Provider:** aws
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** Critical
 
 **Category:** Networking and Firewall
 
-## Description
-Amazon RDS instances should not be associated with public subnets to prevent potential unauthorized access from the internet. When an RDS instance is placed in a subnet group containing a public subnet (with a CIDR like 0.0.0.0/0), it creates an attack vector for malicious actors to exploit your database. 
-
-Instead, RDS instances should only be deployed in private subnets with specific CIDR blocks. In the secure example, subnets use specific CIDR blocks like '172.2.0.0/24' and '176.2.0.0/24', while the vulnerable example uses '0.0.0.0/0' which allows traffic from any IP address. Properly securing your database network configuration helps prevent data breaches and unauthorized access to sensitive information.
-
 #### Learn More
 
  - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/db_instance#db_subnet_group_name)
+
+### Description
+
+ Amazon RDS instances should not be associated with public subnets to prevent potential unauthorized access from the internet. When an RDS instance is placed in a subnet group containing a public subnet (with a CIDR like 0.0.0.0/0), it creates an attack vector for malicious actors to exploit your database. 
+
+Instead, RDS instances should only be deployed in private subnets with specific CIDR blocks. In the secure example, subnets use specific CIDR blocks like '172.2.0.0/24' and '176.2.0.0/24', while the vulnerable example uses '0.0.0.0/0' which allows traffic from any IP address. Properly securing your database network configuration helps prevent data breaches and unauthorized access to sensitive information.
 
 
 ## Compliant Code Examples

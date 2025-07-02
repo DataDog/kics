@@ -5,28 +5,29 @@ meta:
   id: "e7e961ac-d17e-4413-84bc-8a1fbe242944"
   display_name: "Cloud Storage Bucket Versioning Disabled"
   cloud_provider: "gcp"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Observability"
 ---
 ## Metadata
 
-**Name:** `gcp/cloud_storage_bucket_versioning_disabled`
-
-**Query Name** `Cloud Storage Bucket Versioning Disabled`
-
 **Id:** `e7e961ac-d17e-4413-84bc-8a1fbe242944`
 
 **Cloud Provider:** gcp
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** Medium
 
 **Category:** Observability
 
-## Description
-Enabling versioning on a Google Cloud Storage bucket ensures that previous versions of objects are preserved, preventing accidental or malicious data loss or overwrites. Without versioning enabled (for example, `versioning = { enabled = false }` or omitting the `versioning` block entirely), deleted or overwritten objects cannot be recovered, increasing the risk of permanent data loss. To mitigate this risk, enable versioning by setting `versioning = { enabled = true }` in your Terraform configuration:
+#### Learn More
+
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/storage_bucket#enabled)
+
+### Description
+
+ Enabling versioning on a Google Cloud Storage bucket ensures that previous versions of objects are preserved, preventing accidental or malicious data loss or overwrites. Without versioning enabled (for example, `versioning = { enabled = false }` or omitting the `versioning` block entirely), deleted or overwritten objects cannot be recovered, increasing the risk of permanent data loss. To mitigate this risk, enable versioning by setting `versioning = { enabled = true }` in your Terraform configuration:
 
 ```
 resource "google_storage_bucket" "secure_example" {
@@ -38,10 +39,6 @@ resource "google_storage_bucket" "secure_example" {
   }
 }
 ```
-
-#### Learn More
-
- - [Provider Reference](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/storage_bucket#enabled)
 
 
 ## Compliant Code Examples

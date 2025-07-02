@@ -5,32 +5,29 @@ meta:
   id: "e227091e-2228-4b40-b046-fc13650d8e88"
   display_name: "User With Privilege Escalation By Actions 'iam:AttachRolePolicy'"
   cloud_provider: "aws"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"
 ---
 ## Metadata
 
-**Name:** `aws/user_with_privilege_escalation_by_actions_iam_AttachRolePolicy`
-
-**Query Name** `User With Privilege Escalation By Actions 'iam:AttachRolePolicy'`
-
 **Id:** `e227091e-2228-4b40-b046-fc13650d8e88`
 
 **Cloud Provider:** aws
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** Medium
 
 **Category:** Access Control
 
-## Description
-Granting the `iam:AttachRolePolicy` action with a resource value of `"*"` allows the user to attach any policy to any IAM role, enabling privilege escalation if the user can attach policies granting additional permissions or even administrator-level access. This misconfiguration can lead to unauthorized access across your AWS environment, as users may obtain permissions far beyond their original scope. To remediate, policy statements should scope the `Resource` field to only those roles and policies necessary for the user’s legitimate activities, avoiding the use of a wildcard (`*`).
-
 #### Learn More
 
  - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_user_policy#policy)
+
+### Description
+
+ Granting the `iam:AttachRolePolicy` action with a resource value of `"*"` allows the user to attach any policy to any IAM role, enabling privilege escalation if the user can attach policies granting additional permissions or even administrator-level access. This misconfiguration can lead to unauthorized access across your AWS environment, as users may obtain permissions far beyond their original scope. To remediate, policy statements should scope the `Resource` field to only those roles and policies necessary for the user’s legitimate activities, avoiding the use of a wildcard (`*`).
 
 
 ## Compliant Code Examples
