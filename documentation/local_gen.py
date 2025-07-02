@@ -100,7 +100,7 @@ def process_provider(provider, resource_type, input_dir, output_dir, max_example
     provider_path = input_dir / resource_type / provider
     if not provider_path.is_dir():
         print(f"Warning: Missing provider path: {provider_path}")
-        return
+        return 0
 
     output_provider_path = output_dir / resource_type / provider
     output_provider_path.mkdir(parents=True, exist_ok=True)
@@ -128,7 +128,7 @@ def process_provider(provider, resource_type, input_dir, output_dir, max_example
         except Exception as e:
             print(f"Failed to parse metadata for {rule_dir}: {e}")
             continue
-
+        
         rule_name = rule_dir.name
         rule_desc = metadata.get("queryName", NO_DESC)
         if rule_desc == NO_DESC:
@@ -152,6 +152,7 @@ def process_provider(provider, resource_type, input_dir, output_dir, max_example
 
     provider_entry["rules"].sort(key=lambda r: r["name"])
     list_json_data.append(provider_entry)
+    return 1
 
 def main():
     args = parse_args()
