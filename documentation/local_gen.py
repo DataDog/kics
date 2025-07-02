@@ -73,12 +73,10 @@ meta:
 **Severity:** {severity.capitalize()}
 
 **Category:** {category}
-
-## Description
-{description}
 """
     if description_url:
         markdown += f"\n#### Learn More\n\n - [Provider Reference]({description_url})\n"
+    markdown += f"\n### Description\n\n {description}\n"
     if compliant:
         markdown += "\n\n## Compliant Code Examples\n" + "\n\n".join(compliant)
     if non_compliant:
