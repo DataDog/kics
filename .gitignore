@@ -59,3 +59,6 @@ payload.json
 
 # ANTLR files
 .antlr
+
+# Python temp files
+__pycache__
