@@ -1,5 +1,6 @@
 ---
 title: "MSSQL Server Public Network Access Enabled"
+group-id: "rules/terraform/azure"
 meta:
   name: "azure/mssql_server_public_network_access_enabled"
   id: "ade36cf4-329f-4830-a83d-9db72c800507"

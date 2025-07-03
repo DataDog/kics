@@ -1,5 +1,6 @@
 ---
 title: "EC2 Instance Has Public IP"
+group-id: "rules/terraform/aws"
 meta:
   name: "aws/ec2_instance_has_public_ip"
   id: "5a2486aa-facf-477d-a5c1-b010789459ce"

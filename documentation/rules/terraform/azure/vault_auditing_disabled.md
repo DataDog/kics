@@ -1,5 +1,6 @@
 ---
 title: "Vault Auditing Disabled"
+group-id: "rules/terraform/azure"
 meta:
   name: "azure/vault_auditing_disabled"
   id: "38c71c00-c177-4cd7-8d36-cd1007cdb190"

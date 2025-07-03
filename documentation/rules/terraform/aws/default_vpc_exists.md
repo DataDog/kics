@@ -1,5 +1,6 @@
 ---
 title: "Default VPC Exists"
+group-id: "rules/terraform/aws"
 meta:
   name: "aws/default_vpc_exists"
   id: "96ed3526-0179-4c73-b1b2-372fde2e0d13"

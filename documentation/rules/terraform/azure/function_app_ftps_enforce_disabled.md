@@ -1,5 +1,6 @@
 ---
 title: "Function App FTPS Enforce Disabled"
+group-id: "rules/terraform/azure"
 meta:
   name: "azure/function_app_ftps_enforce_disabled"
   id: "9dab0179-433d-4dff-af8f-0091025691df"

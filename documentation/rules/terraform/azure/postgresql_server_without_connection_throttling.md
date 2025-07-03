@@ -1,5 +1,6 @@
 ---
 title: "PostgreSQL Server Without Connection Throttling"
+group-id: "rules/terraform/azure"
 meta:
   name: "azure/postgresql_server_without_connection_throttling"
   id: "2b3c671f-1b76-4741-8789-ed1fe0785dc4"

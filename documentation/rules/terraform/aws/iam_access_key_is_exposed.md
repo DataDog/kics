@@ -1,5 +1,6 @@
 ---
 title: "IAM Access Key Is Exposed"
+group-id: "rules/terraform/aws"
 meta:
   name: "aws/iam_access_key_is_exposed"
   id: "7081f85c-b94d-40fd-8b45-a4f1cac75e46"

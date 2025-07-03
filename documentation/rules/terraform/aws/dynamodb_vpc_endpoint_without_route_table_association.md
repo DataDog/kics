@@ -1,5 +1,6 @@
 ---
 title: "Dynamodb VPC Endpoint Without Route Table Association"
+group-id: "rules/terraform/aws"
 meta:
   name: "aws/dynamodb_vpc_endpoint_without_route_table_association"
   id: "0bc534c5-13d1-4353-a7fe-b8665d5c1d7d"

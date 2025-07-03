@@ -1,5 +1,6 @@
 ---
 title: "AD Admin Not Configured For SQL Server"
+group-id: "rules/terraform/azure"
 meta:
   name: "azure/ad_admin_not_configured_for_sql_server"
   id: "a3a055d2-9a2e-4cc9-b9fb-12850a1a3a4b"

@@ -1,5 +1,6 @@
 ---
 title: "Group With Privilege Escalation By Actions 'glue:UpdateDevEndpoint'"
+group-id: "rules/terraform/aws"
 meta:
   name: "aws/group_with_privilege_escalation_by_actions_glue_UpdateDevEndpoint"
   id: "8f3c16b3-354d-45db-8ad5-5066778a9485"

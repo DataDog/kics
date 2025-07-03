@@ -1,5 +1,6 @@
 ---
 title: "CloudWatch VPC Changes Alarm Missing"
+group-id: "rules/terraform/aws"
 meta:
   name: "aws/cloudwatch_vpc_changes_alarm_missing"
   id: "9d0d4512-1959-43a2-a17f-72360ff06d1b"

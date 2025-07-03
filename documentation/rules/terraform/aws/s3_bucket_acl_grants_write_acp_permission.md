@@ -1,5 +1,6 @@
 ---
 title: "S3 Bucket ACL Grants WRITE_ACP Permission"
+group-id: "rules/terraform/aws"
 meta:
   name: "aws/s3_bucket_acl_grants_write_acp_permission"
   id: "64a222aa-7793-4e40-915f-4b302c76e4d4"

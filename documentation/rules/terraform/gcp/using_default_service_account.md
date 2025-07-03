@@ -1,5 +1,6 @@
 ---
 title: "Using Default Service Account"
+group-id: "rules/terraform/gcp"
 meta:
   name: "gcp/using_default_service_account"
   id: "3cb4af0b-056d-4fb1-8b95-fdc4593625ff"

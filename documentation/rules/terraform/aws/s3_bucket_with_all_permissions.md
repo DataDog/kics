@@ -1,5 +1,6 @@
 ---
 title: "S3 Bucket With All Permissions"
+group-id: "rules/terraform/aws"
 meta:
   name: "aws/s3_bucket_with_all_permissions"
   id: "a4966c4f-9141-48b8-a564-ffe9959945bc"

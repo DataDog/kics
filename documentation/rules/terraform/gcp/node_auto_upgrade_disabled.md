@@ -1,5 +1,6 @@
 ---
 title: "Node Auto Upgrade Disabled"
+group-id: "rules/terraform/gcp"
 meta:
   name: "gcp/node_auto_upgrade_disabled"
   id: "b139213e-7d24-49c2-8025-c18faa21ecaa"

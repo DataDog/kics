@@ -1,5 +1,6 @@
 ---
 title: "Certificate Has Expired"
+group-id: "rules/terraform/aws"
 meta:
   name: "aws/certificate_has_expired"
   id: "c3831315-5ae6-4fa8-b458-3d4d5ab7a3f6"

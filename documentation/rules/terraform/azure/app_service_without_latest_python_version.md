@@ -1,5 +1,6 @@
 ---
 title: "App Service Without Latest Python Version"
+group-id: "rules/terraform/azure"
 meta:
   name: "azure/app_service_without_latest_python_version"
   id: "cc4aaa9d-1070-461a-b519-04e00f42db8a"

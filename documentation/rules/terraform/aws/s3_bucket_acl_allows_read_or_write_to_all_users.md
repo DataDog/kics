@@ -1,5 +1,6 @@
 ---
 title: "S3 Bucket ACL Allows Read Or Write to All Users"
+group-id: "rules/terraform/aws"
 meta:
   name: "aws/s3_bucket_acl_allows_read_or_write_to_all_users"
   id: "38c5ee0d-7f22-4260-ab72-5073048df100"

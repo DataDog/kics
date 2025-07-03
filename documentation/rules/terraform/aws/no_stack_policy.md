@@ -1,5 +1,6 @@
 ---
 title: "No Stack Policy"
+group-id: "rules/terraform/aws"
 meta:
   name: "aws/no_stack_policy"
   id: "2f01fb2d-828a-499d-b98e-b83747305052"

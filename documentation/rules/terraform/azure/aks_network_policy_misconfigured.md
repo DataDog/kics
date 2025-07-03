@@ -1,5 +1,6 @@
 ---
 title: "AKS Network Policy Misconfigured"
+group-id: "rules/terraform/azure"
 meta:
   name: "azure/aks_network_policy_misconfigured"
   id: "f5342045-b935-402d-adf1-8dbbd09c0eef"

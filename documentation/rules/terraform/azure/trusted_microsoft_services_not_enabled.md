@@ -1,5 +1,6 @@
 ---
 title: "Trusted Microsoft Services Not Enabled"
+group-id: "rules/terraform/azure"
 meta:
   name: "azure/trusted_microsoft_services_not_enabled"
   id: "5400f379-a347-4bdd-a032-446465fdcc6f"

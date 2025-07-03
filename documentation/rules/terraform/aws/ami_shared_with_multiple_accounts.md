@@ -1,5 +1,6 @@
 ---
 title: "AMI Shared With Multiple Accounts"
+group-id: "rules/terraform/aws"
 meta:
   name: "aws/ami_shared_with_multiple_accounts"
   id: "ba4e0031-3e9d-4d7d-b0d6-bd8f003f8698"

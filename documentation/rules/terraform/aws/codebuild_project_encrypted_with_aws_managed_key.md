@@ -1,5 +1,6 @@
 ---
 title: "CodeBuild Project Encrypted With AWS Managed Key"
+group-id: "rules/terraform/aws"
 meta:
   name: "aws/codebuild_project_encrypted_with_aws_managed_key"
   id: "3deec14b-03d2-4d27-9670-7d79322e3340"

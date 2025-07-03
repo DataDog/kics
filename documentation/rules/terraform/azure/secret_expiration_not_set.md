@@ -1,5 +1,6 @@
 ---
 title: "Secret Expiration Not Set"
+group-id: "rules/terraform/azure"
 meta:
   name: "azure/secret_expiration_not_set"
   id: "dfa20ffa-f476-428f-a490-424b41e91c7f"

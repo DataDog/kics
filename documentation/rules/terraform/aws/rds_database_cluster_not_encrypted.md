@@ -1,5 +1,6 @@
 ---
 title: "RDS Database Cluster not Encrypted"
+group-id: "rules/terraform/aws"
 meta:
   name: "aws/rds_database_cluster_not_encrypted"
   id: "656880aa-1388-488f-a6d4-8f73c23149b2"

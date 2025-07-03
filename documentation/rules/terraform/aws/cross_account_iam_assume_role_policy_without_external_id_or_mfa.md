@@ -1,5 +1,6 @@
 ---
 title: "Cross-Account IAM Assume Role Policy Without ExternalId or MFA"
+group-id: "rules/terraform/aws"
 meta:
   name: "aws/cross_account_iam_assume_role_policy_without_external_id_or_mfa"
   id: "09c35abf-5852-4622-ac7a-b987b331232e"

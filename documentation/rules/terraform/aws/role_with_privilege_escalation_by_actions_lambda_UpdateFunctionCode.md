@@ -1,5 +1,6 @@
 ---
 title: "Role With Privilege Escalation By Actions 'lambda:UpdateFunctionCode'"
+group-id: "rules/terraform/aws"
 meta:
   name: "aws/role_with_privilege_escalation_by_actions_lambda_UpdateFunctionCode"
   id: "c583f0f9-7dfd-476b-a056-f47c62b47b46"

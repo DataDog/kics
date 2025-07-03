@@ -1,5 +1,6 @@
 ---
 title: "MariaDB Server Geo-redundant Backup Disabled"
+group-id: "rules/terraform/azure"
 meta:
   name: "azure/mariadb_server_georedundant_backup_disabled"
   id: "0a70d5f3-1ecd-4c8e-9292-928fc9a8c4f1"

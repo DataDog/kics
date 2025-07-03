@@ -1,5 +1,6 @@
 ---
 title: "App Service Not Using Latest TLS Encryption Version"
+group-id: "rules/terraform/azure"
 meta:
   name: "azure/app_service_not_using_latest_tls_encryption_version"
   id: "b7b9d1c7-2d3b-49b4-b867-ebbe68d0b643"

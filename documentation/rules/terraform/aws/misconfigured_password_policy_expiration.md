@@ -1,5 +1,6 @@
 ---
 title: "Misconfigured Password Policy Expiration"
+group-id: "rules/terraform/aws"
 meta:
   name: "aws/misconfigured_password_policy_expiration"
   id: "ce60d060-efb8-4bfd-9cf7-ff8945d00d90"

@@ -1,5 +1,6 @@
 ---
 title: "Kinesis SSE Not Configured"
+group-id: "rules/terraform/aws"
 meta:
   name: "aws/kinesis_sse_not_configured"
   id: "5c6dd5e7-1fe0-4cae-8f81-4c122717cef3"

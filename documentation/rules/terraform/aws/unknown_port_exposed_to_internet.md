@@ -1,5 +1,6 @@
 ---
 title: "Unknown Port Exposed To Internet"
+group-id: "rules/terraform/aws"
 meta:
   name: "aws/unknown_port_exposed_to_internet"
   id: "590d878b-abdc-428f-895a-e2b68a0e1998"

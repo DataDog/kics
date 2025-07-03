@@ -1,5 +1,6 @@
 ---
 title: "Small PostgreSQL DB Server Log Retention Period"
+group-id: "rules/terraform/azure"
 meta:
   name: "azure/small_postgresql_db_server_log_retention_period"
   id: "261a83f8-dd72-4e8c-b5e1-ebf06e8fe606"

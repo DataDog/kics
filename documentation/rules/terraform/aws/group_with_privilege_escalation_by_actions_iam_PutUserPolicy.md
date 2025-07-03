@@ -1,5 +1,6 @@
 ---
 title: "Group With Privilege Escalation By Actions 'iam:PutUserPolicy'"
+group-id: "rules/terraform/aws"
 meta:
   name: "aws/group_with_privilege_escalation_by_actions_iam_PutUserPolicy"
   id: "60263b4a-6801-4587-911d-919c37ed733b"

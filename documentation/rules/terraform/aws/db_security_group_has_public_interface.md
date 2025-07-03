@@ -1,5 +1,6 @@
 ---
 title: "DB Security Group Has Public Interface"
+group-id: "rules/terraform/aws"
 meta:
   name: "aws/db_security_group_has_public_interface"
   id: "f0d8781f-99bf-4958-9917-d39283b168a0"

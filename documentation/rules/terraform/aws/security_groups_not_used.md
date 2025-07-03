@@ -1,5 +1,6 @@
 ---
 title: "Security Group Not Used"
+group-id: "rules/terraform/aws"
 meta:
   name: "aws/security_groups_not_used"
   id: "4849211b-ac39-479e-ae78-5694d506cb24"

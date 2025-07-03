@@ -1,5 +1,6 @@
 ---
 title: "API Gateway Without Configured Authorizer"
+group-id: "rules/terraform/aws"
 meta:
   name: "aws/api_gateway_without_configured_authorizer"
   id: "0a96ce49-4163-4ee6-8169-eb3b0797d694"

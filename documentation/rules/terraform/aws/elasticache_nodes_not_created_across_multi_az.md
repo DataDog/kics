@@ -1,5 +1,6 @@
 ---
 title: "ElastiCache Nodes Not Created Across Multi AZ"
+group-id: "rules/terraform/aws"
 meta:
   name: "aws/elasticache_nodes_not_created_across_multi_az"
   id: "6db03a91-f933-4f13-ab38-a8b87a7de54d"

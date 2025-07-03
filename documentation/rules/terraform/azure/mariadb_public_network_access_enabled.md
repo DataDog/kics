@@ -1,5 +1,6 @@
 ---
 title: "MariaDB Server Public Network Access Enabled"
+group-id: "rules/terraform/azure"
 meta:
   name: "azure/mariadb_public_network_access_enabled"
   id: "7f0a8696-7159-4337-ad0d-8a3ab4a78195"

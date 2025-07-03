@@ -1,5 +1,6 @@
 ---
 title: "API Gateway without WAF"
+group-id: "rules/terraform/aws"
 meta:
   name: "aws/api_gateway_without_waf"
   id: "a186e82c-1078-4a7b-85d8-579561fde884"

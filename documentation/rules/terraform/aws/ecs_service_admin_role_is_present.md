@@ -1,5 +1,6 @@
 ---
 title: "ECS Service Admin Role Is Present"
+group-id: "rules/terraform/aws"
 meta:
   name: "aws/ecs_service_admin_role_is_present"
   id: "3206240f-2e87-4e58-8d24-3e19e7c83d7c"

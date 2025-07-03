@@ -1,5 +1,6 @@
 ---
 title: "Redis Disabled"
+group-id: "rules/terraform/aws"
 meta:
   name: "aws/redis_disabled"
   id: "4bd15dd9-8d5e-4008-8532-27eb0c3706d3"

@@ -1,5 +1,6 @@
 ---
 title: "Function App Client Certificates Unrequired"
+group-id: "rules/terraform/azure"
 meta:
   name: "azure/function_app_client_certificates_unrequired"
   id: "9bb3c639-5edf-458c-8ee5-30c17c7d671d"

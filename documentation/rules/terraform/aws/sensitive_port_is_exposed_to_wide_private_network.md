@@ -1,5 +1,6 @@
 ---
 title: "Sensitive Port Is Exposed To Wide Private Network"
+group-id: "rules/terraform/aws"
 meta:
   name: "aws/sensitive_port_is_exposed_to_wide_private_network"
   id: "92fe237e-074c-4262-81a4-2077acb928c1"

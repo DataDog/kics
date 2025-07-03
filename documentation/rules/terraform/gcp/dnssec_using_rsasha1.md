@@ -1,5 +1,6 @@
 ---
 title: "DNSSEC Using RSASHA1"
+group-id: "rules/terraform/gcp"
 meta:
   name: "gcp/dnssec_using_rsasha1"
   id: "ccc3100c-0fdd-4a5e-9908-c10107291860"

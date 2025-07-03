@@ -1,5 +1,6 @@
 ---
 title: "RDP Is Exposed To The Internet"
+group-id: "rules/terraform/azure"
 meta:
   name: "azure/rdp_is_exposed_to_the_internet"
   id: "efbf6449-5ec5-4cfe-8f15-acc51e0d787c"

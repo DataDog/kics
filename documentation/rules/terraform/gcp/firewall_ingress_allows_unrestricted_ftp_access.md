@@ -1,5 +1,6 @@
 ---
 title: "Google compute firewall ingress allows unrestricted FTP access"
+group-id: "rules/terraform/gcp"
 meta:
   name: "gcp/firewall_ingress_allows_unrestricted_ftp_access"
   id: "d3f8e9c1-7a2b-4d5f-90e2-123456789abc"

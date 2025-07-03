@@ -1,5 +1,6 @@
 ---
 title: "DOCDB Cluster Without KMS"
+group-id: "rules/terraform/aws"
 meta:
   name: "aws/docdb_cluster_without_kms"
   id: "4766d3ea-241c-4ee6-93ff-c380c996bd1a"

@@ -1,5 +1,6 @@
 ---
 title: "Function App Not Using Latest TLS Encryption Version"
+group-id: "rules/terraform/azure"
 meta:
   name: "azure/function_app_not_using_latest_tls_encryption_version"
   id: "45fc717a-bd86-415c-bdd8-677901be1aa6"

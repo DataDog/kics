@@ -1,5 +1,6 @@
 ---
 title: "Geo Redundancy Is Disabled"
+group-id: "rules/terraform/azure"
 meta:
   name: "azure/geo_redundancy_is_disabled"
   id: "8b042c30-e441-453f-b162-7696982ebc58"

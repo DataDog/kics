@@ -1,5 +1,6 @@
 ---
 title: "VPC Peering Route Table with Unrestricted CIDR"
+group-id: "rules/terraform/aws"
 meta:
   name: "aws/vpc_peering_route_table_with_unrestricted_cidr"
   id: "b3a41501-f712-4c4f-81e5-db9a7dc0e34e"

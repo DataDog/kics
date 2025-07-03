@@ -1,5 +1,6 @@
 ---
 title: "App Service Managed Identity Disabled"
+group-id: "rules/terraform/azure"
 meta:
   name: "azure/app_service_managed_identity_disabled"
   id: "b61cce4b-0cc4-472b-8096-15617a6d769b"

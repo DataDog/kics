@@ -1,5 +1,6 @@
 ---
 title: "Storage Account Not Using Latest TLS Encryption Version"
+group-id: "rules/terraform/azure"
 meta:
   name: "azure/storage_account_not_using_latest_tls_encryption_version"
   id: "8263f146-5e03-43e0-9cfe-db960d56d1e7"

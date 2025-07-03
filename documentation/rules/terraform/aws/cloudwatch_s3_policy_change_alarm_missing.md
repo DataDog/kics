@@ -1,5 +1,6 @@
 ---
 title: "CloudWatch S3 policy Change Alarm Missing"
+group-id: "rules/terraform/aws"
 meta:
   name: "aws/cloudwatch_s3_policy_change_alarm_missing"
   id: "27c6a499-895a-4dc7-9617-5c485218db13"

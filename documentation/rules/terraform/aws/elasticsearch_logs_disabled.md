@@ -1,5 +1,6 @@
 ---
 title: "Elasticsearch Log Disabled"
+group-id: "rules/terraform/aws"
 meta:
   name: "aws/elasticsearch_logs_disabled"
   id: "acb6b4e2-a086-4f35-aefd-4db6ea51ada2"

@@ -1,5 +1,6 @@
 ---
 title: "ElastiCache Replication Group Not Encrypted At Rest"
+group-id: "rules/terraform/aws"
 meta:
   name: "aws/elasticache_replication_group_not_encrypted_at_rest"
   id: "76976de7-c7b1-4f64-a94f-90c1345914c2"

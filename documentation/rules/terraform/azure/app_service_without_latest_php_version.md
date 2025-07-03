@@ -1,5 +1,6 @@
 ---
 title: "App Service Without Latest PHP Version"
+group-id: "rules/terraform/azure"
 meta:
   name: "azure/app_service_without_latest_php_version"
   id: "96fe318e-d631-4156-99fa-9080d57280ae"

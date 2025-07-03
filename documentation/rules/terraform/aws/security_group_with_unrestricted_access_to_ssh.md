@@ -1,5 +1,6 @@
 ---
 title: "Security Group With Unrestricted Access To SSH"
+group-id: "rules/terraform/aws"
 meta:
   name: "aws/security_group_with_unrestricted_access_to_ssh"
   id: "65905cec-d691-4320-b320-2000436cb696"

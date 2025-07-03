@@ -1,5 +1,6 @@
 ---
 title: "SQLServer Ingress From Any IP"
+group-id: "rules/terraform/azure"
 meta:
   name: "azure/sql_server_ingress_from_any_ip"
   id: "25c0ea09-f1c5-4380-b055-3b83863f2bb8"

@@ -1,5 +1,6 @@
 ---
 title: "Cloud Storage Bucket Is Publicly Accessible"
+group-id: "rules/terraform/gcp"
 meta:
   name: "gcp/cloud_storage_bucket_is_publicly_accessible"
   id: "c010082c-76e0-4b91-91d9-6e8439e455dd"

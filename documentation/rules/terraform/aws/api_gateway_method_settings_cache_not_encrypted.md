@@ -1,5 +1,6 @@
 ---
 title: "API Gateway Method Settings Cache Not Encrypted"
+group-id: "rules/terraform/aws"
 meta:
   name: "aws/api_gateway_method_settings_cache_not_encrypted"
   id: "b7c9a40c-23e4-4a2d-8d39-a3352f10f288"

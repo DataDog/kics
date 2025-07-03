@@ -1,5 +1,6 @@
 ---
 title: "SageMaker Notebook Internet Access Enabled"
+group-id: "rules/terraform/aws"
 meta:
   name: "aws/sagemaker_direct_internet_access_enabled"
   id: "f3g4h5i6-j7k8-9lmn-0opq-12345abcdefg"

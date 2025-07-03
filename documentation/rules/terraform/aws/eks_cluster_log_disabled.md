@@ -1,5 +1,6 @@
 ---
 title: "EKS cluster logging is not enabled"
+group-id: "rules/terraform/aws"
 meta:
   name: "aws/eks_cluster_log_disabled"
   id: "37304d3f-f852-40b8-ae3f-725e87a7cedf"

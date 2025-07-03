@@ -1,5 +1,6 @@
 ---
 title: "BigQuery Table Is Public"
+group-id: "rules/terraform/gcp"
 meta:
   name: "gcp/bigquery_table_is_public"
   id: "a9b8c7d6-e5f4-3210-abcd-1234567890ab"

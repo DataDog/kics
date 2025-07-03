@@ -1,5 +1,6 @@
 ---
 title: "Team Tag Missing"
+group-id: "rules/terraform/aws"
 meta:
   name: "aws/team_tag_not_present"
   id: "a2b3c4d5-e6f7-8901-gh23-ijkl456m7890"

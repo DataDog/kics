@@ -1,5 +1,6 @@
 ---
 title: "MQ Broker Logging Disabled"
+group-id: "rules/terraform/aws"
 meta:
   name: "aws/mq_broker_logging_disabled"
   id: "31245f98-a6a9-4182-9fc1-45482b9d030a"

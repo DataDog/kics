@@ -38,7 +38,7 @@ def get_code_snippets(test_dir, resource_type, max_examples):
             non_compliant.append(f"```{resource_type}\n{code}\n```")
     return compliant, non_compliant
 
-def build_markdown(rule_path, metadata, cloud_provider, resource_type, max_examples):
+def build_markdown(rule_path, metadata, cloud_provider, resource_type, provider_path, max_examples):
     rule_name = rule_path.name
     title = metadata.get("queryName", "Untitled Rule")
     rule_id = metadata.get("id", "unknown-id")
@@ -53,6 +53,7 @@ def build_markdown(rule_path, metadata, cloud_provider, resource_type, max_examp
 
     markdown = f"""---
 title: {json.dumps(title)}
+group-id: "{provider_path}"
 meta:
   name: "{meta_name}"
   id: "{rule_id}"
@@ -138,8 +139,8 @@ def process_provider(provider, resource_type, input_dir, output_dir, max_example
             "description": rule_desc
         }
 
-        md_content = build_markdown(rule_dir, metadata, provider, resource_type, max_examples)
         output_file = output_provider_path / f"{rule_name}.md"
+        md_content = build_markdown(rule_dir, metadata, provider, resource_type, output_provider_path, max_examples)
         with open(output_file, "w", encoding="utf-8") as f:
             f.write(md_content)
         print(f"Generated: {output_file}")

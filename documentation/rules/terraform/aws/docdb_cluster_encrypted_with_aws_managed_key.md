@@ -1,5 +1,6 @@
 ---
 title: "DOCDB Cluster Encrypted With AWS Managed Key"
+group-id: "rules/terraform/aws"
 meta:
   name: "aws/docdb_cluster_encrypted_with_aws_managed_key"
   id: "2134641d-30a4-4b16-8ffc-2cd4c4ffd15d"

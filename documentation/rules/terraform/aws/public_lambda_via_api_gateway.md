@@ -1,5 +1,6 @@
 ---
 title: "Public Lambda via API Gateway"
+group-id: "rules/terraform/aws"
 meta:
   name: "aws/public_lambda_via_api_gateway"
   id: "3ef8696c-e4ae-4872-92c7-520bb44dfe77"

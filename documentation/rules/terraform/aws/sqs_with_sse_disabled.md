@@ -1,5 +1,6 @@
 ---
 title: "SQS With SSE Disabled"
+group-id: "rules/terraform/aws"
 meta:
   name: "aws/sqs_with_sse_disabled"
   id: "6e8849c1-3aa7-40e3-9063-b85ee300f29f"

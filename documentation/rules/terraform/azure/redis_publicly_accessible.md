@@ -1,5 +1,6 @@
 ---
 title: "Redis Publicly Accessible"
+group-id: "rules/terraform/azure"
 meta:
   name: "azure/redis_publicly_accessible"
   id: "5089d055-53ff-421b-9482-a5267bdce629"

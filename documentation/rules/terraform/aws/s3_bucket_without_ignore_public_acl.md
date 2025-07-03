@@ -1,5 +1,6 @@
 ---
 title: "S3 Bucket Without Ignore Public ACL"
+group-id: "rules/terraform/aws"
 meta:
   name: "aws/s3_bucket_without_ignore_public_acl"
   id: "4fa66806-0dd9-4f8d-9480-3174d39c7c91"

@@ -1,5 +1,6 @@
 ---
 title: "RDS Using Default Port"
+group-id: "rules/terraform/aws"
 meta:
   name: "aws/rds_using_default_port"
   id: "bca7cc4d-b3a4-4345-9461-eb69c68fcd26"

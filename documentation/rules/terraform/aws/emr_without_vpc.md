@@ -1,5 +1,6 @@
 ---
 title: "EMR Without VPC"
+group-id: "rules/terraform/aws"
 meta:
   name: "aws/emr_without_vpc"
   id: "2b3c8a6d-9856-43e6-ab1d-d651094f03b4"

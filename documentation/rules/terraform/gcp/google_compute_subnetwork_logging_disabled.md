@@ -1,5 +1,6 @@
 ---
 title: "Google Compute Subnetwork Logging Disabled"
+group-id: "rules/terraform/gcp"
 meta:
   name: "gcp/google_compute_subnetwork_logging_disabled"
   id: "40430747-442d-450a-a34f-dc57149f4609"

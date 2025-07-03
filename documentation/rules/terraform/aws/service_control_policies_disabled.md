@@ -1,5 +1,6 @@
 ---
 title: "Service Control Policies Disabled"
+group-id: "rules/terraform/aws"
 meta:
   name: "aws/service_control_policies_disabled"
   id: "5ba6229c-8057-433e-91d0-21cf13569ca9"

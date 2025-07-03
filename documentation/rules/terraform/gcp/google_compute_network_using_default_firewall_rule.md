@@ -1,5 +1,6 @@
 ---
 title: "Google Compute Network Using Default Firewall Rule"
+group-id: "rules/terraform/gcp"
 meta:
   name: "gcp/google_compute_network_using_default_firewall_rule"
   id: "40abce54-95b1-478c-8e5f-ea0bf0bb0e33"

@@ -1,5 +1,6 @@
 ---
 title: "REST API With Vulnerable Policy"
+group-id: "rules/terraform/aws"
 meta:
   name: "aws/rest_api_with_vulnerable_policy"
   id: "b161c11b-a59b-4431-9a29-4e19f63e6b27"

@@ -1,5 +1,6 @@
 ---
 title: "SQL Database Audit Disabled"
+group-id: "rules/terraform/azure"
 meta:
   name: "azure/sql_database_audit_disabled"
   id: "83a229ba-483e-47c6-8db7-dc96969bce5a"

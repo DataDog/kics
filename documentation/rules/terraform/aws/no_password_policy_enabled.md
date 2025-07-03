@@ -1,5 +1,6 @@
 ---
 title: "No Password Policy Enabled"
+group-id: "rules/terraform/aws"
 meta:
   name: "aws/no_password_policy_enabled"
   id: "b592ffd4-0577-44b6-bd35-8c5ee81b5918"

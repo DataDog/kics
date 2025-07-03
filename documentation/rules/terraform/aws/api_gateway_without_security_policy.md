@@ -1,5 +1,6 @@
 ---
 title: "API Gateway Without Security Policy"
+group-id: "rules/terraform/aws"
 meta:
   name: "aws/api_gateway_without_security_policy"
   id: "4e1cc5d3-2811-4fb2-861c-ee9b3cb7f90b"

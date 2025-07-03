@@ -1,5 +1,6 @@
 ---
 title: "Secrets Manager With Vulnerable Policy"
+group-id: "rules/terraform/aws"
 meta:
   name: "aws/secrets_manager_with_vulnerable_policy"
   id: "fa00ce45-386d-4718-8392-fb485e1f3c5b"

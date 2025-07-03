@@ -1,5 +1,6 @@
 ---
 title: "RDS Associated with Public Subnet"
+group-id: "rules/terraform/aws"
 meta:
   name: "aws/rds_associated_with_public_subnet"
   id: "2f737336-b18a-4602-8ea0-b200312e1ac1"

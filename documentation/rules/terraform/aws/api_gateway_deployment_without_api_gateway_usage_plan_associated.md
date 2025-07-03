@@ -1,5 +1,6 @@
 ---
 title: "API Gateway Deployment Without API Gateway UsagePlan Associated"
+group-id: "rules/terraform/aws"
 meta:
   name: "aws/api_gateway_deployment_without_api_gateway_usage_plan_associated"
   id: "b3a59b8e-94a3-403e-b6e2-527abaf12034"

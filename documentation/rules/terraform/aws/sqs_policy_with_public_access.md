@@ -1,5 +1,6 @@
 ---
 title: "SQS Policy With Public Access"
+group-id: "rules/terraform/aws"
 meta:
   name: "aws/sqs_policy_with_public_access"
   id: "730675f9-52ed-49b6-8ead-0acb5dd7df7f"

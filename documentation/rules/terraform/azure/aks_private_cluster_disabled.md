@@ -1,5 +1,6 @@
 ---
 title: "AKS Private Cluster Disabled"
+group-id: "rules/terraform/azure"
 meta:
   name: "azure/aks_private_cluster_disabled"
   id: "599318f2-6653-4569-9e21-041d06c63a89"

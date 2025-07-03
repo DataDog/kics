@@ -1,5 +1,6 @@
 ---
 title: "User With Privilege Escalation By Actions 'iam:CreatePolicyVersion'"
+group-id: "rules/terraform/aws"
 meta:
   name: "aws/user_with_privilege_escalation_by_actions_iam_CreatePolicyVersion"
   id: "1743f5f1-0bb0-4934-acef-c80baa5dadfa"

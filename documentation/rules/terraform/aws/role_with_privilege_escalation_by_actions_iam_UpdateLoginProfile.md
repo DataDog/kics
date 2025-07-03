@@ -1,5 +1,6 @@
 ---
 title: "Role With Privilege Escalation By Actions 'iam:UpdateLoginProfile'"
+group-id: "rules/terraform/aws"
 meta:
   name: "aws/role_with_privilege_escalation_by_actions_iam_UpdateLoginProfile"
   id: "35ccf766-0e4d-41ed-9ec4-2dab155082b4"
