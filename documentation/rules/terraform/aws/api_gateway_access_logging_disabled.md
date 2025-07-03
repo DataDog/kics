@@ -5,28 +5,29 @@ meta:
   id: "1b6799eb-4a7a-4b04-9001-8cceb9999326"
   display_name: "API Gateway Access Logging Disabled"
   cloud_provider: "aws"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Observability"
 ---
 ## Metadata
 
-**Name:** `aws/api_gateway_access_logging_disabled`
-
-**Query Name** `API Gateway Access Logging Disabled`
-
 **Id:** `1b6799eb-4a7a-4b04-9001-8cceb9999326`
 
 **Cloud Provider:** aws
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** Medium
 
 **Category:** Observability
 
-## Description
-When configuring an AWS API Gateway Stage in Terraform, it is important to define the `access_log_settings` block to ensure that access logs are collected and sent to a centralized logging destination, such as an Amazon CloudWatch Logs group. Without specifying the `access_log_settings`, as shown in the configuration below, API requests and responses will not be logged, making it difficult to detect anomalous activity, debug issues, or perform security investigations:
+#### Learn More
+
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/api_gateway_stage#access_log_settings)
+
+### Description
+
+ When configuring an AWS API Gateway Stage in Terraform, it is important to define the `access_log_settings` block to ensure that access logs are collected and sent to a centralized logging destination, such as an Amazon CloudWatch Logs group. Without specifying the `access_log_settings`, as shown in the configuration below, API requests and responses will not be logged, making it difficult to detect anomalous activity, debug issues, or perform security investigations:
 
 ```
 resource "aws_api_gateway_stage" "example" {
@@ -50,10 +51,6 @@ resource "aws_api_gateway_stage" "example" {
 ```
 
 Enabling access logging helps meet compliance requirements and establishes a robust audit trail for all API interactions.
-
-#### Learn More
-
- - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/api_gateway_stage#access_log_settings)
 
 
 ## Compliant Code Examples

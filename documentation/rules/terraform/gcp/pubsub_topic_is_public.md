@@ -5,28 +5,29 @@ meta:
   id: "7sdj7dsj8-f348-4f95-845c-1090e41a615c"
   display_name: "Pub/Sub Topics are anonymously or publicly accessible"
   cloud_provider: "gcp"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Insecure Configurations"
 ---
 ## Metadata
 
-**Name:** `gcp/pubsub_topic_is_public`
-
-**Query Name** `Pub/Sub Topics are anonymously or publicly accessible`
-
 **Id:** `7sdj7dsj8-f348-4f95-845c-1090e41a615c`
 
 **Cloud Provider:** gcp
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** Medium
 
 **Category:** Insecure Configurations
 
-## Description
-Google Cloud Pub/Sub Topics should not be configured to allow public access by assigning IAM roles to the special IAM principals `allUsers` or `allAuthenticatedUsers`. Granting roles to these principals, as in the example below,
+#### Learn More
+
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/pubsub_topic_iam_member)
+
+### Description
+
+ Google Cloud Pub/Sub Topics should not be configured to allow public access by assigning IAM roles to the special IAM principals `allUsers` or `allAuthenticatedUsers`. Granting roles to these principals, as in the example below,
 
 ```
 resource "google_pubsub_topic_iam_member" "bad_example" {
@@ -45,10 +46,6 @@ resource "google_pubsub_topic_iam_member" "good_example" {
   role   = "roles/pubsub.publisher"
 }
 ```
-
-#### Learn More
-
- - [Provider Reference](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/pubsub_topic_iam_member)
 
 
 ## Compliant Code Examples

@@ -5,28 +5,29 @@ meta:
   id: "819d50fd-1cdf-45c3-9936-be408aaad93e"
   display_name: "Security Center Pricing Tier Is Not Standard"
   cloud_provider: "azure"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Insecure Configurations"
 ---
 ## Metadata
 
-**Name:** `azure/security_center_pricing_tier_is_not_standard`
-
-**Query Name** `Security Center Pricing Tier Is Not Standard`
-
 **Id:** `819d50fd-1cdf-45c3-9936-be408aaad93e`
 
 **Cloud Provider:** azure
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** Medium
 
 **Category:** Insecure Configurations
 
-## Description
-Selecting the appropriate pricing tier for Azure Security Center is crucial for ensuring comprehensive security monitoring and protection. If the `tier` attribute in the `azurerm_security_center_subscription_pricing` resource is set to `"Free"`, as shown below:
+#### Learn More
+
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/security_center_subscription_pricing)
+
+### Description
+
+ Selecting the appropriate pricing tier for Azure Security Center is crucial for ensuring comprehensive security monitoring and protection. If the `tier` attribute in the `azurerm_security_center_subscription_pricing` resource is set to `"Free"`, as shown below:
 
 ```
 resource "azurerm_security_center_subscription_pricing" "example" {
@@ -43,10 +44,6 @@ resource "azurerm_security_center_subscription_pricing" "example" {
 ```
 
 enables advanced security features such as threat detection and automated response, significantly reducing the risk of undetected attacks and data breaches.
-
-#### Learn More
-
- - [Provider Reference](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/security_center_subscription_pricing)
 
 
 ## Compliant Code Examples

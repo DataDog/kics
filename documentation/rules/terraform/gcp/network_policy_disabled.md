@@ -5,28 +5,29 @@ meta:
   id: "11e7550e-c4b6-472e-adff-c698f157cdd7"
   display_name: "Network Policy Disabled"
   cloud_provider: "gcp"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Insecure Configurations"
 ---
 ## Metadata
 
-**Name:** `gcp/network_policy_disabled`
-
-**Query Name** `Network Policy Disabled`
-
 **Id:** `11e7550e-c4b6-472e-adff-c698f157cdd7`
 
 **Cloud Provider:** gcp
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** Medium
 
 **Category:** Insecure Configurations
 
-## Description
-Kubernetes Engine Clusters must have network policies enabled to restrict traffic between pods and control communication within the cluster. In Terraform, this means setting `network_policy.enabled = true` and ensuring `addons_config.network_policy_config.disabled = false`, as shown below:
+#### Learn More
+
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/container_cluster)
+
+### Description
+
+ Kubernetes Engine Clusters must have network policies enabled to restrict traffic between pods and control communication within the cluster. In Terraform, this means setting `network_policy.enabled = true` and ensuring `addons_config.network_policy_config.disabled = false`, as shown below:
 
 ```
 network_policy {
@@ -40,10 +41,6 @@ addons_config {
 ```
 
 If these settings are not properly configured, unauthorized traffic between pods may be allowed, increasing the risk of lateral movement and the potential compromise of sensitive applications or data within the cluster.
-
-#### Learn More
-
- - [Provider Reference](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/container_cluster)
 
 
 ## Compliant Code Examples

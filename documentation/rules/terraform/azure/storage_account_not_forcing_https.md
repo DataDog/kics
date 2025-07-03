@@ -5,28 +5,29 @@ meta:
   id: "12944ec4-1fa0-47be-8b17-42a034f937c2"
   display_name: "Storage Account Not Forcing HTTPS"
   cloud_provider: "azure"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Encryption"
 ---
 ## Metadata
 
-**Name:** `azure/storage_account_not_forcing_https`
-
-**Query Name** `Storage Account Not Forcing HTTPS`
-
 **Id:** `12944ec4-1fa0-47be-8b17-42a034f937c2`
 
 **Cloud Provider:** azure
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** Medium
 
 **Category:** Encryption
 
-## Description
-Storage accounts should enforce the use of HTTPS by setting the `https_traffic_only_enabled` attribute to `true` in the Terraform configuration. Allowing HTTP traffic (`https_traffic_only_enabled = false`) exposes sensitive data to interception and man-in-the-middle attacks during transit. For example, a secure configuration should look like:
+#### Learn More
+
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/storage_account#https_traffic_only_enabled-1)
+
+### Description
+
+ Storage accounts should enforce the use of HTTPS by setting the `https_traffic_only_enabled` attribute to `true` in the Terraform configuration. Allowing HTTP traffic (`https_traffic_only_enabled = false`) exposes sensitive data to interception and man-in-the-middle attacks during transit. For example, a secure configuration should look like:
 
 ```
 resource "azurerm_storage_account" "secure_example" {
@@ -36,10 +37,6 @@ resource "azurerm_storage_account" "secure_example" {
 ```
 
 Enforcing HTTPS ensures all connections to the storage account are encrypted, protecting data integrity and confidentiality.
-
-#### Learn More
-
- - [Provider Reference](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/storage_account#https_traffic_only_enabled-1)
 
 
 ## Compliant Code Examples

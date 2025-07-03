@@ -5,28 +5,29 @@ meta:
   id: "0b93729a-d882-4803-bdc3-ac429a21f158"
   display_name: "EC2 Instance Using API Keys"
   cloud_provider: "aws"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "LOW"
   category: "Access Control"
 ---
 ## Metadata
 
-**Name:** `aws/ec2_instance_using_api_keys`
-
-**Query Name** `EC2 Instance Using API Keys`
-
 **Id:** `0b93729a-d882-4803-bdc3-ac429a21f158`
 
 **Cloud Provider:** aws
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** Low
 
 **Category:** Access Control
 
-## Description
-EC2 instances should use IAM roles to be granted access to other AWS services. Storing AWS credentials directly in user data or on the instance, for example with environment variables like `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` as shown below, exposes sensitive credentials to anyone with access to the instance or the AWS console:
+#### Learn More
+
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/instance#iam_instance_profile)
+
+### Description
+
+ EC2 instances should use IAM roles to be granted access to other AWS services. Storing AWS credentials directly in user data or on the instance, for example with environment variables like `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` as shown below, exposes sensitive credentials to anyone with access to the instance or the AWS console:
 
 ```
 user_data = <<EOF
@@ -38,10 +39,6 @@ EOF
 ```
 
 This misconfiguration creates a significant security risk, as leaked credentials can be used by attackers to gain unauthorized access to AWS resources and potentially compromise the wider AWS environment. Instead, EC2 instances should be granted permissions using IAM roles via the `iam_instance_profile` attribute, which securely delivers temporary credentials to the instance and removes the need to manually manage or expose AWS keys.
-
-#### Learn More
-
- - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/instance#iam_instance_profile)
 
 
 ## Compliant Code Examples

@@ -5,28 +5,29 @@ meta:
   id: "92fe237e-074c-4262-81a4-2077acb928c1"
   display_name: "Sensitive Port Is Exposed To Wide Private Network"
   cloud_provider: "aws"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "LOW"
   category: "Networking and Firewall"
 ---
 ## Metadata
 
-**Name:** `aws/sensitive_port_is_exposed_to_wide_private_network`
-
-**Query Name** `Sensitive Port Is Exposed To Wide Private Network`
-
 **Id:** `92fe237e-074c-4262-81a4-2077acb928c1`
 
 **Cloud Provider:** aws
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** Low
 
 **Category:** Networking and Firewall
 
-## Description
-Leaving sensitive ports such as port 23 (Telnet) or port 110 (POP3) open to a wide private network via insecure security group rules can expose resources to unnecessary risk, as these ports are frequently targeted by attackers seeking to exploit legacy or weakly protected protocols. In Terraform, a misconfiguration like:
+#### Learn More
+
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group)
+
+### Description
+
+ Leaving sensitive ports such as port 23 (Telnet) or port 110 (POP3) open to a wide private network via insecure security group rules can expose resources to unnecessary risk, as these ports are frequently targeted by attackers seeking to exploit legacy or weakly protected protocols. In Terraform, a misconfiguration like:
 
 ```
 ingress {
@@ -49,10 +50,6 @@ ingress {
 ```
 
 —significantly reduces the risk of lateral movement and unauthorized access within your network.
-
-#### Learn More
-
- - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group)
 
 
 ## Compliant Code Examples

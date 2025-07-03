@@ -5,28 +5,29 @@ meta:
   id: "ee49557d-750c-4cc1-aa95-94ab36cbefde"
   display_name: "Role With Privilege Escalation By Actions 'iam:CreatePolicyVersion'"
   cloud_provider: "aws"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"
 ---
 ## Metadata
 
-**Name:** `aws/role_with_privilege_escalation_by_actions_iam_CreatePolicyVersion`
-
-**Query Name** `Role With Privilege Escalation By Actions 'iam:CreatePolicyVersion'`
-
 **Id:** `ee49557d-750c-4cc1-aa95-94ab36cbefde`
 
 **Cloud Provider:** aws
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** Medium
 
 **Category:** Access Control
 
-## Description
-Granting the `iam:CreatePolicyVersion` action with a resource of `"*"` in an IAM policy allows a user to create new policy versions for *any* policy in the AWS account, including those attached to highly privileged roles. This capability can be exploited for privilege escalation, as a malicious or compromised user could attach or update policies to grant themselves broader permissions. To mitigate this risk, restrict the `Resource` attribute to specific policy ARNs and only grant this action to trusted administrative principals.
+#### Learn More
+
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy#policy)
+
+### Description
+
+ Granting the `iam:CreatePolicyVersion` action with a resource of `"*"` in an IAM policy allows a user to create new policy versions for *any* policy in the AWS account, including those attached to highly privileged roles. This capability can be exploited for privilege escalation, as a malicious or compromised user could attach or update policies to grant themselves broader permissions. To mitigate this risk, restrict the `Resource` attribute to specific policy ARNs and only grant this action to trusted administrative principals.
 
 A more secure configuration would specify only necessary actions for the specific resources required, for example:
 
@@ -53,10 +54,6 @@ resource "aws_iam_user_policy" "inline_policy_run_instances2" {
   })
 }
 ```
-
-#### Learn More
-
- - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy#policy)
 
 
 ## Compliant Code Examples

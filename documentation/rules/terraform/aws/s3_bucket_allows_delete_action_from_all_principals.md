@@ -5,28 +5,29 @@ meta:
   id: "ffdf4b37-7703-4dfe-a682-9d2e99bc6c09"
   display_name: "S3 Bucket Allows Delete Action From All Principals"
   cloud_provider: "aws"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "CRITICAL"
   category: "Access Control"
 ---
 ## Metadata
 
-**Name:** `aws/s3_bucket_allows_delete_action_from_all_principals`
-
-**Query Name** `S3 Bucket Allows Delete Action From All Principals`
-
 **Id:** `ffdf4b37-7703-4dfe-a682-9d2e99bc6c09`
 
 **Cloud Provider:** aws
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** Critical
 
 **Category:** Access Control
 
-## Description
-This vulnerability occurs when an S3 bucket policy allows the delete action from all principals (*), which can lead to unauthorized deletion of data and potential data loss or service disruption. Even when IP address conditions are applied, allowing delete actions from all principals presents a significant security risk as it could be exploited if the IP restriction is bypassed or misconfigured.
+#### Learn More
+
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_policy)
+
+### Description
+
+ This vulnerability occurs when an S3 bucket policy allows the delete action from all principals (*), which can lead to unauthorized deletion of data and potential data loss or service disruption. Even when IP address conditions are applied, allowing delete actions from all principals presents a significant security risk as it could be exploited if the IP restriction is bypassed or misconfigured.
 
 The insecure configuration looks like:
 ```
@@ -46,10 +47,6 @@ To secure your S3 bucket, either explicitly deny the action or restrict it to sp
   "Resource": "arn:aws:s3:::my_tf_test_bucket/*"
 }
 ```
-
-#### Learn More
-
- - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_policy)
 
 
 ## Compliant Code Examples

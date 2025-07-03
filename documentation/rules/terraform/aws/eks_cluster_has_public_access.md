@@ -5,32 +5,29 @@ meta:
   id: "42f4b905-3736-4213-bfe9-c0660518cda8"
   display_name: "EKS Cluster Has Public Access"
   cloud_provider: "aws"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Insecure Configurations"
 ---
 ## Metadata
 
-**Name:** `aws/eks_cluster_has_public_access`
-
-**Query Name** `EKS Cluster Has Public Access`
-
 **Id:** `42f4b905-3736-4213-bfe9-c0660518cda8`
 
 **Cloud Provider:** aws
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** Medium
 
 **Category:** Insecure Configurations
 
-## Description
-This check verifies that the `endpoint_public_access` attribute within the `vpc_config` block of an `aws_eks_cluster` resource is set to `false`. Allowing public access by setting `endpoint_public_access = true` exposes the EKS cluster's management endpoint to the internet, substantially increasing the risk of unauthorized access or potential attacks. Restricting the endpoint to private access ensures that only resources within the VPC can communicate with the EKS API, reducing the cluster's exposure and improving overall security.
-
 #### Learn More
 
  - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/eks_cluster)
+
+### Description
+
+ This check verifies that the `endpoint_public_access` attribute within the `vpc_config` block of an `aws_eks_cluster` resource is set to `false`. Allowing public access by setting `endpoint_public_access = true` exposes the EKS cluster's management endpoint to the internet, substantially increasing the risk of unauthorized access or potential attacks. Restricting the endpoint to private access ensures that only resources within the VPC can communicate with the EKS API, reducing the cluster's exposure and improving overall security.
 
 
 ## Compliant Code Examples

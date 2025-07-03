@@ -5,28 +5,29 @@ meta:
   id: "cefdad16-0dd5-4ac5-8ed2-a37502c78672"
   display_name: "Service Account with Improper Privileges"
   cloud_provider: "gcp"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Resource Management"
 ---
 ## Metadata
 
-**Name:** `gcp/service_account_with_improper_privileges`
-
-**Query Name** `Service Account with Improper Privileges`
-
 **Id:** `cefdad16-0dd5-4ac5-8ed2-a37502c78672`
 
 **Cloud Provider:** gcp
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** Medium
 
 **Category:** Resource Management
 
-## Description
-Granting a service account excessive privileges such as `roles/admin`, `roles/editor`, `roles/owner`, or any write-level roles can expose the environment to the risk of privilege escalation or unintended modifications. This misconfiguration is seen in Terraform when bindings like:
+#### Learn More
+
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/google/latest/docs/data-sources/iam_policy#role)
+
+### Description
+
+ Granting a service account excessive privileges such as `roles/admin`, `roles/editor`, `roles/owner`, or any write-level roles can expose the environment to the risk of privilege escalation or unintended modifications. This misconfiguration is seen in Terraform when bindings like:
 
 ```
 binding {
@@ -49,10 +50,6 @@ binding {
 ```
 
 Failing to restrict service account privileges may allow attackers or compromised services to make unauthorized changes, leading to data exposure or resource compromise.
-
-#### Learn More
-
- - [Provider Reference](https://registry.terraform.io/providers/hashicorp/google/latest/docs/data-sources/iam_policy#role)
 
 
 ## Compliant Code Examples

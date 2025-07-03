@@ -5,28 +5,29 @@ meta:
   id: "d6047119-a0b2-4b59-a4f2-127a36fb685b"
   display_name: "Role With Privilege Escalation By Actions 'iam:PutGroupPolicy'"
   cloud_provider: "aws"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"
 ---
 ## Metadata
 
-**Name:** `aws/role_with_privilege_escalation_by_actions_iam_PutGroupPolicy`
-
-**Query Name** `Role With Privilege Escalation By Actions 'iam:PutGroupPolicy'`
-
 **Id:** `d6047119-a0b2-4b59-a4f2-127a36fb685b`
 
 **Cloud Provider:** aws
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** Medium
 
 **Category:** Access Control
 
-## Description
-Granting the `iam:PutGroupPolicy` action with the `Resource` value set to `"*"` in an IAM policy, as shown below, allows the role to attach arbitrary permissions to any IAM group in the account:
+#### Learn More
+
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy#policy)
+
+### Description
+
+ Granting the `iam:PutGroupPolicy` action with the `Resource` value set to `"*"` in an IAM policy, as shown below, allows the role to attach arbitrary permissions to any IAM group in the account:
 
 ```
 policy = jsonencode({
@@ -44,10 +45,6 @@ policy = jsonencode({
 ```
 
 This powerful permission can be abused for privilege escalation, as a malicious user assuming this role could grant themselves or others elevated privileges by attaching highly permissive group policies. To mitigate this risk, limit the scope of the `Resource` attribute to only the intended groups and restrict allowed actions to only those necessary for the role’s function.
-
-#### Learn More
-
- - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy#policy)
 
 
 ## Compliant Code Examples

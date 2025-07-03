@@ -5,28 +5,29 @@ meta:
   id: "63ebcb19-2739-4d3f-aa5c-e8bbb9b85281"
   display_name: "EKS Cluster Encryption Disabled"
   cloud_provider: "aws"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "HIGH"
   category: "Encryption"
 ---
 ## Metadata
 
-**Name:** `aws/eks_cluster_encryption_disabled`
-
-**Query Name** `EKS Cluster Encryption Disabled`
-
 **Id:** `63ebcb19-2739-4d3f-aa5c-e8bbb9b85281`
 
 **Cloud Provider:** aws
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** High
 
 **Category:** Encryption
 
-## Description
-Amazon EKS clusters store sensitive information including certificate authorities and service account tokens. When encryption is disabled, this sensitive data is stored in plaintext, potentially exposing it to unauthorized access and data breaches. Enabling encryption using KMS keys for EKS clusters adds an essential layer of security by encrypting Kubernetes secrets stored in etcd.
+#### Learn More
+
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/eks_cluster#encryption_config)
+
+### Description
+
+ Amazon EKS clusters store sensitive information including certificate authorities and service account tokens. When encryption is disabled, this sensitive data is stored in plaintext, potentially exposing it to unauthorized access and data breaches. Enabling encryption using KMS keys for EKS clusters adds an essential layer of security by encrypting Kubernetes secrets stored in etcd.
 
 Insecure example without encryption:
 ```
@@ -51,10 +52,6 @@ resource "aws_eks_cluster" "negative1" {
   }
 }
 ```
-
-#### Learn More
-
- - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/eks_cluster#encryption_config)
 
 
 ## Compliant Code Examples

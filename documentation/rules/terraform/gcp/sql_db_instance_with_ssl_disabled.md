@@ -5,28 +5,29 @@ meta:
   id: "02474449-71aa-40a1-87ae-e14497747b00"
   display_name: "SQL DB Instance With SSL Disabled"
   cloud_provider: "gcp"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "HIGH"
   category: "Encryption"
 ---
 ## Metadata
 
-**Name:** `gcp/sql_db_instance_with_ssl_disabled`
-
-**Query Name** `SQL DB Instance With SSL Disabled`
-
 **Id:** `02474449-71aa-40a1-87ae-e14497747b00`
 
 **Cloud Provider:** gcp
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** High
 
 **Category:** Encryption
 
-## Description
-Google Cloud SQL instances without SSL enabled allow unencrypted connections, which can lead to data exposure through network eavesdropping and man-in-the-middle attacks. SSL encryption provides an essential layer of security for database connections by encrypting data in transit between the client and server. To secure your Google Cloud SQL Database, you should explicitly set 'require_ssl = true' in the ip_configuration block as shown below:
+#### Learn More
+
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/sql_database_instance#require_ssl)
+
+### Description
+
+ Google Cloud SQL instances without SSL enabled allow unencrypted connections, which can lead to data exposure through network eavesdropping and man-in-the-middle attacks. SSL encryption provides an essential layer of security for database connections by encrypting data in transit between the client and server. To secure your Google Cloud SQL Database, you should explicitly set 'require_ssl = true' in the ip_configuration block as shown below:
 
 ```
 settings {
@@ -37,10 +38,6 @@ settings {
 ```
 
 Without this configuration, sensitive data such as credentials, personal information, and proprietary data could be intercepted when transmitted over the network.
-
-#### Learn More
-
- - [Provider Reference](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/sql_database_instance#require_ssl)
 
 
 ## Compliant Code Examples

@@ -5,28 +5,29 @@ meta:
   id: "b7c9a40c-23e4-4a2d-8d39-a3352f10f288"
   display_name: "API Gateway Method Settings Cache Not Encrypted"
   cloud_provider: "aws"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "HIGH"
   category: "Encryption"
 ---
 ## Metadata
 
-**Name:** `aws/api_gateway_method_settings_cache_not_encrypted`
-
-**Query Name** `API Gateway Method Settings Cache Not Encrypted`
-
 **Id:** `b7c9a40c-23e4-4a2d-8d39-a3352f10f288`
 
 **Cloud Provider:** aws
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** High
 
 **Category:** Encryption
 
-## Description
-When caching is enabled for API Gateway methods, sensitive data may be stored in the cache. If cache encryption is not enabled, this data remains vulnerable to unauthorized access, potentially exposing sensitive information. The 'cache_data_encrypted' attribute should be explicitly set to 'true' in the settings block of API Gateway method settings whenever caching is enabled.
+#### Learn More
+
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/api_gateway_method_settings#cache_data_encrypted)
+
+### Description
+
+ When caching is enabled for API Gateway methods, sensitive data may be stored in the cache. If cache encryption is not enabled, this data remains vulnerable to unauthorized access, potentially exposing sensitive information. The 'cache_data_encrypted' attribute should be explicitly set to 'true' in the settings block of API Gateway method settings whenever caching is enabled.
 
 Secure example:
 ```terraform
@@ -47,10 +48,6 @@ settings {
   cache_data_encrypted = false  // or omitting this field
 }
 ```
-
-#### Learn More
-
- - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/api_gateway_method_settings#cache_data_encrypted)
 
 
 ## Compliant Code Examples

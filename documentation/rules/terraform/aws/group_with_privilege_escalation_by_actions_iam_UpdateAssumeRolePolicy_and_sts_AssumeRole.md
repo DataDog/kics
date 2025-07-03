@@ -5,32 +5,29 @@ meta:
   id: "78f1ec6f-5659-41ea-bd48-d0a142dce4f2"
   display_name: "Group With Privilege Escalation By Actions 'iam:UpdateAssumeRolePolicy' And 'sts:AssumeRole'"
   cloud_provider: "aws"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"
 ---
 ## Metadata
 
-**Name:** `aws/group_with_privilege_escalation_by_actions_iam_UpdateAssumeRolePolicy_and_sts_AssumeRole`
-
-**Query Name** `Group With Privilege Escalation By Actions 'iam:UpdateAssumeRolePolicy' And 'sts:AssumeRole'`
-
 **Id:** `78f1ec6f-5659-41ea-bd48-d0a142dce4f2`
 
 **Cloud Provider:** aws
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** Medium
 
 **Category:** Access Control
 
-## Description
-This check identifies IAM groups that have been granted both the `iam:UpdateAssumeRolePolicy` and `sts:AssumeRole` actions with a wildcard resource (`"Resource": "*"`) in their attached policies. Granting these permissions together allows any user in the group to escalate their privileges by altering assume role policies and then assuming any role, potentially gaining unauthorized access to sensitive resources. If left unaddressed, this misconfiguration could enable attackers or malicious insiders to escalate permissions, compromise account security, and move laterally throughout your AWS environment.
-
 #### Learn More
 
  - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_group_policy#policy)
+
+### Description
+
+ This check identifies IAM groups that have been granted both the `iam:UpdateAssumeRolePolicy` and `sts:AssumeRole` actions with a wildcard resource (`"Resource": "*"`) in their attached policies. Granting these permissions together allows any user in the group to escalate their privileges by altering assume role policies and then assuming any role, potentially gaining unauthorized access to sensitive resources. If left unaddressed, this misconfiguration could enable attackers or malicious insiders to escalate permissions, compromise account security, and move laterally throughout your AWS environment.
 
 
 ## Compliant Code Examples

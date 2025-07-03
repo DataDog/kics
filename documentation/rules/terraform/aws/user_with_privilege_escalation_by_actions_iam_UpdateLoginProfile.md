@@ -5,28 +5,29 @@ meta:
   id: "6deb34e2-5d9c-499a-801b-ea6d9eda894f"
   display_name: "User With Privilege Escalation By Actions 'iam:UpdateLoginProfile'"
   cloud_provider: "aws"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"
 ---
 ## Metadata
 
-**Name:** `aws/user_with_privilege_escalation_by_actions_iam_UpdateLoginProfile`
-
-**Query Name** `User With Privilege Escalation By Actions 'iam:UpdateLoginProfile'`
-
 **Id:** `6deb34e2-5d9c-499a-801b-ea6d9eda894f`
 
 **Cloud Provider:** aws
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** Medium
 
 **Category:** Access Control
 
-## Description
-Allowing a user the `iam:UpdateLoginProfile` permission with the `Resource` set to `"*"` in Terraform, as in:
+#### Learn More
+
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_user_policy#policy)
+
+### Description
+
+ Allowing a user the `iam:UpdateLoginProfile` permission with the `Resource` set to `"*"` in Terraform, as in:
 
 ```
 Action = [
@@ -36,10 +37,6 @@ Resource = "*"
 ```
 
 enables that user to change the passwords of any IAM user in the AWS account. This creates a privilege escalation risk, as the user could assign themselves or others passwords to high-privilege accounts, resulting in unauthorized access or control over critical resources. If left unaddressed, this misconfiguration can lead to account compromise and the potential for significant security incidents.
-
-#### Learn More
-
- - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_user_policy#policy)
 
 
 ## Compliant Code Examples

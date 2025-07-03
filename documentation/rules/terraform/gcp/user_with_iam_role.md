@@ -5,28 +5,29 @@ meta:
   id: "704fcc44-a58f-4af5-82e2-93f2a58ef918"
   display_name: "User with IAM Role"
   cloud_provider: "gcp"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "LOW"
   category: "Access Control"
 ---
 ## Metadata
 
-**Name:** `gcp/user_with_iam_role`
-
-**Query Name** `User with IAM Role`
-
 **Id:** `704fcc44-a58f-4af5-82e2-93f2a58ef918`
 
 **Cloud Provider:** gcp
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** Low
 
 **Category:** Access Control
 
-## Description
-Assigning an IAM role directly to a user rather than to a group is considered a misconfiguration, as it reduces flexibility and scalability in managing permissions. This practice can also lead to security risks; if the user leaves the organization or changes roles, their individual permissions may be overlooked and not revoked, resulting in excessive access. Using a group-based assignment, as shown below, ensures a more centralized and manageable permission structure:
+#### Learn More
+
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/google/latest/docs/data-sources/iam_policy#role)
+
+### Description
+
+ Assigning an IAM role directly to a user rather than to a group is considered a misconfiguration, as it reduces flexibility and scalability in managing permissions. This practice can also lead to security risks; if the user leaves the organization or changes roles, their individual permissions may be overlooked and not revoked, resulting in excessive access. Using a group-based assignment, as shown below, ensures a more centralized and manageable permission structure:
 
 ```
 data "google_iam_policy" "secure" {
@@ -39,10 +40,6 @@ data "google_iam_policy" "secure" {
   }
 }
 ```
-
-#### Learn More
-
- - [Provider Reference](https://registry.terraform.io/providers/hashicorp/google/latest/docs/data-sources/iam_policy#role)
 
 
 ## Compliant Code Examples

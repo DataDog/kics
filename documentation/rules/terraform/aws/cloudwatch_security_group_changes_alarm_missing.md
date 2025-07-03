@@ -5,32 +5,29 @@ meta:
   id: "4beaf898-9f8b-4237-89e2-5ffdc7ee6006"
   display_name: "Cloudwatch Security Group Changes Alarm Missing"
   cloud_provider: "aws"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Observability"
 ---
 ## Metadata
 
-**Name:** `aws/cloudwatch_security_group_changes_alarm_missing`
-
-**Query Name** `Cloudwatch Security Group Changes Alarm Missing`
-
 **Id:** `4beaf898-9f8b-4237-89e2-5ffdc7ee6006`
 
 **Cloud Provider:** aws
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** Medium
 
 **Category:** Observability
 
-## Description
-This check ensures that log metric filters and corresponding alarms are configured to monitor changes to AWS security groups. Without a properly configured alarm referencing the correct log metric filter, security group changes—such as modifications to ingress or egress rules, or the creation and deletion of security groups—may go undetected. This lack of visibility can allow unauthorized or accidental changes that could expose sensitive resources or weaken the security posture of your environment. If left unaddressed, such misconfigurations could result in delayed detection of security incidents, increasing the potential for data breaches or service compromise.
-
 #### Learn More
 
  - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudwatch_log_metric_filter#pattern)
+
+### Description
+
+ This check ensures that log metric filters and corresponding alarms are configured to monitor changes to AWS security groups. Without a properly configured alarm referencing the correct log metric filter, security group changes—such as modifications to ingress or egress rules, or the creation and deletion of security groups—may go undetected. This lack of visibility can allow unauthorized or accidental changes that could expose sensitive resources or weaken the security posture of your environment. If left unaddressed, such misconfigurations could result in delayed detection of security incidents, increasing the potential for data breaches or service compromise.
 
 
 ## Compliant Code Examples

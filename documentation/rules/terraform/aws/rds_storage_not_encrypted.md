@@ -5,28 +5,29 @@ meta:
   id: "3199c26c-7871-4cb3-99c2-10a59244ce7f"
   display_name: "RDS Storage Not Encrypted"
   cloud_provider: "aws"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "HIGH"
   category: "Encryption"
 ---
 ## Metadata
 
-**Name:** `aws/rds_storage_not_encrypted`
-
-**Query Name** `RDS Storage Not Encrypted`
-
 **Id:** `3199c26c-7871-4cb3-99c2-10a59244ce7f`
 
 **Cloud Provider:** aws
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** High
 
 **Category:** Encryption
 
-## Description
-Amazon RDS storage encryption provides an additional layer of data protection by securing your data from unauthorized access to the underlying storage. When RDS storage is not encrypted, sensitive data stored in your databases could be exposed if the underlying storage is compromised. To properly secure your RDS clusters, set the 'storage_encrypted' attribute to 'true' as shown in the secure example:
+#### Learn More
+
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/rds_cluster#storage_encrypted)
+
+### Description
+
+ Amazon RDS storage encryption provides an additional layer of data protection by securing your data from unauthorized access to the underlying storage. When RDS storage is not encrypted, sensitive data stored in your databases could be exposed if the underlying storage is compromised. To properly secure your RDS clusters, set the 'storage_encrypted' attribute to 'true' as shown in the secure example:
 
 ```terraform
 resource "aws_rds_cluster" "example" {
@@ -36,10 +37,6 @@ resource "aws_rds_cluster" "example" {
 ```
 
 Without this setting, your database is vulnerable to data exposure if physical storage media is stolen or improperly decommissioned.
-
-#### Learn More
-
- - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/rds_cluster#storage_encrypted)
 
 
 ## Compliant Code Examples

@@ -5,28 +5,29 @@ meta:
   id: "1b3af2f9-af8c-4dfc-a0f1-a03adb70deb2"
   display_name: "Lambda Function With Privileged Role"
   cloud_provider: "aws"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "HIGH"
   category: "Insecure Configurations"
 ---
 ## Metadata
 
-**Name:** `aws/lambda_function_with_privileged_role`
-
-**Query Name** `Lambda Function With Privileged Role`
-
 **Id:** `1b3af2f9-af8c-4dfc-a0f1-a03adb70deb2`
 
 **Cloud Provider:** aws
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** High
 
 **Category:** Insecure Configurations
 
-## Description
-AWS Lambda functions with privileged IAM roles present a significant security risk by violating the principle of least privilege. When Lambda functions are assigned roles with broad permissions such as `iam:*` or `sts:AssumeRole`, they become potential vectors for privilege escalation if compromised. Instead, Lambda functions should be granted only the specific permissions needed for their execution.
+#### Learn More
+
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/lambda_function)
+
+### Description
+
+ AWS Lambda functions with privileged IAM roles present a significant security risk by violating the principle of least privilege. When Lambda functions are assigned roles with broad permissions such as `iam:*` or `sts:AssumeRole`, they become potential vectors for privilege escalation if compromised. Instead, Lambda functions should be granted only the specific permissions needed for their execution.
 
 For example, avoid policies with broad permissions like:
 ```
@@ -55,10 +56,6 @@ policy = jsonencode({
   }]
 })
 ```
-
-#### Learn More
-
- - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/lambda_function)
 
 
 ## Compliant Code Examples

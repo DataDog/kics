@@ -5,32 +5,29 @@ meta:
   id: "a4966c4f-9141-48b8-a564-ffe9959945bc"
   display_name: "S3 Bucket With All Permissions"
   cloud_provider: "aws"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "CRITICAL"
   category: "Access Control"
 ---
 ## Metadata
 
-**Name:** `aws/s3_bucket_with_all_permissions`
-
-**Query Name** `S3 Bucket With All Permissions`
-
 **Id:** `a4966c4f-9141-48b8-a564-ffe9959945bc`
 
 **Cloud Provider:** aws
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** Critical
 
 **Category:** Access Control
 
-## Description
-When an S3 bucket policy allows all actions ('s3:*') to all principals ('*'), it creates a severe security vulnerability by exposing your data to unauthorized access, modification, and deletion by anyone on the internet. Instead of using overly permissive policies like 's3:*', implement the principle of least privilege by granting only specific permissions (e.g., 's3:putObject') that are required for legitimate operations. For example, replace insecure configurations like 'Action': ['s3:*'] with more restrictive ones such as 'Action': ['s3:putObject'] to ensure your S3 buckets remain protected while still enabling necessary functionality.
-
 #### Learn More
 
  - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket)
+
+### Description
+
+ When an S3 bucket policy allows all actions ('s3:*') to all principals ('*'), it creates a severe security vulnerability by exposing your data to unauthorized access, modification, and deletion by anyone on the internet. Instead of using overly permissive policies like 's3:*', implement the principle of least privilege by granting only specific permissions (e.g., 's3:putObject') that are required for legitimate operations. For example, replace insecure configurations like 'Action': ['s3:*'] with more restrictive ones such as 'Action': ['s3:putObject'] to ensure your S3 buckets remain protected while still enabling necessary functionality.
 
 
 ## Compliant Code Examples

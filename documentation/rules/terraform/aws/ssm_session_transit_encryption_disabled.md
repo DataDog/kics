@@ -5,28 +5,29 @@ meta:
   id: "ce60cc6b-6831-4bd7-84a2-cc7f8ee71433"
   display_name: "SSM Session Transit Encryption Disabled"
   cloud_provider: "aws"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Encryption"
 ---
 ## Metadata
 
-**Name:** `aws/ssm_session_transit_encryption_disabled`
-
-**Query Name** `SSM Session Transit Encryption Disabled`
-
 **Id:** `ce60cc6b-6831-4bd7-84a2-cc7f8ee71433`
 
 **Cloud Provider:** aws
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** Medium
 
 **Category:** Encryption
 
-## Description
-When creating an `aws_ssm_document` of type `Session`, session data should be encrypted in transit to protect sensitive information from interception or exposure. By omitting critical encryption-related attributes such as `"s3EncryptionEnabled": true`, `"cloudWatchEncryptionEnabled": true`, and specifying a KMS key with `"kmsKeyId"`, unencrypted data could be transferred between AWS resources and users, increasing the risk of unauthorized access or data leakage. Ensuring encryption for SSM Session Manager sessions mitigates these risks by enforcing secure data transport and proper visibility restrictions.
+#### Learn More
+
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/ssm_document#content)
+
+### Description
+
+ When creating an `aws_ssm_document` of type `Session`, session data should be encrypted in transit to protect sensitive information from interception or exposure. By omitting critical encryption-related attributes such as `"s3EncryptionEnabled": true`, `"cloudWatchEncryptionEnabled": true`, and specifying a KMS key with `"kmsKeyId"`, unencrypted data could be transferred between AWS resources and users, increasing the risk of unauthorized access or data leakage. Ensuring encryption for SSM Session Manager sessions mitigates these risks by enforcing secure data transport and proper visibility restrictions.
 
 A secure Terraform configuration is:
 
@@ -50,10 +51,6 @@ resource "aws_ssm_document" "secure_session" {
 DOC
 }
 ```
-
-#### Learn More
-
- - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/ssm_document#content)
 
 
 ## Compliant Code Examples

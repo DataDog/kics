@@ -5,28 +5,29 @@ meta:
   id: "fae52418-bb8b-4ac2-b287-0b9082d6a3fd"
   display_name: "EFS With Vulnerable Policy"
   cloud_provider: "aws"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"
 ---
 ## Metadata
 
-**Name:** `aws/efs_with_vulnerable_policy`
-
-**Query Name** `EFS With Vulnerable Policy`
-
 **Id:** `fae52418-bb8b-4ac2-b287-0b9082d6a3fd`
 
 **Cloud Provider:** aws
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** Medium
 
 **Category:** Access Control
 
-## Description
-AWS EFS file system policies should avoid the use of wildcards (`*`) in the `Action` and `Principal` fields, as shown below, because this grants broad permissions to all users and all actions:
+#### Learn More
+
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/efs_file_system_policy#policy)
+
+### Description
+
+ AWS EFS file system policies should avoid the use of wildcards (`*`) in the `Action` and `Principal` fields, as shown below, because this grants broad permissions to all users and all actions:
 
 ```
 "Principal": { "AWS": "*" },
@@ -39,10 +40,6 @@ Such overly permissive policies can allow any AWS account to perform any action 
 "Principal": { "AWS": "arn:aws:iam::111122223333:user/Carlos" },
 "Action": ["elasticfilesystem:ClientMount", "elasticfilesystem:ClientWrite"]
 ```
-
-#### Learn More
-
- - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/efs_file_system_policy#policy)
 
 
 ## Compliant Code Examples

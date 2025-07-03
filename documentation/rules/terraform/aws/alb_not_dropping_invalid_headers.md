@@ -5,28 +5,29 @@ meta:
   id: "6e3fd2ed-5c83-4c68-9679-7700d224d379"
   display_name: "ALB Not Dropping Invalid Headers"
   cloud_provider: "aws"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Best Practices"
 ---
 ## Metadata
 
-**Name:** `aws/alb_not_dropping_invalid_headers`
-
-**Query Name** `ALB Not Dropping Invalid Headers`
-
 **Id:** `6e3fd2ed-5c83-4c68-9679-7700d224d379`
 
 **Cloud Provider:** aws
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** Medium
 
 **Category:** Best Practices
 
-## Description
-It is recommended to set the `drop_invalid_header_fields` attribute to `true` in AWS Application Load Balancer (`aws_alb`) resources. If this attribute is omitted or set to `false`, as in the examples below:
+#### Learn More
+
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/lb#drop_invalid_header_fields)
+
+### Description
+
+ It is recommended to set the `drop_invalid_header_fields` attribute to `true` in AWS Application Load Balancer (`aws_alb`) resources. If this attribute is omitted or set to `false`, as in the examples below:
 
 ```
 resource "aws_alb" "disabled_1" {
@@ -40,10 +41,6 @@ resource "aws_alb" "disabled_2" {
 ```
 
 the load balancer will accept and forward malformed or non-standard HTTP header fields to the backend, potentially exposing your application to header-based attacks or unexpected backend behavior. Enabling `drop_invalid_header_fields = true` helps mitigate these risks by ensuring only properly formatted HTTP headers are processed.
-
-#### Learn More
-
- - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/lb#drop_invalid_header_fields)
 
 
 ## Compliant Code Examples

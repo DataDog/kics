@@ -5,32 +5,29 @@ meta:
   id: "e39bee8c-fe54-4a3f-824d-e5e2d1cca40a"
   display_name: "IAM Role Policy passRole Allows All"
   cloud_provider: "aws"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"
 ---
 ## Metadata
 
-**Name:** `aws/iam_role_policy_passrole_allows_all`
-
-**Query Name** `IAM Role Policy passRole Allows All`
-
 **Id:** `e39bee8c-fe54-4a3f-824d-e5e2d1cca40a`
 
 **Cloud Provider:** aws
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** Medium
 
 **Category:** Access Control
 
-## Description
-Granting the `iam:passrole` action with a resource value of `"*"` in Terraform (`"Resource": "*"`) is overly permissive, as it allows the user or role to pass any IAM role in the account to AWS services. This broad permission can lead to privilege escalation, enabling attackers or unauthorized users to assume highly-privileged roles they should not have access to. To mitigate this risk, the resource should be scoped to specific role ARNs (e.g., `"Resource": "arn:aws:iam::account-id:role/RoleName"`) to enforce the principle of least privilege.
-
 #### Learn More
 
  - [Provider Reference](https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-security-warning-pass-role-with-star-in-resource)
+
+### Description
+
+ Granting the `iam:passrole` action with a resource value of `"*"` in Terraform (`"Resource": "*"`) is overly permissive, as it allows the user or role to pass any IAM role in the account to AWS services. This broad permission can lead to privilege escalation, enabling attackers or unauthorized users to assume highly-privileged roles they should not have access to. To mitigate this risk, the resource should be scoped to specific role ARNs (e.g., `"Resource": "arn:aws:iam::account-id:role/RoleName"`) to enforce the principle of least privilege.
 
 
 ## Compliant Code Examples

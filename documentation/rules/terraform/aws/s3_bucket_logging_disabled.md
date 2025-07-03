@@ -5,28 +5,29 @@ meta:
   id: "f861041c-8c9f-4156-acfc-5e6e524f5884"
   display_name: "S3 Bucket Logging Disabled"
   cloud_provider: "aws"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Observability"
 ---
 ## Metadata
 
-**Name:** `aws/s3_bucket_logging_disabled`
-
-**Query Name** `S3 Bucket Logging Disabled`
-
 **Id:** `f861041c-8c9f-4156-acfc-5e6e524f5884`
 
 **Cloud Provider:** aws
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** Medium
 
 **Category:** Observability
 
-## Description
-Server Access Logging should be enabled on S3 Buckets so that all changes are logged and trackable. Without the `logging` block in your Terraform configuration, such as
+#### Learn More
+
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket)
+
+### Description
+
+ Server Access Logging should be enabled on S3 Buckets so that all changes are logged and trackable. Without the `logging` block in your Terraform configuration, such as
 
 ```
 resource "aws_s3_bucket" "example" {
@@ -36,10 +37,6 @@ resource "aws_s3_bucket" "example" {
 ```
 
 access and modification events to the S3 bucket will not be recorded, making it difficult to detect unauthorized access or investigate security incidents. This lack of logging can result in untraceable data exposure or loss if the bucket is misused or compromised.
-
-#### Learn More
-
- - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket)
 
 
 ## Compliant Code Examples

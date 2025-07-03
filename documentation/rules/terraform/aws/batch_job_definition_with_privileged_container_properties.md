@@ -5,28 +5,29 @@ meta:
   id: "66cd88ac-9ddf-424a-b77e-e55e17630bee"
   display_name: "Batch Job Definition With Privileged Container Properties"
   cloud_provider: "aws"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "HIGH"
   category: "Insecure Configurations"
 ---
 ## Metadata
 
-**Name:** `aws/batch_job_definition_with_privileged_container_properties`
-
-**Query Name** `Batch Job Definition With Privileged Container Properties`
-
 **Id:** `66cd88ac-9ddf-424a-b77e-e55e17630bee`
 
 **Cloud Provider:** aws
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** High
 
 **Category:** Insecure Configurations
 
-## Description
-AWS Batch Job Definitions with privileged container properties grant elevated permissions to the container, essentially providing it with root-level access to the host machine. This configuration creates a significant security risk as containers can access host resources and potentially escape container isolation, leading to unauthorized access or system compromise. Instead, containers should run with minimum required privileges according to the principle of least privilege. To secure your configuration, either explicitly set the privileged property to false or omit it entirely as shown below:
+#### Learn More
+
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/batch_job_definition)
+
+### Description
+
+ AWS Batch Job Definitions with privileged container properties grant elevated permissions to the container, essentially providing it with root-level access to the host machine. This configuration creates a significant security risk as containers can access host resources and potentially escape container isolation, leading to unauthorized access or system compromise. Instead, containers should run with minimum required privileges according to the principle of least privilege. To secure your configuration, either explicitly set the privileged property to false or omit it entirely as shown below:
 
 ```terraform
 container_properties = <<CONTAINER_PROPERTIES
@@ -40,10 +41,6 @@ container_properties = <<CONTAINER_PROPERTIES
 }
 CONTAINER_PROPERTIES
 ```
-
-#### Learn More
-
- - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/batch_job_definition)
 
 
 ## Compliant Code Examples

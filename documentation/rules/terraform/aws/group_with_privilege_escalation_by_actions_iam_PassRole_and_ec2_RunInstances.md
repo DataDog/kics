@@ -5,32 +5,29 @@ meta:
   id: "15e6ad8c-f420-49a6-bafb-074f5eb1ec74"
   display_name: "Group With Privilege Escalation By Actions 'ec2:RunInstances' And 'iam:PassRole'"
   cloud_provider: "aws"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"
 ---
 ## Metadata
 
-**Name:** `aws/group_with_privilege_escalation_by_actions_iam_PassRole_and_ec2_RunInstances`
-
-**Query Name** `Group With Privilege Escalation By Actions 'ec2:RunInstances' And 'iam:PassRole'`
-
 **Id:** `15e6ad8c-f420-49a6-bafb-074f5eb1ec74`
 
 **Cloud Provider:** aws
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** Medium
 
 **Category:** Access Control
 
-## Description
-Granting an IAM group both the `ec2:RunInstances` and `iam:PassRole` permissions with the `Resource` field set to `"*"` allows users to launch EC2 instances with any IAM role in the account. This opens a dangerous privilege escalation pathway, as users can assign themselves highly privileged roles by launching instances with those roles attached, effectively bypassing intended access controls. If left unaddressed, this misconfiguration can lead to full account compromise, as attackers could elevate their permissions and gain unauthorized access to sensitive resources.
-
 #### Learn More
 
  - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_group_policy#policy)
+
+### Description
+
+ Granting an IAM group both the `ec2:RunInstances` and `iam:PassRole` permissions with the `Resource` field set to `"*"` allows users to launch EC2 instances with any IAM role in the account. This opens a dangerous privilege escalation pathway, as users can assign themselves highly privileged roles by launching instances with those roles attached, effectively bypassing intended access controls. If left unaddressed, this misconfiguration can lead to full account compromise, as attackers could elevate their permissions and gain unauthorized access to sensitive resources.
 
 
 ## Compliant Code Examples

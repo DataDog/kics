@@ -5,28 +5,29 @@ meta:
   id: "abb06e5f-ef9a-4a99-98c6-376d396bfcdf"
   display_name: "SQS Queue Exposed"
   cloud_provider: "aws"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "HIGH"
   category: "Access Control"
 ---
 ## Metadata
 
-**Name:** `aws/sqs_queue_exposed`
-
-**Query Name** `SQS Queue Exposed`
-
 **Id:** `abb06e5f-ef9a-4a99-98c6-376d396bfcdf`
 
 **Cloud Provider:** aws
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** High
 
 **Category:** Access Control
 
-## Description
-An SQS Queue is considered exposed when its policy allows access from any principal by setting 'Principal' to '*'. This creates a security vulnerability where unauthorized users can send messages to your queue, potentially leading to information disclosure or denial of service attacks.
+#### Learn More
+
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/sqs_queue#policy)
+
+### Description
+
+ An SQS Queue is considered exposed when its policy allows access from any principal by setting 'Principal' to '*'. This creates a security vulnerability where unauthorized users can send messages to your queue, potentially leading to information disclosure or denial of service attacks.
 
 To secure your SQS queue, avoid using wildcard principals in your policy statements. Instead, explicitly specify the ARNs of services or resources that should have access to the queue, as shown in the following secure example:
 
@@ -46,10 +47,6 @@ To secure your SQS queue, avoid using wildcard principals in your policy stateme
   ]
 }
 ```
-
-#### Learn More
-
- - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/sqs_queue#policy)
 
 
 ## Compliant Code Examples

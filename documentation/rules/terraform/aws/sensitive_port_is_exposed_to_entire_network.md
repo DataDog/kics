@@ -5,34 +5,31 @@ meta:
   id: "381c3f2a-ef6f-4eff-99f7-b169cda3422c"
   display_name: "Sensitive Port Is Exposed To Entire Network"
   cloud_provider: "aws"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "HIGH"
   category: "Networking and Firewall"
 ---
 ## Metadata
 
-**Name:** `aws/sensitive_port_is_exposed_to_entire_network`
-
-**Query Name** `Sensitive Port Is Exposed To Entire Network`
-
 **Id:** `381c3f2a-ef6f-4eff-99f7-b169cda3422c`
 
 **Cloud Provider:** aws
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** High
 
 **Category:** Networking and Firewall
 
-## Description
-This vulnerability occurs when security groups allow inbound traffic to sensitive ports (such as SSH, RDP, database, or administrative service ports) from the entire internet (0.0.0.0/0 or /0). Exposing sensitive ports to the internet creates a significant security risk as it allows potential attackers from anywhere to attempt connections, potentially leading to unauthorized access, data breaches, or service exploitation.
-
-To remediate this issue, restrict access to sensitive ports by specifying narrower CIDR ranges or specific IP addresses in your security group rules. For example, instead of using `cidr_blocks = ["0.0.0.0/0"]`, use specific IP ranges like `cidr_blocks = [aws_vpc.main.cidr_block]` or `cidr_blocks = ["10.0.0.0/16"]` that only allow traffic from trusted networks.
-
 #### Learn More
 
  - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group)
+
+### Description
+
+ This vulnerability occurs when security groups allow inbound traffic to sensitive ports (such as SSH, RDP, database, or administrative service ports) from the entire internet (0.0.0.0/0 or /0). Exposing sensitive ports to the internet creates a significant security risk as it allows potential attackers from anywhere to attempt connections, potentially leading to unauthorized access, data breaches, or service exploitation.
+
+To remediate this issue, restrict access to sensitive ports by specifying narrower CIDR ranges or specific IP addresses in your security group rules. For example, instead of using `cidr_blocks = ["0.0.0.0/0"]`, use specific IP ranges like `cidr_blocks = [aws_vpc.main.cidr_block]` or `cidr_blocks = ["10.0.0.0/16"]` that only allow traffic from trusted networks.
 
 
 ## Compliant Code Examples

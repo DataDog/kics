@@ -5,32 +5,29 @@ meta:
   id: "f1173d8c-3264-4148-9fdb-61181e031b51"
   display_name: "Role With Privilege Escalation By Actions 'iam:UpdateAssumeRolePolicy' And 'sts:AssumeRole'"
   cloud_provider: "aws"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"
 ---
 ## Metadata
 
-**Name:** `aws/role_with_privilege_escalation_by_actions_iam_UpdateAssumeRolePolicy_and_sts_AssumeRole`
-
-**Query Name** `Role With Privilege Escalation By Actions 'iam:UpdateAssumeRolePolicy' And 'sts:AssumeRole'`
-
 **Id:** `f1173d8c-3264-4148-9fdb-61181e031b51`
 
 **Cloud Provider:** aws
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** Medium
 
 **Category:** Access Control
 
-## Description
-Granting an IAM role permissions for both `iam:UpdateAssumeRolePolicy` and `sts:AssumeRole` actions with the `Resource` attribute set to `"*"` creates a severe privilege escalation risk. This misconfiguration allows a user or role to modify the trust policies of any role and subsequently assume any role in the AWS account, potentially gaining administrative privileges. If left unaddressed, malicious actors could exploit these permissions to take over sensitive roles and perform unauthorized actions across all AWS resources.
-
 #### Learn More
 
  - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy#policy)
+
+### Description
+
+ Granting an IAM role permissions for both `iam:UpdateAssumeRolePolicy` and `sts:AssumeRole` actions with the `Resource` attribute set to `"*"` creates a severe privilege escalation risk. This misconfiguration allows a user or role to modify the trust policies of any role and subsequently assume any role in the AWS account, potentially gaining administrative privileges. If left unaddressed, malicious actors could exploit these permissions to take over sensitive roles and perform unauthorized actions across all AWS resources.
 
 
 ## Compliant Code Examples

@@ -5,28 +5,29 @@ meta:
   id: "96fe318e-d631-4156-99fa-9080d57280ae"
   display_name: "App Service Without Latest PHP Version"
   cloud_provider: "azure"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "LOW"
   category: "Best Practices"
 ---
 ## Metadata
 
-**Name:** `azure/app_service_without_latest_php_version`
-
-**Query Name** `App Service Without Latest PHP Version`
-
 **Id:** `96fe318e-d631-4156-99fa-9080d57280ae`
 
 **Cloud Provider:** azure
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** Low
 
 **Category:** Best Practices
 
-## Description
-Web apps using outdated PHP versions expose themselves to known security vulnerabilities and miss critical security fixes and performance improvements available in newer releases. For example, specifying `php_version = "7.3"` in a Terraform `azurerm_app_service` resource leaves the application open to exploits that are resolved in later PHP versions. To mitigate risk, always configure the `site_config` block to use a recent, supported PHP version, such as:
+#### Learn More
+
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/app_service#php_version)
+
+### Description
+
+ Web apps using outdated PHP versions expose themselves to known security vulnerabilities and miss critical security fixes and performance improvements available in newer releases. For example, specifying `php_version = "7.3"` in a Terraform `azurerm_app_service` resource leaves the application open to exploits that are resolved in later PHP versions. To mitigate risk, always configure the `site_config` block to use a recent, supported PHP version, such as:
 
 ```
 site_config {
@@ -34,10 +35,6 @@ site_config {
 }
 ```
 This ensures the application benefits from the latest patches and features.
-
-#### Learn More
-
- - [Provider Reference](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/app_service#php_version)
 
 
 ## Compliant Code Examples

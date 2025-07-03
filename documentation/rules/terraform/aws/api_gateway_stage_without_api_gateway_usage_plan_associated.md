@@ -5,28 +5,29 @@ meta:
   id: "c999cf62-0920-40f8-8dda-0caccd66ed7e"
   display_name: "API Gateway Stage Without API Gateway UsagePlan Associated"
   cloud_provider: "aws"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "LOW"
   category: "Resource Management"
 ---
 ## Metadata
 
-**Name:** `aws/api_gateway_stage_without_api_gateway_usage_plan_associated`
-
-**Query Name** `API Gateway Stage Without API Gateway UsagePlan Associated`
-
 **Id:** `c999cf62-0920-40f8-8dda-0caccd66ed7e`
 
 **Cloud Provider:** aws
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** Low
 
 **Category:** Resource Management
 
-## Description
-API Gateway stages should always be associated with an API Gateway UsagePlan, which enforces throttling and quota limits for clients accessing your APIs. Without a defined `aws_api_gateway_usage_plan` resource and its association via the `api_stages` block, as shown below,
+#### Learn More
+
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/api_gateway_stage)
+
+### Description
+
+ API Gateway stages should always be associated with an API Gateway UsagePlan, which enforces throttling and quota limits for clients accessing your APIs. Without a defined `aws_api_gateway_usage_plan` resource and its association via the `api_stages` block, as shown below,
 
 ```
 resource "aws_api_gateway_stage" "example" {
@@ -50,10 +51,6 @@ resource "aws_api_gateway_usage_plan" "example" {
 ```
 
 helps mitigate these risks by controlling consumption through quotas and throttling, protecting backend resources and maintaining predictable API performance.
-
-#### Learn More
-
- - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/api_gateway_stage)
 
 
 ## Compliant Code Examples

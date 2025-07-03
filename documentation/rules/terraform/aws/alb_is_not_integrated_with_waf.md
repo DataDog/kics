@@ -5,32 +5,29 @@ meta:
   id: "0afa6ab8-a047-48cf-be07-93a2f8c34cf7"
   display_name: "ALB Is Not Integrated With WAF"
   cloud_provider: "aws"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Networking and Firewall"
 ---
 ## Metadata
 
-**Name:** `aws/alb_is_not_integrated_with_waf`
-
-**Query Name** `ALB Is Not Integrated With WAF`
-
 **Id:** `0afa6ab8-a047-48cf-be07-93a2f8c34cf7`
 
 **Cloud Provider:** aws
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** Medium
 
 **Category:** Networking and Firewall
 
-## Description
-Application Load Balancers (ALBs) should always be protected by a Web Application Firewall (WAF) to defend against common web exploits and vulnerabilities, such as SQL injection and cross-site scripting (XSS) attacks. Without an associated WAF, ALBs are left exposed to the internet with no filter or mitigation in place for potentially malicious traffic targeting applications. This misconfiguration can lead to unauthorized access, data breaches, and disruptions to application availability, compromising the security and integrity of hosted applications. Ensuring that ALBs have an active WAF association is a critical best practice for reducing the risk of successful web-based attacks.
-
 #### Learn More
 
  - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/wafregional_web_acl_association)
+
+### Description
+
+ Application Load Balancers (ALBs) should always be protected by a Web Application Firewall (WAF) to defend against common web exploits and vulnerabilities, such as SQL injection and cross-site scripting (XSS) attacks. Without an associated WAF, ALBs are left exposed to the internet with no filter or mitigation in place for potentially malicious traffic targeting applications. This misconfiguration can lead to unauthorized access, data breaches, and disruptions to application availability, compromising the security and integrity of hosted applications. Ensuring that ALBs have an active WAF association is a critical best practice for reducing the risk of successful web-based attacks.
 
 
 ## Compliant Code Examples

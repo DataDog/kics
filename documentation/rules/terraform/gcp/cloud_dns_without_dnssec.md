@@ -5,28 +5,29 @@ meta:
   id: "5ef61c88-bbb4-4725-b1df-55d23c9676bb"
   display_name: "Cloud DNS Without DNSSEC"
   cloud_provider: "gcp"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Insecure Configurations"
 ---
 ## Metadata
 
-**Name:** `gcp/cloud_dns_without_dnssec`
-
-**Query Name** `Cloud DNS Without DNSSEC`
-
 **Id:** `5ef61c88-bbb4-4725-b1df-55d23c9676bb`
 
 **Cloud Provider:** gcp
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** Medium
 
 **Category:** Insecure Configurations
 
-## Description
-DNSSEC (Domain Name System Security Extensions) should be enabled for Cloud DNS managed zones to ensure the authenticity and integrity of DNS data by cryptographically signing DNS records. Without DNSSEC enabled (e.g., `dnssec_config { state = "off" }`), domains are at greater risk of DNS spoofing and cache poisoning attacks, potentially allowing attackers to redirect traffic or intercept sensitive communications. To mitigate this risk, configure DNSSEC as shown below:
+#### Learn More
+
+ - [Provider Reference](https://www.terraform.io/docs/providers/google/d/dns_managed_zone.html)
+
+### Description
+
+ DNSSEC (Domain Name System Security Extensions) should be enabled for Cloud DNS managed zones to ensure the authenticity and integrity of DNS data by cryptographically signing DNS records. Without DNSSEC enabled (e.g., `dnssec_config { state = "off" }`), domains are at greater risk of DNS spoofing and cache poisoning attacks, potentially allowing attackers to redirect traffic or intercept sensitive communications. To mitigate this risk, configure DNSSEC as shown below:
 
 ```
 resource "google_dns_managed_zone" "example" {
@@ -39,10 +40,6 @@ resource "google_dns_managed_zone" "example" {
   }
 }
 ```
-
-#### Learn More
-
- - [Provider Reference](https://www.terraform.io/docs/providers/google/d/dns_managed_zone.html)
 
 
 ## Compliant Code Examples

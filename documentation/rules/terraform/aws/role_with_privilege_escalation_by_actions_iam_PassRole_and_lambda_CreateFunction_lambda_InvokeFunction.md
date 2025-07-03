@@ -5,32 +5,29 @@ meta:
   id: "fa62ac4f-f5b9-45b9-97c1-625c8b6253ca"
   display_name: "Role With Privilege Escalation By Actions 'lambda:CreateFunction' And 'iam:PassRole' And 'lambda:InvokeFunction'"
   cloud_provider: "aws"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"
 ---
 ## Metadata
 
-**Name:** `aws/role_with_privilege_escalation_by_actions_iam_PassRole_and_lambda_CreateFunction_lambda_InvokeFunction`
-
-**Query Name** `Role With Privilege Escalation By Actions 'lambda:CreateFunction' And 'iam:PassRole' And 'lambda:InvokeFunction'`
-
 **Id:** `fa62ac4f-f5b9-45b9-97c1-625c8b6253ca`
 
 **Cloud Provider:** aws
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** Medium
 
 **Category:** Access Control
 
-## Description
-This configuration grants an IAM role permission to create and invoke Lambda functions (`lambda:CreateFunction` and `lambda:InvokeFunction`) and to pass any IAM role (`iam:PassRole`) with the resource set to `"*"`. This combination of permissions enables privilege escalation, as a user with these rights can create a Lambda function that assumes any role in the account—including high-privilege roles such as `Administrator`. The attacker could then execute arbitrary actions with elevated privileges by passing critical roles to their malicious Lambda and invoking it. If left unaddressed, this vulnerability could allow unauthorized access to sensitive resources or full account takeover.
-
 #### Learn More
 
  - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy#policy)
+
+### Description
+
+ This configuration grants an IAM role permission to create and invoke Lambda functions (`lambda:CreateFunction` and `lambda:InvokeFunction`) and to pass any IAM role (`iam:PassRole`) with the resource set to `"*"`. This combination of permissions enables privilege escalation, as a user with these rights can create a Lambda function that assumes any role in the account—including high-privilege roles such as `Administrator`. The attacker could then execute arbitrary actions with elevated privileges by passing critical roles to their malicious Lambda and invoking it. If left unaddressed, this vulnerability could allow unauthorized access to sensitive resources or full account takeover.
 
 
 ## Compliant Code Examples

@@ -5,28 +5,29 @@ meta:
   id: "132a8c31-9837-4203-9fd1-15ca210c7b73"
   display_name: "SSO Policy with full privileges"
   cloud_provider: "aws"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"
 ---
 ## Metadata
 
-**Name:** `aws/sso_policy_with_full_priveleges`
-
-**Query Name** `SSO Policy with full privileges`
-
 **Id:** `132a8c31-9837-4203-9fd1-15ca210c7b73`
 
 **Cloud Provider:** aws
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** Medium
 
 **Category:** Access Control
 
-## Description
-Single Sign-On (SSO) policies should be configured to grant only the specific administrative privileges necessary, rather than granting unrestricted access to all AWS resources. If the inline policy uses broad permissions such as `"Action": ["*"]` and `"Resource": ["*"]`, as seen in the example below, it grants users full administrative rights, bypassing the principles of least privilege:
+#### Learn More
+
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/ssoadmin_permission_set_inline_policy)
+
+### Description
+
+ Single Sign-On (SSO) policies should be configured to grant only the specific administrative privileges necessary, rather than granting unrestricted access to all AWS resources. If the inline policy uses broad permissions such as `"Action": ["*"]` and `"Resource": ["*"]`, as seen in the example below, it grants users full administrative rights, bypassing the principles of least privilege:
 
 ```
 inline_policy = <<POLICY
@@ -49,10 +50,6 @@ POLICY
 ```
 
 This misconfiguration exposes the environment to significant security risks, as any user assigned this policy could perform destructive actions or gain unauthorized access to sensitive data. Properly scoping permissions is crucial to minimize potential damage in the event of compromised credentials or malicious insiders. Failure to address this issue can lead to data breaches, accidental resource deletion, and loss of control over the cloud environment.
-
-#### Learn More
-
- - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/ssoadmin_permission_set_inline_policy)
 
 
 ## Compliant Code Examples

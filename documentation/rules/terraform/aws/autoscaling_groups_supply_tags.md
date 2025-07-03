@@ -5,28 +5,29 @@ meta:
   id: "ba48df05-eaa1-4d64-905e-4a4b051e7587"
   display_name: "Autoscaling Groups Supply Tags"
   cloud_provider: "aws"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "LOW"
   category: "Availability"
 ---
 ## Metadata
 
-**Name:** `aws/autoscaling_groups_supply_tags`
-
-**Query Name** `Autoscaling Groups Supply Tags`
-
 **Id:** `ba48df05-eaa1-4d64-905e-4a4b051e7587`
 
 **Cloud Provider:** aws
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** Low
 
 **Category:** Availability
 
-## Description
-Autoscaling groups in AWS should be configured with appropriate tags to ensure proper resource management, cost allocation, and identification. When the `tags` attribute is omitted, as in
+#### Learn More
+
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/autoscaling_group#tag-and-tags)
+
+### Description
+
+ Autoscaling groups in AWS should be configured with appropriate tags to ensure proper resource management, cost allocation, and identification. When the `tags` attribute is omitted, as in
 
 ```
 resource "aws_autoscaling_group" "example" {
@@ -52,10 +53,6 @@ resource "aws_autoscaling_group" "example" {
   ]
 }
 ```
-
-#### Learn More
-
- - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/autoscaling_group#tag-and-tags)
 
 
 ## Compliant Code Examples

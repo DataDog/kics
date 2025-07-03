@@ -5,28 +5,29 @@ meta:
   id: "9bb3c639-5edf-458c-8ee5-30c17c7d671d"
   display_name: "Function App Client Certificates Unrequired"
   cloud_provider: "azure"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Insecure Configurations"
 ---
 ## Metadata
 
-**Name:** `azure/function_app_client_certificates_unrequired`
-
-**Query Name** `Function App Client Certificates Unrequired`
-
 **Id:** `9bb3c639-5edf-458c-8ee5-30c17c7d671d`
 
 **Cloud Provider:** azure
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** Medium
 
 **Category:** Insecure Configurations
 
-## Description
-Azure Function Apps should require client certificates for incoming requests by setting the `client_cert_mode` attribute to `"Required"`. Without this setting, as seen below, the Function App allows unauthenticated traffic, increasing the risk of unauthorized access to sensitive business logic or data processed by the Function App:
+#### Learn More
+
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/function_app#client_cert_mode)
+
+### Description
+
+ Azure Function Apps should require client certificates for incoming requests by setting the `client_cert_mode` attribute to `"Required"`. Without this setting, as seen below, the Function App allows unauthenticated traffic, increasing the risk of unauthorized access to sensitive business logic or data processed by the Function App:
 
 ```
 resource "azurerm_function_app" "example" {
@@ -36,10 +37,6 @@ resource "azurerm_function_app" "example" {
 ```
 
 Enforcing client certificate authentication ensures that only trusted clients can interact with the Function App, reducing the attack surface and protecting against various unauthorized access vectors.
-
-#### Learn More
-
- - [Provider Reference](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/function_app#client_cert_mode)
 
 
 ## Compliant Code Examples

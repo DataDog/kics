@@ -5,28 +5,29 @@ meta:
   id: "8f0e6b2d-3c9a-4f1e-8d2a-7b6c5d4e3f21"
   display_name: "Ensure Azure MariaDB server is using latest TLS (1.2)"
   cloud_provider: "azure"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "HIGH"
   category: "Encryption"
 ---
 ## Metadata
 
-**Name:** `azure/mariadb_not_using_latest_tls`
-
-**Query Name** `Ensure Azure MariaDB server is using latest TLS (1.2)`
-
 **Id:** `8f0e6b2d-3c9a-4f1e-8d2a-7b6c5d4e3f21`
 
 **Cloud Provider:** azure
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** High
 
 **Category:** Encryption
 
-## Description
-Using outdated TLS versions in Azure MariaDB servers exposes your database to known vulnerabilities and encryption weaknesses, potentially allowing attackers to intercept and decrypt sensitive data. Without proper SSL enforcement and TLS 1.2 (or higher) configuration, your database communications remain susceptible to man-in-the-middle attacks and other security exploits that have been addressed in newer TLS versions. 
+#### Learn More
+
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/azurerm/3.117.1/docs/resources/mariadb_server#ssl_minimal_tls_version_enforced-1)
+
+### Description
+
+ Using outdated TLS versions in Azure MariaDB servers exposes your database to known vulnerabilities and encryption weaknesses, potentially allowing attackers to intercept and decrypt sensitive data. Without proper SSL enforcement and TLS 1.2 (or higher) configuration, your database communications remain susceptible to man-in-the-middle attacks and other security exploits that have been addressed in newer TLS versions. 
 
 To secure your Azure MariaDB server, you must set both the ssl_enforcement_enabled flag to true and ssl_minimal_tls_version_enforced to TLS1_2, as shown in the following example:
 
@@ -40,10 +41,6 @@ resource "azurerm_mariadb_server" "good_example" {
   ssl_minimal_tls_version_enforced = ["TLS1_2"]
 }
 ```
-
-#### Learn More
-
- - [Provider Reference](https://registry.terraform.io/providers/hashicorp/azurerm/3.117.1/docs/resources/mariadb_server#ssl_minimal_tls_version_enforced-1)
 
 
 ## Compliant Code Examples

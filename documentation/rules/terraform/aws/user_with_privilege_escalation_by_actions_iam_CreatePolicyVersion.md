@@ -5,28 +5,29 @@ meta:
   id: "1743f5f1-0bb0-4934-acef-c80baa5dadfa"
   display_name: "User With Privilege Escalation By Actions 'iam:CreatePolicyVersion'"
   cloud_provider: "aws"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"
 ---
 ## Metadata
 
-**Name:** `aws/user_with_privilege_escalation_by_actions_iam_CreatePolicyVersion`
-
-**Query Name** `User With Privilege Escalation By Actions 'iam:CreatePolicyVersion'`
-
 **Id:** `1743f5f1-0bb0-4934-acef-c80baa5dadfa`
 
 **Cloud Provider:** aws
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** Medium
 
 **Category:** Access Control
 
-## Description
-Allowing a user the `iam:CreatePolicyVersion` action with the resource set to `"*"` in Terraform, as shown in the policy statement below, enables them to update any IAM policy in the AWS account. This privilege can be exploited for privilege escalation, as the user could create a new policy version attaching elevated permissions to themselves or others.
+#### Learn More
+
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_user_policy#policy)
+
+### Description
+
+ Allowing a user the `iam:CreatePolicyVersion` action with the resource set to `"*"` in Terraform, as shown in the policy statement below, enables them to update any IAM policy in the AWS account. This privilege can be exploited for privilege escalation, as the user could create a new policy version attaching elevated permissions to themselves or others.
 
 ```
 policy = jsonencode({
@@ -44,10 +45,6 @@ policy = jsonencode({
 ```
 
 If left unaddressed, this misconfiguration could allow an attacker to gain unauthorized administrative access or perform malicious actions across your AWS environment by changing permissions on any IAM policy.
-
-#### Learn More
-
- - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_user_policy#policy)
 
 
 ## Compliant Code Examples

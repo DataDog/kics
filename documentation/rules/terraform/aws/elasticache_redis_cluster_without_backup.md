@@ -5,28 +5,29 @@ meta:
   id: "8fdb08a0-a868-4fdf-9c27-ccab0237f1ab"
   display_name: "ElastiCache Redis Cluster Without Backup"
   cloud_provider: "aws"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Backup"
 ---
 ## Metadata
 
-**Name:** `aws/elasticache_redis_cluster_without_backup`
-
-**Query Name** `ElastiCache Redis Cluster Without Backup`
-
 **Id:** `8fdb08a0-a868-4fdf-9c27-ccab0237f1ab`
 
 **Cloud Provider:** aws
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** Medium
 
 **Category:** Backup
 
-## Description
-ElastiCache Redis clusters should have the `snapshot_retention_limit` attribute set to a value greater than 0 to ensure that automatic backups are retained for disaster recovery and business continuity purposes. When `snapshot_retention_limit = 0` is specified or omitted, no snapshots are stored, which means data can be permanently lost in the event of accidental deletion, infrastructure failure, or corruption.
+#### Learn More
+
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/elasticache_cluster#snapshot_retention_limit)
+
+### Description
+
+ ElastiCache Redis clusters should have the `snapshot_retention_limit` attribute set to a value greater than 0 to ensure that automatic backups are retained for disaster recovery and business continuity purposes. When `snapshot_retention_limit = 0` is specified or omitted, no snapshots are stored, which means data can be permanently lost in the event of accidental deletion, infrastructure failure, or corruption.
 
 ```
 resource "aws_elasticache_cluster" "insecure" {
@@ -49,10 +50,6 @@ resource "aws_elasticache_cluster" "secure" {
   snapshot_retention_limit  = 5
 }
 ```
-
-#### Learn More
-
- - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/elasticache_cluster#snapshot_retention_limit)
 
 
 ## Compliant Code Examples

@@ -5,28 +5,29 @@ meta:
   id: "9a205ba3-0dd1-42eb-8d54-2ffec836b51a"
   display_name: "Role With Privilege Escalation By Actions 'iam:CreateLoginProfile'"
   cloud_provider: "aws"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"
 ---
 ## Metadata
 
-**Name:** `aws/role_with_privilege_escalation_by_actions_iam_CreateLoginProfile`
-
-**Query Name** `Role With Privilege Escalation By Actions 'iam:CreateLoginProfile'`
-
 **Id:** `9a205ba3-0dd1-42eb-8d54-2ffec836b51a`
 
 **Cloud Provider:** aws
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** Medium
 
 **Category:** Access Control
 
-## Description
-This check identifies if an AWS IAM role policy grants the `iam:CreateLoginProfile` action with a `Resource` set to `"*"`, as shown below:
+#### Learn More
+
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy#policy)
+
+### Description
+
+ This check identifies if an AWS IAM role policy grants the `iam:CreateLoginProfile` action with a `Resource` set to `"*"`, as shown below:
 
 ```
 policy = jsonencode({
@@ -44,10 +45,6 @@ policy = jsonencode({
 ```
 
 Allowing this action enables a user or role to create login profiles (i.e., set console passwords) for any IAM user account, potentially facilitating privilege escalation. If left unaddressed, attackers could exploit this permission to gain unauthorized console access and take full control of IAM users, posing a severe security risk to the environment.
-
-#### Learn More
-
- - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy#policy)
 
 
 ## Compliant Code Examples

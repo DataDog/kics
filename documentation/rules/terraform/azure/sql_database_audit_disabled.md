@@ -5,28 +5,29 @@ meta:
   id: "83a229ba-483e-47c6-8db7-dc96969bce5a"
   display_name: "SQL Database Audit Disabled"
   cloud_provider: "azure"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Resource Management"
 ---
 ## Metadata
 
-**Name:** `azure/sql_database_audit_disabled`
-
-**Query Name** `SQL Database Audit Disabled`
-
 **Id:** `83a229ba-483e-47c6-8db7-dc96969bce5a`
 
 **Cloud Provider:** azure
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** Medium
 
 **Category:** Resource Management
 
-## Description
-Enabling 'Threat Detection' for Azure SQL Database helps identify anomalous activities and potential security threats by alerting administrators when suspicious activity is detected. When the `threat_detection_policy` block is set to `state = "Disabled"` or omitted entirely, as in: 
+#### Learn More
+
+ - [Provider Reference](https://www.terraform.io/docs/providers/azurerm/r/sql_database.html)
+
+### Description
+
+ Enabling 'Threat Detection' for Azure SQL Database helps identify anomalous activities and potential security threats by alerting administrators when suspicious activity is detected. When the `threat_detection_policy` block is set to `state = "Disabled"` or omitted entirely, as in: 
 
 ```
 threat_detection_policy {
@@ -42,10 +43,6 @@ threat_detection_policy {
 }
 ```
 If left unaddressed, disabling this feature may allow attackers to exploit vulnerabilities in your database environment undetected.
-
-#### Learn More
-
- - [Provider Reference](https://www.terraform.io/docs/providers/azurerm/r/sql_database.html)
 
 
 ## Compliant Code Examples

@@ -5,28 +5,29 @@ meta:
   id: "d4e5f6g7-h8i9-0jkl-1234-mn567opq8901"
   display_name: "S3 Bucket Allows Authenticated Users Access"
   cloud_provider: "aws"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "HIGH"
   category: "Access Control"
 ---
 ## Metadata
 
-**Name:** `aws/s3_bucket_allows_access_to_all_authenticated_users`
-
-**Query Name** `S3 Bucket Allows Authenticated Users Access`
-
 **Id:** `d4e5f6g7-h8i9-0jkl-1234-mn567opq8901`
 
 **Cloud Provider:** aws
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** High
 
 **Category:** Access Control
 
-## Description
-This check verifies if AWS S3 bucket ACLs are configured to prevent access from all authenticated AWS users. When an S3 bucket grants access to the 'AuthenticatedUsers' group, it allows any AWS account holder worldwide to access your data, not just users within your organization. This significantly increases the risk of unauthorized data access, potential data breaches, and violation of data governance policies.
+#### Learn More
+
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_acl)
+
+### Description
+
+ This check verifies if AWS S3 bucket ACLs are configured to prevent access from all authenticated AWS users. When an S3 bucket grants access to the 'AuthenticatedUsers' group, it allows any AWS account holder worldwide to access your data, not just users within your organization. This significantly increases the risk of unauthorized data access, potential data breaches, and violation of data governance policies.
 
 To secure your S3 bucket, use specific canonical user IDs rather than the global authenticated users group. For example, instead of using:
 ```
@@ -43,10 +44,6 @@ grantee {
   id   = "1234567890abcdef1234567890abcdef12345678"
 }
 ```
-
-#### Learn More
-
- - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_acl)
 
 
 ## Compliant Code Examples

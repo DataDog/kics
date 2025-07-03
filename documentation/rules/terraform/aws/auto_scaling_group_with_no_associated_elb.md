@@ -5,28 +5,29 @@ meta:
   id: "8e94dced-9bcc-4203-8eb7-7e41202b2505"
   display_name: "Auto Scaling Group With No Associated ELB"
   cloud_provider: "aws"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Availability"
 ---
 ## Metadata
 
-**Name:** `aws/auto_scaling_group_with_no_associated_elb`
-
-**Query Name** `Auto Scaling Group With No Associated ELB`
-
 **Id:** `8e94dced-9bcc-4203-8eb7-7e41202b2505`
 
 **Cloud Provider:** aws
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** Medium
 
 **Category:** Availability
 
-## Description
-AWS Auto Scaling Groups (ASGs) should have associated Elastic Load Balancers (ELBs) to ensure high availability and efficient distribution of incoming traffic. Without specifying the `load_balancers` attribute, for example:
+#### Learn More
+
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/autoscaling_group#load_balancers)
+
+### Description
+
+ AWS Auto Scaling Groups (ASGs) should have associated Elastic Load Balancers (ELBs) to ensure high availability and efficient distribution of incoming traffic. Without specifying the `load_balancers` attribute, for example:
 
 ```
 resource "aws_autoscaling_group" "bar" {
@@ -43,10 +44,6 @@ resource "aws_autoscaling_group" "bar3" {
   load_balancers = ["elb_1"]
 }
 ```
-
-#### Learn More
-
- - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/autoscaling_group#load_balancers)
 
 
 ## Compliant Code Examples

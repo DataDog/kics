@@ -5,28 +5,29 @@ meta:
   id: "5089d055-53ff-421b-9482-a5267bdce629"
   display_name: "Redis Publicly Accessible"
   cloud_provider: "azure"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "CRITICAL"
   category: "Networking and Firewall"
 ---
 ## Metadata
 
-**Name:** `azure/redis_publicly_accessible`
-
-**Query Name** `Redis Publicly Accessible`
-
 **Id:** `5089d055-53ff-421b-9482-a5267bdce629`
 
 **Cloud Provider:** azure
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** Critical
 
 **Category:** Networking and Firewall
 
-## Description
-Azure Redis Cache instances with firewall rules that allow access from public IP addresses are vulnerable to unauthorized access and potential data breaches. When configuring firewall rules, using public IP ranges (like '1.2.3.4' to '2.3.4.5') exposes your Redis Cache to the internet, allowing potential attackers to attempt brute force attacks or exploit vulnerabilities.
+#### Learn More
+
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/redis_firewall_rule)
+
+### Description
+
+ Azure Redis Cache instances with firewall rules that allow access from public IP addresses are vulnerable to unauthorized access and potential data breaches. When configuring firewall rules, using public IP ranges (like '1.2.3.4' to '2.3.4.5') exposes your Redis Cache to the internet, allowing potential attackers to attempt brute force attacks or exploit vulnerabilities.
 
 Instead, limit access to private IP ranges within your internal network (like '10.2.3.4' to '10.3.4.5') as shown below:
 
@@ -41,10 +42,6 @@ resource "azurerm_redis_firewall_rule" "example" {
 ```
 
 This ensures your Redis Cache is only accessible from within your virtual network, significantly reducing the attack surface.
-
-#### Learn More
-
- - [Provider Reference](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/redis_firewall_rule)
 
 
 ## Compliant Code Examples

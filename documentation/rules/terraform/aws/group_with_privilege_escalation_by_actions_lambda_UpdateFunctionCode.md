@@ -5,32 +5,29 @@ meta:
   id: "571254d8-aa6a-432e-9725-535d3ef04d69"
   display_name: "Group With Privilege Escalation By Actions 'lambda:UpdateFunctionCode'"
   cloud_provider: "aws"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"
 ---
 ## Metadata
 
-**Name:** `aws/group_with_privilege_escalation_by_actions_lambda_UpdateFunctionCode`
-
-**Query Name** `Group With Privilege Escalation By Actions 'lambda:UpdateFunctionCode'`
-
 **Id:** `571254d8-aa6a-432e-9725-535d3ef04d69`
 
 **Cloud Provider:** aws
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** Medium
 
 **Category:** Access Control
 
-## Description
-Granting the `lambda:UpdateFunctionCode` permission with the `Resource` attribute set to `"*"` in an IAM group policy enables users in that group to update the code of any Lambda function within the AWS account. This broad permission could allow a user to inject malicious code into critical Lambda functions or leverage those functions for privilege escalation, compromising the overall security of the environment. To mitigate this risk, permissions should be limited to only trusted users and to specific, necessary Lambda functions using fine-grained resource ARNs rather than wildcard resources.
-
 #### Learn More
 
  - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_group_policy#policy)
+
+### Description
+
+ Granting the `lambda:UpdateFunctionCode` permission with the `Resource` attribute set to `"*"` in an IAM group policy enables users in that group to update the code of any Lambda function within the AWS account. This broad permission could allow a user to inject malicious code into critical Lambda functions or leverage those functions for privilege escalation, compromising the overall security of the environment. To mitigate this risk, permissions should be limited to only trusted users and to specific, necessary Lambda functions using fine-grained resource ARNs rather than wildcard resources.
 
 
 ## Compliant Code Examples

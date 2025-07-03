@@ -5,28 +5,29 @@ meta:
   id: "550e8400-e29b-41d4-a716-446655440000"
   display_name: "Ensure legacy networks do not exist for a project"
   cloud_provider: "gcp"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "HIGH"
   category: "Networking and Firewall"
 ---
 ## Metadata
 
-**Name:** `gcp/legacy_networks_exist_for_project`
-
-**Query Name** `Ensure legacy networks do not exist for a project`
-
 **Id:** `550e8400-e29b-41d4-a716-446655440000`
 
 **Cloud Provider:** gcp
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** High
 
 **Category:** Networking and Firewall
 
-## Description
-Legacy networks in Google Cloud Platform (GCP) with auto_create_subnetworks enabled represent a significant security risk as they automatically create subnets with predefined IP ranges in every region. This can lead to overly permissive network configurations and potentially expose internal services to unauthorized access or lateral movement within your infrastructure.
+#### Learn More
+
+ - [Provider Reference](https://cloud.google.com/vpc/docs/legacy)
+
+### Description
+
+ Legacy networks in Google Cloud Platform (GCP) with auto_create_subnetworks enabled represent a significant security risk as they automatically create subnets with predefined IP ranges in every region. This can lead to overly permissive network configurations and potentially expose internal services to unauthorized access or lateral movement within your infrastructure.
 
 The secure configuration (as shown below) explicitly avoids enabling auto-created subnetworks, giving administrators complete control over subnet creation and IP addressing:
 ```hcl
@@ -42,10 +43,6 @@ resource "google_compute_network" "legacy_network" {
   auto_create_subnetworks = true
 }
 ```
-
-#### Learn More
-
- - [Provider Reference](https://cloud.google.com/vpc/docs/legacy)
 
 
 ## Compliant Code Examples

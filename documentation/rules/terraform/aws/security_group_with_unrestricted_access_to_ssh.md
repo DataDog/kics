@@ -5,28 +5,29 @@ meta:
   id: "65905cec-d691-4320-b320-2000436cb696"
   display_name: "Security Group With Unrestricted Access To SSH"
   cloud_provider: "aws"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Networking and Firewall"
 ---
 ## Metadata
 
-**Name:** `aws/security_group_with_unrestricted_access_to_ssh`
-
-**Query Name** `Security Group With Unrestricted Access To SSH`
-
 **Id:** `65905cec-d691-4320-b320-2000436cb696`
 
 **Cloud Provider:** aws
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** Medium
 
 **Category:** Networking and Firewall
 
-## Description
-This check verifies that AWS Security Groups do not allow unrestricted inbound access to port 22 (SSH) from the public internet (`cidr_blocks = ["0.0.0.0/0"]`). Allowing public SSH access exposes instances to unauthorized access attempts and automated attacks, increasing the risk of successful brute-force compromises. To mitigate this vulnerability, the `cidr_blocks` attribute in the `ingress` block should be restricted to trusted IP ranges only, as shown below:
+#### Learn More
+
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group)
+
+### Description
+
+ This check verifies that AWS Security Groups do not allow unrestricted inbound access to port 22 (SSH) from the public internet (`cidr_blocks = ["0.0.0.0/0"]`). Allowing public SSH access exposes instances to unauthorized access attempts and automated attacks, increasing the risk of successful brute-force compromises. To mitigate this vulnerability, the `cidr_blocks` attribute in the `ingress` block should be restricted to trusted IP ranges only, as shown below:
 
 Unsecure configuration:
 ```
@@ -48,10 +49,6 @@ ingress {
 }
 ```
 If left unaddressed, this misconfiguration can lead to remote attackers gaining entry to instances via SSH, putting sensitive data and critical infrastructure at risk.
-
-#### Learn More
-
- - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group)
 
 
 ## Compliant Code Examples

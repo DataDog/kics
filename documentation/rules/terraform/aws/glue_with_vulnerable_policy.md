@@ -5,28 +5,29 @@ meta:
   id: "d25edb51-07fb-4a73-97d4-41cecdc53a22"
   display_name: "Glue With Vulnerable Policy"
   cloud_provider: "aws"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"
 ---
 ## Metadata
 
-**Name:** `aws/glue_with_vulnerable_policy`
-
-**Query Name** `Glue With Vulnerable Policy`
-
 **Id:** `d25edb51-07fb-4a73-97d4-41cecdc53a22`
 
 **Cloud Provider:** aws
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** Medium
 
 **Category:** Access Control
 
-## Description
-Resource-based policies for AWS Glue should not use wildcard values (`"*"`) in the `principals` or `actions` attributes, as shown in the example below:
+#### Learn More
+
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/glue_resource_policy#policy)
+
+### Description
+
+ Resource-based policies for AWS Glue should not use wildcard values (`"*"`) in the `principals` or `actions` attributes, as shown in the example below:
 
 ```
 principals {
@@ -37,10 +38,6 @@ actions = ["glue:*"]
 ```
 
 Allowing all actions and granting access to any principal exposes the Glue resources to unauthorized access or privilege escalation, significantly increasing the risk of data breaches or malicious modifications. Restricting both principals and allowed actions to the minimum necessary set reduces the attack surface and enforces least privilege.
-
-#### Learn More
-
- - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/glue_resource_policy#policy)
 
 
 ## Compliant Code Examples

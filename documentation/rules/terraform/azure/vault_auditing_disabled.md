@@ -5,28 +5,29 @@ meta:
   id: "38c71c00-c177-4cd7-8d36-cd1007cdb190"
   display_name: "Vault Auditing Disabled"
   cloud_provider: "azure"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Observability"
 ---
 ## Metadata
 
-**Name:** `azure/vault_auditing_disabled`
-
-**Query Name** `Vault Auditing Disabled`
-
 **Id:** `38c71c00-c177-4cd7-8d36-cd1007cdb190`
 
 **Cloud Provider:** azure
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** Medium
 
 **Category:** Observability
 
-## Description
-Enabling logging for Azure Key Vault ensures that all access and management activities are captured and can be monitored for unauthorized or anomalous activity. Without logging enabled—such as omitting a `azurerm_monitor_diagnostic_setting` resource—critical security events and access records would not be recorded, making it difficult to detect potential breaches or comply with audit requirements. A secure configuration includes adding a diagnostic setting, for example:
+#### Learn More
+
+ - [Provider Reference](https://www.terraform.io/docs/providers/azurerm/r/key_vault.html)
+
+### Description
+
+ Enabling logging for Azure Key Vault ensures that all access and management activities are captured and can be monitored for unauthorized or anomalous activity. Without logging enabled—such as omitting a `azurerm_monitor_diagnostic_setting` resource—critical security events and access records would not be recorded, making it difficult to detect potential breaches or comply with audit requirements. A secure configuration includes adding a diagnostic setting, for example:
 
 ```
 resource "azurerm_monitor_diagnostic_setting" "example" {
@@ -41,10 +42,6 @@ resource "azurerm_monitor_diagnostic_setting" "example" {
 }
 ```
 This logs Key Vault events and helps ensure accountability and traceability for sensitive key and secret operations.
-
-#### Learn More
-
- - [Provider Reference](https://www.terraform.io/docs/providers/azurerm/r/key_vault.html)
 
 
 ## Compliant Code Examples

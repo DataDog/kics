@@ -5,28 +5,29 @@ meta:
   id: "e29a75e6-aba3-4896-b42d-b87818c16b58"
   display_name: "Redis Cache Allows Non SSL Connections"
   cloud_provider: "azure"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Insecure Configurations"
 ---
 ## Metadata
 
-**Name:** `azure/redis_cache_allows_non_ssl_connections`
-
-**Query Name** `Redis Cache Allows Non SSL Connections`
-
 **Id:** `e29a75e6-aba3-4896-b42d-b87818c16b58`
 
 **Cloud Provider:** azure
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** Medium
 
 **Category:** Insecure Configurations
 
-## Description
-Allowing non-SSL connections to Azure Redis Cache resources exposes sensitive data in transit to potential interception or man-in-the-middle attacks, as information exchanged between clients and the Redis service will not be encrypted. To mitigate this risk, the `enable_non_ssl_port` attribute in the Terraform resource should be set to `false`, ensuring all connections use secure TLS communication. For example:
+#### Learn More
+
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/redis_cache)
+
+### Description
+
+ Allowing non-SSL connections to Azure Redis Cache resources exposes sensitive data in transit to potential interception or man-in-the-middle attacks, as information exchanged between clients and the Redis service will not be encrypted. To mitigate this risk, the `enable_non_ssl_port` attribute in the Terraform resource should be set to `false`, ensuring all connections use secure TLS communication. For example:
 
 ```
 resource "azurerm_redis_cache" "secure_example" {
@@ -45,10 +46,6 @@ resource "azurerm_redis_cache" "secure_example" {
 ```
 
 Neglecting this configuration can lead to exposure of authentication credentials and cached data, increasing the risk of data breaches and compliance violations.
-
-#### Learn More
-
- - [Provider Reference](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/redis_cache)
 
 
 ## Compliant Code Examples

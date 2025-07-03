@@ -5,28 +5,29 @@ meta:
   id: "25db74bf-fa3b-44da-934e-8c3e005c0453"
   display_name: "Route53 Record Undefined"
   cloud_provider: "aws"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "HIGH"
   category: "Networking and Firewall"
 ---
 ## Metadata
 
-**Name:** `aws/route53_record_undefined`
-
-**Query Name** `Route53 Record Undefined`
-
 **Id:** `25db74bf-fa3b-44da-934e-8c3e005c0453`
 
 **Cloud Provider:** aws
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** High
 
 **Category:** Networking and Firewall
 
-## Description
-This check verifies that Route53 record resources have defined values in the 'records' array. Empty record arrays in Route53 configurations may result in DNS resolution failures, causing service disruptions and potentially breaking application functionality that depends on proper name resolution.
+#### Learn More
+
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record)
+
+### Description
+
+ This check verifies that Route53 record resources have defined values in the 'records' array. Empty record arrays in Route53 configurations may result in DNS resolution failures, causing service disruptions and potentially breaking application functionality that depends on proper name resolution.
 
 A properly configured Route53 record should include appropriate values in the records array as shown in the secure example below:
 
@@ -46,10 +47,6 @@ records = [
   
 ]
 ```
-
-#### Learn More
-
- - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record)
 
 
 ## Compliant Code Examples

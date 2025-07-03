@@ -5,32 +5,29 @@ meta:
   id: "594c198b-4d79-41b8-9b36-fde13348b619"
   display_name: "Sensitive Port Is Exposed To Entire Network"
   cloud_provider: "azure"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "HIGH"
   category: "Networking and Firewall"
 ---
 ## Metadata
 
-**Name:** `azure/sensitive_port_is_exposed_to_entire_network`
-
-**Query Name** `Sensitive Port Is Exposed To Entire Network`
-
 **Id:** `594c198b-4d79-41b8-9b36-fde13348b619`
 
 **Cloud Provider:** azure
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** High
 
 **Category:** Networking and Firewall
 
-## Description
-This check identifies Azure network security rules that expose sensitive ports (such as 23 [Telnet], 110 [POP3], or others) to the entire internet, creating a significant security vulnerability. When sensitive ports are accessible from any source IP ('/0', '0.0.0.0/0', or similar notation), attackers can exploit these services to gain unauthorized access, perform reconnaissance, or execute service-specific attacks. To remediate this issue, either deny access to these ports, restrict access to specific IP addresses, or change the protocol as shown in the secure example: `access = "Deny"` for sensitive ports or use `source_address_prefix = "192.168.0.0"` instead of `source_address_prefix = "/0"` or `source_address_prefix = "0.0.0.0/0"`.
-
 #### Learn More
 
  - [Provider Reference](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/network_security_rule)
+
+### Description
+
+ This check identifies Azure network security rules that expose sensitive ports (such as 23 [Telnet], 110 [POP3], or others) to the entire internet, creating a significant security vulnerability. When sensitive ports are accessible from any source IP ('/0', '0.0.0.0/0', or similar notation), attackers can exploit these services to gain unauthorized access, perform reconnaissance, or execute service-specific attacks. To remediate this issue, either deny access to these ports, restrict access to specific IP addresses, or change the protocol as shown in the secure example: `access = "Deny"` for sensitive ports or use `source_address_prefix = "192.168.0.0"` instead of `source_address_prefix = "/0"` or `source_address_prefix = "0.0.0.0/0"`.
 
 
 ## Compliant Code Examples

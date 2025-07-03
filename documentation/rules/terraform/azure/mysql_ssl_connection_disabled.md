@@ -5,28 +5,29 @@ meta:
   id: "73e42469-3a86-4f39-ad78-098f325b4e9f"
   display_name: "MySQL SSL Connection Disabled"
   cloud_provider: "azure"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Encryption"
 ---
 ## Metadata
 
-**Name:** `azure/mysql_ssl_connection_disabled`
-
-**Query Name** `MySQL SSL Connection Disabled`
-
 **Id:** `73e42469-3a86-4f39-ad78-098f325b4e9f`
 
 **Cloud Provider:** azure
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** Medium
 
 **Category:** Encryption
 
-## Description
-To ensure data transmitted between clients and the MySQL server is secure, the `ssl_enforcement_enabled` attribute in the `azurerm_mysql_server` resource should be set to `true`. If `ssl_enforcement_enabled` is set to `false`, as shown below, database connections can occur over unencrypted channels, potentially exposing sensitive information such as credentials and application data to interception and misuse.
+#### Learn More
+
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/mysql_server)
+
+### Description
+
+ To ensure data transmitted between clients and the MySQL server is secure, the `ssl_enforcement_enabled` attribute in the `azurerm_mysql_server` resource should be set to `true`. If `ssl_enforcement_enabled` is set to `false`, as shown below, database connections can occur over unencrypted channels, potentially exposing sensitive information such as credentials and application data to interception and misuse.
 
 ```
 resource "azurerm_mysql_server" "example" {
@@ -36,10 +37,6 @@ resource "azurerm_mysql_server" "example" {
 ```
 
 Enabling SSL enforcement mitigates this risk by ensuring that all clients must connect using SSL, protecting data in transit.
-
-#### Learn More
-
- - [Provider Reference](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/mysql_server)
 
 
 ## Compliant Code Examples

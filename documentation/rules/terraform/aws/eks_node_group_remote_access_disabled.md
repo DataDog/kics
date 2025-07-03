@@ -5,32 +5,29 @@ meta:
   id: "ba40ace1-a047-483c-8a8d-bc2d3a67a82d"
   display_name: "EKS node group remote access disabled"
   cloud_provider: "aws"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Networking and Firewall"
 ---
 ## Metadata
 
-**Name:** `aws/eks_node_group_remote_access_disabled`
-
-**Query Name** `EKS node group remote access disabled`
-
 **Id:** `ba40ace1-a047-483c-8a8d-bc2d3a67a82d`
 
 **Cloud Provider:** aws
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** Medium
 
 **Category:** Networking and Firewall
 
-## Description
-This check ensures that when configuring remote access for an AWS EKS node group, the `source_security_group_ids` attribute is specified. If this parameter is omitted, the EC2 instances in the EKS node group can potentially be accessed via SSH from any IP address, which significantly increases the risk of unauthorized access. By not restricting SSH access to a specific set of trusted security groups, the node group becomes more vulnerable to brute force attacks and other security threats. Properly configuring the `source_security_group_ids` limits remote access to only those network sources that are explicitly permitted, thereby reducing the node group’s attack surface.
-
 #### Learn More
 
  - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/eks_node_group#remote_access)
+
+### Description
+
+ This check ensures that when configuring remote access for an AWS EKS node group, the `source_security_group_ids` attribute is specified. If this parameter is omitted, the EC2 instances in the EKS node group can potentially be accessed via SSH from any IP address, which significantly increases the risk of unauthorized access. By not restricting SSH access to a specific set of trusted security groups, the node group becomes more vulnerable to brute force attacks and other security threats. Properly configuring the `source_security_group_ids` limits remote access to only those network sources that are explicitly permitted, thereby reducing the node group’s attack surface.
 
 
 ## Compliant Code Examples

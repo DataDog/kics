@@ -5,28 +5,29 @@ meta:
   id: "c91d7ea0-d4d1-403b-8fe1-c9961ac082c5"
   display_name: "Neptune Cluster With IAM Database Authentication Disabled"
   cloud_provider: "aws"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "HIGH"
   category: "Access Control"
 ---
 ## Metadata
 
-**Name:** `aws/neptune_cluster_with_iam_database_authentication_disabled`
-
-**Query Name** `Neptune Cluster With IAM Database Authentication Disabled`
-
 **Id:** `c91d7ea0-d4d1-403b-8fe1-c9961ac082c5`
 
 **Cloud Provider:** aws
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** High
 
 **Category:** Access Control
 
-## Description
-AWS Neptune clusters should have IAM database authentication enabled to provide enhanced security by using IAM users and roles to authenticate to the database instead of standard username and password. When disabled, an attacker who gains access to the database credentials could directly connect to the database without additional IAM verification. To secure your Neptune cluster, add the 'iam_database_authentication_enabled = true' parameter as shown in the secure example:
+#### Learn More
+
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/neptune_cluster#storage_encrypted)
+
+### Description
+
+ AWS Neptune clusters should have IAM database authentication enabled to provide enhanced security by using IAM users and roles to authenticate to the database instead of standard username and password. When disabled, an attacker who gains access to the database credentials could directly connect to the database without additional IAM verification. To secure your Neptune cluster, add the 'iam_database_authentication_enabled = true' parameter as shown in the secure example:
 
 ```terraform
 resource "aws_neptune_cluster" "example" {
@@ -35,10 +36,6 @@ resource "aws_neptune_cluster" "example" {
   iam_database_authentication_enabled = true
 }
 ```
-
-#### Learn More
-
- - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/neptune_cluster#storage_encrypted)
 
 
 ## Compliant Code Examples

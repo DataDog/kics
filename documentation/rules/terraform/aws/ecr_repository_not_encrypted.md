@@ -5,28 +5,29 @@ meta:
   id: "0e32d561-4b5a-4664-a6e3-a3fa85649157"
   display_name: "ECR Repository Not Encrypted With CMK"
   cloud_provider: "aws"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "LOW"
   category: "Encryption"
 ---
 ## Metadata
 
-**Name:** `aws/ecr_repository_not_encrypted`
-
-**Query Name** `ECR Repository Not Encrypted With CMK`
-
 **Id:** `0e32d561-4b5a-4664-a6e3-a3fa85649157`
 
 **Cloud Provider:** aws
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** Low
 
 **Category:** Encryption
 
-## Description
-Amazon Elastic Container Registry (ECR) repositories should use customer-managed AWS KMS keys for encryption to ensure stronger access control, auditing, and compliance with organizational security requirements. By default, ECR repositories may only use AES256 encryption or omit the `encryption_configuration` block, which limits key management capabilities and centralized control over key lifecycle and access policies. A secure Terraform configuration example specifies a KMS key:
+#### Learn More
+
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/ecr_repository#encryption_configuration)
+
+### Description
+
+ Amazon Elastic Container Registry (ECR) repositories should use customer-managed AWS KMS keys for encryption to ensure stronger access control, auditing, and compliance with organizational security requirements. By default, ECR repositories may only use AES256 encryption or omit the `encryption_configuration` block, which limits key management capabilities and centralized control over key lifecycle and access policies. A secure Terraform configuration example specifies a KMS key:
 
 ```
 encryption_configuration {
@@ -36,10 +37,6 @@ encryption_configuration {
 ```
 
 Without this, sensitive container images may be at greater risk of unauthorized access or inability to meet regulatory requirements for key rotation and audit.
-
-#### Learn More
-
- - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/ecr_repository#encryption_configuration)
 
 
 ## Compliant Code Examples

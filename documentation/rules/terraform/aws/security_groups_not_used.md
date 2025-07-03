@@ -5,28 +5,29 @@ meta:
   id: "4849211b-ac39-479e-ae78-5694d506cb24"
   display_name: "Security Group Not Used"
   cloud_provider: "aws"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "INFO"
   category: "Access Control"
 ---
 ## Metadata
 
-**Name:** `aws/security_groups_not_used`
-
-**Query Name** `Security Group Not Used`
-
 **Id:** `4849211b-ac39-479e-ae78-5694d506cb24`
 
 **Cloud Provider:** aws
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** Info
 
 **Category:** Access Control
 
-## Description
-This check ensures that AWS load balancers are associated with appropriate security groups, which control network traffic to and from the resource. When the `security_groups` attribute is omitted from an `aws_lb` resource—such as:
+#### Learn More
+
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group)
+
+### Description
+
+ This check ensures that AWS load balancers are associated with appropriate security groups, which control network traffic to and from the resource. When the `security_groups` attribute is omitted from an `aws_lb` resource—such as:
 
 ```
 resource "aws_lb" "test" {
@@ -48,10 +49,6 @@ resource "aws_lb" "test" {
   security_groups = [aws_security_group.allow_tls.id]
 }
 ```
-
-#### Learn More
-
- - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group)
 
 
 ## Compliant Code Examples

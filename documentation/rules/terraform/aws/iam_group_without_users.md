@@ -5,28 +5,29 @@ meta:
   id: "fc101ca7-c9dd-4198-a1eb-0fbe92e80044"
   display_name: "IAM Group Without Users"
   cloud_provider: "aws"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"
 ---
 ## Metadata
 
-**Name:** `aws/iam_group_without_users`
-
-**Query Name** `IAM Group Without Users`
-
 **Id:** `fc101ca7-c9dd-4198-a1eb-0fbe92e80044`
 
 **Cloud Provider:** aws
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** Medium
 
 **Category:** Access Control
 
-## Description
-IAM Groups should have at least one user associated with them to ensure that group permissions are assigned with clear intent and are being utilized for access control. Leaving an IAM group without users—such as configuring `users = []` in an `aws_iam_group_membership` resource—can create ambiguity in access management, leaving unused privilege sets within the environment that may go unnoticed or be misused if users are later added without proper oversight. To address this, always specify one or more users in the `users` attribute, as shown below:
+#### Learn More
+
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_group_membership#users)
+
+### Description
+
+ IAM Groups should have at least one user associated with them to ensure that group permissions are assigned with clear intent and are being utilized for access control. Leaving an IAM group without users—such as configuring `users = []` in an `aws_iam_group_membership` resource—can create ambiguity in access management, leaving unused privilege sets within the environment that may go unnoticed or be misused if users are later added without proper oversight. To address this, always specify one or more users in the `users` attribute, as shown below:
 
 ```
 resource "aws_iam_group_membership" "team" {
@@ -41,10 +42,6 @@ resource "aws_iam_group_membership" "team" {
 }
 ```
 
-
-#### Learn More
-
- - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_group_membership#users)
 
 
 ## Compliant Code Examples

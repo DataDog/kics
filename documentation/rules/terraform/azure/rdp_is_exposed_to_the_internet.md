@@ -5,32 +5,29 @@ meta:
   id: "efbf6449-5ec5-4cfe-8f15-acc51e0d787c"
   display_name: "RDP Is Exposed To The Internet"
   cloud_provider: "azure"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "HIGH"
   category: "Networking and Firewall"
 ---
 ## Metadata
 
-**Name:** `azure/rdp_is_exposed_to_the_internet`
-
-**Query Name** `RDP Is Exposed To The Internet`
-
 **Id:** `efbf6449-5ec5-4cfe-8f15-acc51e0d787c`
 
 **Cloud Provider:** azure
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** High
 
 **Category:** Networking and Firewall
 
-## Description
-Remote Desktop Protocol (RDP) on port 3389 should not be exposed directly to the internet as it creates a significant security risk by allowing potential attackers to attempt brute force attacks against your virtual machines. When network security rules allow TCP traffic on port 3389 from internet sources (using '*', '0.0.0.0', '/0', 'internet', or 'any' as source_address_prefix), they effectively expose your systems to potential unauthorized access. To mitigate this risk, either deny inbound traffic to port 3389 (access = 'Deny'), use a different protocol, or restrict source addresses to specific trusted IP addresses rather than allowing access from anywhere.
-
 #### Learn More
 
  - [Provider Reference](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/network_security_rule)
+
+### Description
+
+ Remote Desktop Protocol (RDP) on port 3389 should not be exposed directly to the internet as it creates a significant security risk by allowing potential attackers to attempt brute force attacks against your virtual machines. When network security rules allow TCP traffic on port 3389 from internet sources (using '*', '0.0.0.0', '/0', 'internet', or 'any' as source_address_prefix), they effectively expose your systems to potential unauthorized access. To mitigate this risk, either deny inbound traffic to port 3389 (access = 'Deny'), use a different protocol, or restrict source addresses to specific trusted IP addresses rather than allowing access from anywhere.
 
 
 ## Compliant Code Examples

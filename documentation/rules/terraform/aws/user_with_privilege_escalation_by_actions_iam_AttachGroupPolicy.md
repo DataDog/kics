@@ -5,28 +5,29 @@ meta:
   id: "6d23d87e-1c5b-4308-b224-92624300f29b"
   display_name: "User With Privilege Escalation By Actions 'iam:AttachGroupPolicy'"
   cloud_provider: "aws"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"
 ---
 ## Metadata
 
-**Name:** `aws/user_with_privilege_escalation_by_actions_iam_AttachGroupPolicy`
-
-**Query Name** `User With Privilege Escalation By Actions 'iam:AttachGroupPolicy'`
-
 **Id:** `6d23d87e-1c5b-4308-b224-92624300f29b`
 
 **Cloud Provider:** aws
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** Medium
 
 **Category:** Access Control
 
-## Description
-Granting the `iam:AttachGroupPolicy` permission with a resource set to `*` allows the user to attach any IAM policy to any group within the AWS account, enabling malicious privilege escalation. If this access is exploited, an attacker could grant themselves or others administrative permissions by attaching powerful policies to groups they control. Instead, permissions should be tightly scoped; for example, only allow specific actions and resources, as in the secure configuration below:
+#### Learn More
+
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_user_policy#policy)
+
+### Description
+
+ Granting the `iam:AttachGroupPolicy` permission with a resource set to `*` allows the user to attach any IAM policy to any group within the AWS account, enabling malicious privilege escalation. If this access is exploited, an attacker could grant themselves or others administrative permissions by attaching powerful policies to groups they control. Instead, permissions should be tightly scoped; for example, only allow specific actions and resources, as in the secure configuration below:
 
 ```
 resource "aws_iam_user_policy" "inline_policy_run_instances2" {
@@ -47,10 +48,6 @@ resource "aws_iam_user_policy" "inline_policy_run_instances2" {
   })
 }
 ```
-
-#### Learn More
-
- - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_user_policy#policy)
 
 
 ## Compliant Code Examples

@@ -5,28 +5,29 @@ meta:
   id: "a187ac47-8163-42ce-8a63-c115236be6fb"
   display_name: "Azure Container Registry With No Locks"
   cloud_provider: "azure"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "HIGH"
   category: "Insecure Configurations"
 ---
 ## Metadata
 
-**Name:** `azure/azure_container_registry_with_no_locks`
-
-**Query Name** `Azure Container Registry With No Locks`
-
 **Id:** `a187ac47-8163-42ce-8a63-c115236be6fb`
 
 **Cloud Provider:** azure
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** High
 
 **Category:** Insecure Configurations
 
-## Description
-Azure Container Registry without proper management locks is vulnerable to accidental deletion or modification, which can lead to service disruptions, data loss, and potentially severe business impact. Management locks provide an additional layer of protection by preventing unauthorized or unintended changes to critical resources. To properly secure an Azure Container Registry, ensure the management lock's scope correctly references the container registry resource as shown below:
+#### Learn More
+
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/container_registry)
+
+### Description
+
+ Azure Container Registry without proper management locks is vulnerable to accidental deletion or modification, which can lead to service disruptions, data loss, and potentially severe business impact. Management locks provide an additional layer of protection by preventing unauthorized or unintended changes to critical resources. To properly secure an Azure Container Registry, ensure the management lock's scope correctly references the container registry resource as shown below:
 
 ```
 resource "azurerm_container_registry" "acr" {
@@ -44,10 +45,6 @@ resource "azurerm_management_lock" "public-ip" {
   notes = "Locked because it's needed by a third-party"
 }
 ```
-
-#### Learn More
-
- - [Provider Reference](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/container_registry)
 
 
 ## Compliant Code Examples

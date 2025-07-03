@@ -5,28 +5,29 @@ meta:
   id: "2f37c4a3-58b9-4afe-8a87-d7f1d2286f84"
   display_name: "IAM Policies With Full Privileges"
   cloud_provider: "aws"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"
 ---
 ## Metadata
 
-**Name:** `aws/iam_policies_with_full_privileges`
-
-**Query Name** `IAM Policies With Full Privileges`
-
 **Id:** `2f37c4a3-58b9-4afe-8a87-d7f1d2286f84`
 
 **Cloud Provider:** aws
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** Medium
 
 **Category:** Access Control
 
-## Description
-IAM policies should never allow full administrative privileges (for all resources), as this is achieved by setting the `"Action"` to `"*"` and the `"Resource"` to `"*"`, as shown below:
+#### Learn More
+
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy)
+
+### Description
+
+ IAM policies should never allow full administrative privileges (for all resources), as this is achieved by setting the `"Action"` to `"*"` and the `"Resource"` to `"*"`, as shown below:
 
 ```
 "Statement": [
@@ -39,10 +40,6 @@ IAM policies should never allow full administrative privileges (for all resource
 ```
 
 Granting such broad permissions bypasses the principle of least privilege, enabling any user or service with this policy to perform any action on any AWS resource. If left unaddressed, this misconfiguration can lead to privilege escalation, data exfiltration, resource manipulation, or complete account compromise in the event of credential leakage.
-
-#### Learn More
-
- - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy)
 
 
 ## Compliant Code Examples

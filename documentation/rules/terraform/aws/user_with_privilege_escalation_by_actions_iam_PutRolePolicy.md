@@ -5,28 +5,29 @@ meta:
   id: "eeb4d37a-3c59-4789-a00c-1509bc3af1e5"
   display_name: "User With Privilege Escalation By Actions 'iam:PutRolePolicy'"
   cloud_provider: "aws"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"
 ---
 ## Metadata
 
-**Name:** `aws/user_with_privilege_escalation_by_actions_iam_PutRolePolicy`
-
-**Query Name** `User With Privilege Escalation By Actions 'iam:PutRolePolicy'`
-
 **Id:** `eeb4d37a-3c59-4789-a00c-1509bc3af1e5`
 
 **Cloud Provider:** aws
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** Medium
 
 **Category:** Access Control
 
-## Description
-Allowing a user the `iam:PutRolePolicy` action on all resources (i.e., `"Resource": "*"`) enables them to attach inline policies to any IAM role in the AWS environment. This grants the user a privilege escalation path, as they could grant overly broad or administrative permissions to roles they do not own, potentially gaining full control over the AWS account. To mitigate this risk, restrict the `iam:PutRolePolicy` action using least privilege and avoid using wildcards in the `Resource` attribute, as shown below:
+#### Learn More
+
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_user_policy#policy)
+
+### Description
+
+ Allowing a user the `iam:PutRolePolicy` action on all resources (i.e., `"Resource": "*"`) enables them to attach inline policies to any IAM role in the AWS environment. This grants the user a privilege escalation path, as they could grant overly broad or administrative permissions to roles they do not own, potentially gaining full control over the AWS account. To mitigate this risk, restrict the `iam:PutRolePolicy` action using least privilege and avoid using wildcards in the `Resource` attribute, as shown below:
 
 ```
 policy = jsonencode({
@@ -42,10 +43,6 @@ policy = jsonencode({
   ]
 })
 ```
-
-#### Learn More
-
- - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_user_policy#policy)
 
 
 ## Compliant Code Examples

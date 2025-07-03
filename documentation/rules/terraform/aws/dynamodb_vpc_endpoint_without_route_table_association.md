@@ -5,32 +5,29 @@ meta:
   id: "0bc534c5-13d1-4353-a7fe-b8665d5c1d7d"
   display_name: "Dynamodb VPC Endpoint Without Route Table Association"
   cloud_provider: "aws"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "LOW"
   category: "Networking and Firewall"
 ---
 ## Metadata
 
-**Name:** `aws/dynamodb_vpc_endpoint_without_route_table_association`
-
-**Query Name** `Dynamodb VPC Endpoint Without Route Table Association`
-
 **Id:** `0bc534c5-13d1-4353-a7fe-b8665d5c1d7d`
 
 **Cloud Provider:** aws
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** Low
 
 **Category:** Networking and Firewall
 
-## Description
-AWS VPC endpoints for DynamoDB provide secure and private connectivity between VPC resources and DynamoDB without traversing the public internet. For a VPC endpoint to function correctly, it must be associated with one or more route tables using the `aws_route_table_association` resource, which ensures the correct routes (`route_table_id` and `subnet_id`) direct DynamoDB traffic through the endpoint. If this association is missing, instances within the VPC will not be able to route requests to DynamoDB over the VPC endpoint, potentially forcing traffic through the public internet or causing connectivity failures. This misconfiguration can expose sensitive data to unnecessary network risk and violates best practices for securing internal AWS service communications.
-
 #### Learn More
 
  - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/vpc_endpoint#vpc_id)
+
+### Description
+
+ AWS VPC endpoints for DynamoDB provide secure and private connectivity between VPC resources and DynamoDB without traversing the public internet. For a VPC endpoint to function correctly, it must be associated with one or more route tables using the `aws_route_table_association` resource, which ensures the correct routes (`route_table_id` and `subnet_id`) direct DynamoDB traffic through the endpoint. If this association is missing, instances within the VPC will not be able to route requests to DynamoDB over the VPC endpoint, potentially forcing traffic through the public internet or causing connectivity failures. This misconfiguration can expose sensitive data to unnecessary network risk and violates best practices for securing internal AWS service communications.
 
 
 ## Compliant Code Examples

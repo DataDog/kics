@@ -5,38 +5,35 @@ meta:
   id: "27c6a499-895a-4dc7-9617-5c485218db13"
   display_name: "CloudWatch S3 policy Change Alarm Missing"
   cloud_provider: "aws"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Observability"
 ---
 ## Metadata
 
-**Name:** `aws/cloudwatch_s3_policy_change_alarm_missing`
-
-**Query Name** `CloudWatch S3 policy Change Alarm Missing`
-
 **Id:** `27c6a499-895a-4dc7-9617-5c485218db13`
 
 **Cloud Provider:** aws
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** Medium
 
 **Category:** Observability
 
-## Description
-This check ensures that a CloudWatch log metric filter and corresponding alarm are in place to monitor S3 bucket policy changes, such as modifications to ACLs or bucket policies. Without the correct configuration, unauthorized changes to S3 bucket permissions could go unnoticed, increasing the risk of data exposure or policy misconfiguration. For example, the `aws_cloudwatch_metric_alarm` should reference the correct metric filter:
+#### Learn More
+
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudwatch_log_metric_filter#pattern)
+
+### Description
+
+ This check ensures that a CloudWatch log metric filter and corresponding alarm are in place to monitor S3 bucket policy changes, such as modifications to ACLs or bucket policies. Without the correct configuration, unauthorized changes to S3 bucket permissions could go unnoticed, increasing the risk of data exposure or policy misconfiguration. For example, the `aws_cloudwatch_metric_alarm` should reference the correct metric filter:
 
 ```
 metric_name = aws_cloudwatch_log_metric_filter.cis_s3_bucket_policy_change_metric_filter.id
 ```
 
 to promptly alert on policy changes and help reduce the time to detect and respond to potentially dangerous modifications.
-
-#### Learn More
-
- - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudwatch_log_metric_filter#pattern)
 
 
 ## Compliant Code Examples

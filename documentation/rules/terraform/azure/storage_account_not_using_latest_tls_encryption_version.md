@@ -5,28 +5,29 @@ meta:
   id: "8263f146-5e03-43e0-9cfe-db960d56d1e7"
   display_name: "Storage Account Not Using Latest TLS Encryption Version"
   cloud_provider: "azure"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Encryption"
 ---
 ## Metadata
 
-**Name:** `azure/storage_account_not_using_latest_tls_encryption_version`
-
-**Query Name** `Storage Account Not Using Latest TLS Encryption Version`
-
 **Id:** `8263f146-5e03-43e0-9cfe-db960d56d1e7`
 
 **Cloud Provider:** azure
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** Medium
 
 **Category:** Encryption
 
-## Description
-To ensure data transmitted to and from Azure Storage Accounts remains protected, it is important to enforce the use of the latest supported TLS encryption protocol. If the `min_tls_version` attribute is set to an outdated protocol such as `"TLS1_1"`, as seen below, the storage account may be vulnerable to known security exploits:
+#### Learn More
+
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/storage_account)
+
+### Description
+
+ To ensure data transmitted to and from Azure Storage Accounts remains protected, it is important to enforce the use of the latest supported TLS encryption protocol. If the `min_tls_version` attribute is set to an outdated protocol such as `"TLS1_1"`, as seen below, the storage account may be vulnerable to known security exploits:
 
 ```
   min_tls_version = "TLS1_1"
@@ -39,10 +40,6 @@ To mitigate this risk, configure storage accounts to use at least TLS 1.2 by set
 ```
 
 Failing to enforce modern TLS versions can expose sensitive data in transit to interception or tampering by attackers.
-
-#### Learn More
-
- - [Provider Reference](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/storage_account)
 
 
 ## Compliant Code Examples

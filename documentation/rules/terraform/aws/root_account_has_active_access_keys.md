@@ -5,28 +5,29 @@ meta:
   id: "970d224d-b42a-416b-81f9-8f4dfe70c4bc"
   display_name: "Root Account Has Active Access Keys"
   cloud_provider: "aws"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "HIGH"
   category: "Insecure Configurations"
 ---
 ## Metadata
 
-**Name:** `aws/root_account_has_active_access_keys`
-
-**Query Name** `Root Account Has Active Access Keys`
-
 **Id:** `970d224d-b42a-416b-81f9-8f4dfe70c4bc`
 
 **Cloud Provider:** aws
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** High
 
 **Category:** Insecure Configurations
 
-## Description
-The AWS Root Account has unrestricted access to all resources in an AWS account, making it a high-value target for attackers. Having active access keys for the root account creates a significant security risk, as compromised keys could lead to complete account takeover and unauthorized access to all AWS services and resources. Best security practice requires using IAM users with appropriate permissions instead of the root account for daily operations and programmatic access.
+#### Learn More
+
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_access_key)
+
+### Description
+
+ The AWS Root Account has unrestricted access to all resources in an AWS account, making it a high-value target for attackers. Having active access keys for the root account creates a significant security risk, as compromised keys could lead to complete account takeover and unauthorized access to all AWS services and resources. Best security practice requires using IAM users with appropriate permissions instead of the root account for daily operations and programmatic access.
 
 Insecure example:
 ```terraform
@@ -43,10 +44,6 @@ resource "aws_iam_access_key" "negative1" {
   pgp_key = "keybase:some_person_that_exists"
 }
 ```
-
-#### Learn More
-
- - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_access_key)
 
 
 ## Compliant Code Examples

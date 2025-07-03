@@ -5,28 +5,29 @@ meta:
   id: "625abc0e-f980-4ac9-a775-f7519ee34296"
   display_name: "API Gateway Deployment Without Access Log Setting"
   cloud_provider: "aws"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Observability"
 ---
 ## Metadata
 
-**Name:** `aws/api_gateway_deployment_without_access_log_setting`
-
-**Query Name** `API Gateway Deployment Without Access Log Setting`
-
 **Id:** `625abc0e-f980-4ac9-a775-f7519ee34296`
 
 **Cloud Provider:** aws
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** Medium
 
 **Category:** Observability
 
-## Description
-API Gateway deployments should have `access_log_settings` defined for each connected API Gateway Stage to ensure proper logging of API requests and responses. Without these settings, as shown below, critical API activity may go unlogged, making it difficult to track access patterns, detect malicious requests, or troubleshoot operational issues:
+#### Learn More
+
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/api_gateway_deployment)
+
+### Description
+
+ API Gateway deployments should have `access_log_settings` defined for each connected API Gateway Stage to ensure proper logging of API requests and responses. Without these settings, as shown below, critical API activity may go unlogged, making it difficult to track access patterns, detect malicious requests, or troubleshoot operational issues:
 
 ```
 resource "aws_api_gateway_stage" "example" {
@@ -39,10 +40,6 @@ resource "aws_api_gateway_stage" "example" {
 ```
 
 Leaving this misconfiguration unaddressed can hinder security monitoring and auditing, potentially exposing the environment to undetected abuse or data exfiltration.
-
-#### Learn More
-
- - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/api_gateway_deployment)
 
 
 ## Compliant Code Examples

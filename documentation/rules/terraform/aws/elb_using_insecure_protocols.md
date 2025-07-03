@@ -5,28 +5,29 @@ meta:
   id: "126c1788-23c2-4a10-906c-ef179f4f96ec"
   display_name: "ELB Using Insecure Protocols"
   cloud_provider: "aws"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Encryption"
 ---
 ## Metadata
 
-**Name:** `aws/elb_using_insecure_protocols`
-
-**Query Name** `ELB Using Insecure Protocols`
-
 **Id:** `126c1788-23c2-4a10-906c-ef179f4f96ec`
 
 **Cloud Provider:** aws
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** Medium
 
 **Category:** Encryption
 
-## Description
-Elastic Load Balancer (ELB) security policies should not enable insecure protocols such as SSLv3, TLSv1, or TLSv1.1, as these older protocols are vulnerable to well-known exploits that can compromise the confidentiality and integrity of data transmitted between clients and the load balancer. In Terraform, this means avoiding policy attributes like `name = "Protocol-SSLv3"` or `name = "Protocol-TLSv1"` with a value of `"true"`. A secure configuration should explicitly allow only newer protocols such as TLSv1.2, for example:
+#### Learn More
+
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/load_balancer_policy)
+
+### Description
+
+ Elastic Load Balancer (ELB) security policies should not enable insecure protocols such as SSLv3, TLSv1, or TLSv1.1, as these older protocols are vulnerable to well-known exploits that can compromise the confidentiality and integrity of data transmitted between clients and the load balancer. In Terraform, this means avoiding policy attributes like `name = "Protocol-SSLv3"` or `name = "Protocol-TLSv1"` with a value of `"true"`. A secure configuration should explicitly allow only newer protocols such as TLSv1.2, for example:
 
 ```
 policy_attribute {
@@ -36,10 +37,6 @@ policy_attribute {
 ```
 
 Leaving insecure protocols enabled increases the risk of man-in-the-middle (MITM) attacks and data breaches for all applications using the ELB.
-
-#### Learn More
-
- - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/load_balancer_policy)
 
 
 ## Compliant Code Examples

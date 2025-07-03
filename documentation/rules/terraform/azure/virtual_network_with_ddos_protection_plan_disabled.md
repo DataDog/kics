@@ -5,28 +5,29 @@ meta:
   id: "b4cc2c52-34a6-4b43-b57c-4bdeb4514a5a"
   display_name: "Virtual Network with DDoS Protection Plan disabled"
   cloud_provider: "azure"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "LOW"
   category: "Availability"
 ---
 ## Metadata
 
-**Name:** `azure/virtual_network_with_ddos_protection_plan_disabled`
-
-**Query Name** `Virtual Network with DDoS Protection Plan disabled`
-
 **Id:** `b4cc2c52-34a6-4b43-b57c-4bdeb4514a5a`
 
 **Cloud Provider:** azure
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** Low
 
 **Category:** Availability
 
-## Description
-Azure Virtual Networks should have a DDoS Protection Plan enabled to safeguard against distributed denial-of-service attacks that can overwhelm and disrupt services hosted in the cloud. Without the `ddos_protection_plan` block configured with `enable = true` in the `azurerm_virtual_network` resource, as shown below, the network remains vulnerable to these attacks, potentially resulting in service downtime and extensive business impact.
+#### Learn More
+
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/virtual_network#ddos_protection_plan)
+
+### Description
+
+ Azure Virtual Networks should have a DDoS Protection Plan enabled to safeguard against distributed denial-of-service attacks that can overwhelm and disrupt services hosted in the cloud. Without the `ddos_protection_plan` block configured with `enable = true` in the `azurerm_virtual_network` resource, as shown below, the network remains vulnerable to these attacks, potentially resulting in service downtime and extensive business impact.
 
 ```
 ddos_protection_plan {
@@ -36,10 +37,6 @@ ddos_protection_plan {
 ```
 
 Enabling DDoS protection ensures automatic detection and mitigation of DDoS attacks, helping protect application availability and data integrity in the Azure environment.
-
-#### Learn More
-
- - [Provider Reference](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/virtual_network#ddos_protection_plan)
 
 
 ## Compliant Code Examples

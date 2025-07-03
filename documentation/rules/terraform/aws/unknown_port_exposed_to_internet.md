@@ -5,28 +5,29 @@ meta:
   id: "590d878b-abdc-428f-895a-e2b68a0e1998"
   display_name: "Unknown Port Exposed To Internet"
   cloud_provider: "aws"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "HIGH"
   category: "Networking and Firewall"
 ---
 ## Metadata
 
-**Name:** `aws/unknown_port_exposed_to_internet`
-
-**Query Name** `Unknown Port Exposed To Internet`
-
 **Id:** `590d878b-abdc-428f-895a-e2b68a0e1998`
 
 **Cloud Provider:** aws
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** High
 
 **Category:** Networking and Firewall
 
-## Description
-This check identifies AWS Security Groups with ingress rules that allow traffic from the internet (0.0.0.0/0) on non-standard ports, which significantly increases your attack surface. When security groups allow uncommon ports to be accessed from anywhere on the internet, it exposes your resources to potential unauthorized access and exploitation from malicious actors globally. To secure your configuration, restrict ingress rules to specific IP ranges or use standard ports only, as shown in the example below:
+#### Learn More
+
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group)
+
+### Description
+
+ This check identifies AWS Security Groups with ingress rules that allow traffic from the internet (0.0.0.0/0) on non-standard ports, which significantly increases your attack surface. When security groups allow uncommon ports to be accessed from anywhere on the internet, it exposes your resources to potential unauthorized access and exploitation from malicious actors globally. To secure your configuration, restrict ingress rules to specific IP ranges or use standard ports only, as shown in the example below:
 
 ```
 ingress {
@@ -38,10 +39,6 @@ ingress {
 ```
 
 Avoid insecure configurations like: `cidr_blocks = ["0.0.0.0/0"]` for non-standard port ranges.
-
-#### Learn More
-
- - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group)
 
 
 ## Compliant Code Examples

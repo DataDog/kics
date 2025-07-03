@@ -5,28 +5,29 @@ meta:
   id: "3e3c175e-aadf-4e2b-a464-3fdac5748d24"
   display_name: "SSH Is Exposed To The Internet"
   cloud_provider: "azure"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Networking and Firewall"
 ---
 ## Metadata
 
-**Name:** `azure/ssh_is_exposed_to_the_internet`
-
-**Query Name** `SSH Is Exposed To The Internet`
-
 **Id:** `3e3c175e-aadf-4e2b-a464-3fdac5748d24`
 
 **Cloud Provider:** azure
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** Medium
 
 **Category:** Networking and Firewall
 
-## Description
-Allowing inbound access to port 22 (SSH) from any source address (e.g., `source_address_prefix = "*"`, `source_address_prefix = "/0"`, or `source_address_prefix = "internet"`) exposes the server to the public internet, making it highly susceptible to brute force attacks and unauthorized access. If left unaddressed, this misconfiguration significantly increases the risk of remote compromise and could result in full administrative control by attackers. To mitigate this risk, restrict SSH access to specific trusted IP addresses and deny all others, for example:
+#### Learn More
+
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/network_security_rule)
+
+### Description
+
+ Allowing inbound access to port 22 (SSH) from any source address (e.g., `source_address_prefix = "*"`, `source_address_prefix = "/0"`, or `source_address_prefix = "internet"`) exposes the server to the public internet, making it highly susceptible to brute force attacks and unauthorized access. If left unaddressed, this misconfiguration significantly increases the risk of remote compromise and could result in full administrative control by attackers. To mitigate this risk, restrict SSH access to specific trusted IP addresses and deny all others, for example:
 
 ```
 resource "azurerm_network_security_rule" "secure_ssh" {
@@ -43,10 +44,6 @@ resource "azurerm_network_security_rule" "secure_ssh" {
   network_security_group_name = azurerm_network_security_group.example.name
 }
 ```
-
-#### Learn More
-
- - [Provider Reference](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/network_security_rule)
 
 
 ## Compliant Code Examples

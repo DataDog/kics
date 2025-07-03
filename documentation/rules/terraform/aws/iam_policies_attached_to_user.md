@@ -5,28 +5,29 @@ meta:
   id: "b4378389-a9aa-44ee-91e7-ef183f11079e"
   display_name: "IAM Policies Attached To User"
   cloud_provider: "aws"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"
 ---
 ## Metadata
 
-**Name:** `aws/iam_policies_attached_to_user`
-
-**Query Name** `IAM Policies Attached To User`
-
 **Id:** `b4378389-a9aa-44ee-91e7-ef183f11079e`
 
 **Cloud Provider:** aws
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** Medium
 
 **Category:** Access Control
 
-## Description
-IAM policies should be attached only to groups or roles to promote centralized permission management and reduce the risk of granting excessive privileges to individual users. Assigning an IAM policy directly to a user, as shown below with the `users` attribute, can increase the risk of credentials compromise or accidental permission escalation:
+#### Learn More
+
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_policy_attachment)
+
+### Description
+
+ IAM policies should be attached only to groups or roles to promote centralized permission management and reduce the risk of granting excessive privileges to individual users. Assigning an IAM policy directly to a user, as shown below with the `users` attribute, can increase the risk of credentials compromise or accidental permission escalation:
 
 ```
 resource "aws_iam_policy_attachment" "positive1_3" {
@@ -39,10 +40,6 @@ EOF
 ```
 
 If left unaddressed, this practice can lead to difficulties in auditing permissions and increases the attack surface, as any compromise of a single user account could grant broad and unrestricted access to resources.
-
-#### Learn More
-
- - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_policy_attachment)
 
 
 ## Compliant Code Examples

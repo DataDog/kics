@@ -5,28 +5,29 @@ meta:
   id: "3ddfa124-6407-4845-a501-179f90c65097"
   display_name: "Authentication Without MFA"
   cloud_provider: "aws"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "LOW"
   category: "Access Control"
 ---
 ## Metadata
 
-**Name:** `aws/authentication_without_mfa`
-
-**Query Name** `Authentication Without MFA`
-
 **Id:** `3ddfa124-6407-4845-a501-179f90c65097`
 
 **Cloud Provider:** aws
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** Low
 
 **Category:** Access Control
 
-## Description
-Requiring users to authenticate using Multi-Factor Authentication (MFA) provides an extra layer of security beyond just a password, reducing the risk of unauthorized access if credentials are compromised. In Terraform, this can be enforced by using an IAM policy with a condition such as `"aws:MultiFactorAuthPresent": "true"`, which restricts permissions like `sts:AssumeRole` to only those sessions where MFA has been verified. Without this condition, as shown in the following policy snippet, the user may be able to access sensitive AWS resources without MFA: 
+#### Learn More
+
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_user_policy)
+
+### Description
+
+ Requiring users to authenticate using Multi-Factor Authentication (MFA) provides an extra layer of security beyond just a password, reducing the risk of unauthorized access if credentials are compromised. In Terraform, this can be enforced by using an IAM policy with a condition such as `"aws:MultiFactorAuthPresent": "true"`, which restricts permissions like `sts:AssumeRole` to only those sessions where MFA has been verified. Without this condition, as shown in the following policy snippet, the user may be able to access sensitive AWS resources without MFA: 
 
 ```
 "Condition": {
@@ -37,10 +38,6 @@ Requiring users to authenticate using Multi-Factor Authentication (MFA) provides
 ```
 
 If left unaddressed, this misconfiguration could allow attackers with access to the user's credentials to escalate privileges or access critical resources without needing a second authentication factor, significantly increasing the risk of account compromise or data breach.
-
-#### Learn More
-
- - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_user_policy)
 
 
 ## Compliant Code Examples

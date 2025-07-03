@@ -5,28 +5,29 @@ meta:
   id: "f3g4h5i6-j7k8-9lmn-0opq-12345abcdefg"
   display_name: "SageMaker Notebook Internet Access Enabled"
   cloud_provider: "aws"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "HIGH"
   category: "Networking and Firewall"
 ---
 ## Metadata
 
-**Name:** `aws/sagemaker_direct_internet_access_enabled`
-
-**Query Name** `SageMaker Notebook Internet Access Enabled`
-
 **Id:** `f3g4h5i6-j7k8-9lmn-0opq-12345abcdefg`
 
 **Cloud Provider:** aws
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** High
 
 **Category:** Networking and Firewall
 
-## Description
-Amazon SageMaker Notebook Instances with direct internet access enabled create potential security vulnerabilities by allowing unauthorized outbound connections and possible data exfiltration channels. When enabled, malicious code or compromised notebooks can directly communicate with external servers, bypassing network security controls and potentially leaking sensitive information or intellectual property. To secure SageMaker Notebook Instances, you should explicitly disable direct internet access as shown in the following example:
+#### Learn More
+
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/sagemaker_notebook_instance#direct_internet_access)
+
+### Description
+
+ Amazon SageMaker Notebook Instances with direct internet access enabled create potential security vulnerabilities by allowing unauthorized outbound connections and possible data exfiltration channels. When enabled, malicious code or compromised notebooks can directly communicate with external servers, bypassing network security controls and potentially leaking sensitive information or intellectual property. To secure SageMaker Notebook Instances, you should explicitly disable direct internet access as shown in the following example:
 
 ```hcl
 resource "aws_sagemaker_notebook_instance" "good_example" {
@@ -47,10 +48,6 @@ resource "aws_sagemaker_notebook_instance" "bad_example" {
   instance_type          = "ml.t2.medium"
 }
 ```
-
-#### Learn More
-
- - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/sagemaker_notebook_instance#direct_internet_access)
 
 
 ## Compliant Code Examples

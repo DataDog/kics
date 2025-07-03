@@ -5,28 +5,29 @@ meta:
   id: "5c6dd5e7-1fe0-4cae-8f81-4c122717cef3"
   display_name: "Kinesis SSE Not Configured"
   cloud_provider: "aws"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "HIGH"
   category: "Encryption"
 ---
 ## Metadata
 
-**Name:** `aws/kinesis_sse_not_configured`
-
-**Query Name** `Kinesis SSE Not Configured`
-
 **Id:** `5c6dd5e7-1fe0-4cae-8f81-4c122717cef3`
 
 **Cloud Provider:** aws
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** High
 
 **Category:** Encryption
 
-## Description
-AWS Kinesis Firehose Delivery Streams should have Server-Side Encryption (SSE) properly configured to protect sensitive data at rest. Without encryption, data stored in Kinesis streams can be exposed to unauthorized access, potentially leading to data breaches and compliance violations. To secure Kinesis streams, the 'server_side_encryption' block must be included with 'enabled' set to true and a valid 'key_type' specified (either 'AWS_OWNED_CMK' or 'CUSTOMER_MANAGED_CMK' with corresponding 'key_arn').
+#### Learn More
+
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/kinesis_firehose_delivery_stream#server_side_encryption)
+
+### Description
+
+ AWS Kinesis Firehose Delivery Streams should have Server-Side Encryption (SSE) properly configured to protect sensitive data at rest. Without encryption, data stored in Kinesis streams can be exposed to unauthorized access, potentially leading to data breaches and compliance violations. To secure Kinesis streams, the 'server_side_encryption' block must be included with 'enabled' set to true and a valid 'key_type' specified (either 'AWS_OWNED_CMK' or 'CUSTOMER_MANAGED_CMK' with corresponding 'key_arn').
 
 Secure example:
 ```
@@ -40,10 +41,6 @@ resource "aws_kinesis_firehose_delivery_stream" "example" {
   }
 }
 ```
-
-#### Learn More
-
- - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/kinesis_firehose_delivery_stream#server_side_encryption)
 
 
 ## Compliant Code Examples

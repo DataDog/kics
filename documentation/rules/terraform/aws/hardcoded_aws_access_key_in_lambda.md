@@ -5,32 +5,29 @@ meta:
   id: "1402afd8-a95c-4e84-8b0b-6fb43758e6ce"
   display_name: "Hardcoded AWS Access Key In Lambda"
   cloud_provider: "aws"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "HIGH"
   category: "Secret Management"
 ---
 ## Metadata
 
-**Name:** `aws/hardcoded_aws_access_key_in_lambda`
-
-**Query Name** `Hardcoded AWS Access Key In Lambda`
-
 **Id:** `1402afd8-a95c-4e84-8b0b-6fb43758e6ce`
 
 **Cloud Provider:** aws
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** High
 
 **Category:** Secret Management
 
-## Description
-Hardcoding AWS access keys in Lambda function environment variables poses a significant security risk as they can be exposed through version control systems, logs, or to anyone with access to the infrastructure code. If these credentials are compromised, attackers can gain unauthorized access to AWS resources, potentially leading to data breaches, resource manipulation, or service disruption. Instead of hardcoding access keys like `foo = "AKIAIOSFODNN7EXAMAAA"`, use a secure approach by either referencing AWS IAM roles that grant the necessary permissions to your Lambda function or storing sensitive credentials in AWS Secrets Manager or Parameter Store and retrieving them at runtime, as shown in the secure example: `foo = "test"`.
-
 #### Learn More
 
  - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/lambda_function)
+
+### Description
+
+ Hardcoding AWS access keys in Lambda function environment variables poses a significant security risk as they can be exposed through version control systems, logs, or to anyone with access to the infrastructure code. If these credentials are compromised, attackers can gain unauthorized access to AWS resources, potentially leading to data breaches, resource manipulation, or service disruption. Instead of hardcoding access keys like `foo = "AKIAIOSFODNN7EXAMAAA"`, use a secure approach by either referencing AWS IAM roles that grant the necessary permissions to your Lambda function or storing sensitive credentials in AWS Secrets Manager or Parameter Store and retrieving them at runtime, as shown in the secure example: `foo = "test"`.
 
 
 ## Compliant Code Examples

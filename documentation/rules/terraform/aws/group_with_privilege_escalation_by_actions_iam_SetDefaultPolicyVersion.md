@@ -5,32 +5,29 @@ meta:
   id: "7782d4b3-e23e-432b-9742-d9528432e771"
   display_name: "Group With Privilege Escalation By Actions 'iam:SetDefaultPolicyVersion'"
   cloud_provider: "aws"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"
 ---
 ## Metadata
 
-**Name:** `aws/group_with_privilege_escalation_by_actions_iam_SetDefaultPolicyVersion`
-
-**Query Name** `Group With Privilege Escalation By Actions 'iam:SetDefaultPolicyVersion'`
-
 **Id:** `7782d4b3-e23e-432b-9742-d9528432e771`
 
 **Cloud Provider:** aws
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** Medium
 
 **Category:** Access Control
 
-## Description
-The configuration permits the `iam:SetDefaultPolicyVersion` action with a Resource value of `"*"`, meaning members of the `aws_iam_group.cosmic` group are allowed to set any version of any IAM policy as the default. This is a dangerous privilege escalation vector, as it could allow attackers to promote a malicious or overly permissive policy version, potentially granting themselves or others administrative access across AWS resources. If left unaddressed, this vulnerability could be exploited to bypass least privilege principles, resulting in unauthorized access or control over critical AWS infrastructure. To mitigate this risk, restrict the allowable actions and resources in IAM policies and avoid assigning wildcard `"*"` resource permissions to sensitive actions like `iam:SetDefaultPolicyVersion`.
-
 #### Learn More
 
  - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_group_policy#policy)
+
+### Description
+
+ The configuration permits the `iam:SetDefaultPolicyVersion` action with a Resource value of `"*"`, meaning members of the `aws_iam_group.cosmic` group are allowed to set any version of any IAM policy as the default. This is a dangerous privilege escalation vector, as it could allow attackers to promote a malicious or overly permissive policy version, potentially granting themselves or others administrative access across AWS resources. If left unaddressed, this vulnerability could be exploited to bypass least privilege principles, resulting in unauthorized access or control over critical AWS infrastructure. To mitigate this risk, restrict the allowable actions and resources in IAM policies and avoid assigning wildcard `"*"` resource permissions to sensitive actions like `iam:SetDefaultPolicyVersion`.
 
 
 ## Compliant Code Examples

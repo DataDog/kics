@@ -5,32 +5,29 @@ meta:
   id: "19ffbe31-9d72-4379-9768-431195eae328"
   display_name: "User With Privilege Escalation By Actions 'cloudformation:CreateStack' And 'iam:PassRole'"
   cloud_provider: "aws"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"
 ---
 ## Metadata
 
-**Name:** `aws/user_with_privilege_escalation_by_actions_iam_PassRole_and_cloudformation_CreateStack`
-
-**Query Name** `User With Privilege Escalation By Actions 'cloudformation:CreateStack' And 'iam:PassRole'`
-
 **Id:** `19ffbe31-9d72-4379-9768-431195eae328`
 
 **Cloud Provider:** aws
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** Medium
 
 **Category:** Access Control
 
-## Description
-Granting an IAM user permissions to both `cloudformation:CreateStack` and `iam:PassRole` with `"Resource": "*"` is a significant security risk, as it allows the user to create CloudFormation stacks that assume any IAM role in the AWS account. This creates a privilege escalation vector, enabling the user to gain broader or even administrative privileges, bypassing intended access controls. If left unaddressed, an attacker or insider with these rights could compromise the integrity and confidentiality of AWS resources, leading to unauthorized access or manipulation of critical infrastructure.
-
 #### Learn More
 
  - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_user_policy#policy)
+
+### Description
+
+ Granting an IAM user permissions to both `cloudformation:CreateStack` and `iam:PassRole` with `"Resource": "*"` is a significant security risk, as it allows the user to create CloudFormation stacks that assume any IAM role in the AWS account. This creates a privilege escalation vector, enabling the user to gain broader or even administrative privileges, bypassing intended access controls. If left unaddressed, an attacker or insider with these rights could compromise the integrity and confidentiality of AWS resources, leading to unauthorized access or manipulation of critical infrastructure.
 
 
 ## Compliant Code Examples

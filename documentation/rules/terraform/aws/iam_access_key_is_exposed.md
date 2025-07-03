@@ -5,28 +5,29 @@ meta:
   id: "7081f85c-b94d-40fd-8b45-a4f1cac75e46"
   display_name: "IAM Access Key Is Exposed"
   cloud_provider: "aws"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"
 ---
 ## Metadata
 
-**Name:** `aws/iam_access_key_is_exposed`
-
-**Query Name** `IAM Access Key Is Exposed`
-
 **Id:** `7081f85c-b94d-40fd-8b45-a4f1cac75e46`
 
 **Cloud Provider:** aws
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** Medium
 
 **Category:** Access Control
 
-## Description
-IAM access keys should never be created or kept active for AWS root user accounts, as specified by the `user = "root"` and `status = "Active"` attributes in a Terraform `aws_iam_access_key` resource block. Allowing active access keys for root users significantly increases the attack surface and exposes highly privileged credentials to potential misuse or compromise, since the root account has unrestricted control over the entire AWS environment. To ensure security, root accounts should have all access keys disabled, for example:
+#### Learn More
+
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_access_key)
+
+### Description
+
+ IAM access keys should never be created or kept active for AWS root user accounts, as specified by the `user = "root"` and `status = "Active"` attributes in a Terraform `aws_iam_access_key` resource block. Allowing active access keys for root users significantly increases the attack surface and exposes highly privileged credentials to potential misuse or compromise, since the root account has unrestricted control over the entire AWS environment. To ensure security, root accounts should have all access keys disabled, for example:
 
 ```
 resource "aws_iam_access_key" "secure_root" {
@@ -34,10 +35,6 @@ resource "aws_iam_access_key" "secure_root" {
   status = "Inactive"
 }
 ```
-
-#### Learn More
-
- - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_access_key)
 
 
 ## Compliant Code Examples

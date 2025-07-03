@@ -5,28 +5,29 @@ meta:
   id: "3cb4af0b-056d-4fb1-8b95-fdc4593625ff"
   display_name: "Using Default Service Account"
   cloud_provider: "gcp"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Insecure Defaults"
 ---
 ## Metadata
 
-**Name:** `gcp/using_default_service_account`
-
-**Query Name** `Using Default Service Account`
-
 **Id:** `3cb4af0b-056d-4fb1-8b95-fdc4593625ff`
 
 **Cloud Provider:** gcp
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** Medium
 
 **Category:** Insecure Defaults
 
-## Description
-Google Compute Engine instances should not be configured to use the default service account, which has broad permissions and full access to all Cloud APIs. If the attribute `service_account`—specifically the `email` sub-attribute—is missing, empty, or set to the default Google Compute Engine service account, it increases the risk of privilege escalation and unauthorized access to sensitive resources. Instead, instances should explicitly specify a custom service account with only the necessary permissions, like in the following example:
+#### Learn More
+
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/compute_instance)
+
+### Description
+
+ Google Compute Engine instances should not be configured to use the default service account, which has broad permissions and full access to all Cloud APIs. If the attribute `service_account`—specifically the `email` sub-attribute—is missing, empty, or set to the default Google Compute Engine service account, it increases the risk of privilege escalation and unauthorized access to sensitive resources. Instead, instances should explicitly specify a custom service account with only the necessary permissions, like in the following example:
 
 ```
 service_account {
@@ -34,10 +35,6 @@ service_account {
   scopes = ["userinfo-email", "compute-ro", "storage-ro"]
 }
 ```
-
-#### Learn More
-
- - [Provider Reference](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/compute_instance)
 
 
 ## Compliant Code Examples

@@ -5,28 +5,29 @@ meta:
   id: "609839ae-bd81-4375-9910-5bce72ae7b92"
   display_name: "MSSQL Server Auditing Disabled"
   cloud_provider: "azure"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Observability"
 ---
 ## Metadata
 
-**Name:** `azure/mssql_server_auditing_disabled`
-
-**Query Name** `MSSQL Server Auditing Disabled`
-
 **Id:** `609839ae-bd81-4375-9910-5bce72ae7b92`
 
 **Cloud Provider:** azure
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** Medium
 
 **Category:** Observability
 
-## Description
-Auditing should be enabled for MSSQL servers to ensure that access and activity logs are generated and retained for security monitoring and incident response. Without the `azurerm_mssql_server_extended_auditing_policy` resource configured, suspicious activities or potential breaches may go undetected, increasing the risk of data compromise. Ensuring auditing is on can be achieved by adding a resource like:
+#### Learn More
+
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/mssql_server)
+
+### Description
+
+ Auditing should be enabled for MSSQL servers to ensure that access and activity logs are generated and retained for security monitoring and incident response. Without the `azurerm_mssql_server_extended_auditing_policy` resource configured, suspicious activities or potential breaches may go undetected, increasing the risk of data compromise. Ensuring auditing is on can be achieved by adding a resource like:
 
 ```
 resource "azurerm_mssql_server_extended_auditing_policy" "example" {
@@ -35,10 +36,6 @@ resource "azurerm_mssql_server_extended_auditing_policy" "example" {
   retention_in_days = 6
 }
 ```
-
-#### Learn More
-
- - [Provider Reference](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/mssql_server)
 
 
 ## Compliant Code Examples

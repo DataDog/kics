@@ -5,38 +5,35 @@ meta:
   id: "9f40c07e-699e-4410-8856-3ba0f2e3a2dd"
   display_name: "CA Certificate Identifier Is Outdated"
   cloud_provider: "aws"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Encryption"
 ---
 ## Metadata
 
-**Name:** `aws/ca_certificate_identifier_is_outdated`
-
-**Query Name** `CA Certificate Identifier Is Outdated`
-
 **Id:** `9f40c07e-699e-4410-8856-3ba0f2e3a2dd`
 
 **Cloud Provider:** aws
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** Medium
 
 **Category:** Encryption
 
-## Description
-AWS RDS instances require the use of a trusted and up-to-date Certificate Authority (CA) certificate for encrypted connections. If the `ca_cert_identifier` attribute is set to an outdated value like `"rds-ca-2015"` instead of the recommended `"rds-ca-2019"`, as shown below:
+#### Learn More
+
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/db_instance)
+
+### Description
+
+ AWS RDS instances require the use of a trusted and up-to-date Certificate Authority (CA) certificate for encrypted connections. If the `ca_cert_identifier` attribute is set to an outdated value like `"rds-ca-2015"` instead of the recommended `"rds-ca-2019"`, as shown below:
 
 ```
 ca_cert_identifier = "rds-ca-2015"
 ```
 
 the database may be vulnerable to deprecation-related outages or security issues due to expired or compromised certificates. Using the correct CA certificate ensures continued support, compliance, and secure encrypted communications with the database.
-
-#### Learn More
-
- - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/db_instance)
 
 
 ## Compliant Code Examples

@@ -5,32 +5,29 @@ meta:
   id: "bf9d42c7-c2f9-4dfe-942c-c8cc8249a081"
   display_name: "User With Privilege Escalation By Actions 'iam:AddUserToGroup'"
   cloud_provider: "aws"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"
 ---
 ## Metadata
 
-**Name:** `aws/user_with_privilege_escalation_by_actions_iam_AddUserToGroup`
-
-**Query Name** `User With Privilege Escalation By Actions 'iam:AddUserToGroup'`
-
 **Id:** `bf9d42c7-c2f9-4dfe-942c-c8cc8249a081`
 
 **Cloud Provider:** aws
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** Medium
 
 **Category:** Access Control
 
-## Description
-Granting the `iam:AddUserToGroup` permission with a resource scope of `"*"` allows the associated IAM user to add themselves or any other user to any group in the AWS account, regardless of the group's assigned permissions. This effectively enables privilege escalation, as the user could insert themselves into groups with administrative or other high-privilege roles, circumventing intended policy boundaries. If left unaddressed, this misconfiguration undermines the principle of least privilege and opens the door to unauthorized access, potentially leading to full compromise of the AWS environment. It is important to restrict such permissions to only trusted users and limit the resources they can affect to mitigate this risk.
-
 #### Learn More
 
  - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_user_policy#policy)
+
+### Description
+
+ Granting the `iam:AddUserToGroup` permission with a resource scope of `"*"` allows the associated IAM user to add themselves or any other user to any group in the AWS account, regardless of the group's assigned permissions. This effectively enables privilege escalation, as the user could insert themselves into groups with administrative or other high-privilege roles, circumventing intended policy boundaries. If left unaddressed, this misconfiguration undermines the principle of least privilege and opens the door to unauthorized access, potentially leading to full compromise of the AWS environment. It is important to restrict such permissions to only trusted users and limit the resources they can affect to mitigate this risk.
 
 
 ## Compliant Code Examples

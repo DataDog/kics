@@ -5,28 +5,29 @@ meta:
   id: "d7ba74da-2da0-4d4b-83c8-2fd72a3f6c28"
   display_name: "Unrestricted SQL Server Access"
   cloud_provider: "azure"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "CRITICAL"
   category: "Networking and Firewall"
 ---
 ## Metadata
 
-**Name:** `azure/unrestricted_sql_server_access`
-
-**Query Name** `Unrestricted SQL Server Access`
-
 **Id:** `d7ba74da-2da0-4d4b-83c8-2fd72a3f6c28`
 
 **Cloud Provider:** azure
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** Critical
 
 **Category:** Networking and Firewall
 
-## Description
-This vulnerability occurs when Azure SQL Server firewall rules allow access from a wide range of IP addresses or use the '0.0.0.0' address, potentially exposing the database to unauthorized access from the internet. Overly permissive firewall rules significantly increase the attack surface and risk of data breaches or unauthorized access to sensitive database information. To secure your SQL Server, define tight IP ranges in your firewall rules as shown in the secure example below:
+#### Learn More
+
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/sql_firewall_rule)
+
+### Description
+
+ This vulnerability occurs when Azure SQL Server firewall rules allow access from a wide range of IP addresses or use the '0.0.0.0' address, potentially exposing the database to unauthorized access from the internet. Overly permissive firewall rules significantly increase the attack surface and risk of data breaches or unauthorized access to sensitive database information. To secure your SQL Server, define tight IP ranges in your firewall rules as shown in the secure example below:
 
 ```terraform
 resource "azurerm_sql_firewall_rule" "secure_example" {
@@ -39,10 +40,6 @@ resource "azurerm_sql_firewall_rule" "secure_example" {
 ```
 
 Avoid wide IP ranges or using '0.0.0.0' as seen in insecure configurations.
-
-#### Learn More
-
- - [Provider Reference](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/sql_firewall_rule)
 
 
 ## Compliant Code Examples

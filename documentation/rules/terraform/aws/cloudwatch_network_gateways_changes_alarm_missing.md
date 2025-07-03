@@ -5,32 +5,29 @@ meta:
   id: "6b6874fe-4c2f-4eea-8b90-7cceaa4a125e"
   display_name: "CloudWatch Network Gateways Changes Alarm Missing"
   cloud_provider: "aws"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "LOW"
   category: "Observability"
 ---
 ## Metadata
 
-**Name:** `aws/cloudwatch_network_gateways_changes_alarm_missing`
-
-**Query Name** `CloudWatch Network Gateways Changes Alarm Missing`
-
 **Id:** `6b6874fe-4c2f-4eea-8b90-7cceaa4a125e`
 
 **Cloud Provider:** aws
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** Low
 
 **Category:** Observability
 
-## Description
-This control checks that a log metric filter and an associated alarm are set up to monitor changes to network gateways in AWS, such as creation or deletion of customer or internet gateways. If the `metric_name` attribute in the `aws_cloudwatch_metric_alarm` resource is not correctly set to the name of the log metric filter (for example, `"XXXX NOT YOUR FILTER XXXX"`), gateway modifications may go undetected. Without this alerting, unauthorized or unintended changes to network gateways can occur without notice, potentially exposing the VPC to security risks or data exfiltration.
-
 #### Learn More
 
  - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudwatch_log_metric_filter#pattern)
+
+### Description
+
+ This control checks that a log metric filter and an associated alarm are set up to monitor changes to network gateways in AWS, such as creation or deletion of customer or internet gateways. If the `metric_name` attribute in the `aws_cloudwatch_metric_alarm` resource is not correctly set to the name of the log metric filter (for example, `"XXXX NOT YOUR FILTER XXXX"`), gateway modifications may go undetected. Without this alerting, unauthorized or unintended changes to network gateways can occur without notice, potentially exposing the VPC to security risks or data exfiltration.
 
 
 ## Compliant Code Examples

@@ -5,28 +5,29 @@ meta:
   id: "b61cce4b-0cc4-472b-8096-15617a6d769b"
   display_name: "App Service Managed Identity Disabled"
   cloud_provider: "azure"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "LOW"
   category: "Resource Management"
 ---
 ## Metadata
 
-**Name:** `azure/app_service_managed_identity_disabled`
-
-**Query Name** `App Service Managed Identity Disabled`
-
 **Id:** `b61cce4b-0cc4-472b-8096-15617a6d769b`
 
 **Cloud Provider:** azure
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** Low
 
 **Category:** Resource Management
 
-## Description
-Azure App Services should have managed identities enabled to provide secure, automated identity management for accessing Azure resources. Without specifying the `identity { type = "SystemAssigned" }` block in the Terraform configuration, the service may rely on insecure credential storage or hardcoded secrets, increasing the risk of credential exposure. Enabling managed identity ensures the App Service can securely authenticate to Azure resources without the need to manage credentials manually, reducing the attack surface and enhancing overall security.
+#### Learn More
+
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/app_service#identity)
+
+### Description
+
+ Azure App Services should have managed identities enabled to provide secure, automated identity management for accessing Azure resources. Without specifying the `identity { type = "SystemAssigned" }` block in the Terraform configuration, the service may rely on insecure credential storage or hardcoded secrets, increasing the risk of credential exposure. Enabling managed identity ensures the App Service can securely authenticate to Azure resources without the need to manage credentials manually, reducing the attack surface and enhancing overall security.
 
 ```
 resource "azurerm_app_service" "example" {
@@ -37,10 +38,6 @@ resource "azurerm_app_service" "example" {
   }
 }
 ```
-
-#### Learn More
-
- - [Provider Reference](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/app_service#identity)
 
 
 ## Compliant Code Examples

@@ -5,38 +5,35 @@ meta:
   id: "1df37f4b-7197-45ce-83f8-9994d2fcf885"
   display_name: "S3 Bucket Allows Get Action From All Principals"
   cloud_provider: "aws"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "HIGH"
   category: "Access Control"
 ---
 ## Metadata
 
-**Name:** `aws/s3_bucket_allows_get_action_from_all_principals`
-
-**Query Name** `S3 Bucket Allows Get Action From All Principals`
-
 **Id:** `1df37f4b-7197-45ce-83f8-9994d2fcf885`
 
 **Cloud Provider:** aws
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** High
 
 **Category:** Access Control
 
-## Description
-When S3 bucket policies allow the GetObject action from all principals (using 'Principal': '*' or 'Principal': {'AWS': '*'}), they expose private data to anyone on the internet, creating a significant data breach risk. This vulnerability could lead to unauthorized access to sensitive information, intellectual property theft, or compliance violations with regulations like GDPR or HIPAA. Instead of using permissive policies like:
+#### Learn More
+
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_policy)
+
+### Description
+
+ When S3 bucket policies allow the GetObject action from all principals (using 'Principal': '*' or 'Principal': {'AWS': '*'}), they expose private data to anyone on the internet, creating a significant data breach risk. This vulnerability could lead to unauthorized access to sensitive information, intellectual property theft, or compliance violations with regulations like GDPR or HIPAA. Instead of using permissive policies like:
 ```
 "Effect": "Allow",
 "Principal": "*",
 "Action": "s3:GetObject"
 ```
 Implement restrictive policies with explicit denials or properly scoped permissions that limit access to specific authenticated principals.
-
-#### Learn More
-
- - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_policy)
 
 
 ## Compliant Code Examples

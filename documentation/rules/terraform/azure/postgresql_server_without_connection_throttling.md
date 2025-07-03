@@ -5,28 +5,29 @@ meta:
   id: "2b3c671f-1b76-4741-8789-ed1fe0785dc4"
   display_name: "PostgreSQL Server Without Connection Throttling"
   cloud_provider: "azure"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Observability"
 ---
 ## Metadata
 
-**Name:** `azure/postgresql_server_without_connection_throttling`
-
-**Query Name** `PostgreSQL Server Without Connection Throttling`
-
 **Id:** `2b3c671f-1b76-4741-8789-ed1fe0785dc4`
 
 **Cloud Provider:** azure
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** Medium
 
 **Category:** Observability
 
-## Description
-PostgreSQL servers should have connection throttling enabled by setting the `connection_throttling` configuration value to `"on"`. Without connection throttling (e.g., `value = "off"`), the server is more vulnerable to connection floods and denial-of-service attacks, as there is no mechanism to limit the rate of incoming connections. Enabling this option reduces the risk of service disruption by preventing excessive connection attempts from overloading the database.
+#### Learn More
+
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/postgresql_configuration)
+
+### Description
+
+ PostgreSQL servers should have connection throttling enabled by setting the `connection_throttling` configuration value to `"on"`. Without connection throttling (e.g., `value = "off"`), the server is more vulnerable to connection floods and denial-of-service attacks, as there is no mechanism to limit the rate of incoming connections. Enabling this option reduces the risk of service disruption by preventing excessive connection attempts from overloading the database.
 
 A secure Terraform configuration example:
   
@@ -38,10 +39,6 @@ resource "azurerm_postgresql_configuration" "example" {
     value               = "on"
 }
 ```
-
-#### Learn More
-
- - [Provider Reference](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/postgresql_configuration)
 
 
 ## Compliant Code Examples

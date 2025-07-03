@@ -5,28 +5,29 @@ meta:
   id: "5d89db57-8b51-4b38-bb76-b9bd42bd40f0"
   display_name: "ElastiCache Using Default Port"
   cloud_provider: "aws"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "LOW"
   category: "Networking and Firewall"
 ---
 ## Metadata
 
-**Name:** `aws/elasticache_using_default_port`
-
-**Query Name** `ElastiCache Using Default Port`
-
 **Id:** `5d89db57-8b51-4b38-bb76-b9bd42bd40f0`
 
 **Cloud Provider:** aws
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** Low
 
 **Category:** Networking and Firewall
 
-## Description
-ElastiCache clusters should avoid using the default ports (`6379` for Redis, `11211` for Memcached), as attackers commonly scan these ports to find and exploit exposed services. By explicitly configuring a non-default port in the `port` attribute of the `aws_elasticache_cluster` resource, you reduce the risk of automated attacks or unauthorized access. Leaving the default port unchanged makes it easier for malicious actors to guess the service endpoint and attempt brute force or exploitation attempts.
+#### Learn More
+
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/elasticache_cluster#port)
+
+### Description
+
+ ElastiCache clusters should avoid using the default ports (`6379` for Redis, `11211` for Memcached), as attackers commonly scan these ports to find and exploit exposed services. By explicitly configuring a non-default port in the `port` attribute of the `aws_elasticache_cluster` resource, you reduce the risk of automated attacks or unauthorized access. Leaving the default port unchanged makes it easier for malicious actors to guess the service endpoint and attempt brute force or exploitation attempts.
 
 A secure Terraform example:
 
@@ -40,10 +41,6 @@ resource "aws_elasticache_cluster" "secure_example" {
   port                 = 6380
 }
 ```
-
-#### Learn More
-
- - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/elasticache_cluster#port)
 
 
 ## Compliant Code Examples

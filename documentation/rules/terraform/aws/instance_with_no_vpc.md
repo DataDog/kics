@@ -5,28 +5,29 @@ meta:
   id: "a31a5a29-718a-4ff4-8001-a69e5e4d029e"
   display_name: "Instance With No VPC"
   cloud_provider: "aws"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "LOW"
   category: "Insecure Configurations"
 ---
 ## Metadata
 
-**Name:** `aws/instance_with_no_vpc`
-
-**Query Name** `Instance With No VPC`
-
 **Id:** `a31a5a29-718a-4ff4-8001-a69e5e4d029e`
 
 **Cloud Provider:** aws
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** Low
 
 **Category:** Insecure Configurations
 
-## Description
-Amazon EC2 instances should always be provisioned within a Virtual Private Cloud (VPC) to leverage the network isolation, traffic filtering, and granular access controls that VPCs provide. If EC2 instances are created without specifying a `subnet_id` or `vpc_security_group_ids` (as shown in the configuration below), they may default to legacy EC2-Classic networks or lack critical network restrictions, increasing the risk of unauthorized access and exposure to attacks. Using a VPC ensures all traffic to and from instances can be centrally managed, monitored, and audited, reducing the attack surface.
+#### Learn More
+
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/instance)
+
+### Description
+
+ Amazon EC2 instances should always be provisioned within a Virtual Private Cloud (VPC) to leverage the network isolation, traffic filtering, and granular access controls that VPCs provide. If EC2 instances are created without specifying a `subnet_id` or `vpc_security_group_ids` (as shown in the configuration below), they may default to legacy EC2-Classic networks or lack critical network restrictions, increasing the risk of unauthorized access and exposure to attacks. Using a VPC ensures all traffic to and from instances can be centrally managed, monitored, and audited, reducing the attack surface.
 
 Insecure example:
 ```
@@ -45,10 +46,6 @@ resource "aws_instance" "example" {
   vpc_security_group_ids = [aws_security_group.example.id]
 }
 ```
-
-#### Learn More
-
- - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/instance)
 
 
 ## Compliant Code Examples

@@ -5,28 +5,29 @@ meta:
   id: "8152e0cf-d2f0-47ad-96d5-d003a76eabd1"
   display_name: "Lambda Functions Without X-Ray Tracing"
   cloud_provider: "aws"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "LOW"
   category: "Observability"
 ---
 ## Metadata
 
-**Name:** `aws/lambda_functions_without_x-ray_tracing`
-
-**Query Name** `Lambda Functions Without X-Ray Tracing`
-
 **Id:** `8152e0cf-d2f0-47ad-96d5-d003a76eabd1`
 
 **Cloud Provider:** aws
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** Low
 
 **Category:** Observability
 
-## Description
-AWS Lambda functions should have the TracingConfig property set with `mode = "Active"` to enable active tracing, which provides detailed request and performance monitoring through AWS X-Ray. When `tracing_config` is either omitted or configured as `mode = "PassThrough"`, as shown below, tracing data will not be automatically captured for Lambda invocations:
+#### Learn More
+
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/lambda_function#tracing_config)
+
+### Description
+
+ AWS Lambda functions should have the TracingConfig property set with `mode = "Active"` to enable active tracing, which provides detailed request and performance monitoring through AWS X-Ray. When `tracing_config` is either omitted or configured as `mode = "PassThrough"`, as shown below, tracing data will not be automatically captured for Lambda invocations:
 
 ```
 tracing_config {
@@ -35,10 +36,6 @@ tracing_config {
 ```
 
 Without active tracing, teams lose critical visibility into Lambda execution, making it harder to detect and troubleshoot performance issues or security incidents in serverless environments.
-
-#### Learn More
-
- - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/lambda_function#tracing_config)
 
 
 ## Compliant Code Examples

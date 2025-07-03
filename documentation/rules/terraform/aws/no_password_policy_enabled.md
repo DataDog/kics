@@ -5,28 +5,29 @@ meta:
   id: "b592ffd4-0577-44b6-bd35-8c5ee81b5918"
   display_name: "No Password Policy Enabled"
   cloud_provider: "aws"
-  platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Insecure Configurations"
 ---
 ## Metadata
 
-**Name:** `aws/no_password_policy_enabled`
-
-**Query Name** `No Password Policy Enabled`
-
 **Id:** `b592ffd4-0577-44b6-bd35-8c5ee81b5918`
 
 **Cloud Provider:** aws
 
-**Platform** Terraform
+**Framework:** Terraform
 
 **Severity:** Medium
 
 **Category:** Insecure Configurations
 
-## Description
-Ensuring strong AWS IAM password security involves configuring both the `password_length` and `password_reset_required` attributes in the `aws_iam_user_login_profile` resource. Failing to set a sufficient `password_length` or omitting the `password_reset_required = true` option, as shown below,
+#### Learn More
+
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_user_login_profile)
+
+### Description
+
+ Ensuring strong AWS IAM password security involves configuring both the `password_length` and `password_reset_required` attributes in the `aws_iam_user_login_profile` resource. Failing to set a sufficient `password_length` or omitting the `password_reset_required = true` option, as shown below,
 
 ```
 resource "aws_iam_user_login_profile" "example" {
@@ -49,10 +50,6 @@ resource "aws_iam_user_login_profile" "example" {
 ```
 
 organizations can better defend against brute-force attacks and reduce credential compromise risk.
-
-#### Learn More
-
- - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_user_login_profile)
 
 
 ## Compliant Code Examples
