@@ -1,5 +1,6 @@
 ---
 title: "Shielded VM Disabled"
+group-id: "rules/terraform/gcp"
 meta:
   name: "gcp/shielded_vm_disabled"
   id: "1b44e234-3d73-41a8-9954-0b154135280e"

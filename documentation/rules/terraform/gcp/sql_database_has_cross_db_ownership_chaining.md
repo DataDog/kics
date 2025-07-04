@@ -1,5 +1,6 @@
 ---
 title: "SQL Server Cross DB Ownership Chaining Enabled"
+group-id: "rules/terraform/gcp"
 meta:
   name: "gcp/sql_database_has_cross_db_ownership_chaining"
   id: "b2d5f3c9-1e68-47a1-89b4-92f3a6d7e123"

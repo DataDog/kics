@@ -1,5 +1,6 @@
 ---
 title: "Redis Entirely Accessible"
+group-id: "rules/terraform/azure"
 meta:
   name: "azure/redis_entirely_accessible"
   id: "fd8da341-6760-4450-b26c-9f6d8850575e"

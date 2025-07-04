@@ -1,5 +1,6 @@
 ---
 title: "Shielded GKE Nodes Disabled"
+group-id: "rules/terraform/gcp"
 meta:
   name: "gcp/shielded_gke_nodes_disabled"
   id: "579a0727-9c29-4d58-8195-fc5802a8bdb4"

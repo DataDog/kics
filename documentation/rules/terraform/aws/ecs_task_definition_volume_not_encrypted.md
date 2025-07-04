@@ -1,5 +1,6 @@
 ---
 title: "ECS Task Definition Volume Not Encrypted"
+group-id: "rules/terraform/aws"
 meta:
   name: "aws/ecs_task_definition_volume_not_encrypted"
   id: "4d46ff3b-7160-41d1-a310-71d6d370b08f"

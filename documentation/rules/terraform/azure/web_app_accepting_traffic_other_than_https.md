@@ -1,5 +1,6 @@
 ---
 title: "Web App Accepting Traffic Other Than HTTPS"
+group-id: "rules/terraform/azure"
 meta:
   name: "azure/web_app_accepting_traffic_other_than_https"
   id: "11e9a948-c6c3-4a0f-8dcf-b5cf1763cdbe"

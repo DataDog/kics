@@ -1,5 +1,6 @@
 ---
 title: "ALB Not Dropping Invalid Headers"
+group-id: "rules/terraform/aws"
 meta:
   name: "aws/alb_not_dropping_invalid_headers"
   id: "6e3fd2ed-5c83-4c68-9679-7700d224d379"

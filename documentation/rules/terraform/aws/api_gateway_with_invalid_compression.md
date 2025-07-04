@@ -1,5 +1,6 @@
 ---
 title: "API Gateway With Invalid Compression"
+group-id: "rules/terraform/aws"
 meta:
   name: "aws/api_gateway_with_invalid_compression"
   id: "ed35928e-195c-4405-a252-98ccb664ab7b"

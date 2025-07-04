@@ -1,5 +1,6 @@
 ---
 title: "EBS Volume Snapshot Not Encrypted"
+group-id: "rules/terraform/aws"
 meta:
   name: "aws/ebs_volume_snapshot_not_encrypted"
   id: "e6b4b943-6883-47a9-9739-7ada9568f8ca"

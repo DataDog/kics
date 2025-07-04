@@ -1,5 +1,6 @@
 ---
 title: "Elasticsearch Uses Default Security Group"
+group-id: "rules/terraform/aws"
 meta:
   name: "aws/elasticsearch_using_default_security_group"
   id: "d3e1f5a9-bb45-4c89-b97c-12d34ef56789"

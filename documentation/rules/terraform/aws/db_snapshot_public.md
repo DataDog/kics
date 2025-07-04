@@ -1,5 +1,6 @@
 ---
 title: "DB Snapshot Is Public"
+group-id: "rules/terraform/aws"
 meta:
   name: "aws/db_snapshot_public"
   id: "f0d8781f-1991-4958-9917-d39283b168a0"

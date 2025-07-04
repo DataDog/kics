@@ -1,5 +1,6 @@
 ---
 title: "BigQuery Dataset Is Public"
+group-id: "rules/terraform/gcp"
 meta:
   name: "gcp/bigquery_dataset_is_public"
   id: "e576ce44-dd03-4022-a8c0-3906acca2ab4"

@@ -1,5 +1,6 @@
 ---
 title: "EKS node group remote access disabled"
+group-id: "rules/terraform/aws"
 meta:
   name: "aws/eks_node_group_remote_access_disabled"
   id: "ba40ace1-a047-483c-8a8d-bc2d3a67a82d"

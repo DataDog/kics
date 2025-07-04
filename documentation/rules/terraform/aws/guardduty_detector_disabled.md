@@ -1,5 +1,6 @@
 ---
 title: "GuardDuty Detector Disabled"
+group-id: "rules/terraform/aws"
 meta:
   name: "aws/guardduty_detector_disabled"
   id: "704dadd3-54fc-48ac-b6a0-02f170011473"

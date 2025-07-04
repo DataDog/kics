@@ -1,5 +1,6 @@
 ---
 title: "Neptune Cluster Instance is Publicly Accessible"
+group-id: "rules/terraform/aws"
 meta:
   name: "aws/neptune_cluster_instance_is_publicly_accessible"
   id: "9ba198e0-fef4-464a-8a4d-75ea55300de7"

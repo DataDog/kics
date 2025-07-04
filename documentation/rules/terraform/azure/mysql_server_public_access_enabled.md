@@ -1,5 +1,6 @@
 ---
 title: "MySQL Server Public Access Enabled"
+group-id: "rules/terraform/azure"
 meta:
   name: "azure/mysql_server_public_access_enabled"
   id: "f118890b-2468-42b1-9ce9-af35146b425b"

@@ -1,5 +1,6 @@
 ---
 title: "Shield Advanced Not In Use"
+group-id: "rules/terraform/aws"
 meta:
   name: "aws/shield_advanced_not_in_use"
   id: "084c6686-2a70-4710-91b1-000393e54c12"

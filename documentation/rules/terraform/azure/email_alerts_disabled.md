@@ -1,5 +1,6 @@
 ---
 title: "Email Alerts Disabled"
+group-id: "rules/terraform/azure"
 meta:
   name: "azure/email_alerts_disabled"
   id: "9db38e87-f6aa-4b5e-a1ec-7266df259409"

@@ -1,5 +1,6 @@
 ---
 title: "Security Contact Email"
+group-id: "rules/terraform/azure"
 meta:
   name: "azure/security_contact_email"
   id: "34664094-59e0-4524-b69f-deaa1a68cce3"

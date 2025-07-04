@@ -1,5 +1,6 @@
 ---
 title: "CloudWatch IAM Policy Changes Alarm Missing"
+group-id: "rules/terraform/aws"
 meta:
   name: "aws/cloudwatch_iam_policy_changes_alarm_missing"
   id: "eaaba502-2f94-411a-a3c2-83d63cc1776d"

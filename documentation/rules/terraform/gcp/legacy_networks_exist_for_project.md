@@ -1,5 +1,6 @@
 ---
 title: "Ensure legacy networks do not exist for a project"
+group-id: "rules/terraform/gcp"
 meta:
   name: "gcp/legacy_networks_exist_for_project"
   id: "550e8400-e29b-41d4-a716-446655440000"

@@ -1,5 +1,6 @@
 ---
 title: "GKE Control Plane Is Public"
+group-id: "rules/terraform/gcp"
 meta:
   name: "gcp/gke_control_plane_is_public"
   id: "e2f9b5c7-8d3a-4a5f-93b0-78aeb39d7e09"

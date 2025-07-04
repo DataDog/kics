@@ -1,5 +1,6 @@
 ---
 title: "Ensure SQL Database Instance Has Skip Show Database Flag"
+group-id: "rules/terraform/gcp"
 meta:
   name: "gcp/sql_database_instance_does_not_have_skip_show_database"
   id: "a8b7c6d5-e4f3-2109-8a7b-6c5d4e3f2109"

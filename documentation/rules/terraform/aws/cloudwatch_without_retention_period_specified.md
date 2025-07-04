@@ -1,5 +1,6 @@
 ---
 title: "CloudWatch Without Retention Period Specified"
+group-id: "rules/terraform/aws"
 meta:
   name: "aws/cloudwatch_without_retention_period_specified"
   id: "ef0b316a-211e-42f1-888e-64efe172b755"

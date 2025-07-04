@@ -1,5 +1,6 @@
 ---
 title: "S3 Bucket Allows Public Policy"
+group-id: "rules/terraform/aws"
 meta:
   name: "aws/s3_bucket_with_public_policy"
   id: "1a4bc881-9f69-4d44-8c9a-d37d08f54c50"

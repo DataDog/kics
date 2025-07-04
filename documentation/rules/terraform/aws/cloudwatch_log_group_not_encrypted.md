@@ -1,5 +1,6 @@
 ---
 title: "CloudWatch Log Group Without KMS"
+group-id: "rules/terraform/aws"
 meta:
   name: "aws/cloudwatch_log_group_not_encrypted"
   id: "0afbcfe9-d341-4b92-a64c-7e6de0543879"

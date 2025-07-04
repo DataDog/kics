@@ -1,5 +1,6 @@
 ---
 title: "IP Forwarding Enabled"
+group-id: "rules/terraform/gcp"
 meta:
   name: "gcp/ip_forwarding_enabled"
   id: "f34c0c25-47b4-41eb-9c79-249b4dd47b89"

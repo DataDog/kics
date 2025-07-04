@@ -1,5 +1,6 @@
 ---
 title: "EFS Not Encrypted"
+group-id: "rules/terraform/aws"
 meta:
   name: "aws/efs_not_encrypted"
   id: "48207659-729f-4b5c-9402-f884257d794f"

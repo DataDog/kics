@@ -1,5 +1,6 @@
 ---
 title: "Neptune Database Cluster Encryption Disabled"
+group-id: "rules/terraform/aws"
 meta:
   name: "aws/neptune_database_cluster_encryption_disabled"
   id: "98d59056-f745-4ef5-8613-32bca8d40b7e"

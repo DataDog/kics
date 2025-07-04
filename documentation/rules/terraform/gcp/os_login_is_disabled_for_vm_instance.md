@@ -1,5 +1,6 @@
 ---
 title: "OSLogin Is Disabled For VM Instance"
+group-id: "rules/terraform/gcp"
 meta:
   name: "gcp/os_login_is_disabled_for_vm_instance"
   id: "d0b4d550-c001-46c3-bbdb-d5d75d33f05f"

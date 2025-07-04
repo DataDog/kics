@@ -1,5 +1,6 @@
 ---
 title: "User With Privilege Escalation By Actions 'iam:CreateAccessKey'"
+group-id: "rules/terraform/aws"
 meta:
   name: "aws/user_with_privilege_escalation_by_actions_iam_CreateAccessKey"
   id: "113208f2-a886-4526-9ecc-f3218600e12c"

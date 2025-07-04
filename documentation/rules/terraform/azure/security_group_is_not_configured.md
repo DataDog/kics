@@ -1,5 +1,6 @@
 ---
 title: "Security Group is Not Configured"
+group-id: "rules/terraform/azure"
 meta:
   name: "azure/security_group_is_not_configured"
   id: "5c822443-e1ea-46b8-84eb-758ec602e844"

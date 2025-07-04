@@ -1,5 +1,6 @@
 ---
 title: "AKS Uses Azure Policies Add-On Disabled"
+group-id: "rules/terraform/azure"
 meta:
   name: "azure/aks_uses_azure_policies_addon_disabled"
   id: "43789711-161b-4708-b5bb-9d1c626f7492"

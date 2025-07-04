@@ -1,5 +1,6 @@
 ---
 title: "DAX Cluster Not Encrypted"
+group-id: "rules/terraform/aws"
 meta:
   name: "aws/dax_cluster_not_encrypted"
   id: "f11aec39-858f-4b6f-b946-0a1bf46c0c87"

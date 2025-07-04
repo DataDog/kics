@@ -1,5 +1,6 @@
 ---
 title: "Azure Front Door WAF Disabled"
+group-id: "rules/terraform/azure"
 meta:
   name: "azure/azure_front_door_waf_disabled"
   id: "835a4f2f-df43-437d-9943-545ccfc55961"

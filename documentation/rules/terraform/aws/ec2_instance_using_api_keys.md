@@ -1,5 +1,6 @@
 ---
 title: "EC2 Instance Using API Keys"
+group-id: "rules/terraform/aws"
 meta:
   name: "aws/ec2_instance_using_api_keys"
   id: "0b93729a-d882-4803-bdc3-ac429a21f158"

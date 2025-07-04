@@ -1,5 +1,6 @@
 ---
 title: "EFS Without KMS"
+group-id: "rules/terraform/aws"
 meta:
   name: "aws/efs_without_kms"
   id: "25d251f3-f348-4f95-845c-1090e41a615c"

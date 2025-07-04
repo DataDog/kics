@@ -1,5 +1,6 @@
 ---
 title: "RDP Access Is Not Restricted"
+group-id: "rules/terraform/gcp"
 meta:
   name: "gcp/rdp_access_is_not_restricted"
   id: "678fd659-96f2-454a-a2a0-c2571f83a4a3"

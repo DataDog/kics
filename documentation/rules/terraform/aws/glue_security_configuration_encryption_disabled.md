@@ -1,5 +1,6 @@
 ---
 title: "Glue Security Configuration Encryption Disabled"
+group-id: "rules/terraform/aws"
 meta:
   name: "aws/glue_security_configuration_encryption_disabled"
   id: "ad5b4e97-2850-4adf-be17-1d293e0b85ee"

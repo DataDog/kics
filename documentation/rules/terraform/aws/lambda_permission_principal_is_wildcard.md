@@ -1,5 +1,6 @@
 ---
 title: "Lambda Permission Principal Is Wildcard"
+group-id: "rules/terraform/aws"
 meta:
   name: "aws/lambda_permission_principal_is_wildcard"
   id: "e08ed7eb-f3ef-494d-9d22-2e3db756a347"

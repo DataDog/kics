@@ -1,5 +1,6 @@
 ---
 title: "CloudWatch Changes To NACL Alarm Missing"
+group-id: "rules/terraform/aws"
 meta:
   name: "aws/cloudwatch_changes_to_nacl_alarm_missing"
   id: "0a8e8dc5-b6fc-44fc-b5a1-969ec950f9b0"

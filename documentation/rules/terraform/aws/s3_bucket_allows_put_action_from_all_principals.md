@@ -1,5 +1,6 @@
 ---
 title: "S3 Bucket Allows Put Action From All Principals"
+group-id: "rules/terraform/aws"
 meta:
   name: "aws/s3_bucket_allows_put_action_from_all_principals"
   id: "d24c0755-c028-44b1-b503-8e719c898832"

@@ -1,5 +1,6 @@
 ---
 title: "Secure Ciphers Disabled"
+group-id: "rules/terraform/aws"
 meta:
   name: "aws/secure_ciphers_disabled"
   id: "5c0003fb-9aa0-42c1-9da3-eb0e332bef21"

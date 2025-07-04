@@ -1,5 +1,6 @@
 ---
 title: "User With Privilege Escalation By Actions 'iam:AddUserToGroup'"
+group-id: "rules/terraform/aws"
 meta:
   name: "aws/user_with_privilege_escalation_by_actions_iam_AddUserToGroup"
   id: "bf9d42c7-c2f9-4dfe-942c-c8cc8249a081"

@@ -1,5 +1,6 @@
 ---
 title: "MQ Broker Is Publicly Accessible"
+group-id: "rules/terraform/aws"
 meta:
   name: "aws/mq_broker_is_publicly_accessible"
   id: "4eb5f791-c861-4afd-9f94-f2a6a3fe49cb"

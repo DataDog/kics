@@ -1,5 +1,6 @@
 ---
 title: "Virtual Network with DDoS Protection Plan disabled"
+group-id: "rules/terraform/azure"
 meta:
   name: "azure/virtual_network_with_ddos_protection_plan_disabled"
   id: "b4cc2c52-34a6-4b43-b57c-4bdeb4514a5a"

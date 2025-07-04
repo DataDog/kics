@@ -1,5 +1,6 @@
 ---
 title: "Default Security Groups With Unrestricted Traffic"
+group-id: "rules/terraform/aws"
 meta:
   name: "aws/default_security_groups_with_unrestricted_traffic"
   id: "46883ce1-dc3e-4b17-9195-c6a601624c73"

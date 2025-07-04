@@ -1,5 +1,6 @@
 ---
 title: "CloudTrail Logging Disabled"
+group-id: "rules/terraform/aws"
 meta:
   name: "aws/cloudtrail_logging_disabled"
   id: "4bb76f17-3d63-4529-bdca-2b454529d774"

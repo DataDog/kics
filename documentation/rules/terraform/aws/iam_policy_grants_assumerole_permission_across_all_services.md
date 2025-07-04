@@ -1,5 +1,6 @@
 ---
 title: "IAM Policy Grants 'AssumeRole' Permission Across All Services"
+group-id: "rules/terraform/aws"
 meta:
   name: "aws/iam_policy_grants_assumerole_permission_across_all_services"
   id: "bcdcbdc6-a350-4855-ae7c-d1e6436f7c97"

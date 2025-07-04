@@ -1,5 +1,6 @@
 ---
 title: "EBS Default Encryption Disabled"
+group-id: "rules/terraform/aws"
 meta:
   name: "aws/ebs_default_encryption_disabled"
   id: "3d3f6270-546b-443c-adb4-bb6fb2187ca6"

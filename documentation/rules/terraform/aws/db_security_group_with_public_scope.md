@@ -1,5 +1,6 @@
 ---
 title: "DB Security Group With Public Scope"
+group-id: "rules/terraform/aws"
 meta:
   name: "aws/db_security_group_with_public_scope"
   id: "1e0ef61b-ad85-4518-a3d3-85eaad164885"

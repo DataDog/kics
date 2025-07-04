@@ -1,5 +1,6 @@
 ---
 title: "ECR Image Tag Not Immutable"
+group-id: "rules/terraform/aws"
 meta:
   name: "aws/ecr_image_tag_not_immutable"
   id: "d1846b12-20c5-4d45-8798-fc35b79268eb"

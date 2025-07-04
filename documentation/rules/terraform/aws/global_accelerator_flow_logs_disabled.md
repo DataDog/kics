@@ -1,5 +1,6 @@
 ---
 title: "Global Accelerator Flow Logs Disabled"
+group-id: "rules/terraform/aws"
 meta:
   name: "aws/global_accelerator_flow_logs_disabled"
   id: "96e8183b-e985-457b-90cd-61c0503a3369"

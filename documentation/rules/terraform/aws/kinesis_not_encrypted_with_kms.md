@@ -1,5 +1,6 @@
 ---
 title: "Kinesis Not Encrypted With KMS"
+group-id: "rules/terraform/aws"
 meta:
   name: "aws/kinesis_not_encrypted_with_kms"
   id: "862fe4bf-3eec-4767-a517-40f378886b88"

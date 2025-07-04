@@ -1,5 +1,6 @@
 ---
 title: "HTTP Port Open To Internet"
+group-id: "rules/terraform/aws"
 meta:
   name: "aws/http_port_open"
   id: "ffac8a12-322e-42c1-b9b9-81ff85c39ef7"

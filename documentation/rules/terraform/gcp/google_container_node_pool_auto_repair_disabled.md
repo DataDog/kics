@@ -1,5 +1,6 @@
 ---
 title: "Google Container Node Pool Auto Repair Disabled"
+group-id: "rules/terraform/gcp"
 meta:
   name: "gcp/google_container_node_pool_auto_repair_disabled"
   id: "acfdbec6-4a17-471f-b412-169d77553332"

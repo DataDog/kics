@@ -1,5 +1,6 @@
 ---
 title: "IAM Role Policy passRole Allows All"
+group-id: "rules/terraform/aws"
 meta:
   name: "aws/iam_role_policy_passrole_allows_all"
   id: "e39bee8c-fe54-4a3f-824d-e5e2d1cca40a"

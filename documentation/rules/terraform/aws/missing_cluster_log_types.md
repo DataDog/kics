@@ -1,5 +1,6 @@
 ---
 title: "Missing Cluster Log Types"
+group-id: "rules/terraform/aws"
 meta:
   name: "aws/missing_cluster_log_types"
   id: "66f130d9-b81d-4e8e-9b08-da74b9c891df"

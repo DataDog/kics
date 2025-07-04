@@ -1,5 +1,6 @@
 ---
 title: "CloudWatch AWS Organizations Changes Missing Alarm"
+group-id: "rules/terraform/aws"
 meta:
   name: "aws/cloudwatch_aws_organizations_changes_missing_alarm"
   id: "38b85c45-e772-4de8-a247-69619ca137b3"

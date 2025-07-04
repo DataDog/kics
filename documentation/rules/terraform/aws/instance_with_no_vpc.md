@@ -1,5 +1,6 @@
 ---
 title: "Instance With No VPC"
+group-id: "rules/terraform/aws"
 meta:
   name: "aws/instance_with_no_vpc"
   id: "a31a5a29-718a-4ff4-8001-a69e5e4d029e"

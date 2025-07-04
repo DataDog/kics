@@ -1,5 +1,6 @@
 ---
 title: "Cloud Storage Anonymous or Publicly Accessible"
+group-id: "rules/terraform/gcp"
 meta:
   name: "gcp/cloud_storage_anonymous_or_publicly_accessible"
   id: "a6cd52a1-3056-4910-96a5-894de9f3f3b3"

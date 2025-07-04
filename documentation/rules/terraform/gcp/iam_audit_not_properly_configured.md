@@ -1,5 +1,6 @@
 ---
 title: "IAM Audit Not Properly Configured"
+group-id: "rules/terraform/gcp"
 meta:
   name: "gcp/iam_audit_not_properly_configured"
   id: "89fe890f-b480-460c-8b6b-7d8b1468adb4"

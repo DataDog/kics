@@ -1,5 +1,6 @@
 ---
 title: "CA Certificate Identifier Is Outdated"
+group-id: "rules/terraform/aws"
 meta:
   name: "aws/ca_certificate_identifier_is_outdated"
   id: "9f40c07e-699e-4410-8856-3ba0f2e3a2dd"

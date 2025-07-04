@@ -1,5 +1,6 @@
 ---
 title: "S3 Static Website Host Enabled"
+group-id: "rules/terraform/aws"
 meta:
   name: "aws/s3_static_website_host_enabled"
   id: "42bb6b7f-6d54-4428-b707-666f669d94fb"

@@ -1,5 +1,6 @@
 ---
 title: "Redis Not Updated Regularly"
+group-id: "rules/terraform/azure"
 meta:
   name: "azure/redis_not_updated_regularly"
   id: "b947809d-dd2f-4de9-b724-04d101c515aa"

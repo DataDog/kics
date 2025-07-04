@@ -1,5 +1,6 @@
 ---
 title: "Stackdriver Monitoring Disabled"
+group-id: "rules/terraform/gcp"
 meta:
   name: "gcp/stackdriver_monitoring_disabled"
   id: "30e8dfd2-3591-4d19-8d11-79e93106c93d"

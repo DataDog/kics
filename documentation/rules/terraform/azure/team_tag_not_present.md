@@ -1,5 +1,6 @@
 ---
 title: "Ensure that cloud resource has a 'team' tag"
+group-id: "rules/terraform/azure"
 meta:
   name: "azure/team_tag_not_present"
   id: "e8f4d3c2-b1a0-4e5f-8d7c-9a0b1c2d3e4f"

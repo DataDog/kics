@@ -1,5 +1,6 @@
 ---
 title: "COS Node Image Not Used"
+group-id: "rules/terraform/gcp"
 meta:
   name: "gcp/cos_node_image_not_used"
   id: "8a893e46-e267-485a-8690-51f39951de58"

@@ -1,5 +1,6 @@
 ---
 title: "IAM Role Allows All Principals To Assume"
+group-id: "rules/terraform/aws"
 meta:
   name: "aws/iam_role_allows_all_principals_to_assume"
   id: "12b7e704-37f0-4d1e-911a-44bf60c48c21"

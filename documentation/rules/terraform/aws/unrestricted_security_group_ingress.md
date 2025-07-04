@@ -1,5 +1,6 @@
 ---
 title: "Unrestricted Security Group Ingress"
+group-id: "rules/terraform/aws"
 meta:
   name: "aws/unrestricted_security_group_ingress"
   id: "4728cd65-a20c-49da-8b31-9c08b423e4db"

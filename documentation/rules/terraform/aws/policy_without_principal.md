@@ -1,5 +1,6 @@
 ---
 title: "Policy Without Principal"
+group-id: "rules/terraform/aws"
 meta:
   name: "aws/policy_without_principal"
   id: "bbe3dd3d-fea9-4b68-a785-cfabe2bbbc54"

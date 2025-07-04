@@ -1,5 +1,6 @@
 ---
 title: "S3 Bucket Object Level CloudTrail Logging Disabled"
+group-id: "rules/terraform/aws"
 meta:
   name: "aws/s3_bucket_object_level_cloudtrail_logging_disabled"
   id: "a8fc2180-b3ac-4c93-bd0d-a55b974e4b07"

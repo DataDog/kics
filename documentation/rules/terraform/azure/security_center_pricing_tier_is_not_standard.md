@@ -1,5 +1,6 @@
 ---
 title: "Security Center Pricing Tier Is Not Standard"
+group-id: "rules/terraform/azure"
 meta:
   name: "azure/security_center_pricing_tier_is_not_standard"
   id: "819d50fd-1cdf-45c3-9936-be408aaad93e"

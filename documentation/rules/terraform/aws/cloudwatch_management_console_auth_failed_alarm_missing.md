@@ -1,5 +1,6 @@
 ---
 title: "CloudWatch Management Console Auth Failed Alarm Missing"
+group-id: "rules/terraform/aws"
 meta:
   name: "aws/cloudwatch_management_console_auth_failed_alarm_missing"
   id: "5864d189-ee9a-4009-ac0c-8a582e6b7919"

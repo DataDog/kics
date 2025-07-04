@@ -1,5 +1,6 @@
 ---
 title: "Legacy Client Certificate Auth Enabled"
+group-id: "rules/terraform/gcp"
 meta:
   name: "gcp/legacy_client_certificate_auth_enabled"
   id: "73fb21a1-b19a-45b1-b648-b47b1678681e"

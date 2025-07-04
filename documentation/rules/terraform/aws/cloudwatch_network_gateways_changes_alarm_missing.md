@@ -1,5 +1,6 @@
 ---
 title: "CloudWatch Network Gateways Changes Alarm Missing"
+group-id: "rules/terraform/aws"
 meta:
   name: "aws/cloudwatch_network_gateways_changes_alarm_missing"
   id: "6b6874fe-4c2f-4eea-8b90-7cceaa4a125e"

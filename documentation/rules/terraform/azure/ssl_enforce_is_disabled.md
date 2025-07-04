@@ -1,5 +1,6 @@
 ---
 title: "SSL Enforce Disabled"
+group-id: "rules/terraform/azure"
 meta:
   name: "azure/ssl_enforce_is_disabled"
   id: "0437633b-daa6-4bbc-8526-c0d2443b946e"

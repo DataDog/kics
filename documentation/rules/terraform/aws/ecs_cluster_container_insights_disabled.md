@@ -1,5 +1,6 @@
 ---
 title: "ECS Cluster with Container Insights Disabled"
+group-id: "rules/terraform/aws"
 meta:
   name: "aws/ecs_cluster_container_insights_disabled"
   id: "97cb0688-369a-4d26-b1f7-86c4c91231bc"

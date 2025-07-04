@@ -1,5 +1,6 @@
 ---
 title: "API Gateway Endpoint Config is Not Private"
+group-id: "rules/terraform/aws"
 meta:
   name: "aws/api_gateway_endpoint_config_is_not_private"
   id: "6b2739db-9c49-4db7-b980-7816e0c248c1"

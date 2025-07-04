@@ -1,5 +1,6 @@
 ---
 title: "S3 Bucket Object Not Encrypted"
+group-id: "rules/terraform/aws"
 meta:
   name: "aws/s3_bucket_object_not_encrypted"
   id: "5fb49a69-8d46-4495-a2f8-9c8c622b2b6e"

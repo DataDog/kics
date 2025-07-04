@@ -1,5 +1,6 @@
 ---
 title: "IAM User Has Too Many Access Keys"
+group-id: "rules/terraform/aws"
 meta:
   name: "aws/iam_user_too_many_access_keys"
   id: "3561130e-9c5f-485b-9e16-2764c82763e5"

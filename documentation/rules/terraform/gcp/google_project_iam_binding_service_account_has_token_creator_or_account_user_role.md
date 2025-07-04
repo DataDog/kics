@@ -1,5 +1,6 @@
 ---
 title: "Google Project IAM Binding Service Account has Token Creator or Account User Role"
+group-id: "rules/terraform/gcp"
 meta:
   name: "gcp/google_project_iam_binding_service_account_has_token_creator_or_account_user_role"
   id: "617ef6ff-711e-4bd7-94ae-e965911b1b40"

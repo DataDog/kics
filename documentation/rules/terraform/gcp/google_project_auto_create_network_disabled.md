@@ -1,5 +1,6 @@
 ---
 title: "Google Project Auto Create Network Disabled"
+group-id: "rules/terraform/gcp"
 meta:
   name: "gcp/google_project_auto_create_network_disabled"
   id: "59571246-3f62-4965-a96f-c7d97e269351"

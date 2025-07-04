@@ -1,5 +1,6 @@
 ---
 title: "Azure App Service Client Certificate Disabled"
+group-id: "rules/terraform/azure"
 meta:
   name: "azure/azure_app_service_client_certificate_disabled"
   id: "a81573f9-3691-4d83-88a0-7d4af63e17a3"

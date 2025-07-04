@@ -1,5 +1,6 @@
 ---
 title: "SSO Identity User Unsafe Creation"
+group-id: "rules/terraform/aws"
 meta:
   name: "aws/sso_policy_with_full_priveleges_copy"
   id: "4003118b-046b-4640-b200-b8c7a4c8b89f"

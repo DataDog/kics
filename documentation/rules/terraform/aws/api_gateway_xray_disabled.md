@@ -1,5 +1,6 @@
 ---
 title: "API Gateway X-Ray Disabled"
+group-id: "rules/terraform/aws"
 meta:
   name: "aws/api_gateway_xray_disabled"
   id: "5813ef56-fa94-406a-b35d-977d4a56ff2b"

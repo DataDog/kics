@@ -1,5 +1,6 @@
 ---
 title: "Azure Active Directory Authentication"
+group-id: "rules/terraform/azure"
 meta:
   name: "azure/azure_active_directory_authentication"
   id: "a21c8da9-41bf-40cf-941d-330cf0d11fc7"

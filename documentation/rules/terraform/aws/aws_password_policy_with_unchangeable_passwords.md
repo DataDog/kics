@@ -1,5 +1,6 @@
 ---
 title: "AWS Password Policy With Unchangeable Passwords"
+group-id: "rules/terraform/aws"
 meta:
   name: "aws/aws_password_policy_with_unchangeable_passwords"
   id: "9ef7d25d-9764-4224-9968-fa321c56ef76"

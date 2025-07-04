@@ -1,5 +1,6 @@
 ---
 title: "IAM User Policy Without MFA"
+group-id: "rules/terraform/aws"
 meta:
   name: "aws/iam_user_policy_without_mfa"
   id: "b5681959-6c09-4f55-b42b-c40fa12d03ec"

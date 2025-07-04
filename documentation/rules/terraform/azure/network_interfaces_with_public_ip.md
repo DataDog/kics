@@ -1,5 +1,6 @@
 ---
 title: "Network Interfaces With Public IP"
+group-id: "rules/terraform/azure"
 meta:
   name: "azure/network_interfaces_with_public_ip"
   id: "c1573577-e494-4417-8854-7e119368dc8b"

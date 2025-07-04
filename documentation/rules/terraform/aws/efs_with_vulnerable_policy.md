@@ -1,5 +1,6 @@
 ---
 title: "EFS With Vulnerable Policy"
+group-id: "rules/terraform/aws"
 meta:
   name: "aws/efs_with_vulnerable_policy"
   id: "fae52418-bb8b-4ac2-b287-0b9082d6a3fd"

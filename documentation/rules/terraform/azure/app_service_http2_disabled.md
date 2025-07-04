@@ -1,5 +1,6 @@
 ---
 title: "App Service HTTP2 Disabled"
+group-id: "rules/terraform/azure"
 meta:
   name: "azure/app_service_http2_disabled"
   id: "525b53be-62ed-4244-b4df-41aecfcb4071"

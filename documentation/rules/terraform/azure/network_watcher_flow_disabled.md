@@ -1,5 +1,6 @@
 ---
 title: "Network Watcher Flow Disabled"
+group-id: "rules/terraform/azure"
 meta:
   name: "azure/network_watcher_flow_disabled"
   id: "b90842e5-6779-44d4-9760-972f4c03ba1c"

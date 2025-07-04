@@ -1,5 +1,6 @@
 ---
 title: "S3 Bucket Without Versioning"
+group-id: "rules/terraform/aws"
 meta:
   name: "aws/s3_bucket_without_versioning"
   id: "568a4d22-3517-44a6-a7ad-6a7eed88722c"

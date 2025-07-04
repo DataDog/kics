@@ -1,5 +1,6 @@
 ---
 title: "PostgreSQL Log Checkpoints Disabled"
+group-id: "rules/terraform/azure"
 meta:
   name: "azure/postgresql_log_checkpoints_disabled"
   id: "3790d386-be81-4dcf-9850-eaa7df6c10d9"

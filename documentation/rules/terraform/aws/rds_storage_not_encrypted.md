@@ -1,5 +1,6 @@
 ---
 title: "RDS Storage Not Encrypted"
+group-id: "rules/terraform/aws"
 meta:
   name: "aws/rds_storage_not_encrypted"
   id: "3199c26c-7871-4cb3-99c2-10a59244ce7f"

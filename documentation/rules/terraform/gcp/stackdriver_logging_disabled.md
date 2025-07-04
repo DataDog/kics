@@ -1,5 +1,6 @@
 ---
 title: "Stackdriver Logging Disabled"
+group-id: "rules/terraform/gcp"
 meta:
   name: "gcp/stackdriver_logging_disabled"
   id: "4c7ebcb2-eae2-461e-bc83-456ee2d4f694"

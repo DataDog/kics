@@ -1,5 +1,6 @@
 ---
 title: "Group With Privilege Escalation By Actions 'iam:SetDefaultPolicyVersion'"
+group-id: "rules/terraform/aws"
 meta:
   name: "aws/group_with_privilege_escalation_by_actions_iam_SetDefaultPolicyVersion"
   id: "7782d4b3-e23e-432b-9742-d9528432e771"
