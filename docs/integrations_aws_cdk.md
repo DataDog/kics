@@ -1,1 +1,0 @@
-For more details check [here](https://www.npmjs.com/package/@checkmarx/cdk-validator-kics).
