@@ -97,8 +97,8 @@ const (
 	// Fullname - KICS fullname
 	Fullname = "Keeping Infrastructure as Code Secure"
 
-	// URL - KICS url
-	URL = "https://www.kics.io/"
+	// URL - DD Docs url
+	URL = "https://docs.datadoghq.com/security/code_security/iac_security/"
 
 	// DefaultLogFile - logfile name
 	DefaultLogFile = "info.log"
