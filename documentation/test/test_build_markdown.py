@@ -38,5 +38,3 @@ class TestBuildMarkdown:
                 else:
                     assert markdown.find(value.upper()) > 0
             mock_snippets.assert_called_once()
-
-        
