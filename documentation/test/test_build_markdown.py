@@ -3,16 +3,17 @@ import local_gen
 from unittest.mock import patch
 from pathlib import Path
 
+
 class TestBuildMarkdown:
-    
+
     @pytest.fixture
     def test_rule_path(self):
         return Path("/test")
-    
+
     @pytest.fixture
     def test_string(self):
         return "test"
-    
+
     @pytest.fixture
     def test_metadata(self):
         return {
@@ -24,7 +25,7 @@ class TestBuildMarkdown:
             "descriptionText": "mockDescriptionText",
             "descriptionUrl": "mockDescriptionUrl"
         }
-    
+
     @pytest.fixture
     def test_code_snippets(self):
         return "compliant", "non-compliant"

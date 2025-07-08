@@ -31,10 +31,10 @@ def read_file_contents(filepath):
 def get_code_snippets(test_dir, resource_type, max_examples):
     compliant, non_compliant = [], []
     for tf_file in islice(glob.iglob(str(test_dir / "negative*.tf")), max_examples):
-        if (code := read_file_contents(tf_file).replace('```', '\\`\\`\\`')):
+        if (code := read_file_contents(tf_file).replace("```", "\\`\\`\\`")):
             compliant.append(f"```{resource_type}\n{code}\n```")
     for tf_file in islice(glob.iglob(str(test_dir / "positive*.tf")), max_examples):
-        if (code := read_file_contents(tf_file).replace('```', '\\`\\`\\`')):
+        if (code := read_file_contents(tf_file).replace("```", "\\`\\`\\`")):
             non_compliant.append(f"```{resource_type}\n{code}\n```")
     return compliant, non_compliant
 
@@ -128,7 +128,7 @@ def process_provider(provider, resource_type, input_dir, output_dir, max_example
         except Exception as e:
             print(f"Failed to parse metadata for {rule_dir}: {e}")
             continue
-        
+
         rule_name = rule_dir.name
         rule_desc = metadata.get("queryName", NO_DESC)
         if rule_desc == NO_DESC:
@@ -170,7 +170,7 @@ def main():
 
     list_json_data = []
     dict_yaml_data = {"rules":{}}
-    
+
     for resource_type, providers in resource_type_dict.items():
         resource_path = input_dir / resource_type
         if not resource_path.is_dir():
