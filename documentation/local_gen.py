@@ -31,10 +31,10 @@ def read_file_contents(filepath):
 def get_code_snippets(test_dir, resource_type, max_examples):
     compliant, non_compliant = [], []
     for tf_file in islice(glob.iglob(str(test_dir / "negative*.tf")), max_examples):
-        if (code := read_file_contents(tf_file).replace('```', '\\`\\`\\`')):
+        if (code := read_file_contents(tf_file).replace("```", "\\`\\`\\`")):
             compliant.append(f"```{resource_type}\n{code}\n```")
     for tf_file in islice(glob.iglob(str(test_dir / "positive*.tf")), max_examples):
-        if (code := read_file_contents(tf_file).replace('```', '\\`\\`\\`')):
+        if (code := read_file_contents(tf_file).replace("```", "\\`\\`\\`")):
             non_compliant.append(f"```{resource_type}\n{code}\n```")
     return compliant, non_compliant
 
@@ -95,7 +95,7 @@ def process_provider(provider, resource_type, input_dir, output_dir, max_example
     provider_path = input_dir / resource_type / provider
     if not provider_path.is_dir():
         print(f"Warning: Missing provider path: {provider_path}")
-        return
+        return 0
 
     output_provider_path = output_dir / resource_type / provider
     output_provider_path.mkdir(parents=True, exist_ok=True)
@@ -147,6 +147,7 @@ def process_provider(provider, resource_type, input_dir, output_dir, max_example
 
     provider_entry["rules"].sort(key=lambda r: r["name"])
     list_json_data.append(provider_entry)
+    return 1
 
 def main():
     args = parse_args()
@@ -164,7 +165,7 @@ def main():
 
     list_json_data = []
     dict_yaml_data = {"rules":{}}
-    
+
     for resource_type, providers in resource_type_dict.items():
         resource_path = input_dir / resource_type
         if not resource_path.is_dir():
