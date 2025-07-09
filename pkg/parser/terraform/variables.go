@@ -81,18 +81,43 @@ func getInputVariablesFromFile(filename string) (converter.VariableMap, error) {
 	// if err != nil {
 	// 	return nil, err
 	// }
+	variables := make(converter.VariableMap)
 
 	attrs := parsedFile.Body.(*hclsyntax.Body).Attributes
-	variables := make(converter.VariableMap)
 	for name, attr := range attrs {
 		value, _ := attr.Expr.Value(&hcl.EvalContext{})
 		variables[name] = value
 	}
+
+	for _, block := range parsedFile.Body.(*hclsyntax.Body).Blocks {
+		if block.Type == "locals" {
+			// If the block is a locals block, we need to get the attributes inside it
+			block_attrs := block.Body.Attributes
+			for name, block_attr := range block_attrs {
+				value, _ := block_attr.Expr.Value(&hcl.EvalContext{})
+				variables[name] = value
+			}
+		}
+	}
 	return variables, nil
+}
+
+func sanitizeCtyMap(in map[string]cty.Value) map[string]cty.Value {
+	out := make(map[string]cty.Value)
+	for k, v := range in {
+		if !v.IsKnown() || v.IsNull() {
+			// default to empty string or another valid fallback
+			out[k] = cty.NullVal(v.Type())
+			continue
+		}
+		out[k] = v
+	}
+	return out
 }
 
 func getInputVariables(currentPath, fileContent, terraformVarsPath string) {
 	variablesMap := make(converter.VariableMap)
+	localsMap := make(converter.VariableMap)
 	tfFiles, err := filepath.Glob(filepath.Join(currentPath, "*.tf"))
 	if err != nil {
 		log.Error().Msg("Error getting .tf files")
@@ -158,17 +183,47 @@ func getInputVariables(currentPath, fileContent, terraformVarsPath string) {
 		}
 	}
 
-	// check if variables.tf file exists in the current path
-	_, err = os.Stat(filepath.Join(currentPath, "variables.tf"))
-	if err == nil {
-		variables, errInputVariables := getInputVariablesFromFile(filepath.Join(currentPath, "variables.tf"))
+	// check if variables.tf or variable.tf file exists in the current path
+	var foundVarFile string
+	for _, fname := range []string{"variables.tf", "variable.tf"} {
+		path := filepath.Join(currentPath, fname)
+		if _, err := os.Stat(path); err == nil {
+			foundVarFile = path
+			break
+		}
+	}
+
+	if foundVarFile != "" {
+		variables, errInputVariables := getInputVariablesFromFile(foundVarFile)
 		if errInputVariables != nil {
-			log.Error().Msgf("Error getting values from %s: %v", filepath.Join(currentPath, "variables.tf"), errInputVariables)
+			log.Error().Msgf("Error getting values from %s: %v", foundVarFile, errInputVariables)
 			log.Err(errInputVariables)
 		} else {
 			mergeMaps(variablesMap, variables)
 		}
 	}
+	cleanVars := sanitizeCtyMap(variablesMap)
+	inputVariableMap["var"] = cty.ObjectVal(cleanVars)
 
-	inputVariableMap["var"] = cty.ObjectVal(variablesMap)
+	// check if @locals.tf or locals.tf file exists in the current path
+	for _, fname := range []string{"@locals.tf", "locals.tf"} {
+		path := filepath.Join(currentPath, fname)
+		if _, err := os.Stat(path); err == nil {
+			foundVarFile = path
+			break
+		}
+	}
+
+	if foundVarFile != "" {
+		variables, errInputVariables := getInputVariablesFromFile(foundVarFile)
+		if errInputVariables != nil {
+			log.Error().Msgf("Error getting values from %s: %v", foundVarFile, errInputVariables)
+			log.Err(errInputVariables)
+		} else {
+			mergeMaps(localsMap, variables)
+		}
+	}
+	cleanLocals := sanitizeCtyMap(localsMap)
+	inputVariableMap["local"] = cty.ObjectVal(cleanLocals)
+
 }
