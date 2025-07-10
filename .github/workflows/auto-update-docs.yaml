@@ -1,0 +1,66 @@
+name: Run Python Script and Create PR
+permissions:
+  contents: write
+  pull-requests: write
+  
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - assets/queries/**
+
+jobs:
+  run-script-and-pr:
+    runs-on: ubuntu-latest
+    env:
+      BRANCH_NAME: auto-gen-${{ github.run_id }} 
+
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 #V4.2.2
+
+      - name: Set up Python
+        uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 #V5.6.0
+        with:
+          python-version: '3.10'
+          cache: 'pip'
+
+      - name: Install Dependencies 
+        run: pip install -r documentation/requirements.txt
+
+      - name: Checkout to new branch
+        run: git checkout -b ${{ env.BRANCH_NAME }}
+      
+      - name: Push branch
+        run: git push origin ${{ env.BRANCH_NAME }}
+
+      - name: Run Python script
+        run: python documentation/local_gen.py assets/queries/ --resources-json "documentation/resources.json" --output-dir "documentation/rules" --list-json "documentation/list.json" --frontmatter-yaml "documentation/frontmatter.yaml"
+
+      - name: Commit changes
+        uses: iarekylew00t/verified-bot-commit@2a9d9e983e611793b54516a18e48361bbac691d9 #V1.4.1
+        with:
+          message: 'feat: Some changes'
+          files: |
+            **
+          ref: "heads/${{ env.BRANCH_NAME }}"
+
+      - name: Create pull request and get URL
+        id: create_pr
+        run: |
+          PR_URL=$(gh pr create -B main -H "${{ env.BRANCH_NAME }}" --title 'Update docs' --body 'Created by Github action')
+          echo "pr_url=$PR_URL" >> "$GITHUB_OUTPUT"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Send GitHub Action data to a Slack workflow
+        uses: slackapi/slack-github-action@b0fa283ad8fea605de13dc3f449259339835fc52 #V2.1.0
+        with:
+          webhook: ${{ secrets.SLACK_WEBHOOK_URL }}
+          webhook-type: webhook-trigger
+          payload: |
+            {
+              "PR_url": "${{ steps.create_pr.outputs.pr_url }}"
+            }
