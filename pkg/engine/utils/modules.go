@@ -20,6 +20,7 @@ import (
 
 type ParsedModule struct {
 	Name           string
+	AbsSource      string
 	Source         string
 	Version        string
 	IsLocal        bool
@@ -118,8 +119,8 @@ func ParseTerraformModules(files model.FileMetadatas) (map[string]ParsedModule, 
 					if mod.IsLocal {
 						// Normalize relative path to absolute
 						absPath := filepath.Join(baseDir, strings.TrimPrefix(resolved, "file://"))
-						mod.Source = filepath.Clean(absPath)
-						err := ValidateModuleSource(mod.Source)
+						mod.AbsSource = filepath.Clean(absPath)
+						err := ValidateModuleSource(mod.AbsSource)
 						if err != nil {
 							log.Warn().Msgf("Invalid local module source %q: %v", mod.Source, err)
 							continue
@@ -380,7 +381,7 @@ func ParseAllModuleVariables(modules map[string]ParsedModule, rootDir string) []
 					output <- ModuleParseResult{Module: mod}
 					continue
 				}
-				modulePath := ResolveModulePath(mod.Source, rootDir)
+				modulePath := ResolveModulePath(mod.AbsSource, rootDir)
 
 				attributesData, err := generateEquivalentMap(modulePath)
 				if err != nil {
