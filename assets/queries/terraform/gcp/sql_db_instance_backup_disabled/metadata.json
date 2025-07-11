@@ -1,6 +1,6 @@
 {
   "id": "cf3c7631-cd1e-42f3-8801-a561214a6e79",
-  "queryName": "SQL DB Instance Backup Disabled",
+  "queryName": "SQL DB instance backup disabled",
   "severity": "MEDIUM",
   "category": "Backup",
   "descriptionText": "This check verifies whether automated backups are enabled for all Google Cloud SQL database instances by ensuring the `backup_configuration` block has the `enabled = true` attribute. Without automated backups, as shown below:\n\n```\nsettings {\n    backup_configuration {\n        enabled = false\n    }\n}\n```\n\nor if the `backup_configuration` block is missing, databases are at risk of unrecoverable data loss in case of accidental deletion, corruption, or other failures. Enabling backups like this:\n\n```\nsettings {\n    backup_configuration {\n        enabled = true\n    }\n}\n```\n\nensures that point-in-time recovery is possible and critical business data can be restored when needed.",

@@ -1,6 +1,6 @@
 {
   "id": "d6cabc3a-d57e-48c2-b341-bf3dd4f4a120",
-  "queryName": "Cloud Storage Bucket Logging Not Enabled",
+  "queryName": "Cloud Storage bucket logging not enabled",
   "severity": "MEDIUM",
   "category": "Observability",
   "descriptionText": "Cloud storage buckets should have logging enabled to capture access and usage data for auditing and monitoring purposes. If the `logging` block is not configured in the Terraform resource, such as  \n\n```\nresource \"google_storage_bucket\" \"auto_expiring_bucket\" {\n  name          = \"auto-expiring-bucket\"\n  location      = \"US\"\n  force_destroy = true\n\n  logging {\n    logBucket = \"example-logs-bucket\"\n  }\n\n  lifecycle_rule {\n    condition {\n      age = 3\n    }\n    action {\n      type = \"Delete\"\n    }\n  }\n}\n```\n\naccess to and modifications of storage objects may go unnoticed, making it difficult to detect unauthorized activities or investigate security incidents. Enabling logging helps improve visibility into data access and can aid in compliance efforts.",
