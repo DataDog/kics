@@ -22,6 +22,7 @@ import (
 	"github.com/Checkmarx/kics/pkg/detector/helm"
 	"github.com/Checkmarx/kics/pkg/detector/terraform"
 	"github.com/Checkmarx/kics/pkg/engine/source"
+	"github.com/Checkmarx/kics/pkg/engine/utils"
 	"github.com/Checkmarx/kics/pkg/model"
 	"github.com/hashicorp/hcl/v2"
 	"github.com/hashicorp/hcl/v2/hclsyntax"
@@ -233,11 +234,12 @@ func (c *Inspector) createInspectionJobs(jobs chan<- InspectionJob, queries []mo
 // This function performs an inspection job and sends the result to the results channel
 func (c *Inspector) performInspection(ctx context.Context, scanID string, files model.FileMetadatas,
 	astPayload ast.Value, baseScanPaths []string, currentQuery chan<- int64,
-	jobs <-chan InspectionJob, results chan<- QueryResult, queries []model.QueryMetadata) {
+	jobs <-chan InspectionJob, results chan<- QueryResult, queries []model.QueryMetadata,
+	modules []utils.ParsedModule) {
 	for job := range jobs {
 		currentQuery <- 1
 
-		queryOpa, err := c.QueryLoader.LoadQuery(ctx, &queries[job.queryID])
+		queryOpa, err := c.QueryLoader.LoadQuery(ctx, &queries[job.queryID], modules)
 		if err != nil {
 			continue
 		}
@@ -276,6 +278,17 @@ func (c *Inspector) Inspect(
 
 	var vulnerabilities []model.Vulnerability
 	vulnerabilities = make([]model.Vulnerability, 0)
+
+	// Step 1: Parse Terraform modules
+	parsedModules, err := utils.ParseTerraformModules(files)
+	if err != nil {
+		log.Warn().Err(err).Msg("Failed to parse Terraform modules")
+	}
+
+	// Step 2: Enrich modules with parsed variables
+	rootDir := "." // or infer from files.RootDir, etc.
+	enrichedModules := utils.ParseAllModuleVariables(parsedModules, rootDir)
+
 	var p interface{}
 
 	payload, err := json.Marshal(combinedFiles)
@@ -310,7 +323,7 @@ func (c *Inspector) Inspect(
 		go func() {
 			// Decrement the counter when the goroutine completes
 			defer wg.Done()
-			c.performInspection(ctx, scanID, files, astPayload, baseScanPaths, currentQuery, jobs, results, queries)
+			c.performInspection(ctx, scanID, files, astPayload, baseScanPaths, currentQuery, jobs, results, queries, enrichedModules)
 		}()
 	}
 	// Start a goroutine to create inspection jobs
@@ -633,7 +646,7 @@ func prepareQueries(queries []model.QueryMetadata, commonLibrary source.RegoLibr
 }
 
 // LoadQuery loads the query into memory so it can be freed when not used anymore
-func (q QueryLoader) LoadQuery(ctx context.Context, query *model.QueryMetadata) (*rego.PreparedEvalQuery, error) {
+func (q QueryLoader) LoadQuery(ctx context.Context, query *model.QueryMetadata, modules []utils.ParsedModule) (*rego.PreparedEvalQuery, error) {
 	opaQuery := rego.PreparedEvalQuery{}
 
 	platformGeneralQuery, ok := q.platformLibraries[query.Platform]
@@ -652,6 +665,10 @@ func (q QueryLoader) LoadQuery(ctx context.Context, query *model.QueryMetadata) 
 		mergedInputData, err = source.MergeInputData(q.commonLibrary.LibraryInputData, mergedInputData)
 		if err != nil {
 			log.Debug().Msg("Could not merge common library input data")
+		}
+		mergedInputData, err = source.MergeModulesData(modules, mergedInputData)
+		if err != nil {
+			log.Debug().Msg("Could not merge modules input data")
 		}
 		store := inmem.NewFromReader(bytes.NewBufferString(mergedInputData))
 		opaQuery, err = rego.New(
