@@ -3,7 +3,7 @@
   "queryName": "S3 bucket with all permissions",
   "severity": "CRITICAL",
   "category": "Access Control",
-  "descriptionText": "When an S3 bucket policy allows all actions ('s3:*') to all principals ('*'), it creates a severe security vulnerability by exposing your data to unauthorized access, modification, and deletion by anyone on the internet. Instead of using overly permissive policies like 's3:*', implement the principle of least privilege by granting only specific permissions (e.g., 's3:putObject') that are required for legitimate operations. For example, replace insecure configurations like 'Action': ['s3:*'] with more restrictive ones such as 'Action': ['s3:putObject'] to ensure your S3 buckets remain protected while still enabling necessary functionality.",
+  "descriptionText": "When an S3 bucket policy allows all actions (`s3:*`) to all principals (`*`), it creates a severe security vulnerability by exposing your data to unauthorized access, modification, and deletion by anyone on the internet. Instead of using overly permissive policies like `s3:*`, implement the principle of least privilege by granting only specific permissions (e.g., `s3:putObject`) that are required for legitimate operations. For example, replace insecure configurations like `Action`: [`s3:*`] with more restrictive ones such as `Action`: [`s3:putObject`] to ensure your S3 buckets remain protected while still enabling necessary functionality.",
   "descriptionUrl": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket",
   "platform": "Terraform",
   "descriptionID": "aec8fae9",
