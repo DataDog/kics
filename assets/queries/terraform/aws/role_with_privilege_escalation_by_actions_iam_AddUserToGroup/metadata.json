@@ -1,6 +1,6 @@
 {
   "id": "b8a31292-509d-4b61-bc40-13b167db7e9c",
-  "queryName": "Role With Privilege Escalation By Actions 'iam:AddUserToGroup'",
+  "queryName": "Role with privilege escalation by actions 'iam:AddUserToGroup'",
   "severity": "MEDIUM",
   "category": "Access Control",
   "descriptionText": "Granting the `iam:AddUserToGroup` action with a `Resource` value of `\"*\"` in an IAM role—such as in the example below—allows any user or role assigned this policy to add themselves or any user to any IAM group in the account.\n\n```\nresource \"aws_iam_role_policy\" \"test_inline_policy\" {\n  ...\n  policy = jsonencode({\n    ...\n    Statement = [\n      {\n        Action = [\n          \"iam:AddUserToGroup\",\n        ]\n        Effect   = \"Allow\"\n        Resource = \"*\"\n      },\n    ]\n  })\n}\n```\n\nThis configuration creates a privilege escalation risk, as users may gain unauthorized permissions by adding themselves to groups with higher privileges, potentially leading to account compromise. Limiting both the allowed action and narrowing the resources by specifying particular group ARNs greatly reduces this attack surface.",

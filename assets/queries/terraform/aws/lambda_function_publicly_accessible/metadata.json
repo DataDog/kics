@@ -1,6 +1,6 @@
 {
   "id": "1btsf2f9-af8c-4dfc-a0f1-a03adb70deb2",
-  "queryName": "Lambda Function Publicly Accessible",
+  "queryName": "Lambda function publicly accessible",
   "severity": "HIGH",
   "category": "Access Control",
   "descriptionText": "AWS Lambda permissions with a principal value of '*' allow any AWS account or user to invoke the function, making it publicly accessible. This creates a significant security risk as unauthorized parties can trigger your Lambda function, potentially accessing sensitive data or consuming your AWS resources. To secure Lambda functions, specify the exact AWS account ARN in the principal field (e.g., 'arn:aws:iam::123456789012:root') rather than using the wildcard '*'. Compare the secure configuration:\n```\nprincipal = \"arn:aws:iam::123456789012:root\"\n```\nversus the insecure configuration:\n```\nprincipal = \"*\"\n```",

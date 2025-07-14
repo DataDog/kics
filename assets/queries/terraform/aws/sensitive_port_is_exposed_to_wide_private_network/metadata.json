@@ -1,6 +1,6 @@
 {
   "id": "92fe237e-074c-4262-81a4-2077acb928c1",
-  "queryName": "Sensitive Port Is Exposed To Wide Private Network",
+  "queryName": "Sensitive port is exposed to wide private network",
   "severity": "LOW",
   "category": "Networking and Firewall",
   "descriptionText": "Leaving sensitive ports such as port 23 (Telnet) or port 110 (POP3) open to a wide private network via insecure security group rules can expose resources to unnecessary risk, as these ports are frequently targeted by attackers seeking to exploit legacy or weakly protected protocols. In Terraform, a misconfiguration like:\n\n```\ningress {\n  from_port   = 23\n  to_port     = 23\n  protocol    = \"tcp\"\n  cidr_blocks = [\"10.0.0.0/8\"]\n}\n```\n\nmakes internal resources within the VPC accessible to all hosts in the private address range, greatly increasing the attack surface if any host in that range is compromised. Restricting access to only necessary subnets and ports—for example, using\n\n```\ningress {\n  from_port   = 2383\n  to_port     = 2383\n  protocol    = \"tcp\"\n  cidr_blocks = [aws_vpc.main.cidr_block]\n}\n```\n\n—significantly reduces the risk of lateral movement and unauthorized access within your network.",

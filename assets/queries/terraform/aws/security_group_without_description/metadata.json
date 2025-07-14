@@ -1,6 +1,6 @@
 {
   "id": "cb3f5ed6-0d18-40de-a93d-b3538db31e8c",
-  "queryName": "Security Group Rule Without Description",
+  "queryName": "Security group rule without description",
   "severity": "INFO",
   "category": "Best Practices",
   "descriptionText": "It is a best practice for AWS Security Groups to include a meaningful `description` attribute in their Terraform configuration, as in:\n\n```\ndescription = \"Allow TLS inbound traffic\"\n```\n\nOmitting the description field, as shown below,\n\n```\nresource \"aws_security_group\" \"allow_tls\" {\n  name   = \"allow_tls\"\n  vpc_id = aws_vpc.main.id\n  // missing description\n  ...\n}\n```\n\ncan lead to confusion and hinder effective management or auditing of security groups, especially in environments with many resources. Without clear descriptions, security teams may struggle to quickly identify the purpose of a group, increasing the risk of misconfigurations and delayed incident response.",

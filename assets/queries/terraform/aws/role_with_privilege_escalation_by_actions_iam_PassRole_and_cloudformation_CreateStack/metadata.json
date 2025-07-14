@@ -1,6 +1,6 @@
 {
   "id": "be2aa235-bd93-4b68-978a-1cc65d49082f",
-  "queryName": "Role With Privilege Escalation By Actions 'cloudformation:CreateStack' And 'iam:PassRole'",
+  "queryName": "Role with privilege escalation by actions 'cloudformation:CreateStack' and 'iam:PassRole'",
   "severity": "MEDIUM",
   "category": "Access Control",
   "descriptionText": "Granting an IAM role permissions for both `cloudformation:CreateStack` and `iam:PassRole` actions with the resource set to `\"*\"` allows users with this role to launch CloudFormation stacks that assume any IAM role in the account, leading to privilege escalation. This vulnerability means an attacker could potentially create resources with elevated privileges or gain full administrative access to the AWS environment. To mitigate this, avoid assigning overly permissive policies; restrict `iam:PassRole` and `cloudformation:CreateStack` to only trusted roles and explicitly specify the allowed resource ARNs in the policy's `Resource` attribute.",

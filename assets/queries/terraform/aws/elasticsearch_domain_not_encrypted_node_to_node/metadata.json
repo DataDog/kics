@@ -1,6 +1,6 @@
 {
   "id": "967eb3e6-26fc-497d-8895-6428beb6e8e2",
-  "queryName": "Elasticsearch Domain Not Encrypted Node To Node",
+  "queryName": "Elasticsearch domain not encrypted node to node",
   "severity": "MEDIUM",
   "category": "Encryption",
   "descriptionText": "Enabling node-to-node encryption for an Elasticsearch domain ensures that data transferred between nodes in the Elasticsearch cluster is securely encrypted, preventing unauthorized access to data in transit. Without this configuration, as in the example where the `node_to_node_encryption` block is omitted, sensitive data could be intercepted by attackers during communication between cluster nodes. The secure configuration requires adding the block:\n\n```\nnode_to_node_encryption {\n  enabled = true\n}\n```\n\nensuring that all internal communications within the cluster are encrypted and reducing the risk of data exposure.",
