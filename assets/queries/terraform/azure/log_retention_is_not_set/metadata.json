@@ -1,6 +1,6 @@
 {
   "id": "ffb02aca-0d12-475e-b77c-a726f7aeff4b",
-  "queryName": "Log Retention Is Not Set",
+  "queryName": "Log retention is not set",
   "severity": "MEDIUM",
   "category": "Observability",
   "descriptionText": "The `log_retention` server parameter in Azure PostgreSQL determines whether database logs are retained, which is essential for auditing and troubleshooting purposes. If this parameter is set to `OFF` as shown below, log data will not be persisted, potentially hindering investigations into security incidents or operational issues:\n\n```\nresource \"azurerm_postgresql_configuration\" \"example\" {\n    name                = \"log_retention\"\n    resource_group_name = data.azurerm_resource_group.example.name\n    server_name         = azurerm_postgresql_server.example.name\n    value               = \"OFF\"\n}\n```\n\nTo address this, ensure that `log_retention` is set to `ON`, as in the configuration below, so that important logs are retained and available for review:\n\n```\nresource \"azurerm_postgresql_configuration\" \"example\" {\n    name                = \"log_retention\"\n    resource_group_name = data.azurerm_resource_group.example.name\n    server_name         = azurerm_postgresql_server.example.name\n    value               = \"ON\"\n}\n```\n\nFailing to enable log retention can result in loss of critical data needed for compliance, monitoring, and incident response.",

@@ -1,6 +1,6 @@
 {
   "id": "61c3cb8b-0715-47e4-b788-86dde40dd2db",
-  "queryName": "Dashboard Is Enabled",
+  "queryName": "Dashboard is enabled",
   "severity": "LOW",
   "category": "Insecure Configurations",
   "descriptionText": "This check verifies if the Kubernetes Dashboard add-on is enabled in the cluster configuration by examining the `addon_profile` block and specifically whether `kube_dashboard { enabled = true }` has been set. Enabling the Kubernetes Dashboard can expose sensitive cluster information and administrative controls via a web interface, increasing the risk of unauthorized access if not properly secured or restricted. For better security, the dashboard should be disabled by setting `enabled = false`:\n\n```\naddon_profile {\n  kube_dashboard {\n    enabled = false\n  }\n}\n```\nThis reduces the potential attack surface and protects against possible privilege escalation or data exposure vulnerabilities.",
