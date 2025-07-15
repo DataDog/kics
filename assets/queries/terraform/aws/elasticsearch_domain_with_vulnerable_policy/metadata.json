@@ -3,7 +3,7 @@
   "queryName": "Elasticsearch domain with vulnerable policy",
   "severity": "MEDIUM",
   "category": "Access Control",
-  "descriptionText": "When configuring an `aws_elasticsearch_domain_policy`, using a wildcard (`*`) for the `Action` and `Principal` fields—such as `\"Action\": \"es:*\"` and `\"Principal\": \"*\"`—grants unrestricted access to the Elasticsearch domain, allowing any identity to perform any action. This broad permission model introduces a significant security vulnerability, as it may expose sensitive data and allow unauthorized users to modify or delete resources. To mitigate this risk, explicitly define trusted principals and limit actions using specific permissions in the policy document.",
+  "descriptionText": "Using a wildcard (`*`) for both `Action` and `Principal` in an `aws_elasticsearch_domain_policy`—such as `\"Action\": \"es:*\"` and `\"Principal\": \"*\"`—grants unrestricted access to the Elasticsearch domain, allowing any identity to perform any action. This broad permission model introduces a significant security vulnerability, as it may expose sensitive data and allow unauthorized users to modify or delete resources. To mitigate this risk, explicitly define trusted principals and limit actions using specific permissions in the policy document.",
   "descriptionUrl": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/elasticsearch_domain_policy#access_policies",
   "platform": "Terraform",
   "descriptionID": "265f06df",
