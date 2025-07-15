@@ -17,4 +17,5 @@ class Coordinator:
                 old_snippet = self.codeProcessor.read_snippet(rule)
                 new_snippet = self.rulesGenerator.send_request(old_snippet)
                 self.codeProcessor.write_snippet(rule, new_snippet)
+                print(f"Generated module support for {rule.name}!")
                 bar()
