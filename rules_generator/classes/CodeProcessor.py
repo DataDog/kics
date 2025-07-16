@@ -22,3 +22,8 @@ class CodeProcessor:
 
     def write_snippet(self, path: Path, snippet: str) -> None:
         self.__write_file(path / "query.rego", snippet)
+
+    def write_terraform_files(self, path: Path, snippets: str) -> None:
+        snippets_list = snippets.split("#####")
+        self.__write_file(path / "positive_module.tf", snippets_list[0].strip())
+        self.__write_file(path / "negative_module.tf", snippets_list[1].strip())

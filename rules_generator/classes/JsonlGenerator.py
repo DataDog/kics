@@ -49,7 +49,7 @@ class JsonlGenerator:
                 )
         return snippets
 
-    def __create_snippet_and_terraforms_structure(self):
+    def __create_snippet_and_terraforms_structure(self) -> List[Dict[str, str]]:
         couples = []
         standard_path = Path("module_support/queries/terraform/aws")
         if not (standard_path.is_dir()):
@@ -91,7 +91,7 @@ class JsonlGenerator:
             system_message,
         )
 
-    def write_terraform_jsonl(self):
+    def write_terraform_jsonl(self) -> str:
         system_message = """You're an expert writing Rego and also in Terraform and its module support. When provided with a Rego file about a Terraform infrastructure, create examples tf files using the related module.
     Answer with a positive example that will trigger the rule, one new line, "#####", a second new line and a negative example that won't trigger the rule."""
         return self.__write_jsonl_from_couples(

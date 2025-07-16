@@ -1,7 +1,19 @@
+import argparse
+from pathlib import Path
+
 from classes.CodeProcessor import CodeProcessor
 from classes.RulesGenerator import RulesGenerator
 from classes.JsonlGenerator import JsonlGenerator
 from classes.Coordinator import Coordinator
+
+
+def parse_args():
+    parser = argparse.ArgumentParser(
+        description="Generate module support and terraform examples from existing rules"
+    )
+    parser.add_argument("generation", type=str, help="Which function to call")
+    parser.add_argument("path", type=str, help="Path")
+    return parser.parse_args()
 
 
 def generate_new_rules(path: str):
@@ -10,39 +22,14 @@ def generate_new_rules(path: str):
     coordinator.generate_new_rules(path)
 
 
-def get_new_rule():
+def get_new_rule(path: str) -> str:
     rulesGenerator = RulesGenerator()
     codeProcessor = CodeProcessor()
 
-    snippet = codeProcessor.__read_snippet(
-        "assets/queries/terraform/aws/alb_is_not_integrated_with_waf"
-    )
-    new_rule = rulesGenerator.send_request(snippet)
+    snippet = codeProcessor.read_snippet(path)
+    new_rule = rulesGenerator.send_rule_request(snippet)
 
     return new_rule
-
-
-def write_example_jsonl():
-    jsonlGenerator = JsonlGenerator()
-
-    snippets = []
-    couple_1 = {
-        "no_modules": """Line 1.1.1 with "double quoted string"
-        Line 1.1.2""",
-        "modules": """Line 1.2.1
-        Line 1.2.2""",
-    }
-    couple_2 = {
-        "no_modules": """Line 2.1.1
-        Line 2.1.2""",
-        "modules": """Line 2.2.1
-        Line 2.2.2""",
-    }
-    snippets.append(couple_1)
-    snippets.append(couple_2)
-
-    s = jsonlGenerator.__write_jsonl(snippets)
-    print(s)
 
 
 def write_definitive_module_jsonl():
@@ -56,4 +43,14 @@ def write_definitive_terraforms_jsonl():
 
 
 if __name__ == "__main__":
-    print(write_definitive_terraforms_jsonl())
+    args = parse_args()
+    asked = args.generation
+    path = args.path
+    if asked == "generate_new_rules":
+        generate_new_rules(path)
+    elif asked == "get_new_rule":
+        print(get_new_rule(path))
+    elif asked == "write_definitive_module_jsonl":
+        print(write_definitive_module_jsonl())
+    elif asked == "write_definitive_terraforms_jsonl":
+        print(write_definitive_terraforms_jsonl())
