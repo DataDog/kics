@@ -1,9 +1,9 @@
 {
   "id": "45fc717a-bd86-415c-bdd8-677901be1aa6",
-  "queryName": "Function App Not Using Latest TLS Encryption Version",
+  "queryName": "Function App not using latest TLS encryption version",
   "severity": "MEDIUM",
   "category": "Encryption",
-  "descriptionText": "Azure Function Apps should be configured to use the latest supported TLS version to ensure encrypted communications and protect data in transit. If the `min_tls_version` attribute is set to an outdated value such as `1.1`, as in:\n\n```\nsite_config {\n  min_tls_version = 1.1\n}\n```\n\nthe application becomes susceptible to known TLS vulnerabilities and exploits. Setting `min_tls_version` to at least `1.2`, as in\n\n```\nsite_config {\n  min_tls_version = 1.2\n}\n```\n\nmitigates these risks and enforces stronger secure connections with clients.",
+  "descriptionText": "Azure Function Apps should be configured to use the latest supported TLS version to ensure encrypted communications and protect data in transit. If the `min_tls_version` attribute is set to an outdated value such as `1.1`, as shown below, the application becomes susceptible to known TLS vulnerabilities and exploits:\n\n```\nsite_config {\n  min_tls_version = 1.1\n}\n```\n\nTo mitigate these risks and enforce stronger secure connections with clients, set `min_tls_version` to at least `1.2`, as shown here:\n\n```\nsite_config {\n  min_tls_version = 1.2\n}\n```\n\n",
   "descriptionUrl": "https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/function_app#min_tls_version",
   "platform": "Terraform",
   "descriptionID": "69753abf",

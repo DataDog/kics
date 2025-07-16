@@ -1,6 +1,6 @@
 {
   "id": "9bb3c639-5edf-458c-8ee5-30c17c7d671d",
-  "queryName": "Function App Client Certificates Unrequired",
+  "queryName": "Function App client certificates not required",
   "severity": "MEDIUM",
   "category": "Insecure Configurations",
   "descriptionText": "Azure Function Apps should require client certificates for incoming requests by setting the `client_cert_mode` attribute to `\"Required\"`. Without this setting, as seen below, the Function App allows unauthenticated traffic, increasing the risk of unauthorized access to sensitive business logic or data processed by the Function App:\n\n```\nresource \"azurerm_function_app\" \"example\" {\n  // ... other configuration ...\n  client_cert_mode = \"Required\"\n}\n```\n\nEnforcing client certificate authentication ensures that only trusted clients can interact with the Function App, reducing the attack surface and protecting against various unauthorized access vectors.",
