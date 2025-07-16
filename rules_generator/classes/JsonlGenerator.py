@@ -23,10 +23,12 @@ class JsonlGenerator:
 
         return json.dumps(json_string)
 
-    def __write_jsonl_from_snippets(self, snippets: List[Dict[str, str]]) -> str:
+    def __write_jsonl_from_couples(
+        self, couples: List[Dict[str, str]], key1: str, key2: str
+    ) -> str:
         s = ""
-        for couple in snippets:
-            s += self.__write_json(couple["no_modules"], couple["modules"]) + "\n"
+        for couple in couples:
+            s += self.__write_json(couple[key1], couple[key2]) + "\n"
         return s
 
     def __create_no_module_and_module_structure(self) -> List[Dict[str, str]]:
@@ -47,7 +49,29 @@ class JsonlGenerator:
                 )
         return snippets
 
-    def write_jsonl(self) -> str:
-        return self.__write_jsonl_from_snippets(
-            self.__create_no_module_and_module_structure()
+    def __create_snippet_and_terraforms_structure(self):
+        couples = []
+        standard_path = Path("assets/queries/terraform/aws")
+        for rule_path in (standard_path).iterdir():
+            with (
+                open(rule_path / "test/positive1.tf", "r") as f_positive,
+                open(rule_path / "test/negative1.tf") as f_negative,
+                open(rule_path / "query.rego") as f_rule,
+            ):
+                couples.append(
+                    {
+                        "rule": f_rule.read(),
+                        "terraforms": f"{f_positive.read()}\n#####\n{f_negative.read()}",
+                    }
+                )
+        return couples
+
+    def write_module_jsonl(self) -> str:
+        return self.__write_jsonl_from_couples(
+            self.__create_no_module_and_module_structure(), "no_modules", "modules"
+        )
+
+    def write_terraform_jsonl(self):
+        return self.__write_jsonl_from_couples(
+            self.__create_snippet_and_terraforms_structure(), "rule", "terraforms"
         )

@@ -45,10 +45,15 @@ def write_example_jsonl():
     print(s)
 
 
-def write_definitive_jsonl():
+def write_definitive_module_jsonl():
     jsonlGenerator = JsonlGenerator("")
-    return jsonlGenerator.write_jsonl_from_path()
+    return jsonlGenerator.write_module_jsonl()
+
+
+def write_definitive_terraforms_jsonl():
+    jsonlGenerator = JsonlGenerator("")
+    return jsonlGenerator.write_terraform_jsonl()
 
 
 if __name__ == "__main__":
-    generate_new_rules("assets/queries/terraform/aws")
+    print(write_definitive_terraforms_jsonl())
