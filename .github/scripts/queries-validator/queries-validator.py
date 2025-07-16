@@ -67,6 +67,7 @@ def validate_queries_metadata(queries):
 
     with open("metadata-schema.json") as fileSchema:
         schema = json.load(fileSchema)
+        print(schema)
         for i, query in enumerate(queries):
             print('[{}] Validating "{}" ...'.format(i, query))
 
