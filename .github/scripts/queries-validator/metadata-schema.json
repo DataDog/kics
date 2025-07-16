@@ -1,6 +1,6 @@
 {
     "type": "object",
-    "additionalProperties": false,
+    "additionalProperties": true,
     "definitions": {
         "query_id_pattern": {
             "type": "string",
@@ -86,12 +86,6 @@
             ]
         },
         "descriptionText": {
-            "$ref": "#/definitions/description_text_pattern",
-            "type": "string",
-            "minLength": 1,
-            "maxLength" : 500
-        },
-        "oldDescriptionText": {
             "$ref": "#/definitions/description_text_pattern",
             "type": "string",
             "minLength": 1,
