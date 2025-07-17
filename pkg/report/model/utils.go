@@ -62,6 +62,10 @@ func GetResourceNameTag(resourceName string) string {
 	return fmt.Sprintf(resourceNameTag, resourceName)
 }
 
+func GetScannedFilesCountTag(scannedFiles int) string {
+	return fmt.Sprintf(scannedFileCountTag, scannedFiles)
+}
+
 // stringToHash returns a SHA256 hash of the input string.
 func StringToHash(str string) string {
 	hash := sha256.New()
