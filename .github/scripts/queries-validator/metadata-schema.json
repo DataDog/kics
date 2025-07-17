@@ -1,6 +1,6 @@
 {
     "type": "object",
-    "additionalProperties": false,
+    "additionalProperties": true,
     "definitions": {
         "query_id_pattern": {
             "type": "string",
@@ -138,11 +138,11 @@
         },
         "override": {
             "type": "object",
-            "additionalProperties": false,
+            "additionalProperties": true,
             "patternProperties": {
                 "^\\d[\\.\\d]+$": {
                     "type": "object",
-                    "additionalProperties": false,
+                    "additionalProperties": true,
                     "required": [
                         "id",
                         "queryName",
