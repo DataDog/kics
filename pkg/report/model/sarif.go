@@ -235,6 +235,7 @@ const (
 	executionTimeTag         = "DATADOG_EXECUTION_TIME_SECS:%v"
 	ruleTypeProperty         = "DATADOG_RULE_TYPE:IAC_SCANNING"
 	categoryTag              = "DATADOG_CATEGORY:%s"
+	scannedFileCountTag      = "DATADOG_SCANNED_FILE_COUNT:%d"
 )
 
 func initSarifTool() sarifTool {
@@ -748,9 +749,10 @@ func (sr *sarifReport) AddTags(summary *model.Summary, diffAware *model.DiffAwar
 	}
 	tagsToAppend := []string{}
 	executionTimeTag := GetScanDurationTag(*summary)
+	scannedFileCountTag := GetScannedFilesCountTag(summary.ScannedFiles)
 	diffAwareEnabledTag := GetDiffAwareEnabledTag(*diffAware)
 
-	tagsToAppend = append(tagsToAppend, executionTimeTag, diffAwareEnabledTag)
+	tagsToAppend = append(tagsToAppend, executionTimeTag, scannedFileCountTag, diffAwareEnabledTag)
 
 	if diffAware.Enabled {
 		if diffAware.BaseSha == "" || diffAware.Files == "" || diffAware.ConfigDigest == "" {
