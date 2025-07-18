@@ -1,6 +1,6 @@
 {
   "id": "4beaf898-9f8b-4237-89e2-5ffdc7ee6006",
-  "queryName": "Cloudwatch Security Group Changes Alarm Missing",
+  "queryName": "Cloudwatch security group changes alarm missing",
   "severity": "MEDIUM",
   "category": "Observability",
   "descriptionText": "This check ensures that log metric filters and corresponding alarms are configured to monitor changes to AWS security groups. Without a properly configured alarm referencing the correct log metric filter, security group changes—such as modifications to ingress or egress rules, or the creation and deletion of security groups—may go undetected. This lack of visibility can allow unauthorized or accidental changes that could expose sensitive resources or weaken the security posture of your environment. If left unaddressed, such misconfigurations could result in delayed detection of security incidents, increasing the potential for data breaches or service compromise.",

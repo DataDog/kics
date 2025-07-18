@@ -1,9 +1,9 @@
 {
   "id": "ec28bf61-a474-4dbe-b414-6dd3a067d6f0",
-  "queryName": "Cognito UserPool Without MFA",
+  "queryName": "Cognito user pool without MFA",
   "severity": "LOW",
   "category": "Best Practices",
-  "descriptionText": "AWS Cognito User Pools should have Multi-Factor Authentication (MFA) enabled to enhance the security of user accounts. If the `mfa_configuration` attribute is set to `\"OFF\"` or left undefined, as in \n\n```\nresource \"aws_cognito_user_pool\" \"example\" {\n  mfa_configuration = \"OFF\"\n  // ... other configuration ...\n}\n```\n\nusers are only required to use a single authentication factor, making their accounts more susceptible to unauthorized access if credentials are compromised. Enabling MFA (e.g., `mfa_configuration = \"ON\"` or `\"OPTIONAL\"`) significantly reduces the risk of account takeover by requiring an additional authentication factor.",
+  "descriptionText": "AWS Cognito user pools should have Multi-Factor Authentication (MFA) enabled to enhance the security of user accounts. If the `mfa_configuration` attribute is set to `\"OFF\"` or left undefined, as in the following example, users are only required to use a single authentication factor, making their accounts more susceptible to unauthorized access if credentials are compromised.\n\n```\nresource \"aws_cognito_user_pool\" \"example\" {\n  mfa_configuration = \"OFF\"\n  // ... other configuration ...\n}\n```\n\nEnabling MFA (for example, `mfa_configuration = \"ON\"` or `\"OPTIONAL\"`) significantly reduces the risk of account takeover by requiring an additional authentication factor.",
   "descriptionUrl": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cognito_user_pool",
   "platform": "Terraform",
   "descriptionID": "17f77319",

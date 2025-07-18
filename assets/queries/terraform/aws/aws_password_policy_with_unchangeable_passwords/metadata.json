@@ -1,9 +1,9 @@
 {
   "id": "9ef7d25d-9764-4224-9968-fa321c56ef76",
-  "queryName": "AWS Password Policy With Unchangeable Passwords",
+  "queryName": "AWS password policy with unchangeable passwords",
   "severity": "LOW",
   "category": "Insecure Configurations",
-  "descriptionText": "This check evaluates whether the AWS IAM account password policy allows users to change their own passwords by ensuring the attribute `allow_users_to_change_password` is set to `true`. If this is set to `false`, as in `allow_users_to_change_password = false`, users are prevented from updating their passwords, which can lead to stale or compromised credentials remaining in active use. This increases the risk of unauthorized account access, as users are unable to maintain password hygiene or respond quickly to potential credential exposures.",
+  "descriptionText": "This check evaluates whether the AWS IAM account password policy allows users to change their own passwords by ensuring the attribute `allow_users_to_change_password` is set to `true`. If `allow_users_to_change_password` is set to `false`, users are prevented from updating their passwords, which can lead to stale or compromised credentials remaining in active use. This increases the risk of unauthorized account access, as users are unable to maintain password hygiene or respond quickly to potential credential exposures.",
   "descriptionUrl": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_account_password_policy",
   "platform": "Terraform",
   "descriptionID": "8163d3cf",
