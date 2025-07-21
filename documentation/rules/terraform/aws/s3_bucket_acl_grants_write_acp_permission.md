@@ -1,10 +1,10 @@
 ---
-title: "S3 Bucket ACL Grants WRITE_ACP Permission"
+title: "S3 bucket ACL grants WRITE_ACP permission"
 group-id: "rules/terraform/aws"
 meta:
   name: "aws/s3_bucket_acl_grants_write_acp_permission"
   id: "64a222aa-7793-4e40-915f-4b302c76e4d4"
-  display_name: "S3 Bucket ACL Grants WRITE_ACP Permission"
+  display_name: "S3 bucket ACL grants WRITE_ACP permission"
   cloud_provider: "aws"
   framework: "Terraform"
   severity: "CRITICAL"
@@ -28,7 +28,7 @@ meta:
 
 ### Description
 
- The WRITE_ACP permission on an S3 bucket allows external entities to modify the bucket's Access Control Lists, which could lead to unauthorized access to your data. If exploited, an attacker could grant themselves or others full access to your bucket contents, potentially resulting in data leaks or tampering with critical information. Instead of using WRITE_ACP permissions, you should use 'READ' or 'READ_ACP' as shown in the secure example: `permission = "READ"` or `permission = "READ_ACP"`, avoiding the insecure pattern: `permission = "WRITE_ACP"`.
+ The `WRITE_ACP` permission on an S3 bucket allows external entities to modify the bucket's Access Control Lists, which could lead to unauthorized access to your data. If exploited, an attacker could grant themselves or others full access to your bucket contents, potentially resulting in data leaks or tampering with critical information. Instead of using `WRITE_ACP` permissions, you should use `READ` or `READ_ACP`, as shown in the secure example: `permission = "READ"` or `permission = "READ_ACP"`, avoiding the insecure pattern: `permission = "WRITE_ACP"`.
 
 
 ## Compliant Code Examples

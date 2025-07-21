@@ -1,10 +1,10 @@
 ---
-title: "CloudTrail Log File Validation Disabled"
+title: "CloudTrail log file validation disabled"
 group-id: "rules/terraform/aws"
 meta:
   name: "aws/cloudtrail_log_file_validation_disabled"
   id: "52ffcfa6-6c70-4ea6-8376-d828d3961669"
-  display_name: "CloudTrail Log File Validation Disabled"
+  display_name: "CloudTrail log file validation disabled"
   cloud_provider: "aws"
   framework: "Terraform"
   severity: "LOW"

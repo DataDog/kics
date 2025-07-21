@@ -1,10 +1,10 @@
 ---
-title: "S3 Bucket Allows List Action From All Principals"
+title: "S3 bucket allows list action from all principals"
 group-id: "rules/terraform/aws"
 meta:
   name: "aws/s3_bucket_allows_list_action_from_all_principals"
   id: "66c6f96f-2d9e-417e-a998-9058aeeecd44"
-  display_name: "S3 Bucket Allows List Action From All Principals"
+  display_name: "S3 bucket allows list action from all principals"
   cloud_provider: "aws"
   framework: "Terraform"
   severity: "HIGH"
@@ -28,7 +28,7 @@ meta:
 
 ### Description
 
- When S3 bucket policies allow List actions (such as s3:ListObjects) from all principals ('*'), they create a significant security risk by potentially exposing sensitive data to unauthorized users. This configuration can lead to information disclosure vulnerabilities where private files, folder structures, and metadata become publicly accessible, potentially revealing confidential information or intellectual property. To remediate this issue, either deny the list actions explicitly or restrict them to specific trusted principals and IP addresses. Compare the insecure configuration: `"Effect": "Allow", "Principal": "*", "Action": "s3:ListObjects"` with the secure approach: `"Effect": "Deny", "Action": "s3:*"` with appropriate conditions to limit access.
+ When S3 bucket policies allow List actions (such as `s3:ListObjects`) from all principals (`*`), they create a significant security risk by potentially exposing sensitive data to unauthorized users. This configuration can lead to information disclosure vulnerabilities where private files, folder structures, and metadata become publicly accessible, potentially revealing confidential information or intellectual property. To remediate this issue, either deny the list actions explicitly or restrict them to specific trusted principals and IP addresses. Compare the insecure configuration, `"Effect": "Allow", "Principal": "*", "Action": "s3:ListObjects"`, with the secure approach, `"Effect": "Deny", "Action": "s3:*"`, using appropriate conditions to limit access.
 
 
 ## Compliant Code Examples

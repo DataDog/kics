@@ -1,10 +1,10 @@
 ---
-title: "Storage Table Allows All ACL Permissions"
+title: "Storage table allows all ACL permissions"
 group-id: "rules/terraform/azure"
 meta:
   name: "azure/storage_table_allows_all_acl_permissions"
   id: "3ac3e75c-6374-4a32-8ba0-6ed69bda404e"
-  display_name: "Storage Table Allows All ACL Permissions"
+  display_name: "Storage table allows all ACL permissions"
   cloud_provider: "azure"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -28,7 +28,7 @@ meta:
 
 ### Description
 
- Allowing all ACL (Access Control List) permissions (`rwdl` for read, write, delete, and list) on an Azure Storage Table exposes the resource to excessive access, increasing the risk of unauthorized data modification or deletion. This misconfiguration may lead to data leakage, loss, or manipulation if the credentials are compromised or abused. To enhance security, permissions should be limited to only those operations necessary for the application's function, such as using only `r` for read access:
+ Allowing all Access Control List (ACL) permissions (`rwdl` for read, write, delete, and list) on an Azure storage Table grants overly broad access, increasing the risk of unauthorized data modification or deletion. This misconfiguration may lead to data leakage, loss, or manipulation if the credentials are compromised or abused. To enhance security, permissions should be limited to only those operations necessary for the application's function, such as using only `r` for read access:
 
 ```
 resource "azurerm_storage_table" "table_resource2" {

@@ -1,10 +1,10 @@
 ---
-title: "SQS Policy With Public Access"
+title: "SQS policy with public access"
 group-id: "rules/terraform/aws"
 meta:
   name: "aws/sqs_policy_with_public_access"
   id: "730675f9-52ed-49b6-8ead-0acb5dd7df7f"
-  display_name: "SQS Policy With Public Access"
+  display_name: "SQS policy with public access"
   cloud_provider: "aws"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -28,9 +28,9 @@ meta:
 
 ### Description
 
- This check looks for overly permissive `Action` statements and wildcard `"Principal": "*"` in AWS SQS queue policies, which may grant broad permissions to any user. If left unaddressed, this misconfiguration can allow unauthorized parties to perform any action on the queue, including viewing, deleting, or sending messages, which poses risks such as data leakage or denial of service. To reduce the attack surface, always scope the `Principal` attribute in policy documents to trusted AWS identities instead of using `"*"` or `{"AWS": "*"}`.
+ This check looks for overly permissive `Action` statements and wildcards `"Principal": "*"` in AWS SQS queue policies, which may grant broad permissions to any user. If left unaddressed, this misconfiguration can allow unauthorized parties to perform any action on the queue, including viewing, deleting, or sending messages, which poses risks such as data leakage or denial of service. To reduce the attack surface, always scope the `Principal` attribute in policy documents to trusted AWS identities instead of using `"*"` or `{"AWS": "*"}`.
 
-For example, in an insecure configuration:
+The following is an example of an insecure configuration:
 
 ```
 resource "aws_sqs_queue_policy" "test" {
@@ -48,7 +48,7 @@ EOF
 }
 ```
 
-Use a more restrictive principal in secure configurations:
+A secure configuration uses a more restrictive principal, as shown below:
 
 ```
 resource "aws_sqs_queue_policy" "test" {

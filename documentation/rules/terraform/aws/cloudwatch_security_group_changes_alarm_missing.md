@@ -1,10 +1,10 @@
 ---
-title: "Cloudwatch Security Group Changes Alarm Missing"
+title: "Cloudwatch security group changes alarm missing"
 group-id: "rules/terraform/aws"
 meta:
   name: "aws/cloudwatch_security_group_changes_alarm_missing"
   id: "4beaf898-9f8b-4237-89e2-5ffdc7ee6006"
-  display_name: "Cloudwatch Security Group Changes Alarm Missing"
+  display_name: "Cloudwatch security group changes alarm missing"
   cloud_provider: "aws"
   framework: "Terraform"
   severity: "MEDIUM"

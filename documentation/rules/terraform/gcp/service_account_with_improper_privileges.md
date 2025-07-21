@@ -1,10 +1,10 @@
 ---
-title: "Service Account with Improper Privileges"
+title: "Service account with improper privileges"
 group-id: "rules/terraform/gcp"
 meta:
   name: "gcp/service_account_with_improper_privileges"
   id: "cefdad16-0dd5-4ac5-8ed2-a37502c78672"
-  display_name: "Service Account with Improper Privileges"
+  display_name: "Service account with improper privileges"
   cloud_provider: "gcp"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -28,7 +28,7 @@ meta:
 
 ### Description
 
- Granting a service account excessive privileges such as `roles/admin`, `roles/editor`, `roles/owner`, or any write-level roles can expose the environment to the risk of privilege escalation or unintended modifications. This misconfiguration is seen in Terraform when bindings like:
+ Granting a service account excessive privileges such as `roles/admin`, `roles/editor`, `roles/owner`, or other write-level roles, can expose the environment to the risk of privilege escalation or unintended changes.  In Terraform, this misconfiguration appears when a binding like the following is used:
 
 ```
 binding {
@@ -39,7 +39,7 @@ binding {
 }
 ```
 
-are used, allowing the service account broad permissions over resources. Least privilege should be enforced by granting only the required roles, such as in the secure example:
+aThis allows the service account broad permissions across resources. To follow the principle of least privilege, grant only the specific roles required. For example:
 
 ```
 binding {
@@ -50,7 +50,7 @@ binding {
 }
 ```
 
-Failing to restrict service account privileges may allow attackers or compromised services to make unauthorized changes, leading to data exposure or resource compromise.
+Failing to restrict service account privileges can enable attackers or compromised services to make unauthorized changes, potentially leading to data exposure or resource compromise.
 
 
 ## Compliant Code Examples

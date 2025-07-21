@@ -1,10 +1,10 @@
 ---
-title: "ElastiCache Replication Group Not Encrypted At Rest"
+title: "ElastiCache replication group not encrypted at rest"
 group-id: "rules/terraform/aws"
 meta:
   name: "aws/elasticache_replication_group_not_encrypted_at_rest"
   id: "76976de7-c7b1-4f64-a94f-90c1345914c2"
-  display_name: "ElastiCache Replication Group Not Encrypted At Rest"
+  display_name: "ElastiCache replication group not encrypted at rest"
   cloud_provider: "aws"
   framework: "Terraform"
   severity: "HIGH"

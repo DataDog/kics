@@ -1,10 +1,10 @@
 ---
-title: "ElasticSearch Not Encrypted At Rest"
+title: "Elasticsearch not encrypted at rest"
 group-id: "rules/terraform/aws"
 meta:
   name: "aws/elasticsearch_not_encrypted_at_rest"
   id: "24e16922-4330-4e9d-be8a-caa90299466a"
-  display_name: "ElasticSearch Not Encrypted At Rest"
+  display_name: "Elasticsearch not encrypted at rest"
   cloud_provider: "aws"
   framework: "Terraform"
   severity: "HIGH"
@@ -28,9 +28,9 @@ meta:
 
 ### Description
 
- This check ensures that AWS ElasticSearch domains have encryption at rest enabled, which protects sensitive data stored in ElasticSearch indices from unauthorized access if physical storage is compromised. Without encryption at rest, data stored in ElasticSearch is vulnerable to exposure if someone gains access to the underlying storage media, potentially leading to data breaches and compliance violations.
+ This check ensures that AWS Elasticsearch domains have encryption at rest enabled, which protects sensitive data stored in Elasticsearch indices from unauthorized access if the underlying physical storage is compromised. Without encryption at rest, data stored in Elasticsearch is vulnerable to exposure if someone gains access to the underlying storage media, potentially leading to data breaches and compliance violations.
 
-To properly secure ElasticSearch, you must explicitly configure the encrypt_at_rest block with enabled set to true:
+To properly secure Elasticsearch, you must explicitly configure the encrypt_at_rest block with enabled set to true:
 
 ```
 resource "aws_elasticsearch_domain" "example" {
@@ -43,7 +43,7 @@ resource "aws_elasticsearch_domain" "example" {
 }
 ```
 
-Insecure configurations either omit the encrypt_at_rest block entirely or explicitly set enabled to false.
+Insecure configurations either omit the `encrypt_at_rest` block entirely or explicitly set `enabled` to `false`.
 
 
 ## Compliant Code Examples

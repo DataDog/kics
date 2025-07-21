@@ -1,10 +1,10 @@
 ---
-title: "Role With Privilege Escalation By Actions 'iam:AddUserToGroup'"
+title: "Role with privilege escalation by actions 'iam:AddUserToGroup'"
 group-id: "rules/terraform/aws"
 meta:
   name: "aws/role_with_privilege_escalation_by_actions_iam_AddUserToGroup"
   id: "b8a31292-509d-4b61-bc40-13b167db7e9c"
-  display_name: "Role With Privilege Escalation By Actions 'iam:AddUserToGroup'"
+  display_name: "Role with privilege escalation by actions 'iam:AddUserToGroup'"
   cloud_provider: "aws"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -28,7 +28,7 @@ meta:
 
 ### Description
 
- Granting the `iam:AddUserToGroup` action with a `Resource` value of `"*"` in an IAM role—such as in the example below—allows any user or role assigned this policy to add themselves or any user to any IAM group in the account.
+ Granting the `iam:AddUserToGroup` action with a `Resource` value of `"*"` in an IAM role, such as in the example below, allows any user or role assigned this policy to add themselves or any user to any IAM group in the account.
 
 ```
 resource "aws_iam_role_policy" "test_inline_policy" {

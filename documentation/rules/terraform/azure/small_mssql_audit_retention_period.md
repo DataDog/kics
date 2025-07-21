@@ -1,10 +1,10 @@
 ---
-title: "Small MSSQL Audit Retention Period"
+title: "Small MSSQL audit retention period"
 group-id: "rules/terraform/azure"
 meta:
   name: "azure/small_mssql_audit_retention_period"
   id: "9c301481-e6ec-44f7-8a49-8ec63e2969ea"
-  display_name: "Small MSSQL Audit Retention Period"
+  display_name: "Small MSSQL audit retention period"
   cloud_provider: "azure"
   framework: "Terraform"
   severity: "LOW"
@@ -24,11 +24,11 @@ meta:
 
 #### Learn More
 
- - [Provider Reference](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/mssql_server)
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/azurerm/3.6.0/docs/resources/mysql_server)
 
 ### Description
 
- Auditing logs for Azure MSSQL Servers should be retained for more than 90 days to support monitoring and forensic investigations. When the `retention_in_days` attribute in the `extended_auditing_policy` block is set to a value less than 91, such as:
+ Auditing logs for Azure MSSQL Servers should be retained for more than 90 days to support monitoring and forensic investigations. When the `retention_in_days` attribute in the `extended_auditing_policy` block is set to a value less than 91, as shown below, important event logs may be deleted too soon, increasing the risk of missing or incomplete audit trails in the event of a breach or regulatory review.
 
 ```
 extended_auditing_policy {
@@ -37,7 +37,7 @@ extended_auditing_policy {
 }
 ```
 
-important event logs may be deleted too soon, increasing the risk of missing or incomplete audit trails in the event of a breach or regulatory review. A secure configuration sets `retention_in_days` to 91 or higher, for example:
+ A secure configuration sets `retention_in_days` to 91 or higher. For example:
 
 ```
 extended_auditing_policy {

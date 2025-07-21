@@ -1,10 +1,10 @@
 ---
-title: "MariaDB Server Geo-redundant Backup Disabled"
+title: "MariaDB server geo-redundant backup disabled"
 group-id: "rules/terraform/azure"
 meta:
   name: "azure/mariadb_server_georedundant_backup_disabled"
   id: "0a70d5f3-1ecd-4c8e-9292-928fc9a8c4f1"
-  display_name: "MariaDB Server Geo-redundant Backup Disabled"
+  display_name: "MariaDB server geo-redundant backup disabled"
   cloud_provider: "azure"
   framework: "Terraform"
   severity: "LOW"
@@ -24,7 +24,7 @@ meta:
 
 #### Learn More
 
- - [Provider Reference](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/mariadb_server#geo_redundant_backup_enabled)
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/azurerm/3.6.0/docs/resources/mariadb_server#geo_redundant_backup_enabled-3)
 
 ### Description
 

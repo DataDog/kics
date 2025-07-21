@@ -1,10 +1,10 @@
 ---
-title: "Launch Configuration Is Not Encrypted"
+title: "Launch configuration is not encrypted"
 group-id: "rules/terraform/aws"
 meta:
   name: "aws/launch_configuration_is_not_encrypted"
   id: "4de9de27-254e-424f-bd70-4c1e95790838"
-  display_name: "Launch Configuration Is Not Encrypted"
+  display_name: "Launch configuration is not encrypted"
   cloud_provider: "aws"
   framework: "Terraform"
   severity: "HIGH"
@@ -28,7 +28,7 @@ meta:
 
 ### Description
 
- AWS Launch Configurations with unencrypted EBS volumes expose sensitive data to potential unauthorized access if the physical storage is compromised or the volume is improperly decommissioned. When data is stored unencrypted, it could allow attackers who gain access to the raw storage to extract sensitive information without needing additional credentials. To properly secure your data, always set the 'encrypted' parameter to true in all block device configurations as shown below:
+ AWS Launch Configurations with unencrypted EBS volumes expose sensitive data to potential unauthorized access if the physical storage is compromised or the volume is improperly decommissioned. When data is stored unencrypted, it could allow attackers who gain access to the raw storage to extract sensitive information without needing additional credentials. To properly secure your data, always set the `encrypted` parameter to true in all block device configurations, as shown below:
 
 ```hcl
 ebs_block_device {
@@ -37,7 +37,7 @@ ebs_block_device {
 }
 ```
 
-Rather than the vulnerable configuration:
+The following is an example of a vulnerable configuration:
 
 ```hcl
 ebs_block_device {

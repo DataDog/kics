@@ -1,10 +1,10 @@
 ---
-title: "Small MSSQL Server Audit Retention"
+title: "Small MSSQL server audit retention"
 group-id: "rules/terraform/azure"
 meta:
   name: "azure/small_msql_server_audit_retention"
   id: "59acb56b-2b10-4c2c-ba38-f2223c3f5cfc"
-  display_name: "Small MSSQL Server Audit Retention"
+  display_name: "Small MSSQL server audit retention"
   cloud_provider: "azure"
   framework: "Terraform"
   severity: "LOW"

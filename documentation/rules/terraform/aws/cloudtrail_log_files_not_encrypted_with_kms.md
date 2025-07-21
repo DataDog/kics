@@ -1,10 +1,10 @@
 ---
-title: "CloudTrail Log Files Not Encrypted With KMS"
+title: "CloudTrail log files not encrypted with KMS"
 group-id: "rules/terraform/aws"
 meta:
   name: "aws/cloudtrail_log_files_not_encrypted_with_kms"
   id: "5d9e3164-9265-470c-9a10-57ae454ac0c7"
-  display_name: "CloudTrail Log Files Not Encrypted With KMS"
+  display_name: "CloudTrail log files not encrypted with KMS"
   cloud_provider: "aws"
   framework: "Terraform"
   severity: "LOW"
@@ -28,7 +28,7 @@ meta:
 
 ### Description
 
- CloudTrail logs contain sensitive information about account activity and should be protected from unauthorized access. If the `kms_key_id` attribute is not specified in the `aws_cloudtrail` resource block, as shown in:
+ CloudTrail logs contain sensitive information about account activity and should be protected from unauthorized access. If the `kms_key_id` attribute is not specified in the `aws_cloudtrail` resource block, as shown below, then the logs stored in S3 are not encrypted with a customer-managed KMS key, leaving them vulnerable to exposure or tampering:
 
 ```
 resource "aws_cloudtrail" "positive1" {
@@ -37,7 +37,7 @@ resource "aws_cloudtrail" "positive1" {
 }
 ```
 
-then the logs stored in S3 are not encrypted with a customer-managed KMS key, leaving them vulnerable to exposure or tampering. Using the `kms_key_id` attribute, as in:
+Using the `kms_key_id` attribute, as in the example below, ensures that the logs are protected with strong encryption, reducing the risk of unauthorized access and helping meet compliance requirements:
 
 ```
 resource "aws_cloudtrail" "negative1" {
@@ -47,7 +47,7 @@ resource "aws_cloudtrail" "negative1" {
 }
 ```
 
-ensures that the logs are protected with strong encryption, reducing the risk of unauthorized access and helping meet compliance requirements.
+
 
 
 ## Compliant Code Examples

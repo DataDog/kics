@@ -1,10 +1,10 @@
 ---
-title: "Role With Privilege Escalation By Actions 'iam:CreateAccessKey'"
+title: "Role with privilege escalation by actions 'iam:CreateAccessKey'"
 group-id: "rules/terraform/aws"
 meta:
   name: "aws/role_with_privilege_escalation_by_actions_iam_CreateAccessKey"
   id: "5b4d4aee-ac94-4810-9611-833636e5916d"
-  display_name: "Role With Privilege Escalation By Actions 'iam:CreateAccessKey'"
+  display_name: "Role with privilege escalation by actions 'iam:CreateAccessKey'"
   cloud_provider: "aws"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -30,7 +30,7 @@ meta:
 
  Allowing the `iam:CreateAccessKey` action on all resources (i.e., with `Resource = "*"`) in an IAM role policy is a privilege escalation risk. This configuration enables any principal with access to this role to create new access keys for any IAM user in the AWS account, potentially including users with higher privileges. Attackers or unauthorized users could abuse this permission to generate access keys for privileged users, thereby gaining elevated access to sensitive resources. Failing to restrict this action through more precise resource ARNs or additional conditions greatly increases the risk of account compromise and unauthorized activity. 
 
-In Terraform, an example of the insecure configuration looks like:
+In Terraform, an insecure configuration example looks like the following:
 
 ```
 resource "aws_iam_role_policy" "test_inline_policy" {

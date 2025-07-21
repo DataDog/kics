@@ -1,10 +1,10 @@
 ---
-title: "EC2 Instance Using Default VPC"
+title: "EC2 instance using default VPC"
 group-id: "rules/terraform/aws"
 meta:
   name: "aws/ec2_instance_using_default_vpc"
   id: "7e4a6e76-568d-43ef-8c4e-36dea481bff1"
-  display_name: "EC2 Instance Using Default VPC"
+  display_name: "EC2 instance using default VPC"
   cloud_provider: "aws"
   framework: "Terraform"
   severity: "LOW"
@@ -28,7 +28,7 @@ meta:
 
 ### Description
 
- This check ensures that Amazon EC2 instances are not deployed within the default VPC (`aws_vpc.default`) in AWS environments. Default VPCs are automatically created by AWS and often have broader, pre-configured network permissions and less restrictive security controls, increasing the attack surface and risk of unauthorized access. By explicitly defining and using custom VPCs (e.g., `aws_vpc.main`), organizations can enforce tailored network segmentation and security group rules, reducing the likelihood of exploitation due to overly permissive defaults.
+ This check ensures that Amazon EC2 instances are not deployed within the default VPC (`aws_vpc.default`) in AWS environments. Default VPCs are automatically created by AWS and often have broader, pre-configured network permissions and less restrictive security controls, increasing the attack surface and risk of unauthorized access. By explicitly defining and using custom VPCs (for example, `aws_vpc.main`), organizations can enforce tailored network segmentation and security group rules, reducing the likelihood of exploitation due to overly permissive defaults.
 
 
 ## Compliant Code Examples

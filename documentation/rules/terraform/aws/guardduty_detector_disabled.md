@@ -1,10 +1,10 @@
 ---
-title: "GuardDuty Detector Disabled"
+title: "GuardDuty detector disabled"
 group-id: "rules/terraform/aws"
 meta:
   name: "aws/guardduty_detector_disabled"
   id: "704dadd3-54fc-48ac-b6a0-02f170011473"
-  display_name: "GuardDuty Detector Disabled"
+  display_name: "GuardDuty detector disabled"
   cloud_provider: "aws"
   framework: "Terraform"
   severity: "MEDIUM"

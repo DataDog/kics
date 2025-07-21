@@ -1,10 +1,10 @@
 ---
-title: "Stackdriver Monitoring Disabled"
+title: "Stackdriver Monitoring disabled"
 group-id: "rules/terraform/gcp"
 meta:
   name: "gcp/stackdriver_monitoring_disabled"
   id: "30e8dfd2-3591-4d19-8d11-79e93106c93d"
-  display_name: "Stackdriver Monitoring Disabled"
+  display_name: "Stackdriver Monitoring disabled"
   cloud_provider: "gcp"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -28,9 +28,9 @@ meta:
 
 ### Description
 
- Kubernetes Engine Clusters must have Stackdriver Monitoring enabled by setting the `monitoring_service` attribute to `"monitoring.googleapis.com/kubernetes"` or leaving it undefined, which allows Google Cloud’s default monitoring. Disabling monitoring by setting `monitoring_service = "none"` leaves clusters without visibility into performance, health, or security events, increasing the risk of undetected failures or malicious activity. 
+ Kubernetes Engine clusters must have Stackdriver Monitoring enabled by setting the `monitoring_service` attribute to `"monitoring.googleapis.com/kubernetes"` or leaving it undefined to use the default monitoring. Disabling monitoring by setting `monitoring_service = "none"` removes visibility into cluster performance, health, and security events, increasing the risk of undetected failures or malicious activity. 
 
-Secure configuration should look like:
+A secure configuration should include:
 
 ```
 resource "google_container_cluster" "example" {

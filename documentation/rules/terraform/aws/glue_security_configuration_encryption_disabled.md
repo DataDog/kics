@@ -1,10 +1,10 @@
 ---
-title: "Glue Security Configuration Encryption Disabled"
+title: "Glue security configuration encryption disabled"
 group-id: "rules/terraform/aws"
 meta:
   name: "aws/glue_security_configuration_encryption_disabled"
   id: "ad5b4e97-2850-4adf-be17-1d293e0b85ee"
-  display_name: "Glue Security Configuration Encryption Disabled"
+  display_name: "Glue security configuration encryption disabled"
   cloud_provider: "aws"
   framework: "Terraform"
   severity: "HIGH"

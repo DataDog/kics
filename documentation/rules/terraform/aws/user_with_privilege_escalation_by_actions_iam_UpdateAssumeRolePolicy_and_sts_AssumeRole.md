@@ -1,10 +1,10 @@
 ---
-title: "User With Privilege Escalation By Actions 'iam:UpdateAssumeRolePolicy' And 'sts:AssumeRole'"
+title: "User with privilege escalation by actions 'iam:UpdateAssumeRolePolicy' and 'sts:AssumeRole'"
 group-id: "rules/terraform/aws"
 meta:
   name: "aws/user_with_privilege_escalation_by_actions_iam_UpdateAssumeRolePolicy_and_sts_AssumeRole"
   id: "33627268-1445-4385-988a-318fd9d1a512"
-  display_name: "User With Privilege Escalation By Actions 'iam:UpdateAssumeRolePolicy' And 'sts:AssumeRole'"
+  display_name: "User with privilege escalation by actions 'iam:UpdateAssumeRolePolicy' and 'sts:AssumeRole'"
   cloud_provider: "aws"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -28,7 +28,7 @@ meta:
 
 ### Description
 
- Granting an IAM user permissions to both `iam:UpdateAssumeRolePolicy` and `sts:AssumeRole` with the resource set to `"*"` allows that user to escalate their privileges by modifying the trust policies of IAM roles and then assuming those roles. This configuration effectively enables the user to grant themselves access to any role and associated permissions in the AWS account, bypassing intended security controls. If left unaddressed, this vulnerability could lead to full account compromise, data exfiltration, or malicious activity performed under elevated permissions.
+ Granting an IAM user `iam:UpdateAssumeRolePolicy` and `sts:AssumeRole` permissions with the resource set to `"*"` allows them to escalate their privileges by modifying the trust policies of IAM roles and then assuming those roles. This configuration effectively enables the user to grant themselves access to any role and associated permissions in the AWS account, bypassing intended security controls. If left unaddressed, this vulnerability could lead to full account compromise, data exfiltration, or malicious activity performed under elevated permissions.
 
 
 ## Compliant Code Examples

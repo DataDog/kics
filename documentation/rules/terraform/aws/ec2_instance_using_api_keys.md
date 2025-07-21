@@ -1,10 +1,10 @@
 ---
-title: "EC2 Instance Using API Keys"
+title: "EC2 instance using API keys"
 group-id: "rules/terraform/aws"
 meta:
   name: "aws/ec2_instance_using_api_keys"
   id: "0b93729a-d882-4803-bdc3-ac429a21f158"
-  display_name: "EC2 Instance Using API Keys"
+  display_name: "EC2 instance using API keys"
   cloud_provider: "aws"
   framework: "Terraform"
   severity: "LOW"
@@ -28,7 +28,7 @@ meta:
 
 ### Description
 
- EC2 instances should use IAM roles to be granted access to other AWS services. Storing AWS credentials directly in user data or on the instance, for example with environment variables like `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` as shown below, exposes sensitive credentials to anyone with access to the instance or the AWS console:
+ EC2 instances should use IAM roles to be granted access to other AWS services. Storing AWS credentials directly in user data or on the instance, for example with environment variables such as `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY`, as shown below, exposes sensitive credentials to anyone with access to the instance or the AWS console:
 
 ```
 user_data = <<EOF

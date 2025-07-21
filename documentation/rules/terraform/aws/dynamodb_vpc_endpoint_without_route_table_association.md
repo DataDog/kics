@@ -1,10 +1,10 @@
 ---
-title: "Dynamodb VPC Endpoint Without Route Table Association"
+title: "Dynamodb VPC endpoint without route table association"
 group-id: "rules/terraform/aws"
 meta:
   name: "aws/dynamodb_vpc_endpoint_without_route_table_association"
   id: "0bc534c5-13d1-4353-a7fe-b8665d5c1d7d"
-  display_name: "Dynamodb VPC Endpoint Without Route Table Association"
+  display_name: "Dynamodb VPC endpoint without route table association"
   cloud_provider: "aws"
   framework: "Terraform"
   severity: "LOW"

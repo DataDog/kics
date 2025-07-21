@@ -1,10 +1,10 @@
 ---
-title: "SSH Is Exposed To The Internet"
+title: "SSH is exposed to the Internet"
 group-id: "rules/terraform/azure"
 meta:
   name: "azure/ssh_is_exposed_to_the_internet"
   id: "3e3c175e-aadf-4e2b-a464-3fdac5748d24"
-  display_name: "SSH Is Exposed To The Internet"
+  display_name: "SSH is exposed to the Internet"
   cloud_provider: "azure"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -28,7 +28,7 @@ meta:
 
 ### Description
 
- Allowing inbound access to port 22 (SSH) from any source address (e.g., `source_address_prefix = "*"`, `source_address_prefix = "/0"`, or `source_address_prefix = "internet"`) exposes the server to the public internet, making it highly susceptible to brute force attacks and unauthorized access. If left unaddressed, this misconfiguration significantly increases the risk of remote compromise and could result in full administrative control by attackers. To mitigate this risk, restrict SSH access to specific trusted IP addresses and deny all others, for example:
+ Allowing inbound access to port 22 (SSH) from any source address (for example, `source_address_prefix = "*"`, `source_address_prefix = "/0"`, or `source_address_prefix = "internet"`) exposes the server to the public internet, making it highly susceptible to brute force attacks and unauthorized access. If left unaddressed, this misconfiguration significantly increases the risk of remote compromise and could result in full administrative control by attackers. To mitigate this risk, restrict SSH access to specific trusted IP addresses and deny all others. For example:
 
 ```
 resource "azurerm_network_security_rule" "secure_ssh" {

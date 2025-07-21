@@ -1,10 +1,10 @@
 ---
-title: "Cloudfront Viewer Protocol Policy Allows HTTP"
+title: "Cloudfront viewer protocol policy allows HTTP"
 group-id: "rules/terraform/aws"
 meta:
   name: "aws/cloudfront_viewer_protocol_policy_allows_http"
   id: "55af1353-2f62-4fa0-a8e1-a210ca2708f5"
-  display_name: "Cloudfront Viewer Protocol Policy Allows HTTP"
+  display_name: "Cloudfront viewer protocol policy allows HTTP"
   cloud_provider: "aws"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -28,7 +28,7 @@ meta:
 
 ### Description
 
- This check ensures that the connection between Amazon CloudFront and the viewer is encrypted by verifying the `viewer_protocol_policy` attribute. If set to `allow-all` (e.g., `viewer_protocol_policy = "allow-all"`), CloudFront can serve content over both HTTP and HTTPS, leaving data in transit vulnerable to interception or man-in-the-middle attacks. To address this, the attribute should be set to `https-only` in all cache behaviors (e.g., `viewer_protocol_policy = "https-only"`), ensuring all communications between CloudFront and the end user are encrypted, thus preserving the confidentiality and integrity of the data.
+ This check ensures that the connection between Amazon CloudFront and the viewer is encrypted by verifying the `viewer_protocol_policy` attribute. If set to `allow-all` (for example, `viewer_protocol_policy = "allow-all"`), CloudFront can serve content over both HTTP and HTTPS, leaving data in transit vulnerable to interception or man-in-the-middle attacks. To address this, the attribute should be set to `https-only` in all cache behaviors (for example, `viewer_protocol_policy = "https-only"`), ensuring all communications between CloudFront and the end user are encrypted, thus preserving the confidentiality and integrity of the data.
 
 
 ## Compliant Code Examples

@@ -1,10 +1,10 @@
 ---
-title: "Lambda Permission Misconfigured"
+title: "Lambda permission misconfigured"
 group-id: "rules/terraform/aws"
 meta:
   name: "aws/lambda_permission_misconfigured"
   id: "75ec6890-83af-4bf1-9f16-e83726df0bd0"
-  display_name: "Lambda Permission Misconfigured"
+  display_name: "Lambda permission misconfigured"
   cloud_provider: "aws"
   framework: "Terraform"
   severity: "LOW"
@@ -28,7 +28,7 @@ meta:
 
 ### Description
 
- This check examines the action field in the aws_lambda_permission resource to ensure it is set to "lambda:InvokeFunction". When this field is misconfigured with broader or unintended actions, such as "lambda:DeleteFunction", it grants unnecessary or overly permissive access to the Lambda function. This can allow third-party AWS services or principals to perform destructive or unintended operations on the function, increasing the risk of unauthorized deletion, modification, or misuse. If left unaddressed, this misconfiguration could result in loss of critical business logic, disruption of service, or escalation of privileges within your cloud environment.
+ This check verifies whether the `action` field in the `aws_lambda_permission` resource is set to `"lambda:InvokeFunction"`. When the field is misconfigured to allow actions beyond what is necessary, such as "lambda:DeleteFunction", it grants overly permissive access to the Lambda function. This can enable third-party AWS services or principals to perform destructive or unintended operations on the function, increasing the risk of unauthorized deletion, modification, or misuse. If left unaddressed, this misconfiguration could result in loss of critical business logic, disruption of service, or escalation of privileges within your cloud environment.
 
 
 ## Compliant Code Examples

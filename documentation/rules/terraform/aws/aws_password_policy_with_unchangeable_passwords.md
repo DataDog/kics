@@ -1,10 +1,10 @@
 ---
-title: "AWS Password Policy With Unchangeable Passwords"
+title: "AWS password policy with unchangeable passwords"
 group-id: "rules/terraform/aws"
 meta:
   name: "aws/aws_password_policy_with_unchangeable_passwords"
   id: "9ef7d25d-9764-4224-9968-fa321c56ef76"
-  display_name: "AWS Password Policy With Unchangeable Passwords"
+  display_name: "AWS password policy with unchangeable passwords"
   cloud_provider: "aws"
   framework: "Terraform"
   severity: "LOW"
@@ -28,7 +28,7 @@ meta:
 
 ### Description
 
- This check evaluates whether the AWS IAM account password policy allows users to change their own passwords by ensuring the attribute `allow_users_to_change_password` is set to `true`. If this is set to `false`, as in `allow_users_to_change_password = false`, users are prevented from updating their passwords, which can lead to stale or compromised credentials remaining in active use. This increases the risk of unauthorized account access, as users are unable to maintain password hygiene or respond quickly to potential credential exposures.
+ This check evaluates whether the AWS IAM account password policy allows users to change their own passwords by ensuring the attribute `allow_users_to_change_password` is set to `true`. If `allow_users_to_change_password` is set to `false`, users are prevented from updating their passwords, which can lead to stale or compromised credentials remaining in active use. This increases the risk of unauthorized account access, as users are unable to maintain password hygiene or respond quickly to potential credential exposures.
 
 
 ## Compliant Code Examples

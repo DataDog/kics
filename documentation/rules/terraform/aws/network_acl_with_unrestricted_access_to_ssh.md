@@ -1,10 +1,10 @@
 ---
-title: "Network ACL With Unrestricted Access To SSH"
+title: "Network ACL with unrestricted access to SSH"
 group-id: "rules/terraform/aws"
 meta:
   name: "aws/network_acl_with_unrestricted_access_to_ssh"
   id: "3af7f2fd-06e6-4dab-b996-2912bea19ba4"
-  display_name: "Network ACL With Unrestricted Access To SSH"
+  display_name: "Network ACL with unrestricted access to SSH"
   cloud_provider: "aws"
   framework: "Terraform"
   severity: "MEDIUM"

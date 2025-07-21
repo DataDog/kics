@@ -1,10 +1,10 @@
 ---
-title: "S3 Bucket Allows Public ACL"
+title: "S3 bucket allows public ACL"
 group-id: "rules/terraform/aws"
 meta:
   name: "aws/s3_bucket_allows_public_acl"
   id: "d0cc8694-fcad-43ff-ac86-32331d7e867f"
-  display_name: "S3 Bucket Allows Public ACL"
+  display_name: "S3 bucket allows public ACL"
   cloud_provider: "aws"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -28,7 +28,7 @@ meta:
 
 ### Description
 
- Allowing public ACLs on an S3 bucket (`block_public_acls = false`) in Terraform configurations can expose the bucket and its contents to unauthorized public access, increasing the risk of data leakage or compromise. When public ACLs are permitted, anyone on the internet may be able to read from or write to the bucket, depending on the ACL applied. To mitigate this risk, the attribute `block_public_acls` should be set to `true` in the `aws_s3_bucket_public_access_block` resource, ensuring that public access via ACLs is blocked by default.
+ Allowing public ACLs on an S3 bucket (`block_public_acls = false`) in Terraform configurations can expose the bucket and its contents to unauthorized public access, increasing the risk of data leakage or compromise. When public ACLs are permitted, anyone on the internet may be able to read from or write to the bucket, depending on the ACL applied. To mitigate this risk, the `block_public_acls` attribute should be set to `true` in the `aws_s3_bucket_public_access_block` resource, ensuring that public access via ACLs is blocked by default.
 
 
 ## Compliant Code Examples

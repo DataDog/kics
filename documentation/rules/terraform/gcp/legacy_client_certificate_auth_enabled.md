@@ -1,10 +1,10 @@
 ---
-title: "Legacy Client Certificate Auth Enabled"
+title: "Legacy client certificate auth enabled"
 group-id: "rules/terraform/gcp"
 meta:
   name: "gcp/legacy_client_certificate_auth_enabled"
   id: "73fb21a1-b19a-45b1-b648-b47b1678681e"
-  display_name: "Legacy Client Certificate Auth Enabled"
+  display_name: "Legacy client certificate auth enabled"
   cloud_provider: "gcp"
   framework: "Terraform"
   severity: "LOW"
@@ -28,9 +28,9 @@ meta:
 
 ### Description
 
- Kubernetes clusters in Google Kubernetes Engine (GKE) should use the default OAuth authentication, ensuring that client certificates are not issued for cluster authentication. This is enforced in Terraform by setting `master_auth.client_certificate_config.issue_client_certificate` to `false` or by omitting the attribute entirely. Allowing client certificate issuance (`issue_client_certificate = true`) increases the cluster’s attack surface by enabling users to authenticate with potentially compromised or unmanaged certificates, potentially leading to unauthorized access.
+ Kubernetes clusters in Google Kubernetes Engine (GKE) should use the default OAuth authentication to ensure that client certificates are not issued for cluster authentication. In Terraform, this is enforced by setting `master_auth.client_certificate_config.issue_client_certificate` to `false` or by omitting the attribute entirely. Allowing client certificate issuance (`issue_client_certificate = true`) increases the cluster's attack surface by enabling users to authenticate with potentially compromised or unmanaged certificates, which could lead to unauthorized access.
 
-For a secure configuration, ensure the relevant block in Terraform looks like:
+For a secure configuration, ensure the relevant block in Terraform is configured as shown below or omitted entirely.
 
 ```
 master_auth {
@@ -39,7 +39,6 @@ master_auth {
   }
 }
 ```
-or is simply omitted.
 
 
 ## Compliant Code Examples

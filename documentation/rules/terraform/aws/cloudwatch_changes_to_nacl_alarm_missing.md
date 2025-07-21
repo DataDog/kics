@@ -1,10 +1,10 @@
 ---
-title: "CloudWatch Changes To NACL Alarm Missing"
+title: "CloudWatch changes to NACL alarm missing"
 group-id: "rules/terraform/aws"
 meta:
   name: "aws/cloudwatch_changes_to_nacl_alarm_missing"
   id: "0a8e8dc5-b6fc-44fc-b5a1-969ec950f9b0"
-  display_name: "CloudWatch Changes To NACL Alarm Missing"
+  display_name: "CloudWatch changes to NACL alarm missing"
   cloud_provider: "aws"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -28,7 +28,7 @@ meta:
 
 ### Description
 
- This check ensures that a log metric filter and an associated CloudWatch alarm are configured to monitor changes to AWS Network Access Control Lists (NACLs). Without properly linking the metric alarm to the log metric filter—such as setting the `metric_name` in `aws_cloudwatch_metric_alarm` to the correct filter like `${aws_cloudwatch_log_metric_filter.cis_changes_nacl.id}`—malicious or accidental modifications to NACLs may go undetected, increasing the risk of unauthorized network access or compromised security postures. A secure example is:
+ This check ensures that a log metric filter and an associated CloudWatch alarm are configured to monitor changes to AWS Network Access Control Lists (NACLs). Without properly linking the metric alarm to the log metric filter—such as setting the `metric_name` in `aws_cloudwatch_metric_alarm` to the correct filter like `${aws_cloudwatch_log_metric_filter.cis_changes_nacl.id}`—malicious or accidental modifications to NACLs may go undetected, increasing the risk of unauthorized network access or compromised security postures. The following example ensures the alarm triggers on relevant NACL changes and notifies security teams promptly:
 
 ```
 resource "aws_cloudwatch_metric_alarm" "cis_changes_nacl" {
@@ -37,7 +37,7 @@ resource "aws_cloudwatch_metric_alarm" "cis_changes_nacl" {
 }
 ```
 
-which ensures the alarm triggers on relevant NACL changes and notifies security teams promptly.
+
 
 
 ## Compliant Code Examples

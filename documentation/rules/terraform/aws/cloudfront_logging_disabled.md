@@ -1,10 +1,10 @@
 ---
-title: "CloudFront Logging Disabled"
+title: "CloudFront logging disabled"
 group-id: "rules/terraform/aws"
 meta:
   name: "aws/cloudfront_logging_disabled"
   id: "94690d79-b3b0-43de-b656-84ebef5753e5"
-  display_name: "CloudFront Logging Disabled"
+  display_name: "CloudFront logging disabled"
   cloud_provider: "aws"
   framework: "Terraform"
   severity: "MEDIUM"

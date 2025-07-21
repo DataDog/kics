@@ -1,10 +1,10 @@
 ---
-title: "Unscanned ECR Image"
+title: "Unscanned ECR image"
 group-id: "rules/terraform/aws"
 meta:
   name: "aws/unscanned_ecr_image"
   id: "9630336b-3fed-4096-8173-b9afdfe346a7"
-  display_name: "Unscanned ECR Image"
+  display_name: "Unscanned ECR image"
   cloud_provider: "aws"
   framework: "Terraform"
   severity: "LOW"

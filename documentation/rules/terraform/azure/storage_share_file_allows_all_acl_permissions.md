@@ -1,10 +1,10 @@
 ---
-title: "Storage Share File Allows All ACL Permissions"
+title: "Storage share file allows all ACL permissions"
 group-id: "rules/terraform/azure"
 meta:
   name: "azure/storage_share_file_allows_all_acl_permissions"
   id: "48bbe0fd-57e4-4678-a4a1-119e79c90fc3"
-  display_name: "Storage Share File Allows All ACL Permissions"
+  display_name: "Storage share file allows all ACL permissions"
   cloud_provider: "azure"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -28,7 +28,7 @@ meta:
 
 ### Description
 
- Allowing all ACL (Access Control List) permissions—read (`r`), write (`w`), delete (`d`), and list (`l`)—on an Azure Storage Share File resource exposes the storage share to excessive privileges, increasing the risk of unauthorized access, data leakage, or malicious data manipulation. This misconfiguration could allow any user or process with the relevant access policy to not only read and list files, but also modify or delete important data, potentially leading to service disruption or data loss. To mitigate this risk, permissions should be set following the principle of least privilege; for example, granting only `r` (read) when read-only access is required, as shown below:
+ Allowing all Access Control List (ACL) permissions(`rwdl` for read, write, delete, and list) on an Azure storage file share grants overly broad access, increasing the risk of unauthorized access, data leakage, or malicious data manipulation. This misconfiguration could allow any user or process with the relevant access policy to not only read and list files, but also modify or delete important data, potentially leading to service disruption or data loss. To mitigate this risk, permissions should be set according to the principle of least privilege, For example, grant only `r` (read) permissions when read-only access is required, as shown below:
 
 ```
 resource "azurerm_storage_share" "example" {

@@ -1,10 +1,10 @@
 ---
-title: "SSH Access Is Not Restricted"
+title: "SSH access is not restricted"
 group-id: "rules/terraform/gcp"
 meta:
   name: "gcp/ssh_access_is_not_restricted"
   id: "c4dcdcdf-10dd-4bf4-b4a0-8f6239e6aaa0"
-  display_name: "SSH Access Is Not Restricted"
+  display_name: "SSH access is not restricted"
   cloud_provider: "gcp"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -28,7 +28,7 @@ meta:
 
 ### Description
 
- Allowing SSH access (TCP port 22) from the Internet (such as setting `source_ranges = ["0.0.0.0/0"]` in a `google_compute_firewall` resource) exposes virtual machine instances to potential unauthorized access and brute-force attacks, violating the principle of least privilege. Attackers scanning public IP ranges can exploit this misconfiguration to gain direct access to your systems, increasing the risk of compromise. A secure configuration should restrict SSH access to trusted IP addresses or private networks, as shown below:
+ Allowing SSH access (TCP port 22) from the internet (such as setting `source_ranges = ["0.0.0.0/0"]` in a `google_compute_firewall` resource) exposes virtual machine instances to potential unauthorized access and brute-force attacks, violating the principle of least privilege. Attackers scanning public IP ranges can exploit this misconfiguration to gain direct access to your systems, increasing the risk of compromise. A secure configuration should restrict SSH access to trusted IP addresses or private networks, as shown below:
 
 ```
 resource "google_compute_firewall" "secure_example" {

@@ -1,10 +1,10 @@
 ---
-title: "Configuration Aggregator to All Regions Disabled"
+title: "Configuration aggregator to all regions disabled"
 group-id: "rules/terraform/aws"
 meta:
   name: "aws/config_configuration_aggregator_to_all_regions_disabled"
   id: "ac5a0bc0-a54c-45aa-90c3-15f7703b9132"
-  display_name: "Configuration Aggregator to All Regions Disabled"
+  display_name: "Configuration aggregator to all regions disabled"
   cloud_provider: "aws"
   framework: "Terraform"
   severity: "LOW"

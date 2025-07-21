@@ -1,10 +1,10 @@
 ---
-title: "Small Activity Log Retention Period"
+title: "Small activity log retention period"
 group-id: "rules/terraform/azure"
 meta:
   name: "azure/small_activity_log_retention_period"
   id: "2b856bf9-8e8c-4005-875f-303a8cba3918"
-  display_name: "Small Activity Log Retention Period"
+  display_name: "Small activity log retention period"
   cloud_provider: "azure"
   framework: "Terraform"
   severity: "LOW"
@@ -24,11 +24,11 @@ meta:
 
 #### Learn More
 
- - [Provider Reference](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/monitor_log_profile)
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/azurerm/3.6.0/docs/resources/monitor_log_profile)
 
 ### Description
 
- This check ensures that the `retention_policy.days` attribute for the `azurerm_monitor_log_profile` resource in Terraform is set to 365 days or greater. Insufficient log retention (for example, `days = 7` or leaving the value unset) can result in the loss of valuable activity logs, limiting the ability to investigate incidents or meet audit requirements. To address this, configure the retention policy to at least 365 days as shown below:
+ This check ensures that the `retention_policy.days` attribute for the `azurerm_monitor_log_profile` resource in Terraform is set to 365 days or greater. Insufficient log retention (for example, `days = 7` or leaving the value unset) can result in the loss of valuable activity logs, limiting the ability to investigate incidents or meet audit requirements. To address this, configure the retention policy to at least 365 days, as shown below:
 
 ```
 retention_policy {

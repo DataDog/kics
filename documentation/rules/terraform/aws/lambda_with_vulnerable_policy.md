@@ -1,10 +1,10 @@
 ---
-title: "Lambda With Vulnerable Policy"
+title: "Lambda with vulnerable policy"
 group-id: "rules/terraform/aws"
 meta:
   name: "aws/lambda_with_vulnerable_policy"
   id: "ad9dabc7-7839-4bae-a957-aa9120013f39"
-  display_name: "Lambda With Vulnerable Policy"
+  display_name: "Lambda with vulnerable policy"
   cloud_provider: "aws"
   framework: "Terraform"
   severity: "HIGH"
@@ -28,7 +28,7 @@ meta:
 
 ### Description
 
- AWS Lambda permissions with wildcard actions ('lambda:*') grant excessive privileges that violate the principle of least privilege, potentially allowing unauthorized operations on your Lambda functions. When wildcards are used, principals may execute unintended actions against your functions, leading to potential service disruption or data leakage. Instead of using wildcards like `action = "lambda:*"`, specify only the precise permissions needed, such as `action = "lambda:InvokeFunction"` to ensure proper access controls and reduce the attack surface of your Lambda resources.
+ AWS Lambda permissions with wildcard actions (`lambda:*`) grant excessive privileges that violate the principle of least privilege, potentially allowing unauthorized operations on your Lambda functions. When wildcards are used, principals may execute unintended actions against your functions, leading to potential service disruption or data leakage. Instead of using wildcards like `action = "lambda:*"`, specify only the precise permissions needed, such as `action = "lambda:InvokeFunction"` to ensure proper access controls and reduce the attack surface of your Lambda resources.
 
 
 ## Compliant Code Examples

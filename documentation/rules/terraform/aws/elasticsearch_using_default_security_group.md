@@ -1,10 +1,10 @@
 ---
-title: "Elasticsearch Uses Default Security Group"
+title: "Elasticsearch uses default security group"
 group-id: "rules/terraform/aws"
 meta:
   name: "aws/elasticsearch_using_default_security_group"
   id: "d3e1f5a9-bb45-4c89-b97c-12d34ef56789"
-  display_name: "Elasticsearch Uses Default Security Group"
+  display_name: "Elasticsearch uses default security group"
   cloud_provider: "aws"
   framework: "Terraform"
   severity: "HIGH"
@@ -28,9 +28,9 @@ meta:
 
 ### Description
 
- AWS Elasticsearch and OpenSearch domains should have explicitly assigned security groups rather than using the default security group. When no security group is specified or an empty list is provided, the default security group is automatically assigned, which typically allows broad inbound/outbound traffic within the VPC and potentially exposes the service to unintended access from other resources. This vulnerability could lead to unauthorized access to sensitive data, potential data breaches, or service disruption.
+ AWS Elasticsearch and OpenSearch domains should be assigned explicit security groups instead of relying on the default security group. When no security group is specified or an empty list is provided, the default security group is automatically assigned, which typically allows broad inbound/outbound traffic within the VPC and potentially exposes the service to unintended access from other resources. This vulnerability could lead to unauthorized access to sensitive data, potential data breaches, or service disruption.
 
-To remediate this issue, always specify at least one security group ID in the security_group_ids list:
+To remediate this issue, always specify at least one security group ID in the `security_group_ids` list:
 
 ```
 resource "aws_elasticsearch_domain" "good_example" {

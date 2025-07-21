@@ -1,10 +1,10 @@
 ---
-title: "Vulnerable Default SSL Certificate"
+title: "Vulnerable default SSL certificate"
 group-id: "rules/terraform/aws"
 meta:
   name: "aws/vulnerable_default_ssl_certificate"
   id: "3a1e94df-6847-4c0e-a3b6-6c6af4e128ef"
-  display_name: "Vulnerable Default SSL Certificate"
+  display_name: "Vulnerable default SSL certificate"
   cloud_provider: "aws"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -30,7 +30,7 @@ meta:
 
  CloudFront web distributions should use custom SSL certificates, specified by setting the `viewer_certificate` block with the `acm_certificate_arn` and not the `cloudfront_default_certificate = true` attribute. Relying on the default CloudFront SSL certificate means content is only secured by the default CloudFront domain, which cannot use custom domain names and exposes the distribution to all clients without proper access restrictions. If left unaddressed, this can allow unintended public access and prevent granular control over who can securely access your content via custom domains.
 
-A secure configuration example is:
+A secure configuration example should look like the following:
 
 ```
 viewer_certificate {

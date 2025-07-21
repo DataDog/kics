@@ -1,10 +1,10 @@
 ---
-title: "SSO Policy with full privileges"
+title: "SSO policy with full privileges"
 group-id: "rules/terraform/aws"
 meta:
-  name: "aws/sso_policy_with_full_priveleges"
+  name: "aws/sso_policy_with_full_privileges"
   id: "132a8c31-9837-4203-9fd1-15ca210c7b73"
-  display_name: "SSO Policy with full privileges"
+  display_name: "SSO policy with full privileges"
   cloud_provider: "aws"
   framework: "Terraform"
   severity: "MEDIUM"

@@ -1,10 +1,10 @@
 ---
-title: "SQL Database Audit Disabled"
+title: "SQL database audit disabled"
 group-id: "rules/terraform/azure"
 meta:
   name: "azure/sql_database_audit_disabled"
   id: "83a229ba-483e-47c6-8db7-dc96969bce5a"
-  display_name: "SQL Database Audit Disabled"
+  display_name: "SQL database audit disabled"
   cloud_provider: "azure"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -24,11 +24,11 @@ meta:
 
 #### Learn More
 
- - [Provider Reference](https://www.terraform.io/docs/providers/azurerm/r/sql_database.html)
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/azurerm/3.6.0/docs/resources/sql_database)
 
 ### Description
 
- Enabling 'Threat Detection' for Azure SQL Database helps identify anomalous activities and potential security threats by alerting administrators when suspicious activity is detected. When the `threat_detection_policy` block is set to `state = "Disabled"` or omitted entirely, as in: 
+ Enabling `Threat Detection` for Azure SQL Database helps identify anomalous activities and potential security threats by alerting administrators when suspicious activity is detected. If the threat_detection_policy block is set to `state = "Disabled"` or omitted entirely, as in the following configuration, threat detection will not be active: 
 
 ```
 threat_detection_policy {
@@ -36,7 +36,7 @@ threat_detection_policy {
 }
 ```
 
-threat detection is not active, increasing the risk that unusual access patterns or potential SQL injection attacks go unnoticed, potentially leading to data breaches or data loss. To secure your deployment, ensure `threat_detection_policy` is set to `state = "Enabled"`:
+This increases the risk that unusual access patterns or potential SQL injection attacks go unnoticed, potentially leading to data breaches or data loss. To secure your deployment, configure the `threat_detection_policy` block as follows:
 
 ```
 threat_detection_policy {

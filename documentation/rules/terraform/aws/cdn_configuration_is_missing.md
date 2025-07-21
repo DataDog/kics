@@ -1,10 +1,10 @@
 ---
-title: "CDN Configuration Is Missing"
+title: "CDN configuration is missing"
 group-id: "rules/terraform/aws"
 meta:
   name: "aws/cdn_configuration_is_missing"
   id: "1bc367f6-901d-4870-ad0c-71d79762ef52"
-  display_name: "CDN Configuration Is Missing"
+  display_name: "CDN configuration is missing"
   cloud_provider: "aws"
   framework: "Terraform"
   severity: "LOW"
@@ -28,7 +28,7 @@ meta:
 
 ### Description
 
- A misconfigured AWS CloudFront distribution may have the `enabled` attribute set to `false`, which means the CDN is disabled and will not provide the intended performance, availability, and security benefits. When a CloudFront distribution is not enabled, website traffic is routed directly to the origin, bypassing critical protections such as DDoS mitigation, geo-restriction, and integrated access controls. This exposes the origin servers to higher risk of malicious traffic, information disclosure, or unauthorized access, potentially increasing the attack surface significantly. If this misconfiguration is left unaddressed, organizations lose important layers of defense and optimization for web applications and data, making resources more vulnerable to compromise or service disruption.
+ A misconfigured AWS CloudFront distribution may have the `enabled` attribute set to `false`, which means the CDN is disabled and will not provide the intended performance, availability, and security benefits. When a CloudFront distribution is not enabled, website traffic is routed directly to the origin, bypassing critical protections such as DDoS mitigation, geo-restriction, and integrated access controls. This exposes the origin servers to a higher risk of malicious traffic, information disclosure, or unauthorized access, potentially increasing the attack surface significantly. If this misconfiguration is left unaddressed, organizations lose important layers of defense and optimization for web applications and data, making resources more vulnerable to compromise or service disruption.
 
 
 ## Compliant Code Examples

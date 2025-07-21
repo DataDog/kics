@@ -1,10 +1,10 @@
 ---
-title: "RDS Cluster With Backup Disabled"
+title: "RDS cluster with backup disabled"
 group-id: "rules/terraform/aws"
 meta:
   name: "aws/rds_cluster_with_backup_disabled"
   id: "e542bd46-58c4-4e0f-a52a-1fb4f9548e02"
-  display_name: "RDS Cluster With Backup Disabled"
+  display_name: "RDS cluster with backup disabled"
   cloud_provider: "aws"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -28,7 +28,7 @@ meta:
 
 ### Description
 
- RDS Cluster backup retention period should be specifically defined. When creating an AWS RDS Cluster using Terraform, omitting the `backup_retention_period` parameter allows the database to default to the minimum backup retention, which could be zero or just one day depending on the engine. This short or undefined retention window risks losing the ability to restore data to a specific point in time, potentially resulting in irreversible data loss in the event of accidental deletion, corruption, or ransomware attacks. Explicitly setting a sufficient retention period ensures backups are available for recovery as required by business continuity or compliance requirements.
+ RDS cluster backup retention period should be explicitly defined. When creating an AWS RDS cluster using Terraform, omitting the `backup_retention_period` parameter allows the database to default to the minimum backup retention, which could be zero or just one day depending on the engine. This short or undefined retention window risks losing the ability to restore data to a specific point in time, potentially resulting in irreversible data loss in the event of accidental deletion, corruption, or ransomware attacks. Explicitly setting a sufficient retention period ensures backups are available for recovery as required by business continuity or compliance requirements.
 
 
 ## Compliant Code Examples

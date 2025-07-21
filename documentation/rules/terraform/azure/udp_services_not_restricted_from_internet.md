@@ -1,10 +1,10 @@
 ---
-title: "Ensure that UDP Services are restricted from the Internet"
+title: "Ensure that UDP services are restricted from the Internet"
 group-id: "rules/terraform/azure"
 meta:
   name: "azure/udp_services_not_restricted_from_internet"
   id: "a3b4c5d6-e7f8-9012-3456-7890abcdef12"
-  display_name: "Ensure that UDP Services are restricted from the Internet"
+  display_name: "Ensure that UDP services are restricted from the Internet"
   cloud_provider: "azure"
   framework: "Terraform"
   severity: "HIGH"
@@ -28,7 +28,7 @@ meta:
 
 ### Description
 
- Network Security Group (NSG) rules that allow unrestricted UDP traffic from the internet (0.0.0.0/0) create significant security vulnerabilities in Azure environments. UDP is a connectionless protocol that doesn't provide built-in security controls, making services using it particularly susceptible to DDoS attacks, packet spoofing, and unauthorized access when exposed publicly. Instead of using broad source address prefixes like '0.0.0.0/0', restrict inbound UDP traffic to specific IP ranges or CIDR blocks that require access.
+ Network Security Group (NSG) rules that allow unrestricted UDP traffic from the internet (`0.0.0.0/0`) create significant security vulnerabilities in Azure environments. UDP is a connectionless protocol that doesn't provide built-in security controls, making services using it particularly susceptible to DDoS attacks, packet spoofing, and unauthorized access when exposed publicly. Instead of using broad source address prefixes like `0.0.0.0/0`, restrict inbound UDP traffic to specific IP ranges or CIDR blocks that require access.
 
 Secure example:
 ```

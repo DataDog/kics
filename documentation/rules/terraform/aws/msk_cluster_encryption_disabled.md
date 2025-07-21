@@ -1,10 +1,10 @@
 ---
-title: "MSK Cluster Encryption Disabled"
+title: "MSK cluster encryption disabled"
 group-id: "rules/terraform/aws"
 meta:
   name: "aws/msk_cluster_encryption_disabled"
   id: "6db52fa6-d4da-4608-908a-89f0c59e743e"
-  display_name: "MSK Cluster Encryption Disabled"
+  display_name: "MSK cluster encryption disabled"
   cloud_provider: "aws"
   framework: "Terraform"
   severity: "HIGH"
@@ -28,7 +28,7 @@ meta:
 
 ### Description
 
- Amazon MSK Clusters store sensitive data that should be protected both at rest and in transit through encryption. When encryption is disabled, data may be exposed to unauthorized users during storage or transmission, creating significant security vulnerabilities. To properly secure an MSK cluster, you should specify both encryption_at_rest_kms_key_arn (for data at rest) and encryption_in_transit with client_broker set to 'TLS' and in_cluster set to true (for data in transit). Here's a secure example:
+ Amazon MSK clusters store sensitive data that should be protected both at rest and in transit through encryption. When encryption is disabled, data may be exposed to unauthorized users during storage or transmission, creating significant security vulnerabilities. To properly secure an MSK cluster, specify both `encryption_at_rest_kms_key_arn` (for data at rest) and `encryption_in_transit` with `client_broker` set to `TLS` and in_cluster set to true (for data in transit). The following example demonstrates a secure configuration:
 
 ```terraform
 resource "aws_msk_cluster" "example" {

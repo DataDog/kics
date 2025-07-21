@@ -1,10 +1,10 @@
 ---
-title: "Google Compute Subnetwork with Private Google Access Disabled"
+title: "Google Compute subnetwork with private Google access disabled"
 group-id: "rules/terraform/gcp"
 meta:
   name: "gcp/google_compute_subnetwork_with_private_google_access_disabled"
   id: "ee7b93c1-b3f8-4a3b-9588-146d481814f5"
-  display_name: "Google Compute Subnetwork with Private Google Access Disabled"
+  display_name: "Google Compute subnetwork with private Google access disabled"
   cloud_provider: "gcp"
   framework: "Terraform"
   severity: "LOW"

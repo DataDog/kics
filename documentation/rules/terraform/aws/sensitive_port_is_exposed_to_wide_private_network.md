@@ -1,10 +1,10 @@
 ---
-title: "Sensitive Port Is Exposed To Wide Private Network"
+title: "Sensitive port is exposed to wide private network"
 group-id: "rules/terraform/aws"
 meta:
   name: "aws/sensitive_port_is_exposed_to_wide_private_network"
   id: "92fe237e-074c-4262-81a4-2077acb928c1"
-  display_name: "Sensitive Port Is Exposed To Wide Private Network"
+  display_name: "Sensitive port is exposed to wide private network"
   cloud_provider: "aws"
   framework: "Terraform"
   severity: "LOW"
@@ -28,7 +28,7 @@ meta:
 
 ### Description
 
- Leaving sensitive ports such as port 23 (Telnet) or port 110 (POP3) open to a wide private network via insecure security group rules can expose resources to unnecessary risk, as these ports are frequently targeted by attackers seeking to exploit legacy or weakly protected protocols. In Terraform, a misconfiguration like:
+ Leaving sensitive ports such as port 23 (Telnet) or port 110 (POP3) open to a wide private network via insecure security group rules can expose resources to unnecessary risk, as these ports are frequently targeted by attackers seeking to exploit legacy or weakly protected protocols. In Terraform, a misconfiguration, as in the example below, makes internal resources within the VPC accessible to all hosts in the private address range, greatly increasing the attack surface if any host in that range is compromised. :
 
 ```
 ingress {
@@ -39,7 +39,7 @@ ingress {
 }
 ```
 
-makes internal resources within the VPC accessible to all hosts in the private address range, greatly increasing the attack surface if any host in that range is compromised. Restricting access to only necessary subnets and ports—for example, using
+Restricting access to only necessary subnets and ports significantly reduces the risk of lateral movement and unauthorized access within your network:
 
 ```
 ingress {
@@ -50,7 +50,7 @@ ingress {
 }
 ```
 
-—significantly reduces the risk of lateral movement and unauthorized access within your network.
+
 
 
 ## Compliant Code Examples

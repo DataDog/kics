@@ -1,10 +1,10 @@
 ---
-title: "SQS Queue Exposed"
+title: "SQS queue exposed"
 group-id: "rules/terraform/aws"
 meta:
   name: "aws/sqs_queue_exposed"
   id: "abb06e5f-ef9a-4a99-98c6-376d396bfcdf"
-  display_name: "SQS Queue Exposed"
+  display_name: "SQS queue exposed"
   cloud_provider: "aws"
   framework: "Terraform"
   severity: "HIGH"
@@ -28,7 +28,7 @@ meta:
 
 ### Description
 
- An SQS Queue is considered exposed when its policy allows access from any principal by setting 'Principal' to '*'. This creates a security vulnerability where unauthorized users can send messages to your queue, potentially leading to information disclosure or denial of service attacks.
+ An SQS Queue is considered exposed when its policy allows access from any principal by setting `Principal` to `*`. This creates a security vulnerability where unauthorized users can send messages to your queue, potentially leading to information disclosure or denial of service attacks.
 
 To secure your SQS queue, avoid using wildcard principals in your policy statements. Instead, explicitly specify the ARNs of services or resources that should have access to the queue, as shown in the following secure example:
 

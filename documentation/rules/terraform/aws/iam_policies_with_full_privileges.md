@@ -1,10 +1,10 @@
 ---
-title: "IAM Policies With Full Privileges"
+title: "IAM policies with full privileges"
 group-id: "rules/terraform/aws"
 meta:
   name: "aws/iam_policies_with_full_privileges"
   id: "2f37c4a3-58b9-4afe-8a87-d7f1d2286f84"
-  display_name: "IAM Policies With Full Privileges"
+  display_name: "IAM policies with full privileges"
   cloud_provider: "aws"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -28,7 +28,7 @@ meta:
 
 ### Description
 
- IAM policies should never allow full administrative privileges (for all resources), as this is achieved by setting the `"Action"` to `"*"` and the `"Resource"` to `"*"`, as shown below:
+ IAM policies should never allow full administrative privileges across all resources, which occurs when both `"Action"` and `"Resource"` are set to `"*"`, as shown below:
 
 ```
 "Statement": [

@@ -1,10 +1,10 @@
 ---
-title: "User with IAM Role"
+title: "User with IAM role"
 group-id: "rules/terraform/gcp"
 meta:
   name: "gcp/user_with_iam_role"
   id: "704fcc44-a58f-4af5-82e2-93f2a58ef918"
-  display_name: "User with IAM Role"
+  display_name: "User with IAM role"
   cloud_provider: "gcp"
   framework: "Terraform"
   severity: "LOW"

@@ -1,10 +1,10 @@
 ---
-title: "CosmosDB Account IP Range Filter Not Set"
+title: "CosmosDB account IP range filter not set"
 group-id: "rules/terraform/azure"
 meta:
   name: "azure/cosmosdb_account_ip_range_filter_not_set"
   id: "c2a3efb6-8a58-481c-82f2-bfddf34bb4b7"
-  display_name: "CosmosDB Account IP Range Filter Not Set"
+  display_name: "CosmosDB account IP range filter not set"
   cloud_provider: "azure"
   framework: "Terraform"
   severity: "CRITICAL"
@@ -28,7 +28,7 @@ meta:
 
 ### Description
 
- Azure CosmosDB Account IP Range Filter provides network-level access control for your database by restricting connections to specified IP addresses or ranges. When this filter is not configured, the database is potentially accessible from any IP address, exposing sensitive data to unauthorized access. Setting the 'ip_range_filter' attribute (e.g., 'ip_range_filter = "104.42.195.92"') limits access to only approved network locations, significantly enhancing your database security posture.
+ Azure CosmosDB Account IP range filter provides network-level access control for your database by restricting connections to specified IP addresses or ranges. When this filter is not configured, the database is potentially accessible from any IP address, exposing sensitive data to unauthorized access. Setting the `ip_range_filter` attribute (for example, 'ip_range_filter = "104.42.195.92"') limits access to only approved network locations, significantly enhancing your database security posture.
 
 
 ## Compliant Code Examples

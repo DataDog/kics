@@ -1,10 +1,10 @@
 ---
-title: "High Google KMS Crypto Key Rotation Period"
+title: "High Google KMS crypto key rotation period"
 group-id: "rules/terraform/gcp"
 meta:
   name: "gcp/high_google_kms_crypto_key_rotation_period"
   id: "d8c57c4e-bf6f-4e32-a2bf-8643532de77b"
-  display_name: "High Google KMS Crypto Key Rotation Period"
+  display_name: "High Google KMS crypto key rotation period"
   cloud_provider: "gcp"
   framework: "Terraform"
   severity: "MEDIUM"

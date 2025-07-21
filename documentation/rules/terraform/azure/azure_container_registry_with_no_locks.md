@@ -1,10 +1,10 @@
 ---
-title: "Azure Container Registry With No Locks"
+title: "Azure Container Registry with no locks"
 group-id: "rules/terraform/azure"
 meta:
   name: "azure/azure_container_registry_with_no_locks"
   id: "a187ac47-8163-42ce-8a63-c115236be6fb"
-  display_name: "Azure Container Registry With No Locks"
+  display_name: "Azure Container Registry with no locks"
   cloud_provider: "azure"
   framework: "Terraform"
   severity: "HIGH"
@@ -28,7 +28,7 @@ meta:
 
 ### Description
 
- Azure Container Registry without proper management locks is vulnerable to accidental deletion or modification, which can lead to service disruptions, data loss, and potentially severe business impact. Management locks provide an additional layer of protection by preventing unauthorized or unintended changes to critical resources. To properly secure an Azure Container Registry, ensure the management lock's scope correctly references the container registry resource as shown below:
+ Azure Container Registry without proper management locks is vulnerable to accidental deletion or modification, which can lead to service disruptions, data loss, and potentially severe business impact. Management locks provide an additional layer of protection by preventing unauthorized or unintended changes to critical resources. To properly secure an Azure Container Registry, ensure the management lock's scope correctly references the container registry resource, as shown below:
 
 ```
 resource "azurerm_container_registry" "acr" {

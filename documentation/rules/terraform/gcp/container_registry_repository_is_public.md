@@ -1,10 +1,10 @@
 ---
-title: "Container Registry Repo Is Public"
+title: "Container Registry repo is public"
 group-id: "rules/terraform/gcp"
 meta:
   name: "gcp/container_registry_repository_is_public"
   id: "f6a7b8c9-d0e1-2345-f678-90abcdef1234"
-  display_name: "Container Registry Repo Is Public"
+  display_name: "Container Registry repo is public"
   cloud_provider: "gcp"
   framework: "Terraform"
   severity: "HIGH"
@@ -28,7 +28,7 @@ meta:
 
 ### Description
 
- Allowing public access to Container Registry repositories creates significant security risks by exposing potentially sensitive container images and artifacts to anyone on the internet. When IAM configurations include public principals like 'allUsers' or 'allAuthenticatedUsers', it bypasses access controls and may lead to data exfiltration, intellectual property theft, or deployment of compromised containers. Instead of using public principals (e.g., `member = "allUsers"` or `members = ["allAuthenticatedUsers", ...]`), implement proper access controls by explicitly specifying authorized users and groups, such as `members = ["user:someone@example.com", "group:admins@example.com"]` to ensure only legitimate users can access your container registry resources.
+ Allowing public access to Container Registry repositories creates significant security risks by exposing potentially sensitive container images and artifacts to anyone on the internet. When IAM configurations include public principals such as `allUsers` or `allAuthenticatedUsers`, it bypasses access controls and may lead to data exfiltration, intellectual property theft, or deployment of compromised containers. Instead of using public principals (for example, `member = "allUsers"` or `members = ["allAuthenticatedUsers", ...]`), implement proper access controls by explicitly specifying authorized users and groups, such as `members = ["user:someone@example.com", "group:admins@example.com"]` to ensure only legitimate users can access your container registry resources.
 
 
 ## Compliant Code Examples

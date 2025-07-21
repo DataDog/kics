@@ -1,10 +1,10 @@
 ---
-title: "No Stack Policy"
+title: "No stack policy"
 group-id: "rules/terraform/aws"
 meta:
   name: "aws/no_stack_policy"
   id: "2f01fb2d-828a-499d-b98e-b83747305052"
-  display_name: "No Stack Policy"
+  display_name: "No stack policy"
   cloud_provider: "aws"
   framework: "Terraform"
   severity: "MEDIUM"

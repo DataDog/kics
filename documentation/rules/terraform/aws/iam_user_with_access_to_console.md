@@ -1,10 +1,10 @@
 ---
-title: "IAM User With Access To Console"
+title: "IAM user with access to console"
 group-id: "rules/terraform/aws"
 meta:
   name: "aws/iam_user_with_access_to_console"
   id: "9ec311bf-dfd9-421f-8498-0b063c8bc552"
-  display_name: "IAM User With Access To Console"
+  display_name: "IAM user with access to console"
   cloud_provider: "aws"
   framework: "Terraform"
   severity: "MEDIUM"

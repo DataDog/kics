@@ -1,10 +1,10 @@
 ---
-title: "Google Project IAM Binding Service Account has Token Creator or Account User Role"
+title: "Google project IAM binding service account has token creator or account user role"
 group-id: "rules/terraform/gcp"
 meta:
   name: "gcp/google_project_iam_binding_service_account_has_token_creator_or_account_user_role"
   id: "617ef6ff-711e-4bd7-94ae-e965911b1b40"
-  display_name: "Google Project IAM Binding Service Account has Token Creator or Account User Role"
+  display_name: "Google project IAM binding service account has token creator or account user role"
   cloud_provider: "gcp"
   framework: "Terraform"
   severity: "HIGH"
@@ -28,9 +28,9 @@ meta:
 
 ### Description
 
- This check identifies if a Google Project IAM binding grants 'serviceAccountTokenCreator' or 'serviceAccountUser' roles, which provide excessive privileges to service accounts. These roles allow the specified members to impersonate service accounts, creating security risks through privilege escalation paths and potential lateral movement across your GCP environment.
+ This check identifies if a Google Project IAM binding grants `serviceAccountTokenCreator` or `serviceAccountUser` roles, which provide excessive privileges to service accounts. These roles allow the specified members to impersonate service accounts, creating security risks through privilege escalation paths and potential lateral movement across your GCP environment.
 
-Members with the 'serviceAccountTokenCreator' role can create OAuth2 access tokens, while those with 'serviceAccountUser' role can use service accounts for their operations. To remediate this issue, assign more restrictive roles that follow the principle of least privilege instead, as shown in the secure example:
+Members with the `serviceAccountTokenCreator` role can create OAuth2 access tokens, while those with `serviceAccountUser` role can use service accounts for their operations. To remediate this issue, assign more restrictive roles that follow the principle of least privilege instead, as shown in the following example:
 
 ```
 resource "google_project_iam_binding" "secure_example" {

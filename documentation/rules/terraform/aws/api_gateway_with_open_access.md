@@ -1,10 +1,10 @@
 ---
-title: "API Gateway With Open Access"
+title: "API Gateway with open access"
 group-id: "rules/terraform/aws"
 meta:
   name: "aws/api_gateway_with_open_access"
   id: "15ccec05-5476-4890-ad19-53991eba1db8"
-  display_name: "API Gateway With Open Access"
+  display_name: "API Gateway with open access"
   cloud_provider: "aws"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -28,7 +28,7 @@ meta:
 
 ### Description
 
- API Gateway methods should restrict the `authorization` type to prevent unauthenticated access, except for the `OPTIONS` method used in CORS preflight requests. If you configure an API Gateway method such as:
+ API Gateway methods should restrict the `authorization` type to prevent unauthenticated access, except for the `OPTIONS` method used in CORS preflight requests. If you configure an API Gateway method without specifying authorization, as shown in the example below, it allows open, unauthenticated access to your API, increasing the risk of data exposure and abuse.
 
 ```
 resource "aws_api_gateway_method" "example" {
@@ -38,7 +38,7 @@ resource "aws_api_gateway_method" "example" {
 }
 ```
 
-without specifying authorization, it allows open, unauthenticated access to your API, increasing the risk of data exposure and abuse. Proper configuration requires setting `authorization = "NONE"` only for the `OPTIONS` method, for example:
+Proper configuration requires setting `authorization = "NONE"` only for the `OPTIONS` method. For example:
 
 ```
 resource "aws_api_gateway_method" "example" {

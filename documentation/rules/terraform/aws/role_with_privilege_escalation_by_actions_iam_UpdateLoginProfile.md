@@ -1,10 +1,10 @@
 ---
-title: "Role With Privilege Escalation By Actions 'iam:UpdateLoginProfile'"
+title: "Role with privilege escalation by actions 'iam:UpdateLoginProfile'"
 group-id: "rules/terraform/aws"
 meta:
   name: "aws/role_with_privilege_escalation_by_actions_iam_UpdateLoginProfile"
   id: "35ccf766-0e4d-41ed-9ec4-2dab155082b4"
-  display_name: "Role With Privilege Escalation By Actions 'iam:UpdateLoginProfile'"
+  display_name: "Role with privilege escalation by actions 'iam:UpdateLoginProfile'"
   cloud_provider: "aws"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -30,7 +30,7 @@ meta:
 
  Granting the `iam:UpdateLoginProfile` action with the `Resource` attribute set to `"*"` in an IAM policy allows a role or user to change the login passwords of any IAM user in the AWS account. This creates a privilege escalation vulnerability, as a user with this permission could take over other accounts and gain unauthorized access to critical resources. 
 
-To prevent this, use least-privilege access—for example, restricting allowed actions and resource scope, as in:
+To prevent this, use least-privilege access—for example, by restricting allowed actions and resource scope, as shown below:
 
 ```
 resource "aws_iam_user_policy" "inline_policy_run_instances2" {

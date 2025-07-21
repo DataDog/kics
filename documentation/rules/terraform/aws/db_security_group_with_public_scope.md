@@ -1,10 +1,10 @@
 ---
-title: "DB Security Group With Public Scope"
+title: "DB security group with public scope"
 group-id: "rules/terraform/aws"
 meta:
   name: "aws/db_security_group_with_public_scope"
   id: "1e0ef61b-ad85-4518-a3d3-85eaad164885"
-  display_name: "DB Security Group With Public Scope"
+  display_name: "DB security group with public scope"
   cloud_provider: "aws"
   framework: "Terraform"
   severity: "CRITICAL"
@@ -24,11 +24,11 @@ meta:
 
 #### Learn More
 
- - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/db_security_group)
+ - [Provider Reference](https://registry.terraform.io/providers/rgeraskin/aws3/latest/docs/resources/db_security_group)
 
 ### Description
 
- AWS DB Security Groups with overly permissive ingress rules (0.0.0.0/0 or ::/0) expose database instances to potential unauthorized access from any IP address on the internet. This critical security vulnerability could lead to data breaches, unauthorized data manipulation, or complete database compromise. Instead of using public CIDR ranges, restrict access to specific IP ranges that require database connectivity.
+ AWS DB security groups with overly permissive ingress rules (`0.0.0.0/0` or `::/0`) expose database instances to potential unauthorized access from any IP address on the internet. This critical security vulnerability could lead to data breaches, unauthorized data manipulation, or complete database compromise. Instead of using public CIDR ranges, restrict access to specific IP ranges that require database connectivity.
 
 Insecure example:
 ```terraform

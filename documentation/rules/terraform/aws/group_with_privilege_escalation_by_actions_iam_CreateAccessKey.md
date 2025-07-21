@@ -1,10 +1,10 @@
 ---
-title: "Group With Privilege Escalation By Actions 'iam:CreateAccessKey'"
+title: "Group with privilege escalation by actions 'iam:CreateAccessKey'"
 group-id: "rules/terraform/aws"
 meta:
   name: "aws/group_with_privilege_escalation_by_actions_iam_CreateAccessKey"
   id: "846646e3-2af1-428c-ac5d-271eccfa6faf"
-  display_name: "Group With Privilege Escalation By Actions 'iam:CreateAccessKey'"
+  display_name: "Group with privilege escalation by actions 'iam:CreateAccessKey'"
   cloud_provider: "aws"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -28,7 +28,7 @@ meta:
 
 ### Description
 
- This check identifies IAM group policies that grant the 'iam:CreateAccessKey' permission with the resource set to '*', which allows users in the group to create access keys for any IAM user in the AWS account. This represents a serious privilege escalation vulnerability because any member of the group could create access keys for higher-privilege users and gain unauthorized access to sensitive resources. If left unaddressed, attackers or malicious insiders could leverage this permission to take control of other users' accounts, compromise the environment, or bypass existing security controls. Restricting 'iam:CreateAccessKey' to only necessary users and scoping its resource access is critical to reducing the risk of privilege escalation.
+ This check identifies IAM group policies that grant the `iam:CreateAccessKey` permission with the resource set to `"*"`, which allows users in the group to create access keys for any IAM user in the AWS account. This represents a serious privilege escalation vulnerability because any member of the group could create access keys for higher-privilege users and gain unauthorized access to sensitive resources. If left unaddressed, attackers or malicious insiders could leverage this permission to take control of other users' accounts, compromise the environment, or bypass existing security controls. Restricting `iam:CreateAccessKey` to only necessary users and scoping its resource access is critical to reducing the risk of privilege escalation.
 
 
 ## Compliant Code Examples

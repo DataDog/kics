@@ -1,10 +1,10 @@
 ---
-title: "KMS Key With No Deletion Window"
+title: "KMS key with no deletion window"
 group-id: "rules/terraform/aws"
 meta:
   name: "aws/kms_key_with_no_deletion_window"
   id: "0b530315-0ea4-497f-b34c-4ff86268f59d"
-  display_name: "KMS Key With No Deletion Window"
+  display_name: "KMS key with no deletion window"
   cloud_provider: "aws"
   framework: "Terraform"
   severity: "LOW"

@@ -1,10 +1,10 @@
 ---
-title: "EFS With Vulnerable Policy"
+title: "EFS with vulnerable policy"
 group-id: "rules/terraform/aws"
 meta:
   name: "aws/efs_with_vulnerable_policy"
   id: "fae52418-bb8b-4ac2-b287-0b9082d6a3fd"
-  display_name: "EFS With Vulnerable Policy"
+  display_name: "EFS with vulnerable policy"
   cloud_provider: "aws"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -35,7 +35,7 @@ meta:
 "Action": ["elasticfilesystem:*"]
 ```
 
-Such overly permissive policies can allow any AWS account to perform any action on the EFS resource, leading to potential unauthorized data access, deletion, or modification. To mitigate this risk, restrict the `Principal` to specific IAM identities and limit `Action` to only what is necessary, for example:
+Such overly permissive policies can allow any AWS account to perform any action on the EFS resource, leading to potential unauthorized data access, deletion, or modification. To mitigate this risk, restrict the `Principal` to specific IAM identities and limit `Action` to only what is necessary. For example:
 
 ```
 "Principal": { "AWS": "arn:aws:iam::111122223333:user/Carlos" },

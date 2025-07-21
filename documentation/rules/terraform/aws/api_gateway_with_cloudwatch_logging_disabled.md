@@ -1,10 +1,10 @@
 ---
-title: "API Gateway With CloudWatch Logging Disabled"
+title: "API Gateway with CloudWatch logging disabled"
 group-id: "rules/terraform/aws"
 meta:
   name: "aws/api_gateway_with_cloudwatch_logging_disabled"
   id: "982aa526-6970-4c59-8b9b-2ce7e019fe36"
-  display_name: "API Gateway With CloudWatch Logging Disabled"
+  display_name: "API Gateway with CloudWatch logging disabled"
   cloud_provider: "aws"
   framework: "Terraform"
   severity: "MEDIUM"

@@ -1,10 +1,10 @@
 ---
-title: "User Data Contains Encoded Private Key"
+title: "User data contains encoded private key"
 group-id: "rules/terraform/aws"
 meta:
   name: "aws/user_data_contains_encoded_private_key"
   id: "443488f5-c734-460b-a36d-5b3f330174dc"
-  display_name: "User Data Contains Encoded Private Key"
+  display_name: "User data contains encoded private key"
   cloud_provider: "aws"
   framework: "Terraform"
   severity: "HIGH"
@@ -28,7 +28,7 @@ meta:
 
 ### Description
 
- AWS Launch Configuration's user_data_base64 field should never contain private keys, even if base64 encoded, as this encryption method can be easily reversed by attackers. When private keys are exposed in user data, they can be extracted from the instance metadata or discovered through AWS API calls, compromising the security of all systems using those credentials. Instead of embedding private keys directly in user data as shown in the insecure example `user_data_base64 = "LS0tLS1CRUdJTiBSU0EgUFJJVkFURSBLRVktLS0tLQpzb21lS2V5"`, use AWS secrets management services like AWS Secrets Manager or Systems Manager Parameter Store, or implement a secure alternative where private keys are safely retrieved during instance startup.
+ AWS Launch Configuration's `user_data_base64` field should never contain private keys, even if base64 encoded, as this encryption method can be easily reversed by attackers. When private keys are exposed in user data, they can be extracted from the instance metadata or discovered through AWS API calls, compromising the security of all systems using those credentials. Instead of embedding private keys directly in user data, as shown in the insecure example `user_data_base64 = "LS0tLS1CRUdJTiBSU0EgUFJJVkFURSBLRVktLS0tLQpzb21lS2V5"`, use AWS secrets management services like AWS Secrets Manager or Systems Manager Parameter Store, or implement a secure alternative where private keys are safely retrieved during instance startup.
 
 
 ## Compliant Code Examples

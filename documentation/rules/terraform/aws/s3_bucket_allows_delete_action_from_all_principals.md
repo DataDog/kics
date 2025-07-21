@@ -1,10 +1,10 @@
 ---
-title: "S3 Bucket Allows Delete Action From All Principals"
+title: "S3 bucket allows delete action from all principals"
 group-id: "rules/terraform/aws"
 meta:
   name: "aws/s3_bucket_allows_delete_action_from_all_principals"
   id: "ffdf4b37-7703-4dfe-a682-9d2e99bc6c09"
-  display_name: "S3 Bucket Allows Delete Action From All Principals"
+  display_name: "S3 bucket allows delete action from all principals"
   cloud_provider: "aws"
   framework: "Terraform"
   severity: "CRITICAL"
@@ -28,9 +28,9 @@ meta:
 
 ### Description
 
- This vulnerability occurs when an S3 bucket policy allows the delete action from all principals (*), which can lead to unauthorized deletion of data and potential data loss or service disruption. Even when IP address conditions are applied, allowing delete actions from all principals presents a significant security risk as it could be exploited if the IP restriction is bypassed or misconfigured.
+ This vulnerability occurs when an S3 bucket policy allows the delete action from all principals (`*`), which can lead to unauthorized deletion of data and potential data loss or service disruption. Even when IP address conditions are applied, allowing delete actions from all principals presents a significant security risk as it could be exploited if the IP restriction is bypassed or misconfigured.
 
-The insecure configuration looks like:
+An insecure configuration looks like the following:
 ```
 {
   "Effect": "Allow",

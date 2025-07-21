@@ -1,10 +1,10 @@
 ---
-title: "ELB Using Weak Ciphers"
+title: "ELB using weak ciphers"
 group-id: "rules/terraform/aws"
 meta:
   name: "aws/elb_using_weak_ciphers"
   id: "4a800e14-c94a-442d-9067-5a2e9f6c0a4c"
-  display_name: "ELB Using Weak Ciphers"
+  display_name: "ELB using weak ciphers"
   cloud_provider: "aws"
   framework: "Terraform"
   severity: "HIGH"
@@ -28,7 +28,7 @@ meta:
 
 ### Description
 
- Elastic Load Balancers (ELBs) with weak cipher configurations present a significant security vulnerability as they can be exploited through various attacks like BEAST, POODLE, or FREAK, potentially leading to data breaches and session hijacking. Weak ciphers such as DES-CBC3-SHA or TLS_RSA_ARCFOUR_128_SHA1 are considered cryptographically insufficient by modern standards and may be exploited by attackers to decrypt sensitive data passing through the load balancer. To mitigate this risk, configure your ELB with strong cipher suites as shown below:
+ Elastic Load Balancers (ELBs) with weak cipher configurations present a significant security vulnerability as they can be exploited through various attacks like BEAST, POODLE, or FREAK, potentially leading to data breaches and session hijacking. Weak ciphers such as DES-CBC3-SHA or TLS_RSA_ARCFOUR_128_SHA1 are considered cryptographically insufficient by modern standards and may be exploited by attackers to decrypt sensitive data passing through the load balancer. To mitigate this risk, configure your ELB with strong cipher suites, as shown below:
 
 ```hcl
 policy_attribute {

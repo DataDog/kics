@@ -1,10 +1,10 @@
 ---
-title: "SNS Topic Not Encrypted"
+title: "SNS topic not encrypted"
 group-id: "rules/terraform/aws"
 meta:
   name: "aws/sns_topic_not_encrypted"
   id: "28545147-2fc6-42d5-a1f9-cf226658e591"
-  display_name: "SNS Topic Not Encrypted"
+  display_name: "SNS topic not encrypted"
   cloud_provider: "aws"
   framework: "Terraform"
   severity: "HIGH"
@@ -28,7 +28,7 @@ meta:
 
 ### Description
 
- Amazon SNS topics should be encrypted at rest using AWS KMS to protect sensitive message content. Without encryption, data stored in SNS topics is vulnerable to unauthorized access if the service or underlying storage is compromised. Use the `kms_master_key_id` attribute to specify a KMS key for encryption as shown in the secure example: `kms_master_key_id = "alias/MyAlias"`. Leaving this attribute empty or unspecified (as in `kms_master_key_id = ""`) results in unencrypted SNS topics, exposing sensitive data to potential security breaches.
+ Amazon SNS topics should be encrypted at rest using AWS KMS to protect sensitive message content. Without encryption, data stored in SNS topics is vulnerable to unauthorized access if the service or underlying storage is compromised. Use the `kms_master_key_id` attribute to specify a KMS key for encryption, as shown in this example: `kms_master_key_id = "alias/MyAlias"`. Leaving this attribute empty or unspecified (as in `kms_master_key_id = ""`) results in unencrypted SNS topics, exposing sensitive data to potential security breaches.
 
 
 ## Compliant Code Examples

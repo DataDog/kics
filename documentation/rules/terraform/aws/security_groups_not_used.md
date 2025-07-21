@@ -1,10 +1,10 @@
 ---
-title: "Security Group Not Used"
+title: "Security group not used"
 group-id: "rules/terraform/aws"
 meta:
   name: "aws/security_groups_not_used"
   id: "4849211b-ac39-479e-ae78-5694d506cb24"
-  display_name: "Security Group Not Used"
+  display_name: "Security group not used"
   cloud_provider: "aws"
   framework: "Terraform"
   severity: "INFO"
@@ -28,7 +28,7 @@ meta:
 
 ### Description
 
- This check ensures that AWS load balancers are associated with appropriate security groups, which control network traffic to and from the resource. When the `security_groups` attribute is omitted from an `aws_lb` resource—such as:
+ This check ensures that AWS load balancers are associated with appropriate security groups, which control network traffic to and from the resource. When the `security_groups` attribute is omitted from an `aws_lb` resource, as shown below, the load balancer may become exposed to unrestricted network access, increasing the risk of unauthorized access or attacks:
 
 ```
 resource "aws_lb" "test" {
@@ -39,7 +39,7 @@ resource "aws_lb" "test" {
 }
 ```
 
-—the load balancer may become exposed to unrestricted network access, increasing the risk of unauthorized access or attacks. By explicitly defining `security_groups`, as shown below, you can restrict inbound and outbound traffic to only trusted sources:
+By explicitly defining `security_groups`, you can restrict inbound and outbound traffic to only trusted sources:
 
 ```
 resource "aws_lb" "test" {

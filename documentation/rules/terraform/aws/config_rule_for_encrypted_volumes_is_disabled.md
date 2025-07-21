@@ -1,10 +1,10 @@
 ---
-title: "Config Rule For Encrypted Volumes Disabled"
+title: "Config rule for encrypted volumes disabled"
 group-id: "rules/terraform/aws"
 meta:
   name: "aws/config_rule_for_encrypted_volumes_is_disabled"
   id: "abdb29d4-5ca1-4e91-800b-b3569bbd788c"
-  display_name: "Config Rule For Encrypted Volumes Disabled"
+  display_name: "Config rule for encrypted volumes disabled"
   cloud_provider: "aws"
   framework: "Terraform"
   severity: "HIGH"
@@ -28,9 +28,9 @@ meta:
 
 ### Description
 
- This check verifies if AWS Config rules include the ENCRYPTED_VOLUMES source identifier, which monitors whether EBS volumes that are attached to EC2 instances are encrypted. Without this rule in place, organizations may unknowingly deploy unencrypted EBS volumes, potentially exposing sensitive data to unauthorized access in case of data breaches or improper access controls. 
+ This check verifies if AWS Config rules include the `ENCRYPTED_VOLUMES` source identifier, which monitors whether EBS volumes that are attached to EC2 instances are encrypted. Without this rule in place, organizations may unknowingly deploy unencrypted EBS volumes, potentially exposing sensitive data to unauthorized access in case of data breaches or improper access controls. 
 
-To address this vulnerability, ensure at least one AWS Config rule uses ENCRYPTED_VOLUMES as the source identifier as shown below:
+To address this vulnerability, ensure at least one AWS Config rule uses `ENCRYPTED_VOLUMES` as the source identifier, as shown below:
 
 ```terraform
 resource "aws_config_config_rule" "encrypted_volumes" {

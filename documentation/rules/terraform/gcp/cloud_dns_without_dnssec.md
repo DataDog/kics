@@ -1,10 +1,10 @@
 ---
-title: "Cloud DNS Without DNSSEC"
+title: "Cloud DNS without DNSSEC"
 group-id: "rules/terraform/gcp"
 meta:
   name: "gcp/cloud_dns_without_dnssec"
   id: "5ef61c88-bbb4-4725-b1df-55d23c9676bb"
-  display_name: "Cloud DNS Without DNSSEC"
+  display_name: "Cloud DNS without DNSSEC"
   cloud_provider: "gcp"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -28,7 +28,7 @@ meta:
 
 ### Description
 
- DNSSEC (Domain Name System Security Extensions) should be enabled for Cloud DNS managed zones to ensure the authenticity and integrity of DNS data by cryptographically signing DNS records. Without DNSSEC enabled (e.g., `dnssec_config { state = "off" }`), domains are at greater risk of DNS spoofing and cache poisoning attacks, potentially allowing attackers to redirect traffic or intercept sensitive communications. To mitigate this risk, configure DNSSEC as shown below:
+ Domain Name System Security Extensions (DNSSEC) should be enabled for Cloud DNS managed zones to ensure the authenticity and integrity of DNS data by cryptographically signing DNS records. Without DNSSEC enabled (for example, `dnssec_config { state = "off" }`), domains are at greater risk of DNS spoofing and cache poisoning attacks, potentially allowing attackers to redirect traffic or intercept sensitive communications. To mitigate this risk, configure DNSSEC as shown below:
 
 ```
 resource "google_dns_managed_zone" "example" {

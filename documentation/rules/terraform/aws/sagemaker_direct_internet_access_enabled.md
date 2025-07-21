@@ -1,10 +1,10 @@
 ---
-title: "SageMaker Notebook Internet Access Enabled"
+title: "SageMaker notebook internet access enabled"
 group-id: "rules/terraform/aws"
 meta:
   name: "aws/sagemaker_direct_internet_access_enabled"
   id: "f3g4h5i6-j7k8-9lmn-0opq-12345abcdefg"
-  display_name: "SageMaker Notebook Internet Access Enabled"
+  display_name: "SageMaker notebook internet access enabled"
   cloud_provider: "aws"
   framework: "Terraform"
   severity: "HIGH"
@@ -28,7 +28,7 @@ meta:
 
 ### Description
 
- Amazon SageMaker Notebook Instances with direct internet access enabled create potential security vulnerabilities by allowing unauthorized outbound connections and possible data exfiltration channels. When enabled, malicious code or compromised notebooks can directly communicate with external servers, bypassing network security controls and potentially leaking sensitive information or intellectual property. To secure SageMaker Notebook Instances, you should explicitly disable direct internet access as shown in the following example:
+ Amazon SageMaker notebook instances with direct internet access enabled create potential security vulnerabilities by allowing unauthorized outbound connections and possible data exfiltration channels. When enabled, malicious code or compromised notebooks can directly communicate with external servers, bypassing network security controls and potentially leaking sensitive information or intellectual property. To secure SageMaker notebook instances, you should explicitly disable direct internet access as shown in the following example:
 
 ```hcl
 resource "aws_sagemaker_notebook_instance" "good_example" {

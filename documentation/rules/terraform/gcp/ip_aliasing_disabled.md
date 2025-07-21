@@ -1,10 +1,10 @@
 ---
-title: "IP Aliasing Disabled"
+title: "IP aliasing disabled"
 group-id: "rules/terraform/gcp"
 meta:
   name: "gcp/ip_aliasing_disabled"
   id: "c606ba1d-d736-43eb-ac24-e16108f3a9e0"
-  display_name: "IP Aliasing Disabled"
+  display_name: "IP aliasing disabled"
   cloud_provider: "gcp"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -39,7 +39,7 @@ resource "google_container_cluster" "example" {
 }
 ```
 
-A secure configuration should include both:
+A secure configuration should include both `ip_allocation_policy` and `networking_mode = "VPC_NATIVE"`, as shown here:
 
 ```
 resource "google_container_cluster" "example" {
@@ -51,7 +51,7 @@ resource "google_container_cluster" "example" {
 }
 ```
 
-Failure to enforce alias IP allocation can lead to reduced network segmentation and potentially exposes pods and services to unintended network access.
+Failure to enforce Alias IP allocation can reduce network segmentation and may expose pods and services to unintended network access.
 
 
 ## Compliant Code Examples

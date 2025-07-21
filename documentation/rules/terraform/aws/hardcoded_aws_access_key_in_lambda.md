@@ -1,10 +1,10 @@
 ---
-title: "Hardcoded AWS Access Key In Lambda"
+title: "Hardcoded AWS access key in Lambda"
 group-id: "rules/terraform/aws"
 meta:
   name: "aws/hardcoded_aws_access_key_in_lambda"
   id: "1402afd8-a95c-4e84-8b0b-6fb43758e6ce"
-  display_name: "Hardcoded AWS Access Key In Lambda"
+  display_name: "Hardcoded AWS access key in Lambda"
   cloud_provider: "aws"
   framework: "Terraform"
   severity: "HIGH"

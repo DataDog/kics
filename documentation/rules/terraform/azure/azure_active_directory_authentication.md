@@ -1,10 +1,10 @@
 ---
-title: "Azure Active Directory Authentication"
+title: "Azure Active Directory authentication"
 group-id: "rules/terraform/azure"
 meta:
   name: "azure/azure_active_directory_authentication"
   id: "a21c8da9-41bf-40cf-941d-330cf0d11fc7"
-  display_name: "Azure Active Directory Authentication"
+  display_name: "Azure Active Directory authentication"
   cloud_provider: "azure"
   framework: "Terraform"
   severity: "LOW"

@@ -1,10 +1,10 @@
 ---
-title: "Key Expiration Not Set"
+title: "Key expiration not set"
 group-id: "rules/terraform/azure"
 meta:
   name: "azure/key_expiration_not_set"
   id: "4d080822-5ee2-49a4-8984-68f3d4c890fc"
-  display_name: "Key Expiration Not Set"
+  display_name: "Key expiration not set"
   cloud_provider: "azure"
   framework: "Terraform"
   severity: "MEDIUM"

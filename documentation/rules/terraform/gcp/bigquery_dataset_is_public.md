@@ -1,10 +1,10 @@
 ---
-title: "BigQuery Dataset Is Public"
+title: "BigQuery dataset is public"
 group-id: "rules/terraform/gcp"
 meta:
   name: "gcp/bigquery_dataset_is_public"
   id: "e576ce44-dd03-4022-a8c0-3906acca2ab4"
-  display_name: "BigQuery Dataset Is Public"
+  display_name: "BigQuery dataset is public"
   cloud_provider: "gcp"
   framework: "Terraform"
   severity: "HIGH"
@@ -28,7 +28,7 @@ meta:
 
 ### Description
 
- This check identifies BigQuery datasets that are configured to allow public or anonymous access, which exposes sensitive data to unauthorized users and increases the risk of data breaches. The vulnerability occurs when access controls use the special groups 'allAuthenticatedUsers' or 'allUsers', effectively making data available to anyone with a Google account or the general public. To secure your BigQuery dataset, restrict access to specific users, groups, or domains instead of using public access groups, as shown in the example below:
+ This check identifies BigQuery datasets configured to allow public or anonymous access, which can expose sensitive data to unauthorized users and increase the risk of data breaches. The vulnerability occurs when access controls use the special groups `allAuthenticatedUsers` or `allUsers`, effectively making data available to anyone with a Google account or the general public. To secure your BigQuery dataset, restrict access to specific users, groups, or domains instead of using public access groups, as shown in the example below:
 
 ```terraform
 access {

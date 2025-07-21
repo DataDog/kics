@@ -1,10 +1,10 @@
 ---
-title: "Using Default Service Account"
+title: "Using default service account"
 group-id: "rules/terraform/gcp"
 meta:
   name: "gcp/using_default_service_account"
   id: "3cb4af0b-056d-4fb1-8b95-fdc4593625ff"
-  display_name: "Using Default Service Account"
+  display_name: "Using default service account"
   cloud_provider: "gcp"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -28,7 +28,7 @@ meta:
 
 ### Description
 
- Google Compute Engine instances should not be configured to use the default service account, which has broad permissions and full access to all Cloud APIs. If the attribute `service_account`—specifically the `email` sub-attribute—is missing, empty, or set to the default Google Compute Engine service account, it increases the risk of privilege escalation and unauthorized access to sensitive resources. Instead, instances should explicitly specify a custom service account with only the necessary permissions, like in the following example:
+ Google Compute Engine instances should not be configured to use the default service account, which has broad permissions and full access to all Cloud APIs. If the attribute `service_account`—specifically the `email` sub-attribute—is missing, empty, or set to the default Google Compute Engine service account, it increases the risk of privilege escalation and unauthorized access to sensitive resources. Instead, instances should explicitly specify a custom service account with only the necessary permissions, such as in the following example:
 
 ```
 service_account {

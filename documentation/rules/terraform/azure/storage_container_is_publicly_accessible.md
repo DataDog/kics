@@ -1,10 +1,10 @@
 ---
-title: "Storage Container Is Publicly Accessible"
+title: "Storage container is publicly accessible"
 group-id: "rules/terraform/azure"
 meta:
   name: "azure/storage_container_is_publicly_accessible"
   id: "dd5230f8-a577-4bbb-b7ac-f2c2fe7d5299"
-  display_name: "Storage Container Is Publicly Accessible"
+  display_name: "Storage container is publicly accessible"
   cloud_provider: "azure"
   framework: "Terraform"
   severity: "HIGH"
@@ -28,9 +28,9 @@ meta:
 
 ### Description
 
- When a storage container in Azure Blob Storage has 'container_access_type' set to 'blob' or 'container', it enables anonymous public access to the data stored within. This configuration creates a significant security risk as it allows anyone with the container URL to access, view, and potentially download the stored data without authentication, potentially leading to sensitive data exposure or unauthorized data access.
+ When a storage container in Azure Blob Storage has `container_access_type` set to `blob` or `container`, it enables anonymous public access to the data stored within. This configuration creates a significant security risk as it allows anyone with the container URL to access, view, and potentially download the stored data without authentication, potentially leading to sensitive data exposure or unauthorized data access.
 
-To secure your storage containers, always set 'container_access_type' to 'private' explicitly, or rely on the default value which is also 'private'. For example:
+To secure your storage containers, always set `container_access_type` to `private` explicitly, or rely on the default value, which is also `private`. For example:
 
 ```
 resource "azurerm_storage_container" "secure_container" {

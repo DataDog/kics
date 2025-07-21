@@ -1,10 +1,10 @@
 ---
-title: "Elasticsearch Log Disabled"
+title: "Elasticsearch log disabled"
 group-id: "rules/terraform/aws"
 meta:
   name: "aws/elasticsearch_logs_disabled"
   id: "acb6b4e2-a086-4f35-aefd-4db6ea51ada2"
-  display_name: "Elasticsearch Log Disabled"
+  display_name: "Elasticsearch log disabled"
   cloud_provider: "aws"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -28,7 +28,7 @@ meta:
 
 ### Description
 
- Elasticsearch domains in AWS should have logging enabled to capture important audit and performance data. The attribute `enabled` within the `log_publishing_options` block should be set to `true` to ensure that logs, such as `"INDEX_SLOW_LOGS"`, are published to the associated CloudWatch log group. If log publishing is disabled (e.g. `enabled = false`), critical operational and security events may go undetected, making it difficult to troubleshoot issues, monitor for suspicious activity, or meet compliance requirements. Failing to enable logging increases the risk of undetected data breaches or operational failures due to limited visibility into Elasticsearch domain activity.
+ Elasticsearch domains in AWS should have logging enabled to capture important audit and performance data. The attribute `enabled` within the `log_publishing_options` block should be set to `true` to ensure that logs, such as `"INDEX_SLOW_LOGS"`, are published to the associated CloudWatch log group. If log publishing is disabled (for example, `enabled = false`), critical operational and security events may go undetected, making it difficult to troubleshoot issues, monitor for suspicious activity, or meet compliance requirements. Failing to enable logging increases the risk of undetected data breaches or operational failures due to limited visibility into Elasticsearch domain activity.
 
 
 ## Compliant Code Examples

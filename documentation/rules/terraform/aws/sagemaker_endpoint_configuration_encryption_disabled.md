@@ -1,10 +1,10 @@
 ---
-title: "Sagemaker Endpoint Configuration Encryption Disabled"
+title: "SageMaker endpoint configuration encryption disabled"
 group-id: "rules/terraform/aws"
 meta:
   name: "aws/sagemaker_endpoint_configuration_encryption_disabled"
   id: "58b35504-0287-4154-bf69-02c0573deab8"
-  display_name: "Sagemaker Endpoint Configuration Encryption Disabled"
+  display_name: "SageMaker endpoint configuration encryption disabled"
   cloud_provider: "aws"
   framework: "Terraform"
   severity: "HIGH"
@@ -30,14 +30,14 @@ meta:
 
  Amazon SageMaker endpoint configurations should have encryption enabled using a KMS key to protect sensitive data at rest. Without proper encryption, data stored within SageMaker endpoints may be vulnerable to unauthorized access if the underlying storage is compromised. This represents a significant security risk as machine learning endpoints often process and store sensitive information.
 
-To address this vulnerability, specify the `kms_key_arn` attribute in your SageMaker endpoint configuration. For example, the secure implementation uses:
+To address this vulnerability, specify the `kms_key_arn` attribute in your SageMaker endpoint configuration. For example, the secure implementation uses the following configuration, where kms_key_arn is specified to enable encryption:
 ```
 resource "aws_sagemaker_endpoint_configuration" "example" {
   // other configuration
   kms_key_arn = "aws_kms_key.example.arn"
 }
 ```
-while the insecure version omits this critical encryption setting.
+In contrast, the insecure version omits this critical encryption setting.
 
 
 ## Compliant Code Examples

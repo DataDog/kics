@@ -1,10 +1,10 @@
 ---
-title: "No Password Policy Enabled"
+title: "No password policy enabled"
 group-id: "rules/terraform/aws"
 meta:
   name: "aws/no_password_policy_enabled"
   id: "b592ffd4-0577-44b6-bd35-8c5ee81b5918"
-  display_name: "No Password Policy Enabled"
+  display_name: "No password policy enabled"
   cloud_provider: "aws"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -28,7 +28,7 @@ meta:
 
 ### Description
 
- Ensuring strong AWS IAM password security involves configuring both the `password_length` and `password_reset_required` attributes in the `aws_iam_user_login_profile` resource. Failing to set a sufficient `password_length` or omitting the `password_reset_required = true` option, as shown below,
+ Ensuring strong AWS IAM password security involves configuring both the `password_length` and `password_reset_required` attributes in the `aws_iam_user_login_profile` resource. Failing to set a sufficient `password_length` or omitting the `password_reset_required = true` option, as shown below, can lead to accounts being protected by weak or reused passwords, which increases the risk of unauthorized access.
 
 ```
 resource "aws_iam_user_login_profile" "example" {
@@ -39,7 +39,7 @@ resource "aws_iam_user_login_profile" "example" {
 }
 ```
 
-can lead to accounts being protected by weak or reused passwords, which increases the risk of unauthorized access. By requiring users to reset passwords on first use and enforcing adequate password length, as in
+By requiring users to reset passwords on first use and enforcing adequate password length, as in the following example, organizations can better defend against brute-force attacks and reduce credential compromise risk.
 
 ```
 resource "aws_iam_user_login_profile" "example" {
@@ -50,7 +50,7 @@ resource "aws_iam_user_login_profile" "example" {
 }
 ```
 
-organizations can better defend against brute-force attacks and reduce credential compromise risk.
+
 
 
 ## Compliant Code Examples

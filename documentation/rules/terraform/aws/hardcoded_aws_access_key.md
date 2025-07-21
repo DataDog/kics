@@ -1,10 +1,10 @@
 ---
-title: "Hardcoded AWS Access Key"
+title: "Hardcoded AWS access key"
 group-id: "rules/terraform/aws"
 meta:
   name: "aws/hardcoded_aws_access_key"
   id: "d7b9d850-3e06-4a75-852f-c46c2e92240b"
-  display_name: "Hardcoded AWS Access Key"
+  display_name: "Hardcoded AWS access key"
   cloud_provider: "aws"
   framework: "Terraform"
   severity: "HIGH"

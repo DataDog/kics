@@ -1,10 +1,10 @@
 ---
-title: "Password Without Reuse Prevention"
+title: "Password without reuse prevention"
 group-id: "rules/terraform/aws"
 meta:
   name: "aws/password_without_reuse_prevention"
   id: "89806cdc-9c2e-4bd1-a0dc-53f339bcfb2a"
-  display_name: "Password Without Reuse Prevention"
+  display_name: "Password without reuse prevention"
   cloud_provider: "aws"
   framework: "Terraform"
   severity: "LOW"
@@ -28,7 +28,7 @@ meta:
 
 ### Description
 
- This check ensures that the IAM account password policy's `password_reuse_prevention` attribute is set to at least 24, preventing users from reusing any of their last 24 passwords. Without this configuration, as seen when `password_reuse_prevention = 20` or when the attribute is omitted, users may repeatedly cycle through a small set of previously used passwords, increasing the risk of password-related attacks. Configuring a secure password policy such as:
+ This check ensures that the IAM account password policy's `password_reuse_prevention` attribute is set to at least 24, preventing users from reusing any of their last 24 passwords. Without this configuration, as seen when `password_reuse_prevention = 20` or when the attribute is omitted, users may repeatedly cycle through a small set of previously used passwords, increasing the risk of password-related attacks. Configuring a secure password policy, as in the following example, helps to enforce strong password hygiene and mitigates the likelihood of compromised credentials being reused:
 
 ```
 resource "aws_iam_account_password_policy" "secure" {
@@ -42,7 +42,7 @@ resource "aws_iam_account_password_policy" "secure" {
 }
 ```
 
-helps to enforce strong password hygiene and mitigates the likelihood of compromised credentials being reused.
+
 
 
 ## Compliant Code Examples

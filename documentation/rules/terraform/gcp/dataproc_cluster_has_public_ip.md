@@ -1,10 +1,10 @@
 ---
-title: "Dataproc Clusters Has Public IPs"
+title: "Dataproc clusters has public IPs"
 group-id: "rules/terraform/gcp"
 meta:
   name: "gcp/dataproc_cluster_has_public_ip"
   id: "d2c4b6a8-1234-4f56-9abc-def012345678"
-  display_name: "Dataproc Clusters Has Public IPs"
+  display_name: "Dataproc clusters has public IPs"
   cloud_provider: "gcp"
   framework: "Terraform"
   severity: "HIGH"
@@ -28,9 +28,9 @@ meta:
 
 ### Description
 
- Google Cloud Dataproc clusters with public IP addresses are directly accessible from the internet, creating an expanded attack surface that could be exploited by malicious actors. When 'internal_ip_only' is set to false or omitted, clusters receive both internal and external IP addresses, potentially exposing sensitive data processing operations and administrative interfaces to unauthorized access.
+ Google Cloud Dataproc clusters with public IP addresses are directly accessible from the internet, creating an expanded attack surface that could be exploited by malicious actors. When `internal_ip_only` is set to `false` or omitted, clusters receive both internal and external IP addresses, potentially exposing sensitive data processing operations and administrative interfaces to unauthorized access.
 
-Secure configuration requires setting 'internal_ip_only' to true as shown in this example:
+Secure configuration requires setting `internal_ip_only` to true as shown in this example:
 ```terraform
 resource "google_dataproc_cluster" "good_example" {
   cluster_config {
@@ -41,7 +41,7 @@ resource "google_dataproc_cluster" "good_example" {
 }
 ```
 
-Insecure configuration that should be avoided:
+The following is an insecure configuration that should be avoided:
 ```terraform
 resource "google_dataproc_cluster" "bad_example" {
   cluster_config {

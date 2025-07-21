@@ -1,10 +1,10 @@
 ---
-title: "SQL DB Instance Publicly Accessible"
+title: "SQL DB instance publicly accessible"
 group-id: "rules/terraform/gcp"
 meta:
   name: "gcp/sql_db_instance_is_publicly_accessible"
   id: "b187edca-b81e-4fdc-aff4-aab57db45edb"
-  display_name: "SQL DB Instance Publicly Accessible"
+  display_name: "SQL DB instance publicly accessible"
   cloud_provider: "gcp"
   framework: "Terraform"
   severity: "CRITICAL"
@@ -28,7 +28,9 @@ meta:
 
 ### Description
 
- A Google Cloud SQL instance becomes publicly accessible when it has public IP addressing enabled without proper network restrictions, creating a potential attack vector for unauthorized access. This can occur through ipv4_enabled being set to true (default) or by configuring authorized_networks with overly permissive CIDR ranges like '0.0.0.0/0' which allows connections from any IP address. To secure Cloud SQL instances, either disable public IP by setting ipv4_enabled to false and specifying a private_network (e.g., `ipv4_enabled = false` and `private_network = "your-network-id"`) or restrict authorized_networks to specific trusted IP ranges (e.g., `authorized_networks { name = "trusted-network", value = "10.0.0.0/24" }`) rather than using '0.0.0.0/0'.
+ A Google Cloud SQL instance becomes publicly accessible when it has public IP addressing enabled without proper network restrictions, creating a potential attack vector for unauthorized access. This can occur when `ipv4_enabled` is set to `true` (default), or when `authorized_networks` is configured with overly permissive CIDR ranges such as `0.0.0.0/0`, which allows connections from any IP address.
+
+To secure Cloud SQL instances, either disable public IP by setting ipv4_enabled to false and specifying a private_network (for example, `ipv4_enabled = false` and `private_network = "your-network-id"`), or restrict `authorized_networks` to specific trusted IP ranges (for example, `authorized_networks { name = "trusted-network", value = "10.0.0.0/24" }`) rather than using `0.0.0.0/0`.
 
 
 ## Compliant Code Examples

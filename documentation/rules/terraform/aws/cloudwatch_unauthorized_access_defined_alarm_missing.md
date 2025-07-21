@@ -1,10 +1,10 @@
 ---
-title: "CloudWatch Unauthorized Access Alarm Missing"
+title: "CloudWatch unauthorized access alarm missing"
 group-id: "rules/terraform/aws"
 meta:
   name: "aws/cloudwatch_unauthorized_access_defined_alarm_missing"
   id: "4c18a45b-4ab1-4790-9f83-399ac695f1e5"
-  display_name: "CloudWatch Unauthorized Access Alarm Missing"
+  display_name: "CloudWatch unauthorized access alarm missing"
   cloud_provider: "aws"
   framework: "Terraform"
   severity: "CRITICAL"
@@ -28,9 +28,9 @@ meta:
 
 ### Description
 
- This check validates that a CloudWatch metric alarm is properly configured to monitor unauthorized API calls, which could indicate potential security breaches or application errors. A properly configured alarm requires the metric_name to correctly reference the corresponding metric filter ID. When this reference is incorrect (e.g., using a placeholder like 'XXXX NOT YOUR FILTER XXXX' instead of the actual metric filter ID), the alarm will not trigger when unauthorized access attempts occur, leaving your AWS infrastructure vulnerable to undetected attacks.
+ This check validates that a CloudWatch metric alarm is properly configured to monitor unauthorized API calls, which could indicate potential security breaches or application errors. A properly configured alarm requires the `metric_name` to correctly reference the corresponding metric filter ID. When this reference is incorrect (for example, using a placeholder such as 'XXXX NOT YOUR FILTER XXXX' instead of the actual metric filter ID), the alarm will not trigger when unauthorized access attempts occur, leaving your AWS infrastructure vulnerable to undetected attacks.
 
-To fix this issue, ensure the metric_name references the correct metric filter ID as shown in this example:
+To fix this issue, ensure the metric_name references the correct metric filter ID, as shown in this example:
 ```
 metric_name = aws_cloudwatch_log_metric_filter.cis_unauthorized_api_calls_metric_filter.id
 ```

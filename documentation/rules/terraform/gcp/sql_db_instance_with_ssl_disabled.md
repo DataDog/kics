@@ -1,10 +1,10 @@
 ---
-title: "SQL DB Instance With SSL Disabled"
+title: "SQL DB instance with SSL disabled"
 group-id: "rules/terraform/gcp"
 meta:
   name: "gcp/sql_db_instance_with_ssl_disabled"
   id: "02474449-71aa-40a1-87ae-e14497747b00"
-  display_name: "SQL DB Instance With SSL Disabled"
+  display_name: "SQL DB instance with SSL disabled"
   cloud_provider: "gcp"
   framework: "Terraform"
   severity: "HIGH"
@@ -28,7 +28,7 @@ meta:
 
 ### Description
 
- Google Cloud SQL instances without SSL enabled allow unencrypted connections, which can lead to data exposure through network eavesdropping and man-in-the-middle attacks. SSL encryption provides an essential layer of security for database connections by encrypting data in transit between the client and server. To secure your Google Cloud SQL Database, you should explicitly set 'require_ssl = true' in the ip_configuration block as shown below:
+ Google Cloud SQL instances without SSL enabled allow unencrypted connections, which can lead to data exposure through network eavesdropping and man-in-the-middle attacks. SSL encryption provides an essential layer of security for database connections by encrypting data in transit between the client and server. To secure your Google Cloud SQL Database, you should explicitly set `require_ssl = true` in the `ip_configuration` block as shown below:
 
 ```
 settings {

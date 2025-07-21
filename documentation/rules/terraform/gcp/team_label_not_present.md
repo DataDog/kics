@@ -1,10 +1,10 @@
 ---
-title: "team label missing"
+title: "Team label missing"
 group-id: "rules/terraform/gcp"
 meta:
   name: "gcp/team_label_not_present"
   id: "b2b3c4d5-e6f7-8901-gh23-ijkl456m7890"
-  display_name: "team label missing"
+  display_name: "Team label missing"
   cloud_provider: "gcp"
   framework: "Terraform"
   severity: "INFO"

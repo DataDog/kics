@@ -1,10 +1,10 @@
 ---
-title: "Secure Ciphers Disabled"
+title: "Secure ciphers disabled"
 group-id: "rules/terraform/aws"
 meta:
   name: "aws/secure_ciphers_disabled"
   id: "5c0003fb-9aa0-42c1-9da3-eb0e332bef21"
-  display_name: "Secure Ciphers Disabled"
+  display_name: "Secure ciphers disabled"
   cloud_provider: "aws"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -28,7 +28,7 @@ meta:
 
 ### Description
 
- This check verifies whether Amazon CloudFront distributions are configured to use secure TLS protocols and ciphers by examining the `viewer_certificate` block and its `minimum_protocol_version` attribute. CloudFront distributions that specify weak or outdated protocol versions, such as `SSLv3` (e.g., `minimum_protocol_version = "SSLv3"`), expose transmitted data to vulnerabilities like man-in-the-middle attacks and eavesdropping, because these protocols have known security flaws and are no longer considered safe. Failing to enforce secure cipher suites can allow attackers to decrypt, tamper with, or intercept sensitive information in transit between CloudFront and clients. To mitigate this risk, the attribute should be set to a secure value (such as "TLSv1.2_2019" or higher), or by using the default CloudFront certificate which enforces modern standards.
+ This check verifies whether Amazon CloudFront distributions are configured to use secure TLS protocols and ciphers by examining the `viewer_certificate` block and its `minimum_protocol_version` attribute. CloudFront distributions that specify weak or outdated protocol versions, such as `SSLv3` (for example, `minimum_protocol_version = "SSLv3"`), expose transmitted data to vulnerabilities such as man-in-the-middle attacks and eavesdropping, as these protocols have known security flaws and are no longer considered safe. Failing to enforce secure cipher suites can allow attackers to decrypt, tamper with, or intercept sensitive information in transit between CloudFront and clients. To mitigate this risk, the attribute should be set to a secure value (such as "TLSv1.2_2019" or higher), or use the default CloudFront certificate which enforces modern standards.
 
 
 ## Compliant Code Examples

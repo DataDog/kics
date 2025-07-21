@@ -1,10 +1,10 @@
 ---
-title: "Function App Not Using Latest TLS Encryption Version"
+title: "Function App not using latest TLS encryption version"
 group-id: "rules/terraform/azure"
 meta:
   name: "azure/function_app_not_using_latest_tls_encryption_version"
   id: "45fc717a-bd86-415c-bdd8-677901be1aa6"
-  display_name: "Function App Not Using Latest TLS Encryption Version"
+  display_name: "Function App not using latest TLS encryption version"
   cloud_provider: "azure"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -28,7 +28,7 @@ meta:
 
 ### Description
 
- Azure Function Apps should be configured to use the latest supported TLS version to ensure encrypted communications and protect data in transit. If the `min_tls_version` attribute is set to an outdated value such as `1.1`, as in:
+ Azure Function Apps should be configured to use the latest supported TLS version to ensure encrypted communications and protect data in transit. If the `min_tls_version` attribute is set to an outdated value such as `1.1`, as shown below, the application becomes susceptible to known TLS vulnerabilities and exploits:
 
 ```
 site_config {
@@ -36,7 +36,7 @@ site_config {
 }
 ```
 
-the application becomes susceptible to known TLS vulnerabilities and exploits. Setting `min_tls_version` to at least `1.2`, as in
+To mitigate these risks and enforce stronger secure connections with clients, set `min_tls_version` to at least `1.2`, as shown here:
 
 ```
 site_config {
@@ -44,7 +44,7 @@ site_config {
 }
 ```
 
-mitigates these risks and enforces stronger secure connections with clients.
+
 
 
 ## Compliant Code Examples

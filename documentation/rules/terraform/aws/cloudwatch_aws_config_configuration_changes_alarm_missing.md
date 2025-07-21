@@ -1,10 +1,10 @@
 ---
-title: "CloudWatch AWS Config Configuration Changes Alarm Missing"
+title: "CloudWatch AWS Config configuration changes alarm missing"
 group-id: "rules/terraform/aws"
 meta:
   name: "aws/cloudwatch_aws_config_configuration_changes_alarm_missing"
   id: "5b8d7527-de8e-4114-b9dd-9d988f1f418f"
-  display_name: "CloudWatch AWS Config Configuration Changes Alarm Missing"
+  display_name: "CloudWatch AWS Config configuration changes alarm missing"
   cloud_provider: "aws"
   framework: "Terraform"
   severity: "MEDIUM"

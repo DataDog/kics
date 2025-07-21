@@ -1,10 +1,10 @@
 ---
-title: "Security Group is Not Configured"
+title: "Security group is not configured"
 group-id: "rules/terraform/azure"
 meta:
   name: "azure/security_group_is_not_configured"
   id: "5c822443-e1ea-46b8-84eb-758ec602e844"
-  display_name: "Security Group is Not Configured"
+  display_name: "Security group is not configured"
   cloud_provider: "azure"
   framework: "Terraform"
   severity: "HIGH"
@@ -28,9 +28,9 @@ meta:
 
 ### Description
 
- Network Security Groups (NSGs) in Azure provide filtering of network traffic to and from Azure resources within an Azure Virtual Network. When a subnet is not configured with an NSG, it lacks essential security controls that filter inbound and outbound traffic, potentially exposing resources to unauthorized access and network-based attacks. 
+ Network Security Groups (NSGs) in Azure provide filtering of network traffic to and from Azure resources within an Azure virtual network. When a subnet is not configured with an NSG, it lacks essential security controls that filter inbound and outbound traffic, potentially exposing resources to unauthorized access and network-based attacks. 
 
-A properly secured Virtual Network requires the 'security_group' attribute to be defined with a valid NSG reference in each subnet configuration. Without this protection, workloads running in these subnets may be accessible from unwanted network sources, increasing the attack surface.
+A properly secured virtual network requires the `security_group` attribute to be defined with a valid NSG reference in each subnet configuration. Without this protection, workloads running in these subnets may be accessible from unwanted network sources, increasing the attack surface.
 
 Secure example:
 ```terraform

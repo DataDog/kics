@@ -1,10 +1,10 @@
 ---
-title: "IP Forwarding Enabled"
+title: "IP forwarding enabled"
 group-id: "rules/terraform/gcp"
 meta:
   name: "gcp/ip_forwarding_enabled"
   id: "f34c0c25-47b4-41eb-9c79-249b4dd47b89"
-  display_name: "IP Forwarding Enabled"
+  display_name: "IP forwarding enabled"
   cloud_provider: "gcp"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -28,7 +28,7 @@ meta:
 
 ### Description
 
- This check ensures that the `can_ip_forward` attribute for Google Compute Engine instances is set to `false`, preventing instances from forwarding packets that are not addressed to themselves. If `can_ip_forward` is set to `true`, as shown below, the instance could be misused as a routing or proxy device, increasing the risk of data exfiltration or man-in-the-middle attacks:
+ This check ensures that the `can_ip_forward` attribute for Google Compute Engine instances is set to `false`, which prevents instances from forwarding packets not addressed to them. If `can_ip_forward` is set to `true`, as shown below, the instance could be misused as a routing or proxy device, increasing the risk of data exfiltration or man-in-the-middle attacks:
 
 ```
 resource "google_compute_instance" "appserver" {

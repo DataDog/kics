@@ -1,10 +1,10 @@
 ---
-title: "S3 Static Website Host Enabled"
+title: "S3 static website host enabled"
 group-id: "rules/terraform/aws"
 meta:
   name: "aws/s3_static_website_host_enabled"
   id: "42bb6b7f-6d54-4428-b707-666f669d94fb"
-  display_name: "S3 Static Website Host Enabled"
+  display_name: "S3 static website host enabled"
   cloud_provider: "aws"
   framework: "Terraform"
   severity: "HIGH"
@@ -28,7 +28,7 @@ meta:
 
 ### Description
 
- AWS S3 static website hosting allows serving content directly from buckets without additional authentication, potentially exposing sensitive data to the internet. When enabled via the 'website' block, the bucket content becomes accessible through the website endpoint, bypassing S3's access controls and increasing attack surface. Attackers could access unintended data if bucket policies are misconfigured or files are incorrectly permissioned.
+ AWS S3 static website hosting allows serving content directly from buckets without additional authentication, potentially exposing sensitive data to the internet. When enabled via the `website` block, the bucket content becomes accessible through the website endpoint, bypassing S3's access controls and increasing the attack surface. Attackers could access unintended data if bucket policies are misconfigured or files are incorrectly permissioned.
 
 Secure configuration example:
 ```

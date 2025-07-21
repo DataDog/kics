@@ -1,10 +1,10 @@
 ---
-title: "Sagemaker Notebook Instance Without KMS"
+title: "SageMaker notebook instance without KMS"
 group-id: "rules/terraform/aws"
 meta:
   name: "aws/sagemaker_notebook_instance_without_kms"
   id: "f3674e0c-f6be-43fa-b71c-bf346d1aed99"
-  display_name: "Sagemaker Notebook Instance Without KMS"
+  display_name: "SageMaker notebook instance without KMS"
   cloud_provider: "aws"
   framework: "Terraform"
   severity: "HIGH"
@@ -28,7 +28,7 @@ meta:
 
 ### Description
 
- AWS SageMaker Notebook Instances should be configured with a KMS key for encryption at rest to protect sensitive data and machine learning artifacts. Without proper encryption, confidential information stored in these notebooks may be exposed to unauthorized access, potentially leading to data breaches and compliance violations. To secure your SageMaker Notebook Instance, specify the 'kms_key_id' attribute in your Terraform configuration, as shown below:
+ AWS SageMaker notebook instances should be configured with a KMS key for encryption at rest to protect sensitive data and machine learning artifacts. Without proper encryption, confidential information stored in these notebooks may be exposed to unauthorized access, potentially leading to data breaches and compliance violations. To secure your SageMaker notebook instance, specify the `kms_key_id` attribute in your Terraform configuration, as shown below:
 
 ```
 resource "aws_sagemaker_notebook_instance" "ni" {

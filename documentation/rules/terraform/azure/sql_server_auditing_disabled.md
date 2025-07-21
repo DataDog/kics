@@ -1,10 +1,10 @@
 ---
-title: "SQL Server Auditing Disabled"
+title: "SQL server auditing disabled"
 group-id: "rules/terraform/azure"
 meta:
   name: "azure/sql_server_auditing_disabled"
   id: "f7e296b0-6660-4bc5-8f87-22ac4a815edf"
-  display_name: "SQL Server Auditing Disabled"
+  display_name: "SQL server auditing disabled"
   cloud_provider: "azure"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -24,11 +24,11 @@ meta:
 
 #### Learn More
 
- - [Provider Reference](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/sql_server)
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/azurerm/3.6.0/docs/resources/sql_firewall_rule)
 
 ### Description
 
- SQL Server auditing should be enabled to ensure that all database events and activities are properly logged for security monitoring and compliance purposes. Without the `extended_auditing_policy` block set as shown below, malicious or unauthorized actions may go undetected, increasing the risk of data breaches and making forensic analysis difficult. For example, secure Terraform configuration includes:
+ SQL Server auditing should be enabled to ensure that all database events and activities are properly logged for security monitoring and compliance purposes. Without the `extended_auditing_policy` block set as shown below, malicious or unauthorized actions may go undetected, increasing the risk of data breaches and making forensic analysis difficult. For example, secure Terraform configuration includes the following:
 
 ```
 extended_auditing_policy {

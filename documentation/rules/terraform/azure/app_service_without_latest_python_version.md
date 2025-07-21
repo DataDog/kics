@@ -1,10 +1,10 @@
 ---
-title: "App Service Without Latest Python Version"
+title: "App Service without latest Python version"
 group-id: "rules/terraform/azure"
 meta:
   name: "azure/app_service_without_latest_python_version"
   id: "cc4aaa9d-1070-461a-b519-04e00f42db8a"
-  display_name: "App Service Without Latest Python Version"
+  display_name: "App Service without latest Python version"
   cloud_provider: "azure"
   framework: "Terraform"
   severity: "LOW"
@@ -28,7 +28,7 @@ meta:
 
 ### Description
 
- It is recommended to specify the latest supported Python version for the `python_version` attribute in the `site_config` block of the `azurerm_app_service` resource. Using outdated Python versions, such as `"python_version = \"2.7\""`, exposes your application to known security vulnerabilities and lacks important features and security updates available in newer releases. To reduce risk, configure the resource with an up-to-date version, for example:
+ It is recommended to specify the latest supported Python version for the `python_version` attribute in the `site_config` block of the `azurerm_app_service` resource. Using outdated Python versions, such as `"python_version = \"2.7\""`, exposes your application to known security vulnerabilities and prevents access to important features and security updates available in newer releases. To reduce risk, configure the resource with an up-to-date version. For example:
 
 ```
 site_config {

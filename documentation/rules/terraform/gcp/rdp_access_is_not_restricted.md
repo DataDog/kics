@@ -1,10 +1,10 @@
 ---
-title: "RDP Access Is Not Restricted"
+title: "RDP access is not restricted"
 group-id: "rules/terraform/gcp"
 meta:
   name: "gcp/rdp_access_is_not_restricted"
   id: "678fd659-96f2-454a-a2a0-c2571f83a4a3"
-  display_name: "RDP Access Is Not Restricted"
+  display_name: "RDP access is not restricted"
   cloud_provider: "gcp"
   framework: "Terraform"
   severity: "HIGH"
@@ -28,9 +28,9 @@ meta:
 
 ### Description
 
- This check verifies if Google Compute firewall rules allow unrestricted RDP access by examining if port 3389 (the default RDP port) is openly accessible from the internet. When firewall rules allow RDP traffic from '0.0.0.0/0' (all IPv4) or '::/0' (all IPv6), it significantly increases the risk of brute force attacks, unauthorized access, and potential system compromise.
+ This check verifies if Google Compute firewall rules allow unrestricted RDP access by examining if port 3389 (the default RDP port) is openly accessible from the internet. When firewall rules allow RDP traffic from `0.0.0.0/0` (all IPv4) or `::/0` (all IPv6), it significantly increases the risk of brute force attacks, unauthorized access, and potential system compromise.
 
-Vulnerable configurations include allowing port 3389 directly or within ranges (e.g., '21-3390'), or using 'protocol = "all"' with unrestricted source ranges. To secure your environment, explicitly exclude RDP ports from public access and restrict RDP traffic to specific trusted IP addresses or VPN connections.
+Vulnerable configurations include allowing port 3389 directly or within ranges (for example, `21-3390`), or using `protocol = "all"` with unrestricted source ranges. To secure your environment, explicitly exclude RDP ports from public access and restrict RDP traffic to specific trusted IP addresses or VPN connections.
 
 ```hcl
 // Insecure configuration (AVOID):

@@ -1,10 +1,10 @@
 ---
-title: "EFS Without KMS"
+title: "EFS without KMS"
 group-id: "rules/terraform/aws"
 meta:
   name: "aws/efs_without_kms"
   id: "25d251f3-f348-4f95-845c-1090e41a615c"
-  display_name: "EFS Without KMS"
+  display_name: "EFS without KMS"
   cloud_provider: "aws"
   framework: "Terraform"
   severity: "LOW"

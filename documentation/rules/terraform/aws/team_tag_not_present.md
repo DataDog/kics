@@ -1,10 +1,10 @@
 ---
-title: "Team Tag Missing"
+title: "Team tag missing"
 group-id: "rules/terraform/aws"
 meta:
   name: "aws/team_tag_not_present"
   id: "a2b3c4d5-e6f7-8901-gh23-ijkl456m7890"
-  display_name: "Team Tag Missing"
+  display_name: "Team tag missing"
   cloud_provider: "aws"
   framework: "Terraform"
   severity: "INFO"
@@ -28,7 +28,7 @@ meta:
 
 ### Description
 
- This check ensures that every cloud resource defined in Terraform includes a "Team" tag within the `tags` attribute, which is critical for tracking resource ownership and accountability. Without a "Team" tag (e.g., `tags = { Environment = "Production" }`), it becomes difficult to determine resource owners, leading to challenges in cost allocation, incident response, and lifecycle management. If left unaddressed, the absence of this tag can result in unmanaged resources remaining active, increasing the risk of security vulnerabilities and unnecessary expenses.
+ This check ensures that every cloud resource defined in Terraform includes a "Team" tag within the `tags` attribute, which is critical for tracking resource ownership and accountability. Without a "Team" tag (for example, `tags = { Environment = "Production" }`), it becomes difficult to determine resource owners, leading to challenges in cost allocation, incident response, and lifecycle management. If left unaddressed, the absence of this tag can result in unmanaged resources remaining active, increasing the risk of security vulnerabilities and unnecessary expenses.
 
 
 ## Compliant Code Examples

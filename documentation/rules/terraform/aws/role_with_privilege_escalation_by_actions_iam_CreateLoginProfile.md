@@ -1,10 +1,10 @@
 ---
-title: "Role With Privilege Escalation By Actions 'iam:CreateLoginProfile'"
+title: "Role with privilege escalation by actions 'iam:CreateLoginProfile'"
 group-id: "rules/terraform/aws"
 meta:
   name: "aws/role_with_privilege_escalation_by_actions_iam_CreateLoginProfile"
   id: "9a205ba3-0dd1-42eb-8d54-2ffec836b51a"
-  display_name: "Role With Privilege Escalation By Actions 'iam:CreateLoginProfile'"
+  display_name: "Role with privilege escalation by actions 'iam:CreateLoginProfile'"
   cloud_provider: "aws"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -45,7 +45,7 @@ policy = jsonencode({
 })
 ```
 
-Allowing this action enables a user or role to create login profiles (i.e., set console passwords) for any IAM user account, potentially facilitating privilege escalation. If left unaddressed, attackers could exploit this permission to gain unauthorized console access and take full control of IAM users, posing a severe security risk to the environment.
+Allowing this action enables a user or role to create login profiles (that is, set console passwords) for any IAM user account, potentially facilitating privilege escalation. If left unaddressed, attackers could exploit this permission to gain unauthorized console access and take full control of IAM users, posing a severe security risk to the environment.
 
 
 ## Compliant Code Examples

@@ -1,10 +1,10 @@
 ---
-title: "MSSQL Server Public Network Access Enabled"
+title: "MSSQL server public network access enabled"
 group-id: "rules/terraform/azure"
 meta:
   name: "azure/mssql_server_public_network_access_enabled"
   id: "ade36cf4-329f-4830-a83d-9db72c800507"
-  display_name: "MSSQL Server Public Network Access Enabled"
+  display_name: "MSSQL server public network access enabled"
   cloud_provider: "azure"
   framework: "Terraform"
   severity: "HIGH"
@@ -24,7 +24,7 @@ meta:
 
 #### Learn More
 
- - [Provider Reference](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/mssql_server#public_network_access_enabled)
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/azurerm/3.6.0/docs/resources/mysql_server#public_network_access_enabled-3)
 
 ### Description
 

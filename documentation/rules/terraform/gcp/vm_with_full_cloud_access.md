@@ -1,10 +1,10 @@
 ---
-title: "VM With Full Cloud Access"
+title: "VM with full cloud access"
 group-id: "rules/terraform/gcp"
 meta:
   name: "gcp/vm_with_full_cloud_access"
   id: "bc280331-27b9-4acb-a010-018e8098aa5d"
-  display_name: "VM With Full Cloud Access"
+  display_name: "VM with full cloud access"
   cloud_provider: "gcp"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -36,7 +36,7 @@ service_account {
 }
 ```
 
-To limit permissions and reduce the attack surface, the service account should only be granted the minimal set of scopes necessary, such as:
+To limit permissions and reduce the attack surface, the service account should only be granted the minimum set of scopes necessary, such as:
 
 ```
 service_account {
