@@ -1,0 +1,726 @@
+Query Name,Severity
+OSS Bucket Allows All Actions From All Principals,Critical
+OSS Bucket Allows Delete Action From All Principals,Critical
+OSS Bucket Allows Put Action From All Principals,Critical
+RDS DB Instance Publicly Accessible,Critical
+OSS Bucket Allows List Action From All Principals,High
+OSS Bucket Public Access Enabled,High
+Ecs Data Disk Kms Key Id Undefined,High
+Launch Template Is Not Encrypted,High
+NAS File System Not Encrypted,High
+NAS File System Without KMS,High
+RDS Instance TDE Status Disabled,High
+OSS Bucket Has Static Website,High
+OSS Bucket Ip Restriction Disabled,High
+Public Security Group Rule All Ports or Protocols,High
+Public Security Group Rule Sensitive Port,High
+Public Security Group Rule Unknown Port,High
+ActionTrail Trail OSS Bucket is Publicly Accessible,High
+Ram Policy Admin Access Not Attached to Users Groups Roles,Medium
+Ram Policy Attached to User,Medium
+CMK Is Unusable,Medium
+OSS Bucket Versioning Disabled,Medium
+ROS Stack Retention Disabled,Medium
+Team Tag Missing,Info
+Disk Encryption Disabled,Medium
+OSS Bucket Encryption Using CMK Disabled,Medium
+SLB Policy With Insecure TLS Version In Use,Medium
+CS Kubernetes Node Pool Auto Repair Disabled,Medium
+RDS DB Instance Publicly Accessible,Medium
+ALB Listening on HTTP,Medium
+API Gateway API Protocol Not HTTPS,Medium
+OSS Buckets Secure Transport Disabled,Medium
+RDS Instance SSL Action Disabled,Medium
+Action Trail Logging For All Regions Disabled,Medium
+OSS Bucket Logging Disabled,Medium
+RDS Instance Events Not Logged,Medium
+RDS Instance Log Connections Disabled,Medium
+RDS Instance Log Disconnections Disabled,Medium
+RDS Instance Log Duration Disabled,Medium
+VPC Flow Logs Disabled,Medium
+No ROS Stack Policy,Medium
+High KMS Key Rotation Period,Medium
+Ram Account Password Policy Max Login Attempts Unrecommended,Medium
+Ram Account Password Policy Max Password Age Unrecommended,Medium
+RAM Account Password Policy without Reuse Prevention,Medium
+RAM Security Preference Not Enforce MFA Login,Low
+OSS Bucket Transfer Acceleration Disabled,Low
+OSS Bucket Lifecycle Rule Disabled,Low
+Kubernetes Cluster Without Terway as CNI Network Plugin,Low
+Log Retention Is Not Greater Than 90 Days,Low
+RDS Instance Retention Period Not Recommended,Low
+ROS Stack Notifications Disabled,Low
+Ram Account Password Policy Not Require At Least one Lowercase Character,Low
+RAM Account Password Policy Not Require at Least one Uppercase Character,Low
+Ram Account Password Policy Not Required Minimum Length,Low
+Ram Account Password Policy Not Required Numbers,Low
+RAM Account Password Policy Not Required Symbols,Low
+Ensure that cloud resource has a 'team' tag,Info
+Team Label Missing,Info
+IAM Role Policy passRole Allows All,Medium
+IAM Access Analyzer Not Enabled,Low
+AMI Not Encrypted,Medium
+AMI Shared With Multiple Accounts,Medium
+API Gateway Without Configured Authorizer,Medium
+API Gateway Deployment Without Access Log Setting,Medium
+API Gateway Deployment Without API Gateway UsagePlan Associated,Low
+API Gateway Without Security Policy,Medium
+API Gateway With Open Access,Medium
+API Gateway Method Does Not Contains An API Key,Medium
+CloudWatch Metrics Disabled,Medium
+API Gateway Method Settings Cache Not Encrypted,High
+API Gateway Endpoint Config is Not Private,Medium
+Certificate RSA Key Bytes Lower Than 256,Medium
+Certificate Has Expired,Medium
+API Gateway With Invalid Compression,Low
+REST API With Vulnerable Policy,Medium
+API Gateway Without SSL Certificate,Medium
+API Gateway Access Logging Disabled,Medium
+API Gateway X-Ray Disabled,Low
+API Gateway With CloudWatch Logging Disabled,Medium
+API Gateway Stage Without API Gateway UsagePlan Associated,Low
+Athena Database Not Encrypted,High
+Athena Workgroup Not Encrypted,High
+Auto Scaling Group With No Associated ELB,Medium
+Autoscaling Groups Supply Tags,Low
+Batch Job Definition With Privileged Container Properties,High
+No Stack Policy,Medium
+Stack Without Template,Low
+Stack Notifications Disabled,Medium
+Stack Retention Disabled,Medium
+CloudFront Without Minimum Protocol TLS 1.2,Medium
+CloudFront Without WAF,Medium
+CDN Configuration Is Missing,Low
+Vulnerable Default SSL Certificate,Medium
+Cloudfront Viewer Protocol Policy Allows HTTP,Medium
+Secure Ciphers Disabled,Medium
+CloudFront Logging Disabled,Medium
+CloudTrail Not Integrated With CloudWatch,Low
+CloudTrail SNS Topic Name Undefined,Low
+CloudTrail Logging Disabled,Medium
+CloudTrail Log File Validation Disabled,Low
+CloudTrail Log Files Not Encrypted With KMS,Low
+CloudTrail Multi Region Disabled,Low
+S3 Bucket Object Level CloudTrail Logging Disabled,Medium
+CloudTrail Log Files S3 Bucket is Publicly Accessible,High
+CloudTrail Log Files S3 Bucket with Logging Disabled,Medium
+CloudWatch Logs Destination With Vulnerable Policy,Low
+CloudWatch Log Group Without KMS,Medium
+CloudWatch Without Retention Period Specified,Info
+CloudWatch Changes To NACL Alarm Missing,Medium
+Cloudwatch Cloudtrail Configuration Changes Alarm Missing,Medium
+CloudWatch Route Table Changes Alarm Missing,Low
+CloudWatch S3 policy Change Alarm Missing,Medium
+CloudWatch AWS Organizations Changes Missing Alarm,Info
+CloudWatch Console Sign-in Without MFA Alarm Missing,Low
+Cloudwatch Security Group Changes Alarm Missing,Medium
+CloudWatch Unauthorized Access Alarm Missing,Critical
+CloudWatch Disabling Or Scheduled Deletion Of Customer Created CMK Alarm Missing,Medium
+CloudWatch Management Console Auth Failed Alarm Missing,Medium
+CloudWatch AWS Config Configuration Changes Alarm Missing,Medium
+CloudWatch Network Gateways Changes Alarm Missing,Low
+CloudWatch Root Account Use Missing,Medium
+CloudWatch VPC Changes Alarm Missing,Medium
+CloudWatch IAM Policy Changes Alarm Missing,Low
+CodeBuild Project Encrypted With AWS Managed Key,Low
+Cognito UserPool Without MFA,Low
+Config Rule For Encrypted Volumes Disabled,High
+Configuration Aggregator to All Regions Disabled,Low
+DAX Cluster Not Encrypted,High
+RDS Database Cluster not Encrypted,High
+DB Instance Storage Not Encrypted,High
+RDS With Backup Disabled,Medium
+RDS Associated with Public Subnet,Critical
+RDS DB Instance Publicly Accessible,Critical
+Automatic Minor Upgrades Disabled,Low
+IAM Database Auth Not Enabled,Medium
+RDS Without Logging,Medium
+CA Certificate Identifier Is Outdated,Medium
+RDS Using Default Port,Low
+DB Security Group With Public Scope,Critical
+DB Security Group Open To Large Scope,High
+DB Security Group Has Public Interface,High
+Default Security Groups With Unrestricted Traffic,High
+VPC Default Security Group Accepts All Traffic,High
+Default VPC Exists,Medium
+DMS Endpoints Without SSL,High
+Amazon DMS Replication Instance Is Publicly Accessible,Critical
+DOCDB Cluster Encrypted With AWS Managed Key,Low
+DOCDB Cluster Without KMS,High
+DocDB Logging Is Disabled,Medium
+DOCDB Cluster Not Encrypted,High
+DynamoDB Table Point In Time Recovery Disabled,Info
+DynamoDB Table Not Encrypted,High
+EBS Default Encryption Disabled,High
+EBS Volume Snapshot Not Encrypted,High
+EBS Volume Encryption Disabled,High
+ECR Repository Not Encrypted With CMK,Low
+Unscanned ECR Image,Low
+ECR Image Tag Not Immutable,Medium
+ECR Repository Without Policy,Low
+ECR Repository Is Publicly Accessible,Critical
+ECS Cluster with Container Insights Disabled,Low
+ECS Service Admin Role Is Present,High
+ECS Service Without Running Tasks,Low
+ECS Task Definition Volume Not Encrypted,High
+ECS Task Definition Network Mode Not Recommended,Medium
+EFS Without KMS,Low
+EFS Not Encrypted,High
+EFS With Vulnerable Policy,Medium
+EKS cluster logging is not enabled,Medium
+EKS Cluster Has Public Access,Medium
+EKS Cluster Has Public Access CIDRs,Medium
+EKS Cluster Encryption Disabled,High
+Missing Cluster Log Types,Medium
+EKS node group remote access disabled,Medium
+Redis Not Compliant,High
+Redis Disabled,Low
+ElastiCache Using Default Port,Low
+ElastiCache Nodes Not Created Across Multi AZ,Medium
+ElastiCache Without VPC,Low
+ElastiCache Redis Cluster Without Backup,Medium
+ElastiCache Replication Group Not Encrypted At Transit,Medium
+ElastiCache Replication Group Not Encrypted At Rest,High
+Elasticsearch Uses Default Security Group,High
+Fine-Grained Access Control Disabled for OpenSearch/Elasticsearch,High
+ElasticSearch Not Encrypted At Rest,High
+Elasticsearch with HTTPS disabled,Medium
+ElasticSearch Encryption With KMS Disabled,High
+Elasticsearch Domain Not Encrypted Node To Node,Medium
+Elasticsearch Log Disabled,Medium
+Elasticsearch Without IAM Authentication,Medium
+ElasticSearch Without Slow Logs,Low
+Elasticsearch Domain With Vulnerable Policy,Medium
+ELB Access Log Disabled,Medium
+EMR Without VPC,Low
+Global Accelerator Flow Logs Disabled,Medium
+Glue Data Catalog Encryption Disabled,High
+Glue With Vulnerable Policy,Medium
+Glue Security Configuration Encryption Disabled,High
+GuardDuty Detector Disabled,Medium
+IAM User Has Too Many Access Keys,Medium
+IAM Access Key Is Exposed,Medium
+Root Account Has Active Access Keys,High
+IAM Password Policy Does Not Require Uppercase Letter,Medium
+IAM Password Policy Does Not Require Symbol,Medium
+IAM Password Policy Does Not Require Numbers,Medium
+IAM Password Without Minimum Length,Low
+Password Without Reuse Prevention,Low
+AWS Password Policy With Unchangeable Passwords,Low
+Misconfigured Password Policy Expiration,Low
+IAM Password Policy Does Not Require Lowercase Letter,Medium
+IAM Group Without Users,Medium
+Group With Privilege Escalation By Actions 'lambda:CreateFunction' And 'iam:PassRole' And 'lambda:InvokeFunction',Medium
+Group With Privilege Escalation By Actions 'iam:CreateLoginProfile',Medium
+Group With Privilege Escalation By Actions 'ec2:RunInstances' And 'iam:PassRole',Medium
+Group With Privilege Escalation By Actions 'iam:AttachRolePolicy',Medium
+Group With Privilege Escalation By Actions 'lambda:UpdateFunctionCode',Medium
+Group With Privilege Escalation By Actions 'iam:PutUserPolicy',Medium
+Group With Privilege Escalation By Actions 'iam:AttachGroupPolicy',Medium
+Group With Privilege Escalation By Actions 'iam:SetDefaultPolicyVersion',Medium
+Group With Privilege Escalation By Actions 'iam:UpdateAssumeRolePolicy' And 'sts:AssumeRole',Medium
+Group With Privilege Escalation By Actions 'glue:CreateDevEndpoint' And 'iam:PassRole',Medium
+Group With Privilege Escalation By Actions 'iam:CreateAccessKey',Medium
+Group With Privilege Escalation By Actions 'glue:UpdateDevEndpoint',Medium
+Group With Privilege Escalation By Actions 'iam:AddUserToGroup',Medium
+Group With Privilege Escalation By Actions 'cloudformation:CreateStack' And 'iam:PassRole',Medium
+Group With Privilege Escalation By Actions 'iam:UpdateLoginProfile',Medium
+Group With Privilege Escalation By Actions 'iam:PutRolePolicy',Medium
+Group With Privilege Escalation By Actions 'iam:AttachUserPolicy',Medium
+Group With Privilege Escalation By Actions 'iam:PutGroupPolicy',Medium
+Group With Privilege Escalation By Actions 'iam:CreatePolicyVersion',Medium
+IAM Policies Attached To User,Medium
+Cross-Account IAM Assume Role Policy Without ExternalId or MFA,High
+IAM Role Allows All Principals To Assume,Medium
+IAM Role With Full Privileges,High
+IAM Policy Grants 'AssumeRole' Permission Across All Services,Medium
+Role With Privilege Escalation By Actions 'glue:CreateDevEndpoint' And 'iam:PassRole',Medium
+Role With Privilege Escalation By Actions 'iam:SetDefaultPolicyVersion',Medium
+IAM Policies With Full Privileges,Medium
+Role With Privilege Escalation By Actions 'ec2:RunInstances' And 'iam:PassRole',Medium
+Role With Privilege Escalation By Actions 'iam:UpdateLoginProfile',Medium
+IAM Policy Grants Full Permissions,High
+Role With Privilege Escalation By Actions 'iam:CreateAccessKey',Medium
+Role With Privilege Escalation By Actions 'iam:AttachUserPolicy',Medium
+Role With Privilege Escalation By Actions 'iam:PutUserPolicy',Medium
+Role With Privilege Escalation By Actions 'iam:CreateLoginProfile',Medium
+Role With Privilege Escalation By Actions 'iam:AddUserToGroup',Medium
+Role With Privilege Escalation By Actions 'cloudformation:CreateStack' And 'iam:PassRole',Medium
+Role With Privilege Escalation By Actions 'lambda:UpdateFunctionCode',Medium
+Role With Privilege Escalation By Actions 'iam:PutGroupPolicy',Medium
+Role With Privilege Escalation By Actions 'iam:PutRolePolicy',Medium
+Role With Privilege Escalation By Actions 'glue:UpdateDevEndpoint',Medium
+Role With Privilege Escalation By Actions 'iam:CreatePolicyVersion',Medium
+Role With Privilege Escalation By Actions 'iam:UpdateAssumeRolePolicy' And 'sts:AssumeRole',Medium
+Role With Privilege Escalation By Actions 'iam:AttachRolePolicy',Medium
+Role With Privilege Escalation By Actions 'iam:AttachGroupPolicy',Medium
+Role With Privilege Escalation By Actions 'lambda:CreateFunction' And 'iam:PassRole' And 'lambda:InvokeFunction',Medium
+IAM User With Access To Console,Medium
+No Password Policy Enabled,Medium
+User With Privilege Escalation By Actions 'iam:PutUserPolicy',Medium
+User With Privilege Escalation By Actions 'iam:CreateLoginProfile',Medium
+User With Privilege Escalation By Actions 'iam:CreateAccessKey',Medium
+User With Privilege Escalation By Actions 'iam:CreatePolicyVersion',Medium
+User With Privilege Escalation By Actions 'cloudformation:CreateStack' And 'iam:PassRole',Medium
+User With Privilege Escalation By Actions 'iam:UpdateAssumeRolePolicy' And 'sts:AssumeRole',Medium
+Authentication Without MFA,Low
+User With Privilege Escalation By Actions 'iam:SetDefaultPolicyVersion',Medium
+User With Privilege Escalation By Actions 'iam:AttachGroupPolicy',Medium
+User With Privilege Escalation By Actions 'iam:UpdateLoginProfile',Medium
+User With Privilege Escalation By Actions 'iam:AttachUserPolicy',Medium
+User With Privilege Escalation By Actions 'lambda:CreateFunction' And 'iam:PassRole' And 'lambda:InvokeFunction',Medium
+User With Privilege Escalation By Actions 'ec2:RunInstances' And 'iam:PassRole',Medium
+User With Privilege Escalation By Actions 'iam:PutGroupPolicy',Medium
+User With Privilege Escalation By Actions 'glue:CreateDevEndpoint' And 'iam:PassRole',Medium
+User With Privilege Escalation By Actions 'glue:UpdateDevEndpoint',Medium
+User With Privilege Escalation By Actions 'lambda:UpdateFunctionCode',Medium
+User With Privilege Escalation By Actions 'iam:AddUserToGroup',Medium
+User With Privilege Escalation By Actions 'iam:AttachRolePolicy',Medium
+User With Privilege Escalation By Actions 'iam:PutRolePolicy',Medium
+IAM User Policy Without MFA,Low
+SSO Identity User Unsafe Creation,Medium
+EC2 Instance Using API Keys,Low
+EC2 Instance Monitoring Disabled,Medium
+EC2 Instance Has Public IP,Medium
+EC2 Not EBS Optimized,Info
+EC2 Instance Using Default VPC,Low
+Instance With No VPC,Low
+Public and Private EC2 Share Role,Medium
+Hardcoded AWS Access Key,High
+EC2 Instance Using Default Security Group,Medium
+BOM - AWS MSK,Trace
+BOM - AWS Kinesis,Trace
+BOM - AWS RDS,Trace
+BOM - AWS DynamoDB,Trace
+BOM - AWS S3 Buckets,Trace
+BOM - AWS Elasticache,Trace
+BOM - AWS EBS,Trace
+BOM - AWS SQS,Trace
+BOM - AWS SNS,Trace
+BOM - AWS EFS,Trace
+BOM - AWS MQ,Trace
+Kinesis SSE Not Configured,High
+Kinesis Not Encrypted With KMS,High
+KMS Key With No Deletion Window,Low
+CMK Rotation Disabled,Low
+CMK Is Unusable,Medium
+KMS Key With Vulnerable Policy,High
+Hardcoded AWS Access Key In Lambda,High
+Lambda Function With Privileged Role,High
+Lambda Functions Without X-Ray Tracing,Low
+Lambda Function Publicly Accessible,High
+Lambda IAM InvokeFunction Misconfigured,Low
+Public Lambda via API Gateway,Medium
+Lambda Permission Misconfigured,Low
+Lambda With Vulnerable Policy,High
+Lambda Permission Principal Is Wildcard,Medium
+IMDSv1 Enabled,High
+User Data Contains Encoded Private Key,High
+Launch Configuration Is Not Encrypted,High
+ALB Not Dropping Invalid Headers,Medium
+ALB Deletion Protection Disabled,Medium
+ALB Listening on HTTP,Medium
+ELB Using Insecure Protocols,Medium
+ELB Using Weak Ciphers,High
+MQ Broker Logging Disabled,Medium
+AmazonMQ Broker Encryption Disabled,High
+MQ Broker Is Publicly Accessible,High
+MSK Cluster Logging Disabled,Medium
+MSK Broker Is Publicly Accessible,High
+MSK Cluster Encryption Disabled,High
+Neptune Logging Is Disabled,Medium
+Neptune Database Cluster Encryption Disabled,High
+Neptune Cluster With IAM Database Authentication Disabled,High
+Neptune Cluster Instance is Publicly Accessible,High
+Neptune Cluster Snapshot Not Encrypted,High
+Network ACL With Unrestricted Access To SSH,Medium
+Network ACL With Unrestricted Access To RDP,High
+VPC Without Network Firewall,Medium
+Service Control Policies Disabled,Medium
+Aurora With Disabled at Rest Encryption,High
+RDS Storage Not Encrypted,High
+RDS Cluster With Backup Disabled,Medium
+Redshift Cluster Without VPC,Low
+Redshift Cluster Logging Disabled,Medium
+Redshift Using Default Port,Low
+Redshift Publicly Accessible,High
+Redshift Not Encrypted,High
+Policy Without Principal,Medium
+Resource Not Using Tags,Info
+ROS Stack Without Template,Medium
+VPC Peering Route Table with Unrestricted CIDR,High
+CloudWatch Logging Disabled,Medium
+Route53 Record Undefined,High
+S3 Bucket ACL Allows Read Or Write to All Users,Critical
+S3 Static Website Host Enabled,High
+S3 Bucket Without Versioning,Medium
+S3 Bucket ACL Allows Read to Any Authenticated User,High
+S3 Bucket with Unsecured CORS Rule,Medium
+S3 Bucket With All Permissions,Critical
+S3 Bucket Without Enabled MFA Delete,Low
+S3 Bucket Logging Disabled,Medium
+S3 Bucket Allows Authenticated Users Access,High
+S3 Bucket ACL Grants WRITE_ACP Permission,Critical
+S3 Bucket Object Not Encrypted,High
+S3 Bucket Allows Get Action From All Principals,High
+S3 Bucket Policy Accepts HTTP Requests,Medium
+S3 Bucket Allows List Action From All Principals,High
+S3 Bucket Access to Any Principal,Critical
+S3 Bucket Allows Put Action From All Principals,Critical
+S3 Bucket Allows Delete Action From All Principals,Critical
+S3 Bucket Allows Public Policy,High
+S3 Bucket Without Restriction Of Public Bucket,Medium
+S3 Bucket Without Ignore Public ACL,Medium
+S3 Bucket Public ACL Overridden By Public Access Block,High
+S3 Bucket Allows Public ACL,Medium
+Sagemaker Endpoint Configuration Encryption Disabled,High
+SageMaker Notebook Internet Access Enabled,High
+Sagemaker Notebook Instance Without KMS,High
+Secretsmanager Secret Without KMS,Medium
+Secretsmanager Secret Encrypted With AWS Managed Key,Medium
+Secrets Manager With Vulnerable Policy,High
+Remote Desktop Port Open To Internet,High
+Sensitive Port Is Exposed To Entire Network,High
+Security Group Not Used,Info
+SQL Analysis Services Port 2383 (TCP) Is Publicly Accessible,Medium
+Unknown Port Exposed To Internet,High
+Security Group With Unrestricted Access To SSH,Medium
+Security Group Rule Without Description,Info
+Sensitive Port Is Exposed To Wide Private Network,Low
+Security Group Without Description,Info
+Sensitive Port Is Exposed To Small Public Network,Medium
+HTTP Port Open To Internet,Medium
+Unrestricted Security Group Ingress,High
+SES Policy With Allowed IAM Actions,High
+Shield Advanced Not In Use,Low
+SNS Topic Not Encrypted,High
+SNS Topic Encrypted With AWS Managed Key,Medium
+SNS Topic is Publicly Accessible,Critical
+SNS Topic Publicity Has Allow and NotAction Simultaneously,Medium
+SQS With SSE Disabled,Medium
+SQS Queue Exposed,High
+SQS Policy With Public Access,Medium
+SQS Policy Allows All Actions,High
+SSM Session Transit Encryption Disabled,Medium
+SSO Permission With Inadequate User Session Duration,Low
+SSO Policy with full privileges,Medium
+VPC Subnet Assigns Public IP,Medium
+SQS VPC Endpoint Without DNS Resolution,Low
+VPC FlowLogs Disabled,Medium
+Dynamodb VPC Endpoint Without Route Table Association,Low
+ALB Is Not Integrated With WAF,Medium
+API Gateway without WAF,Medium
+Workspaces Workspace Volume Not Encrypted,High
+Ensure web app is not remotely debuggable,High
+App Service Authentication Disabled,Medium
+App Service Not Using Latest TLS Encryption Version,Medium
+App Service FTPS Enforce Disabled,Medium
+App Service HTTP2 Disabled,Medium
+Azure App Service Client Certificate Disabled,Medium
+Web App Accepting Traffic Other Than HTTPS,Medium
+App Service Without Latest PHP Version,Low
+App Service Without Latest Python Version,Low
+App Service Managed Identity Disabled,Low
+WAF Is Disabled For Azure Application Gateway,Medium
+Azure Container Registry With No Locks,High
+Admin User Enabled For Container Registry,Medium
+CosmosDB Account IP Range Filter Not Set,Critical
+Cosmos DB Account Without Tags,Low
+Azure Front Door WAF Disabled,Low
+Function App Authentication Disabled,Medium
+Function App Not Using Latest TLS Encryption Version,Medium
+Function App Client Certificates Unrequired,Medium
+Function App FTPS Enforce Disabled,Medium
+Function App HTTP2 Disabled,Medium
+Function App Managed Identity Disabled,Medium
+Key Expiration Not Set,Medium
+Key Vault Secrets Content Type Undefined,Medium
+Secret Expiration Not Set,Medium
+Vault Auditing Disabled,Medium
+AKS RBAC Disabled,Medium
+AKS Private Cluster Disabled,Medium
+AKS Uses Azure Policies Add-On Disabled,Low
+AKS Disk Encryption Set ID Undefined,Low
+AKS Network Policy Misconfigured,Low
+Dashboard Is Enabled,Low
+Ensure web app is not remotely debuggable,High
+Ensure web app is not remotely debuggable,High
+Azure Instance Using Basic Authentication,Medium
+Ensure web app is not remotely debuggable,High
+Ensure web app is not remotely debuggable,High
+Encryption On Managed Disk Disabled,Medium
+Ensure Azure MariaDB server is using latest TLS (1.2),High
+MariaDB Server Public Network Access Enabled,High
+MariaDB Server Geo-redundant Backup Disabled,Low
+Small Activity Log Retention Period,Low
+MSSQL Server Public Network Access Enabled,High
+MSSQL Server Auditing Disabled,Medium
+Small MSSQL Audit Retention Period,Low
+SQL Server Alert Email Disabled,Info
+Enforce SSL connection' is not set to 'ENABLED' for MySQL Database Server,High
+Ensure MySQL is using the latest version of TLS encryption,High
+MySQL Server Public Access Enabled,High
+MySQL SSL Connection Disabled,Medium
+Network Interfaces IP Forwarding Enabled,Medium
+Network Interfaces With Public IP,Medium
+Ensure that UDP Services are restricted from the Internet,High
+Ensure that UDP Services are restricted from the Internet,High
+RDP Is Exposed To The Internet,High
+Sensitive Port Is Exposed To Entire Network,High
+Sensitive Port Is Exposed To Small Public Network,Medium
+SSH Is Exposed To The Internet,Medium
+Sensitive Port Is Exposed To Wide Private Network,Low
+Network Watcher Flow Disabled,Medium
+Small Flow Logs Retention Period,Medium
+Log Retention Is Not Set,Medium
+PostgreSQL Log Checkpoints Disabled,Medium
+PostgreSQL Log Connections Not Set,Medium
+PostgreSQL Log Disconnections Not Set,Medium
+PostgreSQL Log Duration Not Set,Medium
+PostgreSQL Server Without Connection Throttling,Medium
+Small PostgreSQL DB Server Log Retention Period,Low
+Enforce SSL connection' is not set to 'ENABLED' for PostgreSQL Database Server,High
+Ensure that PostgreSQL server disables public network access,High
+SSL Enforce Disabled,Medium
+PostgreSQL Server Threat Detection Policy Disabled,Medium
+Geo Redundancy Is Disabled,Low
+PostgreSQL Server Infrastructure Encryption Disabled,Low
+Redis Cache Allows Non SSL Connections,Medium
+Redis Not Updated Regularly,Medium
+Redis Entirely Accessible,Critical
+Redis Publicly Accessible,Critical
+Beta - Databricks Cluster or Job With None Or Insecure Permission(s),High
+Beta - Unrestricted Databricks ACL,High
+Beta - Job's Task is Legacy (spark_submit_task),Medium
+Beta - Indefinitely Databricks OBO Token Lifetime,Medium
+Beta - Indefinitely Databricks Token Lifetime,Medium
+Beta - Databricks Autoscale Badly Setup,Medium
+Beta - Databricks Group Without User Or Instance Profile,Low
+Beta - Check Databricks Cluster AWS Attribute Best Practices,Low
+Beta - Check Databricks Cluster Azure Attribute Best Practices,Low
+Beta - Check Databricks Cluster GCP Attribute Best Practices,Low
+Beta - Check use no LTS Spark Version,Low
+Firewall Rule Allows Too Many Hosts To Access Redis Cache,Medium
+Role Assignment Not Limit Guest User Permissions,Medium
+Role Definition Allows Custom Role Creation,Medium
+Azure Cognitive Search Public Network Access Enabled,Medium
+Security Contact Email,Medium
+Email Alerts Disabled,Medium
+Security Center Pricing Tier Is Not Standard,Medium
+Azure Active Directory Authentication,Low
+AD Admin Not Configured For SQL Server,Medium
+SQL Server Predictable Active Directory Account Name,Low
+SQL Database Audit Disabled,Medium
+SQLServer Ingress From Any IP,Critical
+Unrestricted SQL Server Access,Critical
+SQL Server Auditing Disabled,Medium
+SQL Server Predictable Admin Account Name,Low
+Small MSSQL Server Audit Retention,Low
+Public Storage Account,High
+Storage Account Not Forcing HTTPS,Medium
+Storage Account Not Using Latest TLS Encryption Version,Medium
+Trusted Microsoft Services Not Enabled,Medium
+Default Azure Storage Account Network Access Is Too Permissive,Medium
+Storage Container Is Publicly Accessible,High
+Storage Share File Allows All ACL Permissions,Medium
+Storage Table Allows All ACL Permissions,Medium
+VM Not Attached To Network,Medium
+Virtual Network with DDoS Protection Plan disabled,Low
+Security Group is Not Configured,High
+Ensure web app is not remotely debuggable,High
+Ensure web app is not remotely debuggable,High
+Ensure web app is not remotely debuggable,High
+Ensure web app is not remotely debuggable,High
+Artifact Registry Repo Is Public,High
+Artifact Registry Repo Is Public,High
+BigQuery Dataset Is Public,High
+BigQuery Table Is Public,High
+BigQuery Table Is Public,High
+Cloud Run Service Is Public,High
+Cloud Run Service Is Public,High
+Disk Encryption Disabled,Medium
+RDP Access Is Not Restricted,High
+Google Compute Network Using Default Firewall Rule,Medium
+Google Compute Network Using Firewall Rule that Allows All Ports,Medium
+SSH Access Is Not Restricted,Medium
+Google Compute Network Using Firewall Rule that Allows Port Range,Low
+Google compute firewall ingress allows unrestricted FTP access,Medium
+Google compute firewall ingress allows unrestricted mysql access,Medium
+VM With Full Cloud Access,Medium
+OSLogin Is Disabled For VM Instance,Medium
+Shielded VM Disabled,Medium
+Using Default Service Account,Medium
+IP Forwarding Enabled,Medium
+Serial Ports Are Enabled For VM Instances,Medium
+Project-wide SSH Keys Are Enabled In VM Instances,Medium
+Ensure legacy networks do not exist for a project,High
+OSLogin Disabled,Medium
+Google Compute SSL Policy Weak Cipher In Use,Medium
+Google Compute Subnetwork Logging Disabled,Medium
+Google Compute Subnetwork with Private Google Access Disabled,Low
+GKE Legacy Authorization Enabled,High
+IP Aliasing Disabled,Medium
+Github Organization Webhook With SSL Disabled,Medium
+GitHub Repository Set To Public,Medium
+Network Policy Disabled,Medium
+Pod Security Policy Disabled,Medium
+Private Cluster Disabled,Medium
+Shielded GKE Nodes Disabled,Medium
+GKE Using Default Service Account,Medium
+Stackdriver Logging Disabled,Medium
+Stackdriver Monitoring Disabled,Medium
+Outdated GKE Version,Low
+Cluster Labels Disabled,Low
+Legacy Client Certificate Auth Enabled,Low
+GKE Control Plane Is Public,High
+Google Container Node Pool Auto Repair Disabled,Medium
+Node Auto Upgrade Disabled,Medium
+COS Node Image Not Used,Low
+Dataproc Clusters Has Public IPs,High
+Dataproc Clusters Publicly Accessible,High
+Dataproc Clusters Publicly Accessible,High
+DNSSEC Using RSASHA1,Medium
+Cloud DNS Without DNSSEC,Medium
+KMS Crypto Key is Publicly Accessible,High
+Google Project Auto Create Network Disabled,Medium
+Google Project IAM Binding Service Account has Token Creator or Account User Role,High
+Google Project IAM Member Service Account Has Admin Role,High
+Google Project IAM Member Service Account has Token Creator or Account User Role,High
+KMS Admin and CryptoKey Roles In Use,Medium
+Not Proper Email Account In Use,Low
+IAM Audit Not Properly Configured,Low
+Service Account with Improper Privileges,Medium
+User with IAM Role,Low
+BOM - GCP Dataflow,Trace
+BOM - GCP FI,Trace
+BOM - GCP PD,Trace
+BOM - GCP PST,Trace
+BOM - GCP Redis,Trace
+BOM - GCP SB,Trace
+High Google KMS Crypto Key Rotation Period,Medium
+Cloud KMS Key Ring is anonymously or publicly accessible,High
+Cloud KMS Key Ring is anonymously or publicly accessible,High
+Cloud Storage Bucket Is Publicly Accessible,Medium
+Pub/Sub Topics are anonymously or publicly accessible,Medium
+Pub/Sub Topics are anonymously or publicly accessible,Medium
+There are non GCP-managed service account keys for a service account,High
+SQL DB Instance Publicly Accessible,Critical
+SQL DB Instance With SSL Disabled,High
+SQL DB Instance Backup Disabled,Medium
+SQL Server Cross DB Ownership Chaining Enabled,High
+Ensure SQL Database Instance Has Skip Show Database Flag,Medium
+Google Storage Bucket Level Access Disabled,High
+Cloud Storage Bucket Logging Not Enabled,Medium
+Cloud Storage Bucket Versioning Disabled,Medium
+Cloud Storage Anonymous or Publicly Accessible,Critical
+Container Registry Repo Is Public,High
+Container Registry Repo Is Public,High
+Cluster Admin Rolebinding With Superuser Permissions,Low
+CronJob Deadline Not Configured,Low
+Deployment Without PodDisruptionBudget,Low
+Deployment Has No PodAntiAffinity,Low
+HPA Targets Invalid Object,Low
+Ingress Controller Exposes Workload,Medium
+Network Policy Is Not Targeting Any Pod,Low
+Non Kube System Pod With Host Mount,High
+Container Is Privileged,High
+Nifcloud RDB Has Public DB Access,High
+Nifcloud Computing Has Public Ingress Security Group Rule,High
+Nifcloud Computing Undefined Security Group To Instance,High
+Nifcloud NAS Has Public Ingress NAS Security Group Rule,High
+Nifcloud RDB Has Public DB Ingress Security Group Rule,High
+Nifcloud Router Undefined Security Group,High
+Nifcloud VPN Gateway Undefined Security Group,High
+Nifcloud LB Using Insecure TLS Policy ID,Medium
+Nifcloud LB Using Insecure TLS Policy Name,Medium
+Nifcloud ELB Listener Using HTTP Protocol,Medium
+Nifcloud ELB Using HTTP Protocol,Medium
+Nifcloud LB Listener Using HTTP Port,Medium
+Nifcloud LB Using HTTP Port,Medium
+Nifcloud Low RDB Backup Retention Period,Low
+Nifcloud DNS Has Verified Record,Low
+Nifcloud Computing Has Common Private Network,Low
+Nifcloud ELB Has Common Private Network,Low
+Nifcloud NAS Has Common Private Network,Low
+Nifcloud RDB Has Common Private Network,Low
+Nifcloud Router Has Common Private Network,Low
+Nifcloud Computing Undefined Description To Security Group,Info
+Nifcloud Computing Undefined Description To Security Group Rule,Info
+Nifcloud NAS Undefined Description To NAS Security Group,Info
+Nifcloud RDB Undefined Description To DB Security Group,Info
+Name Is Not Snake Case,Info
+Output Without Description,Info
+Generic Git Module Without Revision,Info
+Variable Without Description,Info
+Variable Without Type,Info
+Beta - CLB Listener Using Insecure Protocols,High
+Beta - TKE Cluster Encryption Protection Disabled,High
+Beta - CDB Instance Internet Service Enabled,High
+Beta - CVM Instance Has Public IP,High
+Beta - Security Group Rule Set Accepts All Traffic,High
+Beta - CDB Instance Without Backup Policy,Medium
+Beta - CLB Instance Log Setting Disabled,Medium
+Beta - Disk Encryption Disabled,Medium
+Beta - TKE Cluster Has Public Access,Medium
+Beta - CVM Instance Using Default Security Group,Low
+Beta - CVM Instance Using User Data,Low
+Beta - CDB Instance Internet Using Default Intranet Port,Low
+Beta - CVM Instance Using Default VPC,Low
+Beta - TKE Cluster Log Agent Is Not Enabled,Low
+Beta - VPC Flow Logs Disabled,Low
+Beta - CVM Instance Disable Monitor Service,Info
+Containers With Sys Admin Capabilities,High
+Privilege Escalation Allowed,High
+PSP Set To Privileged,High
+Tiller (Helm v2) Is Deployed,High
+Workload Mounting With Sensitive OS Directory,High
+Volume Mount With OS Directory Write Permissions,High
+Docker Daemon Socket is Exposed to Containers,Medium
+Missing App Armor Config,Medium
+Readiness Probe Is Not Configured,Medium
+Container Host Pid Is True,Medium
+Container Resources Limits Undefined,Medium
+Containers With Added Capabilities,Medium
+NET_RAW Capabilities Not Being Dropped,Medium
+Seccomp Profile Is Not Configured,Medium
+Service Account Name Undefined Or Empty,Medium
+Service Account Token Automount Not Disabled,Medium
+Memory Limits Not Defined,Medium
+Memory Requests Not Defined,Medium
+Shared Host IPC Namespace,Medium
+Shared Host Network Namespace,Medium
+Shared Service Account,Medium
+Metadata Label Is Invalid,Low
+No Drop Capabilities for Containers,Low
+Root Container Not Mounted As Read-only,Low
+Image Pull Policy Of The Container Is Not Set To Always,Low
+Image Without Digest,Low
+Pod or Container Without Security Context,Low
+Using Default Namespace,Low
+Workload Host Port Not Specified,Low
+CPU Limits Not Set,Low
+CPU Requests Not Set,Low
+Secrets As Environment Variables,Low
+Invalid Image,Low
+Liveness Probe Is Not Defined,Info
+Cluster Allows Unsafe Sysctls,High
+Container Runs Unmasked,High
+PSP Allows Containers To Share The Host Network Namespace,High
+PSP Allows Privilege Escalation,High
+PSP Allows Sharing Host IPC,High
+PSP With Added Capabilities,High
+Root Containers Admitted,Medium
+NET_RAW Capabilities Disabled for PSP,Medium
+Permissive Access to Create Pods,Medium
+RBAC Roles with Read Secrets Permissions,Medium
+Role Binding To Default Service Account,Medium
+Service Account Allows Access Secrets,Medium
+Service With External Load Balancer,Medium
+Service Type is NodePort,Low
+Default Service Account In Use,Low
+Incorrect Volume Claim Access Mode ReadWriteOnce,Medium
+StatefulSet Without PodDisruptionBudget,Low
+StatefulSet Without Service Name,Low
+StatefulSet Requests Storage,Low
+DB Snapshot Is Public,High
+There are non GCP-managed service account keys for a service account,High

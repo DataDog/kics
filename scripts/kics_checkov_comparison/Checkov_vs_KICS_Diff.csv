@@ -1,0 +1,1707 @@
+idx,Checkov_RuleID,KICS_Description
+1,CKV_K8S_1,
+2,CKV_K8S_10,CPU Requests Not Set
+3,CKV_K8S_10,CPU Requests Not Set
+4,CKV_K8S_10,CPU Requests Not Set
+5,CKV_K8S_10,CPU Requests Not Set
+6,CKV_K8S_11,CPU Limits Not Set
+7,CKV_K8S_11,CPU Limits Not Set
+8,CKV_K8S_11,CPU Limits Not Set
+9,CKV_K8S_11,CPU Limits Not Set
+10,CKV_K8S_12,Memory Limits Not Defined
+11,CKV_K8S_12,Memory Limits Not Defined
+12,CKV_K8S_12,Memory Limits Not Defined
+13,CKV_K8S_12,Memory Limits Not Defined
+14,CKV_K8S_13,Memory Requests Not Defined
+15,CKV_K8S_13,Memory Requests Not Defined
+16,CKV_K8S_13,Memory Requests Not Defined
+17,CKV_K8S_13,Memory Requests Not Defined
+18,CKV_K8S_14,
+19,CKV_K8S_14,
+20,CKV_K8S_14,
+21,CKV_K8S_14,
+22,CKV_K8S_15,Image Pull Policy Of The Container Is Not Set To Always
+23,CKV_K8S_15,Image Pull Policy Of The Container Is Not Set To Always
+24,CKV_K8S_15,Image Pull Policy Of The Container Is Not Set To Always
+25,CKV_K8S_15,Image Pull Policy Of The Container Is Not Set To Always
+26,CKV_K8S_159,Container Is Privileged
+27,CKV_K8S_159,Container Is Privileged
+28,CKV_K8S_159,Container Is Privileged
+29,CKV_K8S_159,Container Is Privileged
+30,CKV_K8S_16,Container Is Privileged
+31,CKV_K8S_16,Container Is Privileged
+32,CKV_K8S_16,Container Is Privileged
+33,CKV_K8S_16,Container Is Privileged
+34,CKV_K8S_17,
+35,CKV_K8S_17,
+36,CKV_K8S_17,
+37,CKV_K8S_17,
+38,CKV_K8S_18,Shared Host IPC Namespace
+39,CKV_K8S_18,Shared Host IPC Namespace
+40,CKV_K8S_18,Shared Host IPC Namespace
+41,CKV_K8S_18,Shared Host IPC Namespace
+42,CKV_K8S_19,Shared Host Network Namespace
+43,CKV_K8S_19,Shared Host Network Namespace
+44,CKV_K8S_19,Shared Host Network Namespace
+45,CKV_K8S_19,Shared Host Network Namespace
+46,CKV_K8S_2,
+47,CKV_K8S_20,Privilege Escalation Allowed
+48,CKV_K8S_20,Privilege Escalation Allowed
+49,CKV_K8S_20,Privilege Escalation Allowed
+50,CKV_K8S_20,Privilege Escalation Allowed
+51,CKV_K8S_21,Using Default Namespace
+52,CKV_K8S_21,Using Default Namespace
+53,CKV_K8S_21,Using Default Namespace
+54,CKV_K8S_21,Using Default Namespace
+55,CKV_K8S_21,Using Default Namespace
+56,CKV_K8S_21,Using Default Namespace
+57,CKV_K8S_21,Using Default Namespace
+58,CKV_K8S_21,Using Default Namespace
+59,CKV_K8S_21,Using Default Namespace
+60,CKV_K8S_21,Using Default Namespace
+61,CKV_K8S_21,Using Default Namespace
+62,CKV_K8S_21,Using Default Namespace
+63,CKV_K8S_21,Using Default Namespace
+64,CKV_K8S_21,Using Default Namespace
+65,CKV_K8S_21,Using Default Namespace
+66,CKV_K8S_21,Using Default Namespace
+67,CKV_K8S_21,Using Default Namespace
+68,CKV_K8S_21,Using Default Namespace
+69,CKV_K8S_21,Using Default Namespace
+70,CKV_K8S_21,Using Default Namespace
+71,CKV_K8S_21,Using Default Namespace
+72,CKV_K8S_21,Using Default Namespace
+73,CKV_K8S_21,Using Default Namespace
+74,CKV_K8S_21,Using Default Namespace
+75,CKV_K8S_21,Using Default Namespace
+76,CKV_K8S_21,Using Default Namespace
+77,CKV_K8S_22,Root Container Not Mounted As Read-only
+78,CKV_K8S_22,Root Container Not Mounted As Read-only
+79,CKV_K8S_22,Root Container Not Mounted As Read-only
+80,CKV_K8S_22,Root Container Not Mounted As Read-only
+81,CKV_K8S_24,PSP With Added Capabilities
+82,CKV_K8S_25,Containers With Added Capabilities
+83,CKV_K8S_25,Containers With Added Capabilities
+84,CKV_K8S_25,Containers With Added Capabilities
+85,CKV_K8S_25,Containers With Added Capabilities
+86,CKV_K8S_26,Workload Host Port Not Specified
+87,CKV_K8S_26,Workload Host Port Not Specified
+88,CKV_K8S_26,Workload Host Port Not Specified
+89,CKV_K8S_26,Workload Host Port Not Specified
+90,CKV_K8S_27,Docker Daemon Socket is Exposed to Containers
+91,CKV_K8S_27,Docker Daemon Socket is Exposed to Containers
+92,CKV_K8S_27,Docker Daemon Socket is Exposed to Containers
+93,CKV_K8S_27,Docker Daemon Socket is Exposed to Containers
+94,CKV_K8S_27,Docker Daemon Socket is Exposed to Containers
+95,CKV_K8S_27,Docker Daemon Socket is Exposed to Containers
+96,CKV_K8S_28,NET_RAW Capabilities Not Being Dropped
+97,CKV_K8S_28,NET_RAW Capabilities Not Being Dropped
+98,CKV_K8S_28,NET_RAW Capabilities Not Being Dropped
+99,CKV_K8S_28,NET_RAW Capabilities Not Being Dropped
+100,CKV_K8S_29,
+101,CKV_K8S_29,
+102,CKV_K8S_29,
+103,CKV_K8S_29,
+104,CKV_K8S_29,
+105,CKV_K8S_29,
+106,CKV_K8S_3,PSP Allows Sharing Host IPC
+107,CKV_K8S_30,Pod or Container Without Security Context
+108,CKV_K8S_30,Pod or Container Without Security Context
+109,CKV_K8S_30,Pod or Container Without Security Context
+110,CKV_K8S_30,Pod or Container Without Security Context
+111,CKV_K8S_32,
+112,CKV_K8S_34,Tiller (Helm v2) Is Deployed
+113,CKV_K8S_34,Tiller (Helm v2) Is Deployed
+114,CKV_K8S_34,Tiller (Helm v2) Is Deployed
+115,CKV_K8S_34,Tiller (Helm v2) Is Deployed
+116,CKV_K8S_35,Secrets As Environment Variables
+117,CKV_K8S_35,Secrets As Environment Variables
+118,CKV_K8S_35,Secrets As Environment Variables
+119,CKV_K8S_35,Secrets As Environment Variables
+120,CKV_K8S_36,No Drop Capabilities for Containers
+121,CKV_K8S_37,No Drop Capabilities for Containers
+122,CKV_K8S_37,No Drop Capabilities for Containers
+123,CKV_K8S_37,No Drop Capabilities for Containers
+124,CKV_K8S_37,No Drop Capabilities for Containers
+125,CKV_K8S_39,Containers With Sys Admin Capabilities
+126,CKV_K8S_39,Containers With Sys Admin Capabilities
+127,CKV_K8S_39,Containers With Sys Admin Capabilities
+128,CKV_K8S_39,Containers With Sys Admin Capabilities
+129,CKV_K8S_4,PSP Allows Containers To Share The Host Network Namespace
+130,CKV_K8S_41,Default Service Account In Use
+131,CKV_K8S_41,Default Service Account In Use
+132,CKV_K8S_42,Role Binding To Default Service Account
+133,CKV_K8S_42,Role Binding To Default Service Account
+134,CKV_K8S_42,Role Binding To Default Service Account
+135,CKV_K8S_42,Role Binding To Default Service Account
+136,CKV_K8S_43,Image Without Digest
+137,CKV_K8S_43,Image Without Digest
+138,CKV_K8S_43,Image Without Digest
+139,CKV_K8S_43,Image Without Digest
+140,CKV_K8S_44,
+141,CKV_K8S_44,
+142,CKV_K8S_49,
+143,CKV_K8S_49,
+144,CKV_K8S_49,
+145,CKV_K8S_49,
+146,CKV_K8S_5,PSP Allows Privilege Escalation
+147,CKV_K8S_6,Root Containers Admitted
+148,CKV_K8S_7,NET_RAW Capabilities Disabled for PSP
+149,CKV_K8S_8,Liveness Probe Is Not Defined
+150,CKV_K8S_8,Liveness Probe Is Not Defined
+151,CKV_K8S_8,Liveness Probe Is Not Defined
+152,CKV_K8S_8,Liveness Probe Is Not Defined
+153,CKV_K8S_9,Readiness Probe Is Not Configured
+154,CKV_K8S_9,Readiness Probe Is Not Configured
+155,CKV_K8S_9,Readiness Probe Is Not Configured
+156,CKV_K8S_9,Readiness Probe Is Not Configured
+157,CKV_AWS_1,IAM Policies With Full Privileges
+158,CKV_AWS_10,IAM Password Without Minimum Length
+159,CKV_AWS_100,EKS node group remote access disabled
+160,CKV_AWS_101,Neptune Logging Is Disabled
+161,CKV_AWS_102,Neptune Cluster Instance is Publicly Accessible
+162,CKV_AWS_103,
+163,CKV_AWS_103,
+164,CKV_AWS_103,
+165,CKV_AWS_104,DocDB Logging Is Disabled
+166,CKV_AWS_105,
+167,CKV_AWS_106,EBS Default Encryption Disabled
+168,CKV_AWS_107,
+169,CKV_AWS_108,
+170,CKV_AWS_109,
+171,CKV_AWS_11,IAM Password Policy Does Not Require Lowercase Letter
+172,CKV_AWS_110,
+173,CKV_AWS_111,
+174,CKV_AWS_112,SSM Session Transit Encryption Disabled
+175,CKV_AWS_113,
+176,CKV_AWS_114,
+177,CKV_AWS_115,
+178,CKV_AWS_116,
+179,CKV_AWS_117,
+180,CKV_AWS_118,
+181,CKV_AWS_118,
+182,CKV_AWS_119,DynamoDB Table Not Encrypted
+183,CKV_AWS_12,IAM Password Policy Does Not Require Numbers
+184,CKV_AWS_120,
+185,CKV_AWS_121,Configuration Aggregator to All Regions Disabled
+186,CKV_AWS_122,SageMaker Notebook Internet Access Enabled
+187,CKV_AWS_123,
+188,CKV_AWS_124,Stack Notifications Disabled
+189,CKV_AWS_126,EC2 Instance Monitoring Disabled
+190,CKV_AWS_127,
+191,CKV_AWS_129,RDS Without Logging
+192,CKV_AWS_13,Password Without Reuse Prevention
+193,CKV_AWS_130,VPC Subnet Assigns Public IP
+194,CKV_AWS_131,ALB Not Dropping Invalid Headers
+195,CKV_AWS_131,
+196,CKV_AWS_133,RDS With Backup Disabled
+197,CKV_AWS_133,RDS Cluster With Backup Disabled
+198,CKV_AWS_134,ElastiCache Redis Cluster Without Backup
+199,CKV_AWS_135,EC2 Not EBS Optimized
+200,CKV_AWS_136,ECR Repository Not Encrypted With CMK
+201,CKV_AWS_137,
+202,CKV_AWS_137,
+203,CKV_AWS_138,
+204,CKV_AWS_139,
+205,CKV_AWS_14,IAM Password Policy Does Not Require Symbol
+206,CKV_AWS_140,
+207,CKV_AWS_141,
+208,CKV_AWS_142,
+209,CKV_AWS_143,
+210,CKV_AWS_144,
+211,CKV_AWS_144,
+212,CKV_AWS_145,
+213,CKV_AWS_145,
+214,CKV_AWS_146,RDS Database Cluster not Encrypted
+215,CKV_AWS_147,CodeBuild Project Encrypted With AWS Managed Key
+216,CKV_AWS_148,Default VPC Exists
+217,CKV_AWS_149,Secretsmanager Secret Without KMS
+218,CKV_AWS_15,IAM Password Policy Does Not Require Uppercase Letter
+219,CKV_AWS_150,ALB Deletion Protection Disabled
+220,CKV_AWS_150,ALB Deletion Protection Disabled
+221,CKV_AWS_152,
+222,CKV_AWS_152,
+223,CKV_AWS_153,Autoscaling Groups Supply Tags
+224,CKV_AWS_154,
+225,CKV_AWS_155,Workspaces Workspace Volume Not Encrypted
+226,CKV_AWS_156,Workspaces Workspace Volume Not Encrypted
+227,CKV_AWS_157,
+228,CKV_AWS_158,CloudWatch Log Group Without KMS
+229,CKV_AWS_159,Athena Workgroup Not Encrypted
+230,CKV_AWS_16,RDS Storage Not Encrypted
+231,CKV_AWS_160,
+232,CKV_AWS_161,IAM Database Auth Not Enabled
+233,CKV_AWS_162,
+234,CKV_AWS_163,
+235,CKV_AWS_164,
+236,CKV_AWS_165,
+237,CKV_AWS_166,
+238,CKV_AWS_167,
+239,CKV_AWS_168,SQS Queue Exposed
+240,CKV_AWS_168,SQS Policy With Public Access
+241,CKV_AWS_169,SNS Topic is Publicly Accessible
+242,CKV_AWS_17,RDS DB Instance Publicly Accessible
+243,CKV_AWS_17,
+244,CKV_AWS_170,
+245,CKV_AWS_171,
+246,CKV_AWS_172,
+247,CKV_AWS_173,
+248,CKV_AWS_174,CloudFront Without Minimum Protocol TLS 1.2
+249,CKV_AWS_175,
+250,CKV_AWS_175,
+251,CKV_AWS_175,
+252,CKV_AWS_176,
+253,CKV_AWS_176,
+254,CKV_AWS_177,
+255,CKV_AWS_178,
+256,CKV_AWS_179,
+257,CKV_AWS_18,S3 Bucket Logging Disabled
+258,CKV_AWS_180,
+259,CKV_AWS_181,
+260,CKV_AWS_182,DOCDB Cluster Without KMS
+261,CKV_AWS_183,EBS Volume Snapshot Not Encrypted
+262,CKV_AWS_184,EFS Without KMS
+263,CKV_AWS_185,Kinesis Not Encrypted With KMS
+264,CKV_AWS_186,
+265,CKV_AWS_187,
+266,CKV_AWS_187,
+267,CKV_AWS_189,
+268,CKV_AWS_19,S3 Bucket Object Not Encrypted
+269,CKV_AWS_19,
+270,CKV_AWS_190,
+271,CKV_AWS_191,
+272,CKV_AWS_192,
+273,CKV_AWS_193,
+274,CKV_AWS_194,
+275,CKV_AWS_195,
+276,CKV_AWS_195,
+277,CKV_AWS_195,
+278,CKV_AWS_196,
+279,CKV_AWS_197,
+280,CKV_AWS_198,
+281,CKV_AWS_199,
+282,CKV_AWS_2,ALB Listening on HTTP
+283,CKV_AWS_20,S3 Bucket ACL Allows Read to Any Authenticated User
+284,CKV_AWS_20,S3 Bucket ACL Allows Read Or Write to All Users
+285,CKV_AWS_200,
+286,CKV_AWS_201,
+287,CKV_AWS_202,
+288,CKV_AWS_203,
+289,CKV_AWS_204,AMI Not Encrypted
+290,CKV_AWS_205,AMI Shared With Multiple Accounts
+291,CKV_AWS_206,API Gateway Without Security Policy
+292,CKV_AWS_207,
+293,CKV_AWS_208,
+294,CKV_AWS_208,
+295,CKV_AWS_209,AmazonMQ Broker Encryption Disabled
+296,CKV_AWS_21,S3 Bucket Without Versioning
+297,CKV_AWS_21,
+298,CKV_AWS_210,Batch Job Definition With Privileged Container Properties
+299,CKV_AWS_211,CA Certificate Identifier Is Outdated
+300,CKV_AWS_212,
+301,CKV_AWS_213,ELB Using Insecure Protocols
+302,CKV_AWS_214,
+303,CKV_AWS_215,
+304,CKV_AWS_216,CDN Configuration Is Missing
+305,CKV_AWS_217,
+306,CKV_AWS_218,
+307,CKV_AWS_219,
+308,CKV_AWS_22,Sagemaker Notebook Instance Without KMS
+309,CKV_AWS_220,
+310,CKV_AWS_221,
+311,CKV_AWS_222,
+312,CKV_AWS_223,
+313,CKV_AWS_224,
+314,CKV_AWS_225,API Gateway Method Settings Cache Not Encrypted
+315,CKV_AWS_226,Automatic Minor Upgrades Disabled
+316,CKV_AWS_226,
+317,CKV_AWS_227,
+318,CKV_AWS_228,Elasticsearch Domain With Vulnerable Policy
+319,CKV_AWS_228,
+320,CKV_AWS_229,
+321,CKV_AWS_229,
+322,CKV_AWS_23,
+323,CKV_AWS_23,
+324,CKV_AWS_23,
+325,CKV_AWS_23,Security Group Without Description
+326,CKV_AWS_23,Security Group Rule Without Description
+327,CKV_AWS_23,
+328,CKV_AWS_23,
+329,CKV_AWS_230,
+330,CKV_AWS_230,
+331,CKV_AWS_231,
+332,CKV_AWS_231,
+333,CKV_AWS_232,
+334,CKV_AWS_232,
+335,CKV_AWS_233,
+336,CKV_AWS_234,
+337,CKV_AWS_235,
+338,CKV_AWS_236,
+339,CKV_AWS_237,
+340,CKV_AWS_238,GuardDuty Detector Disabled
+341,CKV_AWS_239,
+342,CKV_AWS_24,Unrestricted Security Group Ingress
+343,CKV_AWS_24,Unrestricted Security Group Ingress
+344,CKV_AWS_24,
+345,CKV_AWS_240,Kinesis SSE Not Configured
+346,CKV_AWS_241,
+347,CKV_AWS_242,
+348,CKV_AWS_243,
+349,CKV_AWS_244,
+350,CKV_AWS_245,
+351,CKV_AWS_246,
+352,CKV_AWS_247,ElasticSearch Encryption With KMS Disabled
+353,CKV_AWS_247,
+354,CKV_AWS_248,Elasticsearch Uses Default Security Group
+355,CKV_AWS_248,
+356,CKV_AWS_249,
+357,CKV_AWS_25,Unrestricted Security Group Ingress
+358,CKV_AWS_25,Unrestricted Security Group Ingress
+359,CKV_AWS_25,
+360,CKV_AWS_250,
+361,CKV_AWS_250,
+362,CKV_AWS_251,CloudTrail Logging Disabled
+363,CKV_AWS_252,CloudTrail SNS Topic Name Undefined
+364,CKV_AWS_253,
+365,CKV_AWS_254,
+366,CKV_AWS_255,
+367,CKV_AWS_256,
+368,CKV_AWS_258,
+369,CKV_AWS_259,
+370,CKV_AWS_26,SNS Topic Not Encrypted
+371,CKV_AWS_260,Unrestricted Security Group Ingress
+372,CKV_AWS_260,Unrestricted Security Group Ingress
+373,CKV_AWS_260,Unrestricted Security Group Ingress
+374,CKV_AWS_261,
+375,CKV_AWS_261,
+376,CKV_AWS_262,
+377,CKV_AWS_263,
+378,CKV_AWS_264,
+379,CKV_AWS_265,
+380,CKV_AWS_266,
+381,CKV_AWS_267,
+382,CKV_AWS_268,
+383,CKV_AWS_269,
+384,CKV_AWS_27,SQS With SSE Disabled
+385,CKV_AWS_270,
+386,CKV_AWS_271,
+387,CKV_AWS_272,
+388,CKV_AWS_273,
+389,CKV_AWS_274,
+390,CKV_AWS_274,
+391,CKV_AWS_274,
+392,CKV_AWS_274,
+393,CKV_AWS_274,
+394,CKV_AWS_274,
+395,CKV_AWS_275,
+396,CKV_AWS_276,
+397,CKV_AWS_277,Unrestricted Security Group Ingress
+398,CKV_AWS_277,Unrestricted Security Group Ingress
+399,CKV_AWS_277,
+400,CKV_AWS_278,
+401,CKV_AWS_279,Neptune Cluster Snapshot Not Encrypted
+402,CKV_AWS_28,DynamoDB Table Point In Time Recovery Disabled
+403,CKV_AWS_280,
+404,CKV_AWS_281,
+405,CKV_AWS_282,
+406,CKV_AWS_283,
+407,CKV_AWS_284,
+408,CKV_AWS_285,
+409,CKV_AWS_286,
+410,CKV_AWS_286,
+411,CKV_AWS_286,
+412,CKV_AWS_286,
+413,CKV_AWS_286,
+414,CKV_AWS_287,
+415,CKV_AWS_287,
+416,CKV_AWS_287,
+417,CKV_AWS_287,
+418,CKV_AWS_287,
+419,CKV_AWS_288,
+420,CKV_AWS_288,
+421,CKV_AWS_288,
+422,CKV_AWS_288,
+423,CKV_AWS_288,
+424,CKV_AWS_289,
+425,CKV_AWS_289,
+426,CKV_AWS_289,
+427,CKV_AWS_289,
+428,CKV_AWS_289,
+429,CKV_AWS_29,ElastiCache Replication Group Not Encrypted At Rest
+430,CKV_AWS_290,
+431,CKV_AWS_290,
+432,CKV_AWS_290,
+433,CKV_AWS_290,
+434,CKV_AWS_290,
+435,CKV_AWS_291,MSK Broker Is Publicly Accessible
+436,CKV_AWS_292,
+437,CKV_AWS_293,
+438,CKV_AWS_294,
+439,CKV_AWS_295,
+440,CKV_AWS_296,
+441,CKV_AWS_297,
+442,CKV_AWS_298,
+443,CKV_AWS_3,EBS Volume Encryption Disabled
+444,CKV_AWS_30,ElastiCache Replication Group Not Encrypted At Transit
+445,CKV_AWS_300,
+446,CKV_AWS_301,Lambda Function Publicly Accessible
+447,CKV_AWS_302,DB Snapshot Is Public
+448,CKV_AWS_303,
+449,CKV_AWS_304,
+450,CKV_AWS_305,
+451,CKV_AWS_306,
+452,CKV_AWS_307,
+453,CKV_AWS_308,
+454,CKV_AWS_309,
+455,CKV_AWS_31,
+456,CKV_AWS_310,
+457,CKV_AWS_311,
+458,CKV_AWS_312,
+459,CKV_AWS_313,
+460,CKV_AWS_314,
+461,CKV_AWS_315,
+462,CKV_AWS_316,
+463,CKV_AWS_317,ElasticSearch Without Slow Logs
+464,CKV_AWS_317,
+465,CKV_AWS_318,
+466,CKV_AWS_318,
+467,CKV_AWS_319,
+468,CKV_AWS_32,ECR Repository Is Publicly Accessible
+469,CKV_AWS_320,
+470,CKV_AWS_321,Redshift Cluster Without VPC
+471,CKV_AWS_322,
+472,CKV_AWS_323,ElastiCache Without VPC
+473,CKV_AWS_324,
+474,CKV_AWS_325,
+475,CKV_AWS_326,
+476,CKV_AWS_327,
+477,CKV_AWS_328,
+478,CKV_AWS_328,
+479,CKV_AWS_328,
+480,CKV_AWS_329,
+481,CKV_AWS_33,KMS Key With Vulnerable Policy
+482,CKV_AWS_330,
+483,CKV_AWS_331,
+484,CKV_AWS_332,
+485,CKV_AWS_333,
+486,CKV_AWS_334,
+487,CKV_AWS_335,
+488,CKV_AWS_336,
+489,CKV_AWS_337,
+490,CKV_AWS_338,
+491,CKV_AWS_339,
+492,CKV_AWS_34,Cloudfront Viewer Protocol Policy Allows HTTP
+493,CKV_AWS_340,
+494,CKV_AWS_341,
+495,CKV_AWS_341,
+496,CKV_AWS_342,
+497,CKV_AWS_342,
+498,CKV_AWS_342,
+499,CKV_AWS_342,
+500,CKV_AWS_342,
+501,CKV_AWS_342,
+502,CKV_AWS_343,
+503,CKV_AWS_344,
+504,CKV_AWS_345,
+505,CKV_AWS_345,
+506,CKV_AWS_346,
+507,CKV_AWS_347,
+508,CKV_AWS_348,Root Account Has Active Access Keys
+509,CKV_AWS_349,
+510,CKV_AWS_35,CloudTrail Log Files Not Encrypted With KMS
+511,CKV_AWS_350,
+512,CKV_AWS_351,
+513,CKV_AWS_352,
+514,CKV_AWS_353,
+515,CKV_AWS_353,
+516,CKV_AWS_354,
+517,CKV_AWS_354,
+518,CKV_AWS_355,
+519,CKV_AWS_355,
+520,CKV_AWS_355,
+521,CKV_AWS_355,
+522,CKV_AWS_355,
+523,CKV_AWS_356,
+524,CKV_AWS_357,
+525,CKV_AWS_358,
+526,CKV_AWS_359,Neptune Cluster With IAM Database Authentication Disabled
+527,CKV_AWS_36,CloudTrail Log File Validation Disabled
+528,CKV_AWS_360,
+529,CKV_AWS_361,
+530,CKV_AWS_362,
+531,CKV_AWS_363,
+532,CKV_AWS_364,
+533,CKV_AWS_365,
+534,CKV_AWS_366,
+535,CKV_AWS_367,
+536,CKV_AWS_368,
+537,CKV_AWS_369,
+538,CKV_AWS_37,EKS cluster logging is not enabled
+539,CKV_AWS_370,
+540,CKV_AWS_371,
+541,CKV_AWS_372,
+542,CKV_AWS_373,
+543,CKV_AWS_374,
+544,CKV_AWS_375,
+545,CKV_AWS_376,
+546,CKV_AWS_377,
+547,CKV_AWS_378,
+548,CKV_AWS_378,
+549,CKV_AWS_378,ALB Listening on HTTP
+550,CKV_AWS_378,
+551,CKV_AWS_379,
+552,CKV_AWS_38,EKS Cluster Has Public Access CIDRs
+553,CKV_AWS_380,
+554,CKV_AWS_381,
+555,CKV_AWS_382,Unrestricted Security Group Ingress
+556,CKV_AWS_382,Unrestricted Security Group Ingress
+557,CKV_AWS_382,
+558,CKV_AWS_383,
+559,CKV_AWS_39,EKS Cluster Has Public Access
+560,CKV_AWS_40,IAM Policies Attached To User
+561,CKV_AWS_40,IAM Policies Attached To User
+562,CKV_AWS_40,IAM Policies Attached To User
+563,CKV_AWS_41,Hardcoded AWS Access Key
+564,CKV_AWS_42,EFS Not Encrypted
+565,CKV_AWS_43,Kinesis Not Encrypted With KMS
+566,CKV_AWS_44,Neptune Database Cluster Encryption Disabled
+567,CKV_AWS_45,Hardcoded AWS Access Key In Lambda
+568,CKV_AWS_46,Hardcoded AWS Access Key
+569,CKV_AWS_46,
+570,CKV_AWS_46,User Data Contains Encoded Private Key
+571,CKV_AWS_47,DAX Cluster Not Encrypted
+572,CKV_AWS_48,MQ Broker Logging Disabled
+573,CKV_AWS_49,IAM Policies With Full Privileges
+574,CKV_AWS_5,ElasticSearch Not Encrypted At Rest
+575,CKV_AWS_5,ElasticSearch Not Encrypted At Rest
+576,CKV_AWS_50,Lambda Functions Without X-Ray Tracing
+577,CKV_AWS_51,ECR Image Tag Not Immutable
+578,CKV_AWS_53,S3 Bucket Allows Public ACL
+579,CKV_AWS_54,S3 Bucket Allows Public Policy
+580,CKV_AWS_55,S3 Bucket Without Ignore Public ACL
+581,CKV_AWS_56,S3 Bucket Without Restriction Of Public Bucket
+582,CKV_AWS_57,
+583,CKV_AWS_57,S3 Bucket ACL Grants WRITE_ACP Permission
+584,CKV_AWS_58,EKS Cluster Encryption Disabled
+585,CKV_AWS_59,API Gateway With Open Access
+586,CKV_AWS_6,Elasticsearch Domain Not Encrypted Node To Node
+587,CKV_AWS_6,
+588,CKV_AWS_60,IAM Role Allows All Principals To Assume
+589,CKV_AWS_61,IAM Policy Grants 'AssumeRole' Permission Across All Services
+590,CKV_AWS_62,
+591,CKV_AWS_62,IAM Policies With Full Privileges
+592,CKV_AWS_62,IAM Policy Grants Full Permissions
+593,CKV_AWS_62,
+594,CKV_AWS_62,SSO Policy with full privileges
+595,CKV_AWS_63,
+596,CKV_AWS_63,
+597,CKV_AWS_63,
+598,CKV_AWS_63,
+599,CKV_AWS_63,
+600,CKV_AWS_64,Redshift Not Encrypted
+601,CKV_AWS_65,ECS Cluster with Container Insights Disabled
+602,CKV_AWS_66,CloudWatch Without Retention Period Specified
+603,CKV_AWS_67,CloudTrail Multi Region Disabled
+604,CKV_AWS_68,CloudFront Without WAF
+605,CKV_AWS_69,MQ Broker Is Publicly Accessible
+606,CKV_AWS_7,CMK Rotation Disabled
+607,CKV_AWS_70,S3 Bucket Access to Any Principal
+608,CKV_AWS_70,
+609,CKV_AWS_71,Redshift Cluster Logging Disabled
+610,CKV_AWS_72,SQS Policy Allows All Actions
+611,CKV_AWS_73,API Gateway X-Ray Disabled
+612,CKV_AWS_74,DOCDB Cluster Not Encrypted
+613,CKV_AWS_75,Global Accelerator Flow Logs Disabled
+614,CKV_AWS_76,API Gateway Access Logging Disabled
+615,CKV_AWS_76,API Gateway Deployment Without Access Log Setting
+616,CKV_AWS_77,Athena Database Not Encrypted
+617,CKV_AWS_78,
+618,CKV_AWS_79,IMDSv1 Enabled
+619,CKV_AWS_79,
+620,CKV_AWS_79,
+621,CKV_AWS_8,
+622,CKV_AWS_8,Launch Configuration Is Not Encrypted
+623,CKV_AWS_80,MSK Cluster Logging Disabled
+624,CKV_AWS_81,MSK Cluster Encryption Disabled
+625,CKV_AWS_82,
+626,CKV_AWS_83,Elasticsearch with HTTPS disabled
+627,CKV_AWS_83,
+628,CKV_AWS_84,Elasticsearch Log Disabled
+629,CKV_AWS_84,
+630,CKV_AWS_85,DocDB Logging Is Disabled
+631,CKV_AWS_86,CloudFront Logging Disabled
+632,CKV_AWS_87,Redshift Publicly Accessible
+633,CKV_AWS_88,EC2 Instance Has Public IP
+634,CKV_AWS_88,
+635,CKV_AWS_89,Amazon DMS Replication Instance Is Publicly Accessible
+636,CKV_AWS_9,Misconfigured Password Policy Expiration
+637,CKV_AWS_90,
+638,CKV_AWS_91,
+639,CKV_AWS_91,
+640,CKV_AWS_92,ELB Access Log Disabled
+641,CKV_AWS_93,
+642,CKV_AWS_93,
+643,CKV_AWS_94,Glue Data Catalog Encryption Disabled
+644,CKV_AWS_96,Aurora With Disabled at Rest Encryption
+645,CKV_AWS_97,ECS Task Definition Volume Not Encrypted
+646,CKV_AWS_98,Sagemaker Endpoint Configuration Encryption Disabled
+647,CKV_AWS_99,Glue Security Configuration Encryption Disabled
+648,CKV_AZURE_1,Azure Instance Using Basic Authentication
+649,CKV_AZURE_1,
+650,CKV_AZURE_10,
+651,CKV_AZURE_10,SSH Is Exposed To The Internet
+652,CKV_AZURE_100,
+653,CKV_AZURE_101,
+654,CKV_AZURE_102,Geo Redundancy Is Disabled
+655,CKV_AZURE_103,
+656,CKV_AZURE_104,
+657,CKV_AZURE_105,
+658,CKV_AZURE_106,
+659,CKV_AZURE_107,
+660,CKV_AZURE_108,
+661,CKV_AZURE_109,
+662,CKV_AZURE_11,
+663,CKV_AZURE_11,
+664,CKV_AZURE_11,
+665,CKV_AZURE_11,
+666,CKV_AZURE_11,
+667,CKV_AZURE_11,SQLServer Ingress From Any IP
+668,CKV_AZURE_110,
+669,CKV_AZURE_111,
+670,CKV_AZURE_112,
+671,CKV_AZURE_113,MSSQL Server Public Network Access Enabled
+672,CKV_AZURE_114,Key Vault Secrets Content Type Undefined
+673,CKV_AZURE_115,AKS Private Cluster Disabled
+674,CKV_AZURE_116,AKS Uses Azure Policies Add-On Disabled
+675,CKV_AZURE_117,AKS Disk Encryption Set ID Undefined
+676,CKV_AZURE_118,Network Interfaces IP Forwarding Enabled
+677,CKV_AZURE_119,Network Interfaces With Public IP
+678,CKV_AZURE_12,Small Flow Logs Retention Period
+679,CKV_AZURE_120,WAF Is Disabled For Azure Application Gateway
+680,CKV_AZURE_120,
+681,CKV_AZURE_121,Azure Front Door WAF Disabled
+682,CKV_AZURE_122,
+683,CKV_AZURE_123,
+684,CKV_AZURE_124,Azure Cognitive Search Public Network Access Enabled
+685,CKV_AZURE_125,
+686,CKV_AZURE_126,Azure Active Directory Authentication
+687,CKV_AZURE_127,
+688,CKV_AZURE_128,PostgreSQL Server Threat Detection Policy Disabled
+689,CKV_AZURE_129,MariaDB Server Geo-redundant Backup Disabled
+690,CKV_AZURE_13,App Service Authentication Disabled
+691,CKV_AZURE_13,
+692,CKV_AZURE_13,
+693,CKV_AZURE_130,PostgreSQL Server Infrastructure Encryption Disabled
+694,CKV_AZURE_131,Security Contact Email
+695,CKV_AZURE_132,
+696,CKV_AZURE_133,
+697,CKV_AZURE_134,
+698,CKV_AZURE_135,
+699,CKV_AZURE_136,
+700,CKV_AZURE_137,
+701,CKV_AZURE_138,
+702,CKV_AZURE_139,
+703,CKV_AZURE_14,Web App Accepting Traffic Other Than HTTPS
+704,CKV_AZURE_14,
+705,CKV_AZURE_14,
+706,CKV_AZURE_140,
+707,CKV_AZURE_141,
+708,CKV_AZURE_142,
+709,CKV_AZURE_143,
+710,CKV_AZURE_144,
+711,CKV_AZURE_145,Function App Not Using Latest TLS Encryption Version
+712,CKV_AZURE_145,Function App Not Using Latest TLS Encryption Version
+713,CKV_AZURE_145,Function App Not Using Latest TLS Encryption Version
+714,CKV_AZURE_145,Function App Not Using Latest TLS Encryption Version
+715,CKV_AZURE_145,Function App Not Using Latest TLS Encryption Version
+716,CKV_AZURE_145,Function App Not Using Latest TLS Encryption Version
+717,CKV_AZURE_146,Log Retention Is Not Set
+718,CKV_AZURE_147,
+719,CKV_AZURE_148,
+720,CKV_AZURE_149,
+721,CKV_AZURE_149,
+722,CKV_AZURE_15,App Service Not Using Latest TLS Encryption Version
+723,CKV_AZURE_15,App Service Not Using Latest TLS Encryption Version
+724,CKV_AZURE_15,App Service Not Using Latest TLS Encryption Version
+725,CKV_AZURE_150,
+726,CKV_AZURE_151,
+727,CKV_AZURE_152,
+728,CKV_AZURE_153,
+729,CKV_AZURE_153,
+730,CKV_AZURE_153,
+731,CKV_AZURE_154,
+732,CKV_AZURE_155,
+733,CKV_AZURE_156,
+734,CKV_AZURE_157,
+735,CKV_AZURE_158,
+736,CKV_AZURE_159,
+737,CKV_AZURE_159,
+738,CKV_AZURE_16,
+739,CKV_AZURE_16,
+740,CKV_AZURE_16,
+741,CKV_AZURE_160,Sensitive Port Is Exposed To Entire Network
+742,CKV_AZURE_160,Sensitive Port Is Exposed To Entire Network
+743,CKV_AZURE_161,
+744,CKV_AZURE_162,
+745,CKV_AZURE_163,
+746,CKV_AZURE_164,
+747,CKV_AZURE_165,
+748,CKV_AZURE_166,
+749,CKV_AZURE_167,
+750,CKV_AZURE_168,
+751,CKV_AZURE_168,
+752,CKV_AZURE_169,
+753,CKV_AZURE_17,Azure App Service Client Certificate Disabled
+754,CKV_AZURE_17,Azure App Service Client Certificate Disabled
+755,CKV_AZURE_17,Azure App Service Client Certificate Disabled
+756,CKV_AZURE_170,
+757,CKV_AZURE_171,
+758,CKV_AZURE_172,
+759,CKV_AZURE_173,
+760,CKV_AZURE_174,
+761,CKV_AZURE_175,
+762,CKV_AZURE_176,
+763,CKV_AZURE_177,
+764,CKV_AZURE_177,
+765,CKV_AZURE_178,
+766,CKV_AZURE_178,
+767,CKV_AZURE_179,
+768,CKV_AZURE_179,
+769,CKV_AZURE_179,
+770,CKV_AZURE_179,
+771,CKV_AZURE_18,App Service HTTP2 Disabled
+772,CKV_AZURE_18,App Service HTTP2 Disabled
+773,CKV_AZURE_18,App Service HTTP2 Disabled
+774,CKV_AZURE_180,
+775,CKV_AZURE_181,
+776,CKV_AZURE_182,
+777,CKV_AZURE_182,
+778,CKV_AZURE_183,
+779,CKV_AZURE_184,
+780,CKV_AZURE_185,
+781,CKV_AZURE_186,
+782,CKV_AZURE_187,
+783,CKV_AZURE_188,
+784,CKV_AZURE_189,
+785,CKV_AZURE_19,Security Center Pricing Tier Is Not Standard
+786,CKV_AZURE_190,Public Storage Account
+787,CKV_AZURE_191,
+788,CKV_AZURE_192,
+789,CKV_AZURE_193,
+790,CKV_AZURE_194,
+791,CKV_AZURE_195,
+792,CKV_AZURE_196,
+793,CKV_AZURE_197,
+794,CKV_AZURE_198,
+795,CKV_AZURE_199,
+796,CKV_AZURE_2,Encryption On Managed Disk Disabled
+797,CKV_AZURE_20,
+798,CKV_AZURE_200,
+799,CKV_AZURE_201,
+800,CKV_AZURE_202,
+801,CKV_AZURE_203,
+802,CKV_AZURE_204,
+803,CKV_AZURE_205,
+804,CKV_AZURE_206,
+805,CKV_AZURE_207,
+806,CKV_AZURE_208,
+807,CKV_AZURE_209,
+808,CKV_AZURE_21,Email Alerts Disabled
+809,CKV_AZURE_210,
+810,CKV_AZURE_211,
+811,CKV_AZURE_212,
+812,CKV_AZURE_213,
+813,CKV_AZURE_213,
+814,CKV_AZURE_213,
+815,CKV_AZURE_214,
+816,CKV_AZURE_214,
+817,CKV_AZURE_215,
+818,CKV_AZURE_216,
+819,CKV_AZURE_217,
+820,CKV_AZURE_218,
+821,CKV_AZURE_219,
+822,CKV_AZURE_22,Email Alerts Disabled
+823,CKV_AZURE_220,
+824,CKV_AZURE_221,
+825,CKV_AZURE_221,
+826,CKV_AZURE_221,
+827,CKV_AZURE_221,
+828,CKV_AZURE_222,
+829,CKV_AZURE_222,
+830,CKV_AZURE_223,
+831,CKV_AZURE_224,
+832,CKV_AZURE_225,
+833,CKV_AZURE_226,
+834,CKV_AZURE_227,
+835,CKV_AZURE_227,
+836,CKV_AZURE_228,
+837,CKV_AZURE_229,
+838,CKV_AZURE_23,MSSQL Server Auditing Disabled
+839,CKV_AZURE_23,
+840,CKV_AZURE_23,SQL Server Auditing Disabled
+841,CKV_AZURE_230,
+842,CKV_AZURE_231,
+843,CKV_AZURE_232,
+844,CKV_AZURE_233,
+845,CKV_AZURE_234,
+846,CKV_AZURE_235,
+847,CKV_AZURE_236,
+848,CKV_AZURE_237,
+849,CKV_AZURE_238,
+850,CKV_AZURE_239,
+851,CKV_AZURE_24,Small MSSQL Audit Retention Period
+852,CKV_AZURE_24,
+853,CKV_AZURE_24,Small MSSQL Server Audit Retention
+854,CKV_AZURE_240,
+855,CKV_AZURE_241,
+856,CKV_AZURE_242,
+857,CKV_AZURE_244,
+858,CKV_AZURE_245,
+859,CKV_AZURE_246,
+860,CKV_AZURE_247,
+861,CKV_AZURE_248,
+862,CKV_AZURE_25,
+863,CKV_AZURE_26,SQL Server Alert Email Disabled
+864,CKV_AZURE_27,
+865,CKV_AZURE_28,Enforce SSL connection' is not set to 'ENABLED' for MySQL Database Server
+866,CKV_AZURE_29,SSL Enforce Disabled
+867,CKV_AZURE_3,Storage Account Not Forcing HTTPS
+868,CKV_AZURE_30,PostgreSQL Log Checkpoints Disabled
+869,CKV_AZURE_31,PostgreSQL Log Connections Not Set
+870,CKV_AZURE_32,PostgreSQL Server Without Connection Throttling
+871,CKV_AZURE_33,
+872,CKV_AZURE_34,Storage Container Is Publicly Accessible
+873,CKV_AZURE_35,
+874,CKV_AZURE_35,Default Azure Storage Account Network Access Is Too Permissive
+875,CKV_AZURE_36,Trusted Microsoft Services Not Enabled
+876,CKV_AZURE_36,
+877,CKV_AZURE_37,Small Activity Log Retention Period
+878,CKV_AZURE_38,
+879,CKV_AZURE_39,Role Definition Allows Custom Role Creation
+880,CKV_AZURE_4,
+881,CKV_AZURE_40,Key Expiration Not Set
+882,CKV_AZURE_41,Secret Expiration Not Set
+883,CKV_AZURE_42,
+884,CKV_AZURE_43,
+885,CKV_AZURE_44,Storage Account Not Using Latest TLS Encryption Version
+886,CKV_AZURE_45,
+887,CKV_AZURE_47,
+888,CKV_AZURE_48,MariaDB Server Public Network Access Enabled
+889,CKV_AZURE_49,
+890,CKV_AZURE_5,
+891,CKV_AZURE_50,
+892,CKV_AZURE_50,
+893,CKV_AZURE_52,
+894,CKV_AZURE_53,
+895,CKV_AZURE_54,Ensure MySQL is using the latest version of TLS encryption
+896,CKV_AZURE_55,
+897,CKV_AZURE_56,Function App Authentication Disabled
+898,CKV_AZURE_57,
+899,CKV_AZURE_57,
+900,CKV_AZURE_57,
+901,CKV_AZURE_58,
+902,CKV_AZURE_59,Public Storage Account
+903,CKV_AZURE_6,
+904,CKV_AZURE_61,
+905,CKV_AZURE_62,
+906,CKV_AZURE_63,
+907,CKV_AZURE_63,
+908,CKV_AZURE_63,
+909,CKV_AZURE_64,
+910,CKV_AZURE_65,
+911,CKV_AZURE_65,
+912,CKV_AZURE_65,
+913,CKV_AZURE_66,
+914,CKV_AZURE_66,
+915,CKV_AZURE_66,
+916,CKV_AZURE_67,Function App HTTP2 Disabled
+917,CKV_AZURE_67,Function App HTTP2 Disabled
+918,CKV_AZURE_68,Ensure that PostgreSQL server disables public network access
+919,CKV_AZURE_69,
+920,CKV_AZURE_7,
+921,CKV_AZURE_70,
+922,CKV_AZURE_70,
+923,CKV_AZURE_70,
+924,CKV_AZURE_70,
+925,CKV_AZURE_70,
+926,CKV_AZURE_70,
+927,CKV_AZURE_71,App Service Managed Identity Disabled
+928,CKV_AZURE_71,App Service Managed Identity Disabled
+929,CKV_AZURE_71,App Service Managed Identity Disabled
+930,CKV_AZURE_72,Ensure web app is not remotely debuggable
+931,CKV_AZURE_72,Ensure web app is not remotely debuggable
+932,CKV_AZURE_72,Ensure web app is not remotely debuggable
+933,CKV_AZURE_72,Ensure web app is not remotely debuggable
+934,CKV_AZURE_72,Ensure web app is not remotely debuggable
+935,CKV_AZURE_72,Ensure web app is not remotely debuggable
+936,CKV_AZURE_72,Ensure web app is not remotely debuggable
+937,CKV_AZURE_72,Ensure web app is not remotely debuggable
+938,CKV_AZURE_72,Ensure web app is not remotely debuggable
+939,CKV_AZURE_73,
+940,CKV_AZURE_73,
+941,CKV_AZURE_73,
+942,CKV_AZURE_73,
+943,CKV_AZURE_74,
+944,CKV_AZURE_75,
+945,CKV_AZURE_76,
+946,CKV_AZURE_77,Ensure that UDP Services are restricted from the Internet
+947,CKV_AZURE_77,Ensure that UDP Services are restricted from the Internet
+948,CKV_AZURE_78,App Service FTPS Enforce Disabled
+949,CKV_AZURE_78,
+950,CKV_AZURE_78,
+951,CKV_AZURE_79,
+952,CKV_AZURE_8,Dashboard Is Enabled
+953,CKV_AZURE_80,
+954,CKV_AZURE_80,
+955,CKV_AZURE_81,App Service Without Latest PHP Version
+956,CKV_AZURE_82,App Service Without Latest Python Version
+957,CKV_AZURE_83,
+958,CKV_AZURE_84,
+959,CKV_AZURE_85,
+960,CKV_AZURE_86,
+961,CKV_AZURE_87,
+962,CKV_AZURE_88,
+963,CKV_AZURE_88,
+964,CKV_AZURE_88,
+965,CKV_AZURE_89,
+966,CKV_AZURE_9,RDP Is Exposed To The Internet
+967,CKV_AZURE_9,RDP Is Exposed To The Internet
+968,CKV_AZURE_91,Redis Cache Allows Non SSL Connections
+969,CKV_AZURE_92,
+970,CKV_AZURE_92,
+971,CKV_AZURE_93,
+972,CKV_AZURE_94,
+973,CKV_AZURE_94,
+974,CKV_AZURE_95,
+975,CKV_AZURE_96,
+976,CKV_AZURE_97,
+977,CKV_AZURE_97,
+978,CKV_AZURE_98,
+979,CKV_AZURE_99,
+980,CKV_GCP_1,
+981,CKV_GCP_10,Node Auto Upgrade Disabled
+982,CKV_GCP_100,BigQuery Table Is Public
+983,CKV_GCP_100,BigQuery Table Is Public
+984,CKV_GCP_101,Artifact Registry Repo Is Public
+985,CKV_GCP_101,Artifact Registry Repo Is Public
+986,CKV_GCP_102,Cloud Run Service Is Public
+987,CKV_GCP_102,Cloud Run Service Is Public
+988,CKV_GCP_103,Dataproc Clusters Has Public IPs
+989,CKV_GCP_104,
+990,CKV_GCP_105,
+991,CKV_GCP_106,
+992,CKV_GCP_107,
+993,CKV_GCP_107,
+994,CKV_GCP_107,
+995,CKV_GCP_107,
+996,CKV_GCP_108,
+997,CKV_GCP_109,
+998,CKV_GCP_11,SQL DB Instance Publicly Accessible
+999,CKV_GCP_110,
+1000,CKV_GCP_111,
+1001,CKV_GCP_112,
+1002,CKV_GCP_112,
+1003,CKV_GCP_112,
+1004,CKV_GCP_113,
+1005,CKV_GCP_114,
+1006,CKV_GCP_115,
+1007,CKV_GCP_115,
+1008,CKV_GCP_116,
+1009,CKV_GCP_116,
+1010,CKV_GCP_117,
+1011,CKV_GCP_117,
+1012,CKV_GCP_118,
+1013,CKV_GCP_119,
+1014,CKV_GCP_12,
+1015,CKV_GCP_120,
+1016,CKV_GCP_121,
+1017,CKV_GCP_122,
+1018,CKV_GCP_123,
+1019,CKV_GCP_124,
+1020,CKV_GCP_124,
+1021,CKV_GCP_125,
+1022,CKV_GCP_13,
+1023,CKV_GCP_14,SQL DB Instance Backup Disabled
+1024,CKV_GCP_15,BigQuery Dataset Is Public
+1025,CKV_GCP_16,Cloud DNS Without DNSSEC
+1026,CKV_GCP_17,DNSSEC Using RSASHA1
+1027,CKV_GCP_18,GKE Control Plane Is Public
+1028,CKV_GCP_2,SSH Access Is Not Restricted
+1029,CKV_GCP_20,
+1030,CKV_GCP_21,
+1031,CKV_GCP_22,COS Node Image Not Used
+1032,CKV_GCP_23,IP Aliasing Disabled
+1033,CKV_GCP_24,Pod Security Policy Disabled
+1034,CKV_GCP_25,
+1035,CKV_GCP_26,Google Compute Subnetwork Logging Disabled
+1036,CKV_GCP_27,Google Project Auto Create Network Disabled
+1037,CKV_GCP_28,Cloud Storage Bucket Is Publicly Accessible
+1038,CKV_GCP_28,Cloud Storage Anonymous or Publicly Accessible
+1039,CKV_GCP_29,Google Storage Bucket Level Access Disabled
+1040,CKV_GCP_3,RDP Access Is Not Restricted
+1041,CKV_GCP_30,Using Default Service Account
+1042,CKV_GCP_30,
+1043,CKV_GCP_30,
+1044,CKV_GCP_31,VM With Full Cloud Access
+1045,CKV_GCP_31,
+1046,CKV_GCP_31,
+1047,CKV_GCP_32,Project-wide SSH Keys Are Enabled In VM Instances
+1048,CKV_GCP_32,
+1049,CKV_GCP_32,
+1050,CKV_GCP_33,OSLogin Disabled
+1051,CKV_GCP_34,OSLogin Is Disabled For VM Instance
+1052,CKV_GCP_34,
+1053,CKV_GCP_34,
+1054,CKV_GCP_35,Serial Ports Are Enabled For VM Instances
+1055,CKV_GCP_35,
+1056,CKV_GCP_35,
+1057,CKV_GCP_36,IP Forwarding Enabled
+1058,CKV_GCP_36,
+1059,CKV_GCP_36,
+1060,CKV_GCP_37,Disk Encryption Disabled
+1061,CKV_GCP_38,
+1062,CKV_GCP_39,Shielded VM Disabled
+1063,CKV_GCP_39,
+1064,CKV_GCP_39,
+1065,CKV_GCP_4,Google Compute SSL Policy Weak Cipher In Use
+1066,CKV_GCP_40,
+1067,CKV_GCP_40,
+1068,CKV_GCP_40,
+1069,CKV_GCP_41,Google Project IAM Binding Service Account has Token Creator or Account User Role
+1070,CKV_GCP_41,Google Project IAM Member Service Account has Token Creator or Account User Role
+1071,CKV_GCP_42,Google Project IAM Member Service Account Has Admin Role
+1072,CKV_GCP_43,High Google KMS Crypto Key Rotation Period
+1073,CKV_GCP_44,
+1074,CKV_GCP_44,
+1075,CKV_GCP_45,
+1076,CKV_GCP_45,
+1077,CKV_GCP_46,
+1078,CKV_GCP_46,
+1079,CKV_GCP_47,
+1080,CKV_GCP_47,
+1081,CKV_GCP_48,
+1082,CKV_GCP_48,
+1083,CKV_GCP_49,
+1084,CKV_GCP_49,
+1085,CKV_GCP_50,
+1086,CKV_GCP_51,
+1087,CKV_GCP_52,
+1088,CKV_GCP_53,
+1089,CKV_GCP_54,
+1090,CKV_GCP_55,
+1091,CKV_GCP_56,
+1092,CKV_GCP_57,
+1093,CKV_GCP_58,SQL Server Cross DB Ownership Chaining Enabled
+1094,CKV_GCP_59,
+1095,CKV_GCP_6,SQL DB Instance With SSL Disabled
+1096,CKV_GCP_60,
+1097,CKV_GCP_61,
+1098,CKV_GCP_62,Cloud Storage Bucket Logging Not Enabled
+1099,CKV_GCP_63,
+1100,CKV_GCP_64,Private Cluster Disabled
+1101,CKV_GCP_65,
+1102,CKV_GCP_66,
+1103,CKV_GCP_68,
+1104,CKV_GCP_68,
+1105,CKV_GCP_69,
+1106,CKV_GCP_69,
+1107,CKV_GCP_7,GKE Legacy Authorization Enabled
+1108,CKV_GCP_70,
+1109,CKV_GCP_71,Shielded GKE Nodes Disabled
+1110,CKV_GCP_72,
+1111,CKV_GCP_72,
+1112,CKV_GCP_73,
+1113,CKV_GCP_74,Google Compute Subnetwork with Private Google Access Disabled
+1114,CKV_GCP_75,Google compute firewall ingress allows unrestricted FTP access
+1115,CKV_GCP_76,
+1116,CKV_GCP_77,
+1117,CKV_GCP_78,Cloud Storage Bucket Versioning Disabled
+1118,CKV_GCP_79,
+1119,CKV_GCP_8,
+1120,CKV_GCP_80,
+1121,CKV_GCP_81,
+1122,CKV_GCP_82,
+1123,CKV_GCP_83,
+1124,CKV_GCP_84,
+1125,CKV_GCP_85,
+1126,CKV_GCP_86,
+1127,CKV_GCP_87,
+1128,CKV_GCP_88,Google compute firewall ingress allows unrestricted mysql access
+1129,CKV_GCP_89,
+1130,CKV_GCP_9,Google Container Node Pool Auto Repair Disabled
+1131,CKV_GCP_90,
+1132,CKV_GCP_91,
+1133,CKV_GCP_92,
+1134,CKV_GCP_93,
+1135,CKV_GCP_94,
+1136,CKV_GCP_95,
+1137,CKV_GCP_96,
+1138,CKV_GCP_97,
+1139,CKV_GCP_98,Dataproc Clusters Publicly Accessible
+1140,CKV_GCP_98,Dataproc Clusters Publicly Accessible
+1141,CKV_GCP_99,Pub/Sub Topics are anonymously or publicly accessible
+1142,CKV_GCP_99,Pub/Sub Topics are anonymously or publicly accessible
+1143,CKV2_AWS_1,
+1144,CKV2_AWS_1,
+1145,CKV2_AWS_10,CloudTrail Not Integrated With CloudWatch
+1146,CKV2_AWS_11,VPC FlowLogs Disabled
+1147,CKV2_AWS_12,VPC Default Security Group Accepts All Traffic
+1148,CKV2_AWS_12,
+1149,CKV2_AWS_14,
+1150,CKV2_AWS_14,IAM Group Without Users
+1151,CKV2_AWS_15,Auto Scaling Group With No Associated ELB
+1152,CKV2_AWS_15,
+1153,CKV2_AWS_15,
+1154,CKV2_AWS_16,
+1155,CKV2_AWS_16,
+1156,CKV2_AWS_18,
+1157,CKV2_AWS_19,
+1158,CKV2_AWS_19,
+1159,CKV2_AWS_2,
+1160,CKV2_AWS_2,
+1161,CKV2_AWS_20,
+1162,CKV2_AWS_20,
+1163,CKV2_AWS_20,
+1164,CKV2_AWS_20,
+1165,CKV2_AWS_21,
+1166,CKV2_AWS_22,
+1167,CKV2_AWS_23,
+1168,CKV2_AWS_27,
+1169,CKV2_AWS_27,
+1170,CKV2_AWS_28,
+1171,CKV2_AWS_28,
+1172,CKV2_AWS_29,
+1173,CKV2_AWS_29,
+1174,CKV2_AWS_3,
+1175,CKV2_AWS_3,
+1176,CKV2_AWS_30,
+1177,CKV2_AWS_30,
+1178,CKV2_AWS_31,
+1179,CKV2_AWS_32,
+1180,CKV2_AWS_33,
+1181,CKV2_AWS_34,
+1182,CKV2_AWS_35,
+1183,CKV2_AWS_35,
+1184,CKV2_AWS_36,
+1185,CKV2_AWS_38,
+1186,CKV2_AWS_39,
+1187,CKV2_AWS_4,
+1188,CKV2_AWS_4,
+1189,CKV2_AWS_40,
+1190,CKV2_AWS_40,
+1191,CKV2_AWS_40,IAM Policies With Full Privileges
+1192,CKV2_AWS_40,
+1193,CKV2_AWS_40,
+1194,CKV2_AWS_41,
+1195,CKV2_AWS_42,Vulnerable Default SSL Certificate
+1196,CKV2_AWS_43,S3 Bucket Allows Authenticated Users Access
+1197,CKV2_AWS_44,VPC Peering Route Table with Unrestricted CIDR
+1198,CKV2_AWS_44,
+1199,CKV2_AWS_45,
+1200,CKV2_AWS_45,
+1201,CKV2_AWS_46,
+1202,CKV2_AWS_47,
+1203,CKV2_AWS_47,
+1204,CKV2_AWS_48,
+1205,CKV2_AWS_49,DMS Endpoints Without SSL
+1206,CKV2_AWS_5,Security Group Not Used
+1207,CKV2_AWS_50,ElastiCache Nodes Not Created Across Multi AZ
+1208,CKV2_AWS_51,API Gateway Without SSL Certificate
+1209,CKV2_AWS_51,
+1210,CKV2_AWS_51,
+1211,CKV2_AWS_52,Fine-Grained Access Control Disabled for OpenSearch/Elasticsearch
+1212,CKV2_AWS_52,
+1213,CKV2_AWS_53,
+1214,CKV2_AWS_54,Vulnerable Default SSL Certificate
+1215,CKV2_AWS_55,
+1216,CKV2_AWS_56,
+1217,CKV2_AWS_56,
+1218,CKV2_AWS_56,
+1219,CKV2_AWS_56,
+1220,CKV2_AWS_56,
+1221,CKV2_AWS_56,
+1222,CKV2_AWS_57,
+1223,CKV2_AWS_58,
+1224,CKV2_AWS_59,
+1225,CKV2_AWS_59,
+1226,CKV2_AWS_6,
+1227,CKV2_AWS_6,
+1228,CKV2_AWS_60,
+1229,CKV2_AWS_61,
+1230,CKV2_AWS_62,
+1231,CKV2_AWS_63,
+1232,CKV2_AWS_64,
+1233,CKV2_AWS_65,
+1234,CKV2_AWS_66,
+1235,CKV2_AWS_68,
+1236,CKV2_AWS_68,
+1237,CKV2_AWS_69,DB Instance Storage Not Encrypted
+1238,CKV2_AWS_69,
+1239,CKV2_AWS_7,EMR Without VPC
+1240,CKV2_AWS_7,
+1241,CKV2_AWS_70,API Gateway Method Does Not Contains An API Key
+1242,CKV2_AWS_71,
+1243,CKV2_AWS_72,
+1244,CKV2_AWS_73,
+1245,CKV2_AWS_8,
+1246,CKV2_AWS_9,
+1247,CKV2_AZURE_1,
+1248,CKV2_AZURE_10,
+1249,CKV2_AZURE_10,
+1250,CKV2_AZURE_11,
+1251,CKV2_AZURE_12,
+1252,CKV2_AZURE_13,
+1253,CKV2_AZURE_13,
+1254,CKV2_AZURE_14,
+1255,CKV2_AZURE_14,
+1256,CKV2_AZURE_15,
+1257,CKV2_AZURE_16,
+1258,CKV2_AZURE_16,
+1259,CKV2_AZURE_17,
+1260,CKV2_AZURE_17,
+1261,CKV2_AZURE_19,
+1262,CKV2_AZURE_2,
+1263,CKV2_AZURE_2,
+1264,CKV2_AZURE_2,
+1265,CKV2_AZURE_20,
+1266,CKV2_AZURE_20,
+1267,CKV2_AZURE_20,
+1268,CKV2_AZURE_21,
+1269,CKV2_AZURE_21,
+1270,CKV2_AZURE_21,
+1271,CKV2_AZURE_22,
+1272,CKV2_AZURE_22,
+1273,CKV2_AZURE_23,
+1274,CKV2_AZURE_24,
+1275,CKV2_AZURE_25,
+1276,CKV2_AZURE_26,
+1277,CKV2_AZURE_27,
+1278,CKV2_AZURE_28,
+1279,CKV2_AZURE_29,
+1280,CKV2_AZURE_3,
+1281,CKV2_AZURE_3,
+1282,CKV2_AZURE_3,
+1283,CKV2_AZURE_3,
+1284,CKV2_AZURE_30,
+1285,CKV2_AZURE_31,
+1286,CKV2_AZURE_32,
+1287,CKV2_AZURE_33,
+1288,CKV2_AZURE_34,
+1289,CKV2_AZURE_34,
+1290,CKV2_AZURE_35,
+1291,CKV2_AZURE_36,
+1292,CKV2_AZURE_37,Ensure Azure MariaDB server is using latest TLS (1.2)
+1293,CKV2_AZURE_38,
+1294,CKV2_AZURE_39,
+1295,CKV2_AZURE_39,
+1296,CKV2_AZURE_39,
+1297,CKV2_AZURE_39,
+1298,CKV2_AZURE_4,
+1299,CKV2_AZURE_4,
+1300,CKV2_AZURE_4,
+1301,CKV2_AZURE_4,
+1302,CKV2_AZURE_40,
+1303,CKV2_AZURE_41,
+1304,CKV2_AZURE_42,
+1305,CKV2_AZURE_43,
+1306,CKV2_AZURE_44,
+1307,CKV2_AZURE_45,
+1308,CKV2_AZURE_46,
+1309,CKV2_AZURE_46,
+1310,CKV2_AZURE_47,
+1311,CKV2_AZURE_48,
+1312,CKV2_AZURE_49,
+1313,CKV2_AZURE_5,
+1314,CKV2_AZURE_5,
+1315,CKV2_AZURE_5,
+1316,CKV2_AZURE_5,
+1317,CKV2_AZURE_50,
+1318,CKV2_AZURE_50,
+1319,CKV2_AZURE_51,
+1320,CKV2_AZURE_51,
+1321,CKV2_AZURE_52,
+1322,CKV2_AZURE_52,
+1323,CKV2_AZURE_52,
+1324,CKV2_AZURE_53,
+1325,CKV2_AZURE_54,
+1326,CKV2_AZURE_54,
+1327,CKV2_AZURE_55,
+1328,CKV2_AZURE_55,
+1329,CKV2_AZURE_6,
+1330,CKV2_AZURE_6,
+1331,CKV2_AZURE_7,
+1332,CKV2_AZURE_8,
+1333,CKV2_AZURE_8,
+1334,CKV2_AZURE_8,
+1335,CKV2_AZURE_9,
+1336,CKV2_GCP_1,
+1337,CKV2_GCP_10,
+1338,CKV2_GCP_11,
+1339,CKV2_GCP_12,Google Compute Network Using Firewall Rule that Allows All Ports
+1340,CKV2_GCP_13,
+1341,CKV2_GCP_14,
+1342,CKV2_GCP_15,
+1343,CKV2_GCP_16,
+1344,CKV2_GCP_17,
+1345,CKV2_GCP_18,
+1346,CKV2_GCP_19,
+1347,CKV2_GCP_2,
+1348,CKV2_GCP_20,
+1349,CKV2_GCP_21,
+1350,CKV2_GCP_22,
+1351,CKV2_GCP_23,
+1352,CKV2_GCP_24,
+1353,CKV2_GCP_25,
+1354,CKV2_GCP_26,
+1355,CKV2_GCP_27,
+1356,CKV2_GCP_28,
+1357,CKV2_GCP_29,
+1358,CKV2_GCP_3,
+1359,CKV2_GCP_30,
+1360,CKV2_GCP_31,
+1361,CKV2_GCP_32,
+1362,CKV2_GCP_33,
+1363,CKV2_GCP_34,
+1364,CKV2_GCP_35,
+1365,CKV2_GCP_36,
+1366,CKV2_GCP_4,
+1367,CKV2_GCP_4,
+1368,CKV2_GCP_4,
+1369,CKV2_GCP_4,
+1370,CKV2_GCP_5,
+1371,CKV2_GCP_5,
+1372,CKV2_GCP_6,KMS Crypto Key is Publicly Accessible
+1373,CKV2_GCP_6,KMS Crypto Key is Publicly Accessible
+1374,CKV2_GCP_6,KMS Crypto Key is Publicly Accessible
+1375,CKV2_GCP_7,
+1376,CKV2_GCP_7,
+1377,CKV2_GCP_8,Cloud KMS Key Ring is anonymously or publicly accessible
+1378,CKV2_GCP_8,Cloud KMS Key Ring is anonymously or publicly accessible
+1379,CKV2_GCP_8,Cloud KMS Key Ring is anonymously or publicly accessible
+1380,CKV2_GCP_9,Container Registry Repo Is Public
+1381,CKV2_GCP_9,Container Registry Repo Is Public
+1382,CKV2_GCP_9,Container Registry Repo Is Public
+1383,,IAM Role Policy passRole Allows All
+1384,,IAM Access Analyzer Not Enabled
+1385,,API Gateway Without Configured Authorizer
+1386,,API Gateway Deployment Without API Gateway UsagePlan Associated
+1387,,CloudWatch Metrics Disabled
+1388,,API Gateway Endpoint Config is Not Private
+1389,,Certificate RSA Key Bytes Lower Than 256
+1390,,Certificate Has Expired
+1391,,API Gateway With Invalid Compression
+1392,,REST API With Vulnerable Policy
+1393,,API Gateway With CloudWatch Logging Disabled
+1394,,API Gateway Stage Without API Gateway UsagePlan Associated
+1395,,No Stack Policy
+1396,,Stack Without Template
+1397,,Stack Retention Disabled
+1398,,Secure Ciphers Disabled
+1399,,S3 Bucket Object Level CloudTrail Logging Disabled
+1400,,CloudTrail Log Files S3 Bucket is Publicly Accessible
+1401,,CloudTrail Log Files S3 Bucket with Logging Disabled
+1402,,CloudWatch Logs Destination With Vulnerable Policy
+1403,,CloudWatch Changes To NACL Alarm Missing
+1404,,Cloudwatch Cloudtrail Configuration Changes Alarm Missing
+1405,,CloudWatch Route Table Changes Alarm Missing
+1406,,CloudWatch S3 policy Change Alarm Missing
+1407,,CloudWatch AWS Organizations Changes Missing Alarm
+1408,,CloudWatch Console Sign-in Without MFA Alarm Missing
+1409,,Cloudwatch Security Group Changes Alarm Missing
+1410,,CloudWatch Unauthorized Access Alarm Missing
+1411,,CloudWatch Disabling Or Scheduled Deletion Of Customer Created CMK Alarm Missing
+1412,,CloudWatch Management Console Auth Failed Alarm Missing
+1413,,CloudWatch AWS Config Configuration Changes Alarm Missing
+1414,,CloudWatch Network Gateways Changes Alarm Missing
+1415,,CloudWatch Root Account Use Missing
+1416,,CloudWatch VPC Changes Alarm Missing
+1417,,CloudWatch IAM Policy Changes Alarm Missing
+1418,,Cognito UserPool Without MFA
+1419,,Config Rule For Encrypted Volumes Disabled
+1420,,RDS Associated with Public Subnet
+1421,,RDS Using Default Port
+1422,,DB Security Group With Public Scope
+1423,,DB Security Group Open To Large Scope
+1424,,DB Security Group Has Public Interface
+1425,,Default Security Groups With Unrestricted Traffic
+1426,,DOCDB Cluster Encrypted With AWS Managed Key
+1427,,Unscanned ECR Image
+1428,,ECR Repository Without Policy
+1429,,ECS Service Admin Role Is Present
+1430,,ECS Service Without Running Tasks
+1431,,ECS Task Definition Network Mode Not Recommended
+1432,,EFS With Vulnerable Policy
+1433,,EKS Cluster Has Public Access CIDRs
+1434,,Missing Cluster Log Types
+1435,,Redis Not Compliant
+1436,,Redis Disabled
+1437,,ElastiCache Using Default Port
+1438,,Elasticsearch Without IAM Authentication
+1439,,Glue With Vulnerable Policy
+1440,,IAM User Has Too Many Access Keys
+1441,,IAM Access Key Is Exposed
+1442,,AWS Password Policy With Unchangeable Passwords
+1443,,Group With Privilege Escalation By Actions 'lambda:CreateFunction' And 'iam:PassRole' And 'lambda:InvokeFunction'
+1444,,Group With Privilege Escalation By Actions 'lambda:CreateFunction' And 'iam:PassRole' And 'lambda:InvokeFunction'
+1445,,Group With Privilege Escalation By Actions 'iam:CreateLoginProfile'
+1446,,Group With Privilege Escalation By Actions 'iam:CreateLoginProfile'
+1447,,Group With Privilege Escalation By Actions 'ec2:RunInstances' And 'iam:PassRole'
+1448,,Group With Privilege Escalation By Actions 'ec2:RunInstances' And 'iam:PassRole'
+1449,,Group With Privilege Escalation By Actions 'iam:AttachRolePolicy'
+1450,,Group With Privilege Escalation By Actions 'iam:AttachRolePolicy'
+1451,,Group With Privilege Escalation By Actions 'lambda:UpdateFunctionCode'
+1452,,Group With Privilege Escalation By Actions 'lambda:UpdateFunctionCode'
+1453,,Group With Privilege Escalation By Actions 'iam:PutUserPolicy'
+1454,,Group With Privilege Escalation By Actions 'iam:PutUserPolicy'
+1455,,Group With Privilege Escalation By Actions 'iam:AttachGroupPolicy'
+1456,,Group With Privilege Escalation By Actions 'iam:AttachGroupPolicy'
+1457,,Group With Privilege Escalation By Actions 'iam:SetDefaultPolicyVersion'
+1458,,Group With Privilege Escalation By Actions 'iam:SetDefaultPolicyVersion'
+1459,,Group With Privilege Escalation By Actions 'iam:UpdateAssumeRolePolicy' And 'sts:AssumeRole'
+1460,,Group With Privilege Escalation By Actions 'iam:UpdateAssumeRolePolicy' And 'sts:AssumeRole'
+1461,,Group With Privilege Escalation By Actions 'glue:CreateDevEndpoint' And 'iam:PassRole'
+1462,,Group With Privilege Escalation By Actions 'glue:CreateDevEndpoint' And 'iam:PassRole'
+1463,,Group With Privilege Escalation By Actions 'iam:CreateAccessKey'
+1464,,Group With Privilege Escalation By Actions 'iam:CreateAccessKey'
+1465,,Group With Privilege Escalation By Actions 'glue:UpdateDevEndpoint'
+1466,,Group With Privilege Escalation By Actions 'glue:UpdateDevEndpoint'
+1467,,Group With Privilege Escalation By Actions 'iam:AddUserToGroup'
+1468,,Group With Privilege Escalation By Actions 'iam:AddUserToGroup'
+1469,,Group With Privilege Escalation By Actions 'cloudformation:CreateStack' And 'iam:PassRole'
+1470,,Group With Privilege Escalation By Actions 'cloudformation:CreateStack' And 'iam:PassRole'
+1471,,Group With Privilege Escalation By Actions 'iam:UpdateLoginProfile'
+1472,,Group With Privilege Escalation By Actions 'iam:UpdateLoginProfile'
+1473,,Group With Privilege Escalation By Actions 'iam:PutRolePolicy'
+1474,,Group With Privilege Escalation By Actions 'iam:PutRolePolicy'
+1475,,Group With Privilege Escalation By Actions 'iam:AttachUserPolicy'
+1476,,Group With Privilege Escalation By Actions 'iam:AttachUserPolicy'
+1477,,Group With Privilege Escalation By Actions 'iam:PutGroupPolicy'
+1478,,Group With Privilege Escalation By Actions 'iam:PutGroupPolicy'
+1479,,Group With Privilege Escalation By Actions 'iam:CreatePolicyVersion'
+1480,,Group With Privilege Escalation By Actions 'iam:CreatePolicyVersion'
+1481,,Cross-Account IAM Assume Role Policy Without ExternalId or MFA
+1482,,IAM Role With Full Privileges
+1483,,Role With Privilege Escalation By Actions 'glue:CreateDevEndpoint' And 'iam:PassRole'
+1484,,Role With Privilege Escalation By Actions 'glue:CreateDevEndpoint' And 'iam:PassRole'
+1485,,Role With Privilege Escalation By Actions 'iam:SetDefaultPolicyVersion'
+1486,,Role With Privilege Escalation By Actions 'iam:SetDefaultPolicyVersion'
+1487,,Role With Privilege Escalation By Actions 'ec2:RunInstances' And 'iam:PassRole'
+1488,,Role With Privilege Escalation By Actions 'ec2:RunInstances' And 'iam:PassRole'
+1489,,Role With Privilege Escalation By Actions 'iam:UpdateLoginProfile'
+1490,,Role With Privilege Escalation By Actions 'iam:UpdateLoginProfile'
+1491,,Role With Privilege Escalation By Actions 'iam:CreateAccessKey'
+1492,,Role With Privilege Escalation By Actions 'iam:CreateAccessKey'
+1493,,Role With Privilege Escalation By Actions 'iam:AttachUserPolicy'
+1494,,Role With Privilege Escalation By Actions 'iam:AttachUserPolicy'
+1495,,Role With Privilege Escalation By Actions 'iam:PutUserPolicy'
+1496,,Role With Privilege Escalation By Actions 'iam:PutUserPolicy'
+1497,,Role With Privilege Escalation By Actions 'iam:CreateLoginProfile'
+1498,,Role With Privilege Escalation By Actions 'iam:CreateLoginProfile'
+1499,,Role With Privilege Escalation By Actions 'iam:AddUserToGroup'
+1500,,Role With Privilege Escalation By Actions 'iam:AddUserToGroup'
+1501,,Role With Privilege Escalation By Actions 'cloudformation:CreateStack' And 'iam:PassRole'
+1502,,Role With Privilege Escalation By Actions 'cloudformation:CreateStack' And 'iam:PassRole'
+1503,,Role With Privilege Escalation By Actions 'lambda:UpdateFunctionCode'
+1504,,Role With Privilege Escalation By Actions 'lambda:UpdateFunctionCode'
+1505,,Role With Privilege Escalation By Actions 'iam:PutGroupPolicy'
+1506,,Role With Privilege Escalation By Actions 'iam:PutGroupPolicy'
+1507,,Role With Privilege Escalation By Actions 'iam:PutRolePolicy'
+1508,,Role With Privilege Escalation By Actions 'iam:PutRolePolicy'
+1509,,Role With Privilege Escalation By Actions 'glue:UpdateDevEndpoint'
+1510,,Role With Privilege Escalation By Actions 'glue:UpdateDevEndpoint'
+1511,,Role With Privilege Escalation By Actions 'iam:CreatePolicyVersion'
+1512,,Role With Privilege Escalation By Actions 'iam:CreatePolicyVersion'
+1513,,Role With Privilege Escalation By Actions 'iam:UpdateAssumeRolePolicy' And 'sts:AssumeRole'
+1514,,Role With Privilege Escalation By Actions 'iam:UpdateAssumeRolePolicy' And 'sts:AssumeRole'
+1515,,Role With Privilege Escalation By Actions 'iam:AttachRolePolicy'
+1516,,Role With Privilege Escalation By Actions 'iam:AttachRolePolicy'
+1517,,Role With Privilege Escalation By Actions 'iam:AttachGroupPolicy'
+1518,,Role With Privilege Escalation By Actions 'iam:AttachGroupPolicy'
+1519,,Role With Privilege Escalation By Actions 'lambda:CreateFunction' And 'iam:PassRole' And 'lambda:InvokeFunction'
+1520,,Role With Privilege Escalation By Actions 'lambda:CreateFunction' And 'iam:PassRole' And 'lambda:InvokeFunction'
+1521,,IAM User With Access To Console
+1522,,No Password Policy Enabled
+1523,,User With Privilege Escalation By Actions 'iam:PutUserPolicy'
+1524,,User With Privilege Escalation By Actions 'iam:PutUserPolicy'
+1525,,User With Privilege Escalation By Actions 'iam:CreateLoginProfile'
+1526,,User With Privilege Escalation By Actions 'iam:CreateLoginProfile'
+1527,,User With Privilege Escalation By Actions 'iam:CreateAccessKey'
+1528,,User With Privilege Escalation By Actions 'iam:CreateAccessKey'
+1529,,User With Privilege Escalation By Actions 'iam:CreatePolicyVersion'
+1530,,User With Privilege Escalation By Actions 'iam:CreatePolicyVersion'
+1531,,User With Privilege Escalation By Actions 'cloudformation:CreateStack' And 'iam:PassRole'
+1532,,User With Privilege Escalation By Actions 'cloudformation:CreateStack' And 'iam:PassRole'
+1533,,User With Privilege Escalation By Actions 'iam:UpdateAssumeRolePolicy' And 'sts:AssumeRole'
+1534,,User With Privilege Escalation By Actions 'iam:UpdateAssumeRolePolicy' And 'sts:AssumeRole'
+1535,,Authentication Without MFA
+1536,,User With Privilege Escalation By Actions 'iam:SetDefaultPolicyVersion'
+1537,,User With Privilege Escalation By Actions 'iam:SetDefaultPolicyVersion'
+1538,,User With Privilege Escalation By Actions 'iam:AttachGroupPolicy'
+1539,,User With Privilege Escalation By Actions 'iam:AttachGroupPolicy'
+1540,,User With Privilege Escalation By Actions 'iam:UpdateLoginProfile'
+1541,,User With Privilege Escalation By Actions 'iam:UpdateLoginProfile'
+1542,,User With Privilege Escalation By Actions 'iam:AttachUserPolicy'
+1543,,User With Privilege Escalation By Actions 'iam:AttachUserPolicy'
+1544,,User With Privilege Escalation By Actions 'lambda:CreateFunction' And 'iam:PassRole' And 'lambda:InvokeFunction'
+1545,,User With Privilege Escalation By Actions 'lambda:CreateFunction' And 'iam:PassRole' And 'lambda:InvokeFunction'
+1546,,User With Privilege Escalation By Actions 'ec2:RunInstances' And 'iam:PassRole'
+1547,,User With Privilege Escalation By Actions 'ec2:RunInstances' And 'iam:PassRole'
+1548,,User With Privilege Escalation By Actions 'iam:PutGroupPolicy'
+1549,,User With Privilege Escalation By Actions 'iam:PutGroupPolicy'
+1550,,User With Privilege Escalation By Actions 'glue:CreateDevEndpoint' And 'iam:PassRole'
+1551,,User With Privilege Escalation By Actions 'glue:CreateDevEndpoint' And 'iam:PassRole'
+1552,,User With Privilege Escalation By Actions 'glue:UpdateDevEndpoint'
+1553,,User With Privilege Escalation By Actions 'glue:UpdateDevEndpoint'
+1554,,IAM User Policy Without MFA
+1555,,User With Privilege Escalation By Actions 'lambda:UpdateFunctionCode'
+1556,,User With Privilege Escalation By Actions 'lambda:UpdateFunctionCode'
+1557,,User With Privilege Escalation By Actions 'iam:AddUserToGroup'
+1558,,User With Privilege Escalation By Actions 'iam:AddUserToGroup'
+1559,,User With Privilege Escalation By Actions 'iam:AttachRolePolicy'
+1560,,User With Privilege Escalation By Actions 'iam:AttachRolePolicy'
+1561,,User With Privilege Escalation By Actions 'iam:PutRolePolicy'
+1562,,User With Privilege Escalation By Actions 'iam:PutRolePolicy'
+1563,,SSO Identity User Unsafe Creation
+1564,,EC2 Instance Using API Keys
+1565,,EC2 Instance Using Default VPC
+1566,,Instance With No VPC
+1567,,Public and Private EC2 Share Role
+1568,,EC2 Instance Using Default Security Group
+1569,,KMS Key With No Deletion Window
+1570,,CMK Is Unusable
+1571,,Hardcoded AWS Access Key In Lambda
+1572,,Lambda Function With Privileged Role
+1573,,Lambda Functions Without X-Ray Tracing
+1574,,Lambda IAM InvokeFunction Misconfigured
+1575,,Lambda IAM InvokeFunction Misconfigured
+1576,,Public Lambda via API Gateway
+1577,,Public Lambda via API Gateway
+1578,,Lambda Permission Misconfigured
+1579,,Lambda Permission Misconfigured
+1580,,Lambda With Vulnerable Policy
+1581,,Lambda With Vulnerable Policy
+1582,,Lambda Permission Principal Is Wildcard
+1583,,Lambda Permission Principal Is Wildcard
+1584,,ALB Not Dropping Invalid Headers
+1585,,ELB Using Weak Ciphers
+1586,,Network ACL With Unrestricted Access To SSH
+1587,,Network ACL With Unrestricted Access To RDP
+1588,,VPC Without Network Firewall
+1589,,Service Control Policies Disabled
+1590,,RDS Storage Not Encrypted
+1591,,Redshift Using Default Port
+1592,,Policy Without Principal
+1593,,Resource Not Using Tags
+1594,,ROS Stack Without Template
+1595,,CloudWatch Logging Disabled
+1596,,Route53 Record Undefined
+1597,,S3 Static Website Host Enabled
+1598,,S3 Bucket with Unsecured CORS Rule
+1599,,S3 Bucket With All Permissions
+1600,,S3 Bucket Without Enabled MFA Delete
+1601,,S3 Bucket ACL Allows Read to Any Authenticated User
+1602,,S3 Bucket Allows Get Action From All Principals
+1603,,S3 Bucket Policy Accepts HTTP Requests
+1604,,S3 Bucket Allows List Action From All Principals
+1605,,S3 Bucket Allows Put Action From All Principals
+1606,,S3 Bucket Allows Delete Action From All Principals
+1607,,S3 Bucket Public ACL Overridden By Public Access Block
+1608,,Secretsmanager Secret Encrypted With AWS Managed Key
+1609,,Secrets Manager With Vulnerable Policy
+1610,,Remote Desktop Port Open To Internet
+1611,,Sensitive Port Is Exposed To Entire Network
+1612,,SQL Analysis Services Port 2383 (TCP) Is Publicly Accessible
+1613,,Unknown Port Exposed To Internet
+1614,,Security Group With Unrestricted Access To SSH
+1615,,Sensitive Port Is Exposed To Wide Private Network
+1616,,Sensitive Port Is Exposed To Small Public Network
+1617,,HTTP Port Open To Internet
+1618,,SES Policy With Allowed IAM Actions
+1619,,Shield Advanced Not In Use
+1620,,SNS Topic Encrypted With AWS Managed Key
+1621,,SNS Topic Publicity Has Allow and NotAction Simultaneously
+1622,,SSO Permission With Inadequate User Session Duration
+1623,,SQS VPC Endpoint Without DNS Resolution
+1624,,Dynamodb VPC Endpoint Without Route Table Association
+1625,,ALB Is Not Integrated With WAF
+1626,,API Gateway without WAF
+1627,,Azure Container Registry With No Locks
+1628,,Admin User Enabled For Container Registry
+1629,,CosmosDB Account IP Range Filter Not Set
+1630,,Cosmos DB Account Without Tags
+1631,,Function App Client Certificates Unrequired
+1632,,Function App FTPS Enforce Disabled
+1633,,Function App Managed Identity Disabled
+1634,,Vault Auditing Disabled
+1635,,AKS RBAC Disabled
+1636,,AKS Network Policy Misconfigured
+1637,,MySQL Server Public Access Enabled
+1638,,MySQL SSL Connection Disabled
+1639,,Sensitive Port Is Exposed To Small Public Network
+1640,,Sensitive Port Is Exposed To Wide Private Network
+1641,,Network Watcher Flow Disabled
+1642,,PostgreSQL Log Disconnections Not Set
+1643,,PostgreSQL Log Duration Not Set
+1644,,Small PostgreSQL DB Server Log Retention Period
+1645,,Redis Not Updated Regularly
+1646,,Redis Entirely Accessible
+1647,,Firewall Rule Allows Too Many Hosts To Access Redis Cache
+1648,,Redis Publicly Accessible
+1649,,Role Assignment Not Limit Guest User Permissions
+1650,,Role Assignment Not Limit Guest User Permissions
+1651,,AD Admin Not Configured For SQL Server
+1652,,SQL Server Predictable Active Directory Account Name
+1653,,SQL Database Audit Disabled
+1654,,Unrestricted SQL Server Access
+1655,,SQL Server Predictable Admin Account Name
+1656,,Storage Share File Allows All ACL Permissions
+1657,,Storage Table Allows All ACL Permissions
+1658,,VM Not Attached To Network
+1659,,Virtual Network with DDoS Protection Plan disabled
+1660,,Security Group is Not Configured
+1661,,Google Compute Network Using Firewall Rule that Allows Port Range
+1662,,Google Compute Network Using Default Firewall Rule
+1663,,Network Policy Disabled
+1664,,GKE Using Default Service Account
+1665,,Stackdriver Logging Disabled
+1666,,Stackdriver Monitoring Disabled
+1667,,Outdated GKE Version
+1668,,Cluster Labels Disabled
+1669,,Legacy Client Certificate Auth Enabled
+1670,,Service Account with Improper Privileges
+1671,,User with IAM Role
+1672,,KMS Admin and CryptoKey Roles In Use
+1673,,Not Proper Email Account In Use
+1674,,IAM Audit Not Properly Configured
+1675,,Cluster Admin Rolebinding With Superuser Permissions
+1676,,CronJob Deadline Not Configured
+1677,,Deployment Without PodDisruptionBudget
+1678,,Deployment Has No PodAntiAffinity
+1679,,HPA Targets Invalid Object
+1680,,Ingress Controller Exposes Workload
+1681,,Network Policy Is Not Targeting Any Pod
+1682,,Non Kube System Pod With Host Mount
+1683,,PSP Set To Privileged
+1684,,Workload Mounting With Sensitive OS Directory
+1685,,Volume Mount With OS Directory Write Permissions
+1686,,Missing App Armor Config
+1687,,Container Host Pid Is True
+1688,,Container Resources Limits Undefined
+1689,,Seccomp Profile Is Not Configured
+1690,,Service Account Name Undefined Or Empty
+1691,,Service Account Token Automount Not Disabled
+1692,,Shared Service Account
+1693,,Metadata Label Is Invalid
+1694,,Invalid Image
+1695,,Cluster Allows Unsafe Sysctls
+1696,,Container Runs Unmasked
+1697,,Permissive Access to Create Pods
+1698,,RBAC Roles with Read Secrets Permissions
+1699,,Service Account Allows Access Secrets
+1700,,Service With External Load Balancer
+1701,,Service Type is NodePort
+1702,,Incorrect Volume Claim Access Mode ReadWriteOnce
+1703,,StatefulSet Without PodDisruptionBudget
+1704,,StatefulSet Without Service Name
+1705,,StatefulSet Requests Storage
+1706,CKV2_GCP_3,There are non GCP-managed service account keys for a service account

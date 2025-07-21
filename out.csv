@@ -1,0 +1,29 @@
+Checkov_ID,Checkov_number,Kics_ID,Kics_number,Ratio,Severity
+CKV_AWS_79,125,imdsv1 enabled,59,0.472,High
+CKV_AWS_27,99,sqs with sse disabled,90,0.9090909090909091,Medium
+CKV_GCP_29,18,google storage bucket level access disabled,18,1.0,High
+CKV_AWS_54,16,s3 bucket allows public policy,3,0.1875,High
+CKV_AZURE_44,15,storage account not using latest tls encryption version,2,0.13333333333333333,Medium
+CKV_AWS_130,14,vpc subnet assigns public ip,14,1.0,Medium
+CKV_AWS_24,14,unrestricted security group ingress,55,3.9285714285714284,High
+CKV_GCP_28,12,cloud storage anonymous or publicly accessible,0,0.0,Critical
+CKV_AWS_25,11,unrestricted security group ingress,55,5.0,High
+CKV_AWS_88,10,ec2 instance has public ip,6,0.6,Medium
+CKV_GCP_41,6,google project iam member service account has token creator or account user role,4,0.6666666666666666,High
+CKV_AWS_240,6,kinesis sse not configured,6,1.0,High
+CKV_GCP_16,5,cloud dns without dnssec,5,1.0,Medium
+CKV_AWS_34,4,cloudfront viewer protocol policy allows http,5,1.25,Medium
+CKV_AWS_26,4,sns topic not encrypted,4,1.0,High
+CKV_GCP_39,4,shielded vm disabled,6,1.5,Medium
+CKV_AWS_20,4,s3 bucket acl allows read or write to all users,4,1.0,Critical
+CKV_AWS_43,3,kinesis not encrypted with kms,3,1.0,High
+CKV_AZURE_9,3,rdp is exposed to the internet,3,1.0,High
+CKV_GCP_32,2,project-wide ssh keys are enabled in vm instances,4,2.0,Medium
+CKV_GCP_60,2,,0,0.0,?
+CKV_AWS_96,2,aurora with disabled at rest encryption,2,1.0,High
+CKV_AZURE_34,1,storage container is publicly accessible,1,1.0,High
+CKV_GCP_30,1,using default service account,6,6.0,Medium
+CKV_AWS_70,1,s3 bucket access to any principal,1,1.0,Critical
+CKV_AWS_248,1,elasticsearch uses default security group,0,0.0,High
+CKV_AWS_16,1,rds storage not encrypted,3,3.0,High
+CKV2_AWS_52,1,fine-grained access control disabled for opensearch/elasticsearch,1,1.0,High
