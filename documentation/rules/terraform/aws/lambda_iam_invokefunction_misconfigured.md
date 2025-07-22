@@ -1,10 +1,10 @@
 ---
-title: "Lambda IAM InvokeFunction Misconfigured"
+title: "Lambda IAM InvokeFunction misconfigured"
 group-id: "rules/terraform/aws"
 meta:
   name: "aws/lambda_iam_invokefunction_misconfigured"
   id: "0ca1017d-3b80-423e-bb9c-6cd5898d34bd"
-  display_name: "Lambda IAM InvokeFunction Misconfigured"
+  display_name: "Lambda IAM InvokeFunction misconfigured"
   cloud_provider: "aws"
   framework: "Terraform"
   severity: "LOW"
@@ -30,7 +30,7 @@ meta:
 
  AWS Lambda permissions must be carefully defined so that the `Action` field in the IAM policy explicitly specifies allowed actions, such as `"lambda:InvokeFunction"`. If the `Action` field is omitted or set too broadly, it could inadvertently grant unnecessary permissions, allowing unintended users or services to perform privileged operations on the Lambda function. This misconfiguration increases the risk of unauthorized invocation or modification of Lambda functions, potentially leading to security breaches or the execution of malicious code.
 
-A secure Terraform example ensures the `Action` is correctly specified:
+A secure Terraform configuration ensures the `Action` is correctly specified:
 
 ```
 policy = jsonencode({

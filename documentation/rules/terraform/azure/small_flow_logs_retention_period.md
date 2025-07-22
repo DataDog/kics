@@ -1,10 +1,10 @@
 ---
-title: "Small Flow Logs Retention Period"
+title: "Small flow logs retention period"
 group-id: "rules/terraform/azure"
 meta:
   name: "azure/small_flow_logs_retention_period"
   id: "7750fcca-dd03-4d38-b663-4b70289bcfd4"
-  display_name: "Small Flow Logs Retention Period"
+  display_name: "Small flow logs retention period"
   cloud_provider: "azure"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -28,7 +28,7 @@ meta:
 
 ### Description
 
- Network Security Group Flow Logs capture critical information about IP traffic flowing in and out of network security groups, aiding in the detection of anomalies and potential security breaches. If the flow logs are not retained for at least 90 days—for example, using a Terraform configuration where `retention_policy { days = 3 }`—important forensic data could be lost, making it difficult to investigate incidents or compromise attempts. Ensuring the attribute is set as shown below helps maintain compliance and enables sufficient investigation time:
+ Network Security Group flow logs capture critical information about IP traffic flowing in and out of network security groups, aiding in the detection of anomalies and potential security breaches. If the flow logs are not retained for at least 90 days—for example, using a Terraform configuration where `retention_policy { days = 3 }`—important forensic data could be lost, making it difficult to investigate incidents or compromise attempts. Ensuring the attribute is set as shown below helps maintain compliance and enables sufficient investigation time:
 
 ```
 retention_policy {

@@ -1,10 +1,10 @@
 ---
-title: "ALB Is Not Integrated With WAF"
+title: "ALB is not integrated with WAF"
 group-id: "rules/terraform/aws"
 meta:
   name: "aws/alb_is_not_integrated_with_waf"
   id: "0afa6ab8-a047-48cf-be07-93a2f8c34cf7"
-  display_name: "ALB Is Not Integrated With WAF"
+  display_name: "ALB is not integrated with WAF"
   cloud_provider: "aws"
   framework: "Terraform"
   severity: "MEDIUM"

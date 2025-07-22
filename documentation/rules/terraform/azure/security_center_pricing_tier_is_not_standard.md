@@ -1,10 +1,10 @@
 ---
-title: "Security Center Pricing Tier Is Not Standard"
+title: "Security center pricing tier is not standard"
 group-id: "rules/terraform/azure"
 meta:
   name: "azure/security_center_pricing_tier_is_not_standard"
   id: "819d50fd-1cdf-45c3-9936-be408aaad93e"
-  display_name: "Security Center Pricing Tier Is Not Standard"
+  display_name: "Security center pricing tier is not standard"
   cloud_provider: "azure"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -28,7 +28,7 @@ meta:
 
 ### Description
 
- Selecting the appropriate pricing tier for Azure Security Center is crucial for ensuring comprehensive security monitoring and protection. If the `tier` attribute in the `azurerm_security_center_subscription_pricing` resource is set to `"Free"`, as shown below:
+ Selecting the appropriate pricing tier for Azure Security Center is crucial for ensuring comprehensive security monitoring and protection. If the `tier` attribute in the `azurerm_security_center_subscription_pricing` resource is set to `"Free"`, as in the following configuration, only limited security features and monitoring capabilities are enabled, leaving the environment more vulnerable to threats:
 
 ```
 resource "azurerm_security_center_subscription_pricing" "example" {
@@ -36,7 +36,7 @@ resource "azurerm_security_center_subscription_pricing" "example" {
 }
 ```
 
-the configuration provides only limited security features and monitoring capabilities, leaving the environment more vulnerable to threats. Upgrading to the `"Standard"` tier, as recommended:
+To enhance security coverage, upgrade to the `"Standard"` tier, as shown below. This enables advanced features such as threat detection and automated response, significantly reducing the risk of undetected attacks and data breaches:
 
 ```
 resource "azurerm_security_center_subscription_pricing" "example" {
@@ -44,7 +44,7 @@ resource "azurerm_security_center_subscription_pricing" "example" {
 }
 ```
 
-enables advanced security features such as threat detection and automated response, significantly reducing the risk of undetected attacks and data breaches.
+
 
 
 ## Compliant Code Examples

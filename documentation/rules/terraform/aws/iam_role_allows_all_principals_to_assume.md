@@ -1,10 +1,10 @@
 ---
-title: "IAM Role Allows All Principals To Assume"
+title: "IAM role allows all principals to assume"
 group-id: "rules/terraform/aws"
 meta:
   name: "aws/iam_role_allows_all_principals_to_assume"
   id: "12b7e704-37f0-4d1e-911a-44bf60c48c21"
-  display_name: "IAM Role Allows All Principals To Assume"
+  display_name: "IAM role allows all principals to assume"
   cloud_provider: "aws"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -28,7 +28,7 @@ meta:
 
 ### Description
 
- IAM roles should restrict which services or principals can assume them by using tightly scoped `assume_role_policy` statements. If an IAM role's `Principal` in the assume role policy allows all services (e.g., `"Principal": {"AWS": "arn:aws:iam::root"}`) or is overly broad, it can be assumed by unintended AWS accounts or resources, leading to privilege escalation or unauthorized actions in your environment. To mitigate this, always specify the minimum required services or principals in the `assume_role_policy`; for example, restrict access by defining `"Principal": {"Service": "ec2.amazonaws.com"}` instead of allowing `"arn:aws:iam::root"`. Leaving this unchecked could result in a critical security vulnerability where any AWS principal could leverage the role's permissions, increasing the risk of data exposure or account compromise.
+ IAM roles should restrict which services or principals can assume them by using tightly scoped `assume_role_policy` statements. If an IAM role's `Principal` in the assume role policy allows all services (for example, `"Principal": {"AWS": "arn:aws:iam::root"}`) or is overly broad, it can be assumed by unintended AWS accounts or resources, leading to privilege escalation or unauthorized actions in your environment. To mitigate this, always specify the minimum required services or principals in the `assume_role_policy`. For example, restrict access by defining `"Principal": {"Service": "ec2.amazonaws.com"}` instead of allowing `"arn:aws:iam::root"`. Leaving this unchecked could result in a critical security vulnerability where any AWS principal could leverage the role's permissions, increasing the risk of data exposure or account compromise.
 
 
 ## Compliant Code Examples

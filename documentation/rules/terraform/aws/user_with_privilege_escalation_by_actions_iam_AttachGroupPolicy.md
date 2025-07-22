@@ -1,10 +1,10 @@
 ---
-title: "User With Privilege Escalation By Actions 'iam:AttachGroupPolicy'"
+title: "User with privilege escalation by actions 'iam:AttachGroupPolicy'"
 group-id: "rules/terraform/aws"
 meta:
   name: "aws/user_with_privilege_escalation_by_actions_iam_AttachGroupPolicy"
   id: "6d23d87e-1c5b-4308-b224-92624300f29b"
-  display_name: "User With Privilege Escalation By Actions 'iam:AttachGroupPolicy'"
+  display_name: "User with privilege escalation by actions 'iam:AttachGroupPolicy'"
   cloud_provider: "aws"
   framework: "Terraform"
   severity: "MEDIUM"

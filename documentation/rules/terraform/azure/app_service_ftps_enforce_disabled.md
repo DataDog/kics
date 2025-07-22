@@ -1,10 +1,10 @@
 ---
-title: "App Service FTPS Enforce Disabled"
+title: "App Service FTPS enforce disabled"
 group-id: "rules/terraform/azure"
 meta:
   name: "azure/app_service_ftps_enforce_disabled"
   id: "85da374f-b00f-4832-9d44-84a1ca1e89f8"
-  display_name: "App Service FTPS Enforce Disabled"
+  display_name: "App Service FTPS enforce disabled"
   cloud_provider: "azure"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -33,7 +33,7 @@ meta:
 ```
 ftps_state = "FtpsOnly"
 ```
-which enforces encrypted connections to the Azure App Service.
+This setting enforces encrypted connections to the Azure App Service.
 
 
 ## Compliant Code Examples

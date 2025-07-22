@@ -1,10 +1,10 @@
 ---
-title: "Lambda Function Publicly Accessible"
+title: "Lambda function publicly accessible"
 group-id: "rules/terraform/aws"
 meta:
   name: "aws/lambda_function_publicly_accessible"
   id: "1btsf2f9-af8c-4dfc-a0f1-a03adb70deb2"
-  display_name: "Lambda Function Publicly Accessible"
+  display_name: "Lambda function publicly accessible"
   cloud_provider: "aws"
   framework: "Terraform"
   severity: "HIGH"
@@ -28,11 +28,11 @@ meta:
 
 ### Description
 
- AWS Lambda permissions with a principal value of '*' allow any AWS account or user to invoke the function, making it publicly accessible. This creates a significant security risk as unauthorized parties can trigger your Lambda function, potentially accessing sensitive data or consuming your AWS resources. To secure Lambda functions, specify the exact AWS account ARN in the principal field (e.g., 'arn:aws:iam::123456789012:root') rather than using the wildcard '*'. Compare the secure configuration:
+ AWS Lambda permissions with a principal value of `*` allow any AWS account or user to invoke the function, making it publicly accessible. This creates a significant security risk as unauthorized parties can trigger your Lambda function, potentially accessing sensitive data or consuming your AWS resources. To secure Lambda functions, specify the exact AWS account ARN in the `principal` field, as shown below, rather than using the wildcard `*`. 
 ```
 principal = "arn:aws:iam::123456789012:root"
 ```
-versus the insecure configuration:
+The following is an example of an insecure configuration:
 ```
 principal = "*"
 ```

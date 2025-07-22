@@ -1,10 +1,10 @@
 ---
-title: "SSM Session Transit Encryption Disabled"
+title: "SSM session transit encryption disabled"
 group-id: "rules/terraform/aws"
 meta:
   name: "aws/ssm_session_transit_encryption_disabled"
   id: "ce60cc6b-6831-4bd7-84a2-cc7f8ee71433"
-  display_name: "SSM Session Transit Encryption Disabled"
+  display_name: "SSM session transit encryption disabled"
   cloud_provider: "aws"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -30,7 +30,7 @@ meta:
 
  When creating an `aws_ssm_document` of type `Session`, session data should be encrypted in transit to protect sensitive information from interception or exposure. By omitting critical encryption-related attributes such as `"s3EncryptionEnabled": true`, `"cloudWatchEncryptionEnabled": true`, and specifying a KMS key with `"kmsKeyId"`, unencrypted data could be transferred between AWS resources and users, increasing the risk of unauthorized access or data leakage. Ensuring encryption for SSM Session Manager sessions mitigates these risks by enforcing secure data transport and proper visibility restrictions.
 
-A secure Terraform configuration is:
+A secure Terraform configuration looks like the following:
 
 ```hcl
 resource "aws_ssm_document" "secure_session" {

@@ -1,10 +1,10 @@
 ---
-title: "PostgreSQL Log Connections Not Set"
+title: "PostgreSQL log connections not set"
 group-id: "rules/terraform/azure"
 meta:
   name: "azure/postgresql_log_connections_not_set"
   id: "c640d783-10c5-4071-b6c1-23507300d333"
-  display_name: "PostgreSQL Log Connections Not Set"
+  display_name: "PostgreSQL log connections not set"
   cloud_provider: "azure"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -28,7 +28,7 @@ meta:
 
 ### Description
 
- The PostgreSQL server parameter `log_connections` should be set to `ON` to ensure that all connection attempts, whether successful or not, are logged. Without this setting, unauthorized or suspicious connection attempts can go undetected, making it difficult to identify potential security incidents or troubleshoot access issues. For a secure configuration in Terraform, set the `value` attribute to `"on"` as shown below:
+ The PostgreSQL server parameter `log_connections` should be set to `ON` to ensure that all connection attempts, whether successful or not, are logged. Without this setting, unauthorized or suspicious connection attempts can go undetected, making it difficult to identify potential security incidents or troubleshoot access issues. For a secure configuration in Terraform, set the `value` attribute to `"on"`, as shown below:
 
 ```
 resource "azurerm_postgresql_configuration" "secure" {

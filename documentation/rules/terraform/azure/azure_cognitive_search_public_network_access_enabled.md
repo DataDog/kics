@@ -1,10 +1,10 @@
 ---
-title: "Azure Cognitive Search Public Network Access Enabled"
+title: "Azure Cognitive Search public network access enabled"
 group-id: "rules/terraform/azure"
 meta:
   name: "azure/azure_cognitive_search_public_network_access_enabled"
   id: "4a9e0f00-0765-4f72-a0d4-d31110b78279"
-  display_name: "Azure Cognitive Search Public Network Access Enabled"
+  display_name: "Azure Cognitive Search public network access enabled"
   cloud_provider: "azure"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -28,7 +28,7 @@ meta:
 
 ### Description
 
- Allowing public network access to Azure Cognitive Search exposes the service to the internet, increasing the risk of unauthorized access and data exposure. In Terraform, this is controlled by the `public_network_access_enabled` attribute; setting this attribute to `true` permits public connections, while setting it to `false` restricts access to trusted, private networks only. For example, a secure configuration would be:
+ Allowing public network access to Azure Cognitive Search exposes the service to the internet, increasing the risk of unauthorized access and data exposure. In Terraform, this is controlled by the `public_network_access_enabled` attribute; setting this attribute to `true` permits public connections, while setting it to `false` restricts access to trusted, private networks only. For example, a secure configuration would look like the following:
 
 ```
 resource "azurerm_search_service" "example" {

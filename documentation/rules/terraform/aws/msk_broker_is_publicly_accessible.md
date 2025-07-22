@@ -1,10 +1,10 @@
 ---
-title: "MSK Broker Is Publicly Accessible"
+title: "MSK broker is publicly accessible"
 group-id: "rules/terraform/aws"
 meta:
   name: "aws/msk_broker_is_publicly_accessible"
   id: "54378d69-dd7c-4b08-a43e-80d563396857"
-  display_name: "MSK Broker Is Publicly Accessible"
+  display_name: "MSK broker is publicly accessible"
   cloud_provider: "aws"
   framework: "Terraform"
   severity: "HIGH"
@@ -30,7 +30,7 @@ meta:
 
  Amazon MSK (Managed Streaming for Kafka) clusters with public accessibility enabled allow connections from the internet, which significantly expands the attack surface and increases the risk of unauthorized access to sensitive data streams. When MSK brokers are publicly accessible, they can be targeted by malicious actors who may attempt to intercept data, perform denial-of-service attacks, or exploit vulnerabilities to gain deeper access to your infrastructure. 
 
-To secure your MSK cluster, configure the public_access type as 'DISABLED' rather than 'SERVICE_PROVIDED_EIPS' as shown below:
+To secure your MSK cluster, configure the `public_access` type as `DISABLED` rather than `SERVICE_PROVIDED_EIPS`, as shown below:
 
 ```hcl
 broker_node_group_info {

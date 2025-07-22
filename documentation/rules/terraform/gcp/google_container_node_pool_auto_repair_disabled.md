@@ -1,10 +1,10 @@
 ---
-title: "Google Container Node Pool Auto Repair Disabled"
+title: "Google Container node pool auto repair disabled"
 group-id: "rules/terraform/gcp"
 meta:
   name: "gcp/google_container_node_pool_auto_repair_disabled"
   id: "acfdbec6-4a17-471f-b412-169d77553332"
-  display_name: "Google Container Node Pool Auto Repair Disabled"
+  display_name: "Google Container node pool auto repair disabled"
   cloud_provider: "gcp"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -28,7 +28,7 @@ meta:
 
 ### Description
 
- Enabling auto repair for Google Kubernetes Engine (GKE) node pools ensures that failed or unhealthy nodes are automatically detected and repaired, maintaining cluster health and minimizing manual intervention. If the `auto_repair` attribute is set to `false` or omitted in a Terraform resource like 
+ Enabling auto repair for Google Kubernetes Engine (GKE) node pools ensures that failed or unhealthy nodes are automatically detected and repaired, maintaining cluster health and minimizing manual intervention. If the `auto_repair` attribute is set to `false` or omitted in a Terraform resource, as in the following configuration, unhealthy nodes may persist and degrade application availability or introduce operational risks: 
 
 ```
 management {
@@ -36,7 +36,7 @@ management {
 }
 ```
 
-unhealthy nodes may persist and degrade application availability or introduce operational risks. To address this, set `auto_repair` to `true` in your Terraform configuration:
+To address this, set `auto_repair` to `true` in your Terraform configuration:
 
 ```
 management {

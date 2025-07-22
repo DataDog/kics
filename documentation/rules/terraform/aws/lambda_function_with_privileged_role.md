@@ -1,10 +1,10 @@
 ---
-title: "Lambda Function With Privileged Role"
+title: "Lambda function with privileged role"
 group-id: "rules/terraform/aws"
 meta:
   name: "aws/lambda_function_with_privileged_role"
   id: "1b3af2f9-af8c-4dfc-a0f1-a03adb70deb2"
-  display_name: "Lambda Function With Privileged Role"
+  display_name: "Lambda function with privileged role"
   cloud_provider: "aws"
   framework: "Terraform"
   severity: "HIGH"
@@ -30,7 +30,7 @@ meta:
 
  AWS Lambda functions with privileged IAM roles present a significant security risk by violating the principle of least privilege. When Lambda functions are assigned roles with broad permissions such as `iam:*` or `sts:AssumeRole`, they become potential vectors for privilege escalation if compromised. Instead, Lambda functions should be granted only the specific permissions needed for their execution.
 
-For example, avoid policies with broad permissions like:
+For example, avoid policies with broad permissions like the following:
 ```
 policy = jsonencode({
   Statement = [{

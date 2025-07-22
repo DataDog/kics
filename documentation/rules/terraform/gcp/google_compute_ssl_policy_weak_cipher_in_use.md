@@ -1,10 +1,10 @@
 ---
-title: "Google Compute SSL Policy Weak Cipher In Use"
+title: "Google Compute SSL policy weak cipher in use"
 group-id: "rules/terraform/gcp"
 meta:
   name: "gcp/google_compute_ssl_policy_weak_cipher_in_use"
   id: "14a457f0-473d-4d1d-9e37-6d99b355b336"
-  display_name: "Google Compute SSL Policy Weak Cipher In Use"
+  display_name: "Google Compute SSL policy weak cipher in use"
   cloud_provider: "gcp"
   framework: "Terraform"
   severity: "MEDIUM"

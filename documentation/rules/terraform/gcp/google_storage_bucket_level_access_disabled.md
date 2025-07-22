@@ -1,10 +1,10 @@
 ---
-title: "Google Storage Bucket Level Access Disabled"
+title: "Google Storage bucket level access disabled"
 group-id: "rules/terraform/gcp"
 meta:
   name: "gcp/google_storage_bucket_level_access_disabled"
   id: "bb0db090-5509-4853-a827-75ced0b3caa0"
-  display_name: "Google Storage Bucket Level Access Disabled"
+  display_name: "Google Storage bucket level access disabled"
   cloud_provider: "gcp"
   framework: "Terraform"
   severity: "HIGH"
@@ -30,7 +30,7 @@ meta:
 
  Google Storage Bucket Level Access controls access to objects at the bucket level rather than allowing fine-grained permissions at the object level. When disabled, Access Control Lists (ACLs) can be used to grant permissions to individual objects, increasing the risk of accidental exposure or misconfiguration that could lead to unauthorized access to sensitive data.
 
-Enabling uniform bucket-level access simplifies permissions management and helps ensure consistent access control across all objects in a bucket. To secure your configuration, set 'uniform_bucket_level_access = true' in your google_storage_bucket resource as shown:
+Enabling uniform bucket-level access simplifies permissions management and helps ensure consistent access control across all objects in a bucket. To secure your configuration, set `uniform_bucket_level_access = true` in your `google_storage_bucket` resource as shown below:
 
 ```
 resource "google_storage_bucket" "secure_bucket" {

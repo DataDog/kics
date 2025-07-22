@@ -1,10 +1,10 @@
 ---
-title: "Misconfigured Password Policy Expiration"
+title: "Misconfigured password policy expiration"
 group-id: "rules/terraform/aws"
 meta:
   name: "aws/misconfigured_password_policy_expiration"
   id: "ce60d060-efb8-4bfd-9cf7-ff8945d00d90"
-  display_name: "Misconfigured Password Policy Expiration"
+  display_name: "Misconfigured password policy expiration"
   cloud_provider: "aws"
   framework: "Terraform"
   severity: "LOW"
@@ -28,7 +28,7 @@ meta:
 
 ### Description
 
- A password expiration policy enforces regular password changes, reducing the risk of compromised credentials being exploited over long periods. If the `aws_iam_account_password_policy` resource does not set the `max_password_age` attribute, as shown below,
+ A password expiration policy enforces regular password changes, reducing the risk of compromised credentials being exploited over long periods. If the `aws_iam_account_password_policy` resource does not set the `max_password_age` attribute, as shown below, passwords may remain valid indefinitely, increasing the chance that leaked or weak passwords can be used for unauthorized access. This exposes your AWS environment to persistent credential-related threats if not addressed. 
 
 ```
 resource "aws_iam_account_password_policy" "example" {
@@ -42,7 +42,7 @@ resource "aws_iam_account_password_policy" "example" {
 }
 ```
 
-passwords may remain valid indefinitely, increasing the chance that leaked or weak passwords can be used for unauthorized access. This exposes your AWS environment to persistent credential-related threats if not addressed.
+
 
 
 ## Compliant Code Examples

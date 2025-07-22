@@ -1,10 +1,10 @@
 ---
-title: "Policy Without Principal"
+title: "Policy without principal"
 group-id: "rules/terraform/aws"
 meta:
   name: "aws/policy_without_principal"
   id: "bbe3dd3d-fea9-4b68-a785-cfabe2bbbc54"
-  display_name: "Policy Without Principal"
+  display_name: "Policy without principal"
   cloud_provider: "aws"
   framework: "Terraform"
   severity: "MEDIUM"

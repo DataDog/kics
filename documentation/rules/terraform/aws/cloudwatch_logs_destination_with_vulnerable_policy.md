@@ -1,10 +1,10 @@
 ---
-title: "CloudWatch Logs Destination With Vulnerable Policy"
+title: "CloudWatch logs destination with vulnerable policy"
 group-id: "rules/terraform/aws"
 meta:
   name: "aws/cloudwatch_logs_destination_with_vulnerable_policy"
   id: "db0ec4c4-852c-46a2-b4f3-7ec13cdb12a8"
-  display_name: "CloudWatch Logs Destination With Vulnerable Policy"
+  display_name: "CloudWatch logs destination with vulnerable policy"
   cloud_provider: "aws"
   framework: "Terraform"
   severity: "LOW"
@@ -28,7 +28,7 @@ meta:
 
 ### Description
 
- CloudWatch Logs destination policies should not use wildcards ('*') in the 'principals' or 'actions' fields, as this can inadvertently grant broad permissions. When wildcards are used, any AWS principal may gain permission to perform any logs-related actions, increasing the risk of unauthorized access or data exfiltration. Attackers or unintentional actors could potentially send or retrieve log data, modify log subscriptions, or disrupt monitoring workflows. Restricting both 'principals' and 'actions' to only necessary accounts and actions protects log data integrity and helps maintain the security of monitoring operations.
+ CloudWatch Logs destination policies should not use wildcards ('*') in the `principals` or `actions` fields, as this can inadvertently grant broad permissions. When wildcards are used, any AWS principal may gain permission to perform any logs-related actions, increasing the risk of unauthorized access or data exfiltration. Attackers or unintentional actors could potentially send or retrieve log data, modify log subscriptions, or disrupt monitoring workflows. Restricting both `principals` and `actions` to only necessary accounts and actions protects log data integrity and helps maintain the security of monitoring operations.
 
 
 ## Compliant Code Examples

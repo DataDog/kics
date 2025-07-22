@@ -1,10 +1,10 @@
 ---
-title: "User With Privilege Escalation By Actions 'iam:SetDefaultPolicyVersion'"
+title: "User with privilege escalation by actions 'iam:SetDefaultPolicyVersion'"
 group-id: "rules/terraform/aws"
 meta:
   name: "aws/user_with_privilege_escalation_by_actions_iam_SetDefaultPolicyVersion"
   id: "43a41523-386a-4cb1-becb-42af6b414433"
-  display_name: "User With Privilege Escalation By Actions 'iam:SetDefaultPolicyVersion'"
+  display_name: "User with privilege escalation by actions 'iam:SetDefaultPolicyVersion'"
   cloud_provider: "aws"
   framework: "Terraform"
   severity: "MEDIUM"

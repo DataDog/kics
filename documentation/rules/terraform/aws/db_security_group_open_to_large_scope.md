@@ -1,10 +1,10 @@
 ---
-title: "DB Security Group Open To Large Scope"
+title: "DB security group open to large scope"
 group-id: "rules/terraform/aws"
 meta:
   name: "aws/db_security_group_open_to_large_scope"
   id: "4f615f3e-fb9c-4fad-8b70-2e9f781806ce"
-  display_name: "DB Security Group Open To Large Scope"
+  display_name: "DB security group open to large scope"
   cloud_provider: "aws"
   framework: "Terraform"
   severity: "HIGH"
@@ -24,11 +24,11 @@ meta:
 
 #### Learn More
 
- - [Provider Reference](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/db_security_group)
+ - [Provider Reference](https://registry.terraform.io/providers/rgeraskin/aws3/latest/docs/resources/db_security_group)
 
 ### Description
 
- This check ensures that DB Security Groups aren't configured with overly broad CIDR ranges that could expose your database to unnecessary network access. When a CIDR block with more than 256 hosts (such as /24 or lower) is configured in the ingress rules, it increases the attack surface and potential for unauthorized access to your database instances.
+ This check ensures that DB security groups aren't configured with overly broad CIDR ranges that could expose your database to unnecessary network access. When a CIDR block with more than 256 hosts (such as /24 or lower) is configured in the ingress rules, it increases the attack surface and potential for unauthorized access to your database instances.
 
 In the insecure example below, the security group allows access from a /24 CIDR block (256 hosts):
 ```

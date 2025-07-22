@@ -1,10 +1,10 @@
 ---
-title: "S3 Bucket ACL Allows Read Or Write to All Users"
+title: "S3 bucket ACL allows read or write to all users"
 group-id: "rules/terraform/aws"
 meta:
   name: "aws/s3_bucket_acl_allows_read_or_write_to_all_users"
   id: "38c5ee0d-7f22-4260-ab72-5073048df100"
-  display_name: "S3 Bucket ACL Allows Read Or Write to All Users"
+  display_name: "S3 bucket ACL allows read or write to all users"
   cloud_provider: "aws"
   framework: "Terraform"
   severity: "CRITICAL"
@@ -28,7 +28,7 @@ meta:
 
 ### Description
 
- This check identifies AWS S3 buckets that have ACLs allowing read or write access to all users, creating a significant security risk. When S3 buckets are configured with public access (using ACLs like 'public-read' or 'public-read-write'), sensitive data can be exposed to unauthorized users, potentially leading to data breaches, intellectual property theft, or compliance violations. To secure your S3 buckets, always use private ACLs as shown in the example below:
+ This check identifies AWS S3 buckets that have ACLs allowing read or write access to all users, creating a significant security risk. When S3 buckets are configured with public access (using ACLs such as `public-read` or `public-read-write`), sensitive data can be exposed to unauthorized users, potentially leading to data breaches, intellectual property theft, or compliance violations. To secure your S3 buckets, always use private ACLs, as shown in the example below:
 
 ```terraform
 resource "aws_s3_bucket" "secure_example" {

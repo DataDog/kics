@@ -1,10 +1,10 @@
 ---
-title: "Network Interfaces IP Forwarding Enabled"
+title: "Network interfaces IP forwarding enabled"
 group-id: "rules/terraform/azure"
 meta:
   name: "azure/network_interfaces_ip_forwarding_enabled"
   id: "4216ebac-d74c-4423-b437-35025cb88af5"
-  display_name: "Network Interfaces IP Forwarding Enabled"
+  display_name: "Network interfaces IP forwarding enabled"
   cloud_provider: "azure"
   framework: "Terraform"
   severity: "MEDIUM"

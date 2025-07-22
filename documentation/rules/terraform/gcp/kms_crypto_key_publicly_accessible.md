@@ -1,10 +1,10 @@
 ---
-title: "KMS Crypto Key is Publicly Accessible"
+title: "KMS CryptoKey is publicly accessible"
 group-id: "rules/terraform/gcp"
 meta:
   name: "gcp/kms_crypto_key_publicly_accessible"
   id: "16cc87d1-dd47-4f46-b3ce-4dfcac8fd2f5"
-  display_name: "KMS Crypto Key is Publicly Accessible"
+  display_name: "KMS CryptoKey is publicly accessible"
   cloud_provider: "gcp"
   framework: "Terraform"
   severity: "HIGH"
@@ -28,7 +28,7 @@ meta:
 
 ### Description
 
- Google Cloud KMS Crypto Keys provide cryptographic functionality for encrypting and decrypting sensitive data in Google Cloud. When KMS Crypto Key IAM policies include 'allUsers' or 'allAuthenticatedUsers', they become publicly accessible, creating a serious security vulnerability that could lead to unauthorized access to encryption capabilities, data breaches, or compromised encrypted information.
+ Google Cloud KMS CryptoKeys provide cryptographic functionality for encrypting and decrypting sensitive data in Google Cloud. When KMS CryptoKey IAM policies include `allUsers` or `allAuthenticatedUsers`, they become publicly accessible, creating a serious security vulnerability that could lead to unauthorized access to encryption capabilities, data breaches, or compromised encrypted information.
 
 Insecure configuration example:
 ```

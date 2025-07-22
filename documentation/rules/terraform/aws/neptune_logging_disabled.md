@@ -1,10 +1,10 @@
 ---
-title: "Neptune Logging Is Disabled"
+title: "Neptune logging is disabled"
 group-id: "rules/terraform/aws"
 meta:
   name: "aws/neptune_logging_disabled"
   id: "45cff7b6-3b80-40c1-ba7b-2cf480678bb8"
-  display_name: "Neptune Logging Is Disabled"
+  display_name: "Neptune logging is disabled"
   cloud_provider: "aws"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -28,7 +28,7 @@ meta:
 
 ### Description
 
- Enabling Neptune logging ensures that audit and error logs are exported to Amazon CloudWatch, which is critical for monitoring, troubleshooting, and security auditing of Neptune database activity. If the `enable_cloudwatch_logs_exports` attribute is not set with values such as `["audit"]` or `["audit", "error"]`, as shown below:
+ Enabling Neptune logging ensures that audit and error logs are exported to Amazon CloudWatch, which is critical for monitoring, troubleshooting, and security auditing of Neptune database activity. If the `enable_cloudwatch_logs_exports` attribute is not set with values such as `["audit"]` or `["audit", "error"]`, as shown below, no logs will be exported by default, leaving potentially malicious or unauthorized database actions undetected:
 
 ```
 resource "aws_neptune_cluster" "example" {
@@ -37,7 +37,7 @@ resource "aws_neptune_cluster" "example" {
 }
 ```
 
-no logs will be exported by default, leaving potentially malicious or unauthorized database actions undetected. Without these logs, it becomes challenging to investigate incidents, meet compliance requirements, or identify operational issues, increasing the risk of undetected attacks or data breaches.
+Without these logs, it becomes challenging to investigate incidents, meet compliance requirements, or identify operational issues, increasing the risk of undetected attacks or data breaches.
 
 
 ## Compliant Code Examples

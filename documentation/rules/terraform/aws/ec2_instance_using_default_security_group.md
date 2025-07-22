@@ -1,10 +1,10 @@
 ---
-title: "EC2 Instance Using Default Security Group"
+title: "EC2 instance using default security group"
 group-id: "rules/terraform/aws"
 meta:
   name: "aws/ec2_instance_using_default_security_group"
   id: "f1adc521-f79a-4d71-b55b-a68294687432"
-  display_name: "EC2 Instance Using Default Security Group"
+  display_name: "EC2 instance using default security group"
   cloud_provider: "aws"
   framework: "Terraform"
   severity: "MEDIUM"

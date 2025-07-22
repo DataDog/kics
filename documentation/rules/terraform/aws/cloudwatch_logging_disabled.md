@@ -1,10 +1,10 @@
 ---
-title: "CloudWatch Logging Disabled"
+title: "CloudWatch logging disabled"
 group-id: "rules/terraform/aws"
 meta:
   name: "aws/cloudwatch_logging_disabled"
   id: "7dbba512-e244-42dc-98bb-422339827967"
-  display_name: "CloudWatch Logging Disabled"
+  display_name: "CloudWatch logging disabled"
   cloud_provider: "aws"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -28,7 +28,7 @@ meta:
 
 ### Description
 
- This check verifies whether Amazon Route53 hosted zones have CloudWatch logging enabled by ensuring an `aws_route53_query_log` resource is associated with the hosted zone and correctly configured. Without query logging, DNS queries to the hosted zone are not captured, making it difficult to detect potential misuse, troubleshoot DNS issues, or comply with audit requirements. Enable logging using the `aws_route53_query_log` resource, and specify the `cloudwatch_log_group_arn` and `zone_id` attributes, as in:
+ This check verifies whether Amazon Route53 hosted zones have CloudWatch logging enabled by ensuring an `aws_route53_query_log` resource is associated with the hosted zone and correctly configured. Without query logging, DNS queries to the hosted zone are not captured, making it difficult to detect potential misuse, troubleshoot DNS issues, or comply with audit requirements. Enable logging using the `aws_route53_query_log` resource, and specify the `cloudwatch_log_group_arn` and `zone_id` attributes, as in the following example:
 
 ```
 resource "aws_route53_query_log" "example_com" {

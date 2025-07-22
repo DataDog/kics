@@ -1,10 +1,10 @@
 ---
-title: "Log Retention Is Not Set"
+title: "Log retention is not set"
 group-id: "rules/terraform/azure"
 meta:
   name: "azure/log_retention_is_not_set"
   id: "ffb02aca-0d12-475e-b77c-a726f7aeff4b"
-  display_name: "Log Retention Is Not Set"
+  display_name: "Log retention is not set"
   cloud_provider: "azure"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -28,7 +28,7 @@ meta:
 
 ### Description
 
- The `log_retention` server parameter in Azure PostgreSQL determines whether database logs are retained, which is essential for auditing and troubleshooting purposes. If this parameter is set to `OFF` as shown below, log data will not be persisted, potentially hindering investigations into security incidents or operational issues:
+ The `log_retention` server parameter in Azure PostgreSQL determines whether database logs are retained, which is essential for auditing and troubleshooting purposes. If this parameter is set to `OFF`, as shown below, log data will not be persisted, potentially hindering investigations into security incidents or operational issues:
 
 ```
 resource "azurerm_postgresql_configuration" "example" {

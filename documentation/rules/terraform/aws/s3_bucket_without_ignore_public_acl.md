@@ -1,10 +1,10 @@
 ---
-title: "S3 Bucket Without Ignore Public ACL"
+title: "S3 bucket without ignore public ACL"
 group-id: "rules/terraform/aws"
 meta:
   name: "aws/s3_bucket_without_ignore_public_acl"
   id: "4fa66806-0dd9-4f8d-9480-3174d39c7c91"
-  display_name: "S3 Bucket Without Ignore Public ACL"
+  display_name: "S3 bucket without ignore public ACL"
   cloud_provider: "aws"
   framework: "Terraform"
   severity: "MEDIUM"

@@ -1,10 +1,10 @@
 ---
-title: "CloudWatch Console Sign-in Without MFA Alarm Missing"
+title: "CloudWatch console sign-in without MFA alarm missing"
 group-id: "rules/terraform/aws"
 meta:
   name: "aws/cloudwatch_management_console_sign_in_without_mfa_alarm_missing"
   id: "44ceb4fa-0897-4fd2-b676-30e7a58f2933"
-  display_name: "CloudWatch Console Sign-in Without MFA Alarm Missing"
+  display_name: "CloudWatch console sign-in without MFA alarm missing"
   cloud_provider: "aws"
   framework: "Terraform"
   severity: "LOW"

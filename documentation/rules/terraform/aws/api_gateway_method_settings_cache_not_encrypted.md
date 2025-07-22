@@ -1,10 +1,10 @@
 ---
-title: "API Gateway Method Settings Cache Not Encrypted"
+title: "API Gateway method settings cache not encrypted"
 group-id: "rules/terraform/aws"
 meta:
   name: "aws/api_gateway_method_settings_cache_not_encrypted"
   id: "b7c9a40c-23e4-4a2d-8d39-a3352f10f288"
-  display_name: "API Gateway Method Settings Cache Not Encrypted"
+  display_name: "API Gateway method settings cache not encrypted"
   cloud_provider: "aws"
   framework: "Terraform"
   severity: "HIGH"
@@ -28,7 +28,7 @@ meta:
 
 ### Description
 
- When caching is enabled for API Gateway methods, sensitive data may be stored in the cache. If cache encryption is not enabled, this data remains vulnerable to unauthorized access, potentially exposing sensitive information. The 'cache_data_encrypted' attribute should be explicitly set to 'true' in the settings block of API Gateway method settings whenever caching is enabled.
+ When caching is enabled for API Gateway methods, sensitive data may be stored in the cache. If cache encryption is not enabled, this data remains vulnerable to unauthorized access, potentially exposing sensitive information. The `cache_data_encrypted` attribute should be explicitly set to `true` in the settings block of API Gateway method settings whenever caching is enabled.
 
 Secure example:
 ```terraform

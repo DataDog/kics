@@ -1,10 +1,10 @@
 ---
-title: "IAM Role Policy passRole Allows All"
+title: "IAM role policy passrole allows all"
 group-id: "rules/terraform/aws"
 meta:
   name: "aws/iam_role_policy_passrole_allows_all"
   id: "e39bee8c-fe54-4a3f-824d-e5e2d1cca40a"
-  display_name: "IAM Role Policy passRole Allows All"
+  display_name: "IAM role policy passrole allows all"
   cloud_provider: "aws"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -28,7 +28,7 @@ meta:
 
 ### Description
 
- Granting the `iam:passrole` action with a resource value of `"*"` in Terraform (`"Resource": "*"`) is overly permissive, as it allows the user or role to pass any IAM role in the account to AWS services. This broad permission can lead to privilege escalation, enabling attackers or unauthorized users to assume highly-privileged roles they should not have access to. To mitigate this risk, the resource should be scoped to specific role ARNs (e.g., `"Resource": "arn:aws:iam::account-id:role/RoleName"`) to enforce the principle of least privilege.
+ Granting the `iam:passrole` action with a resource value of `"*"` in Terraform (`"Resource": "*"`) is overly permissive, as it allows the user or role to pass any IAM role in the account to AWS services. This broad permission can lead to privilege escalation, enabling attackers or unauthorized users to assume highly-privileged roles they should not have access to. To mitigate this risk, the resource should be scoped to specific role ARNs (for example, `"Resource": "arn:aws:iam::account-id:role/RoleName"`) to enforce the principle of least privilege.
 
 
 ## Compliant Code Examples

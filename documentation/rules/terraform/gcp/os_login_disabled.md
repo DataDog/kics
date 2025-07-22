@@ -1,10 +1,10 @@
 ---
-title: "OSLogin Disabled"
+title: "OSLogin disabled"
 group-id: "rules/terraform/gcp"
 meta:
   name: "gcp/os_login_disabled"
   id: "32ecd6eb-0711-421f-9627-1a28d9eff217"
-  display_name: "OSLogin Disabled"
+  display_name: "OSLogin disabled"
   cloud_provider: "gcp"
   framework: "Terraform"
   severity: "MEDIUM"

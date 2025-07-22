@@ -1,10 +1,10 @@
 ---
-title: "Redshift Cluster Without VPC"
+title: "Redshift cluster without VPC"
 group-id: "rules/terraform/aws"
 meta:
   name: "aws/redshift_cluster_without_vpc"
   id: "0a494a6a-ebe2-48a0-9d77-cf9d5125e1b3"
-  display_name: "Redshift Cluster Without VPC"
+  display_name: "Redshift cluster without VPC"
   cloud_provider: "aws"
   framework: "Terraform"
   severity: "LOW"
@@ -28,7 +28,7 @@ meta:
 
 ### Description
 
- Amazon Redshift clusters should be deployed within an Amazon VPC to ensure network isolation and control over access to the cluster. If the attributes `vpc_security_group_ids` and `cluster_subnet_group_name` are not specified, the cluster is created outside a VPC and could be exposed to the public internet, increasing the risk of unauthorized access and data breaches. A secure configuration includes these attributes as shown:
+ Amazon Redshift clusters should be deployed within an Amazon VPC to ensure network isolation and control over access to the cluster. If the `vpc_security_group_ids` and `cluster_subnet_group_name` attributes are not specified, the cluster is created outside a VPC and could be exposed to the public internet, increasing the risk of unauthorized access and data breaches. A secure configuration includes the following attributes:
 
 ```
 resource "aws_redshift_cluster" "secure_example" {

@@ -1,10 +1,10 @@
 ---
-title: "IAM Password Policy Does Not Require Symbol"
+title: "IAM password policy does not require symbol"
 group-id: "rules/terraform/aws"
 meta:
   name: "aws/iam_password_does_not_require_symbol"
   id: "bts2c3d4-e5f6-7890-ab12-cd34ef567890"
-  display_name: "IAM Password Policy Does Not Require Symbol"
+  display_name: "IAM password policy does not require symbol"
   cloud_provider: "aws"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -28,7 +28,7 @@ meta:
 
 ### Description
 
- This check ensures that the AWS IAM account password policy enforces the use of at least one symbol in user passwords by setting `require_symbols = true`. If `require_symbols` is set to `false`, as shown below:
+ This check ensures that the AWS IAM account password policy enforces the use of at least one symbol in user passwords by setting `require_symbols = true`. If `require_symbols` is set to `false`, as shown below it weakens password complexity, making user accounts more susceptible to brute-force or password guessing attacks. Failing to enforce symbol usage increases the risk of unauthorized access to AWS resources.
 
 ```
 resource "aws_iam_account_password_policy" "bad_example" {
@@ -40,7 +40,7 @@ resource "aws_iam_account_password_policy" "bad_example" {
 }
 ```
 
-it weakens password complexity, making user accounts more susceptible to brute-force or password guessing attacks. Failing to enforce symbol usage increases the risk of unauthorized access to AWS resources.
+
 
 
 ## Compliant Code Examples

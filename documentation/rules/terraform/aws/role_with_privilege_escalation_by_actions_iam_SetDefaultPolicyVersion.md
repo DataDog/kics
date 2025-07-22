@@ -1,10 +1,10 @@
 ---
-title: "Role With Privilege Escalation By Actions 'iam:SetDefaultPolicyVersion'"
+title: "Role with privilege escalation by actions 'iam:SetDefaultPolicyVersion'"
 group-id: "rules/terraform/aws"
 meta:
   name: "aws/role_with_privilege_escalation_by_actions_iam_SetDefaultPolicyVersion"
   id: "118281d0-6471-422e-a7c5-051bc667926e"
-  display_name: "Role With Privilege Escalation By Actions 'iam:SetDefaultPolicyVersion'"
+  display_name: "Role with privilege escalation by actions 'iam:SetDefaultPolicyVersion'"
   cloud_provider: "aws"
   framework: "Terraform"
   severity: "MEDIUM"

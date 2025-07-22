@@ -1,10 +1,10 @@
 ---
-title: "'ssl_enforcement_enabled' is not set to 'ENABLED' for PostgreSQL Database Server"
+title: "ssl_enforcement_enabled is not set to ENABLED for PostgreSQL database server"
 group-id: "rules/terraform/azure"
 meta:
   name: "azure/postgres_enforce_ssl_connection_disabled"
   id: "93f9tyjk-e5f6-7890-ab12-cd34ef567890"
-  display_name: "'ssl_enforcement_enabled' is not set to 'ENABLED' for PostgreSQL Database Server"
+  display_name: "ssl_enforcement_enabled is not set to ENABLED for PostgreSQL database server"
   cloud_provider: "azure"
   framework: "Terraform"
   severity: "HIGH"
@@ -28,7 +28,7 @@ meta:
 
 ### Description
 
- SSL/TLS encryption is essential for PostgreSQL Database Servers to protect sensitive data during transmission between the client and server. When 'ssl_enforcement_enabled' is not set to 'ENABLED', data transferred between clients and the database is vulnerable to eavesdropping, man-in-the-middle attacks, and data tampering. This security vulnerability could lead to unauthorized access and data exposure.
+ SSL/TLS encryption is essential for PostgreSQL Database Servers to protect sensitive data during transmission between the client and server. When `ssl_enforcement_enabled` is not set to `ENABLED`, data transferred between clients and the database is vulnerable to eavesdropping, man-in-the-middle attacks, and data tampering. This security vulnerability could lead to unauthorized access and data exposure.
 
 Insecure configuration example:
 ```terraform

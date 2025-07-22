@@ -1,10 +1,10 @@
 ---
-title: "MySQL Server Public Access Enabled"
+title: "MySQL server public access enabled"
 group-id: "rules/terraform/azure"
 meta:
   name: "azure/mysql_server_public_access_enabled"
   id: "f118890b-2468-42b1-9ce9-af35146b425b"
-  display_name: "MySQL Server Public Access Enabled"
+  display_name: "MySQL server public access enabled"
   cloud_provider: "azure"
   framework: "Terraform"
   severity: "HIGH"
@@ -28,7 +28,7 @@ meta:
 
 ### Description
 
- This check verifies if the Azure MySQL Server has public network access enabled, which allows connections from the internet to reach your database. When public network access is enabled, your database is accessible to anyone who has the connection information, creating a significant security risk. Properly secured MySQL servers should have public_network_access_enabled set to false, forcing all connections to be made through private endpoints or service endpoints. Secure configuration example: 
+ This check verifies if the Azure MySQL Server has public network access enabled, which allows connections from the internet to reach your database. When public network access is enabled, your database is accessible to anyone who has the connection information, creating a significant security risk. Properly secured MySQL servers should have `public_network_access_enabled` set to `false`, forcing all connections to be made through private endpoints or service endpoints. The following example shows a secure configuration: 
 ```
 resource "azurerm_mysql_server" "example" {
   // ... other configuration ...

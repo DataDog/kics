@@ -1,10 +1,10 @@
 ---
-title: "IAM Audit Not Properly Configured"
+title: "IAM audit not properly configured"
 group-id: "rules/terraform/gcp"
 meta:
   name: "gcp/iam_audit_not_properly_configured"
   id: "89fe890f-b480-460c-8b6b-7d8b1468adb4"
-  display_name: "IAM Audit Not Properly Configured"
+  display_name: "IAM audit not properly configured"
   cloud_provider: "gcp"
   framework: "Terraform"
   severity: "LOW"

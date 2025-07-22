@@ -1,10 +1,10 @@
 ---
-title: "EKS Cluster Encryption Disabled"
+title: "EKS cluster encryption disabled"
 group-id: "rules/terraform/aws"
 meta:
   name: "aws/eks_cluster_encryption_disabled"
   id: "63ebcb19-2739-4d3f-aa5c-e8bbb9b85281"
-  display_name: "EKS Cluster Encryption Disabled"
+  display_name: "EKS cluster encryption disabled"
   cloud_provider: "aws"
   framework: "Terraform"
   severity: "HIGH"

@@ -1,10 +1,10 @@
 ---
-title: "RDS With Backup Disabled"
+title: "RDS with backup disabled"
 group-id: "rules/terraform/aws"
 meta:
   name: "aws/rds_with_backup_disabled"
   id: "1dc73fb4-5b51-430c-8c5f-25dcf9090b02"
-  display_name: "RDS With Backup Disabled"
+  display_name: "RDS with backup disabled"
   cloud_provider: "aws"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -28,7 +28,7 @@ meta:
 
 ### Description
 
- This check ensures that Amazon RDS instances have automatic backups enabled by setting the backup_retention_period to a value greater than zero. When backup_retention_period is set to 0, no automated backups are created for the database instance, leaving data unprotected against accidental deletion, corruption, or operational incidents. Without automated backups, it is impossible to restore the database to a previous point in time, significantly increasing the risk of permanent data loss. Enabling and properly configuring the backup retention period helps ensure data durability and business continuity for critical database workloads.
+ This check ensures that Amazon RDS instances have automatic backups enabled by setting the `backup_retention_period` to a value greater than zero. When `backup_retention_period` is set to `0`, no automated backups are created for the database instance, leaving data unprotected against accidental deletion, corruption, or operational incidents. Without automated backups, it is impossible to restore the database to a previous point in time, significantly increasing the risk of permanent data loss. Enabling and properly configuring the backup retention period helps ensure data durability and business continuity for critical database workloads.
 
 
 ## Compliant Code Examples

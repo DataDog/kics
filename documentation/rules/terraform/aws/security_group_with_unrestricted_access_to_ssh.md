@@ -1,10 +1,10 @@
 ---
-title: "Security Group With Unrestricted Access To SSH"
+title: "Security group with unrestricted access to SSH"
 group-id: "rules/terraform/aws"
 meta:
   name: "aws/security_group_with_unrestricted_access_to_ssh"
   id: "65905cec-d691-4320-b320-2000436cb696"
-  display_name: "Security Group With Unrestricted Access To SSH"
+  display_name: "Security group with unrestricted access to SSH"
   cloud_provider: "aws"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -28,9 +28,9 @@ meta:
 
 ### Description
 
- This check verifies that AWS Security Groups do not allow unrestricted inbound access to port 22 (SSH) from the public internet (`cidr_blocks = ["0.0.0.0/0"]`). Allowing public SSH access exposes instances to unauthorized access attempts and automated attacks, increasing the risk of successful brute-force compromises. To mitigate this vulnerability, the `cidr_blocks` attribute in the `ingress` block should be restricted to trusted IP ranges only, as shown below:
+ This check verifies that AWS security groups do not allow unrestricted inbound access to port 22 (SSH) from the public internet (`cidr_blocks = ["0.0.0.0/0"]`). Allowing public SSH access exposes instances to unauthorized access attempts and automated attacks, increasing the risk of successful brute-force compromises. To mitigate this vulnerability, the `cidr_blocks` attribute in the `ingress` block should be restricted to trusted IP ranges only, as shown below:
 
-Unsecure configuration:
+Insecure configuration:
 ```
 ingress {
   from_port   = 22

@@ -1,10 +1,10 @@
 ---
-title: "RDS DB Instance Publicly Accessible"
+title: "RDS DB instance publicly accessible"
 group-id: "rules/terraform/aws"
 meta:
   name: "aws/rds_db_instance_publicly_accessible"
   id: "35113e6f-2c6b-414d-beec-7a9482d3b2d1"
-  display_name: "RDS DB Instance Publicly Accessible"
+  display_name: "RDS DB instance publicly accessible"
   cloud_provider: "aws"
   framework: "Terraform"
   severity: "CRITICAL"
@@ -28,7 +28,7 @@ meta:
 
 ### Description
 
- Amazon RDS database instances with 'publicly_accessible' set to true can be accessed over the public internet, significantly expanding the attack surface and increasing the risk of unauthorized access. When enabled, attackers may attempt to brute force database credentials or exploit vulnerabilities in the database engine to gain access to sensitive data. To secure your RDS instance, ensure 'publicly_accessible' is set to false as shown below:
+ Amazon RDS database instances with `publicly_accessible` set to `true` can be accessed over the public internet, significantly expanding the attack surface and increasing the risk of unauthorized access. When enabled, attackers may attempt to brute force database credentials or exploit vulnerabilities in the database engine to gain access to sensitive data. To secure your RDS instance, ensure `publicly_accessible` is set to `false`, as shown below:
 
 ```
 resource "aws_db_instance" "secure_example" {

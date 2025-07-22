@@ -1,10 +1,10 @@
 ---
-title: "API Gateway Access Logging Disabled"
+title: "API Gateway access logging disabled"
 group-id: "rules/terraform/aws"
 meta:
   name: "aws/api_gateway_access_logging_disabled"
   id: "1b6799eb-4a7a-4b04-9001-8cceb9999326"
-  display_name: "API Gateway Access Logging Disabled"
+  display_name: "API Gateway access logging disabled"
   cloud_provider: "aws"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -28,7 +28,7 @@ meta:
 
 ### Description
 
- When configuring an AWS API Gateway Stage in Terraform, it is important to define the `access_log_settings` block to ensure that access logs are collected and sent to a centralized logging destination, such as an Amazon CloudWatch Logs group. Without specifying the `access_log_settings`, as shown in the configuration below, API requests and responses will not be logged, making it difficult to detect anomalous activity, debug issues, or perform security investigations:
+ When configuring an AWS API Gateway stage in Terraform, it is important to define the `access_log_settings` block to ensure that access logs are collected and sent to a centralized logging destination, such as an Amazon CloudWatch Logs group. Without specifying the `access_log_settings`, as shown in the configuration below, API requests and responses will not be logged, making it difficult to detect anomalous activity, debug issues, or perform security investigations:
 
 ```
 resource "aws_api_gateway_stage" "example" {

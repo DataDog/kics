@@ -1,10 +1,10 @@
 ---
-title: "SSO Permission With Inadequate User Session Duration"
+title: "SSO permission with inadequate user session duration"
 group-id: "rules/terraform/aws"
 meta:
   name: "aws/sso_permission_with_inadequate_user_session_duration"
   id: "ce9dfce0-5fc8-433b-944a-3b16153111a8"
-  display_name: "SSO Permission With Inadequate User Session Duration"
+  display_name: "SSO permission with inadequate user session duration"
   cloud_provider: "aws"
   framework: "Terraform"
   severity: "LOW"
@@ -28,7 +28,7 @@ meta:
 
 ### Description
 
- Single Sign-On (SSO) permission sets should restrict user session durations to a maximum of one hour to reduce the window of opportunity for unauthorized access and session hijacking. Allowing longer session durations by setting the `session_duration` attribute to values like `"PT2H"` or `"PT1H1M"` in the `aws_ssoadmin_permission_set` resource increases the risk of attackers leveraging stale or stolen sessions. Configuring session durations to `session_duration = "PT1H"` or omitting the duration in the configuration enforces this security best practice and helps limit potential exposure.
+ Single Sign-On (SSO) permission sets should restrict user session durations to a maximum of one hour to reduce the window of opportunity for unauthorized access and session hijacking. Allowing longer session durations by setting the `session_duration` attribute to values such as `"PT2H"` or `"PT1H1M"` in the `aws_ssoadmin_permission_set` resource increases the risk of attackers leveraging stale or stolen sessions. Configuring session durations to `session_duration = "PT1H"`, or omitting the duration in the configuration enforces this security best practice and helps limit potential exposure.
 
 ```
 resource "aws_ssoadmin_permission_set" "example" {

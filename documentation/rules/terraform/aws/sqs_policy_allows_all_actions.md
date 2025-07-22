@@ -1,10 +1,10 @@
 ---
-title: "SQS Policy Allows All Actions"
+title: "SQS policy allows all actions"
 group-id: "rules/terraform/aws"
 meta:
   name: "aws/sqs_policy_allows_all_actions"
   id: "816ea8cf-d589-442d-a917-2dd0ce0e45e3"
-  display_name: "SQS Policy Allows All Actions"
+  display_name: "SQS policy allows all actions"
   cloud_provider: "aws"
   framework: "Terraform"
   severity: "HIGH"
@@ -28,7 +28,7 @@ meta:
 
 ### Description
 
- When SQS policies use the wildcard (*) for actions, they grant excessive permissions that violate the principle of least privilege, potentially allowing unauthorized entities to perform any operation on the queue. This vulnerability creates a significant security risk where attackers could read sensitive messages, delete messages, or modify queue configurations if they gain access. Instead of using wildcards, specify only the required actions as shown in the secure example: `"Action": "sqs:SendMessage"` rather than the insecure `"Action": "*"`.
+ When SQS policies use the wildcard (`*`) for actions, they grant excessive permissions that violate the principle of least privilege, potentially allowing unauthorized entities to perform any operation on the queue. This vulnerability creates a significant security risk where attackers could read sensitive messages, delete messages, or modify queue configurations if they gain access. To avoid excessive permissions, replace wildcards with specific actions, such as `"Action": "sqs:SendMessage"` instead of the insecure `"Action": "*"`.
 
 
 ## Compliant Code Examples

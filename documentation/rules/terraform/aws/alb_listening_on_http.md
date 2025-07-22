@@ -1,10 +1,10 @@
 ---
-title: "ALB Listening on HTTP"
+title: "ALB listening on HTTP"
 group-id: "rules/terraform/aws"
 meta:
   name: "aws/alb_listening_on_http"
   id: "de7f5e83-da88-4046-871f-ea18504b1d43"
-  display_name: "ALB Listening on HTTP"
+  display_name: "ALB listening on HTTP"
   cloud_provider: "aws"
   framework: "Terraform"
   severity: "MEDIUM"

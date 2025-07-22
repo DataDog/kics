@@ -1,10 +1,10 @@
 ---
-title: "Google compute firewall ingress allows unrestricted mysql access"
+title: "Google Compute firewall ingress allows unrestricted MySQL access"
 group-id: "rules/terraform/gcp"
 meta:
   name: "gcp/firewall_ingress_allows_unrestricted_mysql_access"
   id: "d0a1b2c3-d4e5-6789-abcd-ef0123456789"
-  display_name: "Google compute firewall ingress allows unrestricted mysql access"
+  display_name: "Google Compute firewall ingress allows unrestricted MySQL access"
   cloud_provider: "gcp"
   framework: "Terraform"
   severity: "MEDIUM"

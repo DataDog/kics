@@ -1,10 +1,10 @@
 ---
-title: "Autoscaling Groups Supply Tags"
+title: "Autoscaling groups supply tags"
 group-id: "rules/terraform/aws"
 meta:
   name: "aws/autoscaling_groups_supply_tags"
   id: "ba48df05-eaa1-4d64-905e-4a4b051e7587"
-  display_name: "Autoscaling Groups Supply Tags"
+  display_name: "Autoscaling groups supply tags"
   cloud_provider: "aws"
   framework: "Terraform"
   severity: "LOW"
@@ -28,7 +28,7 @@ meta:
 
 ### Description
 
- Autoscaling groups in AWS should be configured with appropriate tags to ensure proper resource management, cost allocation, and identification. When the `tags` attribute is omitted, as in
+ Autoscaling groups in AWS should be configured with appropriate tags to ensure proper resource management, cost allocation, and identification. When the `tags` attribute is omitted, as in the following example, it becomes difficult to track and manage autoscaling resources, increasing the risk of orphaned or mismanaged infrastructure.
 
 ```
 resource "aws_autoscaling_group" "example" {
@@ -40,7 +40,7 @@ resource "aws_autoscaling_group" "example" {
 }
 ```
 
-it becomes difficult to track and manage autoscaling resources, increasing the risk of orphaned or mismanaged infrastructure. Adding descriptive tags, as shown below, helps enforce governance, simplifies operations, and supports effective monitoring:
+Adding descriptive tags, as shown below, helps enforce governance, simplifies operations, and supports effective monitoring:
 
 ```
 resource "aws_autoscaling_group" "example" {

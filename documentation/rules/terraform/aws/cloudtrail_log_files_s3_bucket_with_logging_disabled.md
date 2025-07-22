@@ -1,10 +1,10 @@
 ---
-title: "CloudTrail Log Files S3 Bucket with Logging Disabled"
+title: "CloudTrail log files S3 bucket with logging disabled"
 group-id: "rules/terraform/aws"
 meta:
   name: "aws/cloudtrail_log_files_s3_bucket_with_logging_disabled"
   id: "ee9e50e8-b2ed-4176-ad42-8fc0cf7593f4"
-  display_name: "CloudTrail Log Files S3 Bucket with Logging Disabled"
+  display_name: "CloudTrail log files S3 bucket with logging disabled"
   cloud_provider: "aws"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -28,7 +28,7 @@ meta:
 
 ### Description
 
- Enabling server access logging on S3 buckets that store AWS CloudTrail log files is essential for ensuring a comprehensive audit trail. When the `logging` block is not configured within the resource `aws_s3_bucket`, as in `resource "aws_s3_bucket" "foo" { ... }` without a `logging` attribute, access requests to the bucket itself are not recorded. This omission means that critical activities—such as who accessed, modified, or deleted CloudTrail log files—may go undetected, undermining visibility and hindering forensic investigations. If left unaddressed, this vulnerability could enable attackers or malicious insiders to cover their tracks by accessing or deleting evidence of unauthorized activity without any trace in bucket-level access logs.
+ Enabling server access logging on S3 buckets that store AWS CloudTrail log files is essential for ensuring a comprehensive audit trail. If the `logging` block is not configured in the `aws_s3_bucket` resource, for example, in `resource "aws_s3_bucket" "foo" { ... }` without a `logging` attribute, access requests to the bucket itself are not recorded. This omission means that critical activities—such as who accessed, modified, or deleted CloudTrail log files—may go undetected, undermining visibility and hindering forensic investigations. If left unaddressed, this vulnerability could enable attackers or malicious insiders to cover their tracks by accessing or deleting evidence of unauthorized activity without any trace in bucket-level access logs.
 
 
 ## Compliant Code Examples

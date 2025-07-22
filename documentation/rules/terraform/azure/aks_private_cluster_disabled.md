@@ -1,10 +1,10 @@
 ---
-title: "AKS Private Cluster Disabled"
+title: "AKS private cluster disabled"
 group-id: "rules/terraform/azure"
 meta:
   name: "azure/aks_private_cluster_disabled"
   id: "599318f2-6653-4569-9e21-041d06c63a89"
-  display_name: "AKS Private Cluster Disabled"
+  display_name: "AKS private cluster disabled"
   cloud_provider: "azure"
   framework: "Terraform"
   severity: "MEDIUM"

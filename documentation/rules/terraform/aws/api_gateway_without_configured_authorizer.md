@@ -1,10 +1,10 @@
 ---
-title: "API Gateway Without Configured Authorizer"
+title: "API Gateway without configured authorizer"
 group-id: "rules/terraform/aws"
 meta:
   name: "aws/api_gateway_without_configured_authorizer"
   id: "0a96ce49-4163-4ee6-8169-eb3b0797d694"
-  display_name: "API Gateway Without Configured Authorizer"
+  display_name: "API Gateway without configured authorizer"
   cloud_provider: "aws"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -28,7 +28,7 @@ meta:
 
 ### Description
 
- This check ensures that all AWS API Gateway REST APIs have an associated API Gateway Authorizer, which is responsible for validating incoming requests before granting access to backend resources. Without specifying an authorizer using the `aws_api_gateway_authorizer` resource and linking it to the `rest_api_id` attribute in your Terraform configuration, APIs may be left unprotected, allowing unauthenticated and potentially malicious users to access sensitive endpoints. Failure to enforce proper authorization can result in unauthorized access, data exposure, or abuse of backend services.
+ This check ensures that all AWS API Gateway REST APIs have an associated API Gateway authorizer, which is responsible for validating incoming requests before granting access to backend resources. Without specifying an authorizer using the `aws_api_gateway_authorizer` resource and linking it to the `rest_api_id` attribute in your Terraform configuration, APIs may be left unprotected, allowing unauthenticated and potentially malicious users to access sensitive endpoints. Failure to enforce proper authorization can result in unauthorized access, data exposure, or abuse of backend services.
 
 
 ## Compliant Code Examples

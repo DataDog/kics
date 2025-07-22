@@ -1,10 +1,10 @@
 ---
-title: "IAM User Policy Without MFA"
+title: "IAM user policy without MFA"
 group-id: "rules/terraform/aws"
 meta:
   name: "aws/iam_user_policy_without_mfa"
   id: "b5681959-6c09-4f55-b42b-c40fa12d03ec"
-  display_name: "IAM User Policy Without MFA"
+  display_name: "IAM user policy without MFA"
   cloud_provider: "aws"
   framework: "Terraform"
   severity: "LOW"
@@ -28,7 +28,7 @@ meta:
 
 ### Description
 
- This check verifies that the AWS root user is required to authenticate using multi-factor authentication (MFA). If the root user is not protected with MFA, as in a policy lacking a condition on `"aws:MultiFactorAuthPresent"`, unauthorized users with access to the root credentials could compromise the entire AWS account. Enforcing MFA by adding a policy condition such as
+ This check verifies that the AWS root user is required to authenticate using Multi-Factor Authentication (MFA). If the root user is not protected with MFA, as in a policy lacking a condition on `"aws:MultiFactorAuthPresent"`, unauthorized users with access to the root credentials could compromise the entire AWS account. Enforcing MFA by adding a policy condition, such as the following, significantly reduces the risk of credential theft, unauthorized privilege escalation, and account takeovers.
 
 ```
 "Condition": {
@@ -38,7 +38,7 @@ meta:
 }
 ```
 
-significantly reduces the risk of credential theft, unauthorized privilege escalation, and account takeovers.
+
 
 
 ## Compliant Code Examples

@@ -1,10 +1,10 @@
 ---
-title: "IAM Password Policy Does Not Require Uppercase Letter"
+title: "IAM password policy does not require uppercase letter"
 group-id: "rules/terraform/aws"
 meta:
   name: "aws/iam_password_does_not_require_uppercase"
   id: "2c3d4ghwt-e5f6-7890-ab12-cd34ef567890"
-  display_name: "IAM Password Policy Does Not Require Uppercase Letter"
+  display_name: "IAM password policy does not require uppercase letter"
   cloud_provider: "aws"
   framework: "Terraform"
   severity: "MEDIUM"

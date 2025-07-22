@@ -1,10 +1,10 @@
 ---
-title: "ECR Repository Is Publicly Accessible"
+title: "ECR repository is publicly accessible"
 group-id: "rules/terraform/aws"
 meta:
   name: "aws/ecr_repository_is_publicly_accessible"
   id: "e86e26fc-489e-44f0-9bcd-97305e4ba69a"
-  display_name: "ECR Repository Is Publicly Accessible"
+  display_name: "ECR repository is publicly accessible"
   cloud_provider: "aws"
   framework: "Terraform"
   severity: "CRITICAL"
@@ -28,7 +28,7 @@ meta:
 
 ### Description
 
- Amazon ECR repository policies that use wildcard '*' in the Principal field grant public access to your container images, potentially exposing sensitive data or proprietary code. When left unaddressed, this vulnerability allows unauthorized users to pull, and in some cases push, container images, compromising the integrity and confidentiality of your container deployments. To remediate this issue, always specify explicit IAM principals in your repository policies, such as `"Principal": { "AWS": "arn:aws:iam::account_number:root" }` instead of using `"Principal": "*"`.
+ Amazon ECR repository policies that use a wildcard `*` in the `Principal` field grant public access to your container images, potentially exposing sensitive data or proprietary code. When left unaddressed, this vulnerability allows unauthorized users to pull, and in some cases push, container images, compromising the integrity and confidentiality of your container deployments. To remediate this issue, always specify explicit IAM principals in your repository policies, such as `"Principal": { "AWS": "arn:aws:iam::account_number:root" }` instead of using `"Principal": "*"`.
 
 
 ## Compliant Code Examples

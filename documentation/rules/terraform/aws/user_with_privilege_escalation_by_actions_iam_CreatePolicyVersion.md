@@ -1,10 +1,10 @@
 ---
-title: "User With Privilege Escalation By Actions 'iam:CreatePolicyVersion'"
+title: "User with privilege escalation by actions 'iam:CreatePolicyVersion'"
 group-id: "rules/terraform/aws"
 meta:
   name: "aws/user_with_privilege_escalation_by_actions_iam_CreatePolicyVersion"
   id: "1743f5f1-0bb0-4934-acef-c80baa5dadfa"
-  display_name: "User With Privilege Escalation By Actions 'iam:CreatePolicyVersion'"
+  display_name: "User with privilege escalation by actions 'iam:CreatePolicyVersion'"
   cloud_provider: "aws"
   framework: "Terraform"
   severity: "MEDIUM"

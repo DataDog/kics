@@ -1,10 +1,10 @@
 ---
-title: "Google Compute Network Using Firewall Rule that Allows Port Range"
+title: "Google Compute network using firewall rule that allows port range"
 group-id: "rules/terraform/gcp"
 meta:
   name: "gcp/google_compute_network_using_firewall_rule_allows_port_range"
   id: "e6f61c37-106b-449f-a5bb-81bfcaceb8b4"
-  display_name: "Google Compute Network Using Firewall Rule that Allows Port Range"
+  display_name: "Google Compute network using firewall rule that allows port range"
   cloud_provider: "gcp"
   framework: "Terraform"
   severity: "LOW"
@@ -28,7 +28,7 @@ meta:
 
 ### Description
 
- Allowing a port range in a Google Compute Network firewall rule, such as `ports = ["80", "8080", "1000-2000"]`, can expose unnecessary services and increase the attack surface of your cloud environment. Attackers may exploit any open ports within the specified range, leading to potential unauthorized access or compromise of resources. To reduce risk, firewall rules should restrict access to only required ports, as shown in a secure configuration:
+ Allowing a port range in a Google Compute Network firewall rule, such as `ports = ["80", "8080", "1000-2000"]`, can expose unnecessary services and increase the attack surface of your cloud environment. Attackers may exploit any open ports within the specified range, leading to potential unauthorized access or compromise of resources. To reduce risk, firewall rules should restrict access to only required ports, as shown in the following configuration:
 
 ```
 allow {

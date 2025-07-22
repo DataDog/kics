@@ -1,10 +1,10 @@
 ---
-title: "S3 Bucket Public ACL Overridden By Public Access Block"
+title: "S3 bucket public ACL overridden by public access block"
 group-id: "rules/terraform/aws"
 meta:
   name: "aws/s3_bucket_public_acl_overridden_by_public_access_block"
   id: "bf878b1a-7418-4de3-b13c-3a86cf894920"
-  display_name: "S3 Bucket Public ACL Overridden By Public Access Block"
+  display_name: "S3 bucket public ACL overridden by public access block"
   cloud_provider: "aws"
   framework: "Terraform"
   severity: "HIGH"

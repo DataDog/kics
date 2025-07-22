@@ -1,10 +1,10 @@
 ---
-title: "Node Auto Upgrade Disabled"
+title: "Node auto upgrade disabled"
 group-id: "rules/terraform/gcp"
 meta:
   name: "gcp/node_auto_upgrade_disabled"
   id: "b139213e-7d24-49c2-8025-c18faa21ecaa"
-  display_name: "Node Auto Upgrade Disabled"
+  display_name: "Node auto upgrade disabled"
   cloud_provider: "gcp"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -28,7 +28,7 @@ meta:
 
 ### Description
 
- Kubernetes nodes should have automatic upgrades enabled to ensure that critical security patches, bug fixes, and feature updates are applied without manual intervention. In Terraform, this is configured with the `auto_upgrade` attribute inside the `management` block set to `true`:
+ Kubernetes nodes should have automatic upgrades enabled to ensure that critical security patches, bug fixes, and feature updates are applied without manual intervention. In Terraform, this is configured by setting the `auto_upgrade` attribute to `true` within the `management` block:
 
 ```
 management {

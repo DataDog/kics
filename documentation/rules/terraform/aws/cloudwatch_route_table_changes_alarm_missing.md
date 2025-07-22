@@ -1,10 +1,10 @@
 ---
-title: "CloudWatch Route Table Changes Alarm Missing"
+title: "CloudWatch route table changes alarm missing"
 group-id: "rules/terraform/aws"
 meta:
   name: "aws/cloudwatch_route_table_changes_alarm_missing"
   id: "2285e608-ddbc-47f3-ba54-ce7121e31216"
-  display_name: "CloudWatch Route Table Changes Alarm Missing"
+  display_name: "CloudWatch route table changes alarm missing"
   cloud_provider: "aws"
   framework: "Terraform"
   severity: "LOW"

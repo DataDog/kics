@@ -1,10 +1,10 @@
 ---
-title: "API Gateway Deployment Without API Gateway UsagePlan Associated"
+title: "API gateway deployment without API gateway usage plan associated"
 group-id: "rules/terraform/aws"
 meta:
   name: "aws/api_gateway_deployment_without_api_gateway_usage_plan_associated"
   id: "b3a59b8e-94a3-403e-b6e2-527abaf12034"
-  display_name: "API Gateway Deployment Without API Gateway UsagePlan Associated"
+  display_name: "API gateway deployment without API gateway usage plan associated"
   cloud_provider: "aws"
   framework: "Terraform"
   severity: "LOW"
@@ -28,7 +28,7 @@ meta:
 
 ### Description
 
- An API Gateway Deployment should have an associated UsagePlan defined using the `aws_api_gateway_usage_plan` resource, with the `api_stages` attribute referencing the relevant API and stage. Without a UsagePlan, API Gateway endpoints are left unprotected, allowing unlimited, unauthenticated access and risking abuse, denial of service, or unexpected cost overruns. To prevent this, always associate deployments with a UsagePlan as shown below:
+ An API Gateway Deployment should have an associated UsagePlan defined using the `aws_api_gateway_usage_plan` resource, with the `api_stages` attribute referencing the relevant API and stage. Without a UsagePlan, API Gateway endpoints are left unprotected, allowing unlimited, unauthenticated access and risking abuse, denial of service, or unexpected cost overruns. To prevent this, always associate deployments with a UsagePlan, as shown below:
 
 ```
 resource "aws_api_gateway_usage_plan" "example" {

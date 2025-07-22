@@ -1,10 +1,10 @@
 ---
-title: "KMS Key With Vulnerable Policy"
+title: "KMS key with vulnerable policy"
 group-id: "rules/terraform/aws"
 meta:
   name: "aws/kms_key_with_full_permissions"
   id: "7ebc9038-0bde-479a-acc4-6ed7b6758899"
-  display_name: "KMS Key With Vulnerable Policy"
+  display_name: "KMS key with vulnerable policy"
   cloud_provider: "aws"
   framework: "Terraform"
   severity: "HIGH"
@@ -28,9 +28,9 @@ meta:
 
 ### Description
 
- This check identifies AWS KMS keys with overly permissive policies that grant full access to all AWS services or users. KMS keys with policies allowing 'kms:*' actions to all principals ('AWS:*') create a significant security risk, potentially allowing unauthorized users to access, modify, or delete encrypted data across your AWS environment.
+ This check identifies AWS KMS keys with overly permissive policies that grant full access to all AWS services or users. KMS keys with policies allowing `kms:*` actions to all principals (`AWS:*`) create a significant security risk, potentially allowing unauthorized users to access, modify, or delete encrypted data across your AWS environment.
 
-Vulnerable policies typically include a statement with 'Effect:Allow', 'Principal:{"AWS":"*"}', and 'Action:["kms:*"]' as shown in this insecure example:
+Vulnerable policies typically include a statement with `Effect:Allow`, `Principal:{"AWS":"*"}`, and `Action:["kms:*"]`, as shown in this insecure example:
 ```
 "Statement":[{
   "Effect":"Allow",
@@ -40,7 +40,7 @@ Vulnerable policies typically include a statement with 'Effect:Allow', 'Principa
 }]
 ```
 
-Secure your KMS keys by using least privilege principles: restrict access to specific IAM roles/users, limit actions to only those needed, and use explicit Deny statements where appropriate as shown in the secure example:
+Secure your KMS keys by using least privilege principless—restrict access to specific IAM roles/users, limit actions to only those needed, and use explicit `Deny` statements where appropriate as shown in the following example:
 ```
 "Statement":[{
   "Effect":"Deny",

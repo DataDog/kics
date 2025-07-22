@@ -1,10 +1,10 @@
 ---
-title: "Firewall Rule Allows Too Many Hosts To Access Redis Cache"
+title: "Firewall rule allows too many hosts to access Redis Cache"
 group-id: "rules/terraform/azure"
 meta:
   name: "azure/firewall_rule_allows_too_many_hosts_to_access_redis_cache"
   id: "a829b715-cf75-4e92-b645-54c9b739edfb"
-  display_name: "Firewall Rule Allows Too Many Hosts To Access Redis Cache"
+  display_name: "Firewall rule allows too many hosts to access Redis Cache"
   cloud_provider: "azure"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -28,7 +28,7 @@ meta:
 
 ### Description
 
- This check assesses whether any Redis Cache firewall rule is configured to allow access from an overly broad IP range, such as specifying `start_ip = "1.0.0.0"` and `end_ip = "3.0.0.0"`. Allowing too many hosts to access the Redis Cache can expose sensitive data or enable unauthorized users to exploit the cache service. Firewall rules should narrowly define permitted IPs, for example:
+ This check assesses whether any Redis Cache firewall rule is configured to allow access from an overly broad IP range, such as specifying `start_ip = "1.0.0.0"` and `end_ip = "3.0.0.0"`. Allowing too many hosts to access the Redis Cache can expose sensitive data or enable unauthorized users to exploit the cache service. Firewall rules should narrowly define permitted IPs. For example:
 
 ```
 resource "azurerm_redis_firewall_rule" "secure_example" {

@@ -1,10 +1,10 @@
 ---
-title: "RDS Without Logging"
+title: "RDS without logging"
 group-id: "rules/terraform/aws"
 meta:
   name: "aws/rds_without_logging"
   id: "8d7f7b8c-6c7c-40f8-baa6-62006c6c7b56"
-  display_name: "RDS Without Logging"
+  display_name: "RDS without logging"
   cloud_provider: "aws"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -28,7 +28,7 @@ meta:
 
 ### Description
 
- When an RDS instance does not have any logging enabled, critical database activities such as errors, slow queries, and general events are not captured or retained. This lack of visibility makes it difficult to detect anomalous behavior, troubleshoot incidents, or comply with auditing requirements. Enabling logging, for example by setting `enabled_cloudwatch_logs_exports = ["general", "error"]` in Terraform, ensures that important logs are exported for monitoring and incident response purposes.
+ When an RDS instance does not have any logging enabled, critical database activities such as errors, slow queries, and general events are not captured or retained. This lack of visibility makes it difficult to detect anomalous behavior, troubleshoot incidents, or comply with auditing requirements. Enabling logging, for example, by setting `enabled_cloudwatch_logs_exports = ["general", "error"]` in Terraform, ensures that important logs are exported for monitoring and incident response purposes.
 
 
 ## Compliant Code Examples

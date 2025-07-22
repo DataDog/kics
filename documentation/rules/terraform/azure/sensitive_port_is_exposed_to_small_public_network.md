@@ -1,10 +1,10 @@
 ---
-title: "Sensitive Port Is Exposed To Small Public Network"
+title: "Sensitive port is exposed to small public network"
 group-id: "rules/terraform/azure"
 meta:
   name: "azure/sensitive_port_is_exposed_to_small_public_network"
   id: "e9dee01f-2505-4df2-b9bf-7804d1fd9082"
-  display_name: "Sensitive Port Is Exposed To Small Public Network"
+  display_name: "Sensitive port is exposed to small public network"
   cloud_provider: "azure"
   framework: "Terraform"
   severity: "MEDIUM"

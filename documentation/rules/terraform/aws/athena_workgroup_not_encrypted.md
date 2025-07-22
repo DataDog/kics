@@ -1,10 +1,10 @@
 ---
-title: "Athena Workgroup Not Encrypted"
+title: "Athena workgroup not encrypted"
 group-id: "rules/terraform/aws"
 meta:
   name: "aws/athena_workgroup_not_encrypted"
   id: "d364984a-a222-4b5f-a8b0-e23ab19ebff3"
-  display_name: "Athena Workgroup Not Encrypted"
+  display_name: "Athena workgroup not encrypted"
   cloud_provider: "aws"
   framework: "Terraform"
   severity: "HIGH"
@@ -28,7 +28,7 @@ meta:
 
 ### Description
 
- Amazon Athena Workgroups must have encryption configured to protect sensitive query results stored in S3 buckets. Without encryption, query results containing sensitive data could be exposed to unauthorized users if the S3 bucket is compromised, potentially leading to data breaches and compliance violations. The encryption configuration should be included within the result_configuration block by specifying an encryption_option (such as 'SSE_KMS') and providing a KMS key ARN, as shown in the secure example below:
+ Amazon Athena workgroups must have encryption configured to protect sensitive query results stored in S3 buckets. Without encryption, query results containing sensitive data could be exposed to unauthorized users if the S3 bucket is compromised, potentially leading to data breaches and compliance violations. The encryption configuration should be included within the `result_configuration` block by specifying an `encryption_option` (such as `SSE_KMS`) and providing a KMS key ARN, as shown in the following example:
 
 ```terraform
 resource "aws_athena_workgroup" "example" {

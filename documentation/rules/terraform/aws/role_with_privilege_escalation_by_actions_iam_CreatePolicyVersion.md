@@ -1,10 +1,10 @@
 ---
-title: "Role With Privilege Escalation By Actions 'iam:CreatePolicyVersion'"
+title: "Role with privilege escalation by actions 'iam:CreatePolicyVersion'"
 group-id: "rules/terraform/aws"
 meta:
   name: "aws/role_with_privilege_escalation_by_actions_iam_CreatePolicyVersion"
   id: "ee49557d-750c-4cc1-aa95-94ab36cbefde"
-  display_name: "Role With Privilege Escalation By Actions 'iam:CreatePolicyVersion'"
+  display_name: "Role with privilege escalation by actions 'iam:CreatePolicyVersion'"
   cloud_provider: "aws"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -30,7 +30,7 @@ meta:
 
  Granting the `iam:CreatePolicyVersion` action with a resource of `"*"` in an IAM policy allows a user to create new policy versions for *any* policy in the AWS account, including those attached to highly privileged roles. This capability can be exploited for privilege escalation, as a malicious or compromised user could attach or update policies to grant themselves broader permissions. To mitigate this risk, restrict the `Resource` attribute to specific policy ARNs and only grant this action to trusted administrative principals.
 
-A more secure configuration would specify only necessary actions for the specific resources required, for example:
+A more secure configuration would specify only necessary actions for the specific resources required. For example:
 
 ```
 resource "aws_iam_user" "cosmic2" {

@@ -24,11 +24,11 @@ meta:
 
 #### Learn More
 
- - [Provider Reference](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/pubsub_topic_iam_member)
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/pubsub_topic_iam)
 
 ### Description
 
- Google Cloud Pub/Sub Topics should not be configured to allow public access by assigning IAM roles to the special IAM principals `allUsers` or `allAuthenticatedUsers`. Granting roles to these principals, as in the example below,
+ Google Cloud Pub/Sub Topics should not be configured to allow public access by assigning IAM roles to the special principals `allUsers` or `allAuthenticatedUsers`. Granting roles to these principals makes the topic accessible to anyone on the internet or to any authenticated Google user, exposing your data to unauthorized access or misuse. For example:
 
 ```
 resource "google_pubsub_topic_iam_member" "bad_example" {
@@ -38,7 +38,7 @@ resource "google_pubsub_topic_iam_member" "bad_example" {
 }
 ```
 
-makes the topic accessible to anyone on the internet or to any authenticated Google user, exposing your data to unauthorized access or misuse. To prevent this, restrict the `member` attribute to specific users or service accounts, for example:
+To prevent this, restrict the `member` attribute to specific users or service accounts, as shown below:
 
 ```
 resource "google_pubsub_topic_iam_member" "good_example" {

@@ -1,10 +1,10 @@
 ---
-title: "User With Privilege Escalation By Actions 'ec2:RunInstances' And 'iam:PassRole'"
+title: "User with privilege escalation by actions 'ec2:RunInstances' and 'iam:PassRole'"
 group-id: "rules/terraform/aws"
 meta:
   name: "aws/user_with_privilege_escalation_by_actions_iam_PassRole_and_ec2_RunInstances"
   id: "89561b03-cb35-44a9-a7e9-8356e71606f4"
-  display_name: "User With Privilege Escalation By Actions 'ec2:RunInstances' And 'iam:PassRole'"
+  display_name: "User with privilege escalation by actions 'ec2:RunInstances' and 'iam:PassRole'"
   cloud_provider: "aws"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -28,7 +28,7 @@ meta:
 
 ### Description
 
- Granting a user the permissions `'ec2:RunInstances'` and `'iam:PassRole'` with the resource set to `'*'` allows them to launch EC2 instances and attach any IAM role, potentially escalating their privileges beyond intended limits. 
+ Granting a user the `'ec2:RunInstances'` and `'iam:PassRole'` permissions with the resource set to `'*'` allows them to launch EC2 instances and attach any IAM role, potentially escalating their privileges beyond intended limits. 
 
 For example, the following configuration is unsafe:
 

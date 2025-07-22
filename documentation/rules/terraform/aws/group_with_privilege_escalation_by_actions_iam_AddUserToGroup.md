@@ -1,10 +1,10 @@
 ---
-title: "Group With Privilege Escalation By Actions 'iam:AddUserToGroup'"
+title: "Group with privilege escalation by actions 'iam:AddUserToGroup'"
 group-id: "rules/terraform/aws"
 meta:
   name: "aws/group_with_privilege_escalation_by_actions_iam_AddUserToGroup"
   id: "970ed7a2-0aca-4425-acf1-0453c9ecbca1"
-  display_name: "Group With Privilege Escalation By Actions 'iam:AddUserToGroup'"
+  display_name: "Group with privilege escalation by actions 'iam:AddUserToGroup'"
   cloud_provider: "aws"
   framework: "Terraform"
   severity: "MEDIUM"

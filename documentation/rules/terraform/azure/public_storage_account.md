@@ -1,10 +1,10 @@
 ---
-title: "Public Storage Account"
+title: "Public storage account"
 group-id: "rules/terraform/azure"
 meta:
   name: "azure/public_storage_account"
   id: "17f75827-0684-48f4-8747-61129c7e4198"
-  display_name: "Public Storage Account"
+  display_name: "Public storage account"
   cloud_provider: "azure"
   framework: "Terraform"
   severity: "HIGH"
@@ -28,9 +28,9 @@ meta:
 
 ### Description
 
- Public Azure Storage Accounts represent a significant security risk as they potentially expose sensitive data to unauthorized access from the internet. When storage accounts have their default_action set to 'Allow' or include overly permissive IP rules (0.0.0.0/0), attackers can potentially access, exfiltrate, or manipulate stored data including PII, credentials, or business-critical information.
+ Public Azure storage accounts represent a significant security risk as they potentially expose sensitive data to unauthorized access from the internet. When storage accounts have their default_action set to `Allow` or include overly permissive IP rules (`0.0.0.0/0`), attackers can potentially access, exfiltrate, or manipulate stored data including PII, credentials, or business-critical information.
 
-To secure storage accounts, configure network rules with default_action set to 'Deny' and explicitly allow only specific IP addresses or virtual networks that require access. For example:
+To secure storage accounts, configure network rules with `default_action` set to `Deny` and explicitly allow only specific IP addresses or virtual networks that require access. For example:
 
 ```
 resource "azurerm_storage_account" "secure_example" {

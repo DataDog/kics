@@ -1,10 +1,10 @@
 ---
-title: "Group With Privilege Escalation By Actions 'ec2:RunInstances' And 'iam:PassRole'"
+title: "Group with privilege escalation by actions 'ec2:RunInstances' and 'iam:PassRole'"
 group-id: "rules/terraform/aws"
 meta:
   name: "aws/group_with_privilege_escalation_by_actions_iam_PassRole_and_ec2_RunInstances"
   id: "15e6ad8c-f420-49a6-bafb-074f5eb1ec74"
-  display_name: "Group With Privilege Escalation By Actions 'ec2:RunInstances' And 'iam:PassRole'"
+  display_name: "Group with privilege escalation by actions 'ec2:RunInstances' and 'iam:PassRole'"
   cloud_provider: "aws"
   framework: "Terraform"
   severity: "MEDIUM"

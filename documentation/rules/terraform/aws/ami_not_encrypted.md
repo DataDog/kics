@@ -1,10 +1,10 @@
 ---
-title: "AMI Not Encrypted"
+title: "AMI not encrypted"
 group-id: "rules/terraform/aws"
 meta:
   name: "aws/ami_not_encrypted"
   id: "8bbb242f-6e38-4127-86d4-d8f0b2687ae2"
-  display_name: "AMI Not Encrypted"
+  display_name: "AMI not encrypted"
   cloud_provider: "aws"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -30,7 +30,7 @@ meta:
 
  Amazon Machine Images (AMIs) created without EBS encryption can result in sensitive data stored on volumes being exposed if the underlying storage is compromised. To mitigate this, AMI resources should have the `encrypted = true` attribute set within each `ebs_block_device` block to ensure all data at rest is protected.
 
-For example, a secure Terraform configuration would look like:
+For example, a secure Terraform configuration would look like the following:
 
 ```
 resource "aws_ami" "secure" {

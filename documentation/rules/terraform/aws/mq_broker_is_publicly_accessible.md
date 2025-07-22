@@ -1,10 +1,10 @@
 ---
-title: "MQ Broker Is Publicly Accessible"
+title: "MQ broker is publicly accessible"
 group-id: "rules/terraform/aws"
 meta:
   name: "aws/mq_broker_is_publicly_accessible"
   id: "4eb5f791-c861-4afd-9f94-f2a6a3fe49cb"
-  display_name: "MQ Broker Is Publicly Accessible"
+  display_name: "MQ broker is publicly accessible"
   cloud_provider: "aws"
   framework: "Terraform"
   severity: "HIGH"
@@ -28,7 +28,7 @@ meta:
 
 ### Description
 
- This check verifies if AWS MQ Brokers have the 'publicly_accessible' attribute set to true, which makes them accessible from the internet. When an MQ Broker is publicly accessible, it increases the attack surface and exposure to potential unauthorized access, potentially leading to data breaches or service disruption. To secure your MQ Broker, omit the 'publicly_accessible' attribute or explicitly set it to false, as shown below:
+ This check verifies if AWS MQ brokers have the `publicly_accessible` attribute set to `true`, which makes them accessible from the internet. When an MQ broker is publicly accessible, it increases the attack surface and the risk of unauthorized access, potentially leading to data breaches or service disruption. To secure your MQ broker, omit the `publicly_accessible` attribute or explicitly set it to false, as shown below:
 
 ```
 resource "aws_mq_broker" "secure_broker" {

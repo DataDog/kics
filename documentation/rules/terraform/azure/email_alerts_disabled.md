@@ -1,10 +1,10 @@
 ---
-title: "Email Alerts Disabled"
+title: "Email alerts disabled"
 group-id: "rules/terraform/azure"
 meta:
   name: "azure/email_alerts_disabled"
   id: "9db38e87-f6aa-4b5e-a1ec-7266df259409"
-  display_name: "Email Alerts Disabled"
+  display_name: "Email alerts disabled"
   cloud_provider: "azure"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -28,7 +28,7 @@ meta:
 
 ### Description
 
- Azure Security Center contact alert notifications should be enabled to ensure that designated security contacts receive email alerts about security issues or threats in your Azure environment. If the `alert_notifications` attribute is set to `false`, such as in 
+ Azure Security Center contact alert notifications should be enabled to ensure that designated security contacts receive email alerts about security issues or threats in your Azure environment. If the `alert_notifications` attribute is set to `false`, such as shown below, critical security incidents could go unnoticed, increasing the risk of delayed response to threats.
 
 ```
 resource "azurerm_security_center_contact" "example" {
@@ -38,7 +38,7 @@ resource "azurerm_security_center_contact" "example" {
 }
 ```
 
-critical security incidents could go unnoticed, increasing the risk of delayed response to threats. Setting `alert_notifications = true` ensures timely awareness and response to potential security incidents.
+Setting `alert_notifications = true` ensures timely awareness and response to potential security incidents.
 
 
 ## Compliant Code Examples

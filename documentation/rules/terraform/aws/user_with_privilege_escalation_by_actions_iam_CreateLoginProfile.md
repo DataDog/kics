@@ -1,10 +1,10 @@
 ---
-title: "User With Privilege Escalation By Actions 'iam:CreateLoginProfile'"
+title: "User with privilege escalation by actions 'iam:CreateLoginProfile'"
 group-id: "rules/terraform/aws"
 meta:
   name: "aws/user_with_privilege_escalation_by_actions_iam_CreateLoginProfile"
   id: "0fd7d920-4711-46bd-aff2-d307d82cd8b7"
-  display_name: "User With Privilege Escalation By Actions 'iam:CreateLoginProfile'"
+  display_name: "User with privilege escalation by actions 'iam:CreateLoginProfile'"
   cloud_provider: "aws"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -28,7 +28,7 @@ meta:
 
 ### Description
 
- Allowing users the `iam:CreateLoginProfile` action with the `Resource` set to `"*"` in AWS IAM policies permits them to set a password for any IAM user, thereby enabling direct console access. This creates a privilege escalation vulnerability, as the user can potentially assign login profiles to high-privilege accounts, leading to unauthorized access and control over critical AWS resources. To mitigate this risk, restrict the `Resource` to specific user ARNs and avoid assigning broad permissions, as shown in a secure Terraform configuration:
+ Allowing users the `iam:CreateLoginProfile` action with the `Resource` set to `"*"` in AWS IAM policies permits them to set a password for any IAM user, thereby enabling direct console access. This creates a privilege escalation vulnerability, as the user can potentially assign login profiles to high-privilege accounts, leading to unauthorized access and control over critical AWS resources. To mitigate this risk, restrict the `Resource` to specific user ARNs and avoid assigning broad permissions, as shown in the following secure Terraform configuration:
 
 ```
 policy = jsonencode({

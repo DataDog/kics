@@ -1,10 +1,10 @@
 ---
-title: "Unknown Port Exposed To Internet"
+title: "Unknown port exposed to internet"
 group-id: "rules/terraform/aws"
 meta:
   name: "aws/unknown_port_exposed_to_internet"
   id: "590d878b-abdc-428f-895a-e2b68a0e1998"
-  display_name: "Unknown Port Exposed To Internet"
+  display_name: "Unknown port exposed to internet"
   cloud_provider: "aws"
   framework: "Terraform"
   severity: "HIGH"
@@ -28,7 +28,7 @@ meta:
 
 ### Description
 
- This check identifies AWS Security Groups with ingress rules that allow traffic from the internet (0.0.0.0/0) on non-standard ports, which significantly increases your attack surface. When security groups allow uncommon ports to be accessed from anywhere on the internet, it exposes your resources to potential unauthorized access and exploitation from malicious actors globally. To secure your configuration, restrict ingress rules to specific IP ranges or use standard ports only, as shown in the example below:
+ This check identifies AWS Security Groups with ingress rules that allow traffic from the internet (`0.0.0.0/0`) on non-standard ports, which significantly increases your attack surface. When security groups allow uncommon ports to be accessed from anywhere on the internet, it exposes your resources to potential unauthorized access and exploitation from malicious actors globally. To secure your configuration, restrict ingress rules to specific IP ranges or use standard ports only, as shown in the example below:
 
 ```
 ingress {

@@ -1,10 +1,10 @@
 ---
-title: "Route53 Record Undefined"
+title: "Route53 record undefined"
 group-id: "rules/terraform/aws"
 meta:
   name: "aws/route53_record_undefined"
   id: "25db74bf-fa3b-44da-934e-8c3e005c0453"
-  display_name: "Route53 Record Undefined"
+  display_name: "Route53 record undefined"
   cloud_provider: "aws"
   framework: "Terraform"
   severity: "HIGH"
@@ -28,9 +28,9 @@ meta:
 
 ### Description
 
- This check verifies that Route53 record resources have defined values in the 'records' array. Empty record arrays in Route53 configurations may result in DNS resolution failures, causing service disruptions and potentially breaking application functionality that depends on proper name resolution.
+ This check verifies that Route53 record resources have defined values in the `records` array. Empty `record` arrays in Route53 configurations may result in DNS resolution failures, causing service disruptions and potentially breaking application functionality that depends on proper name resolution.
 
-A properly configured Route53 record should include appropriate values in the records array as shown in the secure example below:
+A properly configured Route53 record should include appropriate values in the `records` array, as shown in the secure example below:
 
 ```terraform
 records = [

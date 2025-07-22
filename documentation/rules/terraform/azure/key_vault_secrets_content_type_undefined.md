@@ -1,10 +1,10 @@
 ---
-title: "Key Vault Secrets Content Type Undefined"
+title: "Key Vault secrets content type undefined"
 group-id: "rules/terraform/azure"
 meta:
   name: "azure/key_vault_secrets_content_type_undefined"
   id: "f8e08a38-fc6e-4915-abbe-a7aadf1d59ef"
-  display_name: "Key Vault Secrets Content Type Undefined"
+  display_name: "Key Vault secrets content type undefined"
   cloud_provider: "azure"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -28,7 +28,7 @@ meta:
 
 ### Description
 
- Key Vault Secrets in Azure should explicitly set the `content_type` attribute to define the type and intended usage of the stored secret. Omitting `content_type` can lead to poor secret management practices, making it more difficult to identify and handle secrets correctly, which increases the risk of accidental misuse or disclosure. A secure Terraform configuration includes the `content_type` attribute, as shown below:
+ Key Vault secrets in Azure should explicitly set the `content_type` attribute to define the type and intended usage of the stored secret. Omitting `content_type` can lead to poor secret management practices, making it more difficult to identify and handle secrets correctly, which increases the risk of accidental misuse or disclosure. A secure Terraform configuration includes the `content_type` attribute, as shown below:
 
 ```
 resource "azurerm_key_vault_secret" "example" {

@@ -1,10 +1,10 @@
 ---
-title: "MySQL SSL Connection Disabled"
+title: "MySQL SSL connection disabled"
 group-id: "rules/terraform/azure"
 meta:
   name: "azure/mysql_ssl_connection_disabled"
   id: "73e42469-3a86-4f39-ad78-098f325b4e9f"
-  display_name: "MySQL SSL Connection Disabled"
+  display_name: "MySQL SSL connection disabled"
   cloud_provider: "azure"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -24,7 +24,7 @@ meta:
 
 #### Learn More
 
- - [Provider Reference](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/mysql_server)
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/azurerm/3.6.0/docs/resources/mysql_server)
 
 ### Description
 

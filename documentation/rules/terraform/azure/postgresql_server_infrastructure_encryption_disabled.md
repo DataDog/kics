@@ -1,10 +1,10 @@
 ---
-title: "PostgreSQL Server Infrastructure Encryption Disabled"
+title: "PostgreSQL server infrastructure encryption disabled"
 group-id: "rules/terraform/azure"
 meta:
   name: "azure/postgresql_server_infrastructure_encryption_disabled"
   id: "6425c98b-ca4e-41fe-896a-c78772c131f8"
-  display_name: "PostgreSQL Server Infrastructure Encryption Disabled"
+  display_name: "PostgreSQL server infrastructure encryption disabled"
   cloud_provider: "azure"
   framework: "Terraform"
   severity: "LOW"

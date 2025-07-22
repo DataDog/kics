@@ -1,10 +1,10 @@
 ---
-title: "GKE Using Default Service Account"
+title: "GKE using default service account"
 group-id: "rules/terraform/gcp"
 meta:
   name: "gcp/gke_using_default_service_account"
   id: "1c8eef02-17b1-4a3e-b01d-dcc3292d2c38"
-  display_name: "GKE Using Default Service Account"
+  display_name: "GKE using default service account"
   cloud_provider: "gcp"
   framework: "Terraform"
   severity: "MEDIUM"

@@ -1,10 +1,10 @@
 ---
-title: "Shield Advanced Not In Use"
+title: "Shield Advanced not in use"
 group-id: "rules/terraform/aws"
 meta:
   name: "aws/shield_advanced_not_in_use"
   id: "084c6686-2a70-4710-91b1-000393e54c12"
-  display_name: "Shield Advanced Not In Use"
+  display_name: "Shield Advanced not in use"
   cloud_provider: "aws"
   framework: "Terraform"
   severity: "LOW"
@@ -28,7 +28,7 @@ meta:
 
 ### Description
 
- AWS Shield Advanced provides enhanced protection against distributed denial-of-service (DDoS) attacks for critical AWS resources such as Amazon Route 53 hosted zones, AWS Global Accelerator accelerators, Elastic IP addresses, Elastic Load Balancers, and Amazon CloudFront distributions. Without Shield Advanced enabled, these resources are vulnerable to large-scale DDoS attacks, which can lead to downtime, degraded performance, and increased mitigation costs. To secure these resources in Terraform, use the `aws_shield_protection` resource with the correct `resource_arn`, for example:
+ AWS Shield Advanced provides enhanced protection against distributed denial-of-service (DDoS) attacks for critical AWS resources, such as Amazon Route 53 hosted zones, AWS Global Accelerator accelerators, Elastic IP addresses, Elastic Load Balancers, and Amazon CloudFront distributions. Without Shield Advanced enabled, these resources are vulnerable to large-scale DDoS attacks, which can lead to downtime, degraded performance, and increased mitigation costs. To secure these resources in Terraform, use the `aws_shield_protection` resource with the correct `resource_arn`. For example:
 
 ```
 resource "aws_shield_protection" "example" {

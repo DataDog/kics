@@ -1,10 +1,10 @@
 ---
-title: "CloudTrail Not Integrated With CloudWatch"
+title: "CloudTrail not integrated with CloudWatch"
 group-id: "rules/terraform/aws"
 meta:
   name: "aws/cloudtrail_not_integrated_with_cloudwatch"
   id: "17b30f8f-8dfb-4597-adf6-57600b6cf25e"
-  display_name: "CloudTrail Not Integrated With CloudWatch"
+  display_name: "CloudTrail not integrated with CloudWatch"
   cloud_provider: "aws"
   framework: "Terraform"
   severity: "LOW"
@@ -28,7 +28,7 @@ meta:
 
 ### Description
 
- Integrating AWS CloudTrail with CloudWatch Logs is essential for real-time monitoring and alerting on account activity. If the `cloud_watch_logs_group_arn` and `cloud_watch_logs_role_arn` attributes are not set in the `aws_cloudtrail` resource, as in the following insecure configuration:
+ Integrating AWS CloudTrail with CloudWatch Logs is essential for real-time monitoring and alerting on account activity. If the `cloud_watch_logs_group_arn` and `cloud_watch_logs_role_arn` attributes are not set in the `aws_cloudtrail` resource, as in the following insecure configuration, CloudTrail events will only be stored in S3 with no efficient mechanism for real-time detection or automated response to suspicious activities:
 
 ```
 resource "aws_cloudtrail" "example" {
@@ -38,9 +38,9 @@ resource "aws_cloudtrail" "example" {
 }
 ```
 
-CloudTrail events will only be stored in S3 with no efficient mechanism for real-time detection or automated response to suspicious activities. Without CloudWatch integration, critical security or operational issues could go unnoticed, increasing the risk of unauthorized behavior persisting undetected in your AWS environment.
+Without CloudWatch integration, critical security or operational issues could go unnoticed, increasing the risk of unauthorized behavior persisting undetected in your AWS environment.
 
-A secure Terraform configuration should explicitly connect CloudTrail to CloudWatch Logs, for example:
+A secure Terraform configuration should explicitly connect CloudTrail to CloudWatch Logs. For example:
 
 ```
 resource "aws_cloudtrail" "example" {

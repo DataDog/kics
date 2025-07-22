@@ -1,10 +1,10 @@
 ---
-title: "VPC FlowLogs Disabled"
+title: "VPC Flow Logs disabled"
 group-id: "rules/terraform/aws"
 meta:
   name: "aws/vpc_flowlogs_disabled"
   id: "f83121ea-03da-434f-9277-9cd247ab3047"
-  display_name: "VPC FlowLogs Disabled"
+  display_name: "VPC Flow Logs disabled"
   cloud_provider: "aws"
   framework: "Terraform"
   severity: "MEDIUM"

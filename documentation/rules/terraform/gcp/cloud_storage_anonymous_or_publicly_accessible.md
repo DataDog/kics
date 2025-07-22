@@ -1,10 +1,10 @@
 ---
-title: "Cloud Storage Anonymous or Publicly Accessible"
+title: "Cloud Storage is anonymous or publicly accessible"
 group-id: "rules/terraform/gcp"
 meta:
   name: "gcp/cloud_storage_anonymous_or_publicly_accessible"
   id: "a6cd52a1-3056-4910-96a5-894de9f3f3b3"
-  display_name: "Cloud Storage Anonymous or Publicly Accessible"
+  display_name: "Cloud Storage is anonymous or publicly accessible"
   cloud_provider: "gcp"
   framework: "Terraform"
   severity: "CRITICAL"
@@ -28,7 +28,7 @@ meta:
 
 ### Description
 
- Cloud Storage Buckets configured with anonymous or public access create significant security risks by allowing anyone on the internet to access potentially sensitive data. When 'allUsers' is included in IAM bindings, it grants access to anyone, while 'allAuthenticatedUsers' grants access to anyone with a Google account, both creating overly permissive access controls that violate the principle of least privilege.
+ Cloud Storage Buckets configured with anonymous or public access pose significant security risks by allowing anyone on the internet to access potentially sensitive data. Including `allUsers` in IAM bindings grants access to anyone, while `allAuthenticatedUsers` grants access to any Google account holder. Both violate the principle of least privilege.
 
 Insecure configuration example:
 ```

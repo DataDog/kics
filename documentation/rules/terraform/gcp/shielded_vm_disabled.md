@@ -1,10 +1,10 @@
 ---
-title: "Shielded VM Disabled"
+title: "Shielded VM disabled"
 group-id: "rules/terraform/gcp"
 meta:
   name: "gcp/shielded_vm_disabled"
   id: "1b44e234-3d73-41a8-9954-0b154135280e"
-  display_name: "Shielded VM Disabled"
+  display_name: "Shielded VM disabled"
   cloud_provider: "gcp"
   framework: "Terraform"
   severity: "MEDIUM"

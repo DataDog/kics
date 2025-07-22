@@ -1,10 +1,10 @@
 ---
-title: "User With Privilege Escalation By Actions 'lambda:CreateFunction' And 'iam:PassRole' And 'lambda:InvokeFunction'"
+title: "User with privilege escalation by actions 'lambda:CreateFunction' and 'iam:PassRole' and 'lambda:InvokeFunction'"
 group-id: "rules/terraform/aws"
 meta:
   name: "aws/user_with_privilege_escalation_by_actions_iam_PassRole_and_lambda_CreateFunction_and_lambda_InvokeFunction"
   id: "8055dec2-efb8-4fe6-8837-d9bed6ff202a"
-  display_name: "User With Privilege Escalation By Actions 'lambda:CreateFunction' And 'iam:PassRole' And 'lambda:InvokeFunction'"
+  display_name: "User with privilege escalation by actions 'lambda:CreateFunction' and 'iam:PassRole' and 'lambda:InvokeFunction'"
   cloud_provider: "aws"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -28,7 +28,7 @@ meta:
 
 ### Description
 
- Granting a user the permissions `'lambda:CreateFunction'`, `'lambda:InvokeFunction'`, and `'iam:PassRole'` with the `Resource` set to `"*"` allows them to create and execute Lambda functions under any IAM role, potentially escalating their privileges in the AWS environment. This misconfiguration means the user can attach highly privileged roles to their Lambda functions and run them, effectively gaining any permissions those roles have—including full administrative access—without approval or oversight. If left unaddressed, this could lead to complete compromise of AWS resources, data theft, or account takeover.
+ Granting a user the `'lambda:CreateFunction'`, `'lambda:InvokeFunction'`, and `'iam:PassRole'` permissions with the `Resource` set to `"*"` allows them to create and execute Lambda functions under any IAM role, potentially escalating their privileges in the AWS environment. This misconfiguration means the user can attach highly privileged roles to their Lambda functions and run them, effectively gaining any permissions those roles have—including full administrative access—without approval or oversight. If left unaddressed, this could lead to complete compromise of AWS resources, data theft, or account takeover.
 
 
 ## Compliant Code Examples

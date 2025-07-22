@@ -1,10 +1,10 @@
 ---
-title: "Stack Retention Disabled"
+title: "Stack retention disabled"
 group-id: "rules/terraform/aws"
 meta:
   name: "aws/stack_retention_disabled"
   id: "6e0e2f68-3fd9-4cd8-a5e4-e2213ef0df97"
-  display_name: "Stack Retention Disabled"
+  display_name: "Stack retention disabled"
   cloud_provider: "aws"
   framework: "Terraform"
   severity: "MEDIUM"

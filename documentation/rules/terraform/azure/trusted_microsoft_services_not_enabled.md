@@ -1,10 +1,10 @@
 ---
-title: "Trusted Microsoft Services Not Enabled"
+title: "Trusted Microsoft services not enabled"
 group-id: "rules/terraform/azure"
 meta:
   name: "azure/trusted_microsoft_services_not_enabled"
   id: "5400f379-a347-4bdd-a032-446465fdcc6f"
-  display_name: "Trusted Microsoft Services Not Enabled"
+  display_name: "Trusted Microsoft services not enabled"
   cloud_provider: "azure"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -28,7 +28,7 @@ meta:
 
 ### Description
 
- Trusted Microsoft Services should be enabled for Storage Account access to ensure that Azure resources such as Azure Backup, Azure Monitor, and others can securely interact with the Storage Account without exposing it more broadly. When the `bypass` attribute in `azurerm_storage_account` or `azurerm_storage_account_network_rules` is not set to include `"AzureServices"`, essential Azure services may be denied access or administrators may set overly permissive network rules, increasing the attack surface. Securely configuring your storage account should look like:
+ Trusted Microsoft services should be enabled for Storage Account access to ensure that Azure resources such as Azure Backup, Azure Monitor, and others can securely interact with the Storage Account without exposing it more broadly. When the `bypass` attribute in `azurerm_storage_account` or `azurerm_storage_account_network_rules` does not include `"AzureServices"`, essential Azure services may be denied access, or administrators may compensate by setting overly permissive network rules, increasing the attack surface. To ensure a secure configuration, the storage account should be configured as follows:
 
 ```
 network_rules {
@@ -37,7 +37,7 @@ network_rules {
 }
 ```
 
-Failing to enable Trusted Microsoft Services can hinder platform functionality or lead to weaker network restrictions that unnecessarily expose the storage account to risk.
+Failing to enable trusted Microsoft services can hinder platform functionality or lead to weaker network restrictions that unnecessarily expose the storage account to risk.
 
 
 ## Compliant Code Examples

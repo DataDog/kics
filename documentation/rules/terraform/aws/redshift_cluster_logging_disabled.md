@@ -1,10 +1,10 @@
 ---
-title: "Redshift Cluster Logging Disabled"
+title: "Redshift cluster logging disabled"
 group-id: "rules/terraform/aws"
 meta:
   name: "aws/redshift_cluster_logging_disabled"
   id: "15ffbacc-fa42-4f6f-a57d-2feac7365caa"
-  display_name: "Redshift Cluster Logging Disabled"
+  display_name: "Redshift cluster logging disabled"
   cloud_provider: "aws"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -28,7 +28,7 @@ meta:
 
 ### Description
 
- Amazon Redshift clusters should have logging enabled to ensure that audit and diagnostic data, such as query execution and connection attempts, are recorded and stored for security and compliance purposes. If the `logging` block is omitted, or the attribute `enable` is set to `false` in the Redshift cluster Terraform resource, as shown below,
+ Amazon Redshift clusters should have logging enabled to ensure that audit and diagnostic data, such as query execution and connection attempts, are recorded and stored for security and compliance purposes. If the `logging` block is omitted, or the attribute `enable` is set to `false` in the Redshift cluster Terraform resource, as shown below, critical events may go unrecorded, making it difficult to detect unauthorized access or investigate security incidents.
 
 ```
 resource "aws_redshift_cluster" "example" {
@@ -39,7 +39,7 @@ resource "aws_redshift_cluster" "example" {
 }
 ```
 
-critical events may go unrecorded, making it difficult to detect unauthorized access or investigate security incidents. Enabling logging with
+Enabling logging with the following configuration helps ensure that activity is continuously monitored and available for review in the case of an incident.
 
 ```
 logging {
@@ -48,7 +48,7 @@ logging {
 }
 ```
 
-helps ensure that activity is continuously monitored and available for review in the case of an incident.
+
 
 
 ## Compliant Code Examples

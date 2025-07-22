@@ -1,10 +1,10 @@
 ---
-title: "IAM Policy Grants Full Permissions"
+title: "IAM policy grants full permissions"
 group-id: "rules/terraform/aws"
 meta:
   name: "aws/iam_policy_grants_full_permissions"
   id: "575a2155-6af1-4026-b1af-d5bc8fe2a904"
-  display_name: "IAM Policy Grants Full Permissions"
+  display_name: "IAM policy grants full permissions"
   cloud_provider: "aws"
   framework: "Terraform"
   severity: "HIGH"
@@ -28,7 +28,7 @@ meta:
 
 ### Description
 
- IAM policies that grant full administrative permissions ('*') to all resources pose a significant security risk by violating the principle of least privilege. If these credentials are compromised, attackers gain unrestricted access to your AWS environment, potentially leading to data breaches, resource destruction, or cryptocurrency mining. Instead of using wildcard permissions, specify only the actions and resources necessary for the role or user, such as limiting to specific services and resources as shown below:
+ IAM policies that grant full administrative permissions (`*`) to all resources pose a significant security risk by violating the principle of least privilege. If these credentials are compromised, attackers gain unrestricted access to your AWS environment, potentially leading to data breaches, resource destruction, or cryptocurrency mining. Instead of using wildcard permissions, specify only the actions and resources necessary for the role or user, such as limiting to specific services and resources, as shown below:
 
 Insecure example:
 ```json

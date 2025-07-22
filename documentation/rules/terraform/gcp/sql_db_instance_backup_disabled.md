@@ -1,10 +1,10 @@
 ---
-title: "SQL DB Instance Backup Disabled"
+title: "SQL DB instance backup disabled"
 group-id: "rules/terraform/gcp"
 meta:
   name: "gcp/sql_db_instance_backup_disabled"
   id: "cf3c7631-cd1e-42f3-8801-a561214a6e79"
-  display_name: "SQL DB Instance Backup Disabled"
+  display_name: "SQL DB instance backup disabled"
   cloud_provider: "gcp"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -28,7 +28,7 @@ meta:
 
 ### Description
 
- This check verifies whether automated backups are enabled for all Google Cloud SQL database instances by ensuring the `backup_configuration` block has the `enabled = true` attribute. Without automated backups, as shown below:
+ This check verifies whether automated backups are enabled for all Google Cloud SQL database instances by ensuring the `backup_configuration` block has the `enabled = true` attribute. If automated backups are disabled or the `backup_configuration` block is missing, databases are at risk of unrecoverable data loss in the event of accidental deletion, corruption, or other failures. When automated backups are disabled, the configuration appears as follows:
 
 ```
 settings {
@@ -38,7 +38,7 @@ settings {
 }
 ```
 
-or if the `backup_configuration` block is missing, databases are at risk of unrecoverable data loss in case of accidental deletion, corruption, or other failures. Enabling backups like this:
+To mitigate this risk, ensure backups are enabled using the following configuration:
 
 ```
 settings {
@@ -48,7 +48,7 @@ settings {
 }
 ```
 
-ensures that point-in-time recovery is possible and critical business data can be restored when needed.
+This ensures that point-in-time recovery is possible and critical business data can be restored when needed.
 
 
 ## Compliant Code Examples

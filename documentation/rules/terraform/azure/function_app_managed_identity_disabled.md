@@ -1,10 +1,10 @@
 ---
-title: "Function App Managed Identity Disabled"
+title: "Function App managed identity disabled"
 group-id: "rules/terraform/azure"
 meta:
   name: "azure/function_app_managed_identity_disabled"
   id: "c87749b3-ff10-41f5-9df2-c421e8151759"
-  display_name: "Function App Managed Identity Disabled"
+  display_name: "Function App managed identity disabled"
   cloud_provider: "azure"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -28,7 +28,7 @@ meta:
 
 ### Description
 
- Azure Function Apps should have managed identities enabled to allow for secure authentication to Azure services without the need for hard-coded credentials. If the `identity` block is omitted in a Terraform resource, as in the example below, the Function App will not have a managed identity and may rely on less secure methods such as embedding credentials in code or configuration:
+ Azure Function Apps should have managed identities enabled to allow for secure authentication to Azure services without the need for hard-coded credentials. If the `identity` block is omitted in a Terraform resource, as in the example below, the Function App will not have a managed identity and may rely on less secure methods, such as embedding credentials in code or configuration:
 
 ```
 resource "azurerm_function_app" "insecure" {

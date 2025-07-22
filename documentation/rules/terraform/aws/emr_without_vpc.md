@@ -1,10 +1,10 @@
 ---
-title: "EMR Without VPC"
+title: "EMR without VPC"
 group-id: "rules/terraform/aws"
 meta:
   name: "aws/emr_without_vpc"
   id: "2b3c8a6d-9856-43e6-ab1d-d651094f03b4"
-  display_name: "EMR Without VPC"
+  display_name: "EMR without VPC"
   cloud_provider: "aws"
   framework: "Terraform"
   severity: "LOW"

@@ -1,10 +1,10 @@
 ---
-title: "Role Assignment Not Limit Guest User Permissions"
+title: "Role assignment not limit guest user permissions"
 group-id: "rules/terraform/azure"
 meta:
   name: "azure/role_assignment_not_limit_guest_users_permissions"
   id: "8e75e431-449f-49e9-b56a-c8f1378025cf"
-  display_name: "Role Assignment Not Limit Guest User Permissions"
+  display_name: "Role assignment not limit guest user permissions"
   cloud_provider: "azure"
   framework: "Terraform"
   severity: "MEDIUM"

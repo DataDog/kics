@@ -1,10 +1,10 @@
 ---
-title: "VPC Default Security Group Accepts All Traffic"
+title: "VPC default security group accepts all traffic"
 group-id: "rules/terraform/aws"
 meta:
   name: "aws/vpc_default_security_group_accepts_all_traffic"
   id: "9a4ef195-74b9-4c58-b8ed-2b2fe4353a75"
-  display_name: "VPC Default Security Group Accepts All Traffic"
+  display_name: "VPC default security group accepts all traffic"
   cloud_provider: "aws"
   framework: "Terraform"
   severity: "HIGH"
@@ -28,7 +28,7 @@ meta:
 
 ### Description
 
- Default Security Groups are automatically created when a VPC is created and allow all inbound traffic from resources assigned to the same security group and all outbound traffic by default when explicitly configured with open rules. This creates a significant security vulnerability as it allows unrestricted network access between resources, potentially enabling lateral movement during a breach. 
+ Default security groups are automatically created when a VPC is created and allow all inbound traffic from resources assigned to the same security group, as well as all outbound traffic by default. This creates a significant security vulnerability as it allows unrestricted network access between resources, potentially enabling lateral movement during a breach. 
 
 Secure implementation should not define open ingress/egress rules, as in the following example:
 ```
@@ -37,7 +37,7 @@ resource "aws_default_security_group" "default2" {
 }
 ```
 
-Avoid explicitly configuring rules that allow all traffic, such as:
+Avoid explicitly configuring rules that allow all traffic, such as in the following example:
 ```
 ingress = [{
   protocol  = -1

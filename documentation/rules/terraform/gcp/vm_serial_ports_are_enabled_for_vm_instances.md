@@ -1,10 +1,10 @@
 ---
-title: "Serial Ports Are Enabled For VM Instances"
+title: "Serial ports are enabled for VM instances"
 group-id: "rules/terraform/gcp"
 meta:
   name: "gcp/vm_serial_ports_are_enabled_for_vm_instances"
   id: "97fa667a-d05b-4f16-9071-58b939f34751"
-  display_name: "Serial Ports Are Enabled For VM Instances"
+  display_name: "Serial ports are enabled for VM instances"
   cloud_provider: "gcp"
   framework: "Terraform"
   severity: "MEDIUM"

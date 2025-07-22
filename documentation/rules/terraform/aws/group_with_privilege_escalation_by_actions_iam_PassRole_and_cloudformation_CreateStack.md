@@ -1,10 +1,10 @@
 ---
-title: "Group With Privilege Escalation By Actions 'cloudformation:CreateStack' And 'iam:PassRole'"
+title: "Group with privilege escalation by actions 'cloudformation:CreateStack' and 'iam:PassRole'"
 group-id: "rules/terraform/aws"
 meta:
   name: "aws/group_with_privilege_escalation_by_actions_iam_PassRole_and_cloudformation_CreateStack"
   id: "9b0ffadc-a61f-4c2a-b1e6-68fab60f6267"
-  display_name: "Group With Privilege Escalation By Actions 'cloudformation:CreateStack' And 'iam:PassRole'"
+  display_name: "Group with privilege escalation by actions 'cloudformation:CreateStack' and 'iam:PassRole'"
   cloud_provider: "aws"
   framework: "Terraform"
   severity: "MEDIUM"

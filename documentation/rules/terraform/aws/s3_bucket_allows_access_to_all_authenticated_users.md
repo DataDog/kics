@@ -1,10 +1,10 @@
 ---
-title: "S3 Bucket Allows Authenticated Users Access"
+title: "S3 bucket allows authenticated users access"
 group-id: "rules/terraform/aws"
 meta:
   name: "aws/s3_bucket_allows_access_to_all_authenticated_users"
   id: "d4e5f6g7-h8i9-0jkl-1234-mn567opq8901"
-  display_name: "S3 Bucket Allows Authenticated Users Access"
+  display_name: "S3 bucket allows authenticated users access"
   cloud_provider: "aws"
   framework: "Terraform"
   severity: "HIGH"
@@ -28,7 +28,7 @@ meta:
 
 ### Description
 
- This check verifies if AWS S3 bucket ACLs are configured to prevent access from all authenticated AWS users. When an S3 bucket grants access to the 'AuthenticatedUsers' group, it allows any AWS account holder worldwide to access your data, not just users within your organization. This significantly increases the risk of unauthorized data access, potential data breaches, and violation of data governance policies.
+ This check verifies if AWS S3 bucket ACLs are configured to prevent access from all authenticated AWS users. When an S3 bucket grants access to the `AuthenticatedUsers` group, it allows any AWS account holder worldwide to access your data, not just users within your organization. This significantly increases the risk of unauthorized data access, potential data breaches, and violation of data governance policies.
 
 To secure your S3 bucket, use specific canonical user IDs rather than the global authenticated users group. For example, instead of using:
 ```

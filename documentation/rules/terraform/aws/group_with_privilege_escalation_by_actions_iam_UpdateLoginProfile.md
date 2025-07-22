@@ -1,10 +1,10 @@
 ---
-title: "Group With Privilege Escalation By Actions 'iam:UpdateLoginProfile'"
+title: "Group with privilege escalation by actions 'iam:UpdateLoginProfile'"
 group-id: "rules/terraform/aws"
 meta:
   name: "aws/group_with_privilege_escalation_by_actions_iam_UpdateLoginProfile"
   id: "ad296c0d-8131-4d6b-b030-1b0e73a99ad3"
-  display_name: "Group With Privilege Escalation By Actions 'iam:UpdateLoginProfile'"
+  display_name: "Group with privilege escalation by actions 'iam:UpdateLoginProfile'"
   cloud_provider: "aws"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -28,7 +28,7 @@ meta:
 
 ### Description
 
- Allowing an IAM group the `iam:UpdateLoginProfile` action on all resources (i.e., `"Resource": "*"`) is a significant privilege escalation risk. With this permission, any user in the group can reset or change the console password of any IAM user in the AWS account, effectively taking over their credentials. If left unaddressed, malicious or compromised users could gain access to higher privileges, potentially leading to unauthorized access, data exfiltration, or service disruption.
+ Allowing an IAM group the `iam:UpdateLoginProfile` action on all resources (`"Resource": "*"`) is a significant privilege escalation risk. With this permission, any user in the group can reset or change the console password of any IAM user in the AWS account, effectively taking over their credentials. If left unaddressed, malicious or compromised users could gain access to higher privileges, potentially leading to unauthorized access, data exfiltration, or service disruption.
 
 
 ## Compliant Code Examples

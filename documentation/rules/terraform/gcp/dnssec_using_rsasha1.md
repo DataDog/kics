@@ -1,10 +1,10 @@
 ---
-title: "DNSSEC Using RSASHA1"
+title: "DNSSEC using RSASHA1"
 group-id: "rules/terraform/gcp"
 meta:
   name: "gcp/dnssec_using_rsasha1"
   id: "ccc3100c-0fdd-4a5e-9908-c10107291860"
-  display_name: "DNSSEC Using RSASHA1"
+  display_name: "DNSSEC using RSASHA1"
   cloud_provider: "gcp"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -28,7 +28,7 @@ meta:
 
 ### Description
 
- DNSSEC should not use the RSASHA1 algorithm, which is considered weak and vulnerable to cryptographic attacks. If a `dnssec_config` block contains a `default_key_specs` attribute with `algorithm = "rsasha1"`, attackers may be able to exploit known weaknesses in this algorithm to forge DNS records, potentially redirecting users to malicious sites or causing other security issues. Instead, use a stronger algorithm such as `rsasha256`:
+ DNSSEC should not use the RSASHA1 algorithm, which is considered weak and vulnerable to cryptographic attacks. If a `dnssec_config` block contains a `default_key_specs` attribute with `algorithm = "rsasha1"`, attackers may be able to exploit known weaknesses in the algorithm to forge DNS records, potentially redirecting users to malicious sites or causing other security issues. Instead, use a stronger algorithm such as `rsasha256`:
 
 ```
 dnssec_config {

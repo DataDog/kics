@@ -1,10 +1,10 @@
 ---
-title: "Cluster Labels Disabled"
+title: "Cluster labels disabled"
 group-id: "rules/terraform/gcp"
 meta:
   name: "gcp/cluster_labels_disabled"
   id: "65c1bc7a-4835-4ac4-a2b6-13d310b0648d"
-  display_name: "Cluster Labels Disabled"
+  display_name: "Cluster labels disabled"
   cloud_provider: "gcp"
   framework: "Terraform"
   severity: "LOW"

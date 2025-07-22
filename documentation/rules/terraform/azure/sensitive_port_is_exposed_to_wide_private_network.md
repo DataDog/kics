@@ -1,10 +1,10 @@
 ---
-title: "Sensitive Port Is Exposed To Wide Private Network"
+title: "Sensitive port is exposed to wide private network"
 group-id: "rules/terraform/azure"
 meta:
   name: "azure/sensitive_port_is_exposed_to_wide_private_network"
   id: "c6c7b33d-d7f6-4ab8-8c82-ca0431ecdb7e"
-  display_name: "Sensitive Port Is Exposed To Wide Private Network"
+  display_name: "Sensitive port is exposed to wide private network"
   cloud_provider: "azure"
   framework: "Terraform"
   severity: "LOW"
@@ -28,7 +28,7 @@ meta:
 
 ### Description
 
- Opening sensitive ports such as port 23 (Telnet) or port 110 (POP3) to wide private network ranges (e.g., `10.0.0.0/8`, `172.16.0.0/12`, or `192.168.0.0/16`) in either TCP or UDP protocols increases the attack surface and exposes resources to unnecessary risk, as these ports are often targeted by attackers due to weak authentication and lack of encryption. If left unaddressed, this misconfiguration can lead to potential unauthorized access, credential theft, or exploitation of legacy services, especially if the associated services are enabled and unpatched. To remediate, network security rules should deny inbound access to such sensitive ports, for example:
+ Opening sensitive ports such as port 23 (Telnet) or port 110 (POP3) to wide private network ranges (for example, `10.0.0.0/8`, `172.16.0.0/12`, or `192.168.0.0/16`) in either TCP or UDP protocols increases the attack surface and exposes resources to unnecessary risk, as these ports are often targeted by attackers due to weak authentication and lack of encryption. If left unaddressed, this misconfiguration can lead to potential unauthorized access, credential theft, or exploitation of legacy services, especially if the associated services are enabled and unpatched. To remediate, network security rules should deny inbound access to such sensitive ports. For example:
 
 ```
 resource "azurerm_network_security_rule" "secure_example" {

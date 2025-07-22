@@ -1,10 +1,10 @@
 ---
-title: "S3 Bucket ACL Allows Read to Any Authenticated User"
+title: "S3 bucket ACL allows read to any authenticated user"
 group-id: "rules/terraform/aws"
 meta:
   name: "aws/s3_bucket_acl_allows_read_to_any_authenticated_user"
   id: "57b9893d-33b1-4419-bcea-a717ea87e139"
-  display_name: "S3 Bucket ACL Allows Read to Any Authenticated User"
+  display_name: "S3 bucket ACL allows read to any authenticated user"
   cloud_provider: "aws"
   framework: "Terraform"
   severity: "HIGH"
@@ -28,7 +28,7 @@ meta:
 
 ### Description
 
- This check identifies S3 buckets that use the 'authenticated-read' ACL, which grants read access to any authenticated AWS user, regardless of their account. This configuration creates a significant security risk as it exposes your data to all authenticated AWS users worldwide, potentially leading to unauthorized data access and information disclosure. 
+ This check identifies S3 buckets that use the `authenticated-read` ACL, which grants read access to any authenticated AWS user, regardless of their account. This configuration creates a significant security risk as it exposes your data to all authenticated AWS users worldwide, potentially leading to unauthorized data access and information disclosure. 
 
 Secure configuration example:
 ```
