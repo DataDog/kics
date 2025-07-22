@@ -293,9 +293,6 @@ func resolveFunctionCall(expr *hclsyntax.FunctionCallExpr, locals map[string]str
 	}
 }
 
-// windowsAbsPath matches something like "C:\..." or "D:/..."
-var windowsAbsPath = regexp.MustCompile(`^[a-zA-Z]:[\\/].*`)
-
 // LooksLikeLocalModuleSource uses heuristics to determine if the resolved source string is likely local
 func LooksLikeLocalModuleSource(source string) bool {
 	source = strings.TrimSpace(source)
@@ -318,11 +315,7 @@ func LooksLikeLocalModuleSource(source string) bool {
 
 	return strings.HasPrefix(lower, "./") ||
 		strings.HasPrefix(lower, "../") ||
-		strings.HasPrefix(lower, ".\\") ||
-		strings.HasPrefix(lower, "..\\") ||
-		filepath.IsAbs(source) || // Unix-style absolute
-		windowsAbsPath.MatchString(source) || // Windows-style absolute
-		strings.HasPrefix(lower, "file://")
+		filepath.IsAbs(source)
 }
 
 func DetectModuleSourceType(source string) (string, string) {
