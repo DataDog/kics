@@ -1,6 +1,6 @@
 ---
 title: "S3 bucket access to any principal"
-group-id: "rules/terraform/aws"
+group_id: "rules/terraform/aws"
 meta:
   name: "aws/s3_bucket_access_to_any_principal"
   id: "7af43613-6bb9-4a0e-8c4d-1314b799425e"

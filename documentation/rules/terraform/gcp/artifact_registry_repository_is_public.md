@@ -1,6 +1,6 @@
 ---
 title: "Artifact Registry repo is public"
-group-id: "rules/terraform/gcp"
+group_id: "rules/terraform/gcp"
 meta:
   name: "gcp/artifact_registry_repository_is_public"
   id: "a7b8c9d0-e1f2-3a4b-5c6d-7e8f90123456"

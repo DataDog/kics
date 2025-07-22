@@ -1,6 +1,6 @@
 ---
 title: "CloudTrail log files not encrypted with KMS"
-group-id: "rules/terraform/aws"
+group_id: "rules/terraform/aws"
 meta:
   name: "aws/cloudtrail_log_files_not_encrypted_with_kms"
   id: "5d9e3164-9265-470c-9a10-57ae454ac0c7"

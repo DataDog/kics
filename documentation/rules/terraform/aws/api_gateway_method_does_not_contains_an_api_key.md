@@ -1,6 +1,6 @@
 ---
 title: "API Gateway method does not contains an API key"
-group-id: "rules/terraform/aws"
+group_id: "rules/terraform/aws"
 meta:
   name: "aws/api_gateway_method_does_not_contains_an_api_key"
   id: "671211c5-5d2a-4e97-8867-30fc28b02216"

@@ -1,6 +1,6 @@
 ---
 title: "Stack without template"
-group-id: "rules/terraform/aws"
+group_id: "rules/terraform/aws"
 meta:
   name: "aws/stack_without_template"
   id: "91bea7b8-0c31-4863-adc9-93f6177266c4"

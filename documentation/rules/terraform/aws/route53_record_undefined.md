@@ -1,6 +1,6 @@
 ---
 title: "Route53 record undefined"
-group-id: "rules/terraform/aws"
+group_id: "rules/terraform/aws"
 meta:
   name: "aws/route53_record_undefined"
   id: "25db74bf-fa3b-44da-934e-8c3e005c0453"

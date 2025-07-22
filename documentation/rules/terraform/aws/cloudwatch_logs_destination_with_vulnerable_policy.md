@@ -1,6 +1,6 @@
 ---
 title: "CloudWatch logs destination with vulnerable policy"
-group-id: "rules/terraform/aws"
+group_id: "rules/terraform/aws"
 meta:
   name: "aws/cloudwatch_logs_destination_with_vulnerable_policy"
   id: "db0ec4c4-852c-46a2-b4f3-7ec13cdb12a8"

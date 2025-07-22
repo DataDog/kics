@@ -1,6 +1,6 @@
 ---
 title: "SQL analysis services port 2383 (TCP) is publicly accessible"
-group-id: "rules/terraform/aws"
+group_id: "rules/terraform/aws"
 meta:
   name: "aws/sql_analysis_services_port_2383_is_publicly_accessible"
   id: "54c417bf-c762-48b9-9d31-b3d87047e3f0"

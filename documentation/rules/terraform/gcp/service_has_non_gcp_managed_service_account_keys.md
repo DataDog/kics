@@ -1,6 +1,6 @@
 ---
 title: "There are non GCP-managed service account keys for a service account"
-group-id: "rules/terraform/gcp"
+group_id: "rules/terraform/gcp"
 meta:
   name: "gcp/service_has_non_gcp_managed_service_account_keys"
   id: "3jh54js8-e5f6-7890-abcd-ef1234567890"

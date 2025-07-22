@@ -1,6 +1,6 @@
 ---
 title: "Cloud Run service is public"
-group-id: "rules/terraform/gcp"
+group_id: "rules/terraform/gcp"
 meta:
   name: "gcp/cloud_run_service_is_public"
   id: "7e3c1a2b-9d4f-4c8e-8a5b-0f1e2d3c4b6a"

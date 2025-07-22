@@ -1,6 +1,6 @@
 ---
 title: "MSSQL server auditing disabled"
-group-id: "rules/terraform/azure"
+group_id: "rules/terraform/azure"
 meta:
   name: "azure/mssql_server_auditing_disabled"
   id: "609839ae-bd81-4375-9910-5bce72ae7b92"

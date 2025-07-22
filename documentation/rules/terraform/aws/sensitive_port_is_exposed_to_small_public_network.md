@@ -1,6 +1,6 @@
 ---
 title: "Sensitive port is exposed to small public network"
-group-id: "rules/terraform/aws"
+group_id: "rules/terraform/aws"
 meta:
   name: "aws/sensitive_port_is_exposed_to_small_public_network"
   id: "e35c16a2-d54e-419d-8546-a804d8e024d0"

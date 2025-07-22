@@ -1,6 +1,6 @@
 ---
 title: "Neptune cluster snapshot not encrypted"
-group-id: "rules/terraform/aws"
+group_id: "rules/terraform/aws"
 meta:
   name: "aws/neptune_snapshots_not_encrypted"
   id: "g3l20gd0k-e5f6-7890-ab12-cd34ef567890"

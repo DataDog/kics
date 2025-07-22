@@ -1,6 +1,6 @@
 ---
 title: "RDS without logging"
-group-id: "rules/terraform/aws"
+group_id: "rules/terraform/aws"
 meta:
   name: "aws/rds_without_logging"
   id: "8d7f7b8c-6c7c-40f8-baa6-62006c6c7b56"

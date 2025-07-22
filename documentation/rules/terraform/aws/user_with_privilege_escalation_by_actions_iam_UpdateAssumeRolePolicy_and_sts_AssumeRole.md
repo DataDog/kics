@@ -1,6 +1,6 @@
 ---
 title: "User with privilege escalation by actions 'iam:UpdateAssumeRolePolicy' and 'sts:AssumeRole'"
-group-id: "rules/terraform/aws"
+group_id: "rules/terraform/aws"
 meta:
   name: "aws/user_with_privilege_escalation_by_actions_iam_UpdateAssumeRolePolicy_and_sts_AssumeRole"
   id: "33627268-1445-4385-988a-318fd9d1a512"

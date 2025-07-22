@@ -1,6 +1,6 @@
 ---
 title: "IP aliasing disabled"
-group-id: "rules/terraform/gcp"
+group_id: "rules/terraform/gcp"
 meta:
   name: "gcp/ip_aliasing_disabled"
   id: "c606ba1d-d736-43eb-ac24-e16108f3a9e0"

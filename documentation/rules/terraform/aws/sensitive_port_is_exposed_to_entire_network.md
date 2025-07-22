@@ -1,6 +1,6 @@
 ---
 title: "Sensitive port is exposed to entire network"
-group-id: "rules/terraform/aws"
+group_id: "rules/terraform/aws"
 meta:
   name: "aws/sensitive_port_is_exposed_to_entire_network"
   id: "381c3f2a-ef6f-4eff-99f7-b169cda3422c"

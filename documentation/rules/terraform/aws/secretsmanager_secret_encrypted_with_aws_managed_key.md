@@ -1,6 +1,6 @@
 ---
 title: "Secrets Manager secret encrypted with AWS-managed key"
-group-id: "rules/terraform/aws"
+group_id: "rules/terraform/aws"
 meta:
   name: "aws/secretsmanager_secret_encrypted_with_aws_managed_key"
   id: "b0d3ef3f-845d-4b1b-83d6-63a5a380375f"

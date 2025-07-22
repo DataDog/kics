@@ -1,6 +1,6 @@
 ---
 title: "RDS DB instance publicly accessible"
-group-id: "rules/terraform/aws"
+group_id: "rules/terraform/aws"
 meta:
   name: "aws/rds_db_instance_publicly_accessible"
   id: "35113e6f-2c6b-414d-beec-7a9482d3b2d1"

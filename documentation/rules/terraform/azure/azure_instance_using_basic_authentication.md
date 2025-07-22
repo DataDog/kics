@@ -1,6 +1,6 @@
 ---
 title: "Azure instance using basic authentication"
-group-id: "rules/terraform/azure"
+group_id: "rules/terraform/azure"
 meta:
   name: "azure/azure_instance_using_basic_authentication"
   id: "dafe30ec-325d-4516-85d1-e8e6776f012c"

@@ -1,6 +1,6 @@
 ---
 title: "Automatic minor upgrades disabled"
-group-id: "rules/terraform/aws"
+group_id: "rules/terraform/aws"
 meta:
   name: "aws/automatic_minor_upgrades_disabled"
   id: "3b6d777b-76e3-4133-80a3-0d6f667ade7f"

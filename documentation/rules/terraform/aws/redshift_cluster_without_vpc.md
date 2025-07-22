@@ -1,6 +1,6 @@
 ---
 title: "Redshift cluster without VPC"
-group-id: "rules/terraform/aws"
+group_id: "rules/terraform/aws"
 meta:
   name: "aws/redshift_cluster_without_vpc"
   id: "0a494a6a-ebe2-48a0-9d77-cf9d5125e1b3"

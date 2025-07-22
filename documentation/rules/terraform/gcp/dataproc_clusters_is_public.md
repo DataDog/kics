@@ -1,6 +1,6 @@
 ---
 title: "Dataproc clusters publicly accessible"
-group-id: "rules/terraform/gcp"
+group_id: "rules/terraform/gcp"
 meta:
   name: "gcp/dataproc_clusters_is_public"
   id: "e3f7a9b1-c2d3-4e5f-8901-23456789abcd"

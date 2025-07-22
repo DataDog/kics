@@ -1,6 +1,6 @@
 ---
 title: "Glue with vulnerable policy"
-group-id: "rules/terraform/aws"
+group_id: "rules/terraform/aws"
 meta:
   name: "aws/glue_with_vulnerable_policy"
   id: "d25edb51-07fb-4a73-97d4-41cecdc53a22"

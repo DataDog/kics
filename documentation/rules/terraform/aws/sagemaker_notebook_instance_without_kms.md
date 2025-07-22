@@ -1,6 +1,6 @@
 ---
 title: "SageMaker notebook instance without KMS"
-group-id: "rules/terraform/aws"
+group_id: "rules/terraform/aws"
 meta:
   name: "aws/sagemaker_notebook_instance_without_kms"
   id: "f3674e0c-f6be-43fa-b71c-bf346d1aed99"

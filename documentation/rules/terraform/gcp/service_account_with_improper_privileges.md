@@ -1,6 +1,6 @@
 ---
 title: "Service account with improper privileges"
-group-id: "rules/terraform/gcp"
+group_id: "rules/terraform/gcp"
 meta:
   name: "gcp/service_account_with_improper_privileges"
   id: "cefdad16-0dd5-4ac5-8ed2-a37502c78672"

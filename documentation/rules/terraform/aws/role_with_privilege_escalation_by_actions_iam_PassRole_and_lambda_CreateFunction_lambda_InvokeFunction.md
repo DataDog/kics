@@ -1,6 +1,6 @@
 ---
 title: "Role with privilege escalation by actions 'lambda:CreateFunction' and 'iam:PassRole' and 'lambda:InvokeFunction'"
-group-id: "rules/terraform/aws"
+group_id: "rules/terraform/aws"
 meta:
   name: "aws/role_with_privilege_escalation_by_actions_iam_PassRole_and_lambda_CreateFunction_lambda_InvokeFunction"
   id: "fa62ac4f-f5b9-45b9-97c1-625c8b6253ca"

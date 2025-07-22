@@ -1,6 +1,6 @@
 ---
 title: "S3 bucket allows list action from all principals"
-group-id: "rules/terraform/aws"
+group_id: "rules/terraform/aws"
 meta:
   name: "aws/s3_bucket_allows_list_action_from_all_principals"
   id: "66c6f96f-2d9e-417e-a998-9058aeeecd44"

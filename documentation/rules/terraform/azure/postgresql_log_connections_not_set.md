@@ -1,6 +1,6 @@
 ---
 title: "PostgreSQL log connections not set"
-group-id: "rules/terraform/azure"
+group_id: "rules/terraform/azure"
 meta:
   name: "azure/postgresql_log_connections_not_set"
   id: "c640d783-10c5-4071-b6c1-23507300d333"

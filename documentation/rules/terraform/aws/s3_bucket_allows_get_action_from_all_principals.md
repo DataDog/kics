@@ -1,6 +1,6 @@
 ---
 title: "S3 bucket allows get action from all principals"
-group-id: "rules/terraform/aws"
+group_id: "rules/terraform/aws"
 meta:
   name: "aws/s3_bucket_allows_get_action_from_all_principals"
   id: "1df37f4b-7197-45ce-83f8-9994d2fcf885"

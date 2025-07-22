@@ -1,6 +1,6 @@
 ---
 title: "Small MSSQL audit retention period"
-group-id: "rules/terraform/azure"
+group_id: "rules/terraform/azure"
 meta:
   name: "azure/small_mssql_audit_retention_period"
   id: "9c301481-e6ec-44f7-8a49-8ec63e2969ea"

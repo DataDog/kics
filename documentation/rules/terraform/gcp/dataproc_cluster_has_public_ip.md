@@ -1,6 +1,6 @@
 ---
 title: "Dataproc clusters has public IPs"
-group-id: "rules/terraform/gcp"
+group_id: "rules/terraform/gcp"
 meta:
   name: "gcp/dataproc_cluster_has_public_ip"
   id: "d2c4b6a8-1234-4f56-9abc-def012345678"

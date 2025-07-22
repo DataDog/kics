@@ -1,6 +1,6 @@
 ---
 title: "ElastiCache replication group not encrypted at transit"
-group-id: "rules/terraform/aws"
+group_id: "rules/terraform/aws"
 meta:
   name: "aws/elasticache_replication_group_not_encrypted_at_transit"
   id: "1afbb3fa-cf6c-4a3d-b730-95e9f4df343e"

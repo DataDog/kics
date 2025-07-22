@@ -1,6 +1,6 @@
 ---
 title: "Secrets Manager secret without KMS"
-group-id: "rules/terraform/aws"
+group_id: "rules/terraform/aws"
 meta:
   name: "aws/secretsmanager_secret_without_kms"
   id: "a2f548f2-188c-4fff-b172-e9a6acb216bd"

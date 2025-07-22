@@ -1,6 +1,6 @@
 ---
 title: "Google Storage bucket level access disabled"
-group-id: "rules/terraform/gcp"
+group_id: "rules/terraform/gcp"
 meta:
   name: "gcp/google_storage_bucket_level_access_disabled"
   id: "bb0db090-5509-4853-a827-75ced0b3caa0"

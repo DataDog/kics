@@ -1,6 +1,6 @@
 ---
 title: "DynamoDB table not encrypted"
-group-id: "rules/terraform/aws"
+group_id: "rules/terraform/aws"
 meta:
   name: "aws/dynamodb_table_not_encrypted"
   id: "ce089fd4-1406-47bd-8aad-c259772bb294"

@@ -1,6 +1,6 @@
 ---
 title: "Redshift cluster logging disabled"
-group-id: "rules/terraform/aws"
+group_id: "rules/terraform/aws"
 meta:
   name: "aws/redshift_cluster_logging_disabled"
   id: "15ffbacc-fa42-4f6f-a57d-2feac7365caa"

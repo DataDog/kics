@@ -1,6 +1,6 @@
 ---
 title: "MySQL SSL connection disabled"
-group-id: "rules/terraform/azure"
+group_id: "rules/terraform/azure"
 meta:
   name: "azure/mysql_ssl_connection_disabled"
   id: "73e42469-3a86-4f39-ad78-098f325b4e9f"

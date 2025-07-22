@@ -1,6 +1,6 @@
 ---
 title: "S3 bucket with unsecured CORS rule"
-group-id: "rules/terraform/aws"
+group_id: "rules/terraform/aws"
 meta:
   name: "aws/s3_bucket_with_unsecured_cors_rule"
   id: "98a8f708-121b-455b-ae2f-da3fb59d17e1"

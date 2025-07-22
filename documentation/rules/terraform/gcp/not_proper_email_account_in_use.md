@@ -1,6 +1,6 @@
 ---
 title: "Not proper email account in use"
-group-id: "rules/terraform/gcp"
+group_id: "rules/terraform/gcp"
 meta:
   name: "gcp/not_proper_email_account_in_use"
   id: "9356962e-4a4f-4d06-ac59-dc8008775eaa"

@@ -1,6 +1,6 @@
 ---
 title: "Glue Data Catalog encryption disabled"
-group-id: "rules/terraform/aws"
+group_id: "rules/terraform/aws"
 meta:
   name: "aws/glue_data_catalog_encryption_disabled"
   id: "01d50b14-e933-4c99-b314-6d08cd37ad35"

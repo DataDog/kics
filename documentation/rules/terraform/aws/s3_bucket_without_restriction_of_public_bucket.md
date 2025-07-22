@@ -1,6 +1,6 @@
 ---
 title: "S3 bucket without restriction of public bucket"
-group-id: "rules/terraform/aws"
+group_id: "rules/terraform/aws"
 meta:
   name: "aws/s3_bucket_without_restriction_of_public_bucket"
   id: "1ec253ab-c220-4d63-b2de-5b40e0af9293"

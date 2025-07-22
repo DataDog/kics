@@ -1,6 +1,6 @@
 ---
 title: "Private cluster disabled"
-group-id: "rules/terraform/gcp"
+group_id: "rules/terraform/gcp"
 meta:
   name: "gcp/private_cluster_disabled"
   id: "6ccb85d7-0420-4907-9380-50313f80946b"

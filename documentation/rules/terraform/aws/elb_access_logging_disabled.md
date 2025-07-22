@@ -1,6 +1,6 @@
 ---
 title: "ELB access log disabled"
-group-id: "rules/terraform/aws"
+group_id: "rules/terraform/aws"
 meta:
   name: "aws/elb_access_logging_disabled"
   id: "20018359-6fd7-4d05-ab26-d4dffccbdf79"

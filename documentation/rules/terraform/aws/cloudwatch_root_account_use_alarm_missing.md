@@ -1,6 +1,6 @@
 ---
 title: "CloudWatch root account use missing"
-group-id: "rules/terraform/aws"
+group_id: "rules/terraform/aws"
 meta:
   name: "aws/cloudwatch_root_account_use_alarm_missing"
   id: "8b1b1e67-6248-4dca-bbad-93486bb181c0"

@@ -1,6 +1,6 @@
 ---
 title: "OSLogin disabled"
-group-id: "rules/terraform/gcp"
+group_id: "rules/terraform/gcp"
 meta:
   name: "gcp/os_login_disabled"
   id: "32ecd6eb-0711-421f-9627-1a28d9eff217"

@@ -1,6 +1,6 @@
 ---
 title: "Cloudfront viewer protocol policy allows HTTP"
-group-id: "rules/terraform/aws"
+group_id: "rules/terraform/aws"
 meta:
   name: "aws/cloudfront_viewer_protocol_policy_allows_http"
   id: "55af1353-2f62-4fa0-a8e1-a210ca2708f5"

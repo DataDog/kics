@@ -1,6 +1,6 @@
 ---
 title: "DynamoDB table Point-in-Time Recovery disabled"
-group-id: "rules/terraform/aws"
+group_id: "rules/terraform/aws"
 meta:
   name: "aws/dynamodb_table_point_in_time_recovery_disabled"
   id: "741f1291-47ac-4a85-a07b-3d32a9d6bd3e"

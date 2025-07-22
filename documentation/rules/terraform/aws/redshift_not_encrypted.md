@@ -1,6 +1,6 @@
 ---
 title: "Redshift not encrypted"
-group-id: "rules/terraform/aws"
+group_id: "rules/terraform/aws"
 meta:
   name: "aws/redshift_not_encrypted"
   id: "cfdcabb0-fc06-427c-865b-c59f13e898ce"

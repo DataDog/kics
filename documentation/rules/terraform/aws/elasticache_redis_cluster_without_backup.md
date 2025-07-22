@@ -1,6 +1,6 @@
 ---
 title: "ElastiCache Redis cluster without backup"
-group-id: "rules/terraform/aws"
+group_id: "rules/terraform/aws"
 meta:
   name: "aws/elasticache_redis_cluster_without_backup"
   id: "8fdb08a0-a868-4fdf-9c27-ccab0237f1ab"

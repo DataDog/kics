@@ -1,6 +1,6 @@
 ---
 title: "IAM database auth not enabled"
-group-id: "rules/terraform/aws"
+group_id: "rules/terraform/aws"
 meta:
   name: "aws/iam_database_auth_not_enabled"
   id: "88fd05e0-ac0e-43d2-ba6d-fc0ba60ae1a6"

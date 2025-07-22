@@ -1,6 +1,6 @@
 ---
 title: "Cloud Storage bucket versioning disabled"
-group-id: "rules/terraform/gcp"
+group_id: "rules/terraform/gcp"
 meta:
   name: "gcp/cloud_storage_bucket_versioning_disabled"
   id: "e7e961ac-d17e-4413-84bc-8a1fbe242944"

@@ -1,6 +1,6 @@
 ---
 title: "S3 bucket ACL allows read to any authenticated user"
-group-id: "rules/terraform/aws"
+group_id: "rules/terraform/aws"
 meta:
   name: "aws/s3_bucket_acl_allows_read_to_any_authenticated_user"
   id: "57b9893d-33b1-4419-bcea-a717ea87e139"

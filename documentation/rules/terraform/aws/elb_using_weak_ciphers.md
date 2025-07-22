@@ -1,6 +1,6 @@
 ---
 title: "ELB using weak ciphers"
-group-id: "rules/terraform/aws"
+group_id: "rules/terraform/aws"
 meta:
   name: "aws/elb_using_weak_ciphers"
   id: "4a800e14-c94a-442d-9067-5a2e9f6c0a4c"

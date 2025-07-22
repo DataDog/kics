@@ -1,6 +1,6 @@
 ---
 title: "SQL server predictable Active Directory admin account name"
-group-id: "rules/terraform/azure"
+group_id: "rules/terraform/azure"
 meta:
   name: "azure/sql_server_predictable_active_directory_admin_account_name"
   id: "bcd3fc01-5902-4f2a-b05a-227f9bbf5450"

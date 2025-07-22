@@ -1,6 +1,6 @@
 ---
 title: "Aurora with disabled at rest encryption"
-group-id: "rules/terraform/aws"
+group_id: "rules/terraform/aws"
 meta:
   name: "aws/aurora_with_disabled_at_rest_encryption"
   id: "1a690d1d-0ae7-49fa-b2db-b75ae0dd1d3e"

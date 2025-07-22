@@ -1,6 +1,6 @@
 ---
 title: "Disk encryption disabled"
-group-id: "rules/terraform/gcp"
+group_id: "rules/terraform/gcp"
 meta:
   name: "gcp/disk_encryption_disabled"
   id: "b1d51728-7270-4991-ac2f-fc26e2695b38"

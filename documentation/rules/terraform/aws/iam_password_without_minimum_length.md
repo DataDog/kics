@@ -1,6 +1,6 @@
 ---
 title: "IAM password without minimum length"
-group-id: "rules/terraform/aws"
+group_id: "rules/terraform/aws"
 meta:
   name: "aws/iam_password_without_minimum_length"
   id: "1bc1c685-e593-450e-88fb-19db4c82aa1d"

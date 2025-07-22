@@ -1,6 +1,6 @@
 ---
 title: "Authentication without MFA"
-group-id: "rules/terraform/aws"
+group_id: "rules/terraform/aws"
 meta:
   name: "aws/authentication_without_mfa"
   id: "3ddfa124-6407-4845-a501-179f90c65097"

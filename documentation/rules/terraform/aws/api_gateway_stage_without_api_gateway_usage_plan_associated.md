@@ -1,6 +1,6 @@
 ---
 title: "API Gateway stage without API Gateway usage plan associated"
-group-id: "rules/terraform/aws"
+group_id: "rules/terraform/aws"
 meta:
   name: "aws/api_gateway_stage_without_api_gateway_usage_plan_associated"
   id: "c999cf62-0920-40f8-8dda-0caccd66ed7e"

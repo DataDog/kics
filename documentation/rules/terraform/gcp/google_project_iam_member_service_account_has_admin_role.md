@@ -1,6 +1,6 @@
 ---
 title: "Google project IAM member service account has admin role"
-group-id: "rules/terraform/gcp"
+group_id: "rules/terraform/gcp"
 meta:
   name: "gcp/google_project_iam_member_service_account_has_admin_role"
   id: "84d36481-fd63-48cb-838e-635c44806ec2"

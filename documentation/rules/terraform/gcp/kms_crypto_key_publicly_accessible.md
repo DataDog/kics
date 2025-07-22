@@ -1,6 +1,6 @@
 ---
 title: "KMS CryptoKey is publicly accessible"
-group-id: "rules/terraform/gcp"
+group_id: "rules/terraform/gcp"
 meta:
   name: "gcp/kms_crypto_key_publicly_accessible"
   id: "16cc87d1-dd47-4f46-b3ce-4dfcac8fd2f5"

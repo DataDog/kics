@@ -1,6 +1,6 @@
 ---
 title: "Storage account not forcing HTTPS"
-group-id: "rules/terraform/azure"
+group_id: "rules/terraform/azure"
 meta:
   name: "azure/storage_account_not_forcing_https"
   id: "12944ec4-1fa0-47be-8b17-42a034f937c2"

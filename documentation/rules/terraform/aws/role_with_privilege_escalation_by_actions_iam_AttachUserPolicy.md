@@ -1,6 +1,6 @@
 ---
 title: "Role with privilege escalation by actions 'iam:AttachUserPolicy'"
-group-id: "rules/terraform/aws"
+group_id: "rules/terraform/aws"
 meta:
   name: "aws/role_with_privilege_escalation_by_actions_iam_AttachUserPolicy"
   id: "7c96920c-6fd0-449d-9a52-0aa431b6beaf"

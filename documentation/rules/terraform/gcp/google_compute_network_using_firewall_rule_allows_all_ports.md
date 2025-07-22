@@ -1,6 +1,6 @@
 ---
 title: "Google Compute network using firewall rule that allows all ports"
-group-id: "rules/terraform/gcp"
+group_id: "rules/terraform/gcp"
 meta:
   name: "gcp/google_compute_network_using_firewall_rule_allows_all_ports"
   id: "22ef1d26-80f8-4a6c-8c15-f35aab3cac78"

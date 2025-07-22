@@ -1,6 +1,6 @@
 ---
 title: "AKS RBAC disabled"
-group-id: "rules/terraform/azure"
+group_id: "rules/terraform/azure"
 meta:
   name: "azure/aks_rbac_disabled"
   id: "86f92117-eed8-4614-9c6c-b26da20ff37f"

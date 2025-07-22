@@ -1,6 +1,6 @@
 ---
 title: "Unrestricted SQL server access"
-group-id: "rules/terraform/azure"
+group_id: "rules/terraform/azure"
 meta:
   name: "azure/unrestricted_sql_server_access"
   id: "d7ba74da-2da0-4d4b-83c8-2fd72a3f6c28"

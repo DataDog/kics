@@ -1,6 +1,6 @@
 ---
 title: "EKS cluster has public access CIDRs"
-group-id: "rules/terraform/aws"
+group_id: "rules/terraform/aws"
 meta:
   name: "aws/eks_cluster_has_public_access_cidrs"
   id: "61cf9883-1752-4768-b18c-0d57f2737709"

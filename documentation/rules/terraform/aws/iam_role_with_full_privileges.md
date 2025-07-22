@@ -1,6 +1,6 @@
 ---
 title: "IAM role with full privileges"
-group-id: "rules/terraform/aws"
+group_id: "rules/terraform/aws"
 meta:
   name: "aws/iam_role_with_full_privileges"
   id: "b1ffa705-19a3-4b73-b9d0-0c97d0663842"

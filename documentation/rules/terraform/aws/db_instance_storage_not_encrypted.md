@@ -1,6 +1,6 @@
 ---
 title: "DB instance storage not encrypted"
-group-id: "rules/terraform/aws"
+group_id: "rules/terraform/aws"
 meta:
   name: "aws/db_instance_storage_not_encrypted"
   id: "08bd0760-8752-44e1-9779-7bb369b2b4e4"

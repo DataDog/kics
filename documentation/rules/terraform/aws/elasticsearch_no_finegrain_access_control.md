@@ -1,6 +1,6 @@
 ---
 title: "Fine-grained access control disabled for OpenSearch/Elasticsearch"
-group-id: "rules/terraform/aws"
+group_id: "rules/terraform/aws"
 meta:
   name: "aws/elasticsearch_no_finegrain_access_control"
   id: "b4c6d7e8-f9a1-4bcd-89ef-01234abcd567"

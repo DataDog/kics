@@ -1,6 +1,6 @@
 ---
 title: "Function App authentication disabled"
-group-id: "rules/terraform/azure"
+group_id: "rules/terraform/azure"
 meta:
   name: "azure/function_app_authentication_disabled"
   id: "e65a0733-94a0-4826-82f4-df529f4c593f"

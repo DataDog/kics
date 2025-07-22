@@ -1,6 +1,6 @@
 ---
 title: "CMK is unusable"
-group-id: "rules/terraform/aws"
+group_id: "rules/terraform/aws"
 meta:
   name: "aws/cmk_is_unusable"
   id: "7350fa23-dcf7-4938-916d-6a60b0c73b50"

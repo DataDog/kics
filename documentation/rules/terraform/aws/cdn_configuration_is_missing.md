@@ -1,6 +1,6 @@
 ---
 title: "CDN configuration is missing"
-group-id: "rules/terraform/aws"
+group_id: "rules/terraform/aws"
 meta:
   name: "aws/cdn_configuration_is_missing"
   id: "1bc367f6-901d-4870-ad0c-71d79762ef52"

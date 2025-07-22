@@ -1,6 +1,6 @@
 ---
 title: "ssl_enforcement_enabled is not set to ENABLED for PostgreSQL database server"
-group-id: "rules/terraform/azure"
+group_id: "rules/terraform/azure"
 meta:
   name: "azure/postgres_enforce_ssl_connection_disabled"
   id: "93f9tyjk-e5f6-7890-ab12-cd34ef567890"

@@ -1,6 +1,6 @@
 ---
 title: "ALB deletion protection disabled"
-group-id: "rules/terraform/aws"
+group_id: "rules/terraform/aws"
 meta:
   name: "aws/alb_deletion_protection_disabled"
   id: "afecd1f1-6378-4f7e-bb3b-60c35801fdd4"

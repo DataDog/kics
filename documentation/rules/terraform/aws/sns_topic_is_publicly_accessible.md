@@ -1,6 +1,6 @@
 ---
 title: "SNS topic is publicly accessible"
-group-id: "rules/terraform/aws"
+group_id: "rules/terraform/aws"
 meta:
   name: "aws/sns_topic_is_publicly_accessible"
   id: "b26d2b7e-60f6-413d-a3a1-a57db24aa2b3"

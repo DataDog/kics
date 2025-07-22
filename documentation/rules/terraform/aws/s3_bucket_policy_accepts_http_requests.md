@@ -1,6 +1,6 @@
 ---
 title: "S3 bucket policy accepts HTTP requests"
-group-id: "rules/terraform/aws"
+group_id: "rules/terraform/aws"
 meta:
   name: "aws/s3_bucket_policy_accepts_http_requests"
   id: "4bc4dd4c-7d8d-405e-a0fb-57fa4c31b4d9"

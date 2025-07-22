@@ -1,6 +1,6 @@
 ---
 title: "Pub/Sub Topics are anonymously or publicly accessible"
-group-id: "rules/terraform/gcp"
+group_id: "rules/terraform/gcp"
 meta:
   name: "gcp/pubsub_topic_is_public"
   id: "7sdj7dsj8-f348-4f95-845c-1090e41a615c"

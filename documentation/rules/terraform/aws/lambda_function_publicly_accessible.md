@@ -1,6 +1,6 @@
 ---
 title: "Lambda function publicly accessible"
-group-id: "rules/terraform/aws"
+group_id: "rules/terraform/aws"
 meta:
   name: "aws/lambda_function_publicly_accessible"
   id: "1btsf2f9-af8c-4dfc-a0f1-a03adb70deb2"

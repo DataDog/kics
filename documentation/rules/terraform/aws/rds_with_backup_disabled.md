@@ -1,6 +1,6 @@
 ---
 title: "RDS with backup disabled"
-group-id: "rules/terraform/aws"
+group_id: "rules/terraform/aws"
 meta:
   name: "aws/rds_with_backup_disabled"
   id: "1dc73fb4-5b51-430c-8c5f-25dcf9090b02"

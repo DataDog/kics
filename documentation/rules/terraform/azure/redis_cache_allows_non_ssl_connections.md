@@ -1,6 +1,6 @@
 ---
 title: "Redis cache allows non SSL connections"
-group-id: "rules/terraform/azure"
+group_id: "rules/terraform/azure"
 meta:
   name: "azure/redis_cache_allows_non_ssl_connections"
   id: "e29a75e6-aba3-4896-b42d-b87818c16b58"

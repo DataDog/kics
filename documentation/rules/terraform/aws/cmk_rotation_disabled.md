@@ -1,6 +1,6 @@
 ---
 title: "CMK rotation disabled"
-group-id: "rules/terraform/aws"
+group_id: "rules/terraform/aws"
 meta:
   name: "aws/cmk_rotation_disabled"
   id: "22fbfeac-7b5a-421a-8a27-7a2178bb910b"

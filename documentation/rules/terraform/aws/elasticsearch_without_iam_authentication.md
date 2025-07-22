@@ -1,6 +1,6 @@
 ---
 title: "Elasticsearch without IAM authentication"
-group-id: "rules/terraform/aws"
+group_id: "rules/terraform/aws"
 meta:
   name: "aws/elasticsearch_without_iam_authentication"
   id: "e7530c3c-b7cf-4149-8db9-d037a0b5268e"

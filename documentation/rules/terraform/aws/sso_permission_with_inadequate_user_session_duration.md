@@ -1,6 +1,6 @@
 ---
 title: "SSO permission with inadequate user session duration"
-group-id: "rules/terraform/aws"
+group_id: "rules/terraform/aws"
 meta:
   name: "aws/sso_permission_with_inadequate_user_session_duration"
   id: "ce9dfce0-5fc8-433b-944a-3b16153111a8"

@@ -1,6 +1,6 @@
 ---
 title: "Lambda function with privileged role"
-group-id: "rules/terraform/aws"
+group_id: "rules/terraform/aws"
 meta:
   name: "aws/lambda_function_with_privileged_role"
   id: "1b3af2f9-af8c-4dfc-a0f1-a03adb70deb2"

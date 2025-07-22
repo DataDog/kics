@@ -1,6 +1,6 @@
 ---
 title: "KMS admin and CryptoKey roles in use"
-group-id: "rules/terraform/gcp"
+group_id: "rules/terraform/gcp"
 meta:
   name: "gcp/kms_admin_and_crypto_key_roles_in_use"
   id: "92e4464a-4139-4d57-8742-b5acc0347680"

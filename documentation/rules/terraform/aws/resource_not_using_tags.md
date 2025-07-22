@@ -1,6 +1,6 @@
 ---
 title: "Resource not using tags"
-group-id: "rules/terraform/aws"
+group_id: "rules/terraform/aws"
 meta:
   name: "aws/resource_not_using_tags"
   id: "e38a8e0a-b88b-4902-b3fe-b0fcb17d5c10"

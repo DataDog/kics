@@ -1,6 +1,6 @@
 ---
 title: "S3 bucket public ACL overridden by public access block"
-group-id: "rules/terraform/aws"
+group_id: "rules/terraform/aws"
 meta:
   name: "aws/s3_bucket_public_acl_overridden_by_public_access_block"
   id: "bf878b1a-7418-4de3-b13c-3a86cf894920"

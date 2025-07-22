@@ -1,6 +1,6 @@
 ---
 title: "DMS endpoints without SSL"
-group-id: "rules/terraform/aws"
+group_id: "rules/terraform/aws"
 meta:
   name: "aws/dms_endpoint_no_ssl_configured"
   id: "e6f7g8h9-i0j1-4klm-56no-7890pqrstu12"

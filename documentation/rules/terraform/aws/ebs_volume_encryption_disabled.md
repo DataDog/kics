@@ -1,6 +1,6 @@
 ---
 title: "EBS volume encryption disabled"
-group-id: "rules/terraform/aws"
+group_id: "rules/terraform/aws"
 meta:
   name: "aws/ebs_volume_encryption_disabled"
   id: "cc997676-481b-4e93-aa81-d19f8c5e9b12"
