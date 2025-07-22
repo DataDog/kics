@@ -1,6 +1,6 @@
 ---
 title: "DocumentDB logging is disabled"
-group-id: "rules/terraform/aws"
+group_id: "rules/terraform/aws"
 meta:
   name: "aws/docdb_logging_disabled"
   id: "56f6a008-1b14-4af4-b9b2-ab7cf7e27641"

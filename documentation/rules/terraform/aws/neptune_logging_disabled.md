@@ -1,6 +1,6 @@
 ---
 title: "Neptune logging is disabled"
-group-id: "rules/terraform/aws"
+group_id: "rules/terraform/aws"
 meta:
   name: "aws/neptune_logging_disabled"
   id: "45cff7b6-3b80-40c1-ba7b-2cf480678bb8"

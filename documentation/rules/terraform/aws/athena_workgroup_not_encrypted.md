@@ -1,6 +1,6 @@
 ---
 title: "Athena workgroup not encrypted"
-group-id: "rules/terraform/aws"
+group_id: "rules/terraform/aws"
 meta:
   name: "aws/athena_workgroup_not_encrypted"
   id: "d364984a-a222-4b5f-a8b0-e23ab19ebff3"

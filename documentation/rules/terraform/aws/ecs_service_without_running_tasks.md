@@ -1,6 +1,6 @@
 ---
 title: "ECS service without running tasks"
-group-id: "rules/terraform/aws"
+group_id: "rules/terraform/aws"
 meta:
   name: "aws/ecs_service_without_running_tasks"
   id: "91f16d09-689e-4926-aca7-155157f634ed"

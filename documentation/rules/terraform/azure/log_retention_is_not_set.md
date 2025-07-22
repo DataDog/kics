@@ -1,6 +1,6 @@
 ---
 title: "Log retention is not set"
-group-id: "rules/terraform/azure"
+group_id: "rules/terraform/azure"
 meta:
   name: "azure/log_retention_is_not_set"
   id: "ffb02aca-0d12-475e-b77c-a726f7aeff4b"

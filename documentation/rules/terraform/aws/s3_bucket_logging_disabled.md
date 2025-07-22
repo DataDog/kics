@@ -1,6 +1,6 @@
 ---
 title: "S3 bucket logging disabled"
-group-id: "rules/terraform/aws"
+group_id: "rules/terraform/aws"
 meta:
   name: "aws/s3_bucket_logging_disabled"
   id: "f861041c-8c9f-4156-acfc-5e6e524f5884"

@@ -1,6 +1,6 @@
 ---
 title: "IAM group without users"
-group-id: "rules/terraform/aws"
+group_id: "rules/terraform/aws"
 meta:
   name: "aws/iam_group_without_users"
   id: "fc101ca7-c9dd-4198-a1eb-0fbe92e80044"

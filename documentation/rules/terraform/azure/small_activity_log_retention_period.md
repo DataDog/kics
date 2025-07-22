@@ -1,6 +1,6 @@
 ---
 title: "Small activity log retention period"
-group-id: "rules/terraform/azure"
+group_id: "rules/terraform/azure"
 meta:
   name: "azure/small_activity_log_retention_period"
   id: "2b856bf9-8e8c-4005-875f-303a8cba3918"

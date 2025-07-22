@@ -1,6 +1,6 @@
 ---
 title: "ELB using insecure protocols"
-group-id: "rules/terraform/aws"
+group_id: "rules/terraform/aws"
 meta:
   name: "aws/elb_using_insecure_protocols"
   id: "126c1788-23c2-4a10-906c-ef179f4f96ec"

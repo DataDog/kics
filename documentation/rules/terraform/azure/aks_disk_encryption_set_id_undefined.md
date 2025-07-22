@@ -1,6 +1,6 @@
 ---
 title: "AKS disk encryption set ID undefined"
-group-id: "rules/terraform/azure"
+group_id: "rules/terraform/azure"
 meta:
   name: "azure/aks_disk_encryption_set_id_undefined"
   id: "b17d8bb8-4c08-4785-867e-cb9e62a622aa"

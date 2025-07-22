@@ -1,6 +1,6 @@
 ---
 title: "Batch job definition with privileged container properties"
-group-id: "rules/terraform/aws"
+group_id: "rules/terraform/aws"
 meta:
   name: "aws/batch_job_definition_with_privileged_container_properties"
   id: "66cd88ac-9ddf-424a-b77e-e55e17630bee"

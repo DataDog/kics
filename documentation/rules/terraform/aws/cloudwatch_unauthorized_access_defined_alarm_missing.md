@@ -1,6 +1,6 @@
 ---
 title: "CloudWatch unauthorized access alarm missing"
-group-id: "rules/terraform/aws"
+group_id: "rules/terraform/aws"
 meta:
   name: "aws/cloudwatch_unauthorized_access_defined_alarm_missing"
   id: "4c18a45b-4ab1-4790-9f83-399ac695f1e5"

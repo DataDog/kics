@@ -1,6 +1,6 @@
 ---
 title: "KMS key with vulnerable policy"
-group-id: "rules/terraform/aws"
+group_id: "rules/terraform/aws"
 meta:
   name: "aws/kms_key_with_full_permissions"
   id: "7ebc9038-0bde-479a-acc4-6ed7b6758899"

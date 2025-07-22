@@ -1,6 +1,6 @@
 ---
 title: "Function App managed identity disabled"
-group-id: "rules/terraform/azure"
+group_id: "rules/terraform/azure"
 meta:
   name: "azure/function_app_managed_identity_disabled"
   id: "c87749b3-ff10-41f5-9df2-c421e8151759"

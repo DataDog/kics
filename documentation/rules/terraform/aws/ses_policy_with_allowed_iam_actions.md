@@ -1,6 +1,6 @@
 ---
 title: "SES policy with allowed IAM actions"
-group-id: "rules/terraform/aws"
+group_id: "rules/terraform/aws"
 meta:
   name: "aws/ses_policy_with_allowed_iam_actions"
   id: "34b921bd-90a0-402e-a0a5-dc73371fd963"

@@ -1,6 +1,6 @@
 ---
 title: "Storage share file allows all ACL permissions"
-group-id: "rules/terraform/azure"
+group_id: "rules/terraform/azure"
 meta:
   name: "azure/storage_share_file_allows_all_acl_permissions"
   id: "48bbe0fd-57e4-4678-a4a1-119e79c90fc3"

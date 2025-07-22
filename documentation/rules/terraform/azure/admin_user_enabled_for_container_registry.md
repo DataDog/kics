@@ -1,6 +1,6 @@
 ---
 title: "Admin user enabled for container registry"
-group-id: "rules/terraform/azure"
+group_id: "rules/terraform/azure"
 meta:
   name: "azure/admin_user_enabled_for_container_registry"
   id: "b897dfbf-322c-45a8-b67c-1e698beeaa51"

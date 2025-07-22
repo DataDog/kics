@@ -1,6 +1,6 @@
 ---
 title: "Role with privilege escalation by actions 'ec2:RunInstances' and 'iam:PassRole'"
-group-id: "rules/terraform/aws"
+group_id: "rules/terraform/aws"
 meta:
   name: "aws/role_with_privilege_escalation_by_actions_iam_PassRole_and_ec2_RunInstances"
   id: "30b88745-eebe-4ecb-a3a9-5cf886e96204"

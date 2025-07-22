@@ -1,6 +1,6 @@
 ---
 title: "Vulnerable default SSL certificate"
-group-id: "rules/terraform/aws"
+group_id: "rules/terraform/aws"
 meta:
   name: "aws/vulnerable_default_ssl_certificate"
   id: "3a1e94df-6847-4c0e-a3b6-6c6af4e128ef"

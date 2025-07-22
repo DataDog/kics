@@ -1,6 +1,6 @@
 ---
 title: "SSO identity user unsafe creation"
-group-id: "rules/terraform/aws"
+group_id: "rules/terraform/aws"
 meta:
   name: "aws/sso_identity_user_unsafe_creation"
   id: "4003118b-046b-4640-b200-b8c7a4c8b89f"

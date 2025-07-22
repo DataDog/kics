@@ -1,6 +1,6 @@
 ---
 title: "Elasticsearch with HTTPS disabled"
-group-id: "rules/terraform/aws"
+group_id: "rules/terraform/aws"
 meta:
   name: "aws/elasticsearch_with_https_disabled"
   id: "2e9e0729-66d5-4148-9d39-5e6fb4bf2a4e"

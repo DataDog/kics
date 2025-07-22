@@ -1,6 +1,6 @@
 ---
 title: "CloudWatch logging disabled"
-group-id: "rules/terraform/aws"
+group_id: "rules/terraform/aws"
 meta:
   name: "aws/cloudwatch_logging_disabled"
   id: "7dbba512-e244-42dc-98bb-422339827967"

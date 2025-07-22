@@ -1,6 +1,6 @@
 ---
 title: "RDS cluster with backup disabled"
-group-id: "rules/terraform/aws"
+group_id: "rules/terraform/aws"
 meta:
   name: "aws/rds_cluster_with_backup_disabled"
   id: "e542bd46-58c4-4e0f-a52a-1fb4f9548e02"

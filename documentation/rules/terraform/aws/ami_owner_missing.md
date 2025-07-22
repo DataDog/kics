@@ -1,6 +1,6 @@
 ---
 title: "AMI most recent without owner or filter"
-group-id: "rules/terraform/aws"
+group_id: "rules/terraform/aws"
 meta:
   name: "aws/ami_owner_missing"
   id: "f317c3c2-58e5-4aa7-bb8e-3a7f6bcd274a"

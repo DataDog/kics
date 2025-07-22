@@ -1,6 +1,6 @@
 ---
 title: "Team label missing"
-group-id: "rules/terraform/gcp"
+group_id: "rules/terraform/gcp"
 meta:
   name: "gcp/team_label_not_present"
   id: "b2b3c4d5-e6f7-8901-gh23-ijkl456m7890"

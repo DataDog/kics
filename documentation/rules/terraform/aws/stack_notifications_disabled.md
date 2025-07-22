@@ -1,6 +1,6 @@
 ---
 title: "Stack notifications disabled"
-group-id: "rules/terraform/aws"
+group_id: "rules/terraform/aws"
 meta:
   name: "aws/stack_notifications_disabled"
   id: "b72d0026-f649-4c91-a9ea-15d8f681ac09"

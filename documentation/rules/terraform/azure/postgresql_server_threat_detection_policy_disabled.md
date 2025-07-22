@@ -1,6 +1,6 @@
 ---
 title: "PostgreSQL Server threat detection policy disabled"
-group-id: "rules/terraform/azure"
+group_id: "rules/terraform/azure"
 meta:
   name: "azure/postgresql_server_threat_detection_policy_disabled"
   id: "c407c3cf-c409-4b29-b590-db5f4138d332"

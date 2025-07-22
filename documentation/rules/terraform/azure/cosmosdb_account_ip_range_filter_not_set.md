@@ -1,6 +1,6 @@
 ---
 title: "CosmosDB account IP range filter not set"
-group-id: "rules/terraform/azure"
+group_id: "rules/terraform/azure"
 meta:
   name: "azure/cosmosdb_account_ip_range_filter_not_set"
   id: "c2a3efb6-8a58-481c-82f2-bfddf34bb4b7"

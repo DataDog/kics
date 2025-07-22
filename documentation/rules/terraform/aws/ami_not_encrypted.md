@@ -1,6 +1,6 @@
 ---
 title: "AMI not encrypted"
-group-id: "rules/terraform/aws"
+group_id: "rules/terraform/aws"
 meta:
   name: "aws/ami_not_encrypted"
   id: "8bbb242f-6e38-4127-86d4-d8f0b2687ae2"

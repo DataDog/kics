@@ -1,6 +1,6 @@
 ---
 title: "IAM policies attached to user"
-group-id: "rules/terraform/aws"
+group_id: "rules/terraform/aws"
 meta:
   name: "aws/iam_policies_attached_to_user"
   id: "b4378389-a9aa-44ee-91e7-ef183f11079e"

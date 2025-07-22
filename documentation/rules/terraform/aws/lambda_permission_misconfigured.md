@@ -1,6 +1,6 @@
 ---
 title: "Lambda permission misconfigured"
-group-id: "rules/terraform/aws"
+group_id: "rules/terraform/aws"
 meta:
   name: "aws/lambda_permission_misconfigured"
   id: "75ec6890-83af-4bf1-9f16-e83726df0bd0"

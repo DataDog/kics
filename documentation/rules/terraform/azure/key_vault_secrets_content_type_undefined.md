@@ -1,6 +1,6 @@
 ---
 title: "Key Vault secrets content type undefined"
-group-id: "rules/terraform/azure"
+group_id: "rules/terraform/azure"
 meta:
   name: "azure/key_vault_secrets_content_type_undefined"
   id: "f8e08a38-fc6e-4915-abbe-a7aadf1d59ef"

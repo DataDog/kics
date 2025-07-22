@@ -1,6 +1,6 @@
 ---
 title: "S3 bucket allows public ACL"
-group-id: "rules/terraform/aws"
+group_id: "rules/terraform/aws"
 meta:
   name: "aws/s3_bucket_allows_public_acl"
   id: "d0cc8694-fcad-43ff-ac86-32331d7e867f"

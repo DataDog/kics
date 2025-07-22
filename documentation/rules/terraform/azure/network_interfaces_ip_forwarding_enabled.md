@@ -1,6 +1,6 @@
 ---
 title: "Network interfaces IP forwarding enabled"
-group-id: "rules/terraform/azure"
+group_id: "rules/terraform/azure"
 meta:
   name: "azure/network_interfaces_ip_forwarding_enabled"
   id: "4216ebac-d74c-4423-b437-35025cb88af5"

@@ -1,6 +1,6 @@
 ---
 title: "EKS cluster encryption disabled"
-group-id: "rules/terraform/aws"
+group_id: "rules/terraform/aws"
 meta:
   name: "aws/eks_cluster_encryption_disabled"
   id: "63ebcb19-2739-4d3f-aa5c-e8bbb9b85281"

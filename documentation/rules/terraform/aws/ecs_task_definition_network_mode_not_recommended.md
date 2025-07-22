@@ -1,6 +1,6 @@
 ---
 title: "ECS task definition network mode not recommended"
-group-id: "rules/terraform/aws"
+group_id: "rules/terraform/aws"
 meta:
   name: "aws/ecs_task_definition_network_mode_not_recommended"
   id: "9f4a9409-9c60-4671-be96-9716dbf63db1"

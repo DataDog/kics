@@ -1,6 +1,6 @@
 ---
 title: "S3 bucket allows authenticated users access"
-group-id: "rules/terraform/aws"
+group_id: "rules/terraform/aws"
 meta:
   name: "aws/s3_bucket_allows_access_to_all_authenticated_users"
   id: "d4e5f6g7-h8i9-0jkl-1234-mn567opq8901"

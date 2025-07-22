@@ -1,6 +1,6 @@
 ---
 title: "API Gateway with open access"
-group-id: "rules/terraform/aws"
+group_id: "rules/terraform/aws"
 meta:
   name: "aws/api_gateway_with_open_access"
   id: "15ccec05-5476-4890-ad19-53991eba1db8"

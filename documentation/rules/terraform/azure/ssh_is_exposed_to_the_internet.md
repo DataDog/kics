@@ -1,6 +1,6 @@
 ---
 title: "SSH is exposed to the Internet"
-group-id: "rules/terraform/azure"
+group_id: "rules/terraform/azure"
 meta:
   name: "azure/ssh_is_exposed_to_the_internet"
   id: "3e3c175e-aadf-4e2b-a464-3fdac5748d24"

@@ -1,6 +1,6 @@
 ---
 title: "DocumentDB cluster not encrypted"
-group-id: "rules/terraform/aws"
+group_id: "rules/terraform/aws"
 meta:
   name: "aws/docdb_cluster_not_encrypted"
   id: "bc1f9009-84a0-490f-ae09-3e0ea6d74ad6"

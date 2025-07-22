@@ -1,6 +1,6 @@
 ---
 title: "Role with privilege escalation by actions 'cloudformation:CreateStack' and 'iam:PassRole'"
-group-id: "rules/terraform/aws"
+group_id: "rules/terraform/aws"
 meta:
   name: "aws/role_with_privilege_escalation_by_actions_iam_PassRole_and_cloudformation_CreateStack"
   id: "be2aa235-bd93-4b68-978a-1cc65d49082f"

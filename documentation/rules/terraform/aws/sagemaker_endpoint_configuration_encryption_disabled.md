@@ -1,6 +1,6 @@
 ---
 title: "SageMaker endpoint configuration encryption disabled"
-group-id: "rules/terraform/aws"
+group_id: "rules/terraform/aws"
 meta:
   name: "aws/sagemaker_endpoint_configuration_encryption_disabled"
   id: "58b35504-0287-4154-bf69-02c0573deab8"

@@ -1,6 +1,6 @@
 ---
 title: "CloudTrail log files S3 bucket is publicly accessible"
-group-id: "rules/terraform/aws"
+group_id: "rules/terraform/aws"
 meta:
   name: "aws/cloudtrail_log_files_s3_bucket_is_publicly_accessible"
   id: "bd0088a5-c133-4b20-b129-ec9968b16ef3"

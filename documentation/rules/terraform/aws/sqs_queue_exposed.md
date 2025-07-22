@@ -1,6 +1,6 @@
 ---
 title: "SQS queue exposed"
-group-id: "rules/terraform/aws"
+group_id: "rules/terraform/aws"
 meta:
   name: "aws/sqs_queue_exposed"
   id: "abb06e5f-ef9a-4a99-98c6-376d396bfcdf"

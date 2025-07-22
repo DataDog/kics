@@ -1,6 +1,6 @@
 ---
 title: "CloudTrail multi region disabled"
-group-id: "rules/terraform/aws"
+group_id: "rules/terraform/aws"
 meta:
   name: "aws/cloudtrail_multi_region_disabled"
   id: "8173d5eb-96b5-4aa6-a71b-ecfa153c123d"

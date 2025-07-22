@@ -1,6 +1,6 @@
 ---
 title: "Ensure that UDP services are restricted from the Internet"
-group-id: "rules/terraform/azure"
+group_id: "rules/terraform/azure"
 meta:
   name: "azure/udp_services_not_restricted_from_internet"
   id: "a3b4c5d6-e7f8-9012-3456-7890abcdef12"

@@ -1,6 +1,6 @@
 ---
 title: "User with IAM role"
-group-id: "rules/terraform/gcp"
+group_id: "rules/terraform/gcp"
 meta:
   name: "gcp/user_with_iam_role"
   id: "704fcc44-a58f-4af5-82e2-93f2a58ef918"

@@ -1,6 +1,6 @@
 ---
 title: "Lambda IAM InvokeFunction misconfigured"
-group-id: "rules/terraform/aws"
+group_id: "rules/terraform/aws"
 meta:
   name: "aws/lambda_iam_invokefunction_misconfigured"
   id: "0ca1017d-3b80-423e-bb9c-6cd5898d34bd"

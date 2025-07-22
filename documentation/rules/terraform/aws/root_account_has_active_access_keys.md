@@ -1,6 +1,6 @@
 ---
 title: "Root account has active access keys"
-group-id: "rules/terraform/aws"
+group_id: "rules/terraform/aws"
 meta:
   name: "aws/root_account_has_active_access_keys"
   id: "970d224d-b42a-416b-81f9-8f4dfe70c4bc"

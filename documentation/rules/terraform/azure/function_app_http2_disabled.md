@@ -1,6 +1,6 @@
 ---
 title: "Function App HTTP2 disabled"
-group-id: "rules/terraform/azure"
+group_id: "rules/terraform/azure"
 meta:
   name: "azure/function_app_http2_disabled"
   id: "ace823d1-4432-4dee-945b-cdf11a5a6bd0"

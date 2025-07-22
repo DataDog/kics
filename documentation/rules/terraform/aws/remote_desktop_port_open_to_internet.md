@@ -1,6 +1,6 @@
 ---
 title: "Remote Desktop port open to internet"
-group-id: "rules/terraform/aws"
+group_id: "rules/terraform/aws"
 meta:
   name: "aws/remote_desktop_port_open_to_internet"
   id: "151187cb-0efc-481c-babd-ad24e3c9bc22"

@@ -1,6 +1,6 @@
 ---
 title: "SQS policy allows all actions"
-group-id: "rules/terraform/aws"
+group_id: "rules/terraform/aws"
 meta:
   name: "aws/sqs_policy_allows_all_actions"
   id: "816ea8cf-d589-442d-a917-2dd0ce0e45e3"

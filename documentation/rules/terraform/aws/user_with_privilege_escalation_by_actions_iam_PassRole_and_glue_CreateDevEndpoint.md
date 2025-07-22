@@ -1,6 +1,6 @@
 ---
 title: "User with privilege escalation by actions 'glue:CreateDevEndpoint' and 'iam:PassRole'"
-group-id: "rules/terraform/aws"
+group_id: "rules/terraform/aws"
 meta:
   name: "aws/user_with_privilege_escalation_by_actions_iam_PassRole_and_glue_CreateDevEndpoint"
   id: "94fbe150-27e3-4eba-9ca6-af32865e4503"

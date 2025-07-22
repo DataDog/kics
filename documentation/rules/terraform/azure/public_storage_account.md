@@ -1,6 +1,6 @@
 ---
 title: "Public storage account"
-group-id: "rules/terraform/azure"
+group_id: "rules/terraform/azure"
 meta:
   name: "azure/public_storage_account"
   id: "17f75827-0684-48f4-8747-61129c7e4198"

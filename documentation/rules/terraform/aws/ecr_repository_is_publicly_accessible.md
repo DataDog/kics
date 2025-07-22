@@ -1,6 +1,6 @@
 ---
 title: "ECR repository is publicly accessible"
-group-id: "rules/terraform/aws"
+group_id: "rules/terraform/aws"
 meta:
   name: "aws/ecr_repository_is_publicly_accessible"
   id: "e86e26fc-489e-44f0-9bcd-97305e4ba69a"

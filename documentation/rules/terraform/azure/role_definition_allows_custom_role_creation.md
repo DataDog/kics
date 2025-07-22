@@ -1,6 +1,6 @@
 ---
 title: "Role definition allows custom role creation"
-group-id: "rules/terraform/azure"
+group_id: "rules/terraform/azure"
 meta:
   name: "azure/role_definition_allows_custom_role_creation"
   id: "3fa5900f-9aac-4982-96b2-a6143d9c99fb"

@@ -1,6 +1,6 @@
 ---
 title: "Workspaces workspace volume not encrypted"
-group-id: "rules/terraform/aws"
+group_id: "rules/terraform/aws"
 meta:
   name: "aws/workspaces_workspace_volume_not_encrypted"
   id: "b9033580-6886-401a-8631-5f19f5bb24c7"

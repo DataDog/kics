@@ -1,6 +1,6 @@
 ---
 title: "Redshift publicly accessible"
-group-id: "rules/terraform/aws"
+group_id: "rules/terraform/aws"
 meta:
   name: "aws/redshift_publicly_accessible"
   id: "af173fde-95ea-4584-b904-bb3923ac4bda"

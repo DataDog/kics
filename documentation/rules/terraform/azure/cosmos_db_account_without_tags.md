@@ -1,6 +1,6 @@
 ---
 title: "Cosmos DB account without tags"
-group-id: "rules/terraform/azure"
+group_id: "rules/terraform/azure"
 meta:
   name: "azure/cosmos_db_account_without_tags"
   id: "56dad03e-e94f-4dd6-93a4-c253a03ff7a0"

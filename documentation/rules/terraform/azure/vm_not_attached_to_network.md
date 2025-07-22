@@ -1,6 +1,6 @@
 ---
 title: "VM not attached to network"
-group-id: "rules/terraform/azure"
+group_id: "rules/terraform/azure"
 meta:
   name: "azure/vm_not_attached_to_network"
   id: "bbf6b3df-4b65-4f87-82cc-da9f30f8c033"

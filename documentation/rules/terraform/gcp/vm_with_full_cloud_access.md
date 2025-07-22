@@ -1,6 +1,6 @@
 ---
 title: "VM with full cloud access"
-group-id: "rules/terraform/gcp"
+group_id: "rules/terraform/gcp"
 meta:
   name: "gcp/vm_with_full_cloud_access"
   id: "bc280331-27b9-4acb-a010-018e8098aa5d"

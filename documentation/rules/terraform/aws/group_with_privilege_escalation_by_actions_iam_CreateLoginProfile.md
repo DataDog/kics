@@ -1,6 +1,6 @@
 ---
 title: "Group with privilege escalation by actions 'iam:CreateLoginProfile'"
-group-id: "rules/terraform/aws"
+group_id: "rules/terraform/aws"
 meta:
   name: "aws/group_with_privilege_escalation_by_actions_iam_CreateLoginProfile"
   id: "04c686f1-e0cd-4812-88e1-4e038410074c"

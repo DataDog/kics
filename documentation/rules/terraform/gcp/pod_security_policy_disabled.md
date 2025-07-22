@@ -1,6 +1,6 @@
 ---
 title: "Pod security policy disabled"
-group-id: "rules/terraform/gcp"
+group_id: "rules/terraform/gcp"
 meta:
   name: "gcp/pod_security_policy_disabled"
   id: "9192e0f9-eca5-4056-9282-ae2a736a4088"

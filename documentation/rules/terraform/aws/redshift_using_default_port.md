@@ -1,6 +1,6 @@
 ---
 title: "Redshift using default port"
-group-id: "rules/terraform/aws"
+group_id: "rules/terraform/aws"
 meta:
   name: "aws/redshift_using_default_port"
   id: "41abc6cc-dde1-4217-83d3-fb5f0cc09d8f"

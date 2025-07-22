@@ -1,6 +1,6 @@
 ---
 title: "Unscanned ECR image"
-group-id: "rules/terraform/aws"
+group_id: "rules/terraform/aws"
 meta:
   name: "aws/unscanned_ecr_image"
   id: "9630336b-3fed-4096-8173-b9afdfe346a7"

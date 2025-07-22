@@ -1,6 +1,6 @@
 ---
 title: "Neptune cluster with IAM database authentication disabled"
-group-id: "rules/terraform/aws"
+group_id: "rules/terraform/aws"
 meta:
   name: "aws/neptune_cluster_with_iam_database_authentication_disabled"
   id: "c91d7ea0-d4d1-403b-8fe1-c9961ac082c5"

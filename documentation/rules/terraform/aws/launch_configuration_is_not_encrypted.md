@@ -1,6 +1,6 @@
 ---
 title: "Launch configuration is not encrypted"
-group-id: "rules/terraform/aws"
+group_id: "rules/terraform/aws"
 meta:
   name: "aws/launch_configuration_is_not_encrypted"
   id: "4de9de27-254e-424f-bd70-4c1e95790838"

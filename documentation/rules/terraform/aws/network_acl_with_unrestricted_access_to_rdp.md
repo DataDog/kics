@@ -1,6 +1,6 @@
 ---
 title: "Network ACL with unrestricted access to RDP"
-group-id: "rules/terraform/aws"
+group_id: "rules/terraform/aws"
 meta:
   name: "aws/network_acl_with_unrestricted_access_to_rdp"
   id: "a20be318-cac7-457b-911d-04cc6e812c25"

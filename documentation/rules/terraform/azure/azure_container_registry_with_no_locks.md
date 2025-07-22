@@ -1,6 +1,6 @@
 ---
 title: "Azure Container Registry with no locks"
-group-id: "rules/terraform/azure"
+group_id: "rules/terraform/azure"
 meta:
   name: "azure/azure_container_registry_with_no_locks"
   id: "a187ac47-8163-42ce-8a63-c115236be6fb"

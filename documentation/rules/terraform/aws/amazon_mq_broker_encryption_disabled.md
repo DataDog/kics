@@ -1,6 +1,6 @@
 ---
 title: "AmazonMQ broker encryption disabled"
-group-id: "rules/terraform/aws"
+group_id: "rules/terraform/aws"
 meta:
   name: "aws/amazon_mq_broker_encryption_disabled"
   id: "3db3f534-e3a3-487f-88c7-0a9fbf64b702"

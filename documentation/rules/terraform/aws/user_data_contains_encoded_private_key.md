@@ -1,6 +1,6 @@
 ---
 title: "User data contains encoded private key"
-group-id: "rules/terraform/aws"
+group_id: "rules/terraform/aws"
 meta:
   name: "aws/user_data_contains_encoded_private_key"
   id: "443488f5-c734-460b-a36d-5b3f330174dc"

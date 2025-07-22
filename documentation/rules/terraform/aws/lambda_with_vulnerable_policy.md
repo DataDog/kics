@@ -1,6 +1,6 @@
 ---
 title: "Lambda with vulnerable policy"
-group-id: "rules/terraform/aws"
+group_id: "rules/terraform/aws"
 meta:
   name: "aws/lambda_with_vulnerable_policy"
   id: "ad9dabc7-7839-4bae-a957-aa9120013f39"

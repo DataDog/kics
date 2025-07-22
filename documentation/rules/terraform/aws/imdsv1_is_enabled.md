@@ -1,6 +1,6 @@
 ---
 title: "IMDSv1 enabled"
-group-id: "rules/terraform/aws"
+group_id: "rules/terraform/aws"
 meta:
   name: "aws/imdsv1_is_enabled"
   id: "f1g2h3i4-j5k6-7lmn-8opq-9012rstuvwxy"

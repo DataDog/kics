@@ -1,6 +1,6 @@
 ---
 title: "EC2 not EBS optimized"
-group-id: "rules/terraform/aws"
+group_id: "rules/terraform/aws"
 meta:
   name: "aws/ec2_not_ebs_optimized"
   id: "60224630-175a-472a-9e23-133827040766"

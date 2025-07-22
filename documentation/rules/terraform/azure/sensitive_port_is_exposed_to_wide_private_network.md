@@ -1,6 +1,6 @@
 ---
 title: "Sensitive port is exposed to wide private network"
-group-id: "rules/terraform/azure"
+group_id: "rules/terraform/azure"
 meta:
   name: "azure/sensitive_port_is_exposed_to_wide_private_network"
   id: "c6c7b33d-d7f6-4ab8-8c82-ca0431ecdb7e"

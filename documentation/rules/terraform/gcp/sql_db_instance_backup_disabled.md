@@ -1,6 +1,6 @@
 ---
 title: "SQL DB instance backup disabled"
-group-id: "rules/terraform/gcp"
+group_id: "rules/terraform/gcp"
 meta:
   name: "gcp/sql_db_instance_backup_disabled"
   id: "cf3c7631-cd1e-42f3-8801-a561214a6e79"

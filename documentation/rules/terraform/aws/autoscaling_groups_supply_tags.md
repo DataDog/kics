@@ -1,6 +1,6 @@
 ---
 title: "Autoscaling groups supply tags"
-group-id: "rules/terraform/aws"
+group_id: "rules/terraform/aws"
 meta:
   name: "aws/autoscaling_groups_supply_tags"
   id: "ba48df05-eaa1-4d64-905e-4a4b051e7587"

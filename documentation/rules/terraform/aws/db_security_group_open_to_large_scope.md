@@ -1,6 +1,6 @@
 ---
 title: "DB security group open to large scope"
-group-id: "rules/terraform/aws"
+group_id: "rules/terraform/aws"
 meta:
   name: "aws/db_security_group_open_to_large_scope"
   id: "4f615f3e-fb9c-4fad-8b70-2e9f781806ce"

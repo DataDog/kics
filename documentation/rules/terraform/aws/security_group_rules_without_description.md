@@ -1,6 +1,6 @@
 ---
 title: "Security group rule without description"
-group-id: "rules/terraform/aws"
+group_id: "rules/terraform/aws"
 meta:
   name: "aws/security_group_rules_without_description"
   id: "68eb4bf3-f9bf-463d-b5cf-e029bb446d2e"

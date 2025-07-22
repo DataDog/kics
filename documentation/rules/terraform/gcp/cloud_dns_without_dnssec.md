@@ -1,6 +1,6 @@
 ---
 title: "Cloud DNS without DNSSEC"
-group-id: "rules/terraform/gcp"
+group_id: "rules/terraform/gcp"
 meta:
   name: "gcp/cloud_dns_without_dnssec"
   id: "5ef61c88-bbb4-4725-b1df-55d23c9676bb"

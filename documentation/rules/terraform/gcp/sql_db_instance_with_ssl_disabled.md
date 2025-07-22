@@ -1,6 +1,6 @@
 ---
 title: "SQL DB instance with SSL disabled"
-group-id: "rules/terraform/gcp"
+group_id: "rules/terraform/gcp"
 meta:
   name: "gcp/sql_db_instance_with_ssl_disabled"
   id: "02474449-71aa-40a1-87ae-e14497747b00"

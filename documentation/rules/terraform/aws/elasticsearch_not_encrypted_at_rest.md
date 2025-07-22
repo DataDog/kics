@@ -1,6 +1,6 @@
 ---
 title: "Elasticsearch not encrypted at rest"
-group-id: "rules/terraform/aws"
+group_id: "rules/terraform/aws"
 meta:
   name: "aws/elasticsearch_not_encrypted_at_rest"
   id: "24e16922-4330-4e9d-be8a-caa90299466a"

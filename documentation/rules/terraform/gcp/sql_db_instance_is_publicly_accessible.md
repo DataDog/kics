@@ -1,6 +1,6 @@
 ---
 title: "SQL DB instance publicly accessible"
-group-id: "rules/terraform/gcp"
+group_id: "rules/terraform/gcp"
 meta:
   name: "gcp/sql_db_instance_is_publicly_accessible"
   id: "b187edca-b81e-4fdc-aff4-aab57db45edb"

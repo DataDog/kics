@@ -1,6 +1,6 @@
 ---
 title: "Lambda functions without X-Ray tracing"
-group-id: "rules/terraform/aws"
+group_id: "rules/terraform/aws"
 meta:
   name: "aws/lambda_functions_without_x-ray_tracing"
   id: "8152e0cf-d2f0-47ad-96d5-d003a76eabd1"

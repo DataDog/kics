@@ -1,6 +1,6 @@
 ---
 title: "Encryption on managed disk disabled"
-group-id: "rules/terraform/azure"
+group_id: "rules/terraform/azure"
 meta:
   name: "azure/encryption_on_managed_disk_disabled"
   id: "a99130ab-4c0e-43aa-97f8-78d4fcb30024"

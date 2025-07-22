@@ -1,6 +1,6 @@
 ---
 title: "Google Compute network using firewall rule that allows port range"
-group-id: "rules/terraform/gcp"
+group_id: "rules/terraform/gcp"
 meta:
   name: "gcp/google_compute_network_using_firewall_rule_allows_port_range"
   id: "e6f61c37-106b-449f-a5bb-81bfcaceb8b4"

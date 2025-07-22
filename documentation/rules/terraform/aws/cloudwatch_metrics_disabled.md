@@ -1,6 +1,6 @@
 ---
 title: "CloudWatch metrics disabled"
-group-id: "rules/terraform/aws"
+group_id: "rules/terraform/aws"
 meta:
   name: "aws/cloudwatch_metrics_disabled"
   id: "081069cb-588b-4ce1-884c-2a1ce3029fe5"

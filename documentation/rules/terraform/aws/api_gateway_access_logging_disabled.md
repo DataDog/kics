@@ -1,6 +1,6 @@
 ---
 title: "API Gateway access logging disabled"
-group-id: "rules/terraform/aws"
+group_id: "rules/terraform/aws"
 meta:
   name: "aws/api_gateway_access_logging_disabled"
   id: "1b6799eb-4a7a-4b04-9001-8cceb9999326"

@@ -1,6 +1,6 @@
 ---
 title: "Auto scaling group with no associated ELB"
-group-id: "rules/terraform/aws"
+group_id: "rules/terraform/aws"
 meta:
   name: "aws/auto_scaling_group_with_no_associated_elb"
   id: "8e94dced-9bcc-4203-8eb7-7e41202b2505"

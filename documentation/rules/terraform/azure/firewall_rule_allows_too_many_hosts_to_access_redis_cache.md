@@ -1,6 +1,6 @@
 ---
 title: "Firewall rule allows too many hosts to access Redis Cache"
-group-id: "rules/terraform/azure"
+group_id: "rules/terraform/azure"
 meta:
   name: "azure/firewall_rule_allows_too_many_hosts_to_access_redis_cache"
   id: "a829b715-cf75-4e92-b645-54c9b739edfb"

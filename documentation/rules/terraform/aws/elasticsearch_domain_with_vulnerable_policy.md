@@ -1,6 +1,6 @@
 ---
 title: "Elasticsearch domain with vulnerable policy"
-group-id: "rules/terraform/aws"
+group_id: "rules/terraform/aws"
 meta:
   name: "aws/elasticsearch_domain_with_vulnerable_policy"
   id: "16c4216a-50d3-4785-bfb2-4adb5144a8ba"

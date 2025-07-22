@@ -1,6 +1,6 @@
 ---
 title: "ECR repository not encrypted with CMK"
-group-id: "rules/terraform/aws"
+group_id: "rules/terraform/aws"
 meta:
   name: "aws/ecr_repository_not_encrypted"
   id: "0e32d561-4b5a-4664-a6e3-a3fa85649157"

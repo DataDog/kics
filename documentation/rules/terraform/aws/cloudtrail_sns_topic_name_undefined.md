@@ -1,6 +1,6 @@
 ---
 title: "CloudTrail SNS topic name undefined"
-group-id: "rules/terraform/aws"
+group_id: "rules/terraform/aws"
 meta:
   name: "aws/cloudtrail_sns_topic_name_undefined"
   id: "482b7d26-0bdb-4b5f-bf6f-545826c0a3dd"

@@ -1,6 +1,6 @@
 ---
 title: "SQL server alert email disabled"
-group-id: "rules/terraform/azure"
+group_id: "rules/terraform/azure"
 meta:
   name: "azure/sql_server_alert_email_disabled"
   id: "55975007-f6e7-4134-83c3-298f1fe4b519"

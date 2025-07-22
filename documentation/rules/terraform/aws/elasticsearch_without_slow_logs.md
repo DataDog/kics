@@ -1,6 +1,6 @@
 ---
 title: "Elasticsearch without slow logs"
-group-id: "rules/terraform/aws"
+group_id: "rules/terraform/aws"
 meta:
   name: "aws/elasticsearch_without_slow_logs"
   id: "e979fcbc-df6c-422d-9458-c33d65e71c45"

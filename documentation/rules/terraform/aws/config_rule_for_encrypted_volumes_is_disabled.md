@@ -1,6 +1,6 @@
 ---
 title: "Config rule for encrypted volumes disabled"
-group-id: "rules/terraform/aws"
+group_id: "rules/terraform/aws"
 meta:
   name: "aws/config_rule_for_encrypted_volumes_is_disabled"
   id: "abdb29d4-5ca1-4e91-800b-b3569bbd788c"

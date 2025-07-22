@@ -1,6 +1,6 @@
 ---
 title: "Certificate RSA key bytes lower than 256"
-group-id: "rules/terraform/aws"
+group_id: "rules/terraform/aws"
 meta:
   name: "aws/certificate_rsa_key_bytes_lower_than_256"
   id: "874d68a3-bfbe-4a4b-aaa0-9e74d7da634b"

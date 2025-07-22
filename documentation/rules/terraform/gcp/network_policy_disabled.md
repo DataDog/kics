@@ -1,6 +1,6 @@
 ---
 title: "Network policy disabled"
-group-id: "rules/terraform/gcp"
+group_id: "rules/terraform/gcp"
 meta:
   name: "gcp/network_policy_disabled"
   id: "11e7550e-c4b6-472e-adff-c698f157cdd7"

@@ -1,6 +1,6 @@
 ---
 title: "IAM policies with full privileges"
-group-id: "rules/terraform/aws"
+group_id: "rules/terraform/aws"
 meta:
   name: "aws/iam_policies_with_full_privileges"
   id: "2f37c4a3-58b9-4afe-8a87-d7f1d2286f84"

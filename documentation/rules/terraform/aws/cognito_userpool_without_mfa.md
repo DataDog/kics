@@ -1,6 +1,6 @@
 ---
 title: "Cognito user pool without MFA"
-group-id: "rules/terraform/aws"
+group_id: "rules/terraform/aws"
 meta:
   name: "aws/cognito_userpool_without_mfa"
   id: "ec28bf61-a474-4dbe-b414-6dd3a067d6f0"

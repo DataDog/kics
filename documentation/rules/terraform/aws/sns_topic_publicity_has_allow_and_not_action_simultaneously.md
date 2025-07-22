@@ -1,6 +1,6 @@
 ---
 title: "SNS topic publicity has allow and NotAction simultaneously"
-group-id: "rules/terraform/aws"
+group_id: "rules/terraform/aws"
 meta:
   name: "aws/sns_topic_publicity_has_allow_and_not_action_simultaneously"
   id: "5ea624e4-c8b1-4bb3-87a4-4235a776adcc"

@@ -1,6 +1,6 @@
 ---
 title: "IAM user with access to console"
-group-id: "rules/terraform/aws"
+group_id: "rules/terraform/aws"
 meta:
   name: "aws/iam_user_with_access_to_console"
   id: "9ec311bf-dfd9-421f-8498-0b063c8bc552"

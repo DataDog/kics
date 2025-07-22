@@ -1,6 +1,6 @@
 ---
 title: "API Gateway without SSL certificate"
-group-id: "rules/terraform/aws"
+group_id: "rules/terraform/aws"
 meta:
   name: "aws/api_gateway_without_ssl_certificate"
   id: "0b4869fc-a842-4597-aa00-1294df425440"

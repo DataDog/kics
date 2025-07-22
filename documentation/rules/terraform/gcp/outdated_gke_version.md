@@ -1,6 +1,6 @@
 ---
 title: "Outdated GKE version"
-group-id: "rules/terraform/gcp"
+group_id: "rules/terraform/gcp"
 meta:
   name: "gcp/outdated_gke_version"
   id: "128df7ec-f185-48bc-8913-ce756a3ccb85"

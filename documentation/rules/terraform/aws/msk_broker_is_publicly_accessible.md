@@ -1,6 +1,6 @@
 ---
 title: "MSK broker is publicly accessible"
-group-id: "rules/terraform/aws"
+group_id: "rules/terraform/aws"
 meta:
   name: "aws/msk_broker_is_publicly_accessible"
   id: "54378d69-dd7c-4b08-a43e-80d563396857"

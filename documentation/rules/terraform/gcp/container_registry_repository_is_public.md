@@ -1,6 +1,6 @@
 ---
 title: "Container Registry repo is public"
-group-id: "rules/terraform/gcp"
+group_id: "rules/terraform/gcp"
 meta:
   name: "gcp/container_registry_repository_is_public"
   id: "f6a7b8c9-d0e1-2345-f678-90abcdef1234"

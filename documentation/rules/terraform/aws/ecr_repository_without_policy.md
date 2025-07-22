@@ -1,6 +1,6 @@
 ---
 title: "ECR repository without policy"
-group-id: "rules/terraform/aws"
+group_id: "rules/terraform/aws"
 meta:
   name: "aws/ecr_repository_without_policy"
   id: "69e7c320-b65d-41bb-be02-d63ecc0bcc9d"

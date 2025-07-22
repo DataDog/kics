@@ -1,6 +1,6 @@
 ---
 title: "Storage container is publicly accessible"
-group-id: "rules/terraform/azure"
+group_id: "rules/terraform/azure"
 meta:
   name: "azure/storage_container_is_publicly_accessible"
   id: "dd5230f8-a577-4bbb-b7ac-f2c2fe7d5299"

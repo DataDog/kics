@@ -1,6 +1,6 @@
 ---
 title: "SSH access is not restricted"
-group-id: "rules/terraform/gcp"
+group_id: "rules/terraform/gcp"
 meta:
   name: "gcp/ssh_access_is_not_restricted"
   id: "c4dcdcdf-10dd-4bf4-b4a0-8f6239e6aaa0"

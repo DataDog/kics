@@ -1,6 +1,6 @@
 ---
 title: "App Service authentication disabled"
-group-id: "rules/terraform/azure"
+group_id: "rules/terraform/azure"
 meta:
   name: "azure/app_service_authentication_disabled"
   id: "c7fc1481-2899-4490-bbd8-544a3a61a2f3"

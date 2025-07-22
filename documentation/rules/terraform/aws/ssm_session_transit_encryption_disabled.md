@@ -1,6 +1,6 @@
 ---
 title: "SSM session transit encryption disabled"
-group-id: "rules/terraform/aws"
+group_id: "rules/terraform/aws"
 meta:
   name: "aws/ssm_session_transit_encryption_disabled"
   id: "ce60cc6b-6831-4bd7-84a2-cc7f8ee71433"

@@ -1,6 +1,6 @@
 ---
 title: "Small flow logs retention period"
-group-id: "rules/terraform/azure"
+group_id: "rules/terraform/azure"
 meta:
   name: "azure/small_flow_logs_retention_period"
   id: "7750fcca-dd03-4d38-b663-4b70289bcfd4"
