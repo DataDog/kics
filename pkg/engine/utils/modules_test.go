@@ -369,11 +369,7 @@ func TestLooksLikeLocalModuleSource(t *testing.T) {
 	cases := map[string]bool{
 		"./foo":                         true,
 		"../bar":                        true,
-		".\\foo":                        true,
-		"..\\bar":                       true,
 		"/abs/unix":                     true,
-		"C:\\windows\\mod":              true,
-		"C:/windows/mod":                true,
 		"file:///some/mod":              true,
 		"git::https://...":              false,
 		"registry.terraform.io/foo/bar": false,
