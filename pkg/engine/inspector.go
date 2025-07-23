@@ -674,9 +674,11 @@ func (q QueryLoader) LoadQuery(ctx context.Context, query *model.QueryMetadata, 
 		if err != nil {
 			log.Debug().Msg("Could not merge common library input data")
 		}
-		mergedInputData, err = source.MergeModulesData(modules, mergedInputData)
-		if err != nil {
-			log.Debug().Msg("Could not merge modules input data")
+		if modules != nil {
+			mergedInputData, err = source.MergeModulesData(modules, mergedInputData)
+			if err != nil {
+				log.Debug().Msg("Could not merge modules input data")
+			}
 		}
 		store := inmem.NewFromReader(bytes.NewBufferString(mergedInputData))
 		opaQuery, err = rego.New(
