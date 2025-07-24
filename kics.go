@@ -4,7 +4,7 @@
  * This product includes software developed at Datadog (https://www.datadoghq.com)  Copyright 2024 Datadog, Inc.
  */
 
-package kics
+package main
 
 import (
 	"path/filepath"
@@ -48,4 +48,21 @@ func ExecuteKICSScan(inputPaths []string, outputPath string, sciInfo model.SCIIn
 
 	resultsFile := filepath.Join(outputPath, params.OutputName)
 	return metadata, resultsFile, nil
+}
+
+func main() {
+	inputPaths := []string{"assets/queries/terraform/aws/s3_bucket_without_versioning/test/positive1.tf"}
+	outputPath := "/Users/benjamin,chouraqui/repos/kics"
+	sci := model.SCIInfo{
+		DiffAware: model.DiffAware{
+			Enabled: false,
+		},
+		RunType: "code_update",
+		RepositoryCommitInfo: model.RepositoryCommitInfo{
+			RepositoryUrl: "github.com/blah",
+			Branch:        "main",
+			CommitSHA:     "1234567890",
+		},
+	}
+	ExecuteKICSScan(inputPaths, outputPath, sci)
 }
