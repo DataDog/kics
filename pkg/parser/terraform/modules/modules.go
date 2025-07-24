@@ -1,4 +1,4 @@
-package utils
+package tfmodules
 
 import (
 	"errors"
@@ -45,7 +45,7 @@ func isValidRegistryFormat(s string) bool {
 	return registryPattern.MatchString(s)
 }
 
-func ResolveModulePath(source string, rootDir string) string {
+func resolveModulePath(source string, rootDir string) string {
 	clean := strings.TrimPrefix(source, "file://")
 	clean = strings.TrimPrefix(clean, "git::")
 	return filepath.Clean(filepath.Join(rootDir, clean))
@@ -61,7 +61,7 @@ func ParseTerraformModules(files model.FileMetadatas) (map[string]ParsedModule, 
 		filePath := file.FilePath
 		baseDir := filepath.Dir(filePath)
 
-		file.Content = GetFileContent(file)
+		file.Content = getFileContent(file)
 
 		hclFile, diags := hclsyntax.ParseConfig([]byte(file.Content), filePath, hcl.Pos{Line: 1, Column: 1})
 		if diags.HasErrors() {
@@ -120,7 +120,7 @@ func ParseTerraformModules(files model.FileMetadatas) (map[string]ParsedModule, 
 						// Normalize relative path to absolute
 						absPath := filepath.Join(baseDir, strings.TrimPrefix(resolved, "file://"))
 						mod.AbsSource = filepath.Clean(absPath)
-						err := ValidateModuleSource(mod.AbsSource)
+						err := validateModuleSource(mod.AbsSource)
 						if err != nil {
 							log.Warn().Msgf("Invalid local module source %q: %v", mod.Source, err)
 							continue
@@ -141,7 +141,7 @@ func ParseTerraformModules(files model.FileMetadatas) (map[string]ParsedModule, 
 	return modules, nil
 }
 
-func ValidateModuleSource(absPath string) error {
+func validateModuleSource(absPath string) error {
 	// Attempt to read the directory contents
 	entries, err := os.ReadDir(absPath)
 	if err != nil {
@@ -165,15 +165,7 @@ func ValidateModuleSource(absPath string) error {
 	return nil
 }
 
-func FlattenFileContents(files model.FileMetadatas) string {
-	var builder string
-	for _, f := range files {
-		builder += GetFileContent(f)
-	}
-	return builder
-}
-
-func GetFileContent(file model.FileMetadata) string {
+func getFileContent(file model.FileMetadata) string {
 	var builder strings.Builder
 	for _, line := range *file.LinesOriginalData {
 		builder.WriteString(line)
@@ -374,7 +366,7 @@ func ParseAllModuleVariables(modules map[string]ParsedModule, rootDir string) []
 					output <- ModuleParseResult{Module: mod}
 					continue
 				}
-				modulePath := ResolveModulePath(mod.AbsSource, rootDir)
+				modulePath := resolveModulePath(mod.AbsSource, rootDir)
 
 				attributesData, err := generateEquivalentMap(modulePath)
 				if err != nil {
