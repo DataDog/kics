@@ -52,12 +52,11 @@ func ResolveModulePath(source string, rootDir string) string {
 }
 
 // ParseTerraformModules parses HCL content and extracts module source/version, resolving locals/variables if possible.
-func ParseTerraformModules(files model.FileMetadatas) (map[string]ParsedModule, []string, error) {
+func ParseTerraformModules(files model.FileMetadatas) (map[string]ParsedModule, error) {
 	modules := make(map[string]ParsedModule)
 	localsMap := make(map[string]string)
 	varsMap := make(map[string]string)
 
-	filesWithModules := make([]string, 0)
 	for _, file := range files {
 		filePath := file.FilePath
 		baseDir := filepath.Dir(filePath)
@@ -137,10 +136,9 @@ func ParseTerraformModules(files model.FileMetadatas) (map[string]ParsedModule, 
 				modules[mod.Source] = mod
 			}
 		}
-		filesWithModules = append(filesWithModules, file.ID)
 	}
 
-	return modules, filesWithModules, nil
+	return modules, nil
 }
 
 func ValidateModuleSource(absPath string) error {

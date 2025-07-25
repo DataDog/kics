@@ -11,7 +11,6 @@ import (
 	"encoding/json"
 	"fmt"
 	"reflect"
-	"slices"
 
 	"runtime"
 	"strings"
@@ -281,7 +280,7 @@ func (c *Inspector) Inspect(
 	vulnerabilities = make([]model.Vulnerability, 0)
 
 	// Step 1: Parse Terraform modules
-	parsedModules, filesWithModules, err := utils.ParseTerraformModules(files)
+	parsedModules, err := utils.ParseTerraformModules(files)
 	if err != nil {
 		log.Warn().Err(err).Msg("Failed to parse Terraform modules")
 	}
@@ -356,10 +355,9 @@ func (c *Inspector) Inspect(
 			continue
 		}
 		for _, vulnerability := range result.vulnerabilities {
-			if slices.Contains(filesWithModules, vulnerability.FileID) {
+			if vulnerability.ResourceType == "module" {
 				log.Log().Msgf("Found module vulnerability %s", vulnerability.QueryName)
 				log.Log().Msgf("Found module vulnerability of severity %s", vulnerability.Severity)
-				log.Log().Msgf("Found module vulnerability in resource %s", vulnerability.ResourceType)
 			}
 
 		}
