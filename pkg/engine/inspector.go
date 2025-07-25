@@ -284,6 +284,7 @@ func (c *Inspector) Inspect(
 	if err != nil {
 		log.Warn().Err(err).Msg("Failed to parse Terraform modules")
 	}
+	log.Log().Msgf("Found %d modules", len(parsedModules))
 
 	// Step 2: Enrich modules with parsed variables
 	rootDir := "." // or infer from files.RootDir, etc.
@@ -352,6 +353,13 @@ func (c *Inspector) Inspect(
 			c.failedQueries[queries[result.queryID].Query] = result.err
 
 			continue
+		}
+		for _, vulnerability := range result.vulnerabilities {
+			if vulnerability.ResourceType == "module" {
+				log.Log().Msgf("Found module vulnerability %s", vulnerability.QueryName)
+				log.Log().Msgf("Found module vulnerability of severity %s", vulnerability.Severity)
+			}
+
 		}
 		vulnerabilities = append(vulnerabilities, result.vulnerabilities...)
 	}
