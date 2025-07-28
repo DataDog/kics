@@ -285,7 +285,7 @@ func initScan(queryID string) (*engine.Inspector, error) {
 
 func loadQuery(inspector *engine.Inspector, queryID string) (*engine.PreparedQuery, error) {
 	if len(inspector.QueryLoader.QueriesMetadata) == 1 {
-		queryOpa, err := inspector.QueryLoader.LoadQuery(context.Background(), &inspector.QueryLoader.QueriesMetadata[0])
+		queryOpa, err := inspector.QueryLoader.LoadQuery(context.Background(), &inspector.QueryLoader.QueriesMetadata[0], nil)
 
 		if err != nil {
 			log.Err(err)

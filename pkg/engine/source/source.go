@@ -10,8 +10,8 @@ import (
 	"encoding/json"
 	"strings"
 
-	"github.com/Checkmarx/kics/pkg/engine/utils"
 	"github.com/Checkmarx/kics/pkg/model"
+	tfmodules "github.com/Checkmarx/kics/pkg/parser/terraform/modules"
 	"github.com/open-policy-agent/opa/ast"
 	"github.com/pkg/errors"
 	"github.com/rs/zerolog/log"
@@ -139,7 +139,7 @@ func MergeInputData(defaultInputData, customInputData string) (string, error) {
 	return string(mergedJSON), nil
 }
 
-func MergeModulesData(modules []utils.ParsedModule, inputData string) (string, error) {
+func MergeModulesData(modules []tfmodules.ParsedModule, inputData string) (string, error) {
 	if checkEmptyInputdata(inputData) {
 		inputData = emptyInputData
 	}
