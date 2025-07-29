@@ -63,3 +63,60 @@ CxPolicy[result] {
         "keyActualValue": "advanced_security_options.internal_user_database_enabled is false"
     }
 }
+
+CxPolicy[result] {
+    module := input.document[i].module[name]
+    keyToCheck := common_lib.get_module_equivalent_key("aws", module.source, "aws_opensearch_domain", "advanced_security_options")
+
+    not common_lib.valid_key(module, keyToCheck)
+
+    result := {
+        "documentId": input.document[i].id,
+        "resourceType": "module",
+        "resourceName": sprintf("%s", [name]),
+        "searchKey": sprintf("module[%s]", [name]),
+        "searchLine": common_lib.build_search_line(["module", name, "advanced_security_options", "enabled"], []),
+        "issueType": "MissingAttribute",
+        "keyExpectedValue": "advanced_security_options block should be present with enabled = true and internal_user_database_enabled = true",
+        "keyActualValue": "advanced_security_options block is missing"
+    }
+}
+
+CxPolicy[result] {
+    module := input.document[i].module[name]
+    keyToCheck := common_lib.get_module_equivalent_key("aws", module.source, "aws_opensearch_domain", "advanced_security_options")
+
+    common_lib.valid_key(module[keyToCheck], "enabled")
+    not module[keyToCheck].enabled
+
+    result := {
+        "documentId": input.document[i].id,
+        "resourceType": "module",
+        "resourceName": sprintf("%s", [name]),
+        "searchKey": sprintf("module[%s]", [name]),
+        "searchLine": common_lib.build_search_line(["module", name, "advanced_security_options", "enabled"], []),
+        "issueType": "MissingAttribute",
+        "keyExpectedValue": "advanced_security_options block should be present with enabled = true and internal_user_database_enabled = true",
+        "keyActualValue": "advanced_security_options block is missing"
+    }
+}
+
+CxPolicy[result] {
+    module := input.document[i].module[name]
+    keyToCheck := common_lib.get_module_equivalent_key("aws", module.source, "aws_opensearch_domain", "advanced_security_options")
+
+    common_lib.valid_key(module[keyToCheck], "internal_user_database_enabled")
+    not module[keyToCheck].internal_user_database_enabled
+
+    result := {
+        "documentId": input.document[i].id,
+        "resourceType": "module",
+        "resourceName": sprintf("%s", [name]),
+        "searchKey": sprintf("module[%s]", [name]),
+        "searchLine": common_lib.build_search_line(["module", name, "advanced_security_options", "internal_user_database_enabled"], []),
+        "issueType": "IncorrectValue",
+        "keyExpectedValue": "advanced_security_options.internal_user_database_enabled should be true",
+        "keyActualValue": "advanced_security_options.internal_user_database_enabled is false"
+    }
+}
+

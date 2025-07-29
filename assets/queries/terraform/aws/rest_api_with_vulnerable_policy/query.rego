@@ -25,3 +25,28 @@ CxPolicy[result] {
 		"searchLine": common_lib.build_search_line(["resource", "aws_api_gateway_rest_api_policy", name, "policy"], []),
 	}
 }
+
+CxPolicy[result] {
+	module := input.document[i].module[name]
+	keyToCheck := common_lib.get_module_equivalent_key("aws", module.source, "aws_api_gateway_rest_api_policy", "policy")
+
+	policy := common_lib.json_unmarshal(module[keyToCheck])
+	st := common_lib.get_statement(policy)
+	statement := st[_]
+
+	common_lib.is_allow_effect(statement)
+	not common_lib.valid_key(statement, "Condition")
+	common_lib.has_wildcard(statement, "execute-api:*")
+
+	result := {
+		"documentId": input.document[i].id,
+		"resourceType": "module",
+		"resourceName": sprintf("%s", [name]),
+		"searchKey": sprintf("module[%s].policy", [name]),
+		"issueType": "IncorrectValue",
+		"keyExpectedValue": "'policy' should not have wildcard in 'Action' and 'Principal'",
+		"keyActualValue": "'policy' has wildcard in 'Action' or 'Principal'",
+		"searchLine": common_lib.build_search_line(["module", name, "policy"], []),
+	}
+}
+

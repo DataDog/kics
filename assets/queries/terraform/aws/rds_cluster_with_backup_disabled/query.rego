@@ -17,3 +17,20 @@ CxPolicy[result] {
 		"keyActualValue": "aws_rds_cluster.backup_retention_period is undefined or null",
 	}
 }
+
+CxPolicy[result] {
+	module := input.document[i].module[name]
+	keyToCheck := common_lib.get_module_equivalent_key("aws", module.source, "aws_rds_cluster", "backup_retention_period")
+
+	not common_lib.valid_key(module, keyToCheck)
+	result := {
+		"documentId": input.document[i].id,
+		"resourceType": "module",
+		"resourceName": sprintf("%s", [name]),
+		"searchKey": sprintf("module[%s]", [name]),
+		"issueType": "MissingAttribute",
+		"keyExpectedValue": "module.aws_rds_cluster.backup_retention_period should be defined and not null",
+		"keyActualValue": "module.aws_rds_cluster.backup_retention_period is undefined or null",
+	}
+}
+

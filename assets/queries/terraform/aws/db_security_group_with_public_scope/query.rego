@@ -16,3 +16,21 @@ CxPolicy[result] {
 		"keyActualValue": "'aws_db_security_group.ingress.cidr'= 0.0.0.0/0",
 	}
 }
+
+CxPolicy[result] {
+	module := input.document[i].module[name]
+	keyToCheck := data.lib.get_module_equivalent_key("aws", module.source, "aws_db_security_group", "ingress")
+	ingress := module[keyToCheck][idx]
+	ingress.cidr == "0.0.0.0/0"
+
+	result := {
+		"documentId": input.document[i].id,
+		"resourceType": "module",
+		"resourceName": sprintf("%s", [name]),
+		"searchKey": sprintf("module[%s].ingress[%d].cidr", [name, idx]),
+		"issueType": "IncorrectValue",
+		"keyExpectedValue": "'ingress.cidr' != 0.0.0.0/0",
+		"keyActualValue": "'ingress.cidr'= 0.0.0.0/0",
+	}
+}
+

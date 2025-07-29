@@ -25,6 +25,29 @@ CxPolicy[result] {
 }
 
 CxPolicy[result] {
+	module := input.document[i].module[name]
+	keyToCheck := common_lib.get_module_equivalent_key("aws", module.source, "aws_api_gateway_stage", "metrics_enabled")
+	common_lib.valid_key(module, keyToCheck)
+	module[keyToCheck] == false
+
+	result := {
+		"documentId": input.document[i].id,
+		"resourceType": "module",
+		"resourceName": sprintf("%s", [name]),
+		"searchKey": sprintf("module[%s].metrics_enabled", [name]),
+		"searchLine": common_lib.build_search_line(["module", name, "metrics_enabled"], []),
+		"issueType": "IncorrectValue",
+		"keyExpectedValue": "'metrics_enabled' should be true",
+		"keyActualValue": "'metrics_enabled' is false",
+		"remediation": json.marshal({
+			"before": "false",
+			"after": "true"
+		}),
+		"remediationType": "replacement",
+	}
+}
+
+CxPolicy[result] {
 	resource := input.document[i].resource.aws_api_gateway_method_settings[name].settings
 	not common_lib.valid_key(resource, "metrics_enabled")
 
@@ -41,3 +64,23 @@ CxPolicy[result] {
 		"remediationType": "addition",
 	}
 }
+
+CxPolicy[result] {
+	module := input.document[i].module[name]
+	keyToCheck := common_lib.get_module_equivalent_key("aws", module.source, "aws_api_gateway_stage", "metrics_enabled")
+	not common_lib.valid_key(module, keyToCheck)
+
+	result := {
+		"documentId": input.document[i].id,
+		"resourceType": "module",
+		"resourceName": sprintf("%s", [name]),
+		"searchKey": sprintf("module[%s]", [name]),
+		"searchLine": common_lib.build_search_line(["module", name], []),
+		"issueType": "MissingAttribute",
+		"keyExpectedValue": "'metrics_enabled' should be defined and not null",
+		"keyActualValue": "'metrics_enabled' is undefined or null",
+		"remediation": sprintf("%s = true", [keyToCheck]),
+		"remediationType": "addition",
+	}
+}
+

@@ -45,3 +45,45 @@ CxPolicy[result] {
 		"remediationType": "replacement",
 	}
 }
+
+CxPolicy[result] {
+	module := input.document[i].module[name]
+	keyToCheck := common_lib.get_module_equivalent_key("aws", module.source, "aws_api_gateway_method", "api_key_required")
+	not common_lib.valid_key(module, keyToCheck)
+
+	result := {
+		"documentId": input.document[i].id,
+		"resourceType": "module",
+		"resourceName": sprintf("%s", [name]),
+		"searchKey": sprintf("module[%s]", [name]),
+		"searchLine": common_lib.build_search_line(["module", name], []),
+		"issueType": "MissingAttribute",
+		"keyExpectedValue": "'api_key_required' should be defined",
+		"keyActualValue": "'api_key_required' is undefined",
+		"remediation": sprintf("%s = true", [keyToCheck]),
+		"remediationType": "addition",
+	}
+}
+
+CxPolicy[result] {
+	module := input.document[i].module[name]
+	keyToCheck := common_lib.get_module_equivalent_key("aws", module.source, "aws_api_gateway_method", "api_key_required")
+	module[keyToCheck] != true
+
+	result := {
+		"documentId": input.document[i].id,
+		"resourceType": "module",
+		"resourceName": sprintf("%s", [name]),
+		"searchKey": sprintf("module[%s].%s", [name, keyToCheck]),
+		"searchLine": common_lib.build_search_line(["module", name, keyToCheck], []),
+		"issueType": "IncorrectValue",
+		"keyExpectedValue": "'api_key_required' should be 'true'",
+		"keyActualValue": "'api_key_required' is 'false'",
+		"remediation": json.marshal({
+			"before": "false",
+			"after": "true"
+		}),
+		"remediationType": "replacement",
+	}
+}
+
