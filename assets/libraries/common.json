@@ -926,9 +926,12 @@
         "terraform-aws-modules/ec2-instance/aws": {
           "resources": [
             "aws_spot_instance_request",
-            "aws_instance"
+            "aws_instance",
+            "aws_launch_template",
+            "aws_launch_configuration"
           ],
           "inputs": {
+            "security_groups": "security_groups",
             "iam_instance_profile": "iam_instance_profile",
             "ipv6_addresses": "ipv6_addresses",
             "hibernation": "hibernation",
@@ -990,9 +993,12 @@
             "aws_db_instance",
             "aws_iam_role_policy_attachment",
             "aws_db_parameter_group",
-            "aws_db_subnet_group"
+            "aws_db_subnet_group",
+            "aws_rds_cluster",
+            "aws_db_security_group"
           ],
           "inputs": {
+            "ingress": "ingress",
             "create_monitoring_role": "create_monitoring_role",
             "domain_iam_role_name": "domain_iam_role_name",
             "apply_immediately": "apply_immediately",
@@ -1683,8 +1689,167 @@
             "aws_lambda_permission",
             "aws_sqs_queue_policy",
             "aws_sns_topic_policy",
-            "aws_s3_bucket_notification"
+            "aws_s3_bucket_notification",
+            "aws_sns_topic"
           ]
+        },
+        "terraform-aws-modules/athena/aws": {
+          "resources": [
+            "aws_athena_database"
+          ],
+          "inputs": {
+            "encryption_configuration": "encryption_configuration"
+          }
+        },
+        "terraform-aws-modules/ebs-encryption/aws": {
+          "resources": [
+            "aws_ebs_encryption_by_default"
+          ],
+          "inputs": {
+            "enabled": "enabled"
+          }
+        },
+        "terraform-aws-modules/ecr/aws": {
+          "resources": [
+            "aws_ecr_repository"
+          ],
+          "inputs": {
+            "image_tag_mutability": "image_tag_mutability"
+          }
+        },
+        "terraform-aws-modules/ecs/aws": {
+          "resources": [
+            "aws_ecs_task_definition"
+          ],
+          "inputs": {
+            "network_mode": "network_mode"
+          }
+        },
+        "terraform-aws-modules/apigateway-v2/aws": {
+          "resources": [
+            "aws_api_gateway_rest_api_policy",
+            "aws_apigatewayv2_stage",
+            "aws_api_gateway_method",
+            "aws_api_gateway_domain_name",
+            "aws_api_gateway_stage"
+          ],
+          "inputs": {
+            "policy": "policy",
+            "default_route_settings": "default_route_settings",
+            "api_key_required": "api_key_required",
+            "authorization": "authorization",
+            "http_method": "http_method",
+            "security_policy": "security_policy",
+            "waf_acl_id": "waf_acl_id",
+            "metrics_enabled": "metrics_enabled"
+          }
+        },
+        "terraform-aws-modules/mq/aws": {
+          "resources": [
+            "aws_mq_broker"
+          ],
+          "inputs": {
+            "encryption_options": "encryption_options"
+          }
+        },
+        "terraform-aws-modules/cloudwatch/aws": {
+          "resources": [
+            "aws_cloudwatch_log_group"
+          ],
+          "inputs": {
+            "kms_key_id": "kms_key_id"
+          }
+        },
+        "terraform-aws-modules/dax/aws": {
+          "resources": [
+            "aws_dax_cluster"
+          ],
+          "inputs": {
+            "server_side_encryption": "server_side_encryption"
+          }
+        },
+        "terraform-aws-modules/docdb/aws": {
+          "resources": [
+            "aws_docdb_cluster"
+          ],
+          "inputs": {
+            "kms_key_id": "kms_key_id",
+            "storage_encrypted": "storage_encrypted",
+            "enabled_cloudwatch_logs_exports": "enabled_cloudwatch_logs_exports"
+          }
+        },
+        "terraform-aws-modules/ebs/aws": {
+          "resources": [
+            "aws_ebs_volume"
+          ],
+          "inputs": {
+            "encrypted": "encrypted"
+          }
+        },
+        "terraform-aws-modules/opensearch/aws": {
+          "resources": [
+            "aws_opensearch_domain"
+          ],
+          "inputs": {
+            "advanced_security_options": "advanced_security_options"
+          }
+        },
+        "terraform-aws-modules/guardduty/aws//modules/detector": {
+          "resources": [
+            "aws_guardduty_detector"
+          ],
+          "inputs": {
+            "enable": "enable"
+          }
+        },
+        "terraform-aws-modules/redshift/aws": {
+          "resources": [
+            "aws_redshift_cluster"
+          ],
+          "inputs": {
+            "encrypted": "encrypted",
+            "publicly_accessible": "publicly_accessible"
+          }
+        },
+        "terraform-aws-modules/s3-bucket/aws//modules/object": {
+          "resources": [
+            "aws_s3_object"
+          ],
+          "inputs": {
+            "server_side_encryption": "server_side_encryption"
+          }
+        },
+        "terraform-aws-modules/rds-aurora/aws": {
+          "resources": [
+            "aws_rds_cluster"
+          ],
+          "inputs": {
+            "storage_encrypted": "storage_encrypted"
+          }
+        },
+        "terraform-aws-modules/cloudfront/aws": {
+          "resources": [
+            "aws_cloudfront_distribution"
+          ],
+          "inputs": {
+            "viewer_certificate": "viewer_certificate"
+          }
+        },
+        "terraform-aws-modules/kms/aws": {
+          "resources": [
+            "aws_kms_key"
+          ],
+          "inputs": {
+            "enable_key_rotation": "enable_key_rotation"
+          }
+        },
+        "terraform-aws-modules/dynamodb-table/aws": {
+          "resources": [
+            "aws_dynamodb_table"
+          ],
+          "inputs": {
+            "server_side_encryption": "server_side_encryption"
+          }
         }
       }
     }
