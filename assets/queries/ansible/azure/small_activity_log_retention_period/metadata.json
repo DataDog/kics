@@ -4,10 +4,11 @@
   "severity": "LOW",
   "category": "Observability",
   "descriptionText": "Ensure that Activity Log Retention is set 365 days or greater",
-  "descriptionUrl": "https://docs.ansible.com/ansible/latest/collections/azure/azcollection/azure_rm_monitorlogprofile_module.html",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/ansible/azure/small_activity_log_retention_period",
   "platform": "Ansible",
   "descriptionID": "5bad8aed",
   "cloudProvider": "azure",
   "cwe": "",
-  "oldSeverity": "MEDIUM"
+  "oldSeverity": "MEDIUM",
+  "providerUrl": "https://docs.ansible.com/ansible/latest/collections/azure/azcollection/azure_rm_monitorlogprofile_module.html"
 }

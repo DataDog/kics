@@ -4,9 +4,10 @@
   "severity": "MEDIUM",
   "category": "Observability",
   "descriptionText": "Make sure Logging is enabled for Redshift Cluster",
-  "descriptionUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-redshift-cluster.html#cfn-redshift-cluster-loggingproperties",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/cloudFormation/aws/redshift_cluster_logging_disabled",
   "platform": "CloudFormation",
   "descriptionID": "b84206ae",
   "cloudProvider": "aws",
-  "cwe": ""
+  "cwe": "",
+  "providerUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-redshift-cluster.html#cfn-redshift-cluster-loggingproperties"
 }

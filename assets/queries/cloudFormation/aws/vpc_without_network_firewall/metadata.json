@@ -4,9 +4,10 @@
   "severity": "MEDIUM",
   "category": "Networking and Firewall",
   "descriptionText": "VPC should have a Network Firewall associated",
-  "descriptionUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-networkfirewall-firewall.html#cfn-networkfirewall-firewall-vpcid",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/cloudFormation/aws/vpc_without_network_firewall",
   "platform": "CloudFormation",
   "descriptionID": "f090ffd2",
   "cloudProvider": "aws",
-  "cwe": ""
+  "cwe": "",
+  "providerUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-networkfirewall-firewall.html#cfn-networkfirewall-firewall-vpcid"
 }

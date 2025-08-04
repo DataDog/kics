@@ -4,10 +4,11 @@
   "severity": "MEDIUM",
   "category": "Encryption",
   "descriptionText": "Checks if the connection between CloudFront and the viewer is encrypted",
-  "descriptionUrl": "https://docs.ansible.com/ansible/latest/collections/community/aws/cloudfront_distribution_module.html",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/ansible/aws/viewer_protocol_policy_allows_http",
   "platform": "Ansible",
   "descriptionID": "5dd1ca8b",
   "cloudProvider": "aws",
   "cwe": "",
-  "oldSeverity": "HIGH"
+  "oldSeverity": "HIGH",
+  "providerUrl": "https://docs.ansible.com/ansible/latest/collections/community/aws/cloudfront_distribution_module.html"
 }

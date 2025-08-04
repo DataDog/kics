@@ -4,7 +4,7 @@
   "severity": "INFO",
   "category": "Best Practices",
   "descriptionText": "Path object should have at least one operation object defined",
-  "descriptionUrl": "https://swagger.io/specification/#path-item-object",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/openAPI/general/path_without_operation",
   "platform": "OpenAPI",
   "descriptionID": "089453e7",
   "aggregation": 2,
@@ -16,5 +16,6 @@
       "descriptionText": ""
     }
   },
-  "cwe": ""
+  "cwe": "",
+  "providerUrl": "https://swagger.io/specification/#path-item-object"
 }

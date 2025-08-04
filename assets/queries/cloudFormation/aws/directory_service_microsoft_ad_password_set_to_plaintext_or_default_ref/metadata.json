@@ -4,10 +4,11 @@
   "severity": "HIGH",
   "category": "Secret Management",
   "descriptionText": "Directory Service Microsoft AD password must not be a plaintext string or a Ref to a Parameter with a Default value.",
-  "descriptionUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-directoryservice-microsoftad.html",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/cloudFormation/aws/directory_service_microsoft_ad_password_set_to_plaintext_or_default_ref",
   "platform": "CloudFormation",
   "descriptionID": "98a72cac",
   "cloudProvider": "aws",
   "cwe": "",
-  "oldSeverity": "MEDIUM"
+  "oldSeverity": "MEDIUM",
+  "providerUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-directoryservice-microsoftad.html"
 }

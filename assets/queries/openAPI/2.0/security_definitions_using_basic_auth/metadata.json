@@ -4,9 +4,10 @@
   "severity": "MEDIUM",
   "category": "Access Control",
   "descriptionText": "Security Definition Object should not use basic authentication",
-  "descriptionUrl": "https://swagger.io/specification/v2/#securitySchemeObject",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/openAPI/2.0/security_definitions_using_basic_auth",
   "platform": "OpenAPI",
   "descriptionID": "80ec8e6a",
   "cwe": "",
-  "oldSeverity": "LOW"
+  "oldSeverity": "LOW",
+  "providerUrl": "https://swagger.io/specification/v2/#securitySchemeObject"
 }

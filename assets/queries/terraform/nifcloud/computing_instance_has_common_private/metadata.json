@@ -4,9 +4,10 @@
   "severity": "LOW",
   "category": "Networking and Firewall",
   "descriptionText": "The instance has common private network",
-  "descriptionUrl": "https://registry.terraform.io/providers/nifcloud/nifcloud/latest/docs/resources/instance#network_id",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/terraform/nifcloud/computing_instance_has_common_private",
   "platform": "Terraform",
   "descriptionID": "c5065d3a",
   "cloudProvider": "nifcloud",
-  "cwe": "200"
+  "cwe": "200",
+  "providerUrl": "https://registry.terraform.io/providers/nifcloud/nifcloud/latest/docs/resources/instance#network_id"
 }

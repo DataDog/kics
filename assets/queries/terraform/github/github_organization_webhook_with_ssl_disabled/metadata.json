@@ -4,9 +4,10 @@
   "severity": "MEDIUM",
   "category": "Encryption",
   "descriptionText": "Check if insecure SSL is being used in the GitHub organization webhooks",
-  "descriptionUrl": "https://registry.terraform.io/providers/hashicorp/github/latest/docs/resources/organization_webhook",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/terraform/github/github_organization_webhook_with_ssl_disabled",
   "platform": "Terraform",
   "descriptionID": "5def6580",
   "cwe": "732",
-  "cloudProvider": "common"
+  "cloudProvider": "common",
+  "providerUrl": "https://registry.terraform.io/providers/hashicorp/github/latest/docs/resources/organization_webhook"
 }

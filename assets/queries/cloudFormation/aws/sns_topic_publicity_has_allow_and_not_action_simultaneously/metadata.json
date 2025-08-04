@@ -4,9 +4,10 @@
   "severity": "MEDIUM",
   "category": "Access Control",
   "descriptionText": "SNS topic Publicity should not have 'Effect: Allow' and argument 'NotAction' at the same time. If it has 'Effect: Allow', the argument stated should be 'Action'.",
-  "descriptionUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/quickref-iam.html#scenario-sns-policy",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/cloudFormation/aws/sns_topic_publicity_has_allow_and_not_action_simultaneously",
   "platform": "CloudFormation",
   "descriptionID": "a4bd80b0",
   "cloudProvider": "aws",
-  "cwe": ""
+  "cwe": "",
+  "providerUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/quickref-iam.html#scenario-sns-policy"
 }

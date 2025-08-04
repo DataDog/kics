@@ -4,9 +4,10 @@
   "severity": "LOW",
   "category": "Access Control",
   "descriptionText": "Ensure that the cluster-admin role is only used where required (RBAC)",
-  "descriptionUrl": "https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/cluster_role_binding#name",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/terraform/kubernetes/cluster_admin_role_binding_with_super_user_permissions",
   "platform": "Terraform",
   "descriptionID": "3cfeabe4",
   "cwe": "250",
-  "cloudProvider": "common"
+  "cloudProvider": "common",
+  "providerUrl": "https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/cluster_role_binding#name"
 }

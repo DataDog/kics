@@ -4,10 +4,11 @@
   "severity": "LOW",
   "category": "Observability",
   "descriptionText": "CloudTrail multi region should be enabled, which means attribute 'is_multi_region_trail' should be set to true",
-  "descriptionUrl": "https://docs.ansible.com/ansible/latest/collections/community/aws/cloudtrail_module.html#parameter-is_multi_region_trail",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/ansible/aws/cloudtrail_multi_region_disabled",
   "platform": "Ansible",
   "descriptionID": "8c4873bf",
   "cloudProvider": "aws",
   "cwe": "",
-  "oldSeverity": "MEDIUM"
+  "oldSeverity": "MEDIUM",
+  "providerUrl": "https://docs.ansible.com/ansible/latest/collections/community/aws/cloudtrail_module.html#parameter-is_multi_region_trail"
 }

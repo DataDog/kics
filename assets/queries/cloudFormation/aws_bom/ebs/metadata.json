@@ -4,9 +4,10 @@
   "severity": "TRACE",
   "category": "Bill Of Materials",
   "descriptionText": "A list of EBS resources found. Amazon Elastic Block Store (Amazon EBS) is an easy-to-use, scalable, high-performance block-storage service designed for Amazon Elastic Compute Cloud (Amazon EC2).",
-  "descriptionUrl": "https://kics.io",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/cloudFormation/aws_bom/ebs",
   "platform": "CloudFormation",
   "descriptionID": "6869b929",
   "cloudProvider": "aws",
-  "cwe": ""
+  "cwe": "",
+  "providerUrl": "https://kics.io"
 }

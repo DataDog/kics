@@ -4,9 +4,10 @@
   "severity": "MEDIUM",
   "category": "Encryption",
   "descriptionText": "CodeBuild Project should be encrypted, which means 'EncryptionKey' should be defined",
-  "descriptionUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-codebuild-project.html",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/cloudFormation/aws/codebuild_not_encrypted",
   "platform": "CloudFormation",
   "descriptionID": "3e1306b1",
   "cloudProvider": "aws",
-  "cwe": ""
+  "cwe": "",
+  "providerUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-codebuild-project.html"
 }

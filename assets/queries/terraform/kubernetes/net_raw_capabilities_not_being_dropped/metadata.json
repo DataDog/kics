@@ -4,9 +4,10 @@
   "severity": "MEDIUM",
   "category": "Insecure Configurations",
   "descriptionText": "Containers should drop 'ALL' or at least 'NET_RAW' capabilities",
-  "descriptionUrl": "https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/pod#drop",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/terraform/kubernetes/net_raw_capabilities_not_being_dropped",
   "platform": "Terraform",
   "descriptionID": "548d4eac",
   "cwe": "269",
-  "cloudProvider": "common"
+  "cloudProvider": "common",
+  "providerUrl": "https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/pod#drop"
 }

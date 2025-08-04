@@ -4,10 +4,11 @@
   "severity": "LOW",
   "category": "Observability",
   "descriptionText": "CloudTrail should be integrated with CloudWatch",
-  "descriptionUrl": "https://docs.ansible.com/ansible/latest/collections/community/aws/cloudtrail_module.html",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/ansible/aws/cloudtrail_not_integrated_with_cloudwatch",
   "platform": "Ansible",
   "descriptionID": "fbc987a2",
   "cloudProvider": "aws",
   "cwe": "",
-  "oldSeverity": "MEDIUM"
+  "oldSeverity": "MEDIUM",
+  "providerUrl": "https://docs.ansible.com/ansible/latest/collections/community/aws/cloudtrail_module.html"
 }

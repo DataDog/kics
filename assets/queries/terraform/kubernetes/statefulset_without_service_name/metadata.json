@@ -4,9 +4,10 @@
   "severity": "LOW",
   "category": "Availability",
   "descriptionText": "StatefulSets should have an existing headless 'serviceName'. The headless service labels should also be implemented on StatefulSets labels.",
-  "descriptionUrl": "https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/stateful_set#selector",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/terraform/kubernetes/statefulset_without_service_name",
   "platform": "Terraform",
   "descriptionID": "a0d17b18",
   "cwe": "665",
-  "cloudProvider": "common"
+  "cloudProvider": "common",
+  "providerUrl": "https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/stateful_set#selector"
 }

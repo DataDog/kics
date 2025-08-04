@@ -4,10 +4,11 @@
   "severity": "MEDIUM",
   "category": "Encryption",
   "descriptionText": "Checks if the connection between the CloudFront and the origin server is encrypted",
-  "descriptionUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudfront-distribution.html",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/cloudFormation/aws/connection_between_cloudfront_origin_not_encrypted",
   "platform": "CloudFormation",
   "descriptionID": "5e31354c",
   "cloudProvider": "aws",
   "cwe": "",
-  "oldSeverity": "HIGH"
+  "oldSeverity": "HIGH",
+  "providerUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudfront-distribution.html"
 }

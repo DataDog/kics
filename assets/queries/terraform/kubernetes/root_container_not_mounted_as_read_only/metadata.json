@@ -4,9 +4,10 @@
   "severity": "LOW",
   "category": "Build Process",
   "descriptionText": "Check if the root container filesystem is not being mounted as read-only.",
-  "descriptionUrl": "https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/pod#read_only_root_filesystem",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/terraform/kubernetes/root_container_not_mounted_as_read_only",
   "platform": "Terraform",
   "descriptionID": "b7afed50",
   "cwe": "668",
-  "cloudProvider": "common"
+  "cloudProvider": "common",
+  "providerUrl": "https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/pod#read_only_root_filesystem"
 }

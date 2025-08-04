@@ -4,9 +4,10 @@
   "severity": "HIGH",
   "category": "Encryption",
   "descriptionText": "Launch Configurations should have the data in the volumes encrypted. To encrypt the data, the 'encrypted' parameter should be set to true in each volume",
-  "descriptionUrl": "https://docs.ansible.com/ansible/latest/collections/community/aws/ec2_lc_module.html",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/ansible/aws/launch_configuration_is_not_encrypted",
   "platform": "Ansible",
   "descriptionID": "57b9aee0",
   "cloudProvider": "aws",
-  "cwe": ""
+  "cwe": "",
+  "providerUrl": "https://docs.ansible.com/ansible/latest/collections/community/aws/ec2_lc_module.html"
 }

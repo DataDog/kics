@@ -4,8 +4,9 @@
   "severity": "LOW",
   "category": "Access Control",
   "descriptionText": "Using an scope on global security field that is undefined on 'securityScheme' can be defined by an attacker",
-  "descriptionUrl": "https://swagger.io/specification/#oauth-flow-object",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/openAPI/3.0/undefined_security_scope_global_security",
   "platform": "OpenAPI",
   "descriptionID": "ef926b66",
-  "cwe": ""
+  "cwe": "",
+  "providerUrl": "https://swagger.io/specification/#oauth-flow-object"
 }

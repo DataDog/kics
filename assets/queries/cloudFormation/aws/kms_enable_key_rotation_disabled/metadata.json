@@ -4,9 +4,10 @@
   "severity": "MEDIUM",
   "category": "Encryption",
   "descriptionText": "EnableKeyRotation should not be false or undefined",
-  "descriptionUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-kms-key.html",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/cloudFormation/aws/kms_enable_key_rotation_disabled",
   "platform": "CloudFormation",
   "descriptionID": "323313bc",
   "cloudProvider": "aws",
-  "cwe": ""
+  "cwe": "",
+  "providerUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-kms-key.html"
 }

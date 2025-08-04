@@ -4,9 +4,10 @@
   "severity": "TRACE",
   "category": "Bill Of Materials",
   "descriptionText": "A list of Dataflow resources found. Unified stream and batch data processing that's serverless, fast, and cost-effective.",
-  "descriptionUrl": "https://kics.io",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/terraform/gcp_bom/dataflow",
   "platform": "Terraform",
   "descriptionID": "5d614ad5",
   "cloudProvider": "gcp",
-  "cwe": "532"
+  "cwe": "532",
+  "providerUrl": "https://kics.io"
 }

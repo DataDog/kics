@@ -4,8 +4,9 @@
   "severity": "HIGH",
   "category": "Access Control",
   "descriptionText": "Security Definitions Object should be set and not empty",
-  "descriptionUrl": "https://swagger.io/specification/v2/#securityDefinitionsObject",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/openAPI/2.0/security_definitions_undefined_or_empty",
   "platform": "OpenAPI",
   "descriptionID": "170dbeca",
-  "cwe": ""
+  "cwe": "",
+  "providerUrl": "https://swagger.io/specification/v2/#securityDefinitionsObject"
 }

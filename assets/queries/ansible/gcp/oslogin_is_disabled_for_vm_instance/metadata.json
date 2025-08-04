@@ -4,9 +4,10 @@
   "severity": "MEDIUM",
   "category": "Insecure Configurations",
   "descriptionText": "VM instance should have OSLogin enabled",
-  "descriptionUrl": "https://docs.ansible.com/ansible/latest/collections/google/cloud/gcp_compute_instance_module.html",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/ansible/gcp/oslogin_is_disabled_for_vm_instance",
   "platform": "Ansible",
   "descriptionID": "2cc130e4",
   "cloudProvider": "gcp",
-  "cwe": ""
+  "cwe": "",
+  "providerUrl": "https://docs.ansible.com/ansible/latest/collections/google/cloud/gcp_compute_instance_module.html"
 }

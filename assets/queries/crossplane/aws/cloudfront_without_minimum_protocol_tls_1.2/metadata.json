@@ -4,10 +4,11 @@
   "severity": "MEDIUM",
   "category": "Insecure Configurations",
   "descriptionText": "CloudFront Minimum Protocol version should be at least TLS 1.2",
-  "descriptionUrl": "https://doc.crds.dev/github.com/crossplane/provider-aws/cloudfront.aws.crossplane.io/Distribution/v1alpha1@v0.29.0#spec-forProvider-distributionConfig-viewerCertificate-minimumProtocolVersion",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/crossplane/aws/cloudfront_without_minimum_protocol_tls_1.2",
   "platform": "Crossplane",
   "descriptionID": "11cca65a",
   "cloudProvider": "aws",
   "cwe": "",
-  "oldSeverity": "HIGH"
+  "oldSeverity": "HIGH",
+  "providerUrl": "https://doc.crds.dev/github.com/crossplane/provider-aws/cloudfront.aws.crossplane.io/Distribution/v1alpha1@v0.29.0#spec-forProvider-distributionConfig-viewerCertificate-minimumProtocolVersion"
 }

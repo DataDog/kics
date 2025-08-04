@@ -4,9 +4,10 @@
   "severity": "HIGH",
   "category": "Networking and Firewall",
   "descriptionText": "Check if default security group does not restrict all inbound and outbound traffic.",
-  "descriptionUrl": "https://docs.ansible.com/ansible/latest/collections/amazon/aws/ec2_group_module.html",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/ansible/aws/default_security_groups_with_unrestricted_traffic",
   "platform": "Ansible",
   "descriptionID": "6fd8f0e1",
   "cloudProvider": "aws",
-  "cwe": ""
+  "cwe": "",
+  "providerUrl": "https://docs.ansible.com/ansible/latest/collections/amazon/aws/ec2_group_module.html"
 }

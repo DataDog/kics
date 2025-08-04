@@ -4,10 +4,11 @@
   "severity": "MEDIUM",
   "category": "Access Control",
   "descriptionText": "This configuration grants an IAM group the permission to attach any policy to any role in the AWS account, as indicated by the action `iam:AttachRolePolicy` with the resource set to `\"*\"`. This creates a significant privilege escalation risk, as group members could grant themselves or others broader access, including administrative permissions, by attaching highly privileged policies to roles. If left unaddressed, this misconfiguration makes it possible for malicious or compromised users to take full control of AWS resources, potentially leading to data breaches or loss of service integrity. Restricting such permissions only to trusted entities and minimizing their scope is critical to maintaining a secure AWS environment.",
-  "descriptionUrl": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_group_policy#policy",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/terraform/aws/group_with_privilege_escalation_by_actions_iam_AttachRolePolicy",
   "platform": "Terraform",
   "descriptionID": "5e39f36b",
   "cloudProvider": "aws",
   "cwe": "269",
-  "oldDescriptionText": "Group with privilege escalation by actions 'iam:AttachRolePolicy' and Resource set to '*'. For more information see https://rhinosecuritylabs.com/aws/aws-privilege-escalation-methods-mitigation/."
+  "oldDescriptionText": "Group with privilege escalation by actions 'iam:AttachRolePolicy' and Resource set to '*'. For more information see https://rhinosecuritylabs.com/aws/aws-privilege-escalation-methods-mitigation/.",
+  "providerUrl": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_group_policy#policy"
 }

@@ -4,10 +4,11 @@
   "severity": "CRITICAL",
   "category": "Access Control",
   "descriptionText": "S3 Buckets should not be readable and writable to all users",
-  "descriptionUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket.html",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/cloudFormation/aws/s3_bucket_acl_allows_read_or_write_to_all_users",
   "platform": "CloudFormation",
   "descriptionID": "68456465",
   "cloudProvider": "aws",
   "cwe": "",
-  "oldSeverity": "HIGH"
+  "oldSeverity": "HIGH",
+  "providerUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket.html"
 }

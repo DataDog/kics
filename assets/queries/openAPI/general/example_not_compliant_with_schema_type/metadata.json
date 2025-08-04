@@ -4,7 +4,7 @@
   "severity": "INFO",
   "category": "Best Practices",
   "descriptionText": "Examples values and fields should be compliant with the schema type",
-  "descriptionUrl": "https://swagger.io/specification/#example-object",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/openAPI/general/example_not_compliant_with_schema_type",
   "platform": "OpenAPI",
   "descriptionID": "484f0373",
   "aggregation": 2,
@@ -16,5 +16,6 @@
       "descriptionText": ""
     }
   },
-  "cwe": ""
+  "cwe": "",
+  "providerUrl": "https://swagger.io/specification/#example-object"
 }
