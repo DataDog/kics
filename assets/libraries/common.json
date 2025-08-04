@@ -1448,7 +1448,8 @@
             "egress_with_cidr_blocks": "egress_with_cidr_blocks",
             "number_of_computed_ingress_rules": "number_of_computed_ingress_rules",
             "computed_ingress_rules": "computed_ingress_rules",
-            "revoke_rules_on_delete": "revoke_rules_on_delete"
+            "revoke_rules_on_delete": "revoke_rules_on_delete",
+            "ingress": "ingress"
           }
         },
         "terraform-aws-modules/alb/aws": {
@@ -1892,6 +1893,14 @@
           ],
           "inputs": {
             "policy": "policy"
+          }
+        },
+        "terraform-aws-modules/iam/aws//modules/iam-group-with-assumable-roles-policy": {
+          "resources": [
+            "aws_iam_group"
+          ],
+          "inputs": {
+            "group_policy": "custom_group_policy"
           }
         }
       }
