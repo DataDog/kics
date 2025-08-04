@@ -44,3 +44,48 @@ CxPolicy[result] {
 		"remediationType": "replacement",
 	}
 }
+
+CxPolicy[result] {
+	module := input.document[i].module[name]
+	keyToCheck := common_lib.get_module_equivalent_key("aws", module.source, "aws_elasticsearch_domain", "encrypt_at_rest")
+
+	not module[keyToCheck]
+
+	result := {
+		"documentId": input.document[i].id,
+		"resourceType": "module",
+		"resourceName": sprintf("%s", [name]),
+		"searchKey": sprintf("module[%s]", [name]),
+		"searchLine": common_lib.build_search_line(["module", name], []),
+		"issueType": "MissingAttribute",
+		"keyExpectedValue": "'encrypt_at_rest' should be set and enabled",
+		"keyActualValue": "'encrypt_at_rest' is undefined",
+		"remediation": sprintf("%s {\n\tenabled = true \n\t}", [keyToCheck]),
+		"remediationType": "addition",
+	}
+}
+
+CxPolicy[result] {
+	module := input.document[i].module[name]
+	keyToCheck := common_lib.get_module_equivalent_key("aws", module.source, "aws_elasticsearch_domain", "encrypt_at_rest")
+
+	encrypt_at_rest := module[keyToCheck]
+	encrypt_at_rest.enabled == false
+
+	result := {
+		"documentId": input.document[i].id,
+		"resourceType": "module",
+		"resourceName": sprintf("%s", [name]),
+		"searchKey": sprintf("module[%s].%s.enabled", [name, keyToCheck]),
+		"searchLine": common_lib.build_search_line(["module", name, keyToCheck, "enabled"], []),
+		"issueType": "IncorrectValue",
+		"keyExpectedValue": "'encrypt_at_rest.enabled' should be true",
+		"keyActualValue": "'encrypt_at_rest.enabled' is false",
+		"remediation": json.marshal({
+			"before": "false",
+			"after": "true"
+		}),
+		"remediationType": "replacement",
+	}
+}
+

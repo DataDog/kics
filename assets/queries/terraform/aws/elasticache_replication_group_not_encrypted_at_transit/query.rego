@@ -20,6 +20,22 @@ CxPolicy[result] {
 }
 
 CxPolicy[result] {
+	module := input.document[i].module[name]
+	keyToCheck := common_lib.get_module_equivalent_key("aws", module.source, "aws_elasticache_replication_group", "transit_encryption_enabled")
+	not common_lib.valid_key(module, keyToCheck)
+
+	result := {
+		"documentId": input.document[i].id,
+		"resourceType": "module",
+		"resourceName": sprintf("%s", [name]),
+		"searchKey": sprintf("module[%s]", [name]),
+		"issueType": "MissingAttribute",
+		"keyExpectedValue": "The attribute 'transit_encryption_enabled' should be set to true",
+		"keyActualValue": "The attribute 'transit_encryption_enabled' is undefined",
+	}
+}
+
+CxPolicy[result] {
 	resource := input.document[i].resource.aws_elasticache_replication_group[name]
 
 	resource.transit_encryption_enabled != true
@@ -34,3 +50,20 @@ CxPolicy[result] {
 		"keyActualValue": "The attribute 'transit_encryption_enabled' is not set to true",
 	}
 }
+
+CxPolicy[result] {
+	module := input.document[i].module[name]
+	keyToCheck := common_lib.get_module_equivalent_key("aws", module.source, "aws_elasticache_replication_group", "transit_encryption_enabled")
+	module[keyToCheck] != true
+
+	result := {
+		"documentId": input.document[i].id,
+		"resourceType": "module",
+		"resourceName": sprintf("%s", [name]),
+		"searchKey": sprintf("module[%s].transit_encryption_enabled", [name]),
+		"issueType": "IncorrectValue",
+		"keyExpectedValue": "The attribute 'transit_encryption_enabled' should be set to true",
+		"keyActualValue": "The attribute 'transit_encryption_enabled' is not set to true",
+	}
+}
+
