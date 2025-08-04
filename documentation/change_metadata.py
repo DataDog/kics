@@ -60,7 +60,7 @@ def main():
                     with open(metadata_file, "r", encoding="utf-8") as f:
                         metadata = json.load(f)
 
-                    provider_url = metadata.get("descriptionUrl", "no-url")
+                    provider_url = metadata.get("providerUrl", "no-url")
                     rule_path = provider_path / rule_dir.name
                     new_description_url = f"https://docs.datadoghq.com/security/code_security/iac_security/iac_rules{rule_path}".replace(
                         str(input_dir), ""
