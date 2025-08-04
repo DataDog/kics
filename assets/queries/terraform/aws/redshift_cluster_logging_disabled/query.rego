@@ -25,6 +25,29 @@ CxPolicy[result] {
 }
 
 CxPolicy[result] {
+	module := input.document[i].module[name]
+	keyToCheck := common_lib.get_module_equivalent_key("aws", module.source, "aws_redshift_cluster", "logging")
+
+	module[keyToCheck].enable == false
+
+	result := {
+		"documentId": input.document[i].id,
+		"resourceType": "module",
+		"resourceName": sprintf("%s", [name]),
+		"searchKey": sprintf("module[%s].logging.enable", [name]),
+		"issueType": "IncorrectValue",
+		"keyExpectedValue": "'logging' should be true",
+		"keyActualValue": "'logging' is false",
+		"searchLine": common_lib.build_search_line(["module", name, "logging", "enable"], []),
+		"remediation": json.marshal({
+			"before": "false",
+			"after": "true"
+		}),
+		"remediationType": "replacement",
+	}
+}
+
+CxPolicy[result] {
 	resource := input.document[i].resource.aws_redshift_cluster[name]
 	not common_lib.valid_key(resource, "logging")
 
@@ -41,3 +64,25 @@ CxPolicy[result] {
 		"remediationType": "addition",
 	}
 }
+
+
+CxPolicy[result] {
+	module := input.document[i].module[name]
+	keyToCheck := common_lib.get_module_equivalent_key("aws", module.source, "aws_redshift_cluster", "logging")
+
+	not common_lib.valid_key(module, keyToCheck)
+
+	result := {
+		"documentId": input.document[i].id,
+		"resourceType": "module",
+		"resourceName": sprintf("%s", [name]),
+		"searchKey": sprintf("module[%s]", [name]),
+		"issueType": "MissingAttribute",
+		"keyExpectedValue": "'logging' should be true",
+		"keyActualValue": "'logging' is undefined",
+		"searchLine": common_lib.build_search_line(["module", name], []),
+		"remediation": "logging {\n\tenable = true \n\t}",
+		"remediationType": "addition",
+	}
+}
+

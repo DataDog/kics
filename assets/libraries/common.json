@@ -1024,6 +1024,7 @@
             "delete_automated_backups": "delete_automated_backups",
             "parameters": "parameters",
             "engine_version": "engine_version",
+            "engine_mode": "engine_mode",
             "option_group_description": "option_group_description",
             "engine": "engine",
             "final_snapshot_identifier_prefix": "final_snapshot_identifier_prefix",
@@ -1813,7 +1814,8 @@
           ],
           "inputs": {
             "encrypted": "encrypted",
-            "publicly_accessible": "publicly_accessible"
+            "publicly_accessible": "publicly_accessible",
+            "logging": "logging"
           }
         },
         "terraform-aws-modules/s3-bucket/aws//modules/object": {
@@ -1875,11 +1877,14 @@
         },
         "terraform-aws-modules/elasticache/aws": {
           "resources": [
-            "aws_elasticache_replication_group"
+            "aws_elasticache_replication_group",
+            "aws_elasticache_cluster"
           ],
           "inputs": {
             "at_rest_encryption_enabled": "at_rest_encryption_enabled",
-            "transit_encryption_enabled": "transit_encryption_enabled"
+            "transit_encryption_enabled": "transit_encryption_enabled",
+            "engine": "engine",
+            "engine_version": "engine_version"
           }
         },
         "terraform-aws-modules/elasticsearch/aws": {
@@ -1894,10 +1899,12 @@
         },
         "terraform-aws-modules/glue/aws": {
           "resources": [
-            "aws_glue_resource_policy"
+            "aws_glue_resource_policy",
+            "aws_glue_job"
           ],
           "inputs": {
-            "policy": "policy"
+            "policy": "policy",
+            "iam_role": "iam_role"
           }
         },
         "terraform-aws-modules/iam/aws//modules/iam-group-with-assumable-roles-policy": {
@@ -1916,6 +1923,14 @@
           "inputs": {
             "publicly_accessible": "publicly_accessible",
             "iam_database_authentication_enabled": "iam_database_authentication_enabled"
+          }
+        },
+        "terraform-aws-modules/iam/aws//modules/iam-assumable-role": {
+          "resources": [
+            "aws_iam_role"
+          ],
+          "inputs": {
+            "permissions_boundary": "permissions_boundary"
           }
         }
       }

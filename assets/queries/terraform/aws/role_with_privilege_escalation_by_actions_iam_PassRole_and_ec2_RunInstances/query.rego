@@ -23,3 +23,24 @@ CxPolicy[result] {
         "searchLine": common_lib.build_search_line(["resource", "aws_iam_role", targetRole], []),
 	}
 }
+
+
+CxPolicy[result] {
+
+	module := input.document[i].module[name]
+	keyToCheck := common_lib.get_module_equivalent_key("aws", module.source, "aws_iam_role", "permissions_boundary")
+
+	not common_lib.valid_key(module, keyToCheck)
+
+	result := {
+		"documentId": input.document[i].id,
+		"resourceType": "module",
+		"resourceName": sprintf("%s", [name]),
+		"searchKey": sprintf("module[%s]", [name]),
+		"issueType": "IncorrectValue",
+		"keyExpectedValue": "'permissions_boundary' attribute should be set.",
+		"keyActualValue": "'permissions_boundary' attribute isn't set.",
+		"searchLine": common_lib.build_search_line(["module", name], []),
+	}
+}
+
