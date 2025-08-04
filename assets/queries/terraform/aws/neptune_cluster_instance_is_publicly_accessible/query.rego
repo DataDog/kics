@@ -24,3 +24,27 @@ CxPolicy[result] {
 		"remediationType": "replacement",
 	}
 }
+
+CxPolicy[result] {
+	module := input.document[i].module[name]
+	keyToCheck := common_lib.get_module_equivalent_key("aws", module.source, "aws_neptune_cluster_instance", "publicly_accessible")
+
+	module[keyToCheck] == true
+
+	result := {
+		"documentId": input.document[i].id,
+		"resourceType": "module",
+		"resourceName": sprintf("%s", [name]),
+		"searchKey": sprintf("module[%s].publicly_accessible", [name]),
+		"issueType": "IncorrectValue",
+		"keyExpectedValue": "'publicly_accessible' should be set to false",
+		"keyActualValue": "'publicly_accessible' is set to true",
+		"searchLine": common_lib.build_search_line(["module", name, "publicly_accessible"], []),
+		"remediation": json.marshal({
+			"before": "true",
+			"after": "false"
+		}),
+		"remediationType": "replacement"
+	}
+}
+
