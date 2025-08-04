@@ -11,6 +11,7 @@ import (
 	"strings"
 
 	"github.com/Checkmarx/kics/pkg/model"
+	tfmodules "github.com/Checkmarx/kics/pkg/parser/terraform/modules"
 	"github.com/open-policy-agent/opa/ast"
 	"github.com/pkg/errors"
 	"github.com/rs/zerolog/log"
@@ -131,6 +132,49 @@ func MergeInputData(defaultInputData, customInputData string) (string, error) {
 	for key, value := range customDataJSON {
 		dataJSON[key] = value
 	}
+	mergedJSON, mergeErr := json.Marshal(dataJSON)
+	if mergeErr != nil {
+		return "", errors.Wrapf(mergeErr, "failed to merge query input data")
+	}
+	return string(mergedJSON), nil
+}
+
+func MergeModulesData(modules []tfmodules.ParsedModule, inputData string) (string, error) {
+	if checkEmptyInputdata(inputData) {
+		inputData = emptyInputData
+	}
+
+	dataJSON := map[string]any{}
+	if unmarshalError := json.Unmarshal([]byte(inputData), &dataJSON); unmarshalError != nil {
+		return "", errors.Wrapf(unmarshalError, "failed to merge query input data")
+	}
+	// Ensure "common_lib" exists and is a map.
+	commonLib, ok := dataJSON["common_lib"].(map[string]any)
+	if !ok || commonLib == nil {
+		commonLib = make(map[string]any)
+		dataJSON["common_lib"] = commonLib
+	}
+
+	// Ensure "modules" within "common_lib" exists and is a map.
+	commonModules, ok := commonLib["modules"].(map[string]any)
+	if !ok || commonModules == nil {
+		commonModules = make(map[string]any)
+		commonLib["modules"] = commonModules
+	}
+
+	// Iterate through generated module mappings and merge their data.
+	for _, module := range modules {
+		for provider, attrData := range module.AttributesData {
+			providersMap, ok := commonModules[provider].(map[string]any)
+			if !ok || providersMap == nil {
+				providersMap = map[string]any{}
+				commonModules[provider] = providersMap
+			}
+
+			providersMap[module.Source] = attrData
+		}
+	}
+
 	mergedJSON, mergeErr := json.Marshal(dataJSON)
 	if mergeErr != nil {
 		return "", errors.Wrapf(mergeErr, "failed to merge query input data")
