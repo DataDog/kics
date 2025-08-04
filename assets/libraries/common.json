@@ -755,7 +755,8 @@
             "aws_default_route_table",
             "aws_internet_gateway",
             "aws_default_security_group",
-            "aws_route_table"
+            "aws_route_table",
+            "aws_neptune_cluster"
           ],
           "inputs": {
             "manage_default_network_acl": "manage_default_network_acl",
@@ -844,6 +845,7 @@
             "manage_default_security_group": "manage_default_security_group",
             "elasticache_acl_tags": "elasticache_acl_tags",
             "enable_classiclink": "enable_classiclink",
+            "storage_encrypted": "storage_encrypted",
             "create_flow_log_cloudwatch_iam_role": "create_flow_log_cloudwatch_iam_role",
             "public_outbound_acl_rules": "public_outbound_acl_rules",
             "default_network_acl_name": "default_network_acl_name",
@@ -1750,7 +1752,9 @@
             "aws_mq_broker"
           ],
           "inputs": {
-            "encryption_options": "encryption_options"
+            "encryption_options": "encryption_options",
+            "publicly_accessible": "publicly_accessible",
+            "logs": "logs"
           }
         },
         "terraform-aws-modules/cloudwatch/aws": {
@@ -1841,7 +1845,8 @@
             "aws_kms_key"
           ],
           "inputs": {
-            "enable_key_rotation": "enable_key_rotation"
+            "enable_key_rotation": "enable_key_rotation",
+            "policy": "policy"
           }
         },
         "terraform-aws-modules/dynamodb-table/aws": {
@@ -1901,6 +1906,16 @@
           ],
           "inputs": {
             "group_policy": "custom_group_policy"
+          }
+        },
+        "terraform-aws-modules/neptune/aws": {
+          "resources": [
+            "aws_neptune_cluster_instance",
+            "aws_neptune_cluster"
+          ],
+          "inputs": {
+            "publicly_accessible": "publicly_accessible",
+            "iam_database_authentication_enabled": "iam_database_authentication_enabled"
           }
         }
       }
