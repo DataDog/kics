@@ -4,7 +4,7 @@
   "severity": "MEDIUM",
   "category": "Insecure Configurations",
   "descriptionText": "SageMaker must have disabled internet access and root access for Creating Notebook Instances.",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/cloudFormation/aws/sagemaker_enabling_internet_access",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/cloudFormation/aws/sagemaker_enabling_internet_access",
   "platform": "CloudFormation",
   "descriptionID": "6e8543a2",
   "cloudProvider": "aws",

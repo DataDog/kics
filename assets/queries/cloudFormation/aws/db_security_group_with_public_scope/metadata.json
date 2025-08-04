@@ -4,7 +4,7 @@
   "severity": "CRITICAL",
   "category": "Networking and Firewall",
   "descriptionText": "The IP address in a DB Security Group should not be '0.0.0.0/0' (IPv4) or '::/0' (IPv6). If so, any IP can access it",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/cloudFormation/aws/db_security_group_with_public_scope",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/cloudFormation/aws/db_security_group_with_public_scope",
   "platform": "CloudFormation",
   "descriptionID": "3ddca0cc",
   "cloudProvider": "aws",

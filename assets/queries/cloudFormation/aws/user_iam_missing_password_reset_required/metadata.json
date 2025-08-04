@@ -4,7 +4,7 @@
   "severity": "MEDIUM",
   "category": "Best Practices",
   "descriptionText": "IAM User Login Profile should exist and have PasswordResetRequired property set to true",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/cloudFormation/aws/user_iam_missing_password_reset_required",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/cloudFormation/aws/user_iam_missing_password_reset_required",
   "platform": "CloudFormation",
   "descriptionID": "a44edc48",
   "cloudProvider": "aws",

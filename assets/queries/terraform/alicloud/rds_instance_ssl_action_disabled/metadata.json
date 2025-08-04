@@ -4,7 +4,7 @@
   "severity": "MEDIUM",
   "category": "Networking and Firewall",
   "descriptionText": "ssl_action parameter should be set to Open for RDS instances",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/terraform/alicloud/rds_instance_ssl_action_disabled",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/terraform/alicloud/rds_instance_ssl_action_disabled",
   "platform": "Terraform",
   "descriptionID": "4a568dd7",
   "cloudProvider": "alicloud",

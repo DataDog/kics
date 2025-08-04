@@ -4,7 +4,7 @@
   "severity": "MEDIUM",
   "category": "Best Practices",
   "descriptionText": "Make sure that any managed IAM policies are implemented in a group and not in a user.",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/cloudFormation/aws/iam_managed_policy_applied_to_a_user",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/cloudFormation/aws/iam_managed_policy_applied_to_a_user",
   "platform": "CloudFormation",
   "descriptionID": "e7fa1d68",
   "cloudProvider": "aws",

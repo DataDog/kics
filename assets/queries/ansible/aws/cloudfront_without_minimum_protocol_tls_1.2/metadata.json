@@ -4,7 +4,7 @@
   "severity": "MEDIUM",
   "category": "Insecure Configurations",
   "descriptionText": "CloudFront Minimum Protocol version should be at least TLS 1.2",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/ansible/aws/cloudfront_without_minimum_protocol_tls_1.2",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/ansible/aws/cloudfront_without_minimum_protocol_tls_1.2",
   "platform": "Ansible",
   "descriptionID": "b0a58f2f",
   "cloudProvider": "aws",

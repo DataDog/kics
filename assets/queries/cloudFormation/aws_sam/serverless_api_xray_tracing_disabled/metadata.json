@@ -4,7 +4,7 @@
   "severity": "MEDIUM",
   "category": "Observability",
   "descriptionText": "AWS Serverless API should have X-Ray Tracing enabled",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/cloudFormation/aws_sam/serverless_api_xray_tracing_disabled",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/cloudFormation/aws_sam/serverless_api_xray_tracing_disabled",
   "platform": "CloudFormation",
   "descriptionID": "ba685b50",
   "cloudProvider": "aws",

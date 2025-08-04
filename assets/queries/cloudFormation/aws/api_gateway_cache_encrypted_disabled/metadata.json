@@ -4,7 +4,7 @@
   "severity": "HIGH",
   "category": "Encryption",
   "descriptionText": "'API::Gateway::Deployment' should have 'CacheDataEncrypted' enabled when 'CachingEnabled' is set to true",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/cloudFormation/aws/api_gateway_cache_encrypted_disabled",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/cloudFormation/aws/api_gateway_cache_encrypted_disabled",
   "platform": "CloudFormation",
   "descriptionID": "16f89b5d",
   "cloudProvider": "aws",

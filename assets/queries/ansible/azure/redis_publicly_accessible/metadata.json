@@ -4,7 +4,7 @@
   "severity": "CRITICAL",
   "category": "Networking and Firewall",
   "descriptionText": "Firewall rule allowing unrestricted access to Redis from other Azure sources",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/ansible/azure/redis_publicly_accessible",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/ansible/azure/redis_publicly_accessible",
   "platform": "Ansible",
   "descriptionID": "140392b3",
   "cloudProvider": "azure",

@@ -4,7 +4,7 @@
   "severity": "HIGH",
   "category": "Networking and Firewall",
   "descriptionText": "Missing security group for vpn gateway",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/terraform/nifcloud/vpn_gateway_security_group_undefined",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/terraform/nifcloud/vpn_gateway_security_group_undefined",
   "platform": "Terraform",
   "descriptionID": "ba50cd20",
   "cloudProvider": "nifcloud",

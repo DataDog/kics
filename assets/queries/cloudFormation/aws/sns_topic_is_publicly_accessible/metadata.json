@@ -4,7 +4,7 @@
   "severity": "CRITICAL",
   "category": "Access Control",
   "descriptionText": "SNS Topic Policy should not allow any principal to access",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/cloudFormation/aws/sns_topic_is_publicly_accessible",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/cloudFormation/aws/sns_topic_is_publicly_accessible",
   "platform": "CloudFormation",
   "descriptionID": "93100b84",
   "cloudProvider": "aws",

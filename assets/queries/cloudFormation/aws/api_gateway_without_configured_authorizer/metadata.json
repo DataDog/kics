@@ -4,7 +4,7 @@
   "severity": "MEDIUM",
   "category": "Access Control",
   "descriptionText": "API Gateway REST API should have an API Gateway Authorizer",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/cloudFormation/aws/api_gateway_without_configured_authorizer",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/cloudFormation/aws/api_gateway_without_configured_authorizer",
   "platform": "CloudFormation",
   "descriptionID": "5734fbc7",
   "cloudProvider": "aws",

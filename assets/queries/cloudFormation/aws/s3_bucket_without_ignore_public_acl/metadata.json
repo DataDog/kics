@@ -4,7 +4,7 @@
   "severity": "MEDIUM",
   "category": "Insecure Configurations",
   "descriptionText": "S3 bucket without ignore public ACL",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/cloudFormation/aws/s3_bucket_without_ignore_public_acl",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/cloudFormation/aws/s3_bucket_without_ignore_public_acl",
   "platform": "CloudFormation",
   "descriptionID": "74146c20",
   "cloudProvider": "aws",

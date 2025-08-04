@@ -4,7 +4,7 @@
   "severity": "HIGH",
   "category": "Encryption",
   "descriptionText": "TKE Cluster should have encryption protection enabled",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/terraform/tencentcloud/tke_cluster_encryption_protection_disabled",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/terraform/tencentcloud/tke_cluster_encryption_protection_disabled",
   "platform": "Terraform",
   "descriptionID": "1220fcb9",
   "cloudProvider": "tencentcloud",

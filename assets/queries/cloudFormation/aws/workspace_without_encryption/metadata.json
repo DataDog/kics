@@ -4,7 +4,7 @@
   "severity": "HIGH",
   "category": "Encryption",
   "descriptionText": "Workspaces should have encryption enabled",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/cloudFormation/aws/workspace_without_encryption",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/cloudFormation/aws/workspace_without_encryption",
   "platform": "CloudFormation",
   "descriptionID": "ed0be490",
   "cloudProvider": "aws",

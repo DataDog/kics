@@ -4,7 +4,7 @@
   "severity": "MEDIUM",
   "category": "Observability",
   "descriptionText": "Every VPC resource should have an associated Flow Log",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/cloudFormation/aws/vpc_flowlogs_disabled",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/cloudFormation/aws/vpc_flowlogs_disabled",
   "platform": "CloudFormation",
   "descriptionID": "0fb02ca5",
   "cloudProvider": "aws",

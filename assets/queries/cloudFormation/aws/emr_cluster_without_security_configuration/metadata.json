@@ -4,7 +4,7 @@
   "severity": "MEDIUM",
   "category": "Insecure Configurations",
   "descriptionText": "EMR Cluster should have security configuration defined.",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/cloudFormation/aws/emr_cluster_without_security_configuration",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/cloudFormation/aws/emr_cluster_without_security_configuration",
   "platform": "CloudFormation",
   "descriptionID": "17e140e2",
   "cloudProvider": "aws",

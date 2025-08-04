@@ -4,7 +4,7 @@
   "severity": "HIGH",
   "category": "Encryption",
   "descriptionText": "Ensure that storage is encrypted.",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/cloudFormation/aws/cmk_unencrypted_storage",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/cloudFormation/aws/cmk_unencrypted_storage",
   "platform": "CloudFormation",
   "descriptionID": "ba38e42e",
   "cloudProvider": "aws",

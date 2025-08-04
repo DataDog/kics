@@ -4,7 +4,7 @@
   "severity": "LOW",
   "category": "Best Practices",
   "descriptionText": "IAM policy should not apply directly to users, should be with a group",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/cloudFormation/aws/iam_policies_without_groups",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/cloudFormation/aws/iam_policies_without_groups",
   "platform": "CloudFormation",
   "descriptionID": "d9bcf74d",
   "cloudProvider": "aws",

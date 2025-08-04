@@ -4,7 +4,7 @@
   "severity": "LOW",
   "category": "Networking and Firewall",
   "descriptionText": "The rdb has common private network",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/terraform/nifcloud/db_instance_has_common_private",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/terraform/nifcloud/db_instance_has_common_private",
   "platform": "Terraform",
   "descriptionID": "89f1ff38",
   "cloudProvider": "nifcloud",

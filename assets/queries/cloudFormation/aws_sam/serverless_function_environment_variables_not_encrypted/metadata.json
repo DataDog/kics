@@ -4,7 +4,7 @@
   "severity": "MEDIUM",
   "category": "Encryption",
   "descriptionText": "AWS Serverless Function should encrypt environment variables",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/cloudFormation/aws_sam/serverless_function_environment_variables_not_encrypted",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/cloudFormation/aws_sam/serverless_function_environment_variables_not_encrypted",
   "platform": "CloudFormation",
   "descriptionID": "f218e4bc",
   "cloudProvider": "aws",

@@ -4,7 +4,7 @@
   "severity": "HIGH",
   "category": "Encryption",
   "descriptionText": "Cloud SQL Database Instance should have SSL enabled",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/ansible/gcp/sql_db_instance_with_ssl_disabled",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/ansible/gcp/sql_db_instance_with_ssl_disabled",
   "platform": "Ansible",
   "descriptionID": "50bb06d6",
   "cloudProvider": "gcp",

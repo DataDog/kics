@@ -4,7 +4,7 @@
   "severity": "MEDIUM",
   "category": "Encryption",
   "descriptionText": "The CA certificate Identifier must be 'rds-ca-2019'.",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/ansible/aws/ca_certificate_identifier_is_outdated",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/ansible/aws/ca_certificate_identifier_is_outdated",
   "platform": "Ansible",
   "descriptionID": "d92aa922",
   "cloudProvider": "aws",

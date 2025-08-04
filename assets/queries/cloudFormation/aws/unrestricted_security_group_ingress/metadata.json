@@ -4,7 +4,7 @@
   "severity": "HIGH",
   "category": "Networking and Firewall",
   "descriptionText": "AWS Security Group Ingress CIDR should not be open to the world",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/cloudFormation/aws/unrestricted_security_group_ingress",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/cloudFormation/aws/unrestricted_security_group_ingress",
   "platform": "CloudFormation",
   "descriptionID": "08256d31",
   "cloudProvider": "aws",

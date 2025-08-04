@@ -4,7 +4,7 @@
   "severity": "MEDIUM",
   "category": "Networking and Firewall",
   "descriptionText": "SageMaker Notebook must be placed in a VPC",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/cloudFormation/aws/sagemaker_notebook_not_placed_in_vpc",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/cloudFormation/aws/sagemaker_notebook_not_placed_in_vpc",
   "platform": "CloudFormation",
   "descriptionID": "d062ca53",
   "cloudProvider": "aws",

@@ -4,7 +4,7 @@
   "severity": "LOW",
   "category": "Secret Management",
   "descriptionText": "KmsMasterKeyId attribute should not be undefined",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/cloudFormation/aws/sns_topic_without_kms_master_key_id",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/cloudFormation/aws/sns_topic_without_kms_master_key_id",
   "platform": "CloudFormation",
   "descriptionID": "a8a19ba3",
   "cloudProvider": "aws",

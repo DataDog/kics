@@ -4,7 +4,7 @@
   "severity": "HIGH",
   "category": "Resource Management",
   "descriptionText": "Containers can mount sensitive folders from the hosts, giving them potentially dangerous access to critical host configurations and binaries.",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/terraform/kubernetes/volume_mount_with_os_directory_write_permissions",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/terraform/kubernetes/volume_mount_with_os_directory_write_permissions",
   "platform": "Terraform",
   "descriptionID": "48833ef2",
   "cwe": "284",

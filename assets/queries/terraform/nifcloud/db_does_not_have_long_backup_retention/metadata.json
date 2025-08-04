@@ -4,7 +4,7 @@
   "severity": "MEDIUM",
   "category": "Backup",
   "descriptionText": "The rdb has backup retention less than 2 day",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/terraform/nifcloud/db_does_not_have_long_backup_retention",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/terraform/nifcloud/db_does_not_have_long_backup_retention",
   "platform": "Terraform",
   "descriptionID": "5fadf94a",
   "cloudProvider": "nifcloud",

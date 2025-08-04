@@ -4,7 +4,7 @@
   "severity": "HIGH",
   "category": "Networking and Firewall",
   "descriptionText": "ECS Service's security group should not allow unrestricted access to all ports from all IPv4 addresses",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/cloudFormation/aws/fully_open_ingress",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/cloudFormation/aws/fully_open_ingress",
   "platform": "CloudFormation",
   "descriptionID": "747f49ac",
   "cloudProvider": "aws",

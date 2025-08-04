@@ -4,7 +4,7 @@
   "severity": "MEDIUM",
   "category": "Access Control",
   "descriptionText": "Ram policies with admin access should not be associated to users, groups or roles",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/terraform/alicloud/ram_policy_admin_access_not_attached_to_users_groups_roles",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/terraform/alicloud/ram_policy_admin_access_not_attached_to_users_groups_roles",
   "platform": "Terraform",
   "descriptionID": "d529825f",
   "cloudProvider": "alicloud",

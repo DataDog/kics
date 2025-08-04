@@ -4,7 +4,7 @@
   "severity": "HIGH",
   "category": "Networking and Firewall",
   "descriptionText": "AWS Security Group should not have public port wide",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/ansible/aws/public_port_wide",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/ansible/aws/public_port_wide",
   "platform": "Ansible",
   "descriptionID": "be17d13e",
   "cloudProvider": "aws",

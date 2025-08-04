@@ -4,7 +4,7 @@
   "severity": "LOW",
   "category": "Best Practices",
   "descriptionText": "Sees if Kubernetes Drop Capabilities exists to ensure containers security context",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/terraform/kubernetes/no_drop_capabilities_for_containers",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/terraform/kubernetes/no_drop_capabilities_for_containers",
   "platform": "Terraform",
   "descriptionID": "f547f3d7",
   "cwe": "754",

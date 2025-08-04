@@ -4,7 +4,7 @@
   "severity": "MEDIUM",
   "category": "Resource Management",
   "descriptionText": "Kubernetes nodes must have auto upgrades set to true, which means Node 'auto_upgrade' should be enabled for Kubernetes Clusters",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/ansible/gcp/node_auto_upgrade_disabled",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/ansible/gcp/node_auto_upgrade_disabled",
   "platform": "Ansible",
   "descriptionID": "4b200606",
   "cloudProvider": "gcp",

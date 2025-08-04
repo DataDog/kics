@@ -4,7 +4,7 @@
   "severity": "MEDIUM",
   "category": "Networking and Firewall",
   "descriptionText": "Service has an external load balancer, which may cause accessibility from other networks and the Internet",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/terraform/kubernetes/service_with_external_load_balancer",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/terraform/kubernetes/service_with_external_load_balancer",
   "platform": "Terraform",
   "descriptionID": "18a78d03",
   "cwe": "552",

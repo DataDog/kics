@@ -4,7 +4,7 @@
   "severity": "HIGH",
   "category": "Networking and Firewall",
   "descriptionText": "Security Groups does not allow 0.0.0.0/0 for rdp (port:3389)",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/cloudFormation/aws/security_groups_unrestricted_access_to_rdp",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/cloudFormation/aws/security_groups_unrestricted_access_to_rdp",
   "platform": "CloudFormation",
   "descriptionID": "ee6a21e3",
   "cloudProvider": "aws",

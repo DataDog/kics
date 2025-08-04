@@ -4,7 +4,7 @@
   "severity": "MEDIUM",
   "category": "Insecure Configurations",
   "descriptionText": "API Gateway Method should restrict the authorization type, except for the HTTP OPTIONS method.",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/cloudFormation/aws/api_gateway_with_open_access",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/cloudFormation/aws/api_gateway_with_open_access",
   "platform": "CloudFormation",
   "descriptionID": "d8d6ab46",
   "cloudProvider": "aws",

@@ -4,7 +4,7 @@
   "severity": "MEDIUM",
   "category": "Observability",
   "descriptionText": "AWS Serverless API/AWS Serverless HTTP API should have Access Logging Setting(s) defined",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/cloudFormation/aws_sam/serverless_api_access_logging_setting_undefined",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/cloudFormation/aws_sam/serverless_api_access_logging_setting_undefined",
   "platform": "CloudFormation",
   "descriptionID": "b2bb4961",
   "cloudProvider": "aws",

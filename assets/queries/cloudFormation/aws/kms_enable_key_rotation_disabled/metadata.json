@@ -4,7 +4,7 @@
   "severity": "MEDIUM",
   "category": "Encryption",
   "descriptionText": "EnableKeyRotation should not be false or undefined",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/cloudFormation/aws/kms_enable_key_rotation_disabled",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/cloudFormation/aws/kms_enable_key_rotation_disabled",
   "platform": "CloudFormation",
   "descriptionID": "323313bc",
   "cloudProvider": "aws",

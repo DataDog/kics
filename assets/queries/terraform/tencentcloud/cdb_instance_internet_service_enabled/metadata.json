@@ -4,7 +4,7 @@
   "severity": "HIGH",
   "category": "Insecure Configurations",
   "descriptionText": "CDB Instance Internet should have internet service disabled",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/terraform/tencentcloud/cdb_instance_internet_service_enabled",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/terraform/tencentcloud/cdb_instance_internet_service_enabled",
   "platform": "Terraform",
   "descriptionID": "2d49b723",
   "cloudProvider": "tencentcloud",

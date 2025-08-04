@@ -4,7 +4,7 @@
   "severity": "HIGH",
   "category": "Secret Management",
   "descriptionText": "Amplify App Access Token must not be in a plain text string or referenced in a parameter as a default value.",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/cloudFormation/aws/amplify_app_access_token_exposed",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/cloudFormation/aws/amplify_app_access_token_exposed",
   "platform": "CloudFormation",
   "descriptionID": "40717425",
   "cloudProvider": "aws",

@@ -4,7 +4,7 @@
   "severity": "MEDIUM",
   "category": "Networking and Firewall",
   "descriptionText": "No security group should allow unrestricted egress access",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/cloudFormation/aws/security_groups_allows_unrestricted_outbound_traffic",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/cloudFormation/aws/security_groups_allows_unrestricted_outbound_traffic",
   "platform": "CloudFormation",
   "descriptionID": "05891eb1",
   "cloudProvider": "aws",

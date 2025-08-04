@@ -4,7 +4,7 @@
   "severity": "MEDIUM",
   "category": "Access Control",
   "descriptionText": "IAM policies should be attached only to groups or roles",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/ansible/aws/iam_policies_attached_to_user",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/ansible/aws/iam_policies_attached_to_user",
   "platform": "Ansible",
   "descriptionID": "cd4d500d",
   "cloudProvider": "aws",

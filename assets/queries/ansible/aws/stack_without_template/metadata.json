@@ -4,7 +4,7 @@
   "severity": "LOW",
   "category": "Build Process",
   "descriptionText": "AWS CloudFormation should have a template defined through the attribute template, template_url or attribute template_body",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/ansible/aws/stack_without_template",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/ansible/aws/stack_without_template",
   "platform": "Ansible",
   "descriptionID": "de8347bd",
   "cloudProvider": "aws",

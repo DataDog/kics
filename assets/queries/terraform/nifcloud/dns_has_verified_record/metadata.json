@@ -4,7 +4,7 @@
   "severity": "HIGH",
   "category": "Insecure Configurations",
   "descriptionText": "Removing verified record of TXT auth the risk that If the authentication record remains, anyone can register the zone",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/terraform/nifcloud/dns_has_verified_record",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/terraform/nifcloud/dns_has_verified_record",
   "platform": "Terraform",
   "descriptionID": "578a5e6b",
   "cloudProvider": "nifcloud",

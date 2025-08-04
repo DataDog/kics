@@ -4,7 +4,7 @@
   "severity": "MEDIUM",
   "category": "Observability",
   "descriptionText": "Every VPC resource should have an associated Flow Log",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/terraform/alicloud/vpc_flow_logs_disabled",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/terraform/alicloud/vpc_flow_logs_disabled",
   "platform": "Terraform",
   "descriptionID": "2841dac6",
   "cloudProvider": "alicloud",

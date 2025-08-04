@@ -4,7 +4,7 @@
   "severity": "MEDIUM",
   "category": "Networking and Firewall",
   "descriptionText": "All Application Load Balancers (ALB) must be protected with Web Application Firewall (WAF) service",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/cloudFormation/aws/alb_is_not_integrated_with_waf",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/cloudFormation/aws/alb_is_not_integrated_with_waf",
   "platform": "CloudFormation",
   "descriptionID": "2cad71a7",
   "cloudProvider": "aws",

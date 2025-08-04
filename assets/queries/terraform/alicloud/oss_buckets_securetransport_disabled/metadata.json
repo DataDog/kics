@@ -4,7 +4,7 @@
   "severity": "MEDIUM",
   "category": "Networking and Firewall",
   "descriptionText": "OSS Buckets should have secure transport enabled",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/terraform/alicloud/oss_buckets_securetransport_disabled",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/terraform/alicloud/oss_buckets_securetransport_disabled",
   "platform": "Terraform",
   "descriptionID": "2b43b0a7",
   "cloudProvider": "alicloud",

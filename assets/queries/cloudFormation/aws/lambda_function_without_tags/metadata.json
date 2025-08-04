@@ -4,7 +4,7 @@
   "severity": "LOW",
   "category": "Insecure Configurations",
   "descriptionText": "AWS Lambda Functions must have associated tags.",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/cloudFormation/aws/lambda_function_without_tags",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/cloudFormation/aws/lambda_function_without_tags",
   "platform": "CloudFormation",
   "descriptionID": "664675e7",
   "cloudProvider": "aws",

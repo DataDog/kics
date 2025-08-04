@@ -4,7 +4,7 @@
   "severity": "MEDIUM",
   "category": "Access Control",
   "descriptionText": "IAM policies should be applied to groups and not to users",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/cloudFormation/aws/iam_policy_on_user",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/cloudFormation/aws/iam_policy_on_user",
   "platform": "CloudFormation",
   "descriptionID": "50f7785d",
   "cloudProvider": "aws",

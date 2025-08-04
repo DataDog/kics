@@ -4,7 +4,7 @@
   "severity": "HIGH",
   "category": "Access Control",
   "descriptionText": "BigQuery dataset is anonymously or publicly accessible",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/ansible/gcp/bigquery_dataset_is_public",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/ansible/gcp/bigquery_dataset_is_public",
   "platform": "Ansible",
   "descriptionID": "72ba0b75",
   "cloudProvider": "gcp",

@@ -4,7 +4,7 @@
   "severity": "MEDIUM",
   "category": "Backup",
   "descriptionText": "Checks if backup configuration is enabled for all Cloud SQL Database instances",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/ansible/gcp/sql_db_instance_backup_disabled",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/ansible/gcp/sql_db_instance_backup_disabled",
   "platform": "Ansible",
   "descriptionID": "006274d4",
   "cloudProvider": "gcp",

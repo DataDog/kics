@@ -4,7 +4,7 @@
   "severity": "LOW",
   "category": "Networking and Firewall",
   "descriptionText": "Elastic MapReduce Cluster (EMR) should be launched in a Virtual Private Cloud (VPC)",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/cloudFormation/aws/emr_wihout_vpc",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/cloudFormation/aws/emr_wihout_vpc",
   "platform": "CloudFormation",
   "descriptionID": "26800d21",
   "cloudProvider": "aws",

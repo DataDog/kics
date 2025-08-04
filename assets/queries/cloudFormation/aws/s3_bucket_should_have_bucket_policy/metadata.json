@@ -4,7 +4,7 @@
   "severity": "LOW",
   "category": "Insecure Defaults",
   "descriptionText": "Checks if S3 Bucket has the same name as a Bucket Policy, if it has, S3 Bucket has a Bucket Policy associated",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/cloudFormation/aws/s3_bucket_should_have_bucket_policy",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/cloudFormation/aws/s3_bucket_should_have_bucket_policy",
   "platform": "CloudFormation",
   "descriptionID": "2b429546",
   "cloudProvider": "aws",

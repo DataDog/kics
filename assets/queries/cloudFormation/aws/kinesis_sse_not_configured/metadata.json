@@ -4,7 +4,7 @@
   "severity": "HIGH",
   "category": "Encryption",
   "descriptionText": "AWS Kinesis Stream should have SSE (Server Side Encryption) defined",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/cloudFormation/aws/kinesis_sse_not_configured",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/cloudFormation/aws/kinesis_sse_not_configured",
   "platform": "CloudFormation",
   "descriptionID": "a8238dc8",
   "cloudProvider": "aws",

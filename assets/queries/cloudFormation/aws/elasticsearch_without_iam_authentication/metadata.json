@@ -4,7 +4,7 @@
   "severity": "MEDIUM",
   "category": "Access Control",
   "descriptionText": "AWS Elasticsearch should ensure IAM Authentication",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/cloudFormation/aws/elasticsearch_without_iam_authentication",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/cloudFormation/aws/elasticsearch_without_iam_authentication",
   "platform": "CloudFormation",
   "descriptionID": "af727c29",
   "cloudProvider": "aws",

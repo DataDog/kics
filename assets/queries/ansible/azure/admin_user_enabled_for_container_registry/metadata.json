@@ -4,7 +4,7 @@
   "severity": "MEDIUM",
   "category": "Access Control",
   "descriptionText": "Admin user is enabled for Container Registry",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/ansible/azure/admin_user_enabled_for_container_registry",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/ansible/azure/admin_user_enabled_for_container_registry",
   "platform": "Ansible",
   "descriptionID": "d8ca5381",
   "cloudProvider": "azure",

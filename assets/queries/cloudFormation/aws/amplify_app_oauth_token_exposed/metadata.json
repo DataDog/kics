@@ -4,7 +4,7 @@
   "severity": "HIGH",
   "category": "Secret Management",
   "descriptionText": "Amplify App OAuth Token must not be a plaintext string or a Ref to a Parameter with a Default value.",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/cloudFormation/aws/amplify_app_oauth_token_exposed",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/cloudFormation/aws/amplify_app_oauth_token_exposed",
   "platform": "CloudFormation",
   "descriptionID": "c9abb2c8",
   "cloudProvider": "aws",

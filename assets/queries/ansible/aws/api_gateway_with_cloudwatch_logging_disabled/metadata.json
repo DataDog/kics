@@ -4,7 +4,7 @@
   "severity": "MEDIUM",
   "category": "Observability",
   "descriptionText": "AWS CloudWatch Logs for APIs is not enabled",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/ansible/aws/api_gateway_with_cloudwatch_logging_disabled",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/ansible/aws/api_gateway_with_cloudwatch_logging_disabled",
   "platform": "Ansible",
   "descriptionID": "313709e8",
   "cloudProvider": "aws",

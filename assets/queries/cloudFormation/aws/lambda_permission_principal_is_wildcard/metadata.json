@@ -4,7 +4,7 @@
   "severity": "MEDIUM",
   "category": "Access Control",
   "descriptionText": "Lambda Permission Principal should not contain a wildcard.",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/cloudFormation/aws/lambda_permission_principal_is_wildcard",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/cloudFormation/aws/lambda_permission_principal_is_wildcard",
   "platform": "CloudFormation",
   "descriptionID": "cfa9120c",
   "cloudProvider": "aws",

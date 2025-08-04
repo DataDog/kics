@@ -4,7 +4,7 @@
   "severity": "LOW",
   "category": "Networking and Firewall",
   "descriptionText": "The nas has common private network",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/terraform/nifcloud/nas_instance_has_common_private",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/terraform/nifcloud/nas_instance_has_common_private",
   "platform": "Terraform",
   "descriptionID": "a54c489c",
   "cloudProvider": "nifcloud",

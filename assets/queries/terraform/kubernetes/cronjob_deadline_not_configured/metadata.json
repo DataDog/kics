@@ -4,7 +4,7 @@
   "severity": "LOW",
   "category": "Resource Management",
   "descriptionText": "Cronjobs must have a configured deadline, which means the attribute 'starting_deadline_seconds' must be defined",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/terraform/kubernetes/cronjob_deadline_not_configured",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/terraform/kubernetes/cronjob_deadline_not_configured",
   "platform": "Terraform",
   "descriptionID": "030edc62",
   "cwe": "400",

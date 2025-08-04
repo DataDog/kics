@@ -4,7 +4,7 @@
   "severity": "LOW",
   "category": "Best Practices",
   "descriptionText": "No password expiration policy",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/ansible/aws/misconfigured_password_policy_expiration",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/ansible/aws/misconfigured_password_policy_expiration",
   "platform": "Ansible",
   "descriptionID": "80db60d5",
   "cloudProvider": "aws",

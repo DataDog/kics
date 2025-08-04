@@ -4,7 +4,7 @@
   "severity": "HIGH",
   "category": "Networking and Firewall",
   "descriptionText": "Check if default security group does not restrict all inbound and outbound traffic.",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/cloudFormation/aws/default_security_groups_with_unrestricted_traffic",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/cloudFormation/aws/default_security_groups_with_unrestricted_traffic",
   "platform": "CloudFormation",
   "descriptionID": "50b0269e",
   "cloudProvider": "aws",

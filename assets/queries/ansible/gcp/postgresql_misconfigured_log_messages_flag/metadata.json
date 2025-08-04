@@ -4,7 +4,7 @@
   "severity": "LOW",
   "category": "Observability",
   "descriptionText": "PostgreSQL database 'log_min_messages' flag isn't set to a valid value",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/ansible/gcp/postgresql_misconfigured_log_messages_flag",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/ansible/gcp/postgresql_misconfigured_log_messages_flag",
   "platform": "Ansible",
   "descriptionID": "339b0278",
   "cloudProvider": "gcp",

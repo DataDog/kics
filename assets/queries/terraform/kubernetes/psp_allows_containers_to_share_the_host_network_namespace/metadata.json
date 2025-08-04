@@ -4,7 +4,7 @@
   "severity": "HIGH",
   "category": "Insecure Configurations",
   "descriptionText": "Check if Pod Security Policies allow containers to share the host network namespace.",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/terraform/kubernetes/psp_allows_containers_to_share_the_host_network_namespace",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/terraform/kubernetes/psp_allows_containers_to_share_the_host_network_namespace",
   "platform": "Terraform",
   "descriptionID": "531152cf",
   "cwe": "250",

@@ -4,7 +4,7 @@
   "severity": "HIGH",
   "category": "Access Control",
   "descriptionText": "Checks if the SQS Queue is exposed",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/ansible/aws/sqs_queue_exposed",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/ansible/aws/sqs_queue_exposed",
   "platform": "Ansible",
   "descriptionID": "a835b707",
   "cloudProvider": "aws",

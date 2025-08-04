@@ -4,7 +4,7 @@
   "severity": "MEDIUM",
   "category": "Access Control",
   "descriptionText": "IAM role allows all services or principals to assume it",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/cloudFormation/aws/iam_role_allows_all_principals_to_assume",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/cloudFormation/aws/iam_role_allows_all_principals_to_assume",
   "platform": "CloudFormation",
   "descriptionID": "13e52bb7",
   "cloudProvider": "aws",

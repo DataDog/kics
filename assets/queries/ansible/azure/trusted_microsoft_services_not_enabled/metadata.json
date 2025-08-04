@@ -4,7 +4,7 @@
   "severity": "MEDIUM",
   "category": "Networking and Firewall",
   "descriptionText": "Trusted Microsoft Services should be enabled for Storage Account access",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/ansible/azure/trusted_microsoft_services_not_enabled",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/ansible/azure/trusted_microsoft_services_not_enabled",
   "platform": "Ansible",
   "descriptionID": "e86db9c1",
   "cloudProvider": "azure",

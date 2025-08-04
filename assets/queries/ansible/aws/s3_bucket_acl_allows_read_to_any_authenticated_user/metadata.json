@@ -4,7 +4,7 @@
   "severity": "HIGH",
   "category": "Access Control",
   "descriptionText": "S3 Buckets should not be readable to any authenticated user",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/ansible/aws/s3_bucket_acl_allows_read_to_any_authenticated_user",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/ansible/aws/s3_bucket_acl_allows_read_to_any_authenticated_user",
   "platform": "Ansible",
   "descriptionID": "e9e4ca47",
   "cloudProvider": "aws",

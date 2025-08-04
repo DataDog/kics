@@ -4,7 +4,7 @@
   "severity": "MEDIUM",
   "category": "Insecure Defaults",
   "descriptionText": "No role nor cluster role should bind to a default service account",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/terraform/kubernetes/role_binding_to_default_service_account",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/terraform/kubernetes/role_binding_to_default_service_account",
   "platform": "Terraform",
   "descriptionID": "a90a96ca",
   "cwe": "665",

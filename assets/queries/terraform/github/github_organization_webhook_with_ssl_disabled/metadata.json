@@ -4,7 +4,7 @@
   "severity": "MEDIUM",
   "category": "Encryption",
   "descriptionText": "Check if insecure SSL is being used in the GitHub organization webhooks",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/terraform/github/github_organization_webhook_with_ssl_disabled",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/terraform/github/github_organization_webhook_with_ssl_disabled",
   "platform": "Terraform",
   "descriptionID": "5def6580",
   "cwe": "732",

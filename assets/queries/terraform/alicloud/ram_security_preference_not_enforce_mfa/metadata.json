@@ -4,7 +4,7 @@
   "severity": "LOW",
   "category": "Access Control",
   "descriptionText": "RAM Security preferences should enforce MFA login for RAM users",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/terraform/alicloud/ram_security_preference_not_enforce_mfa",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/terraform/alicloud/ram_security_preference_not_enforce_mfa",
   "platform": "Terraform",
   "descriptionID": "6131e90d",
   "cloudProvider": "alicloud",

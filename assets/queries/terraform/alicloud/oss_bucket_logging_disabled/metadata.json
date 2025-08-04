@@ -4,7 +4,7 @@
   "severity": "MEDIUM",
   "category": "Observability",
   "descriptionText": "OSS Bucket should have logging enabled, for better visibility of resources and objects.",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/terraform/alicloud/oss_bucket_logging_disabled",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/terraform/alicloud/oss_bucket_logging_disabled",
   "platform": "Terraform",
   "descriptionID": "c4a5fdbb",
   "cloudProvider": "alicloud",

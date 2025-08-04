@@ -4,7 +4,7 @@
   "severity": "MEDIUM",
   "category": "Observability",
   "descriptionText": "Ensure MSK Cluster Logging is enabled",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/cloudFormation/aws/msk_cluster_logging_disabled",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/cloudFormation/aws/msk_cluster_logging_disabled",
   "platform": "CloudFormation",
   "descriptionID": "1d9a0a75",
   "cloudProvider": "aws",

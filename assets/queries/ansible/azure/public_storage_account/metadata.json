@@ -4,7 +4,7 @@
   "severity": "HIGH",
   "category": "Access Control",
   "descriptionText": "Storage Account should not be public to grant the principle of least privileges",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/ansible/azure/public_storage_account",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/ansible/azure/public_storage_account",
   "platform": "Ansible",
   "descriptionID": "78d2c5b3",
   "cloudProvider": "azure",

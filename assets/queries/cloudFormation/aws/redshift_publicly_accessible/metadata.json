@@ -4,7 +4,7 @@
   "severity": "MEDIUM",
   "category": "Insecure Configurations",
   "descriptionText": "AWS Redshift Clusters must not be publicly accessible, which means the attribute 'PubliclyAccessible' must be set to false",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/cloudFormation/aws/redshift_publicly_accessible",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/cloudFormation/aws/redshift_publicly_accessible",
   "platform": "CloudFormation",
   "descriptionID": "407e0863",
   "cloudProvider": "aws",

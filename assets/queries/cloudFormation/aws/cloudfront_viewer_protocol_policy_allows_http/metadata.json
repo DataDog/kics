@@ -4,7 +4,7 @@
   "severity": "MEDIUM",
   "category": "Encryption",
   "descriptionText": "Checks if the connection between CloudFront and the viewer is encrypted",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/cloudFormation/aws/cloudfront_viewer_protocol_policy_allows_http",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/cloudFormation/aws/cloudfront_viewer_protocol_policy_allows_http",
   "platform": "CloudFormation",
   "descriptionID": "bf860aba",
   "cloudProvider": "aws",

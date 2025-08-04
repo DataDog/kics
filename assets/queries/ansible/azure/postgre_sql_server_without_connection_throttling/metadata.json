@@ -4,7 +4,7 @@
   "severity": "MEDIUM",
   "category": "Observability",
   "descriptionText": "Ensure that Connection Throttling is set for the PostgreSQL server",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/ansible/azure/postgre_sql_server_without_connection_throttling",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/ansible/azure/postgre_sql_server_without_connection_throttling",
   "platform": "Ansible",
   "descriptionID": "47504c54",
   "cloudProvider": "azure",

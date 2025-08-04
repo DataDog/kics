@@ -4,7 +4,7 @@
   "severity": "HIGH",
   "category": "Encryption",
   "descriptionText": "CLB Listener protocol must not use insecure protocols",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/terraform/tencentcloud/clb_listener_using_insecure_protocols",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/terraform/tencentcloud/clb_listener_using_insecure_protocols",
   "platform": "Terraform",
   "descriptionID": "e129d0f1",
   "cloudProvider": "tencentcloud",

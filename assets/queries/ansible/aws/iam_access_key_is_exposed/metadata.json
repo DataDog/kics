@@ -4,7 +4,7 @@
   "severity": "MEDIUM",
   "category": "Access Control",
   "descriptionText": "Check if IAM Access Key is active for some user besides 'root'",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/ansible/aws/iam_access_key_is_exposed",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/ansible/aws/iam_access_key_is_exposed",
   "platform": "Ansible",
   "descriptionID": "d8bc01a5",
   "cloudProvider": "aws",

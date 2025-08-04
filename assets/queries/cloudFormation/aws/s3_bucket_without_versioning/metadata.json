@@ -4,7 +4,7 @@
   "severity": "MEDIUM",
   "category": "Backup",
   "descriptionText": "S3 bucket should have versioning enabled",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/cloudFormation/aws/s3_bucket_without_versioning",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/cloudFormation/aws/s3_bucket_without_versioning",
   "platform": "CloudFormation",
   "descriptionID": "fe2c56b9",
   "cloudProvider": "aws",

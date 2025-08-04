@@ -4,7 +4,7 @@
   "severity": "LOW",
   "category": "Availability",
   "descriptionText": "ECS Service should have at least 1 task running",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/cloudFormation/aws/ecs_service_without_running_tasks",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/cloudFormation/aws/ecs_service_without_running_tasks",
   "platform": "CloudFormation",
   "descriptionID": "cd242bdd",
   "cloudProvider": "aws",

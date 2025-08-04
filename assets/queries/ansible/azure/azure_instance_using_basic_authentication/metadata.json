@@ -4,7 +4,7 @@
   "severity": "MEDIUM",
   "category": "Best Practices",
   "descriptionText": "Azure Instances should use SSH Key instead of basic authentication",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/ansible/azure/azure_instance_using_basic_authentication",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/ansible/azure/azure_instance_using_basic_authentication",
   "platform": "Ansible",
   "descriptionID": "e2d834b7",
   "cloudProvider": "azure",

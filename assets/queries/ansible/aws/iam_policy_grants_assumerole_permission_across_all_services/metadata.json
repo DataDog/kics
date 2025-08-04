@@ -4,7 +4,7 @@
   "severity": "MEDIUM",
   "category": "Access Control",
   "descriptionText": "IAM Policy should not grant 'AssumeRole' permission across all services.",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/ansible/aws/iam_policy_grants_assumerole_permission_across_all_services",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/ansible/aws/iam_policy_grants_assumerole_permission_across_all_services",
   "platform": "Ansible",
   "descriptionID": "860cc010",
   "cloudProvider": "aws",

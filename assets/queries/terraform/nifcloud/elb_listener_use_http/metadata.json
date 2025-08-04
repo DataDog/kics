@@ -4,7 +4,7 @@
   "severity": "HIGH",
   "category": "Insecure Configurations",
   "descriptionText": "The elb listener use http protocol",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/terraform/nifcloud/elb_listener_use_http",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/terraform/nifcloud/elb_listener_use_http",
   "platform": "Terraform",
   "descriptionID": "5a3b83e8",
   "cloudProvider": "nifcloud",

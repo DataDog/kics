@@ -4,7 +4,7 @@
   "severity": "CRITICAL",
   "category": "Access Control",
   "descriptionText": "S3 Bucket allows public access",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/ansible/aws/s3_bucket_with_public_access",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/ansible/aws/s3_bucket_with_public_access",
   "platform": "Ansible",
   "descriptionID": "d7a19b7e",
   "cloudProvider": "aws",

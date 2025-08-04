@@ -4,7 +4,7 @@
   "severity": "MEDIUM",
   "category": "Observability",
   "descriptionText": "PostgreSQL database instance should have a 'log_checkpoints' flag with its value set to 'on'",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/ansible/gcp/postgresql_log_checkpoints_flag_not_set_to_on",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/ansible/gcp/postgresql_log_checkpoints_flag_not_set_to_on",
   "platform": "Ansible",
   "descriptionID": "4cdc64c3",
   "cloudProvider": "gcp",

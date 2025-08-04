@@ -4,7 +4,7 @@
   "severity": "LOW",
   "category": "Observability",
   "descriptionText": "Check if SNS topic name is set for CloudTrail",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/cloudFormation/aws/cloudtrail_sns_topic_name_undefined",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/cloudFormation/aws/cloudtrail_sns_topic_name_undefined",
   "platform": "CloudFormation",
   "descriptionID": "69327f38",
   "cloudProvider": "aws",

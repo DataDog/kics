@@ -4,7 +4,7 @@
   "severity": "LOW",
   "category": "Availability",
   "descriptionText": "EBS Volumes that are unattached to instances may contain sensitive data",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/cloudFormation/aws/ebs_volume_not_attached_to_instances",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/cloudFormation/aws/ebs_volume_not_attached_to_instances",
   "platform": "CloudFormation",
   "descriptionID": "33e2f7f6",
   "cloudProvider": "aws",

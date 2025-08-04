@@ -4,7 +4,7 @@
   "severity": "HIGH",
   "category": "Encryption",
   "descriptionText": "Check if ElasticSearch encryption is disabled at Rest",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/cloudFormation/aws/elasticsearch_not_encrypted_at_rest",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/cloudFormation/aws/elasticsearch_not_encrypted_at_rest",
   "platform": "CloudFormation",
   "descriptionID": "645512cb",
   "cloudProvider": "aws",

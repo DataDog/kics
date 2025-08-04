@@ -4,7 +4,7 @@
   "severity": "MEDIUM",
   "category": "Access Control",
   "descriptionText": "Expired SSL/TLS certificates should be removed",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/ansible/aws/certificate_has_expired",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/ansible/aws/certificate_has_expired",
   "platform": "Ansible",
   "descriptionID": "3f6a85e8",
   "cloudProvider": "aws",

@@ -4,7 +4,7 @@
   "severity": "INFO",
   "category": "Availability",
   "descriptionText": "In case of an unresponsive container, a Liveness Probe can help your application become more available since it restarts the container. However, it can lead to cascading failures. Define one if you really need it",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/terraform/kubernetes/liveness_probe_is_not_defined",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/terraform/kubernetes/liveness_probe_is_not_defined",
   "platform": "Terraform",
   "descriptionID": "e5105a57",
   "cwe": "754",

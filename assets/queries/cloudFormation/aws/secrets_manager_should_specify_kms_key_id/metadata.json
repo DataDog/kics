@@ -4,7 +4,7 @@
   "severity": "LOW",
   "category": "Secret Management",
   "descriptionText": "Secrets Manager Secret should explicitly specify KmsKeyId, this will allow the secret to be shared cross-account",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/cloudFormation/aws/secrets_manager_should_specify_kms_key_id",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/cloudFormation/aws/secrets_manager_should_specify_kms_key_id",
   "platform": "CloudFormation",
   "descriptionID": "d78bb871",
   "cloudProvider": "aws",

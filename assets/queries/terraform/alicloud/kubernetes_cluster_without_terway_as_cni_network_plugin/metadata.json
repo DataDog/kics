@@ -4,7 +4,7 @@
   "severity": "LOW",
   "category": "Networking and Firewall",
   "descriptionText": "Kubernetes Cluster should have Terway as CNI Network Plugin to configure network policies",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/terraform/alicloud/kubernetes_cluster_without_terway_as_cni_network_plugin",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/terraform/alicloud/kubernetes_cluster_without_terway_as_cni_network_plugin",
   "platform": "Terraform",
   "descriptionID": "7c27643e",
   "cloudProvider": "alicloud",

@@ -4,7 +4,7 @@
   "severity": "MEDIUM",
   "category": "Observability",
   "descriptionText": "Make sure that Amazon GuardDuty is Enabled",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/cloudFormation/aws/guardduty_detector_disabled",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/cloudFormation/aws/guardduty_detector_disabled",
   "platform": "CloudFormation",
   "descriptionID": "cae19394",
   "cloudProvider": "aws",

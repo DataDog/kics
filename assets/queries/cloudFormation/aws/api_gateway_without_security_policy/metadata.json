@@ -4,7 +4,7 @@
   "severity": "MEDIUM",
   "category": "Insecure Configurations",
   "descriptionText": "API Gateway should have a Security Policy defined and use TLS 1.2.",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/cloudFormation/aws/api_gateway_without_security_policy",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/cloudFormation/aws/api_gateway_without_security_policy",
   "platform": "CloudFormation",
   "descriptionID": "92418e29",
   "cloudProvider": "aws",

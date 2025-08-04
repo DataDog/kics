@@ -4,7 +4,7 @@
   "severity": "MEDIUM",
   "category": "Networking and Firewall",
   "descriptionText": "The HTTP port is open to the internet in a Security Group",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/ansible/aws/http_port_open_to_internet",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/ansible/aws/http_port_open_to_internet",
   "platform": "Ansible",
   "descriptionID": "8c6031b8",
   "cloudProvider": "aws",

@@ -4,7 +4,7 @@
   "severity": "LOW",
   "category": "Observability",
   "descriptionText": "Ensure that Activity Log Retention is set 365 days or greater",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/ansible/azure/small_activity_log_retention_period",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/ansible/azure/small_activity_log_retention_period",
   "platform": "Ansible",
   "descriptionID": "5bad8aed",
   "cloudProvider": "azure",

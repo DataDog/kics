@@ -4,7 +4,7 @@
   "severity": "HIGH",
   "category": "Access Control",
   "descriptionText": "A non kube-system workload should not have hostPath mounted",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/terraform/kubernetes/non_kube_system_pod_with_host_mount",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/terraform/kubernetes/non_kube_system_pod_with_host_mount",
   "platform": "Terraform",
   "descriptionID": "5b17fdb1",
   "cwe": "668",

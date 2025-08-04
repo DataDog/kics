@@ -4,7 +4,7 @@
   "severity": "MEDIUM",
   "category": "Insecure Configurations",
   "descriptionText": "Redis Cache resource should not allow non-SSL connections.",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/crossplane/azure/redis_cache_allows_non_ssl_connections",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/crossplane/azure/redis_cache_allows_non_ssl_connections",
   "platform": "Crossplane",
   "descriptionID": "d7cbff51",
   "cloudProvider": "azure",

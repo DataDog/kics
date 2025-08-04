@@ -4,7 +4,7 @@
   "severity": "MEDIUM",
   "category": "Networking and Firewall",
   "descriptionText": "An AWS Elastic Load Balancer (ELB) shouldn't have security groups without outbound rules",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/cloudFormation/aws/elb_with_security_group_without_outbound_rules",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/cloudFormation/aws/elb_with_security_group_without_outbound_rules",
   "platform": "CloudFormation",
   "descriptionID": "7b876844",
   "cloudProvider": "aws",

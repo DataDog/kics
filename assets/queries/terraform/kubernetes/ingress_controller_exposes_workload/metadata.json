@@ -4,7 +4,7 @@
   "severity": "MEDIUM",
   "category": "Insecure Configurations",
   "descriptionText": "Ingress Controllers should not expose workload in order to avoid vulnerabilities and DoS attacks",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/terraform/kubernetes/ingress_controller_exposes_workload",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/terraform/kubernetes/ingress_controller_exposes_workload",
   "platform": "Terraform",
   "descriptionID": "88c1dfb2",
   "cwe": "779",

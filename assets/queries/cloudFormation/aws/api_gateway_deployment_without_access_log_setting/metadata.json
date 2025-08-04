@@ -4,7 +4,7 @@
   "severity": "MEDIUM",
   "category": "Observability",
   "descriptionText": "API Gateway Deployment should have access log setting defined when connected to an API Gateway Stage.",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/cloudFormation/aws/api_gateway_deployment_without_access_log_setting",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/cloudFormation/aws/api_gateway_deployment_without_access_log_setting",
   "platform": "CloudFormation",
   "descriptionID": "9587628c",
   "cloudProvider": "aws",

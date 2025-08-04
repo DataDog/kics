@@ -4,7 +4,7 @@
   "severity": "MEDIUM",
   "category": "Networking and Firewall",
   "descriptionText": "Check if port 2383 on TCP is publicly accessible by checking the CIDR block range that can access it.",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/ansible/aws/sql_analysis_services_port_2383_is_publicly_accessible",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/ansible/aws/sql_analysis_services_port_2383_is_publicly_accessible",
   "platform": "Ansible",
   "descriptionID": "69176b78",
   "cloudProvider": "aws",

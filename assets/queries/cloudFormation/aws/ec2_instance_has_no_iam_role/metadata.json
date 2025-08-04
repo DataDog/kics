@@ -4,7 +4,7 @@
   "severity": "MEDIUM",
   "category": "Access Control",
   "descriptionText": "Check if an EC2 instance refers to an IAM profile, which represents an IAM Role.",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/cloudFormation/aws/ec2_instance_has_no_iam_role",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/cloudFormation/aws/ec2_instance_has_no_iam_role",
   "platform": "CloudFormation",
   "descriptionID": "bf34b145",
   "cloudProvider": "aws",

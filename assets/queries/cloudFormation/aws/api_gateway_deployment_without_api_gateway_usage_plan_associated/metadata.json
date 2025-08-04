@@ -4,7 +4,7 @@
   "severity": "LOW",
   "category": "Observability",
   "descriptionText": "API Gateway Deployment should have API Gateway UsagePlan defined and associated.",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/cloudFormation/aws/api_gateway_deployment_without_api_gateway_usage_plan_associated",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/cloudFormation/aws/api_gateway_deployment_without_api_gateway_usage_plan_associated",
   "platform": "CloudFormation",
   "descriptionID": "8161e665",
   "cloudProvider": "aws",

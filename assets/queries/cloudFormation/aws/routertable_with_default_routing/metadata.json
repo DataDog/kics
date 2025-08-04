@@ -4,7 +4,7 @@
   "severity": "LOW",
   "category": "Insecure Defaults",
   "descriptionText": "NAT gateways are recommended, and not the default route which permits all traffic, in Route Tables.",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/cloudFormation/aws/routertable_with_default_routing",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/cloudFormation/aws/routertable_with_default_routing",
   "platform": "CloudFormation",
   "descriptionID": "1f341247",
   "cloudProvider": "aws",

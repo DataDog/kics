@@ -4,7 +4,7 @@
   "severity": "HIGH",
   "category": "Insecure Configurations",
   "descriptionText": "Containers should not run with allowPrivilegeEscalation in order to prevent them from gaining more privileges than their parent process",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/terraform/kubernetes/privilege_escalation_allowed",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/terraform/kubernetes/privilege_escalation_allowed",
   "platform": "Terraform",
   "descriptionID": "e693ddd6",
   "cwe": "269",

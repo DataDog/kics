@@ -4,7 +4,7 @@
   "severity": "LOW",
   "category": "Backup",
   "descriptionText": "OSS Bucket should have lifecycle rule enabled and set to true",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/terraform/alicloud/oss_bucket_lifecycle_disabled",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/terraform/alicloud/oss_bucket_lifecycle_disabled",
   "platform": "Terraform",
   "descriptionID": "66609561",
   "cloudProvider": "alicloud",

@@ -4,7 +4,7 @@
   "severity": "LOW",
   "category": "Secret Management",
   "descriptionText": "Container should not use secrets as environment variables",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/terraform/kubernetes/secrets_as_environment_variables",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/terraform/kubernetes/secrets_as_environment_variables",
   "platform": "Terraform",
   "descriptionID": "f5c43d1e",
   "cwe": "526",

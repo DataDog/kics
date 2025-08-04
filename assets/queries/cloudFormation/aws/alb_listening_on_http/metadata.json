@@ -4,7 +4,7 @@
   "severity": "MEDIUM",
   "category": "Networking and Firewall",
   "descriptionText": "AWS Application Load Balancer (alb) should not listen on HTTP",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/cloudFormation/aws/alb_listening_on_http",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/cloudFormation/aws/alb_listening_on_http",
   "platform": "CloudFormation",
   "descriptionID": "55f05412",
   "cloudProvider": "aws",

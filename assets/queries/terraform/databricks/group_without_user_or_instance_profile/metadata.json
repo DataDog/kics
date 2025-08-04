@@ -4,7 +4,7 @@
   "severity": "LOW",
   "category": "Access Control",
   "descriptionText": "Databricks Group should have at least one user or one instance profile associated",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/terraform/databricks/group_without_user_or_instance_profile",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/terraform/databricks/group_without_user_or_instance_profile",
   "platform": "Terraform",
   "descriptionID": "4bb78f12",
   "cloudProvider": "common",

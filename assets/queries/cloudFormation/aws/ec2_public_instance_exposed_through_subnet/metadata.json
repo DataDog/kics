@@ -4,7 +4,7 @@
   "severity": "MEDIUM",
   "category": "Networking and Firewall",
   "descriptionText": "EC2 instances with public IP addresses shouldn't allow for unrestricted traffic to their subnets",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/cloudFormation/aws/ec2_public_instance_exposed_through_subnet",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/cloudFormation/aws/ec2_public_instance_exposed_through_subnet",
   "platform": "CloudFormation",
   "descriptionID": "163e9a52",
   "cloudProvider": "aws",

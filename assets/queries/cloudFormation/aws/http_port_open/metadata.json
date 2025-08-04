@@ -4,7 +4,7 @@
   "severity": "MEDIUM",
   "category": "Networking and Firewall",
   "descriptionText": "The HTTP port is open to the internet in a Security Group",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/cloudFormation/aws/http_port_open",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/cloudFormation/aws/http_port_open",
   "platform": "CloudFormation",
   "descriptionID": "a39efd21",
   "cloudProvider": "aws",

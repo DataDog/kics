@@ -4,7 +4,7 @@
   "severity": "MEDIUM",
   "category": "Availability",
   "descriptionText": "Alicloud KMS must only possess usable Customer Master Keys (CMK), which means the CMKs must have the attribute 'is_enabled' set to true",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/terraform/alicloud/cmk_is_unusable",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/terraform/alicloud/cmk_is_unusable",
   "platform": "Terraform",
   "descriptionID": "52a5ea7c",
   "cloudProvider": "alicloud",

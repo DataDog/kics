@@ -4,7 +4,7 @@
   "severity": "MEDIUM",
   "category": "Insecure Configurations",
   "descriptionText": "ECR should have an image tag be immutable. This prevents image tags from being overwritten.",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/ansible/aws/ecr_image_tag_not_immutable",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/ansible/aws/ecr_image_tag_not_immutable",
   "platform": "Ansible",
   "descriptionID": "a9bdce24",
   "cloudProvider": "aws",

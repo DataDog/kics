@@ -4,7 +4,7 @@
   "severity": "HIGH",
   "category": "Insecure Configurations",
   "descriptionText": "Databricks Cluster and Job must have restricted permissions",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/terraform/databricks/databricks_permissions",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/terraform/databricks/databricks_permissions",
   "platform": "Terraform",
   "descriptionID": "66b9bc6e",
   "cloudProvider": "common",

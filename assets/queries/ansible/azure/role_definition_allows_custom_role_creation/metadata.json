@@ -4,7 +4,7 @@
   "severity": "MEDIUM",
   "category": "Access Control",
   "descriptionText": "Role Definition should not allow custom role creation (Microsoft.Authorization/roleDefinitions/write)",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/ansible/azure/role_definition_allows_custom_role_creation",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/ansible/azure/role_definition_allows_custom_role_creation",
   "platform": "Ansible",
   "descriptionID": "6296166a",
   "cloudProvider": "azure",

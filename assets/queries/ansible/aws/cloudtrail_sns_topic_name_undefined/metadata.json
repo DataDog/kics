@@ -4,7 +4,7 @@
   "severity": "LOW",
   "category": "Observability",
   "descriptionText": "Check if SNS topic name is set for CloudTrail",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/ansible/aws/cloudtrail_sns_topic_name_undefined",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/ansible/aws/cloudtrail_sns_topic_name_undefined",
   "platform": "Ansible",
   "descriptionID": "de97fa1a",
   "cloudProvider": "aws",

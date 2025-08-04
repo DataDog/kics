@@ -4,7 +4,7 @@
   "severity": "MEDIUM",
   "category": "Networking and Firewall",
   "descriptionText": "AWS Security Group Ingress should have a single port",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/cloudFormation/aws/security_group_ingress_with_port_range",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/cloudFormation/aws/security_group_ingress_with_port_range",
   "platform": "CloudFormation",
   "descriptionID": "5f2b65f3",
   "cloudProvider": "aws",

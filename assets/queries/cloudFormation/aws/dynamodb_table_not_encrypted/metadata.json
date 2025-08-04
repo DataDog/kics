@@ -4,7 +4,7 @@
   "severity": "HIGH",
   "category": "Encryption",
   "descriptionText": "AWS DynamoDB Tables should have server-side encryption",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/cloudFormation/aws/dynamodb_table_not_encrypted",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/cloudFormation/aws/dynamodb_table_not_encrypted",
   "platform": "CloudFormation",
   "descriptionID": "92975bc8",
   "cloudProvider": "aws",

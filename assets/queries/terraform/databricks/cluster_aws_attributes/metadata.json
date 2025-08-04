@@ -4,7 +4,7 @@
   "severity": "LOW",
   "category": "Best Practices",
   "descriptionText": "One or some Databricks Cluster AWS Attribute Best Practices are not respected",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/terraform/databricks/cluster_aws_attributes",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/terraform/databricks/cluster_aws_attributes",
   "platform": "Terraform",
   "descriptionID": "b6345aa6",
   "cloudProvider": "common",

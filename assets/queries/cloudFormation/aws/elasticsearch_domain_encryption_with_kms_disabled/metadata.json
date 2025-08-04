@@ -4,7 +4,7 @@
   "severity": "HIGH",
   "category": "Encryption",
   "descriptionText": "Check if any ElasticSearch domain isn't encrypted with KMS.",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/cloudFormation/aws/elasticsearch_domain_encryption_with_kms_disabled",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/cloudFormation/aws/elasticsearch_domain_encryption_with_kms_disabled",
   "platform": "CloudFormation",
   "descriptionID": "6700680a",
   "cloudProvider": "aws",

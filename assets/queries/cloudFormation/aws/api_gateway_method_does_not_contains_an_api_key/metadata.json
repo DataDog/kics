@@ -4,7 +4,7 @@
   "severity": "MEDIUM",
   "category": "Access Control",
   "descriptionText": "An API Key should be required on a method request.",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/cloudFormation/aws/api_gateway_method_does_not_contains_an_api_key",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/cloudFormation/aws/api_gateway_method_does_not_contains_an_api_key",
   "platform": "CloudFormation",
   "descriptionID": "43a06e88",
   "cloudProvider": "aws",

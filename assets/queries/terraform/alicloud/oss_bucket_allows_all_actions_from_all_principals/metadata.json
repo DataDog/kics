@@ -4,7 +4,7 @@
   "severity": "CRITICAL",
   "category": "Access Control",
   "descriptionText": "OSS Buckets should not allow all actions (wildcard) from all principals, as to prevent leaking private information to the entire internet or allow unauthorized data tampering/deletion. This means the 'Effect' must not be 'Allow' when the 'Action' is *, for all Principals.",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/terraform/alicloud/oss_bucket_allows_all_actions_from_all_principals",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/terraform/alicloud/oss_bucket_allows_all_actions_from_all_principals",
   "platform": "Terraform",
   "descriptionID": "5507d429",
   "cloudProvider": "alicloud",

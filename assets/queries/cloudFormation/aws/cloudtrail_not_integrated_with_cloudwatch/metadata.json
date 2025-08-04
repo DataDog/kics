@@ -4,7 +4,7 @@
   "severity": "LOW",
   "category": "Observability",
   "descriptionText": "CloudTrail should be integrated with CloudWatch",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/cloudFormation/aws/cloudtrail_not_integrated_with_cloudwatch",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/cloudFormation/aws/cloudtrail_not_integrated_with_cloudwatch",
   "platform": "CloudFormation",
   "descriptionID": "f43ba695",
   "cloudProvider": "aws",

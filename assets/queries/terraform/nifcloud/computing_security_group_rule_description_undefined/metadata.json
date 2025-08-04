@@ -4,7 +4,7 @@
   "severity": "LOW",
   "category": "Networking and Firewall",
   "descriptionText": "Missing description for security group rule",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/terraform/nifcloud/computing_security_group_rule_description_undefined",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/terraform/nifcloud/computing_security_group_rule_description_undefined",
   "platform": "Terraform",
   "descriptionID": "66ed83ab",
   "cloudProvider": "nifcloud",

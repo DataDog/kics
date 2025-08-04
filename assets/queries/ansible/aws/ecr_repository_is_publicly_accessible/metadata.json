@@ -4,7 +4,7 @@
   "severity": "CRITICAL",
   "category": "Access Control",
   "descriptionText": "Amazon ECR image repositories shouldn't have public access",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/ansible/aws/ecr_repository_is_publicly_accessible",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/ansible/aws/ecr_repository_is_publicly_accessible",
   "platform": "Ansible",
   "descriptionID": "060d624f",
   "cloudProvider": "aws",

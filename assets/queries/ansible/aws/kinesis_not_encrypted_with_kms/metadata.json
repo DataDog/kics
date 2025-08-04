@@ -4,7 +4,7 @@
   "severity": "HIGH",
   "category": "Encryption",
   "descriptionText": "AWS Kinesis Streams and metadata should be protected with KMS",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/ansible/aws/kinesis_not_encrypted_with_kms",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/ansible/aws/kinesis_not_encrypted_with_kms",
   "platform": "Ansible",
   "descriptionID": "017319a7",
   "cloudProvider": "aws",

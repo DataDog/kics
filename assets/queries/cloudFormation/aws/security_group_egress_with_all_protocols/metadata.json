@@ -4,7 +4,7 @@
   "severity": "MEDIUM",
   "category": "Networking and Firewall",
   "descriptionText": "AWS Security Group Egress should not specify all protocols to prevent allow traffic on all ports",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/cloudFormation/aws/security_group_egress_with_all_protocols",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/cloudFormation/aws/security_group_egress_with_all_protocols",
   "platform": "CloudFormation",
   "descriptionID": "b3e66493",
   "cloudProvider": "aws",

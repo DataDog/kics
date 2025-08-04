@@ -4,7 +4,7 @@
   "severity": "MEDIUM",
   "category": "Secret Management",
   "descriptionText": "RAM Account Password Policy 'password_reuse_prevention' should be defined and set to 24 or less",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/terraform/alicloud/ram_account_password_policy_without_reuse_prevention",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/terraform/alicloud/ram_account_password_policy_without_reuse_prevention",
   "platform": "Terraform",
   "descriptionID": "2210f1f7",
   "cloudProvider": "alicloud",

@@ -4,7 +4,7 @@
   "severity": "LOW",
   "category": "Best Practices",
   "descriptionText": "Password policy `password_reuse_prevention` doesn't exist or is equal to 0",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/ansible/aws/password_without_reuse_prevention",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/ansible/aws/password_without_reuse_prevention",
   "platform": "Ansible",
   "descriptionID": "ad12d750",
   "cloudProvider": "aws",

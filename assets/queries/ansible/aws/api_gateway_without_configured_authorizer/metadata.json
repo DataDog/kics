@@ -4,7 +4,7 @@
   "severity": "MEDIUM",
   "category": "Access Control",
   "descriptionText": "API Gateway REST API should have an API Gateway Authorizer",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/ansible/aws/api_gateway_without_configured_authorizer",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/ansible/aws/api_gateway_without_configured_authorizer",
   "platform": "Ansible",
   "descriptionID": "e7b28671",
   "cloudProvider": "aws",

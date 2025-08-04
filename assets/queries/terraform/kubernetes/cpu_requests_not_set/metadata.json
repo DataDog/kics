@@ -4,7 +4,7 @@
   "severity": "LOW",
   "category": "Resource Management",
   "descriptionText": "CPU requests should be set to ensure the sum of the resource requests of the scheduled Containers is less than the capacity of the node",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/terraform/kubernetes/cpu_requests_not_set",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/terraform/kubernetes/cpu_requests_not_set",
   "platform": "Terraform",
   "descriptionID": "957f09a7",
   "cwe": "400",

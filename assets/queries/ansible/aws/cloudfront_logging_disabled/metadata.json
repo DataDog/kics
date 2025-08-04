@@ -4,7 +4,7 @@
   "severity": "MEDIUM",
   "category": "Observability",
   "descriptionText": "AWS CloudFront distributions should have logging enabled to collect all viewer requests, which means the attribute 'logging' should be defined with 'enabled' set to true",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/ansible/aws/cloudfront_logging_disabled",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/ansible/aws/cloudfront_logging_disabled",
   "platform": "Ansible",
   "descriptionID": "1bfc2dfd",
   "cloudProvider": "aws",

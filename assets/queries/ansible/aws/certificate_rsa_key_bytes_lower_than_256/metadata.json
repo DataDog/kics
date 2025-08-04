@@ -4,7 +4,7 @@
   "severity": "MEDIUM",
   "category": "Insecure Configurations",
   "descriptionText": "The certificate should use a RSA key with a length equal to or higher than 256 bytes",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/ansible/aws/certificate_rsa_key_bytes_lower_than_256",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/ansible/aws/certificate_rsa_key_bytes_lower_than_256",
   "platform": "Ansible",
   "descriptionID": "97dc7eba",
   "cloudProvider": "aws",

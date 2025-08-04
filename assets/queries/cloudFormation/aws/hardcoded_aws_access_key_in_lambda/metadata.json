@@ -4,7 +4,7 @@
   "severity": "HIGH",
   "category": "Secret Management",
   "descriptionText": "Lambda access/secret keys should not be hardcoded",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/cloudFormation/aws/hardcoded_aws_access_key_in_lambda",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/cloudFormation/aws/hardcoded_aws_access_key_in_lambda",
   "platform": "CloudFormation",
   "descriptionID": "ff065e3b",
   "cloudProvider": "aws",

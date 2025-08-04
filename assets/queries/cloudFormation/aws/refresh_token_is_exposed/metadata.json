@@ -4,7 +4,7 @@
   "severity": "HIGH",
   "category": "Secret Management",
   "descriptionText": "Alexa ASK Skill AuthenticationConfiguration RefreshToken should not be a plaintext string",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/cloudFormation/aws/refresh_token_is_exposed",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/cloudFormation/aws/refresh_token_is_exposed",
   "platform": "CloudFormation",
   "descriptionID": "c752c5a6",
   "cloudProvider": "aws",

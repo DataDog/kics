@@ -4,7 +4,7 @@
   "severity": "LOW",
   "category": "Access Control",
   "descriptionText": "A IAM user should belong to a group",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/cloudFormation/aws/iam_user_with_no_group",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/cloudFormation/aws/iam_user_with_no_group",
   "platform": "CloudFormation",
   "descriptionID": "d7e9b179",
   "cloudProvider": "aws",

@@ -4,7 +4,7 @@
   "severity": "HIGH",
   "category": "Encryption",
   "descriptionText": "NAS File System must be encrypted",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/terraform/alicloud/nas_file_system_not_encrypted",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/terraform/alicloud/nas_file_system_not_encrypted",
   "platform": "Terraform",
   "descriptionID": "fb3675d5",
   "cloudProvider": "alicloud",

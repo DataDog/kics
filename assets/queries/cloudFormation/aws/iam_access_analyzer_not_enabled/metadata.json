@@ -4,7 +4,7 @@
   "severity": "LOW",
   "category": "Best Practices",
   "descriptionText": "IAM Access Analyzer should be enabled and configured to continuously monitor resource permissions",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/cloudFormation/aws/iam_access_analyzer_not_enabled",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/cloudFormation/aws/iam_access_analyzer_not_enabled",
   "platform": "CloudFormation",
   "descriptionID": "24a6978e",
   "cloudProvider": "aws",

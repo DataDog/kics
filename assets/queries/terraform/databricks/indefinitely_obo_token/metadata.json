@@ -4,7 +4,7 @@
   "severity": "MEDIUM",
   "category": "Insecure Defaults",
   "descriptionText": "OBO Token has an indefinitely lifetime",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/terraform/databricks/indefinitely_obo_token",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/terraform/databricks/indefinitely_obo_token",
   "platform": "Terraform",
   "descriptionID": "df3aa7ed",
   "cloudProvider": "common",

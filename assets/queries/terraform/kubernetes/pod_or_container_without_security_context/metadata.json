@@ -4,7 +4,7 @@
   "severity": "LOW",
   "category": "Insecure Configurations",
   "descriptionText": "A security context defines privilege and access control settings for a Pod or Container",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/terraform/kubernetes/pod_or_container_without_security_context",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/terraform/kubernetes/pod_or_container_without_security_context",
   "platform": "Terraform",
   "descriptionID": "a465ab52",
   "cwe": "285",

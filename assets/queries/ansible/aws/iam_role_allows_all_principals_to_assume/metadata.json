@@ -4,7 +4,7 @@
   "severity": "MEDIUM",
   "category": "Access Control",
   "descriptionText": "IAM role allows all services or principals to assume it",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/ansible/aws/iam_role_allows_all_principals_to_assume",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/ansible/aws/iam_role_allows_all_principals_to_assume",
   "platform": "Ansible",
   "descriptionID": "58219ae0",
   "cloudProvider": "aws",

@@ -4,7 +4,7 @@
   "severity": "LOW",
   "category": "Observability",
   "descriptionText": "RDS Instance SQL Retention Period should be greater than 180",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/terraform/alicloud/rds_instance_retention_not_recommended",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/terraform/alicloud/rds_instance_retention_not_recommended",
   "platform": "Terraform",
   "descriptionID": "243a4fb4",
   "cloudProvider": "alicloud",

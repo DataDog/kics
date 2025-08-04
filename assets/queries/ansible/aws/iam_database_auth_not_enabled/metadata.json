@@ -4,7 +4,7 @@
   "severity": "MEDIUM",
   "category": "Encryption",
   "descriptionText": "IAM Database Auth Enabled should be configured to true when using compatible engine and version",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/ansible/aws/iam_database_auth_not_enabled",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/ansible/aws/iam_database_auth_not_enabled",
   "platform": "Ansible",
   "descriptionID": "952e08fc",
   "cloudProvider": "aws",

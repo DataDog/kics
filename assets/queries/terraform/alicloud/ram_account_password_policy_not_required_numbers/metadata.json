@@ -4,7 +4,7 @@
   "severity": "LOW",
   "category": "Secret Management",
   "descriptionText": "Ram Account Password Policy should have 'require_numbers' set to true",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/terraform/alicloud/ram_account_password_policy_not_required_numbers",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/terraform/alicloud/ram_account_password_policy_not_required_numbers",
   "platform": "Terraform",
   "descriptionID": "0ee40b1d",
   "cloudProvider": "alicloud",

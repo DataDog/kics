@@ -4,7 +4,7 @@
   "severity": "MEDIUM",
   "category": "Observability",
   "descriptionText": "Make sure that for PostgreSQL Database, server parameter 'log_duration' is set to 'ON'",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/ansible/azure/postgre_sql_log_duration_not_set",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/ansible/azure/postgre_sql_log_duration_not_set",
   "platform": "Ansible",
   "descriptionID": "a30f009d",
   "cloudProvider": "azure",

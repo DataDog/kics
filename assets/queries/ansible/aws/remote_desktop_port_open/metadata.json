@@ -4,7 +4,7 @@
   "severity": "HIGH",
   "category": "Networking and Firewall",
   "descriptionText": "The Remote Desktop port is open to the internet in a Security Group",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/ansible/aws/remote_desktop_port_open",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/ansible/aws/remote_desktop_port_open",
   "platform": "Ansible",
   "descriptionID": "d644276b",
   "cloudProvider": "aws",

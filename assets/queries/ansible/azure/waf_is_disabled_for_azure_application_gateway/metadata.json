@@ -4,7 +4,7 @@
   "severity": "MEDIUM",
   "category": "Networking and Firewall",
   "descriptionText": "Check if Web Application Firewall is disabled or not configured for Azure's Application Gateway.",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/ansible/azure/waf_is_disabled_for_azure_application_gateway",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/ansible/azure/waf_is_disabled_for_azure_application_gateway",
   "platform": "Ansible",
   "descriptionID": "eda7b816",
   "cloudProvider": "azure",

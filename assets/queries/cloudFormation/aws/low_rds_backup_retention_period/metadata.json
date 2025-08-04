@@ -4,7 +4,7 @@
   "severity": "LOW",
   "category": "Backup",
   "descriptionText": "AWS RDS backup retention policy should be at least 7 days",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/cloudFormation/aws/low_rds_backup_retention_period",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/cloudFormation/aws/low_rds_backup_retention_period",
   "platform": "CloudFormation",
   "descriptionID": "55094eb2",
   "cloudProvider": "aws",

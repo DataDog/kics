@@ -4,7 +4,7 @@
   "severity": "MEDIUM",
   "category": "Encryption",
   "descriptionText": "Check if secure ciphers aren't used in CloudFront",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/ansible/aws/secure_ciphers_disabled",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/ansible/aws/secure_ciphers_disabled",
   "platform": "Ansible",
   "descriptionID": "bc106b2e",
   "cloudProvider": "aws",

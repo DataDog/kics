@@ -4,7 +4,7 @@
   "severity": "INFO",
   "category": "Networking and Firewall",
   "descriptionText": "A Network ACL's rule numbers cannot be repeated unless one is egress and the other is ingress",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/cloudFormation/aws/ec2_network_acl_duplicate_rule",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/cloudFormation/aws/ec2_network_acl_duplicate_rule",
   "platform": "CloudFormation",
   "descriptionID": "27e96b39",
   "cloudProvider": "aws",

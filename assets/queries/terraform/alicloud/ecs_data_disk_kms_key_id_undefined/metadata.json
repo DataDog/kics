@@ -4,7 +4,7 @@
   "severity": "HIGH",
   "category": "Encryption",
   "descriptionText": "Ecs Data Disk Kms Key Id should be set",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/terraform/alicloud/ecs_data_disk_kms_key_id_undefined",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/terraform/alicloud/ecs_data_disk_kms_key_id_undefined",
   "platform": "Terraform",
   "descriptionID": "04c57e20",
   "cloudProvider": "alicloud",

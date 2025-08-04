@@ -4,7 +4,7 @@
   "severity": "LOW",
   "category": "Networking and Firewall",
   "descriptionText": "ElastiCache should be launched in a Virtual Private Cloud (VPC)",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/ansible/aws/elasticache_without_vpc",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/ansible/aws/elasticache_without_vpc",
   "platform": "Ansible",
   "descriptionID": "c9bde487",
   "cloudProvider": "aws",

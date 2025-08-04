@@ -4,7 +4,7 @@
   "severity": "HIGH",
   "category": "Access Control",
   "descriptionText": "ECS Services must not have Admin roles, which means the attribute 'role' must not be an admin role",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/cloudFormation/aws/ecs_service_admin_role_is_present",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/cloudFormation/aws/ecs_service_admin_role_is_present",
   "platform": "CloudFormation",
   "descriptionID": "756701f8",
   "cloudProvider": "aws",

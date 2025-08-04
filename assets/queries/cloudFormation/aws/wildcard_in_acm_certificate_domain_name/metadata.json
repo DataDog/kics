@@ -4,7 +4,7 @@
   "severity": "LOW",
   "category": "Insecure Configurations",
   "descriptionText": "ACM Certificate should not use wildcards (*) in the domain name",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/cloudFormation/aws/wildcard_in_acm_certificate_domain_name",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/cloudFormation/aws/wildcard_in_acm_certificate_domain_name",
   "platform": "CloudFormation",
   "descriptionID": "0affe61c",
   "cloudProvider": "aws",

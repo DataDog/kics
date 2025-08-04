@@ -4,7 +4,7 @@
   "severity": "MEDIUM",
   "category": "Access Control",
   "descriptionText": "EC2 instances should not use default security group(s)",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/cloudFormation/aws/ec2_instance_using_default_security_group",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/cloudFormation/aws/ec2_instance_using_default_security_group",
   "platform": "CloudFormation",
   "descriptionID": "de993e1a",
   "cloudProvider": "aws",

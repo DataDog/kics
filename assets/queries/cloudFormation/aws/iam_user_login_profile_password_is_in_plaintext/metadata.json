@@ -4,7 +4,7 @@
   "severity": "HIGH",
   "category": "Secret Management",
   "descriptionText": "IAM User LoginProfile Password must not be a plaintext string",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/cloudFormation/aws/iam_user_login_profile_password_is_in_plaintext",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/cloudFormation/aws/iam_user_login_profile_password_is_in_plaintext",
   "platform": "CloudFormation",
   "descriptionID": "0dc817e6",
   "cloudProvider": "aws",

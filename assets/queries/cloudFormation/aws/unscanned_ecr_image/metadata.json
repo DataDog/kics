@@ -4,7 +4,7 @@
   "severity": "LOW",
   "category": "Observability",
   "descriptionText": "Checks if the ECR Image has been scanned",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/cloudFormation/aws/unscanned_ecr_image",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/cloudFormation/aws/unscanned_ecr_image",
   "platform": "CloudFormation",
   "descriptionID": "f3f139c0",
   "cloudProvider": "aws",

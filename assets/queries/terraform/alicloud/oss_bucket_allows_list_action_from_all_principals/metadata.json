@@ -4,7 +4,7 @@
   "severity": "HIGH",
   "category": "Access Control",
   "descriptionText": "OSS Bucket should not allow list action from all principals, as to prevent leaking private information to the entire internet or allow unauthorized data tampering/deletion. This means the 'Effect' must not be 'Allow' when the 'Action' contains 'List', for all Principals.",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/terraform/alicloud/oss_bucket_allows_list_action_from_all_principals",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/terraform/alicloud/oss_bucket_allows_list_action_from_all_principals",
   "platform": "Terraform",
   "descriptionID": "b22a7d83",
   "cloudProvider": "alicloud",

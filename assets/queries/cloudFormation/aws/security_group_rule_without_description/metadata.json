@@ -4,7 +4,7 @@
   "severity": "INFO",
   "category": "Best Practices",
   "descriptionText": "It's considered a best practice for AWS Security Group to have a description",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/cloudFormation/aws/security_group_rule_without_description",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/cloudFormation/aws/security_group_rule_without_description",
   "platform": "CloudFormation",
   "descriptionID": "f7c62b11",
   "cloudProvider": "aws",

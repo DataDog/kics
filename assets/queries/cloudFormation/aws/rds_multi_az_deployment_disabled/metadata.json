@@ -4,7 +4,7 @@
   "severity": "MEDIUM",
   "category": "Availability",
   "descriptionText": "AWS RDS Instance should have a multi-az deployment",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/cloudFormation/aws/rds_multi_az_deployment_disabled",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/cloudFormation/aws/rds_multi_az_deployment_disabled",
   "platform": "CloudFormation",
   "descriptionID": "4bdb6677",
   "cloudProvider": "aws",

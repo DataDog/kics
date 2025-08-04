@@ -4,7 +4,7 @@
   "severity": "HIGH",
   "category": "Encryption",
   "descriptionText": "NAS File System should have encryption provided by user KMS ",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/terraform/alicloud/nas_file_system_without_kms",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/terraform/alicloud/nas_file_system_without_kms",
   "platform": "Terraform",
   "descriptionID": "5fb1326b",
   "cloudProvider": "alicloud",

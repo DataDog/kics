@@ -4,7 +4,7 @@
   "severity": "INFO",
   "category": "Observability",
   "descriptionText": "CVM Instance should have detailed monitor service enabled.",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/terraform/tencentcloud/cvm_instance_disable_monitor_service",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/terraform/tencentcloud/cvm_instance_disable_monitor_service",
   "platform": "Terraform",
   "descriptionID": "e689820e",
   "cloudProvider": "tencentcloud",

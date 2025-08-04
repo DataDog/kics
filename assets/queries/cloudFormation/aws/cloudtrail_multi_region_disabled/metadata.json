@@ -4,7 +4,7 @@
   "severity": "LOW",
   "category": "Observability",
   "descriptionText": "CloudTrail multi region should be enabled, which means attribute 'IsMultiRegionTrail' should be set to true",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/cloudFormation/aws/cloudtrail_multi_region_disabled",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/cloudFormation/aws/cloudtrail_multi_region_disabled",
   "platform": "CloudFormation",
   "descriptionID": "34ddc2cb",
   "cloudProvider": "aws",

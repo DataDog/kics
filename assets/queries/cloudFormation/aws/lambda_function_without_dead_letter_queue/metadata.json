@@ -4,7 +4,7 @@
   "severity": "LOW",
   "category": "Insecure Configurations",
   "descriptionText": "AWS Lambda Function should be configured for a Dead Letter Queue(DLQ)",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/cloudFormation/aws/lambda_function_without_dead_letter_queue",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/cloudFormation/aws/lambda_function_without_dead_letter_queue",
   "platform": "CloudFormation",
   "descriptionID": "d5d9d047",
   "cloudProvider": "aws",

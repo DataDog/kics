@@ -4,7 +4,7 @@
   "severity": "LOW",
   "category": "Access Control",
   "descriptionText": "Users should authenticate with MFA (Multi-factor Authentication) to ensure an extra layer of protection when authenticating",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/ansible/aws/authentication_without_mfa",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/ansible/aws/authentication_without_mfa",
   "platform": "Ansible",
   "descriptionID": "36040ce0",
   "cloudProvider": "aws",

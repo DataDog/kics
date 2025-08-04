@@ -4,7 +4,7 @@
   "severity": "MEDIUM",
   "category": "Observability",
   "descriptionText": "Check if CloudWatch logging is disabled for Route53 hosted zones",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/cloudFormation/aws/cloudwatch_logging_disabled",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/cloudFormation/aws/cloudwatch_logging_disabled",
   "platform": "CloudFormation",
   "descriptionID": "617aba8a",
   "cloudProvider": "aws",

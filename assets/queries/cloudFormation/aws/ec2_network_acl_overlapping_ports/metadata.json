@@ -4,7 +4,7 @@
   "severity": "MEDIUM",
   "category": "Networking and Firewall",
   "descriptionText": "NetworkACL Entries are reusing or overlapping ports which may create ineffective rules",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/cloudFormation/aws/ec2_network_acl_overlapping_ports",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/cloudFormation/aws/ec2_network_acl_overlapping_ports",
   "platform": "CloudFormation",
   "descriptionID": "cb7c8980",
   "cloudProvider": "aws",

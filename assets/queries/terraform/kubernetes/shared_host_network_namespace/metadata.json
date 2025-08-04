@@ -4,7 +4,7 @@
   "severity": "MEDIUM",
   "category": "Resource Management",
   "descriptionText": "Container should not share the host network namespace",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/terraform/kubernetes/shared_host_network_namespace",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/terraform/kubernetes/shared_host_network_namespace",
   "platform": "Terraform",
   "descriptionID": "bf155ca7",
   "cwe": "200",

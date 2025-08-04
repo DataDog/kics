@@ -4,7 +4,7 @@
   "severity": "MEDIUM",
   "category": "Networking and Firewall",
   "descriptionText": "Google Compute Network should not use a firewall rule that allows all ports",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/ansible/gcp/google_compute_network_using_firewall_rule_allows_all_ports",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/ansible/gcp/google_compute_network_using_firewall_rule_allows_all_ports",
   "platform": "Ansible",
   "descriptionID": "da7c0346",
   "cloudProvider": "gcp",

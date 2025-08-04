@@ -4,7 +4,7 @@
   "severity": "HIGH",
   "category": "Networking and Firewall",
   "descriptionText": "Security groups allow ingress from 0.0.0.0/0",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/ansible/aws/unrestricted_security_group_ingress",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/ansible/aws/unrestricted_security_group_ingress",
   "platform": "Ansible",
   "descriptionID": "015995bb",
   "cloudProvider": "aws",

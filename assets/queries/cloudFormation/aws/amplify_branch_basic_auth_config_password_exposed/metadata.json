@@ -4,7 +4,7 @@
   "severity": "HIGH",
   "category": "Secret Management",
   "descriptionText": "Amplify Branch BasicAuthConfig Password must not be a plaintext string or a Ref to a Parameter with a Default value.",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/cloudFormation/aws/amplify_branch_basic_auth_config_password_exposed",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/cloudFormation/aws/amplify_branch_basic_auth_config_password_exposed",
   "platform": "CloudFormation",
   "descriptionID": "f68a0ad6",
   "cloudProvider": "aws",

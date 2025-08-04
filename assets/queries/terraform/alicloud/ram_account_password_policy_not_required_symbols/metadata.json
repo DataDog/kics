@@ -4,7 +4,7 @@
   "severity": "LOW",
   "category": "Secret Management",
   "descriptionText": "RAM account password security should require at least one symbol",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/terraform/alicloud/ram_account_password_policy_not_required_symbols",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/terraform/alicloud/ram_account_password_policy_not_required_symbols",
   "platform": "Terraform",
   "descriptionID": "f3616c34",
   "cloudProvider": "alicloud",

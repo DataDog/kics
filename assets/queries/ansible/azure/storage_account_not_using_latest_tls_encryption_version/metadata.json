@@ -4,7 +4,7 @@
   "severity": "MEDIUM",
   "category": "Encryption",
   "descriptionText": "Ensure Storage Account is using the latest version of TLS encryption",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/ansible/azure/storage_account_not_using_latest_tls_encryption_version",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/ansible/azure/storage_account_not_using_latest_tls_encryption_version",
   "platform": "Ansible",
   "descriptionID": "f050a4f3",
   "cloudProvider": "azure",

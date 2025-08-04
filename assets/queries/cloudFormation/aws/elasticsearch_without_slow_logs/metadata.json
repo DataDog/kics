@@ -4,7 +4,7 @@
   "severity": "LOW",
   "category": "Observability",
   "descriptionText": "Ensure that AWS Elasticsearch enables support for slow logs",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/cloudFormation/aws/elasticsearch_without_slow_logs",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/cloudFormation/aws/elasticsearch_without_slow_logs",
   "platform": "CloudFormation",
   "descriptionID": "72d32380",
   "cloudProvider": "aws",

@@ -4,7 +4,7 @@
   "severity": "HIGH",
   "category": "Encryption",
   "descriptionText": "Elastic File System (EFS) must be encrypted",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/cloudFormation/aws/efs_not_encrypted",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/cloudFormation/aws/efs_not_encrypted",
   "platform": "CloudFormation",
   "descriptionID": "e168cb44",
   "cloudProvider": "aws",

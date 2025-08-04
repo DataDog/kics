@@ -4,7 +4,7 @@
   "severity": "HIGH",
   "category": "Networking and Firewall",
   "descriptionText": "Security Groups allows 0.0.0.0/0 for all ports and protocols.",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/cloudFormation/aws/security_groups_with_meta_ip",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/cloudFormation/aws/security_groups_with_meta_ip",
   "platform": "CloudFormation",
   "descriptionID": "868a9ec5",
   "cloudProvider": "aws",

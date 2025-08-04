@@ -4,7 +4,7 @@
   "severity": "MEDIUM",
   "category": "Insecure Defaults",
   "descriptionText": "Token has an indefinitely lifetime",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/terraform/databricks/indefinitely_token",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/terraform/databricks/indefinitely_token",
   "platform": "Terraform",
   "descriptionID": "79759163",
   "cloudProvider": "common",

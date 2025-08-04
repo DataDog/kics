@@ -4,7 +4,7 @@
   "severity": "MEDIUM",
   "category": "Insecure Configurations",
   "descriptionText": "The Active Directory Administrator is not configured for a SQL server",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/ansible/azure/ad_admin_not_configured_for_sql_server",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/ansible/azure/ad_admin_not_configured_for_sql_server",
   "platform": "Ansible",
   "descriptionID": "afa96f09",
   "cloudProvider": "azure",

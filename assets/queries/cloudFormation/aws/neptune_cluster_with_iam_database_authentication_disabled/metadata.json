@@ -4,7 +4,7 @@
   "severity": "HIGH",
   "category": "Access Control",
   "descriptionText": "Neptune Cluster should have IAM Database Authentication enabled",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/cloudFormation/aws/neptune_cluster_with_iam_database_authentication_disabled",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/cloudFormation/aws/neptune_cluster_with_iam_database_authentication_disabled",
   "platform": "CloudFormation",
   "descriptionID": "39cddadb",
   "cloudProvider": "aws",

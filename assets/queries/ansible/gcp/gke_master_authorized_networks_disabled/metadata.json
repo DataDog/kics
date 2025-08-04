@@ -4,7 +4,7 @@
   "severity": "MEDIUM",
   "category": "Networking and Firewall",
   "descriptionText": "Master authorized networks must be enabled in GKE clusters",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/ansible/gcp/gke_master_authorized_networks_disabled",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/ansible/gcp/gke_master_authorized_networks_disabled",
   "platform": "Ansible",
   "descriptionID": "67294baa",
   "cloudProvider": "gcp",

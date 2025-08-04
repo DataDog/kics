@@ -4,7 +4,7 @@
   "severity": "HIGH",
   "category": "Encryption",
   "descriptionText": "User Data should not contain a base64 encoded private key. If so, anyone can decode the private key easily",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/ansible/aws/user_data_contains_encoded_private_key",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/ansible/aws/user_data_contains_encoded_private_key",
   "platform": "Ansible",
   "descriptionID": "45cb51c3",
   "cloudProvider": "aws",

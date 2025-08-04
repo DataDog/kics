@@ -4,7 +4,7 @@
   "severity": "MEDIUM",
   "category": "Access Control",
   "descriptionText": "IoT Policy should not allow Resource to be set as *",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/cloudFormation/aws/iot_policy_allows_wildcard_resource",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/cloudFormation/aws/iot_policy_allows_wildcard_resource",
   "platform": "CloudFormation",
   "descriptionID": "d5e52bc7",
   "cloudProvider": "aws",

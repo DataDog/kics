@@ -4,7 +4,7 @@
   "severity": "MEDIUM",
   "category": "Access Control",
   "descriptionText": "IoT Policy should not allow Action to be set as *",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/cloudFormation/aws/iot_policy_allows_action_as_wildcard",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/cloudFormation/aws/iot_policy_allows_action_as_wildcard",
   "platform": "CloudFormation",
   "descriptionID": "e4417496",
   "cloudProvider": "aws",

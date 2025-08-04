@@ -4,7 +4,7 @@
   "severity": "LOW",
   "category": "Availability",
   "descriptionText": "The Horizontal Pod Autoscaler must target a valid object",
-  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_security_rules/terraform/kubernetes/hpa_targets_invalid_object",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/terraform/kubernetes/hpa_targets_invalid_object",
   "platform": "Terraform",
   "descriptionID": "f4d95aa4",
   "cwe": "400",
