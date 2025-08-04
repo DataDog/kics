@@ -21,6 +21,24 @@ CxPolicy[result] {
 	}
 }
 
+CxPolicy[result] {
+	module := input.document[i].module[name]
+	keyToCheck := common_lib.get_module_equivalent_key("aws", module.source, "aws_api_gateway_stage", "waf_acl_id")
+
+	not module[keyToCheck]
+
+	result := {
+		"documentId": input.document[i].id,
+        "resourceType": "module",
+		"resourceName": sprintf("%s", [name]),
+		"searchKey": sprintf("module[%s]", [name]),
+		"issueType": "IncorrectValue",
+		"keyExpectedValue": "API Gateway Stage should be associated with a Web Application Firewall",
+		"keyActualValue": "API Gateway Stage is not associated with a Web Application Firewall",
+        "searchLine": common_lib.build_search_line(["module", name], []),
+	}
+}
+
 has_waf_associated(apiGatewayName) {
     targetResources := {"aws_wafregional_web_acl_association", "aws_wafv2_web_acl_association"}
 
@@ -33,3 +51,4 @@ has_waf_associated(apiGatewayName) {
     associatedResource[0] == "${aws_api_gateway_stage"
     associatedResource[1] == apiGatewayName
 }
+

@@ -17,3 +17,20 @@ CxPolicy[result] {
 		"keyActualValue": "Attribute 'kms_key_id' is undefined",
 	}
 }
+
+CxPolicy[result] {
+	module := input.document[i].module[name]
+	keyToCheck := common_lib.get_module_equivalent_key("aws", module.source, "aws_cloudwatch_log_group", "kms_key_id")
+	not common_lib.valid_key(module, keyToCheck)
+
+	result := {
+		"documentId": input.document[i].id,
+		"resourceType": "module",
+		"resourceName": sprintf("%s", [name]),
+		"searchKey": sprintf("module[%s]", [name]),
+		"issueType": "MissingAttribute",
+		"keyExpectedValue": "Attribute 'kms_key_id' should be set",
+		"keyActualValue": "Attribute 'kms_key_id' is undefined",
+	}
+}
+

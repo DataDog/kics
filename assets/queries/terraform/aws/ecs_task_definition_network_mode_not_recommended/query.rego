@@ -23,3 +23,27 @@ CxPolicy[result] {
 		"remediationType": "replacement",
 	}
 }
+
+CxPolicy[result] {
+	module := input.document[i].module[name]
+	keyToCheck := common_lib.get_module_equivalent_key("aws", module.source, "aws_ecs_task_definition", "network_mode")
+
+	lower(module[keyToCheck]) != "awsvpc"
+
+	result := {
+		"documentId": input.document[i].id,
+		"resourceType": "module",
+		"resourceName": sprintf("%s", [name]),
+		"searchKey": sprintf("module[%s].network_mode", [name]),
+		"searchLine": common_lib.build_search_line(["module", name, "network_mode"], []),
+		"issueType": "IncorrectValue",
+		"keyExpectedValue": "'network_mode' should equal to 'awsvpc'",
+		"keyActualValue": sprintf("'network_mode' is equal to '%s'", [module.network_mode]),
+		"remediation": json.marshal({
+			"before": sprintf("%s",[module.network_mode]),
+			"after": "awsvpc"
+		}),
+		"remediationType": "replacement",
+	}
+}
+

@@ -26,3 +26,30 @@ CxPolicy[result] {
 		"remediationType": "replacement",
 	}
 }
+
+CxPolicy[result] {
+	module := input.document[i].module[name]
+	keyToCheck := common_lib.get_module_equivalent_key("aws", module.source, "aws_api_gateway_method", "authorization")
+
+	module[keyToCheck] == "NONE"
+	httpMethodKey := common_lib.get_module_equivalent_key("aws", module.source, "aws_api_gateway_method", "http_method")
+
+	module[httpMethodKey] != "OPTIONS"
+
+	result := {
+		"documentId": input.document[i].id,
+		"resourceType": "module",
+		"resourceName": sprintf("%s", [name]),
+		"searchKey": sprintf("module[%s].http_method", [name]),
+		"issueType": "IncorrectValue",
+		"keyExpectedValue": "authorization should only be 'NONE' if http_method is 'OPTIONS'",
+		"keyActualValue": "'authorization' is 'NONE' and 'http_method' is not ''OPTIONS'",
+		"searchLine": common_lib.build_search_line(["module", name, "http_method"], []),
+		"remediation": json.marshal({
+			"before": sprintf("%s", [module[httpMethodKey]]),
+			"after": "OPTIONS"
+		}),
+		"remediationType": "replacement",
+	}
+}
+

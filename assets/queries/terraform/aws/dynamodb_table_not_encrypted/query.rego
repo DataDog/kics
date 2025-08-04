@@ -41,3 +41,40 @@ CxPolicy[result] {
 		"remediationType": "addition",
 	}
 }
+
+
+CxPolicy[result] {
+	module := input.document[i].module[name]
+	keyToCheck := common_lib.get_module_equivalent_key("aws", module.source, "aws_dynamodb_table", "server_side_encryption")
+	value := module[keyToCheck]
+
+	value.enabled == false
+
+	result := {
+		"documentId": input.document[i].id,
+		"resourceType": "module",
+		"resourceName": sprintf("%s", [name]),
+		"searchKey": sprintf("module[%s].%s.enabled", [name, keyToCheck]),
+		"issueType": "IncorrectValue",
+		"keyExpectedValue": "server_side_encryption.enabled should be set to true",
+		"keyActualValue": "server_side_encryption.enabled is set to false",
+	}
+}
+
+CxPolicy[result] {
+	module := input.document[i].module[name]
+	keyToCheck := common_lib.get_module_equivalent_key("aws", module.source, "aws_dynamodb_table", "server_side_encryption")
+
+	not common_lib.valid_key(module, keyToCheck)
+
+	result := {
+		"documentId": input.document[i].id,
+		"resourceType": "module",
+		"resourceName": sprintf("%s", [name]),
+		"searchKey": sprintf("module[%s]", [name]),
+		"issueType": "MissingAttribute",
+		"keyExpectedValue": "server_side_encryption.enabled should be set to true",
+		"keyActualValue": "server_side_encryption is missing",
+	}
+}
+
