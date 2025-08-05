@@ -1932,6 +1932,46 @@
           "inputs": {
             "permissions_boundary": "permissions_boundary"
           }
+        },
+        "terraform-aws-modules/cloudtrail/aws": {
+          "resources": [
+            "aws_cloudtrail"
+          ],
+          "inputs": {
+            "event_selector": "event_selector"
+          }
+        },
+        "github.com/SebastianUA/terraform-aws-sagemaker": {
+          "resources": [
+            "aws_sagemaker_endpoint_configuration",
+            "aws_sagemaker_notebook_instance"
+          ],
+          "inputs": {
+            "endpoint_config": "endpoint_config",
+            "kms_key_id": "kms_key_id",
+            "direct_internet_access": "direct_internet_access"
+          }
+        },
+        "Young-ook/sagemaker/aws": {
+          "resources": [
+            "aws_sagemaker_endpoint_configuration",
+            "aws_sagemaker_notebook_instance"
+          ],
+          "inputs": {
+            "endpoint_config": "endpoint_config",
+            "kms_key_id": "kms_key_id",
+            "direct_internet_access": "direct_internet_access"
+          }
+        },
+        "terraform-aws-modules/secrets-manager/aws": {
+          "resources": [
+            "aws_secretsmanager_secret_policy",
+            "aws_secretsmanager_secret"
+          ],
+          "inputs": {
+            "policy": "policy",
+            "kms_key_id": "kms_key_id"
+          }
         }
       }
     }

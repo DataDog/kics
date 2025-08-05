@@ -36,3 +36,40 @@ CxPolicy[result] {
 		"keyActualValue": "'read_write_type' is not set to 'All'",
 	}
 }
+
+CxPolicy[result] {
+	module := input.document[i].module[name]
+	keyToCheck := common_lib.get_module_equivalent_key("aws", module.source, "aws_cloudtrail", "event_selector")
+
+	module[keyToCheck].data_resource.type == "AWS::S3::Object"
+	not common_lib.valid_key(module[keyToCheck], "read_write_type")
+
+	result := {
+		"documentId": input.document[i].id,
+		"resourceType": "module",
+		"resourceName": sprintf("%s", [name]),
+		"searchKey": sprintf("module[%s]", [name]),
+		"issueType": "MissingAttribute",
+		"keyExpectedValue": "'event_selector.read_write_type' should be defined and not null",
+		"keyActualValue": "'event_selector.read_write_type' is undefined or null",
+	}
+}
+
+CxPolicy[result] {
+	module := input.document[i].module[name]
+	keyToCheck := common_lib.get_module_equivalent_key("aws", module.source, "aws_cloudtrail", "event_selector")
+
+	module[keyToCheck].data_resource.type == "AWS::S3::Object"
+	module[keyToCheck].read_write_type != "All"
+
+	result := {
+		"documentId": input.document[i].id,
+		"resourceType": "module",
+		"resourceName": sprintf("%s", [name]),
+		"searchKey": sprintf("module[%s].[%s].read_write_type", [name, keyToCheck]),
+		"issueType": "IncorrectValue",
+		"keyExpectedValue": "'read_write_type' should be set to 'All'",
+		"keyActualValue": "'read_write_type' is not set to 'All'",
+	}
+}
+

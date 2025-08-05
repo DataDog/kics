@@ -25,3 +25,28 @@ CxPolicy[result] {
         "remediationType": "replacement"
     }
 }
+
+CxPolicy[result] {
+    module := input.document[i].module[name]
+    keyToCheck := common_lib.get_module_equivalent_key("aws", module.source, "aws_sagemaker_notebook_instance", "direct_internet_access")
+
+    common_lib.valid_key(module, keyToCheck)
+    module[keyToCheck] != "Disabled"
+
+    result := {
+        "documentId": input.document[i].id,
+        "resourceType": "module",
+        "resourceName": sprintf("%s", [name]),
+        "searchKey": sprintf("module[%s].%s", [name, keyToCheck]),
+        "searchLine": common_lib.build_search_line(["module", name, keyToCheck], []),
+        "issueType": "IncorrectValue",
+        "keyExpectedValue": sprintf("%s should be 'Disabled'", [keyToCheck]),
+        "keyActualValue": sprintf("%s is '%s'", [keyToCheck, module[keyToCheck]]),
+        "remediation": json.marshal({
+            "before": "Enabled",
+            "after": "Disabled"
+        }),
+        "remediationType": "replacement"
+    }
+}
+
