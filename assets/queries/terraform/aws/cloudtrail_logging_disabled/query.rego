@@ -23,3 +23,26 @@ CxPolicy[result] {
 		"remediationType": "replacement",
 	}
 }
+
+CxPolicy[result] {
+	module := input.document[i].module[name]
+	keyToCheck := common_lib.get_module_equivalent_key("aws", module.source, "aws_cloudtrail", "enable_logging")
+	module[keyToCheck] == false
+
+	result := {
+		"documentId": input.document[i].id,
+		"resourceType": "module",
+		"resourceName": sprintf("%s", [name]),
+		"searchKey": sprintf("module[%s].enable_logging", [name]),
+		"searchLine": common_lib.build_search_line(["module", name, "enable_logging"], []),
+		"issueType": "IncorrectValue",
+		"keyExpectedValue": "'enable_logging' should be true",
+		"keyActualValue": "'enable_logging' is false",
+		"remediation": json.marshal({
+			"before": "false",
+			"after": "true"
+		}),
+		"remediationType": "replacement",
+	}
+}
+
