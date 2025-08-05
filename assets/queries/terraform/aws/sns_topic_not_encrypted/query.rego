@@ -20,6 +20,23 @@ CxPolicy[result] {
 }
 
 CxPolicy[result] {
+	module := input.document[i].module[name]
+	keyToCheck := common_lib.get_module_equivalent_key("aws", module.source, "aws_sns_topic", "kms_master_key_id")
+
+	not common_lib.valid_key(module, keyToCheck)
+
+	result := {
+		"documentId": input.document[i].id,
+		"resourceType": "module",
+		"resourceName": sprintf("%s", [name]),
+		"searchKey": sprintf("module[%s]", [name]),
+		"issueType": "MissingAttribute",
+		"keyExpectedValue": "SNS Topic should be encrypted",
+		"keyActualValue": "SNS Topic is not encrypted",
+	}
+}
+
+CxPolicy[result] {
 	resource := input.document[i].resource.aws_sns_topic[name]
 
 	resource.kms_master_key_id == ""
@@ -34,3 +51,21 @@ CxPolicy[result] {
 		"keyActualValue": "SNS Topic is not encrypted",
 	}
 }
+
+CxPolicy[result] {
+	module := input.document[i].module[name]
+	keyToCheck := common_lib.get_module_equivalent_key("aws", module.source, "aws_sns_topic", "kms_master_key_id")
+
+	module[keyToCheck] == ""
+
+	result := {
+		"documentId": input.document[i].id,
+		"resourceType": "module",
+		"resourceName": sprintf("%s", [name]),
+		"searchKey": sprintf("module[%s].kms_master_key_id", [name]),
+		"issueType": "IncorrectValue",
+		"keyExpectedValue": "SNS Topic should be encrypted",
+		"keyActualValue": "SNS Topic is not encrypted",
+	}
+}
+

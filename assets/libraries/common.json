@@ -1379,7 +1379,8 @@
         },
         "terraform-aws-modules/sqs/aws": {
           "resources": [
-            "aws_sqs_queue"
+            "aws_sqs_queue",
+            "aws_sqs_queue_policy"
           ],
           "inputs": {
             "policy": "policy",
@@ -1971,6 +1972,14 @@
           "inputs": {
             "policy": "policy",
             "kms_key_id": "kms_key_id"
+          }
+        },
+        "terraform-aws-modules/sns/aws": {
+          "resources": [
+            "aws_sns_topic"
+          ],
+          "inputs": {
+            "kms_master_key_id": "kms_master_key_id"
           }
         }
       }
