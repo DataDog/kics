@@ -2003,11 +2003,13 @@
         },
         "cloudposse/athena/aws": {
           "resources": [
-            "aws_athena_workgroup"
+            "aws_athena_workgroup",
+            "aws_athena_database"
           ],
           "inputs": {
             "enforce_workgroup_configuration": "enforce_workgroup_configuration",
-            "workgroup_encryption_option": "workgroup_encryption_option"
+            "workgroup_encryption_option": "workgroup_encryption_option",
+            "encryption_configuration": "encryption_configuration"
           }
         },
         "terraform-aws-modules/batch/aws//modules/job-definition": {
