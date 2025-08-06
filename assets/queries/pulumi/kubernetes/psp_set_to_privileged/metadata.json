@@ -4,10 +4,11 @@
   "severity": "HIGH",
   "category": "Insecure Configurations",
   "descriptionText": "Do not allow pod to request execution as privileged.",
-  "descriptionUrl": "https://www.pulumi.com/registry/packages/kubernetes/api-docs/policy/v1beta1/podsecuritypolicy/#privileged_yaml",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/pulumi/kubernetes/psp_set_to_privileged",
   "platform": "Pulumi",
   "descriptionID": "7a6c8b70",
   "cwe": "",
   "cloudProvider": "common",
-  "oldSeverity": "MEDIUM"
+  "oldSeverity": "MEDIUM",
+  "providerUrl": "https://www.pulumi.com/registry/packages/kubernetes/api-docs/policy/v1beta1/podsecuritypolicy/#privileged_yaml"
 }

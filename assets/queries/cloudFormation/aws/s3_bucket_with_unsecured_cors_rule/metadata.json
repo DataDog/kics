@@ -4,10 +4,11 @@
   "severity": "MEDIUM",
   "category": "Insecure Configurations",
   "descriptionText": "If the CORS (Cross-Origin Resource Sharing) rule is defined in an S3 bucket, it should be secure",
-  "descriptionUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket-cors.html",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/cloudFormation/aws/s3_bucket_with_unsecured_cors_rule",
   "platform": "CloudFormation",
   "descriptionID": "f616509e",
   "cloudProvider": "aws",
   "cwe": "",
-  "oldSeverity": "HIGH"
+  "oldSeverity": "HIGH",
+  "providerUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket-cors.html"
 }

@@ -4,10 +4,11 @@
   "severity": "MEDIUM",
   "category": "Encryption",
   "descriptionText": "Checks if the connection between CloudFront and the viewer is encrypted",
-  "descriptionUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudfront-distribution.html",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/cloudFormation/aws/cloudfront_viewer_protocol_policy_allows_http",
   "platform": "CloudFormation",
   "descriptionID": "bf860aba",
   "cloudProvider": "aws",
   "cwe": "",
-  "oldSeverity": "HIGH"
+  "oldSeverity": "HIGH",
+  "providerUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudfront-distribution.html"
 }

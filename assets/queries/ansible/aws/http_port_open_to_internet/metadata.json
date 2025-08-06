@@ -4,10 +4,11 @@
   "severity": "MEDIUM",
   "category": "Networking and Firewall",
   "descriptionText": "The HTTP port is open to the internet in a Security Group",
-  "descriptionUrl": "https://docs.ansible.com/ansible/latest/collections/amazon/aws/ec2_group_module.html#ansible-collections-amazon-aws-ec2-group-module",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/ansible/aws/http_port_open_to_internet",
   "platform": "Ansible",
   "descriptionID": "8c6031b8",
   "cloudProvider": "aws",
   "cwe": "",
-  "oldSeverity": "HIGH"
+  "oldSeverity": "HIGH",
+  "providerUrl": "https://docs.ansible.com/ansible/latest/collections/amazon/aws/ec2_group_module.html#ansible-collections-amazon-aws-ec2-group-module"
 }

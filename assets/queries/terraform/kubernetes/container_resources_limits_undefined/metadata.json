@@ -4,9 +4,10 @@
   "severity": "MEDIUM",
   "category": "Insecure Configurations",
   "descriptionText": "Kubernetes container should have resource limitations defined such as CPU and memory",
-  "descriptionUrl": "https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/pod",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/terraform/kubernetes/container_resources_limits_undefined",
   "platform": "Terraform",
   "descriptionID": "36651cdf",
   "cwe": "400",
-  "cloudProvider": "common"
+  "cloudProvider": "common",
+  "providerUrl": "https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/pod"
 }

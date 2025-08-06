@@ -4,9 +4,10 @@
   "severity": "MEDIUM",
   "category": "Best Practices",
   "descriptionText": "Amazon ECS service should be configured to use Load Balancing to distribute traffic evenly across the tasks, which means there must exist at least one LoadBalancer.",
-  "descriptionUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecs-service.html",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/cloudFormation/aws/ecs_no_load_balancer_attached",
   "platform": "CloudFormation",
   "descriptionID": "2f3ec772",
   "cloudProvider": "aws",
-  "cwe": ""
+  "cwe": "",
+  "providerUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecs-service.html"
 }

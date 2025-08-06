@@ -4,10 +4,11 @@
   "severity": "MEDIUM",
   "category": "Networking and Firewall",
   "descriptionText": "Master authorized networks must be enabled in GKE clusters",
-  "descriptionUrl": "https://docs.ansible.com/ansible/latest/collections/google/cloud/gcp_container_cluster_module.html#parameter-master_authorized_networks_config/enabled",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/ansible/gcp/gke_master_authorized_networks_disabled",
   "platform": "Ansible",
   "descriptionID": "67294baa",
   "cloudProvider": "gcp",
   "cwe": "",
-  "oldSeverity": "HIGH"
+  "oldSeverity": "HIGH",
+  "providerUrl": "https://docs.ansible.com/ansible/latest/collections/google/cloud/gcp_container_cluster_module.html#parameter-master_authorized_networks_config/enabled"
 }

@@ -4,10 +4,11 @@
   "severity": "MEDIUM",
   "category": "Encryption",
   "descriptionText": "Make sure that for MySQL Database Server, 'Enforce SSL connection' is enabled",
-  "descriptionUrl": "https://docs.ansible.com/ansible/latest/collections/azure/azcollection/azure_rm_mysqlserver_module.html",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/ansible/azure/mysql_ssl_connection_disabled",
   "platform": "Ansible",
   "descriptionID": "9709164b",
   "cloudProvider": "azure",
   "cwe": "",
-  "oldSeverity": "HIGH"
+  "oldSeverity": "HIGH",
+  "providerUrl": "https://docs.ansible.com/ansible/latest/collections/azure/azcollection/azure_rm_mysqlserver_module.html"
 }

@@ -4,10 +4,11 @@
   "severity": "MEDIUM",
   "category": "Backup",
   "descriptionText": "Checks if backup configuration is enabled for all Cloud SQL Database instances",
-  "descriptionUrl": "https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1beta4/instances",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/googleDeploymentManager/gcp/sql_db_instance_backup_disabled",
   "platform": "GoogleDeploymentManager",
   "descriptionID": "45790b7e",
   "cloudProvider": "gcp",
   "cwe": "",
-  "oldSeverity": "HIGH"
+  "oldSeverity": "HIGH",
+  "providerUrl": "https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1beta4/instances"
 }

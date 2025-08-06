@@ -4,9 +4,10 @@
   "severity": "MEDIUM",
   "category": "Secret Management",
   "descriptionText": "KMS Key should have automatic rotation enabled and the rotation period should not be higher than a year",
-  "descriptionUrl": "https://registry.terraform.io/providers/aliyun/alicloud/latest/docs/resources/kms_key",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/terraform/alicloud/high_kms_key_rotation_period",
   "platform": "Terraform",
   "descriptionID": "7961c2d3",
   "cloudProvider": "alicloud",
-  "cwe": "311"
+  "cwe": "311",
+  "providerUrl": "https://registry.terraform.io/providers/aliyun/alicloud/latest/docs/resources/kms_key"
 }

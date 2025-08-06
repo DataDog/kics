@@ -4,10 +4,11 @@
   "severity": "MEDIUM",
   "category": "Access Control",
   "descriptionText": "Containers should be configured with AppArmor for any application to reduce its potential attack",
-  "descriptionUrl": "https://www.pulumi.com/registry/packages/kubernetes/api-docs/core/v1/pod/#objectmeta",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/pulumi/kubernetes/missing_app_armor_config",
   "platform": "Pulumi",
   "descriptionID": "15676623",
   "cwe": "",
   "cloudProvider": "common",
-  "oldSeverity": "LOW"
+  "oldSeverity": "LOW",
+  "providerUrl": "https://www.pulumi.com/registry/packages/kubernetes/api-docs/core/v1/pod/#objectmeta"
 }

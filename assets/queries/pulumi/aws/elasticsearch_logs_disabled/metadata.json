@@ -4,9 +4,10 @@
   "severity": "MEDIUM",
   "category": "Observability",
   "descriptionText": "AWS Elasticsearch should have logs enabled",
-  "descriptionUrl": "https://www.pulumi.com/registry/packages/aws/api-docs/elasticsearch/domain/#logpublishingoptions_yaml",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/pulumi/aws/elasticsearch_logs_disabled",
   "platform": "Pulumi",
   "descriptionID": "55b7425d",
   "cloudProvider": "aws",
-  "cwe": ""
+  "cwe": "",
+  "providerUrl": "https://www.pulumi.com/registry/packages/aws/api-docs/elasticsearch/domain/#logpublishingoptions_yaml"
 }

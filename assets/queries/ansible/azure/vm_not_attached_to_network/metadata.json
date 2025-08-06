@@ -4,10 +4,11 @@
   "severity": "MEDIUM",
   "category": "Insecure Configurations",
   "descriptionText": "No Network Security Group is attached to the Virtual Machine",
-  "descriptionUrl": "https://docs.ansible.com/ansible/latest/collections/azure/azcollection/azure_rm_virtualmachine_module.html#parameter-network_interface_names",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/ansible/azure/vm_not_attached_to_network",
   "platform": "Ansible",
   "descriptionID": "33a5e5ec",
   "cloudProvider": "azure",
   "cwe": "",
-  "oldSeverity": "HIGH"
+  "oldSeverity": "HIGH",
+  "providerUrl": "https://docs.ansible.com/ansible/latest/collections/azure/azcollection/azure_rm_virtualmachine_module.html#parameter-network_interface_names"
 }

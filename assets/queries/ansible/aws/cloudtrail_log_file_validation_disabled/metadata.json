@@ -4,9 +4,10 @@
   "severity": "LOW",
   "category": "Observability",
   "descriptionText": "CloudTrail log file validation should be enabled to determine whether a log file has not been tampered",
-  "descriptionUrl": "https://docs.ansible.com/ansible/latest/collections/community/aws/cloudtrail_module.html",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/ansible/aws/cloudtrail_log_file_validation_disabled",
   "platform": "Ansible",
   "descriptionID": "04302074",
   "cloudProvider": "aws",
-  "cwe": ""
+  "cwe": "",
+  "providerUrl": "https://docs.ansible.com/ansible/latest/collections/community/aws/cloudtrail_module.html"
 }

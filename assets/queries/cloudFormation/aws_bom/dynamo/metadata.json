@@ -4,9 +4,10 @@
   "severity": "TRACE",
   "category": "Bill Of Materials",
   "descriptionText": "A list of DynamoDB resources found. Amazon DynamoDB is a fully managed, serverless, key-value NoSQL database designed to run high-performance applications at any scale.",
-  "descriptionUrl": "https://kics.io",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/cloudFormation/aws_bom/dynamo",
   "platform": "CloudFormation",
   "descriptionID": "b0d40495",
   "cloudProvider": "aws",
-  "cwe": ""
+  "cwe": "",
+  "providerUrl": "https://kics.io"
 }

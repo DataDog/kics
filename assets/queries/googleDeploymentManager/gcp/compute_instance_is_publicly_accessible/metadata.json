@@ -4,10 +4,11 @@
   "severity": "MEDIUM",
   "category": "Networking and Firewall",
   "descriptionText": "Compute instances shouldn't be accessible from the Internet.",
-  "descriptionUrl": "https://cloud.google.com/compute/docs/reference/rest/v1/instances",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/googleDeploymentManager/gcp/compute_instance_is_publicly_accessible",
   "platform": "GoogleDeploymentManager",
   "descriptionID": "9f60c421",
   "cloudProvider": "gcp",
   "cwe": "",
-  "oldSeverity": "HIGH"
+  "oldSeverity": "HIGH",
+  "providerUrl": "https://cloud.google.com/compute/docs/reference/rest/v1/instances"
 }

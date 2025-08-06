@@ -4,9 +4,10 @@
   "severity": "LOW",
   "category": "Resource Management",
   "descriptionText": "In ECS Task Definition of FARGATE launch type if you specify an invalid CPU or Memory value, you will receive an error",
-  "descriptionUrl": "https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-cpu-memory-error.html",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/cloudFormation/aws/ecs_task_definition_invalid_cpu_or_memory",
   "platform": "CloudFormation",
   "descriptionID": "8fa43a9a",
   "cloudProvider": "aws",
-  "cwe": ""
+  "cwe": "",
+  "providerUrl": "https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-cpu-memory-error.html"
 }

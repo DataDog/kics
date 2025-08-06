@@ -4,9 +4,10 @@
   "severity": "MEDIUM",
   "category": "Encryption",
   "descriptionText": "OSS Bucket should have encryption enabled using Customer Master Key",
-  "descriptionUrl": "https://registry.terraform.io/providers/aliyun/alicloud/latest/docs/resources/oss_bucket#server_side_encryption_rule",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/terraform/alicloud/oss_bucket_cmk_encryption_disabled",
   "platform": "Terraform",
   "descriptionID": "5907ee8c",
   "cloudProvider": "alicloud",
-  "cwe": "311"
+  "cwe": "311",
+  "providerUrl": "https://registry.terraform.io/providers/aliyun/alicloud/latest/docs/resources/oss_bucket#server_side_encryption_rule"
 }

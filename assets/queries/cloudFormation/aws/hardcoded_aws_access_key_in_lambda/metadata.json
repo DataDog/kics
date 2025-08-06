@@ -4,10 +4,11 @@
   "severity": "HIGH",
   "category": "Secret Management",
   "descriptionText": "Lambda access/secret keys should not be hardcoded",
-  "descriptionUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lambda-function.html#cfn-lambda-function-environment",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/cloudFormation/aws/hardcoded_aws_access_key_in_lambda",
   "platform": "CloudFormation",
   "descriptionID": "ff065e3b",
   "cloudProvider": "aws",
   "cwe": "",
-  "oldSeverity": "MEDIUM"
+  "oldSeverity": "MEDIUM",
+  "providerUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lambda-function.html#cfn-lambda-function-environment"
 }

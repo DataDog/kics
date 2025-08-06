@@ -4,10 +4,11 @@
   "severity": "LOW",
   "category": "Best Practices",
   "descriptionText": "AWS Cognito UserPool should have MFA (Multi-Factor Authentication) defined to users",
-  "descriptionUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cognito-userpool.html",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/cloudFormation/aws/cognito_userpool_without_mfa",
   "platform": "CloudFormation",
   "descriptionID": "32d91e4e",
   "cloudProvider": "aws",
   "cwe": "",
-  "oldSeverity": "MEDIUM"
+  "oldSeverity": "MEDIUM",
+  "providerUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cognito-userpool.html"
 }

@@ -4,9 +4,10 @@
   "severity": "LOW",
   "category": "Access Control",
   "descriptionText": "CVM instances should not use default security group(s)",
-  "descriptionUrl": "https://registry.terraform.io/providers/tencentcloudstack/tencentcloud/latest/docs/resources/instance#orderly_security_groups",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/terraform/tencentcloud/cvm_instance_using_default_security_group",
   "platform": "Terraform",
   "descriptionID": "8b32294d",
   "cloudProvider": "tencentcloud",
-  "cwe": "732"
+  "cwe": "732",
+  "providerUrl": "https://registry.terraform.io/providers/tencentcloudstack/tencentcloud/latest/docs/resources/instance#orderly_security_groups"
 }

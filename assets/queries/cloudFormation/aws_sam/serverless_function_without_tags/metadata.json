@@ -4,10 +4,11 @@
   "severity": "LOW",
   "category": "Insecure Configurations",
   "descriptionText": "AWS Serverless Function should have associated tags",
-  "descriptionUrl": "https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/sam-resource-function.html#sam-function-tags",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/cloudFormation/aws_sam/serverless_function_without_tags",
   "platform": "CloudFormation",
   "descriptionID": "fa1b224c",
   "cloudProvider": "aws",
   "cwe": "",
-  "oldSeverity": "MEDIUM"
+  "oldSeverity": "MEDIUM",
+  "providerUrl": "https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/sam-resource-function.html#sam-function-tags"
 }

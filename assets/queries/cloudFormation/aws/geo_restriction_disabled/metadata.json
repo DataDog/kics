@@ -4,9 +4,10 @@
   "severity": "LOW",
   "category": "Best Practices",
   "descriptionText": "Geo Restriction feature should be enabled, to restrict or allow users in specific locations accessing web application content",
-  "descriptionUrl": "https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/georestrictions.html",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/cloudFormation/aws/geo_restriction_disabled",
   "platform": "CloudFormation",
   "descriptionID": "18f149b3",
   "cloudProvider": "aws",
-  "cwe": ""
+  "cwe": "",
+  "providerUrl": "https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/georestrictions.html"
 }

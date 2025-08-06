@@ -4,7 +4,7 @@
   "severity": "INFO",
   "category": "Best Practices",
   "descriptionText": "Schema Object properties should not contain 'enum' and schema keywords",
-  "descriptionUrl": "https://swagger.io/specification/#schema-object",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/openAPI/general/object_using_enum_with_keyword",
   "platform": "OpenAPI",
   "descriptionID": "96b60dc9",
   "aggregation": 2,
@@ -16,5 +16,6 @@
       "descriptionText": "Schema/Parameter/Header Object properties should not contain 'enum' and schema keywords"
     }
   },
-  "cwe": ""
+  "cwe": "",
+  "providerUrl": "https://swagger.io/specification/#schema-object"
 }

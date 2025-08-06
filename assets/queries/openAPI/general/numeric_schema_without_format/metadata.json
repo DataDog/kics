@@ -4,7 +4,7 @@
   "severity": "LOW",
   "category": "Insecure Configurations",
   "descriptionText": "Numeric schema (type set to 'integer' or 'number') should have 'format' defined.",
-  "descriptionUrl": "https://swagger.io/specification/#schema-object",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/openAPI/general/numeric_schema_without_format",
   "platform": "OpenAPI",
   "descriptionID": "7fe69742",
   "aggregation": 2,
@@ -17,5 +17,6 @@
     }
   },
   "cwe": "",
-  "oldSeverity": "MEDIUM"
+  "oldSeverity": "MEDIUM",
+  "providerUrl": "https://swagger.io/specification/#schema-object"
 }

@@ -4,9 +4,10 @@
   "severity": "MEDIUM",
   "category": "Insecure Configurations",
   "descriptionText": "Using HTTP URLs (without encryption) could lead to security vulnerabilities and risks",
-  "descriptionUrl": "https://docs.ansible.com/ansible/latest/plugins/httpapi.html",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/ansible/config/communication_over_http",
   "platform": "Ansible",
   "descriptionID": "8c03b0c0",
   "cloudProvider": "common",
-  "cwe": ""
+  "cwe": "",
+  "providerUrl": "https://docs.ansible.com/ansible/latest/plugins/httpapi.html"
 }

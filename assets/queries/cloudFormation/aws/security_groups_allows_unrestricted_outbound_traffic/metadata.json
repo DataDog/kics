@@ -4,10 +4,11 @@
   "severity": "MEDIUM",
   "category": "Networking and Firewall",
   "descriptionText": "No security group should allow unrestricted egress access",
-  "descriptionUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-security-group.html",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/cloudFormation/aws/security_groups_allows_unrestricted_outbound_traffic",
   "platform": "CloudFormation",
   "descriptionID": "05891eb1",
   "cloudProvider": "aws",
   "cwe": "",
-  "oldSeverity": "HIGH"
+  "oldSeverity": "HIGH",
+  "providerUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-security-group.html"
 }

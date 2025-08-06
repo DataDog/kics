@@ -4,10 +4,11 @@
   "severity": "LOW",
   "category": "Insecure Configurations",
   "descriptionText": "AWS Lambda Functions must have associated tags.",
-  "descriptionUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lambda-function.html",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/cloudFormation/aws/lambda_function_without_tags",
   "platform": "CloudFormation",
   "descriptionID": "664675e7",
   "cloudProvider": "aws",
   "cwe": "",
-  "oldSeverity": "MEDIUM"
+  "oldSeverity": "MEDIUM",
+  "providerUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lambda-function.html"
 }

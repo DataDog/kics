@@ -4,10 +4,11 @@
   "severity": "LOW",
   "category": "Availability",
   "descriptionText": "EBS Volumes that are unattached to instances may contain sensitive data",
-  "descriptionUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ebs-volumeattachment.html",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/cloudFormation/aws/ebs_volume_not_attached_to_instances",
   "platform": "CloudFormation",
   "descriptionID": "33e2f7f6",
   "cloudProvider": "aws",
   "cwe": "",
-  "oldSeverity": "MEDIUM"
+  "oldSeverity": "MEDIUM",
+  "providerUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-ebs-volumeattachment.html"
 }

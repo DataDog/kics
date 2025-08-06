@@ -4,9 +4,10 @@
   "severity": "MEDIUM",
   "category": "Observability",
   "descriptionText": "Make sure that for PostgreSQL Database, server parameter 'log_connections' is set to 'ON'",
-  "descriptionUrl": "https://docs.ansible.com/ansible/latest/collections/azure/azcollection/azure_rm_postgresqlconfiguration_module.html",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/ansible/azure/postgre_sql_log_connections_not_set",
   "platform": "Ansible",
   "descriptionID": "774a65e4",
   "cloudProvider": "azure",
-  "cwe": ""
+  "cwe": "",
+  "providerUrl": "https://docs.ansible.com/ansible/latest/collections/azure/azcollection/azure_rm_postgresqlconfiguration_module.html"
 }

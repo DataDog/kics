@@ -4,9 +4,10 @@
   "severity": "MEDIUM",
   "category": "Best Practices",
   "descriptionText": "IAM User Login Profile should exist and have PasswordResetRequired property set to true",
-  "descriptionUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-user-loginprofile.html",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/cloudFormation/aws/user_iam_missing_password_reset_required",
   "platform": "CloudFormation",
   "descriptionID": "a44edc48",
   "cloudProvider": "aws",
-  "cwe": ""
+  "cwe": "",
+  "providerUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-user-loginprofile.html"
 }

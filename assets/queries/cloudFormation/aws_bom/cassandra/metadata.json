@@ -4,9 +4,10 @@
   "severity": "TRACE",
   "category": "Bill Of Materials",
   "descriptionText": "A list of Cassandra resources found. Amazon Cassandra is an open-source NoSQL database designed to store data for applications that require fast read and write performance",
-  "descriptionUrl": "https://kics.io",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/cloudFormation/aws_bom/cassandra",
   "platform": "CloudFormation",
   "descriptionID": "bd2db07c",
   "cloudProvider": "aws",
-  "cwe": ""
+  "cwe": "",
+  "providerUrl": "https://kics.io"
 }

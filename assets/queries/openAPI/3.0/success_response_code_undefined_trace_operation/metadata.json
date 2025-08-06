@@ -4,9 +4,10 @@
   "severity": "LOW",
   "category": "Networking and Firewall",
   "descriptionText": "Trace should define the '200' successful code",
-  "descriptionUrl": "https://swagger.io/specification/#operation-object",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/openAPI/3.0/success_response_code_undefined_trace_operation",
   "platform": "OpenAPI",
   "descriptionID": "d3325ec2",
   "cwe": "",
-  "oldSeverity": "MEDIUM"
+  "oldSeverity": "MEDIUM",
+  "providerUrl": "https://swagger.io/specification/#operation-object"
 }

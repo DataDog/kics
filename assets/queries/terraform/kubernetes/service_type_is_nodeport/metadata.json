@@ -4,9 +4,10 @@
   "severity": "LOW",
   "category": "Networking and Firewall",
   "descriptionText": "Service type should not be NodePort",
-  "descriptionUrl": "https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/service#type",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/terraform/kubernetes/service_type_is_nodeport",
   "platform": "Terraform",
   "descriptionID": "50e2c36f",
   "cwe": "665",
-  "cloudProvider": "common"
+  "cloudProvider": "common",
+  "providerUrl": "https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/service#type"
 }

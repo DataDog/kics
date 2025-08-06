@@ -4,10 +4,11 @@
   "severity": "MEDIUM",
   "category": "Insecure Configurations",
   "descriptionText": "Web app should only accept HTTPS traffic in Azure Web App Service.",
-  "descriptionUrl": "https://docs.ansible.com/ansible/latest/collections/azure/azcollection/azure_rm_webapp_module.html#parameter-https_only",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/ansible/azure/web_app_accepting_traffic_other_than_https",
   "platform": "Ansible",
   "descriptionID": "c518b2f2",
   "cloudProvider": "azure",
   "cwe": "",
-  "oldSeverity": "HIGH"
+  "oldSeverity": "HIGH",
+  "providerUrl": "https://docs.ansible.com/ansible/latest/collections/azure/azcollection/azure_rm_webapp_module.html#parameter-https_only"
 }

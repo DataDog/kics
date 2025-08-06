@@ -4,9 +4,10 @@
   "severity": "HIGH",
   "category": "Networking and Firewall",
   "descriptionText": "Alicloud Security Group Rule should not allow all ports or all protocols to the public",
-  "descriptionUrl": "https://registry.terraform.io/providers/aliyun/alicloud/latest/docs/resources/security_group_rule#cidr_ip",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/terraform/alicloud/public_security_group_rule_all_ports_or_protocols",
   "platform": "Terraform",
   "descriptionID": "6dcb70e8",
   "cloudProvider": "alicloud",
-  "cwe": "284"
+  "cwe": "284",
+  "providerUrl": "https://registry.terraform.io/providers/aliyun/alicloud/latest/docs/resources/security_group_rule#cidr_ip"
 }

@@ -4,10 +4,11 @@
   "severity": "LOW",
   "category": "Best Practices",
   "descriptionText": "One or some Databricks Cluster GCP Attribute Best Practices are not respected",
-  "descriptionUrl": "https://docs.databricks.com/clusters/cluster-config-best-practices.html",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/terraform/databricks/cluster_gcp_attributes",
   "platform": "Terraform",
   "descriptionID": "c1fe1954",
   "cloudProvider": "common",
   "cwe": "710",
-  "oldSeverity": "MEDIUM"
+  "oldSeverity": "MEDIUM",
+  "providerUrl": "https://docs.databricks.com/clusters/cluster-config-best-practices.html"
 }

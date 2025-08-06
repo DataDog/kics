@@ -4,9 +4,10 @@
   "severity": "LOW",
   "category": "Best Practices",
   "descriptionText": "IAM Access Analyzer should be enabled and configured to continuously monitor resource permissions",
-  "descriptionUrl": "https://docs.amazonaws.cn/en_us/AWSCloudFormation/latest/UserGuide/aws-resource-accessanalyzer-analyzer.html",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/cloudFormation/aws/iam_access_analyzer_not_enabled",
   "platform": "CloudFormation",
   "descriptionID": "24a6978e",
   "cloudProvider": "aws",
-  "cwe": ""
+  "cwe": "",
+  "providerUrl": "https://docs.amazonaws.cn/en_us/AWSCloudFormation/latest/UserGuide/aws-resource-accessanalyzer-analyzer.html"
 }

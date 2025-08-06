@@ -4,9 +4,10 @@
   "severity": "HIGH",
   "category": "Access Control",
   "descriptionText": "Storage Account should not be public to grant the principle of least privileges",
-  "descriptionUrl": "https://docs.ansible.com/ansible/latest/collections/azure/azcollection/azure_rm_storageaccount_module.html#parameter-network_acls",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/ansible/azure/public_storage_account",
   "platform": "Ansible",
   "descriptionID": "78d2c5b3",
   "cloudProvider": "azure",
-  "cwe": ""
+  "cwe": "",
+  "providerUrl": "https://docs.ansible.com/ansible/latest/collections/azure/azcollection/azure_rm_storageaccount_module.html#parameter-network_acls"
 }

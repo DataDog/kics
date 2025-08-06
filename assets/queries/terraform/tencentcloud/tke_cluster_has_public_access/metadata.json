@@ -4,9 +4,10 @@
   "severity": "MEDIUM",
   "category": "Insecure Configurations",
   "descriptionText": "TKE Cluster 'public_ip_assigned' should be set to false",
-  "descriptionUrl": "https://registry.terraform.io/providers/tencentcloudstack/tencentcloud/latest/docs/resources/kubernetes_cluster#public_ip_assigned",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/terraform/tencentcloud/tke_cluster_has_public_access",
   "platform": "Terraform",
   "descriptionID": "6570e731",
   "cloudProvider": "tencentcloud",
-  "cwe": "732"
+  "cwe": "732",
+  "providerUrl": "https://registry.terraform.io/providers/tencentcloudstack/tencentcloud/latest/docs/resources/kubernetes_cluster#public_ip_assigned"
 }

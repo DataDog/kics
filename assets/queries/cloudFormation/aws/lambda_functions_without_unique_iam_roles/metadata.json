@@ -4,10 +4,11 @@
   "severity": "HIGH",
   "category": "Insecure Configurations",
   "descriptionText": "AWS Lambda Functions should not share IAM roles to ensure they will have the minimum privileges needed to perform the required tasks",
-  "descriptionUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lambda-function.html",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/cloudFormation/aws/lambda_functions_without_unique_iam_roles",
   "platform": "CloudFormation",
   "descriptionID": "f919ad7e",
   "cloudProvider": "aws",
   "cwe": "",
-  "oldSeverity": "MEDIUM"
+  "oldSeverity": "MEDIUM",
+  "providerUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lambda-function.html"
 }

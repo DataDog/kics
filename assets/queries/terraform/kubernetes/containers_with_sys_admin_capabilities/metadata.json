@@ -4,10 +4,11 @@
   "severity": "HIGH",
   "category": "Insecure Configurations",
   "descriptionText": "Containers should not have CAP_SYS_ADMIN Linux capability",
-  "descriptionUrl": "https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/pod#capabilities-1",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/terraform/kubernetes/containers_with_sys_admin_capabilities",
   "platform": "Terraform",
   "descriptionID": "03622ad2",
   "cwe": "732",
   "cloudProvider": "common",
-  "oldSeverity": "MEDIUM"
+  "oldSeverity": "MEDIUM",
+  "providerUrl": "https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/pod#capabilities-1"
 }

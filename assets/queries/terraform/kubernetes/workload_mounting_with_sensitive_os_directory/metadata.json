@@ -4,10 +4,11 @@
   "severity": "HIGH",
   "category": "Insecure Configurations",
   "descriptionText": "Workload is mounting a volume with sensitive OS Directory",
-  "descriptionUrl": "https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/pod#host_path",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/terraform/kubernetes/workload_mounting_with_sensitive_os_directory",
   "platform": "Terraform",
   "descriptionID": "2047253f",
   "cwe": "200",
   "cloudProvider": "common",
-  "oldSeverity": "MEDIUM"
+  "oldSeverity": "MEDIUM",
+  "providerUrl": "https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/pod#host_path"
 }

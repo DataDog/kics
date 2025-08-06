@@ -4,9 +4,10 @@
   "severity": "LOW",
   "category": "Access Control",
   "descriptionText": "CVM instances should use roles to be granted access",
-  "descriptionUrl": "https://registry.terraform.io/providers/tencentcloudstack/tencentcloud/latest/docs/resources/instance#user_data",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/terraform/tencentcloud/cvm_instance_using_user_data",
   "platform": "Terraform",
   "descriptionID": "7b10c908",
   "cloudProvider": "tencentcloud",
-  "cwe": "284"
+  "cwe": "284",
+  "providerUrl": "https://registry.terraform.io/providers/tencentcloudstack/tencentcloud/latest/docs/resources/instance#user_data"
 }

@@ -4,10 +4,11 @@
   "severity": "MEDIUM",
   "category": "Access Control",
   "descriptionText": "Sees if Docker Daemon Socket is not exposed to Containers",
-  "descriptionUrl": "https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/pod#host_path",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/terraform/kubernetes/docker_daemon_socket_is_exposed_to_containers",
   "platform": "Terraform",
   "descriptionID": "836d927e",
   "cwe": "668",
   "cloudProvider": "common",
-  "oldSeverity": "LOW"
+  "oldSeverity": "LOW",
+  "providerUrl": "https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/pod#host_path"
 }

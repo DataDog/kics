@@ -4,9 +4,10 @@
   "severity": "LOW",
   "category": "Insecure Configurations",
   "descriptionText": "CDB Instance Internet should not use have default intranet port",
-  "descriptionUrl": "https://registry.terraform.io/providers/tencentcloudstack/tencentcloud/latest/docs/resources/mysql_instance#intranet_port",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/terraform/tencentcloud/cdb_instance_using_default_intranet_port",
   "platform": "Terraform",
   "descriptionID": "dd780613",
   "cloudProvider": "tencentcloud",
-  "cwe": "668"
+  "cwe": "668",
+  "providerUrl": "https://registry.terraform.io/providers/tencentcloudstack/tencentcloud/latest/docs/resources/mysql_instance#intranet_port"
 }

@@ -4,9 +4,10 @@
   "severity": "HIGH",
   "category": "Insecure Configurations",
   "descriptionText": "AWS Redshift Clusters must not be publicly accessible. Check if 'publicly_accessible' field is true (default is false)",
-  "descriptionUrl": "https://docs.ansible.com/ansible/latest/collections/community/aws/redshift_module.html",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/ansible/aws/redshift_publicly_accessible",
   "platform": "Ansible",
   "descriptionID": "ffdc02cc",
   "cloudProvider": "aws",
-  "cwe": ""
+  "cwe": "",
+  "providerUrl": "https://docs.ansible.com/ansible/latest/collections/community/aws/redshift_module.html"
 }

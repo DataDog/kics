@@ -4,7 +4,7 @@
   "severity": "INFO",
   "category": "Best Practices",
   "descriptionText": "Contact Object Email should be a valid email",
-  "descriptionUrl": "https://swagger.io/specification/#contact-object",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/openAPI/general/invalid_contact_email",
   "platform": "OpenAPI",
   "descriptionID": "3380be54",
   "aggregation": 2,
@@ -16,5 +16,6 @@
       "descriptionText": ""
     }
   },
-  "cwe": ""
+  "cwe": "",
+  "providerUrl": "https://swagger.io/specification/#contact-object"
 }

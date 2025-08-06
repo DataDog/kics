@@ -4,10 +4,11 @@
   "severity": "LOW",
   "category": "Encryption",
   "descriptionText": "Logs delivered by CloudTrail should be encrypted using KMS to increase security of your CloudTrail",
-  "descriptionUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudtrail-trail.html#cfn-cloudtrail-trail-kmskeyid",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/cloudFormation/aws/cloudtrail_log_files_not_encrypted_with_kms",
   "platform": "CloudFormation",
   "descriptionID": "cdc07a23",
   "cloudProvider": "aws",
   "cwe": "",
-  "oldSeverity": "MEDIUM"
+  "oldSeverity": "MEDIUM",
+  "providerUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudtrail-trail.html#cfn-cloudtrail-trail-kmskeyid"
 }

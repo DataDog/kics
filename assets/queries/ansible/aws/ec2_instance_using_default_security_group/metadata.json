@@ -4,10 +4,11 @@
   "severity": "MEDIUM",
   "category": "Access Control",
   "descriptionText": "EC2 instances should not use default security group(s)",
-  "descriptionUrl": "https://docs.ansible.com/ansible/latest/collections/amazon/aws/ec2_module.html#parameter-group",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/ansible/aws/ec2_instance_using_default_security_group",
   "platform": "Ansible",
   "descriptionID": "cc323109",
   "cloudProvider": "aws",
   "cwe": "",
-  "oldSeverity": "LOW"
+  "oldSeverity": "LOW",
+  "providerUrl": "https://docs.ansible.com/ansible/latest/collections/amazon/aws/ec2_module.html#parameter-group"
 }

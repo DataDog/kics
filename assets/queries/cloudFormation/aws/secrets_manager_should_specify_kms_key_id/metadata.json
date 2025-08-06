@@ -4,10 +4,11 @@
   "severity": "LOW",
   "category": "Secret Management",
   "descriptionText": "Secrets Manager Secret should explicitly specify KmsKeyId, this will allow the secret to be shared cross-account",
-  "descriptionUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-secret.html",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/cloudFormation/aws/secrets_manager_should_specify_kms_key_id",
   "platform": "CloudFormation",
   "descriptionID": "d78bb871",
   "cloudProvider": "aws",
   "cwe": "",
-  "oldSeverity": "MEDIUM"
+  "oldSeverity": "MEDIUM",
+  "providerUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-secretsmanager-secret.html"
 }

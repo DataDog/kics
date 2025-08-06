@@ -4,8 +4,9 @@
   "severity": "MEDIUM",
   "category": "Insecure Configurations",
   "descriptionText": "The Parameter Object should have the attribute 'schema' defined",
-  "descriptionUrl": "https://swagger.io/specification/#parameter-object",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/openAPI/3.0/parameter_object_without_schema",
   "platform": "OpenAPI",
   "descriptionID": "de40b141",
-  "cwe": ""
+  "cwe": "",
+  "providerUrl": "https://swagger.io/specification/#parameter-object"
 }

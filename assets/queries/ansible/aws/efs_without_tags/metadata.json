@@ -4,9 +4,10 @@
   "severity": "LOW",
   "category": "Build Process",
   "descriptionText": "Amazon Elastic Filesystem should have filesystem tags associated",
-  "descriptionUrl": "https://docs.ansible.com/ansible/latest/collections/community/aws/efs_module.html",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/ansible/aws/efs_without_tags",
   "platform": "Ansible",
   "descriptionID": "1e03284b",
   "cloudProvider": "aws",
-  "cwe": ""
+  "cwe": "",
+  "providerUrl": "https://docs.ansible.com/ansible/latest/collections/community/aws/efs_module.html"
 }

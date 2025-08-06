@@ -4,10 +4,11 @@
   "severity": "HIGH",
   "category": "Insecure Configurations",
   "descriptionText": "Pod Security Policy allows containers to share the host IPC namespace",
-  "descriptionUrl": "https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/pod_security_policy#host_ipc",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/terraform/kubernetes/psp_allows_sharing_host_ipc",
   "platform": "Terraform",
   "descriptionID": "45566e38",
   "cwe": "250",
   "cloudProvider": "common",
-  "oldSeverity": "MEDIUM"
+  "oldSeverity": "MEDIUM",
+  "providerUrl": "https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/pod_security_policy#host_ipc"
 }

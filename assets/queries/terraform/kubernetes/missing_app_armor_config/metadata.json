@@ -4,10 +4,11 @@
   "severity": "MEDIUM",
   "category": "Access Control",
   "descriptionText": "Containers should be configured with AppArmor for any application to reduce its potential attack",
-  "descriptionUrl": "https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/pod#annotations",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/terraform/kubernetes/missing_app_armor_config",
   "platform": "Terraform",
   "descriptionID": "ba36908b",
   "cwe": "284",
   "cloudProvider": "common",
-  "oldSeverity": "LOW"
+  "oldSeverity": "LOW",
+  "providerUrl": "https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/pod#annotations"
 }

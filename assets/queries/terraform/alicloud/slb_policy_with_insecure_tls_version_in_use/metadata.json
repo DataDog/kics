@@ -4,9 +4,10 @@
   "severity": "MEDIUM",
   "category": "Encryption",
   "descriptionText": "SLB Policy should not support insecure versions of TLS protocol",
-  "descriptionUrl": "https://registry.terraform.io/providers/aliyun/alicloud/latest/docs/resources/slb_tls_cipher_policy",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/terraform/alicloud/slb_policy_with_insecure_tls_version_in_use",
   "platform": "Terraform",
   "descriptionID": "dcc71406",
   "cloudProvider": "alicloud",
-  "cwe": "326"
+  "cwe": "326",
+  "providerUrl": "https://registry.terraform.io/providers/aliyun/alicloud/latest/docs/resources/slb_tls_cipher_policy"
 }

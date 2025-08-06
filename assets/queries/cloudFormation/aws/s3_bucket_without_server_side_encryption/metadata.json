@@ -4,9 +4,10 @@
   "severity": "HIGH",
   "category": "Encryption",
   "descriptionText": "S3 Buckets should have server-side encryption at rest enabled to protect sensitive data",
-  "descriptionUrl": "https://docs.aws.amazon.com/AmazonS3/latest/user-guide/default-bucket-encryption.html",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/cloudFormation/aws/s3_bucket_without_server_side_encryption",
   "platform": "CloudFormation",
   "descriptionID": "314a460b",
   "cloudProvider": "aws",
-  "cwe": ""
+  "cwe": "",
+  "providerUrl": "https://docs.aws.amazon.com/AmazonS3/latest/user-guide/default-bucket-encryption.html"
 }

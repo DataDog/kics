@@ -4,9 +4,10 @@
   "severity": "MEDIUM",
   "category": "Resource Management",
   "descriptionText": "Container should not share the host network namespace",
-  "descriptionUrl": "https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/pod#host_network",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/terraform/kubernetes/shared_host_network_namespace",
   "platform": "Terraform",
   "descriptionID": "bf155ca7",
   "cwe": "200",
-  "cloudProvider": "common"
+  "cloudProvider": "common",
+  "providerUrl": "https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/pod#host_network"
 }

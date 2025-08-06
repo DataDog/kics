@@ -4,8 +4,9 @@
   "severity": "MEDIUM",
   "category": "Access Control",
   "descriptionText": "Security Scheme HTTP scheme should be registered in the IANA Authentication Scheme registry",
-  "descriptionUrl": "https://swagger.io/specification/#security-scheme-object",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/openAPI/3.0/security_schemes_http_unknown_scheme",
   "platform": "OpenAPI",
   "descriptionID": "e8060d48",
-  "cwe": ""
+  "cwe": "",
+  "providerUrl": "https://swagger.io/specification/#security-scheme-object"
 }

@@ -4,9 +4,10 @@
   "severity": "HIGH",
   "category": "Insecure Configurations",
   "descriptionText": "The elb use http protocol",
-  "descriptionUrl": "https://registry.terraform.io/providers/nifcloud/nifcloud/latest/docs/resources/elb#protocol",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/terraform/nifcloud/elb_use_http",
   "platform": "Terraform",
   "descriptionID": "051c06d1",
   "cloudProvider": "nifcloud",
-  "cwe": "319"
+  "cwe": "319",
+  "providerUrl": "https://registry.terraform.io/providers/nifcloud/nifcloud/latest/docs/resources/elb#protocol"
 }

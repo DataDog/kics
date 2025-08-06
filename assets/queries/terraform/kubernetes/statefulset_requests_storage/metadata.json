@@ -4,9 +4,10 @@
   "severity": "LOW",
   "category": "Build Process",
   "descriptionText": "A StatefulSet requests volume storage.",
-  "descriptionUrl": "https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/stateful_set#volume_claim_template",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/terraform/kubernetes/statefulset_requests_storage",
   "platform": "Terraform",
   "descriptionID": "3a82ccdb",
   "cwe": "665",
-  "cloudProvider": "common"
+  "cloudProvider": "common",
+  "providerUrl": "https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/stateful_set#volume_claim_template"
 }

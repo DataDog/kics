@@ -4,10 +4,11 @@
   "severity": "MEDIUM",
   "category": "Access Control",
   "descriptionText": "IAM Group should have at least one user associated",
-  "descriptionUrl": "https://docs.ansible.com/ansible/latest/collections/community/aws/iam_group_module.html",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/ansible/aws/iam_group_without_users",
   "platform": "Ansible",
   "descriptionID": "082a1e01",
   "cloudProvider": "aws",
   "cwe": "",
-  "oldSeverity": "LOW"
+  "oldSeverity": "LOW",
+  "providerUrl": "https://docs.ansible.com/ansible/latest/collections/community/aws/iam_group_module.html"
 }

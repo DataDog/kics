@@ -4,9 +4,10 @@
   "severity": "MEDIUM",
   "category": "Access Control",
   "descriptionText": "Ram policies should not be attached to users",
-  "descriptionUrl": "https://registry.terraform.io/providers/aliyun/alicloud/latest/docs/resources/ram_user_policy_attachment",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/terraform/alicloud/ram_policy_attached_to_user",
   "platform": "Terraform",
   "descriptionID": "c3be65a4",
   "cloudProvider": "alicloud",
-  "cwe": "284"
+  "cwe": "284",
+  "providerUrl": "https://registry.terraform.io/providers/aliyun/alicloud/latest/docs/resources/ram_user_policy_attachment"
 }

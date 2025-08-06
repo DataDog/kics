@@ -4,9 +4,10 @@
   "severity": "MEDIUM",
   "category": "Secret Management",
   "descriptionText": "ConfigRule should enforce access keys to be rotated within 90 days.",
-  "descriptionUrl": "https://docs.amazonaws.cn/en_us/config/latest/developerguide/access-keys-rotated.html",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/cloudFormation/aws/access_key_not_rotated_within_90_days",
   "platform": "CloudFormation",
   "descriptionID": "148d40cb",
   "cloudProvider": "aws",
-  "cwe": ""
+  "cwe": "",
+  "providerUrl": "https://docs.amazonaws.cn/en_us/config/latest/developerguide/access-keys-rotated.html"
 }

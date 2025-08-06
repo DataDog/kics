@@ -4,10 +4,11 @@
   "severity": "MEDIUM",
   "category": "Observability",
   "descriptionText": "Cloud storage bucket should have logging enabled",
-  "descriptionUrl": "https://docs.ansible.com/ansible/latest/collections/google/cloud/gcp_storage_bucket_module.html#parameter-logging",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/ansible/gcp/cloud_storage_bucket_logging_not_enabled",
   "platform": "Ansible",
   "descriptionID": "ba5af65f",
   "cloudProvider": "gcp",
   "cwe": "",
-  "oldSeverity": "HIGH"
+  "oldSeverity": "HIGH",
+  "providerUrl": "https://docs.ansible.com/ansible/latest/collections/google/cloud/gcp_storage_bucket_module.html#parameter-logging"
 }

@@ -4,9 +4,10 @@
   "severity": "LOW",
   "category": "Networking and Firewall",
   "descriptionText": "The elb has common private network",
-  "descriptionUrl": "https://registry.terraform.io/providers/nifcloud/nifcloud/latest/docs/resources/elb#network_id",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/terraform/nifcloud/elb_has_common_private",
   "platform": "Terraform",
   "descriptionID": "40e5b2b8",
   "cloudProvider": "nifcloud",
-  "cwe": "285"
+  "cwe": "285",
+  "providerUrl": "https://registry.terraform.io/providers/nifcloud/nifcloud/latest/docs/resources/elb#network_id"
 }

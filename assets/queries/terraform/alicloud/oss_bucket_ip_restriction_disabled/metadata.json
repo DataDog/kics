@@ -4,9 +4,10 @@
   "severity": "HIGH",
   "category": "Networking and Firewall",
   "descriptionText": "OSS Bucket should have ip restricted access",
-  "descriptionUrl": "https://registry.terraform.io/providers/aliyun/alicloud/latest/docs/resources/oss_bucket#policy",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/terraform/alicloud/oss_bucket_ip_restriction_disabled",
   "platform": "Terraform",
   "descriptionID": "93cebe21",
   "cloudProvider": "alicloud",
-  "cwe": "285"
+  "cwe": "285",
+  "providerUrl": "https://registry.terraform.io/providers/aliyun/alicloud/latest/docs/resources/oss_bucket#policy"
 }

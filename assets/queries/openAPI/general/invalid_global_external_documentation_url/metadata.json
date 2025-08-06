@@ -4,7 +4,7 @@
   "severity": "INFO",
   "category": "Best Practices",
   "descriptionText": "Global External Documentation URL should be a valid URL",
-  "descriptionUrl": "https://swagger.io/specification/#external-documentation-object",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/openAPI/general/invalid_global_external_documentation_url",
   "platform": "OpenAPI",
   "descriptionID": "7223516f",
   "aggregation": 2,
@@ -16,5 +16,6 @@
       "descriptionText": ""
     }
   },
-  "cwe": ""
+  "cwe": "",
+  "providerUrl": "https://swagger.io/specification/#external-documentation-object"
 }

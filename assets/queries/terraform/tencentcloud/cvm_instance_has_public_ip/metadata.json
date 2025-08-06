@@ -4,9 +4,10 @@
   "severity": "HIGH",
   "category": "Networking and Firewall",
   "descriptionText": "CVM Instance should not have a public IP address.",
-  "descriptionUrl": "https://registry.terraform.io/providers/tencentcloudstack/tencentcloud/latest/docs/resources/instance#allocate_public_ip",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/terraform/tencentcloud/cvm_instance_has_public_ip",
   "platform": "Terraform",
   "descriptionID": "9e543437",
   "cloudProvider": "tencentcloud",
-  "cwe": "200"
+  "cwe": "200",
+  "providerUrl": "https://registry.terraform.io/providers/tencentcloudstack/tencentcloud/latest/docs/resources/instance#allocate_public_ip"
 }

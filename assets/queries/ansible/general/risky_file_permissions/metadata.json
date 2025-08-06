@@ -4,9 +4,10 @@
   "severity": "INFO",
   "category": "Supply-Chain",
   "descriptionText": "Some modules could end up creating new files on disk with permissions that might be too open or unpredictable",
-  "descriptionUrl": "https://ansible.readthedocs.io/projects/lint/rules/risky-file-permissions/",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/ansible/general/risky_file_permissions",
   "platform": "Ansible",
   "descriptionID": "1f0e1485",
   "cloudProvider": "common",
-  "cwe": ""
+  "cwe": "",
+  "providerUrl": "https://ansible.readthedocs.io/projects/lint/rules/risky-file-permissions/"
 }

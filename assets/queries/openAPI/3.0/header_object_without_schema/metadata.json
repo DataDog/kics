@@ -4,8 +4,9 @@
   "severity": "MEDIUM",
   "category": "Networking and Firewall",
   "descriptionText": "The header object should have schema defined",
-  "descriptionUrl": "https://swagger.io/specification/#header-object",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/openAPI/3.0/header_object_without_schema",
   "platform": "OpenAPI",
   "descriptionID": "c1c481e4",
-  "cwe": ""
+  "cwe": "",
+  "providerUrl": "https://swagger.io/specification/#header-object"
 }

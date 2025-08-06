@@ -4,9 +4,10 @@
   "severity": "MEDIUM",
   "category": "Backup",
   "descriptionText": "Make sure Soft Delete is enabled for Key Vault",
-  "descriptionUrl": "https://docs.ansible.com/ansible/latest/collections/azure/azcollection/azure_rm_keyvault_module.html#parameter-enable_soft_delete",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/ansible/azure/key_vault_soft_delete_is_disabled",
   "platform": "Ansible",
   "descriptionID": "ca1a9cde",
   "cloudProvider": "azure",
-  "cwe": ""
+  "cwe": "",
+  "providerUrl": "https://docs.ansible.com/ansible/latest/collections/azure/azcollection/azure_rm_keyvault_module.html#parameter-enable_soft_delete"
 }

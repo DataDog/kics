@@ -4,9 +4,10 @@
   "severity": "HIGH",
   "category": "Insecure Configurations",
   "descriptionText": "When enabled, this option allows lookup plugins to return data that is not marked 'unsafe'.",
-  "descriptionUrl": "https://docs.ansible.com/ansible/latest/reference_appendices/config.html#default-allow-unsafe-lookups",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/ansible/config/allow_unsafe_lookups_enabled",
   "platform": "Ansible",
   "descriptionID": "0d491461",
   "cloudProvider": "common",
-  "cwe": ""
+  "cwe": "",
+  "providerUrl": "https://docs.ansible.com/ansible/latest/reference_appendices/config.html#default-allow-unsafe-lookups"
 }

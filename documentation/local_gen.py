@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import sys
 import json
 import glob
@@ -79,7 +81,7 @@ def build_markdown(
     severity = metadata.get("severity", "INFO").upper()
     category = metadata.get("category", "unknown")
     description = metadata.get("descriptionText", "No description provided.")
-    description_url = metadata.get("descriptionUrl")
+    provider_url = metadata.get("providerUrl")
     compliant, non_compliant = get_code_snippets(
         rule_path / "test", resource_type, max_examples
     )
@@ -109,8 +111,8 @@ meta:
 
 **Category:** {category}
 """
-    if description_url:
-        markdown += f"\n#### Learn More\n\n - [Provider Reference]({description_url})\n"
+    if provider_url:
+        markdown += f"\n#### Learn More\n\n - [Provider Reference]({provider_url})\n"
     markdown += f"\n### Description\n\n {description}\n"
     if compliant:
         markdown += "\n\n## Compliant Code Examples\n" + "\n\n".join(compliant)

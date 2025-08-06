@@ -4,9 +4,10 @@
   "severity": "MEDIUM",
   "category": "Observability",
   "descriptionText": "Action Trail Logging for all regions should be enabled",
-  "descriptionUrl": "https://registry.terraform.io/providers/aliyun/alicloud/latest/docs/resources/actiontrail_trail#trail_region",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/terraform/alicloud/action_trail_logging_all_regions_disabled",
   "platform": "Terraform",
   "descriptionID": "72180b32",
   "cloudProvider": "alicloud",
-  "cwe": "778"
+  "cwe": "778",
+  "providerUrl": "https://registry.terraform.io/providers/aliyun/alicloud/latest/docs/resources/actiontrail_trail#trail_region"
 }

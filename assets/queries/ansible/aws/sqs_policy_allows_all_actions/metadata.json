@@ -4,10 +4,11 @@
   "severity": "HIGH",
   "category": "Access Control",
   "descriptionText": "SQS policy allows ALL (*) actions",
-  "descriptionUrl": "https://docs.ansible.com/ansible/latest/collections/community/aws/sqs_queue_module.html",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/ansible/aws/sqs_policy_allows_all_actions",
   "platform": "Ansible",
   "descriptionID": "7e78a2e9",
   "cloudProvider": "aws",
   "cwe": "",
-  "oldSeverity": "MEDIUM"
+  "oldSeverity": "MEDIUM",
+  "providerUrl": "https://docs.ansible.com/ansible/latest/collections/community/aws/sqs_queue_module.html"
 }

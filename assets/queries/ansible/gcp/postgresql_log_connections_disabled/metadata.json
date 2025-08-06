@@ -4,10 +4,11 @@
   "severity": "MEDIUM",
   "category": "Observability",
   "descriptionText": "PostgreSQL database instance should have a 'log_connections' flag with its value set to 'on'",
-  "descriptionUrl": "https://docs.ansible.com/ansible/latest/collections/google/cloud/gcp_sql_instance_module.html#parameter-settings/database_flags",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/ansible/gcp/postgresql_log_connections_disabled",
   "platform": "Ansible",
   "descriptionID": "f22853f8",
   "cloudProvider": "gcp",
   "cwe": "",
-  "oldSeverity": "HIGH"
+  "oldSeverity": "HIGH",
+  "providerUrl": "https://docs.ansible.com/ansible/latest/collections/google/cloud/gcp_sql_instance_module.html#parameter-settings/database_flags"
 }

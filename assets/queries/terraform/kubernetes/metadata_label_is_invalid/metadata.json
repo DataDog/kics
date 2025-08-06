@@ -4,10 +4,11 @@
   "severity": "LOW",
   "category": "Best Practices",
   "descriptionText": "Check if any label in the metadata is invalid.",
-  "descriptionUrl": "https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/pod#labels",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/terraform/kubernetes/metadata_label_is_invalid",
   "platform": "Terraform",
   "descriptionID": "5448851e",
   "cwe": "710",
   "cloudProvider": "common",
-  "oldSeverity": "LOW"
+  "oldSeverity": "LOW",
+  "providerUrl": "https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/pod#labels"
 }

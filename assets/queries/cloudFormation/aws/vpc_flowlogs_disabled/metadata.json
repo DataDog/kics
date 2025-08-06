@@ -4,10 +4,11 @@
   "severity": "MEDIUM",
   "category": "Observability",
   "descriptionText": "Every VPC resource should have an associated Flow Log",
-  "descriptionUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-flowlog.html",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/cloudFormation/aws/vpc_flowlogs_disabled",
   "platform": "CloudFormation",
   "descriptionID": "0fb02ca5",
   "cloudProvider": "aws",
   "cwe": "",
-  "oldSeverity": "LOW"
+  "oldSeverity": "LOW",
+  "providerUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-flowlog.html"
 }

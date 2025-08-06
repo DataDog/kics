@@ -4,10 +4,11 @@
   "severity": "LOW",
   "category": "Insecure Configurations",
   "descriptionText": "Default service accounts should not be actively used",
-  "descriptionUrl": "https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/service_account#automount_service_account_token",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/terraform/kubernetes/default_service_account_in_use",
   "platform": "Terraform",
   "descriptionID": "b0822187",
   "cwe": "665",
   "cloudProvider": "common",
-  "oldSeverity": "MEDIUM"
+  "oldSeverity": "MEDIUM",
+  "providerUrl": "https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/service_account#automount_service_account_token"
 }

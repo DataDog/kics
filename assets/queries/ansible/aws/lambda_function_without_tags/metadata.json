@@ -4,10 +4,11 @@
   "severity": "LOW",
   "category": "Insecure Configurations",
   "descriptionText": "AWS Lambda Functions must have associated tags.",
-  "descriptionUrl": "https://docs.ansible.com/ansible/latest/collections/community/aws/lambda_module.html",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/ansible/aws/lambda_function_without_tags",
   "platform": "Ansible",
   "descriptionID": "45d5ac61",
   "cloudProvider": "aws",
   "cwe": "",
-  "oldSeverity": "MEDIUM"
+  "oldSeverity": "MEDIUM",
+  "providerUrl": "https://docs.ansible.com/ansible/latest/collections/community/aws/lambda_module.html"
 }

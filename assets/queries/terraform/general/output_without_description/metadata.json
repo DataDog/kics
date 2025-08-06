@@ -4,9 +4,10 @@
   "severity": "INFO",
   "category": "Best Practices",
   "descriptionText": "All outputs should contain a valid description.",
-  "descriptionUrl": "https://www.terraform.io/docs/language/values/outputs.html#description-output-value-documentation",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/terraform/general/output_without_description",
   "platform": "Terraform",
   "descriptionID": "81535d16",
   "cloudProvider": "common",
-  "cwe": "710"
+  "cwe": "710",
+  "providerUrl": "https://www.terraform.io/docs/language/values/outputs.html#description-output-value-documentation"
 }

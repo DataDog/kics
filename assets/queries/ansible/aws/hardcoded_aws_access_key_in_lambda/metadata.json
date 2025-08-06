@@ -4,10 +4,11 @@
   "severity": "HIGH",
   "category": "Secret Management",
   "descriptionText": "Lambda access/secret keys should not be hardcoded",
-  "descriptionUrl": "https://docs.ansible.com/ansible/latest/collections/community/aws/lambda_module.html",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/ansible/aws/hardcoded_aws_access_key_in_lambda",
   "platform": "Ansible",
   "descriptionID": "fc78f6de",
   "cloudProvider": "aws",
   "cwe": "",
-  "oldSeverity": "MEDIUM"
+  "oldSeverity": "MEDIUM",
+  "providerUrl": "https://docs.ansible.com/ansible/latest/collections/community/aws/lambda_module.html"
 }

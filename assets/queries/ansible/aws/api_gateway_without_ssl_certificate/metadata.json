@@ -4,9 +4,10 @@
   "severity": "MEDIUM",
   "category": "Insecure Configurations",
   "descriptionText": "SSL Client Certificate should be enabled",
-  "descriptionUrl": "https://docs.ansible.com/ansible/2.8/modules/aws_api_gateway_module.html",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/ansible/aws/api_gateway_without_ssl_certificate",
   "platform": "Ansible",
   "descriptionID": "82608f36",
   "cloudProvider": "aws",
-  "cwe": ""
+  "cwe": "",
+  "providerUrl": "https://docs.ansible.com/ansible/2.8/modules/aws_api_gateway_module.html"
 }

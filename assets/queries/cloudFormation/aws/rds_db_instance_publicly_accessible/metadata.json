@@ -4,10 +4,11 @@
   "severity": "CRITICAL",
   "category": "Insecure Configurations",
   "descriptionText": "RDS must not be defined with public interface, which means the attribute 'PubliclyAccessible' must be set to false.",
-  "descriptionUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-rds-database-instance.html",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/cloudFormation/aws/rds_db_instance_publicly_accessible",
   "platform": "CloudFormation",
   "descriptionID": "dae1e8ab",
   "cloudProvider": "aws",
   "cwe": "",
-  "oldSeverity": "HIGH"
+  "oldSeverity": "HIGH",
+  "providerUrl": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-rds-database-instance.html"
 }

@@ -4,9 +4,10 @@
   "severity": "MEDIUM",
   "category": "Backup",
   "descriptionText": "CDB Instance should have set Backup Policy",
-  "descriptionUrl": "https://registry.terraform.io/providers/tencentcloudstack/tencentcloud/latest/docs/resources/mysql_backup_policy",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/terraform/tencentcloud/cdb_instance_without_backup_policy",
   "platform": "Terraform",
   "descriptionID": "f0daf852",
   "cloudProvider": "tencentcloud",
-  "cwe": "754"
+  "cwe": "754",
+  "providerUrl": "https://registry.terraform.io/providers/tencentcloudstack/tencentcloud/latest/docs/resources/mysql_backup_policy"
 }

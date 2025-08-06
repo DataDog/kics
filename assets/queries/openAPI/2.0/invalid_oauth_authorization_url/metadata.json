@@ -4,8 +4,9 @@
   "severity": "MEDIUM",
   "category": "Access Control",
   "descriptionText": "The field authorizationUrl on implicit or authorizationCode fields from OAuth must be a valid URL",
-  "descriptionUrl": "https://swagger.io/specification/v2/#securitySchemeObject",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/openAPI/2.0/invalid_oauth_authorization_url",
   "platform": "OpenAPI",
   "descriptionID": "720629e5",
-  "cwe": ""
+  "cwe": "",
+  "providerUrl": "https://swagger.io/specification/v2/#securitySchemeObject"
 }
