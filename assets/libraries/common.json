@@ -1840,7 +1840,9 @@
             "aws_cloudfront_distribution"
           ],
           "inputs": {
-            "viewer_certificate": "viewer_certificate"
+            "viewer_certificate": "viewer_certificate",
+            "default_cache_behavior": "default_cache_behavior",
+            "ordered_cache_behavior": "ordered_cache_behavior"
           }
         },
         "terraform-aws-modules/kms/aws": {
@@ -1939,7 +1941,8 @@
             "aws_cloudtrail"
           ],
           "inputs": {
-            "event_selector": "event_selector"
+            "event_selector": "event_selector",
+            "enable_logging": "enable_logging"
           }
         },
         "github.com/SebastianUA/terraform-aws-sagemaker": {
@@ -1980,6 +1983,39 @@
           ],
           "inputs": {
             "kms_master_key_id": "kms_master_key_id"
+          }
+        },
+        "terraform-aws-modules/dms/aws": {
+          "resources": [
+            "aws_dms_replication_instance"
+          ],
+          "inputs": {
+            "publicly_accessible": "publicly_accessible"
+          }
+        },
+        "terraform-aws-modules/ami/aws": {
+          "resources": [
+            "aws_ami"
+          ],
+          "inputs": {
+            "ebs_block_device": "ebs_block_device"
+          }
+        },
+        "cloudposse/athena/aws": {
+          "resources": [
+            "aws_athena_workgroup"
+          ],
+          "inputs": {
+            "enforce_workgroup_configuration": "enforce_workgroup_configuration",
+            "workgroup_encryption_option": "workgroup_encryption_option"
+          }
+        },
+        "terraform-aws-modules/batch/aws//modules/job-definition": {
+          "resources": [
+            "aws_batch_job_definition"
+          ],
+          "inputs": {
+            "container_properties": "container_properties"
           }
         }
       }
