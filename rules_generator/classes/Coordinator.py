@@ -13,12 +13,25 @@ class Coordinator:
         self.codeProcessor = CodeProcessor()
         self.rulesGenerator = RulesGenerator()
 
-    def __generate_new_rule(self, rule: str):
+    def __generate_new_rule(self, rule: str, check_sev=True):
         message = self.codeProcessor.read_snippet(rule)
-        received = self.rulesGenerator.send_rule_request(message)
-        result = self.codeProcessor.write_rule_snippet(rule, received)
-        print(f"Generated module support support for {rule.name}!")
-        return result
+        if "get_module_equivalent_key" in message:
+            print(f"Skipping rule {rule} with already existing module support")
+            return {}
+        if (
+            check_sev
+            and (
+                "CRITICAL" in (sev := self.codeProcessor.read_metadata(rule))
+                or "HIGH" in sev
+            )
+            or not check_sev
+        ):
+            received = self.rulesGenerator.send_rule_request(message)
+            result = self.codeProcessor.write_rule_snippet(rule, received)
+            print(f"Generated module support support for {rule.name}!")
+            return result
+        print(f"Skipping less important rule: {rule}")
+        return {}
 
     def __generate_new_terraforms(self, rule: str, update: Dict[str, Any]):
         message = self.codeProcessor.read_snippet(rule)
