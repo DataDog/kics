@@ -17,20 +17,20 @@ CxPolicy[result] {
 	}
 }
 
+#######################################################################################################
+
 CxPolicy[result] {
 	module := input.document[i].module[name]
 	keyToCheck := data.lib.get_module_equivalent_key("aws", module.source, "aws_db_security_group", "ingress")
-	ingress := module[keyToCheck][idx]
-	ingress.cidr == "0.0.0.0/0"
+	module[keyToCheck].cidr == "0.0.0.0/0"
 
 	result := {
 		"documentId": input.document[i].id,
 		"resourceType": "module",
 		"resourceName": sprintf("%s", [name]),
-		"searchKey": sprintf("module[%s].ingress[%d].cidr", [name, idx]),
+		"searchKey": sprintf("module[%s].%s.cidr", [name, keyToCheck]),
 		"issueType": "IncorrectValue",
-		"keyExpectedValue": "'ingress.cidr' != 0.0.0.0/0",
-		"keyActualValue": "'ingress.cidr'= 0.0.0.0/0",
+		"keyExpectedValue": sprintf("'module[%s].%s.cidr' != 0.0.0.0/0", [name, keyToCheck]),
+		"keyActualValue": sprintf("'module[%s].%s.cidr'= 0.0.0.0/0", [name, keyToCheck]),
 	}
 }
-

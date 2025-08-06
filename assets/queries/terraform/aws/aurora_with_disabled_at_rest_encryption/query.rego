@@ -19,23 +19,6 @@ CxPolicy[result] {
 }
 
 CxPolicy[result] {
-	module := input.document[i].module[name]
-	keyToCheck := common_lib.get_module_equivalent_key("aws", module.source, "aws_rds_cluster", "storage_encrypted")
-
-	module[keyToCheck] == false
-
-	result := {
-		"documentId": input.document[i].id,
-		"resourceType": "module",
-		"resourceName": sprintf("%s", [name]),
-		"searchKey": sprintf("module[%s].storage_encrypted", [name]),
-		"issueType": "IncorrectValue",
-		"keyExpectedValue": "module.storage_encrypted should be set to 'true'",
-		"keyActualValue": "module.storage_encrypted is set to 'false'",
-	}
-}
-
-CxPolicy[result] {
 	resource := input.document[i].resource.aws_rds_cluster[name]
 	not common_lib.valid_key(resource, "storage_encrypted")
 
@@ -47,6 +30,25 @@ CxPolicy[result] {
 		"issueType": "MissingAttribute",
 		"keyExpectedValue": "aws_rds_cluster.storage_encrypted should be defined and set to 'true'",
 		"keyActualValue": "aws_rds_cluster.storage_encrypted is undefined",
+	}
+}
+
+#######################################################################################################
+
+CxPolicy[result] {
+	module := input.document[i].module[name]
+	keyToCheck := common_lib.get_module_equivalent_key("aws", module.source, "aws_rds_cluster", "storage_encrypted")
+
+	module[keyToCheck] == false
+
+	result := {
+		"documentId": input.document[i].id,
+		"resourceType": "module",
+		"resourceName": sprintf("%s", [name]),
+		"searchKey": sprintf("module[%s].%s", [name, keyToCheck]),
+		"issueType": "IncorrectValue",
+		"keyExpectedValue": sprintf("module[%s].%s should be set to 'true'", [name, keyToCheck]),
+		"keyActualValue": sprintf("module[%s].%s is set to 'false'", [name, keyToCheck]),
 	}
 }
 
@@ -62,8 +64,7 @@ CxPolicy[result] {
 		"resourceName": sprintf("%s", [name]),
 		"searchKey": sprintf("module[%s]", [name]),
 		"issueType": "MissingAttribute",
-		"keyExpectedValue": "module.storage_encrypted should be defined and set to 'true'",
-		"keyActualValue": "module.storage_encrypted is undefined",
+		"keyExpectedValue": sprintf("module[%s].%s should be defined and set to 'true'", [name, keyToCheck]),
+		"keyActualValue": sprintf("module[%s].%s is undefined", [name, keyToCheck]),
 	}
 }
-
