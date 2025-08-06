@@ -1698,14 +1698,6 @@
             "aws_sns_topic"
           ]
         },
-        "terraform-aws-modules/athena/aws": {
-          "resources": [
-            "aws_athena_database"
-          ],
-          "inputs": {
-            "encryption_configuration": "encryption_configuration"
-          }
-        },
         "terraform-aws-modules/ebs-encryption/aws": {
           "resources": [
             "aws_ebs_encryption_by_default"
