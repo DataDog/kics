@@ -29,39 +29,50 @@ func GetEmbeddedLibraryData(platform string) (string, error) {
 	return string(content), err
 }
 
+//go:embed queries/cicd
+var cicdEmbeddedQueries embed.FS
+
 //go:embed queries/terraform
-var embeddedQueries embed.FS
+var terraformEmbeddedQueries embed.FS
+
+var embeddedQueries []embed.FS = []embed.FS{cicdEmbeddedQueries, terraformEmbeddedQueries}
 
 func GetEmbeddedQueryDirs(ctx context.Context) ([]string, error) {
 	logger := logger.FromContext(ctx)
 	var out []string
-	err := fs.WalkDir(embeddedQueries, ".", func(path string, d fs.DirEntry, err error) error {
-		if err != nil {
-			logger.Info().Msgf("Failed to walk directory: %s", path)
-			return err
-		}
-		baseDir := filepath.Base(path)
-		if baseDir == "test" {
+	for _, embeddedQueriesList := range embeddedQueries {
+		err := fs.WalkDir(embeddedQueriesList, ".", func(path string, d fs.DirEntry, err error) error {
+			if err != nil {
+				logger.Info().Msgf("Failed to walk directory: %s", path)
+				return err
+			}
+			baseDir := filepath.Base(path)
+			if baseDir == "test" {
+				return nil
+			}
+			if d.IsDir() {
+				out = append(out, path)
+			}
 			return nil
+		})
+		if err != nil {
+			logger.Error().Msgf("Failed to walk embedded directory for queries: %v", err)
+			return nil, err
 		}
-		if d.IsDir() {
-			out = append(out, path)
-		}
-		return nil
-	})
-	if err != nil {
-		logger.Error().Msgf("Failed to walk embedded directory for queries: %v", err)
-		return nil, err
 	}
 	return out, nil
 }
 
 func GetEmbeddedQueryFile(ctx context.Context, path string) (string, error) {
 	logger := logger.FromContext(ctx)
-	content, err := embeddedQueries.ReadFile(path)
-	if err != nil {
-		logger.Debug().Msgf("Failed to read file for path %s: %v", path, err)
-		return "", err
+	var content []byte
+	var err error
+	for _, embeddedQueriesList := range embeddedQueries {
+		content, err = embeddedQueriesList.ReadFile(path)
+		if err == nil {
+			return string(content), nil
+		}
 	}
-	return string(content), nil
+	logger.Debug().Msgf("Failed to read file for path %s: %v", path, err)
+	return "", err
 }
