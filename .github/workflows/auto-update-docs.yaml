@@ -36,11 +36,8 @@ jobs:
       - name: Push branch
         run: git push origin ${{ env.BRANCH_NAME }}
 
-      - name: Change Directory
-        run: cd documentation
-
       - name: Run Python script
-        run: python local_gen.py ../assets/queries/ --resources-json "resources.json" --output-dir "rules" --list-json "list.json" --frontmatter-yaml "frontmatter.yaml"
+        run: cd documentation; python local_gen.py ../assets/queries/ --resources-json "resources.json" --output-dir "rules" --list-json "list.json" --frontmatter-yaml "frontmatter.yaml"
 
       - name: Commit changes
         uses: iarekylew00t/verified-bot-commit@2a9d9e983e611793b54516a18e48361bbac691d9 #V1.4.1
