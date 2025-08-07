@@ -64,6 +64,8 @@ CxPolicy[result] {
     }
 }
 
+#######################################################################################################
+
 CxPolicy[result] {
     module := input.document[i].module[name]
     keyToCheck := common_lib.get_module_equivalent_key("aws", module.source, "aws_opensearch_domain", "advanced_security_options")
@@ -74,11 +76,11 @@ CxPolicy[result] {
         "documentId": input.document[i].id,
         "resourceType": "module",
         "resourceName": sprintf("%s", [name]),
-        "searchKey": sprintf("module[%s]", [name]),
-        "searchLine": common_lib.build_search_line(["module", name, "advanced_security_options", "enabled"], []),
+        "searchKey": sprintf("module[%s].%s", [name, keyToCheck]),
+        "searchLine": common_lib.build_search_line(["module", name, keyToCheck, "enabled"], []),
         "issueType": "MissingAttribute",
-        "keyExpectedValue": "advanced_security_options block should be present with enabled = true and internal_user_database_enabled = true",
-        "keyActualValue": "advanced_security_options block is missing"
+        "keyExpectedValue": sprintf("module[%s].%s block should be present with enabled = true and internal_user_database_enabled = true", [name, keyToCheck]),
+        "keyActualValue": sprintf("module[%s].%s block is missing", [name, keyToCheck])
     }
 }
 
@@ -93,11 +95,11 @@ CxPolicy[result] {
         "documentId": input.document[i].id,
         "resourceType": "module",
         "resourceName": sprintf("%s", [name]),
-        "searchKey": sprintf("module[%s]", [name]),
-        "searchLine": common_lib.build_search_line(["module", name, "advanced_security_options", "enabled"], []),
+        "searchKey": sprintf("module[%s].%s", [name, keyToCheck]),
+        "searchLine": common_lib.build_search_line(["module", name, keyToCheck, "enabled"], []),
         "issueType": "MissingAttribute",
-        "keyExpectedValue": "advanced_security_options block should be present with enabled = true and internal_user_database_enabled = true",
-        "keyActualValue": "advanced_security_options block is missing"
+        "keyExpectedValue": sprintf("module[%s].%s.enabled should be true", [name, keyToCheck]),
+        "keyActualValue": sprintf("module[%s].%s.enabled is false", [name, keyToCheck])
     }
 }
 
@@ -112,11 +114,11 @@ CxPolicy[result] {
         "documentId": input.document[i].id,
         "resourceType": "module",
         "resourceName": sprintf("%s", [name]),
-        "searchKey": sprintf("module[%s]", [name]),
-        "searchLine": common_lib.build_search_line(["module", name, "advanced_security_options", "internal_user_database_enabled"], []),
+        "searchKey": sprintf("module[%s].%s.internal_user_database.enabled", [name, keyToCheck]),
+        "searchLine": common_lib.build_search_line(["module", name, keyToCheck, "internal_user_database_enabled"], []),
         "issueType": "IncorrectValue",
-        "keyExpectedValue": "advanced_security_options.internal_user_database_enabled should be true",
-        "keyActualValue": "advanced_security_options.internal_user_database_enabled is false"
+        "keyExpectedValue": sprintf("module[%s].%s.internal_user_database_enabled should be true", [name, keyToCheck]),
+        "keyActualValue": sprintf("module[%s].%s.internal_user_database_enabled is false", [name, keyToCheck])
     }
 }
 

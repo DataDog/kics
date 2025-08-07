@@ -44,6 +44,8 @@ CxPolicy[result] {
 	}
 }
 
+#######################################################################################################
+
 CxPolicy[result] {
 	module := input.document[i].module[name]
 	keyToCheck := common_lib.get_module_equivalent_key("aws", module.source, "aws_api_gateway_domain_name", "security_policy")
@@ -56,8 +58,8 @@ CxPolicy[result] {
 		"searchKey": sprintf("module[%s]", [name]),
 		"searchLine": common_lib.build_search_line(["module", name], []),
 		"issueType": "MissingAttribute",
-		"keyExpectedValue": "'security_policy' should be set",
-		"keyActualValue": "'security_policy' is undefined",
+		"keyExpectedValue": sprintf("module[%s].%s should be set", [name, keyToCheck]),
+		"keyActualValue": sprintf("module[%s].% is undefined", [name, keyToCheck]),
 		"remediation": sprintf("%s = \"TLS_1_2\"", [keyToCheck]),
 		"remediationType": "addition",
 	}
@@ -75,8 +77,8 @@ CxPolicy[result] {
 		"searchKey": sprintf("module[%s].%s", [name, keyToCheck]),
 		"searchLine": common_lib.build_search_line(["module", name, keyToCheck], []),
 		"issueType": "IncorrectValue",
-		"keyExpectedValue": "'security_policy' should be set to TLS_1_2",
-		"keyActualValue": "'security_policy' is set to ${module[keyToCheck]}",
+		"keyExpectedValue": sprintf("module[%s].%s should be set to TLS_1_2", [name, keyToCheck]),
+		"keyActualValue": sprintf("module[%s].%s is set to %s", [name, keyToCheck, module[keyToCheck]]),
 		"remediation": json.marshal({
 			"before": sprintf("%s",[module[keyToCheck]]),
 			"after": "TLS_1_2"
@@ -84,4 +86,3 @@ CxPolicy[result] {
 		"remediationType": "replacement",
 	}
 }
-

@@ -60,3 +60,5 @@ CxPolicy[result] {
         "remediationType": "replacement"
     }
 }
+
+# No module with access_control_policy so can't get_module_equivalent_key

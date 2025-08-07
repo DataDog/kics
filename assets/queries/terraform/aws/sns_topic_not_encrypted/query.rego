@@ -14,8 +14,25 @@ CxPolicy[result] {
 		"resourceName": tf_lib.get_resource_name(resource, name),
 		"searchKey": sprintf("aws_sns_topic[%s]", [name]),
 		"issueType": "MissingAttribute",
-		"keyExpectedValue": "SNS Topic should be encrypted",
-		"keyActualValue": "SNS Topic is not encrypted",
+		"keyExpectedValue": "kms_master_key_id should be defined and not null",
+		"keyActualValue": "kms_master_key_id is undefined or null",
+	}
+}
+
+CxPolicy[result] {
+	module := input.document[i].module[name]
+	keyToCheck := common_lib.get_module_equivalent_key("aws", module.source, "aws_sns_topic", "kms_master_key_id")
+
+	not common_lib.valid_key(module, keyToCheck)
+
+	result := {
+		"documentId": input.document[i].id,
+		"resourceType": "module",
+		"resourceName": sprintf("%s", [name]),
+		"searchKey": sprintf("module[%s]", [name]),
+		"issueType": "MissingAttribute",
+		"keyExpectedValue": sprintf("module[%s].%s should be defined and not null", [name, keyToCheck]),
+		"keyActualValue": sprintf("module[%s].%s is undefined or null", [name, keyToCheck]),
 	}
 }
 
@@ -30,7 +47,25 @@ CxPolicy[result] {
 		"resourceName": tf_lib.get_resource_name(resource, name),
 		"searchKey": sprintf("aws_sns_topic[%s].kms_master_key_id", [name]),
 		"issueType": "IncorrectValue",
-		"keyExpectedValue": "SNS Topic should be encrypted",
-		"keyActualValue": "SNS Topic is not encrypted",
+		"keyExpectedValue": "kms_master_key_id should be defined and not null",
+		"keyActualValue": "kms_master_key_id is empty string",
 	}
 }
+
+CxPolicy[result] {
+	module := input.document[i].module[name]
+	keyToCheck := common_lib.get_module_equivalent_key("aws", module.source, "aws_sns_topic", "kms_master_key_id")
+
+	module[keyToCheck] == ""
+
+	result := {
+		"documentId": input.document[i].id,
+		"resourceType": "module",
+		"resourceName": sprintf("%s", [name]),
+		"searchKey": sprintf("module[%s].kms_master_key_id", [name]),
+		"issueType": "IncorrectValue",
+		"keyExpectedValue": sprintf("module[%s].%s should be defined and not null", [name, keyToCheck]),
+		"keyActualValue": sprintf("module[%s].%s is empty string", [name, keyToCheck]),
+	}
+}
+

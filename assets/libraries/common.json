@@ -755,7 +755,8 @@
             "aws_default_route_table",
             "aws_internet_gateway",
             "aws_default_security_group",
-            "aws_route_table"
+            "aws_route_table",
+            "aws_neptune_cluster"
           ],
           "inputs": {
             "manage_default_network_acl": "manage_default_network_acl",
@@ -844,6 +845,7 @@
             "manage_default_security_group": "manage_default_security_group",
             "elasticache_acl_tags": "elasticache_acl_tags",
             "enable_classiclink": "enable_classiclink",
+            "storage_encrypted": "storage_encrypted",
             "create_flow_log_cloudwatch_iam_role": "create_flow_log_cloudwatch_iam_role",
             "public_outbound_acl_rules": "public_outbound_acl_rules",
             "default_network_acl_name": "default_network_acl_name",
@@ -1022,6 +1024,7 @@
             "delete_automated_backups": "delete_automated_backups",
             "parameters": "parameters",
             "engine_version": "engine_version",
+            "engine_mode": "engine_mode",
             "option_group_description": "option_group_description",
             "engine": "engine",
             "final_snapshot_identifier_prefix": "final_snapshot_identifier_prefix",
@@ -1376,7 +1379,8 @@
         },
         "terraform-aws-modules/sqs/aws": {
           "resources": [
-            "aws_sqs_queue"
+            "aws_sqs_queue",
+            "aws_sqs_queue_policy"
           ],
           "inputs": {
             "policy": "policy",
@@ -1448,7 +1452,8 @@
             "egress_with_cidr_blocks": "egress_with_cidr_blocks",
             "number_of_computed_ingress_rules": "number_of_computed_ingress_rules",
             "computed_ingress_rules": "computed_ingress_rules",
-            "revoke_rules_on_delete": "revoke_rules_on_delete"
+            "revoke_rules_on_delete": "revoke_rules_on_delete",
+            "ingress": "ingress"
           }
         },
         "terraform-aws-modules/alb/aws": {
@@ -1693,14 +1698,6 @@
             "aws_sns_topic"
           ]
         },
-        "terraform-aws-modules/athena/aws": {
-          "resources": [
-            "aws_athena_database"
-          ],
-          "inputs": {
-            "encryption_configuration": "encryption_configuration"
-          }
-        },
         "terraform-aws-modules/ebs-encryption/aws": {
           "resources": [
             "aws_ebs_encryption_by_default"
@@ -1749,7 +1746,9 @@
             "aws_mq_broker"
           ],
           "inputs": {
-            "encryption_options": "encryption_options"
+            "encryption_options": "encryption_options",
+            "publicly_accessible": "publicly_accessible",
+            "logs": "logs"
           }
         },
         "terraform-aws-modules/cloudwatch/aws": {
@@ -1808,7 +1807,8 @@
           ],
           "inputs": {
             "encrypted": "encrypted",
-            "publicly_accessible": "publicly_accessible"
+            "publicly_accessible": "publicly_accessible",
+            "logging": "logging"
           }
         },
         "terraform-aws-modules/s3-bucket/aws//modules/object": {
@@ -1832,7 +1832,9 @@
             "aws_cloudfront_distribution"
           ],
           "inputs": {
-            "viewer_certificate": "viewer_certificate"
+            "viewer_certificate": "viewer_certificate",
+            "default_cache_behavior": "default_cache_behavior",
+            "ordered_cache_behavior": "ordered_cache_behavior"
           }
         },
         "terraform-aws-modules/kms/aws": {
@@ -1840,7 +1842,8 @@
             "aws_kms_key"
           ],
           "inputs": {
-            "enable_key_rotation": "enable_key_rotation"
+            "enable_key_rotation": "enable_key_rotation",
+            "policy": "policy"
           }
         },
         "terraform-aws-modules/dynamodb-table/aws": {
@@ -1849,6 +1852,165 @@
           ],
           "inputs": {
             "server_side_encryption": "server_side_encryption"
+          }
+        },
+        "terraform-aws-modules/efs/aws": {
+          "resources": [
+            "aws_efs_file_system"
+          ],
+          "inputs": {
+            "encrypted": "encrypted"
+          }
+        },
+        "terraform-aws-modules/eks/aws": {
+          "resources": [
+            "aws_eks_cluster"
+          ],
+          "inputs": {
+            "enabled_cluster_log_types": "enabled_cluster_log_types",
+            "encryption_config": "encryption_config"
+          }
+        },
+        "terraform-aws-modules/elasticache/aws": {
+          "resources": [
+            "aws_elasticache_replication_group",
+            "aws_elasticache_cluster"
+          ],
+          "inputs": {
+            "at_rest_encryption_enabled": "at_rest_encryption_enabled",
+            "transit_encryption_enabled": "transit_encryption_enabled",
+            "engine": "engine",
+            "engine_version": "engine_version"
+          }
+        },
+        "terraform-aws-modules/elasticsearch/aws": {
+          "resources": [
+            "aws_elasticsearch_domain",
+            "aws_elasticsearch_domain_policy"
+          ],
+          "inputs": {
+            "access_policies": "access_policies",
+            "encrypt_at_rest": "encrypt_at_rest"
+          }
+        },
+        "terraform-aws-modules/glue/aws": {
+          "resources": [
+            "aws_glue_resource_policy",
+            "aws_glue_job"
+          ],
+          "inputs": {
+            "policy": "policy",
+            "iam_role": "iam_role"
+          }
+        },
+        "terraform-aws-modules/iam/aws//modules/iam-group-with-assumable-roles-policy": {
+          "resources": [
+            "aws_iam_group"
+          ],
+          "inputs": {
+            "group_policy": "custom_group_policy"
+          }
+        },
+        "terraform-aws-modules/neptune/aws": {
+          "resources": [
+            "aws_neptune_cluster_instance",
+            "aws_neptune_cluster"
+          ],
+          "inputs": {
+            "publicly_accessible": "publicly_accessible",
+            "iam_database_authentication_enabled": "iam_database_authentication_enabled"
+          }
+        },
+        "terraform-aws-modules/iam/aws//modules/iam-assumable-role": {
+          "resources": [
+            "aws_iam_role"
+          ],
+          "inputs": {
+            "permissions_boundary": "permissions_boundary"
+          }
+        },
+        "terraform-aws-modules/cloudtrail/aws": {
+          "resources": [
+            "aws_cloudtrail"
+          ],
+          "inputs": {
+            "event_selector": "event_selector",
+            "enable_logging": "enable_logging"
+          }
+        },
+        "github.com/SebastianUA/terraform-aws-sagemaker": {
+          "resources": [
+            "aws_sagemaker_endpoint_configuration",
+            "aws_sagemaker_notebook_instance"
+          ],
+          "inputs": {
+            "endpoint_config": "endpoint_config",
+            "kms_key_id": "kms_key_id",
+            "direct_internet_access": "direct_internet_access"
+          }
+        },
+        "Young-ook/sagemaker/aws": {
+          "resources": [
+            "aws_sagemaker_endpoint_configuration",
+            "aws_sagemaker_notebook_instance"
+          ],
+          "inputs": {
+            "endpoint_config": "endpoint_config",
+            "kms_key_id": "kms_key_id",
+            "direct_internet_access": "direct_internet_access"
+          }
+        },
+        "terraform-aws-modules/secrets-manager/aws": {
+          "resources": [
+            "aws_secretsmanager_secret_policy",
+            "aws_secretsmanager_secret"
+          ],
+          "inputs": {
+            "policy": "policy",
+            "kms_key_id": "kms_key_id"
+          }
+        },
+        "terraform-aws-modules/sns/aws": {
+          "resources": [
+            "aws_sns_topic"
+          ],
+          "inputs": {
+            "kms_master_key_id": "kms_master_key_id"
+          }
+        },
+        "terraform-aws-modules/dms/aws": {
+          "resources": [
+            "aws_dms_replication_instance"
+          ],
+          "inputs": {
+            "publicly_accessible": "publicly_accessible"
+          }
+        },
+        "terraform-aws-modules/ami/aws": {
+          "resources": [
+            "aws_ami"
+          ],
+          "inputs": {
+            "ebs_block_device": "ebs_block_device"
+          }
+        },
+        "cloudposse/athena/aws": {
+          "resources": [
+            "aws_athena_workgroup",
+            "aws_athena_database"
+          ],
+          "inputs": {
+            "enforce_workgroup_configuration": "enforce_workgroup_configuration",
+            "workgroup_encryption_option": "workgroup_encryption_option",
+            "encryption_configuration": "encryption_configuration"
+          }
+        },
+        "terraform-aws-modules/batch/aws//modules/job-definition": {
+          "resources": [
+            "aws_batch_job_definition"
+          ],
+          "inputs": {
+            "container_properties": "container_properties"
           }
         }
       }

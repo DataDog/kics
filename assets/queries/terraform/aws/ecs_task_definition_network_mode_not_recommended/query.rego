@@ -24,6 +24,8 @@ CxPolicy[result] {
 	}
 }
 
+#######################################################################################################
+
 CxPolicy[result] {
 	module := input.document[i].module[name]
 	keyToCheck := common_lib.get_module_equivalent_key("aws", module.source, "aws_ecs_task_definition", "network_mode")
@@ -34,16 +36,15 @@ CxPolicy[result] {
 		"documentId": input.document[i].id,
 		"resourceType": "module",
 		"resourceName": sprintf("%s", [name]),
-		"searchKey": sprintf("module[%s].network_mode", [name]),
-		"searchLine": common_lib.build_search_line(["module", name, "network_mode"], []),
+		"searchKey": sprintf("module[%s].%s", [name, keyToCheck]),
+		"searchLine": common_lib.build_search_line(["module", name, keyToCheck], []),
 		"issueType": "IncorrectValue",
-		"keyExpectedValue": "'network_mode' should equal to 'awsvpc'",
-		"keyActualValue": sprintf("'network_mode' is equal to '%s'", [module.network_mode]),
+		"keyExpectedValue": sprintf("'module[%s].%s' should equal to 'awsvpc'", [name, keyToCheck]),
+		"keyActualValue": sprintf("'module[%s].%s' is equal to '%s'", [name, keyToCheck, module[keyToCheck]]),
 		"remediation": json.marshal({
-			"before": sprintf("%s",[module.network_mode]),
+			"before": sprintf("%s",[module[keyToCheck]]),
 			"after": "awsvpc"
 		}),
 		"remediationType": "replacement",
 	}
 }
-

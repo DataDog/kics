@@ -39,3 +39,39 @@ CxPolicy[result] {
 	}
 }
 
+CxPolicy[result] {
+	module := input.document[i].module[name]
+	keyToCheck := common_lib.get_module_equivalent_key("aws", module.source, "aws_eks_cluster", "encryption_config")
+	not common_lib.valid_key(module, keyToCheck)
+
+	result := {
+		"documentId": input.document[i].id,
+		"resourceType": "module",
+		"resourceName": sprintf("%s", [name]),
+		"searchKey": sprintf("module[%s]", [name]),
+		"issueType": "MissingAttribute",
+		"keyExpectedValue": sprintf("module[%s].%s should be defined and not null", [name, keyToCheck]),
+		"keyActualValue": sprintf("module[%s].%s is undefined or null", [name, keyToCheck]),
+		"searchLine": common_lib.build_search_line(["module", name], []),
+	}
+}
+
+CxPolicy[result] {
+	module := input.document[i].module[name]
+	keyToCheck := common_lib.get_module_equivalent_key("aws", module.source, "aws_eks_cluster", "encryption_config")
+	resources := input.document[i].module[name][keyToCheck].resources
+
+	count({x | resource := resources[x]; resource == "secrets"}) == 0
+
+	result := {
+		"documentId": input.document[i].id,
+		"resourceType": "module",
+		"resourceName": sprintf("%s", [name]),
+		"searchKey": sprintf("module[%s].%s", [name, keyToCheck]),
+		"issueType": "IncorrectValue",
+		"keyExpectedValue": sprintf("module[%s].%s  should be defined", [name, keyToCheck]),
+		"keyActualValue": sprintf("module[%s].%s is undefined", [name, keyToCheck]),
+		"searchLine": common_lib.build_search_line(["module", name, "resources"], []),
+	}
+}
+

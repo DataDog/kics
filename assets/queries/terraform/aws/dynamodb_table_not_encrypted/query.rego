@@ -12,7 +12,7 @@ CxPolicy[result] {
 		"resourceType": "aws_dynamodb_table",
 		"resourceName": tf_lib.get_resource_name(resource, name),
 		"searchKey": sprintf("aws_dynamodb_table[{{%s}}].server_side_encryption.enabled", [name]),
-		"searchLine": common_lib.build_search_line(["resource", "aws_dynamodb_table", name,"server_side_encryption","enabled"], []),
+		"searchLine": common_lib.build_search_line(["resource", "aws_dynamodb_table", name, "server_side_encryption", "enabled"], []),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": "aws_dynamodb_table.server_side_encryption.enabled should be set to true",
 		"keyActualValue": "aws_dynamodb_table.server_side_encryption.enabled is set to false",
@@ -42,29 +42,33 @@ CxPolicy[result] {
 	}
 }
 
+#######################################################################################################
 
 CxPolicy[result] {
 	module := input.document[i].module[name]
 	keyToCheck := common_lib.get_module_equivalent_key("aws", module.source, "aws_dynamodb_table", "server_side_encryption")
-	value := module[keyToCheck]
-
-	value.enabled == false
+	module[keyToCheck].enabled == false
 
 	result := {
 		"documentId": input.document[i].id,
 		"resourceType": "module",
 		"resourceName": sprintf("%s", [name]),
 		"searchKey": sprintf("module[%s].%s.enabled", [name, keyToCheck]),
+		"searchLine": common_lib.build_search_line(["module", name, keyToCheck, "enabled"], []),
 		"issueType": "IncorrectValue",
-		"keyExpectedValue": "server_side_encryption.enabled should be set to true",
-		"keyActualValue": "server_side_encryption.enabled is set to false",
+		"keyExpectedValue": sprintf("module[%s].%s.enabled should be set to true", [name, keyToCheck]),
+		"keyActualValue": sprintf("module[%s].%s.enabled is set to false", [name, keyToCheck]),
+		"remediation": json.marshal({
+			"before": "false",
+			"after": "true"
+		}),
+		"remediationType": "replacement",
 	}
 }
 
 CxPolicy[result] {
 	module := input.document[i].module[name]
 	keyToCheck := common_lib.get_module_equivalent_key("aws", module.source, "aws_dynamodb_table", "server_side_encryption")
-
 	not common_lib.valid_key(module, keyToCheck)
 
 	result := {
@@ -72,9 +76,11 @@ CxPolicy[result] {
 		"resourceType": "module",
 		"resourceName": sprintf("%s", [name]),
 		"searchKey": sprintf("module[%s]", [name]),
+		"searchLine": common_lib.build_search_line(["module", name], []),
 		"issueType": "MissingAttribute",
-		"keyExpectedValue": "server_side_encryption.enabled should be set to true",
-		"keyActualValue": "server_side_encryption is missing",
+		"keyExpectedValue": sprintf("module[%s].%s.enabled should be set to true", [name, keyToCheck]),
+		"keyActualValue": sprintf("module[%s].%s is missing", [name, keyToCheck]),
+		"remediation": sprintf("%s {\n\tenabled = true \n\t }", [keyToCheck]),
+		"remediationType": "addition",
 	}
 }
-

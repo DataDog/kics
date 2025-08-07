@@ -59,10 +59,32 @@ CxPolicy[result] {
 	}
 }
 
+#######################################################################################################
+
 CxPolicy[result] {
 	module := input.document[i].module[name]
 	keyToCheck := common_lib.get_module_equivalent_key("aws", module.source, "aws_dax_cluster", "server_side_encryption")
+	module[keyToCheck].enabled == false
 
+	result := {
+		"documentId": input.document[i].id,
+		"resourceType": "module",
+		"resourceName": sprintf("%s", [name]),
+		"searchKey": sprintf("module[%s].%s.enabled", [name, keyToCheck]),
+		"searchLine": common_lib.build_search_line(["module", name, keyToCheck,"enabled"], []),
+		"issueType": "IncorrectValue",
+		"keyExpectedValue": sprintf("module[%s].%s.enabled should be set to true", [name, keyToCheck]),
+		"keyActualValue": sprintf("module[%s].%s.enabled is set to false", [name, keyToCheck]),
+		"remediation": json.marshal({
+			"before": "false",
+			"after": "true"
+		}),
+		"remediationType": "replacement",
+	}
+
+CxPolicy[result] {
+	module := input.document[i].module[name]
+	keyToCheck := common_lib.get_module_equivalent_key("aws", module.source, "aws_dax_cluster", "server_side_encryption")
 	not common_lib.valid_key(module, keyToCheck)
 
 	result := {
@@ -71,8 +93,8 @@ CxPolicy[result] {
 		"resourceName": sprintf("%s", [name]),
 		"searchKey": sprintf("module[%s]", [name]),
 		"issueType": "MissingAttribute",
-		"keyExpectedValue": "'server_side_encryption.enabled' should be set to true",
-		"keyActualValue": "'server_side_encryption' is missing",
+		"keyExpectedValue": sprintf("module[%s].%s.enabled should be set to true", [name, keyToCheck]),
+		"keyActualValue": sprintf("module[%s].%s is missing", [name, keyToCheck]),
 		"remediation": sprintf("%s {\n\tenabled = true\n\t}", [keyToCheck]),
 		"remediationType": "addition",
 	}
@@ -81,7 +103,6 @@ CxPolicy[result] {
 CxPolicy[result] {
 	module := input.document[i].module[name]
 	keyToCheck := common_lib.get_module_equivalent_key("aws", module.source, "aws_dax_cluster", "server_side_encryption")
-
 	common_lib.valid_key(module, keyToCheck)
 	not common_lib.valid_key(module[keyToCheck], "enabled")
 
@@ -91,32 +112,9 @@ CxPolicy[result] {
 		"resourceName": sprintf("%s", [name]),
 		"searchKey": sprintf("module[%s].%s", [name, keyToCheck]),
 		"issueType": "MissingAttribute",
-		"keyExpectedValue": "'server_side_encryption.enabled' should be set to true",
-		"keyActualValue": "'server_side_encryption.enabled' is missing",
+		"keyExpectedValue": sprintf("module[%s].%s.enabled should be set to true", [name, keyToCheck]),
+		"keyActualValue": sprintf("module[%s].%s.enabled is missing", [name, keyToCheck]),
 		"remediation": "enabled = true",
 		"remediationType": "addition",
-	}
-}
-
-CxPolicy[result] {
-	module := input.document[i].module[name]
-	keyToCheck := common_lib.get_module_equivalent_key("aws", module.source, "aws_dax_cluster", "server_side_encryption")
-	common_lib.valid_key(module[keyToCheck], "enabled")
-
-	module[keyToCheck].enabled == false
-
-	result := {
-		"documentId": input.document[i].id,
-		"resourceType": "module",
-		"resourceName": sprintf("%s", [name]),
-		"searchKey": sprintf("module[%s].%s.enabled", [name, keyToCheck]),
-		"issueType": "IncorrectValue",
-		"keyExpectedValue": "'server_side_encryption.enabled' should be set to true",
-		"keyActualValue": "'server_side_encryption.enabled' is set to false",
-		"remediation": json.marshal({
-			"before": "false",
-			"after": "true"
-		}),
-		"remediationType": "replacement",
 	}
 }

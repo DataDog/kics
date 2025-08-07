@@ -14,8 +14,30 @@ CxPolicy[result] {
 		"searchKey": sprintf("aws_ami[%s].ebs_block_device.encrypted", [name]),
 		"searchLine": common_lib.build_search_line(["resource", "aws_ami", name,"ebs_block_device","encrypted"], []),
 		"issueType": "IncorrectValue",
-		"keyExpectedValue": "One of 'rule.ebs_block_device.encrypted' should be 'true'",
-		"keyActualValue": "One of 'rule.ebs_block_device.encrypted' is not 'true'",
+		"keyExpectedValue": "'rule.ebs_block_device.encrypted' should be 'true'",
+		"keyActualValue": "'rule.ebs_block_device.encrypted' is not 'true'",
+		"remediation": json.marshal({
+			"before": "false",
+			"after": "true"
+		}),
+		"remediationType": "replacement",
+	}
+}
+
+CxPolicy[result] {
+	module := input.document[i].module[name]
+	keyToCheck := common_lib.get_module_equivalent_key("aws", module.source, "aws_ami", "ebs_block_device")
+
+	module[keyToCheck].encrypted == false
+	result := {
+		"documentId": input.document[i].id,
+		"resourceType": "module",
+		"resourceName": sprintf("%s", [name]),
+		"searchKey": sprintf("module[%s].%s.encrypted", [name, keyToCheck]),
+		"issueType": "IncorrectValue",
+		"keyExpectedValue": sprintf("module[%s].%s.encrypted should be set to 'true'", [name, keyToCheck]),
+		"keyActualValue": sprintf("module[%s].%s.encrypted is not set to 'true'", [name, keyToCheck]),
+		"searchLine": common_lib.build_search_line(["module", name], []),
 		"remediation": json.marshal({
 			"before": "false",
 			"after": "true"
@@ -35,9 +57,29 @@ CxPolicy[result] {
 		"searchKey": sprintf("aws_ami[%s].ebs_block_device", [name]),
 		"searchLine": common_lib.build_search_line(["resource", "aws_ami", name,"ebs_block_device"], []),
 		"issueType": "MissingAttribute",
-		"keyExpectedValue": "One of 'rule.ebs_block_device.encrypted' should be 'true'",
+		"keyExpectedValue": "'rule.ebs_block_device.encrypted' should be 'true'",
 		"keyActualValue": "'rule.ebs_block_device' is undefined",
 		"remediation": "encrypted = true",
+		"remediationType": "addition",
+	}
+}
+
+CxPolicy[result] {
+	module := input.document[i].module[name]
+	keyToCheck := common_lib.get_module_equivalent_key("aws", module.source, "aws_ami", "ebs_block_device")
+	common_lib.valid_key(module, keyToCheck)
+	not common_lib.valid_key(module[keyToCheck], "encrypted")
+
+	result := {
+		"documentId": input.document[i].id,
+		"resourceType": "module",
+		"resourceName": sprintf("%s", [name]),
+		"searchKey": sprintf("module[%s]", [name]),
+		"issueType": "MissingAttribute",
+		"keyExpectedValue": sprintf("module[%s].%s.encrypted should be set to 'true'", [name, keyToCheck]),
+		"keyActualValue": sprintf("module[%s].%s.encrypted is undefined", [name, keyToCheck]),
+		"searchLine": common_lib.build_search_line(["module", name], []),
+		"remediation": "ebs_block_device{ \n\tencrypted = true\n\t}",
 		"remediationType": "addition",
 	}
 }
@@ -53,9 +95,29 @@ CxPolicy[result] {
 		"searchKey": sprintf("aws_ami[%s]", [name]),
 		"searchLine": common_lib.build_search_line(["resource", "aws_ami", name], []),
 		"issueType": "MissingAttribute",
-		"keyExpectedValue": "One of 'rule.ebs_block_device.encrypted' should be 'true'",
-		"keyActualValue": "One of 'rule.ebs_block_device' is undefined",
+		"keyExpectedValue": "'rule.ebs_block_device.encrypted' should be 'true'",
+		"keyActualValue": "'rule.ebs_block_device' is undefined",
 		"remediation": "ebs_block_device{ \n\tencrypted = true\n\t}",
 		"remediationType": "addition",
 	}
 }
+
+CxPolicy[result] {
+	module := input.document[i].module[name]
+	keyToCheck := common_lib.get_module_equivalent_key("aws", module.source, "aws_ami", "ebs_block_device")
+	not common_lib.valid_key(module, "ebs_block_device")
+
+	result := {
+		"documentId": input.document[i].id,
+		"resourceType": "module",
+		"resourceName": sprintf("%s", [name]),
+		"searchKey": sprintf("module[%s]", [name]),
+		"issueType": "MissingAttribute",
+		"keyExpectedValue": sprintf("module[%s].%s.encrypted should be set to 'true'", [name, keyToCheck]),
+		"keyActualValue": sprintf("module[%s].%s is undefined", [name, keyToCheck]),
+		"searchLine": common_lib.build_search_line(["module", name], []),
+		"remediation": "ebs_block_device{ \n\tencrypted = true\n\t}",
+		"remediationType": "addition",
+	}
+}
+

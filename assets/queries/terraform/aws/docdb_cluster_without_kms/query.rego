@@ -18,10 +18,11 @@ CxPolicy[result] {
 	}
 }
 
+#######################################################################################################
+
 CxPolicy[result] {
 	module := input.document[i].module[name]
 	keyToCheck := common_lib.get_module_equivalent_key("aws", module.source, "aws_docdb_cluster", "kms_key_id")
-
 	not common_lib.valid_key(module, keyToCheck)
 
 	result := {
@@ -30,7 +31,7 @@ CxPolicy[result] {
 		"resourceName": sprintf("%s", [name]),
 		"searchKey": sprintf("module[%s]", [name]),
 		"issueType": "MissingAttribute",
-		"keyExpectedValue": sprintf("%s should be defined and not null", [keyToCheck]),
-		"keyActualValue": sprintf("%s is undefined or null", [keyToCheck]),
+		"keyExpectedValue": sprintf("module[%s].%s should be defined and not null", [name, keyToCheck]),
+		"keyActualValue": sprintf("module[%s].%s is undefined or null", [name, keyToCheck]),
 	}
 }

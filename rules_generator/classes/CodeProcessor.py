@@ -15,6 +15,9 @@ class CodeProcessor:
     def read_snippet(self, path: Path) -> str:
         return self.__read_file(path / "query.rego")
 
+    def read_metadata(self, path: Path) -> str:
+        return self.__read_file(path / "metadata.json")
+
     def __write_file(self, path: Path, content: str) -> None:
         try:
             with open(path, "w") as f:
