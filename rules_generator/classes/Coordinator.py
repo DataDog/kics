@@ -13,7 +13,7 @@ class Coordinator:
         self.codeProcessor = CodeProcessor()
         self.rulesGenerator = RulesGenerator()
 
-    def __generate_new_rule(self, rule: str, check_sev=True):
+    def __generate_new_rule(self, rule: str, check_sev: bool = True):
         message = self.codeProcessor.read_snippet(rule)
         if "get_module_equivalent_key" in message:
             print(f"Skipping rule {rule} with already existing module support")
@@ -49,7 +49,8 @@ class Coordinator:
     def __generate_new_files(
         self,
         path_str: str,
-        skip: int,
+        skip: int = 0,
+        check_sev: bool = True,
     ) -> None:
         path = Path(path_str)
         common = self.codeProcessor.load_common()
@@ -57,9 +58,7 @@ class Coordinator:
             rules_list = sorted(path.iterdir())[skip:]
             try:
                 for rule in rules_list:
-                    update = self.__generate_new_rule(
-                        rule,
-                    )
+                    update = self.__generate_new_rule(rule, check_sev)
                     if update == {}:
                         continue
                     common = self.codeProcessor.update_common(common, update)
@@ -80,8 +79,11 @@ class Coordinator:
                     f"The following error has occured during the rule generation: {e}"
                 )
 
-    def generate_module_support(self, path_str: str, skip: int) -> None:
+    def generate_module_support(
+        self, path_str: str, skip: int = 0, check_sev: bool = True
+    ) -> None:
         self.__generate_new_files(
             path_str,
             skip,
+            check_sev,
         )
