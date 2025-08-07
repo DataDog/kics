@@ -34,10 +34,10 @@ CxPolicy[result] {
 		"resourceType": "module",
 		"resourceName": sprintf("%s", [name]),
 		"searchKey": sprintf("module[%s].enable_logging", [name]),
-		"searchLine": common_lib.build_search_line(["module", name, "enable_logging"], []),
+		"searchLine": common_lib.build_search_line(["module", name, keyToCheck], []),
 		"issueType": "IncorrectValue",
-		"keyExpectedValue": "'enable_logging' should be true",
-		"keyActualValue": "'enable_logging' is false",
+		"keyExpectedValue": sprintf("module[%s].%s should be true", [name, keyToCheck]),
+		"keyActualValue": sprintf("module[%s].%s is false", [name, keyToCheck]),
 		"remediation": json.marshal({
 			"before": "false",
 			"after": "true"

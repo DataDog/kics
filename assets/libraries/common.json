@@ -1867,7 +1867,8 @@
             "aws_eks_cluster"
           ],
           "inputs": {
-            "enabled_cluster_log_types": "enabled_cluster_log_types"
+            "enabled_cluster_log_types": "enabled_cluster_log_types",
+            "encryption_config": "encryption_config"
           }
         },
         "terraform-aws-modules/elasticache/aws": {

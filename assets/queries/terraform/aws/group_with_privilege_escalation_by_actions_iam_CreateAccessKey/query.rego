@@ -34,11 +34,11 @@ CxPolicy[result] {
 		"documentId": input.document[i].id,
 		"resourceType": "module",
         "resourceName": sprintf("%s", [name]),
-		"searchKey": sprintf("module[%s]", [name]),
+		"searchKey": sprintf("module[%s].%s", [name, keyToCheck]),
 		"issueType": "IncorrectValue",
         "keyExpectedValue": sprintf("group %s should not be associated with a policy that has Action set to 'iam:CreateAccessKey' and Resource set to '*'", [targetGroup]),
 		"keyActualValue": sprintf("group %s is associated with a policy that has Action set to 'iam:CreateAccessKey' and Resource set to '*'", [targetGroup]),
-        "searchLine": common_lib.build_search_line(["module", name, "group_policy", idx], []),
+        "searchLine": common_lib.build_search_line(["module", name, keyToCheck, idx], []),
 	}
 }
 

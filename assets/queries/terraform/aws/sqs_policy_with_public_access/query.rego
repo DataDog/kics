@@ -44,9 +44,9 @@ CxPolicy[result] {
 		"resourceName": sprintf("%s", [name]),
 		"searchKey": sprintf("module[%s].policy", [name]),
 		"issueType": "IncorrectValue",
-		"keyExpectedValue": "'policy.Statement.Principal.AWS' should not equal '*'",
-		"keyActualValue": "'policy.Statement.Principal.AWS' is equal '*'",
-		"searchLine": common_lib.build_search_line(["module", name, "policy"], []),
+		"keyExpectedValue": sprintf("'module[%s].%s.Statement.Principal.AWS' should not equal '*'", [name, keyToCheck]),
+		"keyActualValue": sprintf("'module[%s].%s.Statement.Principal.AWS' is equal '*'", [name, keyToCheck]),
+		"searchLine": common_lib.build_search_line(["module", name, keyToCheck], []),
 	}
 }
 

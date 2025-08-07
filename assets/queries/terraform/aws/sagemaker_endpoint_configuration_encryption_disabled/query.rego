@@ -31,8 +31,8 @@ CxPolicy[result] {
 		"resourceName": sprintf("%s", [name]),
 		"searchKey": sprintf("module[%s]", [name]),
 		"issueType": "MissingAttribute",
-		"keyExpectedValue": "'kms_key_arn' should be defined and not null",
-		"keyActualValue": "'kms_key_arn' is undefined or null",
+		"keyExpectedValue": sprintf("module[%s].%s.kms_key_arn should be defined and not null", [name, keyToCheck]),
+		"keyActualValue": sprintf("module[%s].%s.kms_key_arn is undefined or null", [name, keyToCheck]),
 	}
 }
 

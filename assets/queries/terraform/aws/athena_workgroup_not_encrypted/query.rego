@@ -59,8 +59,8 @@ CxPolicy[result] {
 		"resourceName": sprintf("%s", [name]),
 		"searchKey": sprintf("module[%s].configuration", [name]),
 		"issueType": "MissingAttribute",
-		"keyExpectedValue": "'configuration.result_configuration.encryption_configuration' should be defined",
-		"keyActualValue": "'configuration.result_configuration.encryption_configuration' is missing",
+		"keyExpectedValue": sprintf("module[%s].%s should be defined", [name, keyToCheck]),
+		"keyActualValue": sprintf("module[%s].%s is missing", [name, keyToCheck]),
 	}
 }
 
@@ -75,7 +75,7 @@ CxPolicy[result] {
 		"resourceName": sprintf("%s", [name]),
 		"searchKey": sprintf("module[%s].configuration", [name]),
 		"issueType": "MissingAttribute",
-		"keyExpectedValue": "'configuration.result_configuration.encryption_configuration' should be defined",
-		"keyActualValue": "'configuration.result_configuration.encryption_configuration' is missing",
+		"keyExpectedValue": sprintf("module[%s].%s should be defined", [name, keyToCheck]),
+		"keyActualValue": sprintf("module[%s].%s is missing", [name, keyToCheck]),
 	}
 }

@@ -59,9 +59,9 @@ CxPolicy[result] {
 		"searchKey": sprintf("module[%s]", [name]),
 		"searchLine": common_lib.build_search_line(["module", name], []),
 		"issueType": "MissingAttribute",
-		"keyExpectedValue": "storage_encrypted should be set to true",
-		"keyActualValue": "storage_encrypted is undefined",
-		"remediation": sprintf("%s = true", [keyToCheck]),
+		"keyExpectedValue": sprintf("module[%s].%s should be set to true", [name, keyToCheck]),
+		"keyActualValue": sprintf("module[%s].%s is undefined", [name, keyToCheck]),
+		"remediation": sprintf("module[%s].%s = true", [name, keyToCheck]),
 		"remediationType": "addition",
 	}
 }
@@ -79,8 +79,8 @@ CxPolicy[result] {
 		"searchKey": sprintf("module[%s].%s", [name, keyToCheck]),
 		"searchLine": common_lib.build_search_line(["module", name, keyToCheck], []),
 		"issueType": "IncorrectValue",
-		"keyExpectedValue": "storage_encrypted should be set to true",
-		"keyActualValue": "storage_encrypted is set to false",
+		"keyExpectedValue": sprintf("module[%s].%s should be set to true", [name, keyToCheck]),
+		"keyActualValue": sprintf("module[%s].%s is set to false", [name, keyToCheck]),
 		"remediation": json.marshal({
 			"before": "false",
 			"after": "true"
@@ -92,7 +92,7 @@ CxPolicy[result] {
 is_serverless(cluster) {
 	cluster.engine_mode == "serverless"
 } else {
-	keyToCheck := common_lib.get_module_equivalent_key("aws", module.source, "aws_rds_cluster", "engine_mode")
-	module[keyToCheck] == "serverless"
+	keyToCheck := common_lib.get_module_equivalent_key("aws", cluster.source, "aws_rds_cluster", "engine_mode")
+	cluster[keyToCheck] == "serverless"
 }
 

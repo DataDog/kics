@@ -54,8 +54,8 @@ CxPolicy[result] {
 		"searchKey": sprintf("module[%s]", [name]),
 		"searchLine": common_lib.build_search_line(["module", name], []),
 		"issueType": "MissingAttribute",
-		"keyExpectedValue": "'iam_database_authentication_enabled' should be set to true",
-		"keyActualValue": "'iam_database_authentication_enabled' is undefined",
+		"keyExpectedValue": sprintf("module[%s].%s should be set to true", [name, keyToCheck]),
+		"keyActualValue": sprintf("module[%s].%s is undefined", [name, keyToCheck]),
 		"remediation": sprintf("%s = true", [keyToCheck]),
 		"remediationType": "addition",
 	}
@@ -73,8 +73,8 @@ CxPolicy[result] {
 		"searchKey": sprintf("module[%s].%s", [name, keyToCheck]),
 		"searchLine": common_lib.build_search_line(["module", name, keyToCheck], []),
 		"issueType": "IncorrectValue",
-		"keyExpectedValue": "'iam_database_authentication_enabled' should be set to true",
-		"keyActualValue": "'iam_database_authentication_enabled' is set to false",
+		"keyExpectedValue": sprintf("module[%s].%s should be set to true", [name, keyToCheck]),
+		"keyActualValue": sprintf("module[%s].%s is set to false", [name, keyToCheck]),
 		"remediation": json.marshal({
 			"before": "false",
 			"after": "true"

@@ -51,11 +51,11 @@ CxPolicy[result] {
 		"documentId": input.document[i].id,
 		"resourceType": "module",
 		"resourceName": sprintf("%s", [name]),
-		"searchKey": sprintf("module[%s].encrypted", [name]),
+		"searchKey": sprintf("module[%s].%s", [name, keyToCheck]),
 		"searchLine": common_lib.build_search_line(["module", name ,"encrypted"], []),
 		"issueType": "IncorrectValue",
-		"keyExpectedValue": "'encrypted' should be true",
-		"keyActualValue": "'encrypted' is false",
+		"keyExpectedValue": sprintf("module[%s].%s should be true", [name, keyToCheck]),
+		"keyActualValue": sprintf("module[%s].%s is false", [name, keyToCheck]),
 		"remediation": json.marshal({
 			"before": "false",
 			"after": "true"
@@ -74,11 +74,11 @@ CxPolicy[result] {
 		"resourceType": "module",
 		"resourceName": sprintf("%s", [name]),
 		"searchKey": sprintf("module[%s]", [name]),
-		"searchLine": common_lib.build_search_line(["module", name ,"encrypted"], []),
+		"searchLine": common_lib.build_search_line(["module", name , keyToCheck], []),
 		"issueType": "MissingAttribute",
-		"keyExpectedValue": "'encrypted' should be defined and not null",
-		"keyActualValue": "'encrypted' is undefined or null",
-		"remediation": "encrypted = true",
+		"keyExpectedValue": sprintf("module[%s].%s should be defined and not null", [name, keyToCheck]),
+		"keyActualValue": sprintf("module[%s].%s is undefined or null", [name, keyToCheck]),
+		"remediation": sprintf("module[%s].%s = true", [name, keyToCheck]),
 		"remediationType": "addition",
 	}
 }

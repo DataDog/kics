@@ -40,8 +40,8 @@ CxPolicy[result] {
         "searchKey": sprintf("module[%s].%s", [name, keyToCheck]),
         "searchLine": common_lib.build_search_line(["module", name, keyToCheck], []),
         "issueType": "IncorrectValue",
-        "keyExpectedValue": sprintf("%s should be 'Disabled'", [keyToCheck]),
-        "keyActualValue": sprintf("%s is '%s'", [keyToCheck, module[keyToCheck]]),
+        "keyExpectedValue": sprintf("module[%s].%s should be 'Disabled'", [keyToCheck]),
+        "keyActualValue": sprintf("module[%s].%s is '%s'", [keyToCheck, module[keyToCheck]]),
         "remediation": json.marshal({
             "before": "Enabled",
             "after": "Disabled"

@@ -37,11 +37,11 @@ CxPolicy[result] {
 		"documentId": input.document[i].id,
 		"resourceType": "module",
 		"resourceName": sprintf("%s", [name]),
-		"searchKey": sprintf("module[%s].container_properties.privileged", [name]),
-		"searchLine": common_lib.build_search_line(["module", name, "container_properties", "privileged"], []),
+		"searchKey": sprintf("module[%s].%s.privileged", [name, keyToCheck]),
+		"searchLine": common_lib.build_search_line(["module", name, keyToCheck, "privileged"], []),
 		"issueType": "IncorrectValue",
-		"keyExpectedValue": "'container_properties.privileged' should be 'false' or not set",
-		"keyActualValue": "'container_properties.privileged' is 'true'",
+		"keyExpectedValue": sprintf("module[%s].%s.privileged should be 'false' or not set", [name, keyToCheck]),
+		"keyActualValue": sprintf("module[%s].%s.privileged is 'true'", [name, keyToCheck]),
 		"remediation": json.marshal({
 			"before": "true",
 			"after": "false"

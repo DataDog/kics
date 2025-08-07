@@ -56,8 +56,8 @@ CxPolicy[result] {
 		"resourceName": sprintf("%s", [name]),
 		"searchKey": sprintf("module[%s]", [name]),
 		"issueType": "MissingAttribute",
-		"keyExpectedValue": "'policy' should be defined and not null",
-		"keyActualValue": "'policy' is undefined or null",
+		"keyExpectedValue": sprintf("module[%s].%s should be defined and not null", [name, keyToCheck]),
+		"keyActualValue": sprintf("module[%s].%s is undefined or null", [name, keyToCheck]),
 		"searchLine": common_lib.build_search_line(["module", name], []),
 	}
 }
@@ -79,8 +79,8 @@ CxPolicy[result] {
 		"resourceName": sprintf("%s", [name]),
 		"searchKey": sprintf("module[%s].%s", [name, keyToCheck]),
 		"issueType": "IncorrectValue",
-		"keyExpectedValue": "'policy' should not have wildcard in 'Action' and 'Principal'",
-		"keyActualValue": "'policy' has wildcard in 'Action' or 'Principal'",
+		"keyExpectedValue": sprintf("module[%s].%s should not have wildcard in 'Action' and 'Principal'", [name, keyToCheck]),
+		"keyActualValue": sprintf("module[%s].%s has wildcard in 'Action' or 'Principal'", [name, keyToCheck]),
 		"searchLine": common_lib.build_search_line(["module", name, keyToCheck], []),
 	}
 }

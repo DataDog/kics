@@ -35,11 +35,11 @@ CxPolicy[result] {
 		"documentId": input.document[i].id,
 		"resourceType": "module",
 		"resourceName": sprintf("%s", [name]),
-		"searchKey": sprintf("module[%s].publicly_accessible", [name]),
+		"searchKey": sprintf("module[%s].%s", [name, keyToCheck]),
 		"issueType": "IncorrectValue",
-		"keyExpectedValue": "'publicly_accessible' should be set to false",
-		"keyActualValue": "'publicly_accessible' is set to true",
-		"searchLine": common_lib.build_search_line(["module", name, "publicly_accessible"], []),
+		"keyExpectedValue": sprintf("module[%s].%s should be set to false", [name, keyToCheck]),
+		"keyActualValue": sprintf("module[%s].%s is set to true", [name, keyToCheck]),
+		"searchLine": common_lib.build_search_line(["module", name, keyToCheck], []),
 		"remediation": json.marshal({
 			"before": "true",
 			"after": "false"

@@ -35,9 +35,9 @@ CxPolicy[result] {
 		"searchKey": sprintf("module[%s]", [name]),
 		"searchLine": common_lib.build_search_line(["module", name], []),
 		"issueType": "MissingAttribute",
-		"keyExpectedValue": "The attribute 'at_rest_encryption_enabled' should be set to true",
-		"keyActualValue": "The attribute 'at_rest_encryption_enabled' is undefined",
-		"remediation": sprintf("%s = true", [keyToCheck]),
+		"keyExpectedValue": sprintf("module[%s].%s should be set to true", [name, keyToCheck]),
+		"keyActualValue": sprintf("module[%s].%s is undefined", [name, keyToCheck]),
+		"remediation": sprintf("module[%s].%s = true", [name, keyToCheck]),
 		"remediationType": "addition",
 	}
 }
@@ -77,8 +77,8 @@ CxPolicy[result] {
 		"searchKey": sprintf("module[%s].%s", [name, keyToCheck]),
 		"searchLine": common_lib.build_search_line(["module", name, keyToCheck], []),
 		"issueType": "IncorrectValue",
-		"keyExpectedValue": "The attribute 'at_rest_encryption_enabled' should be set to true",
-		"keyActualValue": "The attribute 'at_rest_encryption_enabled' is not set to true",
+		"keyExpectedValue": sprintf("module[%s].%s should be set to true", [name, keyToCheck]),
+		"keyActualValue": sprintf("module[%s].%s is not set to true", [name, keyToCheck]),
 		"remediation": json.marshal({
 			"before": sprintf("%s", [module[keyToCheck]]),
 			"after": "true"

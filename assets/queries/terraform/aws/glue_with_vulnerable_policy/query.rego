@@ -42,11 +42,11 @@ CxPolicy[result] {
 		"documentId": input.document[i].id,
 		"resourceType": "module",
 		"resourceName": sprintf("%s", [name]),
-		"searchKey": sprintf("module[%s].policy", [name]),
+		"searchKey": sprintf("module[%s].%s", [name, keyToCheck]),
 		"issueType": "IncorrectValue",
-		"keyExpectedValue": sprintf("module[%s].policy should not have wildcard in 'principals' and 'actions'", [name]),
-		"keyActualValue": sprintf("module[%s].policy has wildcard in 'principals' or 'actions'", [name]),
-		"searchLine": common_lib.build_search_line(["module", name, "policy"], []),
+		"keyExpectedValue": sprintf("module[%s].%s should not have wildcard in 'principals' and 'actions'", [name, keyToCheck]),
+		"keyActualValue": sprintf("module[%s].%s has wildcard in 'principals' or 'actions'", [name, keyToCheck]),
+		"searchLine": common_lib.build_search_line(["module", name, keyToCheck], []),
 	}
 }
 

@@ -50,8 +50,8 @@ CxPolicy[result] {
 		"resourceName": sprintf("%s", [name]),
 		"searchKey": sprintf("module[%s]", [name]),
 		"issueType": "MissingAttribute",
-		"keyExpectedValue": "'event_selector.read_write_type' should be defined and not null",
-		"keyActualValue": "'event_selector.read_write_type' is undefined or null",
+		"keyExpectedValue": sprintf("module[%s].%s.read_write_type should be defined and not null", [name, keyToCheck]),
+		"keyActualValue": sprintf("module[%s].%s.read_write_type is undefined or null", [name, keyToCheck]),
 	}
 }
 
@@ -66,10 +66,10 @@ CxPolicy[result] {
 		"documentId": input.document[i].id,
 		"resourceType": "module",
 		"resourceName": sprintf("%s", [name]),
-		"searchKey": sprintf("module[%s].[%s].read_write_type", [name, keyToCheck]),
+		"searchKey": sprintf("module[%s].%s.read_write_type", [name, keyToCheck]),
 		"issueType": "IncorrectValue",
-		"keyExpectedValue": "'read_write_type' should be set to 'All'",
-		"keyActualValue": "'read_write_type' is not set to 'All'",
+		"keyExpectedValue": sprintf("module[%s].%s.read_write_type should be set to 'All'", [name, keyToCheck]),
+		"keyActualValue": sprintf("module[%s].%s.read_write_type is not set to 'All'", [name, keyToCheck]),
 	}
 }
 

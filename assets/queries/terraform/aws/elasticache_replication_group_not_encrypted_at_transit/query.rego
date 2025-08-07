@@ -30,8 +30,8 @@ CxPolicy[result] {
 		"resourceName": sprintf("%s", [name]),
 		"searchKey": sprintf("module[%s]", [name]),
 		"issueType": "MissingAttribute",
-		"keyExpectedValue": "The attribute 'transit_encryption_enabled' should be set to true",
-		"keyActualValue": "The attribute 'transit_encryption_enabled' is undefined",
+		"keyExpectedValue": sprintf("module[%s].%s should be set to true", [name, keyToCheck]),
+		"keyActualValue": sprintf("module[%s].%s is undefined", [name, keyToCheck]),
 	}
 }
 
@@ -60,10 +60,10 @@ CxPolicy[result] {
 		"documentId": input.document[i].id,
 		"resourceType": "module",
 		"resourceName": sprintf("%s", [name]),
-		"searchKey": sprintf("module[%s].transit_encryption_enabled", [name]),
+		"searchKey": sprintf("module[%s].%s", [name, keyToCheck]),
 		"issueType": "IncorrectValue",
-		"keyExpectedValue": "The attribute 'transit_encryption_enabled' should be set to true",
-		"keyActualValue": "The attribute 'transit_encryption_enabled' is not set to true",
+		"keyExpectedValue": sprintf("module[%s].%s should be set to true", [name, keyToCheck]),
+		"keyActualValue": sprintf("module[%s].%s is not set to true", [name, keyToCheck]),
 	}
 }
 

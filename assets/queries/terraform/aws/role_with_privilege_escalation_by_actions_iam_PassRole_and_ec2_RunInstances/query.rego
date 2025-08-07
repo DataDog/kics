@@ -38,8 +38,8 @@ CxPolicy[result] {
 		"resourceName": sprintf("%s", [name]),
 		"searchKey": sprintf("module[%s]", [name]),
 		"issueType": "IncorrectValue",
-		"keyExpectedValue": "'permissions_boundary' attribute should be set.",
-		"keyActualValue": "'permissions_boundary' attribute isn't set.",
+		"keyExpectedValue": sprintf("module[%s].%s should be set.", [name, keyToCheck]),
+		"keyActualValue": sprintf("module[%s].%s isn't set.", [name, keyToCheck]),
 		"searchLine": common_lib.build_search_line(["module", name], []),
 	}
 }

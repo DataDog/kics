@@ -50,8 +50,8 @@ CxPolicy[result] {
 		"resourceName": sprintf("%s", [name]),
 		"searchKey": sprintf("module[%s]", [name]),
 		"issueType": "MissingAttribute",
-		"keyExpectedValue": "'encryption_config' should be defined and not null",
-		"keyActualValue": "'encryption_config' is undefined or null",
+		"keyExpectedValue": sprintf("module[%s].%s should be defined and not null", [name, keyToCheck]),
+		"keyActualValue": sprintf("module[%s].%s is undefined or null", [name, keyToCheck]),
 		"searchLine": common_lib.build_search_line(["module", name], []),
 	}
 }
@@ -67,10 +67,10 @@ CxPolicy[result] {
 		"documentId": input.document[i].id,
 		"resourceType": "module",
 		"resourceName": sprintf("%s", [name]),
-		"searchKey": sprintf("module[%s].encryption_config.resources", [name]),
+		"searchKey": sprintf("module[%s].%s", [name, keyToCheck]),
 		"issueType": "IncorrectValue",
-		"keyExpectedValue": "'secrets' should be defined",
-		"keyActualValue": "'secrets' is undefined",
+		"keyExpectedValue": sprintf("module[%s].%s  should be defined", [name, keyToCheck]),
+		"keyActualValue": sprintf("module[%s].%s is undefined", [name, keyToCheck]),
 		"searchLine": common_lib.build_search_line(["module", name, "resources"], []),
 	}
 }
