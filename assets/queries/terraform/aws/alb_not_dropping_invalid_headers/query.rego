@@ -87,7 +87,7 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": module,
+		"resourceType": "module",
 		"resourceName": sprintf("%s", [name]),
 		"searchKey": sprintf("module[%s]", [name]),
 		"issueType": "MissingAttribute",
