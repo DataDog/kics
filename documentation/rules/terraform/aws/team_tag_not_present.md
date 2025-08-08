@@ -33,6 +33,23 @@ meta:
 
 ## Compliant Code Examples
 ```terraform
+resource "aws_instance" "web_subnet2" {
+  ami           = "ami-123456"
+  instance_type = "t2.micro"
+
+  tags = merge({
+    Name = "${local.resource_prefix.value}-subnet2"
+    }, {
+    git_last_modified_by = "email@email.com"
+    git_modifiers        = "foo.bar"
+    git_org              = "checkmarx"
+    team                 = "team"
+  })
+}
+
+```
+
+```terraform
 # ✅ "team" tag is not a valid attribute for this resource type
 resource "aws_acm_certificate_validation" "example" {
   certificate_arn         = aws_acm_certificate.example.arn
@@ -47,17 +64,6 @@ resource "aws_s3_bucket" "good_example" {
 
   tags = {
     team = "Security" # ✅ "team" tag is present
-  }
-}
-
-```
-
-```terraform
-resource "aws_s3_bucket" "good_example" {
-  bucket = "my-bucket"
-
-  tags = {
-    Team = "Security" # ✅ "Team" tag is present
   }
 }
 

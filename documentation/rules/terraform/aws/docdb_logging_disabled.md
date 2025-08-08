@@ -47,6 +47,29 @@ resource "aws_docdb_cluster" "example" {
 
 ## Compliant Code Examples
 ```terraform
+module "db" {
+  source  = "terraform-aws-modules/docdb/aws"
+  version = "~> 1.0"
+
+  identifier = "docdb-cluster"
+
+  cluster_size       = 2
+  engine_version     = "3.6.0"
+  instance_class     = "db.r5.large"
+  admin_password     = "DocDB@1234567890"
+  vpc_security_group_ids = [aws_security_group.default.id]
+  db_subnet_group_name   = aws_db_subnet_group.default.id
+
+  tags = {
+    Owner       = "user"
+    Environment = "dev"
+  }
+
+  enabled_cloudwatch_logs_exports = ["audit", "profiler"]
+}
+```
+
+```terraform
 resource "aws_docdb_cluster" "negative1" {
   cluster_identifier      = "my-docdb-cluster"
   engine                  = "docdb"
@@ -62,21 +85,6 @@ resource "aws_docdb_cluster" "negative1" {
 ```
 ## Non-Compliant Code Examples
 ```terraform
-resource "aws_docdb_cluster" "positive2" {
-  cluster_identifier      = "my-docdb-cluster"
-  engine                  = "docdb"
-  master_username         = "foo"
-  master_password         = "mustbeeightchars"
-  backup_retention_period = 5
-  preferred_backup_window = "07:00-09:00"
-  skip_final_snapshot     = true
-
-  enabled_cloudwatch_logs_exports = []
-}
-
-```
-
-```terraform
 resource "aws_docdb_cluster" "positive3" {
   cluster_identifier      = "my-docdb-cluster"
   engine                  = "docdb"
@@ -87,6 +95,19 @@ resource "aws_docdb_cluster" "positive3" {
   skip_final_snapshot     = true
 
   enabled_cloudwatch_logs_exports = ["profiler"]
+}
+
+```
+
+```terraform
+resource "aws_docdb_cluster" "positive1" {
+  cluster_identifier      = "my-docdb-cluster"
+  engine                  = "docdb"
+  master_username         = "foo"
+  master_password         = "mustbeeightchars"
+  backup_retention_period = 5
+  preferred_backup_window = "07:00-09:00"
+  skip_final_snapshot     = true
 }
 
 ```

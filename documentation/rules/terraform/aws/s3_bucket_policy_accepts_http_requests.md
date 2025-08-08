@@ -42,6 +42,43 @@ This prevents insecure access and protects data integrity during transmission.
 
 ## Compliant Code Examples
 ```terraform
+
+data "aws_iam_policy_document" "neg5" {
+
+  statement {
+    effect = "Deny"
+
+    principals {
+      type        = "*"
+      identifiers = ["*"]
+    }
+
+    actions = [
+      "s3:*",
+    ]
+
+
+    resources = [
+      "arn:aws:s3:::a/*",
+      "arn:aws:s3:::a",
+    ]
+    condition {
+      test     = "Bool"
+      variable = "aws:SecureTransport"
+      values   = ["false"]
+    }
+  }
+}
+
+
+resource "aws_s3_bucket" "neg5" {
+  bucket = "a"
+  policy = data.aws_iam_policy_document.neg5.json
+}
+
+```
+
+```terraform
 resource "aws_s3_bucket" "negative7" {
   bucket = "my-tf-test-bucket"
 
@@ -85,118 +122,43 @@ resource "aws_s3_bucket_policy" "bucket_policy" {
 ```
 
 ```terraform
-module "s3_bucket" {
-  source = "terraform-aws-modules/s3-bucket/aws"
-  version = "3.7.0"
 
-  bucket = "my-s3-bucket"
-  acl    = "private"
+data "aws_iam_policy_document" "neg6" {
 
-  versioning = {
-    enabled = true
+  statement {
+    effect = "Allow"
+
+    principals {
+      type        = "*"
+      identifiers = ["*"]
+    }
+
+    actions = [
+      "s3:*",
+    ]
+
+
+    resources = [
+      "arn:aws:s3:::a/*",
+      "arn:aws:s3:::a",
+    ]
+    condition {
+      test     = "Bool"
+      variable = "aws:SecureTransport"
+      values   = ["true"]
+    }
   }
-
-  policy = <<EOF
-{
-    "Version": "2012-10-17",
-    "Id": "MYBUCKETPOLICY",
-    "Statement": [
-      {
-        "Sid": "IPAllow",
-        "Effect": "Deny",
-        "Principal": "*",
-        "Action": "s3:*",
-        "Resource": [
-          "aws_s3_bucket.b.arn"
-        ],
-        "Condition": {
-          "Bool": {
-            "aws:SecureTransport": "false"
-          }
-        }
-      },
-      {
-        "Sid": "IPAllow",
-        "Effect": "Deny",
-        "Principal": "*",
-        "Action": "s3:*",
-        "Resource": [
-          "aws_s3_bucket.c.arn"
-        ],
-        "Condition": {
-          "Bool": {
-            "aws:SecureTransport": "false"
-          }
-        }
-      }
-    ]
-}
-EOF
 }
 
-```
 
-```terraform
-resource "aws_s3_bucket" "b2" {
-  bucket = "my-tf-test-bucket"
-
-   policy = <<EOF
-{
-    "Version": "2012-10-17",
-    "Id": "MYBUCKETPOLICY",
-    "Statement": [
-      {
-        "Sid": "IPAllow",
-        "Effect": "Deny",
-        "Principal": "*",
-        "Action": "s3:*",
-        "Resource": [
-          "aws_s3_bucket.b.arn"
-        ],
-        "Condition": {
-          "Bool": {
-            "aws:SecureTransport": "false"
-          }
-        }
-      }
-    ]
-}
-EOF
+resource "aws_s3_bucket" "neg6" {
+  bucket = "a"
+  policy = data.aws_iam_policy_document.neg6.json
 }
 
 ```
 ## Non-Compliant Code Examples
 ```terraform
-resource "aws_s3_bucket" "b2" {
-  bucket = "my-tf-test-bucket"
-
-  policy = <<EOF
-{
-    "Version": "2012-10-17",
-    "Id": "MYBUCKETPOLICY",
-    "Statement": [
-      {
-        "Sid": "IPAllow",
-        "Effect": "Deny",
-        "Principal": "*",
-        "Action": "s3:*",
-        "Resource": [
-          "aws_s3_bucket.b.arn"
-        ],
-        "Condition": {
-          "IpAddress": {
-            "aws:SourceIp": "8.8.8.8/32"
-          }
-        }
-      }
-    ]
-}
-EOF
-}
-
-```
-
-```terraform
 module "s3_bucket" {
   source = "terraform-aws-modules/s3-bucket/aws"
   version = "3.7.0"
@@ -231,6 +193,44 @@ module "s3_bucket" {
 }
 EOF
 }
+
+```
+
+```terraform
+resource "aws_s3_bucket" "b" {
+  bucket = "my-tf-test-bucket"
+}
+
+resource "aws_s3_bucket_policy" "b" {
+  bucket = aws_s3_bucket.b.id
+
+  policy = <<EOF
+{
+    "Version": "2012-10-17",
+    "Id": "MYBUCKETPOLICY",
+    "Statement": [
+      {
+        "Sid": "IPAllow",
+        "Effect": "Deny",
+        "Principal": "*",
+        "Action": "s3:*",
+        "Resource": [
+          "aws_s3_bucket.b.arn"
+        ],
+        "Condition": {
+          "IpAddress": {
+            "aws:SourceIp": "8.8.8.8/32"
+          }
+        }
+      }
+    ]
+}
+EOF
+}
+
+
+
+
 
 ```
 

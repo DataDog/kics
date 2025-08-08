@@ -85,35 +85,6 @@ resource "aws_instance" "monitoring_negative1" {
 ```
 ## Non-Compliant Code Examples
 ```terraform
-data "aws_ami" "ubuntu" {
-  most_recent = true
-
-  filter {
-    name   = "name"
-    values = ["ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server-*"]
-  }
-
-  filter {
-    name   = "virtualization-type"
-    values = ["hvm"]
-  }
-
-  owners = ["099720109477"] # Canonical
-}
-
-resource "aws_instance" "monitoring_positive2" {
-  ami           = data.aws_ami.ubuntu.id
-  instance_type = "t3.micro"
-  monitoring    = false
-
-  tags = {
-    Name = "HelloWorld"
-  }
-}
-
-```
-
-```terraform
 module "ec2_instance" {
   source  = "terraform-aws-modules/ec2-instance/aws"
   version = "~> 3.0"
@@ -130,6 +101,34 @@ module "ec2_instance" {
   tags = {
     Terraform   = "true"
     Environment = "dev"
+  }
+}
+
+```
+
+```terraform
+data "aws_ami" "ubuntu" {
+  most_recent = true
+
+  filter {
+    name   = "name"
+    values = ["ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server-*"]
+  }
+
+  filter {
+    name   = "virtualization-type"
+    values = ["hvm"]
+  }
+
+  owners = ["099720109477"] # Canonical
+}
+
+resource "aws_instance" "monitoring_positive1" {
+  ami           = data.aws_ami.ubuntu.id
+  instance_type = "t3.micro"
+
+  tags = {
+    Name = "HelloWorld"
   }
 }
 

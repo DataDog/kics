@@ -44,6 +44,33 @@ This misconfiguration creates a significant security risk, as leaked credentials
 
 ## Compliant Code Examples
 ```terraform
+module "ec2_instance" {
+  source  = "terraform-aws-modules/ec2-instance/aws"
+  version = "~> 3.0"
+
+  name = "single-instance"
+
+  ami                    = "ami-ebd02392"
+  instance_type          = "t2.micro"
+  key_name               = "user1"
+  monitoring             = true
+  vpc_security_group_ids = ["sg-12345678"]
+  subnet_id              = "subnet-eddcdzz4"
+
+  tags = {
+    Terraform   = "true"
+    Environment = "dev"
+  }
+
+  user_data = <<-EOF
+    #!/bin/bash
+    apt-get update
+  EOF
+}
+
+```
+
+```terraform
 provider "aws" {
   region = "us-east-1"
 }
@@ -143,65 +170,13 @@ module "ec2_instance" {
 }
 
 ```
-
+## Non-Compliant Code Examples
 ```terraform
 provider "aws" {
   region = "us-east-1"
 }
 
-resource "aws_iam_role_policy_attachment" "test_attach" {
-  roles      = [aws_iam_role.test_role.name]
-  policy_arn = aws_iam_policy.test_policy.arn
-}
-
-resource "aws_iam_policy" "test_policy" {
-  name = "test_policy"
-  description = "test policy"
-  path = "/"
-  policy = <<EOF
-{
-  "Version": "2012-10-17",
-  "Statement": [
-      {
-          "Action": [
-              "s3:Get*",
-              "s3:List*"
-          ],
-          "Effect": "Allow",
-          "Resource": "*"
-      }
-  ]
-}
-EOF
-}
-
-resource "aws_iam_role" "test_role" {
-  name = "test_role"
-  path = "/"
-
-  assume_role_policy = <<EOF
-{
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Action": "sts:AssumeRole",
-            "Principal": {
-               "Service": "ec2.amazonaws.com"
-            },
-            "Effect": "Allow",
-            "Sid": ""
-        }
-    ]
-}
-EOF
-}
-
-resource "aws_iam_instance_profile" "test_profile" {
-  name = "test_profile"
-  role = aws_iam_role.role.name
-}
-
-resource "aws_instance" "negative1" {
+resource "aws_instance" "positive7" {
   ami           = "ami-005e54dee72cc1d00" # us-west-2
   instance_type = "t2.micro"
 
@@ -209,7 +184,11 @@ resource "aws_instance" "negative1" {
     Name = "test"
   }
 
-  iam_instance_profile = aws_iam_instance_profile.test_profile.name
+  provisioner "remote-exec" {
+    inline = [
+      "wget -O - http://config.remote.server.com/aws-credentials > ~/.aws/credentials;"
+    ]
+  }
 
   credit_specification {
     cpu_credits = "unlimited"
@@ -217,13 +196,13 @@ resource "aws_instance" "negative1" {
 }
 
 ```
-## Non-Compliant Code Examples
+
 ```terraform
 provider "aws" {
   region = "us-east-1"
 }
 
-resource "aws_instance" "positive6" {
+resource "aws_instance" "positive3" {
   ami           = "ami-005e54dee72cc1d00" # us-west-2
   instance_type = "t2.micro"
 
@@ -232,16 +211,13 @@ resource "aws_instance" "positive6" {
   }
 
   user_data = <<EOT
-#cloud-config
-repo_update: true
-repo_upgrade: all
-
-packages:
- - awscli
-
-runcmd:
- - [ sh, -c, "echo export AWS_ACCESS_KEY_ID=my-key-id >> ~/.bashrc" ]
- - [ sh, -c, "echo export AWS_SECRET_ACCESS_KEY=my-secret >> ~/.bashrc" ]
+#!/bin/bash
+apt-get install -y awscli
+cat << EOF > ~/.aws/credentials
+[default]
+aws_access_key_id = somekey
+aws_secret_access_key = somesecret
+EOF
 EOT
 
   credit_specification {
@@ -265,42 +241,12 @@ module "ec2_instance" {
   vpc_security_group_ids = ["sg-12345678"]
   subnet_id              = "subnet-eddcdzz4"
 
-  user_data_base64 = var.init_aws_cli
+  user_data_base64 = base64encode("apt-get install -y awscli; export AWS_ACCESS_KEY_ID=your_access_key_id_here; export AWS_SECRET_ACCESS_KEY=your_secret_access_key_here")
 
 
   tags = {
     Terraform   = "true"
     Environment = "dev"
-  }
-}
-
-```
-
-```terraform
-provider "aws" {
-  region = "us-east-1"
-}
-
-resource "aws_instance" "positive2" {
-  ami           = "ami-005e54dee72cc1d00" # us-west-2
-  instance_type = "t2.micro"
-
-  tags = {
-    Name = "test"
-  }
-
-  user_data = <<EOT
-#!/bin/bash
-apt-get install -y awscli
-cat << EOF > ~/.aws/config
-[default]
-aws_access_key_id = somekey
-aws_secret_access_key = somesecret
-EOF
-EOT
-
-  credit_specification {
-    cpu_credits = "unlimited"
   }
 }
 

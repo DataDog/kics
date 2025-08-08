@@ -115,21 +115,6 @@ resource "aws_s3_bucket" "negative1" {
 ```
 ## Non-Compliant Code Examples
 ```terraform
-module "s3_bucket" {
-  source = "terraform-aws-modules/s3-bucket/aws"
-  version = "3.7.0"
-
-  bucket = "my-s3-bucket"
-  acl    = "authenticated-read"
-
-  versioning = {
-    enabled = true
-  }
-}
-
-```
-
-```terraform
 provider "aws" {
   region = "us-east-1"
 }
@@ -175,6 +160,21 @@ resource "aws_s3_bucket" "positive1" {
   tags = {
     Name        = "My bucket"
     Environment = "Dev"
+  }
+}
+
+```
+
+```terraform
+module "s3_bucket" {
+  source = "terraform-aws-modules/s3-bucket/aws"
+  version = "3.7.0"
+
+  bucket = "my-s3-bucket"
+  acl    = "authenticated-read"
+
+  versioning = {
+    enabled = true
   }
 }
 

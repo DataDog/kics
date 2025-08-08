@@ -57,28 +57,6 @@ resource "google_dns_managed_zone" "negative1" {
 ```
 ## Non-Compliant Code Examples
 ```terraform
-resource "google_dns_managed_zone" "dns_zone" {
-  name        = var.zone_id
-  dns_name    = var.name
-  description = "managed by Runtime DNA"
-  visibility  = length(var.vpc_id) == 0 ? "public" : "private"
-
-  dynamic "private_visibility_config" {
-    for_each = length(var.vpc_id) > 0 ? [1] : []
-    content {
-      dynamic "networks" {
-        for_each = toset(var.vpc_id)
-        content {
-          network_url = networks.value
-        }
-      }
-    }
-  }
-}
-
-```
-
-```terraform
 // comment
 // comment
 // comment
@@ -134,6 +112,28 @@ resource "google_dns_record_set" "soa_override" {
   ttl  = 300
 
   rrdatas = ["${google_dns_managed_zone.target.name_servers[0]} cloud-dns-hostmaster.google.com. 1 21600 3600 259200 300"]
+}
+
+```
+
+```terraform
+resource "google_dns_managed_zone" "dns_zone" {
+  name        = var.zone_id
+  dns_name    = var.name
+  description = "managed by Runtime DNA"
+  visibility  = length(var.vpc_id) == 0 ? "public" : "private"
+
+  dynamic "private_visibility_config" {
+    for_each = length(var.vpc_id) > 0 ? [1] : []
+    content {
+      dynamic "networks" {
+        for_each = toset(var.vpc_id)
+        content {
+          network_url = networks.value
+        }
+      }
+    }
+  }
 }
 
 ```

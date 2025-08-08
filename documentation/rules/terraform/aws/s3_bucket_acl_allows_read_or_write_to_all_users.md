@@ -110,6 +110,21 @@ resource "aws_s3_bucket" "negative1" {
 ```
 ## Non-Compliant Code Examples
 ```terraform
+module "s3_bucket" {
+  source = "terraform-aws-modules/s3-bucket/aws"
+  version = "3.7.0"
+
+  bucket = "my-s3-bucket"
+  acl    = "public-read"
+
+  versioning = {
+    enabled = true
+  }
+}
+
+```
+
+```terraform
 provider "aws" {
   region = "us-east-1"
 }
@@ -147,10 +162,9 @@ terraform {
     }
   }
 }
-
-resource "aws_s3_bucket" "positive2" {
+resource "aws_s3_bucket" "positive1" {
   bucket = "my-tf-test-bucket"
-  acl    = "public-read-write"
+  acl    = "public-read"
 
   tags = {
     Name        = "My bucket"
@@ -158,21 +172,6 @@ resource "aws_s3_bucket" "positive2" {
   }
 
   versioning {
-    enabled = true
-  }
-}
-
-```
-
-```terraform
-module "s3_bucket" {
-  source = "terraform-aws-modules/s3-bucket/aws"
-  version = "3.7.0"
-
-  bucket = "my-s3-bucket"
-  acl    = "public-read"
-
-  versioning = {
     enabled = true
   }
 }

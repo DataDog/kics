@@ -35,6 +35,19 @@ Restricting inbound traffic to specific, trusted IP addresses, or CIDR ranges is
 
 ## Compliant Code Examples
 ```terraform
+resource "aws_security_group_rule" "negative5" {
+  type              = "ingress"
+  from_port         = 3306
+  to_port           = 3306
+  protocol          = "tcp"
+  ipv6_cidr_blocks  = ["fc00::/8"]
+  security_group_id = aws_security_group.default.id
+}
+
+
+```
+
+```terraform
 module "web_server_sg" {
   source  = "terraform-aws-modules/security-group/aws"
   version = "4.3.0"
@@ -66,45 +79,14 @@ resource "aws_security_group" "negative7" {
 }
 
 ```
-
-```terraform
-resource "aws_security_group" "negative3" {
-  ingress {
-    from_port   = 3306
-    to_port     = 3306
-    protocol    = "tcp"
-    cidr_blocks = ["1.0.0.0/0"]
-  }
-
-  ingress {
-    from_port   = 3306
-    to_port     = 3306
-    protocol    = "tcp"
-    cidr_blocks = ["0.0.1.0/0"]
-  }
-}
-
-```
 ## Non-Compliant Code Examples
 ```terraform
-resource "aws_security_group_rule" "positive6" {
-  type              = "ingress"
-  from_port         = 3306
-  to_port           = 3306
-  protocol          = "tcp"
-  ipv6_cidr_blocks  = ["::/0"]
-  security_group_id = aws_security_group.default.id
-}
-
-```
-
-```terraform
-resource "aws_security_group" "positive2" {
+resource "aws_security_group" "positive7" {
   ingress {
     from_port         = 3306
     to_port           = 3306
     protocol          = "tcp"
-    cidr_blocks       = ["0.0.0.0/0"]
+    ipv6_cidr_blocks  = ["::/0"]
     security_group_id = aws_security_group.default.id
   }
 }
@@ -126,6 +108,20 @@ resource "aws_security_group" "positive3" {
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
+}
+
+```
+
+```terraform
+module "web_server_sg" {
+  source  = "terraform-aws-modules/security-group/aws"
+  version = "4.3.0"
+
+  name        = "web-server"
+  description = "Security group for web-server with HTTP ports open within VPC"
+  vpc_id      = "vpc-12345678"
+
+  ingress_ipv6_cidr_blocks  = ["fc00::/8", "::/0"]
 }
 
 ```

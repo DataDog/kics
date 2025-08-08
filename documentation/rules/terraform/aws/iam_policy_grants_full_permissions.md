@@ -147,27 +147,6 @@ output "secret" {
 ```
 ## Non-Compliant Code Examples
 ```terraform
-resource "aws_iam_policy" "s3-permission" {
-  name   = "s3-permission"
-  policy = <<EOF
-{
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Action": [
-        "*"
-      ],
-      "Effect": "Allow",
-      "Resource": "*"
-    }
-  ]
-}
-EOF
-}
-
-```
-
-```terraform
 resource "aws_iam_user" "positive1" {
   name          = "${local.resource_prefix.value}-user"
   force_destroy = true
@@ -211,5 +190,26 @@ output "secret" {
   value = aws_iam_access_key.user.encrypted_secret
 }
 
+
+```
+
+```terraform
+resource "aws_iam_policy" "s3-permission" {
+  name   = "s3-permission"
+  policy = <<EOF
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Action": [
+        "*"
+      ],
+      "Effect": "Allow",
+      "Resource": "*"
+    }
+  ]
+}
+EOF
+}
 
 ```

@@ -113,39 +113,33 @@ resource "aws_s3_bucket" "negative1" {
 ```
 ## Non-Compliant Code Examples
 ```terraform
-module "s3_bucket" {
-  source = "terraform-aws-modules/s3-bucket/aws"
-
-  version = "3.7.0"
-
-  bucket = "my-s3-bucket"
-  acl    = "private"
-
-}
-
-```
-
-```terraform
-provider "aws" {
-  region = "us-east-1"
-}
-
 terraform {
   required_providers {
     aws = {
-      source  = "hashicorp/aws"
-      version = "~> 3.0"
+      source = "hashicorp/aws"
+      version = "4.2.0"
     }
   }
 }
 
-resource "aws_s3_bucket" "positive2" {
+provider "aws" {
+  # Configuration options
+}
+
+resource "aws_s3_bucket" "b0" {
   bucket = "my-tf-test-bucket"
-  acl    = "private"
 
   tags = {
     Name        = "My bucket"
     Environment = "Dev"
+  }
+}
+
+resource "aws_s3_bucket_versioning" "example" {
+  bucket = aws_s3_bucket.b0.id
+
+  versioning_configuration {
+    status = "Suspended"
   }
 }
 
@@ -177,6 +171,19 @@ resource "aws_s3_bucket" "positive3" {
   versioning {
     mfa_delete = true
   }
+}
+
+```
+
+```terraform
+module "s3_bucket" {
+  source = "terraform-aws-modules/s3-bucket/aws"
+
+  version = "3.7.0"
+
+  bucket = "my-s3-bucket"
+  acl    = "private"
+
 }
 
 ```

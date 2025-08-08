@@ -144,6 +144,22 @@ resource "aws_alb" "negative1" {
 ```
 ## Non-Compliant Code Examples
 ```terraform
+resource "aws_lb" "positive3" {
+  name               = "test-lb-tf"
+  internal           = false
+  load_balancer_type = "network"
+  subnets            = aws_subnet.public.*.id
+
+  enable_deletion_protection = false
+
+  tags = {
+    Environment = "production"
+  }
+}
+
+```
+
+```terraform
 module "alb" {
   source  = "terraform-aws-modules/alb/aws"
   version = "~> 6.0"
@@ -204,22 +220,7 @@ module "alb" {
 ```
 
 ```terraform
-resource "aws_alb" "positive2" {
-  name               = "test-lb-tf"
-  internal           = false
-  load_balancer_type = "network"
-  subnets            = aws_subnet.public.*.id
-
-
-  tags = {
-    Environment = "production"
-  }
-}
-
-```
-
-```terraform
-resource "aws_lb" "positive3" {
+resource "aws_alb" "positive1" {
   name               = "test-lb-tf"
   internal           = false
   load_balancer_type = "network"

@@ -40,6 +40,43 @@ resource "aws_rds_cluster" "my_cluster" {
 
 ## Compliant Code Examples
 ```terraform
+module "rds_cluster" {
+  source = "terraform-aws-modules/rds-aurora/aws"
+  version = "~> 7.0"
+
+  name            = "aurora-example"
+  engine          = "aurora-mysql"
+  engine_version  = "5.7.12"
+  instance_type   = "r5.large"
+  storage_encrypted = true
+
+  username = "root"
+  password = "123SecurePassword123"
+  port     = "3306"
+
+  vpc_id  = "vpc-12345678"
+  subnets = ["subnet-12345678", "subnet-87654321"]
+
+  allowed_cidr_blocks = ["10.20.0.0/16"]
+
+  monitoring_interval = 10
+  instance_monitoring_interval = 60
+
+  apply_immediately   = true
+  skip_final_snapshot = true
+
+  # Database Deletion Protection
+  # deletion_protection = true
+
+  tags = {
+    Owner       = "user"
+    Environment = "dev"
+  }
+}
+
+```
+
+```terraform
 provider "aws" {
   region = "us-west-2"  # Replace with your desired AWS region
 }
@@ -89,6 +126,7 @@ resource "aws_rds_cluster" "my_cluster" {
   deletion_protection          = false
   skip_final_snapshot          = true
   apply_immediately            = true
+  storage_encrypted            = false
 }
 
 resource "aws_rds_cluster_instance" "my_cluster_instance" {
@@ -107,6 +145,42 @@ output "cluster_endpoint" {
 ```
 
 ```terraform
+module "rds_cluster" {
+  source = "terraform-aws-modules/rds-aurora/aws"
+  version = "~> 7.0"
+
+  name            = "aurora-example"
+  engine          = "aurora-mysql"
+  engine_version  = "5.7.12"
+  instance_type   = "r5.large"
+  storage_encrypted = false
+
+  username = "root"
+  password = "123SecurePassword123"
+  port     = "3306"
+
+  vpc_id  = "vpc-12345678"
+  subnets = ["subnet-12345678", "subnet-87654321"]
+
+  allowed_cidr_blocks = ["10.20.0.0/16"]
+
+  monitoring_interval = 10
+  instance_monitoring_interval = 60
+
+  apply_immediately   = true
+  skip_final_snapshot = true
+
+  # Database Deletion Protection
+  # deletion_protection = true
+
+  tags = {
+    Owner       = "user"
+    Environment = "dev"
+  }
+}
+```
+
+```terraform
 provider "aws" {
   region = "us-west-2"  # Replace with your desired AWS region
 }
@@ -122,7 +196,6 @@ resource "aws_rds_cluster" "my_cluster" {
   deletion_protection          = false
   skip_final_snapshot          = true
   apply_immediately            = true
-  storage_encrypted            = false
 }
 
 resource "aws_rds_cluster_instance" "my_cluster_instance" {

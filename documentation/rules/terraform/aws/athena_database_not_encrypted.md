@@ -45,6 +45,22 @@ resource "aws_athena_database" "secure_example" {
 
 ## Compliant Code Examples
 ```terraform
+module "athena_database" {
+  source  = "terraform-aws-modules/athena/aws"
+  version = "~> 2.0"
+
+  name   = "my_athena_db"
+  bucket = "my_athena_bucket"
+
+  encryption_configuration {
+    encryption_option = "SSE_S3"
+  }
+
+  force_destroy = true
+}
+```
+
+```terraform
 resource "aws_s3_bucket" "hoge" {
   bucket = "hoge"
 }
@@ -71,4 +87,16 @@ resource "aws_athena_database" "hoge" {
   bucket = aws_s3_bucket.hoge.bucket
 }
 
+```
+
+```terraform
+module "athena_database" {
+  source  = "terraform-aws-modules/athena/aws"
+  version = "~> 2.0"
+
+  name   = "my_athena_db"
+  bucket = "my_athena_bucket"
+
+  force_destroy = true
+}
 ```

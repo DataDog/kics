@@ -49,6 +49,30 @@ Neglecting this can lead to orphaned resources, wasted spend, and slower inciden
 
 ## Compliant Code Examples
 ```terraform
+resource "google_compute_instance" "good_example" {
+  name         = "good-instance"
+  machine_type = "e2-medium"
+  zone         = "us-central1-a"
+
+  boot_disk {
+    initialize_params {
+      image = "debian-cloud/debian-10"
+    }
+  }
+
+  network_interface {
+    network = "default"
+  }
+
+  labels = {
+    team        = "DevOps" # ✅ "team" tag is present
+    environment = "prod"
+  }
+}
+
+```
+
+```terraform
 # ✅ "team" label is not a valid attribute for this resource type
 resource "google_container_cluster" "good_example" {
   name               = "marcellus-wallace"
@@ -82,30 +106,6 @@ resource "google_compute_instance" "good_example" {
 
   labels = {
     Team        = "DevOps" # ✅ "Team" tag is present
-    environment = "prod"
-  }
-}
-
-```
-
-```terraform
-resource "google_compute_instance" "good_example" {
-  name         = "good-instance"
-  machine_type = "e2-medium"
-  zone         = "us-central1-a"
-
-  boot_disk {
-    initialize_params {
-      image = "debian-cloud/debian-10"
-    }
-  }
-
-  network_interface {
-    network = "default"
-  }
-
-  labels = {
-    team        = "DevOps" # ✅ "team" tag is present
     environment = "prod"
   }
 }

@@ -43,6 +43,42 @@ Neglecting to define the `Principal` in resource-based policies significantly in
 
 ## Compliant Code Examples
 ```terraform
+data "aws_iam_policy_document" "example" {
+  statement {
+    actions = [
+      "cloudwatch:PutMetricData",
+    ]
+
+    resources = ["*"]
+  }
+}
+
+data "aws_iam_policy_document" "lambda_assume" {
+  statement {
+    actions = [
+      "sts:AssumeRole",
+    ]
+    principals {
+      type = "Service"
+      identifiers = [
+        "lambda.amazonaws.com"
+      ]
+    }
+  }
+}
+
+resource "aws_iam_role" "example" {
+  name               = "example-role"
+  assume_role_policy = data.aws_iam_policy_document.lambda_assume.json
+
+  inline_policy {
+    name   = "default"
+    policy = data.aws_iam_policy_document.example.json
+  }
+}
+```
+
+```terraform
 data "aws_iam_policy_document" "glue-example-policyX" {
   statement {
     actions = [
@@ -117,51 +153,6 @@ resource "aws_iam_policy_attachment" "test-attach" {
   roles      = [aws_iam_role.role.name]
   groups     = [aws_iam_group.group.name]
   policy_arn = aws_iam_policy.policy.arn
-}
-
-```
-
-```terraform
-provider "aws" {
-  region = "us-east-1"
-}
-
-resource "aws_kms_key" "secure_policy" {
-  description             = "KMS key + secure_policy"
-  deletion_window_in_days = 7
-
-  policy = <<EOF
-{
-    "Version": "2008-10-17",
-    "Statement": [
-        {
-            "Sid": "Secure Policy",
-            "Effect": "Allow",
-            "Resource": "*",
-            "Action": [
-            "kms:Create*",
-            "kms:Describe*",
-            "kms:Enable*",
-            "kms:List*",
-            "kms:Put*",
-            "kms:Update*",
-            "kms:Revoke*",
-            "kms:Disable*",
-            "kms:Get*",
-            "kms:Delete*",
-            "kms:TagResource",
-            "kms:UntagResource",
-            "kms:ScheduleKeyDeletion",
-            "kms:CancelKeyDeletion"
-            ],
-            "Principal": "AWS": [
-              "arn:aws:iam::AWS-account-ID:user/user-name-1",
-              "arn:aws:iam::AWS-account-ID:user/UserName2"
-            ]
-        }
-    ]
-}
-EOF
 }
 
 ```

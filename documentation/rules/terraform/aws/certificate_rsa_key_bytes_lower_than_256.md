@@ -55,6 +55,14 @@ resource "aws_api_gateway_domain_name" "example3" {
 ```
 ## Non-Compliant Code Examples
 ```terraform
+resource "aws_api_gateway_domain_name" "example" {
+  certificate_body = file("./rsa1024.pem")
+  domain_name     = "api.example.com"
+}
+
+```
+
+```terraform
 resource "aws_iam_server_certificate" "test_cert2" {
   name             = "some_test_cert"
   certificate_body = file("./rsa1024.pem")
@@ -63,14 +71,6 @@ resource "aws_iam_server_certificate" "test_cert2" {
 [......] # cert contents
 -----END RSA PRIVATE KEY-----
 EOF
-}
-
-```
-
-```terraform
-resource "aws_api_gateway_domain_name" "example" {
-  certificate_body = file("./rsa1024.pem")
-  domain_name     = "api.example.com"
 }
 
 ```

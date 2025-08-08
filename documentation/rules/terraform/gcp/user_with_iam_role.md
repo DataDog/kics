@@ -58,6 +58,19 @@ data "google_iam_policy" "negative" {
 ```
 ## Non-Compliant Code Examples
 ```terraform
+data "google_iam_policy" "positive" {
+  binding {
+    role = "roles/apigee.runtimeAgent"
+
+    members = [
+      "user:jane@example.com",
+    ]
+  }
+}
+
+```
+
+```terraform
 resource "google_project_iam_binding" "positive2" {
   project = "your-project-id"
   role    = "roles/container.admin"
@@ -77,19 +90,6 @@ resource "google_project_iam_member" "positive3" {
   project = "your-project-id"
   role    = "roles/editor"
   member  = "user:jane@example.com"
-}
-
-```
-
-```terraform
-data "google_iam_policy" "positive" {
-  binding {
-    role = "roles/apigee.runtimeAgent"
-
-    members = [
-      "user:jane@example.com",
-    ]
-  }
 }
 
 ```

@@ -106,26 +106,6 @@ resource "aws_s3_bucket" "negative1" {
 ```
 ## Non-Compliant Code Examples
 ```terraform
-module "s3_bucket" {
-  source = "terraform-aws-modules/s3-bucket/aws"
-  version = "3.7.0"
-
-  bucket = "my-s3-bucket"
-  acl    = "private"
-
-  versioning = {
-    enabled = true
-  }
-
-  website {
-    index_document = "index.html"
-    error_document = "error.html"
-  }
-}
-
-```
-
-```terraform
 terraform {
   required_providers {
     aws = {
@@ -189,6 +169,26 @@ terraform {
 resource "aws_s3_bucket" "positive1" {
   bucket = "s3-website-test.hashicorp.com"
   acl    = "public-read"
+
+  website {
+    index_document = "index.html"
+    error_document = "error.html"
+  }
+}
+
+```
+
+```terraform
+module "s3_bucket" {
+  source = "terraform-aws-modules/s3-bucket/aws"
+  version = "3.7.0"
+
+  bucket = "my-s3-bucket"
+  acl    = "private"
+
+  versioning = {
+    enabled = true
+  }
 
   website {
     index_document = "index.html"

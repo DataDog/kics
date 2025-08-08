@@ -69,23 +69,6 @@ resource "aws_api_gateway_stage" "example0" {
 ```
 ## Non-Compliant Code Examples
 ```terraform
-resource "aws_api_gateway_deployment" "example3" {
-  rest_api_id   = "some rest api id"
-  stage_name = "some name"
-  tags {
-    project = "ProjectName"
-  }
-}
-
-resource "aws_api_gateway_stage" "example000" {
-  deployment_id = aws_api_gateway_deployment.example3.id
-  rest_api_id   = aws_api_gateway_rest_api.example.id
-  stage_name    = "example"
-}
-
-```
-
-```terraform
 resource "aws_api_gateway_deployment" "example4" {
   rest_api_id   = "some rest api id"
   stage_name = "some name"
@@ -118,6 +101,23 @@ resource "aws_api_gateway_deployment" "examplee" {
 
 resource "aws_api_gateway_stage" "example00" {
   deployment_id = aws_api_gateway_deployment.example.id
+  rest_api_id   = aws_api_gateway_rest_api.example.id
+  stage_name    = "example"
+}
+
+```
+
+```terraform
+resource "aws_api_gateway_deployment" "example3" {
+  rest_api_id   = "some rest api id"
+  stage_name = "some name"
+  tags {
+    project = "ProjectName"
+  }
+}
+
+resource "aws_api_gateway_stage" "example000" {
+  deployment_id = aws_api_gateway_deployment.example3.id
   rest_api_id   = aws_api_gateway_rest_api.example.id
   stage_name    = "example"
 }

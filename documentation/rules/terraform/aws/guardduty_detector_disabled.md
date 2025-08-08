@@ -38,6 +38,15 @@ resource "aws_guardduty_detector" "negative1" {
 }
 
 ```
+
+```terraform
+module "detector" {
+  source  = "terraform-aws-modules/guardduty/aws//modules/detector"
+  version = "~> 3.0"
+
+  enable = true
+}
+```
 ## Non-Compliant Code Examples
 ```terraform
 resource "aws_guardduty_detector" "positive1" {
@@ -45,4 +54,13 @@ resource "aws_guardduty_detector" "positive1" {
 }
 
 
+```
+
+```terraform
+module "detector" {
+  source  = "terraform-aws-modules/guardduty/aws//modules/detector"
+  version = "~> 3.0"
+
+  enable = false
+}
 ```

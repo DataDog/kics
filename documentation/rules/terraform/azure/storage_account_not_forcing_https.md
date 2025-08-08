@@ -42,6 +42,18 @@ Enforcing HTTPS ensures all connections to the storage account are encrypted, pr
 
 ## Compliant Code Examples
 ```terraform
+resource "azurerm_storage_account" "negative1" {
+  name                       = "example"
+  resource_group_name        = data.azurerm_resource_group.example.name
+  location                   = data.azurerm_resource_group.example.location
+  account_tier               = "Standard"
+  account_replication_type   = "GRS"
+  https_traffic_only_enabled = true # Set to true as desired
+}
+
+```
+
+```terraform
 resource "azurerm_storage_account" "positive2" {
   name                     = "example2"
   resource_group_name      = data.azurerm_resource_group.example.name
@@ -50,18 +62,6 @@ resource "azurerm_storage_account" "positive2" {
   account_replication_type = "GRS"
 
   # will not flag because https_traffic_only_enabled is set to true by default so we do not error
-}
-
-```
-
-```terraform
-resource "azurerm_storage_account" "negative1" {
-  name                       = "example"
-  resource_group_name        = data.azurerm_resource_group.example.name
-  location                   = data.azurerm_resource_group.example.location
-  account_tier               = "Standard"
-  account_replication_type   = "GRS"
-  https_traffic_only_enabled = true # Set to true as desired
 }
 
 ```

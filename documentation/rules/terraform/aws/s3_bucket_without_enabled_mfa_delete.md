@@ -33,53 +33,39 @@ meta:
 
 ## Compliant Code Examples
 ```terraform
-module "s3_bucket" {
-  source = "terraform-aws-modules/s3-bucket/aws"
-  version = "3.7.0"
-
-  bucket = "my-s3-bucket"
-  acl    = "private"
-}
-
-```
-
-```terraform
-module "s3_bucket" {
-  source = "terraform-aws-modules/s3-bucket/aws"
-  version = "3.7.0"
-
-  bucket = "my-s3-bucket"
-  acl    = "private"
-
-  lifecycle_rule {
-    id      = "tmp"
-    prefix  = "tmp/"
-    enabled = true
-
-    expiration {
-      date = "2016-01-12"
+terraform {
+  required_providers {
+    aws = {
+      source = "hashicorp/aws"
+      version = "4.2.0"
     }
   }
 }
 
-```
+provider "aws" {
+  # Configuration options
+}
 
-```terraform
-module "s3_bucket" {
-  source = "terraform-aws-modules/s3-bucket/aws"
-  version = "3.7.0"
+resource "aws_s3_bucket" "bb" {
+  bucket = "my-tf-test-bucket"
 
-  bucket = "my-s3-bucket"
-  acl    = "private"
+  tags = {
+    Name        = "My bucket"
+    Environment = "Dev"
+  }
+}
 
-  versioning {
-    enabled = true
-    mfa_delete = true
+resource "aws_s3_bucket_versioning" "example" {
+  bucket = aws_s3_bucket.bb.id
+
+  versioning_configuration {
+    status = "Enabled"
+    mfa_delete = "Enabled"
   }
 }
 
 ```
-## Non-Compliant Code Examples
+
 ```terraform
 module "s3_bucket" {
   source = "terraform-aws-modules/s3-bucket/aws"
@@ -87,10 +73,6 @@ module "s3_bucket" {
 
   bucket = "my-s3-bucket"
   acl    = "private"
-
-  versioning {
-    enabled = false
-  }
 }
 
 ```
@@ -109,7 +91,7 @@ terraform {
   }
 }
 
-resource "aws_s3_bucket" "positive2" {
+resource "aws_s3_bucket" "negative6" {
   bucket = "my-tf-test-bucket"
   acl    = "private"
 
@@ -117,10 +99,39 @@ resource "aws_s3_bucket" "positive2" {
     Name        = "My bucket"
     Environment = "Dev"
   }
+}
 
-  versioning {
-    enabled = true
-    mfa_delete = false
+```
+## Non-Compliant Code Examples
+```terraform
+terraform {
+  required_providers {
+    aws = {
+      source = "hashicorp/aws"
+      version = "4.2.0"
+    }
+  }
+}
+
+provider "aws" {
+  # Configuration options
+}
+
+resource "aws_s3_bucket" "b0" {
+  bucket = "my-tf-test-bucket"
+
+  tags = {
+    Name        = "My bucket"
+    Environment = "Dev"
+  }
+}
+
+resource "aws_s3_bucket_versioning" "example2" {
+  bucket = aws_s3_bucket.b0.id
+
+  versioning_configuration {
+    status = "Enabled"
+    mfa_delete = "Disabled"
   }
 }
 
@@ -148,6 +159,21 @@ resource "aws_s3_bucket" "positive3" {
     Name        = "My bucket"
     Environment = "Dev"
   }
+
+  versioning {
+    enabled = false
+  }
+}
+
+```
+
+```terraform
+module "s3_bucket" {
+  source = "terraform-aws-modules/s3-bucket/aws"
+  version = "3.7.0"
+
+  bucket = "my-s3-bucket"
+  acl    = "private"
 
   versioning {
     enabled = false

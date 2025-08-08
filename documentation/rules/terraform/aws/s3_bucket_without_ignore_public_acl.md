@@ -70,7 +70,6 @@ module "s3_bucket" {
 
   bucket = "my-s3-bucket"
   acl    = "private"
-  ignore_public_acls = false
 
   versioning = {
     enabled = true
@@ -80,16 +79,16 @@ module "s3_bucket" {
 ```
 
 ```terraform
-module "s3_bucket" {
-  source = "terraform-aws-modules/s3-bucket/aws"
-  version = "3.7.0"
+resource "aws_s3_bucket" "positive1" {
+  bucket = "example"
+}
 
-  bucket = "my-s3-bucket"
-  acl    = "private"
+resource "aws_s3_bucket_public_access_block" "positive2" {
+  bucket = aws_s3_bucket.example.id
 
-  versioning = {
-    enabled = true
-  }
+  block_public_acls   = true
+  block_public_policy = true
+  ignore_public_acls  = false
 }
 
 ```

@@ -48,6 +48,36 @@ resource "aws_api_gateway_domain_name" "example" {
 
 ## Compliant Code Examples
 ```terraform
+module "api_gateway_custom_domain" {
+  source   = "terraform-aws-modules/apigateway-v2/aws"
+  version  = "3.0.2"
+  security_policy = "TLS_1_2"
+  description          = "My awesome HTTP API"
+  create_api_domain_name = true
+  domain_name = "api.${module.acm.acm_certificate_domain}"
+
+  domain_name_certificate_arn = module.acm.acm_certificate_arn
+
+  cors_configuration = {
+    allow_credentials = false
+    allow_headers     = ["date", "keep-alive"]
+    allow_methods     = ["PUT", "POST"]
+    allow_origins     = ["*"]
+    expose_headers    = ["keep-alive"]
+    max_age           = 5
+  }
+
+  integrations = {
+    "ANY /{proxy+}" = {
+      lambda_arn             = module.lambda_function.lambda_function_arn
+      payload_format_version = "2.0"
+      timeout_milliseconds  = 12000
+      }
+    }
+}
+```
+
+```terraform
 resource "aws_api_gateway_domain_name" "example4" {
   domain_name              = "api.example.com"
   security_policy = "TLS_1_2"
@@ -56,16 +86,46 @@ resource "aws_api_gateway_domain_name" "example4" {
 ```
 ## Non-Compliant Code Examples
 ```terraform
-resource "aws_api_gateway_domain_name" "example2" {
+resource "aws_api_gateway_domain_name" "example" {
   domain_name              = "api.example.com"
-  security_policy = "TLS_1_0"
 }
 
 ```
 
 ```terraform
-resource "aws_api_gateway_domain_name" "example" {
+module "api_gateway_custom_domain" {
+  source   = "terraform-aws-modules/apigateway-v2/aws"
+  version  = "3.0.2"
+  security_policy = "TLS_1_0"
+  description          = "My awesome HTTP API"
+  create_api_domain_name = true
+  domain_name = "api.${module.acm.acm_certificate_domain}"
+
+  domain_name_certificate_arn = module.acm.acm_certificate_arn
+
+  cors_configuration = {
+    allow_credentials = false
+    allow_headers     = ["date", "keep-alive"]
+    allow_methods     = ["PUT", "POST"]
+    allow_origins     = ["*"]
+    expose_headers    = ["keep-alive"]
+    max_age           = 5
+  }
+
+  integrations = {
+    "ANY /{proxy+}" = {
+      lambda_arn             = module.lambda_function.lambda_function_arn
+      payload_format_version = "2.0"
+      timeout_milliseconds  = 12000
+      }
+    }
+}
+```
+
+```terraform
+resource "aws_api_gateway_domain_name" "example2" {
   domain_name              = "api.example.com"
+  security_policy = "TLS_1_0"
 }
 
 ```

@@ -44,6 +44,34 @@ resource "aws_instance" "secure_example" {
 
 ## Compliant Code Examples
 ```terraform
+module "ec2_instance" {
+  source  = "terraform-aws-modules/ec2-instance/aws"
+  version = "~> 3.0"
+
+  name = "single-instance"
+
+  ami                    = "ami-ebd02392"
+  instance_type          = "t2.micro"
+  key_name               = "user1"
+  monitoring             = true
+  vpc_security_group_ids = ["sg-12345678"]
+  subnet_id              = "subnet-eddcdzz4"
+  associate_public_ip_address = false
+
+  metadata_options {
+    http_endpoint               = "enabled"
+    http_tokens                 = "required"
+    http_put_response_hop_limit = 64
+  }
+
+  tags = {
+    Terraform   = "true"
+    Environment = "dev"
+  }
+}
+```
+
+```terraform
 resource "aws_launch_template" "good_example" {
   name_prefix   = "example"
   image_id      = "ami-123456"
@@ -88,4 +116,32 @@ resource "aws_launch_template" "bad_example" {
   }
 }
 
+```
+
+```terraform
+module "ec2_instance" {
+  source  = "terraform-aws-modules/ec2-instance/aws"
+  version = "~> 3.0"
+
+  name = "single-instance"
+
+  ami                    = "ami-ebd02392"
+  instance_type          = "t2.micro"
+  key_name               = "user1"
+  monitoring             = true
+  vpc_security_group_ids = ["sg-12345678"]
+  subnet_id              = "subnet-eddcdzz4"
+  associate_public_ip_address = false
+
+  metadata_options {
+    http_endpoint               = "enabled"
+    http_tokens                 = "optional"
+    http_put_response_hop_limit = 64
+  }
+
+  tags = {
+    Terraform   = "true"
+    Environment = "dev"
+  }
+}
 ```
