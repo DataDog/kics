@@ -51,6 +51,11 @@ func resolveModulePath(source string, rootDir string) string {
 	return filepath.Clean(filepath.Join(rootDir, clean))
 }
 
+func isTerraformFile(filePath string) bool {
+	re := regexp.MustCompile(`(?i)^.*\.tf$`)
+	return re.MatchString(filePath)
+}
+
 // ParseTerraformModules parses HCL content and extracts module source/version, resolving locals/variables if possible.
 func ParseTerraformModules(files model.FileMetadatas) (map[string]ParsedModule, error) {
 	modules := make(map[string]ParsedModule)
@@ -59,6 +64,10 @@ func ParseTerraformModules(files model.FileMetadatas) (map[string]ParsedModule, 
 
 	for _, file := range files {
 		filePath := file.FilePath
+		isTfFile := isTerraformFile(filePath)
+		if !isTfFile {
+			continue
+		}
 		baseDir := filepath.Dir(filePath)
 
 		file.Content = getFileContent(file)
