@@ -35,7 +35,7 @@ CxPolicy[result] {
 		"documentId": input.document[i].id,
 		"resourceType": "module",
 		"resourceName": sprintf("%s", [name]),
-		"searchKey": sprintf("module[%s].enable_logging", [name]),
+		"searchKey": sprintf("module[%s].%s", [name, keyToCheck]),
 		"searchLine": common_lib.build_search_line(["module", name, keyToCheck], []),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": sprintf("module[%s].%s should be true", [name, keyToCheck]),

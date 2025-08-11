@@ -64,7 +64,7 @@ CxPolicy[result] {
 		"documentId": input.document[i].id,
 		"resourceType": "module",
 		"resourceName": sprintf("%s", [name]),
-		"searchKey": sprintf("module[%s].kms_master_key_id", [name]),
+		"searchKey": sprintf("module[%s].%s", [name, keyToCheck]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": sprintf("module[%s].%s should be defined and not null", [name, keyToCheck]),
 		"keyActualValue": sprintf("module[%s].%s is empty string", [name, keyToCheck]),

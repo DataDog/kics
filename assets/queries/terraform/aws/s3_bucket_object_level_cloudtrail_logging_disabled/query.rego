@@ -50,7 +50,7 @@ CxPolicy[result] {
 		"documentId": input.document[i].id,
 		"resourceType": "module",
 		"resourceName": sprintf("%s", [name]),
-		"searchKey": sprintf("module[%s]", [name]),
+		"searchKey": sprintf("module[%s].%s", [name, keyToCheck]),
 		"issueType": "MissingAttribute",
 		"keyExpectedValue": sprintf("module[%s].%s.read_write_type should be defined and not null", [name, keyToCheck]),
 		"keyActualValue": sprintf("module[%s].%s.read_write_type is undefined or null", [name, keyToCheck]),

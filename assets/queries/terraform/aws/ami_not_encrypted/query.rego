@@ -107,7 +107,7 @@ CxPolicy[result] {
 CxPolicy[result] {
 	module := input.document[i].module[name]
 	keyToCheck := common_lib.get_module_equivalent_key("aws", module.source, "aws_ami", "ebs_block_device")
-	not common_lib.valid_key(module, "ebs_block_device")
+	not common_lib.valid_key(module, keyToCheck)
 
 	result := {
 		"documentId": input.document[i].id,

@@ -35,7 +35,7 @@ CxPolicy[result] {
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": "'secrets' should be defined",
 		"keyActualValue": "'secrets' is undefined",
-		"searchLine": common_lib.build_search_line(["resource", "aws_eks_cluster", name, "resources"], []),
+		"searchLine": common_lib.build_search_line(["resource", "aws_eks_cluster", name, "encryption_config", "resources"], []),
 	}
 }
 
@@ -73,8 +73,8 @@ CxPolicy[result] {
 		"resourceName": sprintf("%s", [name]),
 		"searchKey": sprintf("module[%s].%s", [name, keyToCheck]),
 		"issueType": "IncorrectValue",
-		"keyExpectedValue": sprintf("module[%s].%s  should be defined", [name, keyToCheck]),
-		"keyActualValue": sprintf("module[%s].%s is undefined", [name, keyToCheck]),
-		"searchLine": common_lib.build_search_line(["module", name, "resources"], []),
+		"keyExpectedValue": "'secrets' should be defined",
+		"keyActualValue": "'secrets' is undefined",
+		"searchLine": common_lib.build_search_line(["module", name, "encryption_config", "resources"], []),
 	}
 }

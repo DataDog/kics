@@ -44,7 +44,7 @@ CxPolicy[result] {
 		"documentId": input.document[i].id,
 		"resourceType": "module",
 		"resourceName": sprintf("%s", [name]),
-		"searchKey": sprintf("module[%s].policy", [name]),
+		"searchKey": sprintf("module[%s].%s", [name, keyToCheck]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": sprintf("'module[%s].%s.Statement.Principal.AWS' should not equal '*'", [name, keyToCheck]),
 		"keyActualValue": sprintf("'module[%s].%s.Statement.Principal.AWS' is equal '*'", [name, keyToCheck]),

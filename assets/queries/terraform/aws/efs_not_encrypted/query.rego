@@ -54,7 +54,7 @@ CxPolicy[result] {
 		"resourceType": "module",
 		"resourceName": sprintf("%s", [name]),
 		"searchKey": sprintf("module[%s].%s", [name, keyToCheck]),
-		"searchLine": common_lib.build_search_line(["module", name ,"encrypted"], []),
+		"searchLine": common_lib.build_search_line(["module", name, keyToCheck], []),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": sprintf("module[%s].%s should be true", [name, keyToCheck]),
 		"keyActualValue": sprintf("module[%s].%s is false", [name, keyToCheck]),
@@ -80,7 +80,7 @@ CxPolicy[result] {
 		"issueType": "MissingAttribute",
 		"keyExpectedValue": sprintf("module[%s].%s should be defined and not null", [name, keyToCheck]),
 		"keyActualValue": sprintf("module[%s].%s is undefined or null", [name, keyToCheck]),
-		"remediation": sprintf("module[%s].%s = true", [name, keyToCheck]),
+		"remediation": sprintf("%s = true", [keyToCheck]),
 		"remediationType": "addition",
 	}
 }

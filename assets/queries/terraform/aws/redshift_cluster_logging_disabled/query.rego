@@ -80,7 +80,7 @@ CxPolicy[result] {
 		"keyExpectedValue": sprintf("module[%s].%s.enable should be true", [name, keyToCheck]),
 		"keyActualValue": sprintf("module[%s].%s is undefined", [name, keyToCheck]),
 		"searchLine": common_lib.build_search_line(["module", name], []),
-		"remediation": "logging {\n\tenable = true \n\t}",
+		"remediation": sprintf("%s {\n\tenable = true \n\t}", keyToCheck),
 		"remediationType": "addition",
 	}
 }
