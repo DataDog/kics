@@ -42,10 +42,11 @@ CxPolicy[result] {
 	}
 }
 
+#######################################################################################################
+
 CxPolicy[result] {
 	module := input.document[i].module[name]
 	keyToCheck := common_lib.get_module_equivalent_key("aws", module.source, "aws_redshift_cluster", "encrypted")
-
 	not common_lib.valid_key(module, keyToCheck)
 
 	result := {
@@ -55,8 +56,8 @@ CxPolicy[result] {
 		"searchKey": sprintf("module[%s]", [name]),
 		"searchLine": common_lib.build_search_line(["module", name], []),
 		"issueType": "MissingAttribute",
-		"keyExpectedValue": "encrypted should be defined and not null",
-		"keyActualValue": "encrypted is undefined or null",
+		"keyExpectedValue": sprintf("module[%s].%s should be defined and not null", [name, keyToCheck]),
+		"keyActualValue": sprintf("module[%s].%s is undefined or null", [name, keyToCheck]),
 		"remediation": sprintf("%s = true", [keyToCheck]),
 		"remediationType": "addition",
 	}
@@ -65,7 +66,6 @@ CxPolicy[result] {
 CxPolicy[result] {
 	module := input.document[i].module[name]
 	keyToCheck := common_lib.get_module_equivalent_key("aws", module.source, "aws_redshift_cluster", "encrypted")
-
 	module[keyToCheck] == false
 
 	result := {
@@ -75,8 +75,8 @@ CxPolicy[result] {
 		"searchKey": sprintf("module[%s].%s", [name, keyToCheck]),
 		"searchLine": common_lib.build_search_line(["module", name, keyToCheck], []),
 		"issueType": "IncorrectValue",
-		"keyExpectedValue": "encrypted should be set to false",
-		"keyActualValue": "encrypted is true",
+		"keyExpectedValue": sprintf("module[%].%s should be set to false", [name, keyToCheck]),
+		"keyActualValue": sprintf("module[%s].%s is true", [name, keyToCheck]),
 		"remediation": json.marshal({
 			"before": "false",
 			"after": "true"
@@ -84,4 +84,3 @@ CxPolicy[result] {
 		"remediationType": "replacement",
 	}
 }
-

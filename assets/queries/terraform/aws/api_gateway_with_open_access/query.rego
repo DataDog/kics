@@ -45,7 +45,7 @@ CxPolicy[result] {
 		"searchKey": sprintf("module[%s].%s", [name, httpMethodKey]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": sprintf("%s should only be 'NONE' if %s is 'OPTIONS'", [keyToCheck, httpMethodKey]),
-		"keyActualValue": sprintf("module[%s].%s is 'NONE' and %s is not ''OPTIONS'", [name, keyToCheck, httpMethodKey],
+		"keyActualValue": sprintf("module[%s].%s is 'NONE' and %s is not ''OPTIONS'", [name, keyToCheck, httpMethodKey]),
 		"searchLine": common_lib.build_search_line(["module", name, httpMethodKey], []),
 		"remediation": json.marshal({
 			"before": sprintf("%s", [module[httpMethodKey]]),

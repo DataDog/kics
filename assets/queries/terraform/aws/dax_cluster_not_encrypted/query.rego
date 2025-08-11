@@ -81,6 +81,7 @@ CxPolicy[result] {
 		}),
 		"remediationType": "replacement",
 	}
+}
 
 CxPolicy[result] {
 	module := input.document[i].module[name]

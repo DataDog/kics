@@ -222,7 +222,7 @@ CxPolicy[result] {
 		"resourceName": sprintf("%s", [name]),
 		"searchKey": sprintf("module[%s].%s.logging_level", [name, keyToCheck]),
 		"issueType": "InvalidAttribute",
-		"keyExpectedValue": sprintf("module[%s].%s.logging_level should not be set to OFF", [name, keyToCheck],
+		"keyExpectedValue": sprintf("module[%s].%s.logging_level should not be set to OFF", [name, keyToCheck]),
 		"keyActualValue": sprintf("model[%s].%s.logging_level is set to OFF", [name, keyToCheck]),
 	}
 }

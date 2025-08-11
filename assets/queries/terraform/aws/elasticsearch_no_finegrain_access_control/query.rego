@@ -121,4 +121,3 @@ CxPolicy[result] {
         "keyActualValue": sprintf("module[%s].%s.internal_user_database_enabled is false", [name, keyToCheck])
     }
 }
-

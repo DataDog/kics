@@ -32,6 +32,6 @@ CxPolicy[result] {
 		"searchKey": sprintf("module[%s]", [name]),
 		"issueType": "MissingAttribute",
 		"keyExpectedValue": sprintf("Attribute '%s' should be set", [keyToCheck]),
-		"keyActualValue": sprintf("Attribute '%s' is undefined" [keyToCheck]),
+		"keyActualValue": sprintf("Attribute '%s' is undefined", [keyToCheck]),
 	}
 }

@@ -18,10 +18,11 @@ CxPolicy[result] {
 	}
 }
 
+#######################################################################################################
+
 CxPolicy[result] {
 	module := input.document[i].module[name]
 	keyToCheck := common_lib.get_module_equivalent_key("aws", module.source, "aws_s3_object", "server_side_encryption")
-
 	not common_lib.valid_key(module, keyToCheck)
 
 	result := {
@@ -30,8 +31,7 @@ CxPolicy[result] {
 		"resourceName": sprintf("%s", [name]),
 		"searchKey": sprintf("module[%s]", [name]),
 		"issueType": "MissingAttribute",
-		"keyExpectedValue": "'server_side_encryption' should be defined in module",
-		"keyActualValue": "'server_side_encryption' is undefined or null",
+		"keyExpectedValue": sprintf("module[%s].%s should be defined in module", [name, keyToCheck]),
+		"keyActualValue": sprintf("module[%s].%s is undefined or null", [name, keyToCheck]),
 	}
 }
-

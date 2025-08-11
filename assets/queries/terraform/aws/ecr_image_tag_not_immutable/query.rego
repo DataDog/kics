@@ -80,7 +80,7 @@ CxPolicy[result] {
 		"searchLine": common_lib.build_search_line(["module", name, keyToCheck], []),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": sprintf("module[%s].%s should be 'IMMUTABLE'", [name, keyToCheck]),
-		"keyActualValue": sprintf("module[%s].%s is 'MUTABLE'", [name, keyToCheck],
+		"keyActualValue": sprintf("module[%s].%s is 'MUTABLE'", [name, keyToCheck]),
 		"remediation": json.marshal({
 			"before": "MUTABLE",
 			"after": "IMMUTABLE"
