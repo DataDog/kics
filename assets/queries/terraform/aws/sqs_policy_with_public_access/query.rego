@@ -26,6 +26,8 @@ CxPolicy[result] {
 	}
 }
 
+#######################################################################################################
+
 CxPolicy[result] {
 	module := input.document[i].module[name]
 	keyToCheck := common_lib.get_module_equivalent_key("aws", module.source, "aws_sqs_queue_policy", "policy")
@@ -58,4 +60,3 @@ check_principal(field, value) {
 } else {
 	common_lib.containsOrInArrayContains(field, "*")
 }
-

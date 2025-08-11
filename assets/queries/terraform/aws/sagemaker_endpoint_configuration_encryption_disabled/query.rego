@@ -19,6 +19,8 @@ CxPolicy[result] {
 	}
 }
 
+#######################################################################################################
+
 CxPolicy[result] {
 	module := input.document[i].module[name]
 	keyToCheck := common_lib.get_module_equivalent_key("aws", module.source, "aws_sagemaker_endpoint_configuration", "endpoint_config")
@@ -35,4 +37,3 @@ CxPolicy[result] {
 		"keyActualValue": sprintf("module[%s].%s.kms_key_arn is undefined or null", [name, keyToCheck]),
 	}
 }
-

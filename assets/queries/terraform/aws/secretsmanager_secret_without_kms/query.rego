@@ -18,10 +18,11 @@ CxPolicy[result] {
 	}
 }
 
+#######################################################################################################
+
 CxPolicy[result] {
 	module := input.document[i].module[name]
 	keyToCheck := common_lib.get_module_equivalent_key("aws", module.source, "aws_secretsmanager_secret", "kms_key_id")
-
 	not common_lib.valid_key(module, keyToCheck)
 
 	result := {
@@ -34,4 +35,3 @@ CxPolicy[result] {
 		"keyActualValue": sprintf("module[%s].%s is undefined or null", [name, keyToCheck]),
 	}
 }
-

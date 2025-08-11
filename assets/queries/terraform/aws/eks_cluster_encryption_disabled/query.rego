@@ -39,9 +39,12 @@ CxPolicy[result] {
 	}
 }
 
+#######################################################################################################
+
 CxPolicy[result] {
 	module := input.document[i].module[name]
 	keyToCheck := common_lib.get_module_equivalent_key("aws", module.source, "aws_eks_cluster", "encryption_config")
+
 	not common_lib.valid_key(module, keyToCheck)
 
 	result := {
@@ -59,6 +62,7 @@ CxPolicy[result] {
 CxPolicy[result] {
 	module := input.document[i].module[name]
 	keyToCheck := common_lib.get_module_equivalent_key("aws", module.source, "aws_eks_cluster", "encryption_config")
+
 	resources := input.document[i].module[name][keyToCheck].resources
 
 	count({x | resource := resources[x]; resource == "secrets"}) == 0
@@ -74,4 +78,3 @@ CxPolicy[result] {
 		"searchLine": common_lib.build_search_line(["module", name, "resources"], []),
 	}
 }
-

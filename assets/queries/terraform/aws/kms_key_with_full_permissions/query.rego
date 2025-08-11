@@ -43,28 +43,12 @@ CxPolicy[result] {
 	}
 }
 
+#######################################################################################################
 
 CxPolicy[result] {
 	module := input.document[i].module[name]
 	keyToCheck := common_lib.get_module_equivalent_key("aws", module.source, "aws_kms_key", "policy")
 
-	not common_lib.valid_key(module, keyToCheck)
-
-	result := {
-		"documentId": input.document[i].id,
-		"resourceType": "module",
-		"resourceName": sprintf("%s", [name]),
-		"searchKey": sprintf("module[%s]", [name]),
-		"issueType": "MissingAttribute",
-		"keyExpectedValue": sprintf("module[%s].%s should be defined and not null", [name, keyToCheck]),
-		"keyActualValue": sprintf("module[%s].%s is undefined or null", [name, keyToCheck]),
-		"searchLine": common_lib.build_search_line(["module", name], []),
-	}
-}
-
-CxPolicy[result] {
-	module := input.document[i].module[name]
-	keyToCheck := common_lib.get_module_equivalent_key("aws", module.source, "aws_kms_key", "policy")
 	policy := common_lib.json_unmarshal(module[keyToCheck])
 	st := common_lib.get_statement(policy)
 	statement := st[_]
@@ -85,4 +69,20 @@ CxPolicy[result] {
 	}
 }
 
+CxPolicy[result] {
+	module := input.document[i].module[name]
+	keyToCheck := common_lib.get_module_equivalent_key("aws", module.source, "aws_kms_key", "policy")
 
+	not common_lib.valid_key(module, keyToCheck)
+
+	result := {
+		"documentId": input.document[i].id,
+		"resourceType": "module",
+		"resourceName": sprintf("%s", [name]),
+		"searchKey": sprintf("module[%s]", [name]),
+		"issueType": "MissingAttribute",
+		"keyExpectedValue": sprintf("module[%s].%s should be defined and not null", [name, keyToCheck]),
+		"keyActualValue": sprintf("module[%s].%s is undefined or null", [name, keyToCheck]),
+		"searchLine": common_lib.build_search_line(["module", name], []),
+	}
+}

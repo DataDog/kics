@@ -45,6 +45,8 @@ CxPolicy[result] {
 	}
 }
 
+#######################################################################################################
+
 CxPolicy[result] {
 	module := input.document[i].module[name]
 	keyToCheck := common_lib.get_module_equivalent_key("aws", module.source, "aws_elasticsearch_domain", "encrypt_at_rest")
@@ -68,8 +70,8 @@ CxPolicy[result] {
 CxPolicy[result] {
 	module := input.document[i].module[name]
 	keyToCheck := common_lib.get_module_equivalent_key("aws", module.source, "aws_elasticsearch_domain", "encrypt_at_rest")
-
 	encrypt_at_rest := module[keyToCheck]
+
 	encrypt_at_rest.enabled == false
 
 	result := {
@@ -88,4 +90,3 @@ CxPolicy[result] {
 		"remediationType": "replacement",
 	}
 }
-

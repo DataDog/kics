@@ -26,6 +26,8 @@ CxPolicy[result] {
 	}
 }
 
+#######################################################################################################
+
 CxPolicy[result] {
 	module := input.document[i].module[name]
 	keyToCheck := common_lib.get_module_equivalent_key("aws", module.source, "aws_batch_job_definition", "container_properties")
@@ -49,5 +51,3 @@ CxPolicy[result] {
 		"remediationType": "replacement",
 	}
 }
-
-

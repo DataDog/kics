@@ -26,11 +26,13 @@ CxPolicy[result] {
     }
 }
 
+#######################################################################################################
+
 CxPolicy[result] {
     module := input.document[i].module[name]
     keyToCheck := common_lib.get_module_equivalent_key("aws", module.source, "aws_sagemaker_notebook_instance", "direct_internet_access")
-
     common_lib.valid_key(module, keyToCheck)
+
     module[keyToCheck] != "Disabled"
 
     result := {
@@ -49,4 +51,3 @@ CxPolicy[result] {
         "remediationType": "replacement"
     }
 }
-

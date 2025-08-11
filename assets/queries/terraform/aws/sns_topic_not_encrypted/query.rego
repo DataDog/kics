@@ -20,6 +20,24 @@ CxPolicy[result] {
 }
 
 CxPolicy[result] {
+	resource := input.document[i].resource.aws_sns_topic[name]
+
+	resource.kms_master_key_id == ""
+
+	result := {
+		"documentId": input.document[i].id,
+		"resourceType": "aws_sns_topic",
+		"resourceName": tf_lib.get_resource_name(resource, name),
+		"searchKey": sprintf("aws_sns_topic[%s].kms_master_key_id", [name]),
+		"issueType": "IncorrectValue",
+		"keyExpectedValue": "kms_master_key_id should be defined and not null",
+		"keyActualValue": "kms_master_key_id is empty string",
+	}
+}
+
+#######################################################################################################
+
+CxPolicy[result] {
 	module := input.document[i].module[name]
 	keyToCheck := common_lib.get_module_equivalent_key("aws", module.source, "aws_sns_topic", "kms_master_key_id")
 
@@ -33,22 +51,6 @@ CxPolicy[result] {
 		"issueType": "MissingAttribute",
 		"keyExpectedValue": sprintf("module[%s].%s should be defined and not null", [name, keyToCheck]),
 		"keyActualValue": sprintf("module[%s].%s is undefined or null", [name, keyToCheck]),
-	}
-}
-
-CxPolicy[result] {
-	resource := input.document[i].resource.aws_sns_topic[name]
-
-	resource.kms_master_key_id == ""
-
-	result := {
-		"documentId": input.document[i].id,
-		"resourceType": "aws_sns_topic",
-		"resourceName": tf_lib.get_resource_name(resource, name),
-		"searchKey": sprintf("aws_sns_topic[%s].kms_master_key_id", [name]),
-		"issueType": "IncorrectValue",
-		"keyExpectedValue": "kms_master_key_id should be defined and not null",
-		"keyActualValue": "kms_master_key_id is empty string",
 	}
 }
 
@@ -68,4 +70,3 @@ CxPolicy[result] {
 		"keyActualValue": sprintf("module[%s].%s is empty string", [name, keyToCheck]),
 	}
 }
-

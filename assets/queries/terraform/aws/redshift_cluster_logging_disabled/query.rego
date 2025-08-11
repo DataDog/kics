@@ -25,9 +25,28 @@ CxPolicy[result] {
 }
 
 CxPolicy[result] {
+	resource := input.document[i].resource.aws_redshift_cluster[name]
+	not common_lib.valid_key(resource, "logging")
+
+	result := {
+		"documentId": input.document[i].id,
+		"resourceType": "aws_redshift_cluster",
+		"resourceName": tf_lib.get_resource_name(resource, name),
+		"searchKey": sprintf("aws_redshift_cluster[%s]", [name]),
+		"searchLine": common_lib.build_search_line(["resource", "aws_redshift_cluster", name], []),
+		"issueType": "MissingAttribute",
+		"keyExpectedValue": "'aws_redshift_cluster.logging.enable' should be true",
+		"keyActualValue": "'aws_redshift_cluster.logging' is undefined",
+		"remediation": "logging {\n\tenable = true \n\t}",
+		"remediationType": "addition",
+	}
+}
+
+#######################################################################################################
+
+CxPolicy[result] {
 	module := input.document[i].module[name]
 	keyToCheck := common_lib.get_module_equivalent_key("aws", module.source, "aws_redshift_cluster", "logging")
-
 	module[keyToCheck].enable == false
 
 	result := {
@@ -48,28 +67,8 @@ CxPolicy[result] {
 }
 
 CxPolicy[result] {
-	resource := input.document[i].resource.aws_redshift_cluster[name]
-	not common_lib.valid_key(resource, "logging")
-
-	result := {
-		"documentId": input.document[i].id,
-		"resourceType": "aws_redshift_cluster",
-		"resourceName": tf_lib.get_resource_name(resource, name),
-		"searchKey": sprintf("aws_redshift_cluster[%s]", [name]),
-		"searchLine": common_lib.build_search_line(["resource", "aws_redshift_cluster", name], []),
-		"issueType": "MissingAttribute",
-		"keyExpectedValue": "'aws_redshift_cluster.logging.enable' should be true",
-		"keyActualValue": "'aws_redshift_cluster.logging' is undefined",
-		"remediation": "logging {\n\tenable = true \n\t}",
-		"remediationType": "addition",
-	}
-}
-
-
-CxPolicy[result] {
 	module := input.document[i].module[name]
 	keyToCheck := common_lib.get_module_equivalent_key("aws", module.source, "aws_redshift_cluster", "logging")
-
 	not common_lib.valid_key(module, keyToCheck)
 
 	result := {
@@ -85,4 +84,3 @@ CxPolicy[result] {
 		"remediationType": "addition",
 	}
 }
-

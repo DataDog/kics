@@ -45,6 +45,8 @@ CxPolicy[result] {
 	}
 }
 
+#######################################################################################################
+
 CxPolicy[result] {
 	module := input.document[i].module[name]
 	keyToCheck := common_lib.get_module_equivalent_key("aws", module.source, "aws_rds_cluster", "storage_encrypted")
@@ -95,4 +97,3 @@ is_serverless(cluster) {
 	keyToCheck := common_lib.get_module_equivalent_key("aws", cluster.source, "aws_rds_cluster", "engine_mode")
 	cluster[keyToCheck] == "serverless"
 }
-

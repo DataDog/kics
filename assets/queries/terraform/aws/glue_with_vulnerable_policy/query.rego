@@ -26,10 +26,12 @@ CxPolicy[result] {
 	}
 }
 
+#######################################################################################################
 
 CxPolicy[result] {
 	module := input.document[i].module[name]
 	keyToCheck := common_lib.get_module_equivalent_key("aws", module.source, "aws_glue_resource_policy", "policy")
+
 	policy := common_lib.json_unmarshal(module[keyToCheck])
 	st := common_lib.get_statement(policy)
 	statement := st[_]
@@ -49,4 +51,3 @@ CxPolicy[result] {
 		"searchLine": common_lib.build_search_line(["module", name, keyToCheck], []),
 	}
 }
-

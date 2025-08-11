@@ -42,11 +42,13 @@ CxPolicy[result] {
 	}
 }
 
+#######################################################################################################
+
 CxPolicy[result] {
 	module := input.document[i].module[name]
 	keyToCheck := common_lib.get_module_equivalent_key("aws", module.source, "aws_neptune_cluster", "iam_database_authentication_enabled")
-
 	not common_lib.valid_key(module, keyToCheck)
+
 	result := {
 		"documentId": input.document[i].id,
 		"resourceType": "module",
@@ -82,4 +84,3 @@ CxPolicy[result] {
 		"remediationType": "replacement",
 	}
 }
-
