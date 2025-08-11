@@ -349,11 +349,7 @@ func (d *DefaultDetectLineResponse) DetectCurrentLine(str1, str2 string, recurse
 	distances := make(map[int]int)
 
 	for i := d.CurrentLine; i < len(lines); i++ {
-		line := strings.TrimSpace(lines[i])
-		if strings.HasPrefix(line, "#") || strings.HasPrefix(line, "//") {
-			continue // skip comments
-		}
-		distances = checkLine(str1, str2, distances, lines[i], i)
+		distances = checkLine(str1, str2, distances, lines, i)
 	}
 
 	if len(distances) == 0 {
@@ -368,7 +364,12 @@ func (d *DefaultDetectLineResponse) DetectCurrentLine(str1, str2 string, recurse
 	return d, lines
 }
 
-func checkLine(str1, str2 string, distances map[int]int, line string, i int) map[int]int {
+func checkLine(str1, str2 string, distances map[int]int, lines []string, i int) map[int]int {
+	line := strings.TrimSpace(lines[i])
+	if strings.HasPrefix(line, "#") || strings.HasPrefix(line, "//") {
+		return distances
+	}
+
 	regex := regexp.MustCompile(`^\s+`)
 	line = regex.ReplaceAllString(line, "")
 	if str1 != "" && str2 != "" && strings.Contains(line, str1) {
@@ -376,6 +377,27 @@ func checkLine(str1, str2 string, distances map[int]int, line string, i int) map
 		if strings.Contains(restLine, str2) {
 			distances[i] = levenshtein.ComputeDistance(ExtractLineFragment(line, str1, false), str1)
 			distances[i] += levenshtein.ComputeDistance(ExtractLineFragment(restLine, str2, false), str2)
+		} else if strings.Contains(line, "|") {
+			s := ""
+			currentIndent := strings.Index(lines[i], line)
+			for j := i + 1; j < len(lines); j++ {
+				nextLine := regex.ReplaceAllString(lines[j], "")
+				nextIndent := strings.Index(lines[j], nextLine)
+				if currentIndent == nextIndent {
+					break
+				}
+				s += nextLine
+			}
+			whitespacesRegex := regexp.MustCompile(`\s+`)
+
+			if strings.Contains(
+				whitespacesRegex.ReplaceAllString(str2, ""),
+				whitespacesRegex.ReplaceAllString(s, ""),
+			) {
+				distances[i] = levenshtein.ComputeDistance(ExtractLineFragment(line, str1, false), str1)
+				distances[i] += levenshtein.ComputeDistance(ExtractLineFragment(str2, s, false), s)
+			}
+
 		}
 	} else if str1 != "" && strings.Contains(line, str1) {
 		distances[i] = levenshtein.ComputeDistance(ExtractLineFragment(line, str1, false), str1)
