@@ -40,6 +40,8 @@ CxPolicy[result] {
 	}
 }
 
+#######################################################################################################
+
 CxPolicy[result] {
 	module := input.document[i].module[name]
 	keyToCheck := common_lib.get_module_equivalent_key("aws", module.source, "aws_redshift_cluster", "publicly_accessible")
@@ -51,8 +53,8 @@ CxPolicy[result] {
 		"resourceName": sprintf("%s", [name]),
 		"searchKey": sprintf("module[%s]", [name]),
 		"issueType": "MissingAttribute",
-		"keyExpectedValue": sprintf("%s should be defined and not null", [keyToCheck]),
-		"keyActualValue": sprintf("%s is undefined or null", [keyToCheck]),
+		"keyExpectedValue": sprintf("module[%s].%s should be defined and not null", [name, keyToCheck]),
+		"keyActualValue": sprintf("module[%s].%s is undefined or null", [name, keyToCheck]),
 		"remediation": sprintf("%s = false", [keyToCheck]),
 		"remediationType": "addition",
 	}
@@ -69,8 +71,8 @@ CxPolicy[result] {
 		"resourceName": sprintf("%s", [name]),
 		"searchKey": sprintf("module[%s].%s", [name, keyToCheck]),
 		"issueType": "IncorrectValue",
-		"keyExpectedValue": sprintf("%s should be set to false", [keyToCheck]),
-		"keyActualValue": sprintf("%s is true", [keyToCheck]),
+		"keyExpectedValue": sprintf("module[%s].%s should be set to false", [name, keyToCheck]),
+		"keyActualValue": sprintf("module[%s].%s is true", [name, keyToCheck]),
 		"remediation": json.marshal({
 			"before": "true",
 			"after": "false"
@@ -78,4 +80,3 @@ CxPolicy[result] {
 		"remediationType": "replacement",
 	}
 }
-

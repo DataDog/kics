@@ -20,6 +20,8 @@ CxPolicy[result] {
 	}
 }
 
+#######################################################################################################
+
 CxPolicy[result] {
 	module := input.document[i].module[name]
 	keyToCheck := common_lib.get_module_equivalent_key("aws", module.source, "aws_mq_broker", "encryption_options")
@@ -31,8 +33,7 @@ CxPolicy[result] {
 		"resourceName": sprintf("%s", [name]),
 		"searchKey": sprintf("module[%s]", [name]),
 		"issueType": "MissingAttribute",
-		"keyExpectedValue": "'encryption_options' should be defined",
-		"keyActualValue": "'encryption_options' is not defined",
+		"keyExpectedValue": sprintf("module[%s].%s should be defined", [name, keyToCheck]),
+		"keyActualValue": sprintf("module[%s].%s is not defined", [name, keyToCheck]),
 	}
 }
-

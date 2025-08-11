@@ -24,3 +24,28 @@ CxPolicy[result] {
 		"remediationType": "replacement",
 	}
 }
+
+#######################################################################################################
+
+CxPolicy[result] {
+	module := input.document[i].module[name]
+	keyToCheck := common_lib.get_module_equivalent_key("aws", module.source, "aws_neptune_cluster_instance", "publicly_accessible")
+
+	module[keyToCheck] == true
+
+	result := {
+		"documentId": input.document[i].id,
+		"resourceType": "module",
+		"resourceName": sprintf("%s", [name]),
+		"searchKey": sprintf("module[%s].%s", [name, keyToCheck]),
+		"searchLine": common_lib.build_search_line(["module", name, keyToCheck], []),
+		"issueType": "IncorrectValue",
+		"keyExpectedValue": sprintf("module[%s].%s should be set to false", [name, keyToCheck]),
+		"keyActualValue": sprintf("module[%s].%s is set to true", [name, keyToCheck]),
+		"remediation": json.marshal({
+			"before": "true",
+			"after": "false"
+		}),
+		"remediationType": "replacement"
+	}
+}

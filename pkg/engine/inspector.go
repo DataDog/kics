@@ -338,6 +338,7 @@ func (c *Inspector) Inspect(
 	}()
 
 	// Collect all the results
+	moduleVulns := make(map[string]int)
 	for result := range results {
 		if result.err != nil {
 			fmt.Println()
@@ -356,12 +357,19 @@ func (c *Inspector) Inspect(
 		}
 		for _, vulnerability := range result.vulnerabilities {
 			if vulnerability.ResourceType == "module" {
-				log.Log().Msgf("Found module vulnerability %s", vulnerability.QueryName)
-				log.Log().Msgf("Found module vulnerability of severity %s", vulnerability.Severity)
+				val, ok := moduleVulns[vulnerability.QueryName]
+				if ok {
+					moduleVulns[vulnerability.QueryName] = val + 1
+				} else {
+					moduleVulns[vulnerability.QueryName] = 1
+					log.Info().Msgf("Found module vulnerability %s of severity %s", vulnerability.QueryName, vulnerability.Severity)
+				}
 			}
-
 		}
 		vulnerabilities = append(vulnerabilities, result.vulnerabilities...)
+	}
+	for vulnerability, number := range moduleVulns {
+		log.Info().Msgf("Found %d of module vulnerability %s", number, vulnerability)
 	}
 	return vulnerabilities, nil
 }

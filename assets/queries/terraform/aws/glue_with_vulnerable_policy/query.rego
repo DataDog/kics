@@ -25,3 +25,29 @@ CxPolicy[result] {
 		"searchLine": common_lib.build_search_line(["resource", "aws_glue_resource_policy", name, "policy"], []),
 	}
 }
+
+#######################################################################################################
+
+CxPolicy[result] {
+	module := input.document[i].module[name]
+	keyToCheck := common_lib.get_module_equivalent_key("aws", module.source, "aws_glue_resource_policy", "policy")
+
+	policy := common_lib.json_unmarshal(module[keyToCheck])
+	st := common_lib.get_statement(policy)
+	statement := st[_]
+
+	common_lib.is_allow_effect(statement)
+	not common_lib.valid_key(statement, "Condition")
+	common_lib.has_wildcard(statement, "glue:*")
+
+	result := {
+		"documentId": input.document[i].id,
+		"resourceType": "module",
+		"resourceName": sprintf("%s", [name]),
+		"searchKey": sprintf("module[%s].%s", [name, keyToCheck]),
+		"issueType": "IncorrectValue",
+		"keyExpectedValue": sprintf("module[%s].%s should not have wildcard in 'principals' and 'actions'", [name, keyToCheck]),
+		"keyActualValue": sprintf("module[%s].%s has wildcard in 'principals' or 'actions'", [name, keyToCheck]),
+		"searchLine": common_lib.build_search_line(["module", name, keyToCheck], []),
+	}
+}

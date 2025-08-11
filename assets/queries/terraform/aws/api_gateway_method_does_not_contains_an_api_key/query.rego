@@ -46,6 +46,8 @@ CxPolicy[result] {
 	}
 }
 
+#######################################################################################################
+
 CxPolicy[result] {
 	module := input.document[i].module[name]
 	keyToCheck := common_lib.get_module_equivalent_key("aws", module.source, "aws_api_gateway_method", "api_key_required")
@@ -58,8 +60,8 @@ CxPolicy[result] {
 		"searchKey": sprintf("module[%s]", [name]),
 		"searchLine": common_lib.build_search_line(["module", name], []),
 		"issueType": "MissingAttribute",
-		"keyExpectedValue": "'api_key_required' should be defined",
-		"keyActualValue": "'api_key_required' is undefined",
+		"keyExpectedValue": sprintf("module[%s].%s should be defined", [name, keyToCheck]),
+		"keyActualValue": sprintf("module[%s].%s is undefined", [name, keyToCheck]),
 		"remediation": sprintf("%s = true", [keyToCheck]),
 		"remediationType": "addition",
 	}
@@ -77,8 +79,8 @@ CxPolicy[result] {
 		"searchKey": sprintf("module[%s].%s", [name, keyToCheck]),
 		"searchLine": common_lib.build_search_line(["module", name, keyToCheck], []),
 		"issueType": "IncorrectValue",
-		"keyExpectedValue": "'api_key_required' should be 'true'",
-		"keyActualValue": "'api_key_required' is 'false'",
+		"keyExpectedValue": sprintf("module[%s].%s should be 'true'", [name, keyToCheck]),
+		"keyActualValue": sprintf("module[%s].%s is 'false'", [name, keyToCheck]),
 		"remediation": json.marshal({
 			"before": "false",
 			"after": "true"
@@ -86,4 +88,3 @@ CxPolicy[result] {
 		"remediationType": "replacement",
 	}
 }
-

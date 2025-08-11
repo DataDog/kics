@@ -25,3 +25,29 @@ CxPolicy[result] {
 		"remediationType": "replacement",
 	}
 }
+
+#######################################################################################################
+
+CxPolicy[result] {
+	module := input.document[i].module[name]
+	keyToCheck := common_lib.get_module_equivalent_key("aws", module.source, "aws_batch_job_definition", "container_properties")
+	properties_json = module[keyToCheck]
+	properties := json.unmarshal(properties_json)
+	properties.privileged == true
+
+	result := {
+		"documentId": input.document[i].id,
+		"resourceType": "module",
+		"resourceName": sprintf("%s", [name]),
+		"searchKey": sprintf("module[%s].%s.privileged", [name, keyToCheck]),
+		"searchLine": common_lib.build_search_line(["module", name, keyToCheck, "privileged"], []),
+		"issueType": "IncorrectValue",
+		"keyExpectedValue": sprintf("module[%s].%s.privileged should be 'false' or not set", [name, keyToCheck]),
+		"keyActualValue": sprintf("module[%s].%s.privileged is 'true'", [name, keyToCheck]),
+		"remediation": json.marshal({
+			"before": "true",
+			"after": "false"
+		}),
+		"remediationType": "replacement",
+	}
+}

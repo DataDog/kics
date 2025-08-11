@@ -25,6 +25,8 @@ CxPolicy[result] {
 	}
 }
 
+#######################################################################################################
+
 CxPolicy[result] {
 	module := input.document[i].module[name]
 	keyToCheck := common_lib.get_module_equivalent_key("aws", module.source, "aws_sns_topic", "policy")
@@ -40,11 +42,10 @@ CxPolicy[result] {
 		"documentId": input.document[i].id,
 		"resourceType": "module",
 		"resourceName": sprintf("%s", [name]),
-		"searchKey": sprintf("module[%s]", [name]),
+		"searchKey": sprintf("module[%s].%s", [name, keyToCheck]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": "'Statement.Principal.AWS' shouldn't contain '*'",
 		"keyActualValue": "'Statement.Principal.AWS' contains '*'",
-		"searchLine": common_lib.build_search_line(["module", name, "policy"], []),
+		"searchLine": common_lib.build_search_line(["module", name, keyToCheck], []),
 	}
 }
-

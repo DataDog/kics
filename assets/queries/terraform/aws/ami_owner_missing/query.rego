@@ -37,3 +37,5 @@ check_valid_filters(p) {
     }
 	filters[p]
 }
+
+# No module support for aws_ami which is data so cannot use get_module_equivalent_key

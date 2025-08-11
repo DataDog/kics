@@ -26,6 +26,32 @@ CxPolicy[result] {
 	}
 }
 
+#######################################################################################################
+
+CxPolicy[result] {
+	module := input.document[i].module[name]
+	keyToCheck := common_lib.get_module_equivalent_key("aws", module.source, "aws_sqs_queue_policy", "policy")
+
+	policy := common_lib.json_unmarshal(module[keyToCheck])
+	st := common_lib.get_statement(policy)
+	statement := st[_]
+
+	common_lib.is_allow_effect(statement)
+	check_principal(statement.Principal, "*")
+	tf_lib.anyPrincipal(statement)
+
+	result := {
+		"documentId": input.document[i].id,
+		"resourceType": "module",
+		"resourceName": sprintf("%s", [name]),
+		"searchKey": sprintf("module[%s].%s", [name, keyToCheck]),
+		"issueType": "IncorrectValue",
+		"keyExpectedValue": sprintf("'module[%s].%s.Statement.Principal.AWS' should not equal '*'", [name, keyToCheck]),
+		"keyActualValue": sprintf("'module[%s].%s.Statement.Principal.AWS' is equal '*'", [name, keyToCheck]),
+		"searchLine": common_lib.build_search_line(["module", name, keyToCheck], []),
+	}
+}
+
 check_principal(field, value) {
 	is_object(field)
 	some i

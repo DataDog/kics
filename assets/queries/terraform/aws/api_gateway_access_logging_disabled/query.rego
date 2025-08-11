@@ -73,60 +73,6 @@ CxPolicy[result] {
 }
 
 CxPolicy[result] {
-	module := input.document[i].module[name]
-	keyToCheck := common_lib.get_module_equivalent_key("aws", module.source, "aws_apigatewayv2_stage", "default_route_settings")
-
-	searchKeyValid := common_lib.valid_non_empty_key(module, keyToCheck)
-
-	result := {
-		"documentId": input.document[i].id,
-		"resourceType": "module",
-		"resourceName": sprintf("%s", [name]),
-		"searchKey": sprintf("module[%s]%s", [name, searchKeyValid]),
-		"issueType": "MissingAttribute",
-		"keyExpectedValue": "'default_route_settings' should be defined and not null",
-		"keyActualValue": "'default_route_settings' isn't defined or is null",
-	}
-}
-
-CxPolicy[result] {
-	module := input.document[i].module[name]
-	keyToCheck := common_lib.get_module_equivalent_key("aws", module.source, "aws_apigatewayv2_stage", "default_route_settings")
-
-	defaultRouteSettings := module[keyToCheck]
-	searchKeyValid := common_lib.valid_non_empty_key(defaultRouteSettings, "logging_level")
-
-	result := {
-		"documentId": input.document[i].id,
-		"resourceType": "module",
-		"resourceName": sprintf("%s", [name]),
-		"searchKey": sprintf("module[%s].default_route_settings%s", [name, searchKeyValid]),
-		"issueType": "MissingAttribute",
-		"keyExpectedValue": "'default_route_settings.logging_level' should be defined and not null",
-		"keyActualValue": "'default_route_settings.logging_level' isn't defined or is null",
-	}
-}
-
-CxPolicy[result] {
-	module := input.document[i].module[name]
-	keyToCheck := common_lib.get_module_equivalent_key("aws", module.source, "aws_apigatewayv2_stage", "default_route_settings")
-
-	defaultRouteSettings := module[keyToCheck]
-	loggingLevel := defaultRouteSettings["logging_level"]
-	loggingLevel == "OFF"
-
-	result := {
-		"documentId": input.document[i].id,
-		"resourceType": "module",
-		"resourceName": sprintf("%s", [name]),
-		"searchKey": sprintf("module[%s].default_route_settings.logging_level", [name]),
-		"issueType": "InvalidAttribute",
-		"keyExpectedValue": "'default_route_settings.logging_level' should not be set to OFF",
-		"keyActualValue": "'default_route_settings.logging_level' is set to OFF",
-	}
-}
-
-CxPolicy[result] {
     resource := input.document[i].resource
 	api := resource.aws_api_gateway_stage[name]
 
@@ -225,3 +171,58 @@ CxPolicy[result] {
 	}
 }
 
+#######################################################################################################
+
+CxPolicy[result] {
+	module := input.document[i].module[name]
+	keyToCheck := common_lib.get_module_equivalent_key("aws", module.source, "aws_apigatewayv2_stage", "default_route_settings")
+
+	searchKeyValid := common_lib.valid_non_empty_key(module, keyToCheck)
+
+	result := {
+		"documentId": input.document[i].id,
+		"resourceType": "module",
+		"resourceName": sprintf("%s", [name]),
+		"searchKey": sprintf("module[%s]%s", [name, searchKeyValid]),
+		"issueType": "MissingAttribute",
+		"keyExpectedValue": sprintf("module[%s].%s should be defined and not null", [name, keyToCheck]),
+		"keyActualValue": sprintf("module[%s].%s isn't defined or is null", [name, keyToCheck]),
+	}
+}
+
+CxPolicy[result] {
+	module := input.document[i].module[name]
+	keyToCheck := common_lib.get_module_equivalent_key("aws", module.source, "aws_apigatewayv2_stage", "default_route_settings")
+
+	defaultRouteSettings := module[keyToCheck]
+	searchKeyValid := common_lib.valid_non_empty_key(defaultRouteSettings, "logging_level")
+
+	result := {
+		"documentId": input.document[i].id,
+		"resourceType": "module",
+		"resourceName": sprintf("%s", [name]),
+		"searchKey": sprintf("module[%s].%s%s", [name, keyToCheck, searchKeyValid]),
+		"issueType": "MissingAttribute",
+		"keyExpectedValue": sprintf("module[%s].%s.logging_level' should be defined and not null", [name, keyToCheck]),
+		"keyActualValue": sprintf("module[%s].%s.logging_level' isn't defined or is null", [name, keyToCheck]),
+	}
+}
+
+CxPolicy[result] {
+	module := input.document[i].module[name]
+	keyToCheck := common_lib.get_module_equivalent_key("aws", module.source, "aws_apigatewayv2_stage", "default_route_settings")
+
+	defaultRouteSettings := module[keyToCheck]
+	loggingLevel := defaultRouteSettings["logging_level"]
+	loggingLevel == "OFF"
+
+	result := {
+		"documentId": input.document[i].id,
+		"resourceType": "module",
+		"resourceName": sprintf("%s", [name]),
+		"searchKey": sprintf("module[%s].%s.logging_level", [name, keyToCheck]),
+		"issueType": "InvalidAttribute",
+		"keyExpectedValue": sprintf("module[%s].%s.logging_level should not be set to OFF", [name, keyToCheck]),
+		"keyActualValue": sprintf("model[%s].%s.logging_level is set to OFF", [name, keyToCheck]),
+	}
+}

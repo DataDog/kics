@@ -23,3 +23,5 @@ CxPolicy[result] {
         "searchLine": common_lib.build_search_line(["resource", "aws_iam_role", targetRole], []),
 	}
 }
+
+# No module support as role_unrecommended_permission_policy_scenarios cannot use get_module_equivalent_key

@@ -1,5 +1,5 @@
 module "athena_database" {
-  source  = "terraform-aws-modules/athena/aws"
+  source  = "cloudposse/athena/aws"
   version = "~> 2.0"
 
   name   = "my_athena_db"

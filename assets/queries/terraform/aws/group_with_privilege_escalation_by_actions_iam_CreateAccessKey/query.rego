@@ -22,3 +22,5 @@ CxPolicy[result] {
         "searchLine": common_lib.build_search_line(["resource", "aws_iam_group", targetGroup], []),
 	}
 }
+
+# No module support as group_unrecommended_permission_policy_scenarios cannot use get_module_equivalent_key

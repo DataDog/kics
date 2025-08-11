@@ -18,3 +18,22 @@ CxPolicy[result] {
 		"keyActualValue": sprintf("aws_dms_replication_instance[%s].publicly_accessible is set to true", [name]),
 	}
 }
+
+#######################################################################################################
+
+CxPolicy[result] {
+	module := input.document[i].module[name]
+	keyToCheck := common_lib.get_module_equivalent_key("aws", module.source, "aws_dms_replication_instance", "publicly_accessible")
+
+	module[keyToCheck] == true
+
+	result := {
+		"documentId": input.document[i].id,
+		"resourceType": "module",
+		"resourceName": sprintf("%s", [name]),
+		"searchKey": sprintf("module[%s].%s", [name, keyToCheck]),
+		"issueType": "IncorrectValue",
+		"keyExpectedValue": sprintf("module[%s].%s should be set to false", [name, keyToCheck]),
+		"keyActualValue": sprintf("module[%s].%s is set to true", [name, keyToCheck]),
+	}
+}

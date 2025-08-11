@@ -44,6 +44,8 @@ CxPolicy[result] {
 	}
 }
 
+#######################################################################################################
+
 CxPolicy[result] {
 	module := input.document[i].module[name]
 	keyToCheck := common_lib.get_module_equivalent_key("aws", module.source, "aws_ebs_volume", "encrypted")
@@ -56,8 +58,8 @@ CxPolicy[result] {
 		"searchKey": sprintf("module[%s]", [name]),
 		"searchLine": common_lib.build_search_line(["module", name], []),
 		"issueType": "MissingAttribute",
-		"keyExpectedValue": "One of 'encrypted' should be defined",
-		"keyActualValue": "One of 'encrypted' is undefined",
+		"keyExpectedValue": sprintf("One of 'module[%s].%s' should be defined", [name, keyToCheck]),
+		"keyActualValue": sprintf("One of 'module[%s].%s' is undefined", [name, keyToCheck]),
 		"remediation": sprintf("%s = true", [keyToCheck]),
 		"remediationType": "addition",
 	}
@@ -72,11 +74,11 @@ CxPolicy[result] {
 		"documentId": input.document[i].id,
 		"resourceType": "module",
 		"resourceName": sprintf("%s", [name]),
-		"searchKey": sprintf("module[%s].encrypted", [name]),
-		"searchLine": common_lib.build_search_line(["module", name, "encrypted"], []),
+		"searchKey": sprintf("module[%s].%s", [name, keyToCheck]),
+		"searchLine": common_lib.build_search_line(["module", name, keyToCheck], []),
 		"issueType": "IncorrectValue",
-		"keyExpectedValue": "One of 'encrypted' should be 'true'",
-		"keyActualValue": "One of 'encrypted' is 'false'",
+		"keyExpectedValue": sprintf("One of 'module[%s].%s' should be 'true'", [name, keyToCheck]),
+		"keyActualValue": sprintf("One of 'module[%s].%s' is 'false'", [name, keyToCheck]),
 		"remediation": json.marshal({
 			"before": "false",
 			"after": "true"
