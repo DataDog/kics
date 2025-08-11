@@ -49,6 +49,33 @@ ebs_block_device {
 
 ## Compliant Code Examples
 ```terraform
+resource "aws_launch_configuration" "negative1" {
+  image_id      = data.aws_ami.ubuntu.id
+  instance_type = "m4.large"
+  spot_price    = "0.001"
+  user_data_base64 = "c29tZUtleQ==" # someKey
+
+  lifecycle {
+    create_before_destroy = true
+  }
+
+  ebs_block_device {
+    device_name = "/dev/xvda1"
+    encrypted = true
+  }
+}
+
+resource "aws_launch_configuration" "negative2" {
+  name = "test-launch-config"
+
+  ephemeral_block_device {
+    encrypted = false
+  }
+}
+
+```
+
+```terraform
 module "asg" {
   source = "terraform-aws-modules/autoscaling/aws"
   version = "1.0.4"
@@ -99,33 +126,6 @@ module "asg" {
       propagate_at_launch = true
     },
   ]
-}
-
-```
-
-```terraform
-resource "aws_launch_configuration" "negative1" {
-  image_id      = data.aws_ami.ubuntu.id
-  instance_type = "m4.large"
-  spot_price    = "0.001"
-  user_data_base64 = "c29tZUtleQ==" # someKey
-
-  lifecycle {
-    create_before_destroy = true
-  }
-
-  ebs_block_device {
-    device_name = "/dev/xvda1"
-    encrypted = true
-  }
-}
-
-resource "aws_launch_configuration" "negative2" {
-  name = "test-launch-config"
-
-  ephemeral_block_device {
-    encrypted = false
-  }
 }
 
 ```
@@ -184,55 +184,43 @@ module "asg" {
 ```
 
 ```terraform
-module "asg" {
-  source = "terraform-aws-modules/autoscaling/aws"
-  version = "1.0.4"
+resource "aws_launch_configuration" "positive1" {
+  image_id      = data.aws_ami.ubuntu.id
+  instance_type = "m4.large"
+  spot_price    = "0.001"
+  user_data_base64 = "c29tZUtleQ==" # someKey
 
-  # Launch configuration
-  lc_name = "example-lc"
+  lifecycle {
+    create_before_destroy = true
+  }
 
-  image_id        = "ami-ebd02392"
-  instance_type   = "t2.micro"
-  security_groups = ["sg-12345678"]
+  ebs_block_device {
+    device_name = "/dev/xvda1"
+  }
+}
 
-  ebs_block_device = [ 
-    {
-      device_name           = "/dev/xvdz"
-      volume_type           = "gp2"
-      volume_size           = "50"
-      delete_on_termination = true
-      encrypted             = false
-    }
-  ]
+resource "aws_launch_configuration" "positive2" {
+  image_id      = data.aws_ami.ubuntu.id
+  instance_type = "m4.large"
+  spot_price    = "0.001"
+  user_data_base64 = "c29tZUtleQ==" # someKey
 
-  root_block_device = [ 
-    {
-      volume_size = "50"
-      volume_type = "gp2"
-    }
-  ]
+  lifecycle {
+    create_before_destroy = true
+  }
 
-  # Auto scaling group
-  asg_name                  = "example-asg"
-  vpc_zone_identifier       = ["subnet-1235678", "subnet-87654321"]
-  health_check_type         = "EC2"
-  min_size                  = 0
-  max_size                  = 1
-  desired_capacity          = 1
-  wait_for_capacity_timeout = 0
+  ebs_block_device {
+    device_name = "/dev/xvda1"
+    encrypted = false
+  }
+}
 
-  tags = [
-    {
-      key                 = "Environment"
-      value               = "dev"
-      propagate_at_launch = true
-    },
-    {
-      key                 = "Project"
-      value               = "megasecret"
-      propagate_at_launch = true
-    },
-  ]
+resource "aws_launch_configuration" "positive3" {
+  name = "test-launch-config"
+
+  root_block_device {
+    encrypted = false
+  }
 }
 
 ```

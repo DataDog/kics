@@ -33,6 +33,34 @@ meta:
 
 ## Compliant Code Examples
 ```terraform
+provider "aws" {
+  region = "us-east-1"
+}
+
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 3.0"
+    }
+  }
+}
+
+resource "aws_s3_bucket" "negative1" {
+  bucket = "s3-website-test.hashicorp.com"
+  acl    = "public-read"
+
+  cors_rule {
+    allowed_methods = ["PUT", "POST"]
+    allowed_origins = ["https://s3-website-test.hashicorp.com"]
+    expose_headers  = ["ETag"]
+    max_age_seconds = 3000
+   }
+}
+
+```
+
+```terraform
 terraform {
   required_providers {
     aws = {
@@ -93,34 +121,6 @@ module "s3_bucket" {
 }
 
 ```
-
-```terraform
-provider "aws" {
-  region = "us-east-1"
-}
-
-terraform {
-  required_providers {
-    aws = {
-      source  = "hashicorp/aws"
-      version = "~> 3.0"
-    }
-  }
-}
-
-resource "aws_s3_bucket" "negative1" {
-  bucket = "s3-website-test.hashicorp.com"
-  acl    = "public-read"
-
-  cors_rule {
-    allowed_methods = ["PUT", "POST"]
-    allowed_origins = ["https://s3-website-test.hashicorp.com"]
-    expose_headers  = ["ETag"]
-    max_age_seconds = 3000
-   }
-}
-
-```
 ## Non-Compliant Code Examples
 ```terraform
 provider "aws" {
@@ -161,55 +161,76 @@ resource "aws_s3_bucket" "positive2" {
 ```
 
 ```terraform
-module "s3_bucket" {
-  source = "terraform-aws-modules/s3-bucket/aws"
-  bucket = "s3-tf-example-versioning"
-  acl    = "private"
-  version = "0.0.1"
-  
-  versioning = [
-    {
-      enabled = true
-      mfa_delete = null
-    },
-  ]
+terraform {
+  required_providers {
+    aws = {
+      source = "hashicorp/aws"
+      version = "4.2.0"
+    }
+  }
+}
 
-  cors_rule = [
-   {
+provider "aws" {
+  # Configuration options
+}
+
+resource "aws_s3_bucket" "bbb" {
+  bucket = "my-tf-test-bucket"
+
+  tags = {
+    Name        = "My bucket"
+    Environment = "Dev"
+  }
+}
+
+resource "aws_s3_bucket_cors_configuration" "example" {
+  bucket = aws_s3_bucket.bbb.bucket
+
+  cors_rule {
+    allowed_headers = ["*"]
+    allowed_methods = ["GET", "PUT", "POST", "DELETE", "HEAD"]
+    allowed_origins = ["*"]
+    expose_headers  = ["ETag"]
+    max_age_seconds = 3000
+  }
+}
+
+```
+
+```terraform
+provider "aws" {
+  region = "us-east-1"
+}
+
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 3.0"
+    }
+  }
+}
+
+resource "aws_s3_bucket" "positive1" {
+  bucket = "my-tf-test-bucket"
+  acl    = "public-read"
+
+  tags = {
+    Name        = "My bucket"
+    Environment = "Dev"
+  }
+
+  versioning {
+    enabled = false
+  }
+
+  cors_rule {
     allowed_headers = ["*"]
     allowed_methods = ["PUT", "POST"]
     allowed_origins = ["https://s3-website-test.hashicorp.com"]
     expose_headers  = ["ETag"]
     max_age_seconds = 3000
    }
-  ]
-}
-
-```
-
-```terraform
-module "s3_bucket" {
-  source = "terraform-aws-modules/s3-bucket/aws"
-  bucket = "s3-tf-example-versioning"
-  acl    = "private"
-  version = "0.0.1"
-
-  versioning = [
-    {
-      enabled = true
-      mfa_delete = null
-    },
-  ]
-
-  cors_rule = [
-   {
-    allowed_headers = ["*"]
-    allowed_methods = ["GET", "PUT", "POST", "DELETE", "HEAD"]
-    allowed_origins = ["*"]
-    expose_headers  = ["ETag"]
-    max_age_seconds = 3000
-   }
-  ]
 }
 
 ```

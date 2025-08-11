@@ -103,7 +103,7 @@ resource "aws_cloudwatch_metric_alarm" "cis_no_mfa_console_signin_cw_alarm" {
 ```terraform
 resource "aws_cloudwatch_log_metric_filter" "CIS_AWS_Config_Change_Metric_Filter" {
   name           = "CIS-AWSConfigChanges"
-  pattern        = "{ ($.eventSource = \"config.amazonaws.com\") && (($.eventName=StopConfigurationRecorder)||($.eventName=PutDeliveryChannel)||($.eventName=PutConfigurationRecorder)) }"
+  pattern        = "{ ($.eventSource = \"config.amazonaws.com\") && (($.eventName=StopConfigurationRecorder)||($.eventName=DeleteDeliveryChannel)||($.eventName=PutDeliveryChannel)||($.eventName=PutConfigurationRecorder)) }"
   log_group_name = aws_cloudwatch_log_group.CIS_CloudWatch_LogsGroup.name
 
   metric_transformation {

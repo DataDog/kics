@@ -33,6 +33,47 @@ meta:
 
 ## Compliant Code Examples
 ```terraform
+provider "aws" {
+  region = "us-east-1"
+}
+
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 3.0"
+    }
+  }
+}
+
+data "aws_caller_identity" "current2" {}
+
+resource "aws_cloudtrail" "foobar2" {
+  name                          = "tf-trail-foobar"
+  s3_bucket_name                = aws_s3_bucket.foo2.id
+  s3_key_prefix                 = "prefix"
+  include_global_service_events = false
+}
+
+resource "aws_s3_bucket" "log_bucket" {
+  bucket = "my-tf-log-bucket"
+  acl    = "log-delivery-write"
+}
+
+
+resource "aws_s3_bucket" "foo2" {
+  bucket = "my-tf-test-bucket"
+  acl    = "private"
+
+  logging {
+    target_bucket = aws_s3_bucket.log_bucket.id
+    target_prefix = "log/"
+  }
+}
+
+```
+
+```terraform
 terraform {
   required_providers {
     aws = {
@@ -83,47 +124,6 @@ module "s3_bucket" {
       mfa_delete = null
     },
   ]
-}
-
-```
-
-```terraform
-provider "aws" {
-  region = "us-east-1"
-}
-
-terraform {
-  required_providers {
-    aws = {
-      source  = "hashicorp/aws"
-      version = "~> 3.0"
-    }
-  }
-}
-
-data "aws_caller_identity" "current2" {}
-
-resource "aws_cloudtrail" "foobar2" {
-  name                          = "tf-trail-foobar"
-  s3_bucket_name                = aws_s3_bucket.foo2.id
-  s3_key_prefix                 = "prefix"
-  include_global_service_events = false
-}
-
-resource "aws_s3_bucket" "log_bucket" {
-  bucket = "my-tf-log-bucket"
-  acl    = "log-delivery-write"
-}
-
-
-resource "aws_s3_bucket" "foo2" {
-  bucket = "my-tf-test-bucket"
-  acl    = "private"
-
-  logging {
-    target_bucket = aws_s3_bucket.log_bucket.id
-    target_prefix = "log/"
-  }
 }
 
 ```
@@ -185,33 +185,6 @@ resource "aws_cloudtrail" "foobar" {
 ```
 
 ```terraform
-terraform {
-  required_providers {
-    aws = {
-      source = "hashicorp/aws"
-      version = "4.2.0"
-    }
-  }
-}
-
-provider "aws" {
-  # Configuration options
-}
-
-resource "aws_cloudtrail" "foobar2" {
-  name                          = "tf-trail-foobar"
-  s3_bucket_name                = aws_s3_bucket.bb.id
-  s3_key_prefix                 = "prefix"
-  include_global_service_events = false
-}
-
-resource "aws_s3_bucket" "bb" {
-  bucket = "my-tf-example-bucket"
-}
-
-```
-
-```terraform
 provider "aws" {
   region = "us-east-1"
 }
@@ -268,6 +241,33 @@ resource "aws_s3_bucket" "foo" {
     ]
 }
 POLICY
+}
+
+```
+
+```terraform
+terraform {
+  required_providers {
+    aws = {
+      source = "hashicorp/aws"
+      version = "4.2.0"
+    }
+  }
+}
+
+provider "aws" {
+  # Configuration options
+}
+
+resource "aws_cloudtrail" "foobar2" {
+  name                          = "tf-trail-foobar"
+  s3_bucket_name                = aws_s3_bucket.bb.id
+  s3_key_prefix                 = "prefix"
+  include_global_service_events = false
+}
+
+resource "aws_s3_bucket" "bb" {
+  bucket = "my-tf-example-bucket"
 }
 
 ```

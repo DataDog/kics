@@ -52,18 +52,10 @@ Statement: [
 
 ## Compliant Code Examples
 ```terraform
-module "s3_bucket" {
-  source = "terraform-aws-modules/s3-bucket/aws"
-  version = "3.7.0"
+resource "aws_s3_bucket_policy" "negative1" {
+  bucket = aws_s3_bucket.b.id
 
-  bucket = "my-s3-bucket"
-  acl    = "private"
-
-  versioning = {
-    enabled = true
-  }
-
-   policy = <<POLICY
+  policy = <<POLICY
 {
   "Version": "2012-10-17",
   "Id": "MYBUCKETPOLICY",
@@ -85,10 +77,18 @@ POLICY
 ```
 
 ```terraform
-resource "aws_s3_bucket_policy" "negative1" {
-  bucket = aws_s3_bucket.b.id
+module "s3_bucket" {
+  source = "terraform-aws-modules/s3-bucket/aws"
+  version = "3.7.0"
 
-  policy = <<POLICY
+  bucket = "my-s3-bucket"
+  acl    = "private"
+
+  versioning = {
+    enabled = true
+  }
+
+   policy = <<POLICY
 {
   "Version": "2012-10-17",
   "Id": "MYBUCKETPOLICY",
@@ -139,6 +139,32 @@ POLICY
 ```
 
 ```terraform
+resource "aws_s3_bucket_policy" "positive1" {
+  bucket = aws_s3_bucket.b.id
+
+  policy = <<POLICY
+{
+  "Version": "2012-10-17",
+  "Id": "MYBUCKETPOLICY",
+  "Statement": [
+    {
+      "Sid": "IPAllow",
+      "Effect": "Allow",
+      "Principal": "*",
+      "Action": "s3:PutObject",
+      "Resource": "arn:aws:s3:::my_tf_test_bucket/*",
+      "Condition": {
+         "IpAddress": {"aws:SourceIp": "8.8.8.8/32"}
+      }
+    }
+  ]
+}
+POLICY
+}
+
+```
+
+```terraform
 module "s3_bucket" {
   source = "terraform-aws-modules/s3-bucket/aws"
   version = "3.7.0"
@@ -161,32 +187,6 @@ module "s3_bucket" {
       "Principal": {
         "AWS": "*"
       },
-      "Action": "s3:PutObject",
-      "Resource": "arn:aws:s3:::my_tf_test_bucket/*",
-      "Condition": {
-         "IpAddress": {"aws:SourceIp": "8.8.8.8/32"}
-      }
-    }
-  ]
-}
-POLICY
-}
-
-```
-
-```terraform
-resource "aws_s3_bucket_policy" "positive1" {
-  bucket = aws_s3_bucket.b.id
-
-  policy = <<POLICY
-{
-  "Version": "2012-10-17",
-  "Id": "MYBUCKETPOLICY",
-  "Statement": [
-    {
-      "Sid": "IPAllow",
-      "Effect": "Allow",
-      "Principal": "*",
       "Action": "s3:PutObject",
       "Resource": "arn:aws:s3:::my_tf_test_bucket/*",
       "Condition": {

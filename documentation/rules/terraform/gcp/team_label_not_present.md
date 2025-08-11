@@ -49,22 +49,6 @@ Neglecting this can lead to orphaned resources, wasted spend, and slower inciden
 
 ## Compliant Code Examples
 ```terraform
-# ✅ "team" label is not a valid attribute for this resource type
-resource "google_container_cluster" "good_example" {
-  name               = "marcellus-wallace"
-  location           = "us-central1-a"
-  initial_node_count = 3
-  monitoring_service = "monitoring.googleapis.com"
-
-  timeouts {
-    create = "30m"
-    update = "40m"
-  }
-}
-
-```
-
-```terraform
 resource "google_compute_instance" "good_example" {
   name         = "good-instance"
   machine_type = "e2-medium"
@@ -107,6 +91,22 @@ resource "google_compute_instance" "good_example" {
   labels = {
     team        = "DevOps" # ✅ "team" tag is present
     environment = "prod"
+  }
+}
+
+```
+
+```terraform
+# ✅ "team" label is not a valid attribute for this resource type
+resource "google_container_cluster" "good_example" {
+  name               = "marcellus-wallace"
+  location           = "us-central1-a"
+  initial_node_count = 3
+  monitoring_service = "monitoring.googleapis.com"
+
+  timeouts {
+    create = "30m"
+    update = "40m"
   }
 }
 

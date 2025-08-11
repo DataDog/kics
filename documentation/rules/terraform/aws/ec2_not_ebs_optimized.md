@@ -45,63 +45,6 @@ resource "aws_instance" "web" {
 
 ## Compliant Code Examples
 ```terraform
-data "aws_ami" "ubuntu" {
-  most_recent = true
-
-  filter {
-    name   = "name"
-    values = ["ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server-*"]
-  }
-
-  filter {
-    name   = "virtualization-type"
-    values = ["hvm"]
-  }
-
-  owners = ["099720109477"] # Canonical
-}
-
-resource "aws_instance" "web" {
-  ami           = data.aws_ami.ubuntu.id
-  instance_type = "t3.nano"
-  ebs_optimized = false
-
-  tags = {
-    Name = "HelloWorld"
-  }
-}
-
-```
-
-```terraform
-data "aws_ami" "ubuntu" {
-  most_recent = true
-
-  filter {
-    name   = "name"
-    values = ["ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server-*"]
-  }
-
-  filter {
-    name   = "virtualization-type"
-    values = ["hvm"]
-  }
-
-  owners = ["099720109477"] # Canonical
-}
-
-resource "aws_instance" "web" {
-  ami           = data.aws_ami.ubuntu.id
-  instance_type = "t3.nano"
-
-  tags = {
-    Name = "HelloWorld"
-  }
-}
-
-```
-
-```terraform
 module "ec2_instance" {
   source  = "terraform-aws-modules/ec2-instance/aws"
   version = "~> 3.0"
@@ -109,17 +52,75 @@ module "ec2_instance" {
   name = "single-instance"
 
   ami                    = "ami-ebd02392"
-  instance_type          = "t3.nano"
+  instance_type          = "t2.micro"
+  ebs_optimized          = true
   key_name               = "user1"
   monitoring             = true
   vpc_security_group_ids = ["sg-12345678"]
   subnet_id              = "subnet-eddcdzz4"
   associate_public_ip_address = false
-  ebs_optimized = false
 
   tags = {
     Terraform   = "true"
     Environment = "dev"
+  }
+}
+
+```
+
+```terraform
+data "aws_ami" "ubuntu" {
+  most_recent = true
+
+  filter {
+    name   = "name"
+    values = ["ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server-*"]
+  }
+
+  filter {
+    name   = "virtualization-type"
+    values = ["hvm"]
+  }
+
+  owners = ["099720109477"] # Canonical
+}
+
+resource "aws_instance" "web" {
+  ami           = data.aws_ami.ubuntu.id
+  instance_type = "t3.micro"
+  ebs_optimized = true
+
+  tags = {
+    Name = "HelloWorld"
+  }
+}
+
+```
+
+```terraform
+data "aws_ami" "ubuntu" {
+  most_recent = true
+
+  filter {
+    name   = "name"
+    values = ["ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server-*"]
+  }
+
+  filter {
+    name   = "virtualization-type"
+    values = ["hvm"]
+  }
+
+  owners = ["099720109477"] # Canonical
+}
+
+resource "aws_instance" "web" {
+  ami           = data.aws_ami.ubuntu.id
+  instance_type = "t3.nano"
+  ebs_optimized = false
+
+  tags = {
+    Name = "HelloWorld"
   }
 }
 
@@ -155,23 +156,28 @@ resource "aws_instance" "web" {
 ```
 
 ```terraform
-module "ec2_instance" {
-  source  = "terraform-aws-modules/ec2-instance/aws"
-  version = "~> 3.0"
+data "aws_ami" "ubuntu" {
+  most_recent = true
 
-  name = "single-instance"
+  filter {
+    name   = "name"
+    values = ["ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server-*"]
+  }
 
-  ami                    = "ami-ebd02392"
-  instance_type          = "t2.micro"
-  key_name               = "user1"
-  monitoring             = true
-  vpc_security_group_ids = ["sg-12345678"]
-  subnet_id              = "subnet-eddcdzz4"
-  associate_public_ip_address = false
+  filter {
+    name   = "virtualization-type"
+    values = ["hvm"]
+  }
+
+  owners = ["099720109477"] # Canonical
+}
+
+resource "aws_instance" "web" {
+  ami           = data.aws_ami.ubuntu.id
+  instance_type = "t2.small"
 
   tags = {
-    Terraform   = "true"
-    Environment = "dev"
+    Name = "HelloWorld"
   }
 }
 
