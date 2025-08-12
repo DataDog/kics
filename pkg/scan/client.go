@@ -97,7 +97,7 @@ func GetDefaultParameters(rootPath string) *Parameters {
 		QueriesPath:                 []string{"./assets/queries"},
 		LibrariesPath:               "./assets/libraries",
 		ReportFormats:               []string{"sarif"},
-		Platform:                    []string{"Terraform"},
+		Platform:                    []string{"CICD", "Terraform"},
 		TerraformVarsPath:           "",
 		QueryExecTimeout:            60,
 		LineInfoPayload:             false,
