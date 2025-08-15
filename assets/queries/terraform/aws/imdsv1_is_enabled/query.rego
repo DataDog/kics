@@ -87,11 +87,11 @@ CxPolicy[result] {
         "documentId": input.document[i].id,
         "resourceType": resource_type,
         "resourceName": tf_lib.get_specific_resource_name(resource, resource_type, name),
-        "searchKey": sprintf("%s[%s].metadata_options", [resource_type, name]),
+        "searchKey": sprintf("%s[%s]", [resource_type, name]),
         "issueType": "MissingValue",
         "keyExpectedValue": "metadata_options must be defined with http_tokens set to 'required'",
         "keyActualValue": "metadata_options is missing, defaulting to IMDSv1",
-        "searchLine": common_lib.build_search_line(["resource", resource_type, name, "metadata_options"], []),
+        "searchLine": common_lib.build_search_line(["resource", resource_type, name], []),
         "remediation": "metadata_options {\n\t  http_tokens = \"required\"\n}",
         "remediationType": "addition"
     }
@@ -173,11 +173,11 @@ CxPolicy[result] {
         "documentId": input.document[i].id,
         "resourceType": "module",
         "resourceName": sprintf("%s", [name]),
-        "searchKey": sprintf("module[%s].%s", [name, keyToCheck]),
+        "searchKey": sprintf("module[%s]", [name]),
         "issueType": "MissingValue",
         "keyExpectedValue": sprintf("%s must be defined with http_tokens set to 'required'", [keyToCheck]),
         "keyActualValue": sprintf("%s is missing, defaulting to IMDSv1", [keyToCheck]),
-        "searchLine": common_lib.build_search_line(["module", name, keyToCheck], []),
+        "searchLine": common_lib.build_search_line(["module", name], []),
         "remediation": sprintf("%s {\n\t  http_tokens = \"required\"\n}", keyToCheck),
         "remediationType": "addition"
     }
