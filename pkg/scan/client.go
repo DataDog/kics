@@ -71,10 +71,10 @@ type Client struct {
 	ProBarBuilder     *progress.PbBuilder
 }
 
-func GetDefaultParameters(rootPath string) *Parameters {
+func GetDefaultParameters(rootPath string, ctx context.Context, extraInfos map[string]string) *Parameters {
 
 	// check for config file and load in relevant params if present
-	configParams, err := initializeConfig(rootPath)
+	configParams, err := initializeConfig(rootPath, ctx, extraInfos)
 	if err != nil {
 		log.Err(err).Msgf("failed to initialize config %v", err)
 		return nil

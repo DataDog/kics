@@ -1,11 +1,13 @@
 package scan
 
 import (
+	"context"
 	"os"
 	"path/filepath"
 
 	consoleHelpers "github.com/Checkmarx/kics/internal/console/helpers"
 	"github.com/Checkmarx/kics/internal/constants"
+	"github.com/rs/zerolog"
 	"github.com/rs/zerolog/log"
 	"github.com/spf13/viper"
 )
@@ -35,7 +37,13 @@ func setupConfigFile(rootPath string) (bool, error) {
 	return false, nil
 }
 
-func initializeConfig(rootPath string) (ConfigParameters, error) {
+func initializeConfig(rootPath string, ctx context.Context, extraInfos map[string]string) (ConfigParameters, error) {
+	infos := zerolog.Ctx(ctx).With()
+	for k, v := range extraInfos {
+		infos = infos.Str(k, v)
+	}
+	log.Logger = infos.Logger()
+
 	log.Debug().Msg("console.initializeConfig()")
 
 	configParams := ConfigParameters{}
