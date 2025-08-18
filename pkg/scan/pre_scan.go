@@ -38,7 +38,7 @@ func setupConfigFile(rootPath string) (bool, error) {
 }
 
 func initializeConfig(rootPath string, ctx context.Context, extraInfos map[string]string) (ConfigParameters, error) {
-	infos := zerolog.Ctx(ctx).With()
+	infos := zerolog.Ctx(log.Logger.WithContext(ctx)).With()
 	for k, v := range extraInfos {
 		infos = infos.Str(k, v)
 	}
