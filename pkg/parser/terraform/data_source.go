@@ -76,7 +76,6 @@ type convertedPolicy struct {
 	Version   string                     `json:"Version,omitempty"`
 }
 
-
 func getDataSourcePolicy(currentPath string, inputVariables converter.VariableMap) converter.VariableMap {
 	tfFiles, err := filepath.Glob(filepath.Join(currentPath, "*.tf"))
 	if err != nil {
@@ -115,13 +114,8 @@ func getDataSourcePolicy(currentPath string, inputVariables converter.VariableMa
 		return inputVariables
 	}
 
-	// Create a copy of inputVariables and add the data
-	result := make(converter.VariableMap)
-	for k, v := range inputVariables {
-		result[k] = v
-	}
-	result["data"] = data
-	return result
+	inputVariables["data"] = data
+	return inputVariables
 }
 
 func decodeDataSourcePolicy(value cty.Value) dataSourcePolicy {

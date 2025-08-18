@@ -61,7 +61,6 @@ func TestMergeMaps(t *testing.T) {
 			require.Equal(t, tt.want, tt.args.baseMap)
 		})
 	}
-	// No cleanup needed since we're not using global variables anymore
 }
 
 func TestSetInputVariablesDefaultValues(t *testing.T) {
@@ -107,7 +106,6 @@ func TestSetInputVariablesDefaultValues(t *testing.T) {
 			require.Equal(t, tt.want, defaultValues)
 		})
 	}
-	// No cleanup needed since we're not using global variables anymore
 }
 
 func TestGetInputVariablesFromFile(t *testing.T) {
@@ -152,7 +150,6 @@ func TestGetInputVariablesFromFile(t *testing.T) {
 			require.Equal(t, tt.want, inputVars)
 		})
 	}
-	// No cleanup needed since we're not using global variables anymore
 }
 
 func TestGetInputVariables(t *testing.T) {

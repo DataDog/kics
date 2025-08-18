@@ -26,29 +26,11 @@ func NewExitHandlerConfig() *ExitHandlerConfig {
 	}
 }
 
-// Default global config for backward compatibility
-var defaultConfig = NewExitHandlerConfig()
-
 // Legacy functions that use the default config for backward compatibility
 
 // ResultsExitCode calculate exit code using default config for backward compatibility
 func ResultsExitCode(summary *model.Summary) int {
-	return ResultsExitCodeWithConfig(defaultConfig, summary)
-}
-
-// InitShouldIgnoreArg uses the default global config (deprecated: use config.InitShouldIgnoreArg)
-func InitShouldIgnoreArg(arg string) error {
-	return defaultConfig.InitShouldIgnoreArg(arg)
-}
-
-// InitShouldFailArg uses the default global config (deprecated: use config.InitShouldFailArg)
-func InitShouldFailArg(args []string) error {
-	return defaultConfig.InitShouldFailArg(args)
-}
-
-// ShowError uses the default global config (deprecated: use config.ShowError)
-func ShowError(kind string) bool {
-	return defaultConfig.ShowError(kind)
+	return ResultsExitCodeWithConfig(NewExitHandlerConfig(), summary)
 }
 
 // ResultsExitCodeWithConfig calculate exit code base on severity of results, returns 0 if no results was reported
