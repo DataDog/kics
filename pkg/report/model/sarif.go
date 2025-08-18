@@ -21,8 +21,6 @@ import (
 	"github.com/rs/zerolog/log"
 )
 
-var categoriesNotFound = make(map[string]bool)
-
 var severityLevelEquivalence = map[model.Severity]string{
 	"INFO":     "none",
 	"LOW":      "none",
@@ -504,10 +502,7 @@ func (sr *sarifReport) buildSarifCategory(category string) sarifDescriptorRefere
 	target.ReferenceIndex = categoryIndex
 
 	if categoryIndex == -1 {
-		if _, exists := categoriesNotFound[category]; !exists {
-			log.Warn().Msgf("Category %s not found.", category)
-			categoriesNotFound[category] = true
-		}
+		log.Warn().Msgf("Category %s not found.", category)
 	}
 
 	return target
