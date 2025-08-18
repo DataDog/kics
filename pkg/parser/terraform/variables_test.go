@@ -61,9 +61,7 @@ func TestMergeMaps(t *testing.T) {
 			require.Equal(t, tt.want, tt.args.baseMap)
 		})
 	}
-	t.Cleanup(func() {
-		inputVariableMap = make(converter.VariableMap)
-	})
+	// No cleanup needed since we're not using global variables anymore
 }
 
 func TestSetInputVariablesDefaultValues(t *testing.T) {
@@ -109,9 +107,7 @@ func TestSetInputVariablesDefaultValues(t *testing.T) {
 			require.Equal(t, tt.want, defaultValues)
 		})
 	}
-	t.Cleanup(func() {
-		inputVariableMap = make(converter.VariableMap)
-	})
+	// No cleanup needed since we're not using global variables anymore
 }
 
 func TestGetInputVariablesFromFile(t *testing.T) {
@@ -156,9 +152,7 @@ func TestGetInputVariablesFromFile(t *testing.T) {
 			require.Equal(t, tt.want, inputVars)
 		})
 	}
-	t.Cleanup(func() {
-		inputVariableMap = make(converter.VariableMap)
-	})
+	// No cleanup needed since we're not using global variables anymore
 }
 
 func TestGetInputVariables(t *testing.T) {
@@ -203,11 +197,8 @@ func TestGetInputVariables(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			fileContent, _ := os.ReadFile(tt.filename)
-			getInputVariables(tt.filename, string(fileContent), "../../../test/fixtures/test_terraform_variables/varsToUse/varsToUse.tf")
-			require.Equal(t, tt.want, inputVariableMap)
+			result := getInputVariables(tt.filename, string(fileContent), "../../../test/fixtures/test_terraform_variables/varsToUse/varsToUse.tf")
+			require.Equal(t, tt.want, result)
 		})
 	}
-	t.Cleanup(func() {
-		inputVariableMap = make(converter.VariableMap)
-	})
 }

@@ -30,10 +30,13 @@ type k8sAPICall struct {
 
 type supportedKinds map[string]map[string]interface{}
 
-var getK8sClientFunc = getK8sClient // for testing purposes
-
 // Import imports the k8s cluster resources into the destination using kuberneter path
 func Import(ctx context.Context, kuberneterPath, destinationPath string) (string, error) {
+	return ImportWithClient(ctx, kuberneterPath, destinationPath, getK8sClient)
+}
+
+// ImportWithClient allows injecting a custom k8s client function for testing
+func ImportWithClient(ctx context.Context, kuberneterPath, destinationPath string, clientFunc func() (client.Client, error)) (string, error) {
 	log.Info().Msg("importing k8s cluster resources")
 
 	supportedKinds := buildSupportedKinds()
@@ -46,7 +49,7 @@ func Import(ctx context.Context, kuberneterPath, destinationPath string) (string
 	}
 
 	// get the k8s client
-	c, err := getK8sClientFunc()
+	c, err := clientFunc()
 	if err != nil {
 		return "", err
 	}

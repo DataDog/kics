@@ -18,7 +18,6 @@ import (
 	"github.com/zclconf/go-cty/cty"
 )
 
-var inputVariableMap = make(converter.VariableMap)
 
 func mergeMaps(baseMap, newItems converter.VariableMap) {
 	for key, value := range newItems {
@@ -176,7 +175,7 @@ func sanitizeCtyMap(in map[string]cty.Value) map[string]cty.Value {
 	return out
 }
 
-func getInputVariables(currentPath, fileContent, terraformVarsPath string) {
+func getInputVariables(currentPath, fileContent, terraformVarsPath string) converter.VariableMap {
 	variablesMap := make(converter.VariableMap)
 	localsMap := make(converter.VariableMap)
 
@@ -256,6 +255,8 @@ func getInputVariables(currentPath, fileContent, terraformVarsPath string) {
 	cleanVars := sanitizeCtyMap(variablesMap)
 	cleanLocals := sanitizeCtyMap(localsMap)
 
-	inputVariableMap["var"] = cty.ObjectVal(cleanVars)
-	inputVariableMap["local"] = cty.ObjectVal(cleanLocals)
+	result := make(converter.VariableMap)
+	result["var"] = cty.ObjectVal(cleanVars)
+	result["local"] = cty.ObjectVal(cleanLocals)
+	return result
 }

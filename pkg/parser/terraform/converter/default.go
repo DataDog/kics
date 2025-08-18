@@ -22,7 +22,6 @@ import (
 // VariableMap represents a set of terraform input variables
 type VariableMap map[string]cty.Value
 
-var inputVarMap = make(VariableMap)
 
 // This file is attributed to https://github.com/tmccombs/hcl2json.
 // convertBlock() is manipulated for combining the both blocks and labels for one given resource.
@@ -30,8 +29,7 @@ var inputVarMap = make(VariableMap)
 // DefaultConverted an hcl File to a toJson serializable object
 // This assumes that the body is a hclsyntax.Body
 var DefaultConverted = func(file *hcl.File, inputVariables VariableMap) (model.Document, error) {
-	inputVarMap = inputVariables
-	c := converter{bytes: file.Bytes}
+	c := converter{bytes: file.Bytes, inputVars: inputVariables}
 	body, err := c.convertBody(file.Body.(*hclsyntax.Body), 0)
 
 	if err != nil {
@@ -52,7 +50,8 @@ var DefaultConverted = func(file *hcl.File, inputVariables VariableMap) (model.D
 }
 
 type converter struct {
-	bytes []byte
+	bytes     []byte
+	inputVars VariableMap
 }
 
 const kicsLinesKey = "_kics_"
@@ -252,7 +251,7 @@ func (c *converter) convertExpression(expr hclsyntax.Expression) (interface{}, e
 		return c.evalFunction(expr)
 	case *hclsyntax.ConditionalExpr:
 		expressionEvaluated, err := expr.Value(&hcl.EvalContext{
-			Variables: inputVarMap,
+			Variables: c.inputVars,
 			Functions: functions.TerraformFuncs,
 		})
 		if err != nil {
@@ -262,7 +261,7 @@ func (c *converter) convertExpression(expr hclsyntax.Expression) (interface{}, e
 	default:
 		// try to evaluate with variables and functions
 		valueConverted, _ := expr.Value(&hcl.EvalContext{
-			Variables: inputVarMap,
+			Variables: c.inputVars,
 			Functions: functions.TerraformFuncs,
 		})
 		if !checkDynamicKnownTypes(valueConverted) {
@@ -400,7 +399,7 @@ func (c *converter) convertStringPart(expr hclsyntax.Expression) (string, error)
 	default:
 		// try to evaluate with variables
 		valueConverted, _ := expr.Value(&hcl.EvalContext{
-			Variables: inputVarMap,
+			Variables: c.inputVars,
 		})
 		if valueConverted.Type().FriendlyName() == "string" {
 			return valueConverted.AsString(), nil
@@ -488,7 +487,7 @@ func (c *converter) wrapExpr(expr hclsyntax.Expression) (string, error) {
 
 func (c *converter) evalFunction(expression hclsyntax.Expression) (interface{}, error) {
 	expressionEvaluated, err := expression.Value(&hcl.EvalContext{
-		Variables: inputVarMap,
+		Variables: c.inputVars,
 		Functions: functions.TerraformFuncs,
 	})
 	if err != nil {
@@ -501,14 +500,14 @@ func (c *converter) evalFunction(expression hclsyntax.Expression) (interface{}, 
 					if convertErr != nil {
 						return c.wrapExpr(expression)
 					}
-					inputVarMap[rootKey] = jsonCtyValue
+					c.inputVars[rootKey] = jsonCtyValue
 				} else {
-					inputVarMap[rootKey] = cty.StringVal(jsonPath)
+					c.inputVars[rootKey] = cty.StringVal(jsonPath)
 				}
 			}
 		}
 		expressionEvaluated, err = expression.Value(&hcl.EvalContext{
-			Variables: inputVarMap,
+			Variables: c.inputVars,
 			Functions: functions.TerraformFuncs,
 		})
 		if err != nil {

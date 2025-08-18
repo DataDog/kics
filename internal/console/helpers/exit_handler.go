@@ -12,17 +12,54 @@ import (
 	"github.com/Checkmarx/kics/pkg/model"
 )
 
-var shouldIgnore string
-var shouldFail map[string]struct{}
+// ExitHandlerConfig holds configuration for exit handling behavior
+type ExitHandlerConfig struct {
+	ShouldIgnore string
+	ShouldFail   map[string]struct{}
+}
 
-// ResultsExitCode calculate exit code base on severity of results, returns 0 if no results was reported
+// NewExitHandlerConfig creates a new exit handler configuration with defaults
+func NewExitHandlerConfig() *ExitHandlerConfig {
+	return &ExitHandlerConfig{
+		ShouldIgnore: "",
+		ShouldFail:   map[string]struct{}{},
+	}
+}
+
+// Default global config for backward compatibility
+var defaultConfig = NewExitHandlerConfig()
+
+// Legacy functions that use the default config for backward compatibility
+
+// ResultsExitCode calculate exit code using default config for backward compatibility
 func ResultsExitCode(summary *model.Summary) int {
+	return ResultsExitCodeWithConfig(defaultConfig, summary)
+}
+
+// InitShouldIgnoreArg uses the default global config (deprecated: use config.InitShouldIgnoreArg)
+func InitShouldIgnoreArg(arg string) error {
+	return defaultConfig.InitShouldIgnoreArg(arg)
+}
+
+// InitShouldFailArg uses the default global config (deprecated: use config.InitShouldFailArg)
+func InitShouldFailArg(args []string) error {
+	return defaultConfig.InitShouldFailArg(args)
+}
+
+// ShowError uses the default global config (deprecated: use config.ShowError)
+func ShowError(kind string) bool {
+	return defaultConfig.ShowError(kind)
+}
+
+// ResultsExitCodeWithConfig calculate exit code base on severity of results, returns 0 if no results was reported
+func ResultsExitCodeWithConfig(config *ExitHandlerConfig, summary *model.Summary) int {
 	// severityArr is needed to make sure 'for' cycle is made in an ordered fashion
 	severityArr := []model.Severity{"CRITICAL", "HIGH", "MEDIUM", "LOW", "INFO", "TRACE"}
 	codeMap := map[model.Severity]int{"CRITICAL": 60, "HIGH": 50, "MEDIUM": 40, "LOW": 30, "INFO": 20, "TRACE": 0}
 	exitMap := summary.SeveritySummary.SeverityCounters
+
 	for _, severity := range severityArr {
-		if _, reportSeverity := shouldFail[strings.ToLower(string(severity))]; !reportSeverity {
+		if _, reportSeverity := config.ShouldFail[strings.ToLower(string(severity))]; !reportSeverity {
 			continue
 		}
 		if exitMap[severity] > 0 {
@@ -33,11 +70,11 @@ func ResultsExitCode(summary *model.Summary) int {
 }
 
 // InitShouldIgnoreArg initializes what kind of errors should be used on exit codes
-func InitShouldIgnoreArg(arg string) error {
+func (config *ExitHandlerConfig) InitShouldIgnoreArg(arg string) error {
 	validArgs := []string{"none", "all", "results", "errors"}
 	for _, validArg := range validArgs {
 		if strings.EqualFold(validArg, arg) {
-			shouldIgnore = strings.ToLower(arg)
+			config.ShouldIgnore = strings.ToLower(arg)
 			return nil
 		}
 	}
@@ -45,7 +82,7 @@ func InitShouldIgnoreArg(arg string) error {
 }
 
 // InitShouldFailArg initializes which kind of vulnerability severity should changes exit code
-func InitShouldFailArg(args []string) error {
+func (config *ExitHandlerConfig) InitShouldFailArg(args []string) error {
 	possibleArgs := map[string]struct{}{
 		"critical": {},
 		"high":     {},
@@ -53,8 +90,9 @@ func InitShouldFailArg(args []string) error {
 		"low":      {},
 		"info":     {},
 	}
+
 	if len(args) == 0 {
-		shouldFail = possibleArgs
+		config.ShouldFail = possibleArgs
 		return nil
 	}
 
@@ -67,13 +105,13 @@ func InitShouldFailArg(args []string) error {
 		argsConverted[strings.ToLower(arg)] = struct{}{}
 	}
 
-	shouldFail = argsConverted
+	config.ShouldFail = argsConverted
 	return nil
 }
 
 // ShowError returns true if should show error, otherwise returns false
-func ShowError(kind string) bool {
-	return strings.EqualFold(shouldIgnore, "none") || (!strings.EqualFold(shouldIgnore, "all") && !strings.EqualFold(shouldIgnore, kind))
+func (config *ExitHandlerConfig) ShowError(kind string) bool {
+	return strings.EqualFold(config.ShouldIgnore, "none") || (!strings.EqualFold(config.ShouldIgnore, "all") && !strings.EqualFold(config.ShouldIgnore, kind))
 }
 
 // RemediateExitCode calculate exit code base on the difference between remediation selected and done

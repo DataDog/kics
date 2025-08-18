@@ -45,8 +45,9 @@ func Test_getDataSourcePolicy(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			getDataSourcePolicy(tt.args.currentPath)
-			data, ok := inputVariableMap["data"]
+			inputVars := make(converter.VariableMap)
+			result := getDataSourcePolicy(tt.args.currentPath, inputVars)
+			data, ok := result["data"]
 			if !ok {
 				t.FailNow()
 			}
@@ -63,7 +64,5 @@ func Test_getDataSourcePolicy(t *testing.T) {
 		})
 	}
 
-	t.Cleanup(func() {
-		inputVariableMap = make(converter.VariableMap)
-	})
+	// No cleanup needed since we're not using global variables anymore
 }

@@ -9,9 +9,9 @@ import (
 	"bytes"
 	"encoding/json"
 	"path/filepath"
-	"sync"
 
 	"github.com/Checkmarx/kics/pkg/builder/engine"
+	"github.com/Checkmarx/kics/pkg/parser/terraform/converter"
 	"github.com/Checkmarx/kics/pkg/parser/terraform/functions"
 	"github.com/hashicorp/hcl/v2"
 	"github.com/hashicorp/hcl/v2/hcldec"
@@ -76,16 +76,15 @@ type convertedPolicy struct {
 	Version   string                     `json:"Version,omitempty"`
 }
 
-var mutexData = &sync.Mutex{}
 
-func getDataSourcePolicy(currentPath string) {
+func getDataSourcePolicy(currentPath string, inputVariables converter.VariableMap) converter.VariableMap {
 	tfFiles, err := filepath.Glob(filepath.Join(currentPath, "*.tf"))
 	if err != nil {
 		log.Error().Msg("Error getting .tf files to parse data source")
-		return
+		return inputVariables
 	}
 	if len(tfFiles) == 0 {
-		return
+		return inputVariables
 	}
 	jsonMap := make(map[string]map[string]string)
 	for _, tfFile := range tfFiles {
@@ -100,7 +99,7 @@ func getDataSourcePolicy(currentPath string) {
 		}
 		for _, block := range body.Blocks {
 			if block.Type == "data" && block.Labels[0] == "aws_iam_policy_document" && len(block.Labels) > 1 {
-				policyJSON := parseDataSourceBody(block.Body)
+				policyJSON := parseDataSourceBody(block.Body, inputVariables)
 				jsonMap[block.Labels[1]] = map[string]string{
 					"json": policyJSON,
 				}
@@ -113,12 +112,16 @@ func getDataSourcePolicy(currentPath string) {
 	data, err := gocty.ToCtyValue(policyResource, cty.Map(cty.Map(cty.Map(cty.String))))
 	if err != nil {
 		log.Error().Msgf("Error trying to convert policy to cty value: %s", err)
-		return
+		return inputVariables
 	}
 
-	mutexData.Lock()
-	inputVariableMap["data"] = data
-	mutexData.Unlock()
+	// Create a copy of inputVariables and add the data
+	result := make(converter.VariableMap)
+	for k, v := range inputVariables {
+		result[k] = v
+	}
+	result["data"] = data
+	return result
 }
 
 func decodeDataSourcePolicy(value cty.Value) dataSourcePolicy {
@@ -221,7 +224,7 @@ func getStatementSpec() *hcldec.BlockListSpec {
 	}
 }
 
-func parseDataSourceBody(body *hclsyntax.Body) string {
+func parseDataSourceBody(body *hclsyntax.Body, inputVariables converter.VariableMap) string {
 	dataSourceSpec := &hcldec.ObjectSpec{
 		"id": &hcldec.AttrSpec{
 			Name:     "id",
@@ -239,7 +242,7 @@ func parseDataSourceBody(body *hclsyntax.Body) string {
 	resolveDataResources(body)
 
 	target, decodeErrs := hcldec.Decode(body, dataSourceSpec, &hcl.EvalContext{
-		Variables: inputVariableMap,
+		Variables: inputVariables,
 		Functions: functions.TerraformFuncs,
 	})
 

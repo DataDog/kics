@@ -59,8 +59,7 @@ func TestImport(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			getK8sClientFunc = tt.k8sClient
-			got, err := Import(context.Background(), tt.args.kuberneterPath, "")
+			got, err := ImportWithClient(context.Background(), tt.args.kuberneterPath, "", tt.k8sClient)
 			if (err != nil) != tt.wantErr {
 				t.Errorf("Import() error = %v, wantErr %v", err, tt.wantErr)
 				return
