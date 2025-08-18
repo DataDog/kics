@@ -12,13 +12,11 @@ import (
 	"github.com/Checkmarx/kics/pkg/model"
 )
 
-// ExitHandlerConfig holds configuration for exit handling behavior
 type ExitHandlerConfig struct {
 	ShouldIgnore string
 	ShouldFail   map[string]struct{}
 }
 
-// NewExitHandlerConfig creates a new exit handler configuration with defaults
 func NewExitHandlerConfig() *ExitHandlerConfig {
 	return &ExitHandlerConfig{
 		ShouldIgnore: "",
@@ -26,14 +24,11 @@ func NewExitHandlerConfig() *ExitHandlerConfig {
 	}
 }
 
-// Legacy functions that use the default config for backward compatibility
-
-// ResultsExitCode calculate exit code using default config for backward compatibility
+// ResultsExitCode calculate exit code base on severity of results, returns 0 if no results was reported
 func ResultsExitCode(summary *model.Summary) int {
 	return ResultsExitCodeWithConfig(NewExitHandlerConfig(), summary)
 }
 
-// ResultsExitCodeWithConfig calculate exit code base on severity of results, returns 0 if no results was reported
 func ResultsExitCodeWithConfig(config *ExitHandlerConfig, summary *model.Summary) int {
 	// severityArr is needed to make sure 'for' cycle is made in an ordered fashion
 	severityArr := []model.Severity{"CRITICAL", "HIGH", "MEDIUM", "LOW", "INFO", "TRACE"}
