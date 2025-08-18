@@ -44,6 +44,27 @@ Instead, consider using CloudFront distribution with proper access controls and 
 
 ## Compliant Code Examples
 ```terraform
+provider "aws" {
+  region = "us-east-1"
+}
+
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 3.0"
+    }
+  }
+}
+
+resource "aws_s3_bucket" "negative1" {
+  bucket = "s3-website-test.hashicorp.com"
+  acl    = "public-read"
+}
+
+```
+
+```terraform
 terraform {
   required_providers {
     aws = {
@@ -83,6 +104,26 @@ module "s3_bucket" {
 }
 
 ```
+## Non-Compliant Code Examples
+```terraform
+module "s3_bucket" {
+  source = "terraform-aws-modules/s3-bucket/aws"
+  version = "3.7.0"
+
+  bucket = "my-s3-bucket"
+  acl    = "private"
+
+  versioning = {
+    enabled = true
+  }
+
+  website {
+    index_document = "index.html"
+    error_document = "error.html"
+  }
+}
+
+```
 
 ```terraform
 provider "aws" {
@@ -98,24 +139,9 @@ terraform {
   }
 }
 
-resource "aws_s3_bucket" "negative1" {
+resource "aws_s3_bucket" "positive1" {
   bucket = "s3-website-test.hashicorp.com"
   acl    = "public-read"
-}
-
-```
-## Non-Compliant Code Examples
-```terraform
-module "s3_bucket" {
-  source = "terraform-aws-modules/s3-bucket/aws"
-  version = "3.7.0"
-
-  bucket = "my-s3-bucket"
-  acl    = "private"
-
-  versioning = {
-    enabled = true
-  }
 
   website {
     index_document = "index.html"
@@ -167,32 +193,6 @@ resource "aws_s3_bucket_website_configuration" "example" {
     redirect {
       replace_key_prefix_with = "documents/"
     }
-  }
-}
-
-```
-
-```terraform
-provider "aws" {
-  region = "us-east-1"
-}
-
-terraform {
-  required_providers {
-    aws = {
-      source  = "hashicorp/aws"
-      version = "~> 3.0"
-    }
-  }
-}
-
-resource "aws_s3_bucket" "positive1" {
-  bucket = "s3-website-test.hashicorp.com"
-  acl    = "public-read"
-
-  website {
-    index_document = "index.html"
-    error_document = "error.html"
   }
 }
 

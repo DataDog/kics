@@ -33,16 +33,9 @@ meta:
 
 ## Compliant Code Examples
 ```terraform
-module "s3_bucket" {
-  source = "terraform-aws-modules/s3-bucket/aws"
-  version = "3.7.0"
-
-  bucket = "my-s3-bucket"
+resource "aws_s3_bucket" "negative1" {
+  bucket = "S3B_181355"
   acl    = "private"
-
-  versioning = {
-    enabled = true
-  }
 
   policy = <<EOF
 	{
@@ -65,9 +58,16 @@ module "s3_bucket" {
 ```
 
 ```terraform
-resource "aws_s3_bucket" "negative1" {
-  bucket = "S3B_181355"
+module "s3_bucket" {
+  source = "terraform-aws-modules/s3-bucket/aws"
+  version = "3.7.0"
+
+  bucket = "my-s3-bucket"
   acl    = "private"
+
+  versioning = {
+    enabled = true
+  }
 
   policy = <<EOF
 	{

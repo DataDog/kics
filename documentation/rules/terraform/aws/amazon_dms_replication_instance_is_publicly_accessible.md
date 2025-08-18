@@ -41,7 +41,6 @@ resource "aws_dms_replication_instance" "test" {
   engine_version               = "3.1.4"
   kms_key_arn                  = "arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012"
   multi_az                     = false
-  publicly_accessible          = false
   preferred_maintenance_window = "sun:10:30-sun:14:30"
   replication_instance_class   = "dms.t2.micro"
   replication_instance_id      = "test-dms-replication-instance-tf"
@@ -68,6 +67,7 @@ resource "aws_dms_replication_instance" "test" {
   engine_version               = "3.1.4"
   kms_key_arn                  = "arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012"
   multi_az                     = false
+  publicly_accessible          = false
   preferred_maintenance_window = "sun:10:30-sun:14:30"
   replication_instance_class   = "dms.t2.micro"
   replication_instance_id      = "test-dms-replication-instance-tf"
@@ -82,6 +82,20 @@ resource "aws_dms_replication_instance" "test" {
     aws_iam_role_policy_attachment.dms-cloudwatch-logs-role-AmazonDMSCloudWatchLogsRole,
     aws_iam_role_policy_attachment.dms-vpc-role-AmazonDMSVPCManagementRole
   ]
+}
+```
+
+```terraform
+module "dms_instance" {
+  source = "terraform-aws-modules/dms/aws"
+  version = "~> 1.0"
+
+  identifier = "test-dms-instance"
+  instance_class = "dms.t2.micro"
+  allocated_storage = 8
+  publicly_accessible = false
+
+  apply_immediately = true
 }
 ```
 ## Non-Compliant Code Examples
@@ -109,5 +123,19 @@ resource "aws_dms_replication_instance" "test" {
     aws_iam_role_policy_attachment.dms-cloudwatch-logs-role-AmazonDMSCloudWatchLogsRole,
     aws_iam_role_policy_attachment.dms-vpc-role-AmazonDMSVPCManagementRole
   ]
+}
+```
+
+```terraform
+module "dms_instance" {
+  source = "terraform-aws-modules/dms/aws"
+  version = "~> 1.0"
+
+  identifier = "test-dms-instance"
+  instance_class = "dms.t2.micro"
+  allocated_storage = 8
+  publicly_accessible = true
+
+  apply_immediately = true
 }
 ```

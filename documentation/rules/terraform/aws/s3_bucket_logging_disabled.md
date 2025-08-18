@@ -42,6 +42,40 @@ This lack of logging can result in untraceable data exposure or loss if the buck
 
 ## Compliant Code Examples
 ```terraform
+provider "aws" {
+  region = "us-east-1"
+}
+
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 3.0"
+    }
+  }
+}
+
+resource "aws_s3_bucket" "negative1" {
+  bucket = "my-tf-test-bucket"
+  acl    = "private"
+
+  tags = {
+    Name        = "My bucket"
+    Environment = "Dev"
+  }
+
+  logging {
+    target_bucket = "logs"
+  }
+
+  versioning {
+    mfa_delete = true
+  }
+}
+
+```
+
+```terraform
 terraform {
   required_providers {
     aws = {
@@ -86,40 +120,6 @@ module "s3_bucket" {
 }
 
 ```
-
-```terraform
-provider "aws" {
-  region = "us-east-1"
-}
-
-terraform {
-  required_providers {
-    aws = {
-      source  = "hashicorp/aws"
-      version = "~> 3.0"
-    }
-  }
-}
-
-resource "aws_s3_bucket" "negative1" {
-  bucket = "my-tf-test-bucket"
-  acl    = "private"
-
-  tags = {
-    Name        = "My bucket"
-    Environment = "Dev"
-  }
-
-  logging {
-    target_bucket = "logs"
-  }
-
-  versioning {
-    mfa_delete = true
-  }
-}
-
-```
 ## Non-Compliant Code Examples
 ```terraform
 module "s3_bucket" {
@@ -132,26 +132,6 @@ module "s3_bucket" {
   versioning = {
     enabled = true
   }
-}
-
-```
-
-```terraform
-terraform {
-  required_providers {
-    aws = {
-      source = "hashicorp/aws"
-      version = "4.2.0"
-    }
-  }
-}
-
-provider "aws" {
-  # Configuration options
-}
-
-resource "aws_s3_bucket" "examplee" {
-  bucket = "my-tf-example-bucket"
 }
 
 ```
@@ -182,6 +162,26 @@ resource "aws_s3_bucket" "positive1" {
   versioning {
     mfa_delete = true
   }
+}
+
+```
+
+```terraform
+terraform {
+  required_providers {
+    aws = {
+      source = "hashicorp/aws"
+      version = "4.2.0"
+    }
+  }
+}
+
+provider "aws" {
+  # Configuration options
+}
+
+resource "aws_s3_bucket" "examplee" {
+  bucket = "my-tf-example-bucket"
 }
 
 ```

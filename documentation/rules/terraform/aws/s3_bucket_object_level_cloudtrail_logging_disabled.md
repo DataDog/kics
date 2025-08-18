@@ -89,6 +89,28 @@ POLICY
 }
 
 ```
+
+```terraform
+module "cloudtrail" {
+  source = "terraform-aws-modules/cloudtrail/aws"
+  version = "3.1.0"
+
+  name = "cloudtrail"
+
+  s3_bucket_server_side_encryption_enabled = true
+  enable_log_file_validation               = true
+
+  event_selector {
+    read_write_type           = "All"
+    include_management_events = true
+
+    data_resource {
+      type   = "AWS::S3::Object"
+      values = ["arn:aws:s3:::"]
+    }
+  }
+}
+```
 ## Non-Compliant Code Examples
 ```terraform
 data "aws_caller_identity" "current2" {}
@@ -201,6 +223,30 @@ resource "aws_s3_bucket" "foo" {
     ]
 }
 POLICY
+}
+
+```
+
+```terraform
+module "cloudtrail" {
+  source = "terraform-aws-modules/cloudtrail/aws"
+  version = "3.1.0"
+
+  name = "cloudtrail"
+
+  s3_bucket_server_side_encryption_enabled = true
+  enable_log_file_validation               = true
+
+  event_selector {
+    read_write_type           = "WriteOnly"
+    include_management_events = true
+
+    data_resource {
+      type   = "AWS::S3::Object"
+      values = ["arn:aws:s3:::"]
+
+    }
+  }
 }
 
 ```

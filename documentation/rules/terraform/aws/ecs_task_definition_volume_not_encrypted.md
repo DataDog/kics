@@ -85,18 +85,6 @@ resource "aws_ecs_task_definition" "service_2" {
 ```
 
 ```terraform
-resource "aws_ecs_task_definition" "service_2" {
-  family                = "service"
-  container_definitions = file("task-definitions/service.json")
-
-  volume {
-    name = "service-storage"
-  }
-}
-
-```
-
-```terraform
 resource "aws_ecs_task_definition" "service" {
   family                = "service"
   container_definitions = file("task-definitions/service.json")
@@ -114,6 +102,18 @@ resource "aws_ecs_task_definition" "service" {
         iam             = "ENABLED"
       }
     }
+  }
+}
+
+```
+
+```terraform
+resource "aws_ecs_task_definition" "service_2" {
+  family                = "service"
+  container_definitions = file("task-definitions/service.json")
+
+  volume {
+    name = "service-storage"
   }
 }
 

@@ -37,6 +37,34 @@ ignore_public_acls = false```.
 
 ## Compliant Code Examples
 ```terraform
+provider "aws" {
+  region = "us-east-1"
+}
+
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 3.0"
+    }
+  }
+}
+resource "aws_s3_bucket" "public-bucket2" {
+  bucket = "bucket-with-public-acl-32"
+  acl = "public-read-write"
+}
+
+resource "aws_s3_bucket_public_access_block" "block_public_bucket_32" {
+  bucket = aws_s3_bucket.public-bucket2.id
+  block_public_acls = false
+  block_public_policy = true
+  ignore_public_acls = false
+  restrict_public_buckets = true
+}
+
+```
+
+```terraform
 terraform {
   required_providers {
     aws = {
@@ -90,34 +118,6 @@ module "s3_bucket" {
 }
 
 ```
-
-```terraform
-provider "aws" {
-  region = "us-east-1"
-}
-
-terraform {
-  required_providers {
-    aws = {
-      source  = "hashicorp/aws"
-      version = "~> 3.0"
-    }
-  }
-}
-resource "aws_s3_bucket" "public-bucket2" {
-  bucket = "bucket-with-public-acl-32"
-  acl = "public-read-write"
-}
-
-resource "aws_s3_bucket_public_access_block" "block_public_bucket_32" {
-  bucket = aws_s3_bucket.public-bucket2.id
-  block_public_acls = false
-  block_public_policy = true
-  ignore_public_acls = false
-  restrict_public_buckets = true
-}
-
-```
 ## Non-Compliant Code Examples
 ```terraform
 module "s3_bucket" {
@@ -137,6 +137,35 @@ module "s3_bucket" {
   ignore_public_acls = true
   restrict_public_buckets = true
 
+}
+
+```
+
+```terraform
+provider "aws" {
+  region = "us-east-1"
+}
+
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 3.0"
+    }
+  }
+}
+
+resource "aws_s3_bucket" "public-bucket" {
+  bucket = "bucket-with-public-acl-3"
+  acl = "public-read-write"
+}
+
+resource "aws_s3_bucket_public_access_block" "block_public_bucket_3" {
+  bucket = aws_s3_bucket.public-bucket.id
+  block_public_acls = true
+  block_public_policy = true
+  ignore_public_acls = true
+  restrict_public_buckets = true
 }
 
 ```
@@ -166,35 +195,6 @@ resource "aws_s3_bucket_acl" "example_bucket_acl" {
 
 resource "aws_s3_bucket_public_access_block" "block_public_bucket_3" {
   bucket = aws_s3_bucket.bu.id
-  block_public_acls = true
-  block_public_policy = true
-  ignore_public_acls = true
-  restrict_public_buckets = true
-}
-
-```
-
-```terraform
-provider "aws" {
-  region = "us-east-1"
-}
-
-terraform {
-  required_providers {
-    aws = {
-      source  = "hashicorp/aws"
-      version = "~> 3.0"
-    }
-  }
-}
-
-resource "aws_s3_bucket" "public-bucket" {
-  bucket = "bucket-with-public-acl-3"
-  acl = "public-read-write"
-}
-
-resource "aws_s3_bucket_public_access_block" "block_public_bucket_3" {
-  bucket = aws_s3_bucket.public-bucket.id
   block_public_acls = true
   block_public_policy = true
   ignore_public_acls = true

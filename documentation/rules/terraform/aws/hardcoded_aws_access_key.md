@@ -35,20 +35,6 @@ Instead of hardcoding credentials directly in configuration files like `user_dat
 
 ## Compliant Code Examples
 ```terraform
-resource "aws_instance" "negative1" {
-  ami           = data.aws_ami.ubuntu.id
-  instance_type = "t3.micro"
-
-  user_data = file("scripts/first-boot-http.sh")
-  tags = {
-    Name = "HelloWorld"
-  }
-}
-
-
-```
-
-```terraform
 module "ec2_instance" {
   source  = "terraform-aws-modules/ec2-instance/aws"
   version = "~> 3.0"
@@ -68,6 +54,20 @@ module "ec2_instance" {
     Environment = "dev"
   }
 }
+
+```
+
+```terraform
+resource "aws_instance" "negative1" {
+  ami           = data.aws_ami.ubuntu.id
+  instance_type = "t3.micro"
+
+  user_data = file("scripts/first-boot-http.sh")
+  tags = {
+    Name = "HelloWorld"
+  }
+}
+
 
 ```
 ## Non-Compliant Code Examples

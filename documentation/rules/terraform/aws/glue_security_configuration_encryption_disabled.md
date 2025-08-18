@@ -99,16 +99,16 @@ resource "aws_glue_security_configuration" "positive2" {
 ```
 
 ```terraform
-resource "aws_glue_security_configuration" "positive2" {
+resource "aws_glue_security_configuration" "positive1" {
   name = "example"
 
   encryption_configuration {
     cloudwatch_encryption {
       cloudwatch_encryption_mode = "SSE-KMS"
-      kms_key_arn = data.aws_kms_key.example.arn
     }
 
     job_bookmarks_encryption {
+      job_bookmarks_encryption_mode = "CSE-KMS"
       kms_key_arn = data.aws_kms_key.example.arn
     }
 
@@ -122,16 +122,16 @@ resource "aws_glue_security_configuration" "positive2" {
 ```
 
 ```terraform
-resource "aws_glue_security_configuration" "positive1" {
+resource "aws_glue_security_configuration" "positive2" {
   name = "example"
 
   encryption_configuration {
     cloudwatch_encryption {
       cloudwatch_encryption_mode = "SSE-KMS"
+      kms_key_arn = data.aws_kms_key.example.arn
     }
 
     job_bookmarks_encryption {
-      job_bookmarks_encryption_mode = "CSE-KMS"
       kms_key_arn = data.aws_kms_key.example.arn
     }
 

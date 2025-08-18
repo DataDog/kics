@@ -61,20 +61,20 @@ resource "aws_cloudtrail" "positive2" {
 ```
 
 ```terraform
-resource "aws_cloudtrail" "positive3" {
-  name                          = "npositive_3"
-  s3_bucket_name                = "bucketlog_3"
-  is_multi_region_trail         = true
-  include_global_service_events = false
+#this is a problematic code where the query should report a result(s)
+resource "aws_cloudtrail" "positive1" {
+  name                          = "npositive_1"
+  s3_bucket_name                = "bucketlog_1"
 }
 
 ```
 
 ```terraform
-#this is a problematic code where the query should report a result(s)
-resource "aws_cloudtrail" "positive1" {
-  name                          = "npositive_1"
-  s3_bucket_name                = "bucketlog_1"
+resource "aws_cloudtrail" "positive3" {
+  name                          = "npositive_3"
+  s3_bucket_name                = "bucketlog_3"
+  is_multi_region_trail         = true
+  include_global_service_events = false
 }
 
 ```

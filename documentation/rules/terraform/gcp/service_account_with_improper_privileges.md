@@ -55,6 +55,19 @@ Failing to restrict service account privileges can enable attackers or compromis
 
 ## Compliant Code Examples
 ```terraform
+data "google_iam_policy" "policy5" {
+  binding {
+    role = "roles/apigee.runtimeAgent"
+
+    members = [
+      "user:jane@example.com",
+    ]
+  }
+}
+
+```
+
+```terraform
 resource "google_project_iam_binding" "project5" {
   role = "roles/viewer"
 
@@ -98,19 +111,6 @@ resource "google_project_iam_member" "project4" {
 }
 
 ```
-
-```terraform
-data "google_iam_policy" "policy5" {
-  binding {
-    role = "roles/apigee.runtimeAgent"
-
-    members = [
-      "user:jane@example.com",
-    ]
-  }
-}
-
-```
 ## Non-Compliant Code Examples
 ```terraform
 resource "google_project_iam_binding" "project1" {
@@ -139,16 +139,10 @@ resource "google_project_iam_member" "project2" {
 ```terraform
 data "google_iam_policy" "admin" {
   binding {
-    role = "roles/compute.imageUser"
+    role = "roles/editor"
 
     members = [
       "serviceAccount:jane@example.com",
-    ]
-  }
-  binding {
-    role = "roles/owner"
-    members = [
-      "serviceAccount:john@example.com",
     ]
   }
 }

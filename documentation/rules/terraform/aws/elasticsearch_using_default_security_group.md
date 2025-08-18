@@ -47,22 +47,22 @@ Avoid empty security group lists or omitting the security_group_ids attribute.
 
 ## Compliant Code Examples
 ```terraform
-resource "aws_elasticsearch_domain" "good_example" {
+resource "aws_opensearch_domain" "good_example" {
   domain_name = "example"
 
   vpc_options {
-
+    security_group_ids = ["sg-87654321"] # ✅ Explicit security group assigned
   }
 }
 
 ```
 
 ```terraform
-resource "aws_opensearch_domain" "good_example" {
+resource "aws_elasticsearch_domain" "good_example" {
   domain_name = "example"
 
   vpc_options {
-    security_group_ids = ["sg-87654321"] # ✅ Explicit security group assigned
+
   }
 }
 

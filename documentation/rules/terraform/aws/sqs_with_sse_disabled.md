@@ -41,6 +41,15 @@ resource "aws_sqs_queue" "example" {
 
 ## Compliant Code Examples
 ```terraform
+resource "aws_sqs_queue" "negative1" {
+  name                              = "terraform-example-queue"
+  kms_master_key_id                 = "alias/aws/sqs"
+  kms_data_key_reuse_period_seconds = 300
+}
+
+```
+
+```terraform
 resource "aws_sqs_queue" "negative3" {
   name                    = "terraform-example-queue"
   sqs_managed_sse_enabled = true
@@ -62,15 +71,6 @@ module "user_queue" {
 
   kms_master_key_id = "alias/aws/sqs"
 
-}
-
-```
-
-```terraform
-resource "aws_sqs_queue" "negative1" {
-  name                              = "terraform-example-queue"
-  kms_master_key_id                 = "alias/aws/sqs"
-  kms_data_key_reuse_period_seconds = 300
 }
 
 ```
@@ -104,10 +104,18 @@ resource "aws_sqs_queue" "positive2" {
 ```
 
 ```terraform
-resource "aws_sqs_queue" "positive3" {
-  name                              = "terraform-example-queue"
-  kms_master_key_id                 = null
-  kms_data_key_reuse_period_seconds = 300
+module "user_queue" {
+  source  = "terraform-aws-modules/sqs/aws"
+  version = "~> 2.0"
+
+  name = "user"
+
+  tags = {
+    Service     = "user"
+    Environment = "dev"
+  }
+
+  kms_master_key_id = ""
 }
 
 ```

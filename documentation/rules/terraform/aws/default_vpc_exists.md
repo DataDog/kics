@@ -46,6 +46,20 @@ This ensures network isolation and enables more granular control over security s
 
 ## Compliant Code Examples
 ```terraform
+resource "aws_vpc" "negative1" {
+  cidr_block       = "10.0.0.0/16"
+  instance_tenancy = "default"
+
+  tags = {
+    Name = "main"
+  }
+}
+
+
+
+```
+
+```terraform
 module "vpc" {
   source  = "terraform-aws-modules/vpc/aws"
   version = "3.7.0"
@@ -65,20 +79,6 @@ module "vpc" {
     Environment = "dev"
   }
 }
-
-```
-
-```terraform
-resource "aws_vpc" "negative1" {
-  cidr_block       = "10.0.0.0/16"
-  instance_tenancy = "default"
-
-  tags = {
-    Name = "main"
-  }
-}
-
-
 
 ```
 ## Non-Compliant Code Examples

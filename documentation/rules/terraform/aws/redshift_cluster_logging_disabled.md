@@ -66,7 +66,41 @@ resource "aws_redshift_cluster" "negative1" {
   }
 }
 ```
+
+```terraform
+module "redshift" {
+  source = "terraform-aws-modules/redshift/aws"
+  version = "~> 3.0"
+
+  cluster_identifier = "redshift-cluster-demo"
+  database_name      = "demodb"
+  master_username    = "adminuser"
+  master_password    = "AdminUser12345"
+
+  logging {
+    enable = true
+    bucket_name = "foo"
+  }
+}
+```
 ## Non-Compliant Code Examples
+```terraform
+module "redshift" {
+  source = "terraform-aws-modules/redshift/aws"
+  version = "~> 3.0"
+
+  cluster_identifier = "redshift-cluster-demo"
+  database_name      = "demodb"
+  master_username    = "adminuser"
+  master_password    = "AdminUser12345"
+
+  logging {
+    enable = false
+    bucket_name = "foo"
+  }
+}
+```
+
 ```terraform
 resource "aws_redshift_cluster" "positive1" {
   cluster_identifier = "tf-redshift-cluster"
