@@ -284,7 +284,7 @@ func (c *Inspector) Inspect(
 	if err != nil {
 		log.Warn().Err(err).Msg("Failed to parse Terraform modules")
 	}
-	log.Log().Msgf("Found %d modules", len(parsedModules))
+	log.Info().Msgf("Found %d modules", len(parsedModules))
 
 	// Step 2: Enrich modules with parsed variables
 	rootDir := "." // or infer from files.RootDir, etc.

@@ -1,9 +1,9 @@
 package scan
 
 import (
-	"context"
 	"os"
 	"path/filepath"
+	"time"
 
 	consoleHelpers "github.com/Checkmarx/kics/internal/console/helpers"
 	"github.com/Checkmarx/kics/internal/constants"
@@ -37,8 +37,12 @@ func setupConfigFile(rootPath string) (bool, error) {
 	return false, nil
 }
 
-func initializeConfig(rootPath string, ctx context.Context, extraInfos map[string]string) (ConfigParameters, error) {
-	infos := zerolog.Ctx(log.Logger.WithContext(ctx)).With()
+func initializeConfig(rootPath string, extraInfos map[string]string) (ConfigParameters, error) {
+	baseLogger := zerolog.New(zerolog.ConsoleWriter{Out: os.Stderr, TimeFormat: time.RFC3339}).
+		With().
+		Timestamp().Logger()
+
+	infos := (&baseLogger).With()
 	for k, v := range extraInfos {
 		infos = infos.Str(k, v)
 	}
