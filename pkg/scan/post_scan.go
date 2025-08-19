@@ -171,8 +171,8 @@ func (c *Client) postScan(scanResults *Results) (ScanMetadata, error) {
 		"excluded_results", len(c.ScanParams.ExcludeResults),
 	).Msg("Exclusions Info")
 
-	exitCode := consoleHelpers.ResultsExitCode(&summary)
-	if consoleHelpers.ShowError("results") && exitCode != 0 {
+	handler, exitCode := consoleHelpers.ResultsExitCode(&summary)
+	if handler.ShowError("results") && exitCode != 0 {
 		os.Exit(exitCode)
 	}
 

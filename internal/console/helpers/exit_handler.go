@@ -12,24 +12,25 @@ import (
 	"github.com/Checkmarx/kics/pkg/model"
 )
 
-type ExitHandlerConfig struct {
+type ExitHandler struct {
 	ShouldIgnore string
 	ShouldFail   map[string]struct{}
 }
 
-func NewExitHandlerConfig() *ExitHandlerConfig {
-	return &ExitHandlerConfig{
+func NewExitHandler() *ExitHandler {
+	return &ExitHandler{
 		ShouldIgnore: "",
 		ShouldFail:   map[string]struct{}{},
 	}
 }
 
 // ResultsExitCode calculate exit code base on severity of results, returns 0 if no results was reported
-func ResultsExitCode(summary *model.Summary) int {
-	return ResultsExitCodeWithConfig(NewExitHandlerConfig(), summary)
+func ResultsExitCode(summary *model.Summary) (*ExitHandler, int) {
+	exitHandler := NewExitHandler()
+	return exitHandler, ResultsExitCodeWithConfig(exitHandler, summary)
 }
 
-func ResultsExitCodeWithConfig(config *ExitHandlerConfig, summary *model.Summary) int {
+func ResultsExitCodeWithConfig(config *ExitHandler, summary *model.Summary) int {
 	// severityArr is needed to make sure 'for' cycle is made in an ordered fashion
 	severityArr := []model.Severity{"CRITICAL", "HIGH", "MEDIUM", "LOW", "INFO", "TRACE"}
 	codeMap := map[model.Severity]int{"CRITICAL": 60, "HIGH": 50, "MEDIUM": 40, "LOW": 30, "INFO": 20, "TRACE": 0}
@@ -47,7 +48,7 @@ func ResultsExitCodeWithConfig(config *ExitHandlerConfig, summary *model.Summary
 }
 
 // InitShouldIgnoreArg initializes what kind of errors should be used on exit codes
-func (config *ExitHandlerConfig) InitShouldIgnoreArg(arg string) error {
+func (config *ExitHandler) InitShouldIgnoreArg(arg string) error {
 	validArgs := []string{"none", "all", "results", "errors"}
 	for _, validArg := range validArgs {
 		if strings.EqualFold(validArg, arg) {
@@ -59,7 +60,7 @@ func (config *ExitHandlerConfig) InitShouldIgnoreArg(arg string) error {
 }
 
 // InitShouldFailArg initializes which kind of vulnerability severity should changes exit code
-func (config *ExitHandlerConfig) InitShouldFailArg(args []string) error {
+func (config *ExitHandler) InitShouldFailArg(args []string) error {
 	possibleArgs := map[string]struct{}{
 		"critical": {},
 		"high":     {},
@@ -87,7 +88,7 @@ func (config *ExitHandlerConfig) InitShouldFailArg(args []string) error {
 }
 
 // ShowError returns true if should show error, otherwise returns false
-func (config *ExitHandlerConfig) ShowError(kind string) bool {
+func (config *ExitHandler) ShowError(kind string) bool {
 	return strings.EqualFold(config.ShouldIgnore, "none") || (!strings.EqualFold(config.ShouldIgnore, "all") && !strings.EqualFold(config.ShouldIgnore, kind))
 }
 
