@@ -66,6 +66,16 @@ func GetIgnoreLines(file *FileMetadata) []int {
 // unmarshal is the function that will parse the yaml elements and call the functions needed
 // to place their line information in the payload
 func unmarshal(val *yaml.Node) interface{} {
+	return unmarshalWithDepth(val, make(map[*yaml.Node]bool))
+}
+
+// unmarshalWithDepth handles recursive unmarshaling with circular reference detection
+func unmarshalWithDepth(val *yaml.Node, visited map[*yaml.Node]bool) interface{} {
+	if visited[val] {
+		return nil
+	}
+	visited[val] = true
+	defer func() { delete(visited, val) }()
 	tmp := make(map[string]interface{})
 	ignoreCommentsYAML(val)
 
@@ -74,7 +84,7 @@ func unmarshal(val *yaml.Node) interface{} {
 	if val.Kind == yaml.SequenceNode {
 		contentArray := make([]interface{}, 0)
 		for _, contentEntry := range val.Content {
-			contentArray = append(contentArray, unmarshal(contentEntry))
+			contentArray = append(contentArray, unmarshalWithDepth(contentEntry, visited))
 		}
 		tmp["playbooks"] = contentArray
 	} else if val.Kind == yaml.ScalarNode {
@@ -90,24 +100,31 @@ func unmarshal(val *yaml.Node) interface{} {
 				// in case value iteration is a map
 				case yaml.MappingNode:
 					// unmarshall map value and get its line information
-					tt := unmarshal(val.Content[i+1]).(map[string]interface{})
-					tt["_kics_lines"] = getLines(val.Content[i+1], val.Content[i].Line)
-					tmp[val.Content[i].Value] = tt
+					result := unmarshalWithDepth(val.Content[i+1], visited)
+					if tt, ok := result.(map[string]interface{}); ok {
+						tt["_kics_lines"] = getLines(val.Content[i+1], val.Content[i].Line)
+						tmp[val.Content[i].Value] = tt
+					} else {
+						tmp[val.Content[i].Value] = result
+					}
 				// in case value iteration is an array
 				case yaml.SequenceNode:
 					contentArray := make([]interface{}, 0)
 					// unmarshall each iteration of the array
 					for _, contentEntry := range val.Content[i+1].Content {
-						contentArray = append(contentArray, unmarshal(contentEntry))
+						contentArray = append(contentArray, unmarshalWithDepth(contentEntry, visited))
 					}
 					tmp[val.Content[i].Value] = contentArray
 				case yaml.AliasNode:
-					if tt, ok := unmarshal(val.Content[i+1].Alias).(map[string]interface{}); ok {
-						tt["_kics_lines"] = getLines(val.Content[i+1], val.Content[i].Line)
-						utils.MergeMaps(tmp, tt)
-					}
-					if v, ok := unmarshal(val.Content[i+1].Alias).(string); ok {
-						tmp[val.Content[i].Value] = v
+					if val.Content[i+1].Alias != nil {
+						result := unmarshalWithDepth(val.Content[i+1].Alias, visited)
+						if tt, ok := result.(map[string]interface{}); ok {
+							tt["_kics_lines"] = getLines(val.Content[i+1], val.Content[i].Line)
+							utils.MergeMaps(tmp, tt)
+						}
+						if v, ok := result.(string); ok {
+							tmp[val.Content[i].Value] = v
+						}
 					}
 				}
 			}
