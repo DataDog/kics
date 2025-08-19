@@ -34,6 +34,7 @@ type Parser struct {
 	numOfRetries      int
 	terraformVarsPath string
 	sciInfo           model.SCIInfo
+	inputVariables    converter.VariableMap
 }
 
 // NewDefault initializes a parser with Parser default values
@@ -67,8 +68,8 @@ func (p *Parser) Resolve(fileContent []byte, filename string, _ bool, _ int) ([]
 			masterUtils.HandlePanic(r, errMessage)
 		}
 	}()
-	getInputVariables(filepath.Dir(filename), string(fileContent), p.terraformVarsPath)
-	getDataSourcePolicy(filepath.Dir(filename))
+	inputVars := getInputVariables(filepath.Dir(filename), string(fileContent), p.terraformVarsPath)
+	p.inputVariables = getDataSourcePolicy(filepath.Dir(filename), inputVars)
 	return fileContent, nil
 }
 
@@ -213,7 +214,7 @@ func (p *Parser) Parse(path string, content []byte) ([]model.Document, []int, er
 
 	linesToIgnore := comment.GetIgnoreLines(ignore, file.Body.(*hclsyntax.Body))
 
-	fc, parseErr := p.convertFunc(file, inputVariableMap)
+	fc, parseErr := p.convertFunc(file, p.inputVariables)
 	json, err := addExtraInfo([]model.Document{fc}, path)
 	if err != nil {
 		return json, []int{}, errors.Wrap(err, "failed terraform parse")

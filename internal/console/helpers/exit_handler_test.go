@@ -72,8 +72,9 @@ var resultsExitCodeTests = []struct {
 func TestExitHandler_ResultsExitCode(t *testing.T) {
 	for idx, testCase := range resultsExitCodeTests {
 		t.Run(fmt.Sprintf("Print test case %d", idx), func(t *testing.T) {
-			shouldFail = testCase.caseTest.failOn
-			result := ResultsExitCode(&testCase.caseTest.summary)
+			config := NewExitHandlerConfig()
+			config.ShouldFail = testCase.caseTest.failOn
+			result := ResultsExitCodeWithConfig(config, &testCase.caseTest.summary)
 			require.Equal(t, testCase.expectedResult, result)
 		})
 	}
@@ -142,14 +143,15 @@ var initShouldIgnoreExitCodeTests = []struct {
 func TestExitHandler_InitShouldIgnoreArg(t *testing.T) {
 	for idx, testCase := range initShouldIgnoreExitCodeTests {
 		t.Run(fmt.Sprintf("Print test case %d", idx), func(t *testing.T) {
-			shouldIgnore = "none"
-			err := InitShouldIgnoreArg(testCase.caseTest)
+			config := NewExitHandlerConfig()
+			config.ShouldIgnore = "none"
+			err := config.InitShouldIgnoreArg(testCase.caseTest)
 			if testCase.expectedResult.wantErr {
 				require.NotNil(t, err)
 			} else {
 				require.Nil(t, err)
 			}
-			require.Equal(t, testCase.expectedResult.want, shouldIgnore)
+			require.Equal(t, testCase.expectedResult.want, config.ShouldIgnore)
 		})
 	}
 }
@@ -210,14 +212,15 @@ var initShouldFailTests = []struct {
 func TestExitHandler_InitShouldFailArg(t *testing.T) {
 	for idx, testCase := range initShouldFailTests {
 		t.Run(fmt.Sprintf("Print test case %d", idx), func(t *testing.T) {
-			shouldFail = make(map[string]struct{})
-			err := InitShouldFailArg(testCase.caseTest)
+			config := NewExitHandlerConfig()
+			config.ShouldFail = make(map[string]struct{})
+			err := config.InitShouldFailArg(testCase.caseTest)
 			if testCase.expectedResult.wantErr {
 				require.NotNil(t, err)
 			} else {
 				require.Nil(t, err)
 			}
-			require.Equal(t, testCase.expectedResult.want, shouldFail)
+			require.Equal(t, testCase.expectedResult.want, config.ShouldFail)
 		})
 	}
 }
@@ -247,8 +250,9 @@ var showResultsTests = []struct {
 func TestExitHandler_ShowError(t *testing.T) {
 	for idx, testCase := range showResultsTests {
 		t.Run(fmt.Sprintf("Print test case %d", idx), func(t *testing.T) {
-			shouldIgnore = testCase.caseTest
-			result := ShowError("errors")
+			config := NewExitHandlerConfig()
+			config.ShouldIgnore = testCase.caseTest
+			result := config.ShowError("errors")
 			require.Equal(t, testCase.expectedResult, result)
 		})
 	}
