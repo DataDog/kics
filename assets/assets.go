@@ -28,7 +28,7 @@ func GetEmbeddedLibraryData(platform string) (string, error) {
 	return string(content), err
 }
 
-//go:embed queries/terraform
+//go:embed queries/*
 var embeddedQueries embed.FS
 
 func GetEmbeddedQueryDirs() ([]string, error) {
