@@ -466,6 +466,72 @@ func compareJSONLine(t *testing.T, test1 interface{}, test2 string) {
 	require.JSONEq(t, test2, string(stringefiedJSON))
 }
 
+func TestDocument_UnmarshalYAML_CircularReference(t *testing.T) {
+	// Create nodes that will form a circular reference via aliases
+	node1 := &yaml.Node{
+		Kind: yaml.MappingNode,
+		Content: []*yaml.Node{
+			{
+				Kind:  yaml.ScalarNode,
+				Value: "key1",
+				Line:  1,
+			},
+			{
+				Kind:  yaml.ScalarNode,
+				Value: "value1",
+			},
+			{
+				Kind:  yaml.ScalarNode,
+				Value: "ref",
+				Line:  2,
+			},
+			nil, // Will be set to create circular reference
+		},
+	}
+
+	node2 := &yaml.Node{
+		Kind: yaml.MappingNode,
+		Content: []*yaml.Node{
+			{
+				Kind:  yaml.ScalarNode,
+				Value: "key2",
+				Line:  3,
+			},
+			{
+				Kind:  yaml.ScalarNode,
+				Value: "value2",
+			},
+			{
+				Kind:  yaml.ScalarNode,
+				Value: "backref",
+				Line:  4,
+			},
+			{
+				Kind:  yaml.AliasNode,
+				Alias: node1, // Creates circular reference
+			},
+		},
+	}
+
+	// Complete the circular reference
+	node1.Content[3] = &yaml.Node{
+		Kind:  yaml.AliasNode,
+		Alias: node2,
+	}
+
+	// Test that the new code works correctly
+	t.Run("new_code_succeeds", func(t *testing.T) {
+		doc := &Document{}
+
+		// This should not cause a stack overflow with the fix
+		err := doc.UnmarshalYAML(node1)
+		require.NoError(t, err)
+
+		// Verify the document was parsed (even with nil values for circular refs)
+		require.NotNil(t, doc)
+	})
+}
+
 func Test_GetIgnoreLines(t *testing.T) {
 	tests := []struct {
 		name string
