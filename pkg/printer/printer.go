@@ -8,9 +8,7 @@ package printer
 import (
 	"fmt"
 	"io"
-	"os"
 	"strings"
-	"time"
 
 	"github.com/Checkmarx/kics/pkg/utils"
 
@@ -81,7 +79,7 @@ func WordWrap(s, indentation string, limit int) string {
 func PrintResult(summary *model.Summary, printer *Printer, usingCustomQueries bool, sciInfo model.SCIInfo) error {
 	log.Debug().Msg("helpers.PrintResult()")
 	fmt.Printf("\n\n")
-	logger := zerolog.New(zerolog.ConsoleWriter{Out: os.Stderr, TimeFormat: time.RFC3339}).
+	logger := log.Logger.
 		With().
 		Timestamp().Logger()
 
