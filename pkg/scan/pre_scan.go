@@ -43,13 +43,15 @@ func initializeConfig(rootPath string, extraInfos map[string]string, consolePrin
 		baseLogger = zerolog.New(zerolog.ConsoleWriter{Out: os.Stderr, TimeFormat: time.RFC3339}).
 			With().
 			Timestamp().Logger()
-	}
+		log.Logger = baseLogger
+	} else {
+		infos := (&baseLogger).With()
+		for k, v := range extraInfos {
+			infos = infos.Str(k, v)
+		}
 
-	infos := (&baseLogger).With()
-	for k, v := range extraInfos {
-		infos = infos.Str(k, v)
+		log.Logger = infos.Logger()
 	}
-	log.Logger = infos.Logger()
 
 	log.Debug().Msg("console.initializeConfig()")
 
