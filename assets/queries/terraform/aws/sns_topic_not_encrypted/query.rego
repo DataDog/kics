@@ -15,7 +15,10 @@ CxPolicy[result] {
 		"searchKey": sprintf("aws_sns_topic[%s]", [name]),
 		"issueType": "MissingAttribute",
 		"keyExpectedValue": "kms_master_key_id should be defined and not null",
-		"keyActualValue": "kms_master_key_id is undefined or null",
+        "keyActualValue": "kms_master_key_id is undefined or null",
+        "searchLine": common_lib.build_search_line(["resource", "aws_sns_topic", name], []),
+        "remediation": "kms_master_key_id = \"alias/aws/sns\"",
+        "remediationType": "addition",
 	}
 }
 
@@ -31,7 +34,13 @@ CxPolicy[result] {
 		"searchKey": sprintf("aws_sns_topic[%s].kms_master_key_id", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": "kms_master_key_id should be defined and not null",
-		"keyActualValue": "kms_master_key_id is empty string",
+        "keyActualValue": "kms_master_key_id is empty string",
+        "searchLine": common_lib.build_search_line(["resource", "aws_sns_topic", name, "kms_master_key_id"], []),
+        "remediation": json.marshal({
+            "before": "\"\"",
+            "after":  "\"alias/aws/sns\"",
+        }),
+        "remediationType": "replacement",
 	}
 }
 
@@ -51,6 +60,9 @@ CxPolicy[result] {
 		"issueType": "MissingAttribute",
 		"keyExpectedValue": sprintf("module[%s].%s should be defined and not null", [name, keyToCheck]),
 		"keyActualValue": sprintf("module[%s].%s is undefined or null", [name, keyToCheck]),
+        "searchLine": common_lib.build_search_line(["module", name], []),
+        "remediation": sprintf("%s = \"alias/aws/sns\"", [keyToCheck]),
+        "remediationType": "addition",
 	}
 }
 
@@ -67,6 +79,12 @@ CxPolicy[result] {
 		"searchKey": sprintf("module[%s].%s", [name, keyToCheck]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": sprintf("module[%s].%s should be defined and not null", [name, keyToCheck]),
-		"keyActualValue": sprintf("module[%s].%s is empty string", [name, keyToCheck]),
+        "keyActualValue": sprintf("module[%s].%s is empty string", [name, keyToCheck]),
+        "searchLine": common_lib.build_search_line(["module", name, keyToCheck], []),
+        "remediation": json.marshal({
+            "before": "\"\"",
+            "after":  "\"alias/aws/sns\"",
+        }),
+        "remediationType": "replacement",
 	}
 }
