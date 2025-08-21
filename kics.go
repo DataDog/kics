@@ -16,7 +16,7 @@ import (
 	"github.com/rs/zerolog/log"
 )
 
-func ExecuteKICSScan(inputPaths []string, outputPath string, sciInfo model.SCIInfo) (scan.ScanMetadata, string, error) {
+func ExecuteKICSScan(inputPaths []string, outputPath string, sciInfo model.SCIInfo, consolePrint ...bool) (scan.ScanMetadata, string, error) {
 	extraInfos := map[string]string{
 		"org":        fmt.Sprintf("%d", sciInfo.OrgId),
 		"branch":     sciInfo.RepositoryCommitInfo.Branch,
@@ -24,7 +24,7 @@ func ExecuteKICSScan(inputPaths []string, outputPath string, sciInfo model.SCIIn
 		"repository": sciInfo.RepositoryCommitInfo.RepositoryUrl,
 	}
 
-	params := scan.GetDefaultParameters(outputPath, extraInfos)
+	params := scan.GetDefaultParameters(outputPath, extraInfos, consolePrint...)
 	params.Path = inputPaths
 	params.OutputPath = outputPath
 	params.SCIInfo = sciInfo

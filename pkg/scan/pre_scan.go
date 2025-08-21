@@ -37,10 +37,13 @@ func setupConfigFile(rootPath string) (bool, error) {
 	return false, nil
 }
 
-func initializeConfig(rootPath string, extraInfos map[string]string) (ConfigParameters, error) {
-	baseLogger := zerolog.New(zerolog.ConsoleWriter{Out: os.Stderr, TimeFormat: time.RFC3339}).
-		With().
-		Timestamp().Logger()
+func initializeConfig(rootPath string, extraInfos map[string]string, consolePrint ...bool) (ConfigParameters, error) {
+	baseLogger := log.Logger
+	if len(consolePrint) > 0 && consolePrint[0] {
+		baseLogger = zerolog.New(zerolog.ConsoleWriter{Out: os.Stderr, TimeFormat: time.RFC3339}).
+			With().
+			Timestamp().Logger()
+	}
 
 	infos := (&baseLogger).With()
 	for k, v := range extraInfos {

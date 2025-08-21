@@ -79,9 +79,7 @@ func WordWrap(s, indentation string, limit int) string {
 func PrintResult(summary *model.Summary, printer *Printer, usingCustomQueries bool, sciInfo model.SCIInfo) error {
 	log.Debug().Msg("helpers.PrintResult()")
 	fmt.Printf("\n\n")
-	logger := log.Logger.
-		With().
-		Timestamp().Logger()
+	logger := log.Logger
 
 	for index := range summary.Queries {
 		idx := len(summary.Queries) - index - 1
