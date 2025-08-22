@@ -87,7 +87,7 @@ func PrintResult(summary *model.Summary, printer *Printer, usingCustomQueries bo
 			continue
 		}
 
-		(&logger).Info().Msgf(
+		logger.Info().Msgf(
 			"%s, Severity: %s, Results: %d\n",
 			printer.PrintBySev(summary.Queries[idx].QueryName, string(summary.Queries[idx].Severity)),
 			printer.PrintBySev(string(summary.Queries[idx].Severity), string(summary.Queries[idx].Severity)),
@@ -95,21 +95,21 @@ func PrintResult(summary *model.Summary, printer *Printer, usingCustomQueries bo
 		)
 
 		if summary.Queries[idx].Experimental {
-			(&logger).Info().Msgf("Note: this is an experimental query")
+			logger.Info().Msgf("Note: this is an experimental query")
 		}
 
 		if !printer.minimal {
 			if summary.Queries[idx].CISDescriptionID != "" {
-				(&logger).Info().Msgf("%s %s\n", printer.Bold("Description ID:"), summary.Queries[idx].CISDescriptionIDFormatted)
-				(&logger).Info().Msgf("%s %s\n", printer.Bold("Title:"), summary.Queries[idx].CISDescriptionTitle)
-				(&logger).Info().Msgf("%s %s\n", printer.Bold("Description:"), summary.Queries[idx].CISDescriptionTextFormatted)
+				logger.Info().Msgf("%s %s\n", printer.Bold("Description ID:"), summary.Queries[idx].CISDescriptionIDFormatted)
+				logger.Info().Msgf("%s %s\n", printer.Bold("Title:"), summary.Queries[idx].CISDescriptionTitle)
+				logger.Info().Msgf("%s %s\n", printer.Bold("Description:"), summary.Queries[idx].CISDescriptionTextFormatted)
 			} else {
-				(&logger).Info().Msgf("%s %s\n", printer.Bold("Description:"), summary.Queries[idx].Description)
+				logger.Info().Msgf("%s %s\n", printer.Bold("Description:"), summary.Queries[idx].Description)
 			}
-			(&logger).Info().Msgf("%s %s\n", printer.Bold("Platform:"), summary.Queries[idx].Platform)
+			logger.Info().Msgf("%s %s\n", printer.Bold("Platform:"), summary.Queries[idx].Platform)
 
 			if summary.Queries[idx].CWE != "" {
-				(&logger).Info().Msgf("%s %s\n", printer.Bold("CWE:"), summary.Queries[idx].CWE)
+				logger.Info().Msgf("%s %s\n", printer.Bold("CWE:"), summary.Queries[idx].CWE)
 			}
 
 			// checks if should print queries URL DOCS based on the use of custom queries and invalid ids
@@ -121,7 +121,7 @@ func PrintResult(summary *model.Summary, printer *Printer, usingCustomQueries bo
 					queryURLId = "a88baa34-e2ad-44ea-ad6f-8cac87bc7c71"
 				}
 
-				(&logger).Info().Msgf("%s %s\n\n",
+				logger.Info().Msgf("%s %s\n\n",
 					printer.Bold("Learn more about this vulnerability:"),
 					fmt.Sprintf("https://docs.kics.io/latest/queries/%s-queries/%s%s",
 						queryURLPlatform,
@@ -129,14 +129,14 @@ func PrintResult(summary *model.Summary, printer *Printer, usingCustomQueries bo
 						queryURLId))
 			}
 		}
-		printFiles(&summary.Queries[idx], printer, &logger)
+		printFiles(&summary.Queries[idx], printer)
 	}
-	(&logger).Info().Msgf("\nResults Summary:\n")
-	printSeverityCounter(model.SeverityCritical, summary.SeveritySummary.SeverityCounters[model.SeverityCritical], &logger)
-	printSeverityCounter(model.SeverityHigh, summary.SeveritySummary.SeverityCounters[model.SeverityHigh], &logger)
-	printSeverityCounter(model.SeverityMedium, summary.SeveritySummary.SeverityCounters[model.SeverityMedium], &logger)
-	printSeverityCounter(model.SeverityLow, summary.SeveritySummary.SeverityCounters[model.SeverityLow], &logger)
-	printSeverityCounter(model.SeverityInfo, summary.SeveritySummary.SeverityCounters[model.SeverityInfo], &logger)
+	logger.Info().Msgf("\nResults Summary:\n")
+	printSeverityCounter(model.SeverityCritical, summary.SeveritySummary.SeverityCounters[model.SeverityCritical])
+	printSeverityCounter(model.SeverityHigh, summary.SeveritySummary.SeverityCounters[model.SeverityHigh])
+	printSeverityCounter(model.SeverityMedium, summary.SeveritySummary.SeverityCounters[model.SeverityMedium])
+	printSeverityCounter(model.SeverityLow, summary.SeveritySummary.SeverityCounters[model.SeverityLow])
+	printSeverityCounter(model.SeverityInfo, summary.SeveritySummary.SeverityCounters[model.SeverityInfo])
 	log.Info().Msgf("TOTAL: %d\n\n", summary.SeveritySummary.TotalCounter)
 
 	log.Info().Int64(
@@ -169,11 +169,13 @@ func PrintResult(summary *model.Summary, printer *Printer, usingCustomQueries bo
 	return nil
 }
 
-func printSeverityCounter(severity string, counter int, logger *zerolog.Logger) {
+func printSeverityCounter(severity string, counter int) {
+	logger := log.Logger
 	logger.Info().Msgf("%s: %d\n", severity, counter)
 }
 
-func printFiles(query *model.QueryResult, printer *Printer, logger *zerolog.Logger) {
+func printFiles(query *model.QueryResult, printer *Printer) {
+	logger := log.Logger
 	for fileIdx := range query.Files {
 		logger.Info().Msgf("\t%s %s:%s\n", printer.PrintBySev(fmt.Sprintf("[%d]:", fileIdx+1), string(query.Severity)),
 			query.Files[fileIdx].FileName, printer.Success.Sprint(query.Files[fileIdx].Line))
