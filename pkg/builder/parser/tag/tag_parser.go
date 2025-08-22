@@ -12,6 +12,8 @@ import (
 	"strconv"
 	"strings"
 	"text/scanner"
+
+	"github.com/rs/zerolog/log"
 )
 
 const (
@@ -103,7 +105,9 @@ func parseTag(s, name string) (Tag, error) {
 		case ',':
 			// NOP
 		default:
-			return Tag{}, fmt.Errorf("invalid token: %s", sc.TokenText())
+			err := fmt.Errorf("invalid token: %s", sc.TokenText())
+			log.Error().Msg(err.Error())
+			return Tag{}, err
 		}
 	}
 }
@@ -123,7 +127,9 @@ func parseArray(sc *scanner.Scanner) ([]interface{}, error) {
 		if next == ',' {
 			continue
 		}
-		return result, fmt.Errorf(", expected but got %s", string(next))
+		err = fmt.Errorf(", expected but got %s", string(next))
+		log.Error().Msg(err.Error())
+		return result, err
 	}
 }
 
@@ -148,7 +154,9 @@ func parseValue(sc *scanner.Scanner) (interface{}, error) {
 			sc.Next()
 			return "!=", nil
 		}
-		return nil, fmt.Errorf("invalid value: %s", sc.TokenText())
+		err := fmt.Errorf("invalid value: %s", sc.TokenText())
+		log.Error().Msg(err.Error())
+		return nil, err
 	case '[':
 		sc.Next()
 		return parseArray(sc)
@@ -167,7 +175,9 @@ func parseValue(sc *scanner.Scanner) (interface{}, error) {
 				return strconv.ParseFloat(sc.TokenText(), bitSize64)
 			}
 		default:
-			return nil, fmt.Errorf("invalid value: %s", sc.TokenText())
+			err := fmt.Errorf("invalid value: %s", sc.TokenText())
+			log.Error().Msg(err.Error())
+			return nil, err
 		}
 	}
 	return nil, errors.New("invalid value")
@@ -178,12 +188,16 @@ func parseArgs(sc *scanner.Scanner) (map[string]interface{}, error) {
 	for {
 		tok := sc.Scan()
 		if tok != scanner.Ident {
-			return result, fmt.Errorf("invalid attribute name: %s", sc.TokenText())
+			err := fmt.Errorf("invalid attribute name: %s", sc.TokenText())
+			log.Error().Msg(err.Error())
+			return result, err
 		}
 		name := sc.TokenText()
 		eq := sc.Next()
 		if eq != '=' {
-			return result, fmt.Errorf("= expected but got %s", string(eq))
+			err := fmt.Errorf("= expected but got %s", string(eq))
+			log.Error().Msg(err.Error())
+			return result, err
 		}
 		value, err := parseValue(sc)
 		if err != nil {
@@ -197,7 +211,9 @@ func parseArgs(sc *scanner.Scanner) (map[string]interface{}, error) {
 		if next == ',' {
 			continue
 		}
-		return result, fmt.Errorf(") or , expected but got %s", string(next))
+		err = fmt.Errorf(") or , expected but got %s", string(next))
+		log.Error().Msg(err.Error())
+		return result, err
 	}
 }
 
@@ -246,7 +262,9 @@ func parseEscape(sc *scanner.Scanner) (string, error) {
 	case '\'':
 		return "'", nil
 	}
-	return "", fmt.Errorf("invalid escape sequence: %s", string(ch))
+	err := fmt.Errorf("invalid escape sequence: %s", string(ch))
+	log.Error().Msg(err.Error())
+	return "", err
 }
 
 func checkType(s string) interface{} {

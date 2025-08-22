@@ -278,10 +278,10 @@ func getAllDirs(embedfs *embed.FS, path string) ([]string, error) {
 	var out []string
 	err := fs.WalkDir(embedfs, ".", func(path string, d fs.DirEntry, err error) error {
 		if err != nil {
-			log.Info().Msgf("Failed to walk directory: %s", path)
+			log.Error().Msgf("Failed to walk directory: %s", path)
 			return err
 		}
-		fmt.Printf("path=%q, isDir=%v\n", path, d.IsDir())
+		log.Info().Msgf("path=%q, isDir=%v\n", path, d.IsDir())
 		if d.IsDir() {
 			out = append(out, path)
 		}
@@ -417,7 +417,9 @@ func ReadQuery(queryDir string) (model.QueryMetadata, error) {
 	}
 
 	if valid, missingField := validateMetadata(metadata); !valid {
-		return model.QueryMetadata{}, fmt.Errorf("failed to read metadata field: %s", missingField)
+		err := fmt.Errorf("failed to read metadata field: %s", missingField)
+		log.Error().Msg(err.Error())
+		return model.QueryMetadata{}, err
 	}
 
 	platform := getPlatform(metadata["platform"].(string))

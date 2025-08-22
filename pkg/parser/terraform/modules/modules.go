@@ -145,8 +145,9 @@ func validateModuleSource(absPath string) error {
 	// Attempt to read the directory contents
 	entries, err := os.ReadDir(absPath)
 	if err != nil {
-		log.Error().Msgf("Module source path %q is not accessible: %v", absPath, err)
-		return fmt.Errorf("module source path %q is not accessible: %w", absPath, err)
+		err := fmt.Errorf("module source path %q is not accessible: %w", absPath, err)
+		log.Error().Msg(err.Error())
+		return err
 	}
 
 	// Check for at least one .tf file
@@ -159,8 +160,9 @@ func validateModuleSource(absPath string) error {
 	}
 
 	if !valid {
-		log.Warn().Msgf("Module at %s does not contain any .tf files", absPath)
-		return fmt.Errorf("module at %s does not contain any .tf files", absPath)
+		wrn := fmt.Errorf("module at %s does not contain any .tf files", absPath)
+		log.Warn().Msg(wrn.Error())
+		return wrn
 	}
 	return nil
 }
@@ -431,7 +433,9 @@ func generateEquivalentMap(modulePath string) (map[string]ModuleAttributesInfo, 
 
 		hclFile, diag := hclwrite.ParseConfig(contents, "", hcl.InitialPos)
 		if diag.HasErrors() {
-			return nil, fmt.Errorf("error parsing input Terraform block in file %s: %s", path, diag.Error())
+			err := fmt.Errorf("error parsing input Terraform block in file %s: %s", path, diag.Error())
+			log.Error().Msg(err.Error())
+			return nil, err
 		}
 
 		for _, block := range hclFile.Body().Blocks() {

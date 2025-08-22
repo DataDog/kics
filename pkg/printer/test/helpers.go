@@ -11,6 +11,7 @@ import (
 	"strings"
 
 	"github.com/Checkmarx/kics/pkg/model"
+	"github.com/rs/zerolog/log"
 )
 
 const (
@@ -62,10 +63,11 @@ func CaptureOutput(funcToExec execute) (string, error) {
 // ChangeCurrentDir gets current working directory and changes to its parent until finds the desired directory
 // or fail
 func ChangeCurrentDir(desiredDir string) error {
+	logger := log.Logger
 	for currentDir, err := os.Getwd(); GetCurrentDirName(currentDir) != desiredDir; currentDir, err = os.Getwd() {
 		if err == nil {
 			if err = os.Chdir(".."); err != nil {
-				fmt.Print(formatCurrentDirError(err))
+				logger.Error().Msg(formatCurrentDirError(err))
 				return errors.New(formatCurrentDirError(err))
 			}
 		} else {
