@@ -92,7 +92,7 @@ CxPolicy[result] {
         "keyExpectedValue": "metadata_options must be defined with http_tokens set to 'required'",
         "keyActualValue": "metadata_options is missing, defaulting to IMDSv1",
         "searchLine": common_lib.build_search_line(["resource", resource_type, name], []),
-        "remediation": "metadata_options {\n\t  http_tokens = \"required\"\n}",
+        #"remediation": "metadata_options {\n\t  http_tokens = \"required\"\n}",
         "remediationType": "addition"
     }
 }
@@ -178,7 +178,7 @@ CxPolicy[result] {
         "keyExpectedValue": sprintf("%s must be defined with http_tokens set to 'required'", [keyToCheck]),
         "keyActualValue": sprintf("%s is missing, defaulting to IMDSv1", [keyToCheck]),
         "searchLine": common_lib.build_search_line(["module", name], []),
-        "remediation": sprintf("%s {\n\t  http_tokens = \"required\"\n}", keyToCheck),
+        #"remediation": sprintf("%s {\n\t  http_tokens = \"required\"\n}", keyToCheck),
         "remediationType": "addition"
     }
 }
