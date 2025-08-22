@@ -16,6 +16,7 @@ import (
 	"github.com/hashicorp/hcl/v2"
 	"github.com/hashicorp/hcl/v2/hclsyntax"
 	"github.com/rs/zerolog"
+	"github.com/rs/zerolog/log"
 )
 
 type DetectKindLine struct{}
@@ -99,17 +100,23 @@ func locateTerraformBlock(src []byte, identifyingLine int, strLines []string) (m
 	filePath := "temp.tf"
 
 	if identifyingLine <= 0 || identifyingLine > len(strLines) {
-		return model.VulnerabilityLines{}, fmt.Errorf("line %d is out of range", identifyingLine)
+		err := fmt.Errorf("line %d is out of range", identifyingLine)
+		log.Error().Msg(err.Error())
+		return model.VulnerabilityLines{}, err
 	}
 
 	hclFile, diagnostics := hclsyntax.ParseConfig(src, filePath, hcl.InitialPos)
 	if diagnostics.HasErrors() {
-		return model.VulnerabilityLines{}, fmt.Errorf("failed to parse HCL: %v", diagnostics.Errs())
+		err := fmt.Errorf("failed to parse HCL: %v", diagnostics.Errs())
+		log.Error().Msg(err.Error())
+		return model.VulnerabilityLines{}, err
 	}
 
 	body, ok := hclFile.Body.(*hclsyntax.Body)
 	if !ok {
-		return model.VulnerabilityLines{}, fmt.Errorf("unexpected HCL body type")
+		err := fmt.Errorf("unexpected HCL body type")
+		log.Error().Msg(err.Error())
+		return model.VulnerabilityLines{}, err
 	}
 
 	for _, block := range body.Blocks {
@@ -138,7 +145,9 @@ func locateTerraformBlock(src []byte, identifyingLine int, strLines []string) (m
 		}
 	}
 
-	return model.VulnerabilityLines{}, fmt.Errorf("failed to locate block for line %d", identifyingLine)
+	err := fmt.Errorf("failed to locate block for line %d", identifyingLine)
+	log.Error().Msg(err.Error())
+	return model.VulnerabilityLines{}, err
 }
 
 func toResourceLine(pos hcl.Pos) model.ResourceLine {

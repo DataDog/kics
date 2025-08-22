@@ -136,13 +136,13 @@ func (c *Client) GetQueryPath() (provider.ExtractedPath, error) {
 		log.Debug().Msgf("Looking for queries in executable path and in current work directory")
 		defaultQueryPath, errDefaultQueryPath := consoleHelpers.GetDefaultQueryPath(c.ScanParams.QueriesPath[0])
 		if errDefaultQueryPath != nil {
-			fmt.Printf("%v\n", errDefaultQueryPath)
+			log.Error().Msgf("%v\n", errDefaultQueryPath)
 			return extPath, errors.Wrap(errDefaultQueryPath, "unable to find queries")
 		}
 		queriesPath = append(queriesPath, defaultQueryPath)
 	}
 	c.ScanParams.QueriesPath = queriesPath
-	fmt.Printf("%v\n", c.ScanParams.QueriesPath)
+	log.Info().Msgf("%v\n", c.ScanParams.QueriesPath)
 	return extPath, nil
 }
 
@@ -169,7 +169,9 @@ func resolvePath(flagContent, flagName, downloadDir string) (provider.ExtractedP
 		return extractedPath, errExtractPath
 	}
 	if len(extractedPath.Path) != 1 {
-		return extractedPath, fmt.Errorf("could not find a valid path (--%s) on %s", flagName, flagContent)
+		err := fmt.Errorf("could not find a valid path (--%s) on %s", flagName, flagContent)
+		log.Error().Msg(err.Error())
+		return extractedPath, err
 	}
 	log.Debug().Msgf("Trying to load path (--%s) from %s", flagName, flagContent)
 	return extractedPath, nil

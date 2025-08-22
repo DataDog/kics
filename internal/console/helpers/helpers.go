@@ -130,8 +130,7 @@ func GetExecutableDirectory() string {
 	log.Debug().Msg("helpers.GetExecutableDirectory()")
 	path, err := os.Executable()
 	if err != nil {
-		log.Err(err)
-		fmt.Printf("%v/n", err)
+		log.Error().Msgf("%v/n", err)
 	}
 	return filepath.Dir(path)
 }

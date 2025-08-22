@@ -284,7 +284,7 @@ func (c *Inspector) Inspect(
 	if err != nil {
 		log.Warn().Err(err).Msg("Failed to parse Terraform modules")
 	}
-	log.Log().Msgf("Found %d modules", len(parsedModules))
+	log.Info().Msgf("Found %d modules", len(parsedModules))
 
 	// Step 2: Enrich modules with parsed variables
 	rootDir := "." // or infer from files.RootDir, etc.
@@ -729,7 +729,9 @@ func parseJsonencodeHCL(input string) (ast.Value, error) {
 	const suffix = ")"
 
 	if !strings.HasPrefix(input, prefix) || !strings.HasSuffix(input, suffix) {
-		return nil, fmt.Errorf("expected jsonencode(...) format, got: %s", input)
+		err := fmt.Errorf("expected jsonencode(...) format, got: %s", input)
+		log.Error().Msg(err.Error())
+		return nil, err
 	}
 
 	// Extract inner expression
@@ -737,12 +739,16 @@ func parseJsonencodeHCL(input string) (ast.Value, error) {
 
 	expr, diags := hclsyntax.ParseExpression([]byte(inner), "inline_expr.hcl", hcl.Pos{Line: 1, Column: 1})
 	if diags.HasErrors() {
-		return nil, fmt.Errorf("HCL parse error: %s", diags.Error())
+		err := fmt.Errorf("HCL parse error: %s", diags.Error())
+		log.Error().Msg(err.Error())
+		return nil, err
 	}
 
 	val, err := expressionToAST(expr)
 	if err != nil {
-		return nil, fmt.Errorf("expression to AST failed: %w", err)
+		err = fmt.Errorf("expression to AST failed: %w", err)
+		log.Error().Msg(err.Error())
+		return nil, err
 	}
 
 	return val, nil

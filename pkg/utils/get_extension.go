@@ -22,11 +22,15 @@ func GetExtension(path string) (string, error) {
 	// Get file information
 	fileInfo, err := os.Stat(path)
 	if err != nil {
-		return "", fmt.Errorf("file %s not found", path)
+		err = fmt.Errorf("file %s not found", path)
+		log.Error().Msg(err.Error())
+		return "", err
 	}
 
 	if fileInfo.IsDir() {
-		return "", fmt.Errorf("the path %s is a directory", path)
+		err = fmt.Errorf("the path %s is a directory", path)
+		log.Error().Msg(err.Error())
+		return "", err
 	}
 
 	ext := filepath.Ext(path)
@@ -43,7 +47,9 @@ func GetExtension(path string) (string, error) {
 			}
 
 			if isText {
-				return "", fmt.Errorf("file %s does not have a supported extension", path)
+				err := fmt.Errorf("file %s does not have a supported extension", path)
+				log.Error().Msg(err.Error())
+				return "", err
 			}
 		}
 	}

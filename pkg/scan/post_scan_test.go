@@ -421,7 +421,7 @@ func Test_GetScanMetadata(t *testing.T) {
 		t.Run(tt.name, func(t *testing.T) {
 			c := Client{}
 			c.Tracker = &tt.tracker
-			c.ScanParams = GetDefaultParameters(".")
+			c.ScanParams = GetDefaultParameters(".", map[string]string{"test": "test"})
 			v := c.generateMetadata(tt.results, tt.scanStartTime, tt.endTime)
 
 			require.Equal(t, tt.expectedMetadata.StartTime, v.StartTime)

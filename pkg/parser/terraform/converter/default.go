@@ -14,6 +14,7 @@ import (
 	"github.com/Checkmarx/kics/pkg/parser/terraform/functions"
 	"github.com/hashicorp/hcl/v2"
 	"github.com/hashicorp/hcl/v2/hclsyntax"
+	"github.com/rs/zerolog/log"
 	"github.com/zclconf/go-cty/cty"
 	ctyconvert "github.com/zclconf/go-cty/cty/convert"
 	ctyjson "github.com/zclconf/go-cty/cty/json"
@@ -21,7 +22,6 @@ import (
 
 // VariableMap represents a set of terraform input variables
 type VariableMap map[string]cty.Value
-
 
 // This file is attributed to https://github.com/tmccombs/hcl2json.
 // convertBlock() is manipulated for combining the both blocks and labels for one given resource.
@@ -197,7 +197,9 @@ func (c *converter) convertBlock(block *hclsyntax.Block, out model.Document, def
 			var ok bool
 			out, ok = inner.(model.Document)
 			if !ok {
-				return fmt.Errorf("unable to convert Block to JSON: %v.%v", block.Type, strings.Join(block.Labels, "."))
+				err = fmt.Errorf("unable to convert Block to JSON: %v.%v", block.Type, strings.Join(block.Labels, "."))
+				log.Error().Msg(err.Error())
+				return err
 			}
 		} else {
 			obj := make(model.Document)

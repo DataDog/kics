@@ -40,7 +40,9 @@ func Run(src []byte, filename string) ([]build.Rule, error) {
 		return nil, diags.Errs()[0]
 	}
 	if file == nil {
-		return nil, fmt.Errorf("invalid parse result")
+		err := fmt.Errorf("invalid parse result")
+		log.Error().Msg(err.Error())
+		return nil, err
 	}
 
 	e := &Engine{
@@ -172,8 +174,9 @@ func (e *Engine) ExpToString(expr hclsyntax.Expression) (string, error) {
 		items := evaluateScopeTraversalExpr(t.Traversal)
 		return strings.Join(items, "."), nil
 	}
-
-	return "", fmt.Errorf("can't convert expression %T to string", expr)
+	err := fmt.Errorf("can't convert expression %T to string", expr)
+	log.Error().Msg(err.Error())
+	return "", err
 }
 
 func (e *Engine) buildString(parts []hclsyntax.Expression) (string, error) {

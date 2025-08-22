@@ -751,12 +751,14 @@ func (sr *sarifReport) AddTags(summary *model.Summary, diffAware *model.DiffAwar
 
 	if diffAware.Enabled {
 		if diffAware.BaseSha == "" || diffAware.Files == "" || diffAware.ConfigDigest == "" {
-			return fmt.Errorf(
+			err := fmt.Errorf(
 				"diffAware enabled but base sha %s, files %s, config digest %s provided",
 				diffAware.BaseSha,
 				diffAware.Files,
 				diffAware.ConfigDigest,
 			)
+			log.Error().Msg(err.Error())
+			return err
 		}
 		diffAwareConfigDigestTag := GetDiffAwareConfigDigestTag(*diffAware)
 		diffAwareBaseShaTag := GetDiffAwareBaseShaTag(*diffAware)

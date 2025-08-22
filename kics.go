@@ -7,6 +7,7 @@
 package kics
 
 import (
+	"fmt"
 	"path/filepath"
 
 	"github.com/Checkmarx/kics/internal/console"
@@ -15,12 +16,20 @@ import (
 	"github.com/rs/zerolog/log"
 )
 
-func ExecuteKICSScan(inputPaths []string, outputPath string, sciInfo model.SCIInfo) (scan.ScanMetadata, string, error) {
-	params := scan.GetDefaultParameters(outputPath)
+func ExecuteKICSScan(inputPaths []string, outputPath string, sciInfo model.SCIInfo, consolePrint ...bool) (scan.ScanMetadata, string, error) {
+	extraInfos := map[string]string{
+		"org":        fmt.Sprintf("%d", sciInfo.OrgId),
+		"branch":     sciInfo.RepositoryCommitInfo.Branch,
+		"sha":        sciInfo.RepositoryCommitInfo.CommitSHA,
+		"repository": sciInfo.RepositoryCommitInfo.RepositoryUrl,
+	}
+
+	params := scan.GetDefaultParameters(outputPath, extraInfos, consolePrint...)
 	params.Path = inputPaths
 	params.OutputPath = outputPath
 	params.SCIInfo = sciInfo
 	metadata, err := console.ExecuteScan(params)
+
 	if err != nil {
 		log.Error().Int64(
 			"org", sciInfo.OrgId,
