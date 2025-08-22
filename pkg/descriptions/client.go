@@ -199,7 +199,9 @@ func getBaseURL() (string, error) {
 	var rtnBaseURL string
 	urlFromEnv := os.Getenv("KICS_DESCRIPTIONS_ENDPOINT")
 	if constants.BaseURL == "" && urlFromEnv == "" {
-		return "", fmt.Errorf("the BaseURL or KICS_DESCRIPTIONS_ENDPOINT environment variable not set")
+		err := fmt.Errorf("the BaseURL or KICS_DESCRIPTIONS_ENDPOINT environment variable not set")
+		log.Error().Msg(err.Error())
+		return "", err
 	}
 
 	if urlFromEnv != "" {
