@@ -38,8 +38,9 @@ var (
 )
 
 // NewFileSystemSourceProvider initializes a FileSystemSourceProvider with path and files that will be ignored
-func NewFileSystemSourceProvider(paths, excludes []string) (*FileSystemSourceProvider, error) {
-	log.Debug().Msgf("provider.NewFileSystemSourceProvider()")
+func NewFileSystemSourceProvider(ctx context.Context, paths, excludes []string) (*FileSystemSourceProvider, error) {
+	logger := log.Ctx(ctx)
+	logger.Debug().Msgf("provider.NewFileSystemSourceProvider()")
 	ex := make(map[string][]os.FileInfo, len(excludes))
 	osPaths := make([]string, len(paths))
 	for idx, path := range paths {
@@ -50,11 +51,11 @@ func NewFileSystemSourceProvider(paths, excludes []string) (*FileSystemSourcePro
 		excludes: ex,
 	}
 	for _, exclude := range excludes {
-		excludePaths, err := GetExcludePaths(exclude)
+		excludePaths, err := GetExcludePaths(ctx, exclude)
 		if err != nil {
 			return nil, err
 		}
-		if err := fs.AddExcluded(excludePaths); err != nil {
+		if err := fs.AddExcluded(ctx, excludePaths); err != nil {
 			return nil, err
 		}
 	}
@@ -63,7 +64,8 @@ func NewFileSystemSourceProvider(paths, excludes []string) (*FileSystemSourcePro
 }
 
 // AddExcluded add new excluded files to the File System Source Provider
-func (s *FileSystemSourceProvider) AddExcluded(excludePaths []string) error {
+func (s *FileSystemSourceProvider) AddExcluded(ctx context.Context, excludePaths []string) error {
+	logger := log.Ctx(ctx)
 	for _, excludePath := range excludePaths {
 		info, err := os.Stat(excludePath)
 		if err != nil {
@@ -71,7 +73,7 @@ func (s *FileSystemSourceProvider) AddExcluded(excludePaths []string) error {
 				continue
 			}
 			if sysErr, ok := err.(*ioFs.PathError); ok {
-				log.Warn().Msgf("Failed getting file info for file '%s', Skipping due to: %s, Error number: %d",
+				logger.Warn().Msgf("Failed getting file info for file '%s', Skipping due to: %s, Error number: %d",
 					excludePath, sysErr, sysErr.Err.(syscall.Errno))
 				continue
 			}
@@ -88,11 +90,12 @@ func (s *FileSystemSourceProvider) AddExcluded(excludePaths []string) error {
 }
 
 // GetExcludePaths gets all the files that should be excluded
-func GetExcludePaths(pathExpressions string) ([]string, error) {
+func GetExcludePaths(ctx context.Context, pathExpressions string) ([]string, error) {
+	logger := log.Ctx(ctx)
 	if strings.ContainsAny(pathExpressions, "*?[") {
 		info, err := filepathx.Glob(pathExpressions)
 		if err != nil {
-			log.Error().Msgf("failed to get exclude path %s: %s", pathExpressions, err)
+			logger.Error().Msgf("failed to get exclude path %s: %s", pathExpressions, err)
 			return []string{pathExpressions}, nil
 		}
 		return info, nil
@@ -106,17 +109,18 @@ func (s *FileSystemSourceProvider) GetBasePaths() []string {
 }
 
 // ignoreDamagedFiles checks whether we should ignore a damaged file from a scan or not.
-func ignoreDamagedFiles(path string) bool {
+func ignoreDamagedFiles(ctx context.Context, path string) bool {
+	logger := log.Ctx(ctx)
 	shouldIgnoreFile := false
 	fileInfo, err := os.Lstat(path)
 	if err != nil {
-		log.Warn().Msgf("Failed getting the file info for file '%s'", path)
+		logger.Warn().Msgf("Failed getting the file info for file '%s'", path)
 		return shouldIgnoreFile
 	}
-	log.Info().Msgf("No mode type bits are set( is a regular file ) for file '%s' : %t ", path, fileInfo.Mode().IsRegular())
+	logger.Info().Msgf("No mode type bits are set( is a regular file ) for file '%s' : %t ", path, fileInfo.Mode().IsRegular())
 
 	if fileInfo.Mode()&os.ModeSymlink == os.ModeSymlink {
-		log.Warn().Msgf("File '%s' is a symbolic link - but seems not to be accessible", path)
+		logger.Warn().Msgf("File '%s' is a symbolic link - but seems not to be accessible", path)
 		shouldIgnoreFile = true
 	}
 
@@ -134,9 +138,9 @@ func (s *FileSystemSourceProvider) GetSources(ctx context.Context,
 		}
 
 		if !fileInfo.IsDir() {
-			c, openFileErr := openScanFile(scanPath, extensions)
+			c, openFileErr := openScanFile(ctx, scanPath, extensions)
 			if openFileErr != nil {
-				if openFileErr == ErrNotSupportedFile || ignoreDamagedFiles(scanPath) {
+				if openFileErr == ErrNotSupportedFile || ignoreDamagedFiles(ctx, scanPath) {
 					continue
 				}
 				return openFileErr
@@ -158,12 +162,13 @@ func (s *FileSystemSourceProvider) GetSources(ctx context.Context,
 
 func (s *FileSystemSourceProvider) walkDir(ctx context.Context, scanPath string, resolved bool,
 	sink Sink, resolverSink ResolverSink, extensions model.Extensions) error {
+	logger := log.Ctx(ctx)
 	return filepath.Walk(scanPath, func(path string, info os.FileInfo, err error) error {
 		if err != nil {
 			return err
 		}
 
-		if shouldSkip, skipFolder := s.checkConditions(info, extensions, path, resolved); shouldSkip {
+		if shouldSkip, skipFolder := s.checkConditions(ctx, info, extensions, path, resolved); shouldSkip {
 			return skipFolder
 		}
 
@@ -179,8 +184,8 @@ func (s *FileSystemSourceProvider) walkDir(ctx context.Context, scanPath string,
 				// }, true)
 				return nil
 			}
-			if errAdd := s.AddExcluded(excluded); errAdd != nil {
-				log.Err(errAdd).Msgf("Filesystem files provider couldn't exclude rendered Chart files, Chart=%s", info.Name())
+			if errAdd := s.AddExcluded(ctx, excluded); errAdd != nil {
+				logger.Err(errAdd).Msgf("Filesystem files provider couldn't exclude rendered Chart files, Chart=%s", info.Name())
 			}
 			resolved = true
 			return nil
@@ -189,7 +194,7 @@ func (s *FileSystemSourceProvider) walkDir(ctx context.Context, scanPath string,
 
 		c, err := os.Open(filepath.Clean(path))
 		if err != nil {
-			if ignoreDamagedFiles(filepath.Clean(path)) {
+			if ignoreDamagedFiles(ctx, filepath.Clean(path)) {
 				return nil
 			}
 			return errors.Wrap(err, "failed to open file")
@@ -209,8 +214,8 @@ func (s *FileSystemSourceProvider) walkDir(ctx context.Context, scanPath string,
 	})
 }
 
-func openScanFile(scanPath string, extensions model.Extensions) (*os.File, error) {
-	ext, _ := utils.GetExtension(scanPath)
+func openScanFile(ctx context.Context, scanPath string, extensions model.Extensions) (*os.File, error) {
+	ext, _ := utils.GetExtension(ctx, scanPath)
 
 	if !extensions.Include(ext) {
 		return nil, ErrNotSupportedFile
@@ -234,24 +239,25 @@ func closeFile(file *os.File, info os.FileInfo) {
 	}
 }
 
-func (s *FileSystemSourceProvider) checkConditions(info os.FileInfo, extensions model.Extensions,
+func (s *FileSystemSourceProvider) checkConditions(ctx context.Context, info os.FileInfo, extensions model.Extensions,
 	path string, resolved bool) (bool, error) {
+	logger := log.Ctx(ctx)
 	s.mu.RLock()
 	defer s.mu.RUnlock()
 
 	if info.IsDir() {
 		// exclude terraform cache folders
 		if queryRegexExcludeTerraCache.MatchString(path) {
-			log.Info().Msgf("Directory ignored: %s", path)
+			logger.Info().Msgf("Directory ignored: %s", path)
 
-			err := s.AddExcluded([]string{info.Name()})
+			err := s.AddExcluded(ctx, []string{info.Name()})
 			if err != nil {
 				return true, err
 			}
 			return true, filepath.SkipDir
 		}
 		if f, ok := s.excludes[info.Name()]; ok && containsFile(f, info) {
-			log.Info().Msgf("Directory ignored: %s", path)
+			logger.Info().Msgf("Directory ignored: %s", path)
 			return true, filepath.SkipDir
 		}
 		_, err := os.Stat(filepath.Join(path, "Chart.yaml"))
@@ -264,7 +270,7 @@ func (s *FileSystemSourceProvider) checkConditions(info os.FileInfo, extensions 
 	if f, ok := s.excludes[info.Name()]; ok && containsFile(f, info) {
 		return true, nil
 	}
-	ext, _ := utils.GetExtension(path)
+	ext, _ := utils.GetExtension(ctx, path)
 	if !extensions.Include(ext) {
 		return true, nil
 	}

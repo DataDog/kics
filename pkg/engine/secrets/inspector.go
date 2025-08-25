@@ -187,7 +187,7 @@ func (c *Inspector) inspectQuery(ctx context.Context, basePaths []string,
 			case <-timeoutCtx.Done():
 				return c.vulnerabilities, timeoutCtx.Err()
 			default:
-				c.checkContent(i, idx, basePaths, cleanFiles)
+				c.checkContent(ctx, i, idx, basePaths, cleanFiles)
 			}
 		}
 	}
@@ -368,17 +368,19 @@ func AllowRuleMatches(s string, allowRules []AllowRule) [][]int {
 	return allowRuleMatches
 }
 
-func (c *Inspector) checkFileContent(query *RegexQuery, basePaths []string, file *model.FileMetadata) {
+func (c *Inspector) checkFileContent(ctx context.Context, query *RegexQuery, basePaths []string, file *model.FileMetadata) {
+	logger := log.Ctx(ctx)
 	isSecret, groups := c.isSecret(file.OriginalData, query)
 	if !isSecret {
 		return
 	}
 
-	lineVulns := c.secretsDetectLine(query, file, groups)
+	lineVulns := c.secretsDetectLine(ctx, query, file, groups)
 
 	for _, lineVuln := range lineVulns {
 		if len(query.Entropies) == 0 {
 			c.addVulnerability(
+				ctx,
 				basePaths,
 				file,
 				query,
@@ -397,10 +399,11 @@ func (c *Inspector) checkFileContent(query *RegexQuery, basePaths []string, file
 					entropy,
 					lineVuln.groups[entropy.Group],
 				)
-				log.Debug().Msgf("match: %v :: %v", isMatch, fmt.Sprint(entropyFloat))
+				logger.Debug().Msgf("match: %v :: %v", isMatch, fmt.Sprint(entropyFloat))
 
 				if isMatch {
 					c.addVulnerability(
+						ctx,
 						basePaths,
 						file,
 						query,
@@ -413,7 +416,8 @@ func (c *Inspector) checkFileContent(query *RegexQuery, basePaths []string, file
 	}
 }
 
-func (c *Inspector) secretsDetectLine(query *RegexQuery, file *model.FileMetadata, vulnGroups [][]string) []lineVulneInfo {
+func (c *Inspector) secretsDetectLine(ctx context.Context, query *RegexQuery, file *model.FileMetadata, vulnGroups [][]string) []lineVulneInfo {
+	logger := log.Ctx(ctx)
 	content := file.OriginalData
 	lines := *file.LinesOriginalData
 	lineVulneInfoSlice := make([]lineVulneInfo, 0)
@@ -426,7 +430,7 @@ func (c *Inspector) secretsDetectLine(query *RegexQuery, file *model.FileMetadat
 		}
 
 		if len(groups) <= query.Multiline.DetectLineGroup {
-			log.Warn().Msgf("Unable to detect line in file %v Multiline group not found: %v", file.FilePath, query.Multiline.DetectLineGroup)
+			logger.Warn().Msgf("Unable to detect line in file %v Multiline group not found: %v", file.FilePath, query.Multiline.DetectLineGroup)
 			lineVulneInfoSlice = append(lineVulneInfoSlice, lineVulneInfoObject)
 			continue
 		}
@@ -453,8 +457,9 @@ func (c *Inspector) secretsDetectLine(query *RegexQuery, file *model.FileMetadat
 	return lineVulneInfoSlice
 }
 
-func (c *Inspector) checkLineByLine(wg *sync.WaitGroup, query *RegexQuery,
+func (c *Inspector) checkLineByLine(ctx context.Context, wg *sync.WaitGroup, query *RegexQuery,
 	basePaths []string, file *model.FileMetadata, lineNumber int, currentLine string) {
+	logger := log.Ctx(ctx)
 	defer wg.Done()
 	isSecret, groups := c.isSecret(currentLine, query)
 	if !isSecret {
@@ -463,6 +468,7 @@ func (c *Inspector) checkLineByLine(wg *sync.WaitGroup, query *RegexQuery,
 
 	if len(query.Entropies) == 0 {
 		c.addVulnerability(
+			ctx,
 			basePaths,
 			file,
 			query,
@@ -483,10 +489,11 @@ func (c *Inspector) checkLineByLine(wg *sync.WaitGroup, query *RegexQuery,
 			entropy,
 			groups[0][entropy.Group],
 		)
-		log.Debug().Msgf("match: %v :: %v", isMatch, fmt.Sprint(entropyFloat))
+		logger.Debug().Msgf("match: %v :: %v", isMatch, fmt.Sprint(entropyFloat))
 
 		if isMatch {
 			c.addVulnerability(
+				ctx,
 				basePaths,
 				file,
 				query,
@@ -497,12 +504,14 @@ func (c *Inspector) checkLineByLine(wg *sync.WaitGroup, query *RegexQuery,
 	}
 }
 
-func (c *Inspector) addVulnerability(basePaths []string, file *model.FileMetadata, query *RegexQuery, lineNumber int, issueLine string) {
+func (c *Inspector) addVulnerability(ctx context.Context, basePaths []string, file *model.FileMetadata, query *RegexQuery, lineNumber int, issueLine string) {
+	logger := log.Ctx(ctx)
 	if engine.ShouldSkipVulnerability(file.Commands, query.ID) {
-		log.Debug().Msgf("Skipping vulnerability in file %s for query '%s':%s", file.FilePath, query.Name, query.ID)
+		logger.Debug().Msgf("Skipping vulnerability in file %s for query '%s':%s", file.FilePath, query.Name, query.ID)
 		return
 	}
 	simID, err := similarity.ComputeSimilarityID(
+		ctx,
 		basePaths,
 		file.FilePath,
 		query.ID,
@@ -510,7 +519,7 @@ func (c *Inspector) addVulnerability(basePaths []string, file *model.FileMetadat
 		"",
 	)
 	if err != nil {
-		log.Error().Msg("unable to compute similarity ID")
+		logger.Error().Msg("unable to compute similarity ID")
 	}
 
 	c.mu.Lock()
@@ -578,9 +587,10 @@ func calculateEntropy(token, charSet string) float64 {
 	return math.Log2(length) - freq/length
 }
 
-// func shouldExecuteQuery(filterTarget, id, category, severity string, filter []string) bool {
+// func shouldExecuteQuery(ctx context.Context, filterTarget, id, category, severity string, filter []string) bool {
+//  logger := log.Ctx(ctx)
 // 	if isValueInArray(filterTarget, filter) {
-// 		log.Debug().
+// 		logger.Debug().
 // 			Msgf("Excluding query ID: %s category: %s severity: %s",
 // 				id,
 // 				category,
@@ -609,10 +619,10 @@ func calculateEntropy(token, charSet string) float64 {
 // 	return nil
 // }
 
-func (c *Inspector) checkContent(i, idx int, basePaths []string, files model.FileMetadatas) {
+func (c *Inspector) checkContent(ctx context.Context, i, idx int, basePaths []string, files model.FileMetadatas) {
 	// lines ignore can have the lines from the resolved files
 	// since inspector secrets only looks to original data, the lines ignore should be replaced
-	files[idx].LinesIgnore = model.GetIgnoreLines(&files[idx])
+	files[idx].LinesIgnore = model.GetIgnoreLines(ctx, &files[idx])
 
 	wg := &sync.WaitGroup{}
 	// check file content line by line
@@ -620,14 +630,14 @@ func (c *Inspector) checkContent(i, idx int, basePaths []string, files model.Fil
 		lines := (&files[idx]).LinesOriginalData
 		for lineNumber, currentLine := range *lines {
 			wg.Add(1)
-			go c.checkLineByLine(wg, &c.regexQueries[i], basePaths, &files[idx], lineNumber, currentLine)
+			go c.checkLineByLine(ctx, wg, &c.regexQueries[i], basePaths, &files[idx], lineNumber, currentLine)
 		}
 		wg.Wait()
 		return
 	}
 
 	// check file content as a whole
-	c.checkFileContent(&c.regexQueries[i], basePaths, &files[idx])
+	c.checkFileContent(ctx, &c.regexQueries[i], basePaths, &files[idx])
 }
 
 func ignoreLine(lineNumber int, linesIgnore []int) bool {

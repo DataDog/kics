@@ -1,6 +1,7 @@
 package tfmodules
 
 import (
+	"context"
 	"errors"
 	"fmt"
 	"maps"
@@ -52,7 +53,8 @@ func resolveModulePath(source string, rootDir string) string {
 }
 
 // ParseTerraformModules parses HCL content and extracts module source/version, resolving locals/variables if possible.
-func ParseTerraformModules(files model.FileMetadatas) (map[string]ParsedModule, error) {
+func ParseTerraformModules(ctx context.Context, files model.FileMetadatas) (map[string]ParsedModule, error) {
+	logger := log.Ctx(ctx)
 	modules := make(map[string]ParsedModule)
 	localsMap := make(map[string]string)
 	varsMap := make(map[string]string)
@@ -65,13 +67,13 @@ func ParseTerraformModules(files model.FileMetadatas) (map[string]ParsedModule, 
 
 		hclFile, diags := hclsyntax.ParseConfig([]byte(file.Content), filePath, hcl.Pos{Line: 1, Column: 1})
 		if diags.HasErrors() {
-			log.Warn().Msgf("Skipping file %s due to HCL parse errors: %s", filePath, diags.Error())
+			logger.Warn().Msgf("Skipping file %s due to HCL parse errors: %s", filePath, diags.Error())
 			continue
 		}
 
 		body, ok := hclFile.Body.(*hclsyntax.Body)
 		if !ok {
-			log.Error().Msgf("Unexpected body type in %s", filePath)
+			logger.Error().Msgf("Unexpected body type in %s", filePath)
 			continue
 		}
 
@@ -120,9 +122,9 @@ func ParseTerraformModules(files model.FileMetadatas) (map[string]ParsedModule, 
 						// Normalize relative path to absolute
 						absPath := filepath.Join(baseDir, strings.TrimPrefix(resolved, "file://"))
 						mod.AbsSource = filepath.Clean(absPath)
-						err := validateModuleSource(mod.AbsSource)
+						err := validateModuleSource(ctx, mod.AbsSource)
 						if err != nil {
-							log.Warn().Msgf("Invalid local module source %q: %v", mod.Source, err)
+							logger.Warn().Msgf("Invalid local module source %q: %v", mod.Source, err)
 							continue
 						}
 					}
@@ -141,12 +143,13 @@ func ParseTerraformModules(files model.FileMetadatas) (map[string]ParsedModule, 
 	return modules, nil
 }
 
-func validateModuleSource(absPath string) error {
+func validateModuleSource(ctx context.Context, absPath string) error {
+	logger := log.Ctx(ctx)
 	// Attempt to read the directory contents
 	entries, err := os.ReadDir(absPath)
 	if err != nil {
 		err := fmt.Errorf("module source path %q is not accessible: %w", absPath, err)
-		log.Error().Msg(err.Error())
+		logger.Error().Msg(err.Error())
 		return err
 	}
 
@@ -161,7 +164,7 @@ func validateModuleSource(absPath string) error {
 
 	if !valid {
 		wrn := fmt.Errorf("module at %s does not contain any .tf files", absPath)
-		log.Warn().Msg(wrn.Error())
+		logger.Warn().Msg(wrn.Error())
 		return wrn
 	}
 	return nil
@@ -350,7 +353,8 @@ func DetectModuleSourceType(source string) (string, string) {
 	return "unknown", ""
 }
 
-func ParseAllModuleVariables(modules map[string]ParsedModule, rootDir string) []ParsedModule {
+func ParseAllModuleVariables(ctx context.Context, modules map[string]ParsedModule, rootDir string) []ParsedModule {
+	logger := log.Ctx(ctx)
 	numWorkers := 4
 
 	input := make(chan ParsedModule)
@@ -370,9 +374,9 @@ func ParseAllModuleVariables(modules map[string]ParsedModule, rootDir string) []
 				}
 				modulePath := resolveModulePath(mod.AbsSource, rootDir)
 
-				attributesData, err := generateEquivalentMap(modulePath)
+				attributesData, err := generateEquivalentMap(ctx, modulePath)
 				if err != nil {
-					log.Warn().Msg("Failed to generate equivalent map")
+					logger.Warn().Msg("Failed to generate equivalent map")
 				} else {
 					mod.AttributesData = attributesData
 				}
@@ -399,7 +403,7 @@ func ParseAllModuleVariables(modules map[string]ParsedModule, rootDir string) []
 	finalModules := make([]ParsedModule, 0, len(modules))
 	for res := range output {
 		if res.Error != nil {
-			log.Warn().Msgf("Failed to parse module %s: %v", res.Module.Name, res.Error)
+			logger.Warn().Msgf("Failed to parse module %s: %v", res.Module.Name, res.Error)
 		}
 		finalModules = append(finalModules, res.Module)
 	}
@@ -407,13 +411,14 @@ func ParseAllModuleVariables(modules map[string]ParsedModule, rootDir string) []
 	return finalModules
 }
 
-func generateEquivalentMap(modulePath string) (map[string]ModuleAttributesInfo, error) {
+func generateEquivalentMap(ctx context.Context, modulePath string) (map[string]ModuleAttributesInfo, error) {
+	logger := log.Ctx(ctx)
 	equivalentMap := make(map[string]ModuleAttributesInfo)
 	resourceTypesMap := make(map[string]map[string]bool)
 
 	entries, err := os.ReadDir(modulePath)
 	if err != nil {
-		log.Error().Msgf("Failed to read module source directory: %s", modulePath)
+		logger.Error().Msgf("Failed to read module source directory: %s", modulePath)
 		return nil, err
 	}
 
@@ -421,20 +426,20 @@ func generateEquivalentMap(modulePath string) (map[string]ModuleAttributesInfo, 
 		path := filepath.Join(modulePath, entry.Name())
 
 		if entry.IsDir() {
-			log.Debug().Msgf("Skipping directory: %s", path)
+			logger.Debug().Msgf("Skipping directory: %s", path)
 			continue
 		}
 
 		contents, err := os.ReadFile(path)
 		if err != nil {
-			log.Error().Msgf("Failed to read file: %s", path)
+			logger.Error().Msgf("Failed to read file: %s", path)
 			return nil, err
 		}
 
 		hclFile, diag := hclwrite.ParseConfig(contents, "", hcl.InitialPos)
 		if diag.HasErrors() {
 			err := fmt.Errorf("error parsing input Terraform block in file %s: %s", path, diag.Error())
-			log.Error().Msg(err.Error())
+			logger.Error().Msg(err.Error())
 			return nil, err
 		}
 
@@ -444,14 +449,14 @@ func generateEquivalentMap(modulePath string) (map[string]ModuleAttributesInfo, 
 			}
 
 			if len(block.Labels()) < 1 {
-				log.Warn().Msgf("Skipping malformed resource block with no labels in file %s", path)
+				logger.Warn().Msgf("Skipping malformed resource block with no labels in file %s", path)
 				continue
 			}
 
 			resourceType := block.Labels()[0]
 			provider, err := GetProviderFromResourceType(resourceType)
 			if err != nil {
-				log.Warn().Msgf("Failed to get provider from resource type '%s' in file %s: %v", resourceType, path, err)
+				logger.Warn().Msgf("Failed to get provider from resource type '%s' in file %s: %v", resourceType, path, err)
 				continue
 			}
 

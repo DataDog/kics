@@ -71,13 +71,13 @@ type Client struct {
 	ProBarBuilder     *progress.PbBuilder
 }
 
-func GetDefaultParameters(rootPath string, extraInfos map[string]string, consolePrint ...bool) *Parameters {
-
+func GetDefaultParameters(ctx context.Context, rootPath string, extraInfos map[string]string, consolePrint ...bool) (*Parameters, context.Context) {
 	// check for config file and load in relevant params if present
-	configParams, err := initializeConfig(rootPath, extraInfos, consolePrint...)
+	configParams, logCtx, err := initializeConfig(ctx, rootPath, extraInfos, consolePrint...)
+	logger := log.Ctx(logCtx)
 	if err != nil {
-		log.Err(err).Msgf("failed to initialize config %v", err)
-		return nil
+		logger.Err(err).Msgf("failed to initialize config %v", err)
+		return nil, logCtx
 	}
 
 	return &Parameters{
@@ -114,18 +114,19 @@ func GetDefaultParameters(rootPath string, extraInfos map[string]string, console
 		UseOldSeverities:            false,
 		MaxResolverDepth:            15,
 		ExcludePlatform:             []string{""},
-	}
+	}, logCtx
 }
 
 // NewClient initializes the client with all the required parameters
-func NewClient(params *Parameters, proBarBuilder *progress.PbBuilder, customPrint *consolePrinter.Printer) (*Client, error) {
+func NewClient(ctx context.Context, params *Parameters, proBarBuilder *progress.PbBuilder, customPrint *consolePrinter.Printer) (*Client, error) {
+	logger := log.Ctx(ctx)
 	t, err := tracker.NewTracker(params.PreviewLines)
 	if err != nil {
-		log.Err(err).Msgf("failed to create tracker %v", err)
+		logger.Err(err).Msgf("failed to create tracker %v", err)
 		return nil, err
 	}
 
-	descriptions.CheckVersion(t)
+	descriptions.CheckVersion(ctx, t)
 
 	store := storage.NewMemoryStorage()
 
@@ -143,19 +144,20 @@ func NewClient(params *Parameters, proBarBuilder *progress.PbBuilder, customPrin
 
 // PerformScan executes executeScan and postScan
 func (c *Client) PerformScan(ctx context.Context) (ScanMetadata, error) {
+	logger := log.Ctx(ctx)
 	c.ScanStartTime = time.Now()
 
 	scanResults, err := c.executeScan(ctx)
 
 	if err != nil {
-		log.Err(err).Msgf("failed to execute scan %v", err)
+		logger.Err(err).Msgf("failed to execute scan %v", err)
 		return ScanMetadata{}, err
 	}
 
-	scanMetadata, postScanError := c.postScan(scanResults)
+	scanMetadata, postScanError := c.postScan(ctx, scanResults)
 
 	if postScanError != nil {
-		log.Err(postScanError)
+		logger.Err(postScanError)
 		return ScanMetadata{}, postScanError
 	}
 

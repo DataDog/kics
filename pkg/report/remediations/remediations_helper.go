@@ -1,6 +1,7 @@
 package model
 
 import (
+	"context"
 	"encoding/json"
 	"fmt"
 	"regexp"
@@ -10,26 +11,28 @@ import (
 	"github.com/rs/zerolog/log"
 )
 
-func TransformToSarifFix(vuln model.VulnerableFile, startLocation model.SarifResourceLocation, endLocation model.SarifResourceLocation) (model.SarifFix, error) {
+func TransformToSarifFix(ctx context.Context, vuln model.VulnerableFile, startLocation model.SarifResourceLocation, endLocation model.SarifResourceLocation) (model.SarifFix, error) {
+	logger := log.Ctx(ctx)
 	switch vuln.RemediationType {
 	case "replacement":
-		return buildReplacementFix(vuln, startLocation, endLocation)
+		return buildReplacementFix(ctx, vuln, startLocation, endLocation)
 	case "addition":
 		return buildAdditionFix(vuln, startLocation)
 	case "removal":
 		return buildRemovalFix(vuln, startLocation, endLocation)
 	default:
 		err := fmt.Errorf("unsupported remediation type: %s", vuln.RemediationType)
-		log.Error().Msg(err.Error())
+		logger.Error().Msg(err.Error())
 		return model.SarifFix{}, err
 	}
 }
 
-func buildReplacementFix(vuln model.VulnerableFile, startLocation, endLocation model.SarifResourceLocation) (model.SarifFix, error) {
+func buildReplacementFix(ctx context.Context, vuln model.VulnerableFile, startLocation, endLocation model.SarifResourceLocation) (model.SarifFix, error) {
+	logger := log.Ctx(ctx)
 	var patch map[string]string
 	if err := json.Unmarshal([]byte(vuln.Remediation), &patch); err != nil {
 		err = fmt.Errorf("invalid remediation format for replacement: %v", err)
-		log.Error().Msg(err.Error())
+		logger.Error().Msg(err.Error())
 		return model.SarifFix{}, err
 	}
 
@@ -41,7 +44,7 @@ func buildReplacementFix(vuln model.VulnerableFile, startLocation, endLocation m
 	matches := keyValRegex.FindStringSubmatch(vuln.LineWithVulnerability)
 	if len(matches) < 3 {
 		err := fmt.Errorf("could not parse key-value from line: %s", vuln.LineWithVulnerability)
-		log.Error().Msg(err.Error())
+		logger.Error().Msg(err.Error())
 		return model.SarifFix{}, err
 	}
 
@@ -108,7 +111,7 @@ func buildReplacementFix(vuln model.VulnerableFile, startLocation, endLocation m
 
 	if !matched {
 		err := fmt.Errorf("line value '%s' does not match any expected values '%s'", normalizedFullLine, strings.Join(altValues, " | "))
-		log.Error().Msg(err.Error())
+		logger.Error().Msg(err.Error())
 		return model.SarifFix{}, err
 	}
 
@@ -123,7 +126,7 @@ func buildReplacementFix(vuln model.VulnerableFile, startLocation, endLocation m
 		idxs := keyValRegex.FindStringSubmatchIndex(vuln.LineWithVulnerability)
 		if len(idxs) < 6 {
 			err := fmt.Errorf("could not determine exact value location")
-			log.Error().Msg(err.Error())
+			logger.Error().Msg(err.Error())
 			return model.SarifFix{}, err
 		}
 

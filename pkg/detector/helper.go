@@ -6,6 +6,7 @@
 package detector
 
 import (
+	"context"
 	"fmt"
 	"regexp"
 	"strconv"
@@ -182,7 +183,8 @@ func resolveListIndex(attrName string, index int, lines []string) string {
 	return ""
 }
 
-func getKeyWithCurlyBrackets(key string, extractedString [][]string, parts []string) (substr1Res, substr2Res string) {
+func getKeyWithCurlyBrackets(ctx context.Context, key string, extractedString [][]string, parts []string) (substr1Res, substr2Res string) {
+	logger := log.Ctx(ctx)
 	var substr1, substr2 string
 	extractedPart := nameRegexDocker.FindStringSubmatch(key)
 	if len(extractedPart) == valuePartsLength {
@@ -192,7 +194,7 @@ func getKeyWithCurlyBrackets(key string, extractedString [][]string, parts []str
 				case len(parts) - 2:
 					i, err := strconv.Atoi(extractedPart[1])
 					if err != nil {
-						log.Error().Msgf("failed to extract curly brackets substring")
+						logger.Error().Msgf("failed to extract curly brackets substring")
 					}
 					if len(extractedString) > i {
 						if extractedString[i][1] != "" {
@@ -202,7 +204,7 @@ func getKeyWithCurlyBrackets(key string, extractedString [][]string, parts []str
 				case len(parts) - 1:
 					i, err := strconv.Atoi(extractedPart[1])
 					if err != nil {
-						log.Error().Msgf("failed to extract curly brackets substring")
+						logger.Error().Msgf("failed to extract curly brackets substring")
 					}
 					if len(extractedString) > i {
 						if extractedString[i][1] != "" {

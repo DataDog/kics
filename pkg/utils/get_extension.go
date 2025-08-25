@@ -7,6 +7,7 @@ package utils
 
 import (
 	"bytes"
+	"context"
 	"fmt"
 	"os"
 	"path/filepath"
@@ -16,20 +17,21 @@ import (
 )
 
 // GetExtension gets the extension of a file path
-func GetExtension(path string) (string, error) {
+func GetExtension(ctx context.Context, path string) (string, error) {
+	logger := log.Ctx(ctx)
 	targets := []string{"tfvars"}
 
 	// Get file information
 	fileInfo, err := os.Stat(path)
 	if err != nil {
 		err = fmt.Errorf("file %s not found", path)
-		log.Error().Msg(err.Error())
+		logger.Error().Msg(err.Error())
 		return "", err
 	}
 
 	if fileInfo.IsDir() {
 		err = fmt.Errorf("the path %s is a directory", path)
-		log.Error().Msg(err.Error())
+		logger.Error().Msg(err.Error())
 		return "", err
 	}
 
@@ -40,7 +42,7 @@ func GetExtension(path string) (string, error) {
 		if Contains(base, targets) {
 			ext = base
 		} else {
-			isText, err := isTextFile(path)
+			isText, err := isTextFile(ctx, path)
 
 			if err != nil {
 				return "", err
@@ -48,7 +50,7 @@ func GetExtension(path string) (string, error) {
 
 			if isText {
 				err := fmt.Errorf("file %s does not have a supported extension", path)
-				log.Error().Msg(err.Error())
+				logger.Error().Msg(err.Error())
 				return "", err
 			}
 		}
@@ -57,10 +59,11 @@ func GetExtension(path string) (string, error) {
 	return ext, nil
 }
 
-func isTextFile(path string) (bool, error) {
+func isTextFile(ctx context.Context, path string) (bool, error) {
+	logger := log.Ctx(ctx)
 	info, err := os.Stat(path)
 	if err != nil {
-		log.Error().Msgf("failed to get file info: %s", err)
+		logger.Error().Msgf("failed to get file info: %s", err)
 		return false, err
 	}
 
@@ -70,7 +73,7 @@ func isTextFile(path string) (bool, error) {
 
 	content, err := os.ReadFile(filepath.Clean(path))
 	if err != nil {
-		log.Error().Msgf("failed to analyze file: %s", err)
+		logger.Error().Msgf("failed to analyze file: %s", err)
 		return false, err
 	}
 

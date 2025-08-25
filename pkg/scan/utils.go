@@ -28,7 +28,8 @@ var (
 )
 
 func (c *Client) prepareAndAnalyzePaths(ctx context.Context) (provider.ExtractedPath, error) {
-	queryExPaths, libExPaths, err := c.preparePaths()
+	logger := log.Ctx(ctx)
+	queryExPaths, libExPaths, err := c.preparePaths(ctx)
 	if err != nil {
 		return provider.ExtractedPath{}, err
 	}
@@ -40,7 +41,7 @@ func (c *Client) prepareAndAnalyzePaths(ctx context.Context) (provider.Extracted
 		return provider.ExtractedPath{}, err
 	}
 
-	regularExPaths, err := provider.GetSources(regularPaths, c.ScanParams.OutputPath)
+	regularExPaths, err := provider.GetSources(ctx, regularPaths, c.ScanParams.OutputPath)
 	if err != nil {
 		return provider.ExtractedPath{}, err
 	}
@@ -49,7 +50,7 @@ func (c *Client) prepareAndAnalyzePaths(ctx context.Context) (provider.Extracted
 	if len(allPaths.Path) == 0 {
 		return provider.ExtractedPath{}, nil
 	}
-	log.Info().Msgf("Total files in the project: %d", getTotalFiles(allPaths.Path))
+	logger.Info().Msgf("Total files in the project: %d", getTotalFiles(ctx, allPaths.Path))
 
 	a := &analyzer.Analyzer{
 		Paths:             allPaths.Path,
@@ -61,7 +62,7 @@ func (c *Client) prepareAndAnalyzePaths(ctx context.Context) (provider.Extracted
 		MaxFileSize:       c.ScanParams.MaxFileSizeFlag,
 	}
 
-	pathTypes, errAnalyze := analyzePaths(a)
+	pathTypes, errAnalyze := analyzePaths(ctx, a)
 
 	if errAnalyze != nil {
 		return provider.ExtractedPath{}, errAnalyze
@@ -102,13 +103,13 @@ func combinePaths(kuberneter, regular, query, library provider.ExtractedPath) pr
 	return combinedPaths
 }
 
-func (c *Client) preparePaths() (queryExtPath, libExtPath provider.ExtractedPath, err error) {
-	queryExtPath, err = c.GetQueryPath()
+func (c *Client) preparePaths(ctx context.Context) (queryExtPath, libExtPath provider.ExtractedPath, err error) {
+	queryExtPath, err = c.GetQueryPath(ctx)
 	if err != nil {
 		return provider.ExtractedPath{}, provider.ExtractedPath{}, err
 	}
 
-	libExtPath, err = c.getLibraryPath()
+	libExtPath, err = c.getLibraryPath(ctx)
 	if err != nil {
 		return queryExtPath, provider.ExtractedPath{}, err
 	}
@@ -117,7 +118,8 @@ func (c *Client) preparePaths() (queryExtPath, libExtPath provider.ExtractedPath
 }
 
 // GetQueryPath gets all the queries paths
-func (c *Client) GetQueryPath() (provider.ExtractedPath, error) {
+func (c *Client) GetQueryPath(ctx context.Context) (provider.ExtractedPath, error) {
+	logger := log.Ctx(ctx)
 	queriesPath := make([]string, 0)
 	extPath := provider.ExtractedPath{
 		Path:          []string{},
@@ -125,7 +127,7 @@ func (c *Client) GetQueryPath() (provider.ExtractedPath, error) {
 	}
 	if c.ScanParams.ChangedDefaultQueryPath {
 		for _, queryPath := range c.ScanParams.QueriesPath {
-			extractedPath, errExtractQueries := resolvePath(queryPath, "queries-path", c.ScanParams.OutputPath)
+			extractedPath, errExtractQueries := resolvePath(ctx, queryPath, "queries-path", c.ScanParams.OutputPath)
 			if errExtractQueries != nil {
 				return extPath, errExtractQueries
 			}
@@ -133,26 +135,26 @@ func (c *Client) GetQueryPath() (provider.ExtractedPath, error) {
 			queriesPath = append(queriesPath, extractedPath.Path[0])
 		}
 	} else {
-		log.Debug().Msgf("Looking for queries in executable path and in current work directory")
+		logger.Debug().Msgf("Looking for queries in executable path and in current work directory")
 		defaultQueryPath, errDefaultQueryPath := consoleHelpers.GetDefaultQueryPath(c.ScanParams.QueriesPath[0])
 		if errDefaultQueryPath != nil {
-			log.Error().Msgf("%v\n", errDefaultQueryPath)
+			logger.Error().Msgf("%v\n", errDefaultQueryPath)
 			return extPath, errors.Wrap(errDefaultQueryPath, "unable to find queries")
 		}
 		queriesPath = append(queriesPath, defaultQueryPath)
 	}
 	c.ScanParams.QueriesPath = queriesPath
-	log.Info().Msgf("%v\n", c.ScanParams.QueriesPath)
+	logger.Info().Msgf("%v\n", c.ScanParams.QueriesPath)
 	return extPath, nil
 }
 
-func (c *Client) getLibraryPath() (provider.ExtractedPath, error) {
+func (c *Client) getLibraryPath(ctx context.Context) (provider.ExtractedPath, error) {
 	extPath := provider.ExtractedPath{
 		Path:          []string{},
 		ExtractionMap: make(map[string]model.ExtractedPathObject),
 	}
 	if c.ScanParams.ChangedDefaultLibrariesPath {
-		extractedLibrariesPath, errExtractLibraries := resolvePath(c.ScanParams.LibrariesPath, "libraries-path", c.ScanParams.OutputPath)
+		extractedLibrariesPath, errExtractLibraries := resolvePath(ctx, c.ScanParams.LibrariesPath, "libraries-path", c.ScanParams.OutputPath)
 		if errExtractLibraries != nil {
 			return extPath, errExtractLibraries
 		}
@@ -163,35 +165,37 @@ func (c *Client) getLibraryPath() (provider.ExtractedPath, error) {
 	return extPath, nil
 }
 
-func resolvePath(flagContent, flagName, downloadDir string) (provider.ExtractedPath, error) {
-	extractedPath, errExtractPath := provider.GetSources([]string{flagContent}, downloadDir)
+func resolvePath(ctx context.Context, flagContent, flagName, downloadDir string) (provider.ExtractedPath, error) {
+	logger := log.Ctx(ctx)
+	extractedPath, errExtractPath := provider.GetSources(ctx, []string{flagContent}, downloadDir)
 	if errExtractPath != nil {
 		return extractedPath, errExtractPath
 	}
 	if len(extractedPath.Path) != 1 {
 		err := fmt.Errorf("could not find a valid path (--%s) on %s", flagName, flagContent)
-		log.Error().Msg(err.Error())
+		logger.Error().Msg(err.Error())
 		return extractedPath, err
 	}
-	log.Debug().Msgf("Trying to load path (--%s) from %s", flagName, flagContent)
+	logger.Debug().Msgf("Trying to load path (--%s) from %s", flagName, flagContent)
 	return extractedPath, nil
 }
 
 // analyzePaths will analyze the paths to scan to determine which type of queries to load
 // and which files should be ignored, it then updates the types and exclude flags variables
 // with the results found
-func analyzePaths(a *analyzer.Analyzer) (model.AnalyzedPaths, error) {
+func analyzePaths(ctx context.Context, a *analyzer.Analyzer) (model.AnalyzedPaths, error) {
+	logger := log.Ctx(ctx)
 	var err error
 	var pathsFlag model.AnalyzedPaths
 	excluded := make([]string, 0)
 
-	pathsFlag, err = analyzer.Analyze(a)
+	pathsFlag, err = analyzer.Analyze(ctx, a)
 	if err != nil {
-		log.Err(err).Msgf("failed analyze %v", err)
+		logger.Err(err).Msgf("failed analyze %v", err)
 		return model.AnalyzedPaths{}, err
 	}
 
-	logLoadingQueriesType(pathsFlag.Types)
+	logLoadingQueriesType(ctx, pathsFlag.Types)
 
 	excluded = append(excluded, a.Exc...)
 	excluded = append(excluded, pathsFlag.Exc...)
@@ -199,13 +203,14 @@ func analyzePaths(a *analyzer.Analyzer) (model.AnalyzedPaths, error) {
 	return pathsFlag, nil
 }
 
-func logLoadingQueriesType(types []string) {
+func logLoadingQueriesType(ctx context.Context, types []string) {
+	logger := log.Ctx(ctx)
 	if len(types) == 0 {
-		log.Info().Msg("No queries were loaded")
+		logger.Info().Msg("No queries were loaded")
 		return
 	}
 
-	log.Info().Msgf("Loading queries of type: %s", strings.Join(types, ", "))
+	logger.Info().Msgf("Loading queries of type: %s", strings.Join(types, ", "))
 }
 
 func extractPathType(paths []string) (regular, kuberneter []string) {
@@ -219,14 +224,15 @@ func extractPathType(paths []string) (regular, kuberneter []string) {
 	return
 }
 
-func deleteExtractionFolder(extractionMap map[string]model.ExtractedPathObject) {
+func deleteExtractionFolder(ctx context.Context, extractionMap map[string]model.ExtractedPathObject) {
+	logger := log.Ctx(ctx)
 	for extractionFile := range extractionMap {
 		if strings.Contains(extractionFile, "kics-extract-kuberneter") {
 			continue
 		}
 		err := os.RemoveAll(extractionFile)
 		if err != nil {
-			log.Err(err).Msg("Failed to delete KICS extraction folder")
+			logger.Err(err).Msg("Failed to delete KICS extraction folder")
 		}
 	}
 }
@@ -246,16 +252,18 @@ func usingCustomQueries(queriesPath []string) bool {
 }
 
 // printVersionCheck - Prints and logs warning if not using KICS latest version
-func printVersionCheck(customPrint *consolePrinter.Printer, s *model.Summary) {
+func printVersionCheck(ctx context.Context, customPrint *consolePrinter.Printer, s *model.Summary) {
+	logger := log.Ctx(ctx)
 	if !s.LatestVersion.Latest {
 		message := fmt.Sprintf("A new version 'v%s' of KICS is available, please consider updating", s.LatestVersion.LatestVersionTag)
 
 		fmt.Println(customPrint.VersionMessage.Sprintf(message))
-		log.Warn().Msgf(message)
+		logger.Warn().Msgf(message)
 	}
 }
 
-func getTotalFiles(paths []string) int {
+func getTotalFiles(ctx context.Context, paths []string) int {
+	logger := log.Ctx(ctx)
 	files := 0
 	for _, path := range paths {
 		if err := filepath.Walk(path, func(path string, info os.FileInfo, err error) error {
@@ -269,7 +277,7 @@ func getTotalFiles(paths []string) int {
 
 			return nil
 		}); err != nil {
-			log.Error().Msgf("failed to walk path %s: %s", path, err)
+			logger.Error().Msgf("failed to walk path %s: %s", path, err)
 		}
 	}
 	return files

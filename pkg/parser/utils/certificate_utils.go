@@ -6,6 +6,7 @@
 package utils
 
 import (
+	"context"
 	"crypto/rsa"
 	"crypto/x509"
 	"encoding/pem"
@@ -66,13 +67,14 @@ func getCertificateInfo(filePath string) (certInfo, error) {
 }
 
 // AddCertificateInfo gets and adds certificate information of a certificate file
-func AddCertificateInfo(path, content string) map[string]interface{} {
+func AddCertificateInfo(ctx context.Context, path, content string) map[string]interface{} {
+	logger := log.Ctx(ctx)
 	var filePath string
 
 	_, err := os.Stat(content)
 
 	if err != nil { // content is not a full valid path or is an incomplete path
-		log.Trace().Msgf("path to the certificate content is not a valid: %s", content)
+		logger.Trace().Msgf("path to the certificate content is not a valid: %s", content)
 		filePath = filepath.Join(filepath.Dir(path), content)
 	} else { // content is a full valid path
 		filePath = content
@@ -92,7 +94,7 @@ func AddCertificateInfo(path, content string) map[string]interface{} {
 		return attributes
 	}
 
-	log.Error().Msgf("Failed to get certificate path %s: %s", filePath, err)
+	logger.Error().Msgf("Failed to get certificate path %s: %s", filePath, err)
 
 	return nil
 }

@@ -6,6 +6,7 @@
 package analyzer
 
 import (
+	"context"
 	"fmt"
 	"os"
 	"path/filepath"
@@ -271,7 +272,8 @@ var defaultConfigFiles = []string{"pnpm-lock.yaml"}
 
 // Analyze will go through the slice paths given and determine what type of queries should be loaded
 // should be loaded based on the extension of the file and the content
-func Analyze(a *Analyzer) (model.AnalyzedPaths, error) {
+func Analyze(ctx context.Context, a *Analyzer) (model.AnalyzedPaths, error) {
+	logger := log.Ctx(ctx)
 	// start metrics for file analyzer
 	metrics.Metric.Start("file_type_analyzer")
 	returnAnalyzedPaths := model.AnalyzedPaths{
@@ -288,7 +290,7 @@ func Analyze(a *Analyzer) (model.AnalyzedPaths, error) {
 	ignoreFiles := make([]string, 0)
 	projectConfigFiles := make([]string, 0)
 	done := make(chan bool)
-	hasGitIgnoreFile, gitIgnore := shouldConsiderGitIgnoreFile(a.Paths[0], a.GitIgnoreFileName, a.ExcludeGitIgnore)
+	hasGitIgnoreFile, gitIgnore := shouldConsiderGitIgnoreFile(ctx, a.Paths[0], a.GitIgnoreFileName, a.ExcludeGitIgnore)
 	// get all the files inside the given paths
 	for _, path := range a.Paths {
 		if _, err := os.Stat(path); err != nil {
@@ -299,23 +301,23 @@ func Analyze(a *Analyzer) (model.AnalyzedPaths, error) {
 				return err
 			}
 
-			ext, errExt := utils.GetExtension(path)
+			ext, errExt := utils.GetExtension(ctx, path)
 			if errExt == nil {
 				trimmedPath := strings.ReplaceAll(path, a.Paths[0], filepath.Base(a.Paths[0]))
-				ignoreFiles = a.checkIgnore(info.Size(), hasGitIgnoreFile, gitIgnore, path, trimmedPath, ignoreFiles)
+				ignoreFiles = a.checkIgnore(ctx, info.Size(), hasGitIgnoreFile, gitIgnore, path, trimmedPath, ignoreFiles)
 
-				if isConfigFile(path, defaultConfigFiles) {
+				if isConfigFile(ctx, path, defaultConfigFiles) {
 					projectConfigFiles = append(projectConfigFiles, path)
 					a.Exc = append(a.Exc, path)
 				}
 
-				if _, ok := possibleFileTypes[ext]; ok && !isExcludedFile(path, a.Exc) {
+				if _, ok := possibleFileTypes[ext]; ok && !isExcludedFile(ctx, path, a.Exc) {
 					files = append(files, path)
 				}
 			}
 			return nil
 		}); err != nil {
-			log.Error().Msgf("failed to analyze path %s: %s", path, err)
+			logger.Error().Msgf("failed to analyze path %s: %s", path, err)
 		}
 	}
 
@@ -333,7 +335,7 @@ func Analyze(a *Analyzer) (model.AnalyzedPaths, error) {
 			excludeTypesFlag: a.ExcludeTypes,
 			filePath:         file,
 		}
-		go a.worker(results, unwanted, locCount, &wg)
+		go a.worker(ctx, results, unwanted, locCount, &wg)
 	}
 
 	go func() {
@@ -362,12 +364,12 @@ func Analyze(a *Analyzer) (model.AnalyzedPaths, error) {
 // worker determines the type of the file by ext (dockerfile and terraform)/content and
 // writes the answer to the results channel
 // if no types were found, the worker will write the path of the file in the unwanted channel
-func (a *analyzerInfo) worker(results, unwanted chan<- string, locCount chan<- int, wg *sync.WaitGroup) { //nolint: gocyclo
+func (a *analyzerInfo) worker(ctx context.Context, results, unwanted chan<- string, locCount chan<- int, wg *sync.WaitGroup) { //nolint: gocyclo
 	defer wg.Done()
 
-	ext, errExt := utils.GetExtension(a.filePath)
+	ext, errExt := utils.GetExtension(ctx, a.filePath)
 	if errExt == nil {
-		linesCount, _ := utils.LineCounter(a.filePath)
+		linesCount, _ := utils.LineCounter(ctx, a.filePath)
 
 		switch ext {
 		// Terraform
@@ -397,7 +399,7 @@ func (a *analyzerInfo) worker(results, unwanted chan<- string, locCount chan<- i
 		/* It could be Ansible, Buildah, CICD, CloudFormation, Crossplane, OpenAPI, Azure Resource Manager
 		Docker Compose, Knative, Kubernetes, Pulumi, ServerlessFW or Google Deployment Manager*/
 		case yaml, yml, json, sh:
-			a.checkContent(results, unwanted, locCount, linesCount, ext)
+			a.checkContent(ctx, results, unwanted, locCount, linesCount, ext)
 		}
 	}
 }
@@ -414,13 +416,14 @@ func needsOverride(check bool, returnType, key, ext string) bool {
 
 // checkContent will determine the file type by content when worker was unable to
 // determine by ext, if no type was determined checkContent adds it to unwanted channel
-func (a *analyzerInfo) checkContent(results, unwanted chan<- string, locCount chan<- int, linesCount int, ext string) {
+func (a *analyzerInfo) checkContent(ctx context.Context, results, unwanted chan<- string, locCount chan<- int, linesCount int, ext string) {
+	logger := log.Ctx(ctx)
 	typesFlag := a.typesFlag
 	excludeTypesFlag := a.excludeTypesFlag
 	// get file content
 	content, err := os.ReadFile(a.filePath)
 	if err != nil {
-		log.Error().Msgf("failed to analyze file: %s", err)
+		logger.Error().Msgf("failed to analyze file: %s", err)
 		return
 	}
 
@@ -455,7 +458,7 @@ func (a *analyzerInfo) checkContent(results, unwanted chan<- string, locCount ch
 			returnType = key
 		}
 	}
-	returnType = checkReturnType(a.filePath, returnType, ext, content)
+	returnType = checkReturnType(ctx, a.filePath, returnType, ext, content)
 	if returnType != "" {
 		if a.isAvailableType(returnType) {
 			results <- returnType
@@ -467,7 +470,7 @@ func (a *analyzerInfo) checkContent(results, unwanted chan<- string, locCount ch
 	unwanted <- a.filePath
 }
 
-func checkReturnType(path, returnType, ext string, content []byte) string {
+func checkReturnType(ctx context.Context, path, returnType, ext string, content []byte) string {
 	if returnType != "" {
 		if returnType == "cdkTf" {
 			return terraform
@@ -476,10 +479,10 @@ func checkReturnType(path, returnType, ext string, content []byte) string {
 			return arm
 		}
 	} else if ext == yaml || ext == yml {
-		if checkHelm(path) {
+		if checkHelm(ctx, path) {
 			return kubernetes
 		}
-		platform := checkYamlPlatform(content, path)
+		platform := checkYamlPlatform(ctx, content, path)
 		if platform != "" {
 			return platform
 		}
@@ -487,23 +490,25 @@ func checkReturnType(path, returnType, ext string, content []byte) string {
 	return returnType
 }
 
-func checkHelm(path string) bool {
+func checkHelm(ctx context.Context, path string) bool {
+	logger := log.Ctx(ctx)
 	_, err := os.Stat(filepath.Join(filepath.Dir(path), "Chart.yaml"))
 	if errors.Is(err, os.ErrNotExist) {
 		return false
 	} else if err != nil {
-		log.Error().Msgf("failed to check helm: %s", err)
+		logger.Error().Msgf("failed to check helm: %s", err)
 	}
 
 	return true
 }
 
-func checkYamlPlatform(content []byte, path string) string {
-	content = utils.DecryptAnsibleVault(content, os.Getenv("ANSIBLE_VAULT_PASSWORD_FILE"))
+func checkYamlPlatform(ctx context.Context, content []byte, path string) string {
+	logger := log.Ctx(ctx)
+	content = utils.DecryptAnsibleVault(ctx, content, os.Getenv("ANSIBLE_VAULT_PASSWORD_FILE"))
 
 	var yamlContent model.Document
 	if err := yamlParser.Unmarshal(content, &yamlContent); err != nil {
-		log.Warn().Msgf("failed to parse yaml file (%s): %s", path, err)
+		logger.Warn().Msgf("failed to parse yaml file (%s): %s", path, err)
 	}
 	// check if it is google deployment manager platform
 	for _, keyword := range listKeywordsGoogleDeployment {
@@ -617,15 +622,16 @@ func getKeysFromExcludeTypesFlag(excludeTypesFlag []string) []string {
 }
 
 // isExcludedFile verifies if the path is pointed in the --exclude-paths flag
-func isExcludedFile(path string, exc []string) bool {
+func isExcludedFile(ctx context.Context, path string, exc []string) bool {
+	logger := log.Ctx(ctx)
 	for i := range exc {
-		exclude, err := provider.GetExcludePaths(exc[i])
+		exclude, err := provider.GetExcludePaths(ctx, exc[i])
 		if err != nil {
-			log.Err(err).Msg("failed to get exclude paths")
+			logger.Err(err).Msg("failed to get exclude paths")
 		}
 		for j := range exclude {
 			if exclude[j] == path {
-				log.Info().Msgf("Excluded file %s from analyzer", path)
+				logger.Info().Msgf("Excluded file %s from analyzer", path)
 				return true
 			}
 		}
@@ -638,11 +644,12 @@ func isDeadSymlink(path string) bool {
 	return fileInfo == nil
 }
 
-func isConfigFile(path string, exc []string) bool {
+func isConfigFile(ctx context.Context, path string, exc []string) bool {
+	logger := log.Ctx(ctx)
 	for i := range exc {
-		exclude, err := provider.GetExcludePaths(exc[i])
+		exclude, err := provider.GetExcludePaths(ctx, exc[i])
 		if err != nil {
-			log.Err(err).Msg("failed to get exclude paths")
+			logger.Err(err).Msg("failed to get exclude paths")
 		}
 		for j := range exclude {
 			fileInfo, _ := os.Stat(path)
@@ -651,7 +658,7 @@ func isConfigFile(path string, exc []string) bool {
 			}
 
 			if len(path)-len(exclude[j]) > 0 && path[len(path)-len(exclude[j]):] == exclude[j] && exclude[j] != "" {
-				log.Info().Msgf("Excluded file %s from analyzer", path)
+				logger.Info().Msgf("Excluded file %s from analyzer", path)
 				return true
 			}
 		}
@@ -660,15 +667,16 @@ func isConfigFile(path string, exc []string) bool {
 }
 
 // shouldConsiderGitIgnoreFile verifies if the scan should exclude the files according to the .gitignore file
-func shouldConsiderGitIgnoreFile(path, gitIgnore string, excludeGitIgnoreFile bool) (hasGitIgnoreFileRes bool,
+func shouldConsiderGitIgnoreFile(ctx context.Context, path, gitIgnore string, excludeGitIgnoreFile bool) (hasGitIgnoreFileRes bool,
 	gitIgnoreRes *ignore.GitIgnore) {
+	logger := log.Ctx(ctx)
 	gitIgnorePath := filepath.ToSlash(filepath.Join(path, gitIgnore))
 	_, err := os.Stat(gitIgnorePath)
 
 	if !excludeGitIgnoreFile && err == nil && gitIgnore != "" {
 		gitIgnore, _ := ignore.CompileIgnoreFile(gitIgnorePath)
 		if gitIgnore != nil {
-			log.Info().Msgf(".gitignore file was found in '%s' and it will be used to automatically exclude paths", path)
+			logger.Info().Msgf(".gitignore file was found in '%s' and it will be used to automatically exclude paths", path)
 			return true, gitIgnore
 		}
 	}
@@ -699,9 +707,10 @@ func (a *analyzerInfo) isAvailableType(typeName string) bool {
 	return false
 }
 
-func (a *Analyzer) checkIgnore(fileSize int64, hasGitIgnoreFile bool,
+func (a *Analyzer) checkIgnore(ctx context.Context, fileSize int64, hasGitIgnoreFile bool,
 	gitIgnore *ignore.GitIgnore,
 	fullPath string, trimmedPath string, ignoreFiles []string) []string {
+	logger := log.Ctx(ctx)
 	exceededFileSize := a.MaxFileSize >= 0 && float64(fileSize)/float64(sizeMb) > float64(a.MaxFileSize)
 
 	if (hasGitIgnoreFile && gitIgnore.MatchesPath(trimmedPath)) || isDeadSymlink(fullPath) || exceededFileSize {
@@ -709,7 +718,7 @@ func (a *Analyzer) checkIgnore(fileSize int64, hasGitIgnoreFile bool,
 		a.Exc = append(a.Exc, fullPath)
 
 		if exceededFileSize {
-			log.Error().Msgf("file %s exceeds maximum file size of %d Mb", fullPath, a.MaxFileSize)
+			logger.Error().Msgf("file %s exceeds maximum file size of %d Mb", fullPath, a.MaxFileSize)
 		}
 	}
 	return ignoreFiles

@@ -33,6 +33,7 @@ func (s *Service) sink(ctx context.Context, filename, scanID string,
 	rc io.Reader, data []byte,
 	openAPIResolveReferences bool,
 	maxResolverDepth int) error {
+	logger := log.Ctx(ctx)
 	s.Tracker.TrackFileFound(filename)
 
 	c, err := getContent(rc, data, s.MaxFileSize, filename)
@@ -46,9 +47,9 @@ func (s *Service) sink(ctx context.Context, filename, scanID string,
 	if err != nil {
 		return errors.Wrapf(err, "failed to get file content: %s", filename)
 	}
-	documents, err := s.Parser.Parse(filename, *content, openAPIResolveReferences, c.IsMinified, maxResolverDepth)
+	documents, err := s.Parser.Parse(ctx, filename, *content, openAPIResolveReferences, c.IsMinified, maxResolverDepth)
 	if err != nil {
-		log.Err(err).Msgf("failed to parse file content: %s", filename)
+		logger.Err(err).Msgf("failed to parse file content: %s", filename)
 		return nil
 	}
 
@@ -60,7 +61,7 @@ func (s *Service) sink(ctx context.Context, filename, scanID string,
 	}
 	s.Tracker.TrackFileFoundCountLines(linesResolved)
 
-	fileCommands := s.Parser.CommentsCommands(filename, *content)
+	fileCommands := s.Parser.CommentsCommands(ctx, filename, *content)
 
 	for _, document := range documents.Docs {
 		_, err = json.Marshal(document)
@@ -82,7 +83,7 @@ func (s *Service) sink(ctx context.Context, filename, scanID string,
 		file := model.FileMetadata{
 			ID:                uuid.New().String(),
 			ScanID:            scanID,
-			Document:          PrepareScanDocument(document, documents.Kind),
+			Document:          PrepareScanDocument(ctx, document, documents.Kind),
 			LineInfoDocument:  document,
 			OriginalData:      documents.Content,
 			Kind:              documents.Kind,

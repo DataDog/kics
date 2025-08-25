@@ -43,12 +43,13 @@ type executeScanParameters struct {
 }
 
 func (c *Client) initScan(ctx context.Context) (*executeScanParameters, error) {
+	logger := log.Ctx(ctx)
 	progressBar := c.ProBarBuilder.BuildCircle("Preparing Scan Assets: ")
-	go progressBar.Start()
+	go progressBar.Start(ctx)
 
 	extractedPaths, err := c.prepareAndAnalyzePaths(ctx)
 	if err != nil {
-		log.Err(err).Msgf("failed to prepare and analyze paths %v", err)
+		logger.Err(err).Msgf("failed to prepare and analyze paths %v", err)
 		return nil, err
 	}
 
@@ -59,6 +60,7 @@ func (c *Client) initScan(ctx context.Context) (*executeScanParameters, error) {
 	paramsPlatforms := c.ScanParams.Platform
 	useDifferentPlatformQueries(&paramsPlatforms)
 	querySource := source.NewFilesystemSource(
+		ctx,
 		c.ScanParams.QueriesPath,
 		paramsPlatforms,
 		c.ScanParams.CloudProvider,
@@ -67,7 +69,7 @@ func (c *Client) initScan(ctx context.Context) (*executeScanParameters, error) {
 
 	queryFilter := c.createQueryFilter()
 
-	log.Info().Msgf("Preparing to inspect query source %v", querySource)
+	logger.Info().Msgf("Preparing to inspect query source %v", querySource)
 
 	inspector, err := engine.NewInspector(ctx,
 		querySource,
@@ -85,7 +87,7 @@ func (c *Client) initScan(ctx context.Context) (*executeScanParameters, error) {
 		return nil, err
 	}
 
-	log.Info().Msgf("Finshed inspect query source %v", querySource)
+	logger.Info().Msgf("Finshed inspect query source %v", querySource)
 
 	// secretsRegexRulesContent, err := getSecretsRegexRules(c.ScanParams.SecretsRegexesPath)
 	// if err != nil {
@@ -105,11 +107,12 @@ func (c *Client) initScan(ctx context.Context) (*executeScanParameters, error) {
 	// 	isCustomSecretsRegexes,
 	// )
 	// if err != nil {
-	// 	log.Err(err)
+	// 	logger.Err(err)
 	// 	return nil, err
 	// }
 
 	services, err := c.createService(
+		ctx,
 		inspector,
 		extractedPaths.Path,
 		c.Tracker,
@@ -117,12 +120,12 @@ func (c *Client) initScan(ctx context.Context) (*executeScanParameters, error) {
 		querySource,
 	)
 	if err != nil {
-		log.Err(err).Msgf("failed to create service %v", err)
+		logger.Err(err).Msgf("failed to create service %v", err)
 		return nil, err
 	}
 
 	if err := progressBar.Close(); err != nil {
-		log.Debug().Msgf("Failed to close progress bar: %s", err.Error())
+		logger.Debug().Msgf("Failed to close progress bar: %s", err.Error())
 	}
 
 	return &executeScanParameters{
@@ -133,10 +136,11 @@ func (c *Client) initScan(ctx context.Context) (*executeScanParameters, error) {
 }
 
 func (c *Client) executeScan(ctx context.Context) (*Results, error) {
+	logger := log.Ctx(ctx)
 	executeScanParameters, err := c.initScan(ctx)
 
 	if err != nil {
-		log.Err(err).Msgf("failed to execute scan %v", err)
+		logger.Err(err).Msgf("failed to execute scan %v", err)
 		return nil, err
 	}
 
@@ -144,31 +148,31 @@ func (c *Client) executeScan(ctx context.Context) (*Results, error) {
 		return nil, nil
 	}
 
-	log.Info().Msg("Scan initialized")
+	logger.Info().Msg("Scan initialized")
 
-	log.Info().Msgf("Preparing to scan")
+	logger.Info().Msgf("Preparing to scan")
 
 	if err = scanner.PrepareAndScan(
 		ctx,
 		c.ScanParams.ScanID, c.ScanParams.OpenAPIResolveReferences, c.ScanParams.MaxResolverDepth, *c.ProBarBuilder,
 		executeScanParameters.services); err != nil {
-		log.Err(err).Msgf("failed to prepare and scan %v", err)
+		logger.Err(err).Msgf("failed to prepare and scan %v", err)
 		return nil, err
 	}
 
-	log.Info().Msg("Scan finished")
+	logger.Info().Msg("Scan finished")
 
 	failedQueries := executeScanParameters.inspector.GetFailedQueries()
 
 	results, err := c.Storage.GetVulnerabilities(ctx, c.ScanParams.ScanID)
 	if err != nil {
-		log.Err(err).Msgf("failed to get vulns %v", err)
+		logger.Err(err).Msgf("failed to get vulns %v", err)
 		return nil, err
 	}
 
 	files, err := c.Storage.GetFiles(ctx, c.ScanParams.ScanID)
 	if err != nil {
-		log.Err(err).Msgf("failed to get files %v", err)
+		logger.Err(err).Msgf("failed to get files %v", err)
 		return nil, err
 	}
 
@@ -245,17 +249,18 @@ func (c *Client) createQueryFilter() *source.QueryInspectorParameters {
 }
 
 func (c *Client) createService(
+	ctx context.Context,
 	inspector *engine.Inspector,
 	paths []string,
 	t kics.Tracker,
 	store kics.Storage,
 	querySource *source.FilesystemSource) ([]*kics.Service, error) {
-	filesSource, err := c.getFileSystemSourceProvider(paths)
+	filesSource, err := c.getFileSystemSourceProvider(ctx, paths)
 	if err != nil {
 		return nil, err
 	}
 
-	combinedParser, err := parser.NewBuilder().
+	combinedParser, err := parser.NewBuilder(ctx).
 		// Add(&jsonParser.Parser{}).
 		Add(&yamlParser.Parser{}).
 		Add(terraformParser.NewDefaultWithParams(c.ScanParams.TerraformVarsPath, c.ScanParams.SCIInfo)).
@@ -271,7 +276,7 @@ func (c *Client) createService(
 
 	// combinedResolver to be used to resolve files and templates
 	combinedResolver, err := resolver.NewBuilder().
-		Build()
+		Build(ctx)
 	if err != nil {
 		return nil, err
 	}
@@ -295,7 +300,7 @@ func (c *Client) createService(
 	return services, nil
 }
 
-func (c *Client) getFileSystemSourceProvider(paths []string) (*provider.FileSystemSourceProvider, error) {
+func (c *Client) getFileSystemSourceProvider(ctx context.Context, paths []string) (*provider.FileSystemSourceProvider, error) {
 	var excludePaths []string
 	if c.ScanParams.PayloadPath != "" {
 		excludePaths = append(excludePaths, c.ScanParams.PayloadPath)
@@ -305,7 +310,7 @@ func (c *Client) getFileSystemSourceProvider(paths []string) (*provider.FileSyst
 		excludePaths = append(excludePaths, c.ScanParams.ExcludePaths...)
 	}
 
-	filesSource, err := provider.NewFileSystemSourceProvider(paths, excludePaths)
+	filesSource, err := provider.NewFileSystemSourceProvider(ctx, paths, excludePaths)
 	if err != nil {
 		return nil, err
 	}

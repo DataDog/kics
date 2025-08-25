@@ -6,6 +6,7 @@
 package printer
 
 import (
+	"context"
 	"fmt"
 	"io"
 	"strings"
@@ -76,8 +77,9 @@ func WordWrap(s, indentation string, limit int) string {
 }
 
 // PrintResult prints on output the summary results
-func PrintResult(summary *model.Summary, printer *Printer, usingCustomQueries bool, sciInfo model.SCIInfo) error {
-	log.Debug().Msg("helpers.PrintResult()")
+func PrintResult(ctx context.Context, summary *model.Summary, printer *Printer, usingCustomQueries bool, sciInfo model.SCIInfo) error {
+	logger := log.Ctx(ctx)
+	logger.Debug().Msg("helpers.PrintResult()")
 	fmt.Printf("\n\n")
 
 	for index := range summary.Queries {
@@ -86,7 +88,7 @@ func PrintResult(summary *model.Summary, printer *Printer, usingCustomQueries bo
 			continue
 		}
 
-		log.Info().Msgf(
+		logger.Info().Msgf(
 			"%s, Severity: %s, Results: %d\n",
 			printer.PrintBySev(summary.Queries[idx].QueryName, string(summary.Queries[idx].Severity)),
 			printer.PrintBySev(string(summary.Queries[idx].Severity), string(summary.Queries[idx].Severity)),
@@ -94,21 +96,21 @@ func PrintResult(summary *model.Summary, printer *Printer, usingCustomQueries bo
 		)
 
 		if summary.Queries[idx].Experimental {
-			log.Info().Msgf("Note: this is an experimental query")
+			logger.Info().Msgf("Note: this is an experimental query")
 		}
 
 		if !printer.minimal {
 			if summary.Queries[idx].CISDescriptionID != "" {
-				log.Info().Msgf("%s %s\n", printer.Bold("Description ID:"), summary.Queries[idx].CISDescriptionIDFormatted)
-				log.Info().Msgf("%s %s\n", printer.Bold("Title:"), summary.Queries[idx].CISDescriptionTitle)
-				log.Info().Msgf("%s %s\n", printer.Bold("Description:"), summary.Queries[idx].CISDescriptionTextFormatted)
+				logger.Info().Msgf("%s %s\n", printer.Bold("Description ID:"), summary.Queries[idx].CISDescriptionIDFormatted)
+				logger.Info().Msgf("%s %s\n", printer.Bold("Title:"), summary.Queries[idx].CISDescriptionTitle)
+				logger.Info().Msgf("%s %s\n", printer.Bold("Description:"), summary.Queries[idx].CISDescriptionTextFormatted)
 			} else {
-				log.Info().Msgf("%s %s\n", printer.Bold("Description:"), summary.Queries[idx].Description)
+				logger.Info().Msgf("%s %s\n", printer.Bold("Description:"), summary.Queries[idx].Description)
 			}
-			log.Info().Msgf("%s %s\n", printer.Bold("Platform:"), summary.Queries[idx].Platform)
+			logger.Info().Msgf("%s %s\n", printer.Bold("Platform:"), summary.Queries[idx].Platform)
 
 			if summary.Queries[idx].CWE != "" {
-				log.Info().Msgf("%s %s\n", printer.Bold("CWE:"), summary.Queries[idx].CWE)
+				logger.Info().Msgf("%s %s\n", printer.Bold("CWE:"), summary.Queries[idx].CWE)
 			}
 
 			// checks if should print queries URL DOCS based on the use of custom queries and invalid ids
@@ -120,7 +122,7 @@ func PrintResult(summary *model.Summary, printer *Printer, usingCustomQueries bo
 					queryURLId = "a88baa34-e2ad-44ea-ad6f-8cac87bc7c71"
 				}
 
-				log.Info().Msgf("%s %s\n\n",
+				logger.Info().Msgf("%s %s\n\n",
 					printer.Bold("Learn more about this vulnerability:"),
 					fmt.Sprintf("https://docs.kics.io/latest/queries/%s-queries/%s%s",
 						queryURLPlatform,
@@ -128,17 +130,17 @@ func PrintResult(summary *model.Summary, printer *Printer, usingCustomQueries bo
 						queryURLId))
 			}
 		}
-		printFiles(&summary.Queries[idx], printer)
+		printFiles(ctx, &summary.Queries[idx], printer)
 	}
-	log.Info().Msgf("\nResults Summary:\n")
-	printSeverityCounter(model.SeverityCritical, summary.SeveritySummary.SeverityCounters[model.SeverityCritical])
-	printSeverityCounter(model.SeverityHigh, summary.SeveritySummary.SeverityCounters[model.SeverityHigh])
-	printSeverityCounter(model.SeverityMedium, summary.SeveritySummary.SeverityCounters[model.SeverityMedium])
-	printSeverityCounter(model.SeverityLow, summary.SeveritySummary.SeverityCounters[model.SeverityLow])
-	printSeverityCounter(model.SeverityInfo, summary.SeveritySummary.SeverityCounters[model.SeverityInfo])
-	log.Info().Msgf("TOTAL: %d\n\n", summary.SeveritySummary.TotalCounter)
+	logger.Info().Msgf("\nResults Summary:\n")
+	printSeverityCounter(ctx, model.SeverityCritical, summary.SeveritySummary.SeverityCounters[model.SeverityCritical])
+	printSeverityCounter(ctx, model.SeverityHigh, summary.SeveritySummary.SeverityCounters[model.SeverityHigh])
+	printSeverityCounter(ctx, model.SeverityMedium, summary.SeveritySummary.SeverityCounters[model.SeverityMedium])
+	printSeverityCounter(ctx, model.SeverityLow, summary.SeveritySummary.SeverityCounters[model.SeverityLow])
+	printSeverityCounter(ctx, model.SeverityInfo, summary.SeveritySummary.SeverityCounters[model.SeverityInfo])
+	logger.Info().Msgf("TOTAL: %d\n\n", summary.SeveritySummary.TotalCounter)
 
-	log.Info().Int64(
+	logger.Info().Int64(
 		"org", sciInfo.OrgId,
 	).Str(
 		"branch", sciInfo.RepositoryCommitInfo.Branch,
@@ -148,7 +150,7 @@ func PrintResult(summary *model.Summary, printer *Printer, usingCustomQueries bo
 		"repository", sciInfo.RepositoryCommitInfo.RepositoryUrl,
 	).Msgf("Scanned Files: %d", summary.ScannedFiles)
 
-	log.Info().Int64(
+	logger.Info().Int64(
 		"org", sciInfo.OrgId,
 	).Str(
 		"branch", sciInfo.RepositoryCommitInfo.Branch,
@@ -158,23 +160,25 @@ func PrintResult(summary *model.Summary, printer *Printer, usingCustomQueries bo
 		"repository", sciInfo.RepositoryCommitInfo.RepositoryUrl,
 	).Msgf("Parsed Files: %d", summary.ParsedFiles)
 
-	log.Info().Msgf("Scanned Lines: %d", summary.ScannedFilesLines)
-	log.Info().Msgf("Parsed Lines: %d", summary.ParsedFilesLines)
-	log.Info().Msgf("Ignored Lines: %d", summary.IgnoredFilesLines)
-	log.Info().Msgf("Queries loaded: %d", summary.TotalQueries)
-	log.Info().Msgf("Queries failed to execute: %d", summary.FailedToExecuteQueries)
-	log.Info().Msg("Inspector stopped")
+	logger.Info().Msgf("Scanned Lines: %d", summary.ScannedFilesLines)
+	logger.Info().Msgf("Parsed Lines: %d", summary.ParsedFilesLines)
+	logger.Info().Msgf("Ignored Lines: %d", summary.IgnoredFilesLines)
+	logger.Info().Msgf("Queries loaded: %d", summary.TotalQueries)
+	logger.Info().Msgf("Queries failed to execute: %d", summary.FailedToExecuteQueries)
+	logger.Info().Msg("Inspector stopped")
 
 	return nil
 }
 
-func printSeverityCounter(severity string, counter int) {
-	log.Info().Msgf("%s: %d\n", severity, counter)
+func printSeverityCounter(ctx context.Context, severity string, counter int) {
+	logger := log.Ctx(ctx)
+	logger.Info().Msgf("%s: %d\n", severity, counter)
 }
 
-func printFiles(query *model.QueryResult, printer *Printer) {
+func printFiles(ctx context.Context, query *model.QueryResult, printer *Printer) {
+	logger := log.Ctx(ctx)
 	for fileIdx := range query.Files {
-		log.Info().Msgf("\t%s %s:%s\n", printer.PrintBySev(fmt.Sprintf("[%d]:", fileIdx+1), string(query.Severity)),
+		logger.Info().Msgf("\t%s %s:%s\n", printer.PrintBySev(fmt.Sprintf("[%d]:", fileIdx+1), string(query.Severity)),
 			query.Files[fileIdx].FileName, printer.Success.Sprint(query.Files[fileIdx].Line))
 		if !printer.minimal {
 			fmt.Println()
@@ -185,7 +189,7 @@ func printFiles(query *model.QueryResult, printer *Printer) {
 				if line.Position == query.Files[fileIdx].Line {
 					printer.Line.Printf("\t\t%03d: %s\n", line.Position, line.Line)
 				} else {
-					log.Info().Msgf("\t\t%03d: %s\n", line.Position, line.Line)
+					logger.Info().Msgf("\t\t%03d: %s\n", line.Position, line.Line)
 				}
 			}
 			fmt.Print("\n\n")

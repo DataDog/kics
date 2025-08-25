@@ -7,6 +7,7 @@ package helpers
 
 import (
 	"bufio"
+	"context"
 	"encoding/json"
 	"errors"
 	"fmt"
@@ -31,7 +32,7 @@ import (
 
 const divisor = float32(100000)
 
-var reportGenerators = map[string]func(path, filename string, body interface{}, sciInfo model.SCIInfo) error{
+var reportGenerators = map[string]func(ctx context.Context, path, filename string, body interface{}, sciInfo model.SCIInfo) error{
 	"json":        report.PrintJSONReport,
 	"sarif":       report.PrintSarifReport,
 	"html":        report.PrintHTMLReport,
@@ -104,19 +105,19 @@ func FileAnalyzer(path string) (string, error) {
 }
 
 // GenerateReport execute each report function to generate report
-func GenerateReport(path, filename string, body interface{}, formats []string, proBarBuilder progress.PbBuilder, sciInfo model.SCIInfo) error {
+func GenerateReport(ctx context.Context, path, filename string, body interface{}, formats []string, proBarBuilder progress.PbBuilder, sciInfo model.SCIInfo) error {
 	log.Debug().Msgf("helpers.GenerateReport()")
 	metrics.Metric.Start("generate_report")
 
 	progressBar := proBarBuilder.BuildCircle("Generating Reports: ")
 
 	var err error = nil
-	go progressBar.Start()
+	go progressBar.Start(ctx)
 	defer progressBar.Close()
 
 	for _, format := range formats {
 		format = strings.ToLower(format)
-		if err = reportGenerators[format](path, filename, body, sciInfo); err != nil {
+		if err = reportGenerators[format](ctx, path, filename, body, sciInfo); err != nil {
 			log.Error().Msgf("Failed to generate %s report", format)
 			break
 		}

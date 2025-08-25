@@ -6,6 +6,7 @@
 package remediation
 
 import (
+	"context"
 	"os"
 	"path/filepath"
 	"regexp"
@@ -55,18 +56,20 @@ func getBefore(line string) string {
 
 // willRemediate verifies if the remediation actually removes the result
 func willRemediate(
+	ctx context.Context,
 	remediated []string,
 	originalFileName string,
 	remediation *Remediation,
 	openAPIResolveReferences bool,
 	maxResolverDepth int) bool {
+	logger := log.Ctx(ctx)
 	filepath.Clean(originalFileName)
 	// create temporary file
 	tmpFile := filepath.Join(os.TempDir(), "temporary-remediation-"+utils.NextRandom()+"-"+filepath.Base(originalFileName))
 	f, err := os.OpenFile(tmpFile, os.O_WRONLY|os.O_CREATE|os.O_TRUNC, os.ModePerm)
 
 	if err != nil {
-		log.Error().Msgf("failed to open temporary file for remediation '%s': %s", remediation.SimilarityID, err)
+		logger.Error().Msgf("failed to open temporary file for remediation '%s': %s", remediation.SimilarityID, err)
 		return false
 	}
 
@@ -75,40 +78,41 @@ func willRemediate(
 	defer func(f *os.File) {
 		err = f.Close()
 		if err != nil {
-			log.Err(err).Msgf("failed to close file: %s", tmpFile)
+			logger.Err(err).Msgf("failed to close file: %s", tmpFile)
 		}
 	}(f)
 
 	if _, err = f.Write(content); err != nil {
-		log.Error().Msgf("failed to write temporary file for remediation '%s': %s", remediation.SimilarityID, err)
+		logger.Error().Msgf("failed to write temporary file for remediation '%s': %s", remediation.SimilarityID, err)
 		return false
 	}
 
 	// scan the temporary file to verify if the remediation removed the result
-	results, err := scanTmpFile(tmpFile, remediation.QueryID, content, openAPIResolveReferences, maxResolverDepth)
+	results, err := scanTmpFile(ctx, tmpFile, remediation.QueryID, content, openAPIResolveReferences, maxResolverDepth)
 
 	if err != nil {
-		log.Error().Msgf("failed to get results of query %s: %s", remediation.QueryID, err)
+		logger.Error().Msgf("failed to get results of query %s: %s", remediation.QueryID, err)
 		return false
 	}
 
 	err = os.Remove(tmpFile)
 
 	if err != nil {
-		log.Err(err)
+		logger.Err(err)
 	}
 
-	return removedResult(results, remediation)
+	return removedResult(ctx, results, remediation)
 }
 
-func removedResult(results []model.Vulnerability, remediation *Remediation) bool {
+func removedResult(ctx context.Context, results []model.Vulnerability, remediation *Remediation) bool {
+	logger := log.Ctx(ctx)
 	for i := range results {
 		result := results[i]
 
 		if result.SearchKey == remediation.SearchKey &&
 			result.KeyActualValue == remediation.ActualValue &&
 			result.KeyExpectedValue == remediation.ExpectedValue {
-			log.Info().Msgf("failed to remediate '%s'", remediation.SimilarityID)
+			logger.Info().Msgf("failed to remediate '%s'", remediation.SimilarityID)
 			return false
 		}
 	}
@@ -116,13 +120,14 @@ func removedResult(results []model.Vulnerability, remediation *Remediation) bool
 }
 
 // CreateTempFile creates a temporary file with the content as the file pointed in the filePathCopyFrom
-func CreateTempFile(filePathCopyFrom, tmpFilePath string) string {
+func CreateTempFile(ctx context.Context, filePathCopyFrom, tmpFilePath string) string {
+	logger := log.Ctx(ctx)
 	filepath.Clean(filePathCopyFrom)
 	filepath.Clean(tmpFilePath)
 	f, err := os.OpenFile(tmpFilePath, os.O_WRONLY|os.O_CREATE|os.O_TRUNC, os.ModePerm)
 
 	if err != nil {
-		log.Error().Msgf("failed to open file '%s': %s", tmpFilePath, err)
+		logger.Error().Msgf("failed to open file '%s': %s", tmpFilePath, err)
 		return ""
 	}
 
@@ -131,17 +136,17 @@ func CreateTempFile(filePathCopyFrom, tmpFilePath string) string {
 	defer func(f *os.File) {
 		err = f.Close()
 		if err != nil {
-			log.Err(err).Msgf("failed to close file: %s", tmpFilePath)
+			logger.Err(err).Msgf("failed to close file: %s", tmpFilePath)
 		}
 	}(f)
 
 	if err != nil {
-		log.Error().Msgf("failed to read file '%s': %s", filePathCopyFrom, err)
+		logger.Error().Msgf("failed to read file '%s': %s", filePathCopyFrom, err)
 		return ""
 	}
 
 	if _, err = f.Write(content); err != nil {
-		log.Error().Msgf("failed to write file '%s': %s", tmpFilePath, err)
+		logger.Error().Msgf("failed to write file '%s': %s", tmpFilePath, err)
 		return ""
 	}
 

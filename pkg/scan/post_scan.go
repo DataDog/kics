@@ -6,6 +6,7 @@
 package scan
 
 import (
+	"context"
 	_ "embed" // Embed kics CLI img and scan-flags
 	"os"
 	"path/filepath"
@@ -22,7 +23,8 @@ import (
 	"github.com/rs/zerolog/log"
 )
 
-func (c *Client) getSummary(results []model.Vulnerability, end time.Time, pathParameters model.PathParameters) model.Summary {
+func (c *Client) getSummary(ctx context.Context, results []model.Vulnerability, end time.Time, pathParameters model.PathParameters) model.Summary {
+	// logger := log.Ctx(ctx)
 	counters := model.Counters{
 		ScannedFiles:           c.Tracker.FoundFiles,
 		ScannedFilesLines:      c.Tracker.FoundCountLines,
@@ -36,6 +38,7 @@ func (c *Client) getSummary(results []model.Vulnerability, end time.Time, pathPa
 	}
 
 	summary := model.CreateSummary(
+		ctx,
 		counters,
 		results,
 		c.ScanParams.ScanID,
@@ -49,12 +52,12 @@ func (c *Client) getSummary(results []model.Vulnerability, end time.Time, pathPa
 	}
 
 	// if c.ScanParams.DisableFullDesc {
-	// 	log.Warn().Msg("Skipping descriptions because provided disable flag is set")
+	// 	logger.Warn().Msg("Skipping descriptions because provided disable flag is set")
 	// } else {
 	// 	err := descriptions.RequestAndOverrideDescriptions(&summary)
 	// 	if err != nil {
-	// 		log.Warn().Msgf("Unable to get descriptions: %s", err)
-	// 		log.Warn().Msgf("Using default descriptions")
+	// 		logger.Warn().Msgf("Unable to get descriptions: %s", err)
+	// 		logger.Warn().Msgf("Using default descriptions")
 	// 	}
 	// }
 
@@ -62,19 +65,22 @@ func (c *Client) getSummary(results []model.Vulnerability, end time.Time, pathPa
 }
 
 func (c *Client) resolveOutputs(
+	ctx context.Context,
 	summary *model.Summary,
 	documents model.Documents,
 	printer *consolePrinter.Printer,
 	proBarBuilder progress.PbBuilder,
 ) error {
-	log.Debug().Msg("console.resolveOutputs()")
+	logger := log.Ctx(ctx)
+	logger.Debug().Msg("console.resolveOutputs()")
 
 	usingCustomQueries := usingCustomQueries(c.ScanParams.QueriesPath)
-	if err := consolePrinter.PrintResult(summary, printer, usingCustomQueries, c.ScanParams.SCIInfo); err != nil {
+	if err := consolePrinter.PrintResult(ctx, summary, printer, usingCustomQueries, c.ScanParams.SCIInfo); err != nil {
 		return err
 	}
 	if c.ScanParams.PayloadPath != "" {
 		if err := report.ExportJSONReport(
+			ctx,
 			filepath.Dir(c.ScanParams.PayloadPath),
 			filepath.Base(c.ScanParams.PayloadPath),
 			documents,
@@ -84,6 +90,7 @@ func (c *Client) resolveOutputs(
 	}
 
 	return printOutput(
+		ctx,
 		c.ScanParams.OutputPath,
 		c.ScanParams.OutputName,
 		summary, c.ScanParams.ReportFormats,
@@ -92,8 +99,9 @@ func (c *Client) resolveOutputs(
 	)
 }
 
-func printOutput(outputPath, filename string, body interface{}, formats []string, proBarBuilder progress.PbBuilder, sciInfo model.SCIInfo) error {
-	log.Debug().Msg("console.printOutput()")
+func printOutput(ctx context.Context, outputPath, filename string, body interface{}, formats []string, proBarBuilder progress.PbBuilder, sciInfo model.SCIInfo) error {
+	logger := log.Ctx(ctx)
+	logger.Debug().Msg("console.printOutput()")
 	if outputPath == "" {
 		return nil
 	}
@@ -101,18 +109,19 @@ func printOutput(outputPath, filename string, body interface{}, formats []string
 		formats = []string{"json"}
 	}
 
-	log.Debug().Msgf("Output formats provided [%v]", strings.Join(formats, ","))
-	log.Debug().Msgf("SCIInfo: %v", sciInfo)
-	err := consoleHelpers.GenerateReport(outputPath, filename, body, formats, proBarBuilder, sciInfo)
+	logger.Debug().Msgf("Output formats provided [%v]", strings.Join(formats, ","))
+	logger.Debug().Msgf("SCIInfo: %v", sciInfo)
+	err := consoleHelpers.GenerateReport(ctx, outputPath, filename, body, formats, proBarBuilder, sciInfo)
 
 	return err
 }
 
 // postScan is responsible for the output results
-func (c *Client) postScan(scanResults *Results) (ScanMetadata, error) {
+func (c *Client) postScan(ctx context.Context, scanResults *Results) (ScanMetadata, error) {
+	logger := log.Ctx(ctx)
 	metadata := ScanMetadata{}
 	if scanResults == nil {
-		log.Info().Msg("No files were scanned")
+		logger.Info().Msg("No files were scanned")
 		scanResults = &Results{
 			Results:        []model.Vulnerability{},
 			ExtractedPaths: provider.ExtractedPath{},
@@ -125,31 +134,31 @@ func (c *Client) postScan(scanResults *Results) (ScanMetadata, error) {
 	// if c.ScanParams.DisableSecrets {
 	// 	err := maskPreviewLines(c.ScanParams.SecretsRegexesPath, scanResults)
 	// 	if err != nil {
-	// 		log.Err(err)
+	// 		logger.Err(err)
 	// 		return err
 	// 	}
 	// }
 	sort.Strings(c.ScanParams.Path)
-	summary := c.getSummary(scanResults.Results, time.Now(), model.PathParameters{
+	summary := c.getSummary(ctx, scanResults.Results, time.Now(), model.PathParameters{
 		ScannedPaths:      c.ScanParams.Path,
 		PathExtractionMap: scanResults.ExtractedPaths.ExtractionMap,
 	})
 
 	if err := c.resolveOutputs(
+		ctx,
 		&summary,
-		scanResults.Files.Combine(c.ScanParams.LineInfoPayload),
+		scanResults.Files.Combine(ctx, c.ScanParams.LineInfoPayload),
 		c.Printer,
 		*c.ProBarBuilder); err != nil {
-		log.Err(err).Msgf("failed to resolve outputs %v", err)
+		logger.Err(err).Msgf("failed to resolve outputs %v", err)
 		return metadata, err
 	}
 
-	logger := consolePrinter.NewLogger(nil)
 	endTime := time.Now()
 	scanDuration := endTime.Sub(c.ScanStartTime)
-	consolePrinter.PrintScanDuration(&logger, scanDuration)
+	consolePrinter.PrintScanDuration(ctx, scanDuration)
 
-	log.Info().Int64(
+	logger.Info().Int64(
 		"org", c.ScanParams.SCIInfo.OrgId,
 	).Str(
 		"branch", c.ScanParams.SCIInfo.RepositoryCommitInfo.Branch,

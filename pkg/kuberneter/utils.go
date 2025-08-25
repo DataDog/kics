@@ -6,6 +6,7 @@
 package kuberneter
 
 import (
+	"context"
 	"fmt"
 	"os"
 	"path/filepath"
@@ -39,22 +40,23 @@ type K8sAPIOptions struct {
 
 const kuberneterPathLength = 3
 
-func (info *k8sAPICall) saveK8sResources(kind, k8sResourcesContent, apiVersionFolder string) {
+func (info *k8sAPICall) saveK8sResources(ctx context.Context, kind, k8sResourcesContent, apiVersionFolder string) {
+	logger := log.Ctx(ctx)
 	file := filepath.Join(apiVersionFolder, kind+"s"+".yaml")
 
 	f, err := os.OpenFile(filepath.Clean(file), os.O_WRONLY|os.O_CREATE|os.O_TRUNC, os.ModePerm)
 
 	if err != nil {
-		log.Error().Msgf("failed to open file '%s': %s", file, err)
+		logger.Error().Msgf("failed to open file '%s': %s", file, err)
 	}
 
 	if _, err = f.WriteString(k8sResourcesContent); err != nil {
-		log.Error().Msgf("failed to write file '%s': %s", file, err)
+		logger.Error().Msgf("failed to write file '%s': %s", file, err)
 	}
 
 	err = f.Close()
 	if err != nil {
-		log.Err(err).Msgf("failed to close file: %s", file)
+		logger.Err(err).Msgf("failed to close file: %s", file)
 	}
 }
 
@@ -64,11 +66,11 @@ func (info *k8sAPICall) saveK8sResources(kind, k8sResourcesContent, apiVersionFo
 // 	begin := fmt.Sprintf("\n---\napiVersion: %s\nkind: %s\n", getAPIVersion(apiVersion), kind)
 
 // 	if _, err := sb.WriteString(begin); err != nil {
-// 		log.Err(err).Msg("failed to write")
+// 		logger.Err(err).Msg("failed to write")
 // 	}
 
 // 	if err := e.Encode(o, sb); err != nil {
-// 		log.Err(err).Msg("failed to encode")
+// 		logger.Err(err).Msg("failed to encode")
 // 	}
 
 // 	return sb

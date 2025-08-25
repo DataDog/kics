@@ -6,6 +6,7 @@
 package model
 
 import (
+	"context"
 	"encoding/csv"
 	"encoding/json"
 	"errors"
@@ -211,12 +212,12 @@ type SarifRun struct {
 
 // SarifReport represents a usable sarif report reference
 type SarifReport interface {
-	BuildSarifIssue(issue *model.QueryResult, sciInfo model.SCIInfo) string
+	BuildSarifIssue(ctx context.Context, issue *model.QueryResult, sciInfo model.SCIInfo) string
 	RebuildTaxonomies(cwes []string, guids map[string]string)
 	GetGUIDFromRelationships(idx int, cweID string) string
-	AddTags(summary *model.Summary, diffAware *model.DiffAware) error
+	AddTags(ctx context.Context, summary *model.Summary, diffAware *model.DiffAware) error
 	ResolveFilepaths(basePath string) error
-	SetToolVersionType(runType string)
+	SetToolVersionType(ctx context.Context, runType string)
 }
 
 type sarifReport struct {
@@ -490,7 +491,8 @@ func (sr *sarifReport) buildCweCategory(cweID string) sarifDescriptorReference {
 	return cwe
 }
 
-func (sr *sarifReport) buildSarifCategory(category string) sarifDescriptorReference {
+func (sr *sarifReport) buildSarifCategory(ctx context.Context, category string) sarifDescriptorReference {
+	logger := log.Ctx(ctx)
 	target := targetTemplate
 	categoryIndex := sr.findSarifCategory(category)
 
@@ -502,7 +504,7 @@ func (sr *sarifReport) buildSarifCategory(category string) sarifDescriptorRefere
 	target.ReferenceIndex = categoryIndex
 
 	if categoryIndex == -1 {
-		log.Warn().Msgf("Category %s not found.", category)
+		logger.Warn().Msgf("Category %s not found.", category)
 	}
 
 	return target
@@ -594,7 +596,8 @@ func (sr *sarifReport) RebuildTaxonomies(cwes []string, guids map[string]string)
 }
 
 // BuildSarifIssue creates a new entries in Results (one for each file) and new entry in Rules and Taxonomy if necessary
-func (sr *sarifReport) BuildSarifIssue(issue *model.QueryResult, sciInfo model.SCIInfo) string {
+func (sr *sarifReport) BuildSarifIssue(ctx context.Context, issue *model.QueryResult, sciInfo model.SCIInfo) string {
+	logger := log.Ctx(ctx)
 	if len(issue.Files) > 0 {
 		metadata := ruleMetadata{
 			queryID:          issue.QueryID,
@@ -637,7 +640,7 @@ func (sr *sarifReport) BuildSarifIssue(issue *model.QueryResult, sciInfo model.S
 			resourceLocation := vulnerability.ResourceLocation
 
 			if resourceLocation.Start.Line < 1 || resourceLocation.End.Line < 1 {
-				log.Warn().Msgf("Invalid resource location for file %s", issue.Files[idx].FileName)
+				logger.Warn().Msgf("Invalid resource location for file %s", issue.Files[idx].FileName)
 				continue
 			}
 
@@ -706,14 +709,15 @@ func (sr *sarifReport) BuildSarifIssue(issue *model.QueryResult, sciInfo model.S
 			}
 			if vulnerability.Remediation != "" && vulnerability.RemediationType != "" {
 				sarifFix, err := remediationsHelper.TransformToSarifFix(
+					ctx,
 					vulnerability,
 					remediationStartLocation,
 					remediationEndLocation,
 				)
 				if err != nil {
 					// we do not want to fail the whole process if we cannot transform the fix
-					// so we just log the error and continue
-					log.Err(err).Msgf("failed to transform to sarif fix: %v", err)
+					// so we just logger the error and continue
+					logger.Err(err).Msgf("failed to transform to sarif fix: %v", err)
 				} else {
 					// we want the location displayed in the UI to properly highlight the remediation
 					result.ResultLocations[0].PhysicalLocation.Region.StartLine = remediationStartLocation.Line
@@ -729,16 +733,18 @@ func (sr *sarifReport) BuildSarifIssue(issue *model.QueryResult, sciInfo model.S
 	return ""
 }
 
-func (sr *sarifReport) SetToolVersionType(runType string) {
+func (sr *sarifReport) SetToolVersionType(ctx context.Context, runType string) {
+	logger := log.Ctx(ctx)
 	if len(runType) > 0 {
 		for idx := range sr.Runs {
 			sr.Runs[idx].Tool.Driver.ToolVersion = runType
 		}
-		log.Info().Msgf("Tool version set to %s", runType)
+		logger.Info().Msgf("Tool version set to %s", runType)
 	}
 }
 
-func (sr *sarifReport) AddTags(summary *model.Summary, diffAware *model.DiffAware) error {
+func (sr *sarifReport) AddTags(ctx context.Context, summary *model.Summary, diffAware *model.DiffAware) error {
+	logger := log.Ctx(ctx)
 	if len(sr.Runs) != 1 {
 		return errors.New("sarifReport must have exactly one run")
 	}
@@ -757,7 +763,7 @@ func (sr *sarifReport) AddTags(summary *model.Summary, diffAware *model.DiffAwar
 				diffAware.Files,
 				diffAware.ConfigDigest,
 			)
-			log.Error().Msg(err.Error())
+			logger.Error().Msg(err.Error())
 			return err
 		}
 		diffAwareConfigDigestTag := GetDiffAwareConfigDigestTag(*diffAware)

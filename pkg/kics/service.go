@@ -74,10 +74,11 @@ func (s *Service) PrepareSources(ctx context.Context,
 	openAPIResolveReferences bool,
 	maxResolverDepth int,
 	wg *sync.WaitGroup, errCh chan<- error) {
+	logger := log.Ctx(ctx)
 	defer wg.Done()
 	// CxSAST query under review
 	data := make([]byte, mbConst)
-	log.Info().Msgf("Getting sources")
+	logger.Info().Msgf("Getting sources")
 	if err := s.SourceProvider.GetSources(
 		ctx,
 		s.Parser.SupportedExtensions(),
@@ -99,7 +100,8 @@ func (s *Service) StartScan(
 	errCh chan<- error,
 	wg *sync.WaitGroup,
 	currentQuery chan<- int64) {
-	log.Debug().Msg("service.StartScan()")
+	logger := log.Ctx(ctx)
+	logger.Debug().Msg("service.StartScan()")
 	defer wg.Done()
 
 	// secretsVulnerabilities, err := s.SecretsInspector.Inspect(
@@ -196,15 +198,16 @@ func (s *Service) saveToFile(ctx context.Context, file *model.FileMetadata) {
 }
 
 // PrepareScanDocument removes _kics_lines from payload and parses json filters
-func PrepareScanDocument(body map[string]interface{}, kind model.FileKind) map[string]interface{} {
+func PrepareScanDocument(ctx context.Context, body map[string]interface{}, kind model.FileKind) map[string]interface{} {
+	logger := log.Ctx(ctx)
 	var bodyMap map[string]interface{}
 	j, err := json.Marshal(body)
 	if err != nil {
-		log.Error().Msgf("failed to remove kics line information")
+		logger.Error().Msgf("failed to remove kics line information")
 		return body
 	}
 	if err := json.Unmarshal(j, &bodyMap); err != nil {
-		log.Error().Msgf("failed to remove kics line information: '%s'", err)
+		logger.Error().Msgf("failed to remove kics line information: '%s'", err)
 		return body
 	}
 	prepareScanDocumentRoot(bodyMap, kind)

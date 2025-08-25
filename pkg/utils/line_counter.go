@@ -9,6 +9,7 @@ package utils
 
 import (
 	"bufio"
+	"context"
 	"os"
 	"path/filepath"
 
@@ -16,14 +17,15 @@ import (
 )
 
 // LineCounter get the number of lines of a given file
-func LineCounter(path string) (int, error) {
+func LineCounter(ctx context.Context, path string) (int, error) {
+	logger := log.Ctx(ctx)
 	file, err := os.Open(filepath.Clean(path))
 	if err != nil {
 		return 0, err
 	}
 	defer func() {
 		if err := file.Close(); err != nil {
-			log.Err(err).Msgf("failed to close '%s'", filepath.Clean(path))
+			logger.Err(err).Msgf("failed to close '%s'", filepath.Clean(path))
 		}
 	}()
 

@@ -6,6 +6,7 @@
 package converter
 
 import (
+	"context"
 	"fmt"
 	"strconv"
 	"strings"
@@ -28,9 +29,9 @@ type VariableMap map[string]cty.Value
 
 // DefaultConverted an hcl File to a toJson serializable object
 // This assumes that the body is a hclsyntax.Body
-var DefaultConverted = func(file *hcl.File, inputVariables VariableMap) (model.Document, error) {
+var DefaultConverted = func(ctx context.Context, file *hcl.File, inputVariables VariableMap) (model.Document, error) {
 	c := converter{bytes: file.Bytes, inputVars: inputVariables}
-	body, err := c.convertBody(file.Body.(*hclsyntax.Body), 0)
+	body, err := c.convertBody(ctx, file.Body.(*hclsyntax.Body), 0)
 
 	if err != nil {
 		// sentryReport.ReportSentry(&sentryReport.Report{
@@ -60,7 +61,7 @@ func (c *converter) rangeSource(r hcl.Range) string {
 	return string(c.bytes[r.Start.Byte:r.End.Byte])
 }
 
-func (c *converter) convertBody(body *hclsyntax.Body, defLine int) (model.Document, error) {
+func (c *converter) convertBody(ctx context.Context, body *hclsyntax.Body, defLine int) (model.Document, error) {
 	var err error
 	var v string
 	countValue := body.Attributes["count"]
@@ -119,7 +120,7 @@ func (c *converter) convertBody(body *hclsyntax.Body, defLine int) (model.Docume
 		kicsS[kicsLinesKey+block.Type] = model.LineObject{
 			Line: block.TypeRange.Start.Line,
 		}
-		err = c.convertBlock(block, out, block.TypeRange.Start.Line)
+		err = c.convertBlock(ctx, block, out, block.TypeRange.Start.Line)
 		if err != nil {
 			// sentryReport.ReportSentry(&sentryReport.Report{
 			// 	Location: "func convertBody",
@@ -180,9 +181,10 @@ func (c *converter) getArrLines(expr hclsyntax.Expression) []map[string]*model.L
 	return arr
 }
 
-func (c *converter) convertBlock(block *hclsyntax.Block, out model.Document, defLine int) error {
+func (c *converter) convertBlock(ctx context.Context, block *hclsyntax.Block, out model.Document, defLine int) error {
+	logger := log.Ctx(ctx)
 	var key = block.Type
-	value, err := c.convertBody(block.Body, defLine)
+	value, err := c.convertBody(ctx, block.Body, defLine)
 
 	if err != nil {
 		return err
@@ -198,7 +200,7 @@ func (c *converter) convertBlock(block *hclsyntax.Block, out model.Document, def
 			out, ok = inner.(model.Document)
 			if !ok {
 				err = fmt.Errorf("unable to convert Block to JSON: %v.%v", block.Type, strings.Join(block.Labels, "."))
-				log.Error().Msg(err.Error())
+				logger.Error().Msg(err.Error())
 				return err
 			}
 		} else {

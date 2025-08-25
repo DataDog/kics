@@ -6,12 +6,14 @@
 package utils
 
 import (
+	"context"
 	"fmt"
 
 	"github.com/rs/zerolog/log"
 )
 
-func HandlePanic(r any, errMessage string) {
+func HandlePanic(ctx context.Context, r any, errMessage string) {
+	logger := log.Ctx(ctx)
 	err := fmt.Errorf("panic: %v", r)
-	log.Err(err).Msg(errMessage)
+	logger.Err(err).Msg(errMessage)
 }

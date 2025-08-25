@@ -7,6 +7,7 @@ package json
 
 import (
 	"bytes"
+	"context"
 
 	"github.com/Checkmarx/kics/pkg/parser/utils"
 
@@ -23,11 +24,11 @@ type Parser struct {
 }
 
 // Resolve - replace or modifies in-memory content before parsing
-func (p *Parser) Resolve(fileContent []byte, filename string, resolveReferences bool, maxResolverDepth int) ([]byte, error) {
+func (p *Parser) Resolve(ctx context.Context, fileContent []byte, filename string, resolveReferences bool, maxResolverDepth int) ([]byte, error) {
 	// Resolve files passed as arguments with file resolver (e.g. file://)
 	res := file.NewResolver(yaml.Unmarshal, yaml.Marshal, p.SupportedExtensions())
 	resolvedFilesCache := make(map[string]file.ResolvedFile)
-	resolved := res.Resolve(fileContent, filename, 0, maxResolverDepth, resolvedFilesCache, resolveReferences)
+	resolved := res.Resolve(ctx, fileContent, filename, 0, maxResolverDepth, resolvedFilesCache, resolveReferences)
 	p.resolvedFiles = res.ResolvedFiles
 	if len(res.ResolvedFiles) == 0 {
 		return fileContent, nil
@@ -37,7 +38,7 @@ func (p *Parser) Resolve(fileContent []byte, filename string, resolveReferences 
 }
 
 // Parse parses yaml/yml file and returns it as a Document
-func (p *Parser) Parse(filePath string, fileContent []byte) ([]model.Document, []int, error) {
+func (p *Parser) Parse(ctx context.Context, filePath string, fileContent []byte) ([]model.Document, []int, error) {
 	model.NewIgnore.Reset()
 	var documents []model.Document
 	dec := yaml.NewDecoder(bytes.NewReader(fileContent))
@@ -57,7 +58,7 @@ func (p *Parser) Parse(filePath string, fileContent []byte) ([]model.Document, [
 
 	linesToIgnore := model.NewIgnore.GetLines()
 
-	return convertKeysToString(addExtraInfo(documents, filePath)), linesToIgnore, nil
+	return convertKeysToString(addExtraInfo(ctx, documents, filePath)), linesToIgnore, nil
 }
 
 // convertKeysToString goes through every document to convert map[interface{}]interface{}
@@ -123,47 +124,49 @@ func (p *Parser) GetKind() model.FileKind {
 	return model.KindYAML
 }
 
-func processCertContent(elements map[string]interface{}, content, filePath string) {
+func processCertContent(ctx context.Context, elements map[string]interface{}, content, filePath string) {
 	var certInfo map[string]interface{}
 	if content != "" {
-		certInfo = utils.AddCertificateInfo(filePath, content)
+		certInfo = utils.AddCertificateInfo(ctx, filePath, content)
 		if certInfo != nil {
 			elements["certificate"] = certInfo
 		}
 	}
 }
 
-func processElements(elements map[string]interface{}, filePath string) {
+func processElements(ctx context.Context, elements map[string]interface{}, filePath string) {
 	if elements["certificate"] != nil {
-		processCertContent(elements, utils.CheckCertificate(elements["certificate"].(string)), filePath)
+		processCertContent(ctx, elements, utils.CheckCertificate(elements["certificate"].(string)), filePath)
 	}
 }
 
-func addExtraInfo(documents []model.Document, filePath string) []model.Document {
+func addExtraInfo(ctx context.Context, documents []model.Document, filePath string) []model.Document {
 	for _, documentPlaybooks := range documents { // iterate over documents
 		if playbooks, ok := documentPlaybooks["playbooks"]; ok {
-			processPlaybooks(playbooks, filePath)
+			processPlaybooks(ctx, playbooks, filePath)
 		}
 	}
 
 	return documents
 }
 
-func processPlaybooks(playbooks interface{}, filePath string) {
+func processPlaybooks(ctx context.Context, playbooks interface{}, filePath string) {
+	logger := log.Ctx(ctx)
 	sliceResources, ok := playbooks.([]interface{})
 	if !ok { // prevent panic if playbooks is not a slice
-		log.Warn().Msgf("Failed to parse playbooks: %s", filePath)
+		logger.Warn().Msgf("Failed to parse playbooks: %s", filePath)
 		return
 	}
 	for _, resources := range sliceResources { // iterate over playbooks
-		processPlaybooksElements(resources, filePath)
+		processPlaybooksElements(ctx, resources, filePath)
 	}
 }
 
-func processPlaybooksElements(resources interface{}, filePath string) {
+func processPlaybooksElements(ctx context.Context, resources interface{}, filePath string) {
+	logger := log.Ctx(ctx)
 	mapResources, ok := resources.(map[string]interface{})
 	if !ok {
-		log.Warn().Msgf("Failed to parse playbooks elements: %s", filePath)
+		logger.Warn().Msgf("Failed to parse playbooks elements: %s", filePath)
 		return
 	}
 	for _, value := range mapResources {
@@ -171,7 +174,7 @@ func processPlaybooksElements(resources interface{}, filePath string) {
 		if !ok {
 			continue
 		}
-		processElements(mapValue, filePath)
+		processElements(ctx, mapValue, filePath)
 	}
 }
 

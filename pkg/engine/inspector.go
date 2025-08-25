@@ -66,7 +66,7 @@ type QueryLoader struct {
 }
 
 // VulnerabilityBuilder represents a function that will build a vulnerability
-type VulnerabilityBuilder func(ctx *QueryContext, tracker Tracker, v interface{},
+type VulnerabilityBuilder func(ctx context.Context, qCtx *QueryContext, tracker Tracker, v interface{},
 	detector *detector.DetectLine, useOldSeverities bool, kicsComputeNewSimID bool, queryDuration time.Duration) (*model.Vulnerability, error)
 
 // PreparedQuery includes the opaQuery and its metadata
@@ -134,21 +134,22 @@ func NewInspector(
 	numWorkers int,
 	kicsComputeNewSimID bool,
 ) (*Inspector, error) {
-	log.Debug().Msg("engine.NewInspector()")
+	logger := log.Ctx(ctx)
+	logger.Debug().Msg("engine.NewInspector()")
 
 	metrics.Metric.Start("get_queries")
-	queries, err := queriesSource.GetQueries(queryParameters)
+	queries, err := queriesSource.GetQueries(ctx, queryParameters)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to get queries")
 	}
 
-	log.Info().Msgf("Queries loaded: %d", len(queries))
+	logger.Info().Msgf("Queries loaded: %d", len(queries))
 
-	commonLibrary, err := queriesSource.GetQueryLibrary("common")
+	commonLibrary, err := queriesSource.GetQueryLibrary(ctx, "common")
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to get library")
 	}
-	platformLibraries := getPlatformLibraries(queriesSource, queries)
+	platformLibraries := getPlatformLibraries(ctx, queriesSource, queries)
 
 	// regoLibrary := source.RegoLibraries{
 	// 	LibraryCode:      string(libraryFile),
@@ -159,7 +160,7 @@ func NewInspector(
 	// 	"terraform": regoLibrary,
 	// }
 
-	// log.Info().Msgf("Platform libraries loaded: %d, %d", len(platformLibraries), len(libraryFile))
+	// logger.Info().Msgf("Platform libraries loaded: %d, %d", len(platformLibraries), len(libraryFile))
 
 	queryLoader := prepareQueries(queries, commonLibrary, platformLibraries, tracker)
 
@@ -168,7 +169,7 @@ func NewInspector(
 	metrics.Metric.Stop()
 
 	if needsLog {
-		log.Info().
+		logger.Info().
 			Msgf("Inspector initialized, number of queries=%d", queryLoader.querySum)
 	}
 
@@ -179,7 +180,7 @@ func NewInspector(
 	queryExecTimeout := time.Duration(queryTimeout) * time.Second
 
 	if needsLog {
-		log.Info().Msgf("Query execution timeout=%v", queryExecTimeout)
+		logger.Info().Msgf("Query execution timeout=%v", queryExecTimeout)
 	}
 
 	return &Inspector{
@@ -196,16 +197,17 @@ func NewInspector(
 	}, nil
 }
 
-func getPlatformLibraries(queriesSource source.QueriesSource, queries []model.QueryMetadata) map[string]source.RegoLibraries {
+func getPlatformLibraries(ctx context.Context, queriesSource source.QueriesSource, queries []model.QueryMetadata) map[string]source.RegoLibraries {
+	logger := log.Ctx(ctx)
 	supportedPlatforms := make(map[string]string)
 	for _, query := range queries {
 		supportedPlatforms[query.Platform] = ""
 	}
 	platformLibraries := make(map[string]source.RegoLibraries)
 	for platform := range supportedPlatforms {
-		platformLibrary, errLoadingPlatformLib := queriesSource.GetQueryLibrary(platform)
+		platformLibrary, errLoadingPlatformLib := queriesSource.GetQueryLibrary(ctx, platform)
 		if errLoadingPlatformLib != nil {
-			log.Err(errLoadingPlatformLib).Msgf("error loading platform library: %s", errLoadingPlatformLib)
+			logger.Err(errLoadingPlatformLib).Msgf("error loading platform library: %s", errLoadingPlatformLib)
 			continue
 		}
 		platformLibraries[platform] = platformLibrary
@@ -258,7 +260,7 @@ func (c *Inspector) performInspection(ctx context.Context, scanID string, files 
 			BaseScanPaths: baseScanPaths,
 		}
 
-		vuls, err := c.doRun(queryContext)
+		vuls, err := c.doRun(ctx, queryContext)
 		if err == nil {
 			c.tracker.TrackQueryExecution(query.Metadata.Aggregation)
 		}
@@ -273,22 +275,23 @@ func (c *Inspector) Inspect(
 	baseScanPaths []string,
 	platforms []string,
 	currentQuery chan<- int64) ([]model.Vulnerability, error) {
-	log.Debug().Msg("engine.Inspect()")
-	combinedFiles := files.Combine(false)
+	logger := log.Ctx(ctx)
+	logger.Debug().Msg("engine.Inspect()")
+	combinedFiles := files.Combine(ctx, false)
 
 	var vulnerabilities []model.Vulnerability
 	vulnerabilities = make([]model.Vulnerability, 0)
 
 	// Step 1: Parse Terraform modules
-	parsedModules, err := tfmodules.ParseTerraformModules(files)
+	parsedModules, err := tfmodules.ParseTerraformModules(ctx, files)
 	if err != nil {
-		log.Warn().Err(err).Msg("Failed to parse Terraform modules")
+		logger.Warn().Err(err).Msg("Failed to parse Terraform modules")
 	}
-	log.Info().Msgf("Found %d modules", len(parsedModules))
+	logger.Info().Msgf("Found %d modules", len(parsedModules))
 
 	// Step 2: Enrich modules with parsed variables
 	rootDir := "." // or infer from files.RootDir, etc.
-	enrichedModules := tfmodules.ParseAllModuleVariables(parsedModules, rootDir)
+	enrichedModules := tfmodules.ParseAllModuleVariables(ctx, parsedModules, rootDir)
 
 	var p interface{}
 
@@ -362,14 +365,14 @@ func (c *Inspector) Inspect(
 					moduleVulns[vulnerability.QueryName] = val + 1
 				} else {
 					moduleVulns[vulnerability.QueryName] = 1
-					log.Info().Msgf("Found module vulnerability %s of severity %s", vulnerability.QueryName, vulnerability.Severity)
+					logger.Info().Msgf("Found module vulnerability %s of severity %s", vulnerability.QueryName, vulnerability.Severity)
 				}
 			}
 		}
 		vulnerabilities = append(vulnerabilities, result.vulnerabilities...)
 	}
 	for vulnerability, number := range moduleVulns {
-		log.Info().Msgf("Found %d of module vulnerability %s", number, vulnerability)
+		logger.Info().Msgf("Found %d of module vulnerability %s", number, vulnerability)
 	}
 	return vulnerabilities, nil
 }
@@ -411,21 +414,22 @@ func (c *Inspector) GetFailedQueries() map[string]error {
 	return c.failedQueries
 }
 
-func (c *Inspector) doRun(ctx *QueryContext) (vulns []model.Vulnerability, err error) {
+func (c *Inspector) doRun(ctx context.Context, qCtx *QueryContext) (vulns []model.Vulnerability, err error) {
+	logger := log.Ctx(ctx)
 	queryStart := time.Now()
-	timeoutCtx, cancel := context.WithTimeout(ctx.Ctx, c.queryExecTimeout)
+	timeoutCtx, cancel := context.WithTimeout(qCtx.Ctx, c.queryExecTimeout)
 	defer cancel()
 	defer func() {
 		if r := recover(); r != nil {
-			errMessage := fmt.Sprintf("Recovered from panic during query '%s' run. ", ctx.Query.Metadata.Query)
+			errMessage := fmt.Sprintf("Recovered from panic during query '%s' run. ", qCtx.Query.Metadata.Query)
 			err = fmt.Errorf("panic: %v", r)
 			fmt.Println()
-			log.Err(err).Msg(errMessage)
+			logger.Err(err).Msg(errMessage)
 		}
 	}()
-	*ctx.payload = c.TransformJsonencodeInPayload(*ctx.payload)
+	*qCtx.payload = c.TransformJsonencodeInPayload(ctx, *qCtx.payload)
 
-	options := []rego.EvalOption{rego.EvalParsedInput(*ctx.payload)}
+	options := []rego.EvalOption{rego.EvalParsedInput(*qCtx.payload)}
 
 	var cov *cover.Cover
 	if c.enableCoverageReport {
@@ -433,8 +437,8 @@ func (c *Inspector) doRun(ctx *QueryContext) (vulns []model.Vulnerability, err e
 		options = append(options, rego.EvalQueryTracer(cov))
 	}
 
-	results, err := ctx.Query.OpaQuery.Eval(timeoutCtx, options...)
-	ctx.payload = nil
+	results, err := qCtx.Query.OpaQuery.Eval(timeoutCtx, options...)
+	qCtx.payload = nil
 	if err != nil {
 		if topdown.IsCancel(err) {
 			return nil, errors.Wrap(err, "query executing timeout exited")
@@ -443,28 +447,28 @@ func (c *Inspector) doRun(ctx *QueryContext) (vulns []model.Vulnerability, err e
 		return nil, errors.Wrap(err, "failed to evaluate query")
 	}
 	if c.enableCoverageReport && cov != nil {
-		module, parseErr := ast.ParseModule(ctx.Query.Metadata.Query, ctx.Query.Metadata.Content)
+		module, parseErr := ast.ParseModule(qCtx.Query.Metadata.Query, qCtx.Query.Metadata.Content)
 		if parseErr != nil {
 			return nil, errors.Wrap(parseErr, "failed to parse coverage module")
 		}
 
 		c.coverageReport = cov.Report(map[string]*ast.Module{
-			ctx.Query.Metadata.Query: module,
+			qCtx.Query.Metadata.Query: module,
 		})
 	}
 
 	queryDuration := time.Since(queryStart)
-	timeoutCtxToDecode, cancelDecode := context.WithTimeout(ctx.Ctx, c.queryExecTimeout)
+	timeoutCtxToDecode, cancelDecode := context.WithTimeout(qCtx.Ctx, c.queryExecTimeout)
 	defer cancelDecode()
-	return c.DecodeQueryResults(ctx, timeoutCtxToDecode, results, queryDuration)
+	return c.DecodeQueryResults(ctx, qCtx, timeoutCtxToDecode, results, queryDuration)
 }
 
-func (c *Inspector) TransformJsonencodeInPayload(value ast.Value) ast.Value {
+func (c *Inspector) TransformJsonencodeInPayload(ctx context.Context, value ast.Value) ast.Value {
 	switch v := value.(type) {
 	case ast.Object:
 		newObj := ast.NewObject()
 		_ = v.Iter(func(k *ast.Term, val *ast.Term) error {
-			newVal := c.TransformJsonencodeInPayload(val.Value)
+			newVal := c.TransformJsonencodeInPayload(ctx, val.Value)
 			newObj.Insert(k, ast.NewTerm(newVal))
 			return nil
 		})
@@ -474,7 +478,7 @@ func (c *Inspector) TransformJsonencodeInPayload(value ast.Value) ast.Value {
 		terms := []*ast.Term{}
 		for i := 0; i < v.Len(); i++ {
 			elem := v.Elem(i)
-			transformed := c.TransformJsonencodeInPayload(elem.Value)
+			transformed := c.TransformJsonencodeInPayload(ctx, elem.Value)
 			terms = append(terms, ast.NewTerm(transformed))
 		}
 		return ast.NewArray(terms...)
@@ -482,7 +486,7 @@ func (c *Inspector) TransformJsonencodeInPayload(value ast.Value) ast.Value {
 	case ast.String:
 		str := string(v)
 		if strings.Contains(str, "jsonencode(") {
-			parsed, err := parseJsonencodeHCL(str)
+			parsed, err := parseJsonencodeHCL(ctx, str)
 			if err == nil {
 				return parsed
 			} else {
@@ -498,10 +502,12 @@ func (c *Inspector) TransformJsonencodeInPayload(value ast.Value) ast.Value {
 
 // DecodeQueryResults decodes the results into []model.Vulnerability
 func (c *Inspector) DecodeQueryResults(
-	ctx *QueryContext,
+	ctx context.Context,
+	qCtx *QueryContext,
 	ctxTimeout context.Context,
 	results rego.ResultSet,
 	queryDuration time.Duration) ([]model.Vulnerability, error) {
+	logger := log.Ctx(ctx)
 	if len(results) == 0 {
 		return nil, ErrNoResult
 	}
@@ -527,7 +533,7 @@ func (c *Inspector) DecodeQueryResults(
 			timeOut = true
 			break
 		default:
-			vulnerability, aux := getVulnerabilitiesFromQuery(ctx, c, queryResultItem, queryDuration)
+			vulnerability, aux := getVulnerabilitiesFromQuery(ctx, qCtx, c, queryResultItem, queryDuration)
 			if aux {
 				failedDetectLine = aux
 			}
@@ -539,10 +545,10 @@ func (c *Inspector) DecodeQueryResults(
 
 	if timeOut {
 		fmt.Println()
-		log.Err(ctxTimeout.Err()).Msgf(
+		logger.Err(ctxTimeout.Err()).Msgf(
 			"Timeout processing the results of the query: %s %s",
-			ctx.Query.Metadata.Platform,
-			ctx.Query.Metadata.Query)
+			qCtx.Query.Metadata.Platform,
+			qCtx.Query.Metadata.Query)
 	}
 
 	if failedDetectLine {
@@ -552,31 +558,32 @@ func (c *Inspector) DecodeQueryResults(
 	return vulnerabilities, nil
 }
 
-func getVulnerabilitiesFromQuery(ctx *QueryContext, c *Inspector, queryResultItem interface{}, queryDuration time.Duration) (*model.Vulnerability, bool) {
-	vulnerability, err := c.vb(ctx, c.tracker, queryResultItem, c.detector, c.useOldSeverities, c.kicsComputeNewSimID, queryDuration)
+func getVulnerabilitiesFromQuery(ctx context.Context, qCtx *QueryContext, c *Inspector, queryResultItem interface{}, queryDuration time.Duration) (*model.Vulnerability, bool) {
+	logger := log.Ctx(ctx)
+	vulnerability, err := c.vb(ctx, qCtx, c.tracker, queryResultItem, c.detector, c.useOldSeverities, c.kicsComputeNewSimID, queryDuration)
 	if err != nil && err.Error() == ErrNoResult.Error() {
 		// Ignoring bad results
 		return nil, false
 	}
 	if err != nil {
 		// sentryReport.ReportSentry(&sentryReport.Report{
-		// 	Message:  fmt.Sprintf("Inspector can't save vulnerability, query=%s", ctx.Query.Metadata.Query),
+		// 	Message:  fmt.Sprintf("Inspector can't save vulnerability, query=%s", qCtx.Query.Metadata.Query),
 		// 	Err:      err,
 		// 	Location: "func decodeQueryResults()",
-		// 	Platform: ctx.Query.Metadata.Platform,
-		// 	Metadata: ctx.Query.Metadata.Metadata,
-		// 	Query:    ctx.Query.Metadata.Query,
+		// 	Platform: qCtx.Query.Metadata.Platform,
+		// 	Metadata: qCtx.Query.Metadata.Metadata,
+		// 	Query:    qCtx.Query.Metadata.Query,
 		// }, true)
 
-		if _, ok := c.failedQueries[ctx.Query.Metadata.Query]; !ok {
-			c.failedQueries[ctx.Query.Metadata.Query] = err
+		if _, ok := c.failedQueries[qCtx.Query.Metadata.Query]; !ok {
+			c.failedQueries[qCtx.Query.Metadata.Query] = err
 		}
 
 		return nil, false
 	}
-	file := ctx.Files[vulnerability.FileID]
+	file := qCtx.Files[vulnerability.FileID]
 	if ShouldSkipVulnerability(file.Commands, vulnerability.QueryID) {
-		log.Debug().Msgf("Skipping vulnerability in file %s for query '%s':%s", file.FilePath, vulnerability.QueryName, vulnerability.QueryID)
+		logger.Debug().Msgf("Skipping vulnerability in file %s for query '%s':%s", file.FilePath, vulnerability.QueryName, vulnerability.QueryID)
 		return nil, false
 	}
 
@@ -585,11 +592,11 @@ func getVulnerabilitiesFromQuery(ctx *QueryContext, c *Inspector, queryResultIte
 	}
 
 	if _, ok := c.excludeResults[vulnerability.SimilarityID]; ok {
-		log.Debug().
+		logger.Debug().
 			Msgf("Excluding result SimilarityID: %s", vulnerability.SimilarityID)
 		return nil, false
 	} else if checkComment(vulnerability.Line, file.LinesIgnore) {
-		log.Debug().
+		logger.Debug().
 			Msgf("Excluding result Comment: %s", vulnerability.SimilarityID)
 		return nil, false
 	}
@@ -663,6 +670,7 @@ func prepareQueries(queries []model.QueryMetadata, commonLibrary source.RegoLibr
 
 // LoadQuery loads the query into memory so it can be freed when not used anymore
 func (q QueryLoader) LoadQuery(ctx context.Context, query *model.QueryMetadata, modules []tfmodules.ParsedModule) (*rego.PreparedEvalQuery, error) {
+	logger := log.Ctx(ctx)
 	opaQuery := rego.PreparedEvalQuery{}
 
 	platformGeneralQuery, ok := q.platformLibraries[query.Platform]
@@ -676,16 +684,16 @@ func (q QueryLoader) LoadQuery(ctx context.Context, query *model.QueryMetadata, 
 	default:
 		mergedInputData, err := source.MergeInputData(platformGeneralQuery.LibraryInputData, query.InputData)
 		if err != nil {
-			log.Debug().Msgf("Could not merge %s library input data", query.Platform)
+			logger.Debug().Msgf("Could not merge %s library input data", query.Platform)
 		}
 		mergedInputData, err = source.MergeInputData(q.commonLibrary.LibraryInputData, mergedInputData)
 		if err != nil {
-			log.Debug().Msg("Could not merge common library input data")
+			logger.Debug().Msg("Could not merge common library input data")
 		}
 		if modules != nil {
 			mergedInputData, err = source.MergeModulesData(modules, mergedInputData)
 			if err != nil {
-				log.Debug().Msg("Could not merge modules input data")
+				logger.Debug().Msg("Could not merge modules input data")
 			}
 		}
 		store := inmem.NewFromReader(bytes.NewBufferString(mergedInputData))
@@ -715,7 +723,8 @@ func (q QueryLoader) LoadQuery(ctx context.Context, query *model.QueryMetadata, 
 	}
 }
 
-func parseJsonencodeHCL(input string) (ast.Value, error) {
+func parseJsonencodeHCL(ctx context.Context, input string) (ast.Value, error) {
+	logger := log.Ctx(ctx)
 	input = strings.TrimSpace(input)
 
 	// Remove Terraform interpolation
@@ -730,7 +739,7 @@ func parseJsonencodeHCL(input string) (ast.Value, error) {
 
 	if !strings.HasPrefix(input, prefix) || !strings.HasSuffix(input, suffix) {
 		err := fmt.Errorf("expected jsonencode(...) format, got: %s", input)
-		log.Error().Msg(err.Error())
+		logger.Error().Msg(err.Error())
 		return nil, err
 	}
 
@@ -740,14 +749,14 @@ func parseJsonencodeHCL(input string) (ast.Value, error) {
 	expr, diags := hclsyntax.ParseExpression([]byte(inner), "inline_expr.hcl", hcl.Pos{Line: 1, Column: 1})
 	if diags.HasErrors() {
 		err := fmt.Errorf("HCL parse error: %s", diags.Error())
-		log.Error().Msg(err.Error())
+		logger.Error().Msg(err.Error())
 		return nil, err
 	}
 
 	val, err := expressionToAST(expr)
 	if err != nil {
 		err = fmt.Errorf("expression to AST failed: %w", err)
-		log.Error().Msg(err.Error())
+		logger.Error().Msg(err.Error())
 		return nil, err
 	}
 

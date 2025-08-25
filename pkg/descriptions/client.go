@@ -7,6 +7,7 @@ package descriptions
 
 import (
 	"bytes"
+	"context"
 	"encoding/base64"
 	"encoding/json"
 	"fmt"
@@ -49,9 +50,9 @@ type HTTPClient interface {
 
 // HTTPDescription - HTTP client interface to use for requesting descriptions
 type HTTPDescription interface {
-	CheckConnection() error
-	RequestDescriptions(descriptionIDs []string) (map[string]descModel.CISDescriptions, error)
-	CheckLatestVersion(version string) (model.Version, error)
+	CheckConnection(ctx context.Context) error
+	RequestDescriptions(ctx context.Context, descriptionIDs []string) (map[string]descModel.CISDescriptions, error)
+	CheckLatestVersion(ctx context.Context, version string) (model.Version, error)
 }
 
 // Client - client for making descriptions requests
@@ -59,8 +60,9 @@ type Client struct {
 }
 
 // CheckConnection - checks if the endpoint is reachable
-func (c *Client) CheckConnection() error {
-	baseURL, err := getBaseURL()
+func (c *Client) CheckConnection(ctx context.Context) error {
+	logger := log.Ctx(ctx)
+	baseURL, err := getBaseURL(ctx)
 	if err != nil {
 		return err
 	}
@@ -77,15 +79,16 @@ func (c *Client) CheckConnection() error {
 	}
 	defer func() {
 		if closeErr := resp.Body.Close(); closeErr != nil {
-			log.Err(closeErr).Msg("Error closing file")
+			logger.Err(closeErr).Msg("Error closing file")
 		}
 	}()
 	return err
 }
 
 // CheckLatestVersion - Check if using KICS latest version from endpoint
-func (c *Client) CheckLatestVersion(version string) (model.Version, error) {
-	baseURL, err := getBaseURL()
+func (c *Client) CheckLatestVersion(ctx context.Context, version string) (model.Version, error) {
+	logger := log.Ctx(ctx)
+	baseURL, err := getBaseURL(ctx)
 	if err != nil {
 		return model.Version{}, err
 	}
@@ -113,7 +116,7 @@ func (c *Client) CheckLatestVersion(version string) (model.Version, error) {
 	}
 	defer func() {
 		if closeErr := resp.Body.Close(); closeErr != nil {
-			log.Err(closeErr).Msg("Error closing file")
+			logger.Err(closeErr).Msg("Error closing file")
 		}
 	}()
 
@@ -132,10 +135,11 @@ func (c *Client) CheckLatestVersion(version string) (model.Version, error) {
 }
 
 // RequestDescriptions - gets descriptions from endpoint
-func (c *Client) RequestDescriptions(descriptionIDs []string) (map[string]descModel.CISDescriptions, error) {
-	baseURL, err := getBaseURL()
+func (c *Client) RequestDescriptions(ctx context.Context, descriptionIDs []string) (map[string]descModel.CISDescriptions, error) {
+	logger := log.Ctx(ctx)
+	baseURL, err := getBaseURL(ctx)
 	if err != nil {
-		log.Debug().Msg("Unable to get baseURL")
+		logger.Debug().Msg("Unable to get baseURL")
 		return nil, err
 	}
 
@@ -148,7 +152,7 @@ func (c *Client) RequestDescriptions(descriptionIDs []string) (map[string]descMo
 
 	requestBody, err := json.Marshal(descriptionRequest)
 	if err != nil {
-		log.Err(err).Msg("Unable to marshal request body")
+		logger.Err(err).Msg("Unable to marshal request body")
 		return nil, err
 	}
 
@@ -159,31 +163,31 @@ func (c *Client) RequestDescriptions(descriptionIDs []string) (map[string]descMo
 	req.Header.Add("Content-Type", "application/json")
 	req.Header.Add("Authorization", fmt.Sprintf("Basic %s", base64.StdEncoding.EncodeToString([]byte(getBasicAuth()))))
 
-	log.Debug().Msgf("HTTP POST to descriptions endpoint")
+	logger.Debug().Msgf("HTTP POST to descriptions endpoint")
 	startTime := time.Now()
 	resp, err := doRequest(req)
 	if err != nil {
-		log.Err(err).Msgf("Unable to POST to descriptions endpoint")
+		logger.Err(err).Msgf("Unable to POST to descriptions endpoint")
 		return nil, err
 	}
 	defer func() {
 		if closeErr := resp.Body.Close(); closeErr != nil {
-			log.Err(closeErr).Msg("Error closing file")
+			logger.Err(closeErr).Msg("Error closing file")
 		}
 	}()
 	endTime := time.Since(startTime)
-	log.Debug().Msgf("HTTP Status: %d %s %v", resp.StatusCode, http.StatusText(resp.StatusCode), endTime)
+	logger.Debug().Msgf("HTTP Status: %d %s %v", resp.StatusCode, http.StatusText(resp.StatusCode), endTime)
 
 	b, err := io.ReadAll(resp.Body)
 	if err != nil {
-		log.Err(err).Msg("Unable to read response body")
+		logger.Err(err).Msg("Unable to read response body")
 		return nil, err
 	}
 
 	var getDescriptionsResponse descModel.DescriptionResponse
 	err = json.Unmarshal(b, &getDescriptionsResponse)
 	if err != nil {
-		log.Err(err).Msg("Unable to unmarshal response body")
+		logger.Err(err).Msg("Unable to unmarshal response body")
 		return nil, err
 	}
 
@@ -195,12 +199,13 @@ func doRequest(request *http.Request) (*http.Response, error) {
 	return HTTPRequestClient.Do(request)
 }
 
-func getBaseURL() (string, error) {
+func getBaseURL(ctx context.Context) (string, error) {
+	logger := log.Ctx(ctx)
 	var rtnBaseURL string
 	urlFromEnv := os.Getenv("KICS_DESCRIPTIONS_ENDPOINT")
 	if constants.BaseURL == "" && urlFromEnv == "" {
 		err := fmt.Errorf("the BaseURL or KICS_DESCRIPTIONS_ENDPOINT environment variable not set")
-		log.Error().Msg(err.Error())
+		logger.Error().Msg(err.Error())
 		return "", err
 	}
 

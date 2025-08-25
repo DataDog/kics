@@ -6,6 +6,7 @@
 package report
 
 import (
+	"context"
 	"strings"
 
 	"github.com/Checkmarx/kics/pkg/model"
@@ -13,7 +14,7 @@ import (
 )
 
 // PrintCycloneDxReport prints the CycloneDX report in the given path and filename with the given body
-func PrintCycloneDxReport(path, filename string, body interface{}, sciInfo model.SCIInfo) error {
+func PrintCycloneDxReport(ctx context.Context, path, filename string, body interface{}, sciInfo model.SCIInfo) error {
 	filePaths := make(map[string]string)
 
 	if !strings.HasPrefix(filename, "cyclonedx-") {
@@ -29,8 +30,8 @@ func PrintCycloneDxReport(path, filename string, body interface{}, sciInfo model
 			return err
 		}
 
-		body = reportModel.BuildCycloneDxReport(&summary, filePaths)
+		body = reportModel.BuildCycloneDxReport(ctx, &summary, filePaths)
 	}
 
-	return exportXMLReport(path, filename, body)
+	return exportXMLReport(ctx, path, filename, body)
 }

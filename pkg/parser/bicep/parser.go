@@ -6,6 +6,7 @@
 package bicep
 
 import (
+	"context"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -196,7 +197,7 @@ func makeResourcesNestedStructure(jBicep *JSONBicep) []interface{} {
 }
 
 // Parse - parses bicep to BicepVisitor template (json file)
-func (p *Parser) Parse(file string, _ []byte) ([]model.Document, []int, error) {
+func (p *Parser) Parse(ctx context.Context, file string, _ []byte) ([]model.Document, []int, error) {
 	bicepVisitor := NewBicepVisitor()
 	stream, err := antlr.NewFileStream(file)
 	if err != nil {
@@ -871,7 +872,7 @@ func (p *Parser) StringifyContent(content []byte) (string, error) {
 }
 
 // Resolve resolves bicep files variables
-func (p *Parser) Resolve(fileContent []byte, _ string, _ bool, _ int) ([]byte, error) {
+func (p *Parser) Resolve(ctx context.Context, fileContent []byte, _ string, _ bool, _ int) ([]byte, error) {
 	return fileContent, nil
 }
 

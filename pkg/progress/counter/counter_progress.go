@@ -6,6 +6,7 @@
 package counter
 
 import (
+	"context"
 	"io"
 	"sync"
 
@@ -54,11 +55,12 @@ func NewProgressBar(label string, total int64, progress chan int64, wg *sync.Wai
 }
 
 // Start initializes the Counter Progress Bar
-func (p ProgressBar) Start() {
+func (p ProgressBar) Start(ctx context.Context) {
+	logger := log.Ctx(ctx)
 	defer func() {
 		err := p.Close()
 		if err != nil {
-			log.Error().Msgf("failed to stop progress bar %v", err)
+			logger.Error().Msgf("failed to stop progress bar %v", err)
 		}
 		p.wg.Done()
 	}()

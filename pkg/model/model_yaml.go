@@ -6,6 +6,7 @@
 package model
 
 import (
+	"context"
 	json "encoding/json"
 	"errors"
 	"path/filepath"
@@ -17,8 +18,8 @@ import (
 )
 
 // UnmarshalYAML is a custom yaml parser that places line information in the payload
-func (m *Document) UnmarshalYAML(value *yaml.Node) error {
-	dpc := unmarshal(value)
+func (m *Document) UnmarshalYAML(ctx context.Context, value *yaml.Node) error {
+	dpc := unmarshal(ctx, value)
 	if mapDcp, ok := dpc.(map[string]interface{}); ok {
 		// set line information for root level objects
 		mapDcp["_kics_lines"] = getLines(value, 0)
@@ -34,7 +35,8 @@ func (m *Document) UnmarshalYAML(value *yaml.Node) error {
 // GetIgnoreLines get the lines to ignore in the KICS results
 // lines ignore can have the lines from the resolved files
 // since inspector secrets only looks to original data, the lines ignore should be replaced in yaml cases
-func GetIgnoreLines(file *FileMetadata) []int {
+func GetIgnoreLines(ctx context.Context, file *FileMetadata) []int {
+	logger := log.Ctx(ctx)
 	ignoreLines := file.LinesIgnore
 
 	if utils.Contains(filepath.Ext(file.FilePath), []string{".yml", ".yaml"}) {
@@ -42,12 +44,12 @@ func GetIgnoreLines(file *FileMetadata) []int {
 		var node yaml.Node
 
 		if err := yaml.Unmarshal([]byte(file.OriginalData), &node); err != nil {
-			log.Info().Msgf("failed to unmarshal file: %s", err)
+			logger.Info().Msgf("failed to unmarshal file: %s", err)
 			return ignoreLines
 		}
 
 		if node.Kind == 1 && len(node.Content) == 1 {
-			_ = unmarshal(node.Content[0])
+			_ = unmarshal(ctx, node.Content[0])
 			ignoreLines = NewIgnore.GetLines()
 		}
 	}
@@ -65,12 +67,12 @@ func GetIgnoreLines(file *FileMetadata) []int {
 */
 // unmarshal is the function that will parse the yaml elements and call the functions needed
 // to place their line information in the payload
-func unmarshal(val *yaml.Node) interface{} {
-	return unmarshalWithDepth(val, make(map[*yaml.Node]bool))
+func unmarshal(ctx context.Context, val *yaml.Node) interface{} {
+	return unmarshalWithDepth(ctx, val, make(map[*yaml.Node]bool))
 }
 
 // unmarshalWithDepth handles recursive unmarshaling with circular reference detection
-func unmarshalWithDepth(val *yaml.Node, visited map[*yaml.Node]bool) interface{} {
+func unmarshalWithDepth(ctx context.Context, val *yaml.Node, visited map[*yaml.Node]bool) interface{} {
 	if visited[val] {
 		return nil
 	}
@@ -84,23 +86,23 @@ func unmarshalWithDepth(val *yaml.Node, visited map[*yaml.Node]bool) interface{}
 	if val.Kind == yaml.SequenceNode {
 		contentArray := make([]interface{}, 0)
 		for _, contentEntry := range val.Content {
-			contentArray = append(contentArray, unmarshalWithDepth(contentEntry, visited))
+			contentArray = append(contentArray, unmarshalWithDepth(ctx, contentEntry, visited))
 		}
 		tmp["playbooks"] = contentArray
 	} else if val.Kind == yaml.ScalarNode {
 		// resolve Scalar Node
-		return scalarNodeResolver(val)
+		return scalarNodeResolver(ctx, val)
 	} else {
 		// iterate two by two, since first iteration is the key and the second is the value
 		for i := 0; i < len(val.Content); i += 2 {
 			if val.Content[i].Kind == yaml.ScalarNode {
 				switch val.Content[i+1].Kind {
 				case yaml.ScalarNode:
-					tmp[val.Content[i].Value] = scalarNodeResolver(val.Content[i+1])
+					tmp[val.Content[i].Value] = scalarNodeResolver(ctx, val.Content[i+1])
 				// in case value iteration is a map
 				case yaml.MappingNode:
 					// unmarshall map value and get its line information
-					result := unmarshalWithDepth(val.Content[i+1], visited)
+					result := unmarshalWithDepth(ctx, val.Content[i+1], visited)
 					if tt, ok := result.(map[string]interface{}); ok {
 						tt["_kics_lines"] = getLines(val.Content[i+1], val.Content[i].Line)
 						tmp[val.Content[i].Value] = tt
@@ -112,12 +114,12 @@ func unmarshalWithDepth(val *yaml.Node, visited map[*yaml.Node]bool) interface{}
 					contentArray := make([]interface{}, 0)
 					// unmarshall each iteration of the array
 					for _, contentEntry := range val.Content[i+1].Content {
-						contentArray = append(contentArray, unmarshalWithDepth(contentEntry, visited))
+						contentArray = append(contentArray, unmarshalWithDepth(ctx, contentEntry, visited))
 					}
 					tmp[val.Content[i].Value] = contentArray
 				case yaml.AliasNode:
 					if val.Content[i+1].Alias != nil {
-						result := unmarshalWithDepth(val.Content[i+1].Alias, visited)
+						result := unmarshalWithDepth(ctx, val.Content[i+1].Alias, visited)
 						if tt, ok := result.(map[string]interface{}); ok {
 							tt["_kics_lines"] = getLines(val.Content[i+1], val.Content[i].Line)
 							utils.MergeMaps(tmp, tt)
@@ -195,7 +197,8 @@ func getSeqLines(val *yaml.Node, def int) map[string]*LineObject {
 }
 
 // scalarNodeResolver transforms a ScalarNode value in its correct type
-func scalarNodeResolver(val *yaml.Node) interface{} {
+func scalarNodeResolver(ctx context.Context, val *yaml.Node) interface{} {
+	logger := log.Ctx(ctx)
 	var transformed interface{} = val.Value
 	switch val.Tag {
 	case "!!bool":
@@ -203,7 +206,7 @@ func scalarNodeResolver(val *yaml.Node) interface{} {
 	case "!!int":
 		v, err := strconv.Atoi(val.Value)
 		if err != nil {
-			log.Error().Msgf("failed to convert integer in yaml parser")
+			logger.Error().Msgf("failed to convert integer in yaml parser")
 			return val.Value
 		}
 		transformed = v

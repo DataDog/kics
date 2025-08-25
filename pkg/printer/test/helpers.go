@@ -2,6 +2,7 @@ package test
 
 import (
 	"bytes"
+	"context"
 	"encoding/json"
 	"errors"
 	"fmt"
@@ -62,8 +63,8 @@ func CaptureOutput(funcToExec execute) (string, error) {
 
 // ChangeCurrentDir gets current working directory and changes to its parent until finds the desired directory
 // or fail
-func ChangeCurrentDir(desiredDir string) error {
-	logger := log.Logger
+func ChangeCurrentDir(ctx context.Context, desiredDir string) error {
+	logger := log.Ctx(ctx)
 	for currentDir, err := os.Getwd(); GetCurrentDirName(currentDir) != desiredDir; currentDir, err = os.Getwd() {
 		if err == nil {
 			if err = os.Chdir(".."); err != nil {

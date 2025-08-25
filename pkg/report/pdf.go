@@ -6,6 +6,7 @@
 package report
 
 import (
+	"context"
 	_ "embed" // used for embedding report static files
 	"fmt"
 	"path/filepath"
@@ -292,9 +293,10 @@ func createFooterArea(m pdf.Maroto) {
 }
 
 // PrintPdfReport creates a report file on the PDF format
-func PrintPdfReport(path, filename string, body interface{}, sciInfo model.SCIInfo) error {
+func PrintPdfReport(ctx context.Context, path, filename string, body interface{}, sciInfo model.SCIInfo) error {
+	logger := log.Ctx(ctx)
 	startTime := time.Now()
-	log.Info().Msg("Started generating pdf report")
+	logger.Info().Msg("Started generating pdf report")
 
 	summary := body.(*model.Summary)
 
@@ -327,9 +329,9 @@ func PrintPdfReport(path, filename string, body interface{}, sciInfo model.SCIIn
 		return err
 	}
 
-	log.Info().Msgf("Generate report duration: %v", time.Since(startTime))
+	logger.Info().Msgf("Generate report duration: %v", time.Since(startTime))
 
-	fileCreationReport(filepath.Join(path, filename+".pdf"), filename)
+	fileCreationReport(ctx, filepath.Join(path, filename+".pdf"), filename)
 
 	return err
 }

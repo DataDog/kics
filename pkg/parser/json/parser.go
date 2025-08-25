@@ -7,6 +7,7 @@ package json
 
 import (
 	"bytes"
+	"context"
 	"encoding/json"
 
 	"github.com/Checkmarx/kics/pkg/model"
@@ -20,11 +21,11 @@ type Parser struct {
 }
 
 // Resolve - replace or modifies in-memory content before parsing
-func (p *Parser) Resolve(fileContent []byte, filename string, resolveReferences bool, maxResolverDepth int) ([]byte, error) {
+func (p *Parser) Resolve(ctx context.Context, fileContent []byte, filename string, resolveReferences bool, maxResolverDepth int) ([]byte, error) {
 	// Resolve files passed as arguments with file resolver (e.g. file://)
 	res := file.NewResolver(json.Unmarshal, json.Marshal, p.SupportedExtensions())
 	resolvedFilesCache := make(map[string]file.ResolvedFile)
-	resolved := res.Resolve(fileContent, filename, 0, maxResolverDepth, resolvedFilesCache, resolveReferences)
+	resolved := res.Resolve(ctx, fileContent, filename, 0, maxResolverDepth, resolvedFilesCache, resolveReferences)
 	p.resolvedFiles = res.ResolvedFiles
 	if len(res.ResolvedFiles) == 0 {
 		return fileContent, nil
@@ -33,7 +34,7 @@ func (p *Parser) Resolve(fileContent []byte, filename string, resolveReferences 
 }
 
 // Parse parses json file and returns it as a Document
-func (p *Parser) Parse(_ string, fileContent []byte) ([]model.Document, []int, error) {
+func (p *Parser) Parse(ctx context.Context, _ string, fileContent []byte) ([]model.Document, []int, error) {
 	r := model.Document{}
 	err := json.Unmarshal(fileContent, &r)
 	if err != nil {

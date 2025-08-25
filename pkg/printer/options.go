@@ -6,6 +6,7 @@
 package printer
 
 import (
+	"context"
 	"io"
 	"os"
 	"path/filepath"
@@ -40,36 +41,39 @@ func Verbose(opt interface{}, changed bool) error {
 }
 
 // Silent - disables stdout output
-func Silent(opt interface{}) error {
+func Silent(ctx context.Context, opt interface{}) error {
+	logger := log.Ctx(ctx)
 	silent := opt.(bool)
 	if silent {
 		color.SetOutput(io.Discard)
 		os.Stdout = nil
-		log.Logger = log.Output(zerolog.MultiLevelWriter(io.Discard, outFileLogger.(io.Writer)))
+		logger.Output(zerolog.MultiLevelWriter(io.Discard, outFileLogger.(io.Writer)))
 	}
 	return nil
 }
 
 // CI - enable only log messages to CLI output
-func CI(opt interface{}) error {
+func CI(ctx context.Context, opt interface{}) error {
+	logger := log.Ctx(ctx)
 	ci := opt.(bool)
 	if ci {
 		color.SetOutput(io.Discard)
-		log.Logger = log.Output(zerolog.MultiLevelWriter(outConsoleLogger, outFileLogger.(io.Writer)))
+		logger.Output(zerolog.MultiLevelWriter(outConsoleLogger, outFileLogger.(io.Writer)))
 		os.Stdout = nil
 	}
 	return nil
 }
 
 // LogFormat - configures the logs format (JSON,pretty).
-func LogFormat(logFormat string) error {
+func LogFormat(ctx context.Context, logFormat string) error {
+	logger := log.Ctx(ctx)
 	if logFormat == constants.LogFormatJSON {
-		log.Logger = log.Output(zerolog.MultiLevelWriter(outConsoleLogger, loggerFile.(io.Writer)))
+		logger.Output(zerolog.MultiLevelWriter(outConsoleLogger, loggerFile.(io.Writer)))
 		outFileLogger = loggerFile
 		outConsoleLogger = os.Stdout
 	} else if logFormat == constants.LogFormatPretty {
 		fileLogger = consoleHelpers.CustomConsoleWriter(&zerolog.ConsoleWriter{Out: loggerFile.(io.Writer), NoColor: true})
-		log.Logger = log.Output(zerolog.MultiLevelWriter(consoleLogger, fileLogger))
+		logger.Output(zerolog.MultiLevelWriter(consoleLogger, fileLogger))
 		outFileLogger = fileLogger
 		outConsoleLogger = zerolog.ConsoleWriter{Out: os.Stdout, NoColor: true}
 	} else {
@@ -146,13 +150,6 @@ func LogLevel(opt interface{}, changed bool) error {
 
 type LogSink struct {
 	logs []string
-}
-
-func NewLogger(logs *LogSink) zerolog.Logger {
-	if logs == nil {
-		return log.Logger
-	}
-	return zerolog.New(logs)
 }
 
 func (l *LogSink) Write(p []byte) (n int, err error) {

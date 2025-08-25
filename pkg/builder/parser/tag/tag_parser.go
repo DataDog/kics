@@ -7,6 +7,7 @@ package tag
 
 import (
 	"bytes"
+	"context"
 	"errors"
 	"fmt"
 	"strconv"
@@ -29,7 +30,7 @@ type Tag struct {
 
 // Parse tag from following structure
 // name1:"expected=private,test=false" name2:"attr=1"
-func Parse(s string, supportedNames []string) ([]Tag, error) {
+func Parse(ctx context.Context, s string, supportedNames []string) ([]Tag, error) {
 	s = strings.TrimLeft(strings.TrimLeft(strings.TrimSpace(s), "/"), " ")
 	var tags []Tag
 	for _, si := range strings.Split(s, " ") {
@@ -43,7 +44,7 @@ func Parse(s string, supportedNames []string) ([]Tag, error) {
 				continue
 			}
 
-			tag, err := parseTag(cleanSi, supportedName)
+			tag, err := parseTag(ctx, cleanSi, supportedName)
 			if err != nil {
 				return nil, err
 			}
@@ -55,7 +56,8 @@ func Parse(s string, supportedNames []string) ([]Tag, error) {
 	return tags, nil
 }
 
-func parseTag(s, name string) (Tag, error) {
+func parseTag(ctx context.Context, s, name string) (Tag, error) {
+	logger := log.Ctx(ctx)
 	t := Tag{
 		Name:       name,
 		Attributes: make(map[string]interface{}),
@@ -84,14 +86,14 @@ func parseTag(s, name string) (Tag, error) {
 			switch sc.Peek() {
 			case '=':
 				sc.Next()
-				value, err := parseValue(sc)
+				value, err := parseValue(ctx, sc)
 				if err != nil {
 					return Tag{}, err
 				}
 				t.Attributes[ident] = value
 			case '[':
 				sc.Next()
-				arg, err := parseArgs(sc)
+				arg, err := parseArgs(ctx, sc)
 				if err != nil {
 					return Tag{}, err
 				}
@@ -106,16 +108,17 @@ func parseTag(s, name string) (Tag, error) {
 			// NOP
 		default:
 			err := fmt.Errorf("invalid token: %s", sc.TokenText())
-			log.Error().Msg(err.Error())
+			logger.Error().Msg(err.Error())
 			return Tag{}, err
 		}
 	}
 }
 
-func parseArray(sc *scanner.Scanner) ([]interface{}, error) {
+func parseArray(ctx context.Context, sc *scanner.Scanner) ([]interface{}, error) {
+	logger := log.Ctx(ctx)
 	var result []interface{}
 	for {
-		value, err := parseValue(sc)
+		value, err := parseValue(ctx, sc)
 		if err != nil {
 			return result, err
 		}
@@ -128,16 +131,17 @@ func parseArray(sc *scanner.Scanner) ([]interface{}, error) {
 			continue
 		}
 		err = fmt.Errorf(", expected but got %s", string(next))
-		log.Error().Msg(err.Error())
+		logger.Error().Msg(err.Error())
 		return result, err
 	}
 }
 
-func parseValue(sc *scanner.Scanner) (interface{}, error) {
+func parseValue(ctx context.Context, sc *scanner.Scanner) (interface{}, error) {
+	logger := log.Ctx(ctx)
 	switch sc.Peek() {
 	case '\'':
 		sc.Next()
-		return parseString(sc)
+		return parseString(ctx, sc)
 	case '*':
 		r := sc.Next()
 		return string(r), nil
@@ -155,11 +159,11 @@ func parseValue(sc *scanner.Scanner) (interface{}, error) {
 			return "!=", nil
 		}
 		err := fmt.Errorf("invalid value: %s", sc.TokenText())
-		log.Error().Msg(err.Error())
+		logger.Error().Msg(err.Error())
 		return nil, err
 	case '[':
 		sc.Next()
-		return parseArray(sc)
+		return parseArray(ctx, sc)
 	default:
 		tok := sc.Scan()
 		switch tok {
@@ -176,30 +180,31 @@ func parseValue(sc *scanner.Scanner) (interface{}, error) {
 			}
 		default:
 			err := fmt.Errorf("invalid value: %s", sc.TokenText())
-			log.Error().Msg(err.Error())
+			logger.Error().Msg(err.Error())
 			return nil, err
 		}
 	}
 	return nil, errors.New("invalid value")
 }
 
-func parseArgs(sc *scanner.Scanner) (map[string]interface{}, error) {
+func parseArgs(ctx context.Context, sc *scanner.Scanner) (map[string]interface{}, error) {
+	logger := log.Ctx(ctx)
 	result := map[string]interface{}{}
 	for {
 		tok := sc.Scan()
 		if tok != scanner.Ident {
 			err := fmt.Errorf("invalid attribute name: %s", sc.TokenText())
-			log.Error().Msg(err.Error())
+			logger.Error().Msg(err.Error())
 			return result, err
 		}
 		name := sc.TokenText()
 		eq := sc.Next()
 		if eq != '=' {
 			err := fmt.Errorf("= expected but got %s", string(eq))
-			log.Error().Msg(err.Error())
+			logger.Error().Msg(err.Error())
 			return result, err
 		}
-		value, err := parseValue(sc)
+		value, err := parseValue(ctx, sc)
 		if err != nil {
 			return result, err
 		}
@@ -212,12 +217,12 @@ func parseArgs(sc *scanner.Scanner) (map[string]interface{}, error) {
 			continue
 		}
 		err = fmt.Errorf(") or , expected but got %s", string(next))
-		log.Error().Msg(err.Error())
+		logger.Error().Msg(err.Error())
 		return result, err
 	}
 }
 
-func parseString(sc *scanner.Scanner) (string, error) {
+func parseString(ctx context.Context, sc *scanner.Scanner) (string, error) {
 	var buf bytes.Buffer
 	ch := sc.Next()
 	for ch != '\'' {
@@ -225,7 +230,7 @@ func parseString(sc *scanner.Scanner) (string, error) {
 			return "", errors.New("unterminated string")
 		}
 		if ch == '\\' {
-			s, err := parseEscape(sc)
+			s, err := parseEscape(ctx, sc)
 			if err != nil {
 				return "", err
 			}
@@ -238,7 +243,8 @@ func parseString(sc *scanner.Scanner) (string, error) {
 	return buf.String(), nil
 }
 
-func parseEscape(sc *scanner.Scanner) (string, error) {
+func parseEscape(ctx context.Context, sc *scanner.Scanner) (string, error) {
+	logger := log.Ctx(ctx)
 	ch := sc.Next()
 	switch ch {
 	case 'a':
@@ -263,7 +269,7 @@ func parseEscape(sc *scanner.Scanner) (string, error) {
 		return "'", nil
 	}
 	err := fmt.Errorf("invalid escape sequence: %s", string(ch))
-	log.Error().Msg(err.Error())
+	logger.Error().Msg(err.Error())
 	return "", err
 }
 

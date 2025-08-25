@@ -6,6 +6,7 @@
 package model
 
 import (
+	"context"
 	"fmt"
 	"os"
 	"strings"
@@ -69,14 +70,15 @@ type Compliance struct {
 }
 
 // BuildASFF builds the ASFF report
-func BuildASFF(summary *model.Summary) []AwsSecurityFinding {
+func BuildASFF(ctx context.Context, summary *model.Summary) []AwsSecurityFinding {
+	logger := log.Ctx(ctx)
 	findings := []AwsSecurityFinding{}
 
 	awsAccountInfo := getAwsAccountInfo()
 
 	if awsAccountInfo.incompleteAwsAccountInfo() {
 		variables := "AWS_ACCOUNT_ID, AWS_REGION"
-		log.Debug().Msg(fmt.Sprintf("failed to get AWS account information: check your environment variables (%s)", variables))
+		logger.Debug().Msg(fmt.Sprintf("failed to get AWS account information: check your environment variables (%s)", variables))
 	}
 
 	for idx := range summary.Queries {

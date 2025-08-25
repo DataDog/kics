@@ -7,6 +7,7 @@ package writer
 
 import (
 	"bytes"
+	"context"
 	"fmt"
 	"html/template"
 	"strconv"
@@ -98,7 +99,7 @@ func (w *RegoWriter) Render(rules []build.Rule) ([]byte, error) {
 	return wr.Bytes(), nil
 }
 
-func condition(r Block, c build.Condition) string {
+func condition(ctx context.Context, r Block, c build.Condition) string {
 	key := conditionKey(r, c, true, false)
 
 	if c.IssueType == model.IssueTypeRedundantAttribute {
@@ -125,13 +126,14 @@ func condition(r Block, c build.Condition) string {
 	}
 
 	if value, ok := c.AttrAsString("val"); ok {
-		return fmt.Sprintf("%s %s %s", key, condition, regoValueToString(value))
+		return fmt.Sprintf("%s %s %s", key, condition, regoValueToString(ctx, value))
 	}
 
-	return fmt.Sprintf("%s %s %s", key, condition, regoValueToString(c.Value))
+	return fmt.Sprintf("%s %s %s", key, condition, regoValueToString(ctx, c.Value))
 }
 
-func regoValueToString(i interface{}) string {
+func regoValueToString(ctx context.Context, i interface{}) string {
+	logger := log.Ctx(ctx)
 	switch v := i.(type) {
 	case bool:
 		if v {
@@ -163,7 +165,7 @@ func regoValueToString(i interface{}) string {
 
 		return fmt.Sprintf("{%s}", strings.Join(sts, ", "))
 	default:
-		log.Warn().Msgf("Can't convert value, %T to string", i)
+		logger.Warn().Msgf("Can't convert value, %T to string", i)
 		return ""
 	}
 }

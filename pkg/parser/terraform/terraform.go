@@ -6,6 +6,7 @@
 package terraform
 
 import (
+	"context"
 	"os"
 	"path/filepath"
 	"regexp"
@@ -26,7 +27,7 @@ import (
 const RetriesDefaultValue = 50
 
 // Converter returns content json, error line, error
-type Converter func(file *hcl.File, inputVariables converter.VariableMap) (model.Document, error)
+type Converter func(ctx context.Context, file *hcl.File, inputVariables converter.VariableMap) (model.Document, error)
 
 // Parser struct that contains the function to parse file and the number of retries if something goes wrong
 type Parser struct {
@@ -60,30 +61,30 @@ func NewDefaultWithParams(terraformVarsPath string, sciInfo model.SCIInfo) *Pars
 }
 
 // Resolve - replace or modifies in-memory content before parsing
-func (p *Parser) Resolve(fileContent []byte, filename string, _ bool, _ int) ([]byte, error) {
+func (p *Parser) Resolve(ctx context.Context, fileContent []byte, filename string, _ bool, _ int) ([]byte, error) {
 	// handle panic during resolve process
 	defer func() {
 		if r := recover(); r != nil {
 			errMessage := "Recovered from panic during resolve of file " + filename
-			masterUtils.HandlePanic(r, errMessage)
+			masterUtils.HandlePanic(ctx, r, errMessage)
 		}
 	}()
-	inputVars := getInputVariables(filepath.Dir(filename), string(fileContent), p.terraformVarsPath)
-	p.inputVariables = getDataSourcePolicy(filepath.Dir(filename), inputVars)
+	inputVars := getInputVariables(ctx, filepath.Dir(filename), string(fileContent), p.terraformVarsPath)
+	p.inputVariables = getDataSourcePolicy(ctx, filepath.Dir(filename), inputVars)
 	return fileContent, nil
 }
 
-func processContent(elements model.Document, content, path string) {
+func processContent(ctx context.Context, elements model.Document, content, path string) {
 	var certInfo map[string]interface{}
 	if content != "" {
-		certInfo = utils.AddCertificateInfo(path, content)
+		certInfo = utils.AddCertificateInfo(ctx, path, content)
 		if certInfo != nil {
 			elements["certificate_body"] = certInfo
 		}
 	}
 }
 
-func processElements(elements model.Document, path string) {
+func processElements(ctx context.Context, elements model.Document, path string) {
 	for k, v3 := range elements { // resource elements
 		if k != "certificate_body" {
 			continue
@@ -91,35 +92,35 @@ func processElements(elements model.Document, path string) {
 		switch value := v3.(type) {
 		case string:
 			content := utils.CheckCertificate(value)
-			processContent(elements, content, path)
+			processContent(ctx, elements, content, path)
 		case ctyjson.SimpleJSONValue:
 			content := utils.CheckCertificate(value.Value.AsString())
-			processContent(elements, content, path)
+			processContent(ctx, elements, content, path)
 		}
 	}
 }
 
-func processResourcesElements(resourcesElements model.Document, path string) error {
+func processResourcesElements(ctx context.Context, resourcesElements model.Document, path string) error {
 	for _, v2 := range resourcesElements {
 		switch t := v2.(type) {
 		case []interface{}:
 			return errors.New("failed to process resources")
 		case interface{}:
 			if elements, ok := t.(model.Document); ok {
-				processElements(elements, path)
+				processElements(ctx, elements, path)
 			}
 		}
 	}
 	return nil
 }
 
-func processResources(doc model.Document, path string) error {
+func processResources(ctx context.Context, doc model.Document, path string) error {
 	var resourcesElements model.Document
 
 	defer func() {
 		if r := recover(); r != nil {
 			errMessage := "Recovered from panic during process of resources in file " + path
-			masterUtils.HandlePanic(r, errMessage)
+			masterUtils.HandlePanic(ctx, r, errMessage)
 		}
 	}()
 
@@ -128,7 +129,7 @@ func processResources(doc model.Document, path string) error {
 		case []interface{}: // support the case of nameless resources - where we get a list of resources
 			for _, value := range t {
 				resourcesElements = value.(model.Document)
-				err := processResourcesElements(resourcesElements, path)
+				err := processResourcesElements(ctx, resourcesElements, path)
 				if err != nil {
 					return err
 				}
@@ -136,7 +137,7 @@ func processResources(doc model.Document, path string) error {
 
 		case interface{}:
 			resourcesElements = t.(model.Document)
-			err := processResourcesElements(resourcesElements, path)
+			err := processResourcesElements(ctx, resourcesElements, path)
 			if err != nil {
 				return err
 			}
@@ -145,17 +146,17 @@ func processResources(doc model.Document, path string) error {
 	return nil
 }
 
-func addExtraInfo(json []model.Document, path string) ([]model.Document, error) {
+func addExtraInfo(ctx context.Context, json []model.Document, path string) ([]model.Document, error) {
 	// handle panic during resource processing
 	defer func() {
 		if r := recover(); r != nil {
 			errMessage := "Recovered from panic during resource processing for file " + path
-			masterUtils.HandlePanic(r, errMessage)
+			masterUtils.HandlePanic(ctx, r, errMessage)
 		}
 	}()
 	for _, documents := range json { // iterate over documents
 		if resources, ok := documents["resource"].(model.Document); ok {
-			err := processResources(resources, path)
+			err := processResources(ctx, resources, path)
 			if err != nil {
 				return []model.Document{}, err
 			}
@@ -180,12 +181,13 @@ func parseFile(filename string, shouldReplaceDataSource bool) (*hcl.File, error)
 }
 
 // Parse execute parser for the content in a file
-func (p *Parser) Parse(path string, content []byte) ([]model.Document, []int, error) {
+func (p *Parser) Parse(ctx context.Context, path string, content []byte) ([]model.Document, []int, error) {
+	logger := log.Ctx(ctx)
 	file, diagnostics := hclsyntax.ParseConfig(content, filepath.Base(path), hcl.Pos{Byte: 0, Line: 1, Column: 1})
 	defer func() {
 		if r := recover(); r != nil {
 			errMessage := "Recovered from panic during parsing of file " + path
-			masterUtils.HandlePanic(r, errMessage)
+			masterUtils.HandlePanic(ctx, r, errMessage)
 		}
 	}()
 	if diagnostics != nil && diagnostics.HasErrors() && len(diagnostics.Errs()) > 0 {
@@ -195,10 +197,10 @@ func (p *Parser) Parse(path string, content []byte) ([]model.Document, []int, er
 
 	ignore, err := comment.ParseComments(content, path)
 	if err != nil {
-		log.Err(err).Msg("failed to parse comments")
+		logger.Err(err).Msg("failed to parse comments")
 	}
 
-	log.Info().Int64(
+	logger.Info().Int64(
 		"org", p.sciInfo.OrgId,
 	).Str(
 		"branch", p.sciInfo.RepositoryCommitInfo.Branch,
@@ -214,8 +216,8 @@ func (p *Parser) Parse(path string, content []byte) ([]model.Document, []int, er
 
 	linesToIgnore := comment.GetIgnoreLines(ignore, file.Body.(*hclsyntax.Body))
 
-	fc, parseErr := p.convertFunc(file, p.inputVariables)
-	json, err := addExtraInfo([]model.Document{fc}, path)
+	fc, parseErr := p.convertFunc(ctx, file, p.inputVariables)
+	json, err := addExtraInfo(ctx, []model.Document{fc}, path)
 	if err != nil {
 		return json, []int{}, errors.Wrap(err, "failed terraform parse")
 	}

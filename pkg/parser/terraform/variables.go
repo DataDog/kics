@@ -6,6 +6,7 @@
 package terraform
 
 import (
+	"context"
 	"os"
 	"path/filepath"
 	"regexp"
@@ -17,7 +18,6 @@ import (
 	"github.com/rs/zerolog/log"
 	"github.com/zclconf/go-cty/cty"
 )
-
 
 func mergeMaps(baseMap, newItems converter.VariableMap) {
 	for key, value := range newItems {
@@ -56,7 +56,8 @@ func setInputVariablesDefaultValues(filename string) (converter.VariableMap, err
 	return defaultValuesMap, nil
 }
 
-func checkTfvarsValid(f *hcl.File, filename string) error {
+func checkTfvarsValid(ctx context.Context, f *hcl.File, filename string) error {
+	logger := log.Ctx(ctx)
 	content, _, _ := f.Body.PartialContent(&hcl.BodySchema{
 		Blocks: []hcl.BlockHeaderSchema{
 			{
@@ -66,7 +67,7 @@ func checkTfvarsValid(f *hcl.File, filename string) error {
 		},
 	})
 	if len(content.Blocks) > 0 {
-		log.Debug().Msgf("failed to get variables from %s, .tfvars file is used to assing values not to declare new variables", filename)
+		logger.Debug().Msgf("failed to get variables from %s, .tfvars file is used to assing values not to declare new variables", filename)
 	}
 	return nil
 }
@@ -175,13 +176,14 @@ func sanitizeCtyMap(in map[string]cty.Value) map[string]cty.Value {
 	return out
 }
 
-func getInputVariables(currentPath, fileContent, terraformVarsPath string) converter.VariableMap {
+func getInputVariables(ctx context.Context, currentPath, fileContent, terraformVarsPath string) converter.VariableMap {
+	logger := log.Ctx(ctx)
 	variablesMap := make(converter.VariableMap)
 	localsMap := make(converter.VariableMap)
 
 	tfFiles, err := filepath.Glob(filepath.Join(currentPath, "*.tf"))
 	if err != nil {
-		log.Error().Msg("Error getting .tf files")
+		logger.Error().Msg("Error getting .tf files")
 	}
 
 	// Parse all .tf files for variables and locals
@@ -189,8 +191,8 @@ func getInputVariables(currentPath, fileContent, terraformVarsPath string) conve
 		// Get variables
 		vars, errVars := getInputVariablesFromFile(tfFile)
 		if errVars != nil {
-			log.Error().Msgf("Error getting default values from %s", tfFile)
-			log.Err(errVars)
+			logger.Error().Msgf("Error getting default values from %s", tfFile)
+			logger.Err(errVars)
 		} else {
 			mergeMaps(variablesMap, vars)
 		}
@@ -198,8 +200,8 @@ func getInputVariables(currentPath, fileContent, terraformVarsPath string) conve
 		// Get locals
 		locals, errLocals := getInputLocalsFromFile(tfFile)
 		if errLocals != nil {
-			log.Error().Msgf("Error getting locals from %s", tfFile)
-			log.Err(errLocals)
+			logger.Error().Msgf("Error getting locals from %s", tfFile)
+			logger.Err(errLocals)
 		} else {
 			mergeMaps(localsMap, locals)
 		}
@@ -208,7 +210,7 @@ func getInputVariables(currentPath, fileContent, terraformVarsPath string) conve
 	// Parse *.auto.tfvars files
 	tfVarsFiles, err := filepath.Glob(filepath.Join(currentPath, "*.auto.tfvars"))
 	if err != nil {
-		log.Error().Msg("Error getting .auto.tfvars files")
+		logger.Error().Msg("Error getting .auto.tfvars files")
 	}
 
 	// Add terraform.tfvars if it exists
@@ -219,8 +221,8 @@ func getInputVariables(currentPath, fileContent, terraformVarsPath string) conve
 	for _, tfVarsFile := range tfVarsFiles {
 		vars, errInput := getInputVariablesFromFile(tfVarsFile)
 		if errInput != nil {
-			log.Error().Msgf("Error getting values from %s", tfVarsFile)
-			log.Err(errInput)
+			logger.Error().Msgf("Error getting values from %s", tfVarsFile)
+			logger.Err(errInput)
 			continue
 		}
 		mergeMaps(variablesMap, vars)
@@ -241,13 +243,13 @@ func getInputVariables(currentPath, fileContent, terraformVarsPath string) conve
 		if _, err := os.Stat(terraformVarsPath); err == nil {
 			vars, errInput := getInputVariablesFromFile(terraformVarsPath)
 			if errInput != nil {
-				log.Error().Msgf("Error getting values from %s", terraformVarsPath)
-				log.Err(errInput)
+				logger.Error().Msgf("Error getting values from %s", terraformVarsPath)
+				logger.Err(errInput)
 			} else {
 				mergeMaps(variablesMap, vars)
 			}
 		} else {
-			log.Trace().Msgf("%s file not found", terraformVarsPath)
+			logger.Trace().Msgf("%s file not found", terraformVarsPath)
 		}
 	}
 

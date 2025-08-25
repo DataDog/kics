@@ -7,6 +7,7 @@
 package source
 
 import (
+	"context"
 	"encoding/json"
 	"strings"
 
@@ -48,18 +49,19 @@ type RegoLibraries struct {
 // GetQueries gets all queries from a QueryMetadata list
 // GetQueryLibrary gets a library of rego functions given a plataform's name
 type QueriesSource interface {
-	GetQueries(querySelection *QueryInspectorParameters) ([]model.QueryMetadata, error)
-	GetQueryLibrary(platform string) (RegoLibraries, error)
+	GetQueries(ctx context.Context, querySelection *QueryInspectorParameters) ([]model.QueryMetadata, error)
+	GetQueryLibrary(ctx context.Context, platform string) (RegoLibraries, error)
 }
 
 // mergeLibraries return custom library and embedded library merged, overwriting embedded library functions, if necessary
-func mergeLibraries(customLib, embeddedLib string) (string, error) {
+func mergeLibraries(ctx context.Context, customLib, embeddedLib string) (string, error) {
+	logger := log.Ctx(ctx)
 	if customLib == "" {
 		return embeddedLib, nil
 	}
 	statements, _, err := ast.NewParser().WithReader(strings.NewReader(customLib)).Parse()
 	if err != nil {
-		log.Err(err).Msg("Could not parse custom library")
+		logger.Err(err).Msg("Could not parse custom library")
 		return "", err
 	}
 	headers := make(map[string]string)
@@ -77,7 +79,7 @@ func mergeLibraries(customLib, embeddedLib string) (string, error) {
 	}
 	statements, _, err = ast.NewParser().WithReader(strings.NewReader(embeddedLib)).Parse()
 	if err != nil {
-		log.Err(err).Msg("Could not parse default library")
+		logger.Err(err).Msg("Could not parse default library")
 		return "", err
 	}
 	for _, st := range statements {

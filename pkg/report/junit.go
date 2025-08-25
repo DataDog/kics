@@ -6,6 +6,7 @@
 package report
 
 import (
+	"context"
 	"strings"
 
 	"github.com/Checkmarx/kics/pkg/model"
@@ -13,7 +14,7 @@ import (
 )
 
 // PrintJUnitReport prints the JUnit report in the given path and filename with the given body
-func PrintJUnitReport(path, filename string, body interface{}, sciInfo model.SCIInfo) error {
+func PrintJUnitReport(ctx context.Context, path, filename string, body interface{}, sciInfo model.SCIInfo) error {
 	if !strings.HasPrefix(filename, "junit-") {
 		filename = "junit-" + filename
 	}
@@ -35,5 +36,5 @@ func PrintJUnitReport(path, filename string, body interface{}, sciInfo model.SCI
 
 	jUnitReport.FinishReport()
 
-	return exportXMLReport(path, filename, jUnitReport)
+	return exportXMLReport(ctx, path, filename, jUnitReport)
 }

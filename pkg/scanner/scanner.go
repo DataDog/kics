@@ -63,6 +63,7 @@ func PrepareAndScan(
 // StartScan will run concurrent scans by parser
 func StartScan(ctx context.Context, scanID string,
 	proBarBuilder progress.PbBuilder, services serviceSlice) error {
+	logger := log.Ctx(ctx)
 	defer metrics.Metric.Stop()
 	metrics.Metric.Start("start_scan")
 	var wg sync.WaitGroup
@@ -71,12 +72,12 @@ func StartScan(ctx context.Context, scanID string,
 	currentQuery := make(chan int64, 1)
 	var wgProg sync.WaitGroup
 
-	log.Info().Msgf("Starting scan with id: %s", scanID)
+	logger.Info().Msgf("Starting scan with id: %s", scanID)
 
 	total := services.GetQueriesLength()
-	log.Info().Msgf("Got %d queries", total)
+	logger.Info().Msgf("Got %d queries", total)
 	if total != 0 {
-		startProgressBar(total, &wgProg, currentQuery, proBarBuilder)
+		startProgressBar(ctx, total, &wgProg, currentQuery, proBarBuilder)
 	}
 
 	for _, service := range services {
@@ -114,8 +115,8 @@ func (s serviceSlice) GetQueriesLength() int {
 	return count
 }
 
-func startProgressBar(total int, wg *sync.WaitGroup, progressChannel chan int64, proBarBuilder progress.PbBuilder) {
+func startProgressBar(ctx context.Context, total int, wg *sync.WaitGroup, progressChannel chan int64, proBarBuilder progress.PbBuilder) {
 	wg.Add(1)
 	progressBar := proBarBuilder.BuildCounter("Executing queries: ", total, wg, progressChannel)
-	go progressBar.Start()
+	go progressBar.Start(ctx)
 }
