@@ -12,13 +12,13 @@ import (
 	"regexp"
 	"sort"
 
+	"github.com/Checkmarx/kics/pkg/logger"
 	"github.com/Checkmarx/kics/pkg/model"
 	"github.com/Checkmarx/kics/pkg/parser/jsonfilter/parser"
 	"github.com/Checkmarx/kics/pkg/utils"
 	"github.com/antlr4-go/antlr/v4"
 	"github.com/google/uuid"
 	"github.com/pkg/errors"
-	"github.com/rs/zerolog/log"
 )
 
 var (
@@ -33,7 +33,7 @@ func (s *Service) sink(ctx context.Context, filename, scanID string,
 	rc io.Reader, data []byte,
 	openAPIResolveReferences bool,
 	maxResolverDepth int) error {
-	logger := log.Ctx(ctx)
+	logger := logger.FromContext(ctx)
 	s.Tracker.TrackFileFound(filename)
 
 	c, err := getContent(rc, data, s.MaxFileSize, filename)

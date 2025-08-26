@@ -7,12 +7,12 @@ import (
 	"regexp"
 	"strings"
 
+	"github.com/Checkmarx/kics/pkg/logger"
 	"github.com/Checkmarx/kics/pkg/model"
-	"github.com/rs/zerolog/log"
 )
 
 func TransformToSarifFix(ctx context.Context, vuln model.VulnerableFile, startLocation model.SarifResourceLocation, endLocation model.SarifResourceLocation) (model.SarifFix, error) {
-	logger := log.Ctx(ctx)
+	logger := logger.FromContext(ctx)
 	switch vuln.RemediationType {
 	case "replacement":
 		return buildReplacementFix(ctx, vuln, startLocation, endLocation)
@@ -28,7 +28,7 @@ func TransformToSarifFix(ctx context.Context, vuln model.VulnerableFile, startLo
 }
 
 func buildReplacementFix(ctx context.Context, vuln model.VulnerableFile, startLocation, endLocation model.SarifResourceLocation) (model.SarifFix, error) {
-	logger := log.Ctx(ctx)
+	logger := logger.FromContext(ctx)
 	var patch map[string]string
 	if err := json.Unmarshal([]byte(vuln.Remediation), &patch); err != nil {
 		err = fmt.Errorf("invalid remediation format for replacement: %v", err)

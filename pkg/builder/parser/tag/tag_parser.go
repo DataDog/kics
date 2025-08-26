@@ -14,7 +14,7 @@ import (
 	"strings"
 	"text/scanner"
 
-	"github.com/rs/zerolog/log"
+	"github.com/Checkmarx/kics/pkg/logger"
 )
 
 const (
@@ -57,7 +57,7 @@ func Parse(ctx context.Context, s string, supportedNames []string) ([]Tag, error
 }
 
 func parseTag(ctx context.Context, s, name string) (Tag, error) {
-	logger := log.Ctx(ctx)
+	logger := logger.FromContext(ctx)
 	t := Tag{
 		Name:       name,
 		Attributes: make(map[string]interface{}),
@@ -115,7 +115,7 @@ func parseTag(ctx context.Context, s, name string) (Tag, error) {
 }
 
 func parseArray(ctx context.Context, sc *scanner.Scanner) ([]interface{}, error) {
-	logger := log.Ctx(ctx)
+	logger := logger.FromContext(ctx)
 	var result []interface{}
 	for {
 		value, err := parseValue(ctx, sc)
@@ -137,7 +137,7 @@ func parseArray(ctx context.Context, sc *scanner.Scanner) ([]interface{}, error)
 }
 
 func parseValue(ctx context.Context, sc *scanner.Scanner) (interface{}, error) {
-	logger := log.Ctx(ctx)
+	logger := logger.FromContext(ctx)
 	switch sc.Peek() {
 	case '\'':
 		sc.Next()
@@ -188,7 +188,7 @@ func parseValue(ctx context.Context, sc *scanner.Scanner) (interface{}, error) {
 }
 
 func parseArgs(ctx context.Context, sc *scanner.Scanner) (map[string]interface{}, error) {
-	logger := log.Ctx(ctx)
+	logger := logger.FromContext(ctx)
 	result := map[string]interface{}{}
 	for {
 		tok := sc.Scan()
@@ -244,7 +244,7 @@ func parseString(ctx context.Context, sc *scanner.Scanner) (string, error) {
 }
 
 func parseEscape(ctx context.Context, sc *scanner.Scanner) (string, error) {
-	logger := log.Ctx(ctx)
+	logger := logger.FromContext(ctx)
 	ch := sc.Next()
 	switch ch {
 	case 'a':

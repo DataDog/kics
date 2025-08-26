@@ -11,10 +11,9 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/rs/zerolog/log"
-
 	"encoding/json"
 
+	"github.com/Checkmarx/kics/pkg/logger"
 	"github.com/Checkmarx/kics/pkg/model"
 	"github.com/pkg/errors"
 	"mvdan.cc/sh/v3/syntax"
@@ -161,7 +160,7 @@ func (i *Info) getStmtInfo(ctx context.Context, stmt *syntax.Stmt, args []*synta
 }
 
 func getWordValue(ctx context.Context, wd *syntax.Word) string {
-	logger := log.Ctx(ctx)
+	logger := logger.FromContext(ctx)
 	printer := syntax.NewPrinter()
 	var buf bytes.Buffer
 
@@ -178,7 +177,7 @@ func getWordValue(ctx context.Context, wd *syntax.Word) string {
 }
 
 func getFullCommand(ctx context.Context, args []*syntax.Word) string {
-	logger := log.Ctx(ctx)
+	logger := logger.FromContext(ctx)
 	var buf bytes.Buffer
 	printer := syntax.NewPrinter()
 

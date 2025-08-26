@@ -9,12 +9,12 @@ import (
 	"context"
 	"time"
 
-	"github.com/rs/zerolog/log"
+	"github.com/Checkmarx/kics/pkg/logger"
 )
 
 // PrintScanDuration prints the scan duration
 func PrintScanDuration(ctx context.Context, elapsed time.Duration) {
-	logger := log.Ctx(ctx)
+	logger := logger.FromContext(ctx)
 	elapsedStrFormat := "Scan duration: %v\n"
-	(*logger).Info().Msgf(elapsedStrFormat, elapsed)
+	logger.Info().Msgf(elapsedStrFormat, elapsed)
 }

@@ -15,8 +15,8 @@ import (
 	"strings"
 
 	"github.com/Checkmarx/kics/internal/constants"
+	"github.com/Checkmarx/kics/pkg/logger"
 	"github.com/Checkmarx/kics/pkg/model"
-	"github.com/rs/zerolog/log"
 	"github.com/tdewolff/minify/v2"
 	minifyCSS "github.com/tdewolff/minify/v2/css"
 	minifyHtml "github.com/tdewolff/minify/v2/html"
@@ -85,7 +85,7 @@ func getVersion() string {
 
 // PrintHTMLReport creates a report file on HTML format
 func PrintHTMLReport(ctx context.Context, path, filename string, body interface{}, sciInfo model.SCIInfo) error {
-	logger := log.Ctx(ctx)
+	logger := logger.FromContext(ctx)
 	if !strings.HasSuffix(filename, ".html") {
 		filename += ".html"
 	}

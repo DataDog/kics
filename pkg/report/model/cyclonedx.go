@@ -17,9 +17,9 @@ import (
 	"time"
 
 	"github.com/Checkmarx/kics/internal/constants"
+	"github.com/Checkmarx/kics/pkg/logger"
 	"github.com/Checkmarx/kics/pkg/model"
 	"github.com/google/uuid"
-	"github.com/rs/zerolog/log"
 )
 
 var cycloneDxSeverityLevelEquivalence = map[model.Severity]string{
@@ -137,7 +137,7 @@ func getAllFiles(summary *model.Summary) []model.VulnerableFile {
 }
 
 func generateSha256(ctx context.Context, filePath string, filePaths map[string]string) string {
-	logger := log.Ctx(ctx)
+	logger := logger.FromContext(ctx)
 	file := filePaths[filePath]
 	content, err := os.ReadFile(filepath.Clean(file))
 
@@ -240,7 +240,7 @@ func InitCycloneDxReport() *CycloneDxReport {
 
 // BuildCycloneDxReport builds the CycloneDX report
 func BuildCycloneDxReport(ctx context.Context, summary *model.Summary, filePaths map[string]string) *CycloneDxReport {
-	logger := log.Ctx(ctx)
+	logger := logger.FromContext(ctx)
 	var component Component
 	var vuln []Vulnerability
 	var version, sha, purl, filePath string

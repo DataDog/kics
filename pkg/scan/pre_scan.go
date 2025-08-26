@@ -8,6 +8,7 @@ import (
 
 	consoleHelpers "github.com/Checkmarx/kics/internal/console/helpers"
 	"github.com/Checkmarx/kics/internal/constants"
+	"github.com/Checkmarx/kics/pkg/logger"
 	"github.com/rs/zerolog"
 	"github.com/rs/zerolog/log"
 	"github.com/spf13/viper"
@@ -23,7 +24,7 @@ type ConfigParameters struct {
 }
 
 func setupConfigFile(ctx context.Context, rootPath string) (bool, error) {
-	logger := log.Ctx(ctx)
+	logger := logger.FromContext(ctx)
 	configPath := filepath.Join(rootPath, constants.DefaultConfigFilename)
 	_, err := os.Stat(configPath)
 	if err != nil {

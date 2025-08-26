@@ -13,9 +13,9 @@ import (
 	"strings"
 	"time"
 
+	"github.com/Checkmarx/kics/pkg/logger"
 	"github.com/Checkmarx/kics/pkg/utils"
 	"github.com/pkg/errors"
-	"github.com/rs/zerolog/log"
 	appsv1 "k8s.io/api/apps/v1"
 	appsv1beta1 "k8s.io/api/apps/v1beta1"
 	appsv1beta2 "k8s.io/api/apps/v1beta2"
@@ -41,7 +41,7 @@ type K8sAPIOptions struct {
 const kuberneterPathLength = 3
 
 func (info *k8sAPICall) saveK8sResources(ctx context.Context, kind, k8sResourcesContent, apiVersionFolder string) {
-	logger := log.Ctx(ctx)
+	logger := logger.FromContext(ctx)
 	file := filepath.Join(apiVersionFolder, kind+"s"+".yaml")
 
 	f, err := os.OpenFile(filepath.Clean(file), os.O_WRONLY|os.O_CREATE|os.O_TRUNC, os.ModePerm)

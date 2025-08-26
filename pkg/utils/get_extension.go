@@ -12,13 +12,13 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/rs/zerolog/log"
+	"github.com/Checkmarx/kics/pkg/logger"
 	"golang.org/x/tools/godoc/util"
 )
 
 // GetExtension gets the extension of a file path
 func GetExtension(ctx context.Context, path string) (string, error) {
-	logger := log.Ctx(ctx)
+	logger := logger.FromContext(ctx)
 	targets := []string{"tfvars"}
 
 	// Get file information
@@ -60,7 +60,7 @@ func GetExtension(ctx context.Context, path string) (string, error) {
 }
 
 func isTextFile(ctx context.Context, path string) (bool, error) {
-	logger := log.Ctx(ctx)
+	logger := logger.FromContext(ctx)
 	info, err := os.Stat(path)
 	if err != nil {
 		logger.Error().Msgf("failed to get file info: %s", err)

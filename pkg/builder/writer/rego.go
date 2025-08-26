@@ -14,9 +14,9 @@ import (
 	"strings"
 
 	build "github.com/Checkmarx/kics/pkg/builder/model"
+	"github.com/Checkmarx/kics/pkg/logger"
 	"github.com/Checkmarx/kics/pkg/model"
 	"github.com/pkg/errors"
-	"github.com/rs/zerolog/log"
 )
 
 // RegoWriter represents the template for a Rego rule
@@ -133,7 +133,7 @@ func condition(ctx context.Context, r Block, c build.Condition) string {
 }
 
 func regoValueToString(ctx context.Context, i interface{}) string {
-	logger := log.Ctx(ctx)
+	logger := logger.FromContext(ctx)
 	switch v := i.(type) {
 	case bool:
 		if v {

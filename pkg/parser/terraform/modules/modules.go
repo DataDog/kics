@@ -11,11 +11,11 @@ import (
 	"strings"
 	"sync"
 
+	"github.com/Checkmarx/kics/pkg/logger"
 	"github.com/Checkmarx/kics/pkg/model"
 	"github.com/hashicorp/hcl/v2"
 	"github.com/hashicorp/hcl/v2/hclsyntax"
 	"github.com/hashicorp/hcl/v2/hclwrite"
-	"github.com/rs/zerolog/log"
 	"github.com/zclconf/go-cty/cty"
 )
 
@@ -54,7 +54,7 @@ func resolveModulePath(source string, rootDir string) string {
 
 // ParseTerraformModules parses HCL content and extracts module source/version, resolving locals/variables if possible.
 func ParseTerraformModules(ctx context.Context, files model.FileMetadatas) (map[string]ParsedModule, error) {
-	logger := log.Ctx(ctx)
+	logger := logger.FromContext(ctx)
 	modules := make(map[string]ParsedModule)
 	localsMap := make(map[string]string)
 	varsMap := make(map[string]string)
@@ -144,7 +144,7 @@ func ParseTerraformModules(ctx context.Context, files model.FileMetadatas) (map[
 }
 
 func validateModuleSource(ctx context.Context, absPath string) error {
-	logger := log.Ctx(ctx)
+	logger := logger.FromContext(ctx)
 	// Attempt to read the directory contents
 	entries, err := os.ReadDir(absPath)
 	if err != nil {
@@ -354,7 +354,7 @@ func DetectModuleSourceType(source string) (string, string) {
 }
 
 func ParseAllModuleVariables(ctx context.Context, modules map[string]ParsedModule, rootDir string) []ParsedModule {
-	logger := log.Ctx(ctx)
+	logger := logger.FromContext(ctx)
 	numWorkers := 4
 
 	input := make(chan ParsedModule)
@@ -412,7 +412,7 @@ func ParseAllModuleVariables(ctx context.Context, modules map[string]ParsedModul
 }
 
 func generateEquivalentMap(ctx context.Context, modulePath string) (map[string]ModuleAttributesInfo, error) {
-	logger := log.Ctx(ctx)
+	logger := logger.FromContext(ctx)
 	equivalentMap := make(map[string]ModuleAttributesInfo)
 	resourceTypesMap := make(map[string]map[string]bool)
 

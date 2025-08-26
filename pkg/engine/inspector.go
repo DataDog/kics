@@ -22,6 +22,7 @@ import (
 	"github.com/Checkmarx/kics/pkg/detector/helm"
 	"github.com/Checkmarx/kics/pkg/detector/terraform"
 	"github.com/Checkmarx/kics/pkg/engine/source"
+	"github.com/Checkmarx/kics/pkg/logger"
 	"github.com/Checkmarx/kics/pkg/model"
 	tfmodules "github.com/Checkmarx/kics/pkg/parser/terraform/modules"
 	"github.com/hashicorp/hcl/v2"
@@ -33,7 +34,6 @@ import (
 	"github.com/open-policy-agent/opa/topdown"
 	"github.com/open-policy-agent/opa/util"
 	"github.com/pkg/errors"
-	"github.com/rs/zerolog/log"
 	"github.com/zclconf/go-cty/cty"
 )
 
@@ -134,7 +134,7 @@ func NewInspector(
 	numWorkers int,
 	kicsComputeNewSimID bool,
 ) (*Inspector, error) {
-	logger := log.Ctx(ctx)
+	logger := logger.FromContext(ctx)
 	logger.Debug().Msg("engine.NewInspector()")
 
 	metrics.Metric.Start("get_queries")
@@ -198,7 +198,7 @@ func NewInspector(
 }
 
 func getPlatformLibraries(ctx context.Context, queriesSource source.QueriesSource, queries []model.QueryMetadata) map[string]source.RegoLibraries {
-	logger := log.Ctx(ctx)
+	logger := logger.FromContext(ctx)
 	supportedPlatforms := make(map[string]string)
 	for _, query := range queries {
 		supportedPlatforms[query.Platform] = ""
@@ -275,7 +275,7 @@ func (c *Inspector) Inspect(
 	baseScanPaths []string,
 	platforms []string,
 	currentQuery chan<- int64) ([]model.Vulnerability, error) {
-	logger := log.Ctx(ctx)
+	logger := logger.FromContext(ctx)
 	logger.Debug().Msg("engine.Inspect()")
 	combinedFiles := files.Combine(ctx, false)
 
@@ -415,7 +415,7 @@ func (c *Inspector) GetFailedQueries() map[string]error {
 }
 
 func (c *Inspector) doRun(ctx context.Context, qCtx *QueryContext) (vulns []model.Vulnerability, err error) {
-	logger := log.Ctx(ctx)
+	logger := logger.FromContext(ctx)
 	queryStart := time.Now()
 	timeoutCtx, cancel := context.WithTimeout(qCtx.Ctx, c.queryExecTimeout)
 	defer cancel()
@@ -507,7 +507,7 @@ func (c *Inspector) DecodeQueryResults(
 	ctxTimeout context.Context,
 	results rego.ResultSet,
 	queryDuration time.Duration) ([]model.Vulnerability, error) {
-	logger := log.Ctx(ctx)
+	logger := logger.FromContext(ctx)
 	if len(results) == 0 {
 		return nil, ErrNoResult
 	}
@@ -559,7 +559,7 @@ func (c *Inspector) DecodeQueryResults(
 }
 
 func getVulnerabilitiesFromQuery(ctx context.Context, qCtx *QueryContext, c *Inspector, queryResultItem interface{}, queryDuration time.Duration) (*model.Vulnerability, bool) {
-	logger := log.Ctx(ctx)
+	logger := logger.FromContext(ctx)
 	vulnerability, err := c.vb(ctx, qCtx, c.tracker, queryResultItem, c.detector, c.useOldSeverities, c.kicsComputeNewSimID, queryDuration)
 	if err != nil && err.Error() == ErrNoResult.Error() {
 		// Ignoring bad results
@@ -670,7 +670,7 @@ func prepareQueries(queries []model.QueryMetadata, commonLibrary source.RegoLibr
 
 // LoadQuery loads the query into memory so it can be freed when not used anymore
 func (q QueryLoader) LoadQuery(ctx context.Context, query *model.QueryMetadata, modules []tfmodules.ParsedModule) (*rego.PreparedEvalQuery, error) {
-	logger := log.Ctx(ctx)
+	logger := logger.FromContext(ctx)
 	opaQuery := rego.PreparedEvalQuery{}
 
 	platformGeneralQuery, ok := q.platformLibraries[query.Platform]
@@ -724,7 +724,7 @@ func (q QueryLoader) LoadQuery(ctx context.Context, query *model.QueryMetadata, 
 }
 
 func parseJsonencodeHCL(ctx context.Context, input string) (ast.Value, error) {
-	logger := log.Ctx(ctx)
+	logger := logger.FromContext(ctx)
 	input = strings.TrimSpace(input)
 
 	// Remove Terraform interpolation

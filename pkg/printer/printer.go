@@ -11,12 +11,12 @@ import (
 	"io"
 	"strings"
 
+	"github.com/Checkmarx/kics/pkg/logger"
 	"github.com/Checkmarx/kics/pkg/utils"
 
 	"github.com/Checkmarx/kics/pkg/model"
 	"github.com/gookit/color"
 	"github.com/rs/zerolog"
-	"github.com/rs/zerolog/log"
 	"github.com/spf13/pflag"
 )
 
@@ -78,7 +78,7 @@ func WordWrap(s, indentation string, limit int) string {
 
 // PrintResult prints on output the summary results
 func PrintResult(ctx context.Context, summary *model.Summary, printer *Printer, usingCustomQueries bool, sciInfo model.SCIInfo) error {
-	logger := log.Ctx(ctx)
+	logger := logger.FromContext(ctx)
 	logger.Debug().Msg("helpers.PrintResult()")
 	fmt.Printf("\n\n")
 
@@ -171,12 +171,12 @@ func PrintResult(ctx context.Context, summary *model.Summary, printer *Printer, 
 }
 
 func printSeverityCounter(ctx context.Context, severity string, counter int) {
-	logger := log.Ctx(ctx)
+	logger := logger.FromContext(ctx)
 	logger.Info().Msgf("%s: %d\n", severity, counter)
 }
 
 func printFiles(ctx context.Context, query *model.QueryResult, printer *Printer) {
-	logger := log.Ctx(ctx)
+	logger := logger.FromContext(ctx)
 	for fileIdx := range query.Files {
 		logger.Info().Msgf("\t%s %s:%s\n", printer.PrintBySev(fmt.Sprintf("[%d]:", fileIdx+1), string(query.Severity)),
 			query.Files[fileIdx].FileName, printer.Success.Sprint(query.Files[fileIdx].Line))

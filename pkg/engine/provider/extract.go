@@ -15,9 +15,9 @@ import (
 	"sync"
 
 	"github.com/Checkmarx/kics/pkg/kuberneter"
+	"github.com/Checkmarx/kics/pkg/logger"
 	"github.com/Checkmarx/kics/pkg/model"
 	"github.com/Checkmarx/kics/pkg/utils"
-	"github.com/rs/zerolog/log"
 
 	"github.com/hashicorp/go-getter"
 )
@@ -49,7 +49,7 @@ type getterStruct struct {
 // GetKuberneterSources uses Kubernetes API to download runtime resources
 // After Downloaded files kics scan the files as normal local files
 func GetKuberneterSources(ctx context.Context, source []string, destinationPath string) (ExtractedPath, error) {
-	logger := log.Ctx(ctx)
+	logger := logger.FromContext(ctx)
 	extrStruct := ExtractedPath{
 		Path:          []string{},
 		ExtractionMap: make(map[string]model.ExtractedPathObject),
@@ -76,7 +76,7 @@ func GetKuberneterSources(ctx context.Context, source []string, destinationPath 
 // It than extracts the files to be scanned. If the source given is not local, a temp dir
 // will be created where the files will be stored.
 func GetSources(ctx context.Context, source []string, downloadDir string) (ExtractedPath, error) {
-	// logger := log.Ctx(ctx)
+	// logger := logger.FromContext(ctx)
 	extrStruct := ExtractedPath{
 		Path:          []string{},
 		ExtractionMap: make(map[string]model.ExtractedPathObject),
@@ -125,7 +125,7 @@ func GetSources(ctx context.Context, source []string, downloadDir string) (Extra
 }
 
 func getPaths(ctx context.Context, g *getterStruct) (string, error) {
-	logger := log.Ctx(ctx)
+	logger := logger.FromContext(ctx)
 	if isEncrypted(ctx, g.source) {
 		err := errors.New("zip encrypted files are not supported")
 		logger.Err(err)
@@ -173,7 +173,7 @@ func getPaths(ctx context.Context, g *getterStruct) (string, error) {
 
 // check if the dst is a symbolic link
 func checkSymLink(ctx context.Context, getterDst, pathFile string) (string, bool) {
-	logger := log.Ctx(ctx)
+	logger := logger.FromContext(ctx)
 	var local bool
 	_, err := os.Stat(pathFile)
 	if err == nil { // check if file exist locally
@@ -217,7 +217,7 @@ func getFileInfo(info fs.FileInfo, dst, pathFile string) fs.FileInfo {
 }
 
 func isEncrypted(ctx context.Context, sourceFile string) bool {
-	logger := log.Ctx(ctx)
+	logger := logger.FromContext(ctx)
 	if filepath.Ext(sourceFile) != ".zip" {
 		return false
 	}

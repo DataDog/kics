@@ -16,8 +16,8 @@ import (
 	"strings"
 	"sync"
 
+	"github.com/Checkmarx/kics/pkg/logger"
 	"github.com/pkg/errors"
-	"github.com/rs/zerolog/log"
 	"sigs.k8s.io/controller-runtime/pkg/client"
 )
 
@@ -37,7 +37,7 @@ func Import(ctx context.Context, kuberneterPath, destinationPath string) (string
 
 // ImportWithClient allows injecting a custom k8s client function for testing
 func ImportWithClient(ctx context.Context, kuberneterPath, destinationPath string, clientFunc func(context.Context) (client.Client, error)) (string, error) {
-	logger := log.Ctx(ctx)
+	logger := logger.FromContext(ctx)
 	logger.Info().Msg("importing k8s cluster resources")
 
 	supportedKinds := buildSupportedKinds()
@@ -94,7 +94,7 @@ func (info *k8sAPICall) listK8sResources(ctx context.Context, idx int, supKinds 
 }
 
 func (info *k8sAPICall) listKinds(ctx context.Context, apiVersion string, kinds map[string]interface{}, namespace string, wg *sync.WaitGroup) {
-	logger := log.Ctx(ctx)
+	logger := logger.FromContext(ctx)
 	defer wg.Done()
 	sb := &strings.Builder{}
 

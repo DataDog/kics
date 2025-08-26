@@ -19,9 +19,9 @@ import (
 
 	"github.com/Checkmarx/kics/assets"
 	"github.com/Checkmarx/kics/internal/constants"
+	"github.com/Checkmarx/kics/pkg/logger"
 	"github.com/Checkmarx/kics/pkg/model"
 	"github.com/pkg/errors"
-	"github.com/rs/zerolog/log"
 )
 
 // FilesystemSource this type defines a struct with a path to a filesystem source of queries
@@ -52,7 +52,7 @@ const (
 
 // NewFilesystemSource initializes a NewFilesystemSource with source to queries and types of queries to load
 func NewFilesystemSource(ctx context.Context, source, types, cloudProviders []string, libraryPath string, experimentalQueries bool) *FilesystemSource {
-	logger := log.Ctx(ctx)
+	logger := logger.FromContext(ctx)
 	logger.Debug().Msg("source.NewFilesystemSource()")
 
 	if len(types) == 0 {
@@ -94,7 +94,7 @@ func ListSupportedCloudProviders() []string {
 }
 
 func getLibraryInDir(ctx context.Context, platform, libraryDirPath string) string {
-	logger := log.Ctx(ctx)
+	logger := logger.FromContext(ctx)
 	var libraryFilePath string
 	err := filepath.Walk(libraryDirPath, func(path string, info os.FileInfo, err error) error {
 		if err != nil {
@@ -117,7 +117,7 @@ func isDefaultLibrary(libraryPath string) bool {
 
 // GetPathToCustomLibrary - returns the libraries path for a given platform
 func GetPathToCustomLibrary(ctx context.Context, platform, libraryPathFlag string) string {
-	logger := log.Ctx(ctx)
+	logger := logger.FromContext(ctx)
 	libraryFilePath := kicsDefault
 
 	if !isDefaultLibrary(libraryPathFlag) {
@@ -135,7 +135,7 @@ func GetPathToCustomLibrary(ctx context.Context, platform, libraryPathFlag strin
 
 // GetQueryLibrary returns the library.rego for the platform passed in the argument
 func (s *FilesystemSource) GetQueryLibrary(ctx context.Context, platform string) (RegoLibraries, error) {
-	logger := log.Ctx(ctx)
+	logger := logger.FromContext(ctx)
 	library := GetPathToCustomLibrary(ctx, platform, s.Library)
 
 	if library == "" {
@@ -196,7 +196,7 @@ func (s *FilesystemSource) CheckCloudProvider(cloudProvider interface{}) bool {
 }
 
 func checkQueryInclude(ctx context.Context, id interface{}, includedQueries []string) bool {
-	logger := log.Ctx(ctx)
+	logger := logger.FromContext(ctx)
 	queryMetadataKey, ok := id.(string)
 	if !ok {
 		logger.Warn().
@@ -212,7 +212,7 @@ func checkQueryInclude(ctx context.Context, id interface{}, includedQueries []st
 }
 
 func checkQueryExcludeField(ctx context.Context, id interface{}, excludeQueries []string) bool {
-	logger := log.Ctx(ctx)
+	logger := logger.FromContext(ctx)
 	queryMetadataKey, ok := id.(string)
 	if !ok {
 		logger.Warn().
@@ -237,7 +237,7 @@ func checkQueryExclude(ctx context.Context, metadata map[string]interface{}, que
 // GetQueries walks a given filesource path returns all queries found in an array of
 // QueryMetadata struct
 func (s *FilesystemSource) GetQueries(ctx context.Context, queryParameters *QueryInspectorParameters) ([]model.QueryMetadata, error) {
-	logger := log.Ctx(ctx)
+	logger := logger.FromContext(ctx)
 	// queryDirs, err := s.iterateSources()
 	logger.Info().Msg("iterateEmbeddedQuerySources()")
 	dirs, err := s.iterateEmbeddedQuerySources(ctx)
@@ -283,7 +283,7 @@ func (s *FilesystemSource) iterateSources() ([]string, error) {
 }
 
 func getAllDirs(ctx context.Context, embedfs *embed.FS, path string) ([]string, error) {
-	logger := log.Ctx(ctx)
+	logger := logger.FromContext(ctx)
 	var out []string
 	err := fs.WalkDir(embedfs, ".", func(path string, d fs.DirEntry, err error) error {
 		if err != nil {
@@ -305,7 +305,7 @@ func getAllDirs(ctx context.Context, embedfs *embed.FS, path string) ([]string, 
 
 // iterate over the embedded query directory and read the respective queries
 func (s *FilesystemSource) iterateEmbeddedQuerySources(ctx context.Context) ([]string, error) {
-	logger := log.Ctx(ctx)
+	logger := logger.FromContext(ctx)
 	// dirEntries, err := queryDir.ReadDir(".")
 	// if err != nil {
 	// 	return nil, errors.Wrap(err, "failed to read embedded query directory")
@@ -342,7 +342,7 @@ func (s *FilesystemSource) iterateEmbeddedQuerySources(ctx context.Context) ([]s
 
 // iterateQueryDirs iterates all query directories and reads the respective queries
 func (s *FilesystemSource) iterateQueryDirs(ctx context.Context, queryDirs []string, queryParameters *QueryInspectorParameters) []model.QueryMetadata {
-	// logger := log.Ctx(ctx)
+	// logger := logger.FromContext(ctx)
 	queries := make([]model.QueryMetadata, 0, len(queryDirs))
 
 	for _, queryDir := range queryDirs {
@@ -416,7 +416,7 @@ func validateMetadata(metadata map[string]interface{}) (exist bool, field string
 // ReadQuery reads query's files for a given path and returns a QueryMetadata struct with it's
 // content
 func ReadQuery(ctx context.Context, queryDir string) (model.QueryMetadata, error) {
-	logger := log.Ctx(ctx)
+	logger := logger.FromContext(ctx)
 	queryContent, err := assets.GetEmbeddedQueryFile(ctx, path.Join(queryDir, QueryFileName))
 	// queryContent, err := os.ReadFile(filepath.Clean(path.Join(queryDir, QueryFileName)))
 	if err != nil {
@@ -456,7 +456,7 @@ func ReadQuery(ctx context.Context, queryDir string) (model.QueryMetadata, error
 
 // ReadMetadata read query's metadata file inside the query directory
 func ReadMetadata(ctx context.Context, queryDir string) (map[string]interface{}, error) {
-	logger := log.Ctx(ctx)
+	logger := logger.FromContext(ctx)
 	f, err := assets.GetEmbeddedQueryFile(ctx, filepath.Clean(path.Join(queryDir, MetadataFileName)))
 	// f, err := os.Open(filepath.Clean(path.Join(queryDir, MetadataFileName)))
 	if err != nil {
@@ -509,7 +509,7 @@ func getExperimental(experimental interface{}) bool {
 }
 
 func readInputData(ctx context.Context, inputDataPath string) (string, error) {
-	logger := log.Ctx(ctx)
+	logger := logger.FromContext(ctx)
 	inputData, err := assets.GetEmbeddedQueryFile(ctx, filepath.Clean(inputDataPath))
 	if err != nil {
 		if os.IsNotExist(err) {

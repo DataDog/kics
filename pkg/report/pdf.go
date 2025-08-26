@@ -13,12 +13,12 @@ import (
 	"time"
 
 	"github.com/Checkmarx/kics/internal/constants"
+	"github.com/Checkmarx/kics/pkg/logger"
 	"github.com/Checkmarx/kics/pkg/model"
 	"github.com/johnfercher/maroto/pkg/color"
 	"github.com/johnfercher/maroto/pkg/consts"
 	"github.com/johnfercher/maroto/pkg/pdf"
 	"github.com/johnfercher/maroto/pkg/props"
-	"github.com/rs/zerolog/log"
 )
 
 const (
@@ -294,7 +294,7 @@ func createFooterArea(m pdf.Maroto) {
 
 // PrintPdfReport creates a report file on the PDF format
 func PrintPdfReport(ctx context.Context, path, filename string, body interface{}, sciInfo model.SCIInfo) error {
-	logger := log.Ctx(ctx)
+	logger := logger.FromContext(ctx)
 	startTime := time.Now()
 	logger.Info().Msg("Started generating pdf report")
 

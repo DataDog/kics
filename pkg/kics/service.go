@@ -15,6 +15,7 @@ import (
 	"github.com/Checkmarx/kics/pkg/engine"
 	"github.com/Checkmarx/kics/pkg/engine/provider"
 	"github.com/Checkmarx/kics/pkg/engine/secrets"
+	"github.com/Checkmarx/kics/pkg/logger"
 	"github.com/Checkmarx/kics/pkg/minified"
 	"github.com/Checkmarx/kics/pkg/model"
 	"github.com/Checkmarx/kics/pkg/parser"
@@ -22,7 +23,6 @@ import (
 
 	"github.com/Checkmarx/kics/pkg/utils"
 	"github.com/pkg/errors"
-	"github.com/rs/zerolog/log"
 )
 
 const (
@@ -74,7 +74,7 @@ func (s *Service) PrepareSources(ctx context.Context,
 	openAPIResolveReferences bool,
 	maxResolverDepth int,
 	wg *sync.WaitGroup, errCh chan<- error) {
-	logger := log.Ctx(ctx)
+	logger := logger.FromContext(ctx)
 	defer wg.Done()
 	// CxSAST query under review
 	data := make([]byte, mbConst)
@@ -100,7 +100,7 @@ func (s *Service) StartScan(
 	errCh chan<- error,
 	wg *sync.WaitGroup,
 	currentQuery chan<- int64) {
-	logger := log.Ctx(ctx)
+	logger := logger.FromContext(ctx)
 	logger.Debug().Msg("service.StartScan()")
 	defer wg.Done()
 
@@ -199,7 +199,7 @@ func (s *Service) saveToFile(ctx context.Context, file *model.FileMetadata) {
 
 // PrepareScanDocument removes _kics_lines from payload and parses json filters
 func PrepareScanDocument(ctx context.Context, body map[string]interface{}, kind model.FileKind) map[string]interface{} {
-	logger := log.Ctx(ctx)
+	logger := logger.FromContext(ctx)
 	var bodyMap map[string]interface{}
 	j, err := json.Marshal(body)
 	if err != nil {

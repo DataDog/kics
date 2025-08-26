@@ -15,7 +15,7 @@ import (
 	"path/filepath"
 	"regexp"
 
-	"github.com/rs/zerolog/log"
+	"github.com/Checkmarx/kics/pkg/logger"
 )
 
 type certInfo struct {
@@ -68,7 +68,7 @@ func getCertificateInfo(filePath string) (certInfo, error) {
 
 // AddCertificateInfo gets and adds certificate information of a certificate file
 func AddCertificateInfo(ctx context.Context, path, content string) map[string]interface{} {
-	logger := log.Ctx(ctx)
+	logger := logger.FromContext(ctx)
 	var filePath string
 
 	_, err := os.Stat(content)

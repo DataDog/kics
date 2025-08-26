@@ -12,9 +12,9 @@ import (
 	"strings"
 	"time"
 
+	"github.com/Checkmarx/kics/pkg/logger"
 	"github.com/Checkmarx/kics/pkg/model"
 	"github.com/aws/aws-sdk-go-v2/aws"
-	"github.com/rs/zerolog/log"
 )
 
 // AwsAccountInfo contains all the relevant information of the user AWS account
@@ -71,7 +71,7 @@ type Compliance struct {
 
 // BuildASFF builds the ASFF report
 func BuildASFF(ctx context.Context, summary *model.Summary) []AwsSecurityFinding {
-	logger := log.Ctx(ctx)
+	logger := logger.FromContext(ctx)
 	findings := []AwsSecurityFinding{}
 
 	awsAccountInfo := getAwsAccountInfo()

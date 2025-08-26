@@ -11,6 +11,7 @@ import (
 	"path/filepath"
 	"regexp"
 
+	"github.com/Checkmarx/kics/pkg/logger"
 	"github.com/Checkmarx/kics/pkg/model"
 	"github.com/Checkmarx/kics/pkg/parser/terraform/comment"
 	"github.com/Checkmarx/kics/pkg/parser/terraform/converter"
@@ -19,7 +20,6 @@ import (
 	"github.com/hashicorp/hcl/v2"
 	"github.com/hashicorp/hcl/v2/hclsyntax"
 	"github.com/pkg/errors"
-	"github.com/rs/zerolog/log"
 	ctyjson "github.com/zclconf/go-cty/cty/json"
 )
 
@@ -182,7 +182,7 @@ func parseFile(filename string, shouldReplaceDataSource bool) (*hcl.File, error)
 
 // Parse execute parser for the content in a file
 func (p *Parser) Parse(ctx context.Context, path string, content []byte) ([]model.Document, []int, error) {
-	logger := log.Ctx(ctx)
+	logger := logger.FromContext(ctx)
 	file, diagnostics := hclsyntax.ParseConfig(content, filepath.Base(path), hcl.Pos{Byte: 0, Line: 1, Column: 1})
 	defer func() {
 		if r := recover(); r != nil {

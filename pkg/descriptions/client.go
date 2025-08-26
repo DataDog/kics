@@ -18,8 +18,8 @@ import (
 
 	"github.com/Checkmarx/kics/internal/constants"
 	descModel "github.com/Checkmarx/kics/pkg/descriptions/model"
+	"github.com/Checkmarx/kics/pkg/logger"
 	"github.com/Checkmarx/kics/pkg/model"
-	"github.com/rs/zerolog/log"
 )
 
 var (
@@ -61,7 +61,7 @@ type Client struct {
 
 // CheckConnection - checks if the endpoint is reachable
 func (c *Client) CheckConnection(ctx context.Context) error {
-	logger := log.Ctx(ctx)
+	logger := logger.FromContext(ctx)
 	baseURL, err := getBaseURL(ctx)
 	if err != nil {
 		return err
@@ -87,7 +87,7 @@ func (c *Client) CheckConnection(ctx context.Context) error {
 
 // CheckLatestVersion - Check if using KICS latest version from endpoint
 func (c *Client) CheckLatestVersion(ctx context.Context, version string) (model.Version, error) {
-	logger := log.Ctx(ctx)
+	logger := logger.FromContext(ctx)
 	baseURL, err := getBaseURL(ctx)
 	if err != nil {
 		return model.Version{}, err
@@ -136,7 +136,7 @@ func (c *Client) CheckLatestVersion(ctx context.Context, version string) (model.
 
 // RequestDescriptions - gets descriptions from endpoint
 func (c *Client) RequestDescriptions(ctx context.Context, descriptionIDs []string) (map[string]descModel.CISDescriptions, error) {
-	logger := log.Ctx(ctx)
+	logger := logger.FromContext(ctx)
 	baseURL, err := getBaseURL(ctx)
 	if err != nil {
 		logger.Debug().Msg("Unable to get baseURL")
@@ -200,7 +200,7 @@ func doRequest(request *http.Request) (*http.Response, error) {
 }
 
 func getBaseURL(ctx context.Context) (string, error) {
-	logger := log.Ctx(ctx)
+	logger := logger.FromContext(ctx)
 	var rtnBaseURL string
 	urlFromEnv := os.Getenv("KICS_DESCRIPTIONS_ENDPOINT")
 	if constants.BaseURL == "" && urlFromEnv == "" {

@@ -13,6 +13,7 @@ import (
 
 	"github.com/Checkmarx/kics/pkg/engine"
 	"github.com/Checkmarx/kics/pkg/kics"
+	"github.com/Checkmarx/kics/pkg/logger"
 	"github.com/Checkmarx/kics/pkg/minified"
 	"github.com/Checkmarx/kics/pkg/model"
 	"github.com/Checkmarx/kics/pkg/scan"
@@ -28,7 +29,6 @@ import (
 	yamlParser "github.com/Checkmarx/kics/pkg/parser/yaml"
 	"github.com/Checkmarx/kics/pkg/utils"
 	"github.com/open-policy-agent/opa/rego"
-	"github.com/rs/zerolog/log"
 )
 
 type runQueryInfo struct {
@@ -46,7 +46,7 @@ func scanTmpFile(
 	remediated []byte,
 	openAPIResolveReferences bool,
 	maxResolverDepth int) ([]model.Vulnerability, error) {
-	logger := log.Ctx(ctx)
+	logger := logger.FromContext(ctx)
 	// get payload
 	files, err := getPayload(ctx, tmpFile, remediated, openAPIResolveReferences, maxResolverDepth)
 
@@ -94,7 +94,7 @@ func scanTmpFile(
 
 // getPayload gets the payload of a file
 func getPayload(ctx context.Context, filePath string, content []byte, openAPIResolveReferences bool, maxResolverDepth int) (model.FileMetadatas, error) {
-	logger := log.Ctx(ctx)
+	logger := logger.FromContext(ctx)
 	ext, _ := utils.GetExtension(ctx, filePath)
 	var p []*parser.Parser
 	var err error
@@ -160,7 +160,7 @@ func getPayload(ctx context.Context, filePath string, content []byte, openAPIRes
 
 // runQuery runs a query and returns its results
 func runQuery(ctx context.Context, r *runQueryInfo) []model.Vulnerability {
-	logger := log.Ctx(ctx)
+	logger := logger.FromContext(ctx)
 	queryStart := time.Now()
 	queryExecTimeout := time.Duration(60) * time.Second
 
@@ -200,7 +200,7 @@ func runQuery(ctx context.Context, r *runQueryInfo) []model.Vulnerability {
 }
 
 func initScan(ctx context.Context, queryID string) (*engine.Inspector, error) {
-	logger := log.Ctx(ctx)
+	logger := logger.FromContext(ctx)
 	scanParams := &scan.Parameters{
 		CloudProvider:               []string{""},
 		DisableFullDesc:             false,
@@ -290,7 +290,7 @@ func initScan(ctx context.Context, queryID string) (*engine.Inspector, error) {
 }
 
 func loadQuery(ctx context.Context, inspector *engine.Inspector, queryID string) (*engine.PreparedQuery, error) {
-	logger := log.Ctx(ctx)
+	logger := logger.FromContext(ctx)
 	if len(inspector.QueryLoader.QueriesMetadata) == 1 {
 		queryOpa, err := inspector.QueryLoader.LoadQuery(context.Background(), &inspector.QueryLoader.QueriesMetadata[0], nil)
 

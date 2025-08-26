@@ -16,11 +16,11 @@ import (
 	consoleHelpers "github.com/Checkmarx/kics/internal/console/helpers"
 	"github.com/Checkmarx/kics/pkg/analyzer"
 	"github.com/Checkmarx/kics/pkg/engine/provider"
+	"github.com/Checkmarx/kics/pkg/logger"
 	"github.com/Checkmarx/kics/pkg/model"
 	consolePrinter "github.com/Checkmarx/kics/pkg/printer"
 	"github.com/Checkmarx/kics/pkg/utils"
 	"github.com/pkg/errors"
-	"github.com/rs/zerolog/log"
 )
 
 var (
@@ -28,7 +28,7 @@ var (
 )
 
 func (c *Client) prepareAndAnalyzePaths(ctx context.Context) (provider.ExtractedPath, error) {
-	logger := log.Ctx(ctx)
+	logger := logger.FromContext(ctx)
 	queryExPaths, libExPaths, err := c.preparePaths(ctx)
 	if err != nil {
 		return provider.ExtractedPath{}, err
@@ -119,7 +119,7 @@ func (c *Client) preparePaths(ctx context.Context) (queryExtPath, libExtPath pro
 
 // GetQueryPath gets all the queries paths
 func (c *Client) GetQueryPath(ctx context.Context) (provider.ExtractedPath, error) {
-	logger := log.Ctx(ctx)
+	logger := logger.FromContext(ctx)
 	queriesPath := make([]string, 0)
 	extPath := provider.ExtractedPath{
 		Path:          []string{},
@@ -166,7 +166,7 @@ func (c *Client) getLibraryPath(ctx context.Context) (provider.ExtractedPath, er
 }
 
 func resolvePath(ctx context.Context, flagContent, flagName, downloadDir string) (provider.ExtractedPath, error) {
-	logger := log.Ctx(ctx)
+	logger := logger.FromContext(ctx)
 	extractedPath, errExtractPath := provider.GetSources(ctx, []string{flagContent}, downloadDir)
 	if errExtractPath != nil {
 		return extractedPath, errExtractPath
@@ -184,7 +184,7 @@ func resolvePath(ctx context.Context, flagContent, flagName, downloadDir string)
 // and which files should be ignored, it then updates the types and exclude flags variables
 // with the results found
 func analyzePaths(ctx context.Context, a *analyzer.Analyzer) (model.AnalyzedPaths, error) {
-	logger := log.Ctx(ctx)
+	logger := logger.FromContext(ctx)
 	var err error
 	var pathsFlag model.AnalyzedPaths
 	excluded := make([]string, 0)
@@ -204,7 +204,7 @@ func analyzePaths(ctx context.Context, a *analyzer.Analyzer) (model.AnalyzedPath
 }
 
 func logLoadingQueriesType(ctx context.Context, types []string) {
-	logger := log.Ctx(ctx)
+	logger := logger.FromContext(ctx)
 	if len(types) == 0 {
 		logger.Info().Msg("No queries were loaded")
 		return
@@ -225,7 +225,7 @@ func extractPathType(paths []string) (regular, kuberneter []string) {
 }
 
 func deleteExtractionFolder(ctx context.Context, extractionMap map[string]model.ExtractedPathObject) {
-	logger := log.Ctx(ctx)
+	logger := logger.FromContext(ctx)
 	for extractionFile := range extractionMap {
 		if strings.Contains(extractionFile, "kics-extract-kuberneter") {
 			continue
@@ -253,7 +253,7 @@ func usingCustomQueries(queriesPath []string) bool {
 
 // printVersionCheck - Prints and logs warning if not using KICS latest version
 func printVersionCheck(ctx context.Context, customPrint *consolePrinter.Printer, s *model.Summary) {
-	logger := log.Ctx(ctx)
+	logger := logger.FromContext(ctx)
 	if !s.LatestVersion.Latest {
 		message := fmt.Sprintf("A new version 'v%s' of KICS is available, please consider updating", s.LatestVersion.LatestVersionTag)
 
@@ -263,7 +263,7 @@ func printVersionCheck(ctx context.Context, customPrint *consolePrinter.Printer,
 }
 
 func getTotalFiles(ctx context.Context, paths []string) int {
-	logger := log.Ctx(ctx)
+	logger := logger.FromContext(ctx)
 	files := 0
 	for _, path := range paths {
 		if err := filepath.Walk(path, func(path string, info os.FileInfo, err error) error {

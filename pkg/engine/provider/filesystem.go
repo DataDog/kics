@@ -16,10 +16,10 @@ import (
 	"sync"
 	"syscall"
 
+	"github.com/Checkmarx/kics/pkg/logger"
 	"github.com/Checkmarx/kics/pkg/model"
 	"github.com/Checkmarx/kics/pkg/utils"
 	"github.com/pkg/errors"
-	"github.com/rs/zerolog/log"
 	"github.com/yargevad/filepathx"
 )
 
@@ -39,7 +39,7 @@ var (
 
 // NewFileSystemSourceProvider initializes a FileSystemSourceProvider with path and files that will be ignored
 func NewFileSystemSourceProvider(ctx context.Context, paths, excludes []string) (*FileSystemSourceProvider, error) {
-	logger := log.Ctx(ctx)
+	logger := logger.FromContext(ctx)
 	logger.Debug().Msgf("provider.NewFileSystemSourceProvider()")
 	ex := make(map[string][]os.FileInfo, len(excludes))
 	osPaths := make([]string, len(paths))
@@ -65,7 +65,7 @@ func NewFileSystemSourceProvider(ctx context.Context, paths, excludes []string) 
 
 // AddExcluded add new excluded files to the File System Source Provider
 func (s *FileSystemSourceProvider) AddExcluded(ctx context.Context, excludePaths []string) error {
-	logger := log.Ctx(ctx)
+	logger := logger.FromContext(ctx)
 	for _, excludePath := range excludePaths {
 		info, err := os.Stat(excludePath)
 		if err != nil {
@@ -91,7 +91,7 @@ func (s *FileSystemSourceProvider) AddExcluded(ctx context.Context, excludePaths
 
 // GetExcludePaths gets all the files that should be excluded
 func GetExcludePaths(ctx context.Context, pathExpressions string) ([]string, error) {
-	logger := log.Ctx(ctx)
+	logger := logger.FromContext(ctx)
 	if strings.ContainsAny(pathExpressions, "*?[") {
 		info, err := filepathx.Glob(pathExpressions)
 		if err != nil {
@@ -110,7 +110,7 @@ func (s *FileSystemSourceProvider) GetBasePaths() []string {
 
 // ignoreDamagedFiles checks whether we should ignore a damaged file from a scan or not.
 func ignoreDamagedFiles(ctx context.Context, path string) bool {
-	logger := log.Ctx(ctx)
+	logger := logger.FromContext(ctx)
 	shouldIgnoreFile := false
 	fileInfo, err := os.Lstat(path)
 	if err != nil {
@@ -162,7 +162,7 @@ func (s *FileSystemSourceProvider) GetSources(ctx context.Context,
 
 func (s *FileSystemSourceProvider) walkDir(ctx context.Context, scanPath string, resolved bool,
 	sink Sink, resolverSink ResolverSink, extensions model.Extensions) error {
-	logger := log.Ctx(ctx)
+	logger := logger.FromContext(ctx)
 	return filepath.Walk(scanPath, func(path string, info os.FileInfo, err error) error {
 		if err != nil {
 			return err
@@ -241,7 +241,7 @@ func closeFile(file *os.File, info os.FileInfo) {
 
 func (s *FileSystemSourceProvider) checkConditions(ctx context.Context, info os.FileInfo, extensions model.Extensions,
 	path string, resolved bool) (bool, error) {
-	logger := log.Ctx(ctx)
+	logger := logger.FromContext(ctx)
 	s.mu.RLock()
 	defer s.mu.RUnlock()
 

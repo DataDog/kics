@@ -16,15 +16,15 @@ import (
 
 	consoleHelpers "github.com/Checkmarx/kics/internal/console/helpers"
 	"github.com/Checkmarx/kics/pkg/engine/provider"
+	"github.com/Checkmarx/kics/pkg/logger"
 	"github.com/Checkmarx/kics/pkg/model"
 	consolePrinter "github.com/Checkmarx/kics/pkg/printer"
 	"github.com/Checkmarx/kics/pkg/progress"
 	"github.com/Checkmarx/kics/pkg/report"
-	"github.com/rs/zerolog/log"
 )
 
 func (c *Client) getSummary(ctx context.Context, results []model.Vulnerability, end time.Time, pathParameters model.PathParameters) model.Summary {
-	// logger := log.Ctx(ctx)
+	// logger := logger.FromContext(ctx)
 	counters := model.Counters{
 		ScannedFiles:           c.Tracker.FoundFiles,
 		ScannedFilesLines:      c.Tracker.FoundCountLines,
@@ -71,7 +71,7 @@ func (c *Client) resolveOutputs(
 	printer *consolePrinter.Printer,
 	proBarBuilder progress.PbBuilder,
 ) error {
-	logger := log.Ctx(ctx)
+	logger := logger.FromContext(ctx)
 	logger.Debug().Msg("console.resolveOutputs()")
 
 	usingCustomQueries := usingCustomQueries(c.ScanParams.QueriesPath)
@@ -100,7 +100,7 @@ func (c *Client) resolveOutputs(
 }
 
 func printOutput(ctx context.Context, outputPath, filename string, body interface{}, formats []string, proBarBuilder progress.PbBuilder, sciInfo model.SCIInfo) error {
-	logger := log.Ctx(ctx)
+	logger := logger.FromContext(ctx)
 	logger.Debug().Msg("console.printOutput()")
 	if outputPath == "" {
 		return nil
@@ -118,7 +118,7 @@ func printOutput(ctx context.Context, outputPath, filename string, body interfac
 
 // postScan is responsible for the output results
 func (c *Client) postScan(ctx context.Context, scanResults *Results) (ScanMetadata, error) {
-	logger := log.Ctx(ctx)
+	logger := logger.FromContext(ctx)
 	metadata := ScanMetadata{}
 	if scanResults == nil {
 		logger.Info().Msg("No files were scanned")

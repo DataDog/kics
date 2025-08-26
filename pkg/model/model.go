@@ -12,7 +12,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/rs/zerolog/log"
+	"github.com/Checkmarx/kics/pkg/logger"
 )
 
 // Constants to describe what kind of file refers
@@ -292,7 +292,7 @@ type Document map[string]interface{}
 
 // Combine merge documents from FileMetadatas using the ID as reference for Document ID and FileName as reference for file
 func (m FileMetadatas) Combine(ctx context.Context, lineInfo bool) Documents {
-	logger := log.Ctx(ctx)
+	logger := logger.FromContext(ctx)
 	documents := Documents{Documents: make([]Document, 0, len(m))}
 	for i := 0; i < len(m); i++ {
 		_, ignore := m[i].Commands["ignore"]

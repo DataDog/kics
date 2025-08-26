@@ -11,8 +11,8 @@ import (
 	"strconv"
 	"strings"
 
+	"github.com/Checkmarx/kics/pkg/logger"
 	"github.com/Checkmarx/kics/pkg/model"
-	"github.com/rs/zerolog/log"
 )
 
 const (
@@ -25,7 +25,7 @@ type defaultDetectLine struct {
 // DetectLine searches vulnerability line if kindDetectLine is not in detectors
 func (d defaultDetectLine) DetectLine(ctx context.Context, file *model.FileMetadata, searchKey string,
 	outputLines int) model.VulnerabilityLines {
-	logger := log.Ctx(ctx)
+	logger := logger.FromContext(ctx)
 	detector := &DefaultDetectLineResponse{
 		CurrentLine:     0,
 		IsBreak:         false,

@@ -13,10 +13,10 @@ import (
 	"strings"
 
 	"github.com/Checkmarx/kics/pkg/detector"
+	"github.com/Checkmarx/kics/pkg/logger"
 	"github.com/Checkmarx/kics/pkg/model"
 	"github.com/hashicorp/hcl/v2"
 	"github.com/hashicorp/hcl/v2/hclsyntax"
-	"github.com/rs/zerolog/log"
 )
 
 type DetectKindLine struct{}
@@ -25,7 +25,7 @@ const undetectedVulnerabilityLine = -1
 
 // DetectLine searches vulnerability line in terraform files
 func (d DetectKindLine) DetectLine(ctx context.Context, file *model.FileMetadata, searchKey string, outputLines int) model.VulnerabilityLines {
-	logger := log.Ctx(ctx)
+	logger := logger.FromContext(ctx)
 	searchKey = sanitizeSearchKey(searchKey)
 
 	detection := &detector.DefaultDetectLineResponse{
@@ -98,7 +98,7 @@ func sanitizeSearchKey(key string) string {
 }
 
 func locateTerraformBlock(ctx context.Context, src []byte, identifyingLine int, strLines []string) (model.VulnerabilityLines, error) {
-	logger := log.Ctx(ctx)
+	logger := logger.FromContext(ctx)
 	filePath := "temp.tf"
 
 	if identifyingLine <= 0 || identifyingLine > len(strLines) {

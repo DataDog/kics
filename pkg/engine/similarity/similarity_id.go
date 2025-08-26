@@ -12,12 +12,12 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/rs/zerolog/log"
+	"github.com/Checkmarx/kics/pkg/logger"
 )
 
 // ComputeSimilarityID This function receives four string parameters and computes a sha256 hash
 func ComputeSimilarityID(ctx context.Context, basePaths []string, filePath, queryID, searchKey, searchValue string) (*string, error) {
-	logger := log.Ctx(ctx)
+	logger := logger.FromContext(ctx)
 	basePath := ""
 	for _, path := range basePaths {
 		if strings.Contains(filepath.ToSlash(filePath), filepath.ToSlash(path)) {

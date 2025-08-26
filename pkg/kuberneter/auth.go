@@ -15,8 +15,8 @@ import (
 
 	b64 "encoding/base64"
 
+	"github.com/Checkmarx/kics/pkg/logger"
 	"github.com/pkg/errors"
-	"github.com/rs/zerolog/log"
 	"k8s.io/client-go/rest"
 	"k8s.io/client-go/tools/clientcmd"
 	"sigs.k8s.io/controller-runtime/pkg/client"
@@ -28,7 +28,7 @@ type K8sConfig struct {
 }
 
 func getK8sClient(ctx context.Context) (client.Client, error) {
-	logger := log.Ctx(ctx)
+	logger := logger.FromContext(ctx)
 	// authentication through k8s config file
 	if os.Getenv("K8S_CONFIG_FILE") != "" {
 		config, err := clientcmd.BuildConfigFromFlags("", os.Getenv("K8S_CONFIG_FILE"))
@@ -75,7 +75,7 @@ func getK8sClient(ctx context.Context) (client.Client, error) {
 }
 
 func (c *K8sConfig) hasCertificateAuthority(ctx context.Context) bool {
-	logger := log.Ctx(ctx)
+	logger := logger.FromContext(ctx)
 	if os.Getenv("K8S_CA_FILE") != "" {
 		c.Config.TLSClientConfig.CAFile = os.Getenv("K8S_CA_FILE")
 		return true
@@ -109,7 +109,7 @@ func (c *K8sConfig) hasServiceAccountToken() bool {
 }
 
 func (c *K8sConfig) hasClientCertificate(ctx context.Context) bool {
-	logger := log.Ctx(ctx)
+	logger := logger.FromContext(ctx)
 	hasCert := false
 
 	if os.Getenv("K8S_CERT_FILE") != "" {

@@ -12,11 +12,11 @@ import (
 	"regexp"
 	"sort"
 
+	"github.com/Checkmarx/kics/pkg/logger"
 	"github.com/Checkmarx/kics/pkg/minified"
 	"github.com/Checkmarx/kics/pkg/model"
 	"github.com/Checkmarx/kics/pkg/utils"
 	"github.com/google/uuid"
-	"github.com/rs/zerolog/log"
 )
 
 func (s *Service) resolverSink(
@@ -24,7 +24,7 @@ func (s *Service) resolverSink(
 	filename, scanID string,
 	openAPIResolveReferences bool,
 	maxResolverDepth int) ([]string, error) {
-	logger := log.Ctx(ctx)
+	logger := logger.FromContext(ctx)
 	kind := s.Resolver.GetType(filename)
 	if kind == model.KindCOMMON {
 		return []string{}, nil

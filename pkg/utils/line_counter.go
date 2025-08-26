@@ -13,12 +13,12 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/rs/zerolog/log"
+	"github.com/Checkmarx/kics/pkg/logger"
 )
 
 // LineCounter get the number of lines of a given file
 func LineCounter(ctx context.Context, path string) (int, error) {
-	logger := log.Ctx(ctx)
+	logger := logger.FromContext(ctx)
 	file, err := os.Open(filepath.Clean(path))
 	if err != nil {
 		return 0, err

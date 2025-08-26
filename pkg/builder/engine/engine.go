@@ -13,10 +13,10 @@ import (
 	build "github.com/Checkmarx/kics/pkg/builder/model"
 	commentParser "github.com/Checkmarx/kics/pkg/builder/parser/comment"
 	tagParser "github.com/Checkmarx/kics/pkg/builder/parser/tag"
+	"github.com/Checkmarx/kics/pkg/logger"
 	"github.com/Checkmarx/kics/pkg/model"
 	"github.com/hashicorp/hcl/v2"
 	"github.com/hashicorp/hcl/v2/hclsyntax"
-	"github.com/rs/zerolog/log"
 	"github.com/zclconf/go-cty/cty"
 	ctyConvert "github.com/zclconf/go-cty/cty/convert"
 )
@@ -31,7 +31,7 @@ type Engine struct {
 
 // Run parses files and execute engine.Run
 func Run(ctx context.Context, src []byte, filename string) ([]build.Rule, error) {
-	logger := log.Ctx(ctx)
+	logger := logger.FromContext(ctx)
 	cp, err := commentParser.NewParser(src, filename)
 	if err != nil {
 		return nil, err
@@ -147,7 +147,7 @@ func (e *Engine) walkAttribute(ctx context.Context, attr *hclsyntax.Attribute, w
 
 // ExpToString converts an expression into a string
 func (e *Engine) ExpToString(ctx context.Context, expr hclsyntax.Expression) (string, error) {
-	logger := log.Ctx(ctx)
+	logger := logger.FromContext(ctx)
 	switch t := expr.(type) {
 	case *hclsyntax.LiteralValueExpr:
 		s, err := ctyConvert.Convert(t.Val, cty.String)
@@ -230,7 +230,7 @@ func (e *Engine) checkComment(ctx context.Context, rg hcl.Range, walkHistory []b
 }
 
 func (e *Engine) addRule(ctx context.Context, walkHistory []build.PathItem, comment commentParser.Comment, actualValue *string) {
-	logger := log.Ctx(ctx)
+	logger := logger.FromContext(ctx)
 	tags, err := tagParser.Parse(ctx, comment.Value(), model.AllIssueTypesAsString)
 	if err != nil {
 		logger.Err(err).Msgf("Line %d: failed to parse comment '%s'", comment.Line(), comment.Value())

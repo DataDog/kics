@@ -12,9 +12,9 @@ import (
 	"os"
 	"strings"
 
+	"github.com/Checkmarx/kics/pkg/logger"
 	"github.com/Checkmarx/kics/pkg/model"
 	"github.com/Checkmarx/kics/pkg/utils"
-	"github.com/rs/zerolog/log"
 )
 
 type kindParser interface {
@@ -35,7 +35,7 @@ type Builder struct {
 
 // NewBuilder creates a new Builder's reference
 func NewBuilder(ctx context.Context) *Builder {
-	logger := log.Ctx(ctx)
+	logger := logger.FromContext(ctx)
 	logger.Debug().Msg("parser.NewBuilder()")
 	return &Builder{}
 }
@@ -137,7 +137,7 @@ func (c *Parser) Parse(
 	fileContent []byte,
 	openAPIResolveReferences, isMinified bool,
 	maxResolverDepth int) (ParsedDocument, error) {
-	logger := log.Ctx(ctx)
+	logger := logger.FromContext(ctx)
 	fileContent = utils.DecryptAnsibleVault(ctx, fileContent, os.Getenv("ANSIBLE_VAULT_PASSWORD_FILE"))
 
 	if c.isValidExtension(ctx, filePath) {

@@ -12,12 +12,12 @@ import (
 	"path/filepath"
 
 	"github.com/Checkmarx/kics/pkg/builder/engine"
+	"github.com/Checkmarx/kics/pkg/logger"
 	"github.com/Checkmarx/kics/pkg/parser/terraform/converter"
 	"github.com/Checkmarx/kics/pkg/parser/terraform/functions"
 	"github.com/hashicorp/hcl/v2"
 	"github.com/hashicorp/hcl/v2/hcldec"
 	"github.com/hashicorp/hcl/v2/hclsyntax"
-	"github.com/rs/zerolog/log"
 	"github.com/zclconf/go-cty/cty"
 	"github.com/zclconf/go-cty/cty/gocty"
 	ctyjson "github.com/zclconf/go-cty/cty/json"
@@ -78,7 +78,7 @@ type convertedPolicy struct {
 }
 
 func getDataSourcePolicy(ctx context.Context, currentPath string, inputVariables converter.VariableMap) converter.VariableMap {
-	logger := log.Ctx(ctx)
+	logger := logger.FromContext(ctx)
 	tfFiles, err := filepath.Glob(filepath.Join(currentPath, "*.tf"))
 	if err != nil {
 		logger.Error().Msg("Error getting .tf files to parse data source")
@@ -121,7 +121,7 @@ func getDataSourcePolicy(ctx context.Context, currentPath string, inputVariables
 }
 
 func decodeDataSourcePolicy(ctx context.Context, value cty.Value) dataSourcePolicy {
-	logger := log.Ctx(ctx)
+	logger := logger.FromContext(ctx)
 	jsonified, err := ctyjson.Marshal(value, cty.DynamicPseudoType)
 	if err != nil {
 		logger.Error().Msgf("Error trying to decode data source block: %s", err)
@@ -222,7 +222,7 @@ func getStatementSpec() *hcldec.BlockListSpec {
 }
 
 func parseDataSourceBody(ctx context.Context, body *hclsyntax.Body, inputVariables converter.VariableMap) string {
-	logger := log.Ctx(ctx)
+	logger := logger.FromContext(ctx)
 	dataSourceSpec := &hcldec.ObjectSpec{
 		"id": &hcldec.AttrSpec{
 			Name:     "id",
@@ -317,7 +317,7 @@ func resolveDataResources(ctx context.Context, body *hclsyntax.Body) {
 }
 
 func resolveTuple(ctx context.Context, expr hclsyntax.Expression) {
-	logger := log.Ctx(ctx)
+	logger := logger.FromContext(ctx)
 	e := engine.Engine{}
 	if v, ok := expr.(*hclsyntax.TupleConsExpr); ok {
 		for i, ex := range v.Exprs {

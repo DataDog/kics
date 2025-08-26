@@ -18,10 +18,10 @@ import (
 	"strings"
 	"time"
 
+	"github.com/Checkmarx/kics/pkg/logger"
 	"github.com/Checkmarx/kics/pkg/model"
 	reportModel "github.com/Checkmarx/kics/pkg/report/model"
 	"github.com/gocarina/gocsv"
-	"github.com/rs/zerolog/log"
 )
 
 var (
@@ -68,12 +68,12 @@ func getCurrentTime() string {
 }
 
 func fileCreationReport(ctx context.Context, path, filename string) {
-	logger := log.Ctx(ctx)
+	logger := logger.FromContext(ctx)
 	logger.Info().Str("fileName", filename).Msgf("Results saved to file %s", path)
 }
 
 func closeFile(ctx context.Context, path, filename string, file *os.File) {
-	logger := log.Ctx(ctx)
+	logger := logger.FromContext(ctx)
 	err := file.Close()
 	if err != nil {
 		logger.Err(err).Msgf("Failed to close file %s", path)
@@ -96,7 +96,7 @@ func getPlatforms(queries model.QueryResultSlice) string {
 
 // ExportJSONReport - encodes a given body to a JSON file in a given filepath
 func ExportJSONReport(ctx context.Context, path, filename string, body interface{}) error {
-	logger := log.Ctx(ctx)
+	logger := logger.FromContext(ctx)
 	if !strings.Contains(filename, ".") {
 		filename += jsonExtension
 	}
@@ -141,7 +141,7 @@ func getSummary(body interface{}) (sum model.Summary, err error) {
 }
 
 func exportXMLReport(ctx context.Context, path, filename string, body interface{}) error {
-	logger := log.Ctx(ctx)
+	logger := logger.FromContext(ctx)
 	if !strings.HasSuffix(filename, ".xml") {
 		filename += ".xml"
 	}

@@ -13,9 +13,9 @@ import (
 	"strings"
 
 	"github.com/Checkmarx/kics/pkg/detector"
+	"github.com/Checkmarx/kics/pkg/logger"
 	"github.com/Checkmarx/kics/pkg/model"
 	"github.com/agnivade/levenshtein"
-	"github.com/rs/zerolog/log"
 )
 
 // DetectKindLine defines a kindDetectLine type
@@ -44,7 +44,7 @@ const (
 // lines (ex: "# KICS_HELM_ID_")
 func (d DetectKindLine) DetectLine(ctx context.Context, file *model.FileMetadata, searchKey string,
 	outputLines int) model.VulnerabilityLines {
-	logger := log.Ctx(ctx)
+	logger := logger.FromContext(ctx)
 	searchKey = fmt.Sprintf("%s.%s", strings.TrimRight(strings.TrimLeft(file.HelmID, "# "), ":"), searchKey)
 
 	lines := make([]string, len(*file.LinesOriginalData))

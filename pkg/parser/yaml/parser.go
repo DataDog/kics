@@ -9,12 +9,12 @@ import (
 	"bytes"
 	"context"
 
+	"github.com/Checkmarx/kics/pkg/logger"
 	"github.com/Checkmarx/kics/pkg/parser/utils"
 
 	"github.com/Checkmarx/kics/pkg/model"
 	"github.com/Checkmarx/kics/pkg/resolver/file"
 	"github.com/pkg/errors"
-	"github.com/rs/zerolog/log"
 	"gopkg.in/yaml.v3"
 )
 
@@ -151,7 +151,7 @@ func addExtraInfo(ctx context.Context, documents []model.Document, filePath stri
 }
 
 func processPlaybooks(ctx context.Context, playbooks interface{}, filePath string) {
-	logger := log.Ctx(ctx)
+	logger := logger.FromContext(ctx)
 	sliceResources, ok := playbooks.([]interface{})
 	if !ok { // prevent panic if playbooks is not a slice
 		logger.Warn().Msgf("Failed to parse playbooks: %s", filePath)
@@ -163,7 +163,7 @@ func processPlaybooks(ctx context.Context, playbooks interface{}, filePath strin
 }
 
 func processPlaybooksElements(ctx context.Context, resources interface{}, filePath string) {
-	logger := log.Ctx(ctx)
+	logger := logger.FromContext(ctx)
 	mapResources, ok := resources.(map[string]interface{})
 	if !ok {
 		logger.Warn().Msgf("Failed to parse playbooks elements: %s", filePath)

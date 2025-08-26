@@ -9,11 +9,11 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/rs/zerolog/log"
+	"github.com/Checkmarx/kics/pkg/logger"
 )
 
 func HandlePanic(ctx context.Context, r any, errMessage string) {
-	logger := log.Ctx(ctx)
+	logger := logger.FromContext(ctx)
 	err := fmt.Errorf("panic: %v", r)
 	logger.Err(err).Msg(errMessage)
 }

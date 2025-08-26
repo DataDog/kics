@@ -13,7 +13,7 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/rs/zerolog/log"
+	"github.com/Checkmarx/kics/pkg/logger"
 )
 
 // Report includes all query results
@@ -58,7 +58,7 @@ type Set struct {
 
 // RemediateFile remediationSets the replacements first and secondly, the additions sorted down
 func (s *Summary) RemediateFile(ctx context.Context, filePath string, remediationSet Set, openAPIResolveReferences bool, maxResolverDepth int) error {
-	logger := log.Ctx(ctx)
+	logger := logger.FromContext(ctx)
 	filepath.Clean(filePath)
 	content, err := os.ReadFile(filePath)
 
@@ -106,7 +106,7 @@ type ReplacementInfo struct {
 }
 
 func replacement(ctx context.Context, r *Remediation, lines []string) []string {
-	logger := log.Ctx(ctx)
+	logger := logger.FromContext(ctx)
 	originalLine := lines[r.Line-1]
 
 	var replacement ReplacementInfo
@@ -130,7 +130,7 @@ func replacement(ctx context.Context, r *Remediation, lines []string) []string {
 }
 
 func addition(ctx context.Context, r *Remediation, lines *[]string) []string {
-	logger := log.Ctx(ctx)
+	logger := logger.FromContext(ctx)
 	fatherNumberLine := r.Line - 1
 
 	if len(*lines) <= fatherNumberLine+1 {
@@ -163,7 +163,7 @@ func addition(ctx context.Context, r *Remediation, lines *[]string) []string {
 }
 
 func (s *Summary) writeRemediation(ctx context.Context, remediatedLines, lines []string, filePath, similarityID string) []string {
-	logger := log.Ctx(ctx)
+	logger := logger.FromContext(ctx)
 	remediated := []byte(strings.Join(remediatedLines, "\n"))
 
 	if err := os.WriteFile(filePath, remediated, os.ModePerm); err != nil {

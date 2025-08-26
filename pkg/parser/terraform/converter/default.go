@@ -11,11 +11,11 @@ import (
 	"strconv"
 	"strings"
 
+	"github.com/Checkmarx/kics/pkg/logger"
 	"github.com/Checkmarx/kics/pkg/model"
 	"github.com/Checkmarx/kics/pkg/parser/terraform/functions"
 	"github.com/hashicorp/hcl/v2"
 	"github.com/hashicorp/hcl/v2/hclsyntax"
-	"github.com/rs/zerolog/log"
 	"github.com/zclconf/go-cty/cty"
 	ctyconvert "github.com/zclconf/go-cty/cty/convert"
 	ctyjson "github.com/zclconf/go-cty/cty/json"
@@ -182,7 +182,7 @@ func (c *converter) getArrLines(expr hclsyntax.Expression) []map[string]*model.L
 }
 
 func (c *converter) convertBlock(ctx context.Context, block *hclsyntax.Block, out model.Document, defLine int) error {
-	logger := log.Ctx(ctx)
+	logger := logger.FromContext(ctx)
 	var key = block.Type
 	value, err := c.convertBody(ctx, block.Body, defLine)
 

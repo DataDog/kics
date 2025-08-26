@@ -12,9 +12,9 @@ import (
 	"regexp"
 	"strings"
 
+	"github.com/Checkmarx/kics/pkg/logger"
 	"github.com/Checkmarx/kics/pkg/model"
 	"github.com/Checkmarx/kics/pkg/utils"
-	"github.com/rs/zerolog/log"
 )
 
 // Summary represents the information about the number of selected remediation and remediation done
@@ -62,7 +62,7 @@ func willRemediate(
 	remediation *Remediation,
 	openAPIResolveReferences bool,
 	maxResolverDepth int) bool {
-	logger := log.Ctx(ctx)
+	logger := logger.FromContext(ctx)
 	filepath.Clean(originalFileName)
 	// create temporary file
 	tmpFile := filepath.Join(os.TempDir(), "temporary-remediation-"+utils.NextRandom()+"-"+filepath.Base(originalFileName))
@@ -105,7 +105,7 @@ func willRemediate(
 }
 
 func removedResult(ctx context.Context, results []model.Vulnerability, remediation *Remediation) bool {
-	logger := log.Ctx(ctx)
+	logger := logger.FromContext(ctx)
 	for i := range results {
 		result := results[i]
 
@@ -121,7 +121,7 @@ func removedResult(ctx context.Context, results []model.Vulnerability, remediati
 
 // CreateTempFile creates a temporary file with the content as the file pointed in the filePathCopyFrom
 func CreateTempFile(ctx context.Context, filePathCopyFrom, tmpFilePath string) string {
-	logger := log.Ctx(ctx)
+	logger := logger.FromContext(ctx)
 	filepath.Clean(filePathCopyFrom)
 	filepath.Clean(tmpFilePath)
 	f, err := os.OpenFile(tmpFilePath, os.O_WRONLY|os.O_CREATE|os.O_TRUNC, os.ModePerm)

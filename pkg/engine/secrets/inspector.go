@@ -18,8 +18,8 @@ import (
 	"github.com/Checkmarx/kics/pkg/detector"
 	engine "github.com/Checkmarx/kics/pkg/engine"
 	"github.com/Checkmarx/kics/pkg/engine/similarity"
+	"github.com/Checkmarx/kics/pkg/logger"
 	"github.com/Checkmarx/kics/pkg/model"
-	"github.com/rs/zerolog/log"
 )
 
 const (
@@ -369,7 +369,7 @@ func AllowRuleMatches(s string, allowRules []AllowRule) [][]int {
 }
 
 func (c *Inspector) checkFileContent(ctx context.Context, query *RegexQuery, basePaths []string, file *model.FileMetadata) {
-	logger := log.Ctx(ctx)
+	logger := logger.FromContext(ctx)
 	isSecret, groups := c.isSecret(file.OriginalData, query)
 	if !isSecret {
 		return
@@ -417,7 +417,7 @@ func (c *Inspector) checkFileContent(ctx context.Context, query *RegexQuery, bas
 }
 
 func (c *Inspector) secretsDetectLine(ctx context.Context, query *RegexQuery, file *model.FileMetadata, vulnGroups [][]string) []lineVulneInfo {
-	logger := log.Ctx(ctx)
+	logger := logger.FromContext(ctx)
 	content := file.OriginalData
 	lines := *file.LinesOriginalData
 	lineVulneInfoSlice := make([]lineVulneInfo, 0)
@@ -459,7 +459,7 @@ func (c *Inspector) secretsDetectLine(ctx context.Context, query *RegexQuery, fi
 
 func (c *Inspector) checkLineByLine(ctx context.Context, wg *sync.WaitGroup, query *RegexQuery,
 	basePaths []string, file *model.FileMetadata, lineNumber int, currentLine string) {
-	logger := log.Ctx(ctx)
+	logger := logger.FromContext(ctx)
 	defer wg.Done()
 	isSecret, groups := c.isSecret(currentLine, query)
 	if !isSecret {
@@ -505,7 +505,7 @@ func (c *Inspector) checkLineByLine(ctx context.Context, wg *sync.WaitGroup, que
 }
 
 func (c *Inspector) addVulnerability(ctx context.Context, basePaths []string, file *model.FileMetadata, query *RegexQuery, lineNumber int, issueLine string) {
-	logger := log.Ctx(ctx)
+	logger := logger.FromContext(ctx)
 	if engine.ShouldSkipVulnerability(file.Commands, query.ID) {
 		logger.Debug().Msgf("Skipping vulnerability in file %s for query '%s':%s", file.FilePath, query.Name, query.ID)
 		return
@@ -588,7 +588,7 @@ func calculateEntropy(token, charSet string) float64 {
 }
 
 // func shouldExecuteQuery(ctx context.Context, filterTarget, id, category, severity string, filter []string) bool {
-//  logger := log.Ctx(ctx)
+//  logger := logger.FromContext(ctx)
 // 	if isValueInArray(filterTarget, filter) {
 // 		logger.Debug().
 // 			Msgf("Excluding query ID: %s category: %s severity: %s",

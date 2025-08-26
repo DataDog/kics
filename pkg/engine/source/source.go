@@ -11,11 +11,11 @@ import (
 	"encoding/json"
 	"strings"
 
+	"github.com/Checkmarx/kics/pkg/logger"
 	"github.com/Checkmarx/kics/pkg/model"
 	tfmodules "github.com/Checkmarx/kics/pkg/parser/terraform/modules"
 	"github.com/open-policy-agent/opa/ast"
 	"github.com/pkg/errors"
-	"github.com/rs/zerolog/log"
 )
 
 // QueryInspectorParameters is a struct that represents the optionn to select queries to be executed
@@ -55,7 +55,7 @@ type QueriesSource interface {
 
 // mergeLibraries return custom library and embedded library merged, overwriting embedded library functions, if necessary
 func mergeLibraries(ctx context.Context, customLib, embeddedLib string) (string, error) {
-	logger := log.Ctx(ctx)
+	logger := logger.FromContext(ctx)
 	if customLib == "" {
 		return embeddedLib, nil
 	}

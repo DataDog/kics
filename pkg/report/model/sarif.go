@@ -16,10 +16,10 @@ import (
 	"strings"
 
 	"github.com/Checkmarx/kics/internal/constants"
+	"github.com/Checkmarx/kics/pkg/logger"
 	"github.com/Checkmarx/kics/pkg/model"
 	remediationsHelper "github.com/Checkmarx/kics/pkg/report/remediations"
 	"github.com/google/uuid"
-	"github.com/rs/zerolog/log"
 )
 
 var severityLevelEquivalence = map[model.Severity]string{
@@ -492,7 +492,7 @@ func (sr *sarifReport) buildCweCategory(cweID string) sarifDescriptorReference {
 }
 
 func (sr *sarifReport) buildSarifCategory(ctx context.Context, category string) sarifDescriptorReference {
-	logger := log.Ctx(ctx)
+	logger := logger.FromContext(ctx)
 	target := targetTemplate
 	categoryIndex := sr.findSarifCategory(category)
 
@@ -597,7 +597,7 @@ func (sr *sarifReport) RebuildTaxonomies(cwes []string, guids map[string]string)
 
 // BuildSarifIssue creates a new entries in Results (one for each file) and new entry in Rules and Taxonomy if necessary
 func (sr *sarifReport) BuildSarifIssue(ctx context.Context, issue *model.QueryResult, sciInfo model.SCIInfo) string {
-	logger := log.Ctx(ctx)
+	logger := logger.FromContext(ctx)
 	if len(issue.Files) > 0 {
 		metadata := ruleMetadata{
 			queryID:          issue.QueryID,
@@ -734,7 +734,7 @@ func (sr *sarifReport) BuildSarifIssue(ctx context.Context, issue *model.QueryRe
 }
 
 func (sr *sarifReport) SetToolVersionType(ctx context.Context, runType string) {
-	logger := log.Ctx(ctx)
+	logger := logger.FromContext(ctx)
 	if len(runType) > 0 {
 		for idx := range sr.Runs {
 			sr.Runs[idx].Tool.Driver.ToolVersion = runType
@@ -744,7 +744,7 @@ func (sr *sarifReport) SetToolVersionType(ctx context.Context, runType string) {
 }
 
 func (sr *sarifReport) AddTags(ctx context.Context, summary *model.Summary, diffAware *model.DiffAware) error {
-	logger := log.Ctx(ctx)
+	logger := logger.FromContext(ctx)
 	if len(sr.Runs) != 1 {
 		return errors.New("sarifReport must have exactly one run")
 	}

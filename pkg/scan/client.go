@@ -12,6 +12,7 @@ import (
 	"github.com/Checkmarx/kics/internal/storage"
 	"github.com/Checkmarx/kics/internal/tracker"
 	"github.com/Checkmarx/kics/pkg/descriptions"
+	"github.com/Checkmarx/kics/pkg/logger"
 	"github.com/Checkmarx/kics/pkg/model"
 	consolePrinter "github.com/Checkmarx/kics/pkg/printer"
 	"github.com/Checkmarx/kics/pkg/progress"
@@ -119,7 +120,7 @@ func GetDefaultParameters(ctx context.Context, rootPath string, extraInfos map[s
 
 // NewClient initializes the client with all the required parameters
 func NewClient(ctx context.Context, params *Parameters, proBarBuilder *progress.PbBuilder, customPrint *consolePrinter.Printer) (*Client, error) {
-	logger := log.Ctx(ctx)
+	logger := logger.FromContext(ctx)
 	t, err := tracker.NewTracker(params.PreviewLines)
 	if err != nil {
 		logger.Err(err).Msgf("failed to create tracker %v", err)
@@ -144,7 +145,7 @@ func NewClient(ctx context.Context, params *Parameters, proBarBuilder *progress.
 
 // PerformScan executes executeScan and postScan
 func (c *Client) PerformScan(ctx context.Context) (ScanMetadata, error) {
-	logger := log.Ctx(ctx)
+	logger := logger.FromContext(ctx)
 	c.ScanStartTime = time.Now()
 
 	scanResults, err := c.executeScan(ctx)

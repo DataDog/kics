@@ -12,8 +12,8 @@ import (
 	"path/filepath"
 	"strconv"
 
+	"github.com/Checkmarx/kics/pkg/logger"
 	"github.com/Checkmarx/kics/pkg/utils"
-	"github.com/rs/zerolog/log"
 	"gopkg.in/yaml.v3"
 )
 
@@ -36,7 +36,7 @@ func (m *Document) UnmarshalYAML(ctx context.Context, value *yaml.Node) error {
 // lines ignore can have the lines from the resolved files
 // since inspector secrets only looks to original data, the lines ignore should be replaced in yaml cases
 func GetIgnoreLines(ctx context.Context, file *FileMetadata) []int {
-	logger := log.Ctx(ctx)
+	logger := logger.FromContext(ctx)
 	ignoreLines := file.LinesIgnore
 
 	if utils.Contains(filepath.Ext(file.FilePath), []string{".yml", ".yaml"}) {
@@ -198,7 +198,7 @@ func getSeqLines(val *yaml.Node, def int) map[string]*LineObject {
 
 // scalarNodeResolver transforms a ScalarNode value in its correct type
 func scalarNodeResolver(ctx context.Context, val *yaml.Node) interface{} {
-	logger := log.Ctx(ctx)
+	logger := logger.FromContext(ctx)
 	var transformed interface{} = val.Value
 	switch val.Tag {
 	case "!!bool":

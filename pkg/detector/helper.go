@@ -15,8 +15,8 @@ import (
 	"github.com/agnivade/levenshtein"
 
 	"github.com/Checkmarx/kics/internal/constants"
+	"github.com/Checkmarx/kics/pkg/logger"
 	"github.com/Checkmarx/kics/pkg/model"
-	"github.com/rs/zerolog/log"
 )
 
 var (
@@ -184,7 +184,7 @@ func resolveListIndex(attrName string, index int, lines []string) string {
 }
 
 func getKeyWithCurlyBrackets(ctx context.Context, key string, extractedString [][]string, parts []string) (substr1Res, substr2Res string) {
-	logger := log.Ctx(ctx)
+	logger := logger.FromContext(ctx)
 	var substr1, substr2 string
 	extractedPart := nameRegexDocker.FindStringSubmatch(key)
 	if len(extractedPart) == valuePartsLength {

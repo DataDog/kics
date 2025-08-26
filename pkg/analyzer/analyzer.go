@@ -17,10 +17,10 @@ import (
 
 	"github.com/Checkmarx/kics/internal/metrics"
 	"github.com/Checkmarx/kics/pkg/engine/provider"
+	"github.com/Checkmarx/kics/pkg/logger"
 	"github.com/Checkmarx/kics/pkg/model"
 	"github.com/Checkmarx/kics/pkg/utils"
 	"github.com/pkg/errors"
-	"github.com/rs/zerolog/log"
 	ignore "github.com/sabhiram/go-gitignore"
 
 	yamlParser "gopkg.in/yaml.v3"
@@ -273,7 +273,7 @@ var defaultConfigFiles = []string{"pnpm-lock.yaml"}
 // Analyze will go through the slice paths given and determine what type of queries should be loaded
 // should be loaded based on the extension of the file and the content
 func Analyze(ctx context.Context, a *Analyzer) (model.AnalyzedPaths, error) {
-	logger := log.Ctx(ctx)
+	logger := logger.FromContext(ctx)
 	// start metrics for file analyzer
 	metrics.Metric.Start("file_type_analyzer")
 	returnAnalyzedPaths := model.AnalyzedPaths{
@@ -417,7 +417,7 @@ func needsOverride(check bool, returnType, key, ext string) bool {
 // checkContent will determine the file type by content when worker was unable to
 // determine by ext, if no type was determined checkContent adds it to unwanted channel
 func (a *analyzerInfo) checkContent(ctx context.Context, results, unwanted chan<- string, locCount chan<- int, linesCount int, ext string) {
-	logger := log.Ctx(ctx)
+	logger := logger.FromContext(ctx)
 	typesFlag := a.typesFlag
 	excludeTypesFlag := a.excludeTypesFlag
 	// get file content
@@ -491,7 +491,7 @@ func checkReturnType(ctx context.Context, path, returnType, ext string, content 
 }
 
 func checkHelm(ctx context.Context, path string) bool {
-	logger := log.Ctx(ctx)
+	logger := logger.FromContext(ctx)
 	_, err := os.Stat(filepath.Join(filepath.Dir(path), "Chart.yaml"))
 	if errors.Is(err, os.ErrNotExist) {
 		return false
@@ -503,7 +503,7 @@ func checkHelm(ctx context.Context, path string) bool {
 }
 
 func checkYamlPlatform(ctx context.Context, content []byte, path string) string {
-	logger := log.Ctx(ctx)
+	logger := logger.FromContext(ctx)
 	content = utils.DecryptAnsibleVault(ctx, content, os.Getenv("ANSIBLE_VAULT_PASSWORD_FILE"))
 
 	var yamlContent model.Document
@@ -623,7 +623,7 @@ func getKeysFromExcludeTypesFlag(excludeTypesFlag []string) []string {
 
 // isExcludedFile verifies if the path is pointed in the --exclude-paths flag
 func isExcludedFile(ctx context.Context, path string, exc []string) bool {
-	logger := log.Ctx(ctx)
+	logger := logger.FromContext(ctx)
 	for i := range exc {
 		exclude, err := provider.GetExcludePaths(ctx, exc[i])
 		if err != nil {
@@ -645,7 +645,7 @@ func isDeadSymlink(path string) bool {
 }
 
 func isConfigFile(ctx context.Context, path string, exc []string) bool {
-	logger := log.Ctx(ctx)
+	logger := logger.FromContext(ctx)
 	for i := range exc {
 		exclude, err := provider.GetExcludePaths(ctx, exc[i])
 		if err != nil {
@@ -669,7 +669,7 @@ func isConfigFile(ctx context.Context, path string, exc []string) bool {
 // shouldConsiderGitIgnoreFile verifies if the scan should exclude the files according to the .gitignore file
 func shouldConsiderGitIgnoreFile(ctx context.Context, path, gitIgnore string, excludeGitIgnoreFile bool) (hasGitIgnoreFileRes bool,
 	gitIgnoreRes *ignore.GitIgnore) {
-	logger := log.Ctx(ctx)
+	logger := logger.FromContext(ctx)
 	gitIgnorePath := filepath.ToSlash(filepath.Join(path, gitIgnore))
 	_, err := os.Stat(gitIgnorePath)
 
@@ -710,7 +710,7 @@ func (a *analyzerInfo) isAvailableType(typeName string) bool {
 func (a *Analyzer) checkIgnore(ctx context.Context, fileSize int64, hasGitIgnoreFile bool,
 	gitIgnore *ignore.GitIgnore,
 	fullPath string, trimmedPath string, ignoreFiles []string) []string {
-	logger := log.Ctx(ctx)
+	logger := logger.FromContext(ctx)
 	exceededFileSize := a.MaxFileSize >= 0 && float64(fileSize)/float64(sizeMb) > float64(a.MaxFileSize)
 
 	if (hasGitIgnoreFile && gitIgnore.MatchesPath(trimmedPath)) || isDeadSymlink(fullPath) || exceededFileSize {

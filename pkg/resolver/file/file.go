@@ -13,9 +13,9 @@ import (
 	"strings"
 
 	"github.com/Checkmarx/kics/pkg/analyzer"
+	"github.com/Checkmarx/kics/pkg/logger"
 	"github.com/Checkmarx/kics/pkg/model"
 	"github.com/Checkmarx/kics/pkg/utils"
-	"github.com/rs/zerolog/log"
 	"gopkg.in/yaml.v3"
 )
 
@@ -63,7 +63,7 @@ func isOpenAPI(fileContent []byte) bool {
 func (r *Resolver) Resolve(ctx context.Context, fileContent []byte, path string,
 	resolveCount, maxResolverDepth int, resolvedFilesCache map[string]ResolvedFile,
 	resolveReferences bool) []byte {
-	logger := log.Ctx(ctx)
+	logger := logger.FromContext(ctx)
 	// handle panic during resolve process
 	defer func() {
 		if r := recover(); r != nil {
@@ -358,7 +358,7 @@ func (r *Resolver) resolveFile(
 	resolveCount, maxResolverDepth int,
 	resolvedFilesCache map[string]ResolvedFile,
 	yamlResolve, resolveReferences bool) (any, bool) {
-	logger := log.Ctx(ctx)
+	logger := logger.FromContext(ctx)
 	// open the file with the content to replace
 	file, err := os.Open(filepath.Clean(filePath))
 	if err != nil {

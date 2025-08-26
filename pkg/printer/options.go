@@ -14,10 +14,10 @@ import (
 
 	consoleHelpers "github.com/Checkmarx/kics/internal/console/helpers"
 	"github.com/Checkmarx/kics/internal/constants"
+	"github.com/Checkmarx/kics/pkg/logger"
 	"github.com/gookit/color"
 	"github.com/pkg/errors"
 	"github.com/rs/zerolog"
-	"github.com/rs/zerolog/log"
 )
 
 // NoColor - disables ASCII color codes
@@ -42,7 +42,7 @@ func Verbose(opt interface{}, changed bool) error {
 
 // Silent - disables stdout output
 func Silent(ctx context.Context, opt interface{}) error {
-	logger := log.Ctx(ctx)
+	logger := logger.FromContext(ctx)
 	silent := opt.(bool)
 	if silent {
 		color.SetOutput(io.Discard)
@@ -54,7 +54,7 @@ func Silent(ctx context.Context, opt interface{}) error {
 
 // CI - enable only log messages to CLI output
 func CI(ctx context.Context, opt interface{}) error {
-	logger := log.Ctx(ctx)
+	logger := logger.FromContext(ctx)
 	ci := opt.(bool)
 	if ci {
 		color.SetOutput(io.Discard)
@@ -66,7 +66,7 @@ func CI(ctx context.Context, opt interface{}) error {
 
 // LogFormat - configures the logs format (JSON,pretty).
 func LogFormat(ctx context.Context, logFormat string) error {
-	logger := log.Ctx(ctx)
+	logger := logger.FromContext(ctx)
 	if logFormat == constants.LogFormatJSON {
 		logger.Output(zerolog.MultiLevelWriter(outConsoleLogger, loggerFile.(io.Writer)))
 		outFileLogger = loggerFile

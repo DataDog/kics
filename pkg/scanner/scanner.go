@@ -12,8 +12,8 @@ import (
 
 	"github.com/Checkmarx/kics/internal/metrics"
 	"github.com/Checkmarx/kics/pkg/kics"
+	"github.com/Checkmarx/kics/pkg/logger"
 	"github.com/Checkmarx/kics/pkg/progress"
-	"github.com/rs/zerolog/log"
 )
 
 type serviceSlice []*kics.Service
@@ -63,7 +63,7 @@ func PrepareAndScan(
 // StartScan will run concurrent scans by parser
 func StartScan(ctx context.Context, scanID string,
 	proBarBuilder progress.PbBuilder, services serviceSlice) error {
-	logger := log.Ctx(ctx)
+	logger := logger.FromContext(ctx)
 	defer metrics.Metric.Stop()
 	metrics.Metric.Start("start_scan")
 	var wg sync.WaitGroup

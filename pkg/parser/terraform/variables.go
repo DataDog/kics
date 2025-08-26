@@ -12,10 +12,10 @@ import (
 	"regexp"
 	"strings"
 
+	"github.com/Checkmarx/kics/pkg/logger"
 	"github.com/Checkmarx/kics/pkg/parser/terraform/converter"
 	"github.com/hashicorp/hcl/v2"
 	"github.com/hashicorp/hcl/v2/hclsyntax"
-	"github.com/rs/zerolog/log"
 	"github.com/zclconf/go-cty/cty"
 )
 
@@ -57,7 +57,7 @@ func setInputVariablesDefaultValues(filename string) (converter.VariableMap, err
 }
 
 func checkTfvarsValid(ctx context.Context, f *hcl.File, filename string) error {
-	logger := log.Ctx(ctx)
+	logger := logger.FromContext(ctx)
 	content, _, _ := f.Body.PartialContent(&hcl.BodySchema{
 		Blocks: []hcl.BlockHeaderSchema{
 			{
@@ -177,7 +177,7 @@ func sanitizeCtyMap(in map[string]cty.Value) map[string]cty.Value {
 }
 
 func getInputVariables(ctx context.Context, currentPath, fileContent, terraformVarsPath string) converter.VariableMap {
-	logger := log.Ctx(ctx)
+	logger := logger.FromContext(ctx)
 	variablesMap := make(converter.VariableMap)
 	localsMap := make(converter.VariableMap)
 
