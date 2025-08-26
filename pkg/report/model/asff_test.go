@@ -6,6 +6,7 @@
 package model
 
 import (
+	"context"
 	"reflect"
 	"testing"
 	"time"
@@ -146,10 +147,11 @@ func TestBuildASFFReport(t *testing.T) {
 		},
 	}
 
+	ctx := context.Background()
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			if tt.name == "Build ASFF" || tt.name == "Build ASFF with CWE" {
-				got := BuildASFF(tt.args.summary)
+				got := BuildASFF(ctx, tt.args.summary)
 
 				if len(got) == 0 {
 					t.Errorf("BuildASFF returned an empty slice for test case %s", tt.name)
@@ -162,7 +164,7 @@ func TestBuildASFFReport(t *testing.T) {
 					t.Errorf("BuildASFF() = %v, want %v", got, tt.want)
 				}
 			} else if tt.name == "Build ASFF with critical severity" {
-				got := BuildASFF(tt.args.summary)
+				got := BuildASFF(ctx, tt.args.summary)
 
 				if len(got) == 0 {
 					t.Errorf("BuildASFF with critical severity returned an empty slice for test case %s", tt.name)

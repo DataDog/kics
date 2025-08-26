@@ -6,6 +6,7 @@
 package grpc
 
 import (
+	"context"
 	"encoding/json"
 	"reflect"
 	"testing"
@@ -355,10 +356,12 @@ func TestParser_Parse(t *testing.T) {
 			wantErr: false,
 		},
 	}
+
+	ctx := context.Background()
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			p := &Parser{}
-			got, got1, err := p.Parse(tt.args.in0, tt.args.fileContent)
+			got, got1, err := p.Parse(ctx, tt.args.in0, tt.args.fileContent)
 			if (err != nil) != tt.wantErr {
 				t.Errorf("Parser.Parse() error = %v, wantErr %v", err, tt.wantErr)
 				return
@@ -529,10 +532,12 @@ func TestParser_Resolve(t *testing.T) {
 			want: []byte{},
 		},
 	}
+
+	ctx := context.Background()
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			p := &Parser{}
-			got, err := p.Resolve(tt.args.fileContent, tt.args.filename, true, 15)
+			got, err := p.Resolve(ctx, tt.args.fileContent, tt.args.filename, true, 15)
 			if (err != nil) != tt.wantErr {
 				t.Errorf("Parser.Resolve() error = %v, wantErr %v", err, tt.wantErr)
 				return

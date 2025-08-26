@@ -29,14 +29,14 @@ func TestImport(t *testing.T) {
 
 	tests := []struct {
 		name      string
-		k8sClient func() (client.Client, error)
+		k8sClient func(context.Context) (client.Client, error)
 		args      args
 		want      string
 		wantErr   bool
 	}{
 		{
 			name: "test import right path and without client",
-			k8sClient: func() (client.Client, error) {
+			k8sClient: func(context.Context) (client.Client, error) {
 				return nil, nil
 			},
 			args: args{
@@ -47,7 +47,7 @@ func TestImport(t *testing.T) {
 		},
 		{
 			name: "test import path error",
-			k8sClient: func() (client.Client, error) {
+			k8sClient: func(context.Context) (client.Client, error) {
 				return nil, nil
 			},
 			args: args{
@@ -57,6 +57,7 @@ func TestImport(t *testing.T) {
 			wantErr: true,
 		},
 	}
+
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			got, err := ImportWithClient(context.Background(), tt.args.kuberneterPath, "", tt.k8sClient)
@@ -115,6 +116,7 @@ func Test_HasCAFile_envVars(t *testing.T) {
 		},
 	}
 
+	ctx := context.Background()
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			k8Client := &K8sConfig{
@@ -126,7 +128,7 @@ func Test_HasCAFile_envVars(t *testing.T) {
 			for _, env := range tt.args {
 				os.Setenv(env.name, env.value)
 			}
-			v := k8Client.hasCertificateAuthority()
+			v := k8Client.hasCertificateAuthority(ctx)
 			require.Equal(t, tt.expectedResult, v)
 			for _, env := range tt.args {
 				os.Unsetenv(env.name)
@@ -215,6 +217,7 @@ func Test_HasClientCertificate_envVars(t *testing.T) {
 		},
 	}
 
+	ctx := context.Background()
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			k8Client := &K8sConfig{
@@ -226,7 +229,7 @@ func Test_HasClientCertificate_envVars(t *testing.T) {
 			for _, env := range tt.args {
 				os.Setenv(env.name, env.value)
 			}
-			v := k8Client.hasClientCertificate()
+			v := k8Client.hasClientCertificate(ctx)
 			require.Equal(t, tt.expectedResult, v)
 			for _, env := range tt.args {
 				os.Unsetenv(env.name)
@@ -362,12 +365,13 @@ func Test_GetClient(t *testing.T) {
 		},
 	}
 
+	ctx := context.Background()
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			for _, env := range tt.args {
 				os.Setenv(env.name, env.value)
 			}
-			_, err := getK8sClient()
+			_, err := getK8sClient(ctx)
 			require.Equal(t, tt.wantErr, err != nil)
 			for _, env := range tt.args {
 				os.Unsetenv(env.name)

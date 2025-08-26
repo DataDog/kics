@@ -6,6 +6,7 @@
 package source
 
 import (
+	"context"
 	"os"
 	"path/filepath"
 	"reflect"
@@ -50,16 +51,18 @@ func BenchmarkFilesystemSource_GetQueries(b *testing.B) {
 			},
 		},
 	}
+
+	ctx := context.Background()
 	for _, tt := range tests {
 		b.Run(tt.name, func(b *testing.B) {
-			s := NewFilesystemSource(tt.fields.Source, tt.fields.Types, tt.fields.CloudProviders, tt.fields.Library, tt.fields.ExperimentalQueries)
+			s := NewFilesystemSource(ctx, tt.fields.Source, tt.fields.Types, tt.fields.CloudProviders, tt.fields.Library, tt.fields.ExperimentalQueries)
 			for n := 0; n < b.N; n++ {
 				filter := QueryInspectorParameters{
 					IncludeQueries: IncludeQueries{ByIDs: []string{}},
 					ExcludeQueries: ExcludeQueries{ByIDs: []string{}, ByCategories: []string{}},
 					InputDataPath:  "",
 				}
-				if _, err := s.GetQueries(&filter); err != nil {
+				if _, err := s.GetQueries(ctx, &filter); err != nil {
 					b.Errorf("Error: %s", err)
 				}
 			}
@@ -168,15 +171,17 @@ func TestFilesystemSource_GetQueriesWithExclude(t *testing.T) { //nolint
 			wantErr:           false,
 		},
 	}
+
+	ctx := context.Background()
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			s := NewFilesystemSource(tt.fields.Source, []string{""}, []string{""}, tt.fields.Library, tt.fields.ExperimentalQueries)
+			s := NewFilesystemSource(ctx, tt.fields.Source, []string{""}, []string{""}, tt.fields.Library, tt.fields.ExperimentalQueries)
 			filter := QueryInspectorParameters{
 				IncludeQueries: IncludeQueries{ByIDs: []string{}},
 				ExcludeQueries: ExcludeQueries{ByIDs: tt.excludeIDs, ByCategories: tt.excludeCategory, BySeverities: tt.excludeSeverities},
 				InputDataPath:  "",
 			}
-			got, err := s.GetQueries(&filter)
+			got, err := s.GetQueries(ctx, &filter)
 			if (err != nil) != tt.wantErr {
 				t.Errorf("FilesystemSource.GetQueries() error = %v, wantErr %v", err, tt.wantErr)
 				return
@@ -261,9 +266,11 @@ func TestFilesystemSource_GetQueriesWithInclude(t *testing.T) {
 			wantErr: true,
 		},
 	}
+
+	ctx := context.Background()
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			s := NewFilesystemSource(tt.fields.Source, []string{""}, []string{""}, tt.fields.Library, tt.fields.ExperimentalQueries)
+			s := NewFilesystemSource(ctx, tt.fields.Source, []string{""}, []string{""}, tt.fields.Library, tt.fields.ExperimentalQueries)
 			filter := QueryInspectorParameters{
 				IncludeQueries: IncludeQueries{
 					ByIDs: tt.includeIDs,
@@ -275,7 +282,7 @@ func TestFilesystemSource_GetQueriesWithInclude(t *testing.T) {
 				InputDataPath: "",
 			}
 
-			got, err := s.GetQueries(&filter)
+			got, err := s.GetQueries(ctx, &filter)
 			if (err != nil) != tt.wantErr {
 				t.Errorf("FilesystemSource.GetQueries() error = %v, wantErr %v", err, tt.wantErr)
 				return
@@ -402,11 +409,13 @@ func TestFilesystemSource_GetQueryLibrary(t *testing.T) { //nolint
 			wantErr:  true,
 		},
 	}
+
+	ctx := context.Background()
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			s := NewFilesystemSource(tt.fields.Source, []string{""}, []string{""}, tt.fields.Library, tt.fields.ExperimentalQueries)
+			s := NewFilesystemSource(ctx, tt.fields.Source, []string{""}, []string{""}, tt.fields.Library, tt.fields.ExperimentalQueries)
 
-			got, err := s.GetQueryLibrary(tt.args.platform)
+			got, err := s.GetQueryLibrary(ctx, tt.args.platform)
 			if (err != nil) != tt.wantErr {
 				t.Errorf("FilesystemSource.GetQueryLibrary() error = %v, wantErr %v", err, tt.wantErr)
 				return
@@ -548,9 +557,11 @@ func TestFilesystemSource_GetQueries(t *testing.T) {
 			wantErr: false,
 		},
 	}
+
+	ctx := context.Background()
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			s := NewFilesystemSource(tt.fields.Source, []string{""}, []string{""}, tt.fields.Library, tt.fields.ExperimentalQueries)
+			s := NewFilesystemSource(ctx, tt.fields.Source, []string{""}, []string{""}, tt.fields.Library, tt.fields.ExperimentalQueries)
 			filter := QueryInspectorParameters{
 				IncludeQueries: IncludeQueries{
 					ByIDs: []string{}},
@@ -561,7 +572,7 @@ func TestFilesystemSource_GetQueries(t *testing.T) {
 				ExperimentalQueries: tt.fields.ExperimentalQueries,
 				InputDataPath:       "",
 			}
-			got, err := s.GetQueries(&filter)
+			got, err := s.GetQueries(ctx, &filter)
 			if (err != nil) != tt.wantErr {
 				t.Errorf("FilesystemSource.GetQueries() error = %v, wantErr %v", err, tt.wantErr)
 				return
@@ -599,9 +610,11 @@ func Test_ReadMetadata(t *testing.T) {
 			wantErr: false,
 		},
 	}
+
+	ctx := context.Background()
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got, err := ReadMetadata(tt.args.queryDir); !reflect.DeepEqual(got, tt.want) {
+			if got, err := ReadMetadata(ctx, tt.args.queryDir); !reflect.DeepEqual(got, tt.want) {
 				require.Equal(t, tt.wantErr, (err != nil))
 				gotStr, err := test.StringifyStruct(got)
 				require.Nil(t, err)
@@ -734,9 +747,11 @@ func TestReadInputData(t *testing.T) {
 			want: `{"test": "success"}`,
 		},
 	}
+
+	ctx := context.Background()
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			got, err := readInputData(tt.path)
+			got, err := readInputData(ctx, tt.path)
 			require.NoError(t, err)
 			require.Equal(t, tt.want, got)
 		})
@@ -828,9 +843,10 @@ func TestSource_getLibraryInDir(t *testing.T) {
 		},
 	}
 
+	ctx := context.Background()
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			got := getLibraryInDir(tt.args.platform, tt.args.libraryDirPath)
+			got := getLibraryInDir(ctx, tt.args.platform, tt.args.libraryDirPath)
 			require.Equal(t, tt.want, got)
 		})
 	}

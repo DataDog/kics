@@ -6,6 +6,7 @@
 package engine
 
 import (
+	"context"
 	"reflect"
 	"testing"
 
@@ -85,9 +86,11 @@ func TestRun(t *testing.T) {
 			wantErr: false,
 		},
 	}
+
+	ctx := context.Background()
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			got, err := Run(tt.args.src, tt.args.filename)
+			got, err := Run(ctx, tt.args.src, tt.args.filename)
 			if (err != nil) != tt.wantErr {
 				t.Errorf("Run() error = %v, wantErr %v", err, tt.wantErr)
 				return
@@ -128,9 +131,10 @@ func TestEngine_BuildString(t *testing.T) {
 		},
 	}
 
+	ctx := context.Background()
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			got, err := tt.fields.Engine.buildString(tt.args.parts)
+			got, err := tt.fields.Engine.buildString(ctx, tt.args.parts)
 			if (err != nil) != tt.wantErr {
 				t.Errorf("Run() error = %v, wantErr %v", err, tt.wantErr)
 				return

@@ -6,6 +6,7 @@
 package utils
 
 import (
+	"context"
 	"path/filepath"
 	"testing"
 
@@ -13,10 +14,11 @@ import (
 )
 
 func TestAddCertificateInfo(t *testing.T) {
+	ctx := context.Background()
 	path := filepath.Join("..", "..", "..", "test", "fixtures", "test_certificate", "positive.tf")
 	certificatePath := "certificate.pem"
 
-	info := AddCertificateInfo(path, certificatePath)
+	info := AddCertificateInfo(ctx, path, certificatePath)
 
 	require.NotEmpty(t, info)
 }

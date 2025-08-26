@@ -6,6 +6,7 @@
 package kics
 
 import (
+	"context"
 	"encoding/json"
 	"regexp"
 	"testing"
@@ -116,13 +117,14 @@ func TestKics_prepareDocument(t *testing.T) {
 		},
 	}
 
+	ctx := context.Background()
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			interf := make(map[string]interface{})
 			err := json.Unmarshal([]byte(tt.args.bodyType), &interf)
 			require.NoError(t, err)
 
-			got := PrepareScanDocument(interf, tt.args.kind)
+			got := PrepareScanDocument(ctx, interf, tt.args.kind)
 			compareJSONLine(t, got, tt.want)
 		})
 	}

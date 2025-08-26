@@ -6,6 +6,7 @@
 package helm
 
 import (
+	"context"
 	"reflect"
 	"testing"
 
@@ -199,10 +200,11 @@ func TestEngine_detectHelmLine(t *testing.T) { //nolint
 		},
 	}
 
+	ctx := context.Background()
 	for _, tt := range tests {
 		detector := DetectKindLine{}
 		t.Run(tt.name, func(t *testing.T) {
-			got := detector.DetectLine(tt.args.file, tt.args.searchKey, tt.args.outputLines, tt.args.logWithFields)
+			got := detector.DetectLine(ctx, tt.args.file, tt.args.searchKey, tt.args.outputLines)
 			if !reflect.DeepEqual(got, tt.want) {
 				t.Errorf("detectHelmLine() = %v, want = %v", got, tt.want)
 			}

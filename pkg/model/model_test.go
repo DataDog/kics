@@ -6,6 +6,7 @@
 package model
 
 import (
+	"context"
 	"testing"
 
 	"github.com/stretchr/testify/require"
@@ -86,17 +87,20 @@ func TestFileMetadatas(t *testing.T) {
 	})
 
 	t.Run("combine", func(t *testing.T) {
-		result := m.Combine(false)
+		ctx := context.Background()
+		result := m.Combine(ctx, false)
 		require.Equal(t, Documents{Documents: []Document{{"file": "file_name", "id": "id"}}}, result)
 	})
 
 	t.Run("combine_empty_documents", func(t *testing.T) {
-		result := mEmptyDocuments.Combine(false)
+		ctx := context.Background()
+		result := mEmptyDocuments.Combine(ctx, false)
 		require.Equal(t, Documents{Documents: []Document{}}, result)
 	})
 
 	t.Run("ignore_documents", func(t *testing.T) {
-		result := mIgnoreCommand.Combine(false)
+		ctx := context.Background()
+		result := mIgnoreCommand.Combine(ctx, false)
 		require.Equal(t, Documents{Documents: []Document{}}, result)
 	})
 }

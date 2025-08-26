@@ -6,6 +6,7 @@
 package json
 
 import (
+	"context"
 	"reflect"
 	"testing"
 
@@ -42,9 +43,10 @@ func TestParser_SupportedTypes(t *testing.T) {
 
 // TestParser_Parse tests the functions [Parse()] and all the methods called by them
 func TestParser_Parse(t *testing.T) {
+	ctx := context.Background()
 	p := &Parser{}
 
-	doc, _, err := p.Parse("test.json", []byte(have))
+	doc, _, err := p.Parse(ctx, "test.json", []byte(have))
 	require.NoError(t, err)
 	require.Len(t, doc, 1)
 	require.Contains(t, doc[0], "martin")
@@ -52,9 +54,10 @@ func TestParser_Parse(t *testing.T) {
 
 // Test_Resolve tests the functions [Resolve()] and all the methods called by them
 func Test_Resolve(t *testing.T) {
+	ctx := context.Background()
 	parser := &Parser{}
 
-	resolved, err := parser.Resolve([]byte(have), "test.json", true, 15)
+	resolved, err := parser.Resolve(ctx, []byte(have), "test.json", true, 15)
 	require.NoError(t, err)
 	require.Equal(t, have, string(resolved))
 }

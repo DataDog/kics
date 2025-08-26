@@ -6,6 +6,7 @@
 package descriptions
 
 import (
+	"context"
 	"errors"
 	"testing"
 
@@ -16,6 +17,7 @@ import (
 )
 
 func TestDescriptions_CheckVersion(t *testing.T) {
+	ctx := context.Background()
 	mt := &tracker.CITracker{}
 	descClient = &mockclient.MockDescriptionsClient{}
 	mockclient.CheckConnection = func() error {
@@ -33,7 +35,7 @@ func TestDescriptions_CheckVersion(t *testing.T) {
 		LatestVersionTag: "1.4.5",
 	}
 
-	CheckVersion(mt)
+	CheckVersion(ctx, mt)
 	require.Equal(t, want, mt.Version)
 
 	mockclient.CheckVersion = func(version string) (model.Version, error) {
@@ -44,13 +46,13 @@ func TestDescriptions_CheckVersion(t *testing.T) {
 		Latest: true,
 	}
 
-	CheckVersion(mt)
+	CheckVersion(ctx, mt)
 	require.Equal(t, want, mt.Version)
 
 	mockclient.CheckConnection = func() error {
 		return errors.New("Check connection mock error")
 	}
 
-	CheckVersion(mt)
+	CheckVersion(ctx, mt)
 	require.Equal(t, want, mt.Version)
 }

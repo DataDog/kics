@@ -6,6 +6,7 @@
 package parser
 
 import (
+	"context"
 	"testing"
 
 	"github.com/Checkmarx/kics/pkg/model"
@@ -19,11 +20,12 @@ import (
 func TestParser_Parse(t *testing.T) {
 	p := initilizeBuilder()
 
+	ctx := context.Background()
 	for _, parser := range p {
 		if _, ok := parser.extensions[".json"]; !ok {
 			continue
 		}
-		docs, err := parser.Parse("../../test/fixtures/test_extension/test.json", []byte(`
+		docs, err := parser.Parse(ctx, "../../test/fixtures/test_extension/test.json", []byte(`
 {
 	"martin": {
 		"name": "CxBraga"
@@ -40,7 +42,7 @@ func TestParser_Parse(t *testing.T) {
 		if _, ok := parser.extensions[".yaml"]; !ok {
 			continue
 		}
-		docs, err := parser.Parse("../../test/fixtures/test_extension/test.yaml", []byte(`
+		docs, err := parser.Parse(ctx, "../../test/fixtures/test_extension/test.yaml", []byte(`
 martin:
   name: CxBraga
 `), true, false, 15)
@@ -53,13 +55,14 @@ martin:
 
 // TestParser_Empty tests the functions [Parse()] and all the methods called by them (tests an empty parser)
 func TestParser_Empty(t *testing.T) {
-	p, err := NewBuilder().
+	ctx := context.Background()
+	p, err := NewBuilder(ctx).
 		Build([]string{""}, []string{""})
 	if err != nil {
 		t.Errorf("Error building parser: %s", err)
 	}
 	for _, parser := range p {
-		docs, err := parser.Parse("test.json", nil, true, false, 15)
+		docs, err := parser.Parse(ctx, "test.json", nil, true, false, 15)
 		require.Nil(t, docs.Docs)
 		require.Equal(t, model.FileKind(""), docs.Kind)
 		require.Error(t, err)
@@ -85,7 +88,8 @@ func TestParser_SupportedExtensions(t *testing.T) {
 }
 
 func initilizeBuilder() []*Parser {
-	bd, _ := NewBuilder().
+	ctx := context.Background()
+	bd, _ := NewBuilder(ctx).
 		Add(&jsonParser.Parser{}).
 		Add(&yamlParser.Parser{}).
 		Add(terraformParser.NewDefault()).
@@ -94,11 +98,12 @@ func initilizeBuilder() []*Parser {
 }
 
 func TestIsValidExtension(t *testing.T) {
-	parser, _ := NewBuilder().
+	ctx := context.Background()
+	parser, _ := NewBuilder(ctx).
 		Add(&jsonParser.Parser{}).
 		Build([]string{""}, []string{""})
-	require.True(t, parser[0].isValidExtension("../../test/fixtures/test_extension/test.json"), "test.json should be a valid extension")
-	require.False(t, parser[0].isValidExtension("../../test/fixtures/test_extension/test.xml"), "test.xml should not be a valid extension")
+	require.True(t, parser[0].isValidExtension(ctx, "../../test/fixtures/test_extension/test.json"), "test.json should be a valid extension")
+	require.False(t, parser[0].isValidExtension(ctx, "../../test/fixtures/test_extension/test.xml"), "test.xml should not be a valid extension")
 }
 
 func TestParser_Contains(t *testing.T) {

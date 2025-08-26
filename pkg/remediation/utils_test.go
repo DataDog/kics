@@ -6,6 +6,7 @@
 package remediation
 
 import (
+	"context"
 	"os"
 	"path/filepath"
 	"reflect"
@@ -151,9 +152,10 @@ func Test_CreateTempFile(t *testing.T) {
 		},
 	}
 
+	ctx := context.Background()
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			got := CreateTempFile(tt.filePathCopyFrom, tt.tmpFile)
+			got := CreateTempFile(ctx, tt.filePathCopyFrom, tt.tmpFile)
 			require.Equal(t, got, tt.want)
 		})
 	}

@@ -1,6 +1,7 @@
 package test
 
 import (
+	"context"
 	"fmt"
 	"net/url"
 	"os"
@@ -168,14 +169,15 @@ func getFilesMetadatasWithContent(t testing.TB, filePath string, content []byte)
 	combinedParser := getCombinedParser()
 	files := make(model.FileMetadatas, 0)
 
+	ctx := context.Background()
 	for _, parser := range combinedParser {
-		docs, err := parser.Parse(filePath, content, true, false, 15)
+		docs, err := parser.Parse(ctx, filePath, content, true, false, 15)
 		for _, document := range docs.Docs {
 			require.NoError(t, err)
 			files = append(files, model.FileMetadata{
 				ID:                uuid.NewString(),
 				ScanID:            scanID,
-				Document:          kics.PrepareScanDocument(document, docs.Kind),
+				Document:          kics.PrepareScanDocument(ctx, document, docs.Kind),
 				LineInfoDocument:  document,
 				OriginalData:      docs.Content,
 				Kind:              docs.Kind,
@@ -189,7 +191,8 @@ func getFilesMetadatasWithContent(t testing.TB, filePath string, content []byte)
 }
 
 func getCombinedParser() []*parser.Parser {
-	bd, _ := parser.NewBuilder().
+	ctx := context.Background()
+	bd, _ := parser.NewBuilder(ctx).
 		Add(&jsonParser.Parser{}).
 		Add(&yamlParser.Parser{}).
 		Add(&bicepParser.Parser{}).
@@ -256,7 +259,8 @@ func sliceContains(s []string, str string) bool {
 }
 
 func readLibrary(platform string) (source.RegoLibraries, error) {
-	library := source.GetPathToCustomLibrary(platform, "./assets/libraries")
+	ctx := context.Background()
+	library := source.GetPathToCustomLibrary(ctx, platform, "./assets/libraries")
 
 	libraryData, err := assets.GetEmbeddedLibraryData(strings.ToLower(platform))
 	if err != nil {

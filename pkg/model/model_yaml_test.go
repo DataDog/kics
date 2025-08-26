@@ -6,6 +6,7 @@
 package model
 
 import (
+	"context"
 	json "encoding/json"
 	"testing"
 
@@ -450,9 +451,10 @@ var tests = []struct {
 }
 
 func TestDocument_UnmarshalYAML(t *testing.T) {
+	ctx := context.Background()
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if err := tt.m.UnmarshalYAML(tt.args.value); (err != nil) != tt.wantErr {
+			if err := tt.m.UnmarshalYAML(ctx, tt.args.value); (err != nil) != tt.wantErr {
 				t.Errorf("Document.UnmarshalYAML() error = %v, wantErr %v", err, tt.wantErr)
 			}
 			compareJSONLine(t, tt.m, tt.want)
@@ -521,10 +523,11 @@ func TestDocument_UnmarshalYAML_CircularReference(t *testing.T) {
 
 	// Test that the new code works correctly
 	t.Run("new_code_succeeds", func(t *testing.T) {
+		ctx := context.Background()
 		doc := &Document{}
 
 		// This should not cause a stack overflow with the fix
-		err := doc.UnmarshalYAML(node1)
+		err := doc.UnmarshalYAML(ctx, node1)
 		require.NoError(t, err)
 
 		// Verify the document was parsed (even with nil values for circular refs)
@@ -577,9 +580,11 @@ func Test_GetIgnoreLines(t *testing.T) {
 			want: []int{14, 15},
 		},
 	}
+
+	ctx := context.Background()
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			got := GetIgnoreLines(tt.file)
+			got := GetIgnoreLines(ctx, tt.file)
 			require.Equal(t, got, tt.want)
 		})
 	}

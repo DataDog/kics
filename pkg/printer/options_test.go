@@ -6,6 +6,7 @@
 package printer
 
 import (
+	"context"
 	"io"
 	"os"
 	"path/filepath"
@@ -152,11 +153,12 @@ func TestOptions_CI(t *testing.T) {
 		},
 	}
 
+	ctx := context.Background()
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			outConsoleLogger = io.Discard
 			outFileLogger = io.Discard
-			err := CI(tt.args.opt)
+			err := CI(ctx, tt.args.opt)
 			if (err != nil) != tt.wantErr {
 				t.Errorf("CI() = %v, wantErr = %v", err, tt.wantErr)
 			}
@@ -259,9 +261,10 @@ func TestOptions_LogFormat(t *testing.T) {
 		},
 	}
 
+	ctx := context.Background()
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			err := LogFormat(tt.args.opt)
+			err := LogFormat(ctx, tt.args.opt)
 			if (err != nil) != tt.wantErr {
 				t.Errorf("LogFormat() = %v, wantErr = %v", err, tt.wantErr)
 			}

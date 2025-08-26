@@ -6,6 +6,7 @@
 package ansibleconfig
 
 import (
+	"context"
 	"encoding/json"
 	"testing"
 
@@ -76,12 +77,14 @@ profile_tasks = yes
 			wantErr: false,
 		},
 	}
+
+	ctx := context.Background()
 	for i, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			p := &Parser{}
 			switch i {
 			case 0:
-				got, _, err := p.Parse("", tt.args.content)
+				got, _, err := p.Parse(ctx, "", tt.args.content)
 				if (err != nil) != tt.wantErr {
 					t.Errorf("Parser() error = %v, wantErr %v", err, tt.wantErr)
 					return

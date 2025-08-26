@@ -1,6 +1,7 @@
 package report
 
 import (
+	"context"
 	"os"
 	"path/filepath"
 	"testing"
@@ -41,13 +42,14 @@ func TestPrintCSVReport(t *testing.T) {
 		},
 	}
 
+	ctx := context.Background()
 	for _, test := range tests {
 		t.Run(test.name, func(t *testing.T) {
 			if err := os.MkdirAll(test.caseTest.path, os.ModePerm); err != nil {
 				t.Fatal(err)
 			}
 
-			err := PrintCSVReport(test.caseTest.path, test.caseTest.filename, test.caseTest.summary, model.SCIInfo{})
+			err := PrintCSVReport(ctx, test.caseTest.path, test.caseTest.filename, test.caseTest.summary, model.SCIInfo{})
 			require.NoError(t, err)
 
 			require.FileExists(t, filepath.Join(test.caseTest.path, test.caseTest.filename+".csv"))

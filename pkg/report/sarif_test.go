@@ -1,6 +1,7 @@
 package report
 
 import (
+	"context"
 	"encoding/json"
 	"fmt"
 	"os"
@@ -46,12 +47,13 @@ var sarifTests = []reportTestCase{
 
 // TestPrintSarifReport tests the functions [PrintSarifReport()] and all the methods called by them
 func TestPrintSarifReport(t *testing.T) {
+	ctx := context.Background()
 	for idx, test := range sarifTests {
 		t.Run(fmt.Sprintf("Sarif File test case %d", idx), func(t *testing.T) {
 			if err := os.MkdirAll(test.caseTest.path, os.ModePerm); err != nil {
 				t.Fatal(err)
 			}
-			err := PrintSarifReport(test.caseTest.path, test.caseTest.filename, test.caseTest.summary, model.SCIInfo{})
+			err := PrintSarifReport(ctx, test.caseTest.path, test.caseTest.filename, test.caseTest.summary, model.SCIInfo{})
 			checkFileExists(t, err, &test, "sarif")
 			jsonResult, err := os.ReadFile(filepath.Join(test.caseTest.path, test.caseTest.filename+".sarif"))
 			require.NoError(t, err)
@@ -68,12 +70,13 @@ func TestPrintSarifReport(t *testing.T) {
 }
 
 func TestPrintSarifReportWithToolVersionFullScan(t *testing.T) {
+	ctx := context.Background()
 	for idx, test := range sarifTests {
 		t.Run(fmt.Sprintf("Sarif File test case %d", idx), func(t *testing.T) {
 			if err := os.MkdirAll(test.caseTest.path, os.ModePerm); err != nil {
 				t.Fatal(err)
 			}
-			err := PrintSarifReport(test.caseTest.path, test.caseTest.filename, test.caseTest.summary, model.SCIInfo{RunType: "full_scan"})
+			err := PrintSarifReport(ctx, test.caseTest.path, test.caseTest.filename, test.caseTest.summary, model.SCIInfo{RunType: "full_scan"})
 			checkFileExists(t, err, &test, "sarif")
 			jsonResult, err := os.ReadFile(filepath.Join(test.caseTest.path, test.caseTest.filename+".sarif"))
 			require.NoError(t, err)
@@ -88,12 +91,13 @@ func TestPrintSarifReportWithToolVersionFullScan(t *testing.T) {
 }
 
 func TestPrintSarifReportWithToolVersionCodeUpdate(t *testing.T) {
+	ctx := context.Background()
 	for idx, test := range sarifTests {
 		t.Run(fmt.Sprintf("Sarif File test case %d", idx), func(t *testing.T) {
 			if err := os.MkdirAll(test.caseTest.path, os.ModePerm); err != nil {
 				t.Fatal(err)
 			}
-			err := PrintSarifReport(test.caseTest.path, test.caseTest.filename, test.caseTest.summary, model.SCIInfo{RunType: "code_update"})
+			err := PrintSarifReport(ctx, test.caseTest.path, test.caseTest.filename, test.caseTest.summary, model.SCIInfo{RunType: "code_update"})
 			checkFileExists(t, err, &test, "sarif")
 			jsonResult, err := os.ReadFile(filepath.Join(test.caseTest.path, test.caseTest.filename+".sarif"))
 			require.NoError(t, err)

@@ -6,6 +6,7 @@
 package detector
 
 import (
+	"context"
 	"reflect"
 	"testing"
 
@@ -22,13 +23,13 @@ type mockkindDetectLine struct {
 type mockDefaultDetector struct {
 }
 
-func (m mockkindDetectLine) DetectLine(file *model.FileMetadata, searchKey string, outputLines int, logWithFields *zerolog.Logger) model.VulnerabilityLines {
+func (m mockkindDetectLine) DetectLine(ctx context.Context, file *model.FileMetadata, searchKey string, outputLines int) model.VulnerabilityLines {
 	return model.VulnerabilityLines{
 		Line: 1,
 	}
 }
 
-func (m mockDefaultDetector) DetectLine(file *model.FileMetadata, searchKey string, outputLines int, logWithFields *zerolog.Logger) model.VulnerabilityLines {
+func (m mockDefaultDetector) DetectLine(ctx context.Context, file *model.FileMetadata, searchKey string, outputLines int) model.VulnerabilityLines {
 	return model.VulnerabilityLines{
 		Line: 5,
 	}
@@ -67,6 +68,7 @@ func TestDetector_SetupLogs(t *testing.T) {
 }
 
 func TestDetector_DetectLine(t *testing.T) {
+	ctx := context.Background()
 	var mock mockkindDetectLine
 	var defaultmock mockDefaultDetector
 	det := initDetector().Add(mock, model.KindCOMMON)
@@ -109,7 +111,7 @@ func TestDetector_DetectLine(t *testing.T) {
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			got := det.DetectLine(tt.args.file, tt.args.searchKey, &zerolog.Logger{})
+			got := det.DetectLine(ctx, tt.args.file, tt.args.searchKey)
 			if !reflect.DeepEqual(got, tt.want) {
 				t.Errorf("DetectLine() = %v, want = %v", got, tt.want)
 			}

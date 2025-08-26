@@ -6,13 +6,13 @@
 package detector
 
 import (
+	"context"
 	"reflect"
 	"testing"
 
 	"github.com/Checkmarx/kics/pkg/model"
 	"github.com/Checkmarx/kics/pkg/utils"
 	"github.com/Checkmarx/kics/test"
-	"github.com/rs/zerolog"
 	"github.com/stretchr/testify/require"
 )
 
@@ -132,10 +132,12 @@ func Test_detectLine(t *testing.T) { //nolint
 			},
 		},
 	}
+
+	ctx := context.Background()
 	for _, tt := range tests {
 		detector := NewDetectLine(tt.fields.outputLines)
 		t.Run(tt.name, func(t *testing.T) {
-			got := detector.defaultDetector.DetectLine(tt.args.file, tt.args.searchKey, 3, &zerolog.Logger{})
+			got := detector.defaultDetector.DetectLine(ctx, tt.args.file, tt.args.searchKey, 3)
 			gotStrVulnerabilities, err := test.StringifyStruct(got)
 			require.Nil(t, err)
 			wantStrVulnerabilities, err := test.StringifyStruct(tt.want)

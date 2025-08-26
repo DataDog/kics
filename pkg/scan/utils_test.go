@@ -1,6 +1,7 @@
 package scan
 
 import (
+	"context"
 	"io/ioutil"
 	"os"
 	"path/filepath"
@@ -50,13 +51,14 @@ func Test_GetQueryPath(t *testing.T) {
 		},
 	}
 
+	ctx := context.Background()
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			client := Client{
 				ScanParams: &tt.scanParams,
 			}
 
-			client.GetQueryPath()
+			client.GetQueryPath(ctx)
 
 			if got := client.ScanParams.QueriesPath; !reflect.DeepEqual(len(got), tt.want) {
 				t.Errorf("GetQueryPath() = %v, want %v", len(got), tt.want)
@@ -97,13 +99,15 @@ func Test_PrintVersionCheck(t *testing.T) {
 			expectedOutput: "A new version 'v1.1.0' of KICS is available, please consider updating",
 		},
 	}
+
+	ctx := context.Background()
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			rescueStdout := os.Stdout
 			r, w, _ := os.Pipe()
 			os.Stdout = w
 
-			printVersionCheck(tt.consolePrinter, tt.modelSummary)
+			printVersionCheck(ctx, tt.consolePrinter, tt.modelSummary)
 
 			w.Close()
 			out, _ := ioutil.ReadAll(r)
@@ -187,10 +191,12 @@ func Test_GetTotalFiles(t *testing.T) {
 			expectedOutput: 0,
 		},
 	}
+
+	ctx := context.Background()
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 
-			v := getTotalFiles(tt.paths)
+			v := getTotalFiles(ctx, tt.paths)
 			require.Equal(t, tt.expectedOutput, v)
 
 		})
@@ -219,13 +225,15 @@ func Test_LogLoadingQueriesType(t *testing.T) {
 			expectedOutput: "",
 		},
 	}
+
+	ctx := context.Background()
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			rescueStdout := os.Stdout
 			r, w, _ := os.Pipe()
 			os.Stdout = w
 
-			logLoadingQueriesType(tt.types)
+			logLoadingQueriesType(ctx, tt.types)
 
 			w.Close()
 			out, _ := ioutil.ReadAll(r)
@@ -411,12 +419,13 @@ func Test_GetLibraryPath(t *testing.T) {
 		},
 	}
 
+	ctx := context.Background()
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			c := &Client{}
 
 			c.ScanParams = &tt.scanParameters
-			_, v := c.getLibraryPath()
+			_, v := c.getLibraryPath(ctx)
 
 			if tt.expectedError {
 				require.Error(t, v)
@@ -478,11 +487,13 @@ func Test_PreparePaths(t *testing.T) {
 			expectedError:   true,
 		},
 	}
+
+	ctx := context.Background()
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			c := &Client{}
 			c.ScanParams = &tt.scanParameters
-			_, _, v := c.preparePaths()
+			_, _, v := c.preparePaths(ctx)
 
 			require.Equal(t, tt.queriesQuantity, len(c.ScanParams.QueriesPath))
 			if tt.expectedError {
@@ -528,9 +539,11 @@ func Test_AnalyzePaths(t *testing.T) {
 			},
 		},
 	}
+
+	ctx := context.Background()
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			anPaths, err := analyzePaths(&tt.analyzer)
+			anPaths, err := analyzePaths(ctx, &tt.analyzer)
 			require.ElementsMatch(t, tt.expectedOutput.Types, anPaths.Types)
 			require.ElementsMatch(t, tt.expectedOutput.Exc, anPaths.Exc)
 			if tt.expectedError {

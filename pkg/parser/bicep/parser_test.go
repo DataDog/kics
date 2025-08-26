@@ -6,6 +6,7 @@
 package bicep
 
 import (
+	"context"
 	"encoding/json"
 	"path/filepath"
 	"reflect"
@@ -31,9 +32,10 @@ func TestParser_SupportedExtensions(t *testing.T) {
 }
 
 func Test_Resolve(t *testing.T) {
+	ctx := context.Background()
 	parser := &Parser{}
 	param := `param vmName string = 'simple-vm'`
-	resolved, err := parser.Resolve([]byte(param), "test.bicep", true, 15)
+	resolved, err := parser.Resolve(ctx, []byte(param), "test.bicep", true, 15)
 	require.NoError(t, err)
 	require.Equal(t, []byte(param), resolved)
 }
@@ -1724,9 +1726,10 @@ func TestParseBicepFile(t *testing.T) {
 		},
 	}
 
+	ctx := context.Background()
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			document, _, err := parser.Parse(tt.filename, nil)
+			document, _, err := parser.Parse(ctx, tt.filename, nil)
 			if (err != nil) != tt.wantErr {
 				t.Errorf("Parser.Parse() error = %v, wantErr %v", err, tt.wantErr)
 				return

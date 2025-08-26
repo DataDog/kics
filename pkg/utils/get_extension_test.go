@@ -6,6 +6,7 @@
 package utils
 
 import (
+	"context"
 	"fmt"
 	"os"
 	"testing"
@@ -37,6 +38,7 @@ func TestGetExtension(t *testing.T) {
 		},
 	}
 
+	ctx := context.Background()
 	for _, test := range tests {
 		t.Run(test.name, func(t *testing.T) {
 			if test.toCreate {
@@ -47,7 +49,7 @@ func TestGetExtension(t *testing.T) {
 				}
 			}
 
-			got, err := GetExtension(test.filePath)
+			got, err := GetExtension(ctx, test.filePath)
 			require.Equal(t, test.want, got)
 			require.Equal(t, test.err, err)
 

@@ -503,12 +503,13 @@ func TestInspector_DecodeQueryResults(t *testing.T) {
 		},
 	}
 
+	ctx := context.Background()
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			//create a context with 0 second to timeout
 			timeoutDuration, _ := time.ParseDuration(tt.args.timeDuration)
 			myCtxTimeOut, _ := context.WithTimeout(contextToUSe, timeoutDuration)
-			result, err := c.DecodeQueryResults(&tt.args.queryContext, myCtxTimeOut, tt.args.regoResult, 57)
+			result, err := c.DecodeQueryResults(ctx, &tt.args.queryContext, myCtxTimeOut, tt.args.regoResult, 57)
 			assert.Nil(t, err, "Error not as expected")
 			assert.Equal(t, 0, len(result), "Array size is not as expected")
 		})
@@ -550,8 +551,9 @@ func newQueryContext(ctx context.Context) QueryContext {
 }
 
 func newInspectorInstance(t *testing.T, queryPath []string, kicsComputeNewSimID bool) *Inspector {
-	querySource := source.NewFilesystemSource(queryPath, []string{""}, []string{""}, filepath.FromSlash("./assets/libraries"), true)
-	var vb = func(ctx *QueryContext, tracker Tracker, v interface{},
+	ctx := context.Background()
+	querySource := source.NewFilesystemSource(ctx, queryPath, []string{""}, []string{""}, filepath.FromSlash("./assets/libraries"), true)
+	var vb = func(ctx context.Context, qCtx *QueryContext, tracker Tracker, v interface{},
 		detector *detector.DetectLine, useOldSeverity bool, kicsComputeNewSimID bool, queryDuration time.Duration) (*model.Vulnerability, error) {
 		return &model.Vulnerability{}, nil
 	}
@@ -574,14 +576,14 @@ type mockSource struct {
 	Types  []string
 }
 
-func (m *mockSource) GetQueries(queryFilter *source.QueryInspectorParameters) ([]model.QueryMetadata, error) {
-	sources := source.NewFilesystemSource(m.Source, []string{""}, []string{""}, filepath.FromSlash("./assets/libraries"), true)
+func (m *mockSource) GetQueries(ctx context.Context, queryFilter *source.QueryInspectorParameters) ([]model.QueryMetadata, error) {
+	sources := source.NewFilesystemSource(ctx, m.Source, []string{""}, []string{""}, filepath.FromSlash("./assets/libraries"), true)
 
-	return sources.GetQueries(queryFilter)
+	return sources.GetQueries(ctx, queryFilter)
 }
 
-func (m *mockSource) GetQueryLibrary(platform string) (source.RegoLibraries, error) {
-	library := source.GetPathToCustomLibrary(platform, "./assets/libraries")
+func (m *mockSource) GetQueryLibrary(ctx context.Context, platform string) (source.RegoLibraries, error) {
+	library := source.GetPathToCustomLibrary(ctx, platform, "./assets/libraries")
 
 	if library != "default" {
 		content, err := os.ReadFile(library)

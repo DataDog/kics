@@ -6,13 +6,13 @@
 package terraform
 
 import (
+	"context"
 	"fmt"
 	"strings"
 	"testing"
 
 	"github.com/Checkmarx/kics/pkg/model"
 	"github.com/Checkmarx/kics/pkg/utils"
-	"github.com/rs/zerolog"
 	"github.com/stretchr/testify/require"
 )
 
@@ -237,10 +237,11 @@ func TestDetectTerraformLine(t *testing.T) { //nolint
 		},
 	}
 
+	ctx := context.Background()
 	for i, testCase := range testCases {
 		detector := DetectKindLine{}
 		t.Run(fmt.Sprintf("detectTerraformLine-%d", i), func(t *testing.T) {
-			v := detector.DetectLine(testCase.file, testCase.searchKey, 3, &zerolog.Logger{})
+			v := detector.DetectLine(ctx, testCase.file, testCase.searchKey, 3)
 			require.Equal(t, testCase.expected, v)
 		})
 	}
@@ -526,10 +527,11 @@ func TestDetectTerraformLineRemediations(t *testing.T) {
 		},
 	}
 
+	ctx := context.Background()
 	for i, testCase := range testCases {
 		detector := DetectKindLine{}
 		t.Run(fmt.Sprintf("detectTerraformLine-%d", i), func(t *testing.T) {
-			v := detector.DetectLine(testCase.file, testCase.searchKey, 3, &zerolog.Logger{})
+			v := detector.DetectLine(ctx, testCase.file, testCase.searchKey, 3)
 			require.Equal(t, testCase.expected, v)
 		})
 	}

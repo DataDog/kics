@@ -185,9 +185,10 @@ func TestInspectorSimilarityID(t *testing.T) {
 }
 
 func getTestQueryID(params *testCaseParamsType) string {
+	ctx := context.Background()
 	var testQueryID string
 	if params.queryID == "" {
-		metadata, err := source.ReadMetadata(params.queryDir)
+		metadata, err := source.ReadMetadata(ctx, params.queryDir)
 		if err != nil {
 			return ""
 		}
@@ -267,7 +268,7 @@ func createInspectorAndGetVulnerabilities(ctx context.Context, t testing.TB,
 
 	queriesSource.EXPECT().GetQueries(getQueryFilter()).
 		DoAndReturn(func(interface{}) ([]model.QueryMetadata, error) {
-			metadata, err := source.ReadMetadata(testParams.queryDir)
+			metadata, err := source.ReadMetadata(ctx, testParams.queryDir)
 			require.NoError(t, err)
 
 			// Override metadata ID with custom QueryID for testing
@@ -319,7 +320,7 @@ func createInspectorAndGetVulnerabilities(ctx context.Context, t testing.TB,
 	proBarBuilder := progress.InitializePbBuilder(true, true, true)
 	platforms := []string{"Ansible", "AzureResourceManager", "Buildah", "CICD", "CloudFormation", "GRPC", "Kubernetes", "OpenAPI", "Terraform"}
 	progressBar := proBarBuilder.BuildCounter("Executing queries: ", inspector.LenQueriesByPlat(platforms), wg, currentQuery)
-	go progressBar.Start()
+	go progressBar.Start(ctx)
 
 	wg.Add(1)
 	vulnerabilities, err := inspector.Inspect(

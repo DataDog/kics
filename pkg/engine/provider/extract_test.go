@@ -6,6 +6,7 @@
 package provider
 
 import (
+	"context"
 	"testing"
 
 	"github.com/Checkmarx/kics/test"
@@ -59,9 +60,10 @@ func TestProvider_GetSources(t *testing.T) {
 		},
 	}
 
+	ctx := context.Background()
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			got, err := GetSources(tt.args.source, "")
+			got, err := GetSources(ctx, tt.args.source, "")
 			if (err != nil) != tt.wantErr {
 				t.Errorf("GetSources() = %v, wantErr = %v", err, tt.wantErr)
 			}

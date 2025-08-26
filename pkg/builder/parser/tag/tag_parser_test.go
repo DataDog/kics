@@ -6,6 +6,7 @@
 package tag
 
 import (
+	"context"
 	"testing"
 
 	"github.com/stretchr/testify/require"
@@ -13,20 +14,21 @@ import (
 
 // TestParseTags tests the functions [Parse()] and all the methods called by them (check for equal flags)
 func TestParseTags(t *testing.T) { //nolint
+	ctx := context.Background()
 	t.Run("empty", func(t *testing.T) {
-		tags, err := Parse("", []string{"test2"})
+		tags, err := Parse(ctx, "", []string{"test2"})
 		require.NoError(t, err)
 		assertEqualTags(t, tags, []Tag{})
 	})
 
 	t.Run("not_supported", func(t *testing.T) {
-		tags, err := Parse("// test", []string{"test2"})
+		tags, err := Parse(ctx, "// test", []string{"test2"})
 		require.NoError(t, err)
 		assertEqualTags(t, tags, []Tag{})
 	})
 
 	t.Run("just_comment", func(t *testing.T) {
-		tags, err := Parse("// test", []string{"test"})
+		tags, err := Parse(ctx, "// test", []string{"test"})
 		require.NoError(t, err)
 		assertEqualTags(t, tags, []Tag{
 			{
@@ -36,7 +38,7 @@ func TestParseTags(t *testing.T) { //nolint
 	})
 
 	t.Run("just_many_comments", func(t *testing.T) {
-		tags, err := Parse("// a commentB", []string{"a", "commentB"})
+		tags, err := Parse(ctx, "// a commentB", []string{"a", "commentB"})
 		require.NoError(t, err)
 		assertEqualTags(t, tags, []Tag{
 			{
@@ -49,7 +51,7 @@ func TestParseTags(t *testing.T) { //nolint
 	})
 
 	t.Run("just_many_comments", func(t *testing.T) {
-		tags, err := Parse("// a:\"something,expected=private,test=false,test2=true,iii=123.3,tt=['a','c']\" commentB a:\"test=1,b,c=!=\"", []string{"a", "commentB"}) //nolint:lll
+		tags, err := Parse(ctx, "// a:\"something,expected=private,test=false,test2=true,iii=123.3,tt=['a','c']\" commentB a:\"test=1,b,c=!=\"", []string{"a", "commentB"}) //nolint:lll
 		require.NoError(t, err)
 		assertEqualTags(t, tags, []Tag{
 			{
@@ -78,7 +80,7 @@ func TestParseTags(t *testing.T) { //nolint
 	})
 
 	t.Run("all_attributes", func(t *testing.T) {
-		tags, err := Parse("// Test:\"r=*,resource=['a','b','c'],any_key,upper,lower,con=<=,con2=>\"", []string{"Test"})
+		tags, err := Parse(ctx, "// Test:\"r=*,resource=['a','b','c'],any_key,upper,lower,con=<=,con2=>\"", []string{"Test"})
 		require.NoError(t, err)
 		assertEqualTags(t, tags, []Tag{
 			{
@@ -99,7 +101,7 @@ func TestParseTags(t *testing.T) { //nolint
 	})
 
 	t.Run("parse_args", func(t *testing.T) {
-		tags, err := Parse("// Test:testArr[a=testA,b=testB]", []string{"Test"})
+		tags, err := Parse(ctx, "// Test:testArr[a=testA,b=testB]", []string{"Test"})
 		require.NoError(t, err)
 		assertEqualTags(t, tags, []Tag{
 			{
@@ -115,7 +117,7 @@ func TestParseTags(t *testing.T) { //nolint
 	})
 
 	t.Run("parse_escape", func(t *testing.T) {
-		tags, err := Parse("// a:tt=['a\\a','b\\b','f\\f','n\\n','r\\r','t\\t','v\\v']", []string{"a"}) //nolint:lll
+		tags, err := Parse(ctx, "// a:tt=['a\\a','b\\b','f\\f','n\\n','r\\r','t\\t','v\\v']", []string{"a"}) //nolint:lll
 		require.NoError(t, err)
 		assertEqualTags(t, tags, []Tag{
 			{
@@ -136,7 +138,7 @@ func TestParseTags(t *testing.T) { //nolint
 	})
 
 	t.Run("special_escape_cases", func(t *testing.T) {
-		tags, err := Parse("// Test:t='\\\\',pel='\\'',asp='\\\"\\\"'", []string{"Test"})
+		tags, err := Parse(ctx, "// Test:t='\\\\',pel='\\'',asp='\\\"\\\"'", []string{"Test"})
 		require.NoError(t, err)
 		assertEqualTags(t, tags, []Tag{
 			{
@@ -153,38 +155,39 @@ func TestParseTags(t *testing.T) { //nolint
 
 // TestParseTags tests the functions [Parse()] and all the methods called by them (checks for errors)
 func TestParseErrorTags(t *testing.T) {
+	ctx := context.Background()
 	t.Run("invalid_token", func(t *testing.T) {
-		tags, err := Parse("// Test:[error]", []string{"Test"})
+		tags, err := Parse(ctx, "// Test:[error]", []string{"Test"})
 		require.Error(t, err)
 		assertEqualTags(t, tags, nil)
 	})
 
 	t.Run("parse_args_error", func(t *testing.T) {
-		tags, err := Parse("// Test:testArr[testA]", []string{"Test"})
+		tags, err := Parse(ctx, "// Test:testArr[testA]", []string{"Test"})
 		require.Error(t, err)
 		assertEqualTags(t, tags, nil)
 	})
 
 	t.Run("invalid_value_error", func(t *testing.T) {
-		tags, err := Parse("// Test:t=!test", []string{"Test"})
+		tags, err := Parse(ctx, "// Test:t=!test", []string{"Test"})
 		require.Error(t, err)
 		assertEqualTags(t, tags, nil)
 	})
 
 	t.Run("invalid_escape_sequence", func(t *testing.T) {
-		tags, err := Parse("// Test:t='\\k'", []string{"Test"})
+		tags, err := Parse(ctx, "// Test:t='\\k'", []string{"Test"})
 		require.Error(t, err)
 		assertEqualTags(t, tags, nil)
 	})
 
 	t.Run("unterminated_string", func(t *testing.T) {
-		tags, err := Parse("// Test:t='\n'", []string{"Test"})
+		tags, err := Parse(ctx, "// Test:t='\n'", []string{"Test"})
 		require.Error(t, err)
 		assertEqualTags(t, tags, nil)
 	})
 
 	t.Run("']'_or_','_expected_error", func(t *testing.T) {
-		tags, err := Parse("// Test:t=['a')", []string{"Test"})
+		tags, err := Parse(ctx, "// Test:t=['a')", []string{"Test"})
 		require.Error(t, err)
 		assertEqualTags(t, tags, nil)
 	})

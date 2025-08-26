@@ -6,6 +6,7 @@
 package converter
 
 import (
+	"context"
 	"encoding/json"
 	"fmt"
 	"testing"
@@ -57,9 +58,10 @@ block "label_one" "label_two" {
 	}
 }`
 
+	ctx := context.Background()
 	file, _ := hclsyntax.ParseConfig([]byte(input), "testFileName", hcl.Pos{Byte: 0, Line: 1, Column: 1})
 
-	body, err := DefaultConverted(file, VariableMap{})
+	body, err := DefaultConverted(ctx, file, VariableMap{})
 	require.NoError(t, err)
 	compareJSONLine(t, body, expected)
 }
@@ -157,9 +159,10 @@ block "label_one" "label_two" {
 		}
 	}`
 
+	ctx := context.Background()
 	file, _ := hclsyntax.ParseConfig([]byte(input), "testFileName", hcl.Pos{Byte: 0, Line: 1, Column: 1})
 
-	body, err := DefaultConverted(file, VariableMap{})
+	body, err := DefaultConverted(ctx, file, VariableMap{})
 	require.NoError(t, err)
 	compareJSONLine(t, body, expected)
 }
@@ -202,9 +205,10 @@ block "label_one" {
 		}
 	}`
 
+	ctx := context.Background()
 	file, _ := hclsyntax.ParseConfig([]byte(input), "testFileName", hcl.Pos{Byte: 0, Line: 1, Column: 1})
 
-	body, err := DefaultConverted(file, VariableMap{})
+	body, err := DefaultConverted(ctx, file, VariableMap{})
 	require.NoError(t, err)
 	compareJSONLine(t, body, expected)
 }
@@ -257,9 +261,10 @@ block "label_one" {
 		}
 	}`
 
+	ctx := context.Background()
 	file, _ := hclsyntax.ParseConfig([]byte(input), "testFileName", hcl.Pos{Byte: 0, Line: 1, Column: 1})
 
-	body, err := DefaultConverted(file, VariableMap{})
+	body, err := DefaultConverted(ctx, file, VariableMap{})
 	require.NoError(t, err)
 	compareJSONLine(t, body, expected)
 }
@@ -280,9 +285,10 @@ block "label_one" {
 		"attribute2": "my-test-concat",
 	}
 
+	ctx := context.Background()
 	file, _ := hclsyntax.ParseConfig([]byte(input), "testFileName", hcl.Pos{Byte: 0, Line: 1, Column: 1})
 
-	body, err := DefaultConverted(file, VariableMap{
+	body, err := DefaultConverted(ctx, file, VariableMap{
 		"var": cty.ObjectVal(map[string]cty.Value{
 			"test": cty.StringVal("my-test"),
 		}),
@@ -497,11 +503,13 @@ block "label_one" {
 			wantErr: false,
 		},
 	}
+
+	ctx := context.Background()
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			file, _ := hclsyntax.ParseConfig([]byte(tt.input), "testFileName", hcl.Pos{Byte: 0, Line: 1, Column: 1})
 			c := converter{bytes: file.Bytes}
-			got, err := c.convertBody(file.Body.(*hclsyntax.Body), 0)
+			got, err := c.convertBody(ctx, file.Body.(*hclsyntax.Body), 0)
 			fmt.Println(err)
 			require.True(t, (err != nil) == tt.wantErr)
 			gotJSON, _ := json.Marshal(got)
@@ -771,9 +779,10 @@ variable "region" {
 		}
 	}`
 
+	ctx := context.Background()
 	file, _ := hclsyntax.ParseConfig([]byte(input), "testFileName", hcl.Pos{Byte: 0, Line: 1, Column: 1})
 
-	body, err := DefaultConverted(file, VariableMap{})
+	body, err := DefaultConverted(ctx, file, VariableMap{})
 	require.NoError(t, err)
 	compareJSONLine(t, body, expected)
 }

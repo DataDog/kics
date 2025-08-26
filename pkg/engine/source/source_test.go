@@ -6,6 +6,7 @@
 package source
 
 import (
+	"context"
 	"encoding/json"
 	"testing"
 
@@ -106,9 +107,11 @@ dummy_test(a) {
 			errExpected: true,
 		},
 	}
+
+	ctx := context.Background()
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			got, err := mergeLibraries(tt.customLib, tt.embeddedLib)
+			got, err := mergeLibraries(ctx, tt.customLib, tt.embeddedLib)
 			if tt.errExpected {
 				require.Error(t, err)
 			} else {

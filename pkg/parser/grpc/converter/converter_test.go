@@ -7,6 +7,7 @@ package converter
 
 import (
 	"bytes"
+	"context"
 	"encoding/json"
 	"fmt"
 	"reflect"
@@ -790,13 +791,15 @@ func TestConvert(t *testing.T) {
 			}`,
 		},
 	}
+
+	ctx := context.Background()
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			reader := bytes.NewReader(tt.content)
 			parserProto := proto.NewParser(reader)
 			nodes, err := parserProto.Parse()
 			require.NoError(t, err)
-			got, ignore := Convert(nodes)
+			got, ignore := Convert(ctx, nodes)
 			require.Equal(t, tt.wantIgnoreLines, ignore)
 			gotString, err := json.Marshal(got)
 			require.NoError(t, err)
