@@ -6,16 +6,17 @@
 package terraform
 
 import (
+	"context"
 	"fmt"
 	"regexp"
 	"strconv"
 	"strings"
 
 	"github.com/Checkmarx/kics/pkg/detector"
+	"github.com/Checkmarx/kics/pkg/logger"
 	"github.com/Checkmarx/kics/pkg/model"
 	"github.com/hashicorp/hcl/v2"
 	"github.com/hashicorp/hcl/v2/hclsyntax"
-	"github.com/rs/zerolog"
 )
 
 type DetectKindLine struct{}
@@ -23,7 +24,8 @@ type DetectKindLine struct{}
 const undetectedVulnerabilityLine = -1
 
 // DetectLine searches vulnerability line in terraform files
-func (d DetectKindLine) DetectLine(file *model.FileMetadata, searchKey string, outputLines int, log *zerolog.Logger) model.VulnerabilityLines {
+func (d DetectKindLine) DetectLine(ctx context.Context, file *model.FileMetadata, searchKey string, outputLines int) model.VulnerabilityLines {
+	logger := logger.FromContext(ctx)
 	searchKey = sanitizeSearchKey(searchKey)
 
 	detection := &detector.DefaultDetectLineResponse{
@@ -64,9 +66,9 @@ func (d DetectKindLine) DetectLine(file *model.FileMetadata, searchKey string, o
 
 	if detection.FoundAtLeastOne {
 		line := detection.CurrentLine + 1
-		vulnLines, err := locateTerraformBlock([]byte(file.OriginalData), line, lines)
+		vulnLines, err := locateTerraformBlock(ctx, []byte(file.OriginalData), line, lines)
 		if err != nil {
-			log.Error().Err(err).Msgf("Failed to parse block at line %d in file %s", line, file.FilePath)
+			logger.Error().Err(err).Msgf("Failed to parse block at line %d in file %s", line, file.FilePath)
 			return buildEmptyVulnerabilityLines(file)
 		}
 		vulnLines.Line = line
@@ -76,7 +78,7 @@ func (d DetectKindLine) DetectLine(file *model.FileMetadata, searchKey string, o
 		return vulnLines
 	}
 
-	log.Warn().Msgf("Failed to detect Terraform line, query response %s", normalizedKey)
+	logger.Warn().Msgf("Failed to detect Terraform line, query response %s", normalizedKey)
 	return buildEmptyVulnerabilityLines(file)
 }
 
@@ -95,21 +97,28 @@ func sanitizeSearchKey(key string) string {
 	return re.ReplaceAllString(key, "[$1]")
 }
 
-func locateTerraformBlock(src []byte, identifyingLine int, strLines []string) (model.VulnerabilityLines, error) {
+func locateTerraformBlock(ctx context.Context, src []byte, identifyingLine int, strLines []string) (model.VulnerabilityLines, error) {
+	logger := logger.FromContext(ctx)
 	filePath := "temp.tf"
 
 	if identifyingLine <= 0 || identifyingLine > len(strLines) {
-		return model.VulnerabilityLines{}, fmt.Errorf("line %d is out of range", identifyingLine)
+		err := fmt.Errorf("line %d is out of range", identifyingLine)
+		logger.Error().Msg(err.Error())
+		return model.VulnerabilityLines{}, err
 	}
 
 	hclFile, diagnostics := hclsyntax.ParseConfig(src, filePath, hcl.InitialPos)
 	if diagnostics.HasErrors() {
-		return model.VulnerabilityLines{}, fmt.Errorf("failed to parse HCL: %v", diagnostics.Errs())
+		err := fmt.Errorf("failed to parse HCL: %v", diagnostics.Errs())
+		logger.Error().Msg(err.Error())
+		return model.VulnerabilityLines{}, err
 	}
 
 	body, ok := hclFile.Body.(*hclsyntax.Body)
 	if !ok {
-		return model.VulnerabilityLines{}, fmt.Errorf("unexpected HCL body type")
+		err := fmt.Errorf("unexpected HCL body type")
+		logger.Error().Msg(err.Error())
+		return model.VulnerabilityLines{}, err
 	}
 
 	for _, block := range body.Blocks {
@@ -138,7 +147,9 @@ func locateTerraformBlock(src []byte, identifyingLine int, strLines []string) (m
 		}
 	}
 
-	return model.VulnerabilityLines{}, fmt.Errorf("failed to locate block for line %d", identifyingLine)
+	err := fmt.Errorf("failed to locate block for line %d", identifyingLine)
+	logger.Error().Msg(err.Error())
+	return model.VulnerabilityLines{}, err
 }
 
 func toResourceLine(pos hcl.Pos) model.ResourceLine {

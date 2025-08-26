@@ -6,6 +6,7 @@
 package report
 
 import (
+	"context"
 	"strings"
 
 	"github.com/Checkmarx/kics/pkg/model"
@@ -13,7 +14,7 @@ import (
 )
 
 // PrintSarifReport creates a report file on sarif format, fetching the ID and GUID from relationships to be inputted to taxonomies field
-func PrintSarifReport(path, filename string, body interface{}, sciInfo model.SCIInfo) error {
+func PrintSarifReport(ctx context.Context, path, filename string, body interface{}, sciInfo model.SCIInfo) error {
 	if !strings.HasSuffix(filename, ".sarif") {
 		filename += ".sarif"
 	}
@@ -27,20 +28,20 @@ func PrintSarifReport(path, filename string, body interface{}, sciInfo model.SCI
 		auxID := []string{}
 		auxGUID := map[string]string{}
 		for idx := range summary.Queries {
-			x := sarifReport.BuildSarifIssue(&summary.Queries[idx], sciInfo)
+			x := sarifReport.BuildSarifIssue(ctx, &summary.Queries[idx], sciInfo)
 			if x != "" {
 				auxID = append(auxID, x)
 				guid := sarifReport.GetGUIDFromRelationships(idx, x)
 				auxGUID[x] = guid
 			}
 		}
-		sarifReport.AddTags(&summary, &sciInfo.DiffAware)
+		sarifReport.AddTags(ctx, &summary, &sciInfo.DiffAware)
 		sarifReport.ResolveFilepaths(path)
-		sarifReport.SetToolVersionType(sciInfo.RunType)
+		sarifReport.SetToolVersionType(ctx, sciInfo.RunType)
 
 		// sarifReport.RebuildTaxonomies(auxID, auxGUID)
 		body = sarifReport
 	}
 
-	return ExportJSONReport(path, filename, body)
+	return ExportJSONReport(ctx, path, filename, body)
 }

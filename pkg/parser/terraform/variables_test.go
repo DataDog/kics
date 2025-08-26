@@ -6,6 +6,7 @@
 package terraform
 
 import (
+	"context"
 	"os"
 	"path/filepath"
 	"testing"
@@ -191,10 +192,11 @@ func TestGetInputVariables(t *testing.T) {
 		},
 	}
 
+	ctx := context.Background()
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			fileContent, _ := os.ReadFile(tt.filename)
-			result := getInputVariables(tt.filename, string(fileContent), "../../../test/fixtures/test_terraform_variables/varsToUse/varsToUse.tf")
+			result := getInputVariables(ctx, tt.filename, string(fileContent), "../../../test/fixtures/test_terraform_variables/varsToUse/varsToUse.tf")
 			require.Equal(t, tt.want, result)
 		})
 	}

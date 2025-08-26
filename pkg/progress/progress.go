@@ -6,6 +6,7 @@
 package progress
 
 import (
+	"context"
 	"sync"
 
 	"github.com/Checkmarx/kics/pkg/progress/circle"
@@ -16,7 +17,7 @@ import (
 // Start initializes the Progress Bar execution
 // Close stops the Progress Bar execution
 type PBar interface {
-	Start()
+	Start(ctx context.Context)
 	Close() error
 }
 

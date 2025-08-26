@@ -6,6 +6,7 @@
 package analyzer
 
 import (
+	"context"
 	"path/filepath"
 	"sort"
 	"testing"
@@ -408,6 +409,7 @@ func TestAnalyzer_Analyze(t *testing.T) {
 		},
 	}
 
+	ctx := context.Background()
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			exc := []string{""}
@@ -422,7 +424,7 @@ func TestAnalyzer_Analyze(t *testing.T) {
 				MaxFileSize:       tt.MaxFileSize,
 			}
 
-			got, err := Analyze(analyzer)
+			got, err := Analyze(ctx, analyzer)
 			if (err != nil) != tt.wantErr {
 				t.Errorf("Analyze = %v, wantErr = %v", err, tt.wantErr)
 			}

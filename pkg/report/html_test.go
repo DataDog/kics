@@ -1,6 +1,7 @@
 package report
 
 import (
+	"context"
 	"fmt"
 	"os"
 	"path/filepath"
@@ -45,12 +46,13 @@ var htmlTests = []struct {
 
 // TestPrintHTMLReport tests the functions [PrintHTMLReport()] and all the methods called by them
 func TestPrintHTMLReport(t *testing.T) {
+	ctx := context.Background()
 	for idx, test := range htmlTests {
 		t.Run(fmt.Sprintf("HTML File test case %d", idx), func(t *testing.T) {
 			if err := os.MkdirAll(test.caseTest.path, os.ModePerm); err != nil {
 				t.Fatal(err)
 			}
-			err := PrintHTMLReport(test.caseTest.path, test.caseTest.filename, test.caseTest.summary, model.SCIInfo{})
+			err := PrintHTMLReport(ctx, test.caseTest.path, test.caseTest.filename, test.caseTest.summary, model.SCIInfo{})
 			require.NoError(t, err)
 			require.FileExists(t, filepath.Join(test.caseTest.path, test.caseTest.filename+".html"))
 			htmlString, err := os.ReadFile(filepath.Join(test.caseTest.path, test.caseTest.filename+".html"))

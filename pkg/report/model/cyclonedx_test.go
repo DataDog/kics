@@ -1,6 +1,7 @@
 package model
 
 import (
+	"context"
 	"fmt"
 	"path/filepath"
 	"reflect"
@@ -313,6 +314,8 @@ func TestBuildCycloneDxReport(t *testing.T) {
 			want: &cycloneDxCWE,
 		},
 	}
+
+	ctx := context.Background()
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			queries := tt.args.summary.Queries
@@ -321,7 +324,7 @@ func TestBuildCycloneDxReport(t *testing.T) {
 					queries[idx].Files[i].FileName = filepath.Join("..", "..", "..", queries[idx].Files[i].FileName)
 				}
 			}
-			got := BuildCycloneDxReport(tt.args.summary, tt.args.filePaths)
+			got := BuildCycloneDxReport(ctx, tt.args.summary, tt.args.filePaths)
 			got.SerialNumber = "urn:uuid:" // set to "urn:uuid:" because it will be different for every report
 			assert.Equal(t, len(got.Components.Components), len(tt.want.Components.Components), "Comparing number of components")
 			for idx := range got.Components.Components {

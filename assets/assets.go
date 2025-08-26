@@ -1,11 +1,12 @@
 package assets
 
 import (
+	"context"
 	"embed" // used for embedding KICS libraries
 	"io/fs"
 	"path/filepath"
 
-	"github.com/rs/zerolog/log"
+	"github.com/Checkmarx/kics/pkg/logger"
 )
 
 //go:embed libraries/*.rego
@@ -31,11 +32,12 @@ func GetEmbeddedLibraryData(platform string) (string, error) {
 //go:embed queries/terraform
 var embeddedQueries embed.FS
 
-func GetEmbeddedQueryDirs() ([]string, error) {
+func GetEmbeddedQueryDirs(ctx context.Context) ([]string, error) {
+	logger := logger.FromContext(ctx)
 	var out []string
 	err := fs.WalkDir(embeddedQueries, ".", func(path string, d fs.DirEntry, err error) error {
 		if err != nil {
-			log.Info().Msgf("Failed to walk directory: %s", path)
+			logger.Info().Msgf("Failed to walk directory: %s", path)
 			return err
 		}
 		baseDir := filepath.Base(path)
@@ -48,16 +50,17 @@ func GetEmbeddedQueryDirs() ([]string, error) {
 		return nil
 	})
 	if err != nil {
-		log.Error().Msgf("Failed to walk embedded directory for queries: %v", err)
+		logger.Error().Msgf("Failed to walk embedded directory for queries: %v", err)
 		return nil, err
 	}
 	return out, nil
 }
 
-func GetEmbeddedQueryFile(path string) (string, error) {
+func GetEmbeddedQueryFile(ctx context.Context, path string) (string, error) {
+	logger := logger.FromContext(ctx)
 	content, err := embeddedQueries.ReadFile(path)
 	if err != nil {
-		log.Debug().Msgf("Failed to read file for path %s: %v", path, err)
+		logger.Debug().Msgf("Failed to read file for path %s: %v", path, err)
 		return "", err
 	}
 	return string(content), nil

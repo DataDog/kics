@@ -2,6 +2,7 @@ package test
 
 import (
 	"bytes"
+	"context"
 	"encoding/json"
 	"errors"
 	"fmt"
@@ -10,6 +11,7 @@ import (
 	"path/filepath"
 	"strings"
 
+	"github.com/Checkmarx/kics/pkg/logger"
 	"github.com/Checkmarx/kics/pkg/model"
 )
 
@@ -61,11 +63,12 @@ func CaptureOutput(funcToExec execute) (string, error) {
 
 // ChangeCurrentDir gets current working directory and changes to its parent until finds the desired directory
 // or fail
-func ChangeCurrentDir(desiredDir string) error {
+func ChangeCurrentDir(ctx context.Context, desiredDir string) error {
+	logger := logger.FromContext(ctx)
 	for currentDir, err := os.Getwd(); GetCurrentDirName(currentDir) != desiredDir; currentDir, err = os.Getwd() {
 		if err == nil {
 			if err = os.Chdir(".."); err != nil {
-				fmt.Print(formatCurrentDirError(err))
+				logger.Error().Msg(formatCurrentDirError(err))
 				return errors.New(formatCurrentDirError(err))
 			}
 		} else {

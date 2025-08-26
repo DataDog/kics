@@ -7,26 +7,32 @@ package utils
 
 import (
 	"bytes"
+	"context"
 	"fmt"
 	"os"
 	"path/filepath"
 
-	"github.com/rs/zerolog/log"
+	"github.com/Checkmarx/kics/pkg/logger"
 	"golang.org/x/tools/godoc/util"
 )
 
 // GetExtension gets the extension of a file path
-func GetExtension(path string) (string, error) {
+func GetExtension(ctx context.Context, path string) (string, error) {
+	logger := logger.FromContext(ctx)
 	targets := []string{"tfvars"}
 
 	// Get file information
 	fileInfo, err := os.Stat(path)
 	if err != nil {
-		return "", fmt.Errorf("file %s not found", path)
+		err = fmt.Errorf("file %s not found", path)
+		logger.Error().Msg(err.Error())
+		return "", err
 	}
 
 	if fileInfo.IsDir() {
-		return "", fmt.Errorf("the path %s is a directory", path)
+		err = fmt.Errorf("the path %s is a directory", path)
+		logger.Error().Msg(err.Error())
+		return "", err
 	}
 
 	ext := filepath.Ext(path)
@@ -36,14 +42,16 @@ func GetExtension(path string) (string, error) {
 		if Contains(base, targets) {
 			ext = base
 		} else {
-			isText, err := isTextFile(path)
+			isText, err := isTextFile(ctx, path)
 
 			if err != nil {
 				return "", err
 			}
 
 			if isText {
-				return "", fmt.Errorf("file %s does not have a supported extension", path)
+				err := fmt.Errorf("file %s does not have a supported extension", path)
+				logger.Error().Msg(err.Error())
+				return "", err
 			}
 		}
 	}
@@ -51,10 +59,11 @@ func GetExtension(path string) (string, error) {
 	return ext, nil
 }
 
-func isTextFile(path string) (bool, error) {
+func isTextFile(ctx context.Context, path string) (bool, error) {
+	logger := logger.FromContext(ctx)
 	info, err := os.Stat(path)
 	if err != nil {
-		log.Error().Msgf("failed to get file info: %s", err)
+		logger.Error().Msgf("failed to get file info: %s", err)
 		return false, err
 	}
 
@@ -64,7 +73,7 @@ func isTextFile(path string) (bool, error) {
 
 	content, err := os.ReadFile(filepath.Clean(path))
 	if err != nil {
-		log.Error().Msgf("failed to analyze file: %s", err)
+		logger.Error().Msgf("failed to analyze file: %s", err)
 		return false, err
 	}
 

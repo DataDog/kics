@@ -7,6 +7,7 @@ package descriptions
 
 import (
 	"bytes"
+	"context"
 	"encoding/json"
 	"io/ioutil"
 	"net/http"
@@ -43,6 +44,7 @@ var (
 )
 
 func TestClient_RequestDescriptions(t *testing.T) {
+	ctx := context.Background()
 	os.Setenv("KICS_DESCRIPTIONS_ENDPOINT", "http://example.com")
 	HTTPRequestClient = &mockclient.MockHTTPClient{}
 	mockclient.GetDoFunc = func(request *http.Request) (*http.Response, error) {
@@ -61,7 +63,7 @@ func TestClient_RequestDescriptions(t *testing.T) {
 		}, nil
 	}
 	descClient := Client{}
-	descriptions, err := descClient.RequestDescriptions([]string{
+	descriptions, err := descClient.RequestDescriptions(ctx, []string{
 		"foo1",
 		"foo2",
 		"foo3",
@@ -110,6 +112,7 @@ func TestClient_post(t *testing.T) {
 }
 
 func TestClient_CheckLatestVersion(t *testing.T) {
+	ctx := context.Background()
 	os.Setenv("KICS_DESCRIPTIONS_ENDPOINT", "http://example.com")
 	HTTPRequestClient = &mockclient.MockHTTPClient{}
 	mockclient.GetDoFunc = func(request *http.Request) (*http.Response, error) {
@@ -128,7 +131,7 @@ func TestClient_CheckLatestVersion(t *testing.T) {
 		}, nil
 	}
 	descClient := Client{}
-	version, err := descClient.CheckLatestVersion("1.4.0")
+	version, err := descClient.CheckLatestVersion(ctx, "1.4.0")
 	require.NoError(t, err, "CheckLatestVersion() should not return an error")
 	require.NotNil(t, version, "CheckLatestVersion() should return a version check")
 	t.Cleanup(func() {

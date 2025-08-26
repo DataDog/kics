@@ -5,8 +5,11 @@
  */
 package utils
 
+import "context"
+
 // DecryptAnsibleVault verifies if the fileContent is encrypted by ansible-vault. If yes, the function decrypts it
-func DecryptAnsibleVault(fileContent []byte, secret string) []byte {
+func DecryptAnsibleVault(ctx context.Context, fileContent []byte, secret string) []byte {
+	// logger := logger.FromContext(ctx)
 	// match, err := regexp.MatchString(`^\s*\$ANSIBLE_VAULT.*`, string(fileContent))
 	// if err != nil {
 	// 	return fileContent
@@ -15,7 +18,7 @@ func DecryptAnsibleVault(fileContent []byte, secret string) []byte {
 	// 	content, err := vault.Decrypt(string(fileContent), secret)
 
 	// 	if err == nil {
-	// 		log.Info().Msg("Decrypting Ansible Vault file")
+	// 		logger.Info().Msg("Decrypting Ansible Vault file")
 	// 		fileContent = []byte(content)
 	// 	}
 	// }

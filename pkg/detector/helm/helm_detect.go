@@ -6,15 +6,16 @@
 package helm
 
 import (
+	"context"
 	"fmt"
 	"sort"
 	"strconv"
 	"strings"
 
 	"github.com/Checkmarx/kics/pkg/detector"
+	"github.com/Checkmarx/kics/pkg/logger"
 	"github.com/Checkmarx/kics/pkg/model"
 	"github.com/agnivade/levenshtein"
-	"github.com/rs/zerolog"
 )
 
 // DetectKindLine defines a kindDetectLine type
@@ -41,8 +42,9 @@ const (
 // DetectLine is used to detect line on the helm template,
 // it looks only at the keys of the template and will make use of the auxiliary added
 // lines (ex: "# KICS_HELM_ID_")
-func (d DetectKindLine) DetectLine(file *model.FileMetadata, searchKey string,
-	outputLines int, logWithFields *zerolog.Logger) model.VulnerabilityLines {
+func (d DetectKindLine) DetectLine(ctx context.Context, file *model.FileMetadata, searchKey string,
+	outputLines int) model.VulnerabilityLines {
+	logger := logger.FromContext(ctx)
 	searchKey = fmt.Sprintf("%s.%s", strings.TrimRight(strings.TrimLeft(file.HelmID, "# "), ":"), searchKey)
 
 	lines := make([]string, len(*file.LinesOriginalData))
@@ -102,7 +104,7 @@ func (d DetectKindLine) DetectLine(file *model.FileMetadata, searchKey string,
 	}
 
 	var filePathSplit = strings.Split(file.FilePath, "/")
-	logWithFields.Warn().Msgf("Failed to detect line associated with identified result in file %s\n", filePathSplit[len(filePathSplit)-1])
+	logger.Warn().Msgf("Failed to detect line associated with identified result in file %s\n", filePathSplit[len(filePathSplit)-1])
 
 	return model.VulnerabilityLines{
 		Line:         undetectedVulnerabilityLine,

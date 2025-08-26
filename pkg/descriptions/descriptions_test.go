@@ -6,6 +6,7 @@
 package descriptions
 
 import (
+	"context"
 	"os"
 	"testing"
 
@@ -16,6 +17,7 @@ import (
 )
 
 func TestRequestAndOverrideDescriptions_NoBaseURL(t *testing.T) {
+	ctx := context.Background()
 	mock := test.SummaryMock
 	descClient = &mockclient.MockDescriptionsClient{}
 	mockclient.CheckConnection = func() error {
@@ -30,7 +32,7 @@ func TestRequestAndOverrideDescriptions_NoBaseURL(t *testing.T) {
 			},
 		}, nil
 	}
-	err := RequestAndOverrideDescriptions(&mock)
+	err := RequestAndOverrideDescriptions(ctx, &mock)
 	require.NoError(t, err, "Expected error")
 	for _, query := range mock.Queries {
 		if query.DescriptionID == "504b1d43" {
@@ -67,6 +69,7 @@ func Test_CheckConnection(t *testing.T) {
 
 	envVarName := "KICS_DESCRIPTIONS_ENDPOINT"
 
+	ctx := context.Background()
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			os.Unsetenv(envVarName)
@@ -74,7 +77,7 @@ func Test_CheckConnection(t *testing.T) {
 				os.Setenv(envVarName, tt.varValue)
 			}
 			c := Client{}
-			err := c.CheckConnection()
+			err := c.CheckConnection(ctx)
 			if tt.expectedError {
 				require.Error(t, err)
 			} else {

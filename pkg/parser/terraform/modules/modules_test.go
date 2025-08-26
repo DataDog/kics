@@ -1,6 +1,7 @@
 package tfmodules
 
 import (
+	"context"
 	"os"
 	"path/filepath"
 	"reflect"
@@ -56,6 +57,7 @@ module "local_bucket" {
 }
 `
 
+	ctx := context.Background()
 	files := model.FileMetadatas{
 		{
 			FilePath: filepath.Join(tmpDir, "main.tf"),
@@ -66,7 +68,7 @@ module "local_bucket" {
 		},
 	}
 
-	gotMap, err := ParseTerraformModules(files)
+	gotMap, err := ParseTerraformModules(ctx, files)
 	if err != nil {
 		t.Fatalf("unexpected error: %v", err)
 	}
@@ -319,6 +321,7 @@ module "three" {
 		},
 	}
 
+	ctx := context.Background()
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			// Simulate a single file input using the test case content
@@ -331,7 +334,7 @@ module "three" {
 					}},
 			}
 
-			gotMap, err := ParseTerraformModules(files)
+			gotMap, err := ParseTerraformModules(ctx, files)
 			if err != nil {
 				t.Fatalf("unexpected error: %v", err)
 			}

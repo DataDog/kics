@@ -112,8 +112,9 @@ func TestUniqueQueryIDs(t *testing.T) {
 	queriesIdentifiers := make(map[string]string)
 	descriptionIdentifiers := make(map[string]string)
 
+	ctx := context.Background()
 	for _, entry := range queries {
-		metadata, err := source.ReadMetadata(entry.dir)
+		metadata, err := source.ReadMetadata(ctx, entry.dir)
 		require.NoError(t, err)
 		uuid := metadata["id"].(string)
 		duplicateDir, ok := queriesIdentifiers[uuid]
@@ -193,7 +194,7 @@ func testQuery(tb testing.TB, entry queryEntry, filesPath []string, expectedVuln
 	queriesSource := mock.NewMockQueriesSource(ctrl)
 	queriesSource.EXPECT().GetQueries(getQueryFilter()).
 		DoAndReturn(func(interface{}) ([]model.QueryMetadata, error) {
-			q, err := source.ReadQuery(entry.dir)
+			q, err := source.ReadQuery(ctx, entry.dir)
 			require.NoError(tb, err)
 
 			return []model.QueryMetadata{q}, nil
@@ -232,7 +233,7 @@ func testQuery(tb testing.TB, entry queryEntry, filesPath []string, expectedVuln
 	proBarBuilder := progress.InitializePbBuilder(true, true, true)
 	platforms := MapToStringSlice(constants.AvailablePlatforms)
 	progressBar := proBarBuilder.BuildCounter("Executing queries: ", inspector.LenQueriesByPlat(platforms), wg, currentQuery)
-	go progressBar.Start()
+	go progressBar.Start(ctx)
 	wg.Add(1)
 
 	vulnerabilities, err := inspector.Inspect(

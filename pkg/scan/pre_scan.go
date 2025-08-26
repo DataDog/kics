@@ -1,11 +1,15 @@
 package scan
 
 import (
+	"context"
 	"os"
 	"path/filepath"
+	"time"
 
 	consoleHelpers "github.com/Checkmarx/kics/internal/console/helpers"
 	"github.com/Checkmarx/kics/internal/constants"
+	"github.com/Checkmarx/kics/pkg/logger"
+	"github.com/rs/zerolog"
 	"github.com/rs/zerolog/log"
 	"github.com/spf13/viper"
 )
@@ -19,24 +23,42 @@ type ConfigParameters struct {
 	IncludeQueries    []string
 }
 
-func setupConfigFile(rootPath string) (bool, error) {
+func setupConfigFile(ctx context.Context, rootPath string) (bool, error) {
+	logger := logger.FromContext(ctx)
 	configPath := filepath.Join(rootPath, constants.DefaultConfigFilename)
 	_, err := os.Stat(configPath)
 	if err != nil {
 		if os.IsNotExist(err) {
-			log.Info().Msgf("Config file not found at %s", configPath)
+			logger.Info().Msgf("Config file not found at %s", configPath)
 			return true, nil
 		}
-		log.Info().Msgf("Error reading config file at %s", configPath)
+		logger.Info().Msgf("Error reading config file at %s", configPath)
 		return true, err
 	}
 
-	log.Info().Msgf("Config file found at %s", configPath)
+	logger.Info().Msgf("Config file found at %s", configPath)
 	return false, nil
 }
 
-func initializeConfig(rootPath string) (ConfigParameters, error) {
-	log.Debug().Msg("console.initializeConfig()")
+func initializeConfig(ctx context.Context, rootPath string, extraInfos map[string]string, consolePrint ...bool) (ConfigParameters, context.Context, error) {
+	var logCtx context.Context
+	baseLogger := log.Logger
+	if len(consolePrint) > 0 && consolePrint[0] {
+		baseLogger = zerolog.New(zerolog.ConsoleWriter{Out: os.Stderr, TimeFormat: time.RFC3339}).
+			With().
+			Timestamp().Logger()
+		logCtx = baseLogger.WithContext(ctx)
+	} else {
+		infos := baseLogger.With()
+		for k, v := range extraInfos {
+			infos = infos.Str(k, v)
+		}
+
+		logCtx = infos.Logger().WithContext(ctx)
+		baseLogger = infos.Logger()
+	}
+
+	baseLogger.Debug().Msg("console.initializeConfig()")
 
 	configParams := ConfigParameters{}
 
@@ -44,12 +66,12 @@ func initializeConfig(rootPath string) (ConfigParameters, error) {
 	v.SetEnvPrefix("KICS")
 	v.AutomaticEnv()
 
-	exit, err := setupConfigFile(rootPath)
+	exit, err := setupConfigFile(ctx, rootPath)
 	if err != nil {
-		return configParams, err
+		return configParams, logCtx, err
 	}
 	if exit {
-		return configParams, nil
+		return configParams, logCtx, nil
 	}
 	configPath := filepath.Join(rootPath, constants.DefaultConfigFilename)
 
@@ -58,13 +80,13 @@ func initializeConfig(rootPath string) (ConfigParameters, error) {
 	v.AddConfigPath(rootPath)
 	ext, err := consoleHelpers.FileAnalyzer(configPath)
 	if err != nil {
-		log.Debug().Msgf("Error analyzing config file base %s at %s", base, configPath)
-		return configParams, err
+		baseLogger.Debug().Msgf("Error analyzing config file base %s at %s", base, configPath)
+		return configParams, logCtx, err
 	}
 	v.SetConfigType(ext)
 	if err := v.ReadInConfig(); err != nil {
-		log.Debug().Msgf("Error reading config file base %s at %s", base, configPath)
-		return configParams, err
+		baseLogger.Debug().Msgf("Error reading config file base %s at %s", base, configPath)
+		return configParams, logCtx, err
 	}
 
 	if v.Get("exclude-categories") != nil {
@@ -86,5 +108,5 @@ func initializeConfig(rootPath string) (ConfigParameters, error) {
 		configParams.IncludeQueries = v.GetStringSlice("include-queries")
 	}
 
-	return configParams, nil
+	return configParams, logCtx, nil
 }

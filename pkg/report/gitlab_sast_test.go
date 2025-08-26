@@ -1,6 +1,7 @@
 package report
 
 import (
+	"context"
 	"fmt"
 	"os"
 	"path/filepath"
@@ -43,12 +44,13 @@ var gitlabSASTTests = []struct {
 
 // TestPrintGitlabSASTReport tests the functions [PrintGitlabSASTReport()] and all the methods called by them
 func TestPrintGitlabSASTReport(t *testing.T) {
+	ctx := context.Background()
 	for idx, test := range gitlabSASTTests {
 		t.Run(fmt.Sprintf("Gitlab SAST Report File test case %d", idx), func(t *testing.T) {
 			if err := os.MkdirAll(test.caseTest.path, os.ModePerm); err != nil {
 				t.Fatal(err)
 			}
-			err := PrintGitlabSASTReport(test.caseTest.path, test.caseTest.filename, test.caseTest.summary, model.SCIInfo{})
+			err := PrintGitlabSASTReport(ctx, test.caseTest.path, test.caseTest.filename, test.caseTest.summary, model.SCIInfo{})
 			require.NoError(t, err)
 			require.FileExists(t, filepath.Join(test.caseTest.path, "gl-sast-"+test.caseTest.filename+".json"))
 			os.RemoveAll(test.caseTest.path)

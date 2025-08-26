@@ -1,6 +1,7 @@
 package report
 
 import (
+	"context"
 	"os"
 	"path/filepath"
 	"testing"
@@ -50,6 +51,8 @@ func TestPrintCycloneDxReport(t *testing.T) {
 			wantErr: false,
 		},
 	}
+
+	ctx := context.Background()
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			queries := tt.args.body.(model.Summary).Queries
@@ -61,7 +64,7 @@ func TestPrintCycloneDxReport(t *testing.T) {
 			if err := os.MkdirAll(tt.args.path, os.ModePerm); err != nil {
 				t.Fatal(err)
 			}
-			if err := PrintCycloneDxReport(tt.args.path, tt.args.filename, tt.args.body, model.SCIInfo{}); (err != nil) != tt.wantErr {
+			if err := PrintCycloneDxReport(ctx, tt.args.path, tt.args.filename, tt.args.body, model.SCIInfo{}); (err != nil) != tt.wantErr {
 				t.Errorf("PrintCycloneDxReport() error = %v, wantErr %v", err, tt.wantErr)
 			}
 			require.FileExists(t, filepath.Join(tt.args.path, "cyclonedx-"+tt.args.filename+".xml"))

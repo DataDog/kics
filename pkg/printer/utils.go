@@ -6,13 +6,15 @@
 package printer
 
 import (
+	"context"
 	"time"
 
-	"github.com/rs/zerolog"
+	"github.com/Checkmarx/kics/pkg/logger"
 )
 
 // PrintScanDuration prints the scan duration
-func PrintScanDuration(logger *zerolog.Logger, elapsed time.Duration) {
+func PrintScanDuration(ctx context.Context, elapsed time.Duration) {
+	logger := logger.FromContext(ctx)
 	elapsedStrFormat := "Scan duration: %v\n"
-	(*logger).Info().Msgf(elapsedStrFormat, elapsed)
+	logger.Info().Msgf(elapsedStrFormat, elapsed)
 }

@@ -6,16 +6,18 @@
 package similarity
 
 import (
+	"context"
 	"crypto/sha256"
 	"encoding/hex"
 	"path/filepath"
 	"strings"
 
-	"github.com/rs/zerolog/log"
+	"github.com/Checkmarx/kics/pkg/logger"
 )
 
 // ComputeSimilarityID This function receives four string parameters and computes a sha256 hash
-func ComputeSimilarityID(basePaths []string, filePath, queryID, searchKey, searchValue string) (*string, error) {
+func ComputeSimilarityID(ctx context.Context, basePaths []string, filePath, queryID, searchKey, searchValue string) (*string, error) {
+	logger := logger.FromContext(ctx)
 	basePath := ""
 	for _, path := range basePaths {
 		if strings.Contains(filepath.ToSlash(filePath), filepath.ToSlash(path)) {
@@ -25,7 +27,7 @@ func ComputeSimilarityID(basePaths []string, filePath, queryID, searchKey, searc
 	}
 	standardizedPath, err := standardizeToRelativePath(basePath, filePath)
 	if err != nil {
-		log.Debug().Msgf("Error while standardizing path: %s", err)
+		logger.Debug().Msgf("Error while standardizing path: %s", err)
 	}
 
 	var stringNode = standardizedPath + queryID + searchKey + searchValue

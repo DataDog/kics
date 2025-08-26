@@ -6,6 +6,7 @@
 package terraform
 
 import (
+	"context"
 	"path/filepath"
 	"reflect"
 	"strings"
@@ -125,8 +126,9 @@ func TestParser_SupportedExtensions(t *testing.T) {
 
 // Test_Parser tests the functions [Parser()] and all the methods called by them
 func Test_Parser(t *testing.T) {
+	ctx := context.Background()
 	parser := NewDefault()
-	document, linesToIgnore, err := parser.Parse("test.tf", []byte(have))
+	document, linesToIgnore, err := parser.Parse(ctx, "test.tf", []byte(have))
 
 	require.Equal(t, []int{8, 9, 10, 11, 5, 4, 6}, linesToIgnore)
 	require.NoError(t, err)
@@ -135,7 +137,7 @@ func Test_Parser(t *testing.T) {
 	require.Contains(t, document[0]["resource"], "aws_s3_bucket")
 
 	// case where we fail to parse the file and a fatal error is thrown caught with recover
-	document, linesToIgnore, err = parser.Parse("test.tf", []byte(conditionalValResource))
+	document, linesToIgnore, err = parser.Parse(ctx, "test.tf", []byte(conditionalValResource))
 	require.NoError(t, err)
 	require.Len(t, document, 0)
 	require.Len(t, linesToIgnore, 0)
@@ -144,8 +146,9 @@ func Test_Parser(t *testing.T) {
 
 // Test_Count tests resources with count set to 0
 func Test_Count(t *testing.T) {
+	ctx := context.Background()
 	parser := NewDefault()
-	document, _, err := parser.Parse("count.tf", []byte(count))
+	document, _, err := parser.Parse(ctx, "count.tf", []byte(count))
 	require.NoError(t, err)
 	require.Len(t, document, 1)
 	require.Contains(t, document[0], "resource")
@@ -155,9 +158,10 @@ func Test_Count(t *testing.T) {
 
 // Test_Parentheses_Expr tests if parentheses expr is well parsed
 func Test_Parentheses_Expr(t *testing.T) {
+	ctx := context.Background()
 	parser := NewDefault()
-	getInputVariables(filepath.FromSlash("../../../test/fixtures/test-tf-parentheses"), parentheses, "")
-	document, _, err := parser.Parse("parentheses.tf", []byte(parentheses))
+	getInputVariables(ctx, filepath.FromSlash("../../../test/fixtures/test-tf-parentheses"), parentheses, "")
+	document, _, err := parser.Parse(ctx, "parentheses.tf", []byte(parentheses))
 	require.NoError(t, err)
 	require.Len(t, document, 1)
 	require.Contains(t, document[0], "data")
@@ -167,8 +171,9 @@ func Test_Parentheses_Expr(t *testing.T) {
 
 // Test_namelessResource tests the case of the nameless resource where the resource name is not specified and model.Document resource is a list
 func Test_namelessResource(t *testing.T) {
+	ctx := context.Background()
 	parser := NewDefault()
-	document, _, err := parser.Parse("namelessResource.tf", []byte(namelessResource))
+	document, _, err := parser.Parse(ctx, "namelessResource.tf", []byte(namelessResource))
 	require.NoError(t, err)
 	require.Len(t, document, 1)
 	require.Contains(t, document[0], "resource")
@@ -181,9 +186,10 @@ func Test_namelessResource(t *testing.T) {
 
 // Test_Resolve tests the functions [Resolve()] and all the methods called by them
 func Test_Resolve(t *testing.T) {
+	ctx := context.Background()
 	parser := NewDefault()
 
-	resolved, err := parser.Resolve([]byte(have), "test.tf", true, 15)
+	resolved, err := parser.Resolve(ctx, []byte(have), "test.tf", true, 15)
 	require.NoError(t, err)
 	require.Equal(t, []byte(have), resolved)
 }
@@ -215,9 +221,10 @@ func TestTerraform_ProcessContent(t *testing.T) {
 		},
 	}
 
+	ctx := context.Background()
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			processContent(tt.args.elements, tt.args.content, tt.args.path)
+			processContent(ctx, tt.args.elements, tt.args.content, tt.args.path)
 			require.Equal(t, tt.want, tt.args.elements["certificate_body"])
 		})
 	}
@@ -395,7 +402,7 @@ func TestParser_GetResolvedFiles(t *testing.T) {
 		{
 			name: "Should get resolved files",
 			fields: fields{
-				convertFunc: func(file *hcl.File, inputVariables converter.VariableMap) (model.Document, error) {
+				convertFunc: func(ctx context.Context, file *hcl.File, inputVariables converter.VariableMap) (model.Document, error) {
 					return nil, nil
 				},
 			},

@@ -7,13 +7,13 @@ package buildah
 
 import (
 	"bytes"
+	"context"
 	"sort"
 	"strings"
 
-	"github.com/rs/zerolog/log"
-
 	"encoding/json"
 
+	"github.com/Checkmarx/kics/pkg/logger"
 	"github.com/Checkmarx/kics/pkg/model"
 	"github.com/pkg/errors"
 	"mvdan.cc/sh/v3/syntax"
@@ -56,12 +56,12 @@ const (
 )
 
 // Resolve - replace or modifies in-memory content before parsing
-func (p *Parser) Resolve(fileContent []byte, _ string, _ bool, _ int) ([]byte, error) {
+func (p *Parser) Resolve(ctx context.Context, fileContent []byte, _ string, _ bool, _ int) ([]byte, error) {
 	return fileContent, nil
 }
 
 // Parse - parses Buildah file to Json
-func (p *Parser) Parse(_ string, fileContent []byte) ([]model.Document, []int, error) {
+func (p *Parser) Parse(ctx context.Context, _ string, fileContent []byte) ([]model.Document, []int, error) {
 	var info Info
 	info.From = map[string][]Command{}
 
@@ -75,7 +75,7 @@ func (p *Parser) Parse(_ string, fileContent []byte) ([]model.Document, []int, e
 	syntax.Walk(f, func(node syntax.Node) bool {
 		switch x := node.(type) {
 		case *syntax.Stmt:
-			info.getStmt(x)
+			info.getStmt(ctx, x)
 		case *syntax.Comment:
 			info.getIgnoreLines(x)
 		}
@@ -106,12 +106,12 @@ func (p *Parser) Parse(_ string, fileContent []byte) ([]model.Document, []int, e
 	return documents, info.IgnoreLines, nil
 }
 
-func (i *Info) getStmt(stmt *syntax.Stmt) {
+func (i *Info) getStmt(ctx context.Context, stmt *syntax.Stmt) {
 	if cmd, ok := stmt.Cmd.(*syntax.CallExpr); ok {
 		args := cmd.Args
 
 		// get dd-iac-scan ignore-block related to command + get command
-		stCommand := i.getStmtInfo(stmt, args)
+		stCommand := i.getStmtInfo(ctx, stmt, args)
 
 		if stCommand.Cmd == "buildah from" {
 			fromValue := FromValue{
@@ -130,14 +130,14 @@ func (i *Info) getStmt(stmt *syntax.Stmt) {
 	}
 }
 
-func (i *Info) getStmtInfo(stmt *syntax.Stmt, args []*syntax.Word) Command {
+func (i *Info) getStmtInfo(ctx context.Context, stmt *syntax.Stmt, args []*syntax.Word) Command {
 	var command Command
 	minimumArgs := 2
 
 	if len(args) > minimumArgs {
-		if getWordValue(args[0]) == buildah {
-			cmd := "buildah " + strings.TrimSpace(getWordValue(args[1]))
-			fullCmd := strings.TrimSpace(getFullCommand(args))
+		if getWordValue(ctx, args[0]) == buildah {
+			cmd := "buildah " + strings.TrimSpace(getWordValue(ctx, args[1]))
+			fullCmd := strings.TrimSpace(getFullCommand(ctx, args))
 			value := strings.TrimPrefix(fullCmd, cmd)
 			start := int(args[0].Pos().Line())
 			end := int(args[len(args)-1].End().Line())
@@ -159,14 +159,15 @@ func (i *Info) getStmtInfo(stmt *syntax.Stmt, args []*syntax.Word) Command {
 	return command
 }
 
-func getWordValue(wd *syntax.Word) string {
+func getWordValue(ctx context.Context, wd *syntax.Word) string {
+	logger := logger.FromContext(ctx)
 	printer := syntax.NewPrinter()
 	var buf bytes.Buffer
 
 	err := printer.Print(&buf, wd)
 
 	if err != nil {
-		log.Debug().Msgf("failed to get word value: %s", err)
+		logger.Debug().Msgf("failed to get word value: %s", err)
 	}
 
 	value := buf.String()
@@ -175,7 +176,8 @@ func getWordValue(wd *syntax.Word) string {
 	return value
 }
 
-func getFullCommand(args []*syntax.Word) string {
+func getFullCommand(ctx context.Context, args []*syntax.Word) string {
+	logger := logger.FromContext(ctx)
 	var buf bytes.Buffer
 	printer := syntax.NewPrinter()
 
@@ -184,7 +186,7 @@ func getFullCommand(args []*syntax.Word) string {
 	err := printer.Print(&buf, call)
 
 	if err != nil {
-		log.Debug().Msgf("failed to get full command: %s", err)
+		logger.Debug().Msgf("failed to get full command: %s", err)
 	}
 
 	command := buf.String()

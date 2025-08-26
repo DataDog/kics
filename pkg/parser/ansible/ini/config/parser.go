@@ -6,6 +6,7 @@
 package ansibleconfig
 
 import (
+	"context"
 	"strconv"
 	"strings"
 
@@ -18,12 +19,12 @@ import (
 type Parser struct {
 }
 
-func (p *Parser) Resolve(fileContent []byte, _ string, _ bool, _ int) ([]byte, error) {
+func (p *Parser) Resolve(ctx context.Context, fileContent []byte, _ string, _ bool, _ int) ([]byte, error) {
 	return fileContent, nil
 }
 
 // Parse parses .cfg/.conf file and returns it as a Document
-func (p *Parser) Parse(filePath string, fileContent []byte) ([]model.Document, []int, error) {
+func (p *Parser) Parse(ctx context.Context, filePath string, fileContent []byte) ([]model.Document, []int, error) {
 	model.NewIgnore.Reset()
 
 	reader := strings.NewReader(string(fileContent))

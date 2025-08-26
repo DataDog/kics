@@ -6,6 +6,7 @@
 package report
 
 import (
+	"context"
 	"strings"
 
 	"github.com/Checkmarx/kics/pkg/model"
@@ -13,7 +14,7 @@ import (
 )
 
 // PrintCSVReport prints the CSV report in the given path and filename with the given body
-func PrintCSVReport(path, filename string, body interface{}, sciInfo model.SCIInfo) error {
+func PrintCSVReport(ctx context.Context, path, filename string, body interface{}, sciInfo model.SCIInfo) error {
 	if !strings.HasSuffix(filename, ".csv") {
 		filename += ".csv"
 	}
@@ -28,5 +29,5 @@ func PrintCSVReport(path, filename string, body interface{}, sciInfo model.SCIIn
 		report = reportModel.BuildCSVReport(&summary)
 	}
 
-	return exportCSVReport(path, filename, report)
+	return exportCSVReport(ctx, path, filename, report)
 }

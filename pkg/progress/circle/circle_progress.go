@@ -6,6 +6,7 @@
 package circle
 
 import (
+	"context"
 	"fmt"
 	"io"
 	"time"
@@ -49,7 +50,7 @@ func NewProgressBar(label string, silent bool) ProgressBar {
 }
 
 // Start initializes the Circle Progress Bar
-func (p ProgressBar) Start() {
+func (p ProgressBar) Start(ctx context.Context) {
 	for { // increment until the Close func is called
 		p.pBar.Increment()
 		// lower cpu usage from infinite loop

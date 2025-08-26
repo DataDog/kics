@@ -7,11 +7,12 @@
 package detector
 
 import (
+	"context"
 	"strconv"
 	"strings"
 
+	"github.com/Checkmarx/kics/pkg/logger"
 	"github.com/Checkmarx/kics/pkg/model"
-	"github.com/rs/zerolog"
 )
 
 const (
@@ -22,8 +23,9 @@ type defaultDetectLine struct {
 }
 
 // DetectLine searches vulnerability line if kindDetectLine is not in detectors
-func (d defaultDetectLine) DetectLine(file *model.FileMetadata, searchKey string,
-	outputLines int, logwithfields *zerolog.Logger) model.VulnerabilityLines {
+func (d defaultDetectLine) DetectLine(ctx context.Context, file *model.FileMetadata, searchKey string,
+	outputLines int) model.VulnerabilityLines {
+	logger := logger.FromContext(ctx)
 	detector := &DefaultDetectLineResponse{
 		CurrentLine:     0,
 		IsBreak:         false,
@@ -75,7 +77,7 @@ func (d defaultDetectLine) DetectLine(file *model.FileMetadata, searchKey string
 	}
 
 	var filePathSplit = strings.Split(file.FilePath, "/")
-	logwithfields.Warn().Msgf("Failed to detect line associated with identified result in file %s\n", filePathSplit[len(filePathSplit)-1])
+	logger.Warn().Msgf("Failed to detect line associated with identified result in file %s\n", filePathSplit[len(filePathSplit)-1])
 
 	return model.VulnerabilityLines{
 		Line:         undetectedVulnerabilityLine,

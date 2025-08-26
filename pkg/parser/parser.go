@@ -7,13 +7,14 @@ package parser
 
 import (
 	"bytes"
+	"context"
 	"errors"
 	"os"
 	"strings"
 
+	"github.com/Checkmarx/kics/pkg/logger"
 	"github.com/Checkmarx/kics/pkg/model"
 	"github.com/Checkmarx/kics/pkg/utils"
-	"github.com/rs/zerolog/log"
 )
 
 type kindParser interface {
@@ -21,8 +22,8 @@ type kindParser interface {
 	GetCommentToken() string
 	SupportedExtensions() []string
 	SupportedTypes() map[string]bool
-	Parse(filePath string, fileContent []byte) ([]model.Document, []int, error)
-	Resolve(fileContent []byte, filename string, _ bool, _ int) ([]byte, error)
+	Parse(ctx context.Context, filePath string, fileContent []byte) ([]model.Document, []int, error)
+	Resolve(ctx context.Context, fileContent []byte, filename string, _ bool, _ int) ([]byte, error)
 	StringifyContent(content []byte) (string, error)
 	GetResolvedFiles() map[string]model.ResolvedFile
 }
@@ -33,8 +34,9 @@ type Builder struct {
 }
 
 // NewBuilder creates a new Builder's reference
-func NewBuilder() *Builder {
-	log.Debug().Msg("parser.NewBuilder()")
+func NewBuilder(ctx context.Context) *Builder {
+	logger := logger.FromContext(ctx)
+	logger.Debug().Msg("parser.NewBuilder()")
 	return &Builder{}
 }
 
@@ -92,8 +94,8 @@ type ParsedDocument struct {
 }
 
 // CommentsCommands gets commands on comments in the file beginning, before the code starts
-func (c *Parser) CommentsCommands(filePath string, fileContent []byte) model.CommentsCommands {
-	if c.isValidExtension(filePath) {
+func (c *Parser) CommentsCommands(ctx context.Context, filePath string, fileContent []byte) model.CommentsCommands {
+	if c.isValidExtension(ctx, filePath) {
 		commentsCommands := make(model.CommentsCommands)
 		commentToken := c.parsers.GetCommentToken()
 		if commentToken != "" {
@@ -130,25 +132,27 @@ func (c *Parser) CommentsCommands(filePath string, fileContent []byte) model.Com
 // Parse executes a parser on the fileContent and returns the file content as a Document, the file kind and
 // an error, if an error has occurred
 func (c *Parser) Parse(
+	ctx context.Context,
 	filePath string,
 	fileContent []byte,
 	openAPIResolveReferences, isMinified bool,
 	maxResolverDepth int) (ParsedDocument, error) {
-	fileContent = utils.DecryptAnsibleVault(fileContent, os.Getenv("ANSIBLE_VAULT_PASSWORD_FILE"))
+	logger := logger.FromContext(ctx)
+	fileContent = utils.DecryptAnsibleVault(ctx, fileContent, os.Getenv("ANSIBLE_VAULT_PASSWORD_FILE"))
 
-	if c.isValidExtension(filePath) {
-		resolved, err := c.parsers.Resolve(fileContent, filePath, openAPIResolveReferences, maxResolverDepth)
+	if c.isValidExtension(ctx, filePath) {
+		resolved, err := c.parsers.Resolve(ctx, fileContent, filePath, openAPIResolveReferences, maxResolverDepth)
 		if err != nil {
 			return ParsedDocument{}, err
 		}
-		obj, igLines, err := c.parsers.Parse(filePath, resolved)
+		obj, igLines, err := c.parsers.Parse(ctx, filePath, resolved)
 		if err != nil {
 			return ParsedDocument{}, err
 		}
 
 		cont, err := c.parsers.StringifyContent(fileContent)
 		if err != nil {
-			log.Error().Msgf("failed to stringify original content: %s", err)
+			logger.Error().Msgf("failed to stringify original content: %s", err)
 			cont = string(fileContent)
 		}
 
@@ -189,8 +193,8 @@ func contains(types []string, supportedTypes map[string]bool) bool {
 	return false
 }
 
-func (c *Parser) isValidExtension(filePath string) bool {
-	ext, _ := utils.GetExtension(filePath)
+func (c *Parser) isValidExtension(ctx context.Context, filePath string) bool {
+	ext, _ := utils.GetExtension(ctx, filePath)
 	_, ok := c.extensions[ext]
 	return ok
 }

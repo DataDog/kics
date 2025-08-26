@@ -1,6 +1,7 @@
 package model
 
 import (
+	"context"
 	"fmt"
 	"testing"
 
@@ -80,9 +81,10 @@ func TestTransformToSarifFixE2E(t *testing.T) { //nolint
 		},
 	}
 
+	ctx := context.Background()
 	for i, testCase := range testCases {
 		t.Run(fmt.Sprintf("TransformToSarifFix-%d", i), func(t *testing.T) {
-			v, err := TransformToSarifFix(testCase.vuln, testCase.startLocation, testCase.endLocation)
+			v, err := TransformToSarifFix(ctx, testCase.vuln, testCase.startLocation, testCase.endLocation)
 			assert.Nil(t, err)
 			require.Equal(t, testCase.expected, v)
 		})
@@ -90,6 +92,7 @@ func TestTransformToSarifFixE2E(t *testing.T) { //nolint
 }
 
 func TestTransformToSarifFix_Addition(t *testing.T) {
+	ctx := context.Background()
 	vuln := model.VulnerableFile{
 		FileName:        "main.tf",
 		RemediationType: "addition",
@@ -102,12 +105,13 @@ func TestTransformToSarifFix_Addition(t *testing.T) {
 		BlockLocation: model.ResourceLocation{Start: model.ResourceLine{Line: 1}, End: model.ResourceLine{Line: 3}},
 	}
 	start := model.SarifResourceLocation{Line: 2, Col: 3}
-	fix, err := TransformToSarifFix(vuln, start, start)
+	fix, err := TransformToSarifFix(ctx, vuln, start, start)
 	require.NoError(t, err)
 	require.Contains(t, fix.ArtifactChanges[0].Replacements[0].InsertedContent.Text, "Environment")
 }
 
 func TestTransformToSarifFix_Removal(t *testing.T) {
+	ctx := context.Background()
 	vuln := model.VulnerableFile{
 		FileName:        "main.tf",
 		RemediationType: "removal",
@@ -119,7 +123,7 @@ func TestTransformToSarifFix_Removal(t *testing.T) {
 	}
 	start := model.SarifResourceLocation{Line: 2, Col: 3}
 	end := model.SarifResourceLocation{Line: 2, Col: 25}
-	fix, err := TransformToSarifFix(vuln, start, end)
+	fix, err := TransformToSarifFix(ctx, vuln, start, end)
 	require.NoError(t, err)
 	require.Equal(t, "", fix.ArtifactChanges[0].Replacements[0].InsertedContent.Text)
 }
@@ -220,9 +224,10 @@ func TestTransformToSarifFix_Replacement(t *testing.T) {
 		},
 	}
 
+	ctx := context.Background()
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			fix, err := TransformToSarifFix(tt.vuln, tt.start, tt.end)
+			fix, err := TransformToSarifFix(ctx, tt.vuln, tt.start, tt.end)
 			if tt.wantErr {
 				require.Error(t, err)
 			} else {
@@ -234,6 +239,7 @@ func TestTransformToSarifFix_Replacement(t *testing.T) {
 }
 
 func TestTransformToSarifFix_AddToEmptyBlock(t *testing.T) {
+	ctx := context.Background()
 	vuln := model.VulnerableFile{
 		FileName:        "main.tf",
 		RemediationType: "addition",
@@ -246,7 +252,7 @@ func TestTransformToSarifFix_AddToEmptyBlock(t *testing.T) {
 		BlockLocation: model.ResourceLocation{Start: model.ResourceLine{Line: 1}, End: model.ResourceLine{Line: 3}},
 	}
 	start := model.SarifResourceLocation{Line: 2, Col: 10}
-	fix, err := TransformToSarifFix(vuln, start, start)
+	fix, err := TransformToSarifFix(ctx, vuln, start, start)
 	require.NoError(t, err)
 	require.Contains(t, fix.ArtifactChanges[0].Replacements[0].InsertedContent.Text, "Environment")
 }
@@ -275,11 +281,12 @@ func TestTransformToSarifFix_Removal_QuotedUnquoted(t *testing.T) {
 		},
 	}
 
+	ctx := context.Background()
 	for i, vuln := range tests {
 		start := model.SarifResourceLocation{Line: 2, Col: 3}
 		end := model.SarifResourceLocation{Line: 2, Col: 20}
 		t.Run(fmt.Sprintf("removal_case_%d", i), func(t *testing.T) {
-			fix, err := TransformToSarifFix(vuln, start, end)
+			fix, err := TransformToSarifFix(ctx, vuln, start, end)
 			require.NoError(t, err)
 			require.Equal(t, "", fix.ArtifactChanges[0].Replacements[0].InsertedContent.Text)
 		})

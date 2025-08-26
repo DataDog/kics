@@ -1,6 +1,7 @@
 package counter
 
 import (
+	"context"
 	"sync"
 	"testing"
 
@@ -40,11 +41,13 @@ func TestCounter_Start(t *testing.T) {
 
 	wg := &sync.WaitGroup{}
 	prog := make(chan int64)
+
+	ctx := context.Background()
 	for _, tt := range tests {
 		wg.Add(1)
 		t.Run(tt.name, func(t *testing.T) {
 			pb := NewProgressBar(tt.fields.label, tt.fields.total, prog, wg, tt.silent)
-			go pb.Start()
+			go pb.Start(ctx)
 
 			for i := 0; i <= tt.counter; i++ {
 				prog <- 1

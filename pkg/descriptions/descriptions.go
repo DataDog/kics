@@ -6,6 +6,7 @@
 package descriptions
 
 import (
+	"context"
 	"fmt"
 
 	"github.com/Checkmarx/kics/pkg/model"
@@ -16,17 +17,17 @@ var (
 )
 
 // RequestAndOverrideDescriptions - Requests descriptions and override default descriptions
-func RequestAndOverrideDescriptions(summary *model.Summary) error {
+func RequestAndOverrideDescriptions(ctx context.Context, summary *model.Summary) error {
 	descriptionIDs := make([]string, 0)
 	for idx := range summary.Queries {
 		descriptionIDs = append(descriptionIDs, summary.Queries[idx].DescriptionID)
 	}
 
-	if err := descClient.CheckConnection(); err != nil {
+	if err := descClient.CheckConnection(ctx); err != nil {
 		return err
 	}
 
-	descriptionMap, err := descClient.RequestDescriptions(descriptionIDs)
+	descriptionMap, err := descClient.RequestDescriptions(ctx, descriptionIDs)
 	if err != nil {
 		return err
 	}

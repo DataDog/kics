@@ -6,6 +6,7 @@
 package model
 
 import (
+	"context"
 	"crypto/sha256"
 	"encoding/hex"
 	"encoding/xml"
@@ -16,9 +17,9 @@ import (
 	"time"
 
 	"github.com/Checkmarx/kics/internal/constants"
+	"github.com/Checkmarx/kics/pkg/logger"
 	"github.com/Checkmarx/kics/pkg/model"
 	"github.com/google/uuid"
-	"github.com/rs/zerolog/log"
 )
 
 var cycloneDxSeverityLevelEquivalence = map[model.Severity]string{
@@ -135,12 +136,13 @@ func getAllFiles(summary *model.Summary) []model.VulnerableFile {
 	return fileNames
 }
 
-func generateSha256(filePath string, filePaths map[string]string) string {
+func generateSha256(ctx context.Context, filePath string, filePaths map[string]string) string {
+	logger := logger.FromContext(ctx)
 	file := filePaths[filePath]
 	content, err := os.ReadFile(filepath.Clean(file))
 
 	if err != nil {
-		log.Trace().Msgf("failed to read %s", file)
+		logger.Trace().Msgf("failed to read %s", file)
 		return ""
 	}
 
@@ -237,7 +239,8 @@ func InitCycloneDxReport() *CycloneDxReport {
 }
 
 // BuildCycloneDxReport builds the CycloneDX report
-func BuildCycloneDxReport(summary *model.Summary, filePaths map[string]string) *CycloneDxReport {
+func BuildCycloneDxReport(ctx context.Context, summary *model.Summary, filePaths map[string]string) *CycloneDxReport {
+	logger := logger.FromContext(ctx)
 	var component Component
 	var vuln []Vulnerability
 	var version, sha, purl, filePath string
@@ -247,11 +250,11 @@ func BuildCycloneDxReport(summary *model.Summary, filePaths map[string]string) *
 
 	for i := range files {
 		filePath = strings.Replace(files[i].FileName, "\\", "/", -1)
-		sha = generateSha256(files[i].FileName, filePaths)
+		sha = generateSha256(ctx, files[i].FileName, filePaths)
 
 		index := 12
 		if len(sha) < index {
-			log.Trace().Msgf("failed to generate SHA-256 for %s", filePath)
+			logger.Trace().Msgf("failed to generate SHA-256 for %s", filePath)
 			continue
 		}
 

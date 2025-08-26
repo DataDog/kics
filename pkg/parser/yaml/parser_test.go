@@ -6,6 +6,7 @@
 package json
 
 import (
+	"context"
 	"encoding/json"
 	"fmt"
 	"path/filepath"
@@ -362,9 +363,10 @@ resources:
 		},
 	}
 
+	ctx := context.Background()
 	for idx, tt := range have {
 		t.Run(fmt.Sprintf("test_parse_case_%d", idx), func(t *testing.T) {
-			doc, linesToIgnore, err := p.Parse("test.yaml", []byte(tt))
+			doc, linesToIgnore, err := p.Parse(ctx, "test.yaml", []byte(tt))
 			if want[idx].wantErr {
 				require.Error(t, err)
 			} else {
@@ -384,6 +386,7 @@ func compareJSONLine(t *testing.T, test1 interface{}, test2 string) {
 
 // Test_Resolve tests the functions [Resolve()] and all the methods called by them
 func Test_Resolve(t *testing.T) {
+	ctx := context.Background()
 	have := `
 	martin:
 		name: test
@@ -393,7 +396,7 @@ func Test_Resolve(t *testing.T) {
 	`
 	parser := &Parser{}
 
-	resolved, err := parser.Resolve([]byte(have), "test.yaml", true, 15)
+	resolved, err := parser.Resolve(ctx, []byte(have), "test.yaml", true, 15)
 	require.NoError(t, err)
 	require.Equal(t, []byte(have), resolved)
 }
@@ -427,9 +430,10 @@ func TestYaml_processElements(t *testing.T) {
 		},
 	}
 
+	ctx := context.Background()
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			processElements(tt.args.elements, tt.args.filePath)
+			processElements(ctx, tt.args.elements, tt.args.filePath)
 			require.Equal(t, tt.wantCert, tt.args.elements["certificate"])
 			require.Equal(t, tt.wantSwag, tt.args.elements["swagger_file"])
 		})
@@ -461,10 +465,11 @@ func TestModel_TestYamlParser(t *testing.T) {
 		},
 	}
 
+	ctx := context.Background()
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			parser := Parser{}
-			got, _, err := parser.Parse("", []byte(tt.sample))
+			got, _, err := parser.Parse(ctx, "", []byte(tt.sample))
 			if tt.wantErr {
 				require.Error(t, err)
 			} else {

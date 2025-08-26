@@ -6,6 +6,7 @@
 package writer
 
 import (
+	"context"
 	"fmt"
 	"os"
 	"strings"
@@ -251,9 +252,10 @@ func TestRegoValueToString(t *testing.T) {
 		},
 	}
 
+	ctx := context.Background()
 	for idx, value := range values {
 		t.Run(fmt.Sprintf("regoValueToString_%d", idx), func(t *testing.T) {
-			result := regoValueToString(value.testCase)
+			result := regoValueToString(ctx, value.testCase)
 			require.Equal(t, value.expectedResult, result)
 		})
 	}
@@ -339,9 +341,11 @@ func TestCondition(t *testing.T) {
 			expectedResult: "block[blockType][name].values[key]",
 		},
 	}
+
+	ctx := context.Background()
 	for idx, value := range values {
 		t.Run(fmt.Sprintf("condition_%d", idx), func(t *testing.T) {
-			key := condition(value.block, value.c)
+			key := condition(ctx, value.block, value.c)
 			require.Equal(t, value.expectedResult, key)
 		})
 	}

@@ -89,7 +89,8 @@ func TestScanner_StartScan(t *testing.T) {
 }
 
 func createServices(types, cloudProviders []string) (serviceSlice, *storage.MemoryStorage, error) {
-	filesSource, err := provider.NewFileSystemSourceProvider([]string{filepath.FromSlash("../../test")}, []string{})
+	ctx := context.Background()
+	filesSource, err := provider.NewFileSystemSourceProvider(ctx, []string{filepath.FromSlash("../../test")}, []string{})
 	if err != nil {
 		return nil, nil, err
 	}
@@ -98,7 +99,7 @@ func createServices(types, cloudProviders []string) (serviceSlice, *storage.Memo
 	if err != nil {
 		return nil, nil, err
 	}
-	querySource := source.NewFilesystemSource(sourcePath, types, cloudProviders, filepath.FromSlash("../../assets/libraries"), true)
+	querySource := source.NewFilesystemSource(ctx, sourcePath, types, cloudProviders, filepath.FromSlash("../../assets/libraries"), true)
 
 	inspector, err := engine.NewInspector(context.Background(),
 		querySource, engine.DefaultVulnerabilityBuilder,
@@ -121,7 +122,7 @@ func createServices(types, cloudProviders []string) (serviceSlice, *storage.Memo
 	// 	return nil, nil, err
 	// }
 
-	combinedParser, err := parser.NewBuilder().
+	combinedParser, err := parser.NewBuilder(ctx).
 		Add(&jsonParser.Parser{}).
 		Add(&yamlParser.Parser{}).
 		Add(terraformParser.NewDefault()).
@@ -131,7 +132,7 @@ func createServices(types, cloudProviders []string) (serviceSlice, *storage.Memo
 	}
 
 	combinedResolver, err := resolver.NewBuilder().
-		Build()
+		Build(ctx)
 	if err != nil {
 		return nil, nil, err
 	}

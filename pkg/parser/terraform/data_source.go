@@ -7,16 +7,17 @@ package terraform
 
 import (
 	"bytes"
+	"context"
 	"encoding/json"
 	"path/filepath"
 
 	"github.com/Checkmarx/kics/pkg/builder/engine"
+	"github.com/Checkmarx/kics/pkg/logger"
 	"github.com/Checkmarx/kics/pkg/parser/terraform/converter"
 	"github.com/Checkmarx/kics/pkg/parser/terraform/functions"
 	"github.com/hashicorp/hcl/v2"
 	"github.com/hashicorp/hcl/v2/hcldec"
 	"github.com/hashicorp/hcl/v2/hclsyntax"
-	"github.com/rs/zerolog/log"
 	"github.com/zclconf/go-cty/cty"
 	"github.com/zclconf/go-cty/cty/gocty"
 	ctyjson "github.com/zclconf/go-cty/cty/json"
@@ -76,10 +77,11 @@ type convertedPolicy struct {
 	Version   string                     `json:"Version,omitempty"`
 }
 
-func getDataSourcePolicy(currentPath string, inputVariables converter.VariableMap) converter.VariableMap {
+func getDataSourcePolicy(ctx context.Context, currentPath string, inputVariables converter.VariableMap) converter.VariableMap {
+	logger := logger.FromContext(ctx)
 	tfFiles, err := filepath.Glob(filepath.Join(currentPath, "*.tf"))
 	if err != nil {
-		log.Error().Msg("Error getting .tf files to parse data source")
+		logger.Error().Msg("Error getting .tf files to parse data source")
 		return inputVariables
 	}
 	if len(tfFiles) == 0 {
@@ -89,7 +91,7 @@ func getDataSourcePolicy(currentPath string, inputVariables converter.VariableMa
 	for _, tfFile := range tfFiles {
 		parsedFile, parseErr := parseFile(tfFile, true)
 		if parseErr != nil {
-			log.Debug().Msgf("Error trying to parse file %s for data source.", tfFile)
+			logger.Debug().Msgf("Error trying to parse file %s for data source.", tfFile)
 			continue
 		}
 		body, ok := parsedFile.Body.(*hclsyntax.Body)
@@ -98,7 +100,7 @@ func getDataSourcePolicy(currentPath string, inputVariables converter.VariableMa
 		}
 		for _, block := range body.Blocks {
 			if block.Type == "data" && block.Labels[0] == "aws_iam_policy_document" && len(block.Labels) > 1 {
-				policyJSON := parseDataSourceBody(block.Body, inputVariables)
+				policyJSON := parseDataSourceBody(ctx, block.Body, inputVariables)
 				jsonMap[block.Labels[1]] = map[string]string{
 					"json": policyJSON,
 				}
@@ -110,7 +112,7 @@ func getDataSourcePolicy(currentPath string, inputVariables converter.VariableMa
 	}
 	data, err := gocty.ToCtyValue(policyResource, cty.Map(cty.Map(cty.Map(cty.String))))
 	if err != nil {
-		log.Error().Msgf("Error trying to convert policy to cty value: %s", err)
+		logger.Error().Msgf("Error trying to convert policy to cty value: %s", err)
 		return inputVariables
 	}
 
@@ -118,16 +120,17 @@ func getDataSourcePolicy(currentPath string, inputVariables converter.VariableMa
 	return inputVariables
 }
 
-func decodeDataSourcePolicy(value cty.Value) dataSourcePolicy {
+func decodeDataSourcePolicy(ctx context.Context, value cty.Value) dataSourcePolicy {
+	logger := logger.FromContext(ctx)
 	jsonified, err := ctyjson.Marshal(value, cty.DynamicPseudoType)
 	if err != nil {
-		log.Error().Msgf("Error trying to decode data source block: %s", err)
+		logger.Error().Msgf("Error trying to decode data source block: %s", err)
 		return dataSourcePolicy{}
 	}
 	var data dataSource
 	err = json.Unmarshal(jsonified, &data)
 	if err != nil {
-		log.Error().Msgf("Error trying to encode data source json: %s", err)
+		logger.Error().Msgf("Error trying to encode data source json: %s", err)
 		return dataSourcePolicy{}
 	}
 	return data.Value
@@ -218,7 +221,8 @@ func getStatementSpec() *hcldec.BlockListSpec {
 	}
 }
 
-func parseDataSourceBody(body *hclsyntax.Body, inputVariables converter.VariableMap) string {
+func parseDataSourceBody(ctx context.Context, body *hclsyntax.Body, inputVariables converter.VariableMap) string {
+	logger := logger.FromContext(ctx)
 	dataSourceSpec := &hcldec.ObjectSpec{
 		"id": &hcldec.AttrSpec{
 			Name:     "id",
@@ -233,7 +237,7 @@ func parseDataSourceBody(body *hclsyntax.Body, inputVariables converter.Variable
 		"statement": getStatementSpec(),
 	}
 
-	resolveDataResources(body)
+	resolveDataResources(ctx, body)
 
 	target, decodeErrs := hcldec.Decode(body, dataSourceSpec, &hcl.EvalContext{
 		Variables: inputVariables,
@@ -243,13 +247,13 @@ func parseDataSourceBody(body *hclsyntax.Body, inputVariables converter.Variable
 	// check decode errors
 	for _, decErr := range decodeErrs {
 		if decErr.Summary != "Unknown variable" {
-			log.Debug().Msgf("Error trying to eval data source block: %s", decErr.Summary)
+			logger.Debug().Msgf("Error trying to eval data source block: %s", decErr.Summary)
 			return ""
 		}
-		log.Debug().Msg("Dismissed Error when decoding policy: Found unknown variable")
+		logger.Debug().Msg("Dismissed Error when decoding policy: Found unknown variable")
 	}
 
-	dataSourceJSON := decodeDataSourcePolicy(target)
+	dataSourceJSON := decodeDataSourcePolicy(ctx, target)
 	convertedDataSource := convertedPolicy{
 		ID:      dataSourceJSON.ID,
 		Version: dataSourceJSON.Version,
@@ -296,30 +300,31 @@ func parseDataSourceBody(body *hclsyntax.Body, inputVariables converter.Variable
 	encoder.SetEscapeHTML(false)
 	err := encoder.Encode(convertedDataSource)
 	if err != nil {
-		log.Error().Msgf("Error trying to encoding data source json: %s", err)
+		logger.Error().Msgf("Error trying to encoding data source json: %s", err)
 		return ""
 	}
 	return buffer.String()
 }
 
 // resolveDataResources resolves the data resources expressions into LiteralValueExpr
-func resolveDataResources(body *hclsyntax.Body) {
+func resolveDataResources(ctx context.Context, body *hclsyntax.Body) {
 	for _, block := range body.Blocks {
 		if resources, ok := block.Body.Attributes["resources"]; ok &&
 			block.Type == "statement" {
-			resolveTuple(resources.Expr)
+			resolveTuple(ctx, resources.Expr)
 		}
 	}
 }
 
-func resolveTuple(expr hclsyntax.Expression) {
+func resolveTuple(ctx context.Context, expr hclsyntax.Expression) {
+	logger := logger.FromContext(ctx)
 	e := engine.Engine{}
 	if v, ok := expr.(*hclsyntax.TupleConsExpr); ok {
 		for i, ex := range v.Exprs {
-			striExpr, err := e.ExpToString(ex)
+			striExpr, err := e.ExpToString(ctx, ex)
 
 			if err != nil {
-				log.Error().Msgf("Error trying to ExpToString: %s", err)
+				logger.Error().Msgf("Error trying to ExpToString: %s", err)
 			}
 
 			v.Exprs[i] = &hclsyntax.LiteralValueExpr{

@@ -6,11 +6,12 @@
 package counter
 
 import (
+	"context"
 	"io"
 	"sync"
 
+	"github.com/Checkmarx/kics/pkg/logger"
 	"github.com/cheggaaa/pb/v3"
-	"github.com/rs/zerolog/log"
 )
 
 // ProgressBar is a struct that holds the required fields for
@@ -54,11 +55,12 @@ func NewProgressBar(label string, total int64, progress chan int64, wg *sync.Wai
 }
 
 // Start initializes the Counter Progress Bar
-func (p ProgressBar) Start() {
+func (p ProgressBar) Start(ctx context.Context) {
+	logger := logger.FromContext(ctx)
 	defer func() {
 		err := p.Close()
 		if err != nil {
-			log.Error().Msgf("failed to stop progress bar %v", err)
+			logger.Error().Msgf("failed to stop progress bar %v", err)
 		}
 		p.wg.Done()
 	}()

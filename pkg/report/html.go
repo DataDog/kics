@@ -7,6 +7,7 @@ package report
 
 import (
 	"bytes"
+	"context"
 	_ "embed" // used for embedding report static files
 	"html/template"
 	"os"
@@ -14,8 +15,8 @@ import (
 	"strings"
 
 	"github.com/Checkmarx/kics/internal/constants"
+	"github.com/Checkmarx/kics/pkg/logger"
 	"github.com/Checkmarx/kics/pkg/model"
-	"github.com/rs/zerolog/log"
 	"github.com/tdewolff/minify/v2"
 	minifyCSS "github.com/tdewolff/minify/v2/css"
 	minifyHtml "github.com/tdewolff/minify/v2/html"
@@ -83,7 +84,8 @@ func getVersion() string {
 }
 
 // PrintHTMLReport creates a report file on HTML format
-func PrintHTMLReport(path, filename string, body interface{}, sciInfo model.SCIInfo) error {
+func PrintHTMLReport(ctx context.Context, path, filename string, body interface{}, sciInfo model.SCIInfo) error {
+	logger := logger.FromContext(ctx)
 	if !strings.HasSuffix(filename, ".html") {
 		filename += ".html"
 	}
@@ -102,7 +104,7 @@ func PrintHTMLReport(path, filename string, body interface{}, sciInfo model.SCII
 	if err != nil {
 		return err
 	}
-	defer closeFile(fullPath, filename, f)
+	defer closeFile(ctx, fullPath, filename, f)
 	var buffer bytes.Buffer
 
 	err = t.Execute(&buffer, body)
@@ -120,7 +122,7 @@ func PrintHTMLReport(path, filename string, body interface{}, sciInfo model.SCII
 	minifierWriter := minifier.Writer(textHTML, f)
 	defer func() {
 		if closeErr := minifierWriter.Close(); closeErr != nil {
-			log.Err(closeErr).Msg("Error closing file")
+			logger.Err(closeErr).Msg("Error closing file")
 		}
 	}()
 

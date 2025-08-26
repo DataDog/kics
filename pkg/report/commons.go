@@ -7,6 +7,7 @@ package report
 
 import (
 	"bytes"
+	"context"
 	"encoding/json"
 	"encoding/xml"
 	"fmt"
@@ -17,10 +18,10 @@ import (
 	"strings"
 	"time"
 
+	"github.com/Checkmarx/kics/pkg/logger"
 	"github.com/Checkmarx/kics/pkg/model"
 	reportModel "github.com/Checkmarx/kics/pkg/report/model"
 	"github.com/gocarina/gocsv"
-	"github.com/rs/zerolog/log"
 )
 
 var (
@@ -66,17 +67,19 @@ func getCurrentTime() string {
 	return dt.Format("01/02/2006 15:04")
 }
 
-func fileCreationReport(path, filename string) {
-	log.Info().Str("fileName", filename).Msgf("Results saved to file %s", path)
+func fileCreationReport(ctx context.Context, path, filename string) {
+	logger := logger.FromContext(ctx)
+	logger.Info().Str("fileName", filename).Msgf("Results saved to file %s", path)
 }
 
-func closeFile(path, filename string, file *os.File) {
+func closeFile(ctx context.Context, path, filename string, file *os.File) {
+	logger := logger.FromContext(ctx)
 	err := file.Close()
 	if err != nil {
-		log.Err(err).Msgf("Failed to close file %s", path)
+		logger.Err(err).Msgf("Failed to close file %s", path)
 	}
 
-	fileCreationReport(path, filename)
+	fileCreationReport(ctx, path, filename)
 }
 
 func getPlatforms(queries model.QueryResultSlice) string {
@@ -92,7 +95,8 @@ func getPlatforms(queries model.QueryResultSlice) string {
 }
 
 // ExportJSONReport - encodes a given body to a JSON file in a given filepath
-func ExportJSONReport(path, filename string, body interface{}) error {
+func ExportJSONReport(ctx context.Context, path, filename string, body interface{}) error {
+	logger := logger.FromContext(ctx)
 	if !strings.Contains(filename, ".") {
 		filename += jsonExtension
 	}
@@ -103,18 +107,18 @@ func ExportJSONReport(path, filename string, body interface{}) error {
 		return err
 	}
 
-	defer closeFile(fullPath, filename, f)
+	defer closeFile(ctx, fullPath, filename, f)
 
 	var minifiedJSON bytes.Buffer
 	bodyBytes, err := json.Marshal(body)
 	if err != nil {
-		log.Err(err).Msg("failed to marshal sarif report body: ")
+		logger.Err(err).Msg("failed to marshal sarif report body: ")
 		return err
 	}
 
 	err = json.Compact(&minifiedJSON, bodyBytes)
 	if err != nil {
-		log.Err(err).Msg("Error minifying JSON:")
+		logger.Err(err).Msg("Error minifying JSON:")
 		return err
 	}
 
@@ -136,7 +140,8 @@ func getSummary(body interface{}) (sum model.Summary, err error) {
 	return summary, nil
 }
 
-func exportXMLReport(path, filename string, body interface{}) error {
+func exportXMLReport(ctx context.Context, path, filename string, body interface{}) error {
+	logger := logger.FromContext(ctx)
 	if !strings.HasSuffix(filename, ".xml") {
 		filename += ".xml"
 	}
@@ -146,9 +151,9 @@ func exportXMLReport(path, filename string, body interface{}) error {
 	if err != nil {
 		return err
 	}
-	defer closeFile(fullPath, filename, f)
+	defer closeFile(ctx, fullPath, filename, f)
 	if _, err = f.WriteString(xml.Header); err != nil {
-		log.Debug().Err(err).Msg("Failed to write XML header")
+		logger.Debug().Err(err).Msg("Failed to write XML header")
 	}
 	encoder := xml.NewEncoder(f)
 	encoder.Indent("", "\t")
@@ -156,14 +161,14 @@ func exportXMLReport(path, filename string, body interface{}) error {
 	return encoder.Encode(body)
 }
 
-func exportCSVReport(path, filename string, body []reportModel.CSVReport) error {
+func exportCSVReport(ctx context.Context, path, filename string, body []reportModel.CSVReport) error {
 	fullPath := filepath.Join(path, filename)
 	f, err := os.OpenFile(filepath.Clean(fullPath), os.O_WRONLY|os.O_CREATE|os.O_TRUNC, os.ModePerm)
 	if err != nil {
 		return err
 	}
 
-	defer closeFile(fullPath, filename, f)
+	defer closeFile(ctx, fullPath, filename, f)
 
 	return gocsv.MarshalFile(&body, f)
 }

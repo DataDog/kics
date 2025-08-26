@@ -15,9 +15,9 @@ import (
 	"sync"
 
 	"github.com/Checkmarx/kics/pkg/kuberneter"
+	"github.com/Checkmarx/kics/pkg/logger"
 	"github.com/Checkmarx/kics/pkg/model"
 	"github.com/Checkmarx/kics/pkg/utils"
-	"github.com/rs/zerolog/log"
 
 	"github.com/hashicorp/go-getter"
 )
@@ -49,6 +49,7 @@ type getterStruct struct {
 // GetKuberneterSources uses Kubernetes API to download runtime resources
 // After Downloaded files kics scan the files as normal local files
 func GetKuberneterSources(ctx context.Context, source []string, destinationPath string) (ExtractedPath, error) {
+	logger := logger.FromContext(ctx)
 	extrStruct := ExtractedPath{
 		Path:          []string{},
 		ExtractionMap: make(map[string]model.ExtractedPathObject),
@@ -57,7 +58,7 @@ func GetKuberneterSources(ctx context.Context, source []string, destinationPath 
 	for _, path := range source {
 		exportedPath, err := kuberneter.Import(ctx, path, destinationPath)
 		if err != nil {
-			log.Error().Msgf("failed to import %s: %s", path, err)
+			logger.Error().Msgf("failed to import %s: %s", path, err)
 		}
 
 		extrStruct.ExtractionMap[exportedPath] = model.ExtractedPathObject{
@@ -74,14 +75,15 @@ func GetKuberneterSources(ctx context.Context, source []string, destinationPath 
 // GetSources goes through the source slice, and determines the of source type (ex: zip, git, local).
 // It than extracts the files to be scanned. If the source given is not local, a temp dir
 // will be created where the files will be stored.
-func GetSources(source []string, downloadDir string) (ExtractedPath, error) {
+func GetSources(ctx context.Context, source []string, downloadDir string) (ExtractedPath, error) {
+	// logger := logger.FromContext(ctx)
 	extrStruct := ExtractedPath{
 		Path:          []string{},
 		ExtractionMap: make(map[string]model.ExtractedPathObject),
 	}
 	for _, path := range source {
 		destination := filepath.Join(downloadDir, utils.NextRandom())
-		// log.Info().Msgf("Extracting %s to %s", path, destination)
+		// logger.Info().Msgf("Extracting %s to %s", path, destination)
 		// mode := getter.ClientModeAny
 
 		// pwd := "external/com_github_checkmarx_kics/"
@@ -107,7 +109,7 @@ func GetSources(source []string, downloadDir string) (ExtractedPath, error) {
 		// 	if ignoreDamagedFiles(path) {
 		// 		continue
 		// 	}
-		// 	log.Error().Msgf("%s", err)
+		// 	logger.Error().Msgf("%s", err)
 		// 	return ExtractedPath{}, err
 		// }
 		// tempDst, local := checkSymLink(getterDst, path)
@@ -122,10 +124,11 @@ func GetSources(source []string, downloadDir string) (ExtractedPath, error) {
 	return extrStruct, nil
 }
 
-func getPaths(g *getterStruct) (string, error) {
-	if isEncrypted(g.source) {
+func getPaths(ctx context.Context, g *getterStruct) (string, error) {
+	logger := logger.FromContext(ctx)
+	if isEncrypted(ctx, g.source) {
 		err := errors.New("zip encrypted files are not supported")
-		log.Err(err)
+		logger.Err(err)
 		return "", err
 	}
 
@@ -169,7 +172,8 @@ func getPaths(g *getterStruct) (string, error) {
 }
 
 // check if the dst is a symbolic link
-func checkSymLink(getterDst, pathFile string) (string, bool) {
+func checkSymLink(ctx context.Context, getterDst, pathFile string) (string, bool) {
+	logger := logger.FromContext(ctx)
 	var local bool
 	_, err := os.Stat(pathFile)
 	if err == nil { // check if file exist locally
@@ -178,7 +182,7 @@ func checkSymLink(getterDst, pathFile string) (string, bool) {
 
 	info, err := os.Lstat(getterDst)
 	if err != nil {
-		log.Error().Msgf("failed lstat for %s: %v", getterDst, err)
+		logger.Error().Msgf("failed lstat for %s: %v", getterDst, err)
 	}
 
 	fileInfo := getFileInfo(info, getterDst, pathFile)
@@ -186,7 +190,7 @@ func checkSymLink(getterDst, pathFile string) (string, bool) {
 	if info.Mode()&os.ModeSymlink != 0 { // if it's a symbolic Link
 		path, err := os.Readlink(getterDst) // get location of symbolic Link
 		if err != nil {
-			log.Error().Msgf("failed Readlink for %s: %v", getterDst, err)
+			logger.Error().Msgf("failed Readlink for %s: %v", getterDst, err)
 		}
 		getterDst = path // change path to local path
 	} else if !fileInfo.IsDir() { // symbolic links are not created for single files
@@ -212,10 +216,11 @@ func getFileInfo(info fs.FileInfo, dst, pathFile string) fs.FileInfo {
 	return fileInfo
 }
 
-func isEncrypted(sourceFile string) bool {
+func isEncrypted(ctx context.Context, sourceFile string) bool {
+	logger := logger.FromContext(ctx)
 	if filepath.Ext(sourceFile) != ".zip" {
 		return false
 	}
-	log.Error().Msgf("file %s is zipped", sourceFile)
+	logger.Error().Msgf("file %s is zipped", sourceFile)
 	return false
 }

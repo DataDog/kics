@@ -6,6 +6,7 @@
 package report
 
 import (
+	"context"
 	"strings"
 
 	"github.com/Checkmarx/kics/pkg/model"
@@ -13,7 +14,7 @@ import (
 )
 
 // PrintCodeClimateReport prints the code climate report in the given path and filename with the given body
-func PrintCodeClimateReport(path, filename string, body interface{}, sciInfo model.SCIInfo) error {
+func PrintCodeClimateReport(ctx context.Context, path, filename string, body interface{}, sciInfo model.SCIInfo) error {
 	if !strings.HasPrefix(filename, "codeclimate") {
 		filename = "codeclimate-" + filename
 	}
@@ -27,5 +28,5 @@ func PrintCodeClimateReport(path, filename string, body interface{}, sciInfo mod
 		body = reportModel.BuildCodeClimateReport(&summary)
 	}
 
-	return ExportJSONReport(path, filename, body)
+	return ExportJSONReport(ctx, path, filename, body)
 }

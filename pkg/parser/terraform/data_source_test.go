@@ -6,6 +6,7 @@
 package terraform
 
 import (
+	"context"
 	"path/filepath"
 	"testing"
 
@@ -43,10 +44,12 @@ func Test_getDataSourcePolicy(t *testing.T) {
 `,
 		},
 	}
+
+	ctx := context.Background()
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			inputVars := make(converter.VariableMap)
-			result := getDataSourcePolicy(tt.args.currentPath, inputVars)
+			result := getDataSourcePolicy(ctx, tt.args.currentPath, inputVars)
 			data, ok := result["data"]
 			if !ok {
 				t.FailNow()

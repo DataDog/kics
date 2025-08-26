@@ -1,6 +1,7 @@
 package resolver
 
 import (
+	"context"
 	"path/filepath"
 	"reflect"
 	"testing"
@@ -9,8 +10,9 @@ import (
 )
 
 func initializeBuilder() *Resolver {
+	ctx := context.Background()
 	bd, _ := NewBuilder().
-		Build()
+		Build(ctx)
 	return bd
 }
 

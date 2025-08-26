@@ -6,6 +6,8 @@
 package report
 
 import (
+	"context"
+
 	"github.com/Checkmarx/kics/internal/constants"
 	"github.com/Checkmarx/kics/pkg/model"
 )
@@ -13,7 +15,7 @@ import (
 const jsonExtension = ".json"
 
 // PrintJSONReport prints on JSON file the summary results
-func PrintJSONReport(path, filename string, body interface{}, sciInfo model.SCIInfo) error {
+func PrintJSONReport(ctx context.Context, path, filename string, body interface{}, sciInfo model.SCIInfo) error {
 	if body != "" {
 		summary, err := getSummary(body)
 		if err != nil {
@@ -30,5 +32,5 @@ func PrintJSONReport(path, filename string, body interface{}, sciInfo model.SCII
 		body = summary
 	}
 
-	return ExportJSONReport(path, filename, body)
+	return ExportJSONReport(ctx, path, filename, body)
 }

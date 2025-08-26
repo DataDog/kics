@@ -144,15 +144,16 @@ func TestService(t *testing.T) { //nolint
 
 func createParserSourceProvider(path string) ([]*parser.Parser,
 	*provider.FileSystemSourceProvider, *resolver.Resolver) {
-	mockParser, _ := parser.NewBuilder().
+	ctx := context.Background()
+	mockParser, _ := parser.NewBuilder(ctx).
 		Add(&jsonParser.Parser{}).
 		Add(&yamlParser.Parser{}).
 		Add(terraformParser.NewDefault()).
 		Build([]string{""}, []string{""})
 
-	mockFilesSource, _ := provider.NewFileSystemSourceProvider([]string{path}, []string{})
+	mockFilesSource, _ := provider.NewFileSystemSourceProvider(ctx, []string{path}, []string{})
 
-	mockResolver, _ := resolver.NewBuilder().Build()
+	mockResolver, _ := resolver.NewBuilder().Build(ctx)
 
 	return mockParser, mockFilesSource, mockResolver
 }

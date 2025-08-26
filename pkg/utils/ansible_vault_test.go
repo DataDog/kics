@@ -1,6 +1,7 @@
 package utils
 
 import (
+	"context"
 	"testing"
 
 	"github.com/stretchr/testify/require"
@@ -53,9 +54,11 @@ func Test_DecryptAnsibleVault(t *testing.T) {
 			},
 		},
 	}
+
+	ctx := context.Background()
 	for _, test := range tests {
 		t.Run(test.name, func(t *testing.T) {
-			got := DecryptAnsibleVault(ansibleVaultEncrypted, "cosmic")
+			got := DecryptAnsibleVault(ctx, ansibleVaultEncrypted, "cosmic")
 			require.Equal(t, test.ansibleVaultDecrypted, got)
 		})
 	}

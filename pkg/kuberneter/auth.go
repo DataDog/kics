@@ -10,12 +10,13 @@ Package kuberneter implements calls to the Kubernetes API in order to scan the r
 package kuberneter
 
 import (
+	"context"
 	"os"
 
 	b64 "encoding/base64"
 
+	"github.com/Checkmarx/kics/pkg/logger"
 	"github.com/pkg/errors"
-	"github.com/rs/zerolog/log"
 	"k8s.io/client-go/rest"
 	"k8s.io/client-go/tools/clientcmd"
 	"sigs.k8s.io/controller-runtime/pkg/client"
@@ -26,17 +27,18 @@ type K8sConfig struct {
 	Config *rest.Config
 }
 
-func getK8sClient() (client.Client, error) {
+func getK8sClient(ctx context.Context) (client.Client, error) {
+	logger := logger.FromContext(ctx)
 	// authentication through k8s config file
 	if os.Getenv("K8S_CONFIG_FILE") != "" {
 		config, err := clientcmd.BuildConfigFromFlags("", os.Getenv("K8S_CONFIG_FILE"))
 
 		if err != nil {
-			log.Error().Msgf("failed to get k8s client through k8s config file: %s", err)
+			logger.Error().Msgf("failed to get k8s client through k8s config file: %s", err)
 			return nil, err
 		}
 
-		log.Info().Msg("auth to k8s API through k8s config file")
+		logger.Info().Msg("auth to k8s API through k8s config file")
 
 		config.QPS = 100
 		config.Burst = 100
@@ -52,27 +54,28 @@ func getK8sClient() (client.Client, error) {
 	}
 
 	// authentication through k8s service account token or k8s client certificate
-	if os.Getenv("K8S_HOST") != "" && c.hasCertificateAuthority() {
+	if os.Getenv("K8S_HOST") != "" && c.hasCertificateAuthority(ctx) {
 		c.Config.Host = os.Getenv("K8S_HOST")
 
 		// authentication through k8s service account token
 		if c.hasServiceAccountToken() {
-			log.Info().Msg("auth to k8s API through k8s service account token")
+			logger.Info().Msg("auth to k8s API through k8s service account token")
 			return client.New(c.Config, client.Options{})
 		}
 
 		// authentication through k8s client certificate
-		if c.hasClientCertificate() {
-			log.Info().Msg("auth to k8s API through k8s client certificate")
+		if c.hasClientCertificate(ctx) {
+			logger.Info().Msg("auth to k8s API through k8s client certificate")
 			return client.New(c.Config, client.Options{})
 		}
 	}
 
-	log.Error().Msg("failed to get k8s client. check the k8s cluster auth information")
+	logger.Error().Msg("failed to get k8s client. check the k8s cluster auth information")
 	return nil, errors.New("failed to get k8s client")
 }
 
-func (c *K8sConfig) hasCertificateAuthority() bool {
+func (c *K8sConfig) hasCertificateAuthority(ctx context.Context) bool {
+	logger := logger.FromContext(ctx)
 	if os.Getenv("K8S_CA_FILE") != "" {
 		c.Config.TLSClientConfig.CAFile = os.Getenv("K8S_CA_FILE")
 		return true
@@ -81,7 +84,7 @@ func (c *K8sConfig) hasCertificateAuthority() bool {
 	if os.Getenv("K8S_CA_DATA") != "" {
 		caDataDecoded, err := b64.StdEncoding.DecodeString(os.Getenv("K8S_CA_DATA"))
 		if err != nil {
-			log.Error().Msgf("failed to decode K8S_CA_DATA: %s", err)
+			logger.Error().Msgf("failed to decode K8S_CA_DATA: %s", err)
 			return false
 		}
 		c.Config.TLSClientConfig.CAData = caDataDecoded
@@ -105,7 +108,8 @@ func (c *K8sConfig) hasServiceAccountToken() bool {
 	return false
 }
 
-func (c *K8sConfig) hasClientCertificate() bool {
+func (c *K8sConfig) hasClientCertificate(ctx context.Context) bool {
+	logger := logger.FromContext(ctx)
 	hasCert := false
 
 	if os.Getenv("K8S_CERT_FILE") != "" {
@@ -116,7 +120,7 @@ func (c *K8sConfig) hasClientCertificate() bool {
 	if os.Getenv("K8S_CERT_DATA") != "" {
 		certDataDecoded, err := b64.StdEncoding.DecodeString(os.Getenv("K8S_CERT_DATA"))
 		if err != nil {
-			log.Error().Msgf("failed to decode K8S_CERT_DATA: %s", err)
+			logger.Error().Msgf("failed to decode K8S_CERT_DATA: %s", err)
 			return false
 		}
 		c.Config.TLSClientConfig.CertData = certDataDecoded
@@ -132,7 +136,7 @@ func (c *K8sConfig) hasClientCertificate() bool {
 		if os.Getenv("K8S_KEY_DATA") != "" {
 			keyDataDecoded, err := b64.StdEncoding.DecodeString(os.Getenv("K8S_KEY_DATA"))
 			if err != nil {
-				log.Error().Msgf("failed to decode K8S_KEY_DATA: %s", err)
+				logger.Error().Msgf("failed to decode K8S_KEY_DATA: %s", err)
 				return false
 			}
 			c.Config.TLSClientConfig.KeyData = keyDataDecoded

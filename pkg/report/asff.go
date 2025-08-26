@@ -6,6 +6,7 @@
 package report
 
 import (
+	"context"
 	"strings"
 
 	"github.com/Checkmarx/kics/pkg/model"
@@ -13,7 +14,7 @@ import (
 )
 
 // PrintASFFReport prints the ASFF report in the given path and filename with the given body
-func PrintASFFReport(path, filename string, body interface{}, sciInfo model.SCIInfo) error {
+func PrintASFFReport(ctx context.Context, path, filename string, body interface{}, sciInfo model.SCIInfo) error {
 	if !strings.HasPrefix(filename, "asff-") {
 		filename = "asff-" + filename
 	}
@@ -23,8 +24,8 @@ func PrintASFFReport(path, filename string, body interface{}, sciInfo model.SCII
 			return err
 		}
 
-		body = reportModel.BuildASFF(&summary)
+		body = reportModel.BuildASFF(ctx, &summary)
 	}
 
-	return ExportJSONReport(path, filename, body)
+	return ExportJSONReport(ctx, path, filename, body)
 }

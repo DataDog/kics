@@ -1,6 +1,7 @@
 package report
 
 import (
+	"context"
 	"encoding/json"
 	"fmt"
 	"os"
@@ -50,6 +51,7 @@ var jsonTests = []struct {
 
 // TestPrintJSONReport tests the functions [PrintJSONReport()] and all the methods called by them
 func TestPrintJSONReport(t *testing.T) {
+	ctx := context.Background()
 	for idx, test := range jsonTests {
 		t.Run(fmt.Sprintf("JSON File test case %d", idx), func(t *testing.T) {
 			test.expectedResult.Version = "development"
@@ -57,7 +59,7 @@ func TestPrintJSONReport(t *testing.T) {
 			if err = os.MkdirAll(test.caseTest.path, os.ModePerm); err != nil {
 				t.Fatal(err)
 			}
-			err = PrintJSONReport(test.caseTest.path, test.caseTest.filename, test.caseTest.summary, model.SCIInfo{})
+			err = PrintJSONReport(ctx, test.caseTest.path, test.caseTest.filename, test.caseTest.summary, model.SCIInfo{})
 			require.NoError(t, err)
 			require.FileExists(t, filepath.Join(test.caseTest.path, test.caseTest.filename+".json"))
 			var jsonResult []byte

@@ -1,6 +1,7 @@
 package scan
 
 import (
+	"context"
 	"os"
 	"path/filepath"
 	"testing"
@@ -108,13 +109,14 @@ func Test_GetSummary(t *testing.T) {
 		},
 	}
 
+	ctx := context.Background()
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			c := Client{}
 			c.Tracker = &tt.tracker
 			c.ScanParams = &tt.scanParameters
 
-			v := c.getSummary(tt.results, tt.endTime, tt.pathParameters)
+			v := c.getSummary(ctx, tt.results, tt.endTime, tt.pathParameters)
 
 			require.Equal(t, tt.expectedResult.Counters, v.Counters)
 			require.Equal(t, tt.expectedResult.SeveritySummary, v.SeveritySummary)
@@ -279,9 +281,11 @@ func Test_PrintOutput(t *testing.T) {
 			proBarBuilder: *progress.InitializePbBuilder(true, false, true),
 		},
 	}
+
+	ctx := context.Background()
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			err := printOutput(tt.outputPath, tt.filename, tt.body, tt.formats, tt.proBarBuilder, model.SCIInfo{})
+			err := printOutput(ctx, tt.outputPath, tt.filename, tt.body, tt.formats, tt.proBarBuilder, model.SCIInfo{})
 			os.Remove(filepath.Join("..", "..", tt.filename+".json"))
 			require.NoError(t, err)
 		})
@@ -324,6 +328,7 @@ func Test_resolveOutputs(t *testing.T) {
 		},
 	}
 
+	ctx := context.Background()
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			c := Client{}
@@ -331,7 +336,7 @@ func Test_resolveOutputs(t *testing.T) {
 			c.ScanParams = &tt.scanParams
 			c.ProBarBuilder = progress.InitializePbBuilder(true, false, true)
 			c.Printer = printer.NewPrinter(true)
-			md, err := c.postScan(tt.scanResults)
+			md, err := c.postScan(ctx, tt.scanResults)
 			require.NotNil(t, md)
 			require.NoError(t, err)
 		})
@@ -417,11 +422,12 @@ func Test_GetScanMetadata(t *testing.T) {
 		},
 	}
 
+	ctx := context.Background()
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			c := Client{}
 			c.Tracker = &tt.tracker
-			c.ScanParams = GetDefaultParameters(".")
+			c.ScanParams, _ = GetDefaultParameters(ctx, ".", map[string]string{"test": "test"})
 			v := c.generateMetadata(tt.results, tt.scanStartTime, tt.endTime)
 
 			require.Equal(t, tt.expectedMetadata.StartTime, v.StartTime)

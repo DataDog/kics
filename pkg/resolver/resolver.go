@@ -6,11 +6,12 @@
 package resolver
 
 import (
+	"context"
 	"os"
 	"path/filepath"
 
+	"github.com/Checkmarx/kics/pkg/logger"
 	"github.com/Checkmarx/kics/pkg/model"
-	"github.com/rs/zerolog/log"
 )
 
 // kindResolver is a type of resolver interface (ex: helm resolver)
@@ -37,15 +38,17 @@ func NewBuilder() *Builder {
 }
 
 // Add will add kindResolvers for building the resolver
-func (b *Builder) Add(p kindResolver) *Builder {
-	log.Debug().Msgf("resolver.Add()")
+func (b *Builder) Add(ctx context.Context, p kindResolver) *Builder {
+	logger := logger.FromContext(ctx)
+	logger.Debug().Msgf("resolver.Add()")
 	b.resolvers = append(b.resolvers, p)
 	return b
 }
 
 // Build will create a new instance of a resolver
-func (b *Builder) Build() (*Resolver, error) {
-	log.Debug().Msg("resolver.Build()")
+func (b *Builder) Build(ctx context.Context) (*Resolver, error) {
+	logger := logger.FromContext(ctx)
+	logger.Debug().Msg("resolver.Build()")
 
 	resolvers := make(map[model.FileKind]kindResolver, len(b.resolvers))
 	for _, resolver := range b.resolvers {
@@ -60,13 +63,14 @@ func (b *Builder) Build() (*Resolver, error) {
 }
 
 // Resolve will resolve the files according to its type
-func (r *Resolver) Resolve(filePath string, kind model.FileKind) (model.ResolvedFiles, error) {
+func (r *Resolver) Resolve(ctx context.Context, filePath string, kind model.FileKind) (model.ResolvedFiles, error) {
+	logger := logger.FromContext(ctx)
 	if r, ok := r.resolvers[kind]; ok {
 		obj, err := r.Resolve(filePath)
 		if err != nil {
 			return model.ResolvedFiles{}, err
 		}
-		log.Debug().Msgf("resolver.Resolve() rendered file: %s", filePath)
+		logger.Debug().Msgf("resolver.Resolve() rendered file: %s", filePath)
 		return obj, nil
 	}
 	// need to log here

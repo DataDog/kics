@@ -12,11 +12,11 @@ import (
 	"regexp"
 	"sort"
 
+	"github.com/Checkmarx/kics/pkg/logger"
 	"github.com/Checkmarx/kics/pkg/minified"
 	"github.com/Checkmarx/kics/pkg/model"
 	"github.com/Checkmarx/kics/pkg/utils"
 	"github.com/google/uuid"
-	"github.com/rs/zerolog/log"
 )
 
 func (s *Service) resolverSink(
@@ -24,13 +24,14 @@ func (s *Service) resolverSink(
 	filename, scanID string,
 	openAPIResolveReferences bool,
 	maxResolverDepth int) ([]string, error) {
+	logger := logger.FromContext(ctx)
 	kind := s.Resolver.GetType(filename)
 	if kind == model.KindCOMMON {
 		return []string{}, nil
 	}
-	resFiles, err := s.Resolver.Resolve(filename, kind)
+	resFiles, err := s.Resolver.Resolve(ctx, filename, kind)
 	if err != nil {
-		log.Err(err).Msgf("failed to render file content")
+		logger.Err(err).Msgf("failed to render file content")
 		return []string{}, err
 	}
 
@@ -38,17 +39,17 @@ func (s *Service) resolverSink(
 		s.Tracker.TrackFileFound(rfile.FileName)
 
 		isMinified := minified.IsMinified(rfile.FileName, rfile.Content)
-		documents, err := s.Parser.Parse(rfile.FileName, rfile.Content, openAPIResolveReferences, isMinified, maxResolverDepth)
+		documents, err := s.Parser.Parse(ctx, rfile.FileName, rfile.Content, openAPIResolveReferences, isMinified, maxResolverDepth)
 		if err != nil {
 			if documents.Kind == "break" {
 				return []string{}, nil
 			}
-			log.Err(err).Msgf("failed to parse file content")
+			logger.Err(err).Msgf("failed to parse file content")
 			return []string{}, nil
 		}
 
 		if kind == model.KindHELM {
-			ignoreList, errorIL := s.getOriginalIgnoreLines(
+			ignoreList, errorIL := s.getOriginalIgnoreLines(ctx,
 				rfile.FileName, rfile.OriginalData,
 				openAPIResolveReferences, isMinified, maxResolverDepth)
 			if errorIL == nil {
@@ -61,7 +62,7 @@ func (s *Service) resolverSink(
 			documents.CountLines = bytes.Count(rfile.OriginalData, []byte{'\n'}) + 1
 		}
 
-		fileCommands := s.Parser.CommentsCommands(rfile.FileName, rfile.OriginalData)
+		fileCommands := s.Parser.CommentsCommands(ctx, rfile.FileName, rfile.OriginalData)
 
 		for _, document := range documents.Docs {
 			_, err = json.Marshal(document)
@@ -83,7 +84,7 @@ func (s *Service) resolverSink(
 			file := model.FileMetadata{
 				ID:                uuid.New().String(),
 				ScanID:            scanID,
-				Document:          PrepareScanDocument(document, kind),
+				Document:          PrepareScanDocument(ctx, document, kind),
 				OriginalData:      string(rfile.OriginalData),
 				LineInfoDocument:  document,
 				Kind:              kind,
@@ -112,14 +113,14 @@ func (s *Service) resolverSink(
 	return resFiles.Excluded, nil
 }
 
-func (s *Service) getOriginalIgnoreLines(filename string,
+func (s *Service) getOriginalIgnoreLines(ctx context.Context, filename string,
 	originalFile []uint8,
 	openAPIResolveReferences, isMinified bool,
 	maxResolverDepth int) (ignoreLines []int, err error) {
 	refactor := regexp.MustCompile(`.*\n?.*KICS_HELM_ID.+\n`).ReplaceAll(originalFile, []uint8{})
 	refactor = regexp.MustCompile(`{{-\s*(.*?)\s*}}`).ReplaceAll(refactor, []uint8{})
 
-	documentsOriginal, err := s.Parser.Parse(filename, refactor, openAPIResolveReferences, isMinified, maxResolverDepth)
+	documentsOriginal, err := s.Parser.Parse(ctx, filename, refactor, openAPIResolveReferences, isMinified, maxResolverDepth)
 	if err == nil {
 		ignoreLines = documentsOriginal.IgnoreLines
 	}

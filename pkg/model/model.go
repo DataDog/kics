@@ -6,12 +6,13 @@
 package model
 
 import (
+	"context"
 	"regexp"
 	"sort"
 	"strings"
 	"time"
 
-	"github.com/rs/zerolog/log"
+	"github.com/Checkmarx/kics/pkg/logger"
 )
 
 // Constants to describe what kind of file refers
@@ -290,7 +291,8 @@ type Documents struct {
 type Document map[string]interface{}
 
 // Combine merge documents from FileMetadatas using the ID as reference for Document ID and FileName as reference for file
-func (m FileMetadatas) Combine(lineInfo bool) Documents {
+func (m FileMetadatas) Combine(ctx context.Context, lineInfo bool) Documents {
+	logger := logger.FromContext(ctx)
 	documents := Documents{Documents: make([]Document, 0, len(m))}
 	for i := 0; i < len(m); i++ {
 		_, ignore := m[i].Commands["ignore"]
@@ -298,7 +300,7 @@ func (m FileMetadatas) Combine(lineInfo bool) Documents {
 			continue
 		}
 		if ignore {
-			log.Debug().Msgf("Ignoring file %s", m[i].FilePath)
+			logger.Debug().Msgf("Ignoring file %s", m[i].FilePath)
 			continue
 		}
 		if lineInfo {

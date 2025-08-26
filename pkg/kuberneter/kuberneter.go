@@ -16,8 +16,8 @@ import (
 	"strings"
 	"sync"
 
+	"github.com/Checkmarx/kics/pkg/logger"
 	"github.com/pkg/errors"
-	"github.com/rs/zerolog/log"
 	"sigs.k8s.io/controller-runtime/pkg/client"
 )
 
@@ -36,8 +36,9 @@ func Import(ctx context.Context, kuberneterPath, destinationPath string) (string
 }
 
 // ImportWithClient allows injecting a custom k8s client function for testing
-func ImportWithClient(ctx context.Context, kuberneterPath, destinationPath string, clientFunc func() (client.Client, error)) (string, error) {
-	log.Info().Msg("importing k8s cluster resources")
+func ImportWithClient(ctx context.Context, kuberneterPath, destinationPath string, clientFunc func(context.Context) (client.Client, error)) (string, error) {
+	logger := logger.FromContext(ctx)
+	logger.Info().Msg("importing k8s cluster resources")
 
 	supportedKinds := buildSupportedKinds()
 	defer func() { supportedKinds = nil }()
@@ -49,7 +50,7 @@ func ImportWithClient(ctx context.Context, kuberneterPath, destinationPath strin
 	}
 
 	// get the k8s client
-	c, err := clientFunc()
+	c, err := clientFunc(ctx)
 	if err != nil {
 		return "", err
 	}
@@ -73,33 +74,34 @@ func ImportWithClient(ctx context.Context, kuberneterPath, destinationPath strin
 
 	// list and save k8s resources
 	for i := range k8sAPIOptions.Namespaces {
-		info.listK8sResources(i, supportedKinds)
+		info.listK8sResources(ctx, i, supportedKinds)
 	}
 
 	return destination, nil
 }
 
-func (info *k8sAPICall) listK8sResources(idx int, supKinds *supportedKinds) {
+func (info *k8sAPICall) listK8sResources(ctx context.Context, idx int, supKinds *supportedKinds) {
 	var wg sync.WaitGroup
 	for apiVersion := range *supKinds {
 		kinds := (*supKinds)[apiVersion]
 
 		if isTarget(apiVersion, info.options.APIVersions) {
 			wg.Add(1)
-			go info.listKinds(apiVersion, kinds, info.options.Namespaces[idx], &wg)
+			go info.listKinds(ctx, apiVersion, kinds, info.options.Namespaces[idx], &wg)
 		}
 	}
 	wg.Wait()
 }
 
-func (info *k8sAPICall) listKinds(apiVersion string, kinds map[string]interface{}, namespace string, wg *sync.WaitGroup) {
+func (info *k8sAPICall) listKinds(ctx context.Context, apiVersion string, kinds map[string]interface{}, namespace string, wg *sync.WaitGroup) {
+	logger := logger.FromContext(ctx)
 	defer wg.Done()
 	sb := &strings.Builder{}
 
 	apiVersionFolder := filepath.Join(info.destinationPath, apiVersion)
 
 	if err := os.MkdirAll(apiVersionFolder, os.ModePerm); err != nil {
-		log.Error().Msgf("unable to create folder %s: %s", apiVersionFolder, err)
+		logger.Error().Msgf("unable to create folder %s: %s", apiVersionFolder, err)
 		return
 	}
 
@@ -117,15 +119,15 @@ func (info *k8sAPICall) listKinds(apiVersion string, kinds map[string]interface{
 		resource := kindList.(client.ObjectList)
 		err := info.client.List(*info.ctx, resource, client.InNamespace(namespace))
 		if err != nil {
-			log.Info().Msgf("failed to list %s: %s", apiVersion, err)
+			logger.Info().Msgf("failed to list %s: %s", apiVersion, err)
 		}
 
 		// // objList, err := meta.ExtractList(resource)
 		// // if err != nil {
-		// // 	log.Info().Msgf("failed to extract list: %s", err)
+		// // 	logger.Info().Msgf("failed to extract list: %s", err)
 		// // }
 
-		// log.Info().Msgf("KICS found %d %s(s) in %s from %s", len(objList), kind, getNamespace(namespace), apiVersion)
+		// logger.Info().Msgf("KICS found %d %s(s) in %s from %s", len(objList), kind, getNamespace(namespace), apiVersion)
 
 		// for i := range objList {
 		// 	item := objList[i]
@@ -133,7 +135,7 @@ func (info *k8sAPICall) listKinds(apiVersion string, kinds map[string]interface{
 		// }
 
 		if sb.String() != "" {
-			info.saveK8sResources(kind, sb.String(), apiVersionFolder)
+			info.saveK8sResources(ctx, kind, sb.String(), apiVersionFolder)
 		}
 		sb.Reset()
 	}

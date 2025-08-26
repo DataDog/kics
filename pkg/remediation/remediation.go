@@ -6,13 +6,14 @@
 package remediation
 
 import (
+	"context"
 	"encoding/json"
 	"os"
 	"path/filepath"
 	"sort"
 	"strings"
 
-	"github.com/rs/zerolog/log"
+	"github.com/Checkmarx/kics/pkg/logger"
 )
 
 // Report includes all query results
@@ -56,12 +57,13 @@ type Set struct {
 }
 
 // RemediateFile remediationSets the replacements first and secondly, the additions sorted down
-func (s *Summary) RemediateFile(filePath string, remediationSet Set, openAPIResolveReferences bool, maxResolverDepth int) error {
+func (s *Summary) RemediateFile(ctx context.Context, filePath string, remediationSet Set, openAPIResolveReferences bool, maxResolverDepth int) error {
+	logger := logger.FromContext(ctx)
 	filepath.Clean(filePath)
 	content, err := os.ReadFile(filePath)
 
 	if err != nil {
-		log.Error().Msgf("failed to read file: %s", err)
+		logger.Error().Msgf("failed to read file: %s", err)
 		return err
 	}
 
@@ -71,9 +73,9 @@ func (s *Summary) RemediateFile(filePath string, remediationSet Set, openAPIReso
 	if len(remediationSet.Replacement) > 0 {
 		for i := range remediationSet.Replacement {
 			r := remediationSet.Replacement[i]
-			remediatedLines := replacement(&r, lines)
-			if len(remediatedLines) > 0 && willRemediate(remediatedLines, filePath, &r, openAPIResolveReferences, maxResolverDepth) {
-				lines = s.writeRemediation(remediatedLines, lines, filePath, r.SimilarityID)
+			remediatedLines := replacement(ctx, &r, lines)
+			if len(remediatedLines) > 0 && willRemediate(ctx, remediatedLines, filePath, &r, openAPIResolveReferences, maxResolverDepth) {
+				lines = s.writeRemediation(ctx, remediatedLines, lines, filePath, r.SimilarityID)
 			}
 		}
 	}
@@ -87,9 +89,9 @@ func (s *Summary) RemediateFile(filePath string, remediationSet Set, openAPIReso
 
 		for i := range remediationSet.Addition {
 			a := remediationSet.Addition[i]
-			remediatedLines := addition(&a, &lines)
-			if len(remediatedLines) > 0 && willRemediate(remediatedLines, filePath, &a, openAPIResolveReferences, maxResolverDepth) {
-				lines = s.writeRemediation(remediatedLines, lines, filePath, a.SimilarityID)
+			remediatedLines := addition(ctx, &a, &lines)
+			if len(remediatedLines) > 0 && willRemediate(ctx, remediatedLines, filePath, &a, openAPIResolveReferences, maxResolverDepth) {
+				lines = s.writeRemediation(ctx, remediatedLines, lines, filePath, a.SimilarityID)
 			}
 		}
 	}
@@ -103,7 +105,8 @@ type ReplacementInfo struct {
 	After  string `json:"after"`
 }
 
-func replacement(r *Remediation, lines []string) []string {
+func replacement(ctx context.Context, r *Remediation, lines []string) []string {
+	logger := logger.FromContext(ctx)
 	originalLine := lines[r.Line-1]
 
 	var replacement ReplacementInfo
@@ -116,7 +119,7 @@ func replacement(r *Remediation, lines []string) []string {
 	remediated := strings.Replace(lines[r.Line-1], replacement.Before, replacement.After, 1)
 
 	if originalLine == remediated {
-		log.Info().Msgf("remediation '%s' is already done", r.SimilarityID)
+		logger.Info().Msgf("remediation '%s' is already done", r.SimilarityID)
 		return []string{}
 	}
 
@@ -126,7 +129,8 @@ func replacement(r *Remediation, lines []string) []string {
 	return lines
 }
 
-func addition(r *Remediation, lines *[]string) []string {
+func addition(ctx context.Context, r *Remediation, lines *[]string) []string {
+	logger := logger.FromContext(ctx)
 	fatherNumberLine := r.Line - 1
 
 	if len(*lines) <= fatherNumberLine+1 {
@@ -136,7 +140,7 @@ func addition(r *Remediation, lines *[]string) []string {
 	firstLine := strings.Split(r.Remediation, "\n")[0]
 
 	if strings.TrimSpace((*lines)[fatherNumberLine+1]) == strings.TrimSpace(firstLine) {
-		log.Info().Msgf("remediation '%s' is already done", r.SimilarityID)
+		logger.Info().Msgf("remediation '%s' is already done", r.SimilarityID)
 		return []string{}
 	}
 
@@ -158,15 +162,16 @@ func addition(r *Remediation, lines *[]string) []string {
 	return remediation
 }
 
-func (s *Summary) writeRemediation(remediatedLines, lines []string, filePath, similarityID string) []string {
+func (s *Summary) writeRemediation(ctx context.Context, remediatedLines, lines []string, filePath, similarityID string) []string {
+	logger := logger.FromContext(ctx)
 	remediated := []byte(strings.Join(remediatedLines, "\n"))
 
 	if err := os.WriteFile(filePath, remediated, os.ModePerm); err != nil {
-		log.Error().Msgf("failed to write file: %s", err)
+		logger.Error().Msgf("failed to write file: %s", err)
 		return lines
 	}
 
-	log.Info().Msgf("file '%s' was remediated with '%s'", filePath, similarityID)
+	logger.Info().Msgf("file '%s' was remediated with '%s'", filePath, similarityID)
 	s.ActualRemediationDoneNumber++
 
 	return remediatedLines

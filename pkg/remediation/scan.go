@@ -13,6 +13,7 @@ import (
 
 	"github.com/Checkmarx/kics/pkg/engine"
 	"github.com/Checkmarx/kics/pkg/kics"
+	"github.com/Checkmarx/kics/pkg/logger"
 	"github.com/Checkmarx/kics/pkg/minified"
 	"github.com/Checkmarx/kics/pkg/model"
 	"github.com/Checkmarx/kics/pkg/scan"
@@ -28,7 +29,6 @@ import (
 	yamlParser "github.com/Checkmarx/kics/pkg/parser/yaml"
 	"github.com/Checkmarx/kics/pkg/utils"
 	"github.com/open-policy-agent/opa/rego"
-	"github.com/rs/zerolog/log"
 )
 
 type runQueryInfo struct {
@@ -41,40 +41,42 @@ type runQueryInfo struct {
 
 // scanTmpFile scans a temporary file against a specific query
 func scanTmpFile(
+	ctx context.Context,
 	tmpFile, queryID string,
 	remediated []byte,
 	openAPIResolveReferences bool,
 	maxResolverDepth int) ([]model.Vulnerability, error) {
+	logger := logger.FromContext(ctx)
 	// get payload
-	files, err := getPayload(tmpFile, remediated, openAPIResolveReferences, maxResolverDepth)
+	files, err := getPayload(ctx, tmpFile, remediated, openAPIResolveReferences, maxResolverDepth)
 
 	if err != nil {
-		log.Err(err).Msg("didn't get payload")
+		logger.Err(err).Msg("didn't get payload")
 		return []model.Vulnerability{}, err
 	}
 
 	if len(files) == 0 {
-		log.Error().Msg("failed to get payload")
+		logger.Error().Msg("failed to get payload")
 		return []model.Vulnerability{}, errors.New("failed to get payload")
 	}
 
-	payload := files.Combine(false)
+	payload := files.Combine(ctx, false)
 
 	// init scan
-	inspector, err := initScan(queryID)
+	inspector, err := initScan(ctx, queryID)
 
 	if err != nil {
-		log.Err(err).Msg("")
+		logger.Err(err).Msg("")
 		return []model.Vulnerability{}, err
 	}
-	log.Info().Msg("Scan initialized")
+	logger.Info().Msg("Scan initialized")
 
 	// load query
-	log.Info().Msg("Loading query")
-	query, err := loadQuery(inspector, queryID)
+	logger.Info().Msg("Loading query")
+	query, err := loadQuery(ctx, inspector, queryID)
 
 	if err != nil {
-		log.Err(err)
+		logger.Err(err)
 		return []model.Vulnerability{}, err
 	}
 
@@ -87,47 +89,48 @@ func scanTmpFile(
 		files:     files,
 	}
 
-	return runQuery(info), nil
+	return runQuery(ctx, info), nil
 }
 
 // getPayload gets the payload of a file
-func getPayload(filePath string, content []byte, openAPIResolveReferences bool, maxResolverDepth int) (model.FileMetadatas, error) {
-	ext, _ := utils.GetExtension(filePath)
+func getPayload(ctx context.Context, filePath string, content []byte, openAPIResolveReferences bool, maxResolverDepth int) (model.FileMetadatas, error) {
+	logger := logger.FromContext(ctx)
+	ext, _ := utils.GetExtension(ctx, filePath)
 	var p []*parser.Parser
 	var err error
 
 	switch ext {
 	case ".tf":
-		p, err = parser.NewBuilder().Add(terraformParser.NewDefault()).Build([]string{""}, []string{""})
+		p, err = parser.NewBuilder(ctx).Add(terraformParser.NewDefault()).Build([]string{""}, []string{""})
 
 	case ".proto":
-		p, err = parser.NewBuilder().Add(&protoParser.Parser{}).Build([]string{""}, []string{""})
+		p, err = parser.NewBuilder(ctx).Add(&protoParser.Parser{}).Build([]string{""}, []string{""})
 
 	case ".yaml", ".yml":
-		p, err = parser.NewBuilder().Add(&yamlParser.Parser{}).Build([]string{""}, []string{""})
+		p, err = parser.NewBuilder(ctx).Add(&yamlParser.Parser{}).Build([]string{""}, []string{""})
 
 	case ".json":
-		p, err = parser.NewBuilder().Add(&jsonParser.Parser{}).Build([]string{""}, []string{""})
+		p, err = parser.NewBuilder(ctx).Add(&jsonParser.Parser{}).Build([]string{""}, []string{""})
 
 	case ".sh":
-		p, err = parser.NewBuilder().Add(&buildahParser.Parser{}).Build([]string{""}, []string{""})
+		p, err = parser.NewBuilder(ctx).Add(&buildahParser.Parser{}).Build([]string{""}, []string{""})
 	}
 
 	if err != nil {
-		log.Error().Msgf("failed to get parser: %s", err)
+		logger.Error().Msgf("failed to get parser: %s", err)
 		return model.FileMetadatas{}, err
 	}
 
 	if len(p) == 0 {
-		log.Info().Msg("failed to get parser")
+		logger.Info().Msg("failed to get parser")
 		return model.FileMetadatas{}, errors.New("failed to get parser")
 	}
 
 	isMinified := minified.IsMinified(filePath, content)
-	documents, er := p[0].Parse(filePath, content, openAPIResolveReferences, isMinified, maxResolverDepth)
+	documents, er := p[0].Parse(ctx, filePath, content, openAPIResolveReferences, isMinified, maxResolverDepth)
 
 	if er != nil {
-		log.Error().Msgf("failed to parse file '%s': %s", filePath, er)
+		logger.Error().Msgf("failed to parse file '%s': %s", filePath, er)
 		return model.FileMetadatas{}, er
 	}
 
@@ -141,9 +144,9 @@ func getPayload(filePath string, content []byte, openAPIResolveReferences bool, 
 
 		file := model.FileMetadata{
 			FilePath:          filePath,
-			Document:          kics.PrepareScanDocument(document, documents.Kind),
+			Document:          kics.PrepareScanDocument(ctx, document, documents.Kind),
 			LineInfoDocument:  document,
-			Commands:          p[0].CommentsCommands(filePath, content),
+			Commands:          p[0].CommentsCommands(ctx, filePath, content),
 			OriginalData:      string(content),
 			LinesOriginalData: utils.SplitLines(string(content)),
 			IsMinified:        documents.IsMinified,
@@ -156,7 +159,8 @@ func getPayload(filePath string, content []byte, openAPIResolveReferences bool, 
 }
 
 // runQuery runs a query and returns its results
-func runQuery(r *runQueryInfo) []model.Vulnerability {
+func runQuery(ctx context.Context, r *runQueryInfo) []model.Vulnerability {
+	logger := logger.FromContext(ctx)
 	queryStart := time.Now()
 	queryExecTimeout := time.Duration(60) * time.Second
 
@@ -169,16 +173,16 @@ func runQuery(r *runQueryInfo) []model.Vulnerability {
 
 	if err != nil {
 		if topdown.IsCancel(err) {
-			log.Err(err)
+			logger.Err(err)
 		}
 
-		log.Err(err)
+		logger.Err(err)
 	}
 
-	ctx := context.Background()
+	bcgCtx := context.Background()
 
 	queryCtx := &engine.QueryContext{
-		Ctx:           ctx,
+		Ctx:           bcgCtx,
 		Query:         r.query,
 		BaseScanPaths: []string{r.tmpFile},
 		Files:         r.files.ToMap(),
@@ -186,16 +190,17 @@ func runQuery(r *runQueryInfo) []model.Vulnerability {
 
 	timeoutCtxToDecode, cancelDecode := context.WithTimeout(context.Background(), queryExecTimeout)
 	defer cancelDecode()
-	decoded, err := r.inspector.DecodeQueryResults(queryCtx, timeoutCtxToDecode, results, time.Since(queryStart))
+	decoded, err := r.inspector.DecodeQueryResults(ctx, queryCtx, timeoutCtxToDecode, results, time.Since(queryStart))
 
 	if err != nil {
-		log.Err(err)
+		logger.Err(err)
 	}
 
 	return decoded
 }
 
-func initScan(queryID string) (*engine.Inspector, error) {
+func initScan(ctx context.Context, queryID string) (*engine.Inspector, error) {
+	logger := logger.FromContext(ctx)
 	scanParams := &scan.Parameters{
 		CloudProvider:               []string{""},
 		DisableFullDesc:             false,
@@ -236,13 +241,14 @@ func initScan(queryID string) (*engine.Inspector, error) {
 		ScanParams: scanParams,
 	}
 
-	_, err := c.GetQueryPath()
+	_, err := c.GetQueryPath(ctx)
 	if err != nil {
-		log.Err(err)
+		logger.Err(err)
 		return &engine.Inspector{}, err
 	}
 
 	queriesSource := source.NewFilesystemSource(
+		ctx,
 		c.ScanParams.QueriesPath,
 		c.ScanParams.Platform,
 		c.ScanParams.CloudProvider,
@@ -259,13 +265,13 @@ func initScan(queryID string) (*engine.Inspector, error) {
 
 	t, err := tracker.NewTracker(c.ScanParams.PreviewLines)
 	if err != nil {
-		log.Err(err)
+		logger.Err(err)
 		return &engine.Inspector{}, err
 	}
 
-	ctx := context.Background()
+	// bcgCtx := context.Background()
 
-	log.Info().Msgf("Preparing to inspect query source %v", queriesSource)
+	logger.Info().Msgf("Preparing to inspect query source %v", queriesSource)
 
 	inspector, err := engine.NewInspector(ctx,
 		queriesSource,
@@ -283,12 +289,13 @@ func initScan(queryID string) (*engine.Inspector, error) {
 	return inspector, err
 }
 
-func loadQuery(inspector *engine.Inspector, queryID string) (*engine.PreparedQuery, error) {
+func loadQuery(ctx context.Context, inspector *engine.Inspector, queryID string) (*engine.PreparedQuery, error) {
+	logger := logger.FromContext(ctx)
 	if len(inspector.QueryLoader.QueriesMetadata) == 1 {
 		queryOpa, err := inspector.QueryLoader.LoadQuery(context.Background(), &inspector.QueryLoader.QueriesMetadata[0], nil)
 
 		if err != nil {
-			log.Err(err)
+			logger.Err(err)
 			return &engine.PreparedQuery{}, err
 		}
 

@@ -6,16 +6,17 @@
 package engine
 
 import (
+	"context"
 	"fmt"
 	"strings"
 
 	build "github.com/Checkmarx/kics/pkg/builder/model"
 	commentParser "github.com/Checkmarx/kics/pkg/builder/parser/comment"
 	tagParser "github.com/Checkmarx/kics/pkg/builder/parser/tag"
+	"github.com/Checkmarx/kics/pkg/logger"
 	"github.com/Checkmarx/kics/pkg/model"
 	"github.com/hashicorp/hcl/v2"
 	"github.com/hashicorp/hcl/v2/hclsyntax"
-	"github.com/rs/zerolog/log"
 	"github.com/zclconf/go-cty/cty"
 	ctyConvert "github.com/zclconf/go-cty/cty/convert"
 )
@@ -29,7 +30,8 @@ type Engine struct {
 }
 
 // Run parses files and execute engine.Run
-func Run(src []byte, filename string) ([]build.Rule, error) {
+func Run(ctx context.Context, src []byte, filename string) ([]build.Rule, error) {
+	logger := logger.FromContext(ctx)
 	cp, err := commentParser.NewParser(src, filename)
 	if err != nil {
 		return nil, err
@@ -40,20 +42,22 @@ func Run(src []byte, filename string) ([]build.Rule, error) {
 		return nil, diags.Errs()[0]
 	}
 	if file == nil {
-		return nil, fmt.Errorf("invalid parse result")
+		err := fmt.Errorf("invalid parse result")
+		logger.Error().Msg(err.Error())
+		return nil, err
 	}
 
 	e := &Engine{
 		commentParser: cp,
 	}
 
-	return e.Run(file.Body.(*hclsyntax.Body))
+	return e.Run(ctx, file.Body.(*hclsyntax.Body))
 }
 
 // Run initializes rules for Engine and returns it
-func (e *Engine) Run(body *hclsyntax.Body) ([]build.Rule, error) {
+func (e *Engine) Run(ctx context.Context, body *hclsyntax.Body) ([]build.Rule, error) {
 	e.conditions = make([]build.Condition, 0)
-	if err := e.walkBody(body, []build.PathItem{}); err != nil {
+	if err := e.walkBody(ctx, body, []build.PathItem{}); err != nil {
 		return nil, err
 	}
 
@@ -79,15 +83,15 @@ func (e *Engine) Run(body *hclsyntax.Body) ([]build.Rule, error) {
 	return rules, nil
 }
 
-func (e *Engine) walkBody(body *hclsyntax.Body, walkHistory []build.PathItem) error {
+func (e *Engine) walkBody(ctx context.Context, body *hclsyntax.Body, walkHistory []build.PathItem) error {
 	for _, attribute := range body.Attributes {
-		if err := e.walkAttribute(attribute, walkHistory); err != nil {
+		if err := e.walkAttribute(ctx, attribute, walkHistory); err != nil {
 			return err
 		}
 	}
 
 	for _, block := range body.Blocks {
-		if err := e.walkBlock(block, walkHistory); err != nil {
+		if err := e.walkBlock(ctx, block, walkHistory); err != nil {
 			return err
 		}
 	}
@@ -95,7 +99,7 @@ func (e *Engine) walkBody(body *hclsyntax.Body, walkHistory []build.PathItem) er
 	return nil
 }
 
-func (e *Engine) walkBlock(block *hclsyntax.Block, walkHistory []build.PathItem) error {
+func (e *Engine) walkBlock(ctx context.Context, block *hclsyntax.Block, walkHistory []build.PathItem) error {
 	if len(block.Labels) == resourceLabelsCount {
 		walkHistory = append(walkHistory,
 			build.PathItem{Type: build.PathTypeResource, Name: block.Type},
@@ -106,12 +110,12 @@ func (e *Engine) walkBlock(block *hclsyntax.Block, walkHistory []build.PathItem)
 		walkHistory = append(walkHistory, build.PathItem{Type: build.PathTypeDefault, Name: block.Type})
 	}
 
-	e.checkComment(block.Range(), walkHistory, nil)
+	e.checkComment(ctx, block.Range(), walkHistory, nil)
 
-	return e.walkBody(block.Body, walkHistory)
+	return e.walkBody(ctx, block.Body, walkHistory)
 }
 
-func (e *Engine) walkAttribute(attr *hclsyntax.Attribute, walkHistory []build.PathItem) error {
+func (e *Engine) walkAttribute(ctx context.Context, attr *hclsyntax.Attribute, walkHistory []build.PathItem) error {
 	walkHistory = append(walkHistory, build.PathItem{Type: build.PathTypeDefault, Name: attr.Name})
 
 	switch exp := attr.Expr.(type) {
@@ -120,29 +124,30 @@ func (e *Engine) walkAttribute(attr *hclsyntax.Attribute, walkHistory []build.Pa
 		*hclsyntax.LiteralValueExpr,
 		*hclsyntax.ScopeTraversalExpr:
 
-		v, err := e.ExpToString(attr.Expr)
+		v, err := e.ExpToString(ctx, attr.Expr)
 		if err != nil {
 			return err
 		}
 
-		e.checkComment(attr.Range(), walkHistory, &v)
+		e.checkComment(ctx, attr.Range(), walkHistory, &v)
 	case *hclsyntax.ObjectConsExpr:
-		e.checkComment(attr.Range(), walkHistory, nil)
+		e.checkComment(ctx, attr.Range(), walkHistory, nil)
 
 		for _, item := range exp.Items {
-			if err := e.walkConstantItem(item, walkHistory); err != nil {
+			if err := e.walkConstantItem(ctx, item, walkHistory); err != nil {
 				return err
 			}
 		}
 	default:
-		e.checkComment(attr.Range(), walkHistory, nil)
+		e.checkComment(ctx, attr.Range(), walkHistory, nil)
 	}
 
 	return nil
 }
 
 // ExpToString converts an expression into a string
-func (e *Engine) ExpToString(expr hclsyntax.Expression) (string, error) {
+func (e *Engine) ExpToString(ctx context.Context, expr hclsyntax.Expression) (string, error) {
+	logger := logger.FromContext(ctx)
 	switch t := expr.(type) {
 	case *hclsyntax.LiteralValueExpr:
 		s, err := ctyConvert.Convert(t.Val, cty.String)
@@ -158,29 +163,30 @@ func (e *Engine) ExpToString(expr hclsyntax.Expression) (string, error) {
 			}
 			return v.AsString(), nil
 		}
-		builderString, err := e.buildString(t.Parts)
+		builderString, err := e.buildString(ctx, t.Parts)
 		if err != nil {
 			return "", err
 		}
 
 		return builderString, nil
 	case *hclsyntax.TemplateWrapExpr:
-		return e.ExpToString(t.Wrapped)
+		return e.ExpToString(ctx, t.Wrapped)
 	case *hclsyntax.ObjectConsKeyExpr:
-		return e.ExpToString(t.Wrapped)
+		return e.ExpToString(ctx, t.Wrapped)
 	case *hclsyntax.ScopeTraversalExpr:
 		items := evaluateScopeTraversalExpr(t.Traversal)
 		return strings.Join(items, "."), nil
 	}
-
-	return "", fmt.Errorf("can't convert expression %T to string", expr)
+	err := fmt.Errorf("can't convert expression %T to string", expr)
+	logger.Error().Msg(err.Error())
+	return "", err
 }
 
-func (e *Engine) buildString(parts []hclsyntax.Expression) (string, error) {
+func (e *Engine) buildString(ctx context.Context, parts []hclsyntax.Expression) (string, error) {
 	builder := &strings.Builder{}
 
 	for _, part := range parts {
-		s, err := e.ExpToString(part)
+		s, err := e.ExpToString(ctx, part)
 		if err != nil {
 			return "", err
 		}
@@ -195,38 +201,39 @@ func (e *Engine) buildString(parts []hclsyntax.Expression) (string, error) {
 	return s, nil
 }
 
-func (e *Engine) walkConstantItem(item hclsyntax.ObjectConsItem, walkHistory []build.PathItem) error {
-	k, err := e.ExpToString(item.KeyExpr)
+func (e *Engine) walkConstantItem(ctx context.Context, item hclsyntax.ObjectConsItem, walkHistory []build.PathItem) error {
+	k, err := e.ExpToString(ctx, item.KeyExpr)
 	if err != nil {
 		return err
 	}
 
 	walkHistory = append(walkHistory, build.PathItem{Type: build.PathTypeDefault, Name: k})
 
-	v, err := e.ExpToString(item.ValueExpr)
+	v, err := e.ExpToString(ctx, item.ValueExpr)
 	if err != nil {
 		return err
 	}
 
-	e.checkComment(item.ValueExpr.Range(), walkHistory, &v)
+	e.checkComment(ctx, item.ValueExpr.Range(), walkHistory, &v)
 
 	return nil
 }
 
-func (e *Engine) checkComment(rg hcl.Range, walkHistory []build.PathItem, actualValue *string) {
+func (e *Engine) checkComment(ctx context.Context, rg hcl.Range, walkHistory []build.PathItem, actualValue *string) {
 	leadComment, endLineComment := e.commentParser.ParseCommentsForNode(rg)
 	if !leadComment.IsEmpty() {
-		e.addRule(walkHistory, leadComment, actualValue)
+		e.addRule(ctx, walkHistory, leadComment, actualValue)
 	}
 	if !endLineComment.IsEmpty() {
-		e.addRule(walkHistory, endLineComment, actualValue)
+		e.addRule(ctx, walkHistory, endLineComment, actualValue)
 	}
 }
 
-func (e *Engine) addRule(walkHistory []build.PathItem, comment commentParser.Comment, actualValue *string) {
-	tags, err := tagParser.Parse(comment.Value(), model.AllIssueTypesAsString)
+func (e *Engine) addRule(ctx context.Context, walkHistory []build.PathItem, comment commentParser.Comment, actualValue *string) {
+	logger := logger.FromContext(ctx)
+	tags, err := tagParser.Parse(ctx, comment.Value(), model.AllIssueTypesAsString)
 	if err != nil {
-		log.Err(err).Msgf("Line %d: failed to parse comment '%s'", comment.Line(), comment.Value())
+		logger.Err(err).Msgf("Line %d: failed to parse comment '%s'", comment.Line(), comment.Value())
 		return
 	}
 

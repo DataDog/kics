@@ -6,14 +6,15 @@
 package model
 
 import (
+	"context"
 	"fmt"
 	"os"
 	"strings"
 	"time"
 
+	"github.com/Checkmarx/kics/pkg/logger"
 	"github.com/Checkmarx/kics/pkg/model"
 	"github.com/aws/aws-sdk-go-v2/aws"
-	"github.com/rs/zerolog/log"
 )
 
 // AwsAccountInfo contains all the relevant information of the user AWS account
@@ -69,14 +70,15 @@ type Compliance struct {
 }
 
 // BuildASFF builds the ASFF report
-func BuildASFF(summary *model.Summary) []AwsSecurityFinding {
+func BuildASFF(ctx context.Context, summary *model.Summary) []AwsSecurityFinding {
+	logger := logger.FromContext(ctx)
 	findings := []AwsSecurityFinding{}
 
 	awsAccountInfo := getAwsAccountInfo()
 
 	if awsAccountInfo.incompleteAwsAccountInfo() {
 		variables := "AWS_ACCOUNT_ID, AWS_REGION"
-		log.Debug().Msg(fmt.Sprintf("failed to get AWS account information: check your environment variables (%s)", variables))
+		logger.Debug().Msg(fmt.Sprintf("failed to get AWS account information: check your environment variables (%s)", variables))
 	}
 
 	for idx := range summary.Queries {

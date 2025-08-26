@@ -1,6 +1,7 @@
 package test
 
 import (
+	"context"
 	"errors"
 	"os"
 	"path/filepath"
@@ -79,11 +80,12 @@ func Test_ChangeCurrentDir(t *testing.T) {
 		},
 	}
 
+	ctx := context.Background()
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			os.Chdir(tt.startDir)
 
-			v := ChangeCurrentDir(tt.desiredDir)
+			v := ChangeCurrentDir(ctx, tt.desiredDir)
 
 			if tt.expectedError {
 				require.Error(t, v)

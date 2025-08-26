@@ -7,6 +7,7 @@ package grpc
 
 import (
 	"bytes"
+	"context"
 	"encoding/json"
 
 	"github.com/Checkmarx/kics/pkg/model"
@@ -19,7 +20,7 @@ type Parser struct {
 }
 
 // Parse - parses grpc to Json
-func (p *Parser) Parse(_ string, fileContent []byte) ([]model.Document, []int, error) {
+func (p *Parser) Parse(ctx context.Context, _ string, fileContent []byte) ([]model.Document, []int, error) {
 	reader := bytes.NewReader(fileContent)
 	parserProto := proto.NewParser(reader)
 	nodes, err := parserProto.Parse()
@@ -29,7 +30,7 @@ func (p *Parser) Parse(_ string, fileContent []byte) ([]model.Document, []int, e
 
 	var doc model.Document
 
-	jproto, linesIgnore := converter.Convert(nodes)
+	jproto, linesIgnore := converter.Convert(ctx, nodes)
 
 	protoBytes, err := json.Marshal(jproto)
 	if err != nil {
@@ -70,7 +71,7 @@ func (p *Parser) StringifyContent(content []byte) (string, error) {
 }
 
 // Resolve resolves proto files variables
-func (p *Parser) Resolve(fileContent []byte, _ string, _ bool, _ int) ([]byte, error) {
+func (p *Parser) Resolve(ctx context.Context, fileContent []byte, _ string, _ bool, _ int) ([]byte, error) {
 	return fileContent, nil
 }
 

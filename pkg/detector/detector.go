@@ -6,12 +6,14 @@
 package detector
 
 import (
+	"context"
+
 	"github.com/Checkmarx/kics/pkg/model"
 	"github.com/rs/zerolog"
 )
 
 type kindDetectLine interface {
-	DetectLine(file *model.FileMetadata, searchKey string, outputLines int, logWithFields *zerolog.Logger) model.VulnerabilityLines
+	DetectLine(ctx context.Context, file *model.FileMetadata, searchKey string, outputLines int) model.VulnerabilityLines
 }
 
 // DetectLine is a struct that associates a kindDetectLine to its FileKind
@@ -45,11 +47,11 @@ func (d *DetectLine) Add(detector kindDetectLine, kind model.FileKind) *DetectLi
 
 // DetectLine will use the correct kindDetectLine according to the files kind
 // if file kind is not in detectors default detect line is called
-func (d *DetectLine) DetectLine(file *model.FileMetadata, searchKey string, logWithFields *zerolog.Logger) model.VulnerabilityLines {
+func (d *DetectLine) DetectLine(ctx context.Context, file *model.FileMetadata, searchKey string) model.VulnerabilityLines {
 	if det, ok := d.detectors[file.Kind]; ok {
-		return det.DetectLine(file, searchKey, d.outputLines, logWithFields)
+		return det.DetectLine(ctx, file, searchKey, d.outputLines)
 	}
-	return d.defaultDetector.DetectLine(file, searchKey, d.outputLines, logWithFields)
+	return d.defaultDetector.DetectLine(ctx, file, searchKey, d.outputLines)
 }
 
 // GetAdjacent finds and returns the lines adjacent to the line containing the vulnerability

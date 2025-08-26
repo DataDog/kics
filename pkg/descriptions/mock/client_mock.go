@@ -1,6 +1,7 @@
 package mockclient
 
 import (
+	"context"
 	"net/http"
 
 	"github.com/Checkmarx/kics/pkg/descriptions/model"
@@ -23,17 +24,17 @@ type MockDescriptionsClient struct {
 }
 
 // RequestDescriptions - mock descriptions client request descriptions function
-func (m *MockDescriptionsClient) RequestDescriptions(descriptionIDs []string) (map[string]model.CISDescriptions, error) {
+func (m *MockDescriptionsClient) RequestDescriptions(ctx context.Context, descriptionIDs []string) (map[string]model.CISDescriptions, error) {
 	return GetDescriptions(descriptionIDs)
 }
 
 // CheckConnection - mock descriptions client check connection function
-func (m *MockDescriptionsClient) CheckConnection() error {
+func (m *MockDescriptionsClient) CheckConnection(ctx context.Context) error {
 	return CheckConnection()
 }
 
 // CheckLatestVersion - mock client request version function
-func (m *MockDescriptionsClient) CheckLatestVersion(version string) (genModel.Version, error) {
+func (m *MockDescriptionsClient) CheckLatestVersion(ctx context.Context, version string) (genModel.Version, error) {
 	return CheckVersion(version)
 }
 
