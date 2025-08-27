@@ -420,7 +420,7 @@ func TestDetectCurrentLine(t *testing.T) {
 		t.Run(tt.name, func(t *testing.T) {
 			d := tt.fields.defaultDetectLineResponse
 
-			d, _ = d.DetectCurrentLine(tt.args.str1, tt.args.str2, 0, tt.args.lines)
+			d, _, _, _ = d.DetectCurrentLine(tt.args.str1, tt.args.str2, 0, tt.args.lines)
 
 			if d.CurrentLine != tt.want.defaultDetectLineResponse.CurrentLine {
 				t.Errorf("DetectCurrentLine() = %v, want %v", d.CurrentLine, tt.want.defaultDetectLineResponse.CurrentLine)

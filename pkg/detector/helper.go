@@ -345,48 +345,50 @@ func removeExtras(result string, start, end int) string {
 
 // DetectCurrentLine uses levenshtein distance to find the most accurate line for the vulnerability
 func (d *DefaultDetectLineResponse) DetectCurrentLine(str1, str2 string, recurseCount int,
-	lines []string) (det *DefaultDetectLineResponse, l []string) {
+	lines []string) (det *DefaultDetectLineResponse, start model.ResourceLine, end model.ResourceLine, l []string) {
 	distances := make(map[int]int)
 
 	for i := d.CurrentLine; i < len(lines); i++ {
-		distances = checkLine(str1, str2, distances, lines, i)
+		distances, start, end = checkLine(str1, str2, distances, lines, i)
 	}
 
 	if len(distances) == 0 {
 		d.IsBreak = true
-		return d, lines
+		return d, start, end, lines
 	}
 
 	d.CurrentLine = SelectLineWithMinimumDistance(distances, d.CurrentLine)
 	d.IsBreak = false
 	d.FoundAtLeastOne = true
 
-	return d, lines
+	return d, start, end, lines
 }
 
-func checkLine(str1, str2 string, distances map[int]int, lines []string, i int) map[int]int {
-	line := strings.TrimSpace(lines[i])
+func checkLine(str1, str2 string, distances map[int]int, lines []string, startLine int) (map[int]int, model.ResourceLine, model.ResourceLine) {
+	line := strings.TrimSpace(lines[startLine])
+	endLine := startLine
 	if strings.HasPrefix(line, "#") || strings.HasPrefix(line, "//") {
-		return distances
+		return distances, model.ResourceLine{Line: startLine, Col: 0}, model.ResourceLine{Line: 0, Col: 0}
 	}
 
 	regex := regexp.MustCompile(`^\s+`)
 	line = regex.ReplaceAllString(line, "")
+	currentIndent := strings.Index(lines[startLine], line)
 	if str1 != "" && str2 != "" && strings.Contains(line, str1) {
 		restLine := line[strings.Index(line, str1)+len(str1):]
 		if strings.Contains(restLine, str2) {
-			distances[i] = levenshtein.ComputeDistance(ExtractLineFragment(line, str1, false), str1)
-			distances[i] += levenshtein.ComputeDistance(ExtractLineFragment(restLine, str2, false), str2)
+			distances[startLine] = levenshtein.ComputeDistance(ExtractLineFragment(line, str1, false), str1)
+			distances[startLine] += levenshtein.ComputeDistance(ExtractLineFragment(restLine, str2, false), str2)
 		} else if strings.Contains(line, "|") {
 			s := ""
-			currentIndent := strings.Index(lines[i], line)
-			for j := i + 1; j < len(lines); j++ {
-				nextLine := regex.ReplaceAllString(lines[j], "")
-				nextIndent := strings.Index(lines[j], nextLine)
+			for endLine < len(lines) {
+				nextLine := regex.ReplaceAllString(lines[endLine], "")
+				nextIndent := strings.Index(lines[endLine], nextLine)
 				if currentIndent == nextIndent {
 					break
 				}
 				s += nextLine
+				endLine++
 			}
 			whitespacesRegex := regexp.MustCompile(`\s+`)
 
@@ -394,14 +396,14 @@ func checkLine(str1, str2 string, distances map[int]int, lines []string, i int) 
 				whitespacesRegex.ReplaceAllString(str2, ""),
 				whitespacesRegex.ReplaceAllString(s, ""),
 			) {
-				distances[i] = levenshtein.ComputeDistance(ExtractLineFragment(line, str1, false), str1)
-				distances[i] += levenshtein.ComputeDistance(ExtractLineFragment(str2, s, false), s)
+				distances[startLine] = levenshtein.ComputeDistance(ExtractLineFragment(line, str1, false), str1)
+				distances[startLine] += levenshtein.ComputeDistance(ExtractLineFragment(str2, s, false), s)
 			}
 
 		}
 	} else if str1 != "" && strings.Contains(line, str1) {
-		distances[i] = levenshtein.ComputeDistance(ExtractLineFragment(line, str1, false), str1)
+		distances[startLine] = levenshtein.ComputeDistance(ExtractLineFragment(line, str1, false), str1)
 	}
 
-	return distances
+	return distances, model.ResourceLine{Line: startLine, Col: currentIndent}, model.ResourceLine{Line: endLine, Col: len(lines[startLine])}
 }

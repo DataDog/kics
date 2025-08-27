@@ -58,7 +58,7 @@ func (d DetectKindLine) DetectLine(ctx context.Context, file *model.FileMetadata
 
 	for _, part := range keyParts {
 		s1, s2 := detector.GenerateSubstrings(part, extracted, lines, detection.CurrentLine)
-		detection, _ = detection.DetectCurrentLine(s1, s2, 0, lines)
+		detection, _, _, _ = detection.DetectCurrentLine(s1, s2, 0, lines)
 		if detection.IsBreak {
 			break
 		}
