@@ -56,6 +56,32 @@ provider "aws" {
 terraform {
   required_providers {
     aws = {
+      source  = "hashicorp/aws"
+      version = "~> 3.0"
+    }
+  }
+}
+
+resource "aws_s3_bucket" "negative1" {
+  bucket = "my-tf-test-bucket"
+  acl    = "private"
+
+  tags = {
+    Name        = "My bucket"
+    Environment = "Dev"
+  }
+}
+
+```
+
+```terraform
+provider "aws" {
+  region = "us-east-1"
+}
+
+terraform {
+  required_providers {
+    aws = {
       source = "hashicorp/aws"
       version = "4.2.0"
     }
@@ -87,32 +113,6 @@ module "s3_bucket" {
 }
 
 ```
-
-```terraform
-provider "aws" {
-  region = "us-east-1"
-}
-
-terraform {
-  required_providers {
-    aws = {
-      source  = "hashicorp/aws"
-      version = "~> 3.0"
-    }
-  }
-}
-
-resource "aws_s3_bucket" "negative1" {
-  bucket = "my-tf-test-bucket"
-  acl    = "private"
-
-  tags = {
-    Name        = "My bucket"
-    Environment = "Dev"
-  }
-}
-
-```
 ## Non-Compliant Code Examples
 ```terraform
 module "s3_bucket" {
@@ -125,31 +125,6 @@ module "s3_bucket" {
   versioning = {
     enabled = true
   }
-}
-
-```
-
-```terraform
-provider "aws" {
-  region = "us-east-1"
-}
-
-terraform {
-  required_providers {
-    aws = {
-      source = "hashicorp/aws"
-      version = "4.2.0"
-    }
-  }
-}
-
-resource "aws_s3_bucket" "example1" {
-  bucket = "my-tf-example-bucket"
-}
-
-resource "aws_s3_bucket_acl" "example_bucket_acl" {
-  bucket = aws_s3_bucket.example1.id
-  acl    = "authenticated-read"
 }
 
 ```
@@ -176,6 +151,31 @@ resource "aws_s3_bucket" "positive1" {
     Name        = "My bucket"
     Environment = "Dev"
   }
+}
+
+```
+
+```terraform
+provider "aws" {
+  region = "us-east-1"
+}
+
+terraform {
+  required_providers {
+    aws = {
+      source = "hashicorp/aws"
+      version = "4.2.0"
+    }
+  }
+}
+
+resource "aws_s3_bucket" "example1" {
+  bucket = "my-tf-example-bucket"
+}
+
+resource "aws_s3_bucket_acl" "example_bucket_acl" {
+  bucket = aws_s3_bucket.example1.id
+  acl    = "authenticated-read"
 }
 
 ```

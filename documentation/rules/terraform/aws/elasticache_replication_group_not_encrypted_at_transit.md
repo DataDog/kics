@@ -46,6 +46,46 @@ resource "aws_elasticache_replication_group" "example3" {
 }
 
 ```
+
+```terraform
+module "user_example_redis" {
+  source  = "terraform-aws-modules/elasticache/aws"
+  version = "~> 2.0"
+
+  name = "cluster-example"
+
+  engine_version = "3.2.10"
+  node_type      = "cache.t2.small"
+  number_cache_clusters = 2
+  parameter_group_name = "default.redis3.2"
+
+  port = 6379
+
+  subnet_group_name = "${module.user_example_redis.cache_subnet_group_name}"
+  family            = "${module.user_example_redis.cache_subnet_group_family}"
+
+  maintenance_window = "sun:00:00-sun:03:00"
+  notification_topic_arn = "arn:aws:sns:us-east-1:012345678900:my_sns_topic_name"
+
+  security_group_ids = ["${module.sg.sg_id}"]
+
+  transit_encryption_enabled = true
+
+  apply_immediately     = true
+  automatic_failover    = true
+  auto_minor_version_upgrade = true
+
+  tags = {
+    Owner       = "user"
+    Environment = "dev"
+  }
+
+  parameter {
+    name  = "notify-keyspace-events"
+    value = "Kg"
+  }
+}
+```
 ## Non-Compliant Code Examples
 ```terraform
 resource "aws_elasticache_replication_group" "example" {
@@ -70,6 +110,30 @@ resource "aws_elasticache_replication_group" "example" {
   node_type                     = "cache.m4.large"
   number_cache_clusters         = 2
   port                          = 6379
+}
+
+```
+
+```terraform
+module "elasticache_redis" {
+  source = "terraform-aws-modules/elasticache/aws"
+  version = "0.49.0"
+
+  namespace     = "eg"
+  stage         = "prod"
+  name          = "redis"
+  instance_type = "cache.t2.micro"
+  availability_zones = ["us-west-2a", "us-west-2b", "us-west-2c"]
+  cluster_size  = 2
+
+  description     = "Elasticache redis cluster for the foo service"
+  alarm_actions   = ["${aws_kms_key.example.arn}"]
+  ok_actions      = ["${aws_kms_key.example.arn}"]
+
+  subnets         = ["subnet-a4dc27fb", "subnet-b7c9c1c5", "subnet-c9345686"]
+  vpc_id          = "vpc-xxxxxx"
+  allowed_cidr    = "10.10.10.10/32"
+  region          = "us-west-2"
 }
 
 ```

@@ -52,16 +52,8 @@ To secure your S3 bucket, either explicitly deny the action or restrict it to sp
 
 ## Compliant Code Examples
 ```terraform
-module "s3_bucket" {
-  source = "terraform-aws-modules/s3-bucket/aws"
-  version = "3.7.0"
-
-  bucket = "my-s3-bucket"
-  acl    = "private"
-
-  versioning = {
-    enabled = true
-  }
+resource "aws_s3_bucket_policy" "negative1" {
+  bucket = aws_s3_bucket.b.id
 
   policy = <<POLICY
 {
@@ -85,8 +77,16 @@ POLICY
 ```
 
 ```terraform
-resource "aws_s3_bucket_policy" "negative1" {
-  bucket = aws_s3_bucket.b.id
+module "s3_bucket" {
+  source = "terraform-aws-modules/s3-bucket/aws"
+  version = "3.7.0"
+
+  bucket = "my-s3-bucket"
+  acl    = "private"
+
+  versioning = {
+    enabled = true
+  }
 
   policy = <<POLICY
 {
@@ -138,16 +138,8 @@ POLICY
 ```
 
 ```terraform
-module "s3_bucket" {
-  source = "terraform-aws-modules/s3-bucket/aws"
-  version = "3.7.0"
-
-  bucket = "my-s3-bucket"
-  acl    = "private"
-
-  versioning = {
-    enabled = true
-  }
+resource "aws_s3_bucket_policy" "positive1" {
+  bucket = aws_s3_bucket.b.id
 
   policy = <<POLICY
 {
@@ -172,8 +164,16 @@ POLICY
 ```
 
 ```terraform
-resource "aws_s3_bucket_policy" "positive1" {
-  bucket = aws_s3_bucket.b.id
+module "s3_bucket" {
+  source = "terraform-aws-modules/s3-bucket/aws"
+  version = "3.7.0"
+
+  bucket = "my-s3-bucket"
+  acl    = "private"
+
+  versioning = {
+    enabled = true
+  }
 
   policy = <<POLICY
 {

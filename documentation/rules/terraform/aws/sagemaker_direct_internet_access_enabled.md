@@ -61,7 +61,39 @@ resource "aws_sagemaker_notebook_instance" "good_example" {
 }
 
 ```
+
+```terraform
+module "sagemaker_notebook_instance" {
+  source = "github.com/SebastianUA/terraform-aws-sagemaker"
+  version = "5.3.0"
+
+  notebook_instance_name  = "notebook-instance"
+  direct_internet_access  = "Disabled"
+
+  tags = {
+    Name        = "My notebook"
+    Environment = "Dev"
+  }
+}
+
+```
 ## Non-Compliant Code Examples
+```terraform
+module "sagemaker_notebook_instance" {
+  source = "github.com/SebastianUA/terraform-aws-sagemaker"
+  version = "5.3.0"
+
+  notebook_instance_name  = "notebook-instance"
+  direct_internet_access  = "Enabled"
+
+  tags = {
+    Name        = "My notebook"
+    Environment = "Dev"
+  }
+}
+
+```
+
 ```terraform
 resource "aws_sagemaker_notebook_instance" "bad_example" {
   name                   = "example-notebook"

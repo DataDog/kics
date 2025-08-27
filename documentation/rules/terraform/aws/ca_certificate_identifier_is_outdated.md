@@ -39,23 +39,6 @@ Using the correct CA certificate ensures continued support, compliance, and secu
 
 ## Compliant Code Examples
 ```terraform
-resource "aws_db_instance" "negative1" {
-  allocated_storage    = 20
-  storage_type         = "gp2"
-  engine               = "mysql"
-  engine_version       = "5.7"
-  instance_class       = "db.t2.micro"
-  name                 = "mydb"
-  username             = "foo"
-  password             = "foobarbaz"
-  iam_database_authentication_enabled = true
-  storage_encrypted = true
-  ca_cert_identifier = "rds-ca-rsa2048-g1"
-}
-
-```
-
-```terraform
 module "db" {
   source  = "terraform-aws-modules/rds/aws"
   version = "~> 3.0"
@@ -66,7 +49,7 @@ module "db" {
   engine_version    = "5.7.19"
   instance_class    = "db.t2.large"
   allocated_storage = 5
-  ca_cert_identifier = "rds-ca-2019"
+  ca_cert_identifier = "rds-ca-rsa4096-g1"
 
   name     = "demodb"
   username = "user"
@@ -147,6 +130,23 @@ resource "aws_db_instance" "negative1" {
   iam_database_authentication_enabled = true
   storage_encrypted = true
   ca_cert_identifier = "rds-ca-2019"
+}
+
+```
+
+```terraform
+resource "aws_db_instance" "negative1" {
+  allocated_storage    = 20
+  storage_type         = "gp2"
+  engine               = "mysql"
+  engine_version       = "5.7"
+  instance_class       = "db.t2.micro"
+  name                 = "mydb"
+  username             = "foo"
+  password             = "foobarbaz"
+  iam_database_authentication_enabled = true
+  storage_encrypted = true
+  ca_cert_identifier = "rds-ca-rsa2048-g1"
 }
 
 ```

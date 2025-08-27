@@ -1260,7 +1260,7 @@
           },
           {
             "name": "team_tag_not_present",
-            "short_description": "Team tag missing"
+            "short_description": "Team tag missing on AWS resource"
           },
           {
             "name": "unknown_port_exposed_to_internet",
@@ -1758,7 +1758,7 @@
           },
           {
             "name": "team_tag_not_present",
-            "short_description": "Ensure that cloud resource has a team tag"
+            "short_description": "Ensure that Azure cloud resource has a team tag"
           },
           {
             "name": "trusted_microsoft_services_not_enabled",
@@ -2060,7 +2060,7 @@
           },
           {
             "name": "team_label_not_present",
-            "short_description": "Team label missing"
+            "short_description": "Team label missing on GCP resource"
           },
           {
             "name": "user_with_iam_role",

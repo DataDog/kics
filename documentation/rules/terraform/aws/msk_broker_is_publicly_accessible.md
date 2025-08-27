@@ -47,12 +47,17 @@ For additional security, implement network ACLs, security groups, and private VP
 
 ## Compliant Code Examples
 ```terraform
-resource "aws_msk_cluster" "negative2" {
+resource "aws_msk_cluster" "negative1" {
   cluster_name           = "example"
   kafka_version          = "2.7.1"
   number_of_broker_nodes = 3
 
   broker_node_group_info {
+    connectivity_info {
+      public_access {
+        type = "DISABLED"
+      }
+    }
     instance_type = "kafka.m5.4xlarge"
     client_subnets = [
       aws_subnet.subnet_az1.id,
@@ -75,17 +80,12 @@ resource "aws_msk_cluster" "negative2" {
 ```
 
 ```terraform
-resource "aws_msk_cluster" "negative1" {
+resource "aws_msk_cluster" "negative2" {
   cluster_name           = "example"
   kafka_version          = "2.7.1"
   number_of_broker_nodes = 3
 
   broker_node_group_info {
-    connectivity_info {
-      public_access {
-        type = "DISABLED"
-      }
-    }
     instance_type = "kafka.m5.4xlarge"
     client_subnets = [
       aws_subnet.subnet_az1.id,

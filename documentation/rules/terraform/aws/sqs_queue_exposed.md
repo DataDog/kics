@@ -52,16 +52,8 @@ To secure your SQS queue, avoid using wildcard principals in your policy stateme
 
 ## Compliant Code Examples
 ```terraform
-module "user_queue" {
-  source  = "terraform-aws-modules/sqs/aws"
-  version = "~> 2.0"
-
-  name = "user"
-
-  tags = {
-    Service     = "user"
-    Environment = "dev"
-  }
+resource "aws_sqs_queue" "negative1" {
+  name = "examplequeue"
 
   policy = <<POLICY
 {
@@ -88,8 +80,16 @@ POLICY
 ```
 
 ```terraform
-resource "aws_sqs_queue" "negative1" {
-  name = "examplequeue"
+module "user_queue" {
+  source  = "terraform-aws-modules/sqs/aws"
+  version = "~> 2.0"
+
+  name = "user"
+
+  tags = {
+    Service     = "user"
+    Environment = "dev"
+  }
 
   policy = <<POLICY
 {

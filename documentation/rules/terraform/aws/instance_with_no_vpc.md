@@ -51,6 +51,18 @@ resource "aws_instance" "example" {
 
 ## Compliant Code Examples
 ```terraform
+resource "aws_instance" "negative1" {
+  ami = "ami-003634241a8fcdec0"
+
+  instance_type = "t2.micro"
+
+  vpc_security_group_ids = ["aws_security_group.instance.id"]
+
+}
+
+```
+
+```terraform
 module "ec2_instance" {
   source  = "terraform-aws-modules/ec2-instance/aws"
   version = "~> 3.0"
@@ -68,18 +80,6 @@ module "ec2_instance" {
     Terraform   = "true"
     Environment = "dev"
   }
-}
-
-```
-
-```terraform
-resource "aws_instance" "negative1" {
-  ami = "ami-003634241a8fcdec0"
-
-  instance_type = "t2.micro"
-
-  vpc_security_group_ids = ["aws_security_group.instance.id"]
-
 }
 
 ```

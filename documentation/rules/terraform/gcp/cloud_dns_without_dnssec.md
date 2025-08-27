@@ -79,22 +79,6 @@ resource "google_dns_managed_zone" "dns_zone" {
 ```
 
 ```terraform
-// comment
-// comment
-// comment
-// comment
-resource "google_dns_managed_zone" "positive1" {
-  name     = "foobar"
-  dns_name = "foo.bar."
-
-  dnssec_config {
-    state         = "off"
-    non_existence = "nsec3"
-  }
-}
-```
-
-```terraform
 resource "google_dns_managed_zone" "target" {
   name        = "postgres-eu1-prod-dog"
   dns_name    = "postgres.eu1.prod.dog."
@@ -136,4 +120,20 @@ resource "google_dns_record_set" "soa_override" {
   rrdatas = ["${google_dns_managed_zone.target.name_servers[0]} cloud-dns-hostmaster.google.com. 1 21600 3600 259200 300"]
 }
 
+```
+
+```terraform
+// comment
+// comment
+// comment
+// comment
+resource "google_dns_managed_zone" "positive1" {
+  name     = "foobar"
+  dns_name = "foo.bar."
+
+  dnssec_config {
+    state         = "off"
+    non_existence = "nsec3"
+  }
+}
 ```

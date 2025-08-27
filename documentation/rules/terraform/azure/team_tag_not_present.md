@@ -1,10 +1,10 @@
 ---
-title: "Ensure that cloud resource has a team tag"
+title: "Ensure that Azure cloud resource has a team tag"
 group_id: "rules/terraform/azure"
 meta:
   name: "azure/team_tag_not_present"
   id: "e8f4d3c2-b1a0-4e5f-8d7c-9a0b1c2d3e4f"
-  display_name: "Ensure that cloud resource has a team tag"
+  display_name: "Ensure that Azure cloud resource has a team tag"
   cloud_provider: "azure"
   framework: "Terraform"
   severity: "INFO"
@@ -58,23 +58,6 @@ resource "azurerm_storage_account" "good_example" {
 
 ## Compliant Code Examples
 ```terraform
-# ✅ "team" label is not a valid attribute for this resource type
-
-resource "azurerm_postgresql_test" "good_example" {
-  name                = "good-postgresql-server"
-  location            = "East US"
-  resource_group_name = "example-rg"
-
-  public_network_access_enabled = [false]
-
-  version                 = "9.6"
-  ssl_enforcement_enabled = true
-  sku_name                = "B_Gen5_1"
-}
-
-```
-
-```terraform
 resource "azurerm_postgresql_server" "good_example" {
   name                = "good-postgresql-server"
   location            = "East US"
@@ -90,6 +73,23 @@ resource "azurerm_postgresql_server" "good_example" {
     Team        = "DevOps" # ✅ Correct setting
     environment = "prod"
   }
+}
+
+```
+
+```terraform
+# ✅ "team" label is not a valid attribute for this resource type
+
+resource "azurerm_postgresql_test" "good_example" {
+  name                = "good-postgresql-server"
+  location            = "East US"
+  resource_group_name = "example-rg"
+
+  public_network_access_enabled = [false]
+
+  version                 = "9.6"
+  ssl_enforcement_enabled = true
+  sku_name                = "B_Gen5_1"
 }
 
 ```

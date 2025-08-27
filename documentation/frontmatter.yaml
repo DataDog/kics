@@ -961,8 +961,8 @@ rules:
         description: Stack without template
         title: Stack without template
       team_tag_not_present:
-        description: Team tag missing
-        title: Team tag missing
+        description: Team tag missing on AWS resource
+        title: Team tag missing on AWS resource
       unknown_port_exposed_to_internet:
         description: Unknown port exposed to internet
         title: Unknown port exposed to internet
@@ -1343,8 +1343,8 @@ rules:
         description: Storage table allows all ACL permissions
         title: Storage table allows all ACL permissions
       team_tag_not_present:
-        description: Ensure that cloud resource has a team tag
-        title: Ensure that cloud resource has a team tag
+        description: Ensure that Azure cloud resource has a team tag
+        title: Ensure that Azure cloud resource has a team tag
       trusted_microsoft_services_not_enabled:
         description: Trusted Microsoft services not enabled
         title: Trusted Microsoft services not enabled
@@ -1571,8 +1571,8 @@ rules:
         description: Stackdriver Monitoring disabled
         title: Stackdriver Monitoring disabled
       team_label_not_present:
-        description: Team label missing
-        title: Team label missing
+        description: Team label missing on GCP resource
+        title: Team label missing on GCP resource
       user_with_iam_role:
         description: User with IAM role
         title: User with IAM role

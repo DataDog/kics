@@ -53,6 +53,33 @@ policy = jsonencode({
 
 ## Compliant Code Examples
 ```terraform
+resource "aws_iam_policy" "negative1policy" {
+  name        = "negative1policy"
+  path        = "/"
+  description = "negative1 Policy"
+
+  # Terraform's "jsonencode" function converts a
+  # Terraform expression result to valid JSON syntax.
+  policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Action = [
+          "lambda:InvokeFunction",
+        ]
+        Effect   = "Allow"
+        Resource = [
+            "arn:aws:lambda:*:*:function:negative1",
+            "arn:aws:lambda:*:*:function:negative1:*"
+        ]
+      },
+    ]
+  })
+}
+
+```
+
+```terraform
 resource "aws_lambda_function" "negative3" {
   function_name = "negative3"
   role          = "negative3_role"
@@ -101,33 +128,6 @@ resource "aws_iam_policy" "negative2policy" {
         ]
         Effect   = "Allow"
         Resource = ["*"]
-      },
-    ]
-  })
-}
-
-```
-
-```terraform
-resource "aws_iam_policy" "negative1policy" {
-  name        = "negative1policy"
-  path        = "/"
-  description = "negative1 Policy"
-
-  # Terraform's "jsonencode" function converts a
-  # Terraform expression result to valid JSON syntax.
-  policy = jsonencode({
-    Version = "2012-10-17"
-    Statement = [
-      {
-        Action = [
-          "lambda:InvokeFunction",
-        ]
-        Effect   = "Allow"
-        Resource = [
-            "arn:aws:lambda:*:*:function:negative1",
-            "arn:aws:lambda:*:*:function:negative1:*"
-        ]
       },
     ]
   })
@@ -188,10 +188,10 @@ resource "aws_iam_policy" "positive2policy" {
 ```
 
 ```terraform
-resource "aws_iam_policy" "positive3policy" {
-  name        = "positive3policy"
+resource "aws_iam_policy" "positive5policy" {
+  name        = "positive5policy"
   path        = "/"
-  description = "positive3 Policy"
+  description = "positive5 Policy"
 
   # Terraform's "jsonencode" function converts a
   # Terraform expression result to valid JSON syntax.
@@ -200,7 +200,7 @@ resource "aws_iam_policy" "positive3policy" {
     Statement = [
       {
         Action = [
-          "lambda:InvokeFunction",
+          "*",
         ]
         Effect   = "Allow"
         Resource = [

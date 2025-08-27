@@ -44,6 +44,22 @@ resource "aws_ebs_volume" "negative1" {
 }
 
 ```
+
+```terraform
+module "ebs_volume" {
+  source  = "terraform-aws-modules/ebs/aws"
+  version = "~> 3.0"
+
+  # Use data resources to generate a list
+  create        = true
+  availability_zone = "eu-west-1a"
+  size = 1
+  type = "gp3"
+
+  # Encryption at rest by default
+  encrypted = true
+}
+```
 ## Non-Compliant Code Examples
 ```terraform
 resource "aws_ebs_volume" "positive2" {
@@ -68,4 +84,20 @@ resource "aws_ebs_volume" "positive1" {
   }
 }
 
+```
+
+```terraform
+module "ebs_volume" {
+  source  = "terraform-aws-modules/ebs/aws"
+  version = "~> 3.0"
+
+  # Use data resources to generate a list
+  create        = true
+  availability_zone = "eu-west-1a"
+  size = 1
+  type = "gp3"
+
+  # Encryption at rest by default
+  encrypted = false
+}
 ```

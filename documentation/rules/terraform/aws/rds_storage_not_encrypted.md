@@ -42,6 +42,21 @@ Without this setting, your database is vulnerable to data exposure if physical s
 
 ## Compliant Code Examples
 ```terraform
+resource "aws_rds_cluster" "negative1" {
+  cluster_identifier  = "cloudrail-test-non-encrypted"
+  engine              = "aurora-mysql"
+  engine_version      = "5.7.mysql_aurora.2.03.2"
+  availability_zones  = ["eu-west-1a", "eu-west-1b", "eu-west-1c"]
+  database_name       = "cloudrail"
+  master_username     = "administrator"
+  master_password     = "cloudrail-TEST-password"
+  skip_final_snapshot = true
+  storage_encrypted   = true
+}
+
+```
+
+```terraform
 resource "aws_rds_cluster" "negative2" {
   cluster_identifier  = "cloudrail-test-non-encrypted"
   engine              = "aurora-mysql"
@@ -57,18 +72,25 @@ resource "aws_rds_cluster" "negative2" {
 ```
 
 ```terraform
-resource "aws_rds_cluster" "negative1" {
-  cluster_identifier  = "cloudrail-test-non-encrypted"
-  engine              = "aurora-mysql"
-  engine_version      = "5.7.mysql_aurora.2.03.2"
-  availability_zones  = ["eu-west-1a", "eu-west-1b", "eu-west-1c"]
-  database_name       = "cloudrail"
-  master_username     = "administrator"
-  master_password     = "cloudrail-TEST-password"
-  skip_final_snapshot = true
-  storage_encrypted   = true
-}
+module "default_driver" {
+  source  = "terraform-aws-modules/rds-aurora/aws"
+  version = "7.4.0"
 
+  name           = "cluster"
+  engine         = "aurora-mysql"
+  engine_version = "5.7.mysql_aurora.2.03.2"
+
+  instance_type         = "db.r5.large"
+  instances_database_name  = "test"
+  instances_database_user  = "test"
+  instances_database_password  = "testpassword"
+  instances_database_port  = "3306"
+  storage_encrypted = true
+
+  vpc_id                    = "vpc-12345678"
+  subnets                   = ["subnet-12345678"]
+  allowed_security_groups   = ["sg-12345678"]
+}
 ```
 ## Non-Compliant Code Examples
 ```terraform
@@ -99,4 +121,25 @@ resource "aws_rds_cluster" "positive1" {
   preferred_backup_window = "07:00-09:00"
 }
 
+```
+
+```terraform
+module "default_driver" {
+  source  = "terraform-aws-modules/rds-aurora/aws"
+  version = "7.4.0"
+
+  name           = "cluster"
+  engine         = "aurora-mysql"
+  engine_version = "5.7.mysql_aurora.2.03.2"
+
+  instance_type         = "db.r5.large"
+  instances_database_name  = "test"
+  instances_database_user  = "test"
+  instances_database_password  = "testpassword"
+  instances_database_port  = "3306"
+
+  vpc_id                    = "vpc-12345678"
+  subnets                   = ["subnet-12345678"]
+  allowed_security_groups   = ["sg-12345678"]
+}
 ```

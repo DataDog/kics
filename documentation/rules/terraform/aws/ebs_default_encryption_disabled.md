@@ -46,7 +46,25 @@ resource "aws_ebs_encryption_by_default" "negative2" {
   
 }
 ```
+
+```terraform
+module "ebs_encryption" {
+  source  = "terraform-aws-modules/ebs-encryption/aws"
+  version = "~> 1.0"
+
+  enabled = true
+}
+```
 ## Non-Compliant Code Examples
+```terraform
+module "ebs_encryption" {
+  source  = "terraform-aws-modules/ebs-encryption/aws"
+  version = "~> 1.0"
+
+  enabled = false
+}
+```
+
 ```terraform
 resource "aws_ebs_encryption_by_default" "positive1" {
   enabled = false

@@ -83,6 +83,40 @@ resource "aws_kms_key" "negative1" {
 
 
 ```
+
+```terraform
+module "kms_key" {
+  source = "terraform-aws-modules/kms/aws"
+  version = "1.3.0"
+
+  description             = "KMS key 1"
+  deletion_window_in_days = 7
+
+  policy = <<EOF
+{
+  "Version": "2012-10-17",
+  "Id": "key-default-1",
+  "Statement": [
+    {
+      "Sid": "Allow administration of the key",
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": "arn:aws:iam::646842065146:root"
+      },
+      "Action": "kms:*",
+      "Resource": "*",
+      "Condition": {
+        "StringEquals": {
+          "kms:CallerAccount": "646842065146",
+          "kms:ViaService": "ec2.eu-west-2.amazonaws.com"
+        }
+      }
+    }
+  ]
+}
+EOF
+}
+```
 ## Non-Compliant Code Examples
 ```terraform
 resource "aws_kms_key" "positive1" {
@@ -108,14 +142,6 @@ resource "aws_kms_key" "positive1" {
 ```
 
 ```terraform
-resource "aws_kms_key" "positive3" {
-  description             = "KMS key 1"
-  deletion_window_in_days = 10
-}
-
-```
-
-```terraform
 resource "aws_kms_key" "positive1" {
   description             = "KMS key 1"
   deletion_window_in_days = 10
@@ -134,5 +160,33 @@ resource "aws_kms_key" "positive1" {
     ]
   }
   POLICY
+}
+```
+
+```terraform
+module "kms_key" {
+  source = "terraform-aws-modules/kms/aws"
+  version = "1.3.0"
+
+  description             = "KMS key 1"
+  deletion_window_in_days = 7
+
+  policy = <<EOF
+{
+  "Version": "2012-10-17",
+  "Id": "key-default-1",
+  "Statement": [
+    {
+      "Sid": "Allow administration of the key",
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": "arn:aws:iam::646842065146:root"
+      },
+      "Action": "kms:*",
+      "Resource": "*"
+    }
+  ]
+}
+EOF
 }
 ```

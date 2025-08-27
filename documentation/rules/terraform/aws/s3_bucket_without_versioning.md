@@ -33,6 +33,36 @@ meta:
 
 ## Compliant Code Examples
 ```terraform
+provider "aws" {
+  region = "us-east-1"
+}
+
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 3.0"
+    }
+  }
+}
+
+resource "aws_s3_bucket" "negative1" {
+  bucket = "my-tf-test-bucket"
+  acl    = "private"
+
+  tags = {
+    Name        = "My bucket"
+    Environment = "Dev"
+  }
+
+  versioning {
+    enabled = true
+  }
+}
+
+```
+
+```terraform
 terraform {
   required_providers {
     aws = {
@@ -81,36 +111,6 @@ module "s3_bucket" {
 }
 
 ```
-
-```terraform
-provider "aws" {
-  region = "us-east-1"
-}
-
-terraform {
-  required_providers {
-    aws = {
-      source  = "hashicorp/aws"
-      version = "~> 3.0"
-    }
-  }
-}
-
-resource "aws_s3_bucket" "negative1" {
-  bucket = "my-tf-test-bucket"
-  acl    = "private"
-
-  tags = {
-    Name        = "My bucket"
-    Environment = "Dev"
-  }
-
-  versioning {
-    enabled = true
-  }
-}
-
-```
 ## Non-Compliant Code Examples
 ```terraform
 module "s3_bucket" {
@@ -152,31 +152,18 @@ resource "aws_s3_bucket" "positive2" {
 ```
 
 ```terraform
-provider "aws" {
-  region = "us-east-1"
-}
+module "s3_bucket" {
+  source = "terraform-aws-modules/s3-bucket/aws"
 
-terraform {
-  required_providers {
-    aws = {
-      source  = "hashicorp/aws"
-      version = "~> 3.0"
-    }
-  }
-}
+  version = "3.7.0"
 
-resource "aws_s3_bucket" "positive3" {
-  bucket = "my-tf-test-bucket"
+  bucket = "my-s3-bucket"
   acl    = "private"
 
-  tags = {
-    Name        = "My bucket"
-    Environment = "Dev"
-  }
-
-  versioning {
+  versioning = {
     mfa_delete = true
   }
+
 }
 
 ```

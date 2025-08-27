@@ -33,23 +33,27 @@ meta:
 
 ## Compliant Code Examples
 ```terraform
-module "s3_bucket" {
-  source = "terraform-aws-modules/s3-bucket/aws"
-  version = "3.7.0"
-
-  bucket = "my-s3-bucket"
-  acl    = "private"
+provider "aws" {
+  region = "us-east-1"
 }
 
-```
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 3.0"
+    }
+  }
+}
 
-```terraform
-module "s3_bucket" {
-  source = "terraform-aws-modules/s3-bucket/aws"
-  version = "3.7.0"
-
-  bucket = "my-s3-bucket"
+resource "aws_s3_bucket" "negative4" {
+  bucket = "my-tf-test-bucket"
   acl    = "private"
+
+  tags = {
+    Name        = "My bucket"
+    Environment = "Dev"
+  }
 
   lifecycle_rule {
     id      = "tmp"
@@ -65,17 +69,43 @@ module "s3_bucket" {
 ```
 
 ```terraform
+provider "aws" {
+  region = "us-east-1"
+}
+
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 3.0"
+    }
+  }
+}
+
+resource "aws_s3_bucket" "negative1" {
+  bucket = "my-tf-test-bucket"
+  acl    = "private"
+
+  tags = {
+    Name        = "My bucket"
+    Environment = "Dev"
+  }
+
+  versioning {
+    enabled = true
+    mfa_delete = true
+  }
+}
+
+```
+
+```terraform
 module "s3_bucket" {
   source = "terraform-aws-modules/s3-bucket/aws"
   version = "3.7.0"
 
   bucket = "my-s3-bucket"
   acl    = "private"
-
-  versioning {
-    enabled = true
-    mfa_delete = true
-  }
 }
 
 ```
@@ -127,30 +157,16 @@ resource "aws_s3_bucket" "positive2" {
 ```
 
 ```terraform
-provider "aws" {
-  region = "us-east-1"
-}
+module "s3_bucket" {
+  source = "terraform-aws-modules/s3-bucket/aws"
+  version = "3.7.0"
 
-terraform {
-  required_providers {
-    aws = {
-      source  = "hashicorp/aws"
-      version = "~> 3.0"
-    }
-  }
-}
-
-resource "aws_s3_bucket" "positive3" {
-  bucket = "my-tf-test-bucket"
+  bucket = "my-s3-bucket"
   acl    = "private"
 
-  tags = {
-    Name        = "My bucket"
-    Environment = "Dev"
-  }
-
   versioning {
-    enabled = false
+    enabled = true
+    mfa_delete = false
   }
 }
 
