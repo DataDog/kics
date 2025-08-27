@@ -27,7 +27,9 @@ CxPolicy[result] {
 		"keyExpectedValue": "Run block does not contain dangerous input controlled by user.",
 		"keyActualValue": "Run block contains dangerous input controlled by user.",
 		"searchLine": common_lib.build_search_line(["jobs", j, "steps", k, "run"],[]),
-		"searchValue": matched[m]
+		"searchValue": matched[m],
+		"resourceType": "github_action",
+		"resourceName": input.document[i].jobs[j].steps[k].name
 	}
 }
 
@@ -50,7 +52,9 @@ CxPolicy[result] {
 		"keyExpectedValue": "Run block does not contain dangerous input controlled by user.",
 		"keyActualValue": "Run block contains dangerous input controlled by user.",
 		"searchLine": common_lib.build_search_line(["jobs", j, "steps", k, "run"],[]),
-		"searchValue": matched[m]
+		"searchValue": matched[m],
+		"resourceType": "github_action",
+		"resourceName": input.document[i].jobs[j].steps[k].name
 	}
 }
 
@@ -74,7 +78,9 @@ CxPolicy[result] {
 		"keyExpectedValue": "Run block does not contain dangerous input controlled by user.",
 		"keyActualValue": "Run block contains dangerous input controlled by user.",
 		"searchLine": common_lib.build_search_line(["jobs", j, "steps", k, "run"],[]),
-		"searchValue": matched[m]
+		"searchValue": matched[m],
+		"resourceType": "github_action",
+		"resourceName": input.document[i].jobs[j].steps[k].name
 	}
 }
 
@@ -97,7 +103,9 @@ CxPolicy[result] {
 		"keyExpectedValue": "Run block does not contain dangerous input controlled by user.",
 		"keyActualValue": "Run block contains dangerous input controlled by user.",
 		"searchLine": common_lib.build_search_line(["jobs", j, "steps", k, "run"],[]),
-		"searchValue": matched[m]
+		"searchValue": matched[m],
+		"resourceType": "github_action",
+		"resourceName": input.document[i].jobs[j].steps[k].name
 	}
 }
 
@@ -121,7 +129,9 @@ CxPolicy[result] {
 		"keyExpectedValue": "Run block does not contain dangerous input controlled by user.",
 		"keyActualValue": "Run block contains dangerous input controlled by user.",
 		"searchLine": common_lib.build_search_line(["jobs", j, "steps", k, "run"],[]),
-		"searchValue": matched[m]
+		"searchValue": matched[m],
+		"resourceType": "github_action",
+		"resourceName": input.document[i].jobs[j].steps[k].name
 	}
 }
 
@@ -148,7 +158,9 @@ CxPolicy[result] {
 		"keyExpectedValue": "Run block does not contain dangerous input controlled by user.",
 		"keyActualValue": "Run block contains dangerous input controlled by user.",
 		"searchLine": common_lib.build_search_line(["jobs", j, "steps", k, "run"],[]),
-		"searchValue": matched[m]
+		"searchValue": matched[m],
+		"resourceType": "github_action",
+		"resourceName": input.document[i].jobs[j].steps[k].name
 	}
 }
 
@@ -171,7 +183,9 @@ CxPolicy[result] {
 		"keyExpectedValue": "Run block does not contain dangerous input controlled by user.",
 		"keyActualValue": "Run block contains dangerous input controlled by user.",
 		"searchLine": common_lib.build_search_line(["jobs", j, "steps", k, "run"],[]),
-		"searchValue": matched[m]
+		"searchValue": matched[m],
+		"resourceType": "github_action",
+		"resourceName": input.document[i].jobs[j].steps[k].name
 	}
 }
 
