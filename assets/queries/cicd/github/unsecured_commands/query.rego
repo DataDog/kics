@@ -10,7 +10,7 @@ CxPolicy[result] {
 	
 	result := {
 		"documentId": input.document[i].id,
-		"searchKey": sprintf("env.actions_allow_unsecure_commands={{%s}}", [env]),
+		"searchKey": sprintf("ACTIONS_ALLOW_UNSECURE_COMMANDS={{%s}}", [env]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": "ACTIONS_ALLOW_UNSECURE_COMMANDS environment variable is not set as true.",
 		"keyActualValue": "ACTIONS_ALLOW_UNSECURE_COMMANDS environment variable is set as true.",
@@ -28,7 +28,7 @@ CxPolicy[result] {
 	
 	result := {
 		"documentId": input.document[i].id,
-		"searchKey": sprintf("env.actions_allow_unsecure_commands={{%s}}", [env]),
+		"searchKey": sprintf("ACTIONS_ALLOW_UNSECURE_COMMANDS={{%s}}", [env]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": "ACTIONS_ALLOW_UNSECURE_COMMANDS environment variable is not set as true.",
 		"keyActualValue": "ACTIONS_ALLOW_UNSECURE_COMMANDS environment variable is set as true.",
@@ -46,7 +46,7 @@ CxPolicy[result] {
 	
 	result := {
 		"documentId": input.document[i].id,
-		"searchKey": sprintf("env.actions_allow_unsecure_commands={{%s}}", [env]),
+		"searchKey": sprintf("ACTIONS_ALLOW_UNSECURE_COMMANDS={{%s}}", [env]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": "ACTIONS_ALLOW_UNSECURE_COMMANDS environment variable is not set as true.",
 		"keyActualValue": "ACTIONS_ALLOW_UNSECURE_COMMANDS environment variable is set as true.",

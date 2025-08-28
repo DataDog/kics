@@ -7,7 +7,6 @@ package detector
 
 import (
 	"context"
-	"fmt"
 	"regexp"
 	"strconv"
 	"strings"
@@ -40,41 +39,34 @@ type DefaultDetectLineResponse struct {
 
 // GetBracketValues gets values inside "{{ }}" ignoring any "{{" or "}}" inside
 func GetBracketValues(expr string, list [][]string, restOfString string) [][]string {
-	var tempList []string
-	firstOpen := strings.Index(expr, "{{")
-	firstClose := strings.Index(expr, "}}")
-	for firstOpen > firstClose && firstClose != -1 {
-		firstClose = strings.Index(expr[firstOpen:], "}}") + firstOpen
-	}
-	// in case we have '}}}' we need to advance one position to get the close
-	for firstClose+2 < len(expr) && string(expr[firstClose+2]) == `}` && firstClose != -1 {
-		firstClose++
-	}
+	s := expr + restOfString
 
-	switch t := firstClose - firstOpen; t >= 0 {
-	case true:
-		if t == 0 && expr != "" {
-			tempList = append(tempList, fmt.Sprintf("{{%s}}", expr), expr)
-			list = append(list, tempList)
+	depth := 0
+	open := -1  // index of the first '{' in the outermost `{{`
+	start := -1 // inner start = open + 2
+
+	for i := 0; i < len(s)-1; i++ {
+		switch {
+		case s[i] == '{' && s[i+1] == '{':
+			if depth == 0 {
+				open = i
+				start = i + 2
+			}
+			depth++
+			i++ // skip the second '{'
+
+		case s[i] == '}' && s[i+1] == '}':
+			if depth > 0 {
+				depth--
+				if depth == 0 && open >= 0 && start >= 0 {
+					full := s[open : i+2]
+					inner := s[start:i]
+					list = append(list, []string{full, inner})
+					open, start = -1, -1
+				}
+			}
+			i++ // skip the second '}'
 		}
-		if t == 0 && restOfString == "" {
-			return list // if there is no more string to read from return value of list
-		}
-		if t > 0 && firstOpen+2 <= firstClose {
-			list = GetBracketValues(expr[firstOpen+2:firstClose], list, expr[firstClose+2:])
-		} else {
-			list = GetBracketValues(restOfString, list, "") // recursive call to the rest of the string
-		}
-	case false:
-		nextClose := strings.Index(restOfString, "}}")
-		tempNextClose := nextClose + 2
-		if tempNextClose == len(restOfString) {
-			tempNextClose = nextClose
-		}
-		tempList = append(tempList, fmt.Sprintf("{{%s}}%s}}", expr, restOfString[:tempNextClose]),
-			fmt.Sprintf("%s}}%s", expr, restOfString[:tempNextClose]))
-		list = append(list, tempList)
-		list = GetBracketValues(restOfString[nextClose+2:], list, "") // recursive call to the rest of the string
 	}
 
 	return list
@@ -84,103 +76,18 @@ func GetBracketValues(expr string, list [][]string, restOfString string) [][]str
 // '.' is new line
 // '=' is value in the same line
 // '[]' is in the same line
-func GenerateSubstrings(key string, extracted [][]string, lines []string, currentLine int) (string, string) {
+func GenerateSubstrings(ctx context.Context, key string, extracted [][]string, lines []string, currentLine int) (string, string) {
 	var substr1, substr2 string
-
-	// Replace placeholders back to bracketed values
-	for idx, str := range extracted {
-		placeholder := fmt.Sprintf("{{%d}}", idx)
-		key = strings.Replace(key, placeholder, str[0], 1)
-	}
-
-	// Handle [something] or ["key"]
-	if strings.Contains(key, "[") && strings.HasSuffix(key, "]") {
-		start := strings.Index(key, "[")
-		end := strings.LastIndex(key, "]")
-		if start > 0 && end > start {
-			base := key[:start]
-			bracketValue := key[start+1 : end]
-
-			// Strip quotes from map-style keys like ["Name"]
-			bracketValue = strings.Trim(bracketValue, `"'`)
-
-			// Handle placeholders like [{{label}}]
-			if strings.HasPrefix(bracketValue, "{{") && strings.HasSuffix(bracketValue, "}}") {
-				bracketValue = strings.TrimPrefix(bracketValue, "{{")
-				bracketValue = strings.TrimSuffix(bracketValue, "}}")
-			}
-
-			// Handle numeric index
-			if index, err := strconv.Atoi(bracketValue); err == nil {
-				// Use list logic only if this looks like an actual list
-				if looksLikeListAttribute(base, lines) {
-					substr1 = base
-					substr2 = resolveListIndex(base, index, lines)
-					return substr1, substr2
-				}
-				// Otherwise treat it as a block navigation
-				substr1 = base
-				substr2 = "" // no value needed
-				return substr1, substr2
-			}
-
-			// Resource label or map key
-			substr1 = base
-			substr2 = bracketValue
-			return substr1, substr2
-		}
-	}
-
-	// Fallback: key = value
-	parts := strings.SplitN(key, "=", 2)
-	substr1 = strings.TrimSpace(parts[0])
-	if len(parts) > 1 {
-		substr2 = strings.TrimSpace(parts[1])
-	}
-
-	// Final fallback: try to resolve value from lines
-	if substr2 == "" && substr1 != "" {
-		for i := currentLine; i < len(lines); i++ {
-			line := lines[i]
-			line = strings.TrimSpace(line)
-			if strings.HasPrefix(line, substr1+" =") {
-				parts := strings.SplitN(line, "=", 2)
-				if len(parts) == 2 {
-					substr2 = strings.TrimSpace(parts[1])
-				}
-				break
-			}
-		}
+	if parts := nameRegex.FindStringSubmatch(key); len(parts) == namePartsLength {
+		substr1, substr2 = getKeyWithCurlyBrackets(ctx, key, extracted, parts)
+	} else if parts := strings.Split(key, "="); len(parts) == valuePartsLength {
+		substr1, substr2 = getKeyWithCurlyBrackets(ctx, key, extracted, parts)
+	} else {
+		parts := []string{key, ""}
+		substr1, substr2 = getKeyWithCurlyBrackets(ctx, key, extracted, parts)
 	}
 
 	return substr1, substr2
-}
-
-func looksLikeListAttribute(attrName string, lines []string) bool {
-	for _, line := range lines {
-		line = strings.TrimSpace(line)
-		if strings.HasPrefix(line, attrName+" = [") {
-			return true
-		}
-	}
-	return false
-}
-
-func resolveListIndex(attrName string, index int, lines []string) string {
-	for _, line := range lines {
-		trimmed := strings.TrimSpace(line)
-		if strings.HasPrefix(trimmed, attrName+" = [") {
-			start := strings.Index(trimmed, "[")
-			end := strings.Index(trimmed, "]")
-			if start >= 0 && end > start {
-				items := strings.Split(trimmed[start+1:end], ",")
-				if index < len(items) {
-					return strings.Trim(strings.TrimSpace(items[index]), `"`)
-				}
-			}
-		}
-	}
-	return ""
 }
 
 func getKeyWithCurlyBrackets(ctx context.Context, key string, extractedString [][]string, parts []string) (substr1Res, substr2Res string) {
@@ -345,30 +252,31 @@ func removeExtras(result string, start, end int) string {
 
 // DetectCurrentLine uses levenshtein distance to find the most accurate line for the vulnerability
 func (d *DefaultDetectLineResponse) DetectCurrentLine(str1, str2 string, recurseCount int,
-	lines []string) (det *DefaultDetectLineResponse, start model.ResourceLine, end model.ResourceLine, l []string) {
+	lines []string) (*DefaultDetectLineResponse, model.ResourceLine, model.ResourceLine, []string) {
 	distances := make(map[int]int)
+	starts, ends := make(map[int]model.ResourceLine), make(map[int]model.ResourceLine)
 
 	for i := d.CurrentLine; i < len(lines); i++ {
-		distances, start, end = checkLine(str1, str2, distances, lines, i)
+		distances, starts, ends = checkLine(str1, str2, distances, starts, ends, lines, i)
 	}
 
 	if len(distances) == 0 {
 		d.IsBreak = true
-		return d, start, end, lines
+		return d, model.ResourceLine{Line: 0, Col: 0}, model.ResourceLine{Line: 0, Col: 0}, lines
 	}
 
 	d.CurrentLine = SelectLineWithMinimumDistance(distances, d.CurrentLine)
 	d.IsBreak = false
 	d.FoundAtLeastOne = true
 
-	return d, start, end, lines
+	return d, starts[d.CurrentLine], ends[d.CurrentLine], lines
 }
 
-func checkLine(str1, str2 string, distances map[int]int, lines []string, startLine int) (map[int]int, model.ResourceLine, model.ResourceLine) {
+func checkLine(str1, str2 string, distances map[int]int, starts map[int]model.ResourceLine, ends map[int]model.ResourceLine, lines []string, startLine int) (map[int]int, map[int]model.ResourceLine, map[int]model.ResourceLine) {
 	line := strings.TrimSpace(lines[startLine])
-	endLine := startLine
+	endLine := startLine + 1
 	if strings.HasPrefix(line, "#") || strings.HasPrefix(line, "//") {
-		return distances, model.ResourceLine{Line: startLine, Col: 0}, model.ResourceLine{Line: 0, Col: 0}
+		return distances, starts, ends
 	}
 
 	regex := regexp.MustCompile(`^\s+`)
@@ -379,12 +287,14 @@ func checkLine(str1, str2 string, distances map[int]int, lines []string, startLi
 		if strings.Contains(restLine, str2) {
 			distances[startLine] = levenshtein.ComputeDistance(ExtractLineFragment(line, str1, false), str1)
 			distances[startLine] += levenshtein.ComputeDistance(ExtractLineFragment(restLine, str2, false), str2)
+			starts[startLine] = model.ResourceLine{Line: startLine, Col: currentIndent}
+			ends[startLine] = model.ResourceLine{Line: startLine, Col: len(lines[startLine])}
 		} else if strings.Contains(line, "|") {
-			s := ""
+			s, nextLine := "", ""
 			for endLine < len(lines) {
-				nextLine := regex.ReplaceAllString(lines[endLine], "")
+				nextLine = regex.ReplaceAllString(lines[endLine], "")
 				nextIndent := strings.Index(lines[endLine], nextLine)
-				if currentIndent == nextIndent {
+				if currentIndent == nextIndent || strings.Contains(nextLine, str2) {
 					break
 				}
 				s += nextLine
@@ -395,9 +305,11 @@ func checkLine(str1, str2 string, distances map[int]int, lines []string, startLi
 			if strings.Contains(
 				whitespacesRegex.ReplaceAllString(str2, ""),
 				whitespacesRegex.ReplaceAllString(s, ""),
-			) {
+			) || strings.Contains(nextLine, str2) {
 				distances[startLine] = levenshtein.ComputeDistance(ExtractLineFragment(line, str1, false), str1)
 				distances[startLine] += levenshtein.ComputeDistance(ExtractLineFragment(str2, s, false), s)
+				starts[startLine] = model.ResourceLine{Line: startLine, Col: currentIndent}
+				ends[startLine] = model.ResourceLine{Line: endLine, Col: len(lines[startLine])}
 			}
 
 		}
@@ -405,5 +317,5 @@ func checkLine(str1, str2 string, distances map[int]int, lines []string, startLi
 		distances[startLine] = levenshtein.ComputeDistance(ExtractLineFragment(line, str1, false), str1)
 	}
 
-	return distances, model.ResourceLine{Line: startLine, Col: currentIndent}, model.ResourceLine{Line: endLine, Col: len(lines[startLine])}
+	return distances, starts, ends
 }
