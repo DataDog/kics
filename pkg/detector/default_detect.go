@@ -48,6 +48,8 @@ func (d defaultDetectLine) DetectLine(ctx context.Context, file *model.FileMetad
 			splitSanitized[index] = strings.Join(splitSanitized[index:], ".")
 			splitSanitized = splitSanitized[:index+1]
 			break
+		} else {
+			splitSanitized = []string{sanitizedSubstring}
 		}
 	}
 
