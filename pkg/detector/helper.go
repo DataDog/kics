@@ -380,7 +380,7 @@ func checkLine(str1, str2 string, distances map[int]int, starts map[int]model.Re
 		if strings.Contains(restLine, str2) {
 			distances[startLine] = levenshtein.ComputeDistance(ExtractLineFragment(line, str1, false), str1)
 			distances[startLine] += levenshtein.ComputeDistance(ExtractLineFragment(restLine, str2, false), str2)
-			starts[startLine] = model.ResourceLine{Line: startLine, Col: currentIndent}
+			starts[startLine] = model.ResourceLine{Line: startLine + 1, Col: currentIndent}
 			ends[startLine] = model.ResourceLine{Line: startLine, Col: len(lines[startLine])}
 		} else if strings.Contains(line, "|") {
 			s, nextLine := "", ""
@@ -401,7 +401,7 @@ func checkLine(str1, str2 string, distances map[int]int, starts map[int]model.Re
 			) || strings.Contains(nextLine, str2) {
 				distances[startLine] = levenshtein.ComputeDistance(ExtractLineFragment(line, str1, false), str1)
 				distances[startLine] += levenshtein.ComputeDistance(ExtractLineFragment(str2, s, false), s)
-				starts[startLine] = model.ResourceLine{Line: startLine, Col: currentIndent}
+				starts[startLine] = model.ResourceLine{Line: startLine + 1, Col: currentIndent}
 				ends[startLine] = model.ResourceLine{Line: endLine, Col: len(lines[startLine])}
 			}
 
