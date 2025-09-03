@@ -13,8 +13,6 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": loadBalancer,
-		"resourceName": tf_lib.get_resource_name(lb, name),
 		"searchKey": sprintf("%s[%s]", [loadBalancer, name]),
 		"issueType": "MissingAttribute",
 		"keyExpectedValue": "'enable_deletion_protection' should be defined and set to true",

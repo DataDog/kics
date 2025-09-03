@@ -12,8 +12,6 @@ CxPolicy[result] {
 
     result := {
         "documentId": input.document[i].id,
-        "resourceType": "aws_s3_bucket",
-		"resourceName": tf_lib.get_specific_resource_name(bucket, "aws_s3_bucket", bucketName),
         "searchKey": sprintf("aws_s3_bucket[%s]", [bucketName]),
         "issueType": "MissingAttribute",
         "keyExpectedValue": "'versioning' should be true",
@@ -30,8 +28,6 @@ CxPolicy[result] {
 
     result := {
         "documentId": input.document[i].id,
-        "resourceType": "module",
-		"resourceName": sprintf("%s", [name]),
         "searchKey": sprintf("module[%s]", [name]),
         "issueType": "MissingAttribute",
         "keyExpectedValue": "'versioning' should be true",
@@ -51,8 +47,6 @@ CxPolicy[result] {
 
     result := {
         "documentId": input.document[i].id,
-        "resourceType": "aws_s3_bucket",
-		"resourceName": tf_lib.get_specific_resource_name(bucket, "aws_s3_bucket", name),
         "searchKey": sprintf("aws_s3_bucket[%s].versioning", [name]),
         "issueType": "MissingAttribute",
         "keyExpectedValue": "'versioning.enabled' should be true",
@@ -71,8 +65,6 @@ CxPolicy[result] {
 
     result := {
         "documentId": input.document[i].id,
-        "resourceType": "module",
-		"resourceName": sprintf("%s", [name]),
         "searchKey": sprintf("module[%s].versioning", [name]),
         "issueType": "MissingAttribute",
         "keyExpectedValue": "'versioning.enabled' should be true",
@@ -91,8 +83,6 @@ CxPolicy[result] {
 
     result := {
         "documentId": input.document[i].id,
-        "resourceType": "aws_s3_bucket",
-		"resourceName": tf_lib.get_specific_resource_name(bucket, "aws_s3_bucket", name),
         "searchKey": sprintf("aws_s3_bucket[%s].versioning.enabled", [name]),
         "issueType": "IncorrectValue",
         "keyExpectedValue": "'versioning.enabled' should be true",
@@ -114,8 +104,6 @@ CxPolicy[result] {
 
     result := {
         "documentId": input.document[i].id,
-        "resourceType": "module",
-		"resourceName": sprintf("%s", [name]),
         "searchKey": sprintf("module[%s].versioning.enabled", [name]),
         "issueType": "IncorrectValue",
         "keyExpectedValue": "'versioning.enabled' should be true",
@@ -139,8 +127,6 @@ CxPolicy[result] {
 
     result := {
         "documentId": input.document[i].id,
-       "resourceType": "aws_s3_bucket_versioning",
-		"resourceName": tf_lib.get_resource_name(bucket_versioning, name),
         "searchKey": sprintf("aws_s3_bucket_versioning[%s].versioning_configuration.status", [name]),
         "issueType": "IncorrectValue",
         "keyExpectedValue": "'versioning_configuration.status' should be set to 'Enabled'",

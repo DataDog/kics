@@ -15,8 +15,6 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": lb[idx],
-		"resourceName": tf_lib.get_resource_name(resource, name),
 		"searchKey": sprintf("%s[%s]", [lb[idx], name]),
 		"issueType": "MissingAttribute",
 		"keyExpectedValue": sprintf("'%s[%s]' should not be 'internal' and has a 'aws_wafregional_web_acl_association' associated", [lb[idx], name]),

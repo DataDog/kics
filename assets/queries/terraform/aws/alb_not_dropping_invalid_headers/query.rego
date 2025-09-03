@@ -13,8 +13,6 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": types[x],
-		"resourceName": tf_lib.get_resource_name(res, m),
 		"searchKey": sprintf("%s[{{%s}}].drop_invalid_header_fields", [types[x], m]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": sprintf("%s[{{%s}}].drop_invalid_header_fields should be set to true", [types[x], m]),
@@ -38,8 +36,6 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": types[x],
-		"resourceName": tf_lib.get_resource_name(res, m),
 		"searchKey": sprintf("%s[{{%s}}]", [types[x], m]),
 		"issueType": "MissingAttribute",
 		"keyExpectedValue": sprintf("%s[{{%s}}].drop_invalid_header_fields should be set to true", [types[x], m]),
@@ -61,8 +57,6 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "module",
-		"resourceName": sprintf("%s", [name]),
 		"searchKey": sprintf("module[%s].drop_invalid_header_fields", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": sprintf("module[%s].drop_invalid_header_fields should be set to true", [name]),
@@ -87,8 +81,6 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "module",
-		"resourceName": sprintf("%s", [name]),
 		"searchKey": sprintf("module[%s]", [name]),
 		"issueType": "MissingAttribute",
 		"keyExpectedValue": sprintf("module[%s].drop_invalid_header_fields should be set to true", [name]),
