@@ -10,5 +10,13 @@
   "cloudProvider": "aws",
   "cwe": "732",
   "oldDescriptionText": "S3 Buckets should not be readable to any authenticated user",
-  "providerUrl": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket#acl"
+  "providerUrl": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket#acl",
+  "customFrameworks": [
+    {
+      "control": "aws.1.33",
+      "framework": "dcsb-m-v2",
+      "framework_version": "dcsb-m-v2_0.0.1",
+      "requirement": "aws"
+    }
+  ]
 }

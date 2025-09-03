@@ -10,5 +10,13 @@
   "cloudProvider": "aws",
   "cwe": "400",
   "oldDescriptionText": "Ensures that AWS Elasticsearch and OpenSearch domains do not use the default security group. If a security group is not specified, the default SG is used, which could expose the service to unintended access.",
-  "providerUrl": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/elasticsearch_domain#vpc_options"
+  "providerUrl": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/elasticsearch_domain#vpc_options",
+  "customFrameworks": [
+    {
+      "control": "aws.1.19",
+      "framework": "dcsb-m-v2",
+      "framework_version": "dcsb-m-v2_0.0.1",
+      "requirement": "aws"
+    }
+  ]
 }

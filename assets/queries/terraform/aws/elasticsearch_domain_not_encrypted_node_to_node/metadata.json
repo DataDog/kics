@@ -10,5 +10,13 @@
   "cloudProvider": "aws",
   "cwe": "311",
   "oldDescriptionText": "Elasticsearch Domain encryption should be enabled node to node",
-  "providerUrl": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/elasticsearch_domain#node_to_node_encryption"
+  "providerUrl": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/elasticsearch_domain#node_to_node_encryption",
+  "customFrameworks": [
+    {
+      "control": "aws.1.21",
+      "framework": "dcsb-m-v2",
+      "framework_version": "dcsb-m-v2_0.0.1",
+      "requirement": "aws"
+    }
+  ]
 }

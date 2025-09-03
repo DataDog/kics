@@ -10,5 +10,13 @@
   "cloudProvider": "aws",
   "cwe": "521",
   "oldDescriptionText": "Ensures that the AWS IAM password policy requires at least one lowercase letter. Without this setting, passwords may be easier to guess, leading to security vulnerabilities.",
-  "providerUrl": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_account_password_policy#require_lowercase_characters"
+  "providerUrl": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_account_password_policy#require_lowercase_characters",
+  "customFrameworks": [
+    {
+      "control": "aws.1.13",
+      "framework": "dcsb-m-v2",
+      "framework_version": "dcsb-m-v2_0.0.1",
+      "requirement": "aws"
+    }
+  ]
 }

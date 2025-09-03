@@ -11,5 +11,13 @@
   "cwe": "311",
   "oldSeverity": "MEDIUM",
   "oldDescriptionText": "Neptune database cluster storage should have encryption enabled",
-  "providerUrl": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/neptune_cluster#storage_encrypted"
+  "providerUrl": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/neptune_cluster#storage_encrypted",
+  "customFrameworks": [
+    {
+      "control": "aws.1.31",
+      "framework": "dcsb-m-v2",
+      "framework_version": "dcsb-m-v2_0.0.1",
+      "requirement": "aws"
+    }
+  ]
 }

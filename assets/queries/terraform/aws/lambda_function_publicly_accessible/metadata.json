@@ -10,5 +10,13 @@
   "cloudProvider": "aws",
   "cwe": "200",
   "oldDescriptionText": "Lambda functions should not be publicly accessible.",
-  "providerUrl": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/lambda_function"
+  "providerUrl": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/lambda_function",
+  "customFrameworks": [
+    {
+      "control": "aws.1.9",
+      "framework": "dcsb-m-v2",
+      "framework_version": "dcsb-m-v2_0.0.1",
+      "requirement": "aws"
+    }
+  ]
 }

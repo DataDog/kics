@@ -11,5 +11,13 @@
   "cwe": "668",
   "oldSeverity": "MEDIUM",
   "oldDescriptionText": "Amazon ECR image repositories shouldn't have public access",
-  "providerUrl": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/ecr_repository_policy"
+  "providerUrl": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/ecr_repository_policy",
+  "customFrameworks": [
+    {
+      "control": "aws.1.1",
+      "framework": "dcsb-m-v2",
+      "framework_version": "dcsb-m-v2_0.0.1",
+      "requirement": "aws"
+    }
+  ]
 }

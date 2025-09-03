@@ -10,5 +10,13 @@
   "cloudProvider": "aws",
   "cwe": "311",
   "oldDescriptionText": "AWS Kinesis Server data at rest should have Server Side Encryption (SSE) enabled",
-  "providerUrl": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/kinesis_firehose_delivery_stream#server_side_encryption"
+  "providerUrl": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/kinesis_firehose_delivery_stream#server_side_encryption",
+  "customFrameworks": [
+    {
+      "control": "aws.1.30",
+      "framework": "dcsb-m-v2",
+      "framework_version": "dcsb-m-v2_0.0.1",
+      "requirement": "aws"
+    }
+  ]
 }

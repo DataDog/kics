@@ -10,5 +10,13 @@
   "cloudProvider": "aws",
   "cwe": "668",
   "oldDescriptionText": "The CIDR IP should not be a public interface",
-  "providerUrl": "https://registry.terraform.io/providers/rgeraskin/aws3/latest/docs/resources/db_security_group"
+  "providerUrl": "https://registry.terraform.io/providers/rgeraskin/aws3/latest/docs/resources/db_security_group",
+  "customFrameworks": [
+    {
+      "control": "aws.1.8",
+      "framework": "dcsb-m-v2",
+      "framework_version": "dcsb-m-v2_0.0.1",
+      "requirement": "aws"
+    }
+  ]
 }

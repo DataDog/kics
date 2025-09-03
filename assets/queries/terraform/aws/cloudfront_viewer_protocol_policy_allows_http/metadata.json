@@ -11,5 +11,13 @@
   "cwe": "319",
   "oldSeverity": "HIGH",
   "oldDescriptionText": "Checks if the connection between CloudFront and the viewer is encrypted",
-  "providerUrl": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudfront_distribution"
+  "providerUrl": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudfront_distribution",
+  "customFrameworks": [
+    {
+      "control": "aws.1.14",
+      "framework": "dcsb-m-v2",
+      "framework_version": "dcsb-m-v2_0.0.1",
+      "requirement": "aws"
+    }
+  ]
 }

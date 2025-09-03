@@ -10,5 +10,13 @@
   "cloudProvider": "aws",
   "cwe": "200",
   "oldDescriptionText": "Ensures that direct internet access is disabled for Amazon SageMaker Notebook Instances. Allowing direct internet access could expose the instance to unauthorized access or data exfiltration.",
-  "providerUrl": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/sagemaker_notebook_instance#direct_internet_access"
+  "providerUrl": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/sagemaker_notebook_instance#direct_internet_access",
+  "customFrameworks": [
+    {
+      "control": "aws.1.24",
+      "framework": "dcsb-m-v2",
+      "framework_version": "dcsb-m-v2_0.0.1",
+      "requirement": "aws"
+    }
+  ]
 }
