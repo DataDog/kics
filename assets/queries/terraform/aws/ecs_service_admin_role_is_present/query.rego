@@ -8,8 +8,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "aws_ecs_service",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("aws_ecs_service[%s].iam_role", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": sprintf("'aws_ecs_service[%s].iam_role' should not equal to 'admin'", [name]),

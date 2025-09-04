@@ -10,8 +10,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "nifcloud_db_instance",
-		"resourceName": tf_lib.get_resource_name(dbInstance, name),
+
+
 		"searchKey": sprintf("nifcloud_db_instance[%s]", [name]),
 		"issueType": "MissingAttribute",
 		"keyExpectedValue": sprintf("'nifcloud_db_instance[%s]' should have backup retention longer than 1 day", [name]),
@@ -26,8 +26,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "nifcloud_db_instance",
-		"resourceName": tf_lib.get_resource_name(dbInstance, name),
+
+
 		"searchKey": sprintf("nifcloud_db_instance[%s]", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": sprintf("'nifcloud_db_instance[%s]' should have backup retention longer than 1 day", [name]),

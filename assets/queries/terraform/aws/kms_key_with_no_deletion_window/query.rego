@@ -14,8 +14,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "aws_kms_key",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("aws_kms_key[%s]", [name]),
 		"searchLine": common_lib.build_search_line(["resource", "aws_kms_key", name], []),
 		"issueType": "MissingAttribute",
@@ -37,8 +37,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "aws_kms_key",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("aws_kms_key[%s].deletion_window_in_days", [name]),
 		"searchLine": common_lib.build_search_line(["resource", "aws_kms_key", name ,"deletion_window_in_days"], []),
 		"issueType": "IncorrectValue",

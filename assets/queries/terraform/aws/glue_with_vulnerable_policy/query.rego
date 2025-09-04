@@ -16,8 +16,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "aws_glue_resource_policy",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("aws_glue_resource_policy[%s].policy", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": sprintf("aws_glue_resource_policy[%s].policy should not have wildcard in 'principals' and 'actions'", [name]),
@@ -42,8 +42,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "module",
-		"resourceName": sprintf("%s", [name]),
+
+
 		"searchKey": sprintf("module[%s].%s", [name, keyToCheck]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": sprintf("module[%s].%s should not have wildcard in 'principals' and 'actions'", [name, keyToCheck]),

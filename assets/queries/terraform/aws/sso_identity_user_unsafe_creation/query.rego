@@ -8,8 +8,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "aws_identitystore_user",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("aws_identitystore_user[%s]", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": "aws_identitystore_user resource should not be used",

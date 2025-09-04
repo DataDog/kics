@@ -15,8 +15,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": x,
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("%s[%s].%s", [x, name, resource_prefix]),
 		"issueType": "MissingAttribute",
 		"keyExpectedValue": "Attribute 'livenessProbe' should be defined and not null",

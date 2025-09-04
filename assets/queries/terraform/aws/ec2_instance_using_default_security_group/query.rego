@@ -15,8 +15,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": doc.id,
-		"resourceType": "aws_instance",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("aws_instance[%s].%s", [name, sgs[s]]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": sprintf("aws_instance[%s].%s should not be using default security group", [name, s]),
@@ -39,8 +39,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "module",
-		"resourceName": sprintf("%s", [name]),
+
+
 		"searchKey": sprintf("module[%s].%s", [name, keyToCheck]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": sprintf("module[%s].%s should not be using default security group", [name, s]),

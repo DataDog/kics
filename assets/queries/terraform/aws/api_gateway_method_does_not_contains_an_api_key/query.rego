@@ -11,8 +11,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": document.id,
-		"resourceType": "aws_api_gateway_method",
-		"resourceName": tf_lib.get_resource_name(api, name),
+
+
 		"searchKey": sprintf("resource.aws_api_gateway_method[%s]", [name]),
 		"searchLine": common_lib.build_search_line(["resource", "aws_api_gateway_method", name], []),
 		"issueType": "MissingAttribute",
@@ -31,8 +31,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": document.id,
-		"resourceType": "aws_api_gateway_method",
-		"resourceName": tf_lib.get_resource_name(api, name),
+
+
 		"searchKey": sprintf("resource.aws_api_gateway_method[%s].api_key_required", [name]),
 		"searchLine": common_lib.build_search_line(["resource", "aws_api_gateway_method", name, "api_key_required"], []),
 		"issueType": "IncorrectValue",
@@ -55,8 +55,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "module",
-		"resourceName": sprintf("%s", [name]),
+
+
 		"searchKey": sprintf("module[%s]", [name]),
 		"searchLine": common_lib.build_search_line(["module", name], []),
 		"issueType": "MissingAttribute",
@@ -74,8 +74,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "module",
-		"resourceName": sprintf("%s", [name]),
+
+
 		"searchKey": sprintf("module[%s].%s", [name, keyToCheck]),
 		"searchLine": common_lib.build_search_line(["module", name, keyToCheck], []),
 		"issueType": "IncorrectValue",

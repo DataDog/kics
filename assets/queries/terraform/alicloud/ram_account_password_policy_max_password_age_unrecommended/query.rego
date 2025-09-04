@@ -10,8 +10,8 @@ CxPolicy[result] {
     
     result := {
 		"documentId": input.document[i].id,
-		"resourceType": "alicloud_ram_account_password_policy",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("alicloud_ram_account_password_policy[%s]", [name]),
 		"issueType": "MissingAttribute",
 		"keyExpectedValue": "'max_password_age' should be higher than 0 and lower than 91",
@@ -29,8 +29,8 @@ CxPolicy[result] {
     
     result := {
 		"documentId": input.document[i].id,
-		"resourceType": "alicloud_ram_account_password_policy",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("alicloud_ram_account_password_policy[%s].max_password_age", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": "'max_password_age' should be higher than 0 and lower than 91",
@@ -52,8 +52,8 @@ CxPolicy[result] {
     
     result := {
 		"documentId": input.document[i].id,
-		"resourceType": "alicloud_ram_account_password_policy",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("alicloud_ram_account_password_policy[%s].max_password_age", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": "'max_password_age' should be higher than 0 and lower than 91",

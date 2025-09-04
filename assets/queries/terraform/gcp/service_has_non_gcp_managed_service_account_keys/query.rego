@@ -8,8 +8,8 @@ CxPolicy[result] {
     common_lib.valid_key(resource, "public_key_data")
     result := {
         "documentId": input.document[i].id,
-        "resourceType": "google_service_account_key",
-        "resourceName": tf_lib.get_resource_name(resource, name),
+
+
         "searchKey": sprintf("google_service_account_key[%s].public_key_data", [name]),
         "issueType": "IncorrectValue",
         "keyExpectedValue": "google_service_account_key should not have a public_key_data attribute",

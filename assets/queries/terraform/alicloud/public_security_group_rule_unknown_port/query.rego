@@ -12,8 +12,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "alicloud_security_group_rule",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("alicloud_security_group_rule[%s].port_range", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": "port_range should not contain unknown ports and should not be exposed to the entire Internet",
@@ -37,8 +37,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "alicloud_security_group_rule",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("alicloud_security_group_rule[%s].port_range", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": "port_range should not contain ports unknown and should not be exposed to the entire Internet",

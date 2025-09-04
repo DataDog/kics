@@ -10,8 +10,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": doc.id,
-		"resourceType": "aws_ebs_volume",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("aws_ebs_volume[%s]", [name]),
 		"searchLine": common_lib.build_search_line(["resource", "aws_ebs_volume", name], []),
 		"issueType": "MissingAttribute",
@@ -29,8 +29,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": doc.id,
-		"resourceType": "aws_ebs_volume",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("aws_ebs_volume[%s].encrypted", [name]),
 		"searchLine": common_lib.build_search_line(["resource", "aws_ebs_volume", name, "encrypted"], []),
 		"issueType": "IncorrectValue",
@@ -53,8 +53,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "module",
-		"resourceName": sprintf("%s", [name]),
+
+
 		"searchKey": sprintf("module[%s]", [name]),
 		"searchLine": common_lib.build_search_line(["module", name], []),
 		"issueType": "MissingAttribute",
@@ -72,8 +72,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "module",
-		"resourceName": sprintf("%s", [name]),
+
+
 		"searchKey": sprintf("module[%s].%s", [name, keyToCheck]),
 		"searchLine": common_lib.build_search_line(["module", name, keyToCheck], []),
 		"issueType": "IncorrectValue",

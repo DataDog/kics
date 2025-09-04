@@ -8,8 +8,8 @@ CxPolicy[result] {
 	not common_lib.valid_key(settings, "backup_configuration")
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "google_sql_database_instance",
-		"resourceName": tf_lib.get_resource_name(input.document[i].resource.google_sql_database_instance[name], name),
+
+
 		"searchKey": sprintf("google_sql_database_instance[%s].settings", [name]),
 		"issueType": "MissingAttribute",
 		"keyExpectedValue": "settings.backup_configuration should be defined and not null",
@@ -23,8 +23,8 @@ CxPolicy[result] {
 	not common_lib.valid_key(settings, "enabled")
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "google_sql_database_instance",
-		"resourceName": tf_lib.get_resource_name(input.document[i].resource.google_sql_database_instance[name], name),
+
+
 		"searchKey": sprintf("google_sql_database_instance[%s].settings.backup_configuration", [name]),
 		"issueType": "MissingAttribute",
 		"keyExpectedValue": "settings.backup_configuration.enabled should be defined and not null",
@@ -40,8 +40,8 @@ CxPolicy[result] {
 	settings.backup_configuration.enabled == false
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "google_sql_database_instance",
-		"resourceName": tf_lib.get_resource_name(input.document[i].resource.google_sql_database_instance[name], name),
+
+
 		"searchKey": sprintf("google_sql_database_instance[%s].settings.backup_configuration.enabled", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": "settings.backup_configuration.enabled should be true",

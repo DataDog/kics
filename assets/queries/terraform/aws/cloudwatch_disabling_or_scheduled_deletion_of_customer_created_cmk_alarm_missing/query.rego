@@ -44,8 +44,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "aws_cloudwatch_log_metric_filter",
-		"resourceName": "unknown",
+
+
 		"searchKey": "resource",
 		"issueType": "MissingAttribute",
 		"keyExpectedValue": "aws_cloudwatch_log_metric_filter should have pattern{ ($.eventSource = kms.amazonaws.com) && (($.eventName = DisableKey) || ($.eventName = ScheduleKeyDeletion)) } and be associated an aws_cloudwatch_metric_alarm",

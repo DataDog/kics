@@ -10,8 +10,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "azurerm_virtual_network",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("azurerm_virtual_network[%s]", [name]),
 		"issueType": "MissingAttribute",
 		"keyExpectedValue": sprintf("'azurerm_virtual_network[%s].ddos_protection_plan' should be defined and not null", [name]),
@@ -27,8 +27,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "azurerm_virtual_network",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("azurerm_virtual_network[%s].ddos_protection_plan.enable", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": sprintf("'azurerm_virtual_network[%s].ddos_protection_plan.enable' should be set to true", [name]),

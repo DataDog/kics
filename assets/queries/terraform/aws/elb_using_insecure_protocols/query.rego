@@ -13,8 +13,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "aws_load_balancer_policy",
-		"resourceName": tf_lib.get_resource_name(policy, name),
+
+
 		"searchKey": sprintf("aws_load_balancer_policy[%s].policy_attribute.name", [name]),
 		"searchLine": commonLib.build_search_line(["resource", "aws_load_balancer_policy", name, "policy_attribute", "name" ], []),
 		"issueType": "IncorrectValue",
@@ -37,8 +37,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "aws_load_balancer_policy",
-		"resourceName": tf_lib.get_resource_name(policy, name),
+
+
 		"searchKey": sprintf("aws_load_balancer_policy[%s].policy_attribute[%d].name", [name,j]),
 		"searchLine": commonLib.build_search_line(["resource", "aws_load_balancer_policy", name, "policy_attribute", j, "name" ], []),
 		"issueType": "IncorrectValue",

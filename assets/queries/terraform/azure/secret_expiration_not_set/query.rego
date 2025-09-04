@@ -9,8 +9,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "azurerm_key_vault_secret",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("azurerm_key_vault_secret[%s]", [name]),
 		"issueType": "MissingAttribute",
 		"keyExpectedValue": "'expiration_date' should exist",

@@ -12,8 +12,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "alicloud_oss_bucket",
-		"resourceName": tf_lib.get_specific_resource_name(resource, "alicloud_oss_bucket", name),
+
+
 		"searchKey": sprintf("alicloud_oss_bucket[%s].acl", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": "'acl' should be set to private or not set",

@@ -12,8 +12,8 @@ CxPolicy[result] {
 
     result := {
         "documentId": doc.id,
-        "resourceType": "tencentcloud_instance",
-        "resourceName": tf_lib.get_resource_name(resource, name),
+
+
         "searchKey": sprintf("tencentcloud_instance[%s].vpc_id", [name]),
         "issueType": "IncorrectValue",
         "keyExpectedValue": sprintf("tencentcloud_instance[%s].vpc_id should not contain 'default'", [name]),
@@ -31,8 +31,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": doc.id,
-        "resourceType": "tencentcloud_instance",
-        "resourceName": tf_lib.get_resource_name(resource, name),
+
+
         "searchKey": sprintf("tencentcloud_instance[%s].subnet_id", [name]),
         "issueType": "IncorrectValue",
         "keyExpectedValue": sprintf("tencentcloud_instance[%s].subnet_id should not be associated with a default Subnet", [name]),

@@ -9,8 +9,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "databricks_job",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("databricks_job[%s].task.spark_submit_task", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": sprintf("'databricks_job[%s].task.spark_submit_task' should not contains to 'spark_submit_task'", [name]),
@@ -26,8 +26,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "databricks_job",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("databricks_job[%s].task.spark_submit_task", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": sprintf("'databricks_job[%s].task.spark_submit_task' should not contains to 'spark_submit_task'", [name]),

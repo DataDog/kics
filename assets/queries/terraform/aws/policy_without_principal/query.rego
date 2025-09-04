@@ -16,8 +16,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": path[0],
-		"resourceName": path[1],
+
+
 		"searchKey": sprintf("%s[%s].policy", [path[0], path[1]]),
 		"issueType": "MissingAttribute",
 		"keyExpectedValue": "'Principal' should be defined",

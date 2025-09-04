@@ -9,8 +9,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "azurerm_virtual_machine",
-		"resourceName": tf_lib.get_resource_name(vm, name),
+
+
 		"searchKey": sprintf("azurerm_virtual_machine[%s].network_interface_ids", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": sprintf("'azurerm_virtual_machine[%s].network_interface_ids' list should not be empty", [name]),

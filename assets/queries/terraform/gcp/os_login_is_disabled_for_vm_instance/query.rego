@@ -11,8 +11,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "google_compute_instance",
-		"resourceName": tf_lib.get_resource_name(compute, name),
+
+
 		"searchKey": sprintf("google_compute_instance[%s].metadata.enable-oslogin", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": sprintf("google_compute_instance[%s].metadata.enable-oslogin should be true or undefined", [name]),

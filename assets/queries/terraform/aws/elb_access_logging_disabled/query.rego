@@ -9,8 +9,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "aws_elb",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("aws_elb[{{%s}}]", [name]),
 		"issueType": "MissingAttribute",
 		"keyExpectedValue": sprintf("'aws_elb[{{%s}}].access_logs' should be defined and not null", [name]),
@@ -28,8 +28,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "aws_elb",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("aws_elb[{{%s}}].access_logs.enabled", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": sprintf("'aws_elb[{{%s}}].access_logs.enabled' should be true", [name]),
@@ -50,8 +50,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "module",
-		"resourceName": sprintf("%s", [name]),
+
+
 		"searchKey": sprintf("module[%s]", [name]),
 		"issueType": "MissingAttribute",
 		"keyExpectedValue": "'access_logs' should be defined and not null",
@@ -70,8 +70,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "module",
-		"resourceName": sprintf("%s", [name]),
+
+
 		"searchKey": sprintf("module[%s].%s.enabled", [name, keyToCheck]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": "'access_logs.enabled' should be true",

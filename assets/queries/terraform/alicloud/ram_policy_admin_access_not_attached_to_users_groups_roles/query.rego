@@ -20,8 +20,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-        "resourceType": attachment,
-		"resourceName": tf_lib.get_resource_name(attachment, n),
+
+
         "searchKey": sprintf("%s[%s].policy_name",[attachment, n]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": sprintf("alicloud_ram_policy[%s] should not give admin access to any user, group or role",[name]),

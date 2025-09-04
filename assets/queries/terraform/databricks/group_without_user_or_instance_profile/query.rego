@@ -10,8 +10,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "aws_databricks_group",
-		"resourceName": tf_lib.get_resource_name(databricks_group, name),
+
+
 		"searchKey": sprintf("databricks_group[%s]", [name]),
 		"issueType": "MissingAttribute",
 		"keyExpectedValue": sprintf("aws_databricks_group[%s] should be associated with an databricks_group_member that has at least one user set", [name]),

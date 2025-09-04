@@ -16,8 +16,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "aws_secretsmanager_secret_policy",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("aws_secretsmanager_secret_policy[%s].policy", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": sprintf("aws_secretsmanager_secret_policy[%s].policy should not have wildcard in 'Principal' and 'Action'", [name]),

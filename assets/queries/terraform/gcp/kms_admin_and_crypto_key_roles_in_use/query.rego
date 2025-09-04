@@ -13,8 +13,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "google_project_iam_policy",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("google_project_iam_policy[%s].policy_data", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": sprintf("google_iam_policy[%s].policy_data should not assign a KMS admin role and CryptoKey role to the same member", [name]),

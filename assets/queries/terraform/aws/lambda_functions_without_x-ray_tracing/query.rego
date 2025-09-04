@@ -10,8 +10,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "aws_lambda_function",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("aws_lambda_function[%s].tracing_config.mode", [name]),
 		"searchLine": common_lib.build_search_line(["resource", "aws_lambda_function", name ,"tracing_config", "mode"], []),
 		"issueType": "IncorrectValue",
@@ -32,8 +32,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "aws_lambda_function",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("aws_lambda_function[%s]", [name]),
 		"searchLine": common_lib.build_search_line(["resource", "aws_lambda_function", name ], []),
 		"issueType": "MissingAttribute",

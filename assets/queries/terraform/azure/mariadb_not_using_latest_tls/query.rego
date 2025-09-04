@@ -11,8 +11,8 @@ CxPolicy[result] {
     lower(ssl_enf) != "true"
     result := {
         "documentId": input.document[i].id,
-        "resourceType": "azurerm_mariadb_server",
-        "resourceName": tf_lib.get_resource_name(resource, name),
+
+
         "searchKey": "ssl_enforcement_enabled",
         "searchLine": common_lib.build_search_line(["resource", "azurerm_mariadb_server", name, "ssl_enforcement_enabled"], []),
         "issueType": "IncorrectValue",
@@ -37,8 +37,8 @@ CxPolicy[result] {
     lower(tls) != "tls1_2"
     result := {
         "documentId": input.document[i].id,
-        "resourceType": "azurerm_mariadb_server",
-        "resourceName": tf_lib.get_resource_name(resource, name),
+
+
         "searchKey": "ssl_minimal_tls_version_enforced",
         "searchLine": common_lib.build_search_line(["resource", "azurerm_mariadb_server", name, "ssl_minimal_tls_version_enforced"], []),
         "issueType": "IncorrectValue",

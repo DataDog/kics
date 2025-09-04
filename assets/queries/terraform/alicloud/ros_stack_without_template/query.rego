@@ -11,8 +11,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "alicloud_ros_stack",
-		"resourceName": tf_lib.get_specific_resource_name(resource, "alicloud_ros_stack", name),
+
+
 		"searchKey": sprintf("alicloud_ros_stack[%s]", [name]),
 		"issueType": "MissingAttribute",
 		"keyExpectedValue": "Attribute 'template_body' or Attribute 'template_url' should be set.",

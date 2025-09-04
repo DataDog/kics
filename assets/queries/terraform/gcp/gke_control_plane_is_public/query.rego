@@ -18,8 +18,8 @@ CxPolicy[result] {
 
     result := {
         "documentId": input.document[i].id,
-        "resourceType": "google_container_cluster",
-        "resourceName": tf_lib.get_resource_name(resource, name),
+
+
         "searchKey": sprintf("google_container_cluster[{{%s}}].master_authorized_networks_config.cidr_blocks", [name]),
         "searchLine": common_lib.build_search_line(["resource", "google_container_cluster", name, "master_authorized_networks_config", "cidr_blocks"], []),
         "issueType": "IncorrectValue",

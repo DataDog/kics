@@ -10,8 +10,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "aws_api_gateway_rest_api",
-		"resourceName": tf_lib.get_resource_name(restAPI, name),
+
+
 		"searchKey": sprintf("aws_api_gateway_rest_api[%s]", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": "API Gateway REST API should be associated with an API Gateway Authorizer",

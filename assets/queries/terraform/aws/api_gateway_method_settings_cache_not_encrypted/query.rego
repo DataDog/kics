@@ -10,8 +10,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "aws_api_gateway_method_settings",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("aws_api_gateway_method_settings[{{%s}}].settings.cache_data_encrypted", [name]),
 		"searchLine": common_lib.build_search_line(["resource", "aws_api_gateway_method_settings", name,"settings","cache_data_encrypted" ], []),
 		"issueType": "IncorrectValue",
@@ -32,8 +32,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "aws_api_gateway_method_settings",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("aws_api_gateway_method_settings[{{%s}}].settings", [name]),
 		"searchLine": common_lib.build_search_line(["resource", "aws_api_gateway_method_settings", name,"settings" ], []),
 		"issueType": "MissingAttribute",

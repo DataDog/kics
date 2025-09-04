@@ -11,8 +11,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "google_iam_policy",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("google_iam_policy[%s].binding.role", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": sprintf("google_iam_policy[%s].binding.role should not have admin, editor, owner, or write privileges for service account member", [name]),
@@ -29,8 +29,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "google_iam_policy",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("google_iam_policy[%s].binding[%s].role", [name, format_int(x, 10)]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": sprintf("google_iam_policy[%s].binding[%s].role should not have admin, editor, owner, or write privileges for service account member", [name, format_int(x, 10)]),
@@ -48,8 +48,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": resources[idx],
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("%s[%s].role", [resources[idx], name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": sprintf("%s[%s].role should not have admin, editor, owner, or write privileges for service account member", [resources[idx], name]),

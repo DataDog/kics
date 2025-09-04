@@ -9,8 +9,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "google_project_iam_binding",
-		"resourceName": tf_lib.get_resource_name(projectIam, name),
+
+
 		"searchKey": sprintf("google_project_iam_binding[%s].role", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": sprintf("google_project_iam_binding[%s].role should not be Service Account Token Creator", [name]),
@@ -25,8 +25,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "google_project_iam_binding",
-		"resourceName": tf_lib.get_resource_name(projectIam, name),
+
+
 		"searchKey": sprintf("google_project_iam_binding[%s].role", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": sprintf("google_project_iam_binding[%s].role should not be Service Account Token Creator", [name]),
@@ -41,8 +41,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "google_project_iam_binding",
-		"resourceName": tf_lib.get_resource_name(projectIam, name),
+
+
 		"searchKey": sprintf("google_project_iam_binding[%s].role", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": sprintf("google_project_iam_binding[%s].role should not be Service Account User", [name]),
@@ -57,8 +57,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "google_project_iam_binding",
-		"resourceName": tf_lib.get_resource_name(projectIam, name),
+
+
 		"searchKey": sprintf("google_project_iam_binding[%s].role", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": sprintf("google_project_iam_binding[%s].role should not be Service Account User", [name]),

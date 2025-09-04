@@ -12,8 +12,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "azurerm_app_service",
-		"resourceName": tf_lib.get_resource_name(app, name),
+
+
 		"searchKey": sprintf("azurerm_app_service[%s].site_config.min_tls_version", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": sprintf("'azurerm_app_service[%s].site_config.min_tls_version' should be set to '1.2'", [name]),

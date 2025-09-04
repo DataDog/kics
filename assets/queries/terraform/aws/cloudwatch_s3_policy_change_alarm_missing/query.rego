@@ -65,8 +65,8 @@ CxPolicy[result] {
 	
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "aws_cloudwatch_log_metric_filter",
-		"resourceName": name,
+
+
 		"searchKey": sprintf("aws_cloudwatch_log_metric_filter[%s]", [name]),
 		"issueType": "MissingAttribute",
 		"keyExpectedValue": "aws_cloudwatch_log_metric_filter should be associated an aws_cloudwatch_metric_alarm",
@@ -89,22 +89,22 @@ CxPolicy[result] {
 	doc := input.document[i]
 	resources := doc.resource.aws_cloudwatch_log_metric_filter
 
-	resourceNames := [resourceName | [path, value] := walk(resources);
+
 	    filter := common_lib.json_unmarshal(value.pattern);
 	    not check_expression_missing(filter);
-	    resourceName := path[count(path)-1]
+
 	]
     
-    resourceName := resourceNames[_]
+
     
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "aws_cloudwatch_log_metric_filter",
-		"resourceName": resourceName,
-		"searchKey": sprintf("aws_cloudwatch_log_metric_filter.%s",[resourceName]),
+
+
+
 		"issueType": "MissingAttribute",
 		"keyExpectedValue": "aws_cloudwatch_log_metric_filter should have pattern $.eventSource equal to `s3.amazonaws.com` and $.eventName equal to `PutBucketAcl`, `PutBucketPolicy`, `PutBucketCors`, `PutBucketLifecycle`, `PutBucketReplication`, `DeleteBucketPolicy`, `DeleteBucketCors`, `DeleteBucketLifecycle` and `DeleteBucketReplication`",
 		"keyActualValue": "aws_cloudwatch_log_metric_filter with wrong pattern",
-		"searchLine": common_lib.build_search_line(["resource","aws_cloudwatch_log_metric_filter", resourceName, "pattern"], []),
+
 	}
 }

@@ -10,8 +10,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "aws_cloudformation_stack_set_instance",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("aws_cloudformation_stack_set_instance[%s]", [name]),
 		"searchLine": common_lib.build_search_line(["resource", "aws_cloudformation_stack_set_instance", name], []),
 		"issueType": "MissingAttribute",
@@ -29,8 +29,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "aws_cloudformation_stack_set_instance",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("aws_cloudformation_stack_set_instance[%s].retain_stack", [name]),
 		"searchLine": common_lib.build_search_line(["resource", "aws_cloudformation_stack_set_instance", name, "retain_stack"], []),
 		"issueType": "IncorrectValue",

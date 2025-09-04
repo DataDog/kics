@@ -9,8 +9,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "aws_ecs_task_definition",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("aws_ecs_task_definition[{{%s}}].volume.efs_volume_configuration.transit_encryption", [name]),
 		"searchLine": common_lib.build_search_line(["resource", "aws_ecs_task_definition", name, "volume", "efs_volume_configuration", "transit_encryption"], []),
 		"issueType": "IncorrectValue",
@@ -31,8 +31,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "aws_ecs_task_definition",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("aws_ecs_task_definition[{{%s}}].volume.efs_volume_configuration", [name]),
 		"searchLine": common_lib.build_search_line(["resource", "aws_ecs_task_definition", name, "volume", "efs_volume_configuration"], []),
 		"issueType": "MissingAttribute",
@@ -50,8 +50,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "aws_ecs_task_definition",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("aws_ecs_task_definition[{{%s}}].volume", [name]),
 		"searchLine": common_lib.build_search_line(["resource", "aws_ecs_task_definition", name, "volume"], []),
 		"issueType": "MissingAttribute",

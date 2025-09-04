@@ -9,8 +9,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "google_storage_bucket",
-		"resourceName": tf_lib.get_resource_name(storageBucket, name),
+
+
 		"searchKey": sprintf("google_storage_bucket[%s].uniform_bucket_level_access", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": sprintf("google_storage_bucket[%s].uniform_bucket_level_access should be true", [name]),
@@ -30,8 +30,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "google_storage_bucket",
-		"resourceName": tf_lib.get_resource_name(storageBucket, name),
+
+
 		"searchKey": sprintf("google_storage_bucket[%s]", [name]),
 		"issueType": "MissingAttribute",
 		"keyExpectedValue": sprintf("google_storage_bucket[%s].uniform_bucket_level_access should be defined and not null", [name]),

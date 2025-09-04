@@ -10,8 +10,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "aws_iam_account_password_policy",
-		"resourceName": tf_lib.get_resource_name(pol, name),
+
+
 		"searchKey": sprintf("aws_iam_account_password_policy[%s].allow_users_to_change_password", [name]),
 		"searchLine": common_lib.build_search_line(["resource", "aws_iam_account_password_policy", name,"allow_users_to_change_password"], []),
 		"issueType": "IncorrectValue",

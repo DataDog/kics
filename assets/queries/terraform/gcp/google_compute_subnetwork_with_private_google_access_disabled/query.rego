@@ -9,8 +9,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "google_compute_subnetwork",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("google_compute_subnetwork[%s]", [name]),
 		"issueType": "MissingAttribute",
 		"keyExpectedValue": sprintf("'google_compute_subnetwork[%s].private_ip_google_access' should be defined and not null", [name]),
@@ -27,8 +27,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "google_compute_subnetwork",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("google_compute_subnetwork[%s].private_ip_google_access", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": sprintf("'google_compute_subnetwork[%s].private_ip_google_access' should be set to true", [name]),

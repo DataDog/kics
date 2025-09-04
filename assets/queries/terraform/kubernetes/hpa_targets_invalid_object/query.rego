@@ -11,8 +11,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "kubernetes_horizontal_pod_autoscaler",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("kubernetes_horizontal_pod_autoscaler[%s].spec.metric", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": sprintf("kubernetes_horizontal_pod_autoscaler[%s].spec.metric is a valid object", [name]),

@@ -15,8 +15,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": lb[idx],
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("%s[%s].default_action", [lb[idx], name]),
 		"searchLine": common_lib.build_search_line(["resource", lb[idx], name, "default_action"], []),
 		"issueType": "MissingAttribute",
@@ -35,8 +35,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": lb[idx],
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("%s[%s].default_action.redirect", [lb[idx], name]),
 		"searchLine": common_lib.build_search_line(["resource", lb[idx], name, "default_action", "redirect"], []),
 		"issueType": "MissingAttribute",
@@ -57,8 +57,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": lb[idx],
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("%s[%s].default_action.redirect.protocol", [lb[idx], name]),
 		"searchLine": common_lib.build_search_line(["resource", lb[idx], name, "default_action", "redirect", "protocol"], []),
 		"issueType": "IncorrectValue",

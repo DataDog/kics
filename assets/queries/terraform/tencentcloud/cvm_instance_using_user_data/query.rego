@@ -16,8 +16,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": doc.id,
-		"resourceType": "tencentcloud_instance",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("tencentcloud_instance[%s].user_data", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": sprintf("tencentcloud_instance[%s] should be using 'cam_role_name' to assign a role with permissions", [name]),
@@ -34,8 +34,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": doc.id,
-		"resourceType": "tencentcloud_instance",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("tencentcloud_instance[%s].user_data", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": sprintf("tencentcloud_instance[%s] should be using 'cam_role_name' to assign a role with permissions", [name]),

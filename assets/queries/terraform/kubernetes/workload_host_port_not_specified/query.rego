@@ -13,8 +13,8 @@ CxPolicy[result] {
 	not common_lib.valid_key(path.port, "host_port")
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": x,
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("%s[%s].%s.port", [x, name, resource_prefix]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": "Attribute 'host_port' should be defined and not null",

@@ -9,8 +9,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "azurerm_postgresql_server",
-		"resourceName": tf_lib.get_resource_name(resource, var0),
+
+
 		"searchKey": sprintf("azurerm_postgresql_server[%s]", [var0]),
 		"issueType": "MissingAttribute",
 		"keyExpectedValue": sprintf("'azurerm_postgresql_server.%s.geo_redundant_backup_enabled' should be set", [var0]),
@@ -27,8 +27,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "azurerm_postgresql_server",
-		"resourceName": tf_lib.get_resource_name(resource, var0),
+
+
 		"searchKey": sprintf("azurerm_postgresql_server[%s].geo_redundant_backup_enabled", [var0]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": sprintf("'azurerm_postgresql_server.%s.geo_redundant_backup_enabled' should be true", [var0]),

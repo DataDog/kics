@@ -11,8 +11,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "alicloud_actiontrail_trail",
-		"resourceName": tf_lib.get_specific_resource_name(resource, "alicloud_actiontrail_trail", name),
+
+
 		"searchKey": sprintf("alicloud_actiontrail_trail[%s]", [name]),
 		"issueType": "MissingAttribute",
 		"keyExpectedValue": "oss_bucket_name should be set.",
@@ -31,8 +31,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "alicloud_actiontrail_trail",
-		"resourceName": tf_lib.get_specific_resource_name(resource, "alicloud_actiontrail_trail", name),
+
+
 		"searchKey": sprintf("alicloud_actiontrail_trail[%s]", [name]),
 		"issueType": "MissingAttribute",
 		"keyExpectedValue": sprintf("'%s' should be set.",[possibilities[p]]),
@@ -53,8 +53,8 @@ CxPolicy[result] {
     remediation := {"before":resource[p[f]] , "after": "All" }
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "alicloud_actiontrail_trail",
-		"resourceName": tf_lib.get_specific_resource_name(resource, "alicloud_actiontrail_trail", name),
+
+
 		"searchKey": sprintf("alicloud_actiontrail_trail[%s].%s", [name, p[f]]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": sprintf("'%s' should be set to All", [p[f]]),

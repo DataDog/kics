@@ -11,8 +11,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": doc.id,
-		"resourceType": "azurerm_mssql_server",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("azurerm_mssql_server[%s]", [name]),
 		"issueType": "MissingAttribute",
 		"keyExpectedValue": sprintf("'azurerm_mssql_server[%s].public_network_access_enabled' should be defined and not null", [name]),
@@ -31,8 +31,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": doc.id,
-		"resourceType": "azurerm_mssql_server",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("azurerm_mssql_server[%s].public_network_access_enabled", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": sprintf("'azurerm_mssql_server[%s].public_network_access_enabled' should be set to false", [name]),

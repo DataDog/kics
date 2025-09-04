@@ -9,8 +9,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "tencentcloud_kubernetes_cluster",
-		"resourceName": tf_lib.get_resource_name(cluster, name),
+
+
 		"searchKey": sprintf("tencentcloud_kubernetes_cluster[%s]", [name]),
 		"issueType": "MissingAttribute",
 		"keyExpectedValue": "'log_agent' should be defined and not null",
@@ -28,8 +28,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "tencentcloud_kubernetes_cluster",
-		"resourceName": tf_lib.get_resource_name(cluster, name),
+
+
 		"searchKey": sprintf("tencentcloud_kubernetes_cluster[%s].log_agent.enabled", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": sprintf("tencentcloud_kubernetes_cluster[%s].log_agent.enabled should be set to 'true'", [name]),

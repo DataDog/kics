@@ -9,8 +9,8 @@ CxPolicy[result] {
 	
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "alicloud_nas_file_system",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("alicloud_nas_file_system[%s]", [name]),
 		"issueType": "MissingAttribute",
 		"keyExpectedValue": sprintf("alicloud_nas_file_system[%s].encrypt_type' should be defined and set to 2'", [name]),
@@ -27,8 +27,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "alicloud_nas_file_system",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("alicloud_nas_file_system[%s]", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": sprintf("alicloud_nas_file_system[%s].encrypt_type' should be set to 2'", [name]),

@@ -21,8 +21,8 @@ CxPolicy[result] {
 
     result := {
         "documentId": input.document[i].id,
-        "resourceType": "azurerm_network_security_group",
-        "resourceName": tf_lib.get_resource_name(resource, name),
+
+
         "searchKey": sprintf("azurerm_network_security_group[{{%s}}].security_rule", [name]),
         "searchLine": common_lib.build_search_line(["resource", "azurerm_network_security_group", name, "security_rule"], []),
         "issueType": "IncorrectValue",
@@ -51,8 +51,8 @@ CxPolicy[result] {
 
     result := {
         "documentId": input.document[i].id,
-        "resourceType": "azurerm_network_security_rule",
-        "resourceName": tf_lib.get_resource_name(resource, name),
+
+
         "searchKey": sprintf("azurerm_network_security_rule[{{%s}}].source_address_prefix", [name]),
         "searchLine": common_lib.build_search_line(["resource", "azurerm_network_security_rule", name, "source_address_prefix"], []),
         "issueType": "IncorrectValue",

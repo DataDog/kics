@@ -19,8 +19,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": resources[idx],
-		"resourceName": tf_lib.get_resource_name(target, name),
+
+
 		"searchKey": sprintf("%s[%s]", [resources[idx], name]),
 		"issueType": "MissingAttribute",
 		"keyExpectedValue": sprintf("%s has shield advanced associated", [resources[idx]]),

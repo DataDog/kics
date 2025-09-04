@@ -12,8 +12,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": doc.id,
-		"resourceType": "aws_network_acl",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("aws_network_acl[%s].ingress", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": sprintf("aws_network_acl[%s].ingress[%d] 'SSH' (Port:22) should not be public", [name, idx]),
@@ -32,8 +32,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": doc.id,
-		"resourceType": "aaws_network_acl_rule",
-		"resourceName": netAclRuleName,
+
+
 		"searchKey": sprintf("aws_network_acl_rule[%s]", [netAclRuleName]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": sprintf("aws_network_acl[%s] 'SSH' (TCP:22) should not be public", [netAclRuleName]),
@@ -51,8 +51,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": doc.id,
-		"resourceType": "aws_network_acl",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("aws_network_acl[%s].ingress", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": sprintf("aws_network_acl[%s].ingress 'SSH' (TCP:22) should not be public", [name]),
@@ -71,8 +71,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "module",
-		"resourceName": sprintf("%s", [name]),
+
+
 		"searchKey": sprintf("module[%s].%s", [name, keyToCheck]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": sprintf("aws_network_acl[%s].ingress[%d] 'SSH' (Port:22) should not be public", [name, idx]),

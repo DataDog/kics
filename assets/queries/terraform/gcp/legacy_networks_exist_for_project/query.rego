@@ -8,8 +8,8 @@ CxPolicy[result] {
     resource.auto_create_subnetworks == true
     result := {
         "documentId": input.document[i].id,
-        "resourceType": "google_compute_network",
-        "resourceName": tf_lib.get_resource_name(resource, name),
+
+
         "searchKey": sprintf("google_compute_network[%s].auto_create_subnetworks", [name]),
         "issueType": "IncorrectValue",
         "keyExpectedValue": "auto_create_subnetworks should be false",

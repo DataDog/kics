@@ -9,8 +9,8 @@ CxPolicy[result] {
 
     result := {
         "documentId": input.document[i].id,
-        "resourceType": "tencentcloud_instance",
-        "resourceName": tf_lib.get_resource_name(resource, name),
+
+
         "searchKey": sprintf("tencentcloud_instance[%s].allocate_public_ip", [name]),
         "issueType": "IncorrectValue",
         "keyExpectedValue": sprintf("[%s] 'allocate_public_ip' should be set to false", [name]),

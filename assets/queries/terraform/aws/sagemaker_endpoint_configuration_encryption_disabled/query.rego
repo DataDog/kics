@@ -10,8 +10,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "aws_sagemaker_endpoint_configuration",
-		"resourceName": tf_lib.get_resource_name(sagemakerEndpoint, name),
+
+
 		"searchKey": sprintf("aws_sagemaker_endpoint_configuration[%s]", [name]),
 		"issueType": "MissingAttribute",
 		"keyExpectedValue": sprintf("aws_sagemaker_endpoint_configuration[%s].kms_key_arn should be defined and not null", [name]),
@@ -29,8 +29,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "module",
-		"resourceName": sprintf("%s", [name]),
+
+
 		"searchKey": sprintf("module[%s]", [name]),
 		"issueType": "MissingAttribute",
 		"keyExpectedValue": sprintf("module[%s].%s should be defined and not null", [name, keyToCheck]),

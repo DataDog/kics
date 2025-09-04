@@ -9,8 +9,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "aws_iam_account_password_policy",
-		"resourceName": tf_lib.get_resource_name(expr, name),
+
+
 		"searchKey": sprintf("aws_iam_account_password_policy[%s]", [name]),
 		"searchLine": common_lib.build_search_line(["resource", "aws_iam_account_password_policy", name], []),
 		"issueType": "MissingAttribute",
@@ -27,8 +27,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "aws_iam_account_password_policy",
-		"resourceName": tf_lib.get_resource_name(expr, name),
+
+
 		"searchKey": sprintf("aws_iam_account_password_policy[%s].max_password_age", [name]),
 		"searchLine": common_lib.build_search_line(["resource", "aws_iam_account_password_policy", name, "max_password_age"], []),
 		"issueType": "IncorrectValue",

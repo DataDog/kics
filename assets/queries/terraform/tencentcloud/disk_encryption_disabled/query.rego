@@ -10,8 +10,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "tencentcloud_cbs_storage",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("tencentcloud_cbs_storage[%s].encrypt", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": sprintf("[%s] has encryption set to true", [name]),
@@ -27,8 +27,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "tencentcloud_cbs_storage",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("tencentcloud_cbs_storage[%s]",[name]),
 		"issueType": "MissingAttribute",
 		"keyExpectedValue": sprintf("[%s] has encryption enabled",[name]),

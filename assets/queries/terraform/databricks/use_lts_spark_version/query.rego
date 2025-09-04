@@ -9,8 +9,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "databricks_spark_version",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("databricks_spark_version[%s].long_term_support", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": sprintf("'databricks_spark_version[%s]' should be a LTS version'", [name]),
@@ -26,8 +26,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "databricks_spark_version",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("databricks_cluster[%s].spark_version", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": sprintf("'databricks_cluster[%s].spark_version' should be a LTS version'", [name]),

@@ -9,8 +9,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "aws_route53_record",
-		"resourceName": tf_lib.get_resource_name(route, name),
+
+
 		"searchKey": sprintf("aws_route53_record[%s].records", [name]),
 		"issueType": "MissingAttribute",
 		"keyExpectedValue": "aws_route53_record.records should be defined",

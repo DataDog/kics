@@ -13,8 +13,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "azurerm_kubernetes_cluster",
-		"resourceName": tf_lib.get_resource_name(cluster, name),
+
+
 		"searchKey": sprintf("azurerm_kubernetes_cluster[%s].role_based_access_control.enabled", [name]),
 		"searchLine": common_lib.build_search_line(["resource","azurerm_kubernetes_cluster", name ,"role_based_access_control", "enabled"], []),
 		"issueType": "IncorrectValue",
@@ -36,8 +36,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "azurerm_kubernetes_cluster",
-		"resourceName": tf_lib.get_resource_name(cluster, name),
+
+
 		"searchKey": sprintf("azurerm_kubernetes_cluster[%s].role_based_access_control_enabled", [name]),
 		"searchLine": common_lib.build_search_line(["resource","azurerm_kubernetes_cluster", name ,"role_based_access_control_enabled"], []),
 		"issueType": "IncorrectValue",

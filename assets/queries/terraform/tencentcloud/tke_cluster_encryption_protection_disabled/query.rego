@@ -9,8 +9,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "tencentcloud_kubernetes_cluster",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("tencentcloud_kubernetes_cluster[%s]", [name]),
 		"issueType": "MissingAttribute",
 		"keyExpectedValue": sprintf("tencentcloud_kubernetes_cluster[%s] should have 'tencentcloud_kubernetes_encryption_protection' enabled", [name]),

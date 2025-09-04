@@ -10,8 +10,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "tencentcloud_clb_instance",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("tencentcloud_clb_instance[%s]", [name]),
 		"issueType": "MissingAttribute",
 		"keyExpectedValue": sprintf("tencentcloud_clb_instance[%s] should set 'log_set_id' and 'log_topic_id'", [name]),

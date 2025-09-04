@@ -12,8 +12,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "aws_autoscaling_group",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("aws_autoscaling_group[%s].load_balancers", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": sprintf("aws_autoscaling_group[%s].load_balancers should be set and not empty", [name]),
@@ -31,8 +31,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "aws_autoscaling_group",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("aws_autoscaling_group[%s]", [name]),
 		"issueType": "MissingAttribute",
 		"keyExpectedValue": sprintf("aws_autoscaling_group[%s].load_balancers should be set and not empty", [name]),
@@ -51,8 +51,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "module",
-		"resourceName": sprintf("%s", [name]),
+
+
 		"searchKey": sprintf("module[%s]", [name]),
 		"issueType": "MissingAttribute",
 		"keyExpectedValue": "'load_balancers' should be set and not empty",
@@ -71,8 +71,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "module",
-		"resourceName": sprintf("%s", [name]),
+
+
 		"searchKey": sprintf("module[%s].load_balancers", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": "'load_balancers' should be set and not empty",

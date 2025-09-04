@@ -9,8 +9,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "aws_config_configuration_aggregator",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("aws_config_configuration_aggregator[%s].%s.all_regions", [name, type]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": sprintf("'aws_config_configuration_aggregator[%s].%s.all_regions' should be set to true", [name, type]),
@@ -34,8 +34,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "aws_config_configuration_aggregator",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("aws_config_configuration_aggregator[%s].%s", [name, type]),
 		"issueType": "MissingAttribute",
 		"keyExpectedValue": sprintf("'aws_config_configuration_aggregator[%s].%s.all_regions' should be set to true", [name, type]),

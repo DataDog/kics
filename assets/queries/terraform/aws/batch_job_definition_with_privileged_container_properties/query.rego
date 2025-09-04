@@ -11,8 +11,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "aws_batch_job_definition",
-		"resourceName": tf_lib.get_resource_name(document.resource.aws_batch_job_definition[name], name),
+
+
 		"searchKey": sprintf("aws_batch_job_definition[%s].container_properties.privileged", [name]),
 		"searchLine": common_lib.build_search_line(["resource", "aws_batch_job_definition", name, "container_properties", "privileged"], []),
 		"issueType": "IncorrectValue",
@@ -37,8 +37,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "module",
-		"resourceName": sprintf("%s", [name]),
+
+
 		"searchKey": sprintf("module[%s].%s.privileged", [name, keyToCheck]),
 		"searchLine": common_lib.build_search_line(["module", name, keyToCheck, "privileged"], []),
 		"issueType": "IncorrectValue",

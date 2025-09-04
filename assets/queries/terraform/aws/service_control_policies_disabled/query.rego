@@ -10,8 +10,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "aws_organizations_organization",
-		"resourceName": tf_lib.get_resource_name(org, name),
+
+
 		"searchKey": sprintf("aws_organizations_organization[%s].feature_set", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": "'feature_set' should be set to 'ALL' or undefined",

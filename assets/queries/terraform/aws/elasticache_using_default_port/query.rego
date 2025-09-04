@@ -9,8 +9,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "aws_elasticache_cluster",
-		"resourceName": tf_lib.get_specific_resource_name(resource, "aws_elasticache_cluster", name),
+
+
 		"searchKey": sprintf("aws_elasticache_cluster[%s]", [name]),
 		"issueType": "MissingAttribute",
 		"keyExpectedValue": "aws_elasticache_cluster.port should be defined and not null",
@@ -30,8 +30,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "aws_elasticache_cluster",
-		"resourceName": tf_lib.get_specific_resource_name(cluster, "aws_elasticache_cluster", name),
+
+
 		"searchKey": sprintf("aws_elasticache_cluster[%s].port", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": sprintf("'port' should not be set to %d", [enginePort]),

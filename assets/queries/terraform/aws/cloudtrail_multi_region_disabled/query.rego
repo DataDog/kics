@@ -10,8 +10,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": doc.id,
-		"resourceType": "aws_cloudtrail",
-		"resourceName": tf_lib.get_resource_name(cloudtrail, name),
+
+
 		"searchLine": common_lib.build_search_line(["resource", "aws_cloudtrail", name], []),
 		"searchKey": sprintf("aws_cloudtrail[%s]", [name]),
 		"issueType": "MissingAttribute",
@@ -29,8 +29,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": doc.id,
-		"resourceType": "aws_cloudtrail",
-		"resourceName": tf_lib.get_resource_name(cloudtrail, name),
+
+
 		"searchKey": sprintf("aws_cloudtrail[%s].is_multi_region_trail", [name]),
 		"searchLine": common_lib.build_search_line(["resource", "aws_cloudtrail", name, "is_multi_region_trail"], []),
 		"issueType": "IncorrectValue",
@@ -51,8 +51,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": doc.id,
-		"resourceType": "aws_cloudtrail",
-		"resourceName": tf_lib.get_resource_name(cloudtrail, name),
+
+
 		"searchKey": sprintf("aws_cloudtrail[%s].include_global_service_events", [name]),
 		"searchLine": common_lib.build_search_line(["resource", "aws_cloudtrail", name, "include_global_service_events"], []),
 		"issueType": "IncorrectValue",

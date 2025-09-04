@@ -11,8 +11,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "google_compute_instance",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("google_compute_instance[%s].service_account.scopes", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": "'service_account.scopes' should not contain 'cloud-platform'",

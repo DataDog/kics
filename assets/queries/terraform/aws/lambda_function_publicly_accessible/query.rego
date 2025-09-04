@@ -10,8 +10,8 @@ CxPolicy[result] {
 
     result := {
         "documentId": input.document[i].id,
-        "resourceType": "aws_lambda_permission",
-        "resourceName": tf_lib.get_resource_name(resource, name),
+
+
         "searchKey": sprintf("aws_lambda_permission[{{%s}}].principal", [name]),
         "searchLine": common_lib.build_search_line(["resource", "aws_lambda_permission", name, "principal"], []),
         "issueType": "IncorrectValue",

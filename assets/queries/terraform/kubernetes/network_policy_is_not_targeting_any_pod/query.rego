@@ -17,8 +17,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "kubernetes_network_policy",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("kubernetes_network_policy[%s].spec.pod_selector.match_labels", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": sprintf("kubernetes_network_policy[%s].spec.pod_selector.match_labels is targeting at least a pod", [name]),
@@ -27,8 +27,8 @@ CxPolicy[result] {
 }
 
 findTargettedPod(lValue, lKey) {
-	pod := input.document[_].resource[resourceType]
-	resourceType != "kubernetes_network_policy"
+
+
 	labels := pod[podName].metadata.labels
 
 	some key

@@ -12,8 +12,8 @@ CxPolicy[result] {
 
     result := {
         "documentId": input.document[i].id,
-        "resourceType": "azurerm_postgresql_server",
-        "resourceName": tf_lib.get_resource_name(resource, name),
+
+
         "searchKey": sprintf("azurerm_postgresql_server[%s].public_network_access_enabled", [name]),
         "searchLine": common_lib.build_search_line(["resource", "azurerm_postgresql_server", name, "public_network_access_enabled"], []),
         "issueType": "IncorrectValue",
@@ -34,8 +34,8 @@ CxPolicy[result] {
 
     result := {
         "documentId": input.document[i].id,
-        "resourceType": "azurerm_postgresql_server",
-        "resourceName": tf_lib.get_resource_name(resource, name),
+
+
         "searchKey": sprintf("azurerm_postgresql_server[%s]", [name]),
         "searchLine": common_lib.build_search_line(["resource", "azurerm_postgresql_server", name], []),
         "issueType": "MissingValue",

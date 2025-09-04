@@ -8,8 +8,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-	    "resourceType": "variable",
-		"resourceName": sprintf("%s", variableName),
+
+
 		"searchKey": sprintf("variable.{{%s}}", [variableName]),
 		"issueType": "MissingAttribute",
 		"keyExpectedValue": "'description' should be defined and not null",
@@ -23,8 +23,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-	    "resourceType": "variable",
-		"resourceName": sprintf("%s", variableName),
+
+
 		"searchKey": sprintf("variable.{{%s}}.description", [variableName]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": "'description' should not be empty",

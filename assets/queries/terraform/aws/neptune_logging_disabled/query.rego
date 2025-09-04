@@ -13,8 +13,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "aws_neptune_cluster",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("aws_neptune_cluster[{{%s}}]", [name]),
 		"issueType": "MissingAttribute",
 		"keyExpectedValue": "aws_neptune_cluster.enable_cloudwatch_logs_exports should be defined",
@@ -28,8 +28,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "aws_neptune_cluster",
-		"resourceName": tf_lib.get_resource_name(input.document[i].resource.aws_neptune_cluster[name], name),
+
+
 		"searchKey": sprintf("aws_neptune_cluster[{{%s}}].enable_cloudwatch_logs_exports", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": sprintf("aws_neptune_cluster.enable_cloudwatch_logs_exports should have all following values: %s", [validTypeConcat]),
@@ -48,8 +48,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "aws_neptune_cluster",
-		"resourceName": tf_lib.get_resource_name(input.document[i].resource.aws_neptune_cluster[name], name),
+
+
 		"searchKey": sprintf("aws_neptune_cluster[{{%s}}].enable_cloudwatch_logs_exports", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": sprintf("aws_neptune_cluster.enable_cloudwatch_logs_exports should have all following values: %s", [validTypeConcat]),

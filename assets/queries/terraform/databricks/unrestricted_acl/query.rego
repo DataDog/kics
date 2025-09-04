@@ -10,8 +10,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "databricks_ip_access_list",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("databricks_ip_access_list[%s].ip_addresses", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": sprintf("'databricks_ip_access_list[%s].ip_addresses' should not be equal to '0.0.0.0/0' or '::/0'", [name]),

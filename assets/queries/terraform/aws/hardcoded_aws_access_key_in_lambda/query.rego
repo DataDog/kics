@@ -11,8 +11,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "aws_lambda_function",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("aws_lambda_function[%s].environment.variables.%s", [name, idx]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": "'environment.variables' shouldn't contain AWS Access Key",

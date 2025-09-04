@@ -31,8 +31,8 @@ CxPolicy[result] {
 
     result := {
         "documentId": input.document[i].id,
-        "resourceType": resource_type,
-        "resourceName": tf_lib.get_specific_resource_name(resource, resource_type, name),
+
+
         "searchKey": sprintf("%s[%s].metadata_options.http_tokens", [resource_type, name]),
         "issueType": "IncorrectValue",
         "keyExpectedValue": "metadata_options.http_tokens should be 'required'",
@@ -61,8 +61,8 @@ CxPolicy[result] {
 
     result := {
         "documentId": input.document[i].id,
-        "resourceType": resource_type,
-        "resourceName": tf_lib.get_specific_resource_name(resource, resource_type, name),
+
+
         "searchKey": sprintf("%s[%s].metadata_options.http_tokens", [resource_type, name]),
         "issueType": "IncorrectValue",
         "keyExpectedValue": "metadata_options.http_tokens should be 'required'",
@@ -85,8 +85,8 @@ CxPolicy[result] {
 
     result := {
         "documentId": input.document[i].id,
-        "resourceType": resource_type,
-        "resourceName": tf_lib.get_specific_resource_name(resource, resource_type, name),
+
+
         "searchKey": sprintf("%s[%s]", [resource_type, name]),
         "issueType": "MissingValue",
         "keyExpectedValue": "metadata_options must be defined with http_tokens set to 'required'",
@@ -115,8 +115,8 @@ CxPolicy[result] {
 
     result := {
         "documentId": input.document[i].id,
-        "resourceType": "module",
-        "resourceName": sprintf("%s", [name]),
+
+
         "searchKey": sprintf("module[%s].%s.http_tokens", [name, keyToCheck]),
         "issueType": "IncorrectValue",
         "keyExpectedValue": sprintf("%s.http_tokens should be 'required'", [keyToCheck]),
@@ -146,8 +146,8 @@ CxPolicy[result] {
 
     result := {
         "documentId": input.document[i].id,
-        "resourceType": "module",
-        "resourceName": sprintf("%s", [name]),
+
+
         "searchKey": sprintf("module[%s].%s.http_tokens", [name, keyToCheck]),
         "issueType": "IncorrectValue",
         "keyExpectedValue": sprintf("%s.http_tokens should be 'required'", [keyToCheck]),
@@ -171,8 +171,8 @@ CxPolicy[result] {
 
     result := {
         "documentId": input.document[i].id,
-        "resourceType": "module",
-        "resourceName": sprintf("%s", [name]),
+
+
         "searchKey": sprintf("module[%s]", [name]),
         "issueType": "MissingValue",
         "keyExpectedValue": sprintf("%s must be defined with http_tokens set to 'required'", [keyToCheck]),

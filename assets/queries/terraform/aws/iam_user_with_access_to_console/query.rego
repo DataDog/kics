@@ -9,8 +9,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "aws_iam_user_login_profile",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("%s", [search[0][1]]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": sprintf("%s shouldn't have aws_iam_user_login_profile", [search[0][1]]),

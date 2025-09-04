@@ -11,8 +11,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "aws_iam_access_key",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("aws_iam_access_key[%s].user", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": "One Access Key associated with the same IAM User",

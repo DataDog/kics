@@ -9,8 +9,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "aws_instance",
-		"resourceName": tf_lib.get_resource_name(instance, name),
+
+
 		"searchKey": sprintf("aws_instance[%s].user_data", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": "'user_data' shouldn't contain hardcoded access key",
@@ -27,8 +27,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "module",
-		"resourceName": sprintf("%s", [name]),
+
+
 		"searchKey": sprintf("module[%s].user_data", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": "'user_data' shouldn't contain hardcoded access key",

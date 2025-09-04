@@ -8,8 +8,8 @@ CxPolicy[result] {
 	dnssec_config.default_key_specs.algorithm == "rsasha1"
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "google_dns_managed_zone",
-		"resourceName": tf_lib.get_resource_name(dnssec_config, name),
+
+
 		"searchKey": sprintf("google_dns_managed_zone[%s].dnssec_config.default_key_specs.algorithm", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": "dnssec_config.default_key_specs.algorithm shouldn't be 'rsasha1'",

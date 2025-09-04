@@ -10,8 +10,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "azurerm_sql_database",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("azurerm_sql_database[%s].threat_detection_policy", [name]),
 		"issueType": "MissingAttribute",
 		"keyExpectedValue": "'threat_detection_policy' should exist",
@@ -29,8 +29,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "azurerm_sql_database",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("azurerm_sql_database[%s].threat_detection_policy.state", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": "'threat_detection_policy.state' equal 'Enabled'",

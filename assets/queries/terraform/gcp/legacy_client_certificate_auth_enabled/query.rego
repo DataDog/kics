@@ -10,8 +10,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "google_container_cluster",
-		"resourceName": tf_lib.get_resource_name(resource, primary),
+
+
 		"searchKey": sprintf("google_container_cluster[%s].master_auth", [primary]),
 		"issueType": "MissingAttribute",
 		"keyExpectedValue": "If 'master_auth' is defined, subattribute 'client_certificate_config' should be defined",
@@ -26,8 +26,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "google_container_cluster",
-		"resourceName": tf_lib.get_resource_name(resource, primary),
+
+
 		"searchKey": sprintf("google_container_cluster[%s].master_auth.client_certificate_config.issue_client_certificate", [primary]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": "Attribute 'issue_client_certificate' in 'client_certificate_config' should be false",

@@ -11,8 +11,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "azurerm_monitor_log_profile",
-		"resourceName": tf_lib.get_resource_name(monitor, name),
+
+
 		"searchKey": sprintf("azurerm_monitor_log_profile[%s].retention_policy", [name]),
 		"issueType": "MissingAttribute",
 		"keyExpectedValue": sprintf("'azurerm_monitor_log_profile[%s].retention_policy.days' should be defined and not null", [name]),
@@ -30,8 +30,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "azurerm_monitor_log_profile",
-		"resourceName": tf_lib.get_resource_name(monitor, name),
+
+
 		"searchKey": sprintf("azurerm_monitor_log_profile[%s].retention_policy.enabled", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": sprintf("'azurerm_monitor_log_profile[%s].retention_policy.enabled' should be set to true", [name]),
@@ -54,8 +54,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "azurerm_monitor_log_profile",
-		"resourceName": tf_lib.get_resource_name(monitor, name),
+
+
 		"searchKey": sprintf("azurerm_monitor_log_profile[%s].retention_policy.days", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": sprintf("'azurerm_monitor_log_profile[%s].retention_policy.days' should be greater than or equal to 365 days or 0 (indefinitely)", [name]),

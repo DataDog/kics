@@ -15,8 +15,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "azurerm_storage_account",
-		"resourceName": resource_name,
+
+
 		"searchKey": issue.searchKey,
 		"searchLine": issue.searchLine,
 		"issueType": issue.issueType,

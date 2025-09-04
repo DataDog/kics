@@ -10,8 +10,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "aws_db_instance",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("aws_db_instance[%s].ca_cert_identifier", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": "'aws_db_instance.ca_cert_identifier' should be one provided by Amazon RDS.",
@@ -28,8 +28,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "module",
-		"resourceName": sprintf("%s", [name]),
+
+
 		"searchKey": sprintf("module[%s].ca_cert_identifier", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": "'ca_cert_identifier' should be one provided by Amazon RDS.",

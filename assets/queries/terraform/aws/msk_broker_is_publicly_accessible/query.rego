@@ -10,8 +10,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "aws_msk_cluster",
-		"resourceName": tf_lib.get_specific_resource_name(msk_cluster, "aws_msk_cluster", name),
+
+
 		"searchKey": sprintf("aws_msk_cluster[%s].broker_node_group_info.connectivity_info.public_access.type", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": sprintf("aws_msk_cluster[%s].broker_node_group_info.connectivity_info.public_access.type should be set to 'DISABLED' or undefined", [name]),

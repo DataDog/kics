@@ -11,8 +11,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": document.id,
-		"resourceType": "aws_mq_broker",
-		"resourceName": tf_lib.get_specific_resource_name(resource, "aws_mq_broker", name),
+
+
 		"searchKey": sprintf("resource.aws_mq_broker[%s]", [name]),
 		"issueType": "MissingAttribute",
 		"keyExpectedValue": sprintf("resource.aws_mq_broker[%s].encryption_options should be defined", [name]),
@@ -29,8 +29,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "module",
-		"resourceName": sprintf("%s", [name]),
+
+
 		"searchKey": sprintf("module[%s]", [name]),
 		"issueType": "MissingAttribute",
 		"keyExpectedValue": sprintf("module[%s].%s should be defined", [name, keyToCheck]),

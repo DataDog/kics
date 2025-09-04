@@ -11,8 +11,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "aws_ssoadmin_permission_set_inline_policy",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("aws_ssoadmin_permission_set[%s].session_duration", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": "session_duration should not be higher than 1 hour",

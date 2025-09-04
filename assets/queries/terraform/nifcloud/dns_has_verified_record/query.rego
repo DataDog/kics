@@ -10,8 +10,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "nifcloud_dns_record",
-		"resourceName": tf_lib.get_resource_name(dnsRecord, name),
+
+
 		"searchKey": sprintf("nifcloud_dns_record[%s]", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": sprintf("'nifcloud_dns_record[%s]' remove verified record", [name]),

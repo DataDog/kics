@@ -8,8 +8,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "aws_api_gateway_stage",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("aws_api_gateway_stage[%s]", [name]),
 		"issueType": "MissingAttribute",
 		"keyExpectedValue": "'aws_cloudwatch_log_group' should be defined and use the correct naming convention",

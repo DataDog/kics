@@ -11,8 +11,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "nifcloud_security_group_rule",
-		"resourceName": tf_lib.get_resource_name(securityGroupRule, name),
+
+
 		"searchKey": sprintf("nifcloud_security_group_rule[%s]", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": sprintf("'nifcloud_security_group_rule[%s]' set a more restrictive cidr range", [name]),

@@ -9,8 +9,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "google_compute_ssl_policy",
-		"resourceName": tf_lib.get_resource_name(sslPolicy, name),
+
+
 		"searchKey": sprintf("google_compute_ssl_policy[%s].min_tls_version", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": sprintf("google_compute_ssl_policy[%s].min_tls_version should be TLS_1_2", [name]),
@@ -30,8 +30,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "google_compute_ssl_policy",
-		"resourceName": tf_lib.get_resource_name(sslPolicy, name),
+
+
 		"searchKey": sprintf("google_compute_ssl_policy[%s].min_tls_version", [name]),
 		"issueType": "MissingAttribute",
 		"keyExpectedValue": sprintf("google_compute_ssl_policy[%s].min_tls_version should be TLS_1_2", [name]),

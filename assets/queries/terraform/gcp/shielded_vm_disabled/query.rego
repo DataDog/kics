@@ -18,8 +18,8 @@ CxPolicy[result] {
 
   result := {
     "documentId": document.id,
-    "resourceType": "google_compute_instance",
-    "resourceName": tf_lib.get_resource_name(resource, name),
+
+
     "searchKey": sprintf("google_compute_instance[%s].shielded_instance_config.%s", [name, field]),
     "issueType": "IncorrectValue",
     "keyExpectedValue": sprintf("Attribute 'shielded_instance_config.%s' should be true", [field]),
@@ -43,8 +43,8 @@ CxPolicy[result] {
 
   result := {
     "documentId": document.id,
-    "resourceType": "google_compute_instance",
-    "resourceName": tf_lib.get_resource_name(resource, name),
+
+
     "searchKey": sprintf("google_compute_instance[%s].shielded_instance_config[%d].%s", [name, index, field]),
     "issueType": "IncorrectValue",
     "keyExpectedValue": sprintf("Attribute 'shielded_instance_config.%s' should be true", [field]),
@@ -62,8 +62,8 @@ CxPolicy[result] {
 
   result := {
     "documentId": document.id,
-    "resourceType": "google_compute_instance",
-    "resourceName": tf_lib.get_resource_name(resource, name),
+
+
     "searchKey": sprintf("google_compute_instance[%s].shielded_instance_config", [name]),
     "issueType": "MissingAttribute",
     "keyExpectedValue": "shielded_instance_config block should be present",

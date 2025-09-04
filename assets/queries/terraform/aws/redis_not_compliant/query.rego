@@ -10,8 +10,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "aws_elasticache_cluster",
-		"resourceName": tf_lib.get_specific_resource_name(resource, "aws_elasticache_cluster", name),
+
+
 		"searchKey": sprintf("aws_elasticache_cluster[%s].engine_version", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": sprintf("aws_elasticache_cluster[%s].engine_version should be compliant with the requirements", [name]),

@@ -11,8 +11,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": doc.id,
-		"resourceType": "azurerm_app_service",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("azurerm_app_service[%s]", [name]),
 		"searchLine": common_lib.build_search_line(["resource","azurerm_app_service", name], []),
 		"issueType": "MissingAttribute",
@@ -31,8 +31,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": doc.id,
-		"resourceType": "azurerm_app_service",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("azurerm_app_service[%s].auth_settings.enabled", [name]),
 		"searchLine": common_lib.build_search_line(["resource","azurerm_app_service", name, "auth_settings", "enabled"], []),
 		"issueType": "IncorrectValue",

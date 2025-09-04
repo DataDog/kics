@@ -14,8 +14,8 @@ CxPolicy[result] {
 
 	result := {
         "documentId":        input.document[i].id,
-        "resourceType":      "google_sql_database_instance",
-        "resourceName":      tf_lib.get_resource_name(settings, name),
+
+
         "searchKey":         sprintf("google_sql_database_instance[%s].settings.database_flags.cross db ownership chaining.value", [name]),
         "issueType":         "IncorrectValue",
         "keyExpectedValue":  "'settings.database_flags.cross db ownership chaining' should be off",

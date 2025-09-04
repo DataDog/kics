@@ -11,8 +11,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": document.id,
-		"resourceType": "aws_globalaccelerator_accelerator",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("aws_globalaccelerator_accelerator[{{%s}}]", [name]),
 		"searchLine": common_lib.build_search_line(["resource", "aws_globalaccelerator_accelerator", name], []),
 		"issueType": "MissingAttribute",
@@ -31,8 +31,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": document.id,
-		"resourceType": "aws_globalaccelerator_accelerator",
-		"resourceName": tf_lib.get_resource_name(document.resource.aws_globalaccelerator_accelerator[name], name),
+
+
 		"searchKey": sprintf("aws_globalaccelerator_accelerator[{{%s}}].attributes", [name]),
 		"searchLine": common_lib.build_search_line(["resource", "aws_globalaccelerator_accelerator", name, "attributes"], []),
 		"issueType": "MissingAttribute",
@@ -51,8 +51,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": document.id,
-		"resourceType": "aws_globalaccelerator_accelerator",
-		"resourceName": tf_lib.get_resource_name(document.resource.aws_globalaccelerator_accelerator[name], name),
+
+
 		"searchKey": sprintf("aws_globalaccelerator_accelerator[{{%s}}].attributes.flow_logs_enabled", [name]),
 		"searchLine": common_lib.build_search_line(["resource", "aws_globalaccelerator_accelerator", name, "attributes", "flow_logs_enabled"], []),
 		"issueType": "IncorrectValue",

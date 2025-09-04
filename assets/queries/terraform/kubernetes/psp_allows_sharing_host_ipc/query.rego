@@ -10,8 +10,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "kubernetes_pod_security_policy",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("kubernetes_pod_security_policy[%s].spec.host_ipc", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": "Attribute 'host_ipc' should be undefined or false",

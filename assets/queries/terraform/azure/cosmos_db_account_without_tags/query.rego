@@ -8,8 +8,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "azurerm_cosmosdb_account",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("azurerm_cosmosdb_account[%s]", [name]),
 		"issueType": "MissingAttribute",
 		"keyExpectedValue": sprintf("azurerm_cosmosdb_account[%s].tags should be defined'", [name]),

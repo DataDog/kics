@@ -9,8 +9,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "google_project_iam_member",
-		"resourceName": tf_lib.get_resource_name(projectIam, name),
+
+
 		"searchKey": sprintf("google_project_iam_member[%s].role", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": sprintf("google_project_iam_member[%s].role should not be admin", [name]),
@@ -25,8 +25,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "google_project_iam_member",
-		"resourceName": tf_lib.get_resource_name(projectIam, name),
+
+
 		"searchKey": sprintf("google_project_iam_member[%s].role", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": sprintf("google_project_iam_member[%s].role should not be admin", [name]),

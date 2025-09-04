@@ -10,8 +10,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "aws_eks_cluster",
-		"resourceName": tf_lib.get_resource_name(cluster, name),
+
+
 		"searchKey": sprintf("aws_eks_cluster[%s]", [name]),
 		"issueType": "MissingAttribute",
 		"keyExpectedValue": "'encryption_config' should be defined and not null",
@@ -29,8 +29,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "aws_eks_cluster",
-		"resourceName": tf_lib.get_resource_name(cluster, name),
+
+
 		"searchKey": sprintf("aws_eks_cluster[%s].encryption_config.resources", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": "'secrets' should be defined",
@@ -49,8 +49,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "module",
-		"resourceName": sprintf("%s", [name]),
+
+
 		"searchKey": sprintf("module[%s]", [name]),
 		"issueType": "MissingAttribute",
 		"keyExpectedValue": sprintf("module[%s].%s should be defined and not null", [name, keyToCheck]),
@@ -69,8 +69,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "module",
-		"resourceName": sprintf("%s", [name]),
+
+
 		"searchKey": sprintf("module[%s].%s", [name, keyToCheck]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": "'secrets' should be defined",

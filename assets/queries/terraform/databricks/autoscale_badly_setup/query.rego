@@ -8,8 +8,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "databricks_cluster",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("databricks_cluster[%s].autoscale", [name]),
 		"issueType": "MissingAttribute",
 		"keyExpectedValue": sprintf("'databricks_cluster[%s].autoscale.min_workers' should not be empty", [name]),
@@ -23,8 +23,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "databricks_cluster",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("databricks_cluster[%s].autoscale", [name]),
 		"issueType": "MissingAttribute",
 		"keyExpectedValue": sprintf("'databricks_cluster[%s].autoscale.max_workers' should not be empty", [name]),

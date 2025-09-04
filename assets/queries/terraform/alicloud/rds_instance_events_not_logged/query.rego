@@ -15,8 +15,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "alicloud_log_audit",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("alicloud_log_audit[%s].variable_map", [name]),
 		"issueType": "MissingAttribute",
 		"keyExpectedValue": sprintf("'%s' parameter value should be 'true'", [log]),
@@ -35,8 +35,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "alicloud_log_audit",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("alicloud_log_audit[%s].variable_map.%s", [name, log]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": sprintf("'%s' parameter value should be 'true'", [log]),

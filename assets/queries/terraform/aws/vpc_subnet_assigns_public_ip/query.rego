@@ -10,8 +10,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "aws_subnet",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("aws_subnet[%s].map_public_ip_on_launch", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": sprintf("aws_subnet[%s].map_public_ip_on_launch should be set to false or undefined", [name]),
@@ -33,8 +33,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "module",
-		"resourceName": sprintf("%s", [name]),
+
+
 		"searchKey": sprintf("%s.%s", [name, keyToCheck]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": sprintf("%s.%s should be set to false", [name, keyToCheck]),
@@ -56,8 +56,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "module",
-		"resourceName": sprintf("%s", [name]),
+
+
 		"searchKey": sprintf("%s", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": sprintf("%s.map_public_ip_on_launch should be set to false", [name]),

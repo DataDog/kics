@@ -8,8 +8,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "google_bigquery_dataset",
-		"resourceName": tf_lib.get_specific_resource_name(resource, "google_bigquery_dataset", name),
+
+
 		"searchKey": sprintf("google_bigquery_dataset[%s].access.special_group", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": "'access.special_group' should not equal to 'allAuthenticatedUsers'",

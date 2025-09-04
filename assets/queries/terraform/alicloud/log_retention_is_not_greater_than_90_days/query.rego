@@ -10,8 +10,8 @@ CxPolicy[result] {
     
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "alicloud_log_store",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("alicloud_log_store[%s]", [name]),
 		"issueType": "MissingAttribute",
 		"keyExpectedValue": "For attribute 'retention_period' should be set and over 90 days.",
@@ -30,8 +30,8 @@ CxPolicy[result] {
     
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "alicloud_log_store",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("alicloud_log_store[%s].retention_period", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": "For the attribite 'retention_period' should be set to 90+ days",

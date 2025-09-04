@@ -11,8 +11,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "aws_instance",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("aws_instance.%s", [name]),
 		"issueType": "MissingAttribute",
 		"keyExpectedValue": "'associate_public_ip_address' should be defined and not null",
@@ -31,8 +31,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "module",
-		"resourceName": sprintf("%s", [name]),
+
+
 		"searchKey": sprintf("module[%s]", [name]),
 		"issueType": "MissingAttribute",
 		"keyExpectedValue": "'associate_public_ip_address' should be defined and not null",
@@ -49,8 +49,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "aws_instance",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("aws_instance.%s.associate_public_ip_address", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": "'associate_public_ip_address' should be set to false",
@@ -69,8 +69,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "module",
-		"resourceName": sprintf("%s", [name]),
+
+
 		"searchKey": sprintf("module[%s].associate_public_ip_address", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": "'associate_public_ip_address' should be set to false",

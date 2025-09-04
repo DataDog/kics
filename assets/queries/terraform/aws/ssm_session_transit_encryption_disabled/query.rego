@@ -13,8 +13,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "aws_ssm_document",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("aws_ssm_document[%s].content", [name]),
 		"issueType": "MissingAttribute",
 		"keyExpectedValue": "'inputs' should be defined and not null",
@@ -33,8 +33,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "aws_ssm_document",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("aws_ssm_document[%s].content", [name]),
 		"issueType": "MissingAttribute",
 		"keyExpectedValue": "'inputs.kmsKeyId' should be defined and not null",

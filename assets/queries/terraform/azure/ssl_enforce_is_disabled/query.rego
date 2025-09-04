@@ -9,8 +9,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "azurerm_postgresql_server",
-		"resourceName": tf_lib.get_resource_name(resource, var0),
+
+
 		"searchKey": sprintf("azurerm_postgresql_server[%s].ssl_enforcement_enabled", [var0]),
 		"issueType": "MissingAttribute",
 		"keyExpectedValue": sprintf("'azurerm_postgresql_server.%s.ssl_enforcement_enabled' should equal 'true'", [var0]),
@@ -27,8 +27,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "azurerm_postgresql_server",
-		"resourceName": tf_lib.get_resource_name(resource, var0),
+
+
 		"searchKey": sprintf("azurerm_postgresql_server[%s].ssl_enforcement_enabled", [var0]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": sprintf("'azurerm_postgresql_server.%s.ssl_enforcement_enabled' should equal 'true'", [var0]),

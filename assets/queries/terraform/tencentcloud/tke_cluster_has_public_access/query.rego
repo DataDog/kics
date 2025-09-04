@@ -16,8 +16,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "tencentcloud_kubernetes_cluster",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("tencentcloud_kubernetes_cluster[%s].master_config.public_ip_assigned", [name]),
 		"searchLine": common_lib.build_search_line(["resource", "tencentcloud_kubernetes_cluster", name, "master_config", "public_ip_assigned"], []),
 		"issueType": "IncorrectValue",
@@ -38,8 +38,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "tencentcloud_kubernetes_cluster",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("tencentcloud_kubernetes_cluster[%s].master_config.public_ip_assigned", [name]),
 		"searchLine": common_lib.build_search_line(["resource", "tencentcloud_kubernetes_cluster", name, "master_config", index, "public_ip_assigned"], []),
 		"issueType": "IncorrectValue",
@@ -59,8 +59,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "tencentcloud_kubernetes_cluster",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("tencentcloud_kubernetes_cluster[%s].master_config.internet_max_bandwidth_out", [name]),
 		"searchLine": common_lib.build_search_line(["resource", "tencentcloud_kubernetes_cluster", name, "master_config", "internet_max_bandwidth_out"], []),
 		"issueType": "IncorrectValue",
@@ -80,8 +80,8 @@ CxPolicy[result] {
 
 	result := {
         "documentId": input.document[i].id,
-        "resourceType": "tencentcloud_kubernetes_cluster",
-        "resourceName": tf_lib.get_resource_name(resource, name),
+
+
         "searchKey": sprintf("tencentcloud_kubernetes_cluster[%s].master_config.internet_max_bandwidth_out", [name]),
         "searchLine": common_lib.build_search_line(["resource", "tencentcloud_kubernetes_cluster", name, "master_config", index, "internet_max_bandwidth_out"], []),
         "issueType": "IncorrectValue",
@@ -103,8 +103,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "tencentcloud_kubernetes_cluster",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("tencentcloud_kubernetes_cluster[%s].worker_config.public_ip_assigned", [name]),
 		"searchLine": common_lib.build_search_line(["resource", "tencentcloud_kubernetes_cluster", name, "worker_config", "public_ip_assigned"], []),
 		"issueType": "IncorrectValue",
@@ -125,8 +125,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "tencentcloud_kubernetes_cluster",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("tencentcloud_kubernetes_cluster[%s].worker_config.public_ip_assigned", [name]),
 		"searchLine": common_lib.build_search_line(["resource", "tencentcloud_kubernetes_cluster", name, "worker_config", index, "public_ip_assigned"], []),
 		"issueType": "IncorrectValue",
@@ -146,8 +146,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "tencentcloud_kubernetes_cluster",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("tencentcloud_kubernetes_cluster[%s].worker_config.internet_max_bandwidth_out", [name]),
 		"searchLine": common_lib.build_search_line(["resource", "tencentcloud_kubernetes_cluster", name, "worker_config", "internet_max_bandwidth_out"], []),
 		"issueType": "IncorrectValue",
@@ -167,8 +167,8 @@ CxPolicy[result] {
 
 	result := {
         "documentId": input.document[i].id,
-        "resourceType": "tencentcloud_kubernetes_cluster",
-        "resourceName": tf_lib.get_resource_name(resource, name),
+
+
         "searchKey": sprintf("tencentcloud_kubernetes_cluster[%s].worker_config.internet_max_bandwidth_out", [name]),
         "searchLine": common_lib.build_search_line(["resource", "tencentcloud_kubernetes_cluster", name, "worker_config", index, "internet_max_bandwidth_out"], []),
         "issueType": "IncorrectValue",

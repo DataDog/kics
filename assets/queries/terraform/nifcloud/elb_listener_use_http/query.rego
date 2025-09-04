@@ -16,8 +16,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "nifcloud_elb_listener",
-		"resourceName": tf_lib.get_resource_name(elb_listener, name),
+
+
 		"searchKey": sprintf("nifcloud_elb_listener[%s]", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": sprintf("'nifcloud_elb_listener[%s]' should switch to HTTPS to benefit from TLS security features", [name]),

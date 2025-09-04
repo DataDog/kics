@@ -9,8 +9,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "aws_cloudtrail",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("aws_cloudtrail[%s].enable_log_file_validation", [name]),
 		"searchLine": common_lib.build_search_line(["resource", "aws_cloudtrail", name, "enable_log_file_validation"], []),
 		"issueType": "IncorrectValue",
@@ -30,8 +30,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "aws_cloudtrail",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("aws_cloudtrail[%s]", [name]),
 		"searchLine": common_lib.build_search_line(["resource", "aws_cloudtrail", name], []),
 		"issueType": "MissingAttribute",

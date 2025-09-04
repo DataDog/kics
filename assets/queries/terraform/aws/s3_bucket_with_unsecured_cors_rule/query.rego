@@ -12,8 +12,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "aws_s3_bucket",
-		"resourceName": tf_lib.get_specific_resource_name(bucket, "aws_s3_bucket", name),
+
+
 		"searchKey": sprintf("aws_s3_bucket[%s].cors_rule", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": "'cors_rule' to not allow all methods, all headers or several origins",
@@ -31,8 +31,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "aws_s3_bucket",
-		"resourceName": tf_lib.get_specific_resource_name(bucket, "aws_s3_bucket", name),
+
+
 		"searchKey": sprintf("aws_s3_bucket[%s].cors_rule", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": "'cors_rule' to not allow all methods, all headers or several origins",
@@ -49,8 +49,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "module",
-		"resourceName": sprintf("%s", [name]),
+
+
 		"searchKey": sprintf("module[%s].cors_rule", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": "'cors_rule' to not allow all methods, all headers or several origins",
@@ -70,8 +70,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "aws_s3_bucket_cors_configuration",
-		"resourceName": tf_lib.get_resource_name(cors_configuration, name),
+
+
 		"searchKey": sprintf("aws_s3_bucket_cors_configuration[%s].cors_rule", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": "'cors_rule' to not allow all methods, all headers or several origins",
@@ -91,8 +91,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "aws_s3_bucket_cors_configuration",
-		"resourceName": tf_lib.get_resource_name(cors_configuration, name),
+
+
 		"searchKey": sprintf("aws_s3_bucket_cors_configuration[%s].cors_rule", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": "'cors_rule' to not allow all methods, all headers or several origins",

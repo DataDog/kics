@@ -12,8 +12,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "tencentcloud_clb_listener",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("tencentcloud_clb_listener[%s].protocol", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": sprintf("tencentcloud_clb_listener[%s].protocol[%s] should not be an insecure protocol", [name, protocolCheck]),

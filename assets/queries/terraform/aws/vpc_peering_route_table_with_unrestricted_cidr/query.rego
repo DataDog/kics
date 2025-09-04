@@ -12,8 +12,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "aws_route",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("aws_route[%s]", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": sprintf("aws_route[%s] restricts CIDR", [name]),
@@ -29,8 +29,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "aws_route",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("aws_route_table[%s].route", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": sprintf("aws_route_table[%s].route restricts CIDR", [name]),

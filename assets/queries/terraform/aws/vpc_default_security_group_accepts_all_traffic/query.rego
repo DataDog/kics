@@ -14,8 +14,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "aws_default_security_group",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("aws_default_security_group[{{%s}}].%s", [name, block]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": sprintf("aws_default_security_group[{{%s}}] should not have '%s' defined", [name, block]),
@@ -42,8 +42,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "aws_default_security_group",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("aws_default_security_group[{{%s}}].%s.%s", [name, block, cidrs[c]]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": sprintf("'%s' should be undefined", [block]),

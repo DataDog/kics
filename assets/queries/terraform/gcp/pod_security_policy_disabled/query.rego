@@ -9,8 +9,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "google_container_cluster",
-		"resourceName": tf_lib.get_resource_name(resource, primary),
+
+
 		"searchKey": sprintf("google_container_cluster[%s]", [primary]),
 		"issueType": "MissingAttribute",
 		"keyExpectedValue": "Attribute 'pod_security_policy_config' should be defined",
@@ -28,8 +28,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "google_container_cluster",
-		"resourceName": tf_lib.get_resource_name(resource, primary),
+
+
 		"searchKey": sprintf("google_container_cluster[%s].pod_security_policy_config.enabled", [primary]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": "Attribute 'enabled' of 'pod_security_policy_config' should be true",

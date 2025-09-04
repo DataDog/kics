@@ -18,8 +18,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "nifcloud_load_balancer",
-		"resourceName": tf_lib.get_resource_name(lb, name),
+
+
 		"searchKey": sprintf("nifcloud_load_balancer[%s]", [name]),
 		"issueType": "MissingAttribute",
 		"keyExpectedValue": sprintf("'nifcloud_load_balancer[%s]' should not use outdated/insecure TLS versions for encryption. You should be using TLS v1.2+.", [name]),
@@ -34,8 +34,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "nifcloud_load_balancer",
-		"resourceName": tf_lib.get_resource_name(lb, name),
+
+
 		"searchKey": sprintf("nifcloud_load_balancer[%s]", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": sprintf("'nifcloud_load_balancer[%s]' should not use outdated/insecure TLS versions for encryption. You should be using TLS v1.2+.", [name]),

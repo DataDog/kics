@@ -10,8 +10,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "azurerm_app_service",
-		"resourceName": tf_lib.get_resource_name(function, name),
+
+
 		"searchKey": sprintf("azurerm_app_service[%s].site_config.ftps_state", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": sprintf("'azurerm_app_service[%s].site_config.ftps_state' should not be set to 'AllAllowed'", [name]),

@@ -10,8 +10,8 @@ CxPolicy[result] {
 	volumes[_].path
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "kubernetes_pod",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("kubernetes_pod[%s].spec.volume.host_path.path", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": sprintf("Resource name '%s' in non kube-system namespace '%s' should not have host_path '%s' mounted", [
@@ -36,8 +36,8 @@ CxPolicy[result] {
 	volumes[_].path
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "kubernetes_pod",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("kubernetes_pod[%s].spec.volume.host_path.path", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": sprintf("Resource name '%s' in non kube-system namespace '%s' should not have host_path '%s' mounted", [
@@ -61,8 +61,8 @@ CxPolicy[result] {
 	volumes[_].path
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "kubernetes_persistent_volume",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("kubernetes_persistent_volume[%s].spec.volume.host_path.path", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": sprintf("Resource name '%s' in non kube-system namespace '%s' should not have host_path '%s' mounted", [
@@ -87,8 +87,8 @@ CxPolicy[result] {
 	volumes[_].path
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "kubernetes_persistent_volume",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("kubernetes_persistent_volume[%s].spec.volume.host_path.path", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": sprintf("Resource name '%s' in non kube-system namespace '%s' should not have host_path '%s' mounted", [

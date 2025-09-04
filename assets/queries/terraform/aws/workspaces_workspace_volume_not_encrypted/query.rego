@@ -12,8 +12,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "aws_workspaces_workspace",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("aws_workspaces_workspace[{{%s}}].workspace_properties.%s", [name, volumes[n].value]),
 		"issueType": "MissingAttribute",
 		"keyExpectedValue": sprintf("aws_workspaces_workspace.%s should be set to true", [volumesKey]),
@@ -29,8 +29,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "aws_workspaces_workspace",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("aws_workspaces_workspace[{{%s}}].%s", [name, volumes[n].key]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": sprintf("aws_workspaces_workspace.%s should be set to true", [volumes[n].key]),

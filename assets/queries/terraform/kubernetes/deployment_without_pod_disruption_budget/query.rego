@@ -19,8 +19,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "kubernetes_deployment",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("kubernetes_deployment[%s].spec.selector.match_labels", [name]),
 		"issueType": "MissingAttribute",
 		"keyExpectedValue": sprintf("kubernetes_deployment[%s].spec.selector.match_labels is targeted by a PodDisruptionBudget", [name]),
@@ -29,8 +29,8 @@ CxPolicy[result] {
 }
 
 hasPodDisruptionBudget(lValue, lKey) {
-	pod := input.document[_].resource[resourceType]
-	resourceType == "kubernetes_pod_disruption_budget"
+
+
 
 	labels := pod[podName].spec.selector.match_labels
 

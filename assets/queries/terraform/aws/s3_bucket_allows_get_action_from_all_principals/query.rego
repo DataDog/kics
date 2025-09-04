@@ -10,8 +10,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": pl[r],
-		"resourceName": tf_lib.get_specific_resource_name(resource, "aws_s3_bucket", name),
+
+
 		"searchKey": sprintf("%s[%s].policy.Action", [pl[r], name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": sprintf("%s[%s].policy.Action should not be a 'Get' action", [pl[r], name]),
@@ -27,8 +27,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "module",
-		"resourceName": sprintf("%s", [name]),
+
+
 		"searchKey": sprintf("module[%s].%s.Action", [name, keyToCheck]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": sprintf("module[%s].policy.Action should not be a 'Get' action", [name]),

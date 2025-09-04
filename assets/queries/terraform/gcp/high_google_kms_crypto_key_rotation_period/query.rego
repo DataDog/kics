@@ -10,8 +10,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "google_kms_crypto_key",
-		"resourceName": tf_lib.get_resource_name(cryptoKey, name),
+
+
 		"searchKey": sprintf("google_kms_crypto_key[%s].rotation_period", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": "'google_kms_crypto_key.rotation_period' should be less or equal to 7776000",
@@ -32,8 +32,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "google_kms_crypto_key",
-		"resourceName": tf_lib.get_resource_name(cryptoKey, name),
+
+
 		"searchKey": sprintf("google_kms_crypto_key[%s]", [name]),
 		"issueType": "MissingAttribute",
 		"keyExpectedValue": "'google_kms_crypto_key.rotation_period' should be defined with a value less or equal to 7776000",

@@ -9,8 +9,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "google_compute_project_metadata",
-		"resourceName": tf_lib.get_resource_name(input.document[i].resource.google_compute_project_metadata[name], name),
+
+
 		"searchKey": sprintf("google_compute_project_metadata[%s].metadata.enable-oslogin", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": sprintf("google_compute_project_metadata[%s].metadata['enable-oslogin'] should be true", [name]),
@@ -30,8 +30,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "google_compute_project_metadata",
-		"resourceName": tf_lib.get_resource_name(input.document[i].resource.google_compute_project_metadata[name], name),
+
+
 		"searchKey": sprintf("google_compute_project_metadata[%s].metadata", [name]),
 		"issueType": "MissingAttribute",
 		"keyExpectedValue": sprintf("google_compute_project_metadata[%s].metadata['enable-oslogin'] should be true", [name]),

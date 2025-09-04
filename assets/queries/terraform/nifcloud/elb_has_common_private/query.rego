@@ -10,8 +10,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "nifcloud_elb",
-		"resourceName": tf_lib.get_resource_name(elb, name),
+
+
 		"searchKey": sprintf("nifcloud_elb[%s]", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": sprintf("'nifcloud_elb[%s]' should use a private LAN to isolate the private side network from the shared network", [name]),
@@ -26,8 +26,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "nifcloud_elb",
-		"resourceName": tf_lib.get_resource_name(elb, name),
+
+
 		"searchKey": sprintf("nifcloud_elb[%s]", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": sprintf("'nifcloud_elb[%s]' should use a private LAN to isolate the private side network from the shared network", [name]),

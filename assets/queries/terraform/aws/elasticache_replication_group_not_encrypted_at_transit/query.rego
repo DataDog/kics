@@ -10,8 +10,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "aws_elasticache_replication_group",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("aws_elasticache_replication_group[%s]", [name]),
 		"issueType": "MissingAttribute",
 		"keyExpectedValue": "The attribute 'transit_encryption_enabled' should be set to true",
@@ -26,8 +26,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "aws_elasticache_replication_group",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("aws_elasticache_replication_group[%s].transit_encryption_enabled", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": "The attribute 'transit_encryption_enabled' should be set to true",
@@ -44,8 +44,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "module",
-		"resourceName": sprintf("%s", [name]),
+
+
 		"searchKey": sprintf("module[%s]", [name]),
 		"issueType": "MissingAttribute",
 		"keyExpectedValue": sprintf("module[%s].%s should be set to true", [name, keyToCheck]),
@@ -60,8 +60,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "module",
-		"resourceName": sprintf("%s", [name]),
+
+
 		"searchKey": sprintf("module[%s].%s", [name, keyToCheck]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": sprintf("module[%s].%s should be set to true", [name, keyToCheck]),

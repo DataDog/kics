@@ -15,8 +15,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": doc.id,
-		"resourceType": "aws_instance",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("aws_instance[%s].subnet_id", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": sprintf("aws_instance[%s].subnet_id should not be associated with a default VPC", [name]),

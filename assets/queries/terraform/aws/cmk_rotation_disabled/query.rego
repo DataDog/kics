@@ -12,8 +12,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "aws_kms_key",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("aws_kms_key[%s]", [name]),
 		"issueType": "MissingAttribute",
 		"keyExpectedValue": sprintf("aws_kms_key[%s].enable_key_rotation should be set to true", [name]),
@@ -31,8 +31,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "aws_kms_key",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("aws_kms_key[%s]", [name]),
         "issueType": "IncorrectValue",
 		"keyExpectedValue": sprintf("aws_kms_key[%s].enable_key_rotation should be set to false", [name]),
@@ -50,8 +50,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "aws_kms_key",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("aws_kms_key[%s]", [name]),
         "issueType": "IncorrectValue",
 		"keyExpectedValue": sprintf("aws_kms_key[%s].enable_key_rotation should be set to true", [name]),

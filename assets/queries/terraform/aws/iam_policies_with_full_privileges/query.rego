@@ -4,8 +4,8 @@ import data.generic.common as common_lib
 import data.generic.terraform as tf_lib
 
 CxPolicy[result] {
-	resourceType := {"aws_iam_role_policy", "aws_iam_user_policy", "aws_iam_group_policy", "aws_iam_policy"}
-	resource := input.document[i].resource[resourceType[idx]][name]
+
+
 
 	policy := common_lib.json_unmarshal(resource.policy)
 
@@ -18,13 +18,13 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": resourceType[idx],
-		"resourceName": tf_lib.get_resource_name(resource, name),
-		"searchKey": sprintf("%s[%s].policy", [resourceType[idx], name]),
+
+
+
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": "'policy.Statement.Action' shouldn't contain '*'",
 		"keyActualValue": "'policy.Statement.Action' contains '*'",
-		"searchLine": common_lib.build_search_line(["resource", resourceType[idx], name, "policy"], []),
+
 	}
 }
 
@@ -42,8 +42,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "aws_iam_policy_document",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("aws_iam_policy_document[%s].policy", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": "'policy.Statement.Action' shouldn't contain '*'",

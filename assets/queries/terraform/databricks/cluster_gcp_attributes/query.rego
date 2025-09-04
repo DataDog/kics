@@ -8,8 +8,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "databricks_cluster",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("databricks_cluster[%s].gcp_attributes.availability", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": sprintf("'databricks_cluster[%s].gcp_attributes.availability' should not be equal to 'SPOT'", [name]),

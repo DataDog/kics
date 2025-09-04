@@ -16,8 +16,8 @@ CxPolicy[result] {
 
     result := {
         "documentId": input.document[i].id,
-        "resourceType": "aws_dms_endpoint",
-        "resourceName": tf_lib.get_resource_name(resource, name),
+
+
         "searchKey": sprintf("aws_dms_endpoint[{{%s}}].ssl_mode", [name]),
         "searchLine": common_lib.build_search_line(["resource", "aws_dms_endpoint", name, "ssl_mode"], []),
         "issueType": "IncorrectValue",
@@ -49,8 +49,8 @@ CxPolicy[result] {
 
     result := {
         "documentId": input.document[i].id,
-        "resourceType": "aws_dms_endpoint",
-        "resourceName": tf_lib.get_resource_name(resource, name),
+
+
         "searchKey": sprintf("aws_dms_endpoint[{{%s}}].ssl_mode", [name]),
         "searchLine": common_lib.build_search_line(["resource", "aws_dms_endpoint", name, "ssl_mode"], []),
         "issueType": "IncorrectValue",

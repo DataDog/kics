@@ -10,8 +10,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "aws_cloudtrail",
-		"resourceName": tf_lib.get_resource_name(cloudtrail, name),
+
+
 		"searchKey": sprintf("aws_cloudtrail[%s]", [name]),
 		"issueType": "MissingAttribute",
 		"keyExpectedValue": sprintf("'aws_cloudtrail[%s].sns_topic_name' should be set and should not be null", [name]),

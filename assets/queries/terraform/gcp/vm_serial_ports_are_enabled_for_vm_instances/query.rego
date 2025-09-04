@@ -10,8 +10,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "google_compute_instance",
-		"resourceName": tf_lib.get_resource_name(compute, name),
+
+
 		"searchKey": sprintf("google_compute_instance[%s].metadata.serial-port-enable", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": sprintf("google_compute_instance[%s].metadata.serial-port-enable should be set to false or undefined", [name]),
@@ -27,8 +27,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "google_compute_project_metadata",
-		"resourceName": tf_lib.get_resource_name(project, name),
+
+
 		"searchKey": sprintf("google_compute_project_metadata[%s].metadata.serial-port-enable", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": sprintf("google_compute_project_metadata[%s].metadata.serial-port-enable should be set to false or undefined", [name]),
@@ -44,8 +44,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "google_compute_project_metadata_item",
-		"resourceName": tf_lib.get_resource_name(metadata, name),
+
+
 		"searchKey": sprintf("google_compute_project_metadata_item[%s].value", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": sprintf("google_compute_project_metadata[%s].value should be set to false", [name]),

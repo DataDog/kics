@@ -33,8 +33,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": document[l].id,
-		"resourceType": "aws_lambda_function",
-		"resourceName": tf_lib.get_resource_name(lambda, function_id),
+
+
 		"searchKey": sprintf("aws_lambda_function[%s].role", [function_id]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": sprintf("aws_lambda_function[%s].role shouldn't have privileged permissions through attached inline policy.", [function_id]),
@@ -73,8 +73,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": document[l].id,
-		"resourceType": "aws_lambda_function",
-		"resourceName": tf_lib.get_resource_name(lambda, function_id),
+
+
 		"searchKey": sprintf("aws_lambda_function[%s].role", [function_id]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": sprintf("aws_lambda_function[%s].role shouldn't have privileged permissions through attached managed policy", [function_id]),
@@ -102,8 +102,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": document[l].id,
-		"resourceType": "aws_lambda_function",
-		"resourceName": tf_lib.get_resource_name(lambda, function_id),
+
+
 		"searchKey": sprintf("aws_lambda_function[%s].role", [function_id]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": sprintf("aws_lambda_function[%s].role shouldn't have privileged permissions", [function_id]),

@@ -15,8 +15,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": listKinds[x],
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("%s[%s].metadata", [listKinds[x], name]),
 		"issueType": "MissingAttribute",
 		"keyExpectedValue": sprintf("%s[%s].metadata should be set", [listKinds[x], name]),
@@ -31,8 +31,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": listKinds[x],
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("%s[%s].metadata.namespace", [listKinds[x], name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": sprintf("%s[%s].metadata.namespace should not be set to 'default'", [listKinds[x], name]),

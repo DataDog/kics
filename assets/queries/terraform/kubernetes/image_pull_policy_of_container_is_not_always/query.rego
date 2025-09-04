@@ -14,8 +14,8 @@ CxPolicy[result] {
 	not contains(path.image, ":latest")
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": x,
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("%s[%s].%s.image_pull_policy", [x, name, resource_prefix]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": "Attribute 'image_pull_policy' should be defined as 'Always'",

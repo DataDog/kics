@@ -10,8 +10,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "aws_elasticsearch_domain",
-		"resourceName": tf_lib.get_resource_name(domain, name),
+
+
 		"searchKey": sprintf("aws_elasticsearch_domain[%s]", [name]),
 		"searchLine": common_lib.build_search_line(["resource", "aws_elasticsearch_domain", name], []),
 		"issueType": "MissingAttribute",
@@ -30,8 +30,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "aws_elasticsearch_domain",
-		"resourceName": tf_lib.get_resource_name(domain, name),
+
+
 		"searchKey": sprintf("aws_elasticsearch_domain[%s].encrypt_at_rest.enabled", [name]),
 		"searchLine": common_lib.build_search_line(["resource", "aws_elasticsearch_domain", name, "encrypt_at_rest", "enabled"], []),
 		"issueType": "IncorrectValue",
@@ -55,8 +55,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "module",
-		"resourceName": sprintf("%s", [name]),
+
+
 		"searchKey": sprintf("module[%s]", [name]),
 		"searchLine": common_lib.build_search_line(["module", name], []),
 		"issueType": "MissingAttribute",
@@ -76,8 +76,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "module",
-		"resourceName": sprintf("%s", [name]),
+
+
 		"searchKey": sprintf("module[%s].%s.enabled", [name, keyToCheck]),
 		"searchLine": common_lib.build_search_line(["module", name, keyToCheck, "enabled"], []),
 		"issueType": "IncorrectValue",

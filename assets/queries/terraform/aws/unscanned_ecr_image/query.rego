@@ -10,8 +10,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "aws_ecr_repository",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("aws_ecr_repository[%s].image_scanning_configuration.scan_on_push", [name]),
 		"searchLine": common_lib.build_search_line(["resource", "aws_ecr_repository", name, "image_scanning_configuration", "scan_on_push"], []),
 		"issueType": "IncorrectValue",
@@ -32,8 +32,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "aws_ecr_repository",
-		"resourceName": tf_lib.get_resource_name(imageScan, name),
+
+
 		"searchKey": sprintf("aws_ecr_repository[%s]", [name]),
 		"searchLine": common_lib.build_search_line(["resource", "aws_ecr_repository", name], []),
 		"issueType": "MissingAttribute",

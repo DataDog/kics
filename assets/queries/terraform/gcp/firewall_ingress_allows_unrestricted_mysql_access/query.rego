@@ -47,8 +47,8 @@ CxPolicy[result] {
 
     result := {
         "documentId": input.document[i].id,
-        "resourceType": "google_compute_firewall",
-        "resourceName": tf_lib.get_resource_name(resource, name),
+
+
         "searchKey": sprintf("google_compute_firewall[{{%s}}].source_ranges", [name]),
         "searchLine": common_lib.build_search_line(["resource", "google_compute_firewall", name, "source_ranges"], []),
         "issueType": "IncorrectValue",

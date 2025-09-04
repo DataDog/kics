@@ -9,8 +9,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "tencentcloud_mysql_instance",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("tencentcloud_mysql_instance[%s].intranet_port", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": sprintf("[%s] has 'intranet_port' set to non 3306", [name]),
@@ -25,8 +25,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "tencentcloud_mysql_instance",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("tencentcloud_mysql_instance[%s]",[name]),
 		"issueType": "MissingAttribute",
 		"keyExpectedValue": sprintf("[%s] 'intranet_port' should be set and the value should not be 3306",[name]),

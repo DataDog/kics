@@ -12,8 +12,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "aws_elasticache_cluster",
-		"resourceName": tf_lib.get_specific_resource_name(cluster, "aws_elasticache_cluster", name),
+
+
 		"searchLine": common_lib.build_search_line(["resource", "aws_elasticache_cluster", name], []),
 		"searchKey": sprintf("aws_elasticache_cluster[%s]", [name]),
 		"issueType": "MissingAttribute",
@@ -33,8 +33,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "aws_elasticache_cluster",
-		"resourceName": tf_lib.get_specific_resource_name(cluster, "aws_elasticache_cluster", name),
+
+
 		"searchLine": common_lib.build_search_line(["resource", "aws_elasticache_cluster", name, "az_mode"], []),
 		"searchKey": sprintf("aws_elasticache_cluster[%s].az_mode", [name]),
 		"issueType": "IncorrectValue",

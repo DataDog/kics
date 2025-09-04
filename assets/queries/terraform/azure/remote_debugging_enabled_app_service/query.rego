@@ -14,8 +14,8 @@ CxPolicy[result] {
 
     result := {
         "documentId": input.document[i].id,
-        "resourceType": "azurerm_app_service",
-        "resourceName": tf_lib.get_resource_name(resource, name),
+
+
         "searchKey": sprintf("azurerm_app_service[%s].site_config.remote_debugging_enabled", [name]),
         "searchLine": common_lib.build_search_line(["resource", "azurerm_app_service", name, "site_config", "remote_debugging_enabled"], []),
         "issueType": "IncorrectValue",
@@ -40,8 +40,8 @@ CxPolicy[result] {
 
     result := {
         "documentId": input.document[i].id,
-        "resourceType": "azurerm_linux_function_app",
-        "resourceName": tf_lib.get_resource_name(resource, name),
+
+
         "searchKey": sprintf("azurerm_linux_function_app[%s].site_config.remote_debugging_enabled", [name]),
         "searchLine": common_lib.build_search_line(["resource", "azurerm_linux_function_app", name, "site_config", "remote_debugging_enabled"], []),
         "issueType": "IncorrectValue",
@@ -66,8 +66,8 @@ CxPolicy[result] {
 
     result := {
         "documentId": input.document[i].id,
-        "resourceType": "azurerm_linux_function_app_slot",
-        "resourceName": tf_lib.get_resource_name(resource, name),
+
+
         "searchKey": sprintf("azurerm_linux_function_app_slot[%s].site_config.remote_debugging_enabled", [name]),
         "searchLine": common_lib.build_search_line(["resource", "azurerm_linux_function_app_slot", name, "site_config", "remote_debugging_enabled"], []),
         "issueType": "IncorrectValue",
@@ -92,8 +92,8 @@ CxPolicy[result] {
 
     result := {
         "documentId": input.document[i].id,
-        "resourceType": "azurerm_linux_web_app",
-        "resourceName": tf_lib.get_resource_name(resource, name),
+
+
         "searchKey": sprintf("azurerm_linux_web_app[%s].site_config.remote_debugging_enabled", [name]),
         "searchLine": common_lib.build_search_line(["resource", "azurerm_linux_web_app", name, "site_config", "remote_debugging_enabled"], []),
         "issueType": "IncorrectValue",
@@ -118,8 +118,8 @@ CxPolicy[result] {
 
     result := {
         "documentId": input.document[i].id,
-        "resourceType": "azurerm_linux_web_app_slot",
-        "resourceName": tf_lib.get_resource_name(resource, name),
+
+
         "searchKey": sprintf("azurerm_linux_web_app_slot[%s].site_config.remote_debugging_enabled", [name]),
         "searchLine": common_lib.build_search_line(["resource", "azurerm_linux_web_app_slot", name, "site_config", "remote_debugging_enabled"], []),
         "issueType": "IncorrectValue",
@@ -144,8 +144,8 @@ CxPolicy[result] {
 
     result := {
         "documentId": input.document[i].id,
-        "resourceType": "azurerm_windows_function_app",
-        "resourceName": tf_lib.get_resource_name(resource, name),
+
+
         "searchKey": sprintf("azurerm_windows_function_app[%s].site_config.remote_debugging_enabled", [name]),
         "searchLine": common_lib.build_search_line(["resource", "azurerm_windows_function_app", name, "site_config", "remote_debugging_enabled"], []),
         "issueType": "IncorrectValue",
@@ -170,8 +170,8 @@ CxPolicy[result] {
 
     result := {
         "documentId": input.document[i].id,
-        "resourceType": "azurerm_windows_function_app_slot",
-        "resourceName": tf_lib.get_resource_name(resource, name),
+
+
         "searchKey": sprintf("azurerm_windows_function_app_slot[%s].site_config.remote_debugging_enabled", [name]),
         "searchLine": common_lib.build_search_line(["resource", "azurerm_windows_function_app_slot", name, "site_config", "remote_debugging_enabled"], []),
         "issueType": "IncorrectValue",
@@ -196,8 +196,8 @@ CxPolicy[result] {
 
     result := {
         "documentId": input.document[i].id,
-        "resourceType": "azurerm_windows_web_app",
-        "resourceName": tf_lib.get_resource_name(resource, name),
+
+
         "searchKey":sprintf("azurerm_windows_web_app[%s].site_config.remote_debugging_enabled", [name]),
         "searchLine": common_lib.build_search_line(["resource", "azurerm_windows_web_app", name, "site_config", "remote_debugging_enabled"], []),
         "issueType": "IncorrectValue",
@@ -222,8 +222,8 @@ CxPolicy[result] {
 
     result := {
         "documentId": input.document[i].id,
-        "resourceType": "azurerm_windows_web_app_slot",
-        "resourceName": tf_lib.get_resource_name(resource, name),
+
+
         "searchKey": sprintf("azurerm_windows_web_app_slot[%s].site_config.remote_debugging_enabled", [name]),
         "searchLine": common_lib.build_search_line(["resource", "azurerm_windows_web_app_slot", name, "site_config", "remote_debugging_enabled"], []),
         "issueType": "IncorrectValue",

@@ -9,8 +9,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "aws_mq_broker",
-		"resourceName": tf_lib.get_specific_resource_name(broker, "aws_mq_broker", name),
+
+
 		"searchKey": sprintf("aws_mq_broker[%s].publicly_accessible", [name]),
 		"searchLine": common_lib.build_search_line(["resource", "aws_mq_broker", name, "publicly_accessible"], []),
 		"issueType": "IncorrectValue",

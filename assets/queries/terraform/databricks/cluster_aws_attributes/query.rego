@@ -8,8 +8,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "databricks_cluster",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("databricks_cluster[%s].aws_attributes.availability", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": sprintf("'databricks_cluster[%s].aws_attributes.availability' should not be equal to 'SPOT'", [name]),
@@ -23,8 +23,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "databricks_cluster",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("databricks_cluster[%s].aws_attributes.first_on_demand", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": sprintf("'databricks_cluster[%s].aws_attributes.first_on_demand' should not be equal to '0'", [name]),
@@ -38,8 +38,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "databricks_cluster",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("databricks_cluster[%s].aws_attributes.first_on_demand", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": sprintf("'databricks_cluster[%s].aws_attributes.first_on_demand' should present", [name]),
@@ -53,8 +53,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "databricks_cluster",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("databricks_cluster[%s].aws_attributes.zone_id", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": sprintf("'databricks_cluster[%s].aws_attributes.zone_id' should be egal to 'auto'", [name]),

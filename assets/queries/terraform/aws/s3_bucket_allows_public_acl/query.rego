@@ -10,8 +10,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "aws_s3_bucket_public_access_block",
-		"resourceName": tf_lib.get_resource_name(pubACL, name),
+
+
 		"searchKey": sprintf("aws_s3_bucket_public_access_block[%s]", [name]),
 		"issueType": "MissingAttribute",
 		"keyExpectedValue": "'block_public_acls' should equal 'true'",
@@ -28,8 +28,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "aws_s3_bucket_public_access_block",
-		"resourceName": tf_lib.get_resource_name(pubACL, name),
+
+
 		"searchKey": sprintf("aws_s3_bucket_public_access_block[%s].block_public_acls", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": "'block_public_acls' should equal 'true'",
@@ -50,8 +50,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "module",
-		"resourceName": sprintf("%s", [name]),
+
+
 		"searchKey": sprintf("module[%s]", [name]),
 		"issueType": "MissingAttribute",
 		"keyExpectedValue": "'block_public_acls' should equal 'true'",
@@ -69,8 +69,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "module",
-		"resourceName": sprintf("%s", [name]),
+
+
 		"searchKey": sprintf("module[%s].%s", [name, keyToCheck]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": "'block_public_acls' should equal 'true'",

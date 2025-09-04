@@ -9,8 +9,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "aws_dynamodb_table",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("aws_dynamodb_table[{{%s}}].server_side_encryption.enabled", [name]),
 		"searchLine": common_lib.build_search_line(["resource", "aws_dynamodb_table", name, "server_side_encryption", "enabled"], []),
 		"issueType": "IncorrectValue",
@@ -30,8 +30,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "aws_dynamodb_table",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("aws_dynamodb_table[{{%s}}]", [name]),
 		"searchLine": common_lib.build_search_line(["resource", "aws_dynamodb_table", name], []),
 		"issueType": "MissingAttribute",
@@ -51,8 +51,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "module",
-		"resourceName": sprintf("%s", [name]),
+
+
 		"searchKey": sprintf("module[%s].%s.enabled", [name, keyToCheck]),
 		"searchLine": common_lib.build_search_line(["module", name, keyToCheck, "enabled"], []),
 		"issueType": "IncorrectValue",
@@ -73,8 +73,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "module",
-		"resourceName": sprintf("%s", [name]),
+
+
 		"searchKey": sprintf("module[%s]", [name]),
 		"searchLine": common_lib.build_search_line(["module", name], []),
 		"issueType": "MissingAttribute",

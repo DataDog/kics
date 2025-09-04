@@ -10,8 +10,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "google_container_cluster",
-		"resourceName": tf_lib.get_resource_name(resource, primary),
+
+
 		"searchKey": sprintf("google_container_cluster[%s]", [primary]),
 		"issueType": "MissingAttribute",
 		"keyExpectedValue": "Attribute 'network_policy' should be defined and Attribute 'addons_config' should be defined",
@@ -28,8 +28,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "google_container_cluster",
-		"resourceName": tf_lib.get_resource_name(resource, primary),
+
+
 		"searchKey": sprintf("google_container_cluster[%s].addons_config", [primary]),
 		"issueType": "MissingAttribute",
 		"keyExpectedValue": "Attribute 'addons_config.network_policy_config' should be defined",
@@ -44,8 +44,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "google_container_cluster",
-		"resourceName": tf_lib.get_resource_name(resource, primary),
+
+
 		"searchKey": sprintf("google_container_cluster[%s].network_policy.enabled", [primary]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": "Attribute 'network_policy.enabled' should be true",
@@ -66,8 +66,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "google_container_cluster",
-		"resourceName": tf_lib.get_resource_name(resource, primary),
+
+
 		"searchKey": sprintf("google_container_cluster[%s].addons_config.network_policy_config.disabled", [primary]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": "Attribute 'addons_config.network_policy_config.disabled' should be set to false",

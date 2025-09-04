@@ -10,8 +10,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "nifcloud_security_group_rule",
-		"resourceName": tf_lib.get_resource_name(securityGroupRule, name),
+
+
 		"searchKey": sprintf("nifcloud_security_group_rule[%s]", [name]),
 		"issueType": "MissingAttribute",
 		"keyExpectedValue": sprintf("'nifcloud_security_group_rule[%s]' should include a description for auditing purposes", [name]),

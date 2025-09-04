@@ -19,8 +19,8 @@ CxPolicy[result] {
 
     result := {
         "documentId": input.document[i].id,
-        "resourceType": "google_dataproc_cluster",
-        "resourceName": tf_lib.get_resource_name(resource, name),
+
+
         "searchKey": "cluster_config/[0]/gce_cluster_config/[0]/internal_ip_only",
         "searchLine": common_lib.build_search_line(["resource", "google_dataproc_cluster", name, "cluster_config", "gce_cluster_config", "internal_ip_only"], []),
         "issueType": "IncorrectValue",

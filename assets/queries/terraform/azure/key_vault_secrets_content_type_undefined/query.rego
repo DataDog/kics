@@ -10,8 +10,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "azurerm_key_vault_secret",
-		"resourceName": tf_lib.get_resource_name(key, name),
+
+
 		"searchKey": sprintf("azurerm_key_vault_secret[%s]", [name]),
 		"issueType": "MissingAttribute",
 		"keyExpectedValue": sprintf("'azurerm_key_vault_secret[%s].content_type' should be defined and not null", [name]),

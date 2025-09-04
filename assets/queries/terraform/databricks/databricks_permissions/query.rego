@@ -10,8 +10,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "databricks_job",
-		"resourceName": tf_lib.get_specific_resource_name(databricks_job, "databricks_job", name),
+
+
 		"searchKey": sprintf("databricks_job[%s]", [name]),
 		"issueType": "MissingAttribute",
 		"keyExpectedValue": sprintf("'databricks_job[%s]' should have permissions", [name]),
@@ -33,8 +33,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "databricks_cluster",
-		"resourceName": tf_lib.get_specific_resource_name(databricks_cluster, "databricks_cluster", name),
+
+
 		"searchKey": sprintf("databricks_cluster[%s]", [name]),
 		"issueType": "MissingAttribute",
 		"keyExpectedValue": sprintf("'databricks_cluster[%s]' should have permissions", [name]),
@@ -55,8 +55,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "databricks_permissions",
-		"resourceName": tf_lib.get_specific_resource_name(databricks_permissions, "databricks_permissions", name),
+
+
 		"searchKey": sprintf("databricks_permissions.[%s]", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": sprintf("'databricks_permissions[%s]' should not have permission_level == 'IS_OWNER' without service_principal_name associated", [name]),
@@ -72,8 +72,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "databricks_permissions",
-		"resourceName": tf_lib.get_specific_resource_name(databricks_permissions, "databricks_permissions", name),
+
+
 		"searchKey": sprintf("databricks_permissions.[%s]", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": sprintf("'databricks_permissions[%s]' should not have permission_level == 'IS_OWNER' without service_principal_name associated", [name]),

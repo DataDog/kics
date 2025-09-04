@@ -9,8 +9,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "alicloud_db_instance",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("alicloud_db_instance[%s].address", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": "'address' should not be set to '0.0.0.0/0'",

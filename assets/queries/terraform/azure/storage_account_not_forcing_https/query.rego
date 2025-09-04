@@ -9,8 +9,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "azurerm_storage_account",
-		"resourceName": tf_lib.get_resource_name(resource, var0),
+
+
 		"searchKey": sprintf("azurerm_storage_account[%s].https_traffic_only_enabled", [var0]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": sprintf("'azurerm_storage_account.%s.https_traffic_only_enabled' equals 'true'", [var0]),

@@ -8,8 +8,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "google_container_cluster",
-		"resourceName": tf_lib.get_resource_name(resource, primary),
+
+
 		"searchKey": sprintf("google_container_cluster[%s].monitoring_service", [primary]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": "Attribute 'monitoring_service' should be undefined or 'monitoring.googleapis.com/kubernetes'",
@@ -24,8 +24,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "google_container_cluster",
-		"resourceName": tf_lib.get_resource_name(resource, primary),
+
+
 		"searchKey": sprintf("google_container_cluster[%s].monitoring_service", [primary]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": "Attribute 'monitoring_service' should be undefined or 'monitoring.googleapis.com/kubernetes'",

@@ -13,8 +13,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "aws_db_instance",
-		"resourceName": tf_lib.get_resource_name(db, name),
+
+
 		"searchKey": sprintf("aws_db_instance[%s].port", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": sprintf("aws_db_instance[%s].port should not be set to %d", [name, enginePort]),

@@ -11,8 +11,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "alicloud_oss_bucket",
-		"resourceName": tf_lib.get_specific_resource_name(resource, "alicloud_oss_bucket", name),
+
+
 		"searchKey": sprintf("alicloud_oss_bucket[%s].versioning.status", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": "'versioning.status' should be enabled",
@@ -34,8 +34,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "alicloud_oss_bucket",
-		"resourceName": tf_lib.get_specific_resource_name(resource, "alicloud_oss_bucket", name),
+
+
 		"searchKey": sprintf("alicloud_oss_bucket[%s]", [name]),
 		"issueType": "MissingAttribute",
 		"keyExpectedValue": "'versioning.status' should be defined and set to enabled",

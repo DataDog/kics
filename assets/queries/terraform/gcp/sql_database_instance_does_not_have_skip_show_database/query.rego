@@ -22,8 +22,8 @@ CxPolicy[result] {
 
     result := {
         "documentId": input.document[i].id,
-        "resourceType": "google_sql_database_instance",
-        "resourceName": tf_lib.get_resource_name(resource, name),
+
+
         "searchKey": sprintf("google_sql_database_instance[%s].settings.database_flags.skip_show_database.value", [name]),
         "searchLine": common_lib.build_search_line(["resource", "google_sql_database_instance", name], ["settings", "database_flags", "skip_show_database", "value"]),
         "issueType": "IncorrectValue",
@@ -47,8 +47,8 @@ CxPolicy[result] {
 
     result := {
         "documentId": input.document[i].id,
-        "resourceType": "google_sql_database_instance",
-        "resourceName": tf_lib.get_resource_name(resource, name),
+
+
         "searchKey": sprintf("google_sql_database_instance[%s].settings", [name]),
         "searchLine": common_lib.build_search_line(["resource", "google_sql_database_instance", name], ["settings", "database_flags"]),
         "issueType": "MissingAttribute",
@@ -71,8 +71,8 @@ CxPolicy[result] {
 
     result := {
         "documentId": input.document[i].id,
-        "resourceType": "google_sql_database_instance",
-        "resourceName": tf_lib.get_resource_name(resource, name),
+
+
         "searchKey": sprintf("google_sql_database_instance[%s].settings", [name]),
         "searchLine": common_lib.build_search_line(["resource", "google_sql_database_instance", name], ["settings", "database_flags", "skip_show_database"]),
         "issueType": "MissingValue",

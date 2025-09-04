@@ -15,8 +15,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "aws_sns_topic",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("aws_sns_topic[%s].policy", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": "'Statement.Principal.AWS' shouldn't contain '*'",
@@ -40,8 +40,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "module",
-		"resourceName": sprintf("%s", [name]),
+
+
 		"searchKey": sprintf("module[%s].%s", [name, keyToCheck]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": "'Statement.Principal.AWS' shouldn't contain '*'",

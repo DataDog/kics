@@ -10,8 +10,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": resourcesTest[idx],
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("%s[{{%s}}].user", [resourcesTest[idx], name]),
 		"issueType": "RedundantAttribute",
 		"keyExpectedValue": "'user' is redundant",
@@ -27,8 +27,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": resourcesTest[idx],
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("%s[{{%s}}].users", [resourcesTest[idx], name]),
 		"issueType": "RedundantAttribute",
 		"keyExpectedValue": "'users' is redundant",

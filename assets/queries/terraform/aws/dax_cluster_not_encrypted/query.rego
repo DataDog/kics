@@ -9,8 +9,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "aws_dax_cluster",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("aws_dax_cluster[{{%s}}].server_side_encryption.enabled", [name]),
 		"searchLine": common_lib.build_search_line(["resource", "aws_dax_cluster", name,"server_side_encryption","enabled"], []),
 		"issueType": "IncorrectValue",
@@ -30,8 +30,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "aws_dax_cluster",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("aws_dax_cluster[{{%s}}]", [name]),
 		"issueType": "MissingAttribute",
 		"keyExpectedValue": "aws_dax_cluster.server_side_encryption.enabled should be set to true",
@@ -48,8 +48,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "aws_dax_cluster",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("aws_dax_cluster[{{%s}}].server_side_encryption", [name]),
 		"issueType": "MissingAttribute",
 		"keyExpectedValue": "aws_dax_cluster.server_side_encryption.enabled should be set to true",
@@ -68,8 +68,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "module",
-		"resourceName": sprintf("%s", [name]),
+
+
 		"searchKey": sprintf("module[%s].%s.enabled", [name, keyToCheck]),
 		"searchLine": common_lib.build_search_line(["module", name, keyToCheck,"enabled"], []),
 		"issueType": "IncorrectValue",
@@ -90,8 +90,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "module",
-		"resourceName": sprintf("%s", [name]),
+
+
 		"searchKey": sprintf("module[%s]", [name]),
 		"issueType": "MissingAttribute",
 		"keyExpectedValue": sprintf("module[%s].%s.enabled should be set to true", [name, keyToCheck]),
@@ -109,8 +109,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "module",
-		"resourceName": sprintf("%s", [name]),
+
+
 		"searchKey": sprintf("module[%s].%s", [name, keyToCheck]),
 		"issueType": "MissingAttribute",
 		"keyExpectedValue": sprintf("module[%s].%s.enabled should be set to true", [name, keyToCheck]),

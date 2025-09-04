@@ -11,8 +11,8 @@ CxPolicy[result] {
 
     result := {
         "documentId": input.document[i].id,
-        "resourceType": "azurerm_mysql_server",
-        "resourceName": tf_lib.get_resource_name(resource, name),
+
+
         "searchKey": sprintf("azurerm_mysql_server[{{%s}}].ssl_enforcement_enabled", [name]),
         "searchLine": common_lib.build_search_line(["resource", "azurerm_mysql_server", name, "ssl_enforcement_enabled"], []),
         "issueType": "IncorrectValue",

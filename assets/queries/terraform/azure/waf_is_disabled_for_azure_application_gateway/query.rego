@@ -9,8 +9,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "azurerm_application_gateway",
-		"resourceName": tf_lib.get_resource_name(gateway, name),
+
+
 		"searchKey": sprintf("azurerm_application_gateway[%s]", [name]),
 		"issueType": "MissingAttribute",
 		"keyExpectedValue": sprintf("'azurerm_application_gateway[%s]' should be set", [name]),
@@ -26,8 +26,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "azurerm_application_gateway",
-		"resourceName": tf_lib.get_resource_name(gateway, name),
+
+
 		"searchKey": sprintf("azurerm_application_gateway[%s].waf_configuration.enabled", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": sprintf("'azurerm_application_gateway[%s].waf_configuration.enabled' is true", [name]),

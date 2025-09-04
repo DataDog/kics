@@ -10,8 +10,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "aws_elasticsearch_domain",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("aws_elasticsearch_domain[{{%s}}]", [name]),
 		"searchLine": common_lib.build_search_line(["resource", "aws_elasticsearch_domain", name], []),
 		"issueType": "MissingAttribute",
@@ -29,8 +29,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "aws_elasticsearch_domain",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("aws_elasticsearch_domain[{{%s}}].node_to_node_encryption.enabled", [name]),
 		"searchLine": common_lib.build_search_line(["resource", "aws_elasticsearch_domain", name, "enabled"], []),
 		"issueType": "IncorrectValue",

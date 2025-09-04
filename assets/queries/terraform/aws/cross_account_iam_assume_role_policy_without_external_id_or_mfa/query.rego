@@ -21,8 +21,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "aws_iam_role",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("aws_iam_role[%s].assume_role_policy", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": "'assume_role_policy' requires external ID or MFA",

@@ -10,8 +10,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "azurerm_redis_cache",
-		"resourceName": tf_lib.get_resource_name(redis_cache, name),
+
+
 		"searchKey": sprintf("azurerm_redis_cache[%s]", [name]),
 		"issueType": "MissingAttribute",
 		"keyExpectedValue": sprintf("'azurerm_redis_cache[%s].patch_schedule' should be defined and not null", [name]),

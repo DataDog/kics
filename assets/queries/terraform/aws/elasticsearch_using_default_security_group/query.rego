@@ -9,8 +9,8 @@ CxPolicy[result] {
 
     result := {
         "documentId": input.document[i].id,
-        "resourceType": "aws_elasticsearch_domain",
-        "resourceName": tf_lib.get_resource_name(resource, name),
+
+
         "searchKey": sprintf("aws_elasticsearch_domain[{{%s}}].vpc_options.security_group_ids", [name]),
         "searchLine": common_lib.build_search_line(["resource", "aws_elasticsearch_domain", name, "vpc_options.security_group_ids"], []),
         "issueType": "MissingValue",
@@ -25,8 +25,8 @@ CxPolicy[result] {
 
     result := {
         "documentId": input.document[i].id,
-        "resourceType": "aws_opensearch_domain",
-        "resourceName": tf_lib.get_resource_name(resource, name),
+
+
         "searchKey": sprintf("aws_opensearch_domain[{{%s}}].vpc_options.security_group_ids", [name]),
         "searchLine": common_lib.build_search_line(["resource", "aws_opensearch_domain", name, "vpc_options.security_group_ids"], []),
         "issueType": "MissingValue",

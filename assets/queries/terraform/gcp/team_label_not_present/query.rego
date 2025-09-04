@@ -29,8 +29,8 @@ CxPolicy[result] {
 
     result := {
         "documentId": input.document[i].id,
-        "resourceType": resource_name,
-        "resourceName": tf_lib.get_specific_resource_name(resource_type, resource_name, name),
+
+
         "searchKey": sprintf("%s[%s].labels", [resource_name, name]),
         "issueType": "MissingValue",
         "keyExpectedValue": sprintf("Every resource should have labels: %v", [required_labels]),
@@ -52,8 +52,8 @@ CxPolicy[result] {
 
     result := {
         "documentId": input.document[i].id,
-        "resourceType": resource_type,
-        "resourceName": tf_lib.get_specific_resource_name(resource, resource_type, name),
+
+
         "searchKey": sprintf("%s[%s].labels", [resource_type, name]),
         "issueType": "MissingValue",
         "keyExpectedValue": sprintf("Every resource should have a 'labels' block containing: %v", [required_labels]),

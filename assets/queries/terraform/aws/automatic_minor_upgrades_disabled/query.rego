@@ -9,8 +9,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "aws_db_instance",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("aws_db_instance[%s].auto_minor_version_upgrade", [name]),
 		"searchLine": common_lib.build_search_line(["resource", "aws_db_instance", name,"auto_minor_version_upgrade"], []),
 		"issueType": "IncorrectValue",
@@ -32,8 +32,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "module",
-		"resourceName": sprintf("%s", [name]),
+
+
 		"searchKey": sprintf("module[%s].auto_minor_version_upgrade", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": "'auto_minor_version_upgrade' should be set to true",

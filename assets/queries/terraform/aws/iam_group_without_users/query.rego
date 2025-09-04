@@ -9,8 +9,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "aws_iam_group",
-		"resourceName": tf_lib.get_resource_name(iam_group, name),
+
+
 		"searchKey": sprintf("aws_iam_group[%s]", [name]),
 		"issueType": "MissingAttribute",
 		"keyExpectedValue": sprintf("aws_iam_group[%s] should be associated with an aws_iam_group_membership that has at least one user set", [name]),

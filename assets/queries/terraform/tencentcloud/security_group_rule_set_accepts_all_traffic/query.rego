@@ -20,8 +20,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "tencentcloud_security_group_rule_set",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("tencentcloud_security_group_rule_set[%s].ingress", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": sprintf("tencentcloud_security_group_rule_set[%s] ingress should not be set to accept all traffic", [name]),
@@ -46,8 +46,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "tencentcloud_security_group_rule_set",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("tencentcloud_security_group_rule_set[%s].ingress", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": sprintf("tencentcloud_security_group_rule_set[%s] ingress should not be set to accept all traffic", [name]),
@@ -70,8 +70,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "tencentcloud_security_group_rule_set",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("tencentcloud_security_group_rule_set[%s].ingress", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": sprintf("tencentcloud_security_group_rule_set[%s] ingress should not be set to accept all traffic", [name]),
@@ -94,8 +94,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-        "resourceType": "tencentcloud_security_group_rule_set",
-        "resourceName": tf_lib.get_resource_name(resource, name),
+
+
         "searchKey": sprintf("tencentcloud_security_group_rule_set[%s].ingress", [name]),
         "issueType": "IncorrectValue",
         "keyExpectedValue": sprintf("tencentcloud_security_group_rule_set[%s] ingress should not set accept all traffic", [name]),
@@ -121,8 +121,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "tencentcloud_security_group_rule_set",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("tencentcloud_security_group_rule_set[%s].ingress", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": sprintf("tencentcloud_security_group_rule_set[%s] ingress should not set accept all traffic", [name]),
@@ -147,8 +147,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "tencentcloud_security_group_rule_set",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("tencentcloud_security_group_rule_set[%s].ingress", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": sprintf("tencentcloud_security_group_rule_set[%s] ingress should not set accept all traffic", [name]),
@@ -171,8 +171,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "tencentcloud_security_group_rule_set",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("tencentcloud_security_group_rule_set[%s].ingress", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": sprintf("tencentcloud_security_group_rule_set[%s] ingress should not be set to accept all traffic", [name]),
@@ -195,8 +195,8 @@ CxPolicy[result] {
 
     result := {
 		"documentId": input.document[i].id,
-		"resourceType": "tencentcloud_security_group_rule_set",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("tencentcloud_security_group_rule_set[%s].ingress", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": sprintf("tencentcloud_security_group_rule_set[%s] ingress should not be set to accept all traffic", [name]),

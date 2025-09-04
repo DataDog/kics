@@ -10,8 +10,8 @@ CxPolicy[result] {
     resource_type := "azurerm_virtual_machine"
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": resource_type,
-		"resourceName": tf_lib.get_resource_name(vm, name),
+
+
 		"searchKey": sprintf("%s[%s].admin_ssh_key", [resource_type, name]),
 		"issueType": "MissingAttribute",
 		"keyExpectedValue": sprintf("'%s[%s]' should be using SSH keys for authentication", [resource_type, name]),
@@ -25,8 +25,8 @@ CxPolicy[result] {
     resource_type := "azurerm_linux_virtual_machine"
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": resource_type,
-		"resourceName": tf_lib.get_resource_name(vm, name),
+
+
 		"searchKey": sprintf("%s[%s].admin_ssh_key", [resource_type, name]),
 		"issueType": "MissingAttribute",
 		"keyExpectedValue": sprintf("'%s[%s]' should be using SSH keys for authentication", [resource_type, name]),

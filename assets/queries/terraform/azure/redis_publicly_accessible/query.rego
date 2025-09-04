@@ -11,8 +11,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "azurerm_redis_firewall_rule",
-		"resourceName": tf_lib.get_resource_name(firewall_rule, name),
+
+
 		"searchKey": sprintf("azurerm_redis_firewall_rule[%s].start_ip", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": sprintf("'azurerm_redis_firewall_rule[%s]' ip range should be private", [name]),

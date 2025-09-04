@@ -6,7 +6,7 @@ import data.generic.common as common_lib
 types := {"init_container", "container"}
 
 CxPolicy[result] {
-	resource := input.document[i].resource[resourceType][name]
+
 
 	specInfo := tf_lib.getSpecInfo(resource[name])
 
@@ -18,17 +18,17 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": resourceType,
-		"resourceName": tf_lib.get_resource_name(resource, name),
-		"searchKey": sprintf("%s[%s].%s.%s", [resourceType, name, specInfo.path, types[x]]),
+
+
+
 		"issueType": "IncorrectValue",
-		"keyExpectedValue": sprintf("%s[%s].%s.%s[%d].env.value_from.secret_key_ref should be undefined", [resourceType, name, specInfo.path, types[x]]),
-		"keyActualValue": sprintf("%s[%s].%s.%s[%d].env.value_from.secret_key_ref is set", [resourceType, name, specInfo.path, types[x]]),
+
+
 	}
 }
 
 CxPolicy[result] {
-	resource := input.document[i].resource[resourceType]
+
 
 	specInfo := tf_lib.getSpecInfo(resource[name])
 
@@ -40,17 +40,17 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": resourceType,
-		"resourceName": tf_lib.get_resource_name(resource, name),
-		"searchKey": sprintf("%s[%s].%s.%s.env", [resourceType, name, specInfo.path, types[x]]),
+
+
+
 		"issueType": "IncorrectValue",
-		"keyExpectedValue": sprintf("%s[%s].%s.%s.env.value_from.secret_key_ref should be undefined", [resourceType, name, specInfo.path, types[x]]),
-		"keyActualValue": sprintf("%s[%s].%s.%s.env.value_from.secret_key_ref is set", [resourceType, name, specInfo.path, types[x]]),
+
+
 	}
 }
 
 CxPolicy[result] {
-	resource := input.document[i].resource[resourceType]
+
 
 	specInfo := tf_lib.getSpecInfo(resource[name])
 
@@ -62,17 +62,17 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": resourceType,
-		"resourceName": tf_lib.get_resource_name(resource, name),
-		"searchKey": sprintf("%s[%s].%s.%s", [resourceType, name, specInfo.path, types[x]]),
+
+
+
 		"issueType": "IncorrectValue",
-		"keyExpectedValue": sprintf("%s[%s].%s.%s[%d].env_from.secret_ref should be undefined", [resourceType, name, specInfo.path, types[x], y]),
-		"keyActualValue": sprintf("%s[%s].%s.%s[%d].env_from.secret_ref is set", [resourceType, name, specInfo.path, types[x], y]),
+
+
 	}
 }
 
 CxPolicy[result] {
-	resource := input.document[i].resource[resourceType]
+
 
 	specInfo := tf_lib.getSpecInfo(resource[name])
 
@@ -84,12 +84,12 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": resourceType,
-		"resourceName": tf_lib.get_resource_name(resource, name),
-		"searchKey": sprintf("%s[%s].%s.%s.env_from", [resourceType, name, specInfo.path, types[x]]),
+
+
+
 		"issueType": "IncorrectValue",
-		"keyExpectedValue": sprintf("%s[%s].%s.%s.env_from.secret_ref should be undefined", [resourceType, name, specInfo.path, types[x]]),
-		"keyActualValue": sprintf("%s[%s].%s.%s.env_from.secret_ref is set", [resourceType, name, specInfo.path, types[x]]),
+
+
 	}
 }
 

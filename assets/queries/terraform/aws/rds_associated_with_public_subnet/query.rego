@@ -20,8 +20,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "aws_db_instance",
-		"resourceName": tf_lib.get_resource_name(db, name),
+
+
 		"searchKey": sprintf("aws_db_instance[%s].db_subnet_group_name", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": "RDS should not be running in a public subnet",

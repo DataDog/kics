@@ -13,8 +13,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": res_type,
-		"resourceName": tf_lib.get_specific_resource_name(resource, res_type, name),
+
+
 		"searchKey": sprintf("%s[%s].policy", [res_type,name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": "'policy.Statement' should not allow all actions to all principal",
@@ -32,8 +32,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "module",
-		"resourceName": sprintf("%s", [name]),
+
+
 		"searchKey": sprintf("module[%s].policy", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": "'policy.Statement' should not allow all actions to all principal",

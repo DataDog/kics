@@ -10,8 +10,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "azurerm_mariadb_server",
-		"resourceName": tf_lib.get_resource_name(mariadbServer, name),
+
+
 		"searchKey": sprintf("azurerm_mariadb_server[%s]", [name]),
 		"issueType": "MissingAttribute",
 		"keyExpectedValue": sprintf("'azurerm_mariadb_server[%s].public_network_access_enabled' should be defined and not null", [name]),
@@ -29,8 +29,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "azurerm_mariadb_server",
-		"resourceName": tf_lib.get_resource_name(mariadbServer, name),
+
+
 		"searchKey": sprintf("azurerm_mariadb_server[%s].public_network_access_enabled", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": sprintf("'azurerm_mariadb_server[%s].public_network_access_enabled.enabled' should be set to false", [name]),

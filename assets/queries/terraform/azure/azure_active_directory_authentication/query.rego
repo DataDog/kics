@@ -10,8 +10,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "azurerm_service_fabric_cluster",
-		"resourceName": tf_lib.get_resource_name(active, name),
+
+
 		"searchKey": sprintf("azurerm_service_fabric_cluster[%s].azure_active_directory", [name]),
 		"issueType": "MissingAttribute",
 		"keyExpectedValue": sprintf("'azurerm_service_fabric_cluster[%s].azure_active_directory.tenant_id' should be defined and not null", [name]),
@@ -27,8 +27,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "azurerm_service_fabric_cluster",
-		"resourceName": tf_lib.get_resource_name(azure, name),
+
+
 		"searchKey": sprintf("azurerm_service_fabric_cluster[%s]", [name]),
 		"issueType": "MissingAttribute",
 		"keyExpectedValue": sprintf("'azurerm_service_fabric_cluster[%s].azure_active_directory' should be defined and not null", [name]),

@@ -9,8 +9,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "google_container_cluster",
-		"resourceName": tf_lib.get_resource_name(resource, primary),
+
+
 		"searchKey": sprintf("google_container_cluster[%s]", [primary]),
 		"issueType": "MissingAttribute",
 		"keyExpectedValue": "Attribute 'private_cluster_config' should be defined and not null",
@@ -26,8 +26,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "google_container_cluster",
-		"resourceName": tf_lib.get_resource_name(resource, primary),
+
+
 		"searchKey": sprintf("google_container_cluster[%s].private_cluster_config", [primary]),
 		"issueType": "MissingAttribute",
 		"keyExpectedValue": "Attribute 'private_cluster_config.enable_private_endpoint' should be defined and Attribute 'private_cluster_config.enable_private_nodes' should be defined",
@@ -43,8 +43,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "google_container_cluster",
-		"resourceName": tf_lib.get_resource_name(resource, primary),
+
+
 		"searchKey": sprintf("google_container_cluster[%s].private_cluster_config", [primary]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": "Attribute 'private_cluster_config.enable_private_endpoint' should be true and Attribute 'private_cluster_config.enable_private_nodes' should be true",

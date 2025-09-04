@@ -12,8 +12,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "aws_security_group_rule",
-		"resourceName": tf_lib.get_resource_name(rule, name),
+
+
 		"searchKey": sprintf("aws_security_group_rule[%s].cidr_blocks", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": "One of 'rule.cidr_blocks' not equal '0.0.0.0/0'",
@@ -30,8 +30,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "aws_security_group",
-		"resourceName": tf_lib.get_resource_name(input.document[i].resource.aws_security_group[name], name),
+
+
 		"searchKey": sprintf("aws_security_group[%s].ingress.cidr_blocks", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": "One of 'ingress.cidr_blocks' not equal '0.0.0.0/0'",
@@ -46,8 +46,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "aws_security_group",
-		"resourceName": tf_lib.get_resource_name(input.document[i].resource.aws_security_group[name], name),
+
+
 		"searchKey": sprintf("aws_security_group[%s]", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": "One of 'ingress.cidr_blocks' not equal '0.0.0.0/0'",
@@ -66,8 +66,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "module",
-		"resourceName": sprintf("%s", [name]),
+
+
 		"searchKey": sprintf("module[%s].%s", [name, keyToCheck]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": "One of 'ingress.cidr_blocks' not equal '0.0.0.0/0'",
@@ -85,8 +85,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "aws_security_group_rule",
-		"resourceName": tf_lib.get_resource_name(rule, name),
+
+
 		"searchKey": sprintf("aws_security_group_rule[%s].ipv6_cidr_blocks", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": "One of 'rule.ipv6_cidr_blocks' should not be equal to '::/0'",
@@ -103,8 +103,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "aws_security_group",
-		"resourceName": tf_lib.get_resource_name(input.document[i].resource.aws_security_group[name], name),
+
+
 		"searchKey": sprintf("aws_security_group[%s].ingress.ipv6_cidr_blocks", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": "One of 'ingress.ipv6_cidr_blocks' should not be equal to '::/0'",
@@ -119,8 +119,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "aws_security_group",
-		"resourceName": tf_lib.get_resource_name(input.document[i].resource.aws_security_group[name], name),
+
+
 		"searchKey": sprintf("aws_security_group[%s]", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": "One of 'ingress.ipv6_cidr_blocks' should not be equal to '::/0'",
@@ -139,8 +139,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "module",
-		"resourceName": sprintf("%s", [name]),
+
+
 		"searchKey": sprintf("module[%s].%s", [name, keyToCheck]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": "One of 'ingress.ipv6_cidr_blocks' should not be equal to '::/0'",

@@ -15,8 +15,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "aws_vpc_endpoint",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("aws_vpc_endpoint[%s].vpc_id", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": "'enable_dns_support' should be set to true or undefined",
@@ -34,8 +34,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "module",
-		"resourceName": sprintf("%s", [name]),
+
+
 		"searchKey": sprintf("module[%s].enable_dns_support", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": "'enable_dns_support' should be set to true or undefined",

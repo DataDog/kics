@@ -10,8 +10,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "azurerm_security_center_contact",
-		"resourceName": tf_lib.get_resource_name(scc, name),
+
+
 		"searchKey": sprintf("azurerm_security_center_contact[%s]", [name]),
 		"issueType": "MissingAttribute",
 		"keyExpectedValue": sprintf("'azurerm_security_center_contact[%s].email' should be defined and not null", [name]),

@@ -14,8 +14,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "aws_iam_role",
-        "resourceName": tf_lib.get_resource_name(role, targetRole),
+
+
 		"searchKey": sprintf("aws_iam_role[%s]", [targetRole]),
 		"issueType": "IncorrectValue",
         "keyExpectedValue": sprintf("role %s shouldn't be associated with a policy that has Action set to 'ec2:RunInstances' and 'iam:PassRole' and Resource set to '*'", [targetRole]),

@@ -9,8 +9,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "google_container_cluster",
-		"resourceName": tf_lib.get_resource_name(resource, primary),
+
+
 		"searchKey": sprintf("google_container_cluster[%s].enable_legacy_abac", [primary]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": "Attribute 'enable_legacy_abac' should be set to false",

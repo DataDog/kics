@@ -11,8 +11,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "aws_elasticsearch_domain",
-		"resourceName": tf_lib.get_resource_name(awsElasticsearchDomain, name),
+
+
 		"searchKey": sprintf("aws_elasticsearch_domain[{{%s}}].log_publishing_options.log_type", [name]),
 		"searchLine": commonLib.build_search_line(["resource", "aws_elasticsearch_domain", name, "log_publishing_options", "log_type"], []),
 		"issueType": "IncorrectValue",

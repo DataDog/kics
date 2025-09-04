@@ -16,8 +16,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "kubernetes_ingress",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("kubernetes_ingress[%s].spec.rule.http.path.backend", [name]),
 	    "issueType": "IncorrectValue",
 		"keyExpectedValue": sprintf("kubernetes_ingress[%s] should not be exposing the workload", [name]),

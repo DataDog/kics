@@ -9,8 +9,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "google_compute_instance",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("google_compute_instance[%s]", [name]),
 		"issueType": "MissingAttribute",
 		"keyExpectedValue": sprintf("'google_compute_instance[%s].service_account' should be defined and not null", [name]),
@@ -24,8 +24,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "google_compute_instance",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("google_compute_instance[%s].service_account", [name]),
 		"issueType": "MissingAttribute",
 		"keyExpectedValue": sprintf("'google_compute_instance[%s].service_account.email' should be defined and not null", [name]),
@@ -39,8 +39,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "google_compute_instance",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("google_compute_instance[%s].service_account.email", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": sprintf("'google_compute_instance[%s].service_account.email' should not be empty", [name]),
@@ -56,8 +56,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "google_compute_instance",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("google_compute_instance[%s].service_account.email", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": sprintf("'google_compute_instance[%s].service_account.email' should not be an email", [name]),
@@ -71,8 +71,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "google_compute_instance",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("google_compute_instance[%s].service_account.email", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": sprintf("'google_compute_instance[%s].service_account.email' should not be a default Google Compute Engine service account", [name]),

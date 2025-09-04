@@ -9,8 +9,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "aws_eks_cluster",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("aws_eks_cluster[%s].vpc_config.endpoint_public_access", [name]),
 		"searchLine": common_lib.build_search_line(["resource", "aws_eks_cluster", name, "vpc_config", "endpoint_public_access"], []),
 		"issueType": "IncorrectValue",

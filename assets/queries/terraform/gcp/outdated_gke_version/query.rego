@@ -9,8 +9,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "google_container_cluster",
-		"resourceName": tf_lib.get_resource_name(resource, primary),
+
+
 		"searchKey": sprintf("google_container_cluster[%s]", [primary]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": sprintf("GKE should not be using outated versions on min_master_version or node_version %s",[common_lib.get_version("gke")]),

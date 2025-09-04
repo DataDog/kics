@@ -8,8 +8,8 @@ CxPolicy[result] {
 	not tech.enabled
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "aws_msk_cluster",
-		"resourceName": tf_lib.get_specific_resource_name(msk_cluster, "aws_msk_cluster", name),
+
+
 		"searchKey": sprintf(getSearchKey(msk_cluster, instanceType), [name, instanceType]),
 		"issueType": getIssueType(msk_cluster, instanceType),
 		"keyExpectedValue": "'rule.logging_info.broker_logs.enabled' should be 'true' in every entry",
@@ -28,8 +28,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "aws_msk_cluster",
-		"resourceName": tf_lib.get_specific_resource_name(msk_cluster, "aws_msk_cluster", name),
+
+
 		"searchKey": sprintf("msk_cluster[%s].logging_info.broker_logs", [name]),
 		"issueType": "MissingAttribute",
 		"keyExpectedValue": "Should have at least one of the following keys: 'cloudwatch_logs', 'firehose' or 's3'",
@@ -43,8 +43,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "aws_msk_cluster",
-		"resourceName": tf_lib.get_specific_resource_name(msk_cluster, "aws_msk_cluster", name),
+
+
 		"searchKey": sprintf("aws_msk_cluster[%s]", [name]),
 		"issueType": "MissingAttribute",
 		"keyExpectedValue": "'rule.logging_info' should exist",

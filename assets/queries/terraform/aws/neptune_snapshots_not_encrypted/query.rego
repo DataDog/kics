@@ -11,8 +11,8 @@ CxPolicy[result] {
 
     result := {
         "documentId": input.document[i].id,
-        "resourceType": "aws_neptune_cluster_snapshot",
-        "resourceName": tf_lib.get_resource_name(resource, name),
+
+
         "searchKey": sprintf("aws_neptune_cluster_snapshot[{{%s}}].storage_encrypted", [name]),
         "searchLine": common_lib.build_search_line(["resource", "aws_neptune_cluster_snapshot", name, "storage_encrypted"], []),
         "issueType": "IncorrectValue",

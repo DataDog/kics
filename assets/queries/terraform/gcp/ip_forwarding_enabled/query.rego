@@ -9,8 +9,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "google_compute_instance",
-		"resourceName": tf_lib.get_resource_name(dt, appserver),
+
+
 		"searchKey": sprintf("google_compute_instance[%s].can_ip_forward", [appserver]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": "Attribute 'can_ip_forward' should be set to false or Attribute 'can_ip_forward' should be undefined",

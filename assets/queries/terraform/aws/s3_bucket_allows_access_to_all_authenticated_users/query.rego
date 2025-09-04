@@ -17,8 +17,8 @@ CxPolicy[result] {
 
     result := {
         "documentId": input.document[i].id,
-        "resourceType": "aws_s3_bucket_acl",
-        "resourceName": tf_lib.get_specific_resource_name(resource, "aws_s3_bucket_acl", name),
+
+
         "searchKey": sprintf("aws_s3_bucket_acl[%s].access_control_policy.grant[%d].grantee.uri", [name, grant_index]),
         "issueType": "IncorrectValue",
         "keyExpectedValue": "aws_s3_bucket_acl.access_control_policy.grant[*].grantee.uri should not be 'http://acs.amazonaws.com/groups/global/AuthenticatedUsers'",
@@ -46,8 +46,8 @@ CxPolicy[result] {
 
     result := {
         "documentId": input.document[i].id,
-        "resourceType": "aws_s3_bucket_acl",
-        "resourceName": tf_lib.get_specific_resource_name(resource, "aws_s3_bucket_acl", name),
+
+
         "searchKey": sprintf("aws_s3_bucket_acl[%s].access_control_policy.grant.grantee.uri", [name]),
         "issueType": "IncorrectValue",
         "keyExpectedValue": "aws_s3_bucket_acl.access_control_policy.grant.grantee.uri should not be 'http://acs.amazonaws.com/groups/global/AuthenticatedUsers'",

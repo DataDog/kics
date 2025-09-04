@@ -9,8 +9,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "aws_neptune_cluster",
-		"resourceName": tf_lib.get_resource_name(password_policy, name),
+
+
 		"searchKey": sprintf("aws_neptune_cluster[%s]", [name]),
 		"searchLine": common_lib.build_search_line(["resource", "aws_neptune_cluster", name], []),
 		"issueType": "MissingAttribute",
@@ -27,8 +27,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "aws_neptune_cluster",
-		"resourceName": tf_lib.get_resource_name(password_policy, name),
+
+
 		"searchKey": sprintf("aws_neptune_cluster[%s].storage_encrypted", [name]),
 		"searchLine": common_lib.build_search_line(["resource", "aws_neptune_cluster", name, "storage_encrypted"], []),
 		"issueType": "IncorrectValue",

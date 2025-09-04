@@ -9,8 +9,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "aws_iam_user_login_profile",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("aws_iam_user_login_profile[%s].password_reset_required", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": "Attribute 'password_reset_required' should be true",
@@ -30,8 +30,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "aws_iam_user_login_profile",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("aws_iam_user_login_profile[%s].password_length", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": "Attribute 'password_length' should be 14 or greater",

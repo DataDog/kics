@@ -10,8 +10,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "aws_eks_cluster",
-		"resourceName": tf_lib.get_resource_name(input.document[i].resource.aws_eks_cluster[name], name),
+
+
 		"searchKey": sprintf("aws_eks_cluster[%s].enabled_cluster_log_types", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": "'enabled_cluster_log_types' has all log types",

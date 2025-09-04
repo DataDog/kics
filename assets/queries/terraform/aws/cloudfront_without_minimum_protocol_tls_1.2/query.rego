@@ -12,8 +12,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": document.id,
-		"resourceType": "aws_cloudfront_distribution",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("resource.aws_cloudfront_distribution[%s]", [name]),
 		"issueType": "MissingAttribute",
 		"keyExpectedValue": sprintf("resource.aws_cloudfront_distribution[%s].viewer_certificate' should be defined and not null", [name]),
@@ -33,8 +33,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": document.id,
-		"resourceType": "aws_cloudfront_distribution",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("resource.aws_cloudfront_distribution[%s].viewer_certificate.cloudfront_default_certificate", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": sprintf("resource.aws_cloudfront_distribution[%s].viewer_certificate.cloudfront_default_certificate' should be 'false'", [name]),
@@ -60,8 +60,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": document.id,
-		"resourceType": "aws_cloudfront_distribution",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("resource.aws_cloudfront_distribution[%s].viewer_certificate.minimum_protocol_version", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": sprintf("resource.aws_cloudfront_distribution[%s].viewer_certificate.minimum_protocol_version' should be TLSv1.2_x", [name]),
@@ -85,8 +85,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": document.id,
-		"resourceType": "aws_cloudfront_distribution",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("resource.aws_cloudfront_distribution[%s].viewer_certificate", [name]),
 		"issueType": "MissingAttribute",
 		"keyExpectedValue": sprintf("resource.aws_cloudfront_distribution[%s].viewer_certificate.minimum_protocol_version' should be defined and not null", [name]),
@@ -109,8 +109,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "module",
-		"resourceName": sprintf("%s", [name]),
+
+
 		"searchKey": sprintf("module[%s].%s", [name, keyToCheck]),
 		"issueType": "MissingAttribute",
 		"keyExpectedValue": sprintf("module[%s].%s should be defined and not null", [name, keyToCheck]),
@@ -131,8 +131,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "module",
-		"resourceName": sprintf("%s", [name]),
+
+
 		"searchKey": sprintf("module[%s].%s.cloudfront_default_certificate", [name, keyToCheck]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": sprintf("module[%s].%s.cloudfront_default_certificate should be 'false'", [name, keyToCheck]),
@@ -159,8 +159,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "module",
-		"resourceName": sprintf("%s", [name]),
+
+
 		"searchKey": sprintf("module[%s].%s.minimum_protocol_version", [name, keyToCheck]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": sprintf("module[%s].%s.minimum_protocol_version should be TLSv1.2_x", [name, keyToCheck]),
@@ -185,8 +185,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "module",
-		"resourceName": sprintf("%s", [name]),
+
+
 		"searchKey": sprintf("module[%s].%s", [name, keyToCheck]),
 		"issueType": "MissingAttribute",
 		"keyExpectedValue": sprintf("module[%s].%s.minimum_protocol_version should be defined and not null", [name, keyToCheck]),

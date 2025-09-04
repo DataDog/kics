@@ -11,8 +11,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": document.id,
-		"resourceType": "aws_cloudfront_distribution",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("resource.aws_cloudfront_distribution[%s]", [name]),
 		"searchLine": common_lib.build_search_line(["resource", "aws_cloudfront_distribution", name], []),
 		"issueType": "MissingAttribute",
@@ -31,8 +31,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": document.id,
-		"resourceType": "aws_cloudfront_distribution",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("resource.aws_cloudfront_distribution[%s].enabled", [name]),
 		"searchLine": common_lib.build_search_line(["resource", "aws_cloudfront_distribution", name, "enabled"], []),
 		"issueType": "IncorrectValue",
@@ -54,8 +54,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": document.id,
-		"resourceType": "aws_cloudfront_distribution",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("resource.aws_cloudfront_distribution[%s]", [name]),
 		"searchLine": common_lib.build_search_line(["resource", "aws_cloudfront_distribution", name], []),
 		"issueType": "MissingAttribute",

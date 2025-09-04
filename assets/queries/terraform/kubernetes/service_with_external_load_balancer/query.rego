@@ -10,8 +10,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "kubernetes_service",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("kubernetes_service[%s].metadata.name", [name]),
 		"issueType": "MissingAttribute",
 		"keyExpectedValue": "'metadata.annotations' should be set",
@@ -26,8 +26,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "kubernetes_service",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("kubernetes_service[%s].metadata.name.annotations", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": sprintf("metadata.annotations using an external Load Balancer provider by cloud provider", [name]),

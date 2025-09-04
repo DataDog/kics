@@ -10,8 +10,8 @@ CxPolicy[result] {
     member == "allAuthenticatedUsers"
     result := {
         "documentId": input.document[i].id,
-        "resourceType": "google_cloud_run_service_iam_member",
-        "resourceName": tf_lib.get_resource_name(resource, name),
+
+
         "searchKey": sprintf("google_cloud_run_service_iam_member[{{%s}}].member", [name]),
         "searchLine": common_lib.build_search_line(["resource", "google_cloud_run_service_iam_member", name, "member"], []),
         "issueType": "IncorrectValue",
@@ -32,8 +32,8 @@ CxPolicy[result] {
     member == "allUsers"
     result := {
         "documentId": input.document[i].id,
-        "resourceType": "google_cloud_run_service_iam_member",
-        "resourceName": tf_lib.get_resource_name(resource, name),
+
+
         "searchKey": sprintf("google_cloud_run_service_iam_member[{{%s}}].member", [name]),
         "searchLine": common_lib.build_search_line(["resource", "google_cloud_run_service_iam_member", name, "member"], []),
         "issueType": "IncorrectValue",
@@ -54,8 +54,8 @@ CxPolicy[result] {
     member == "allAuthenticatedUsers"
     result := {
         "documentId": input.document[i].id,
-        "resourceType": "google_cloud_run_service_iam_binding",
-        "resourceName": tf_lib.get_resource_name(resource, name),
+
+
         "searchKey": sprintf("google_cloud_run_service_iam_binding[{{%s}}].members", [name]),
         "searchLine": common_lib.build_search_line(["resource", "google_cloud_run_service_iam_binding", name, "members"], []),
         "issueType": "IncorrectValue",
@@ -76,8 +76,8 @@ CxPolicy[result] {
     member == "allUsers"
     result := {
         "documentId": input.document[i].id,
-        "resourceType": "google_cloud_run_service_iam_binding",
-        "resourceName": tf_lib.get_resource_name(resource, name),
+
+
         "searchKey": sprintf("google_cloud_run_service_iam_binding[{{%s}}].members", [name]),
         "searchLine": common_lib.build_search_line(["resource", "google_cloud_run_service_iam_binding", name, "members"], []),
         "issueType": "IncorrectValue",

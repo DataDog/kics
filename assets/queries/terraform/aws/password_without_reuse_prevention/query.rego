@@ -9,8 +9,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "aws_iam_account_password_policy",
-		"resourceName": tf_lib.get_resource_name(password_policy, name),
+
+
 		"searchKey": sprintf("aws_iam_account_password_policy[%s]", [name]),
 		"searchLine": common_lib.build_search_line(["resource", "aws_iam_account_password_policy", name], []),
 		"issueType": "MissingAttribute",
@@ -28,8 +28,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "aws_iam_account_password_policy",
-		"resourceName": tf_lib.get_resource_name(password_policy, name),
+
+
 		"searchKey": sprintf("aws_iam_account_password_policy[%s].password_reuse_prevention", [name]),
 		"searchLine": common_lib.build_search_line(["resource", "aws_iam_account_password_policy", name, "password_reuse_prevention"], []),
 		"issueType": "IncorrectValue",

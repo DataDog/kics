@@ -10,8 +10,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "aws_api_gateway_rest_api",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("aws_api_gateway_rest_api[%s]", [name]),
 		"searchLine": commonLib.build_search_line(["resource", "aws_api_gateway_rest_api", name], []),
 		"issueType": "MissingAttribute",
@@ -29,8 +29,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "aws_api_gateway_rest_api",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("aws_api_gateway_rest_api[%s].minimum_compression_size", [name]),
 		"searchLine": commonLib.build_search_line(["resource", "aws_api_gateway_rest_api", name, "minimum_compression_size"], []),
 		"issueType": "IncorrectValue",

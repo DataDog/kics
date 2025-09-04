@@ -11,8 +11,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": document.id,
-		"resourceType": "aws_lambda_permission",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("aws_lambda_permission[%s].action", [name]),
 		"searchLine": common_lib.build_search_line(["resource", "aws_lambda_permission", name, "action"], []),
 		"issueType": "IncorrectValue",

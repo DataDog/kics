@@ -12,8 +12,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "alicloud_cs_kubernetes_node_pool",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("alicloud_cs_kubernetes_node_pool[%s].resource.management.auto_repair ",[name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": sprintf("For the resource alicloud_cs_kubernetes_node_pool[%s] to have 'auto_repair' set to true.", [name]),
@@ -34,8 +34,8 @@ CxPolicy[result] {
 	
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "alicloud_cs_kubernetes_node_pool",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("alicloud_cs_kubernetes_node_pool[%s]",[name]),
 		"issueType": "MissingAttribute",
 		"keyExpectedValue": sprintf("For the resource alicloud_cs_kubernetes_node_pool[%s] to have a 'management' block containing 'auto_repair' set to true.", [name]),
@@ -51,8 +51,8 @@ CxPolicy[result] {
 	
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "alicloud_cs_kubernetes_node_pool",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("alicloud_cs_kubernetes_node_pool[%s].management",[name]),
 		"issueType": "MissingAttribute",
 		"keyExpectedValue": sprintf("For the resource alicloud_cs_kubernetes_node_pool[%s] to have a 'management' block containing 'auto_repair' set to true.", [name]),

@@ -9,8 +9,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "aws_elasticsearch_domain",
-		"resourceName": tf_lib.get_resource_name(awsElasticsearchDomain, name),
+
+
 		"searchKey": sprintf("aws_elasticsearch_domain[{{%s}}]", [name]),
 		"searchLine": common_lib.build_search_line(["resource", "aws_elasticsearch_domain", name], []),
 		"issueType": "MissingAttribute",
@@ -27,8 +27,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "aws_elasticsearch_domain",
-		"resourceName": tf_lib.get_resource_name(awsElasticsearchDomain, name),
+
+
 		"searchKey": sprintf("aws_elasticsearch_domain[{{%s}}].log_publishing_options.enabled", [name]),
 		"searchLine": common_lib.build_search_line(["resource", "aws_elasticsearch_domain", name, "log_publishing_options", "enabled"], []),
 		"issueType": "IncorrectValue",

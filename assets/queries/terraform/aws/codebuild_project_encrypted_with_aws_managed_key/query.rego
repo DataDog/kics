@@ -9,8 +9,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "aws_codebuild_project",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("aws_codebuild_project[%s].encryption_key", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": "CodeBuild Project should not be encrypted with AWS managed key",

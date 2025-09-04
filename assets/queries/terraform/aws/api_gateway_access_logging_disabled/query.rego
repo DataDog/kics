@@ -10,8 +10,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "aws_apigatewayv2_stage",
-		"resourceName": tf_lib.get_resource_name(api, name),
+
+
 		"searchKey": sprintf("aws_apigatewayv2_stage[%s]%s", [name, searchKeyValid]),
 		"issueType": "MissingAttribute",
 		"keyExpectedValue": sprintf("aws_apigatewayv2_stage[%s].default_route_settings should be defined and not null", [name]),
@@ -27,8 +27,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "aws_apigatewayv2_stage",
-		"resourceName": tf_lib.get_resource_name(api, name),
+
+
 		"searchKey": sprintf("aws_apigatewayv2_stage[%s].default_route_settings%s", [name, searchKeyValid]),
 		"issueType": "MissingAttribute",
 		"keyExpectedValue": sprintf("aws_apigatewayv2_stage[%s].default_route_settings.logging_level should be defined and not null", [name]),
@@ -45,8 +45,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "aws_apigatewayv2_stage",
-		"resourceName": tf_lib.get_resource_name(api, name),
+
+
 		"searchKey": sprintf("aws_apigatewayv2_stage[%s].default_route_settings.logging_level", [name]),
 		"issueType": "MissingAttribute",
 		"keyExpectedValue": sprintf("aws_apigatewayv2_stage[%s].default_route_settings.logging_level should not be set to OFF", [name]),
@@ -63,8 +63,8 @@ CxPolicy[result] {
 	count(x) == 0
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "aws_api_gateway_stage",
-        "resourceName": tf_lib.get_resource_name(api, name),
+
+
 		"searchKey": sprintf("aws_api_gateway_stage[%s]", [name]),
 		"issueType": "MissingAttribute",
 		"keyExpectedValue": sprintf("aws_api_gateway_stage[%s]'s corresponding aws_api_gateway_method_settings should be defined and not null", [name]),
@@ -84,8 +84,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "aws_api_gateway_stage",
-		"resourceName": tf_lib.get_resource_name(api, name),
+
+
 		"searchKey": sprintf("aws_api_gateway_method_settings[%s]%s", [settingsId, searchKeyValid]),
 		"issueType": "MissingAttribute",
 		"keyExpectedValue": sprintf("aws_api_gateway_method_settings[%s].settings should be defined and not null", [settingsId]),
@@ -106,8 +106,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "aws_api_gateway_stage",
-		"resourceName": tf_lib.get_resource_name(api, name),
+
+
 		"searchKey": sprintf("aws_api_gateway_method_settings[%s].settings%s", [settingsId, searchKeyValid]),
 		"issueType": "MissingAttribute",
 		"keyExpectedValue": sprintf("aws_api_gateway_method_settings[%s].settings.logging_level should be defined and not null", [settingsId]),
@@ -130,8 +130,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "aws_api_gateway_stage",
-		"resourceName": tf_lib.get_resource_name(api, name),
+
+
 		"searchKey": sprintf("aws_api_gateway_method_settings[%s].settings.logging_level", [settingsId]),
 		"issueType": "InvalidAttribute",
 		"keyExpectedValue": sprintf("aws_api_gateway_method_settings[%s].settings.logging_level should not be set to OFF", [settingsId]),
@@ -146,8 +146,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "aws_api_gateway_stage",
-		"resourceName": tf_lib.get_resource_name(api, name),
+
+
 		"searchKey": sprintf("aws_api_gateway_stage[%s]", [name]),
 		"issueType": "MissingAttribute",
 		"keyExpectedValue": "'access_log_settings' should be defined",
@@ -162,8 +162,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "aws_apigatewayv2_stage",
-		"resourceName": tf_lib.get_resource_name(api, name),
+
+
 		"searchKey": sprintf("aws_apigatewayv2_stage[%s]", [name]),
 		"issueType": "MissingAttribute",
 		"keyExpectedValue": "'access_log_settings' should be defined",
@@ -181,8 +181,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "module",
-		"resourceName": sprintf("%s", [name]),
+
+
 		"searchKey": sprintf("module[%s]%s", [name, searchKeyValid]),
 		"issueType": "MissingAttribute",
 		"keyExpectedValue": sprintf("module[%s].%s should be defined and not null", [name, keyToCheck]),
@@ -199,8 +199,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "module",
-		"resourceName": sprintf("%s", [name]),
+
+
 		"searchKey": sprintf("module[%s].%s%s", [name, keyToCheck, searchKeyValid]),
 		"issueType": "MissingAttribute",
 		"keyExpectedValue": sprintf("module[%s].%s.logging_level' should be defined and not null", [name, keyToCheck]),
@@ -218,8 +218,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "module",
-		"resourceName": sprintf("%s", [name]),
+
+
 		"searchKey": sprintf("module[%s].%s.logging_level", [name, keyToCheck]),
 		"issueType": "InvalidAttribute",
 		"keyExpectedValue": sprintf("module[%s].%s.logging_level should not be set to OFF", [name, keyToCheck]),

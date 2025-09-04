@@ -9,8 +9,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "tencentcloud_mysql_instance",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("tencentcloud_mysql_instance[%s].internet_service", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": sprintf("[%s] has 'internet_service' set to 0 or undefined", [name]),

@@ -16,8 +16,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "aws_ssoadmin_permission_set_inline_policy",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("aws_ssoadmin_permission_set_inline_policy[%s].inline_policy", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": "inline_policy.Statement.Action should not equal to, nor contain '*'",

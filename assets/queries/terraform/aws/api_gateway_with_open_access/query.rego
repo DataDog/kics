@@ -12,8 +12,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": document.id,
-		"resourceType": "aws_api_gateway_method",
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("aws_api_gateway_method[%s].http_method", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": "aws_api_gateway_method.authorization should only be 'NONE' if http_method is 'OPTIONS'",
@@ -40,8 +40,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "module",
-		"resourceName": sprintf("%s", [name]),
+
+
 		"searchKey": sprintf("module[%s].%s", [name, httpMethodKey]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": sprintf("%s should only be 'NONE' if %s is 'OPTIONS'", [keyToCheck, httpMethodKey]),

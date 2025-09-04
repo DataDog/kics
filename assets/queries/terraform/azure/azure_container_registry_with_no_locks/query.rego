@@ -11,8 +11,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "azurerm_container_registry",
-		"resourceName": tf_lib.get_resource_name(resourceRegistry, name),
+
+
 		"searchKey": sprintf("azurerm_container_registry[%s]", [name]),
 		"issueType": "MissingAttribute",
 		"keyExpectedValue": sprintf("'azurerm_container_registry[%s] scope' should contain azurerm_management_lock'", [name]),

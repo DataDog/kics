@@ -12,8 +12,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": res,
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("%s[{{%s}}]", [res, name]),
 		"issueType": "MissingAttribute",
 		"keyExpectedValue": sprintf("%s[{{%s}}].tags should be defined and not null", [res, name]),
@@ -30,8 +30,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": res,
-		"resourceName": tf_lib.get_resource_name(resource, name),
+
+
 		"searchKey": sprintf("%s[{{%s}}].tags", [res, name]),
 		"issueType": "MissingAttribute",
 		"keyExpectedValue": sprintf("%s[{{%s}}].tags has additional tags defined other than 'Name'", [res, name]),

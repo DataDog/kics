@@ -9,8 +9,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "aws_neptune_cluster",
-		"resourceName": tf_lib.get_resource_name(password_policy, name),
+
+
 		"searchKey": sprintf("aws_neptune_cluster[%s]", [name]),
 		"searchLine": common_lib.build_search_line(["resource", "aws_neptune_cluster", name], []),
 		"issueType": "MissingAttribute",
@@ -27,8 +27,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "aws_neptune_cluster",
-		"resourceName": tf_lib.get_resource_name(password_policy, name),
+
+
 		"searchKey": sprintf("aws_neptune_cluster[%s].iam_database_authentication_enabled", [name]),
 		"searchLine": common_lib.build_search_line(["resource", "aws_neptune_cluster", name, "iam_database_authentication_enabled"], []),
 		"issueType": "IncorrectValue",
@@ -51,8 +51,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "module",
-		"resourceName": sprintf("%s", [name]),
+
+
 		"searchKey": sprintf("module[%s]", [name]),
 		"searchLine": common_lib.build_search_line(["module", name], []),
 		"issueType": "MissingAttribute",
@@ -70,8 +70,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "module",
-		"resourceName": sprintf("%s", [name]),
+
+
 		"searchKey": sprintf("module[%s].%s", [name, keyToCheck]),
 		"searchLine": common_lib.build_search_line(["module", name, keyToCheck], []),
 		"issueType": "IncorrectValue",

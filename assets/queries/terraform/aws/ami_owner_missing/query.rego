@@ -9,8 +9,8 @@ CxPolicy[result] {
 
     result := {
         "documentId": input.document[i].id,
-        "resourceType": "data.aws_ami",
-        "resourceName": tf_lib.get_specific_resource_name(input.document[i].data.aws_ami[name], "aws_ami", name),
+
+
         "searchKey": sprintf("data.aws_ami[%s].most_recent", [name]),
         "issueType": "MissingValue",
         "keyExpectedValue": "Must define 'owners' or a filter with 'owner-id', 'owner-alias', or 'image-id' when most_recent = true",

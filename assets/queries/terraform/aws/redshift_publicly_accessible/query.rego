@@ -9,8 +9,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "aws_redshift_cluster",
-		"resourceName": tf_lib.get_resource_name(public, name),
+
+
 		"searchKey": sprintf("aws_redshift_cluster[%s]", [name]),
 		"issueType": "MissingAttribute",
 		"keyExpectedValue": "aws_redshift_cluster.publicly_accessible should be defined and not null",
@@ -26,8 +26,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "aws_redshift_cluster",
-		"resourceName": tf_lib.get_resource_name(public, name),
+
+
 		"searchKey": sprintf("aws_redshift_cluster[%s].publicly_accessible", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": "aws_redshift_cluster.publicly_accessible should be set to false",
@@ -49,8 +49,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "module",
-		"resourceName": sprintf("%s", [name]),
+
+
 		"searchKey": sprintf("module[%s]", [name]),
 		"issueType": "MissingAttribute",
 		"keyExpectedValue": sprintf("module[%s].%s should be defined and not null", [name, keyToCheck]),
@@ -67,8 +67,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "module",
-		"resourceName": sprintf("%s", [name]),
+
+
 		"searchKey": sprintf("module[%s].%s", [name, keyToCheck]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": sprintf("module[%s].%s should be set to false", [name, keyToCheck]),

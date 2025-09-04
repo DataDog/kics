@@ -12,8 +12,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "azurerm_kubernetes_cluster",
-		"resourceName": tf_lib.get_resource_name(cluster, name),
+
+
 		"searchKey": sprintf("azurerm_kubernetes_cluster[%s].network_profile.network_policy", [name]),
 		"searchLine": common_lib.build_search_line(["resource","azurerm_kubernetes_cluster", name, "network_profile", "network_policy"], []),
 		"issueType": "IncorrectValue",
@@ -34,8 +34,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "azurerm_kubernetes_cluster",
-		"resourceName": tf_lib.get_resource_name(cluster, name),
+
+
 		"searchKey": sprintf("azurerm_kubernetes_cluster[%s].network_profile", [name]),
 		"searchLine": common_lib.build_search_line(["resource","azurerm_kubernetes_cluster", name, "network_profile"], []),
 		"issueType": "MissingAttribute",
@@ -52,8 +52,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "azurerm_kubernetes_cluster",
-		"resourceName": tf_lib.get_resource_name(cluster, name),
+
+
 		"searchKey": sprintf("azurerm_kubernetes_cluster[%s]", [name]),
 		"searchLine": common_lib.build_search_line(["resource","azurerm_kubernetes_cluster", name], []),
 		"issueType": "MissingAttribute",

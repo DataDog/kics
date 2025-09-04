@@ -10,8 +10,8 @@ CxPolicy[result] {
 
 	result := {
 		"documentId": input.document[i].id,
-		"resourceType": "nifcloud_db_instance",
-		"resourceName": tf_lib.get_resource_name(dbInstance, name),
+
+
 		"searchKey": sprintf("nifcloud_db_instance[%s]", [name]),
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": sprintf("'nifcloud_db_instance[%s]' should use a private LAN to isolate the private side network from the shared network", [name]),
