@@ -7,6 +7,7 @@ package scan
 
 import (
 	"context"
+	"github.com/Checkmarx/kics/pkg/utils"
 	"time"
 
 	"github.com/Checkmarx/kics/internal/storage"
@@ -59,6 +60,7 @@ type Parameters struct {
 	KicsComputeNewSimID         bool
 	PreAnalysisExcludePaths     []string
 	SCIInfo                     model.SCIInfo
+	FeatureFlags                utils.FeatureFlags
 }
 
 // Client represents a scan client
