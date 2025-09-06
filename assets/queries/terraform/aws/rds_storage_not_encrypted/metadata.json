@@ -10,5 +10,19 @@
   "cloudProvider": "aws",
   "cwe": "311",
   "oldDescriptionText": "RDS Storage should be encrypted, which means the attribute 'storage_encrypted' should be set to 'true'",
-  "providerUrl": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/rds_cluster#storage_encrypted"
+  "providerUrl": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/rds_cluster#storage_encrypted",
+  "customFrameworks": [
+    {
+      "control": "aws.1.17",
+      "framework": "dcsb-m-v2",
+      "framework_version": "dcsb-m-v2_0.0.1",
+      "requirement": "aws"
+    },
+    {
+      "control": "aws.1.18",
+      "framework": "dcsb-m-v2",
+      "framework_version": "dcsb-m-v2_0.0.1",
+      "requirement": "aws"
+    }
+  ]
 }

@@ -11,5 +11,13 @@
   "cwe": "668",
   "oldSeverity": "HIGH",
   "oldDescriptionText": "RDS must not be defined with public interface, which means the field 'publicly_accessible' should not be set to 'true' (default is 'false').",
-  "providerUrl": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/db_instance#publicly_accessible"
+  "providerUrl": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/db_instance#publicly_accessible",
+  "customFrameworks": [
+    {
+      "control": "aws.1.8",
+      "framework": "dcsb-m-v2",
+      "framework_version": "dcsb-m-v2_0.0.1",
+      "requirement": "aws"
+    }
+  ]
 }

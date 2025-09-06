@@ -82,6 +82,7 @@ func (c *Client) initScan(ctx context.Context) (*executeScanParameters, error) {
 		true,
 		c.ScanParams.ParallelScanFlag,
 		c.ScanParams.KicsComputeNewSimID,
+		c.ScanParams.FeatureFlags,
 	)
 	if err != nil {
 		return nil, err

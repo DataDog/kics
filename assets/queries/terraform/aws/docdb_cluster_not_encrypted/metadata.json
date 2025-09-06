@@ -10,5 +10,13 @@
   "cloudProvider": "aws",
   "cwe": "311",
   "oldDescriptionText": "AWS DOCDB Cluster storage should be encrypted",
-  "providerUrl": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/docdb_cluster#storage_encrypted"
+  "providerUrl": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/docdb_cluster#storage_encrypted",
+  "customFrameworks": [
+    {
+      "control": "aws.1.15",
+      "framework": "dcsb-m-v2",
+      "framework_version": "dcsb-m-v2_0.0.1",
+      "requirement": "aws"
+    }
+  ]
 }

@@ -10,5 +10,13 @@
   "cloudProvider": "aws",
   "cwe": "319",
   "oldDescriptionText": "Amazon Simple Queue Service (SQS) queue should protect the contents of their messages using Server-Side Encryption (SSE)",
-  "providerUrl": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/sqs_queue"
+  "providerUrl": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/sqs_queue",
+  "customFrameworks": [
+    {
+      "control": "aws.1.28",
+      "framework": "dcsb-m-v2",
+      "framework_version": "dcsb-m-v2_0.0.1",
+      "requirement": "aws"
+    }
+  ]
 }

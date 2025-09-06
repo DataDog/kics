@@ -11,5 +11,13 @@
   "cwe": "311",
   "oldSeverity": "MEDIUM",
   "oldDescriptionText": "SNS (Simple Notification Service) Topic should be encrypted",
-  "providerUrl": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/sns_topic#kms_master_key_id"
+  "providerUrl": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/sns_topic#kms_master_key_id",
+  "customFrameworks": [
+    {
+      "control": "aws.1.29",
+      "framework": "dcsb-m-v2",
+      "framework_version": "dcsb-m-v2_0.0.1",
+      "requirement": "aws"
+    }
+  ]
 }

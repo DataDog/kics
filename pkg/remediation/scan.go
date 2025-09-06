@@ -17,6 +17,7 @@ import (
 	"github.com/Checkmarx/kics/pkg/minified"
 	"github.com/Checkmarx/kics/pkg/model"
 	"github.com/Checkmarx/kics/pkg/scan"
+	"github.com/Checkmarx/kics/pkg/utils"
 	"github.com/open-policy-agent/opa/topdown"
 
 	"github.com/Checkmarx/kics/internal/tracker"
@@ -27,7 +28,6 @@ import (
 	jsonParser "github.com/Checkmarx/kics/pkg/parser/json"
 	terraformParser "github.com/Checkmarx/kics/pkg/parser/terraform"
 	yamlParser "github.com/Checkmarx/kics/pkg/parser/yaml"
-	"github.com/Checkmarx/kics/pkg/utils"
 	"github.com/open-policy-agent/opa/rego"
 )
 
@@ -284,6 +284,7 @@ func initScan(ctx context.Context, queryID string) (*engine.Inspector, error) {
 		false,
 		c.ScanParams.ParallelScanFlag,
 		c.ScanParams.KicsComputeNewSimID,
+		utils.FeatureFlags{},
 	)
 
 	return inspector, err

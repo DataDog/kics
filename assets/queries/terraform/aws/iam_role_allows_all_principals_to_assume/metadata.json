@@ -11,5 +11,13 @@
   "cwe": "732",
   "oldSeverity": "LOW",
   "oldDescriptionText": "IAM role allows all services or principals to assume it",
-  "providerUrl": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role"
+  "providerUrl": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role",
+  "customFrameworks": [
+    {
+      "control": "aws.1.2",
+      "framework": "dcsb-m-v2",
+      "framework_version": "dcsb-m-v2_0.0.1",
+      "requirement": "aws"
+    }
+  ]
 }

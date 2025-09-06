@@ -11,5 +11,19 @@
   "cwe": "311",
   "oldSeverity": "MEDIUM",
   "oldDescriptionText": "Check if ElasticSearch encryption is disabled at Rest",
-  "providerUrl": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/elasticsearch_domain"
+  "providerUrl": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/elasticsearch_domain",
+  "customFrameworks": [
+    {
+      "control": "aws.1.20",
+      "framework": "dcsb-m-v2",
+      "framework_version": "dcsb-m-v2_0.0.1",
+      "requirement": "aws"
+    },
+    {
+      "control": "aws.1.27",
+      "framework": "dcsb-m-v2",
+      "framework_version": "dcsb-m-v2_0.0.1",
+      "requirement": "aws"
+    }
+  ]
 }

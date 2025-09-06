@@ -55,6 +55,7 @@ type ruleMetadata struct {
 	queryCategory    string
 	queryCwe         string
 	severity         model.Severity
+	customFrameworks []model.CustomFramework
 }
 
 type ruleCISMetadata struct {
@@ -539,6 +540,12 @@ func (sr *sarifReport) buildSarifRule(queryMetadata *ruleMetadata, cisMetadata r
 		kicsRuleIDTag := GetKICSRuleIDTag(queryMetadata.queryID)
 		tags = append(tags, categoryTag, kicsRuleIDTag)
 
+		// Add custom framework tags to rule level
+		for _, framework := range queryMetadata.customFrameworks {
+			frameworkTags := GetFrameworkTags(framework)
+			tags = append(tags, frameworkTags...)
+		}
+
 		rule := sarifRule{
 			RuleID:               queryMetadata.queryName,
 			RuleName:             queryMetadata.queryName,
@@ -607,6 +614,7 @@ func (sr *sarifReport) BuildSarifIssue(ctx context.Context, issue *model.QueryRe
 			queryCategory:    issue.Category,
 			queryCwe:         issue.CWE,
 			severity:         issue.Severity,
+			customFrameworks: issue.CustomFrameworks,
 		}
 		cisDescriptions := ruleCISMetadata{
 			id:              issue.CISDescriptionIDFormatted,
@@ -636,6 +644,12 @@ func (sr *sarifReport) BuildSarifIssue(ctx context.Context, issue *model.QueryRe
 			resourceNameTag := GetResourceNameTag(resourceName)
 
 			resultTags := append(tags, resourceTypeTag, resourceNameTag)
+
+			// Add custom framework tags to result level
+			for _, framework := range issue.CustomFrameworks {
+				frameworkTags := GetFrameworkTags(framework)
+				resultTags = append(resultTags, frameworkTags...)
+			}
 
 			resourceLocation := vulnerability.ResourceLocation
 

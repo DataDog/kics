@@ -10,5 +10,13 @@
   "cloudProvider": "aws",
   "cwe": "311",
   "oldDescriptionText": "AWS Redshift Cluster should be encrypted. Check if 'encrypted' field is false or undefined (default is false)",
-  "providerUrl": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/redshift_cluster#encrypted"
+  "providerUrl": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/redshift_cluster#encrypted",
+  "customFrameworks": [
+    {
+      "control": "aws.1.26",
+      "framework": "dcsb-m-v2",
+      "framework_version": "dcsb-m-v2_0.0.1",
+      "requirement": "aws"
+    }
+  ]
 }

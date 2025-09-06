@@ -10,5 +10,13 @@
   "cloudProvider": "aws",
   "cwe": "200",
   "oldDescriptionText": "Checks if the SQS Queue is exposed",
-  "providerUrl": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/sqs_queue#policy"
+  "providerUrl": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/sqs_queue#policy",
+  "customFrameworks": [
+    {
+      "control": "aws.1.5",
+      "framework": "dcsb-m-v2",
+      "framework_version": "dcsb-m-v2_0.0.1",
+      "requirement": "aws"
+    }
+  ]
 }

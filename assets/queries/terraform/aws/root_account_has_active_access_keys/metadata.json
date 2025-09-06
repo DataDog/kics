@@ -10,5 +10,13 @@
   "cloudProvider": "aws",
   "cwe": "710",
   "oldDescriptionText": "The AWS Root Account must not have active access keys associated, which means if there are access keys associated to the Root Account, they must be inactive.",
-  "providerUrl": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_access_key"
+  "providerUrl": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_access_key",
+  "customFrameworks": [
+    {
+      "control": "aws.1.3",
+      "framework": "dcsb-m-v2",
+      "framework_version": "dcsb-m-v2_0.0.1",
+      "requirement": "aws"
+    }
+  ]
 }

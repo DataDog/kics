@@ -10,5 +10,13 @@
   "cloudProvider": "aws",
   "cwe": "284",
   "oldDescriptionText": "Ensures that AWS OpenSearch and Elasticsearch domains have fine-grained access control enabled. Without this setting, access permissions cannot be enforced at a granular level, potentially leading to unauthorized access.",
-  "providerUrl": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/opensearch_domain#advanced_security_options"
+  "providerUrl": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/opensearch_domain#advanced_security_options",
+  "customFrameworks": [
+    {
+      "control": "aws.1.19",
+      "framework": "dcsb-m-v2",
+      "framework_version": "dcsb-m-v2_0.0.1",
+      "requirement": "aws"
+    }
+  ]
 }
