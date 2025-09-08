@@ -291,8 +291,8 @@ func checkLine(str1, str2 string, distances map[int]int, starts map[int]model.Re
 		if strings.Contains(restLine, str2) {
 			distances[startLine] = levenshtein.ComputeDistance(ExtractLineFragment(line, str1, false), str1)
 			distances[startLine] += levenshtein.ComputeDistance(ExtractLineFragment(restLine, str2, false), str2)
-			starts[startLine] = model.ResourceLine{Line: startLine, Col: currentIndent}
-			ends[startLine] = model.ResourceLine{Line: startLine, Col: len(lines[startLine])}
+			starts[startLine] = model.ResourceLine{Line: startLine + 1, Col: currentIndent}
+			ends[startLine] = model.ResourceLine{Line: startLine + 1, Col: len(lines[startLine])}
 		} else if kind == model.KindYAML && yamlMultilineRegex.MatchString(line) {
 			s, nextLine := "", ""
 			for endLine < len(lines) {
@@ -311,13 +311,15 @@ func checkLine(str1, str2 string, distances map[int]int, starts map[int]model.Re
 			) || strings.Contains(nextLine, str2) {
 				distances[startLine] = levenshtein.ComputeDistance(ExtractLineFragment(line, str1, false), str1)
 				distances[startLine] += levenshtein.ComputeDistance(ExtractLineFragment(str2, s, false), s)
-				starts[startLine] = model.ResourceLine{Line: startLine, Col: currentIndent}
-				ends[startLine] = model.ResourceLine{Line: endLine, Col: len(lines[startLine])}
+				starts[startLine] = model.ResourceLine{Line: startLine + 1, Col: currentIndent}
+				ends[startLine] = model.ResourceLine{Line: endLine + 1, Col: len(lines[startLine])}
 			}
 
 		}
 	} else if str1 != "" && strings.Contains(line, str1) {
 		distances[startLine] = levenshtein.ComputeDistance(ExtractLineFragment(line, str1, false), str1)
+		starts[startLine] = model.ResourceLine{Line: startLine + 1, Col: currentIndent}
+		ends[startLine] = model.ResourceLine{Line: endLine + 1, Col: len(lines[startLine])}
 	}
 
 	return distances, starts, ends
