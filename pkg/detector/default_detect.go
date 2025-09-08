@@ -61,7 +61,7 @@ func (d defaultDetectLine) DetectLine(ctx context.Context, file *model.FileMetad
 			substr1 = strings.ReplaceAll(substr1, "parameters", "param")
 			substr1 = strings.ReplaceAll(substr1, "variables", "variable")
 		}
-		detector, start, end, lines = detector.DetectCurrentLine(substr1, substr2, 0, lines)
+		detector, start, end, lines = detector.DetectCurrentLine(substr1, substr2, 0, lines, file.Kind)
 
 		if detector.IsBreak {
 			break

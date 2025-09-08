@@ -252,12 +252,12 @@ func removeExtras(result string, start, end int) string {
 
 // DetectCurrentLine uses levenshtein distance to find the most accurate line for the vulnerability
 func (d *DefaultDetectLineResponse) DetectCurrentLine(str1, str2 string, recurseCount int,
-	lines []string) (*DefaultDetectLineResponse, model.ResourceLine, model.ResourceLine, []string) {
+	lines []string, kind model.FileKind) (*DefaultDetectLineResponse, model.ResourceLine, model.ResourceLine, []string) {
 	distances := make(map[int]int)
 	starts, ends := make(map[int]model.ResourceLine), make(map[int]model.ResourceLine)
 
 	for i := d.CurrentLine; i < len(lines); i++ {
-		distances, starts, ends = checkLine(str1, str2, distances, starts, ends, lines, i)
+		distances, starts, ends = checkLine(str1, str2, distances, starts, ends, lines, i, kind)
 	}
 
 	if len(distances) == 0 {
@@ -272,7 +272,7 @@ func (d *DefaultDetectLineResponse) DetectCurrentLine(str1, str2 string, recurse
 	return d, starts[d.CurrentLine], ends[d.CurrentLine], lines
 }
 
-func checkLine(str1, str2 string, distances map[int]int, starts map[int]model.ResourceLine, ends map[int]model.ResourceLine, lines []string, startLine int) (map[int]int, map[int]model.ResourceLine, map[int]model.ResourceLine) {
+func checkLine(str1, str2 string, distances map[int]int, starts map[int]model.ResourceLine, ends map[int]model.ResourceLine, lines []string, startLine int, kind model.FileKind) (map[int]int, map[int]model.ResourceLine, map[int]model.ResourceLine) {
 	line := strings.TrimSpace(lines[startLine])
 	endLine := startLine + 1
 	if strings.HasPrefix(line, "#") || strings.HasPrefix(line, "//") {
@@ -289,7 +289,7 @@ func checkLine(str1, str2 string, distances map[int]int, starts map[int]model.Re
 			distances[startLine] += levenshtein.ComputeDistance(ExtractLineFragment(restLine, str2, false), str2)
 			starts[startLine] = model.ResourceLine{Line: startLine, Col: currentIndent}
 			ends[startLine] = model.ResourceLine{Line: startLine, Col: len(lines[startLine])}
-		} else if strings.Contains(line, "|") {
+		} else if kind == model.KindYAML && strings.Contains(line, "|") {
 			s, nextLine := "", ""
 			for endLine < len(lines) {
 				nextLine = regex.ReplaceAllString(lines[endLine], "")
