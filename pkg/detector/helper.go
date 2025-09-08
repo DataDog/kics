@@ -279,8 +279,12 @@ func checkLine(str1, str2 string, distances map[int]int, starts map[int]model.Re
 		return distances, starts, ends
 	}
 
-	regex := regexp.MustCompile(`^\s+`)
-	line = regex.ReplaceAllString(line, "")
+	indentRegex := regexp.MustCompile(`^\s+`)
+	whitespacesRegex := regexp.MustCompile(`\s+`)
+	var yamlMultilineRegex = regexp.MustCompile(
+		`(?m)^[ \t]*-?[ \t]*[^:\n#][^:\n]*:\s*(?:[|>](?:[+-]?\d+|\d+[+-]?|[+-])?|\\)\s*(?:#.*)?$`,
+	)
+	line = indentRegex.ReplaceAllString(line, "")
 	currentIndent := strings.Index(lines[startLine], line)
 	if str1 != "" && str2 != "" && strings.Contains(line, str1) {
 		restLine := line[strings.Index(line, str1)+len(str1):]
@@ -289,10 +293,10 @@ func checkLine(str1, str2 string, distances map[int]int, starts map[int]model.Re
 			distances[startLine] += levenshtein.ComputeDistance(ExtractLineFragment(restLine, str2, false), str2)
 			starts[startLine] = model.ResourceLine{Line: startLine, Col: currentIndent}
 			ends[startLine] = model.ResourceLine{Line: startLine, Col: len(lines[startLine])}
-		} else if kind == model.KindYAML && strings.Contains(line, "|") {
+		} else if kind == model.KindYAML && yamlMultilineRegex.MatchString(line) {
 			s, nextLine := "", ""
 			for endLine < len(lines) {
-				nextLine = regex.ReplaceAllString(lines[endLine], "")
+				nextLine = indentRegex.ReplaceAllString(lines[endLine], "")
 				nextIndent := strings.Index(lines[endLine], nextLine)
 				if currentIndent == nextIndent || strings.Contains(nextLine, str2) {
 					break
@@ -300,7 +304,6 @@ func checkLine(str1, str2 string, distances map[int]int, starts map[int]model.Re
 				s += nextLine
 				endLine++
 			}
-			whitespacesRegex := regexp.MustCompile(`\s+`)
 
 			if strings.Contains(
 				whitespacesRegex.ReplaceAllString(str2, ""),
