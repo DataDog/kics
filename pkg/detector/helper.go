@@ -19,8 +19,13 @@ import (
 )
 
 var (
-	nameRegex       = regexp.MustCompile(`^([A-Za-z\d-_]+)\[([A-Za-z\d-_{}]+)]$`)
-	nameRegexDocker = regexp.MustCompile(`{{(.*?)}}`)
+	nameRegex          = regexp.MustCompile(`^([A-Za-z\d-_]+)\[([A-Za-z\d-_{}]+)]$`)
+	nameRegexDocker    = regexp.MustCompile(`{{(.*?)}}`)
+	indentRegex        = regexp.MustCompile(`^\s+`)
+	whitespacesRegex   = regexp.MustCompile(`\s+`)
+	yamlMultilineRegex = regexp.MustCompile(
+		`(?m)^[ \t]*-?[ \t]*[^:\n#][^:\n]*:\s*(?:[|>](?:[+-]?\d+|\d+[+-]?|[+-])?|\\)\s*(?:#.*)?$`,
+	)
 )
 
 const (
@@ -279,11 +284,6 @@ func checkLine(str1, str2 string, distances map[int]int, starts map[int]model.Re
 		return distances, starts, ends
 	}
 
-	indentRegex := regexp.MustCompile(`^\s+`)
-	whitespacesRegex := regexp.MustCompile(`\s+`)
-	var yamlMultilineRegex = regexp.MustCompile(
-		`(?m)^[ \t]*-?[ \t]*[^:\n#][^:\n]*:\s*(?:[|>](?:[+-]?\d+|\d+[+-]?|[+-])?|\\)\s*(?:#.*)?$`,
-	)
 	line = indentRegex.ReplaceAllString(line, "")
 	currentIndent := strings.Index(lines[startLine], line)
 	if str1 != "" && str2 != "" && strings.Contains(line, str1) {
