@@ -59,6 +59,7 @@ type Parameters struct {
 	KicsComputeNewSimID         bool
 	PreAnalysisExcludePaths     []string
 	SCIInfo                     model.SCIInfo
+	FlagEvaluator               interface{}
 }
 
 // Client represents a scan client
@@ -70,6 +71,7 @@ type Client struct {
 	ExcludeResultsMap map[string]bool
 	Printer           *consolePrinter.Printer
 	ProBarBuilder     *progress.PbBuilder
+	FlagEvaluator     interface{}
 }
 
 func GetDefaultParameters(ctx context.Context, rootPath string, extraInfos map[string]string, consolePrint ...bool) (*Parameters, context.Context) {
@@ -140,6 +142,7 @@ func NewClient(ctx context.Context, params *Parameters, proBarBuilder *progress.
 		Storage:           store,
 		ExcludeResultsMap: excludeResultsMap,
 		Printer:           customPrint,
+		FlagEvaluator:     params.FlagEvaluator,
 	}, nil
 }
 

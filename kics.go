@@ -12,12 +12,13 @@ import (
 	"path/filepath"
 
 	"github.com/Checkmarx/kics/internal/console"
+	"github.com/Checkmarx/kics/pkg/featureflags"
 	"github.com/Checkmarx/kics/pkg/model"
 	"github.com/Checkmarx/kics/pkg/scan"
 	"github.com/rs/zerolog/log"
 )
 
-func ExecuteKICSScan(inputPaths []string, outputPath string, sciInfo model.SCIInfo, consolePrint ...bool) (scan.ScanMetadata, string, error) {
+func ExecuteKICSScan(inputPaths []string, outputPath string, sciInfo model.SCIInfo, FlagEvaluator featureflags.FlagEvaluator, consolePrint ...bool) (scan.ScanMetadata, string, error) {
 	ctx := context.Background()
 	extraInfos := map[string]string{
 		"org":        fmt.Sprintf("%d", sciInfo.OrgId),
@@ -30,6 +31,7 @@ func ExecuteKICSScan(inputPaths []string, outputPath string, sciInfo model.SCIIn
 	params.Path = inputPaths
 	params.OutputPath = outputPath
 	params.SCIInfo = sciInfo
+	params.FlagEvaluator = FlagEvaluator
 	metadata, err := console.ExecuteScan(logCtx, params)
 
 	if err != nil {

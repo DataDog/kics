@@ -284,6 +284,7 @@ func initScan(ctx context.Context, queryID string) (*engine.Inspector, error) {
 		false,
 		c.ScanParams.ParallelScanFlag,
 		c.ScanParams.KicsComputeNewSimID,
+		nil,
 	)
 
 	return inspector, err

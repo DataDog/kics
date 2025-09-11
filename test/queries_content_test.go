@@ -270,6 +270,7 @@ func testQueryHasGoodReturnParams(t *testing.T, entry queryEntry) { //nolint
 		true,
 		1,
 		false,
+		nil,
 	)
 	require.Nil(t, err)
 	require.NotNil(t, inspector)

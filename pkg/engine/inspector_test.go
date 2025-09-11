@@ -241,6 +241,7 @@ func TestNewInspector(t *testing.T) { //nolint
 				tt.args.needsLog,
 				tt.args.numWorkers,
 				tt.args.kicsComputeNewSimID,
+				nil,
 			)
 
 			if (err != nil) != tt.wantErr {
@@ -566,6 +567,7 @@ func newInspectorInstance(t *testing.T, queryPath []string, kicsComputeNewSimID 
 		map[string]bool{}, 60,
 		false, true, 1,
 		kicsComputeNewSimID,
+		nil,
 	)
 	require.NoError(t, err)
 	return ins
