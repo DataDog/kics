@@ -267,7 +267,7 @@ func (d *DefaultDetectLineResponse) DetectCurrentLine(str1, str2 string, recurse
 
 	if len(distances) == 0 {
 		d.IsBreak = true
-		return d, model.ResourceLine{Line: 0, Col: 0}, model.ResourceLine{Line: 0, Col: 0}, lines
+		return d, model.ResourceLine{Line: d.CurrentLine + 1, Col: 0}, model.ResourceLine{Line: d.CurrentLine + 1, Col: 0}, lines
 	}
 
 	d.CurrentLine = SelectLineWithMinimumDistance(distances, d.CurrentLine)
@@ -312,14 +312,14 @@ func checkLine(str1, str2 string, distances map[int]int, starts map[int]model.Re
 				distances[startLine] = levenshtein.ComputeDistance(ExtractLineFragment(line, str1, false), str1)
 				distances[startLine] += levenshtein.ComputeDistance(ExtractLineFragment(str2, s, false), s)
 				starts[startLine] = model.ResourceLine{Line: startLine + 1, Col: currentIndent}
-				ends[startLine] = model.ResourceLine{Line: endLine + 1, Col: len(lines[startLine])}
+				ends[startLine] = model.ResourceLine{Line: endLine, Col: len(lines[startLine])}
 			}
 
 		}
 	} else if str1 != "" && strings.Contains(line, str1) {
 		distances[startLine] = levenshtein.ComputeDistance(ExtractLineFragment(line, str1, false), str1)
 		starts[startLine] = model.ResourceLine{Line: startLine + 1, Col: currentIndent}
-		ends[startLine] = model.ResourceLine{Line: endLine + 1, Col: len(lines[startLine])}
+		ends[startLine] = model.ResourceLine{Line: startLine + 1, Col: len(lines[startLine])}
 	}
 
 	return distances, starts, ends
