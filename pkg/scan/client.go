@@ -101,7 +101,7 @@ func GetDefaultParameters(ctx context.Context, rootPath string, extraInfos map[s
 		QueriesPath:                 []string{"./assets/queries"},
 		LibrariesPath:               "./assets/libraries",
 		ReportFormats:               []string{"sarif"},
-		Platform:                    []string{"CICD", "Terraform"},
+		Platform:                    []string{"CICD", "Terraform", "Kubernetes"},
 		TerraformVarsPath:           "",
 		QueryExecTimeout:            60,
 		LineInfoPayload:             false,
