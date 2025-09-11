@@ -86,6 +86,11 @@ def generate_module_support(path: str, skip: int = 0, check_sev: bool = True) ->
     coordinator.generate_module_support(path, skip, check_sev)
 
 
+def generate_metadata(path: str) -> None:
+    coordinator = Coordinator()
+    coordinator.generate_metadata(path)
+
+
 if __name__ == "__main__":
     args = parse_args()
     asked = args.generation
@@ -100,3 +105,5 @@ if __name__ == "__main__":
         print(write_terraforms_generation_llm_jsonl())
     elif asked == "generate_module_support":
         generate_module_support(path, skip, check_sev)
+    elif asked == "generate_metadata":
+        generate_metadata(path)

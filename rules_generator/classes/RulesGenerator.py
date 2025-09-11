@@ -1,4 +1,5 @@
 from openai import OpenAI
+from classes.models.Output import Output
 
 
 class RulesGenerator:
@@ -31,3 +32,23 @@ Answer with only the refactored code, one new line, "@@@@@", a second new line a
             ],
         )
         return response.output_text
+
+    def send_rule_doc_formatting_request(self, metadata: dict) -> Output:
+        system_message = """You are to format some text. You will be provided with a rule name, line break, @@@@@, line break and a rule description.
+Your job is to ensure that the case of the rule's name is good: except the first word, proper nouns and acronyms, no word should start with a capital case.
+Your job is to reformulate the description to make it as clear as possible."""
+
+        queryName = metadata["queryName"]
+        descriptionText = metadata["descriptionText"]
+        response = self.client.responses.parse(
+            model="gpt-5-mini-2025-08-07",
+            input=[
+                {"role": "system", "content": system_message},
+                {
+                    "role": "user",
+                    "content": f"queryName: {queryName}\n\descriptionText: {descriptionText}",
+                },
+            ],
+            text_format=Output,
+        )
+        return response.output_parsed
