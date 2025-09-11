@@ -275,14 +275,15 @@ func (c *Inspector) performInspection(ctx context.Context, scanID string, files 
 							"kics_id": kicsIDStr,
 						}
 
+						logger := logger.FromContext(ctx)
 						// Check if the rule is enabled via feature flag
-						disabled, err := flagEval.EvaluateWithOrgAndCustomVariables("kics_rule_disabled", customVariables)
+						disabled, err := flagEval.EvaluateWithOrgAndCustomVariables("k9-iac-disable-kics-rule", customVariables)
 						if err != nil {
 							// If feature flag evaluation fails, log and continue (fail open)
-							logger := logger.FromContext(ctx)
 							logger.Warn().Err(err).Str("kics_id", kicsIDStr).Msg("Failed to evaluate feature flag for KICS rule")
 						} else if disabled {
 							// Skip this query if feature flag is disabled
+							logger.Info().Str("kics_id", kicsIDStr).Msg("KICS rule disabled for feature flag")
 							continue
 						}
 					}
