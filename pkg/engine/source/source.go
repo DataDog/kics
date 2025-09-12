@@ -11,6 +11,7 @@ import (
 	"encoding/json"
 	"strings"
 
+	"github.com/Checkmarx/kics/pkg/featureflags"
 	"github.com/Checkmarx/kics/pkg/logger"
 	"github.com/Checkmarx/kics/pkg/model"
 	tfmodules "github.com/Checkmarx/kics/pkg/parser/terraform/modules"
@@ -25,7 +26,7 @@ type QueryInspectorParameters struct {
 	ExperimentalQueries bool
 	InputDataPath       string
 	BomQueries          bool
-	FlagEvaluator       interface{}
+	FlagEvaluator       featureflags.FlagEvaluator
 }
 
 // ExcludeQueries is a struct that represents the option to exclude queries by ids or by categories

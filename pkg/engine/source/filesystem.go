@@ -19,7 +19,6 @@ import (
 
 	"github.com/Checkmarx/kics/assets"
 	"github.com/Checkmarx/kics/internal/constants"
-	"github.com/Checkmarx/kics/pkg/featureflags"
 	"github.com/Checkmarx/kics/pkg/logger"
 	"github.com/Checkmarx/kics/pkg/model"
 	"github.com/pkg/errors"
@@ -241,11 +240,6 @@ func checkQueryFeatureFlagDisabled(ctx context.Context, metadata map[string]inte
 		return false
 	}
 
-	flagEval, ok := queryParameters.FlagEvaluator.(featureflags.FlagEvaluator)
-	if !ok {
-		return false
-	}
-
 	// Extract KICS ID from query metadata
 	kicsID, exists := metadata["id"]
 	if !exists {
@@ -264,7 +258,7 @@ func checkQueryFeatureFlagDisabled(ctx context.Context, metadata map[string]inte
 
 	logger := logger.FromContext(ctx)
 	// Check if the rule is disabled via feature flag
-	disabled, err := flagEval.EvaluateWithOrgAndCustomVariables("k9-iac-disable-kics-rule", customVariables)
+	disabled, err := queryParameters.FlagEvaluator.EvaluateWithOrgAndCustomVariables("k9-iac-disable-kics-rule", customVariables)
 	if err != nil {
 		// If feature flag evaluation fails, log and continue (fail open)
 		logger.Warn().Err(err).Str("kics_id", kicsIDStr).Msg("Failed to evaluate feature flag for KICS rule")
