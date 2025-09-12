@@ -82,7 +82,6 @@ func (c *Client) initScan(ctx context.Context) (*executeScanParameters, error) {
 		true,
 		c.ScanParams.ParallelScanFlag,
 		c.ScanParams.KicsComputeNewSimID,
-		c.FlagEvaluator,
 	)
 	if err != nil {
 		return nil, err
@@ -244,6 +243,7 @@ func (c *Client) createQueryFilter() *source.QueryInspectorParameters {
 		ExperimentalQueries: c.ScanParams.ExperimentalQueries,
 		InputDataPath:       c.ScanParams.InputData,
 		BomQueries:          c.ScanParams.BillOfMaterials,
+		FlagEvaluator:       c.FlagEvaluator,
 	}
 
 	return &queryFilter

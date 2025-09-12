@@ -22,7 +22,6 @@ import (
 	"github.com/Checkmarx/kics/pkg/detector/helm"
 	"github.com/Checkmarx/kics/pkg/detector/terraform"
 	"github.com/Checkmarx/kics/pkg/engine/source"
-	"github.com/Checkmarx/kics/pkg/featureflags"
 	"github.com/Checkmarx/kics/pkg/logger"
 	"github.com/Checkmarx/kics/pkg/model"
 	tfmodules "github.com/Checkmarx/kics/pkg/parser/terraform/modules"
@@ -92,7 +91,6 @@ type Inspector struct {
 	useOldSeverities     bool
 	numWorkers           int
 	kicsComputeNewSimID  bool
-	flagEvaluator        interface{}
 }
 
 // QueryContext contains the context where the query is executed, which scan it belongs, basic information of query,
@@ -135,7 +133,6 @@ func NewInspector(
 	needsLog bool,
 	numWorkers int,
 	kicsComputeNewSimID bool,
-	flagEvaluator interface{},
 ) (*Inspector, error) {
 	logger := logger.FromContext(ctx)
 	logger.Debug().Msg("engine.NewInspector()")
@@ -197,7 +194,6 @@ func NewInspector(
 		useOldSeverities:    useOldSeverities,
 		numWorkers:          adjustNumWorkers(numWorkers),
 		kicsComputeNewSimID: kicsComputeNewSimID,
-		flagEvaluator:       flagEvaluator,
 	}, nil
 }
 
@@ -262,33 +258,6 @@ func (c *Inspector) performInspection(ctx context.Context, scanID string, files 
 			Query:         query,
 			payload:       &astPayload,
 			BaseScanPaths: baseScanPaths,
-		}
-
-		// Check feature flag before running query
-		if c.flagEvaluator != nil {
-			if flagEval, ok := c.flagEvaluator.(featureflags.FlagEvaluator); ok {
-				// Extract KICS ID from query metadata
-				if kicsID, exists := query.Metadata.Metadata["id"]; exists {
-					if kicsIDStr, ok := kicsID.(string); ok {
-						// Create custom variables with the KICS ID
-						customVariables := map[string]interface{}{
-							"kics_id": kicsIDStr,
-						}
-
-						logger := logger.FromContext(ctx)
-						// Check if the rule is enabled via feature flag
-						disabled, err := flagEval.EvaluateWithOrgAndCustomVariables("k9-iac-disable-kics-rule", customVariables)
-						if err != nil {
-							// If feature flag evaluation fails, log and continue (fail open)
-							logger.Warn().Err(err).Str("kics_id", kicsIDStr).Msg("Failed to evaluate feature flag for KICS rule")
-						} else if disabled {
-							// Skip this query if feature flag is disabled
-							logger.Info().Str("kics_id", kicsIDStr).Msg("KICS rule disabled for feature flag")
-							continue
-						}
-					}
-				}
-			}
 		}
 
 		vuls, err := c.doRun(ctx, queryContext)

@@ -308,8 +308,9 @@ func createInspectorAndGetVulnerabilities(ctx context.Context, t testing.TB,
 			IncludeQueries: source.IncludeQueries{ByIDs: []string{}},
 			ExcludeQueries: source.ExcludeQueries{ByIDs: []string{}, ByCategories: []string{}},
 			InputDataPath:  "",
+			FlagEvaluator:  nil,
 		},
-		map[string]bool{}, 60, true, true, 1, false, nil)
+		map[string]bool{}, 60, true, true, 1, false)
 
 	require.Nil(t, err)
 	require.NotNil(t, inspector)
