@@ -7,6 +7,7 @@ package detector
 
 import (
 	"context"
+	"fmt"
 	"regexp"
 	"strconv"
 	"strings"
@@ -47,31 +48,46 @@ func GetBracketValues(expr string, list [][]string, restOfString string) [][]str
 	s := expr + restOfString
 
 	depth := 0
+	simpleDepth := 0
 	open := -1  // index of the first '{' in the outermost `{{`
 	start := -1 // inner start = open + 2
 
 	for i := 0; i < len(s)-1; i++ {
-		switch {
-		case s[i] == '{' && s[i+1] == '{':
-			if depth == 0 {
-				open = i
-				start = i + 2
-			}
-			depth++
-			i++ // skip the second '{'
-
-		case s[i] == '}' && s[i+1] == '}':
-			if depth > 0 {
-				depth--
-				if depth == 0 && open >= 0 && start >= 0 {
-					full := s[open : i+2]
-					inner := s[start:i]
-					list = append(list, []string{full, inner})
-					open, start = -1, -1
+		switch s[i] {
+		case '{':
+			if s[i+1] == '{' {
+				if depth == 0 && simpleDepth == 0 {
+					open = i
+					start = i + 2
 				}
+				depth++
+				i++ // skip the second '{'
+			} else {
+				simpleDepth++
 			}
-			i++ // skip the second '}'
+
+		case '}':
+			if s[i+1] == '}' {
+				if depth > 0 && simpleDepth == 0 {
+					depth--
+					if depth == 0 && open >= 0 && start >= 0 {
+						full := s[open : i+2]
+						inner := s[start:i]
+						list = append(list, []string{full, inner})
+						open, start = -1, -1
+					}
+					i++ // skip the second '}'
+				} else if simpleDepth > 0 {
+					simpleDepth--
+				}
+			} else {
+				simpleDepth--
+			}
 		}
+	}
+
+	if len(list) == 0 {
+		list = append(list, []string{fmt.Sprintf("{{%s}}", s), s})
 	}
 
 	return list
