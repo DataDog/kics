@@ -16,16 +16,45 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
-var OriginalData = `resource "aws_s3_bucket" "b" {
-	bucket = "my-tf-test-bucket"
-	acl    = "authenticated-read"
-
-	tags = {
-	  Name        = "My bucket"
-	  Environment = "Dev.123"
-	  Environment = "test"
-	}
-	  }
+var OriginalData = `name: Web Page To Markdown
+on:
+  issues:
+    types: [opened]
+jobs:
+  WebPageToMarkdown:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Does the issue need to be converted to markdown
+        run: |
+          if [ "${{ github.event.issue.body }}" ]; then
+            if [[ "${{ github.event.issue.title }}" =~ ^\[Auto\]* ]]; then
+              :
+            else
+              echo "This issue does not need to generate a markdown file." 1>&2
+              exit 1;
+            fi;
+          else
+            echo "The description of the issue is empty." 1>&2
+            exit 1;
+          fi;
+        shell: bash
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+      - name: Crawl pages and generate Markdown files
+        uses: freeCodeCamp-China/article-webpage-to-markdown-action@v0.1.8
+        with:
+          newsLink: '${{ github.event.issue.body }}'
+          markDownFilePath: './chinese/articles/'
+          githubToken: ${{ github.token }}
+      - name: Git Auto Commit
+        uses: stefanzweifel/git-auto-commit-action@v4.9.2
+        with:
+          commit_message: '${{ github.event.issue.title }}'
+          file_pattern: chinese/articles/*.md
+          commit_user_name: PageToMarkdown Bot
+          commit_user_email: PageToMarkdown-bot@freeCodeCamp.org
 	  `
 
 // Test_detectLine tests the functions [detectLine()] and all the methods called by them
@@ -49,32 +78,41 @@ func Test_detectLine(t *testing.T) { //nolint
 				file: &model.FileMetadata{
 					ScanID:            "scanID",
 					ID:                "Test",
-					Kind:              model.KindTerraform,
+					Kind:              model.KindYAML,
 					OriginalData:      OriginalData,
 					LinesOriginalData: utils.SplitLines(OriginalData),
 				},
-				searchKey: "aws_s3_bucket[b].acl",
+				searchKey: "uses={{freeCodeCamp-China/article-webpage-to-markdown-action@v0.1.8}}",
 			},
 			fields: fields{
 				outputLines: 3,
 			},
 			want: model.VulnerabilityLines{
-				Line: 3,
+				Line: 28,
 				VulnLines: &[]model.CodeLine{
 					{
-						Position: 2,
-						Line:     `	bucket = "my-tf-test-bucket"`,
+						Position: 27,
+						Line:     `      - name: Crawl pages and generate Markdown files`,
 					},
 					{
-						Position: 3,
-						Line:     `	acl    = "authenticated-read"`,
+						Position: 28,
+						Line:     `        uses: freeCodeCamp-China/article-webpage-to-markdown-action@v0.1.8`,
 					},
 					{
-						Position: 4,
-						Line:     "",
+						Position: 29,
+						Line:     "        with:",
 					},
 				},
-				LineWithVulnerability: "",
+				VulnerablilityLocation: model.ResourceLocation{
+					Start: model.ResourceLine{
+						Line: 28,
+						Col:  8,
+					},
+					End: model.ResourceLine{
+						Line: 28,
+						Col:  74,
+					},
+				},
 			},
 		},
 		{
@@ -83,52 +121,52 @@ func Test_detectLine(t *testing.T) { //nolint
 				file: &model.FileMetadata{
 					ScanID:            "scanID",
 					ID:                "Test",
-					Kind:              model.KindTerraform,
+					Kind:              model.KindYAML,
 					OriginalData:      OriginalData,
 					LinesOriginalData: utils.SplitLines(OriginalData),
 				},
-				searchKey: "aws_s3_bucket[b].Environment={{Dev.123}}",
+				searchKey: `run={{if [ "${{ github.event.issue.body }}" ]; then
+  if [[ "${{ github.event.issue.title }}" =~ ^\[Auto\]* ]]; then
+    :
+  else
+    echo "This issue does not need to generate a markdown file." 1>&2
+    exit 1;
+  fi;
+else
+  echo "The description of the issue is empty." 1>&2
+  exit 1;
+fi;
+}}`,
 			},
 			fields: fields{
 				outputLines: 3,
 			},
 			want: model.VulnerabilityLines{
-				Line: 7,
+				Line: 10,
 				VulnLines: &[]model.CodeLine{
 					{
-						Position: 6,
-						Line:     `	  Name        = "My bucket"`,
+						Position: 9,
+						Line:     `      - name: Does the issue need to be converted to markdown`,
 					},
 					{
-						Position: 7,
-						Line:     `	  Environment = "Dev.123"`,
+						Position: 10,
+						Line:     `        run: |`,
 					},
 					{
-						Position: 8,
-						Line:     `	  Environment = "test"`,
+						Position: 11,
+						Line:     `          if [ "${{ github.event.issue.body }}" ]; then`,
 					},
 				},
-				LineWithVulnerability: "",
-			},
-		},
-		{
-			name: "detect_line_error",
-			args: args{
-				file: &model.FileMetadata{
-					ScanID:            "scanID",
-					ID:                "Test",
-					Kind:              model.KindTerraform,
-					OriginalData:      OriginalData,
-					LinesOriginalData: utils.SplitLines(OriginalData),
+				VulnerablilityLocation: model.ResourceLocation{
+					Start: model.ResourceLine{
+						Line: 10,
+						Col:  8,
+					},
+					End: model.ResourceLine{
+						Line: 21,
+						Col:  14,
+					},
 				},
-				searchKey: "testing.error",
-			},
-			fields: fields{
-				outputLines: 3,
-			},
-			want: model.VulnerabilityLines{
-				Line:      -1,
-				VulnLines: &[]model.CodeLine{},
 			},
 		},
 	}
