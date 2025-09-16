@@ -231,7 +231,45 @@ func checkQueryExclude(ctx context.Context, metadata map[string]interface{}, que
 	return checkQueryExcludeField(ctx, metadata["id"], queryParameters.ExcludeQueries.ByIDs) ||
 		checkQueryExcludeField(ctx, metadata["category"], queryParameters.ExcludeQueries.ByCategories) ||
 		checkQueryExcludeField(ctx, metadata["severity"], queryParameters.ExcludeQueries.BySeverities) ||
-		(!queryParameters.BomQueries && metadata["severity"] == model.SeverityTrace)
+		(!queryParameters.BomQueries && metadata["severity"] == model.SeverityTrace) ||
+		checkQueryFeatureFlagDisabled(ctx, metadata, queryParameters)
+}
+
+func checkQueryFeatureFlagDisabled(ctx context.Context, metadata map[string]interface{}, queryParameters *QueryInspectorParameters) bool {
+	if queryParameters.FlagEvaluator == nil {
+		return false
+	}
+
+	// Extract KICS ID from query metadata
+	kicsID, exists := metadata["id"]
+	if !exists {
+		return false
+	}
+
+	kicsIDStr, ok := kicsID.(string)
+	if !ok {
+		return false
+	}
+
+	// Create custom variables with the KICS ID
+	customVariables := map[string]interface{}{
+		"KICS_RULE_ID": kicsIDStr,
+	}
+
+	logger := logger.FromContext(ctx)
+	// Check if the rule is disabled via feature flag
+	disabled, err := queryParameters.FlagEvaluator.EvaluateWithOrgAndCustomVariables("k9-iac-disable-kics-rule", customVariables)
+	if err != nil {
+		// If feature flag evaluation fails, log and continue (fail open)
+		logger.Warn().Err(err).Str("kics_id", kicsIDStr).Msg("Failed to evaluate feature flag for KICS rule")
+		return false
+	}
+
+	if disabled {
+		logger.Info().Str("kics_id", kicsIDStr).Msg("KICS rule disabled by feature flag")
+	}
+
+	return disabled
 }
 
 // GetQueries walks a given filesource path returns all queries found in an array of

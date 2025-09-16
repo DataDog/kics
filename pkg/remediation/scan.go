@@ -261,6 +261,7 @@ func initScan(ctx context.Context, queryID string) (*engine.Inspector, error) {
 
 	queryFilter := source.QueryInspectorParameters{
 		IncludeQueries: includeQueries,
+		FlagEvaluator:  nil,
 	}
 
 	t, err := tracker.NewTracker(c.ScanParams.PreviewLines)

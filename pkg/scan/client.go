@@ -12,6 +12,7 @@ import (
 	"github.com/Checkmarx/kics/internal/storage"
 	"github.com/Checkmarx/kics/internal/tracker"
 	"github.com/Checkmarx/kics/pkg/descriptions"
+	"github.com/Checkmarx/kics/pkg/featureflags"
 	"github.com/Checkmarx/kics/pkg/logger"
 	"github.com/Checkmarx/kics/pkg/model"
 	consolePrinter "github.com/Checkmarx/kics/pkg/printer"
@@ -59,6 +60,7 @@ type Parameters struct {
 	KicsComputeNewSimID         bool
 	PreAnalysisExcludePaths     []string
 	SCIInfo                     model.SCIInfo
+	FlagEvaluator               featureflags.FlagEvaluator
 }
 
 // Client represents a scan client
@@ -70,6 +72,7 @@ type Client struct {
 	ExcludeResultsMap map[string]bool
 	Printer           *consolePrinter.Printer
 	ProBarBuilder     *progress.PbBuilder
+	FlagEvaluator     featureflags.FlagEvaluator
 }
 
 func GetDefaultParameters(ctx context.Context, rootPath string, extraInfos map[string]string, consolePrint ...bool) (*Parameters, context.Context) {
@@ -140,6 +143,7 @@ func NewClient(ctx context.Context, params *Parameters, proBarBuilder *progress.
 		Storage:           store,
 		ExcludeResultsMap: excludeResultsMap,
 		Printer:           customPrint,
+		FlagEvaluator:     params.FlagEvaluator,
 	}, nil
 }
 
