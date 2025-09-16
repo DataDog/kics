@@ -1,0 +1,32 @@
+name: check-go-coverage
+
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  integration-tests:
+    name: integration-tests
+    runs-on: ubuntu-latest
+    steps:
+        - name: Checkout repository
+          uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 #V4.2.2
+          
+        - name: Set up Go
+          uses: actions/setup-go@v5
+          with:
+            go-version: '1.22'
+
+        - name: Generate Test Report
+          run: |
+            mkdir -p ./ctrf
+            go test -json ./... \
+            | go run github.com/ctrf-io/go-ctrf-json-reporter/cmd/go-ctrf-json-reporter@latest \
+                -output ./ctrf/ctrf-report.json 
+
+        - name: Publish Test Report
+          uses: ctrf-io/github-test-reporter@v1
+          with:
+            report-path: './ctrf/*.json'
+            github-report: true
+          if: always()
