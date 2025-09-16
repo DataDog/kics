@@ -222,6 +222,7 @@ func testQuery(tb testing.TB, entry queryEntry, filesPath []string, expectedVuln
 			IncludeQueries: source.IncludeQueries{ByIDs: []string{}},
 			ExcludeQueries: source.ExcludeQueries{ByIDs: []string{}, ByCategories: []string{}},
 			InputDataPath:  "",
+			FlagEvaluator:  nil,
 		},
 		map[string]bool{}, 60, false, true, 1, false)
 

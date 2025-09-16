@@ -244,6 +244,7 @@ func (c *Client) createQueryFilter() *source.QueryInspectorParameters {
 		ExperimentalQueries: c.ScanParams.ExperimentalQueries,
 		InputDataPath:       c.ScanParams.InputData,
 		BomQueries:          c.ScanParams.BillOfMaterials,
+		FlagEvaluator:       c.FlagEvaluator,
 	}
 
 	return &queryFilter

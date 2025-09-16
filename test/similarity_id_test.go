@@ -308,6 +308,7 @@ func createInspectorAndGetVulnerabilities(ctx context.Context, t testing.TB,
 			IncludeQueries: source.IncludeQueries{ByIDs: []string{}},
 			ExcludeQueries: source.ExcludeQueries{ByIDs: []string{}, ByCategories: []string{}},
 			InputDataPath:  "",
+			FlagEvaluator:  nil,
 		},
 		map[string]bool{}, 60, true, true, 1, false)
 

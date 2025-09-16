@@ -263,6 +263,7 @@ func testQueryHasGoodReturnParams(t *testing.T, entry queryEntry) { //nolint
 			IncludeQueries: source.IncludeQueries{ByIDs: []string{}},
 			ExcludeQueries: source.ExcludeQueries{ByIDs: []string{}, ByCategories: []string{}},
 			InputDataPath:  "",
+			FlagEvaluator:  nil,
 		},
 		map[string]bool{},
 		60,
