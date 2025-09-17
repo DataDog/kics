@@ -52,6 +52,15 @@ resource "aws_cloudtrail" "negative1" {
 ```
 ## Non-Compliant Code Examples
 ```terraform
+#this is a problematic code where the query should report a result(s)
+resource "aws_cloudtrail" "positive1" {
+  name                          = "npositive_1"
+  s3_bucket_name                = "bucketlog_1"
+}
+
+```
+
+```terraform
 resource "aws_cloudtrail" "positive2" {
   name                          = "npositive_2"
   s3_bucket_name                = "bucketlog_2"
@@ -66,15 +75,6 @@ resource "aws_cloudtrail" "positive3" {
   s3_bucket_name                = "bucketlog_3"
   is_multi_region_trail         = true
   include_global_service_events = false
-}
-
-```
-
-```terraform
-#this is a problematic code where the query should report a result(s)
-resource "aws_cloudtrail" "positive1" {
-  name                          = "npositive_1"
-  s3_bucket_name                = "bucketlog_1"
 }
 
 ```

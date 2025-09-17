@@ -72,20 +72,6 @@ module "ec2_instance" {
 ```
 ## Non-Compliant Code Examples
 ```terraform
-resource "aws_instance" "positive1" {
-  ami           = data.aws_ami.ubuntu.id
-  instance_type = "t3.micro"
-
-  user_data = "1234567890123456789012345678901234567890$"
-  tags = {
-    Name = "HelloWorld"
-  }
-}
-
-
-```
-
-```terraform
 module "ec2_instance" {
   source  = "terraform-aws-modules/ec2-instance/aws"
   version = "~> 3.0"
@@ -105,5 +91,19 @@ module "ec2_instance" {
     Environment = "dev"
   }
 }
+
+```
+
+```terraform
+resource "aws_instance" "positive1" {
+  ami           = data.aws_ami.ubuntu.id
+  instance_type = "t3.micro"
+
+  user_data = "1234567890123456789012345678901234567890$"
+  tags = {
+    Name = "HelloWorld"
+  }
+}
+
 
 ```

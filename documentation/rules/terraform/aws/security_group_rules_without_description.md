@@ -33,6 +33,36 @@ meta:
 
 ## Compliant Code Examples
 ```terraform
+resource "aws_security_group" "negative2" {
+
+  name        = "${var.prefix}-external-http-https"
+  description = "Allow main HTTP / HTTPS"
+  vpc_id      = local.vpc_id
+
+  ingress {
+    description = "Enable HTTP access for select VMs"
+    from_port   = 80
+    to_port     = 80
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  ingress {
+    description = "Enable HTTPS access for select VMs"
+    from_port   = 443
+    to_port     = 443
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  tags = {
+    Name = "${var.prefix}-external-http-https"
+  }
+}
+
+```
+
+```terraform
 resource "aws_security_group" "negative3" {
 
   name        = "${var.prefix}-external-http-https"
@@ -69,36 +99,6 @@ resource "aws_security_group_rule" "negative3b" {
 ```
 
 ```terraform
-resource "aws_security_group" "negative2" {
-
-  name        = "${var.prefix}-external-http-https"
-  description = "Allow main HTTP / HTTPS"
-  vpc_id      = local.vpc_id
-
-  ingress {
-    description = "Enable HTTP access for select VMs"
-    from_port   = 80
-    to_port     = 80
-    protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-
-  ingress {
-    description = "Enable HTTPS access for select VMs"
-    from_port   = 443
-    to_port     = 443
-    protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-
-  tags = {
-    Name = "${var.prefix}-external-http-https"
-  }
-}
-
-```
-
-```terraform
 resource "aws_security_group" "allow_tls" {
   name        = "allow_tls"
   description = "Allow TLS inbound traffic"
@@ -120,6 +120,35 @@ resource "aws_security_group" "allow_tls" {
 
 ```
 ## Non-Compliant Code Examples
+```terraform
+resource "aws_security_group" "allow_tls" {
+  name        = "allow_tls"
+  description = "Allow TLS inbound traffic"
+  vpc_id      = aws_vpc.main.id
+
+  ingress {
+    from_port        = 443
+    to_port          = 443
+    protocol         = "tcp"
+    cidr_blocks      = [aws_vpc.main.cidr_block]
+    ipv6_cidr_blocks = [aws_vpc.main.ipv6_cidr_block]
+  }
+
+  egress {
+    from_port        = 0
+    to_port          = 0
+    protocol         = "-1"
+    cidr_blocks      = ["0.0.0.0/0"]
+    ipv6_cidr_blocks = ["::/0"]
+  }
+
+  tags = {
+    Name = "allow_tls"
+  }
+}
+
+```
+
 ```terraform
 resource "aws_security_group" "positive2" { 
 
@@ -180,35 +209,6 @@ resource "aws_security_group_rule" "positive3b" {
   protocol          = "tcp"
   security_group_id = aws_security_group.positive3.id
   type              = "ingress"
-}
-
-```
-
-```terraform
-resource "aws_security_group" "allow_tls" {
-  name        = "allow_tls"
-  description = "Allow TLS inbound traffic"
-  vpc_id      = aws_vpc.main.id
-
-  ingress {
-    from_port        = 443
-    to_port          = 443
-    protocol         = "tcp"
-    cidr_blocks      = [aws_vpc.main.cidr_block]
-    ipv6_cidr_blocks = [aws_vpc.main.ipv6_cidr_block]
-  }
-
-  egress {
-    from_port        = 0
-    to_port          = 0
-    protocol         = "-1"
-    cidr_blocks      = ["0.0.0.0/0"]
-    ipv6_cidr_blocks = ["::/0"]
-  }
-
-  tags = {
-    Name = "allow_tls"
-  }
 }
 
 ```

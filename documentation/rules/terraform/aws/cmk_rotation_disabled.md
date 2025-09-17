@@ -41,17 +41,17 @@ resource "aws_kms_key" "example" {
 
 ## Compliant Code Examples
 ```terraform
-resource "aws_kms_key" "negative3" {
-  description              = "KMS key 3"
-  customer_master_key_spec = "RSA_2048"
+resource "aws_kms_key" "negative2" {
+  description              = "KMS key 2"
+  customer_master_key_spec = "RSA_4096"
 }
 
 ```
 
 ```terraform
-resource "aws_kms_key" "negative2" {
-  description              = "KMS key 2"
-  customer_master_key_spec = "RSA_4096"
+resource "aws_kms_key" "negative3" {
+  description              = "KMS key 3"
+  customer_master_key_spec = "RSA_2048"
 }
 
 ```
@@ -66,29 +66,26 @@ resource "aws_kms_key" "negative1" {
 ```
 ## Non-Compliant Code Examples
 ```terraform
+resource "aws_kms_key" "positive5" {
+  description              = "KMS key 5"
+  customer_master_key_spec = "RSA_2048"
+  enable_key_rotation      = true
+}
+
+```
+
+```terraform
+resource "aws_kms_key" "positive1" {
+  description = "KMS key 1"
+}
+
+```
+
+```terraform
 resource "aws_kms_key" "positive2" {
   description         = "KMS key 2"
   is_enabled          = true
   enable_key_rotation = false
-}
-
-```
-
-```terraform
-resource "aws_kms_key" "positive3" {
-  description              = "KMS key 3"
-  is_enabled               = true
-  customer_master_key_spec = "SYMMETRIC_DEFAULT"
-  enable_key_rotation      = false
-}
-
-```
-
-```terraform
-resource "aws_kms_key" "positive4" {
-  description              = "KMS key 4"
-  customer_master_key_spec = "SYMMETRIC_DEFAULT"
-  enable_key_rotation      = false
 }
 
 ```

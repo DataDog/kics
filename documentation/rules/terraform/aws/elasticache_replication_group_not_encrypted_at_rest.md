@@ -50,7 +50,58 @@ resource "aws_elasticache_replication_group" "example3" {
 }
 
 ```
+
+```terraform
+module "elasticache_redis" {
+  source  = "terraform-aws-modules/elasticache/aws"
+  version = "2.0.0"
+
+  identifier          = "democluster-redis"
+  description         = "Redis"
+  node_type           = "cache.t4g.small"
+  num_cache_clusters  = 1
+  engine_version      = "7.1"
+  port                = 6379
+  family              = "redis7"
+  at_rest_encryption_enabled = true
+  transit_encryption_enabled = true
+  subnet_group_name          = "elasticache"
+}
+
+```
 ## Non-Compliant Code Examples
+```terraform
+resource "aws_elasticache_replication_group" "example" {
+  automatic_failover_enabled    = true
+  availability_zones            = ["us-west-2a", "us-west-2b"]
+  replication_group_id          = "tf-rep-group-1"
+  replication_group_description = "test description"
+  node_type                     = "cache.m4.large"
+  number_cache_clusters         = 2
+  port                          = 6379
+}
+
+```
+
+```terraform
+module "elasticache_redis" {
+  source  = "terraform-aws-modules/elasticache/aws"
+  version = "2.0.0"
+
+  identifier          = "democluster-redis"
+  description         = "Redis"
+  node_type           = "cache.t4g.small"
+  num_cache_clusters  = 1
+  engine_version      = "7.1"
+  port                = 6379
+  family              = "redis7"
+  at_rest_encryption_enabled = false
+  transit_encryption_enabled = true
+  subnet_group_name          = "elasticache"
+}
+
+```
+
 ```terraform
 resource "aws_elasticache_replication_group" "example2" {
   automatic_failover_enabled    = true
@@ -61,19 +112,6 @@ resource "aws_elasticache_replication_group" "example2" {
   number_cache_clusters         = 2
   port                          = 6379
   at_rest_encryption_enabled    = false
-}
-
-```
-
-```terraform
-resource "aws_elasticache_replication_group" "example" {
-  automatic_failover_enabled    = true
-  availability_zones            = ["us-west-2a", "us-west-2b"]
-  replication_group_id          = "tf-rep-group-1"
-  replication_group_description = "test description"
-  node_type                     = "cache.m4.large"
-  number_cache_clusters         = 2
-  port                          = 6379
 }
 
 ```

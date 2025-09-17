@@ -53,6 +53,29 @@ resource "aws_neptune_cluster" "negative1" {
 }
 
 ```
+
+```terraform
+module "neptune" {
+  source = "terraform-aws-modules/neptune/aws"
+
+  cluster_name = "example"
+
+  engine_version = "1.0.2.2"
+
+  instance_class = "db.r4.large"
+  instance_count = 2
+
+  iam_database_authentication_enabled = true
+  apply_immediately   = true
+  skip_final_snapshot = true
+
+  vpc_id     = "vpc-abcde012"
+  subnets    = ["subnet-abcde012", "subnet-abcde123", "subnet-abcde234"]
+  name       = "neptune"
+  namespace  = "neptune"
+  stage      = "dev"
+}
+```
 ## Non-Compliant Code Examples
 ```terraform
 resource "aws_neptune_cluster" "positive1" {
@@ -76,4 +99,26 @@ resource "aws_neptune_cluster" "positive2" {
   storage_encrypted                   = true
 }
 
+```
+
+```terraform
+module "neptune" {
+  source = "terraform-aws-modules/neptune/aws"
+
+  cluster_name = "example"
+
+  engine_version = "1.0.2.2"
+
+  instance_class = "db.r4.large"
+  instance_count = 2
+
+  apply_immediately   = true
+  skip_final_snapshot = true
+
+  vpc_id     = "vpc-abcde012"
+  subnets    = ["subnet-abcde012", "subnet-abcde123", "subnet-abcde234"]
+  name       = "neptune"
+  namespace  = "neptune"
+  stage      = "dev"
+}
 ```

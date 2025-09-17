@@ -68,14 +68,13 @@ resource "google_container_cluster" "negative1" {
 ```
 ## Non-Compliant Code Examples
 ```terraform
-resource "google_container_cluster" "positive2" {
+resource "google_container_cluster" "positive1" {
   name     = "my-gke-cluster"
   location = "us-central1"
   remove_default_node_pool = true
   initial_node_count       = 1
 
   node_config {
-    service_account = google_service_account.default.email
     oauth_scopes = [
       "https://www.googleapis.com/auth/cloud-platform"
     ]
@@ -93,13 +92,14 @@ resource "google_container_cluster" "positive2" {
 ```
 
 ```terraform
-resource "google_container_cluster" "positive1" {
+resource "google_container_cluster" "positive2" {
   name     = "my-gke-cluster"
   location = "us-central1"
   remove_default_node_pool = true
   initial_node_count       = 1
 
   node_config {
+    service_account = google_service_account.default.email
     oauth_scopes = [
       "https://www.googleapis.com/auth/cloud-platform"
     ]

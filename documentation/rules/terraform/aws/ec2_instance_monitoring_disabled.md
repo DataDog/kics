@@ -101,10 +101,9 @@ data "aws_ami" "ubuntu" {
   owners = ["099720109477"] # Canonical
 }
 
-resource "aws_instance" "monitoring_positive2" {
+resource "aws_instance" "monitoring_positive1" {
   ami           = data.aws_ami.ubuntu.id
   instance_type = "t3.micro"
-  monitoring    = false
 
   tags = {
     Name = "HelloWorld"
@@ -114,22 +113,29 @@ resource "aws_instance" "monitoring_positive2" {
 ```
 
 ```terraform
-module "ec2_instance" {
-  source  = "terraform-aws-modules/ec2-instance/aws"
-  version = "~> 3.0"
+data "aws_ami" "ubuntu" {
+  most_recent = true
 
-  name = "single-instance"
+  filter {
+    name   = "name"
+    values = ["ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server-*"]
+  }
 
-  ami                    = "ami-ebd02392"
-  instance_type          = "t2.micro"
-  key_name               = "user1"
-  vpc_security_group_ids = ["sg-12345678"]
-  subnet_id              = "subnet-eddcdzz4"
-  associate_public_ip_address = false
+  filter {
+    name   = "virtualization-type"
+    values = ["hvm"]
+  }
+
+  owners = ["099720109477"] # Canonical
+}
+
+resource "aws_instance" "monitoring_positive2" {
+  ami           = data.aws_ami.ubuntu.id
+  instance_type = "t3.micro"
+  monitoring    = false
 
   tags = {
-    Terraform   = "true"
-    Environment = "dev"
+    Name = "HelloWorld"
   }
 }
 

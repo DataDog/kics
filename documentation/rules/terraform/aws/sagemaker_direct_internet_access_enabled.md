@@ -61,6 +61,22 @@ resource "aws_sagemaker_notebook_instance" "good_example" {
 }
 
 ```
+
+```terraform
+module "sagemaker_notebook_instance" {
+  source = "github.com/SebastianUA/terraform-aws-sagemaker"
+  version = "5.3.0"
+
+  notebook_instance_name  = "notebook-instance"
+  direct_internet_access  = "Disabled"
+
+  tags = {
+    Name        = "My notebook"
+    Environment = "Dev"
+  }
+}
+
+```
 ## Non-Compliant Code Examples
 ```terraform
 resource "aws_sagemaker_notebook_instance" "bad_example" {
@@ -68,6 +84,22 @@ resource "aws_sagemaker_notebook_instance" "bad_example" {
   role_arn               = "arn:aws:iam::123456789012:role/SageMakerRole"
   direct_internet_access = "Enabled" # ❌ Direct internet access should be disabled
   instance_type          = "ml.t2.medium"
+}
+
+```
+
+```terraform
+module "sagemaker_notebook_instance" {
+  source = "github.com/SebastianUA/terraform-aws-sagemaker"
+  version = "5.3.0"
+
+  notebook_instance_name  = "notebook-instance"
+  direct_internet_access  = "Enabled"
+
+  tags = {
+    Name        = "My notebook"
+    Environment = "Dev"
+  }
 }
 
 ```

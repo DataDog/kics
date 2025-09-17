@@ -33,21 +33,6 @@ meta:
 
 ## Compliant Code Examples
 ```terraform
-resource "aws_db_instance" "negative3" {
-  allocated_storage    = 10
-  engine               = "oracle-ee"
-  engine_version       = "5.7"
-  instance_class       = "db.t3.micro"
-  name                 = "mydb"
-  username             = "foo"
-  password             = "foobarbaz"
-  skip_final_snapshot  = true
-  port                 = 1522
-}
-
-```
-
-```terraform
 resource "aws_db_instance" "negative2" {
   allocated_storage    = 10
   engine               = "postgres"
@@ -58,6 +43,21 @@ resource "aws_db_instance" "negative2" {
   password             = "foobarbaz"
   skip_final_snapshot  = true
   port                 = 5433
+}
+
+```
+
+```terraform
+resource "aws_db_instance" "negative3" {
+  allocated_storage    = 10
+  engine               = "oracle-ee"
+  engine_version       = "5.7"
+  instance_class       = "db.t3.micro"
+  name                 = "mydb"
+  username             = "foo"
+  password             = "foobarbaz"
+  skip_final_snapshot  = true
+  port                 = 1522
 }
 
 ```
@@ -79,6 +79,22 @@ resource "aws_db_instance" "negative1" {
 ```
 ## Non-Compliant Code Examples
 ```terraform
+resource "aws_db_instance" "positive1" {
+  allocated_storage    = 10
+  engine               = "mysql"
+  engine_version       = "5.7"
+  instance_class       = "db.t3.micro"
+  name                 = "mydb"
+  username             = "foo"
+  password             = "foobarbaz"
+  parameter_group_name = aws_elasticache_parameter_group.default.id
+  skip_final_snapshot  = true
+  port                 = 3306
+}
+
+```
+
+```terraform
 resource "aws_db_instance" "positive2" {
   allocated_storage    = 10
   engine               = "postgres"
@@ -89,21 +105,6 @@ resource "aws_db_instance" "positive2" {
   password             = "foobarbaz"
   skip_final_snapshot  = true
   port                 = 5432
-}
-
-```
-
-```terraform
-resource "aws_db_instance" "positive3" {
-  allocated_storage    = 10
-  engine               = "oracle-ee"
-  engine_version       = "5.7"
-  instance_class       = "db.t3.micro"
-  name                 = "mydb"
-  username             = "foo"
-  password             = "foobarbaz"
-  skip_final_snapshot  = true
-  port                 = 1521
 }
 
 ```

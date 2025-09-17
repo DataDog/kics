@@ -45,6 +45,14 @@ resource "aws_sns_topic" "test2" {
 ```
 ## Non-Compliant Code Examples
 ```terraform
+resource "aws_sns_topic" "user_updates" {
+  name              = "user-updates-topic"
+  kms_master_key_id = "alias/aws/sns"
+}
+
+```
+
+```terraform
 provider "aws" {
   region = "us-east-1"
 }
@@ -56,14 +64,6 @@ data "aws_kms_key" "by_alias" {
 resource "aws_sns_topic" "test" {
   name              = "sns_ecnrypted"
   kms_master_key_id = data.aws_kms_key.by_alias.arn
-}
-
-```
-
-```terraform
-resource "aws_sns_topic" "user_updates" {
-  name              = "user-updates-topic"
-  kms_master_key_id = "alias/aws/sns"
 }
 
 ```

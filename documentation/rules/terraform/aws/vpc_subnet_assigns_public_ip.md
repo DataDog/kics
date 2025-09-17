@@ -33,6 +33,24 @@ meta:
 
 ## Compliant Code Examples
 ```terraform
+resource "aws_vpc" "main3" {
+  cidr_block = "10.0.0.0/16"
+}
+
+resource "aws_subnet" "negative2" {
+  vpc_id     = aws_vpc.main3.id
+  cidr_block = "10.0.1.0/24"
+
+  tags = {
+    Name = "Negative2"
+  }
+
+  map_public_ip_on_launch = false
+}
+
+```
+
+```terraform
 module "vpc" {
   source  = "terraform-aws-modules/vpc/aws"
   version = "3.7.0"
@@ -56,24 +74,6 @@ module "vpc" {
 ```
 
 ```terraform
-resource "aws_vpc" "main3" {
-  cidr_block = "10.0.0.0/16"
-}
-
-resource "aws_subnet" "negative2" {
-  vpc_id     = aws_vpc.main3.id
-  cidr_block = "10.0.1.0/24"
-
-  tags = {
-    Name = "Negative2"
-  }
-
-  map_public_ip_on_launch = false
-}
-
-```
-
-```terraform
 resource "aws_vpc" "main2" {
   cidr_block = "10.0.0.0/16"
 }
@@ -89,6 +89,24 @@ resource "aws_subnet" "negative1" {
 
 ```
 ## Non-Compliant Code Examples
+```terraform
+resource "aws_vpc" "main" {
+  cidr_block = "10.0.0.0/16"
+}
+
+resource "aws_subnet" "positive" {
+  vpc_id     = aws_vpc.main.id
+  cidr_block = "10.0.1.0/24"
+
+  tags = {
+    Name = "Positive"
+  }
+
+  map_public_ip_on_launch = true
+}
+
+```
+
 ```terraform
 module "vpc" {
   source  = "terraform-aws-modules/vpc/aws"
@@ -130,24 +148,6 @@ module "vpc" {
     Terraform   = "true"
     Environment = "dev"
   }
-}
-
-```
-
-```terraform
-resource "aws_vpc" "main" {
-  cidr_block = "10.0.0.0/16"
-}
-
-resource "aws_subnet" "positive" {
-  vpc_id     = aws_vpc.main.id
-  cidr_block = "10.0.1.0/24"
-
-  tags = {
-    Name = "Positive"
-  }
-
-  map_public_ip_on_launch = true
 }
 
 ```
