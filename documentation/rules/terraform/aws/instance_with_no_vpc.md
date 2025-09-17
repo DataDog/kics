@@ -85,6 +85,15 @@ resource "aws_instance" "negative1" {
 ```
 ## Non-Compliant Code Examples
 ```terraform
+resource "aws_instance" "positive1" {
+  ami = "ami-003634241a8fcdec0"
+
+  instance_type = "t2.micro"
+
+}
+```
+
+```terraform
 module "ec2_instance" {
   source  = "terraform-aws-modules/ec2-instance/aws"
   version = "~> 3.0"
@@ -103,13 +112,4 @@ module "ec2_instance" {
   }
 }
 
-```
-
-```terraform
-resource "aws_instance" "positive1" {
-  ami = "ami-003634241a8fcdec0"
-
-  instance_type = "t2.micro"
-
-}
 ```

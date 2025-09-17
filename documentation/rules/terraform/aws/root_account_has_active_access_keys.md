@@ -87,18 +87,18 @@ output "secret" {
 ```
 ## Non-Compliant Code Examples
 ```terraform
-resource "aws_iam_access_key" "positive2" {
+#this is a problematic code where the query should report a result(s)
+resource "aws_iam_access_key" "positive1" {
   user    = "root"
   pgp_key = "keybase:some_person_that_exists"
-  status = "Active"
 }
 
-resource "aws_iam_user" "lb" {
+resource "aws_iam_user" "positive3" {
   name = "loadbalancer"
   path = "/system/"
 }
 
-resource "aws_iam_user_policy" "positive5" {
+resource "aws_iam_user_policy" "positive4" {
   name = "test"
   user = aws_iam_user.lb.name
 
@@ -125,18 +125,18 @@ output "secret" {
 ```
 
 ```terraform
-#this is a problematic code where the query should report a result(s)
-resource "aws_iam_access_key" "positive1" {
+resource "aws_iam_access_key" "positive2" {
   user    = "root"
   pgp_key = "keybase:some_person_that_exists"
+  status = "Active"
 }
 
-resource "aws_iam_user" "positive3" {
+resource "aws_iam_user" "lb" {
   name = "loadbalancer"
   path = "/system/"
 }
 
-resource "aws_iam_user_policy" "positive4" {
+resource "aws_iam_user_policy" "positive5" {
   name = "test"
   user = aws_iam_user.lb.name
 

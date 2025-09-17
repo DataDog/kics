@@ -41,6 +41,41 @@ terraform {
   required_providers {
     aws = {
       source  = "hashicorp/aws"
+      version = "~> 3.0"
+    }
+  }
+}
+
+resource "aws_network_acl" "negative2" {
+  vpc_id = aws_vpc.main.id
+
+  tags = {
+    Name = "main"
+  }
+}
+
+resource "aws_network_acl_rule" "negative2" {
+  network_acl_id = aws_network_acl.negative2.id
+  rule_number    = 100
+  egress         = false
+  protocol       = "tcp"
+  rule_action    = "allow"
+  from_port      = 3389
+  to_port        = 3389
+  cidr_block     = "10.3.0.0/18"
+}
+
+```
+
+```terraform
+provider "aws" {
+  region = "us-east-1"
+}
+
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
       version = "3.52.0"
     }
   }
@@ -70,41 +105,6 @@ resource "aws_network_acl" "negative3" {
   tags = {
     Name = "main"
   }
-}
-
-```
-
-```terraform
-provider "aws" {
-  region = "us-east-1"
-}
-
-terraform {
-  required_providers {
-    aws = {
-      source  = "hashicorp/aws"
-      version = "~> 3.0"
-    }
-  }
-}
-
-resource "aws_network_acl" "negative2" {
-  vpc_id = aws_vpc.main.id
-
-  tags = {
-    Name = "main"
-  }
-}
-
-resource "aws_network_acl_rule" "negative2" {
-  network_acl_id = aws_network_acl.negative2.id
-  rule_number    = 100
-  egress         = false
-  protocol       = "tcp"
-  rule_action    = "allow"
-  from_port      = 3389
-  to_port        = 3389
-  cidr_block     = "10.3.0.0/18"
 }
 
 ```
@@ -169,6 +169,52 @@ terraform {
   }
 }
 
+resource "aws_network_acl" "positive1" {
+  vpc_id = aws_vpc.main.id
+
+  egress = [
+    {
+      protocol   = "tcp"
+      rule_no    = 200
+      action     = "allow"
+      cidr_block = "10.3.0.0/18"
+      from_port  = 443
+      to_port    = 443
+    }
+  ]
+
+  ingress = [
+    {
+      protocol   = "tcp"
+      rule_no    = 100
+      action     = "allow"
+      cidr_block = "0.0.0.0/0"
+      from_port   = 3389
+      to_port     = 3389
+    }
+  ]
+
+  tags = {
+    Name = "main"
+  }
+}
+
+```
+
+```terraform
+provider "aws" {
+  region = "us-east-1"
+}
+
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 3.0"
+    }
+  }
+}
+
 resource "aws_network_acl" "positive2" {
   vpc_id = aws_vpc.main.id
 
@@ -186,48 +232,6 @@ resource "aws_network_acl_rule" "postive2" {
   from_port      = 3389
   to_port        = 3389
   cidr_block     = "0.0.0.0/0"
-}
-
-```
-
-```terraform
-provider "aws" {
-  region = "us-east-1"
-}
-
-terraform {
-  required_providers {
-    aws = {
-      source  = "hashicorp/aws"
-      version = "<= 3.52.0"
-    }
-  }
-}
-
-resource "aws_network_acl" "positive3" {
-  vpc_id = aws_vpc.main.id
-
-  egress {
-      protocol   = "tcp"
-      rule_no    = 200
-      action     = "allow"
-      cidr_block = "10.3.0.0/18"
-      from_port  = 443
-      to_port    = 443
-  }
-
-  ingress {
-      protocol   = "tcp"
-      rule_no    = 100
-      action     = "allow"
-      cidr_block = "0.0.0.0/0"
-      from_port   = 3389
-      to_port     = 3389
-  }
-
-  tags = {
-    Name = "main"
-  }
 }
 
 ```

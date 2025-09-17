@@ -75,7 +75,44 @@ resource "aws_eks_cluster" "negative1" {
 }
 
 ```
+
+```terraform
+module "eks" {
+  source          = "terraform-aws-modules/eks/aws"
+
+  vpc_id = "vpc-1234556abcdef"
+  
+  encryption_config = {
+    resources = ["secrets"]
+    provider_key_arn = "aws_eks_cluster.example"
+  }
+}
+
+```
 ## Non-Compliant Code Examples
+```terraform
+variable "cluster_name" {
+  default = "example"
+  type    = string
+}
+
+resource "aws_eks_cluster" "positive1" {
+  depends_on = [aws_cloudwatch_log_group.example]
+  name                      = var.cluster_name
+}
+
+```
+
+```terraform
+module "eks" {
+  source          = "terraform-aws-modules/eks/aws"
+
+  vpc_id = "vpc-1234556abcdef"
+
+}
+
+```
+
 ```terraform
 variable "cluster_name" {
   default = "example"
@@ -92,19 +129,6 @@ resource "aws_eks_cluster" "positive2" {
       key_arn = "test"
     }
   }
-}
-
-```
-
-```terraform
-variable "cluster_name" {
-  default = "example"
-  type    = string
-}
-
-resource "aws_eks_cluster" "positive1" {
-  depends_on = [aws_cloudwatch_log_group.example]
-  name                      = var.cluster_name
 }
 
 ```

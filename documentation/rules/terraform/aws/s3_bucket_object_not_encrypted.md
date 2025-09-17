@@ -73,6 +73,19 @@ resource "aws_s3_bucket_object" "examplebucket_object" {
 }
 
 ```
+
+```terraform
+module "s3_object" {
+  source  = "terraform-aws-modules/s3-bucket/aws//modules/object"
+  version = "2.3.0"
+
+  bucket  = aws_s3_bucket.example.id
+  key     = "my_app.conf"
+  content = "Hello, world!"
+  server_side_encryption = "AES256"
+}
+
+```
 ## Non-Compliant Code Examples
 ```terraform
 resource "aws_s3_bucket" "examplebucket" {
@@ -92,6 +105,18 @@ resource "aws_s3_bucket_object" "examplebucket_object" {
   key                    = "someobject"
   bucket                 = aws_s3_bucket.examplebucket.id
   source                 = "index.html"
+}
+
+```
+
+```terraform
+module "s3_object" {
+  source  = "terraform-aws-modules/s3-bucket/aws//modules/object"
+  version = "2.3.0"
+
+  bucket  = aws_s3_bucket.example.id
+  key     = "my_app.conf"
+  content = "Hello, world!"
 }
 
 ```
