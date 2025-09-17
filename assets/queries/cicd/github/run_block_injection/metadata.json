@@ -1,9 +1,9 @@
 {
   "id": "20f14e1a-a899-4e79-9f09-b6a84cd4649b",
-  "queryName": "Run Block Injection",
+  "queryName": "Run block injection",
   "severity": "MEDIUM",
   "category": "Insecure Configurations",
-  "descriptionText": "GitHub Actions workflows can be triggered by a variety of events. Every workflow trigger is provided with a GitHub context that contains information about the triggering event, such as which user triggered it, the branch name, and other event context details. Some of this event data, like the base repository name, hash value of a changeset, or pull request number, is unlikely to be controlled or used for injection by the user that triggered the event.",
+  "descriptionText": "GitHub Actions workflows can be triggered by a variety of events. Each trigger includes a GitHub context with details about the event, such as the user who triggered it, the branch name, and other relevant information. Some of this data, like the base repository name, changeset hash, or pull request number, is typically not controlled by the user and is unlikely to be used for injection.",
   "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/cicd/github/run_block_injection",
   "platform": "CICD",
   "descriptionID": "02044a75",
