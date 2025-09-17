@@ -51,8 +51,9 @@ func (d defaultDetectLine) DetectLine(ctx context.Context, file *model.FileMetad
 		}
 	}
 
+	start, end := model.ResourceLine{}, model.ResourceLine{}
 	for _, key := range splitSanitized {
-		substr1, substr2 := GenerateSubstrings(key, extractedString, lines, detector.CurrentLine)
+		substr1, substr2 := GenerateSubstrings(ctx, key, extractedString, lines, detector.CurrentLine)
 
 		// BICEP-specific tweaks in order to make bicep files compatible with ARM queries
 		if file.Kind == "BICEP" {
@@ -60,8 +61,7 @@ func (d defaultDetectLine) DetectLine(ctx context.Context, file *model.FileMetad
 			substr1 = strings.ReplaceAll(substr1, "parameters", "param")
 			substr1 = strings.ReplaceAll(substr1, "variables", "variable")
 		}
-
-		detector, lines = detector.DetectCurrentLine(substr1, substr2, 0, lines)
+		detector, start, end, lines = detector.DetectCurrentLine(substr1, substr2, 0, lines, file.Kind)
 
 		if detector.IsBreak {
 			break
@@ -73,6 +73,10 @@ func (d defaultDetectLine) DetectLine(ctx context.Context, file *model.FileMetad
 			Line:         detector.CurrentLine + 1,
 			VulnLines:    GetAdjacentVulnLines(detector.CurrentLine, outputLines, lines),
 			ResolvedFile: detector.ResolvedFile,
+			VulnerablilityLocation: model.ResourceLocation{
+				Start: start,
+				End:   end,
+			},
 		}
 	}
 
