@@ -3,7 +3,7 @@
   "queryName": "Unpinned actions full length commit SHA",
   "severity": "LOW",
   "category": "Supply-Chain",
-  "descriptionText": "Pin an action to a full-length commit SHA (the complete 40-character SHA-1) to use it as an immutable release. Pinning to a specific SHA reduces the risk of a malicious actor injecting a backdoor, because an attacker would need to produce a SHA-1 collision for a valid Git object to replace the commit. When selecting a SHA, verify it comes from the action’s original repository (not a fork) and that you are using the full commit SHA.",
+  "descriptionText": "Pinning an action to a full-length commit SHA is currently the only way to use it as an immutable release. This helps mitigate the risk of a bad actor introducing a backdoor, as doing so would require generating a SHA-1 collision for a valid Git object. When choosing a SHA, ensure it comes from the action's original repository and not a fork.",
   "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/cicd/github/unpinned_actions_full_length_commit_sha",
   "platform": "CICD",
   "descriptionID": "9cb8402d",

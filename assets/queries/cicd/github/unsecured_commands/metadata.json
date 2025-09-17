@@ -3,7 +3,7 @@
   "queryName": "Unsecured commands",
   "severity": "MEDIUM",
   "category": "Insecure Configurations",
-  "descriptionText": "Deprecated commands set-env and add-path can be explicitly re-enabled by setting the ACTIONS_ALLOW_UNSECURE_COMMANDS environment variable to true. Re-enabling them can allow an attacker to modify the system PATH so a different executable is run than intended, potentially leading to arbitrary code execution. Do not enable this variable; use the supported environment and path file mechanisms (for example, GITHUB_ENV and GITHUB_PATH) instead.",
+  "descriptionText": "The deprecated `set-env` and `add-path` commands can still be explicitly enabled by setting the `ACTIONS_ALLOW_UNSECURE_COMMANDS` environment variable to true. Depending on how this variable is used, an attacker could potentially modify the system path to run unintended commands, which may lead to arbitrary code execution.",
   "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/cicd/github/unsecured_commands",
   "platform": "CICD",
   "descriptionID": "44751f79",
