@@ -12,6 +12,7 @@ import (
 	"time"
 
 	"github.com/Checkmarx/kics/pkg/engine"
+	"github.com/Checkmarx/kics/pkg/featureflags"
 	"github.com/Checkmarx/kics/pkg/kics"
 	"github.com/Checkmarx/kics/pkg/logger"
 	"github.com/Checkmarx/kics/pkg/minified"
@@ -45,7 +46,8 @@ func scanTmpFile(
 	tmpFile, queryID string,
 	remediated []byte,
 	openAPIResolveReferences bool,
-	maxResolverDepth int) ([]model.Vulnerability, error) {
+	maxResolverDepth int,
+	flagEvaluator featureflags.FlagEvaluator) ([]model.Vulnerability, error) {
 	logger := logger.FromContext(ctx)
 	// get payload
 	files, err := getPayload(ctx, tmpFile, remediated, openAPIResolveReferences, maxResolverDepth)
@@ -63,7 +65,7 @@ func scanTmpFile(
 	payload := files.Combine(ctx, false)
 
 	// init scan
-	inspector, err := initScan(ctx, queryID)
+	inspector, err := initScan(ctx, queryID, flagEvaluator)
 
 	if err != nil {
 		logger.Err(err).Msg("")
@@ -199,7 +201,7 @@ func runQuery(ctx context.Context, r *runQueryInfo) []model.Vulnerability {
 	return decoded
 }
 
-func initScan(ctx context.Context, queryID string) (*engine.Inspector, error) {
+func initScan(ctx context.Context, queryID string, flagEvaluator featureflags.FlagEvaluator) (*engine.Inspector, error) {
 	logger := logger.FromContext(ctx)
 	scanParams := &scan.Parameters{
 		CloudProvider:               []string{""},
@@ -261,7 +263,7 @@ func initScan(ctx context.Context, queryID string) (*engine.Inspector, error) {
 
 	queryFilter := source.QueryInspectorParameters{
 		IncludeQueries: includeQueries,
-		FlagEvaluator:  nil,
+		FlagEvaluator:  flagEvaluator,
 	}
 
 	t, err := tracker.NewTracker(c.ScanParams.PreviewLines)
@@ -285,7 +287,7 @@ func initScan(ctx context.Context, queryID string) (*engine.Inspector, error) {
 		false,
 		c.ScanParams.ParallelScanFlag,
 		c.ScanParams.KicsComputeNewSimID,
-		utils.FeatureFlags{},
+		flagEvaluator,
 	)
 
 	return inspector, err

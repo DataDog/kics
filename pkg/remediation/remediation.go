@@ -13,6 +13,7 @@ import (
 	"sort"
 	"strings"
 
+	"github.com/Checkmarx/kics/pkg/featureflags"
 	"github.com/Checkmarx/kics/pkg/logger"
 )
 
@@ -57,7 +58,7 @@ type Set struct {
 }
 
 // RemediateFile remediationSets the replacements first and secondly, the additions sorted down
-func (s *Summary) RemediateFile(ctx context.Context, filePath string, remediationSet Set, openAPIResolveReferences bool, maxResolverDepth int) error {
+func (s *Summary) RemediateFile(ctx context.Context, filePath string, remediationSet Set, openAPIResolveReferences bool, maxResolverDepth int, flagEvaluator featureflags.FlagEvaluator) error {
 	logger := logger.FromContext(ctx)
 	filepath.Clean(filePath)
 	content, err := os.ReadFile(filePath)
@@ -74,7 +75,7 @@ func (s *Summary) RemediateFile(ctx context.Context, filePath string, remediatio
 		for i := range remediationSet.Replacement {
 			r := remediationSet.Replacement[i]
 			remediatedLines := replacement(ctx, &r, lines)
-			if len(remediatedLines) > 0 && willRemediate(ctx, remediatedLines, filePath, &r, openAPIResolveReferences, maxResolverDepth) {
+			if len(remediatedLines) > 0 && willRemediate(ctx, remediatedLines, filePath, &r, openAPIResolveReferences, maxResolverDepth, flagEvaluator) {
 				lines = s.writeRemediation(ctx, remediatedLines, lines, filePath, r.SimilarityID)
 			}
 		}
@@ -90,7 +91,7 @@ func (s *Summary) RemediateFile(ctx context.Context, filePath string, remediatio
 		for i := range remediationSet.Addition {
 			a := remediationSet.Addition[i]
 			remediatedLines := addition(ctx, &a, &lines)
-			if len(remediatedLines) > 0 && willRemediate(ctx, remediatedLines, filePath, &a, openAPIResolveReferences, maxResolverDepth) {
+			if len(remediatedLines) > 0 && willRemediate(ctx, remediatedLines, filePath, &a, openAPIResolveReferences, maxResolverDepth, flagEvaluator) {
 				lines = s.writeRemediation(ctx, remediatedLines, lines, filePath, a.SimilarityID)
 			}
 		}
