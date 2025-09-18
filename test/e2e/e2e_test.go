@@ -5,6 +5,7 @@ import (
 	"testing"
 
 	"github.com/Checkmarx/kics"
+	"github.com/Checkmarx/kics/pkg/featureflags"
 	"github.com/Checkmarx/kics/pkg/model"
 	"github.com/Checkmarx/kics/pkg/scan"
 	"github.com/stretchr/testify/require"
@@ -60,6 +61,7 @@ func Test_E2EExclusions(t *testing.T) {
 						Branch:        "test/branch",
 					},
 				},
+				featureflags.NewLocalEvaluator(),
 			)
 			require.NoError(t, err)
 			require.Equal(t, tt.expectedOutput.Violations, metadata.Stats.Violations)

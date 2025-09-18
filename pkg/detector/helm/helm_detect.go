@@ -69,7 +69,7 @@ func (d DetectKindLine) DetectLine(ctx context.Context, file *model.FileMetadata
 
 	// Since we are only looking at keys we can ignore the second value passed through '=' and '[]'
 	for _, key := range strings.Split(sanitizedSubstring, ".") {
-		substr1, _ := detector.GenerateSubstrings(key, extractedString, lines, curLineRes.lineRes)
+		substr1, _ := detector.GenerateSubstrings(ctx, key, extractedString, lines, curLineRes.lineRes)
 		curLineRes = curLineRes.detectCurrentLine(lines, fmt.Sprintf("%s:", substr1), "", true, file.IDInfo, helmID)
 
 		if curLineRes.breakRes {

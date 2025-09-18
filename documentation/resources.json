@@ -5,5 +5,8 @@
       "azure",
       "gcp"
     ],
-  "terraform":[]
+  "terraform":[],
+  "cicd": [
+    "github"
+  ]
 }

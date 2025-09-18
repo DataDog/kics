@@ -87,3 +87,23 @@ class Coordinator:
             skip,
             check_sev,
         )
+
+    def generate_metadata(self, path_str) -> None:
+        path = Path(path_str)
+        with alive_bar(len(list(path.glob("*")))) as bar:
+            rules_list = sorted(path.iterdir())
+            try:
+                for rule in rules_list:
+                    if not (rule.is_dir() and (rule / "metadata.json").exists()):
+                        continue
+                    metadata = self.codeProcessor.load_metadata(rule)
+                    update = self.rulesGenerator.send_rule_doc_formatting_request(
+                        metadata
+                    )
+                    metadata["queryName"] = update.queryName
+                    metadata["descriptionText"] = update.descriptionText
+                    self.codeProcessor.write_metadata(rule, metadata)
+                    bar()
+            except KeyboardInterrupt:
+                print("Ctrl-C pressed!")
+                sys.exit(0)

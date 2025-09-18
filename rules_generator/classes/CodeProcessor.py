@@ -18,6 +18,14 @@ class CodeProcessor:
     def read_metadata(self, path: Path) -> str:
         return self.__read_file(path / "metadata.json")
 
+    def load_metadata(self, path: Path) -> dict:
+        try:
+            with open(path / "metadata.json", "r") as f:
+                metadata = json.load(f)
+            return metadata
+        except Exception as e:
+            print(e)
+
     def __write_file(self, path: Path, content: str) -> None:
         try:
             with open(path, "w") as f:
@@ -79,3 +87,7 @@ class CodeProcessor:
         snippets_list = splitAt if len(splitAt) > 1 else snippets.split("#####")
         self.__write_file(path / "test/positive_module.tf", snippets_list[0].strip())
         self.__write_file(path / "test/negative_module.tf", snippets_list[1].strip())
+
+    def write_metadata(self, path: Path, metadata: Path) -> None:
+        with open(path / "metadata.json", "w") as f:
+            json.dump(metadata, f, indent=2, ensure_ascii=False)

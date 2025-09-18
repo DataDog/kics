@@ -4,14 +4,23 @@ type LocalEvaluator struct {
 	flags map[string]bool
 }
 
-func NewLocalEvaluator() *LocalEvaluator {
-	return &LocalEvaluator{
-		flags: map[string]bool{
-			IacAttachCustomFrameworks:  true,
-			IacAttachDefaultFrameworks: true,
-			IacDisableKicsRule:         false,
-		},
+func NewLocalEvaluatorWithOverrides(overrides map[string]bool) *LocalEvaluator {
+	flags := map[string]bool{
+		IacAttachCustomFrameworks:  true,
+		IacAttachDefaultFrameworks: true,
+		IacDisableKicsRule:         false,
 	}
+
+	for k, v := range overrides {
+		flags[k] = v
+	}
+	return &LocalEvaluator{
+		flags: flags,
+	}
+}
+
+func NewLocalEvaluator() *LocalEvaluator {
+	return NewLocalEvaluatorWithOverrides(map[string]bool{})
 }
 
 func (l LocalEvaluator) Evaluate(flag string) bool {
