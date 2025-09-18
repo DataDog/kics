@@ -1,5 +1,11 @@
 package featureflags
 
+const (
+	IacAttachCustomFrameworks  = "k9-iac-attach-custom-frameworks"
+	IacAttachDefaultFrameworks = "k9-iac-attach-default-frameworks"
+	IacDisableKicsRule         = "k9-iac-disable-kics-rule"
+)
+
 type FlagEvaluator interface {
 	Evaluate(flag string) bool
 	EvaluateWithOrg(flag string) bool
