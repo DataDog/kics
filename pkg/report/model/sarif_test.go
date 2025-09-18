@@ -245,9 +245,9 @@ var sarifTests = []sarifTest{
 									},
 								},
 							},
-							ResultLevel:      "warning",
+							ResultLevel: "warning",
 							ResultProperties: sarifProperties{
-								"tags": []string{"DATADOG_CATEGORY:", "IAC_RESOURCE_TYPE:test_resource_type", "IAC_RESOURCE_NAME:test_resource_name"},
+								"tags":       []string{"DATADOG_CATEGORY:", "IAC_RESOURCE_TYPE:test_resource_type", "IAC_RESOURCE_NAME:test_resource_name"},
 								"frameworks": []model.Framework(nil),
 							},
 							PartialFingerprints: SarifPartialFingerprints{
@@ -439,7 +439,7 @@ var sarifTests = []sarifTest{
 								},
 							},
 							ResultProperties: sarifProperties{
-								"tags": []string{"DATADOG_CATEGORY:test", "IAC_RESOURCE_TYPE:test_resource_type", "IAC_RESOURCE_NAME:test_resource_name"},
+								"tags":       []string{"DATADOG_CATEGORY:test", "IAC_RESOURCE_TYPE:test_resource_type", "IAC_RESOURCE_NAME:test_resource_name"},
 								"frameworks": []model.Framework(nil),
 							},
 							PartialFingerprints: SarifPartialFingerprints{
@@ -476,7 +476,7 @@ var sarifTests = []sarifTest{
 								},
 							},
 							ResultProperties: sarifProperties{
-								"tags": []string{"DATADOG_CATEGORY:test", "CWE:22", "IAC_RESOURCE_TYPE:test_resource_type_2", "IAC_RESOURCE_NAME:test_resource_name_2"},
+								"tags":       []string{"DATADOG_CATEGORY:test", "CWE:22", "IAC_RESOURCE_TYPE:test_resource_type_2", "IAC_RESOURCE_NAME:test_resource_name_2"},
 								"frameworks": []model.Framework(nil),
 							},
 							PartialFingerprints: SarifPartialFingerprints{
@@ -615,9 +615,9 @@ var sarifTests = []sarifTest{
 									},
 								},
 							},
-							ResultLevel:      "warning",
+							ResultLevel: "warning",
 							ResultProperties: sarifProperties{
-								"tags": []string{"DATADOG_CATEGORY:", "IAC_RESOURCE_TYPE:test_resource_type", "IAC_RESOURCE_NAME:test_resource_name"},
+								"tags":       []string{"DATADOG_CATEGORY:", "IAC_RESOURCE_TYPE:test_resource_type", "IAC_RESOURCE_NAME:test_resource_name"},
 								"frameworks": []model.Framework(nil),
 							},
 							PartialFingerprints: SarifPartialFingerprints{
@@ -709,8 +709,7 @@ func TestBuildSarifIssue(t *testing.T) {
 						require.Equal(t, tt.want.Runs[0].Tool.Driver.Rules[0].Relationships, result.Runs[0].Tool.Driver.Rules[0].Relationships)
 					}
 				}
-				require.Equal(t, tt.want.Runs[0].Results[0].ResultRuleID, result.Runs[0].Results[0].ResultRuleID)
-				require.Equal(t, tt.want.Runs[0].Results[0].ResultLevel, result.Runs[0].Results[0].ResultLevel)
+				require.Equal(t, tt.want.Runs[0].Results[0], result.Runs[0].Results[0])
 				require.Equal(t, tt.want.Runs[0].Tool.Driver.Rules[0].RuleFullDescription.Text, result.Runs[0].Tool.Driver.Rules[0].RuleFullDescription.Text)
 				// Verify rule frameworks property exists
 				require.Contains(t, result.Runs[0].Tool.Driver.Rules[0].RuleProperties, "frameworks")
@@ -760,13 +759,13 @@ func TestBuildSarifIssueWithFrameworks(t *testing.T) {
 	ctx := context.Background()
 
 	queryResult := model.QueryResult{
-		QueryName:   "AMI shared with multiple accounts",
-		QueryID:     "ba4e0031-3e9d-4d7d-b0d6-bd8f003f8698",
-		Description: "This check ensures that AMIs are not granted launch permissions to multiple accounts",
-		QueryURI:    "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/terraform/aws/ami_shared_with_multiple_accounts",
-		Severity:    model.SeverityMedium,
-		Category:    "Access Control",
-		Platform:    "Terraform",
+		QueryName:     "AMI shared with multiple accounts",
+		QueryID:       "ba4e0031-3e9d-4d7d-b0d6-bd8f003f8698",
+		Description:   "This check ensures that AMIs are not granted launch permissions to multiple accounts",
+		QueryURI:      "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/terraform/aws/ami_shared_with_multiple_accounts",
+		Severity:      model.SeverityMedium,
+		Category:      "Access Control",
+		Platform:      "Terraform",
 		CloudProvider: "aws",
 		Frameworks: []model.Framework{
 			{
