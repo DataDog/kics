@@ -251,25 +251,50 @@ func checkQueryFeatureFlagDisabled(ctx context.Context, metadata map[string]inte
 		return false
 	}
 
+	// Extract KICS ID from query metadata
+	kicsPlatform, exists := metadata["platform"]
+	if !exists {
+		return false
+	}
+
+	kicsPlatformStr, ok := kicsPlatform.(string)
+	if !ok {
+		return false
+	}
+
 	// Create custom variables with the KICS ID
 	customVariables := map[string]interface{}{
-		"KICS_RULE_ID": kicsIDStr,
+		"KICS_RULE_ID":     kicsIDStr,
+		"KICS_PLATFORM_ID": kicsPlatformStr,
 	}
 
 	logger := logger.FromContext(ctx)
 	// Check if the rule is disabled via feature flag
-	disabled, err := queryParameters.FlagEvaluator.EvaluateWithOrgAndCustomVariables("k9-iac-disable-kics-rule", customVariables)
+	ruleIdDisabled, err := queryParameters.FlagEvaluator.EvaluateWithOrgAndCustomVariables("k9-iac-disable-kics-rule", customVariables)
 	if err != nil {
 		// If feature flag evaluation fails, log and continue (fail open)
-		logger.Warn().Err(err).Str("kics_id", kicsIDStr).Msg("Failed to evaluate feature flag for KICS rule")
+		logger.Warn().Err(err).Str("kics_id", kicsIDStr).Str("reason", "id").Msg("Failed to evaluate feature flag for KICS rule")
+	}
+
+	if ruleIdDisabled {
+		logger.Info().Str("kics_id", kicsIDStr).Str("reason", "id").Msg("KICS rule disabled by feature flag")
+		return true
+	}
+
+	// Check if the rule is disabled via feature flag
+	rulePlatformDisabled, err := queryParameters.FlagEvaluator.EvaluateWithOrgAndCustomVariables("k9-iac-disable-kics-platform", customVariables)
+	if err != nil {
+		// If feature flag evaluation fails, log and continue (fail open)
+		logger.Warn().Err(err).Str("kics_id", kicsIDStr).Str("reason", "platform").Msg("Failed to evaluate feature flag for KICS rule")
 		return false
 	}
 
-	if disabled {
-		logger.Info().Str("kics_id", kicsIDStr).Msg("KICS rule disabled by feature flag")
+	if rulePlatformDisabled {
+		logger.Info().Str("kics_id", kicsIDStr).Str("reason", "platform").Msg("KICS rule disabled by feature flag")
+		return true
 	}
 
-	return disabled
+	return false
 }
 
 // GetQueries walks a given filesource path returns all queries found in an array of
