@@ -15,13 +15,13 @@
     {
       "control": "aws.1.10",
       "framework": "dcsb-m-v2",
-      "framework_version": "dcsb-m-v2_0.0.1",
+      "framework_version": "0.0.1",
       "requirement": "aws"
     },
     {
       "control": "chris.1",
       "framework": "chris-test",
-      "framework_version": "chris-test_0.0.1",
+      "framework_version": "0.0.1",
       "requirement": "chris"
     }
   ]

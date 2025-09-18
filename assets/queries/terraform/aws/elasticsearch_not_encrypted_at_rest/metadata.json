@@ -16,13 +16,13 @@
     {
       "control": "aws.1.20",
       "framework": "dcsb-m-v2",
-      "framework_version": "dcsb-m-v2_0.0.1",
+      "framework_version": "0.0.1",
       "requirement": "aws"
     },
     {
       "control": "aws.1.27",
       "framework": "dcsb-m-v2",
-      "framework_version": "dcsb-m-v2_0.0.1",
+      "framework_version": "0.0.1",
       "requirement": "aws"
     }
   ]

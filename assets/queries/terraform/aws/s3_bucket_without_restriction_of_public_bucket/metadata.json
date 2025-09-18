@@ -11,5 +11,13 @@
   "cwe": "284",
   "oldSeverity": "HIGH",
   "oldDescriptionText": "S3 bucket without restriction of public bucket",
-  "providerUrl": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_public_access_block"
+  "providerUrl": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_public_access_block",
+  "defaultFrameworks": [
+    {
+      "control": "1.18",
+      "framework": "essential-cloud-security-controls",
+      "framework_version": "v2",
+      "requirement": "aws"
+    }
+  ]
 }

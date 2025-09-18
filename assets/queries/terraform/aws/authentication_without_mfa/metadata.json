@@ -11,5 +11,13 @@
   "cwe": "284",
   "oldSeverity": "HIGH",
   "oldDescriptionText": "Users should authenticate with MFA (Multi-factor Authentication) to ensure an extra layer of protection when authenticating",
-  "providerUrl": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_user_policy"
+  "providerUrl": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_user_policy",
+  "defaultFrameworks": [
+    {
+      "control": "1.17",
+      "framework": "essential-cloud-security-controls",
+      "framework_version": "v2",
+      "requirement": "aws"
+    }
+  ]
 }

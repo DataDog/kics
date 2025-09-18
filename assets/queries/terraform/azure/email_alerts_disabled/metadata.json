@@ -10,5 +10,13 @@
   "cloudProvider": "azure",
   "cwe": "778",
   "oldDescriptionText": "Make sure that alerts notifications are set to 'On' in the Azure Security Center Contact",
-  "providerUrl": "https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/security_center_contact"
+  "providerUrl": "https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/security_center_contact",
+  "defaultFrameworks": [
+    {
+      "control": "2.14",
+      "framework": "essential-cloud-security-controls",
+      "framework_version": "v2",
+      "requirement": "azure"
+    }
+  ]
 }

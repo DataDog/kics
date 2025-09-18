@@ -7,5 +7,13 @@
   "descriptionUrl": "https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/",
   "platform": "Kubernetes",
   "descriptionID": "1d944481",
-  "cwe": ""
+  "cwe": "",
+  "defaultFrameworks": [
+    {
+      "control": "4.11",
+      "framework": "essential-cloud-security-controls",
+      "framework_version": "v2",
+      "requirement": "kubernetes"
+    }
+  ]
 }

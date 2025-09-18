@@ -11,5 +11,13 @@
   "cwe": "732",
   "oldSeverity": "HIGH",
   "oldDescriptionText": "S3 Buckets should not be readable and writable to all users",
-  "providerUrl": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket"
+  "providerUrl": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket",
+  "defaultFrameworks": [
+    {
+      "control": "1.6",
+      "framework": "essential-cloud-security-controls",
+      "framework_version": "v2",
+      "requirement": "aws"
+    }
+  ]
 }

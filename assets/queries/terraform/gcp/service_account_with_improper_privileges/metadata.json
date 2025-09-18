@@ -10,5 +10,13 @@
   "cloudProvider": "gcp",
   "cwe": "284",
   "oldDescriptionText": "Service account should not have improper privileges like admin, editor, owner, or write roles",
-  "providerUrl": "https://registry.terraform.io/providers/hashicorp/google/latest/docs/data-sources/iam_policy#role"
+  "providerUrl": "https://registry.terraform.io/providers/hashicorp/google/latest/docs/data-sources/iam_policy#role",
+  "defaultFrameworks": [
+    {
+      "control": "3.3",
+      "framework": "essential-cloud-security-controls",
+      "framework_version": "v2",
+      "requirement": "gcp"
+    }
+  ]
 }

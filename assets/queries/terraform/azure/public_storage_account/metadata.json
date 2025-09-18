@@ -10,5 +10,13 @@
   "cloudProvider": "azure",
   "cwe": "285",
   "oldDescriptionText": "Storage Account should not be public to grant the principle of least privileges",
-  "providerUrl": "https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/storage_account"
+  "providerUrl": "https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/storage_account",
+  "defaultFrameworks": [
+    {
+      "control": "2.8",
+      "framework": "essential-cloud-security-controls",
+      "framework_version": "v2",
+      "requirement": "azure"
+    }
+  ]
 }

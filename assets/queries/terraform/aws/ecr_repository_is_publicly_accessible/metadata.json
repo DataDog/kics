@@ -16,7 +16,15 @@
     {
       "control": "aws.1.1",
       "framework": "dcsb-m-v2",
-      "framework_version": "dcsb-m-v2_0.0.1",
+      "framework_version": "0.0.1",
+      "requirement": "aws"
+    }
+  ],
+  "defaultFrameworks": [
+    {
+      "control": "1.4",
+      "framework": "essential-cloud-security-controls",
+      "framework_version": "v2",
       "requirement": "aws"
     }
   ]

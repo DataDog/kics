@@ -10,5 +10,13 @@
   "cloudProvider": "aws",
   "cwe": "200",
   "oldDescriptionText": "The DB snapshot is public. This means that anyone can access the snapshot and restore the database. This can lead to unauthorized access to sensitive data.",
-  "providerUrl": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/db_snapshot#shared_accounts-1"
+  "providerUrl": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/db_snapshot#shared_accounts-1",
+  "defaultFrameworks": [
+    {
+      "control": "1.12",
+      "framework": "essential-cloud-security-controls",
+      "framework_version": "v2",
+      "requirement": "aws"
+    }
+  ]
 }

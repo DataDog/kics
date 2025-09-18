@@ -11,5 +11,13 @@
   "cwe": "285",
   "oldSeverity": "HIGH",
   "oldDescriptionText": "Cloud Storage Bucket is anonymously or publicly accessible",
-  "providerUrl": "https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/storage_bucket_iam"
+  "providerUrl": "https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/storage_bucket_iam",
+  "defaultFrameworks": [
+    {
+      "control": "3.1",
+      "framework": "essential-cloud-security-controls",
+      "framework_version": "v2",
+      "requirement": "gcp"
+    }
+  ]
 }

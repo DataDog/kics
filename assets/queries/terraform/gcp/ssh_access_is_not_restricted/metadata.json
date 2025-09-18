@@ -10,5 +10,13 @@
   "cloudProvider": "gcp",
   "cwe": "732",
   "oldDescriptionText": "Google Firewall should not allow SSH access (port 22) from the Internet (public CIDR block) to ensure the principle of least privileges",
-  "providerUrl": "https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/compute_firewall"
+  "providerUrl": "https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/compute_firewall",
+  "defaultFrameworks": [
+    {
+      "control": "3.9",
+      "framework": "essential-cloud-security-controls",
+      "framework_version": "v2",
+      "requirement": "gcp"
+    }
+  ]
 }

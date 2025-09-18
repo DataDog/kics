@@ -16,7 +16,7 @@
     {
       "control": "aws.1.8",
       "framework": "dcsb-m-v2",
-      "framework_version": "dcsb-m-v2_0.0.1",
+      "framework_version": "0.0.1",
       "requirement": "aws"
     }
   ]

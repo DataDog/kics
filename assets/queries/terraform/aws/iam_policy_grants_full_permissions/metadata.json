@@ -10,5 +10,13 @@
   "cloudProvider": "aws",
   "cwe": "732",
   "oldDescriptionText": "IAM policy should not grant full permissions to resources from the get-go, instead of granting permissions gradually as necessary.",
-  "providerUrl": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy"
+  "providerUrl": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy",
+  "defaultFrameworks": [
+    {
+      "control": "1.11",
+      "framework": "essential-cloud-security-controls",
+      "framework_version": "v2",
+      "requirement": "aws"
+    }
+  ]
 }
