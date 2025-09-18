@@ -13,6 +13,7 @@ import (
 	"github.com/Checkmarx/kics/pkg/engine"
 	"github.com/Checkmarx/kics/pkg/engine/provider"
 	"github.com/Checkmarx/kics/pkg/engine/source"
+	"github.com/Checkmarx/kics/pkg/featureflags"
 	"github.com/Checkmarx/kics/pkg/kics"
 	"github.com/Checkmarx/kics/pkg/parser"
 	"github.com/Checkmarx/kics/pkg/progress"
@@ -103,7 +104,9 @@ func createServices(types, cloudProviders []string) (serviceSlice, *storage.Memo
 
 	inspector, err := engine.NewInspector(context.Background(),
 		querySource, engine.DefaultVulnerabilityBuilder,
-		t, &source.QueryInspectorParameters{}, map[string]bool{}, 60, true, true, 1, false)
+		t, &source.QueryInspectorParameters{}, map[string]bool{}, 60, true, true, 1, false,
+		featureflags.NewLocalEvaluator(),
+	)
 	if err != nil {
 		return nil, nil, err
 	}

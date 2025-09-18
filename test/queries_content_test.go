@@ -20,6 +20,7 @@ import (
 	"github.com/Checkmarx/kics/pkg/engine"
 	"github.com/Checkmarx/kics/pkg/engine/mock"
 	"github.com/Checkmarx/kics/pkg/engine/source"
+	"github.com/Checkmarx/kics/pkg/featureflags"
 	"github.com/Checkmarx/kics/pkg/model"
 	"github.com/Checkmarx/kics/pkg/progress"
 	"github.com/golang/mock/gomock"
@@ -271,6 +272,7 @@ func testQueryHasGoodReturnParams(t *testing.T, entry queryEntry) { //nolint
 		true,
 		1,
 		false,
+		featureflags.NewLocalEvaluator(),
 	)
 	require.Nil(t, err)
 	require.NotNil(t, inspector)

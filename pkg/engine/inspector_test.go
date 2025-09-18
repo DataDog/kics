@@ -16,6 +16,7 @@ import (
 	"testing"
 	"time"
 
+	"github.com/Checkmarx/kics/pkg/featureflags"
 	"github.com/open-policy-agent/opa/rego"
 	"github.com/stretchr/testify/assert"
 
@@ -24,7 +25,6 @@ import (
 	"github.com/Checkmarx/kics/pkg/detector"
 	"github.com/Checkmarx/kics/pkg/engine/source"
 	"github.com/Checkmarx/kics/pkg/model"
-	"github.com/Checkmarx/kics/pkg/utils"
 	"github.com/Checkmarx/kics/test"
 	"github.com/rs/zerolog"
 	"github.com/rs/zerolog/log"
@@ -242,7 +242,7 @@ func TestNewInspector(t *testing.T) { //nolint
 				tt.args.needsLog,
 				tt.args.numWorkers,
 				tt.args.kicsComputeNewSimID,
-				utils.FeatureFlags{},
+				featureflags.NewLocalEvaluator(),
 			)
 
 			if (err != nil) != tt.wantErr {
@@ -568,7 +568,7 @@ func newInspectorInstance(t *testing.T, queryPath []string, kicsComputeNewSimID 
 		map[string]bool{}, 60,
 		false, true, 1,
 		kicsComputeNewSimID,
-		utils.FeatureFlags{},
+		featureflags.NewLocalEvaluator(),
 	)
 	require.NoError(t, err)
 	return ins
