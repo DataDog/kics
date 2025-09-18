@@ -262,14 +262,28 @@ func checkQueryFeatureFlagDisabled(ctx context.Context, metadata map[string]inte
 	if err != nil {
 		// If feature flag evaluation fails, log and continue (fail open)
 		logger.Warn().Err(err).Str("kics_id", kicsIDStr).Msg("Failed to evaluate feature flag for KICS rule")
-		return false
+		disabled = false
 	}
 
 	if disabled {
 		logger.Info().Str("kics_id", kicsIDStr).Msg("KICS rule disabled by feature flag")
+		return true
 	}
 
-	return disabled
+	// Check if cicd rules are disabled
+	cicdDisabled, err := queryParameters.FlagEvaluator.EvaluateWithOrgAndCustomVariables("k9-iac-disable-cicd-rules", customVariables)
+	if err != nil {
+		// If feature flag evaluation fails, log and continue (fail open)
+		logger.Warn().Err(err).Str("kics_id", kicsIDStr).Msg("Failed to evaluate CICD feature flag for KICS rule")
+		cicdDisabled = false
+	}
+
+	if cicdDisabled {
+		logger.Info().Str("kics_id", kicsIDStr).Msg("KICS rule disabled by feature flag")
+		return true
+	}
+
+	return false
 }
 
 // GetQueries walks a given filesource path returns all queries found in an array of
