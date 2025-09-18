@@ -71,7 +71,8 @@ type QueryResult struct {
 	CISRationaleText            string            `json:"cis_description_rationale,omitempty"`
 	CISBenchmarkName            string            `json:"cis_benchmark_name,omitempty"`
 	CISBenchmarkVersion         string            `json:"cis_benchmark_version,omitempty"`
-	CustomFrameworks            []CustomFramework `json:"custom_frameworks,omitempty"`
+	Frameworks                  []Framework       `json:"frameworks,omitempty"`
+	CustomFrameworks            []CustomFramework `json:"custom_frameworks,omitempty"` // Deprecated, use Frameworks
 	Files                       []VulnerableFile  `json:"files"`
 }
 
@@ -218,6 +219,7 @@ func CreateSummary(ctx context.Context, counters Counters, vulnerabilities []Vul
 				Category:         item.Category,
 				Description:      item.Description,
 				DescriptionID:    item.DescriptionID,
+				Frameworks:       item.Frameworks,
 				CustomFrameworks: item.CustomFrameworks,
 			}
 		}

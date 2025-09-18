@@ -70,7 +70,7 @@ func GetScannedFilesCountTag(scannedFiles int) string {
 	return fmt.Sprintf(scannedFileCountTag, scannedFiles)
 }
 
-func GetFrameworkTags(framework model.CustomFramework) []string {
+func GetFrameworkTags(framework model.Framework) []string {
 	return []string{
 		fmt.Sprintf(frameworkTag, framework.Framework),
 		fmt.Sprintf(frameworkVersionTag, framework.FrameworkVersion),

@@ -55,7 +55,7 @@ type ruleMetadata struct {
 	queryCategory    string
 	queryCwe         string
 	severity         model.Severity
-	customFrameworks []model.CustomFramework
+	frameworks []model.Framework
 }
 
 type ruleCISMetadata struct {
@@ -540,12 +540,6 @@ func (sr *sarifReport) buildSarifRule(queryMetadata *ruleMetadata, cisMetadata r
 		kicsRuleIDTag := GetKICSRuleIDTag(queryMetadata.queryID)
 		tags = append(tags, categoryTag, kicsRuleIDTag)
 
-		// Add custom framework tags to rule level
-		for _, framework := range queryMetadata.customFrameworks {
-			frameworkTags := GetFrameworkTags(framework)
-			tags = append(tags, frameworkTags...)
-		}
-
 		rule := sarifRule{
 			RuleID:               queryMetadata.queryName,
 			RuleName:             queryMetadata.queryName,
@@ -555,14 +549,16 @@ func (sr *sarifReport) buildSarifRule(queryMetadata *ruleMetadata, cisMetadata r
 			// Relationships:        relationships,
 			HelpURI: helpURI,
 			RuleProperties: sarifProperties{
-				"tags": tags,
+				"tags":       tags,
+				"frameworks": queryMetadata.frameworks,
 			},
 		}
 		if cisMetadata.id != "" {
 			rule.RuleFullDescription.Text = cisMetadata.descriptionText
 			rule.RuleProperties = sarifProperties{
-				"cisId":    cisMetadata.id,
-				"cisTitle": cisMetadata.title,
+				"cisId":      cisMetadata.id,
+				"cisTitle":   cisMetadata.title,
+				"frameworks": queryMetadata.frameworks,
 			}
 		}
 
@@ -614,7 +610,7 @@ func (sr *sarifReport) BuildSarifIssue(ctx context.Context, issue *model.QueryRe
 			queryCategory:    issue.Category,
 			queryCwe:         issue.CWE,
 			severity:         issue.Severity,
-			customFrameworks: issue.CustomFrameworks,
+			frameworks: issue.Frameworks,
 		}
 		cisDescriptions := ruleCISMetadata{
 			id:              issue.CISDescriptionIDFormatted,
@@ -645,11 +641,6 @@ func (sr *sarifReport) BuildSarifIssue(ctx context.Context, issue *model.QueryRe
 
 			resultTags := append(tags, resourceTypeTag, resourceNameTag)
 
-			// Add custom framework tags to result level
-			for _, framework := range issue.CustomFrameworks {
-				frameworkTags := GetFrameworkTags(framework)
-				resultTags = append(resultTags, frameworkTags...)
-			}
 
 			resourceLocation := vulnerability.ResourceLocation
 
@@ -715,7 +706,8 @@ func (sr *sarifReport) BuildSarifIssue(ctx context.Context, issue *model.QueryRe
 					},
 				},
 				ResultProperties: sarifProperties{
-					"tags": resultTags,
+					"tags":       resultTags,
+					"frameworks": issue.Frameworks,
 				},
 				PartialFingerprints: SarifPartialFingerprints{
 					DatadogFingerprint: GetDatadogFingerprintHash(sciInfo, absoluteFilePath, resourceType, resourceName, issue.QueryID),
