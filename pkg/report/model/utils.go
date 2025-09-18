@@ -14,14 +14,10 @@ import (
 )
 
 const (
-	kicsRuleIDTag           = "KICS_RuleID:%s"
-	cweTag                  = "CWE:%s"
-	resourceTypeTag         = "IAC_RESOURCE_TYPE:%s"
-	resourceNameTag         = "IAC_RESOURCE_NAME:%s"
-	frameworkTag            = "framework:%s"
-	frameworkVersionTag     = "framework_version:%s"
-	frameworkRequirementTag = "requirement:%s"
-	frameworkControlTag     = "control:%s"
+	kicsRuleIDTag   = "KICS_RuleID:%s"
+	cweTag          = "CWE:%s"
+	resourceTypeTag = "IAC_RESOURCE_TYPE:%s"
+	resourceNameTag = "IAC_RESOURCE_NAME:%s"
 )
 
 func GetScanDurationTag(summary model.Summary) string {
@@ -68,15 +64,6 @@ func GetResourceNameTag(resourceName string) string {
 
 func GetScannedFilesCountTag(scannedFiles int) string {
 	return fmt.Sprintf(scannedFileCountTag, scannedFiles)
-}
-
-func GetFrameworkTags(framework model.Framework) []string {
-	return []string{
-		fmt.Sprintf(frameworkTag, framework.Framework),
-		fmt.Sprintf(frameworkVersionTag, framework.FrameworkVersion),
-		fmt.Sprintf(frameworkRequirementTag, framework.Requirement),
-		fmt.Sprintf(frameworkControlTag, framework.Control),
-	}
 }
 
 // stringToHash returns a SHA256 hash of the input string.
