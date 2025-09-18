@@ -18,6 +18,25 @@ import (
 	"github.com/rs/zerolog/log"
 )
 
+/*
+// example local usage
+func main() {
+	inputPaths := []string{"assets/queries/terraform/gcp/sql_database_instance_does_not_have_skip_show_database/test/"}
+	outputPath := "/path/to/dir"
+	sci := model.SCIInfo{
+		DiffAware: model.DiffAware{
+			Enabled: false,
+		},
+		RunType: "code_update",
+		RepositoryCommitInfo: model.RepositoryCommitInfo{
+			RepositoryUrl: "github.com/blah",
+			Branch:        "main",
+			CommitSHA:     "1234567890",
+		},
+	}
+	ExecuteKICSScan(inputPaths, outputPath, sci, featureflags.LocalEvaluator{},true)
+}*/
+
 func ExecuteKICSScan(inputPaths []string, outputPath string, sciInfo model.SCIInfo, FlagEvaluator featureflags.FlagEvaluator, consolePrint ...bool) (scan.ScanMetadata, string, error) {
 	ctx := context.Background()
 	extraInfos := map[string]string{
