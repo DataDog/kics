@@ -252,7 +252,7 @@ func checkQueryFeatureFlagDisabled(ctx context.Context, metadata map[string]inte
 		return false
 	}
 
-	// Extract KICS ID from query metadata
+	// Extract KICS PLATFORM from query metadata
 	kicsPlatform, exists := metadata["platform"]
 	if !exists {
 		return false
