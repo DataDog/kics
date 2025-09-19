@@ -54,6 +54,7 @@ type ruleMetadata struct {
 	queryURI         string
 	queryCategory    string
 	queryCwe         string
+	queryPlatform    string
 	severity         model.Severity
 }
 
@@ -117,6 +118,7 @@ type sarifRule struct {
 	RuleName             string              `json:"name"`
 	RuleShortDescription sarifMessage        `json:"shortDescription"`
 	RuleFullDescription  sarifMessage        `json:"fullDescription"`
+	Platform             string              `json:"platform"`
 	DefaultConfiguration sarifConfiguration  `json:"defaultConfiguration"`
 	HelpURI              string              `json:"helpUri"`
 	Relationships        []sarifRelationship `json:"relationships,omitempty"`
@@ -550,6 +552,7 @@ func (sr *sarifReport) buildSarifRule(queryMetadata *ruleMetadata, cisMetadata r
 			RuleProperties: sarifProperties{
 				"tags": tags,
 			},
+			Platform: queryMetadata.queryPlatform,
 		}
 		if cisMetadata.id != "" {
 			rule.RuleFullDescription.Text = cisMetadata.descriptionText
@@ -606,6 +609,7 @@ func (sr *sarifReport) BuildSarifIssue(ctx context.Context, issue *model.QueryRe
 			queryURI:         issue.QueryURI,
 			queryCategory:    issue.Category,
 			queryCwe:         issue.CWE,
+			queryPlatform:    issue.Platform,
 			severity:         issue.Severity,
 		}
 		cisDescriptions := ruleCISMetadata{
