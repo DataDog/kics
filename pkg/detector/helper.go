@@ -283,7 +283,7 @@ func (d *DefaultDetectLineResponse) DetectCurrentLine(str1, str2 string, recurse
 
 	if len(distances) == 0 {
 		d.IsBreak = true
-		return d, model.ResourceLine{Line: d.CurrentLine + 1, Col: 0}, model.ResourceLine{Line: d.CurrentLine + 1, Col: 0}, lines
+		return d, model.ResourceLine{Line: d.CurrentLine + 1, Col: 0}, model.ResourceLine{Line: d.CurrentLine + 1, Col: len(lines[d.CurrentLine])}, lines
 	}
 
 	d.CurrentLine = SelectLineWithMinimumDistance(distances, d.CurrentLine)
