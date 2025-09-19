@@ -19,6 +19,7 @@ import (
 
 	"github.com/Checkmarx/kics/assets"
 	"github.com/Checkmarx/kics/internal/constants"
+	"github.com/Checkmarx/kics/pkg/featureflags"
 	"github.com/Checkmarx/kics/pkg/logger"
 	"github.com/Checkmarx/kics/pkg/model"
 	"github.com/pkg/errors"
@@ -270,7 +271,7 @@ func checkQueryFeatureFlagDisabled(ctx context.Context, metadata map[string]inte
 
 	logger := logger.FromContext(ctx)
 	// Check if the rule is disabled via feature flag
-	ruleIdDisabled, err := queryParameters.FlagEvaluator.EvaluateWithOrgAndCustomVariables("k9-iac-disable-kics-rule", customVariables)
+	ruleIdDisabled, err := queryParameters.FlagEvaluator.EvaluateWithOrgAndCustomVariables(featureflags.IacDisableKicsRule, customVariables)
 	if err != nil {
 		// If feature flag evaluation fails, log and continue (fail open)
 		logger.Warn().Err(err).Str("kics_id", kicsIDStr).Str("reason", "id").Msg("Failed to evaluate feature flag for KICS rule")
@@ -282,7 +283,7 @@ func checkQueryFeatureFlagDisabled(ctx context.Context, metadata map[string]inte
 	}
 
 	// Check if the rule is disabled via feature flag
-	rulePlatformDisabled, err := queryParameters.FlagEvaluator.EvaluateWithOrgAndCustomVariables("k9-iac-disable-kics-platform", customVariables)
+	rulePlatformDisabled, err := queryParameters.FlagEvaluator.EvaluateWithOrgAndCustomVariables(featureflags.IacDisableKicsPlatform, customVariables)
 	if err != nil {
 		// If feature flag evaluation fails, log and continue (fail open)
 		logger.Warn().Err(err).Str("kics_id", kicsIDStr).Str("reason", "platform").Msg("Failed to evaluate feature flag for KICS rule")
