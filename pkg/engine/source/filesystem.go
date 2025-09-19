@@ -274,11 +274,11 @@ func checkQueryFeatureFlagDisabled(ctx context.Context, metadata map[string]inte
 	ruleIdDisabled, err := queryParameters.FlagEvaluator.EvaluateWithOrgAndCustomVariables(featureflags.IacDisableKicsRule, customVariables)
 	if err != nil {
 		// If feature flag evaluation fails, log and continue (fail open)
-		logger.Warn().Err(err).Str("kics_id", kicsIDStr).Str("reason", "id").Msg("Failed to evaluate feature flag for KICS rule")
+		logger.Warn().Err(err).Str("kics_id", kicsIDStr).Str("feature_flag", featureflags.IacDisableKicsRule).Msg("Failed to evaluate feature flag for KICS rule")
 	}
 
 	if ruleIdDisabled {
-		logger.Info().Str("kics_id", kicsIDStr).Str("reason", "id").Msg("KICS rule disabled by feature flag")
+		logger.Info().Str("kics_id", kicsIDStr).Str("feature_flag", featureflags.IacDisableKicsRule).Msg("KICS rule disabled by feature flag")
 		return true
 	}
 
@@ -286,12 +286,12 @@ func checkQueryFeatureFlagDisabled(ctx context.Context, metadata map[string]inte
 	rulePlatformDisabled, err := queryParameters.FlagEvaluator.EvaluateWithOrgAndCustomVariables(featureflags.IacDisableKicsPlatform, customVariables)
 	if err != nil {
 		// If feature flag evaluation fails, log and continue (fail open)
-		logger.Warn().Err(err).Str("kics_id", kicsIDStr).Str("reason", "platform").Msg("Failed to evaluate feature flag for KICS rule")
+		logger.Warn().Err(err).Str("kics_id", kicsIDStr).Str("feature_flag", featureflags.IacDisableKicsPlatform).Msg("Failed to evaluate feature flag for KICS rule")
 		return false
 	}
 
 	if rulePlatformDisabled {
-		logger.Info().Str("kics_id", kicsIDStr).Str("reason", "platform").Msg("KICS rule disabled by feature flag")
+		logger.Info().Str("kics_id", kicsIDStr).Str("feature_flag", featureflags.IacDisableKicsPlatform).Msg("KICS rule disabled by feature flag")
 		return true
 	}
 
