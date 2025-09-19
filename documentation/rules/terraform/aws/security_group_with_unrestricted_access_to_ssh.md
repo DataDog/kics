@@ -112,7 +112,7 @@ resource "aws_security_group" "negative1" {
 ```
 ## Non-Compliant Code Examples
 ```terraform
-resource "aws_security_group" "positive2" {
+resource "aws_security_group" "positive1" {
   name        = "allow_tls"
   description = "Allow TLS inbound traffic"
   vpc_id      = aws_vpc.main.id
@@ -122,7 +122,7 @@ resource "aws_security_group" "positive2" {
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
-    cidr_blocks = ["192.120.0.0/16", "0.0.0.0/0"]
+    cidr_blocks = ["0.0.0.0/0"]
   }
 
   egress {
@@ -140,19 +140,17 @@ resource "aws_security_group" "positive2" {
 ```
 
 ```terraform
-module "vote_service_sg" {
-  source = "terraform-aws-modules/security-group/aws"
-  version = "4.3.0"
-  name        = "user-service"
-  description = "Security group for user-service with custom ports open within VPC, and PostgreSQL publicly open"
-  vpc_id      = "vpc-12345678"
+resource "aws_security_group" "positive2" {
+  name        = "allow_tls"
+  description = "Allow TLS inbound traffic"
+  vpc_id      = aws_vpc.main.id
 
   ingress {
     description = "TLS from VPC"
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
+    cidr_blocks = ["192.120.0.0/16", "0.0.0.0/0"]
   }
 
   egress {

@@ -44,6 +44,28 @@ This misconfiguration creates a significant security risk, as leaked credentials
 
 ## Compliant Code Examples
 ```terraform
+module "ec2_instance" {
+  source  = "terraform-aws-modules/ec2-instance/aws"
+  version = "~> 3.0"
+
+  name = "single-instance"
+
+  ami                    = "ami-ebd02392"
+  instance_type          = "t2.micro"
+  key_name               = "user1"
+  monitoring             = true
+  vpc_security_group_ids = ["sg-12345678"]
+  subnet_id              = "subnet-eddcdzz4"
+
+  tags = {
+    Terraform   = "true"
+    Environment = "dev"
+  }
+}
+
+```
+
+```terraform
 provider "aws" {
   region = "us-east-1"
 }
@@ -118,28 +140,6 @@ resource "aws_instance" "negative3" {
     #!/bin/bash
     apt-get update
   EOF
-}
-
-```
-
-```terraform
-module "ec2_instance" {
-  source  = "terraform-aws-modules/ec2-instance/aws"
-  version = "~> 3.0"
-
-  name = "single-instance"
-
-  ami                    = "ami-ebd02392"
-  instance_type          = "t2.micro"
-  key_name               = "user1"
-  monitoring             = true
-  vpc_security_group_ids = ["sg-12345678"]
-  subnet_id              = "subnet-eddcdzz4"
-
-  tags = {
-    Terraform   = "true"
-    Environment = "dev"
-  }
 }
 
 ```
@@ -223,7 +223,7 @@ provider "aws" {
   region = "us-east-1"
 }
 
-resource "aws_instance" "positive6" {
+resource "aws_instance" "positive5" {
   ami           = "ami-005e54dee72cc1d00" # us-west-2
   instance_type = "t2.micro"
 
@@ -231,18 +231,7 @@ resource "aws_instance" "positive6" {
     Name = "test"
   }
 
-  user_data = <<EOT
-#cloud-config
-repo_update: true
-repo_upgrade: all
-
-packages:
- - awscli
-
-runcmd:
- - [ sh, -c, "echo export AWS_ACCESS_KEY_ID=my-key-id >> ~/.bashrc" ]
- - [ sh, -c, "echo export AWS_SECRET_ACCESS_KEY=my-secret >> ~/.bashrc" ]
-EOT
+  user_data_base64 = base64encode("apt-get install -y awscli; export AWS_ACCESS_KEY_ID=your_access_key_id_here; export AWS_SECRET_ACCESS_KEY=your_secret_access_key_here")
 
   credit_specification {
     cpu_credits = "unlimited"
@@ -281,7 +270,7 @@ provider "aws" {
   region = "us-east-1"
 }
 
-resource "aws_instance" "positive2" {
+resource "aws_instance" "positive1" {
   ami           = "ami-005e54dee72cc1d00" # us-west-2
   instance_type = "t2.micro"
 
@@ -289,15 +278,12 @@ resource "aws_instance" "positive2" {
     Name = "test"
   }
 
-  user_data = <<EOT
+  user_data = <<EOF
 #!/bin/bash
 apt-get install -y awscli
-cat << EOF > ~/.aws/config
-[default]
-aws_access_key_id = somekey
-aws_secret_access_key = somesecret
+export AWS_ACCESS_KEY_ID=your_access_key_id_here
+export AWS_SECRET_ACCESS_KEY=your_secret_access_key_here
 EOF
-EOT
 
   credit_specification {
     cpu_credits = "unlimited"

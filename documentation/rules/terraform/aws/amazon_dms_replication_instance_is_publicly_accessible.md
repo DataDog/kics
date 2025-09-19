@@ -84,6 +84,20 @@ resource "aws_dms_replication_instance" "test" {
   ]
 }
 ```
+
+```terraform
+module "dms_instance" {
+  source = "terraform-aws-modules/dms/aws"
+  version = "~> 1.0"
+
+  identifier = "test-dms-instance"
+  instance_class = "dms.t2.micro"
+  allocated_storage = 8
+  publicly_accessible = false
+
+  apply_immediately = true
+}
+```
 ## Non-Compliant Code Examples
 ```terraform
 resource "aws_dms_replication_instance" "test" {
@@ -109,5 +123,19 @@ resource "aws_dms_replication_instance" "test" {
     aws_iam_role_policy_attachment.dms-cloudwatch-logs-role-AmazonDMSCloudWatchLogsRole,
     aws_iam_role_policy_attachment.dms-vpc-role-AmazonDMSVPCManagementRole
   ]
+}
+```
+
+```terraform
+module "dms_instance" {
+  source = "terraform-aws-modules/dms/aws"
+  version = "~> 1.0"
+
+  identifier = "test-dms-instance"
+  instance_class = "dms.t2.micro"
+  allocated_storage = 8
+  publicly_accessible = true
+
+  apply_immediately = true
 }
 ```

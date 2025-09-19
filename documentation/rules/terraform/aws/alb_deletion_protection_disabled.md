@@ -50,6 +50,22 @@ Enabling this setting minimizes the risk of outages by requiring an extra step t
 
 ## Compliant Code Examples
 ```terraform
+resource "aws_lb" "negative2" {
+  name               = "test-lb-tf"
+  internal           = false
+  load_balancer_type = "network"
+  subnets            = aws_subnet.public.*.id
+
+  enable_deletion_protection = true
+
+  tags = {
+    Environment = "production"
+  }
+}
+
+```
+
+```terraform
 module "alb" {
   source  = "terraform-aws-modules/alb/aws"
   version = "~> 6.0"
@@ -106,22 +122,6 @@ module "alb" {
 
   tags = {
     Environment = "Test"
-  }
-}
-
-```
-
-```terraform
-resource "aws_lb" "negative2" {
-  name               = "test-lb-tf"
-  internal           = false
-  load_balancer_type = "network"
-  subnets            = aws_subnet.public.*.id
-
-  enable_deletion_protection = true
-
-  tags = {
-    Environment = "production"
   }
 }
 
@@ -152,6 +152,8 @@ module "alb" {
 
   load_balancer_type = "application"
 
+  enable_deletion_protection = false
+
   vpc_id             = "vpc-abcde012"
   subnets            = ["subnet-abcde012", "subnet-bcde012a"]
   security_groups    = ["sg-edcd9784", "sg-edcd9785"]
@@ -204,12 +206,13 @@ module "alb" {
 ```
 
 ```terraform
-resource "aws_alb" "positive2" {
+resource "aws_alb" "positive1" {
   name               = "test-lb-tf"
   internal           = false
   load_balancer_type = "network"
   subnets            = aws_subnet.public.*.id
 
+  enable_deletion_protection = false
 
   tags = {
     Environment = "production"
@@ -219,13 +222,12 @@ resource "aws_alb" "positive2" {
 ```
 
 ```terraform
-resource "aws_lb" "positive3" {
+resource "aws_alb" "positive2" {
   name               = "test-lb-tf"
   internal           = false
   load_balancer_type = "network"
   subnets            = aws_subnet.public.*.id
 
-  enable_deletion_protection = false
 
   tags = {
     Environment = "production"

@@ -40,6 +40,21 @@ resource "aws_s3_bucket" "secure_example" {
 
 ## Compliant Code Examples
 ```terraform
+module "s3_bucket" {
+  source = "terraform-aws-modules/s3-bucket/aws"
+  version = "3.7.0"
+
+  bucket = "my-s3-bucket"
+  acl    = "private"
+
+  versioning = {
+    enabled = true
+  }
+}
+
+```
+
+```terraform
 provider "aws" {
   region = "us-east-1"
 }
@@ -60,21 +75,6 @@ resource "aws_s3_bucket" "example0" {
 resource "aws_s3_bucket_acl" "example_bucket_acl" {
   bucket = aws_s3_bucket.example0.id
   acl    = "private"
-}
-
-```
-
-```terraform
-module "s3_bucket" {
-  source = "terraform-aws-modules/s3-bucket/aws"
-  version = "3.7.0"
-
-  bucket = "my-s3-bucket"
-  acl    = "private"
-
-  versioning = {
-    enabled = true
-  }
 }
 
 ```
@@ -123,13 +123,42 @@ terraform {
   }
 }
 
-resource "aws_s3_bucket" "example000" {
+resource "aws_s3_bucket" "example00" {
   bucket = "my-tf-example-bucket"
 }
 
 resource "aws_s3_bucket_acl" "example_bucket_acl" {
-  bucket = aws_s3_bucket.example000.id
-  acl    = "public-read-write"
+  bucket = aws_s3_bucket.example00.id
+  acl    = "public-read"
+}
+
+```
+
+```terraform
+provider "aws" {
+  region = "us-east-1"
+}
+
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 3.0"
+    }
+  }
+}
+resource "aws_s3_bucket" "positive1" {
+  bucket = "my-tf-test-bucket"
+  acl    = "public-read"
+
+  tags = {
+    Name        = "My bucket"
+    Environment = "Dev"
+  }
+
+  versioning {
+    enabled = true
+  }
 }
 
 ```
@@ -158,21 +187,6 @@ resource "aws_s3_bucket" "positive2" {
   }
 
   versioning {
-    enabled = true
-  }
-}
-
-```
-
-```terraform
-module "s3_bucket" {
-  source = "terraform-aws-modules/s3-bucket/aws"
-  version = "3.7.0"
-
-  bucket = "my-s3-bucket"
-  acl    = "public-read"
-
-  versioning = {
     enabled = true
   }
 }

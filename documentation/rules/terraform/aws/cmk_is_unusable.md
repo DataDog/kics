@@ -39,6 +39,19 @@ resource "aws_kms_key" "a3" {
 }
 
 ```
+
+```terraform
+module "kms" {
+  source                  = "terraform-aws-modules/kms/aws"
+  version                 = "1.3.0"
+  description             = "KMS key for hcp-vault"
+  key_usage               = "ENCRYPT_DECRYPT"
+  enable_key_rotation     = true
+  alias                   = "alias/hcp-vault"
+  policy                  = data.aws_iam_policy_document.hcp.json
+  deletion_window_in_days = 7
+}
+```
 ## Non-Compliant Code Examples
 ```terraform
 resource "aws_kms_key" "a" {
@@ -46,4 +59,17 @@ resource "aws_kms_key" "a" {
   is_enabled = false
 }
 
+```
+
+```terraform
+module "kms" {
+  source                  = "terraform-aws-modules/kms/aws"
+  version                 = "1.3.0"
+  description             = "KMS key for hcp-vault"
+  key_usage               = "ENCRYPT_DECRYPT"
+  enable_key_rotation     = false
+  alias                   = "alias/hcp-vault"
+  policy                  = data.aws_iam_policy_document.hcp.json
+  deletion_window_in_days = 7
+}
 ```

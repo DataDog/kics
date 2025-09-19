@@ -48,6 +48,15 @@ resource "aws_globalaccelerator_accelerator" "negative1" {
 ```
 ## Non-Compliant Code Examples
 ```terraform
+resource "aws_globalaccelerator_accelerator" "positive1" {
+  name            = "Example"
+  ip_address_type = "IPV4"
+  enabled         = true
+}
+
+```
+
+```terraform
 resource "aws_globalaccelerator_accelerator" "positive2" {
   name            = "Example"
   ip_address_type = "IPV4"
@@ -70,15 +79,6 @@ resource "aws_globalaccelerator_accelerator" "positive3" {
   attributes {
     flow_logs_enabled   = false
   }
-}
-
-```
-
-```terraform
-resource "aws_globalaccelerator_accelerator" "positive1" {
-  name            = "Example"
-  ip_address_type = "IPV4"
-  enabled         = true
 }
 
 ```

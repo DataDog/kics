@@ -60,6 +60,23 @@ resource "aws_athena_database" "hoge" {
 }
 
 ```
+
+```terraform
+module "athena_database" {
+  source  = "cloudposse/athena/aws"
+  version = "~> 2.0"
+
+  name   = "my_athena_db"
+  bucket = "my_athena_bucket"
+
+  encryption_configuration {
+    encryption_option = "SSE_S3"
+  }
+
+  force_destroy = true
+}
+
+```
 ## Non-Compliant Code Examples
 ```terraform
 resource "aws_s3_bucket" "hoge" {
@@ -69,6 +86,19 @@ resource "aws_s3_bucket" "hoge" {
 resource "aws_athena_database" "hoge" {
   name   = "database_name"
   bucket = aws_s3_bucket.hoge.bucket
+}
+
+```
+
+```terraform
+module "athena_database" {
+  source  = "cloudposse/athena/aws"
+  version = "~> 2.0"
+
+  name   = "my_athena_db"
+  bucket = "my_athena_bucket"
+
+  force_destroy = true
 }
 
 ```
