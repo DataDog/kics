@@ -287,7 +287,6 @@ func checkQueryFeatureFlagDisabled(ctx context.Context, metadata map[string]inte
 	if err != nil {
 		// If feature flag evaluation fails, log and continue (fail open)
 		logger.Warn().Err(err).Str("kics_id", kicsIDStr).Str("feature_flag", featureflags.IacDisableKicsPlatform).Msg("Failed to evaluate feature flag for KICS rule")
-		return false
 	}
 
 	if rulePlatformDisabled {
