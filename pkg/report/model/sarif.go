@@ -56,6 +56,7 @@ type ruleMetadata struct {
 	queryCwe         string
 	queryPlatform    string
 	severity         model.Severity
+	frameworks []model.Framework
 }
 
 type ruleCISMetadata struct {
@@ -550,15 +551,17 @@ func (sr *sarifReport) buildSarifRule(queryMetadata *ruleMetadata, cisMetadata r
 			// Relationships:        relationships,
 			HelpURI: helpURI,
 			RuleProperties: sarifProperties{
-				"tags": tags,
+				"tags":       tags,
+				"frameworks": queryMetadata.frameworks,
 			},
 			Platform: queryMetadata.queryPlatform,
 		}
 		if cisMetadata.id != "" {
 			rule.RuleFullDescription.Text = cisMetadata.descriptionText
 			rule.RuleProperties = sarifProperties{
-				"cisId":    cisMetadata.id,
-				"cisTitle": cisMetadata.title,
+				"cisId":      cisMetadata.id,
+				"cisTitle":   cisMetadata.title,
+				"frameworks": queryMetadata.frameworks,
 			}
 		}
 
@@ -611,6 +614,7 @@ func (sr *sarifReport) BuildSarifIssue(ctx context.Context, issue *model.QueryRe
 			queryCwe:         issue.CWE,
 			queryPlatform:    issue.Platform,
 			severity:         issue.Severity,
+			frameworks: issue.Frameworks,
 		}
 		cisDescriptions := ruleCISMetadata{
 			id:              issue.CISDescriptionIDFormatted,
@@ -640,6 +644,7 @@ func (sr *sarifReport) BuildSarifIssue(ctx context.Context, issue *model.QueryRe
 			resourceNameTag := GetResourceNameTag(resourceName)
 
 			resultTags := append(tags, resourceTypeTag, resourceNameTag)
+
 
 			resourceLocation := vulnerability.ResourceLocation
 
@@ -705,7 +710,8 @@ func (sr *sarifReport) BuildSarifIssue(ctx context.Context, issue *model.QueryRe
 					},
 				},
 				ResultProperties: sarifProperties{
-					"tags": resultTags,
+					"tags":       resultTags,
+					"frameworks": issue.Frameworks,
 				},
 				PartialFingerprints: SarifPartialFingerprints{
 					DatadogFingerprint: GetDatadogFingerprintHash(sciInfo, absoluteFilePath, resourceType, resourceName, issue.QueryID),

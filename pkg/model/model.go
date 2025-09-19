@@ -214,6 +214,15 @@ type Vulnerability struct {
 	ResourceSource        string           `json:"resourceSource"`
 	FileSource            []string         `json:"fileSource"`
 	BlockLocation         ResourceLocation `json:"blockLocation"`
+	Frameworks            []Framework      `json:"frameworks,omitempty"`
+}
+
+// Framework represents a framework mapping for a query
+type Framework struct {
+	Framework        string `json:"framework"`
+	FrameworkVersion string `json:"framework_version"`
+	Requirement      string `json:"requirement"`
+	Control          string `json:"control"`
 }
 
 // QueryConfig is a struct that contains the fileKind and platform of the rego query

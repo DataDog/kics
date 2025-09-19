@@ -10,5 +10,13 @@
   "cloudProvider": "azure",
   "cwe": "778",
   "oldDescriptionText": "Security Contact Email should be defined",
-  "providerUrl": "https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/security_center_contact#email"
+  "providerUrl": "https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/security_center_contact#email",
+  "defaultFrameworks": [
+    {
+      "control": "2.13",
+      "framework": "essential-cloud-security-controls",
+      "framework_version": "v2",
+      "requirement": "azure"
+    }
+  ]
 }

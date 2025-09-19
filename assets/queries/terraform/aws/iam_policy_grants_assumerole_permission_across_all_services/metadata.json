@@ -11,5 +11,13 @@
   "cwe": "732",
   "oldSeverity": "LOW",
   "oldDescriptionText": "IAM Policy should not grant 'AssumeRole' permission across all services.",
-  "providerUrl": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role"
+  "providerUrl": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role",
+  "defaultFrameworks": [
+    {
+      "control": "1.10",
+      "framework": "essential-cloud-security-controls",
+      "framework_version": "v2",
+      "requirement": "aws"
+    }
+  ]
 }

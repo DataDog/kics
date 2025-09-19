@@ -271,6 +271,7 @@ func checkQueryFeatureFlagDisabled(ctx context.Context, metadata map[string]inte
 
 	logger := logger.FromContext(ctx)
 	// Check if the rule is disabled via feature flag
+
 	ruleIdDisabled, err := queryParameters.FlagEvaluator.EvaluateWithOrgAndCustomVariables(featureflags.IacDisableKicsRule, customVariables)
 	if err != nil {
 		// If feature flag evaluation fails, log and continue (fail open)

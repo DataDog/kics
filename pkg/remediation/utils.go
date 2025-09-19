@@ -12,6 +12,7 @@ import (
 	"regexp"
 	"strings"
 
+	"github.com/Checkmarx/kics/pkg/featureflags"
 	"github.com/Checkmarx/kics/pkg/logger"
 	"github.com/Checkmarx/kics/pkg/model"
 	"github.com/Checkmarx/kics/pkg/utils"
@@ -61,7 +62,8 @@ func willRemediate(
 	originalFileName string,
 	remediation *Remediation,
 	openAPIResolveReferences bool,
-	maxResolverDepth int) bool {
+	maxResolverDepth int,
+	flagEvaluator featureflags.FlagEvaluator) bool {
 	logger := logger.FromContext(ctx)
 	filepath.Clean(originalFileName)
 	// create temporary file
@@ -88,7 +90,7 @@ func willRemediate(
 	}
 
 	// scan the temporary file to verify if the remediation removed the result
-	results, err := scanTmpFile(ctx, tmpFile, remediation.QueryID, content, openAPIResolveReferences, maxResolverDepth)
+	results, err := scanTmpFile(ctx, tmpFile, remediation.QueryID, content, openAPIResolveReferences, maxResolverDepth, flagEvaluator)
 
 	if err != nil {
 		logger.Error().Msgf("failed to get results of query %s: %s", remediation.QueryID, err)

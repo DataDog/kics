@@ -10,5 +10,13 @@
   "cloudProvider": "azure",
   "cwe": "732",
   "oldDescriptionText": "Port 3389 (Remote Desktop) is exposed to the internet",
-  "providerUrl": "https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/network_security_rule"
+  "providerUrl": "https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/network_security_rule",
+  "defaultFrameworks": [
+    {
+      "control": "2.5",
+      "framework": "essential-cloud-security-controls",
+      "framework_version": "v2",
+      "requirement": "azure"
+    }
+  ]
 }

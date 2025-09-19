@@ -11,5 +11,13 @@
   "cwe": "285",
   "oldSeverity": "MEDIUM",
   "oldDescriptionText": "Azure Kubernetes Service should have the proper network policy configuration to ensure the principle of least privileges, which means that `network_profile.network_policy` should be defined",
-  "providerUrl": "https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/kubernetes_cluster"
+  "providerUrl": "https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/kubernetes_cluster",
+  "defaultFrameworks": [
+    {
+      "control": "2.9",
+      "framework": "essential-cloud-security-controls",
+      "framework_version": "v2",
+      "requirement": "azure"
+    }
+  ]
 }

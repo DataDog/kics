@@ -17,6 +17,7 @@ import (
 	"github.com/Checkmarx/kics/pkg/engine"
 	"github.com/Checkmarx/kics/pkg/engine/mock"
 	"github.com/Checkmarx/kics/pkg/engine/source"
+	"github.com/Checkmarx/kics/pkg/featureflags"
 	"github.com/Checkmarx/kics/pkg/model"
 	"github.com/Checkmarx/kics/pkg/progress"
 	"github.com/golang/mock/gomock"
@@ -224,7 +225,9 @@ func testQuery(tb testing.TB, entry queryEntry, filesPath []string, expectedVuln
 			InputDataPath:  "",
 			FlagEvaluator:  nil,
 		},
-		map[string]bool{}, 60, false, true, 1, false)
+		map[string]bool{}, 60, false, true, 1, false,
+		featureflags.NewLocalEvaluator(),
+	)
 
 	require.Nil(tb, err)
 	require.NotNil(tb, inspector)

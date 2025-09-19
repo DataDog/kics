@@ -8,5 +8,13 @@
   "platform": "Kubernetes",
   "descriptionID": "81883f01",
   "cwe": "",
-  "oldSeverity": "HIGH"
+  "oldSeverity": "HIGH",
+  "defaultFrameworks": [
+    {
+      "control": "4.3",
+      "framework": "essential-cloud-security-controls",
+      "framework_version": "v2",
+      "requirement": "kubernetes"
+    }
+  ]
 }

@@ -11,5 +11,13 @@
   "cwe": "285",
   "oldSeverity": "MEDIUM",
   "oldDescriptionText": "Azure Virtual Network subnet must be configured with a Network Security Group, which means the attribute 'security_group' must be defined and not empty",
-  "providerUrl": "https://www.terraform.io/docs/providers/azure/r/virtual_network.html"
+  "providerUrl": "https://www.terraform.io/docs/providers/azure/r/virtual_network.html",
+  "defaultFrameworks": [
+    {
+      "control": "2.6",
+      "framework": "essential-cloud-security-controls",
+      "framework_version": "v2",
+      "requirement": "azure"
+    }
+  ]
 }

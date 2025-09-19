@@ -21,8 +21,8 @@ import (
 /*
 // example local usage
 func main() {
-	inputPaths := []string{"assets/queries/terraform/gcp/sql_database_instance_does_not_have_skip_show_database/test/"}
-	outputPath := "/path/to/dir"
+	inputPaths := []string{"assets/queries/terraform/aws/ami_shared_with_multiple_accounts/"}
+	outputPath := "/tmp"
 	sci := model.SCIInfo{
 		DiffAware: model.DiffAware{
 			Enabled: false,
@@ -34,8 +34,9 @@ func main() {
 			CommitSHA:     "1234567890",
 		},
 	}
-	ExecuteKICSScan(inputPaths, outputPath, sci, featureflags.LocalEvaluator{},true)
-}*/
+	ExecuteKICSScan(inputPaths, outputPath, sci, featureflags.NewLocalEvaluator(), true)
+}
+*/
 
 func ExecuteKICSScan(inputPaths []string, outputPath string, sciInfo model.SCIInfo, FlagEvaluator featureflags.FlagEvaluator, consolePrint ...bool) (scan.ScanMetadata, string, error) {
 	ctx := context.Background()

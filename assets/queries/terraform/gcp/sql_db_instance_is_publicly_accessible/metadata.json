@@ -11,5 +11,13 @@
   "cwe": "732",
   "oldSeverity": "HIGH",
   "oldDescriptionText": "Cloud SQL instances should not be publicly accessible.",
-  "providerUrl": "https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/sql_database_instance"
+  "providerUrl": "https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/sql_database_instance",
+  "defaultFrameworks": [
+    {
+      "control": "3.10",
+      "framework": "essential-cloud-security-controls",
+      "framework_version": "v2",
+      "requirement": "gcp"
+    }
+  ]
 }

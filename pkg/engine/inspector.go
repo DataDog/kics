@@ -22,6 +22,7 @@ import (
 	"github.com/Checkmarx/kics/pkg/detector/helm"
 	"github.com/Checkmarx/kics/pkg/detector/terraform"
 	"github.com/Checkmarx/kics/pkg/engine/source"
+	"github.com/Checkmarx/kics/pkg/featureflags"
 	"github.com/Checkmarx/kics/pkg/logger"
 	"github.com/Checkmarx/kics/pkg/model"
 	tfmodules "github.com/Checkmarx/kics/pkg/parser/terraform/modules"
@@ -91,6 +92,7 @@ type Inspector struct {
 	useOldSeverities     bool
 	numWorkers           int
 	kicsComputeNewSimID  bool
+	flagEvaluator        featureflags.FlagEvaluator
 }
 
 // QueryContext contains the context where the query is executed, which scan it belongs, basic information of query,
@@ -102,6 +104,7 @@ type QueryContext struct {
 	Query         *PreparedQuery
 	payload       *ast.Value
 	BaseScanPaths []string
+	FlagEvaluator featureflags.FlagEvaluator
 }
 
 var (
@@ -133,6 +136,7 @@ func NewInspector(
 	needsLog bool,
 	numWorkers int,
 	kicsComputeNewSimID bool,
+	flagEvaluator featureflags.FlagEvaluator,
 ) (*Inspector, error) {
 	logger := logger.FromContext(ctx)
 	logger.Debug().Msg("engine.NewInspector()")
@@ -194,6 +198,7 @@ func NewInspector(
 		useOldSeverities:    useOldSeverities,
 		numWorkers:          adjustNumWorkers(numWorkers),
 		kicsComputeNewSimID: kicsComputeNewSimID,
+		flagEvaluator:       flagEvaluator,
 	}, nil
 }
 
@@ -258,6 +263,7 @@ func (c *Inspector) performInspection(ctx context.Context, scanID string, files 
 			Query:         query,
 			payload:       &astPayload,
 			BaseScanPaths: baseScanPaths,
+			FlagEvaluator: c.flagEvaluator,
 		}
 
 		vuls, err := c.doRun(ctx, queryContext)
