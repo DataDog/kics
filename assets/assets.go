@@ -29,7 +29,7 @@ func GetEmbeddedLibraryData(platform string) (string, error) {
 	return string(content), err
 }
 
-//go:embed queries/cicd queries/terraform
+//go:embed queries/cicd queries/terraform queries/k8s
 var embeddedQueries embed.FS
 
 func GetEmbeddedQueryDirs(ctx context.Context) ([]string, error) {
