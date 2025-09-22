@@ -16,6 +16,9 @@ CxPolicy[result] {
 		"issueType": "MissingAttribute",
 		"keyExpectedValue": "kms_master_key_id should be defined and not null",
 		"keyActualValue": "kms_master_key_id is undefined or null",
+        "searchLine": common_lib.build_search_line(["resource", "aws_sns_topic", name], []),
+        "remediation": "kms_master_key_id = \"alias/MyAlias\"",
+        "remediationType": "addition",
 	}
 }
 
@@ -32,6 +35,12 @@ CxPolicy[result] {
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": "kms_master_key_id should be defined and not null",
 		"keyActualValue": "kms_master_key_id is empty string",
+        "searchLine": common_lib.build_search_line(["resource", "aws_sns_topic", name, "kms_master_key_id"], []),
+        "remediation": json.marshal({
+            "before": "",
+            "after": "alias/MyAlias"
+        }),
+        "remediationType": "replacement",
 	}
 }
 
@@ -51,6 +60,9 @@ CxPolicy[result] {
 		"issueType": "MissingAttribute",
 		"keyExpectedValue": sprintf("module[%s].%s should be defined and not null", [name, keyToCheck]),
 		"keyActualValue": sprintf("module[%s].%s is undefined or null", [name, keyToCheck]),
+        "searchLine": common_lib.build_search_line(["module", name], []),
+        "remediation": sprintf("%s = \"alias/MyAlias\"", [keyToCheck]),
+        "remediationType": "addition",
 	}
 }
 
@@ -68,5 +80,11 @@ CxPolicy[result] {
 		"issueType": "IncorrectValue",
 		"keyExpectedValue": sprintf("module[%s].%s should be defined and not null", [name, keyToCheck]),
 		"keyActualValue": sprintf("module[%s].%s is empty string", [name, keyToCheck]),
+        "searchLine": common_lib.build_search_line(["module", name, keyToCheck], []),
+        "remediation": json.marshal({
+            "before": "",
+            "after": "alias/MyAlias"
+        }),
+        "remediationType": "replacement",
 	}
 }
