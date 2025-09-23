@@ -1,6 +1,6 @@
 {
   "id": "b23e9b98-0cb6-4fc9-b257-1f3270442678",
-  "queryName": "Deployment Without PodDisruptionBudget",
+  "queryName": "Deployment without PodDisruptionBudget",
   "severity": "LOW",
   "category": "Availability",
   "descriptionText": "Deployments should be assigned with a PodDisruptionBudget to ensure high availability",

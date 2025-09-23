@@ -1,6 +1,6 @@
 {
   "id": "caa93370-791f-4fc6-814b-ba6ce0cb4032",
-  "queryName": "Not Limited Capabilities For Pod Security Policy",
+  "queryName": "Not limited capabilities for pod security policy",
   "severity": "INFO",
   "category": "Insecure Configurations",
   "descriptionText": "Limit capabilities for a Pod Security Policy",

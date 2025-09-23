@@ -1,6 +1,6 @@
 {
   "id": "a5530bd7-225a-48f9-91bb-f40b04200165",
-  "queryName": "Service Account Lookup Set To False",
+  "queryName": "Service account lookup set to false",
   "severity": "HIGH",
   "category": "Access Control",
   "descriptionText": "When using kube-apiserver command, the '--service-account-lookup' flag should be set to true",

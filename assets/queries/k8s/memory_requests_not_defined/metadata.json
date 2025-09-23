@@ -1,6 +1,6 @@
 {
   "id": "229588ef-8fde-40c8-8756-f4f2b5825ded",
-  "queryName": "Memory Requests Not Defined",
+  "queryName": "Memory requests not defined",
   "severity": "MEDIUM",
   "category": "Resource Management",
   "descriptionText": "Memory requests should be defined for each container. This allows the kubelet to reserve the requested amount of system resources and prevents over-provisioning on individual nodes",

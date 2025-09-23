@@ -1,6 +1,6 @@
 {
   "id": "10efce34-5af6-4d83-b414-9e096d5a06a9",
-  "queryName": "Encryption Provider Not Properly Configured",
+  "queryName": "Encryption provider not properly configured",
   "severity": "MEDIUM",
   "category": "Encryption",
   "descriptionText": "The EncryptionConfiguration should be configured to have at least one 'aescbc', 'kms' or 'secretbox' provider",

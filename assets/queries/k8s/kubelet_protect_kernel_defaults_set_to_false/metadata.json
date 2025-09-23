@@ -1,6 +1,6 @@
 {
   "id": "6cf42c97-facd-4fda-b8af-ea4529123355",
-  "queryName": "Kubelet Protect Kernel Defaults Set To False",
+  "queryName": "Kubelet protect kernel defaults set to false",
   "severity": "MEDIUM",
   "category": "Insecure Configurations",
   "descriptionText": "--protect-kernel-defaults should be set to true",

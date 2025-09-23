@@ -1,6 +1,6 @@
 {
   "id": "48a5beba-e4c0-4584-a2aa-e6894e4cf424",
-  "queryName": "Pod or Container Without ResourceQuota",
+  "queryName": "Pod or container without ResourceQuota",
   "severity": "LOW",
   "category": "Insecure Configurations",
   "descriptionText": "Each namespace should have a ResourceQuota policy associated to limit the total amount of resources Pods, Containers and PersistentVolumeClaims can consume",

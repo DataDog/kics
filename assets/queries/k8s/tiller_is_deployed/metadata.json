@@ -1,6 +1,6 @@
 {
   "id": "6d173be7-545a-46c6-a81d-2ae52ed1605d",
-  "queryName": "Tiller (Helm v2) Is Deployed",
+  "queryName": "Tiller (Helm v2) is deployed",
   "severity": "HIGH",
   "category": "Insecure Configurations",
   "descriptionText": "Check if Tiller is deployed.",

@@ -1,6 +1,6 @@
 {
   "id": "1a07a446-8e61-4e4d-bc16-b0781fcb8211",
-  "queryName": "Kubelet Event QPS Not Properly Set",
+  "queryName": "Kubelet event QPS not properly set",
   "severity": "LOW",
   "category": "Observability",
   "descriptionText": "When using the kubelet command, the '--event-qps' should be set to 0",

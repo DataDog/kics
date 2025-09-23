@@ -1,6 +1,6 @@
 {
   "id": "1123031a-f921-4c5b-bd86-ef354ecfd37a",
-  "queryName": "Metadata Label Is Invalid",
+  "queryName": "Metadata label is invalid",
   "severity": "LOW",
   "category": "Best Practices",
   "descriptionText": "Check if any label in the metadata is invalid.",

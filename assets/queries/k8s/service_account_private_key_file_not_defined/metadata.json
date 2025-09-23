@@ -1,6 +1,6 @@
 {
   "id": "ccc98ff7-68a7-436e-9218-185cb0b0b780",
-  "queryName": "Service Account Private Key File Not Defined",
+  "queryName": "Service account private key file not defined",
   "severity": "MEDIUM",
   "category": "Encryption",
   "descriptionText": "When using kube-controller-manager commands, the '--service-account-private-key-file' should be defined",

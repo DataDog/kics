@@ -1,6 +1,6 @@
 {
   "id": "52d70f2e-3257-474c-b3dc-8ad9ba6a061a",
-  "queryName": "Kubelet Client Periodic Certificate Switch Disabled",
+  "queryName": "Kubelet client periodic certificate switch disabled",
   "severity": "MEDIUM",
   "category": "Secret Management",
   "descriptionText": "Kubelet argument --rotate-certificates should be true",

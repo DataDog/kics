@@ -1,6 +1,6 @@
 {
   "id": "f1f4d8da-1ac4-47d0-b1aa-91e69d33f7d5",
-  "queryName": "Authorization Mode Set To Always Allow",
+  "queryName": "Authorization mode set to always allow",
   "severity": "HIGH",
   "category": "Access Control",
   "descriptionText": "When using the kubelet command, the authorization-mode flag should not have 'AlwaysAllow' mode",

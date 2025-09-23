@@ -1,6 +1,6 @@
 {
   "id": "b7d0181d-0a9b-4611-9d1c-1ad4f0b620ff",
-  "queryName": "Etcd Peer Client Certificate Authentication Set To False",
+  "queryName": "etcd peer client certificate authentication set to false",
   "severity": "MEDIUM",
   "category": "Secret Management",
   "descriptionText": "When using etcd commands, the '--peer-client-cert-auth' flag should be set to true",

@@ -1,6 +1,6 @@
 {
   "id": "19ebaa28-fc86-4a58-bcfa-015c9e22fe40",
-  "queryName": "Containers With Added Capabilities",
+  "queryName": "Containers with added capabilities",
   "severity": "MEDIUM",
   "category": "Insecure Configurations",
   "descriptionText": "Containers should not have extra capabilities allowed",

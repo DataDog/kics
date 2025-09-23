@@ -1,6 +1,6 @@
 {
   "id": "2f652c42-619d-4361-b361-9f599688f8ca",
-  "queryName": "HPA Targets Invalid Object",
+  "queryName": "HPA targets invalid object",
   "severity": "LOW",
   "category": "Availability",
   "descriptionText": "The Horizontal Pod Autoscaler must target a valid object",

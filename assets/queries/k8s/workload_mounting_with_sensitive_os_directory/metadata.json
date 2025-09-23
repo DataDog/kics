@@ -1,6 +1,6 @@
 {
   "id": "5308a7a8-06f8-45ac-bf10-791fe21de46e",
-  "queryName": "Workload Mounting With Sensitive OS Directory",
+  "queryName": "Workload mounting with sensitive os directory",
   "severity": "HIGH",
   "category": "Insecure Configurations",
   "descriptionText": "Workload is mounting a volume with sensitive OS Directory",

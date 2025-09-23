@@ -1,6 +1,6 @@
 {
   "id": "9391103a-d8d7-4671-ac5d-606ba7ccb0ac",
-  "queryName": "Etcd Client Certificate Authentication Set To False",
+  "queryName": "etcd client certificate authentication set to false",
   "severity": "MEDIUM",
   "category": "Secret Management",
   "descriptionText": "When using etcd commands, the '--client-cert-auth' flag should be defined",

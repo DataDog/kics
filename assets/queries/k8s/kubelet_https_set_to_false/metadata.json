@@ -1,6 +1,6 @@
 {
   "id": "cdc8b54e-6b16-4538-a1b0-35849dbe29cf",
-  "queryName": "Kubelet HTTPS Set To False",
+  "queryName": "Kubelet HTTPS set to false",
   "severity": "MEDIUM",
   "category": "Networking and Firewall",
   "descriptionText": "When using kube-apiserver command, the '--kubelet-https' flag should not be set to false",

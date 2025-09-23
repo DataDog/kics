@@ -1,6 +1,6 @@
 {
   "id": "8b36775e-183d-4d46-b0f7-96a6f34a723f",
-  "queryName": "Missing AppArmor Profile",
+  "queryName": "Missing AppArmor profile",
   "severity": "LOW",
   "category": "Access Control",
   "descriptionText": "Containers should be configured with an AppArmor profile to enforce fine-grained access control over low-level system resources",
