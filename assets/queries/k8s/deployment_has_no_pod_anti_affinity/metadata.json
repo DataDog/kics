@@ -1,6 +1,6 @@
 {
   "id": "a31b7b82-d994-48c4-bd21-3bab6c31827a",
-  "queryName": "Deployment has no podantiaffinity",
+  "queryName": "Deployment has no podAntiAffinity",
   "severity": "LOW",
   "category": "Resource Management",
   "descriptionText": "Check if Deployment resources don't have a podAntiAffinity policy, which prevents multiple pods from being scheduled on the same node.",

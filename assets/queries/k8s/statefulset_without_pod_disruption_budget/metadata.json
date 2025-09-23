@@ -1,6 +1,6 @@
 {
   "id": "1db3a5a5-bf75-44e5-9e44-c56cfc8b1ac5",
-  "queryName": "Statefulset without poddisruptionbudget",
+  "queryName": "StatefulSet without PodDisruptionBudget",
   "severity": "LOW",
   "category": "Availability",
   "descriptionText": "StatefulSets should be assigned with a PodDisruptionBudget to ensure high availability",
