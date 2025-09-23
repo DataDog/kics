@@ -9,6 +9,7 @@ import (
 	consoleHelpers "github.com/Checkmarx/kics/internal/console/helpers"
 	"github.com/Checkmarx/kics/internal/constants"
 	"github.com/Checkmarx/kics/pkg/logger"
+	"github.com/Checkmarx/kics/pkg/version"
 	"github.com/rs/zerolog"
 	"github.com/rs/zerolog/log"
 	"github.com/spf13/viper"
@@ -53,6 +54,7 @@ func initializeConfig(ctx context.Context, rootPath string, extraInfos map[strin
 		for k, v := range extraInfos {
 			infos = infos.Str(k, v)
 		}
+		infos = infos.Str("version", version.String())
 
 		logCtx = infos.Logger().WithContext(ctx)
 		baseLogger = infos.Logger()
