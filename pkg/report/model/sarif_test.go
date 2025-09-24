@@ -101,7 +101,7 @@ var sarifTests = []sarifTest{
 									HelpURI: "https://www.test.com",
 									RuleProperties: sarifProperties{
 										"tags": []string{"DATADOG_RULE_TYPE:IAC_SCANNING", "DATADOG_CATEGORY:", "KICS_QUERY_ID:1"},
-										"frameworks": []model.Framework{
+										"dd_iac_frameworks": []model.Framework{
 											{
 												Framework:        "dcsb-m-v2",
 												FrameworkVersion: "0.0.1",
@@ -137,20 +137,6 @@ var sarifTests = []sarifTest{
 							ResultLevel: "note",
 							ResultProperties: sarifProperties{
 								"tags": []string{"DATADOG_CATEGORY:", "IAC_RESOURCE_TYPE:aws_ami_launch_permission", "IAC_RESOURCE_NAME:test_resource"},
-								"frameworks": []model.Framework{
-									{
-										Framework:        "dcsb-m-v2",
-										FrameworkVersion: "0.0.1",
-										Control:          "aws.1.10",
-										Requirement:      "aws",
-									},
-									{
-										Framework:        "chris-test",
-										FrameworkVersion: "0.0.1",
-										Control:          "chris.1",
-										Requirement:      "chris",
-									},
-								},
 							},
 							PartialFingerprints: SarifPartialFingerprints{
 								DatadogFingerprint: GetDatadogFingerprintHash(
@@ -247,8 +233,7 @@ var sarifTests = []sarifTest{
 							},
 							ResultLevel: "warning",
 							ResultProperties: sarifProperties{
-								"tags":       []string{"DATADOG_CATEGORY:", "IAC_RESOURCE_TYPE:test_resource_type", "IAC_RESOURCE_NAME:test_resource_name"},
-								"frameworks": []model.Framework(nil),
+								"tags": []string{"DATADOG_CATEGORY:", "IAC_RESOURCE_TYPE:test_resource_type", "IAC_RESOURCE_NAME:test_resource_name"},
 							},
 							PartialFingerprints: SarifPartialFingerprints{
 								DatadogFingerprint: GetDatadogFingerprintHash(
@@ -439,8 +424,7 @@ var sarifTests = []sarifTest{
 								},
 							},
 							ResultProperties: sarifProperties{
-								"tags":       []string{"DATADOG_CATEGORY:test", "IAC_RESOURCE_TYPE:test_resource_type", "IAC_RESOURCE_NAME:test_resource_name"},
-								"frameworks": []model.Framework(nil),
+								"tags": []string{"DATADOG_CATEGORY:test", "IAC_RESOURCE_TYPE:test_resource_type", "IAC_RESOURCE_NAME:test_resource_name"},
 							},
 							PartialFingerprints: SarifPartialFingerprints{
 								DatadogFingerprint: GetDatadogFingerprintHash(
@@ -476,8 +460,7 @@ var sarifTests = []sarifTest{
 								},
 							},
 							ResultProperties: sarifProperties{
-								"tags":       []string{"DATADOG_CATEGORY:test", "CWE:22", "IAC_RESOURCE_TYPE:test_resource_type_2", "IAC_RESOURCE_NAME:test_resource_name_2"},
-								"frameworks": []model.Framework(nil),
+								"tags": []string{"DATADOG_CATEGORY:test", "CWE:22", "IAC_RESOURCE_TYPE:test_resource_type_2", "IAC_RESOURCE_NAME:test_resource_name_2"},
 							},
 							PartialFingerprints: SarifPartialFingerprints{
 								DatadogFingerprint: GetDatadogFingerprintHash(
@@ -617,8 +600,7 @@ var sarifTests = []sarifTest{
 							},
 							ResultLevel: "warning",
 							ResultProperties: sarifProperties{
-								"tags":       []string{"DATADOG_CATEGORY:", "IAC_RESOURCE_TYPE:test_resource_type", "IAC_RESOURCE_NAME:test_resource_name"},
-								"frameworks": []model.Framework(nil),
+								"tags": []string{"DATADOG_CATEGORY:", "IAC_RESOURCE_TYPE:test_resource_type", "IAC_RESOURCE_NAME:test_resource_name"},
 							},
 							PartialFingerprints: SarifPartialFingerprints{
 								DatadogFingerprint: GetDatadogFingerprintHash(
@@ -692,12 +674,6 @@ func TestBuildSarifIssue(t *testing.T) {
 				require.Equal(t, wantResult.ResultProperties["tags"], actualResult.ResultProperties["tags"])
 				require.Equal(t, wantResult.PartialFingerprints.DatadogFingerprint, actualResult.PartialFingerprints.DatadogFingerprint)
 				require.Equal(t, wantResult.ResultMessage.Text, actualResult.ResultMessage.Text)
-				// Verify frameworks property exists
-				require.Contains(t, actualResult.ResultProperties, "frameworks")
-				// If expected frameworks is not nil, verify content matches
-				if wantResult.ResultProperties["frameworks"] != nil {
-					require.Equal(t, wantResult.ResultProperties["frameworks"], actualResult.ResultProperties["frameworks"])
-				}
 			}
 			if len(tt.want.Runs[0].Tool.Driver.Rules) > 0 {
 				if len(result.Runs[0].Tool.Driver.Rules[0].Relationships) > 0 {
@@ -711,8 +687,10 @@ func TestBuildSarifIssue(t *testing.T) {
 				}
 				require.Equal(t, tt.want.Runs[0].Results[0], result.Runs[0].Results[0])
 				require.Equal(t, tt.want.Runs[0].Tool.Driver.Rules[0].RuleFullDescription.Text, result.Runs[0].Tool.Driver.Rules[0].RuleFullDescription.Text)
-				// Verify rule frameworks property exists
-				require.Contains(t, result.Runs[0].Tool.Driver.Rules[0].RuleProperties, "frameworks")
+				// Verify dd_iac_frameworks property exists for rules with frameworks
+				if len(tt.vq[0].Frameworks) > 0 {
+					require.Contains(t, result.Runs[0].Tool.Driver.Rules[0].RuleProperties, "dd_iac_frameworks")
+				}
 
 				// for every result in the run we want to check that the location matches the expected location
 				require.Equal(t, tt.want.Runs[0].Results[0].ResultLocations[0].PhysicalLocation.ArtifactLocation.ArtifactURI, result.Runs[0].Results[0].ResultLocations[0].PhysicalLocation.ArtifactLocation.ArtifactURI)
@@ -807,9 +785,9 @@ func TestBuildSarifIssueWithFrameworks(t *testing.T) {
 	require.Len(t, report.Runs[0].Tool.Driver.Rules, 1)
 	rule := report.Runs[0].Tool.Driver.Rules[0]
 
-	// Verify frameworks are in rule properties
-	require.Contains(t, rule.RuleProperties, "frameworks")
-	frameworks, ok := rule.RuleProperties["frameworks"].([]model.Framework)
+	// Verify dd_iac_frameworks are in rule properties
+	require.Contains(t, rule.RuleProperties, "dd_iac_frameworks")
+	frameworks, ok := rule.RuleProperties["dd_iac_frameworks"].([]model.Framework)
 	require.True(t, ok)
 	require.Len(t, frameworks, 2)
 
@@ -832,12 +810,6 @@ func TestBuildSarifIssueWithFrameworks(t *testing.T) {
 	// Verify results were created
 	require.Len(t, report.Runs[0].Results, 1)
 	result := report.Runs[0].Results[0]
-
-	// Verify frameworks are in result properties
-	require.Contains(t, result.ResultProperties, "frameworks")
-	resultFrameworks, ok := result.ResultProperties["frameworks"].([]model.Framework)
-	require.True(t, ok)
-	require.Equal(t, expectedFrameworks, resultFrameworks)
 
 	// Verify other expected properties
 	require.Equal(t, "AMI shared with multiple accounts", result.ResultRuleID)
