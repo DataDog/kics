@@ -101,7 +101,7 @@ var sarifTests = []sarifTest{
 									HelpURI: "https://www.test.com",
 									RuleProperties: sarifProperties{
 										"tags": []string{"DATADOG_RULE_TYPE:IAC_SCANNING", "DATADOG_CATEGORY:", "KICS_QUERY_ID:1"},
-										"dd_iac_frameworks": []model.Framework{
+										"iac-frameworks": []model.Framework{
 											{
 												Framework:        "dcsb-m-v2",
 												FrameworkVersion: "0.0.1",
@@ -687,9 +687,9 @@ func TestBuildSarifIssue(t *testing.T) {
 				}
 				require.Equal(t, tt.want.Runs[0].Results[0], result.Runs[0].Results[0])
 				require.Equal(t, tt.want.Runs[0].Tool.Driver.Rules[0].RuleFullDescription.Text, result.Runs[0].Tool.Driver.Rules[0].RuleFullDescription.Text)
-				// Verify dd_iac_frameworks property exists for rules with frameworks
+				// Verify iac-frameworks property exists for rules with frameworks
 				if len(tt.vq[0].Frameworks) > 0 {
-					require.Contains(t, result.Runs[0].Tool.Driver.Rules[0].RuleProperties, "dd_iac_frameworks")
+					require.Contains(t, result.Runs[0].Tool.Driver.Rules[0].RuleProperties, "iac-frameworks")
 				}
 
 				// for every result in the run we want to check that the location matches the expected location
@@ -785,9 +785,9 @@ func TestBuildSarifIssueWithFrameworks(t *testing.T) {
 	require.Len(t, report.Runs[0].Tool.Driver.Rules, 1)
 	rule := report.Runs[0].Tool.Driver.Rules[0]
 
-	// Verify dd_iac_frameworks are in rule properties
-	require.Contains(t, rule.RuleProperties, "dd_iac_frameworks")
-	frameworks, ok := rule.RuleProperties["dd_iac_frameworks"].([]model.Framework)
+	// Verify iac-frameworks are in rule properties
+	require.Contains(t, rule.RuleProperties, "iac-frameworks")
+	frameworks, ok := rule.RuleProperties["iac-frameworks"].([]model.Framework)
 	require.True(t, ok)
 	require.Len(t, frameworks, 2)
 

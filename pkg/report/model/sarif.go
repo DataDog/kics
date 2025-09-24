@@ -549,8 +549,8 @@ func (sr *sarifReport) buildSarifRule(queryMetadata *ruleMetadata, cisMetadata r
 			// Relationships:        relationships,
 			HelpURI: helpURI,
 			RuleProperties: sarifProperties{
-				"tags":              tags,
-				"dd_iac_frameworks": queryMetadata.frameworks,
+				"tags":           tags,
+				"iac-frameworks": queryMetadata.frameworks,
 			},
 		}
 		if cisMetadata.id != "" {
