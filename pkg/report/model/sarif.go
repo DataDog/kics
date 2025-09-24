@@ -236,6 +236,7 @@ const (
 	executionTimeTag         = "DATADOG_EXECUTION_TIME_SECS:%v"
 	ruleTypeProperty         = "DATADOG_RULE_TYPE:IAC_SCANNING"
 	categoryTag              = "DATADOG_CATEGORY:%s"
+	platformTag              = "DATADOG_PLATFORM:%s"
 	scannedFileCountTag      = "DATADOG_SCANNED_FILE_COUNT:%d"
 )
 

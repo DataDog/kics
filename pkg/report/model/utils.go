@@ -18,7 +18,6 @@ const (
 	cweTag          = "CWE:%s"
 	resourceTypeTag = "IAC_RESOURCE_TYPE:%s"
 	resourceNameTag = "IAC_RESOURCE_NAME:%s"
-	platformTag     = "IAC_PLATFORM:%s"
 )
 
 func GetScanDurationTag(summary model.Summary) string {
