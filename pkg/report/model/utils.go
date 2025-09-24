@@ -18,6 +18,7 @@ const (
 	cweTag          = "CWE:%s"
 	resourceTypeTag = "IAC_RESOURCE_TYPE:%s"
 	resourceNameTag = "IAC_RESOURCE_NAME:%s"
+	platformTag     = "IAC_PLATFORM:%s"
 )
 
 func GetScanDurationTag(summary model.Summary) string {
@@ -64,6 +65,10 @@ func GetResourceNameTag(resourceName string) string {
 
 func GetScannedFilesCountTag(scannedFiles int) string {
 	return fmt.Sprintf(scannedFileCountTag, scannedFiles)
+}
+
+func GetPlatformTag(platform string) string {
+	return fmt.Sprintf(platformTag, platform)
 }
 
 // stringToHash returns a SHA256 hash of the input string.
