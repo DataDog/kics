@@ -265,8 +265,8 @@ func checkQueryFeatureFlagDisabled(ctx context.Context, metadata map[string]inte
 
 	// Create custom variables with the KICS ID
 	customVariables := map[string]interface{}{
-		"KICS_RULE_ID":     kicsIDStr,
-		"KICS_PLATFORM_ID": kicsPlatformStr,
+		"KICS_RULE_ID":       kicsIDStr,
+		"KICS_RULE_PLATFORM": kicsPlatformStr,
 	}
 
 	logger := logger.FromContext(ctx)
