@@ -44,16 +44,25 @@ func (p *Parser) Parse(ctx context.Context, filePath string, fileContent []byte)
 	dec := yaml.NewDecoder(bytes.NewReader(fileContent))
 
 	doc := emptyDocument()
-	for dec.Decode(doc) == nil {
+	decoded := dec.Decode(doc)
+	for decoded == nil {
 		if len(*doc) > 0 {
 			documents = append(documents, *doc)
 		}
 
 		doc = emptyDocument()
+		decoded = dec.Decode(doc)
 	}
 
 	if len(documents) == 0 {
-		return nil, []int{}, errors.Wrap(errors.New("invalid yaml"), "failed to parse yaml")
+		var error error
+		switch decoded.Error() {
+		case "EOF":
+			error = errors.New("invalid yaml")
+		default:
+			error = decoded
+		}
+		return nil, []int{}, errors.Wrap(error, "failed to parse yaml")
 	}
 
 	linesToIgnore := model.NewIgnore.GetLines()
