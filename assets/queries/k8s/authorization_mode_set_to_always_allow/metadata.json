@@ -11,6 +11,12 @@
   "oldSeverity": "MEDIUM",
   "defaultFrameworks": [
     {
+      "control": "4.16",
+      "framework": "essential-cloud-security-controls",
+      "framework_version": "v2",
+      "requirement": "kubernetes"
+    },
+    {
       "control": "4.18",
       "framework": "essential-cloud-security-controls",
       "framework_version": "v2",
