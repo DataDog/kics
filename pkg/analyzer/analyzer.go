@@ -631,7 +631,7 @@ func isExcludedFile(ctx context.Context, path string, exc []string) bool {
 		}
 		for j := range exclude {
 			if exclude[j] == path {
-				// logger.Info().Msgf("Excluded file %s from analyzer", path)
+				logger.Info().Msgf("Excluded file %s from analyzer", path)
 				return true
 			}
 		}
