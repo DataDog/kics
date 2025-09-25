@@ -31,7 +31,7 @@ func GetExtension(ctx context.Context, path string) (string, error) {
 
 	if fileInfo.IsDir() {
 		err = fmt.Errorf("the path %s is a directory", path)
-		logger.Error().Msg(err.Error())
+		logger.Info().Msg(err.Error())
 		return "", err
 	}
 
@@ -50,7 +50,7 @@ func GetExtension(ctx context.Context, path string) (string, error) {
 
 			if isText {
 				err := fmt.Errorf("file %s does not have a supported extension", path)
-				logger.Error().Msg(err.Error())
+				logger.Info().Msg(err.Error())
 				return "", err
 			}
 		}
