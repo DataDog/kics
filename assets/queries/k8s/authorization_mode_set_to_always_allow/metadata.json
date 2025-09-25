@@ -3,7 +3,7 @@
   "queryName": "Authorization mode set to always allow",
   "severity": "HIGH",
   "category": "Access Control",
-  "descriptionText": "When using the kubelet command, the authorization-mode flag should not have 'AlwaysAllow' mode",
+  "descriptionText": "When using the `kubelet` command, the `authorization-mode` flag should not have 'AlwaysAllow' mode.",
   "descriptionUrl": "https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/",
   "platform": "Kubernetes",
   "descriptionID": "f5c66471",

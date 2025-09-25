@@ -3,7 +3,7 @@
   "queryName": "etcd peer client certificate authentication set to false",
   "severity": "MEDIUM",
   "category": "Secret Management",
-  "descriptionText": "When using etcd commands, the '--peer-client-cert-auth' flag should be set to true",
+  "descriptionText": "When using the `etcd` command, the `--peer-client-cert-auth` flag should be set to `true`.",
   "descriptionUrl": "https://etcd.io/docs/v3.4/op-guide/security/",
   "platform": "Kubernetes",
   "descriptionID": "00b0e7f2",

@@ -3,7 +3,7 @@
   "queryName": "Peer auto TLS set to true",
   "severity": "MEDIUM",
   "category": "Networking and Firewall",
-  "descriptionText": "When using etcd commands, the '--peer-auto-tls' should be set to false",
+  "descriptionText": "When using the `etcd` command, the `--peer-auto-tls` should be set to `false`.",
   "descriptionUrl": "https://etcd.io/docs/v3.4/op-guide/security/",
   "platform": "Kubernetes",
   "descriptionID": "02a0a4d9",
