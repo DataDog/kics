@@ -1,9 +1,9 @@
 {
   "id": "192fe40b-b1c3-448a-aba2-6cc19a300fe3",
-  "queryName": "Cronjob deadline not configured",
+  "queryName": "CronJob deadline not configured",
   "severity": "LOW",
   "category": "Resource Management",
-  "descriptionText": "CronJobs must have a configured deadline; the `startingDeadlineSeconds` attribute must be defined.",
+  "descriptionText": "CronJobs must have a configured deadline. The `startingDeadlineSeconds` attribute must be defined.",
   "descriptionUrl": "https://kubernetes.io/docs/concepts/workloads/controllers/cron-jobs/",
   "platform": "Kubernetes",
   "descriptionID": "285952e5",

@@ -1,6 +1,6 @@
 {
   "id": "592ad21d-ad9b-46c6-8d2d-fad09d62a942",
-  "queryName": "Permissive access to create pods",
+  "queryName": "Permissive access to create Pods",
   "severity": "MEDIUM",
   "category": "Access Control",
   "descriptionText": "The permission to create Pods in a cluster should be restricted because it allows privilege escalation.",

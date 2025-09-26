@@ -1,9 +1,9 @@
 {
   "id": "1123031a-f921-4c5b-bd86-ef354ecfd37a",
-  "queryName": "Metadata label is invalid",
+  "queryName": "Invalid metadata label",
   "severity": "LOW",
   "category": "Best Practices",
-  "descriptionText": "Checks whether any label in the metadata is invalid.",
+  "descriptionText": "Metadata labels should be valid.",
   "descriptionUrl": "https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/",
   "platform": "Kubernetes",
   "descriptionID": "a6921416",

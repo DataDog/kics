@@ -1,6 +1,6 @@
 {
   "id": "fa750c81-93c2-4fab-9c6d-d3fd3ce3b89f",
-  "queryName": "TLS connection certificate not setup",
+  "queryName": "TLS connection certificate not set up",
   "severity": "MEDIUM",
   "category": "Networking and Firewall",
   "descriptionText": "TLS connection certificate files should be set up.",

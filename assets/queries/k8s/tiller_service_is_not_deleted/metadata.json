@@ -1,6 +1,6 @@
 {
   "id": "8b862ca9-0fbd-4959-ad72-b6609bdaa22d",
-  "queryName": "Tiller service is not deleted",
+  "queryName": "Tiller Service is not deleted",
   "severity": "HIGH",
   "category": "Insecure Configurations",
   "descriptionText": "Checks whether any Tiller Service is present.",

@@ -3,7 +3,7 @@
   "queryName": "Pod misconfigured network policy",
   "severity": "MEDIUM",
   "category": "Networking and Firewall",
-  "descriptionText": "Checks whether any Pod is not targeted by an appropriate network policy.",
+  "descriptionText": "Each Pod should be targeted by a network policy.",
   "descriptionUrl": "https://kubernetes.io/docs/concepts/services-networking/network-policies/",
   "platform": "Kubernetes",
   "descriptionID": "20500552",
