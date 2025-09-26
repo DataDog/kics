@@ -1,9 +1,9 @@
 {
   "id": "d740d048-8ed3-49d3-b77b-6f072f3b669e",
-  "queryName": "StatefulSet has no podAntiAffinity",
+  "queryName": "StatefulSet without podAntiAffinity",
   "severity": "LOW",
   "category": "Resource Management",
-  "descriptionText": "Checks whether StatefulSet resources lack a `podAntiAffinity` policy, which prevents multiple pods from being scheduled on the same node.",
+  "descriptionText": "StatefulSets should define a `podAntiAffinity` policy to avoid scheduling multiple Pods on the same node.",
   "descriptionUrl": "https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/",
   "platform": "Kubernetes",
   "descriptionID": "f0d30dd9",

@@ -1,9 +1,9 @@
 {
   "id": "02323c00-cdc3-4fdc-a310-4f2b3e7a1660",
-  "queryName": "Container running with low UID",
+  "queryName": "Container with low UID",
   "severity": "MEDIUM",
   "category": "Best Practices",
-  "descriptionText": "Checks whether containers are running with a low UID, which might cause conflicts with the host's user table.",
+  "descriptionText": "Containers should not run with a low UID, as this may cause conflicts with the host's user table.",
   "descriptionUrl": "https://kubernetes.io/docs/tasks/configure-pod-container/security-context/",
   "platform": "Kubernetes",
   "descriptionID": "fc2c11f9",
