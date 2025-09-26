@@ -16,7 +16,7 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
-var OriginalData = `name: Web Page To Markdown
+var OriginalDataCICD = `name: Web Page To Markdown
 on:
   issues:
     types: [opened]
@@ -58,7 +58,7 @@ jobs:
 	  `
 
 // Test_detectLine tests the functions [detectLine()] and all the methods called by them
-func Test_detectLine(t *testing.T) { //nolint
+func Test_detectLineCICD(t *testing.T) { //nolint
 	type args struct {
 		file      *model.FileMetadata
 		searchKey string
@@ -79,8 +79,8 @@ func Test_detectLine(t *testing.T) { //nolint
 					ScanID:            "scanID",
 					ID:                "Test",
 					Kind:              model.KindYAML,
-					OriginalData:      OriginalData,
-					LinesOriginalData: utils.SplitLines(OriginalData),
+					OriginalData:      OriginalDataCICD,
+					LinesOriginalData: utils.SplitLines(OriginalDataCICD),
 				},
 				searchKey: "uses={{freeCodeCamp-China/article-webpage-to-markdown-action@v0.1.8}}",
 			},
@@ -122,8 +122,8 @@ func Test_detectLine(t *testing.T) { //nolint
 					ScanID:            "scanID",
 					ID:                "Test",
 					Kind:              model.KindYAML,
-					OriginalData:      OriginalData,
-					LinesOriginalData: utils.SplitLines(OriginalData),
+					OriginalData:      OriginalDataCICD,
+					LinesOriginalData: utils.SplitLines(OriginalDataCICD),
 				},
 				searchKey: `run={{if [ "${{ github.event.issue.body }}" ]; then
   if [[ "${{ github.event.issue.title }}" =~ ^\[Auto\]* ]]; then
@@ -165,6 +165,174 @@ fi;
 					End: model.ResourceLine{
 						Line: 21,
 						Col:  14,
+					},
+				},
+			},
+		},
+	}
+
+	ctx := context.Background()
+	for _, tt := range tests {
+		detector := NewDetectLine(tt.fields.outputLines)
+		t.Run(tt.name, func(t *testing.T) {
+			got := detector.defaultDetector.DetectLine(ctx, tt.args.file, tt.args.searchKey, 3)
+			gotStrVulnerabilities, err := test.StringifyStruct(got)
+			require.Nil(t, err)
+			wantStrVulnerabilities, err := test.StringifyStruct(tt.want)
+			require.Nil(t, err)
+			if !reflect.DeepEqual(gotStrVulnerabilities, wantStrVulnerabilities) {
+				t.Errorf("detectLine() = %v, want %v", gotStrVulnerabilities, wantStrVulnerabilities)
+			}
+		})
+	}
+}
+
+var OriginalDataK8s = `apiVersion: policy/v1beta1
+kind: PodSecurityPolicy
+metadata:
+  name: privileged
+  annotations:
+    seccomp.security.alpha.kubernetes.io/allowedProfileNames: '*'
+spec:
+  privileged: true
+  allowPrivilegeEscalation: true
+  hostNetwork: true
+  hostPorts:
+  - min: 0
+    max: 65535
+  hostIPC: true
+  hostPID: true
+  runAsUser:
+    rule: 'RunAsAny'
+  seLinux:
+    rule: 'RunAsAny'
+  supplementalGroups:
+    rule: 'RunAsAny'
+  fsGroup:
+    rule: 'RunAsAny'
+
+---
+apiVersion: policy/v1beta1
+kind: PodSecurityPolicy
+metadata:
+  name: privileged2
+  annotations:
+    seccomp.security.alpha.kubernetes.io/allowedProfileNames: '*'
+spec:
+  privileged: true
+  hostNetwork: true
+  hostPorts:
+  - min: 0
+    max: 65535
+  hostIPC: true
+  hostPID: true
+  runAsUser:
+    rule: 'RunAsAny'
+  seLinux:
+    rule: 'RunAsAny'
+  supplementalGroups:
+    rule: 'RunAsAny'
+  fsGroup:
+    rule: 'RunAsAny'
+	  `
+
+// Test_detectLine tests the functions [detectLine()] and all the methods called by them
+func Test_detectLineK8s(t *testing.T) { //nolint
+	type args struct {
+		file      *model.FileMetadata
+		searchKey string
+	}
+	type fields struct {
+		outputLines int
+	}
+	tests := []struct {
+		name   string
+		args   args
+		fields fields
+		want   model.VulnerabilityLines
+	}{
+		{
+			name: "detect_line",
+			args: args{
+				file: &model.FileMetadata{
+					ScanID:            "scanID",
+					ID:                "Test",
+					Kind:              model.KindYAML,
+					OriginalData:      OriginalDataK8s,
+					LinesOriginalData: utils.SplitLines(OriginalDataK8s),
+				},
+				searchKey: "metadata.name={{privileged}}.spec.allowPrivilegeEscalation",
+			},
+			fields: fields{
+				outputLines: 3,
+			},
+			want: model.VulnerabilityLines{
+				Line: 9,
+				VulnLines: &[]model.CodeLine{
+					{
+						Position: 8,
+						Line:     `  privileged: true`,
+					},
+					{
+						Position: 9,
+						Line:     `  allowPrivilegeEscalation: true`,
+					},
+					{
+						Position: 10,
+						Line:     "  hostNetwork: true",
+					},
+				},
+				VulnerablilityLocation: model.ResourceLocation{
+					Start: model.ResourceLine{
+						Line: 9,
+						Col:  2,
+					},
+					End: model.ResourceLine{
+						Line: 9,
+						Col:  32,
+					},
+				},
+			},
+		},
+		{
+			name: "detect_line_2",
+			args: args{
+				file: &model.FileMetadata{
+					ScanID:            "scanID",
+					ID:                "Test",
+					Kind:              model.KindYAML,
+					OriginalData:      OriginalDataK8s,
+					LinesOriginalData: utils.SplitLines(OriginalDataK8s),
+				},
+				searchKey: `metadata.name={{privileged}}.spec.supplementalGroups.rule`,
+			},
+			fields: fields{
+				outputLines: 3,
+			},
+			want: model.VulnerabilityLines{
+				Line: 21,
+				VulnLines: &[]model.CodeLine{
+					{
+						Position: 20,
+						Line:     `  supplementalGroups:`,
+					},
+					{
+						Position: 21,
+						Line:     `    rule: 'RunAsAny'`,
+					},
+					{
+						Position: 22,
+						Line:     `  fsGroup:`,
+					},
+				},
+				VulnerablilityLocation: model.ResourceLocation{
+					Start: model.ResourceLine{
+						Line: 21,
+						Col:  4,
+					},
+					End: model.ResourceLine{
+						Line: 21,
+						Col:  20,
 					},
 				},
 			},
