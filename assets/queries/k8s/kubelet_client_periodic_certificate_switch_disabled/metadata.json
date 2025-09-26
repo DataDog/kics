@@ -3,7 +3,7 @@
   "queryName": "Kubelet client periodic certificate switch disabled",
   "severity": "MEDIUM",
   "category": "Secret Management",
-  "descriptionText": "Kubelet argument --rotate-certificates should be true",
+  "descriptionText": "The kubelet argument `--rotate-certificates` should be set to `true`.",
   "descriptionUrl": "https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/",
   "platform": "Kubernetes",
   "descriptionID": "1a17c91a",

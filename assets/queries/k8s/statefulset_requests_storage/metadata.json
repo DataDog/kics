@@ -3,7 +3,7 @@
   "queryName": "StatefulSet requests storage",
   "severity": "LOW",
   "category": "Build Process",
-  "descriptionText": "A StatefulSet requests volume storage.",
+  "descriptionText": "A StatefulSet requests persistent volume storage.",
   "descriptionUrl": "https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/",
   "platform": "Kubernetes",
   "descriptionID": "6210afe6",

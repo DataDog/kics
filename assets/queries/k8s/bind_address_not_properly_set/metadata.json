@@ -3,7 +3,7 @@
   "queryName": "Bind address not properly set",
   "severity": "INFO",
   "category": "Networking and Firewall",
-  "descriptionText": "When using the `kube-controller-manager` or `kube-scheduler` commands, the `--bind-address` should be set to `127.0.0.1`.",
+  "descriptionText": "When using `kube-controller-manager` or `kube-scheduler`, the `--bind-address` should be set to `127.0.0.1`.",
   "descriptionUrl": "https://kubernetes.io/docs/reference/command-line-tools-reference/kube-controller-manager/",
   "platform": "Kubernetes",
   "descriptionID": "b52844f2",

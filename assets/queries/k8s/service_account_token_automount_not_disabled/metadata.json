@@ -3,7 +3,7 @@
   "queryName": "Service account token automount not disabled",
   "severity": "MEDIUM",
   "category": "Insecure Defaults",
-  "descriptionText": "Service Account Tokens are automatically mounted even if not necessary",
+  "descriptionText": "Service Account tokens are automatically mounted even when not necessary.",
   "descriptionUrl": "https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/#use-the-default-service-account-to-access-the-api-server",
   "platform": "Kubernetes",
   "descriptionID": "51cade0f",

@@ -3,7 +3,7 @@
   "queryName": "TLS connection certificate not setup",
   "severity": "MEDIUM",
   "category": "Networking and Firewall",
-  "descriptionText": "TSL Connection Certificate files should be Setup",
+  "descriptionText": "TLS connection certificate files should be set up.",
   "descriptionUrl": "https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/",
   "platform": "Kubernetes",
   "descriptionID": "c8b75f30",

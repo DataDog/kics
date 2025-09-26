@@ -3,7 +3,7 @@
   "queryName": "RBAC roles with impersonate permission",
   "severity": "MEDIUM",
   "category": "Access Control",
-  "descriptionText": "Roles or ClusterRoles with the permission 'impersonate' allow subjects to assume the rights of other users, groups, or service accounts. In case of compromise, attackers may abuse this sudo-like functionality to achieve privilege escalation",
+  "descriptionText": "Roles or ClusterRoles with the `impersonate` permission allow subjects to assume the rights of other users, groups, or service accounts. In case of compromise, attackers may abuse this sudo-like functionality to achieve privilege escalation.",
   "descriptionUrl": "https://kubernetes.io/docs/reference/access-authn-authz/authentication/#user-impersonation",
   "platform": "Kubernetes",
   "descriptionID": "9f85c3f6",

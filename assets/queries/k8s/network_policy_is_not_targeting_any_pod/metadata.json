@@ -3,7 +3,7 @@
   "queryName": "Network policy is not targeting any pod",
   "severity": "LOW",
   "category": "Networking and Firewall",
-  "descriptionText": "Check if any network policy is not targeting any pod.",
+  "descriptionText": "Checks whether any network policy is not targeting any Pod.",
   "descriptionUrl": "https://kubernetes.io/docs/concepts/services-networking/network-policies/",
   "platform": "Kubernetes",
   "descriptionID": "be3c67e3",

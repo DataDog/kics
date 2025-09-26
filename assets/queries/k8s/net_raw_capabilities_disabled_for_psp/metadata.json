@@ -3,7 +3,7 @@
   "queryName": "NET_RAW capabilities disabled for PSP",
   "severity": "MEDIUM",
   "category": "Insecure Configurations",
-  "descriptionText": "Containers need to have NET_RAW or All as drop capabilities",
+  "descriptionText": "Containers should drop `NET_RAW` or `ALL` capabilities.",
   "descriptionUrl": "https://kubernetes.io/docs/concepts/policy/pod-security-policy/",
   "platform": "Kubernetes",
   "descriptionID": "e72d5579",

@@ -3,7 +3,7 @@
   "queryName": "CPU requests not set",
   "severity": "LOW",
   "category": "Resource Management",
-  "descriptionText": "CPU requests should be set to ensure the sum of the resource requests of the scheduled Containers is less than the capacity of the node",
+  "descriptionText": "CPU requests should be set to ensure the sum of resource requests of scheduled containers is less than the node's capacity.",
   "descriptionUrl": "https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#",
   "platform": "Kubernetes",
   "descriptionID": "ac7ad5df",

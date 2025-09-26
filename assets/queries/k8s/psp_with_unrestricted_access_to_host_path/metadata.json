@@ -3,7 +3,7 @@
   "queryName": "PSP with unrestricted access to host path",
   "severity": "HIGH",
   "category": "Resource Management",
-  "descriptionText": "PodSecurityPolicy should set 'readOnly' to true in every host path allowed",
+  "descriptionText": "PodSecurityPolicy should set `readOnly` to `true` for every allowed host path.",
   "descriptionUrl": "https://kubernetes.io/docs/concepts/policy/pod-security-policy/#volumes-and-file-systems",
   "platform": "Kubernetes",
   "descriptionID": "fc4b7215",

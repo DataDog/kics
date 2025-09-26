@@ -3,7 +3,7 @@
   "queryName": "Rotate Kubelet server certificate not active",
   "severity": "MEDIUM",
   "category": "Secret Management",
-  "descriptionText": "The RotateKubeletServerCertificate argument should be true",
+  "descriptionText": "The `RotateKubeletServerCertificate` argument should be set to `true`.",
   "descriptionUrl": "https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/",
   "platform": "Kubernetes",
   "descriptionID": "a4f48785",

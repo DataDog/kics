@@ -3,7 +3,7 @@
   "queryName": "Request timeout not properly set",
   "severity": "MEDIUM",
   "category": "Availability",
-  "descriptionText": "When using the `kube-apiserver` command, the `--request-timeout` flag value should not be too long.",
+  "descriptionText": "When using `kube-apiserver`, the `--request-timeout` value should not be excessively long.",
   "descriptionUrl": "https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/",
   "platform": "Kubernetes",
   "descriptionID": "592c7cba",

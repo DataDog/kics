@@ -3,7 +3,7 @@
   "queryName": "Not limited capabilities for pod security policy",
   "severity": "INFO",
   "category": "Insecure Configurations",
-  "descriptionText": "Limit capabilities for a Pod Security Policy",
+  "descriptionText": "Limit capabilities for PodSecurityPolicy.",
   "descriptionUrl": "https://kubernetes.io/docs/concepts/policy/pod-security-policy/",
   "platform": "Kubernetes",
   "descriptionID": "eaf6d4ba",

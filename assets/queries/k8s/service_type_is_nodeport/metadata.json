@@ -3,7 +3,7 @@
   "queryName": "Service type is NodePort",
   "severity": "LOW",
   "category": "Networking and Firewall",
-  "descriptionText": "Service type should not be NodePort",
+  "descriptionText": "The Service type should not be `NodePort`.",
   "descriptionUrl": "https://kubernetes.io/docs/concepts/services-networking/service/",
   "platform": "Kubernetes",
   "descriptionID": "4744714e",

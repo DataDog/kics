@@ -3,7 +3,7 @@
   "queryName": "No drop capabilities for containers",
   "severity": "LOW",
   "category": "Best Practices",
-  "descriptionText": "Sees if Kubernetes Drop Capabilities exists to ensure containers security context",
+  "descriptionText": "Checks whether Kubernetes drop capabilities are configured to ensure container security context.",
   "descriptionUrl": "https://kubernetes.io/docs/concepts/workloads/pods/init-containers/",
   "platform": "Kubernetes",
   "descriptionID": "9d3ca6db",

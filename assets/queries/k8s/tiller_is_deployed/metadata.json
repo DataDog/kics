@@ -3,7 +3,7 @@
   "queryName": "Tiller (Helm v2) is deployed",
   "severity": "HIGH",
   "category": "Insecure Configurations",
-  "descriptionText": "Check if Tiller is deployed.",
+  "descriptionText": "Checks whether Tiller is deployed.",
   "descriptionUrl": "https://kubernetes.io/docs/concepts/containers/images/",
   "platform": "Kubernetes",
   "descriptionID": "b0a009b5",

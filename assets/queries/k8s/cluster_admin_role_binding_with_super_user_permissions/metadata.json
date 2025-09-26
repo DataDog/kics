@@ -3,7 +3,7 @@
   "queryName": "Cluster admin rolebinding with superuser permissions",
   "severity": "LOW",
   "category": "Access Control",
-  "descriptionText": "Ensure that the cluster-admin role is only used where required (RBAC)",
+  "descriptionText": "Ensure that the `cluster-admin` role is used only where required (RBAC).",
   "descriptionUrl": "https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles",
   "platform": "Kubernetes",
   "descriptionID": "567eee7e",

@@ -3,7 +3,7 @@
   "queryName": "Kubelet certificate authority not set",
   "severity": "MEDIUM",
   "category": "Secret Management",
-  "descriptionText": "When using the `kube-apiserver` command, the `kubelet-certificate-authority` flag should be set.",
+  "descriptionText": "When using `kube-apiserver`, the `--kubelet-certificate-authority` flag should be set.",
   "descriptionUrl": "https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/",
   "platform": "Kubernetes",
   "descriptionID": "ce08eb5d",

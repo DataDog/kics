@@ -3,7 +3,7 @@
   "queryName": "Workload mounting with sensitive os directory",
   "severity": "HIGH",
   "category": "Insecure Configurations",
-  "descriptionText": "Workload is mounting a volume with sensitive OS Directory",
+  "descriptionText": "The workload mounts a volume with a sensitive OS directory.",
   "descriptionUrl": "https://kubernetes.io/docs/concepts/policy/pod-security-policy/",
   "platform": "Kubernetes",
   "descriptionID": "73339cde",

@@ -3,7 +3,7 @@
   "queryName": "PSP allows sharing host IPC",
   "severity": "HIGH",
   "category": "Insecure Configurations",
-  "descriptionText": "Pod Security Policy allows containers to share the host IPC namespace",
+  "descriptionText": "PodSecurityPolicy allows containers to share the host IPC namespace.",
   "descriptionUrl": "https://kubernetes.io/docs/concepts/policy/pod-security-policy/",
   "platform": "Kubernetes",
   "descriptionID": "329be51b",

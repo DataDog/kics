@@ -3,7 +3,7 @@
   "queryName": "Secrets as environment variables",
   "severity": "LOW",
   "category": "Secret Management",
-  "descriptionText": "Container should not use secrets as environment variables",
+  "descriptionText": "Containers should not use secrets as environment variables.",
   "descriptionUrl": "https://kubernetes.io/docs/concepts/configuration/secret/#using-secrets-as-environment-variables",
   "platform": "Kubernetes",
   "descriptionID": "99365a7d",

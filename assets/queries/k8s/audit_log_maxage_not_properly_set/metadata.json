@@ -3,7 +3,7 @@
   "queryName": "Audit log maxage not properly set",
   "severity": "LOW",
   "category": "Observability",
-  "descriptionText": "When using the `kube-apiserver` command, the `--audit-log-maxage` flag should be set to 30 or more days.",
+  "descriptionText": "When using `kube-apiserver`, the `--audit-log-maxage` flag should be set to 30 days or more.",
   "descriptionUrl": "https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/",
   "platform": "Kubernetes",
   "descriptionID": "a5bc6d07",

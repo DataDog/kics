@@ -3,7 +3,7 @@
   "queryName": "Incorrect volume claim access mode ReadWriteOnce",
   "severity": "MEDIUM",
   "category": "Build Process",
-  "descriptionText": "Kubernetes Stateful Sets must have one Volume Claim template with the access mode 'ReadWriteOnce'",
+  "descriptionText": "Kubernetes StatefulSets must have one volume claim template with the access mode `ReadWriteOnce`.",
   "descriptionUrl": "https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/",
   "platform": "Kubernetes",
   "descriptionID": "f4e48914",

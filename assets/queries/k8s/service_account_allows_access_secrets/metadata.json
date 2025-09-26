@@ -3,7 +3,7 @@
   "queryName": "ServiceAccount allows access secrets",
   "severity": "MEDIUM",
   "category": "Secret Management",
-  "descriptionText": "Roles and ClusterRoles when binded, should not use get, list or watch as verbs",
+  "descriptionText": "Roles and ClusterRoles, when bound, should not use `get`, `list`, or `watch` verbs.",
   "descriptionUrl": "https://kubernetes.io/docs/reference/access-authn-authz/rbac/",
   "platform": "Kubernetes",
   "descriptionID": "79619280",

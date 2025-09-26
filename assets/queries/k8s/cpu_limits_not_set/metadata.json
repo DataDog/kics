@@ -3,7 +3,7 @@
   "queryName": "CPU limits not set",
   "severity": "LOW",
   "category": "Resource Management",
-  "descriptionText": "CPU limits should be set because if the system has CPU time free, a container is guaranteed to be allocated as much CPU as it requests",
+  "descriptionText": "CPU limits should be set to ensure fair resource allocation and prevent containers from consuming excessive CPU.",
   "descriptionUrl": "https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/",
   "platform": "Kubernetes",
   "descriptionID": "9a2ef763",

@@ -3,7 +3,7 @@
   "queryName": "Workload host port not specified",
   "severity": "LOW",
   "category": "Networking and Firewall",
-  "descriptionText": "Verifies if Kubernetes workload's host port is specified",
+  "descriptionText": "Verifies whether the Kubernetes workload's host port is specified.",
   "descriptionUrl": "https://kubernetes.io/docs/concepts/services-networking/connect-applications-service/#exposing-the-service",
   "platform": "Kubernetes",
   "descriptionID": "dba41ddb",

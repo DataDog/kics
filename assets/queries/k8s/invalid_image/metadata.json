@@ -3,7 +3,7 @@
   "queryName": "Invalid image tag",
   "severity": "LOW",
   "category": "Supply-Chain",
-  "descriptionText": "Image tag must be defined and not be empty or equal to latest.",
+  "descriptionText": "The image tag must be defined and not be empty or `latest`.",
   "descriptionUrl": "https://kubernetes.io/docs/concepts/containers/images/#updating-images",
   "platform": "Kubernetes",
   "descriptionID": "30154626",

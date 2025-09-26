@@ -3,7 +3,7 @@
   "queryName": "Shared host IPC namespace",
   "severity": "MEDIUM",
   "category": "Resource Management",
-  "descriptionText": "Container should not share the host IPC namespace",
+  "descriptionText": "Containers should not share the host IPC namespace.",
   "descriptionUrl": "https://kubernetes.io/docs/concepts/policy/pod-security-policy/",
   "platform": "Kubernetes",
   "descriptionID": "1ef1fe71",

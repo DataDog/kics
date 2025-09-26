@@ -3,7 +3,7 @@
   "queryName": "etcd peer TLS certificate files not properly set",
   "severity": "HIGH",
   "category": "Networking and Firewall",
-  "descriptionText": "When using the `etcd` command, the `--peer-cert-file` and `--peer-key-file` should be defined.",
+  "descriptionText": "When using `etcd`, the `--peer-cert-file` and `--peer-key-file` flags should be set.",
   "descriptionUrl": "https://etcd.io/docs/v3.4/op-guide/security/",
   "platform": "Kubernetes",
   "descriptionID": "f3bb5a8e",

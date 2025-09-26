@@ -3,7 +3,7 @@
   "queryName": "Insecure port not properly set",
   "severity": "HIGH",
   "category": "Networking and Firewall",
-  "descriptionText": "When using the `kube-apiserver` command, the `--insecure-port` flag should be set to `0`.",
+  "descriptionText": "When using `kube-apiserver`, the `--insecure-port` flag should be set to `0`.",
   "descriptionUrl": "https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/",
   "platform": "Kubernetes",
   "descriptionID": "d9e178b1",

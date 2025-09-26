@@ -3,7 +3,7 @@
   "queryName": "Object is using a deprecated API version",
   "severity": "LOW",
   "category": "Best Practices",
-  "descriptionText": "Kubernetes APIs evolve over time and are sometimes removed with newer releases. To prevent incompatibilities when upgrading Kubernetes, deprecated APIs should be replaced with newer and more stable API versions.",
+  "descriptionText": "Kubernetes APIs evolve over time and may be removed in newer releases. To prevent incompatibilities when upgrading Kubernetes, deprecated APIs should be replaced with newer, stable API versions.",
   "descriptionUrl": "https://kubernetes.io/docs/reference/using-api/deprecation-guide/",
   "platform": "Kubernetes",
   "descriptionID": "d5c30c5b",

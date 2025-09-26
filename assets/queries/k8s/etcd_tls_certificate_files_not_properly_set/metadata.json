@@ -3,7 +3,7 @@
   "queryName": "etcd TLS certificate files not properly set",
   "severity": "MEDIUM",
   "category": "Networking and Firewall",
-  "descriptionText": "When using the `etcd` command, the `--cert-file` and `--key-file` should be defined.",
+  "descriptionText": "When using `etcd`, the `--cert-file` and `--key-file` flags should be set.",
   "descriptionUrl": "https://etcd.io/docs/v3.4/op-guide/security/",
   "platform": "Kubernetes",
   "descriptionID": "3c8aae35",

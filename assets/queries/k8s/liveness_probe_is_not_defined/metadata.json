@@ -3,7 +3,7 @@
   "queryName": "Liveness probe is not defined",
   "severity": "INFO",
   "category": "Availability",
-  "descriptionText": "In case of an unresponsive container, a Liveness Probe can help your application become more available since it restarts the container. However, it can lead to cascading failures. Define one if you really need it",
+  "descriptionText": "A liveness probe can improve availability by restarting unresponsive containers; however, it can cause cascading failures. Define one only when necessary.",
   "descriptionUrl": "https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#when-should-you-use-a-liveness-probe",
   "platform": "Kubernetes",
   "descriptionID": "f724fa60",

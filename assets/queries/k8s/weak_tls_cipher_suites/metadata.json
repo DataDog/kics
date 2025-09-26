@@ -3,7 +3,7 @@
   "queryName": "Weak TLS cipher suites",
   "severity": "MEDIUM",
   "category": "Encryption",
-  "descriptionText": "TLS Connection should use strong Cipher Suites",
+  "descriptionText": "TLS connections should use strong cipher suites.",
   "descriptionUrl": "https://kubernetes.io/docs/reference/command-line-tools-reference/kubelet/",
   "platform": "Kubernetes",
   "descriptionID": "cbb6cab8",

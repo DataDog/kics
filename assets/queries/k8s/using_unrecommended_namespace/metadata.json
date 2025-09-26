@@ -3,7 +3,7 @@
   "queryName": "Using unrecommended namespace",
   "severity": "MEDIUM",
   "category": "Insecure Configurations",
-  "descriptionText": "Namespaces like 'default', 'kube-system' or 'kube-public' should not be used",
+  "descriptionText": "Namespaces such as `default`, `kube-system`, or `kube-public` should not be used.",
   "descriptionUrl": "https://kubernetes.io/docs/concepts/overview/working-with-objects/kubernetes-objects/",
   "platform": "Kubernetes",
   "descriptionID": "29549ea9",

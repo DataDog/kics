@@ -3,7 +3,7 @@
   "queryName": "Readiness probe is not configured",
   "severity": "MEDIUM",
   "category": "Availability",
-  "descriptionText": "Check if Readiness Probe is not configured.",
+  "descriptionText": "Checks whether the readiness probe is not configured.",
   "descriptionUrl": "https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/#define-readiness-probes",
   "platform": "Kubernetes",
   "descriptionID": "28c0498a",

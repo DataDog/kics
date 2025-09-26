@@ -3,7 +3,7 @@
   "queryName": "Root CA file not defined",
   "severity": "MEDIUM",
   "category": "Encryption",
-  "descriptionText": "When using the `kube-controller-manager` command, the `--root-ca-file` flag should be defined.",
+  "descriptionText": "When using `kube-controller-manager`, the `--root-ca-file` flag should be set.",
   "descriptionUrl": "https://kubernetes.io/docs/reference/command-line-tools-reference/kube-controller-manager/",
   "platform": "Kubernetes",
   "descriptionID": "7d439960",

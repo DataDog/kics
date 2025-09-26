@@ -3,7 +3,7 @@
   "queryName": "Use service account credentials not set to true",
   "severity": "MEDIUM",
   "category": "Access Control",
-  "descriptionText": "When using the `kube-controller-manager` command, the `--use-service-account-credentials` flag should be set to true.",
+  "descriptionText": "When using `kube-controller-manager`, the `--use-service-account-credentials` flag should be set to `true`.",
   "descriptionUrl": "https://kubernetes.io/docs/reference/command-line-tools-reference/kube-controller-manager/",
   "platform": "Kubernetes",
   "descriptionID": "f6b4d617",

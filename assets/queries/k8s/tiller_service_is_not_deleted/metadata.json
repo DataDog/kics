@@ -3,7 +3,7 @@
   "queryName": "Tiller service is not deleted",
   "severity": "HIGH",
   "category": "Insecure Configurations",
-  "descriptionText": "Check if there is any Tiller Service present",
+  "descriptionText": "Checks whether any Tiller Service is present.",
   "descriptionUrl": "https://kubernetes.io/docs/concepts/services-networking/service",
   "platform": "Kubernetes",
   "descriptionID": "4e704117",
