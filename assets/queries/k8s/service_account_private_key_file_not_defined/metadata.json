@@ -1,9 +1,9 @@
 {
   "id": "ccc98ff7-68a7-436e-9218-185cb0b0b780",
-  "queryName": "Service Account Private Key File Not Defined",
+  "queryName": "Service account private key file not defined",
   "severity": "MEDIUM",
   "category": "Encryption",
-  "descriptionText": "When using kube-controller-manager commands, the '--service-account-private-key-file' should be defined",
+  "descriptionText": "When using `kube-controller-manager`, the `--service-account-private-key-file` flag should be set.",
   "descriptionUrl": "https://kubernetes.io/docs/reference/command-line-tools-reference/kube-controller-manager/",
   "platform": "Kubernetes",
   "descriptionID": "b2fc61b4",

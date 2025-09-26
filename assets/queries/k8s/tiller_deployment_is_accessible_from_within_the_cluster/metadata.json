@@ -1,9 +1,9 @@
 {
   "id": "e17fa86a-6222-4584-a914-56e8f6c87e06",
-  "queryName": "Tiller Deployment Is Accessible From Within The Cluster",
+  "queryName": "Tiller Deployment accessible within cluster",
   "severity": "HIGH",
   "category": "Networking and Firewall",
-  "descriptionText": "Check if any Tiller Deployment container allows access from within the cluster.",
+  "descriptionText": "Tiller Deployments should not allow access from within the cluster.",
   "descriptionUrl": "https://kubernetes.io/docs/concepts/containers/images/",
   "platform": "Kubernetes",
   "descriptionID": "615614b8",

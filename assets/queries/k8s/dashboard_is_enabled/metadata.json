@@ -1,9 +1,9 @@
 {
   "id": "d2ad057f-0928-41ef-a83c-f59203bb855b",
-  "queryName": "Dashboard Is Enabled",
+  "queryName": "Dashboard is enabled",
   "severity": "LOW",
   "category": "Insecure Configurations",
-  "descriptionText": "If not needed, disabling the dashboard can prevent from being used as an attack vector",
+  "descriptionText": "If not needed, disable the dashboard to prevent it from being used as an attack vector.",
   "descriptionUrl": "https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/",
   "platform": "Kubernetes",
   "descriptionID": "ad0e6a8d",
