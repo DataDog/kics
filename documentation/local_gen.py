@@ -241,15 +241,14 @@ def main():
     for resource_type, providers in resource_type_dict.items():
         resource_path = input_dir / resource_type
         if not resource_path.is_dir():
-            if resource_type != "default":
-                print(f"Warning: Missing resource path: {resource_path}")
+            print(f"Warning: Missing resource path: {resource_path}")
             continue
 
         resource_entry = {"name": resource_type, "providers": []}
         list_json_data.append(resource_entry)
         dict_yaml_data["rules"][resource_type] = {}
 
-        providers = providers if len(providers) > 0 else resource_type_dict["default"]
+        providers = providers if len(providers) > 0 else ["no-provider"]
         for provider in providers:
             process_provider(
                 provider,
