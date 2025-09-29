@@ -25,3 +25,56 @@ meta:
 ### Description
 
  When using `kube-controller-manager`, the `--service-account-private-key-file` flag should be set.
+
+
+## Compliant Code Examples
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: command-demo
+  labels:
+    purpose: demonstrate-command
+spec:
+  containers:
+    - name: command-demo-container
+      image: gcr.io/google_containers/kube-controller-manager-amd64:v1.6.0
+      command: ["kube-controller-manager"]
+      args: ["--service-account-private-key-file=/path/to/key/file.pem"]
+  restartPolicy: OnFailure
+
+```
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: command-demo
+  labels:
+    purpose: demonstrate-command
+spec:
+  containers:
+    - name: command-demo-container
+      image: gcr.io/google_containers/kube-controller-manager-amd64:v1.6.0
+      command: ["kube-controller-manager","--service-account-private-key-file=/path/to/key/file.pem"]
+      args: []
+  restartPolicy: OnFailure
+
+```
+## Non-Compliant Code Examples
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: command-demo
+  labels:
+    purpose: demonstrate-command
+spec:
+  containers:
+    - name: command-demo-container
+      image: gcr.io/google_containers/kube-controller-manager-amd64:v1.6.0
+      command: ["kube-controller-manager"]
+      args: []
+  restartPolicy: OnFailure
+
+```

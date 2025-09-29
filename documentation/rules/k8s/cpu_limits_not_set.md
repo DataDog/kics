@@ -25,3 +25,73 @@ meta:
 ### Description
 
  CPU limits should be set to ensure fair resource allocation and prevent containers from consuming excessive CPU.
+
+
+## Compliant Code Examples
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: frontend
+spec:
+  containers:
+  - name: app
+    image: images.my-company.example/app:v4
+    resources:
+      limits:
+        cpu: "500m"
+
+  - name: log-aggregator
+    image: images.my-company.example/log-aggregator:v6
+    resources:
+      requests:
+        memory: "64Mi"
+        cpu: "250m"
+      limits:
+        memory: "128Mi"
+        cpu: "500m"
+
+
+```
+## Non-Compliant Code Examples
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: frontend
+spec:
+  containers:
+    - name: app
+      image: images.my-company.example/app:v4
+      resources:
+        limits:
+          memory: "64Mi"
+    - name: log-aggregator
+      image: images.my-company.example/log-aggregator:v6
+      resources:
+        requests:
+          memory: "64Mi"
+          cpu: "250m"
+---
+apiVersion: serving.knative.dev/v1
+kind: Configuration
+metadata:
+  name: dummy-config
+  namespace: knative-sequence
+spec:
+  template:
+    spec:
+      containers:
+        - name: app
+          image: images.my-company.example/app:v4
+          resources:
+            limits:
+              memory: "64Mi"
+        - name: log-aggregator
+          image: images.my-company.example/log-aggregator:v6
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "250m"
+
+```

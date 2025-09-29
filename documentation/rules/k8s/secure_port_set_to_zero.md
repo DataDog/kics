@@ -25,3 +25,56 @@ meta:
 ### Description
 
  When using `kube-apiserver`, the `--secure-port` flag should not be set to `0`.
+
+
+## Compliant Code Examples
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: command-demo
+  labels:
+    purpose: demonstrate-command
+spec:
+  containers:
+    - name: command-demo-container
+      image: gcr.io/google_containers/kube-apiserver-amd64:v1.6.0
+      command: ["kube-apiserver"]
+      args: []
+  restartPolicy: OnFailure
+
+```
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: command-demo
+  labels:
+    purpose: demonstrate-command
+spec:
+  containers:
+    - name: command-demo-container
+      image: gcr.io/google_containers/kube-apiserver-amd64:v1.6.0
+      command: ["kube-apiserver","--secure-port=6443"]
+      args: []
+  restartPolicy: OnFailure
+
+```
+## Non-Compliant Code Examples
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: command-demo
+  labels:
+    purpose: demonstrate-command
+spec:
+  containers:
+    - name: command-demo-container
+      image: gcr.io/google_containers/kube-apiserver-amd64:v1.6.0
+      command: ["kube-apiserver"]
+      args: ["--secure-port=0"]
+  restartPolicy: OnFailure
+
+```

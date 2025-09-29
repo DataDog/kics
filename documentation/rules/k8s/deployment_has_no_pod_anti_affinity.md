@@ -25,3 +25,81 @@ meta:
 ### Description
 
  Deployments should define a `podAntiAffinity` policy to prevent multiple Pods from being scheduled on the same node.
+
+
+## Compliant Code Examples
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-server
+spec:
+  selector:
+    matchLabels:
+      app: web-store
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: web-store
+    spec:
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+          - labelSelector:
+              matchExpressions:
+              - key: app
+                operator: In
+                values:
+                - web-store
+            topologyKey: "kubernetes.io/hostname"
+      containers:
+      - name: web-app
+        image: nginx:1.16-alpine
+```
+## Non-Compliant Code Examples
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: label-mismatch
+spec:
+  selector:
+    matchLabels:
+      app: web-store
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: web-shore
+    spec:
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+          - labelSelector:
+              matchLabels:
+                app: web-store
+            topologyKey: "kubernetes.io/hostname"
+      containers:
+      - name: web-app
+        image: nginx:1.16-alpine
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: no-affinity
+spec:
+  selector:
+    matchLabels:
+      app: web-store
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: web-store
+    spec:
+      containers:
+      - name: web-app
+        image: nginx:1.16-alpine
+
+```

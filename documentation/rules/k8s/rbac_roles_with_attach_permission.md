@@ -25,3 +25,59 @@ meta:
 ### Description
 
  Roles or ClusterRoles with permissions to attach to containers via `kubectl attach` could be abused by attackers to read log output (stdout, stderr) and send input data (stdin) to running processes. Additionally, it could allow a malicious user to attach to a privileged container, resulting in privilege escalation. To prevent this, the `pods/attach` verb should not be used in production environments.
+
+
+## Compliant Code Examples
+```yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  namespace: my-namespace
+  name: allow-attach-neg
+rules:
+- apiGroups: [""]
+  resources: ["pods"]
+  verbs: ["get", "list", "create"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: allow-attach-neg
+  namespace: my-namespace
+subjects:
+- kind: User
+  name: bob
+  apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: Role
+  name: allow-attach-neg
+  apiGroup: ""
+
+```
+## Non-Compliant Code Examples
+```yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  namespace: my-namespace
+  name: allow-attach
+rules:
+- apiGroups: [""]
+  resources: ["pods", "pods/attach"]
+  verbs: ["get", "list", "create"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: allow-attach
+  namespace: my-namespace
+subjects:
+- kind: User
+  name: bob
+  apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: Role
+  name: allow-attach
+  apiGroup: ""
+
+```

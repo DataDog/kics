@@ -25,3 +25,55 @@ meta:
 ### Description
 
  When using `kube-apiserver`, the `--kubelet-https` flag should not be set to `false`.
+
+
+## Compliant Code Examples
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: command-demo
+  labels:
+    purpose: demonstrate-command
+spec:
+  containers:
+    - name: command-demo-container
+      image: gcr.io/google_containers/kube-apiserver-amd64:v1.6.0
+      command: ["kube-apiserver"]
+  restartPolicy: OnFailure
+
+```
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: command-demo
+  labels:
+    purpose: demonstrate-command
+spec:
+  containers:
+    - name: command-demo-container
+      image: gcr.io/google_containers/kube-apiserver-amd64:v1.6.0
+      command: ["kube-apiserver"]
+      args: ["--kubelet-https=true"]
+  restartPolicy: OnFailure
+
+```
+## Non-Compliant Code Examples
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: command-demo
+  labels:
+    purpose: demonstrate-command
+spec:
+  containers:
+    - name: command-demo-container
+      image: gcr.io/google_containers/kube-apiserver-amd64:v1.6.0
+      command: ["kube-apiserver"]
+      args: ["--kubelet-https=false"]
+  restartPolicy: OnFailure
+
+```

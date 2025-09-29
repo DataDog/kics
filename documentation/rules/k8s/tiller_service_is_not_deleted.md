@@ -25,3 +25,39 @@ meta:
 ### Description
 
  Tiller Services should be removed, as Helm v2 is deprecated and no longer supported.
+
+
+## Compliant Code Examples
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: some-service
+  labels:
+    name: some-label
+spec:
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 9376
+```
+## Non-Compliant Code Examples
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: tiller-deploy
+  labels:
+    app: helm
+    name: tiller
+spec:
+  type: ClusterIP
+  selector:
+    app: helm
+    name: tiller
+  ports:
+  - name: tiller
+    port: 44134
+    protocol: TCP
+    targetPort: tiller
+```

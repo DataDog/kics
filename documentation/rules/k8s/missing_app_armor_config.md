@@ -25,3 +25,64 @@ meta:
 ### Description
 
  Containers should be configured with an AppArmor profile to enforce fine-grained access control over low-level system resources.
+
+
+## Compliant Code Examples
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: hello-apparmor-2positive
+  annotations:
+    container.apparmor.security.beta.kubernetes.io/hello: localhost/k8s-apparmor-example-allow-write
+spec:
+  containers:
+  - name: hello
+    image: busybox
+    command: [ "sh", "-c", "echo 'Hello AppArmor!' && sleep 1h" ]
+```
+## Non-Compliant Code Examples
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: hello-apparmor-1
+  annotations:
+    container.apparmor.security.beta.kubernetes.io/hello1: dummy
+    container.apparmor.security.beta.kubernetes.io/hello2: dummy
+spec:
+  containers:
+  - name: hello1
+    image: busybox
+    command: [ "sh", "-c", "echo 'Hello AppArmor!' && sleep 1h" ]
+  - name: hello2
+    image: busybox
+    command: [ "sh", "-c", "echo 'Hello AppArmor!' && sleep 1h" ]
+  - name: hello3
+    image: busybox
+    command: [ "sh", "-c", "echo 'Hello AppArmor!' && sleep 1h" ]
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ubuntu-test1
+  namespace: testns
+  labels:
+    deployment: ubuntu-1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      container: ubuntu-1
+  template:
+    metadata:
+      labels:
+        container: ubuntu-1
+      annotations:
+        container.apparmor.security.beta.kubernetes.io/ubuntu-1-container: dummy
+    spec:
+      containers:
+      - name: ubuntu-1-container
+        image: 0x010/ubuntu-w-utils:latest
+
+```

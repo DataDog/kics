@@ -5,12 +5,15 @@ import json
 import glob
 import argparse
 import shutil
+import re
 import yaml
 from itertools import islice
 from pathlib import Path
 
 
 NO_DESC = "No description provided"
+POSITIVE = re.compile(r"^positive\d*\..+$")
+NEGATIVE = re.compile(r"^negative\d*\..+$")
 
 
 def parse_args():
@@ -61,12 +64,16 @@ def read_file_contents(filepath):
 
 def get_code_snippets(test_dir, resource_type, max_examples):
     compliant, non_compliant = [], []
-    for tf_file in islice(glob.iglob(str(test_dir / "negative*.tf")), max_examples):
-        if code := read_file_contents(tf_file).replace("```", "\\`\\`\\`"):
-            compliant.append(f"```{resource_type}\n{code}\n```")
-    for tf_file in islice(glob.iglob(str(test_dir / "positive*.tf")), max_examples):
-        if code := read_file_contents(tf_file).replace("```", "\\`\\`\\`"):
-            non_compliant.append(f"```{resource_type}\n{code}\n```")
+    for file in islice(
+        (f for f in test_dir.iterdir() if NEGATIVE.match(f.name)), max_examples
+    ):
+        if code := read_file_contents(file).replace("```", "\\`\\`\\`"):
+            compliant.append(f"```{file.suffix.lstrip('.')}\n{code}\n```")
+    for file in islice(
+        (f for f in test_dir.iterdir() if POSITIVE.match(f.name)), max_examples
+    ):
+        if code := read_file_contents(file).replace("```", "\\`\\`\\`"):
+            non_compliant.append(f"```{file.suffix.lstrip('.')}\n{code}\n```")
     return compliant, non_compliant
 
 
@@ -81,7 +88,11 @@ def build_markdown(
     severity = metadata.get("severity", "INFO").upper()
     category = metadata.get("category", "unknown")
     description = metadata.get("descriptionText", "No description provided.")
-    provider_url = metadata.get("providerUrl")
+    provider_url = (
+        metadata.get("providerUrl")
+        if metadata.get("providerUrl") != ""
+        else metadata.get("descriptionUrl")
+    )
     compliant, non_compliant = get_code_snippets(
         rule_path / "test", resource_type, max_examples
     )
@@ -148,10 +159,9 @@ def process_provider(
 
         output_provider_path = output_dir / resource_type
 
-
     if not provider_path.is_dir():
-            print(f"Warning: Missing provider path: {provider_path}")
-            return 0
+        print(f"Warning: Missing provider path: {provider_path}")
+        return 0
 
     output_provider_path.mkdir(parents=True, exist_ok=True)
 

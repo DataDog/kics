@@ -25,3 +25,51 @@ meta:
 ### Description
 
  A service account token is shared between workloads.
+
+
+## Compliant Code Examples
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod1
+spec:
+  serviceAccountName : service1
+  containers:
+  - name: mycontainer
+    image: redis
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod2
+spec:
+  serviceAccountName : service2
+  containers:
+  - name: envars-test-container
+    image: nginx
+
+```
+## Non-Compliant Code Examples
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod1
+spec:
+  serviceAccountName : service1
+  containers:
+  - name: mycontainer
+    image: redis
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod2
+spec:
+  serviceAccountName : service1
+  containers:
+  - name: envars-test-container
+    image: nginx
+
+```

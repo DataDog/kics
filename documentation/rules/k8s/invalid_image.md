@@ -25,3 +25,44 @@ meta:
 ### Description
 
  The image tag must be defined and not be empty or `latest`.
+
+
+## Compliant Code Examples
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: private-image-test-1
+spec:
+  containers:
+    - name: uses-private-image
+      image: nginx:1.21
+      imagePullPolicy: Always
+      command: [ "echo", "SUCCESS" ]
+
+```
+## Non-Compliant Code Examples
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: private-image-test-3
+spec:
+  containers:
+    - name: uses-private-image-container
+      image: nginx
+      imagePullPolicy: Always
+      command: [ "echo", "SUCCESS" ]
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: private-image-test-33
+spec:
+  containers:
+    - name: uses-private-image-container
+      image: nginx:latest
+      imagePullPolicy: Always
+      command: [ "echo", "SUCCESS" ]
+
+```

@@ -25,3 +25,121 @@ meta:
 ### Description
 
  When using `etcd`, the `--cert-file` and `--key-file` flags should be set.
+
+
+## Compliant Code Examples
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-etcd-deployment
+spec:
+  selector:
+    matchLabels:
+      app: app
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: app
+        version: v1
+    spec:
+      serviceAccountName: database
+      containers:
+      - name: database
+        image: gcr.io/google_containers/etcd:v3.2.18
+        imagePullPolicy: IfNotPresent
+        command: ["etcd"]
+        args: ["--cert-file=/etc/env/file.crt", "--key-file=/etc/env/file2.key"]
+      nodeSelector:
+        kubernetes.io/hostname: worker02  
+    restartPolicy: OnFailure
+
+```
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-etcd-deployment
+spec:
+  selector:
+    matchLabels:
+      app: app
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: app
+        version: v1
+    spec:
+      serviceAccountName: database
+      containers:
+      - name: database
+        image: gcr.io/google_containers/etcd:v3.2.18
+        imagePullPolicy: IfNotPresent
+        command: ["etcd", "--cert-file=/etc/env/file.crt", "--key-file=/etc/env/file2.key"]
+        args: []
+      nodeSelector:
+        kubernetes.io/hostname: worker02  
+    restartPolicy: OnFailure
+
+```
+## Non-Compliant Code Examples
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-etcd-deployment
+spec:
+  selector:
+    matchLabels:
+      app: app
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: app
+        version: v1
+    spec:
+      serviceAccountName: database
+      containers:
+      - name: database
+        image: gcr.io/google_containers/etcd:v3.2.18
+        imagePullPolicy: IfNotPresent
+        command: ["etcd"]
+        args: ["--key-file=/etc/env/file2.key"]
+      nodeSelector:
+        kubernetes.io/hostname: worker02  
+    restartPolicy: OnFailure
+
+```
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-etcd-deployment
+spec:
+  selector:
+    matchLabels:
+      app: app
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: app
+        version: v1
+    spec:
+      serviceAccountName: database
+      containers:
+      - name: database
+        image: gcr.io/google_containers/etcd:v3.2.18
+        imagePullPolicy: IfNotPresent
+        command: ["etcd"]
+        args: ["--cert-file=/etc/env/file.crt"]
+      nodeSelector:
+        kubernetes.io/hostname: worker02  
+    restartPolicy: OnFailure
+
+```

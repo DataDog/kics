@@ -25,3 +25,32 @@ meta:
 ### Description
 
  Roles or ClusterRoles with `bind` or `escalate` permissions allow subjects to create new bindings with other roles. This is dangerous, as users with these privileges can bind to roles that may exceed their own privileges.
+
+
+## Compliant Code Examples
+```yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: not-rbac-binder
+rules:
+- apiGroups: ["rbac.authorization.k8s.io"]
+  resources: ["clusterrolebindings"]
+  verbs: ["create"]
+
+```
+## Non-Compliant Code Examples
+```yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: rbac-binder
+rules:
+- apiGroups: ["rbac.authorization.k8s.io"]
+  resources: ["clusterroles"]
+  verbs: ["bind"]
+- apiGroups: ["rbac.authorization.k8s.io"]
+  resources: ["clusterrolebindings"]
+  verbs: ["create"]
+
+```

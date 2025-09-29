@@ -25,3 +25,147 @@ meta:
 ### Description
 
  Memory limits should be defined for each container to prevent resource exhaustion by ensuring that containers do not consume more than the designated amount of memory.
+
+
+## Compliant Code Examples
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: memory-demo-negative
+  namespace: mem-example
+spec:
+  containers:
+  - name: memory-demo-ctr
+    image: polinux/stress
+    resources:
+      limits:
+        memory: "200Mi"
+      requests:
+        memory: "100Mi"
+    command: ["stress"]
+    args: ["--vm", "1", "--vm-bytes", "150M", "--vm-hang", "1"]
+
+```
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: test-deployment-neg
+  labels:
+    app: test-neg
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: test-neg
+  template:
+    metadata:
+      labels:
+        app: test-neg
+    spec:
+      containers:
+        - name:  pause
+          image: k8s.gcr.io/pause
+          resources:
+            limits:
+              cpu: 0.5
+              memory: 512Mi
+            requests:
+              cpu: 0.5
+              memory: 512Mi
+
+```
+## Non-Compliant Code Examples
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: test-deployment
+  labels:
+    app: test
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: test
+  template:
+    metadata:
+      labels:
+        app: test
+    spec:
+      containers:
+        - name:  pause
+          image: k8s.gcr.io/pause
+          resources:
+            limits:
+              cpu: 1
+            requests:
+              cpu: 0.5
+              memory: 512Mi
+
+```
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: memory-demo-1
+  namespace: mem-example
+spec:
+  containers:
+  - name: memory-demo-ctr
+    image: polinux/stress
+    resources:
+      requests:
+        cpu: "0.5"
+    command: ["stress"]
+    args: ["--vm", "1", "--vm-bytes", "150M", "--vm-hang", "1"]
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: memory-demo-2
+  namespace: mem-example
+spec:
+  containers:
+  - name: memory-demo-ctr
+    image: polinux/stress
+    resources:
+      requests:
+        cpu: "0.5"
+    command: ["stress"]
+    args: ["--vm", "1", "--vm-bytes", "150M", "--vm-hang", "1"]
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: memory-demo-3
+  namespace: mem-example
+spec:
+  containers:
+  - name: memory-demo-ctr
+    image: polinux/stress
+    command: ["stress"]
+    args: ["--vm", "1", "--vm-bytes", "150M", "--vm-hang", "1"]
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: memory-demo-4
+  namespace: mem-example
+spec:
+  securityContext:
+    runAsUser: 1000
+    runAsGroup: 3000
+    fsGroup: 2000
+  volumes:
+    - name: sec-ctx-vol
+      emptyDir: { }
+  containers:
+  - name: memory-demo-ctr
+    image: polinux/stress
+    command: ["stress"]
+
+```

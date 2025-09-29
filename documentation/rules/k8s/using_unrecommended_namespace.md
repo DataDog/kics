@@ -25,3 +25,98 @@ meta:
 ### Description
 
  Namespaces such as `default`, `kube-system`, or `kube-public` should not be used.
+
+
+## Compliant Code Examples
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: frontend
+  namespace: cosmicPod
+spec:
+  securityContext:
+    runAsUser: 1000
+  containers:
+  - name: app
+    image: images.my-company.example/app:v4
+    securityContext:
+      allowPrivilegeEscalation: false
+    resources:
+      requests:
+        memory: "64Mi"
+        cpu: "250m"
+      limits:
+        memory: "128Mi"
+        cpu: "500m"
+
+  - name: log-aggregator
+    image: images.my-company.example/log-aggregator:v6
+    securityContext:
+      allowPrivilegeEscalation: false
+    resources:
+      requests:
+        memory: "64Mi"
+        cpu: "250m"
+      limits:
+        memory: "128Mi"
+        cpu: "500m"
+
+---
+apiVersion: v1
+kind: CustomResourceDefinition
+metadata:
+  name: mongo.db.collection.com
+
+```
+## Non-Compliant Code Examples
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: frontend2
+spec:
+  containers:
+  - name: app
+    image: images.my-company.example/app:v4
+    securityContext:
+      allowPrivilegeEscalation: false
+    resources:
+      requests:
+        memory: "64Mi"
+        cpu: "250m"
+      limits:
+        memory: "128Mi"
+        cpu: "500m"
+
+  - name: log-aggregator
+    image: images.my-company.example/log-aggregator:v6
+    securityContext:
+      allowPrivilegeEscalation: false
+    resources:
+      requests:
+        memory: "64Mi"
+        cpu: "250m"
+      limits:
+        memory: "128Mi"
+        cpu: "500m"
+
+```
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mongo.db.collection.com
+  namespace: kube-public
+
+```
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mongo.db.collection.com
+  namespace: kube-system
+
+```

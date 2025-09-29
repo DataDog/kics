@@ -25,3 +25,40 @@ meta:
 ### Description
 
  The Service type should not be `NodePort`.
+
+
+## Compliant Code Examples
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-service
+spec:
+  selector:
+    app: MyApp
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 9376
+  clusterIP: 10.0.171.239
+  type: LoadBalancer
+status:
+  loadBalancer:
+    ingress:
+    - ip: 192.0.2.127
+```
+## Non-Compliant Code Examples
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-service
+spec:
+  type: NodePort
+  selector:
+    app: MyApp
+  ports:
+    - port: 80
+      targetPort: 80
+      nodePort: 30007
+```

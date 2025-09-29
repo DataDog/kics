@@ -25,3 +25,129 @@ meta:
 ### Description
 
  When using `kube-apiserver`, `kube-controller-manager`, or `kube-scheduler`, the `--profiling` flag should be set to `false`.
+
+
+## Compliant Code Examples
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: command-demo
+  labels:
+    purpose: demonstrate-command
+spec:
+  containers:
+    - name: command-demo-container
+      image: gcr.io/google_containers/kube-apiserver-amd64:v1.6.0
+      command: ["kube-apiserver"]
+      args: ["--profiling=false"]
+  restartPolicy: OnFailure
+
+```
+
+```yaml
+apiVersion: kubescheduler.config.k8s.io/v1beta2
+kind: KubeSchedulerConfiguration
+enableProfiling: false
+profiles:
+- pluginConfig:
+  - args:
+      scoringStrategy:
+        resources:
+        - name: cpu
+          weight: 1
+        type: MostAllocated
+    name: NodeResourcesFit3
+
+```
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    component: kube-scheduler
+    tier: control-plane
+  name: kube-scheduler-master-1
+  namespace: kube-system
+spec:
+  containers:
+    - name: command-demo-container
+      image: gcr.io/google_containers/kube-scheduler-master-1
+      command: ["kube-scheduler"]
+      args: []
+  restartPolicy: OnFailure
+
+```
+## Non-Compliant Code Examples
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: command-demo-1
+  labels:
+    purpose: demonstrate-command
+spec:
+  containers:
+    - name: command-demo-container
+      image: gcr.io/google_containers/kube-apiserver-amd64:v1.6.0
+      command: ["kube-apiserver"]
+      args: []
+  restartPolicy: OnFailure
+
+```
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    component: kube-controller-manager
+    tier: control-plane
+  name: kube-controller-manager-master-3
+  namespace: kube-system
+spec:
+  selector:
+    matchLabels:
+      app: kube-controller-manager
+  template:
+    metadata:
+      labels:
+        app: kube-controller-manager
+  containers:
+    - name: command-demo-container
+      image: gcr.io/google_containers/kube-controller-manager-master-3
+      command: ["kube-controller-manager","--profiling=true"]
+      args: []
+  restartPolicy: OnFailure
+
+```
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    component: kube-controller-manager
+    tier: control-plane
+  name: kube-controller-manager-master-4
+  namespace: kube-system
+spec:
+  selector:
+    matchLabels:
+      app: kube-controller-manager
+  template:
+    metadata:
+      labels:
+        app: kube-controller-manager
+  containers:
+    - name: command-demo-container
+      image: gcr.io/google_containers/kube-controller-manager-master-4
+      command: ["kube-controller-manager"]
+      args: []
+  restartPolicy: OnFailure
+
+```

@@ -25,3 +25,49 @@ meta:
 ### Description
 
  The root container filesystem should be mounted as read-only.
+
+
+## Compliant Code Examples
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: goproxy
+  labels:
+    app: goproxy
+spec:
+  containers:
+  - name: goproxy
+    image: k8s.gcr.io/goproxy:0.1
+    securityContext:
+      readOnlyRootFilesystem: true
+
+```
+## Non-Compliant Code Examples
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: rootfalse
+  labels:
+    app: goproxy
+spec:
+  containers:
+  - name: contain1_1
+    image: k8s.gcr.io/goproxy:0.1
+    securityContext:
+      readOnlyRootFilesystem: false
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: noroot
+  labels:
+    app: goproxy
+spec:
+  containers:
+  - name: contain1_2
+    image: k8s.gcr.io/goproxy:0.1
+    securityContext:
+      someotherthing: true
+```

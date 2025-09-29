@@ -4,7 +4,7 @@
  * This product includes software developed at Datadog (https://www.datadoghq.com)  Copyright 2024 Datadog, Inc.
  */
 
-package kics
+package main
 
 import (
 	"context"
@@ -81,4 +81,21 @@ func ExecuteKICSScan(inputPaths []string, outputPath string, sciInfo model.SCIIn
 
 	resultsFile := filepath.Join(outputPath, params.OutputName)
 	return metadata, resultsFile, nil
+}
+
+func main() {
+	inputPaths := []string{"network.yaml"}
+	outputPath := "/tmp"
+	sci := model.SCIInfo{
+		DiffAware: model.DiffAware{
+			Enabled: false,
+		},
+		RunType: "code_update",
+		RepositoryCommitInfo: model.RepositoryCommitInfo{
+			RepositoryUrl: "github.com/blah",
+			Branch:        "main",
+			CommitSHA:     "1234567890",
+		},
+	}
+	ExecuteKICSScan(inputPaths, outputPath, sci, featureflags.NewLocalEvaluator(), true)
 }

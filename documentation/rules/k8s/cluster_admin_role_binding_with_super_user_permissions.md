@@ -25,3 +25,38 @@ meta:
 ### Description
 
  Ensure that the `cluster-admin` role is used only where required (RBAC).
+
+
+## Compliant Code Examples
+```yaml
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1beta1
+metadata:
+  name: tiller-clusterrolebinding
+subjects:
+- kind: ServiceAccount
+  name: tiller
+  namespace: kube-system
+roleRef:
+  kind: ClusterRole
+  name: view
+  apiGroup: ""
+# trigger validation
+
+```
+## Non-Compliant Code Examples
+```yaml
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1beta1
+metadata:
+  name: tiller-clusterrolebinding
+subjects:
+  - kind: ServiceAccount
+    name: tiller
+    namespace: kube-system
+roleRef:
+  kind: ClusterRole
+  name: cluster-admin
+  apiGroup: ""
+
+```

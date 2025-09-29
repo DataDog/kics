@@ -25,3 +25,166 @@ meta:
 ### Description
 
  Containers should not run with a low UID, as this may cause conflicts with the host's user table.
+
+
+## Compliant Code Examples
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: security-context-demo-2
+spec:
+  securityContext:
+    runAsUser: 10000
+  containers:
+    - name: sec-ctx-demo-2
+      image: gcr.io/google-samples/node-hello:1.0
+      securityContext:
+        runAsUser: 10100
+        allowPrivilegeEscalation: false
+
+```
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: securitydemo
+  labels:
+    app: web
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: web
+  template:
+    metadata:
+      labels:
+        app: web
+    spec:
+      securityContext:
+        runAsUser: 65532
+      containers:
+        - name: frontend
+          image: nginx
+          ports:
+            - containerPort: 80
+          securityContext:
+            readOnlyRootFilesystem: true
+        - name: echoserver
+          image: k8s.gcr.io/echoserver:1.4
+          ports:
+            - containerPort: 8080
+
+```
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: securitydemo
+  labels:
+    app: web
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: web
+  template:
+    metadata:
+      labels:
+        app: web
+    spec:
+      securityContext:
+        runAsUser: 19000
+      containers:
+        - name: frontend
+          image: nginx
+          ports:
+            - containerPort: 80
+          securityContext:
+            runAsUser: 12000
+            readOnlyRootFilesystem: true
+        - name: echoserver
+          image: k8s.gcr.io/echoserver:1.4
+          ports:
+            - containerPort: 8080
+          securityContext:
+            readOnlyRootFilesystem: true
+
+```
+## Non-Compliant Code Examples
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: security-context-demo-2
+spec:
+  securityContext:
+    runAsUser: 10
+    runAsNonRoot: false
+  containers:
+    - name: sec-ctx-demo-100
+      image: gcr.io/google-samples/node-hello:1.0
+      securityContext:
+        runAsUser: 333
+        runAsNonRoot: false
+    - name: sec-ctx-demo-200
+      image: gcr.io/google-samples/node-hedwfwllo:1.0
+      securityContext:
+        runAsUser: 340
+        runAsNonRoot: false
+
+```
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: containers-runs-as-root
+spec:
+  securityContext:
+    runAsNonRoot: false
+  containers:
+    - name: sec-ctx-demo-100
+      image: gcr.io/google-samples/node-hello:1.0
+      securityContext:
+        runAsUser: 13
+        runAsNonRoot: false
+
+```
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: securitydemo
+  labels:
+    app: web
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: web
+  template:
+    metadata:
+      labels:
+        app: web
+    spec:
+      securityContext:
+        runAsUser: 1200
+      containers:
+        - name: frontend
+          image: nginx
+          ports:
+            - containerPort: 80
+          securityContext:
+            readOnlyRootFilesystem: true
+        - name: echoserver
+          image: k8s.gcr.io/echoserver:1.4
+          ports:
+            - containerPort: 8080
+          securityContext:
+            readOnlyRootFilesystem: true
+
+```

@@ -25,3 +25,52 @@ meta:
 ### Description
 
  Containers should not use secrets as environment variables.
+
+
+## Compliant Code Examples
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: secret-env-pod
+spec:
+  containers:
+  - name: mycontainer
+    image: redis
+  restartPolicy: Never
+```
+## Non-Compliant Code Examples
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: secret-env-pod
+spec:
+  containers:
+  - name: mycontainer
+    image: redis
+    env:
+      - name: SECRET_USERNAME
+        valueFrom:
+          secretKeyRef:
+            name: mysecret
+            key: username
+      - name: SECRET_PASSWORD
+        valueFrom:
+          secretKeyRef:
+            name: mysecret
+            key: password
+  restartPolicy: Never
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: envfrom-secret
+spec:
+  containers:
+  - name: envars-test-container
+    image: nginx
+    envFrom:
+    - secretRef:
+        name: test-secret
+```

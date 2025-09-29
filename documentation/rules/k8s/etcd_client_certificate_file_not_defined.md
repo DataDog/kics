@@ -25,3 +25,56 @@ meta:
 ### Description
 
  When using `kube-apiserver`, the `--etcd-cafile` flag should be set.
+
+
+## Compliant Code Examples
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: command-demo
+  labels:
+    purpose: demonstrate-command
+spec:
+  containers:
+    - name: command-demo-container
+      image: gcr.io/google_containers/kube-apiserver-amd64:v1.6.0
+      command: ["kube-apiserver"]
+      args: ["--etcd-cafile=/path/to/ca/file.pem"]
+  restartPolicy: OnFailure
+
+```
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: command-demo
+  labels:
+    purpose: demonstrate-command
+spec:
+  containers:
+    - name: command-demo-container
+      image: gcr.io/google_containers/kube-apiserver-amd64:v1.6.0
+      command: ["kube-apiserver","--etcd-cafile=/path/to/ca/file.pem"]
+      args: []
+  restartPolicy: OnFailure
+
+```
+## Non-Compliant Code Examples
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: command-demo
+  labels:
+    purpose: demonstrate-command
+spec:
+  containers:
+    - name: command-demo-container
+      image: gcr.io/google_containers/kube-apiserver-amd64:v1.6.0
+      command: ["kube-apiserver"]
+      args: []
+  restartPolicy: OnFailure
+
+```

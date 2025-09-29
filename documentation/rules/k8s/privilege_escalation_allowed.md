@@ -25,3 +25,99 @@ meta:
 ### Description
 
  Containers should not run with `allowPrivilegeEscalation` to prevent them from gaining more privileges than their parent process.
+
+
+## Compliant Code Examples
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod1
+spec:
+  containers:
+  - name: app
+    image: images.my-company.example/app:v4
+    securityContext:
+      allowPrivilegeEscalation: false
+    resources:
+      requests:
+        memory: "64Mi"
+        cpu: "250m"
+      limits:
+        memory: "128Mi"
+        cpu: "500m"
+
+  - name: log-aggregator
+    image: images.my-company.example/log-aggregator:v6
+    securityContext:
+      allowPrivilegeEscalation: false
+    resources:
+      requests:
+        memory: "64Mi"
+        cpu: "250m"
+      limits:
+        memory: "128Mi"
+        cpu: "500m"
+
+```
+## Non-Compliant Code Examples
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: example-priv
+spec:
+  containers:
+      - name: payment
+        image: nginx
+        securityContext:
+          capabilities:
+          drop:
+            - SYS_ADMIN
+      - name: payment2
+        image: nginx
+      - name: payment4
+        image: nginx
+        securityContext:
+          capabilities:
+            add:
+              - NET_BIND_SERVICE
+      - name: payment3
+        image: nginx
+        securityContext:
+          allowPrivilegeEscalation: false
+
+```
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod2
+spec:
+  containers:
+  - name: app
+    image: images.my-company.example/app:v4
+    securityContext:
+      allowPrivilegeEscalation: true
+    resources:
+      requests:
+        memory: "64Mi"
+        cpu: "250m"
+      limits:
+        memory: "128Mi"
+        cpu: "500m"
+
+  - name: log-aggregator
+    image: images.my-company.example/log-aggregator:v6
+    securityContext:
+      runAsUser: 2000
+    resources:
+      requests:
+        memory: "64Mi"
+        cpu: "250m"
+      limits:
+        memory: "128Mi"
+        cpu: "500m"
+
+```

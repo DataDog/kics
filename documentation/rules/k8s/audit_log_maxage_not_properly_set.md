@@ -25,3 +25,134 @@ meta:
 ### Description
 
  When using `kube-apiserver`, the `--audit-log-maxage` flag should be set to 30 days or more.
+
+
+## Compliant Code Examples
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: command-demo
+  labels:
+    purpose: demonstrate-command
+spec:
+  containers:
+    - name: command-demo-container
+      image: gcr.io/google_containers/kube-apiserver-amd64:v1.6.0
+      command: ["kube-apiserver"]
+      args: ["--audit-log-maxage=30"]
+  restartPolicy: OnFailure
+
+```
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: command-demo
+  labels:
+    purpose: demonstrate-command
+spec:
+  containers:
+    - name: command-demo-container
+      image: gcr.io/google_containers/kube-apiserver-amd64:v1.6.0
+      command: ["kube-apiserver","--audit-log-maxage=35"]
+      args: []
+  restartPolicy: OnFailure
+
+```
+## Non-Compliant Code Examples
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: command-demo
+  labels:
+    purpose: demonstrate-command
+spec:
+  containers:
+    - name: command-demo-container
+      image: gcr.io/google_containers/kube-apiserver-amd64:v1.6.0
+      command: ["kube-apiserver"]
+      args: []
+  restartPolicy: OnFailure
+
+```
+
+```yaml
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: dummy
+  namespace: knative-sequence
+spec:
+  template:
+    spec:
+      containers:
+        - name: command-demo-container
+          image: gcr.io/google_containers/kube-apiserver-amd64:v1.6.0
+          command: ["kube-apiserver"]
+          args: []
+      restartPolicy: OnFailure
+---
+apiVersion: serving.knative.dev/v1
+kind: Configuration
+metadata:
+  name: dummy-config
+  namespace: knative-sequence
+spec:
+  template:
+    spec:
+      containers:
+        - name: command-demo-container
+          image: gcr.io/google_containers/kube-apiserver-amd64:v1.6.0
+          command: ["kube-apiserver"]
+          args: []
+      restartPolicy: OnFailure
+---
+apiVersion: serving.knative.dev/v1
+kind: Revision
+metadata:
+  name: dummy-rev
+  namespace: knative-sequence
+spec:
+  containers:
+    - name: command-demo-container
+      image: gcr.io/google_containers/kube-apiserver-amd64:v1.6.0
+      command: ["kube-apiserver"]
+      args: []
+  restartPolicy: OnFailure
+---
+apiVersion: sources.knative.dev/v1
+kind: ContainerSource
+metadata:
+  name: dummy-cs
+  namespace: knative-sequence
+spec:
+  template:
+    spec:
+      containers:
+        - name: command-demo-container
+          image: gcr.io/google_containers/kube-apiserver-amd64:v1.6.0
+          command: ["kube-apiserver"]
+          args: []
+      restartPolicy: OnFailure
+
+```
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: command-demo
+  labels:
+    purpose: demonstrate-command
+spec:
+  containers:
+    - name: command-demo-container
+      image: gcr.io/google_containers/kube-apiserver-amd64:v1.6.0
+      command: ["kube-apiserver"]
+      args: ["--audit-log-maxage=26"]
+  restartPolicy: OnFailure
+
+```

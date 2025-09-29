@@ -25,3 +25,73 @@ meta:
 ### Description
 
  When using `kube-controller-manager`, the `--terminated-pod-gc-threshold` flag should be set between `0` and `12501`.
+
+
+## Compliant Code Examples
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: command-demo
+  labels:
+    purpose: demonstrate-command
+spec:
+  containers:
+    - name: command-demo-container
+      image: gcr.io/google_containers/kube-controller-manager-amd64:v1.6.0
+      command: ["kube-controller-manager"]
+      args: ["--terminated-pod-gc-threshold=10"]
+  restartPolicy: OnFailure
+
+```
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: command-demo
+  labels:
+    purpose: demonstrate-command
+spec:
+  containers:
+    - name: command-demo-container
+      image: gcr.io/google_containers/kube-controller-manager-amd64:v1.6.0
+      command: ["kube-controller-manager","--terminated-pod-gc-threshold=10"]
+      args: []
+  restartPolicy: OnFailure
+
+```
+## Non-Compliant Code Examples
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: command-demo
+  labels:
+    purpose: demonstrate-command
+spec:
+  containers:
+    - name: command-demo-container
+      image: gcr.io/google_containers/kube-controller-manager-amd64:v1.6.0
+      command: ["kube-controller-manager"]
+      args: ["--terminated-pod-gc-threshold=12501"]
+  restartPolicy: OnFailure
+
+```
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: command-demo
+  labels:
+    purpose: demonstrate-command
+spec:
+  containers:
+    - name: command-demo-container
+      image: gcr.io/google_containers/kube-controller-manager-amd64:v1.6.0
+      command: ["kube-controller-manager","--terminated-pod-gc-threshold=0"]
+      args: []
+  restartPolicy: OnFailure
+
+```

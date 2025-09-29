@@ -25,3 +25,59 @@ meta:
 ### Description
 
  Roles or ClusterRoles with the `impersonate` permission allow subjects to assume the rights of other users, groups, or service accounts. In case of compromise, attackers may abuse this sudo-like functionality to achieve privilege escalation.
+
+
+## Compliant Code Examples
+```yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: impersonator-role-neg
+  namespace: default
+rules:
+- apiGroups: [""]
+  resources: ["users", "groups", "serviceaccounts"]
+  verbs: ["get"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: rbac-impersonate-binding
+subjects:
+- kind: ServiceAccount
+  name: impersonator-sa-neg
+  namespace: default
+  apiGroup: ""
+roleRef:
+  kind: ClusterRole
+  name: impersonator-role-neg
+  apiGroup: ""
+
+```
+## Non-Compliant Code Examples
+```yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: impersonator-role
+  namespace: default
+rules:
+- apiGroups: [""]
+  resources: ["users", "groups", "serviceaccounts"]
+  verbs: ["impersonate"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: rbac-impersonate-binding
+subjects:
+- kind: ServiceAccount
+  name: impersonator-sa
+  namespace: default
+  apiGroup: ""
+roleRef:
+  kind: ClusterRole
+  name: impersonator-role
+  apiGroup: ""
+
+```

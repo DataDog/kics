@@ -25,3 +25,91 @@ meta:
 ### Description
 
  The `--streaming-connection-idle-timeout` flag should not be set to `0`.
+
+
+## Compliant Code Examples
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: command-demo
+  labels:
+    purpose: demonstrate-command
+spec:
+  containers:
+    - name: command-demo-container
+      image: foo/bar
+      command: ["kubelet"]
+      args: [""]
+  restartPolicy: OnFailure
+
+```
+
+```yaml
+apiVersion: kubelet.config.k8s.io/v1beta1
+kind: KubeletConfiguration
+address: "192.168.0.8"
+port: 20250
+serializeImagePulls: false
+evictionHard:
+    memory.available:  "200Mi"
+
+```
+
+```json
+{
+    "address": "192.168.0.8",
+    "apiVersion": "kubelet.config.k8s.io/v1beta1",
+    "evictionHard": {
+        "memory.available": "200Mi"
+    },
+    "kind": "KubeletConfiguration",
+    "port": 20250,
+    "serializeImagePulls": false
+}
+
+```
+## Non-Compliant Code Examples
+```yaml
+apiVersion: kubelet.config.k8s.io/v1beta1
+kind: KubeletConfiguration
+address: "192.168.0.8"
+port: 20250
+serializeImagePulls: false
+evictionHard:
+    memory.available:  "200Mi"
+streamingConnectionIdleTimeout: 0s
+
+```
+
+```json
+{
+    "apiVersion": "kubelet.config.k8s.io/v1beta1",
+    "evictionHard": {
+        "memory.available": "200Mi"
+    },
+    "kind": "KubeletConfiguration",
+    "serializeImagePulls": false,
+    "address": "192.168.0.8",
+    "port": 20250,
+    "streamingConnectionIdleTimeout": "0s"
+}
+
+```
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: command-demo
+  labels:
+    purpose: demonstrate-command
+spec:
+  containers:
+    - name: command-demo-container
+      image: foo/bar
+      command: ["kubelet"]
+      args: ["--streaming-connection-idle-timeout=0"]
+  restartPolicy: OnFailure
+
+```

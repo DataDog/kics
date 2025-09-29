@@ -25,3 +25,109 @@ meta:
 ### Description
 
  CPU requests should be set to ensure the sum of resource requests of scheduled containers is less than the node's capacity.
+
+
+## Compliant Code Examples
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: frontend
+spec:
+  containers:
+    - name: app
+      image: images.my-company.example/app:v4
+      resources:
+        requests:
+          memory: "64Mi"
+          cpu: "250m"
+        limits:
+          memory: "128Mi"
+          cpu: "500m"
+    - name: log-aggregator
+      image: images.my-company.example/log-aggregator:v6
+      resources:
+        requests:
+          memory: "64Mi"
+          cpu: "250m"
+        limits:
+          memory: "128Mi"
+          cpu: "500m"
+---
+apiVersion: serving.knative.dev/v1
+kind: Configuration
+metadata:
+  name: dummy-config
+  namespace: knative-sequence
+spec:
+  template:
+    spec:
+      containers:
+        - name: app
+          image: images.my-company.example/app:v4
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "250m"
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
+        - name: log-aggregator
+          image: images.my-company.example/log-aggregator:v6
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "250m"
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
+
+```
+## Non-Compliant Code Examples
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: frontend
+spec:
+  containers:
+    - name: app
+      image: images.my-company.example/app:v4
+      resources:
+        requests:
+          memory: "64Mi"
+        limits:
+          memory: "128Mi"
+          cpu: "500m"
+    - name: log-aggregator
+      image: images.my-company.example/log-aggregator:v6
+      resources:
+        limits:
+          memory: "128Mi"
+          cpu: "500m"
+---
+apiVersion: serving.knative.dev/v1
+kind: Configuration
+metadata:
+  name: dummy-config
+  namespace: knative-sequence
+spec:
+  template:
+    spec:
+      containers:
+        - name: app
+          image: images.my-company.example/app:v4
+          resources:
+            requests:
+              memory: "64Mi"
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
+        - name: log-aggregator
+          image: images.my-company.example/log-aggregator:v6
+          resources:
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
+
+```

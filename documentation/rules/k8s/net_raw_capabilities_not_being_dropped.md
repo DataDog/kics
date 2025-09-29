@@ -25,3 +25,98 @@ meta:
 ### Description
 
  Containers should drop `ALL` or at least `NET_RAW` capabilities.
+
+
+## Compliant Code Examples
+```yaml
+apiVersion: policy/v1beta1
+kind: PodSecurityPolicy
+metadata:
+  name: example
+spec:
+  containers:
+      - name: payment
+        image: nginx
+        securityContext:
+          capabilities:
+            drop:
+              - ALL
+            add:
+              - NET_BIND_SERVICE
+  privileged: false
+  seLinux:
+    rule: RunAsAny
+  supplementalGroups:
+    rule: RunAsAny
+  runAsUser:
+    rule: RunAsAny
+  fsGroup:
+    rule: RunAsAny
+  volumes:
+  - '*'
+
+```
+## Non-Compliant Code Examples
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: redis-unhealthy-deployment
+  labels:
+    app: redis
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: redis
+  template:
+    metadata:      
+      labels:
+        app: redis
+    spec:
+      hostNetwork: true
+      hostPID: true 
+      hostIPC: true
+      containers:
+      - name: redis
+        image: redis:latest
+        ports:
+        - containerPort: 9001
+          hostPort: 9001
+        securityContext:
+          privileged: true
+          readOnlyRootFilesystem: false
+          allowPrivilegeEscalation: true
+          runAsUser: 0
+          capabilities:
+            add:
+              - NET_ADMIN
+```
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: example
+spec:
+  containers:
+      - name: payment
+        image: nginx
+        securityContext:
+          capabilities:
+            drop:
+              - SYS_ADMIN
+      - name: payment2
+        image: nginx
+      - name: payment4
+        image: nginx
+        securityContext:
+          capabilities:
+            add:
+              - NET_BIND_SERVICE
+      - name: payment3
+        image: nginx
+        securityContext:
+          allowPrivilegeEscalation: false
+
+```
