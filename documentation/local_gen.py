@@ -138,12 +138,21 @@ def process_provider(
     list_json_data,
     dict_frontmatter,
 ):
-    provider_path = input_dir / resource_type / provider
-    if not provider_path.is_dir():
-        print(f"Warning: Missing provider path: {provider_path}")
-        return 0
+    if provider != "no-provider":
+        provider_path = input_dir / resource_type / provider
 
-    output_provider_path = output_dir / resource_type / provider
+        output_provider_path = output_dir / resource_type / provider
+    else:
+        provider = resource_type
+        provider_path = provider_path = input_dir / resource_type
+
+        output_provider_path = output_dir / resource_type
+
+
+    if not provider_path.is_dir():
+            print(f"Warning: Missing provider path: {provider_path}")
+            return 0
+
     output_provider_path.mkdir(parents=True, exist_ok=True)
 
     provider_entry = {

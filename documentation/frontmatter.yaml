@@ -13,6 +13,434 @@ rules:
       unsecured_commands:
         description: Unsecured commands
         title: Unsecured commands
+  k8s:
+    k8s:
+      always_admit_admission_control_plugin_set:
+        description: Always admit admission control plugin set
+        title: Always admit admission control plugin set
+      always_pull_images_admission_control_plugin_not_set:
+        description: Always pull images admission control plugin not set
+        title: Always pull images admission control plugin not set
+      anonymous_auth_is_not_set_to_false:
+        description: Anonymous auth is not set to false
+        title: Anonymous auth is not set to false
+      audit_log_maxage_not_properly_set:
+        description: Audit log maxage not properly set
+        title: Audit log maxage not properly set
+      audit_log_maxbackup_not_properly_set:
+        description: Audit log maxbackup not properly set
+        title: Audit log maxbackup not properly set
+      audit_log_maxsize_not_properly_set:
+        description: Audit log maxsize not properly set
+        title: Audit log maxsize not properly set
+      audit_log_path_not_set:
+        description: Audit log path not set
+        title: Audit log path not set
+      audit_policy_file_not_defined:
+        description: Audit policy file not defined
+        title: Audit policy file not defined
+      audit_policy_not_cover_key_security_concerns:
+        description: Audit policy does not cover key security concerns
+        title: Audit policy does not cover key security concerns
+      authorization_mode_node_not_set:
+        description: Authorization mode node not set
+        title: Authorization mode node not set
+      authorization_mode_rbac_not_set:
+        description: Authorization mode RBAC not set
+        title: Authorization mode RBAC not set
+      authorization_mode_set_to_always_allow:
+        description: Authorization mode set to always allow
+        title: Authorization mode set to always allow
+      auto_tls_set_to_true:
+        description: Auto TLS set to true
+        title: Auto TLS set to true
+      basic_auth_file_is_set:
+        description: Basic auth file is set
+        title: Basic auth file is set
+      bind_address_not_properly_set:
+        description: Bind address not properly set
+        title: Bind address not properly set
+      client_certificate_authentication_not_setup_properly:
+        description: Client certificate authentication not set up properly
+        title: Client certificate authentication not set up properly
+      cluster_admin_role_binding_with_super_user_permissions:
+        description: Cluster admin rolebinding with superuser permissions
+        title: Cluster admin rolebinding with superuser permissions
+      cluster_allows_unsafe_sysctls:
+        description: Cluster allows unsafe sysctls
+        title: Cluster allows unsafe sysctls
+      cni_plugin_does_not_support_network_policies:
+        description: CNI plugin does not support network policies
+        title: CNI plugin does not support network policies
+      container_is_privileged:
+        description: Container is privileged
+        title: Container is privileged
+      container_runs_unmasked:
+        description: Container with unmasked /proc access
+        title: Container with unmasked /proc access
+      containers_run_with_low_uid:
+        description: Container with low UID
+        title: Container with low UID
+      containers_running_as_root:
+        description: Container running as root
+        title: Container running as root
+      containers_with_added_capabilities:
+        description: Containers with added capabilities
+        title: Containers with added capabilities
+      containers_with_sys_admin_capabilities:
+        description: Containers with sys admin capabilities
+        title: Containers with sys admin capabilities
+      cpu_limits_not_set:
+        description: CPU limits not set
+        title: CPU limits not set
+      cpu_requests_not_set:
+        description: CPU requests not set
+        title: CPU requests not set
+      cronjob_deadline_not_configured:
+        description: CronJob deadline not configured
+        title: CronJob deadline not configured
+      dashboard_is_enabled:
+        description: Dashboard is enabled
+        title: Dashboard is enabled
+      deployment_has_no_pod_anti_affinity:
+        description: Deployment without podAntiAffinity
+        title: Deployment without podAntiAffinity
+      deployment_without_pod_disruption_budget:
+        description: Deployment without PodDisruptionBudget
+        title: Deployment without PodDisruptionBudget
+      docker_daemon_socket_is_exposed_to_containers:
+        description: Docker daemon socket is exposed to containers
+        title: Docker daemon socket is exposed to containers
+      encryption_provider_config_is_not_defined:
+        description: Encryption provider config is not defined
+        title: Encryption provider config is not defined
+      encryption_provider_not_properly_configured:
+        description: Encryption provider not properly configured
+        title: Encryption provider not properly configured
+      ensure_administrative_boundaries_between_resources:
+        description: Ensure administrative boundaries between resources
+        title: Ensure administrative boundaries between resources
+      etcd_client_certificate_authentication_set_to_false:
+        description: etcd client certificate authentication set to false
+        title: etcd client certificate authentication set to false
+      etcd_client_certificate_file_not_defined:
+        description: etcd client certificate file not defined
+        title: etcd client certificate file not defined
+      etcd_peer_client_certificate_authentication_set_to_false:
+        description: etcd peer client certificate authentication set to false
+        title: etcd peer client certificate authentication set to false
+      etcd_peer_tls_certificate_files_not_properly_set:
+        description: etcd peer TLS certificate files not properly set
+        title: etcd peer TLS certificate files not properly set
+      etcd_tls_certificate_files_not_properly_set:
+        description: etcd TLS certificate files not properly set
+        title: etcd TLS certificate files not properly set
+      etcd_tls_certificate_not_properly_configured:
+        description: etcd TLS certificate not properly configured
+        title: etcd TLS certificate not properly configured
+      event_rate_limit_admission_control_plugin_not_set:
+        description: Event rate limit admission control plugin not set
+        title: Event rate limit admission control plugin not set
+      hpa_targeted_deployments_with_configured_replica_count:
+        description: HPA targeted deployments with configured replica count
+        title: HPA targeted deployments with configured replica count
+      hpa_targets_invalid_object:
+        description: HPA targets invalid object
+        title: HPA targets invalid object
+      image_policy_webhook_admission_control_plugin_not_set:
+        description: Image policy webhook admission control plugin not set
+        title: Image policy webhook admission control plugin not set
+      image_pull_policy_of_container_is_not_always:
+        description: Image pull policy of the container is not set to always
+        title: Image pull policy of the container is not set to always
+      image_without_digest:
+        description: Image without digest
+        title: Image without digest
+      incorrect_volume_claim_access_mode_read_write_once:
+        description: Incorrect volume claim access mode ReadWriteOnce
+        title: Incorrect volume claim access mode ReadWriteOnce
+      ingress_controller_exposes_workload:
+        description: Ingress controller exposes workload
+        title: Ingress controller exposes workload
+      insecure_bind_address_set:
+        description: Insecure bind address set
+        title: Insecure bind address set
+      insecure_port_not_properly_set:
+        description: Insecure port not properly set
+        title: Insecure port not properly set
+      invalid_image:
+        description: Invalid image tag
+        title: Invalid image tag
+      kubelet_certificate_authority_not_set:
+        description: Kubelet certificate authority not set
+        title: Kubelet certificate authority not set
+      kubelet_client_certificate_or_key_not_set:
+        description: Kubelet client certificate or key not set
+        title: Kubelet client certificate or key not set
+      kubelet_client_periodic_certificate_switch_disabled:
+        description: Kubelet client periodic certificate switch disabled
+        title: Kubelet client periodic certificate switch disabled
+      kubelet_event_qps_not_properly_set:
+        description: Kubelet event QPS not properly set
+        title: Kubelet event QPS not properly set
+      kubelet_hostname_override_is_set:
+        description: Kubelet hostname override is set
+        title: Kubelet hostname override is set
+      kubelet_https_set_to_false:
+        description: Kubelet HTTPS set to false
+        title: Kubelet HTTPS set to false
+      kubelet_not_managing_ip_tables:
+        description: Kubelet not managing IP tables
+        title: Kubelet not managing IP tables
+      kubelet_protect_kernel_defaults_set_to_false:
+        description: Kubelet protect-kernel-defaults set to false
+        title: Kubelet protect-kernel-defaults set to false
+      kubelet_read_only_port_is_not_set_to_zero:
+        description: Kubelet read-only port is not set to zero
+        title: Kubelet read-only port is not set to zero
+      kubelet_streaming_connection_timeout_disabled:
+        description: Kubelet streaming connection timeout disabled
+        title: Kubelet streaming connection timeout disabled
+      liveness_probe_is_not_defined:
+        description: Liveness probe is not defined
+        title: Liveness probe is not defined
+      memory_limits_not_defined:
+        description: Memory limits not defined
+        title: Memory limits not defined
+      memory_requests_not_defined:
+        description: Memory requests not defined
+        title: Memory requests not defined
+      metadata_label_is_invalid:
+        description: Invalid metadata label
+        title: Invalid metadata label
+      missing_app_armor_config:
+        description: Missing AppArmor profile
+        title: Missing AppArmor profile
+      namespace_lifecycle_admission_control_plugin_disabled:
+        description: Namespace lifecycle admission control plugin disabled
+        title: Namespace lifecycle admission control plugin disabled
+      net_raw_capabilities_disabled_for_psp:
+        description: NET_RAW capabilities disabled for PSP
+        title: NET_RAW capabilities disabled for PSP
+      net_raw_capabilities_not_being_dropped:
+        description: NET_RAW capabilities not dropped
+        title: NET_RAW capabilities not dropped
+      network_policy_is_not_targeting_any_pod:
+        description: Network policy without Pod target
+        title: Network policy without Pod target
+      no_drop_capabilities_for_containers:
+        description: Containers missing drop capabilities
+        title: Containers missing drop capabilities
+      node_restriction_admission_control_plugin_not_set:
+        description: Node restriction admission control plugin not set
+        title: Node restriction admission control plugin not set
+      non_kube_system_pod_with_host_mount:
+        description: Non kube-system pod with host mount
+        title: Non kube-system pod with host mount
+      not_limited_capabilities_for_pod_security_policy:
+        description: Unrestricted capabilities in PodSecurityPolicy
+        title: Unrestricted capabilities in PodSecurityPolicy
+      not_unique_certificate_authority:
+        description: Certificate authority is not unique
+        title: Certificate authority is not unique
+      object_is_using_a_deprecated_api_version:
+        description: Object is using a deprecated API version
+        title: Object is using a deprecated API version
+      peer_auto_tls_set_to_true:
+        description: Peer auto TLS set to true
+        title: Peer auto TLS set to true
+      permissive_access_to_create_pods:
+        description: Permissive access to create Pods
+        title: Permissive access to create Pods
+      pod_misconfigured_network_policy:
+        description: Pod misconfigured network policy
+        title: Pod misconfigured network policy
+      pod_or_container_without_limit_range:
+        description: Pod or container without LimitRange
+        title: Pod or container without LimitRange
+      pod_or_container_without_resource_quota:
+        description: Pod or container without ResourceQuota
+        title: Pod or container without ResourceQuota
+      pod_or_container_without_security_context:
+        description: Pod or container without security context
+        title: Pod or container without security context
+      pod_security_policy_admission_control_plugin_not_set:
+        description: Pod security policy admission control plugin not set
+        title: Pod security policy admission control plugin not set
+      privilege_escalation_allowed:
+        description: Privilege escalation allowed
+        title: Privilege escalation allowed
+      profiling_not_set_to_false:
+        description: Profiling not set to false
+        title: Profiling not set to false
+      psp_allows_privilege_escalation:
+        description: PSP allows privilege escalation
+        title: PSP allows privilege escalation
+      psp_allows_sharing_host_ipc:
+        description: PSP allows sharing host IPC
+        title: PSP allows sharing host IPC
+      psp_allows_sharing_host_pid:
+        description: PSP allows sharing host PID
+        title: PSP allows sharing host PID
+      psp_containers_share_host_network_namespace:
+        description: PodSecurityPolicy allows host network sharing
+        title: PodSecurityPolicy allows host network sharing
+      psp_set_to_privileged:
+        description: PSP set to privileged
+        title: PSP set to privileged
+      psp_with_added_capabilities:
+        description: PSP with added capabilities
+        title: PSP with added capabilities
+      psp_with_unrestricted_access_to_host_path:
+        description: PSP with unrestricted access to host path
+        title: PSP with unrestricted access to host path
+      rbac_roles_allow_privilege_escalation:
+        description: RBAC roles allow privilege escalation
+        title: RBAC roles allow privilege escalation
+      rbac_roles_with_attach_permission:
+        description: RBAC roles with attach permission
+        title: RBAC roles with attach permission
+      rbac_roles_with_exec_permission:
+        description: RBAC roles with exec permission
+        title: RBAC roles with exec permission
+      rbac_roles_with_impersonate_permission:
+        description: RBAC roles with impersonate permission
+        title: RBAC roles with impersonate permission
+      rbac_roles_with_portforwarding_permissions:
+        description: RBAC roles with port-forwarding permission
+        title: RBAC roles with port-forwarding permission
+      rbac_roles_with_read_secrets_permissions:
+        description: RBAC roles with read secrets permissions
+        title: RBAC roles with read secrets permissions
+      rbac_wildcard_in_rule:
+        description: RBAC wildcard in rule
+        title: RBAC wildcard in rule
+      readiness_probe_is_not_configured:
+        description: Readiness probe is not configured
+        title: Readiness probe is not configured
+      request_timeout_not_properly_set:
+        description: Request timeout not properly set
+        title: Request timeout not properly set
+      role_binding_to_default_service_account:
+        description: Role binding to default service account
+        title: Role binding to default service account
+      root_ca_file_not_defined:
+        description: Root CA file not defined
+        title: Root CA file not defined
+      root_container_not_mounted_as_read_only:
+        description: Root container not mounted as read-only
+        title: Root container not mounted as read-only
+      root_containers_admitted:
+        description: Root containers admitted
+        title: Root containers admitted
+      rotate_kubelet_server_certificate_not_active:
+        description: Rotate Kubelet server certificate not active
+        title: Rotate Kubelet server certificate not active
+      seccomp_profile_is_not_configured:
+        description: Seccomp profile is not configured
+        title: Seccomp profile is not configured
+      secrets_as_environment_variables:
+        description: Secrets used as environment variables
+        title: Secrets used as environment variables
+      secure_port_set_to_zero:
+        description: Secure port set to zero
+        title: Secure port set to zero
+      security_context_deny_admission_control_plugin_not_set:
+        description: Security context deny admission control plugin not set
+        title: Security context deny admission control plugin not set
+      service_account_admission_control_plugin_disabled:
+        description: Service account admission control plugin disabled
+        title: Service account admission control plugin disabled
+      service_account_allows_access_secrets:
+        description: ServiceAccount allows access to secrets
+        title: ServiceAccount allows access to secrets
+      service_account_key_file_not_properly_set:
+        description: Service account key file not properly set
+        title: Service account key file not properly set
+      service_account_lookup_set_to_false:
+        description: Service account lookup set to false
+        title: Service account lookup set to false
+      service_account_name_undefined_or_empty:
+        description: Service account name undefined or empty
+        title: Service account name undefined or empty
+      service_account_private_key_file_not_defined:
+        description: Service account private key file not defined
+        title: Service account private key file not defined
+      service_account_token_automount_not_disabled:
+        description: Service account token auto-mount not disabled
+        title: Service account token auto-mount not disabled
+      service_does_not_target_pod:
+        description: Service does not target a Pod
+        title: Service does not target a Pod
+      service_type_is_nodeport:
+        description: Service type is NodePort
+        title: Service type is NodePort
+      service_with_external_load_balancer:
+        description: Service with external load balancer
+        title: Service with external load balancer
+      shared_host_ipc_namespace:
+        description: Shared host IPC namespace
+        title: Shared host IPC namespace
+      shared_host_network_namespace:
+        description: Shared host network namespace
+        title: Shared host network namespace
+      shared_host_pid_namespace:
+        description: Shared host PID namespace
+        title: Shared host PID namespace
+      shared_service_account:
+        description: Shared service account
+        title: Shared service account
+      statefulset_has_no_pod_anti_affinity:
+        description: StatefulSet without podAntiAffinity
+        title: StatefulSet without podAntiAffinity
+      statefulset_requests_storage:
+        description: StatefulSet requests storage
+        title: StatefulSet requests storage
+      statefulset_without_pod_disruption_budget:
+        description: StatefulSet without PodDisruptionBudget
+        title: StatefulSet without PodDisruptionBudget
+      statefulset_without_service_name:
+        description: StatefulSet without service name
+        title: StatefulSet without service name
+      terminated_pod_garbage_collector_threshold_not_properly_set:
+        description: Terminated pod garbage collector threshold not properly set
+        title: Terminated pod garbage collector threshold not properly set
+      tiller_deployment_is_accessible_from_within_the_cluster:
+        description: Tiller Deployment accessible within cluster
+        title: Tiller Deployment accessible within cluster
+      tiller_is_deployed:
+        description: Tiller (Helm v2) deployed
+        title: Tiller (Helm v2) deployed
+      tiller_service_is_not_deleted:
+        description: Tiller Service present
+        title: Tiller Service present
+      tls_connection_certificate_not_setup:
+        description: TLS connection certificate not set up
+        title: TLS connection certificate not set up
+      token_auth_file_is_set:
+        description: Token auth file is set
+        title: Token auth file is set
+      use_service_account_credentials_not_set_to_true:
+        description: Use service account credentials not set to true
+        title: Use service account credentials not set to true
+      using_kubernetes_native_secret_management:
+        description: Using Kubernetes native secret management
+        title: Using Kubernetes native secret management
+      using_unrecommended_namespace:
+        description: Using unrecommended namespace
+        title: Using unrecommended namespace
+      volume_mount_with_os_directory_write_permissions:
+        description: Volume mount with OS directory write permissions
+        title: Volume mount with OS directory write permissions
+      weak_tls_cipher_suites:
+        description: Weak TLS cipher suites
+        title: Weak TLS cipher suites
+      workload_host_port_not_specified:
+        description: Workload host port not specified
+        title: Workload host port not specified
+      workload_mounting_with_sensitive_os_directory:
+        description: Workload mounting with sensitive OS directory
+        title: Workload mounting with sensitive OS directory
   terraform:
     aws:
       alb_deletion_protection_disabled:

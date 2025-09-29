@@ -5,8 +5,9 @@
       "azure",
       "gcp"
     ],
-  "terraform":[],
+  "terraform": [],
   "cicd": [
     "github"
-  ]
+  ],
+  "k8s": ["no-provider"]
 }

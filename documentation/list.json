@@ -27,6 +27,585 @@
     ]
   },
   {
+    "name": "k8s",
+    "providers": [
+      {
+        "name": "k8s",
+        "short_description": "K8S Rules",
+        "rules": [
+          {
+            "name": "always_admit_admission_control_plugin_set",
+            "short_description": "Always admit admission control plugin set"
+          },
+          {
+            "name": "always_pull_images_admission_control_plugin_not_set",
+            "short_description": "Always pull images admission control plugin not set"
+          },
+          {
+            "name": "anonymous_auth_is_not_set_to_false",
+            "short_description": "Anonymous auth is not set to false"
+          },
+          {
+            "name": "audit_log_maxage_not_properly_set",
+            "short_description": "Audit log maxage not properly set"
+          },
+          {
+            "name": "audit_log_maxbackup_not_properly_set",
+            "short_description": "Audit log maxbackup not properly set"
+          },
+          {
+            "name": "audit_log_maxsize_not_properly_set",
+            "short_description": "Audit log maxsize not properly set"
+          },
+          {
+            "name": "audit_log_path_not_set",
+            "short_description": "Audit log path not set"
+          },
+          {
+            "name": "audit_policy_file_not_defined",
+            "short_description": "Audit policy file not defined"
+          },
+          {
+            "name": "audit_policy_not_cover_key_security_concerns",
+            "short_description": "Audit policy does not cover key security concerns"
+          },
+          {
+            "name": "authorization_mode_node_not_set",
+            "short_description": "Authorization mode node not set"
+          },
+          {
+            "name": "authorization_mode_rbac_not_set",
+            "short_description": "Authorization mode RBAC not set"
+          },
+          {
+            "name": "authorization_mode_set_to_always_allow",
+            "short_description": "Authorization mode set to always allow"
+          },
+          {
+            "name": "auto_tls_set_to_true",
+            "short_description": "Auto TLS set to true"
+          },
+          {
+            "name": "basic_auth_file_is_set",
+            "short_description": "Basic auth file is set"
+          },
+          {
+            "name": "bind_address_not_properly_set",
+            "short_description": "Bind address not properly set"
+          },
+          {
+            "name": "client_certificate_authentication_not_setup_properly",
+            "short_description": "Client certificate authentication not set up properly"
+          },
+          {
+            "name": "cluster_admin_role_binding_with_super_user_permissions",
+            "short_description": "Cluster admin rolebinding with superuser permissions"
+          },
+          {
+            "name": "cluster_allows_unsafe_sysctls",
+            "short_description": "Cluster allows unsafe sysctls"
+          },
+          {
+            "name": "cni_plugin_does_not_support_network_policies",
+            "short_description": "CNI plugin does not support network policies"
+          },
+          {
+            "name": "container_is_privileged",
+            "short_description": "Container is privileged"
+          },
+          {
+            "name": "container_runs_unmasked",
+            "short_description": "Container with unmasked /proc access"
+          },
+          {
+            "name": "containers_run_with_low_uid",
+            "short_description": "Container with low UID"
+          },
+          {
+            "name": "containers_running_as_root",
+            "short_description": "Container running as root"
+          },
+          {
+            "name": "containers_with_added_capabilities",
+            "short_description": "Containers with added capabilities"
+          },
+          {
+            "name": "containers_with_sys_admin_capabilities",
+            "short_description": "Containers with sys admin capabilities"
+          },
+          {
+            "name": "cpu_limits_not_set",
+            "short_description": "CPU limits not set"
+          },
+          {
+            "name": "cpu_requests_not_set",
+            "short_description": "CPU requests not set"
+          },
+          {
+            "name": "cronjob_deadline_not_configured",
+            "short_description": "CronJob deadline not configured"
+          },
+          {
+            "name": "dashboard_is_enabled",
+            "short_description": "Dashboard is enabled"
+          },
+          {
+            "name": "deployment_has_no_pod_anti_affinity",
+            "short_description": "Deployment without podAntiAffinity"
+          },
+          {
+            "name": "deployment_without_pod_disruption_budget",
+            "short_description": "Deployment without PodDisruptionBudget"
+          },
+          {
+            "name": "docker_daemon_socket_is_exposed_to_containers",
+            "short_description": "Docker daemon socket is exposed to containers"
+          },
+          {
+            "name": "encryption_provider_config_is_not_defined",
+            "short_description": "Encryption provider config is not defined"
+          },
+          {
+            "name": "encryption_provider_not_properly_configured",
+            "short_description": "Encryption provider not properly configured"
+          },
+          {
+            "name": "ensure_administrative_boundaries_between_resources",
+            "short_description": "Ensure administrative boundaries between resources"
+          },
+          {
+            "name": "etcd_client_certificate_authentication_set_to_false",
+            "short_description": "etcd client certificate authentication set to false"
+          },
+          {
+            "name": "etcd_client_certificate_file_not_defined",
+            "short_description": "etcd client certificate file not defined"
+          },
+          {
+            "name": "etcd_peer_client_certificate_authentication_set_to_false",
+            "short_description": "etcd peer client certificate authentication set to false"
+          },
+          {
+            "name": "etcd_peer_tls_certificate_files_not_properly_set",
+            "short_description": "etcd peer TLS certificate files not properly set"
+          },
+          {
+            "name": "etcd_tls_certificate_files_not_properly_set",
+            "short_description": "etcd TLS certificate files not properly set"
+          },
+          {
+            "name": "etcd_tls_certificate_not_properly_configured",
+            "short_description": "etcd TLS certificate not properly configured"
+          },
+          {
+            "name": "event_rate_limit_admission_control_plugin_not_set",
+            "short_description": "Event rate limit admission control plugin not set"
+          },
+          {
+            "name": "hpa_targeted_deployments_with_configured_replica_count",
+            "short_description": "HPA targeted deployments with configured replica count"
+          },
+          {
+            "name": "hpa_targets_invalid_object",
+            "short_description": "HPA targets invalid object"
+          },
+          {
+            "name": "image_policy_webhook_admission_control_plugin_not_set",
+            "short_description": "Image policy webhook admission control plugin not set"
+          },
+          {
+            "name": "image_pull_policy_of_container_is_not_always",
+            "short_description": "Image pull policy of the container is not set to always"
+          },
+          {
+            "name": "image_without_digest",
+            "short_description": "Image without digest"
+          },
+          {
+            "name": "incorrect_volume_claim_access_mode_read_write_once",
+            "short_description": "Incorrect volume claim access mode ReadWriteOnce"
+          },
+          {
+            "name": "ingress_controller_exposes_workload",
+            "short_description": "Ingress controller exposes workload"
+          },
+          {
+            "name": "insecure_bind_address_set",
+            "short_description": "Insecure bind address set"
+          },
+          {
+            "name": "insecure_port_not_properly_set",
+            "short_description": "Insecure port not properly set"
+          },
+          {
+            "name": "invalid_image",
+            "short_description": "Invalid image tag"
+          },
+          {
+            "name": "kubelet_certificate_authority_not_set",
+            "short_description": "Kubelet certificate authority not set"
+          },
+          {
+            "name": "kubelet_client_certificate_or_key_not_set",
+            "short_description": "Kubelet client certificate or key not set"
+          },
+          {
+            "name": "kubelet_client_periodic_certificate_switch_disabled",
+            "short_description": "Kubelet client periodic certificate switch disabled"
+          },
+          {
+            "name": "kubelet_event_qps_not_properly_set",
+            "short_description": "Kubelet event QPS not properly set"
+          },
+          {
+            "name": "kubelet_hostname_override_is_set",
+            "short_description": "Kubelet hostname override is set"
+          },
+          {
+            "name": "kubelet_https_set_to_false",
+            "short_description": "Kubelet HTTPS set to false"
+          },
+          {
+            "name": "kubelet_not_managing_ip_tables",
+            "short_description": "Kubelet not managing IP tables"
+          },
+          {
+            "name": "kubelet_protect_kernel_defaults_set_to_false",
+            "short_description": "Kubelet protect-kernel-defaults set to false"
+          },
+          {
+            "name": "kubelet_read_only_port_is_not_set_to_zero",
+            "short_description": "Kubelet read-only port is not set to zero"
+          },
+          {
+            "name": "kubelet_streaming_connection_timeout_disabled",
+            "short_description": "Kubelet streaming connection timeout disabled"
+          },
+          {
+            "name": "liveness_probe_is_not_defined",
+            "short_description": "Liveness probe is not defined"
+          },
+          {
+            "name": "memory_limits_not_defined",
+            "short_description": "Memory limits not defined"
+          },
+          {
+            "name": "memory_requests_not_defined",
+            "short_description": "Memory requests not defined"
+          },
+          {
+            "name": "metadata_label_is_invalid",
+            "short_description": "Invalid metadata label"
+          },
+          {
+            "name": "missing_app_armor_config",
+            "short_description": "Missing AppArmor profile"
+          },
+          {
+            "name": "namespace_lifecycle_admission_control_plugin_disabled",
+            "short_description": "Namespace lifecycle admission control plugin disabled"
+          },
+          {
+            "name": "net_raw_capabilities_disabled_for_psp",
+            "short_description": "NET_RAW capabilities disabled for PSP"
+          },
+          {
+            "name": "net_raw_capabilities_not_being_dropped",
+            "short_description": "NET_RAW capabilities not dropped"
+          },
+          {
+            "name": "network_policy_is_not_targeting_any_pod",
+            "short_description": "Network policy without Pod target"
+          },
+          {
+            "name": "no_drop_capabilities_for_containers",
+            "short_description": "Containers missing drop capabilities"
+          },
+          {
+            "name": "node_restriction_admission_control_plugin_not_set",
+            "short_description": "Node restriction admission control plugin not set"
+          },
+          {
+            "name": "non_kube_system_pod_with_host_mount",
+            "short_description": "Non kube-system pod with host mount"
+          },
+          {
+            "name": "not_limited_capabilities_for_pod_security_policy",
+            "short_description": "Unrestricted capabilities in PodSecurityPolicy"
+          },
+          {
+            "name": "not_unique_certificate_authority",
+            "short_description": "Certificate authority is not unique"
+          },
+          {
+            "name": "object_is_using_a_deprecated_api_version",
+            "short_description": "Object is using a deprecated API version"
+          },
+          {
+            "name": "peer_auto_tls_set_to_true",
+            "short_description": "Peer auto TLS set to true"
+          },
+          {
+            "name": "permissive_access_to_create_pods",
+            "short_description": "Permissive access to create Pods"
+          },
+          {
+            "name": "pod_misconfigured_network_policy",
+            "short_description": "Pod misconfigured network policy"
+          },
+          {
+            "name": "pod_or_container_without_limit_range",
+            "short_description": "Pod or container without LimitRange"
+          },
+          {
+            "name": "pod_or_container_without_resource_quota",
+            "short_description": "Pod or container without ResourceQuota"
+          },
+          {
+            "name": "pod_or_container_without_security_context",
+            "short_description": "Pod or container without security context"
+          },
+          {
+            "name": "pod_security_policy_admission_control_plugin_not_set",
+            "short_description": "Pod security policy admission control plugin not set"
+          },
+          {
+            "name": "privilege_escalation_allowed",
+            "short_description": "Privilege escalation allowed"
+          },
+          {
+            "name": "profiling_not_set_to_false",
+            "short_description": "Profiling not set to false"
+          },
+          {
+            "name": "psp_allows_privilege_escalation",
+            "short_description": "PSP allows privilege escalation"
+          },
+          {
+            "name": "psp_allows_sharing_host_ipc",
+            "short_description": "PSP allows sharing host IPC"
+          },
+          {
+            "name": "psp_allows_sharing_host_pid",
+            "short_description": "PSP allows sharing host PID"
+          },
+          {
+            "name": "psp_containers_share_host_network_namespace",
+            "short_description": "PodSecurityPolicy allows host network sharing"
+          },
+          {
+            "name": "psp_set_to_privileged",
+            "short_description": "PSP set to privileged"
+          },
+          {
+            "name": "psp_with_added_capabilities",
+            "short_description": "PSP with added capabilities"
+          },
+          {
+            "name": "psp_with_unrestricted_access_to_host_path",
+            "short_description": "PSP with unrestricted access to host path"
+          },
+          {
+            "name": "rbac_roles_allow_privilege_escalation",
+            "short_description": "RBAC roles allow privilege escalation"
+          },
+          {
+            "name": "rbac_roles_with_attach_permission",
+            "short_description": "RBAC roles with attach permission"
+          },
+          {
+            "name": "rbac_roles_with_exec_permission",
+            "short_description": "RBAC roles with exec permission"
+          },
+          {
+            "name": "rbac_roles_with_impersonate_permission",
+            "short_description": "RBAC roles with impersonate permission"
+          },
+          {
+            "name": "rbac_roles_with_portforwarding_permissions",
+            "short_description": "RBAC roles with port-forwarding permission"
+          },
+          {
+            "name": "rbac_roles_with_read_secrets_permissions",
+            "short_description": "RBAC roles with read secrets permissions"
+          },
+          {
+            "name": "rbac_wildcard_in_rule",
+            "short_description": "RBAC wildcard in rule"
+          },
+          {
+            "name": "readiness_probe_is_not_configured",
+            "short_description": "Readiness probe is not configured"
+          },
+          {
+            "name": "request_timeout_not_properly_set",
+            "short_description": "Request timeout not properly set"
+          },
+          {
+            "name": "role_binding_to_default_service_account",
+            "short_description": "Role binding to default service account"
+          },
+          {
+            "name": "root_ca_file_not_defined",
+            "short_description": "Root CA file not defined"
+          },
+          {
+            "name": "root_container_not_mounted_as_read_only",
+            "short_description": "Root container not mounted as read-only"
+          },
+          {
+            "name": "root_containers_admitted",
+            "short_description": "Root containers admitted"
+          },
+          {
+            "name": "rotate_kubelet_server_certificate_not_active",
+            "short_description": "Rotate Kubelet server certificate not active"
+          },
+          {
+            "name": "seccomp_profile_is_not_configured",
+            "short_description": "Seccomp profile is not configured"
+          },
+          {
+            "name": "secrets_as_environment_variables",
+            "short_description": "Secrets used as environment variables"
+          },
+          {
+            "name": "secure_port_set_to_zero",
+            "short_description": "Secure port set to zero"
+          },
+          {
+            "name": "security_context_deny_admission_control_plugin_not_set",
+            "short_description": "Security context deny admission control plugin not set"
+          },
+          {
+            "name": "service_account_admission_control_plugin_disabled",
+            "short_description": "Service account admission control plugin disabled"
+          },
+          {
+            "name": "service_account_allows_access_secrets",
+            "short_description": "ServiceAccount allows access to secrets"
+          },
+          {
+            "name": "service_account_key_file_not_properly_set",
+            "short_description": "Service account key file not properly set"
+          },
+          {
+            "name": "service_account_lookup_set_to_false",
+            "short_description": "Service account lookup set to false"
+          },
+          {
+            "name": "service_account_name_undefined_or_empty",
+            "short_description": "Service account name undefined or empty"
+          },
+          {
+            "name": "service_account_private_key_file_not_defined",
+            "short_description": "Service account private key file not defined"
+          },
+          {
+            "name": "service_account_token_automount_not_disabled",
+            "short_description": "Service account token auto-mount not disabled"
+          },
+          {
+            "name": "service_does_not_target_pod",
+            "short_description": "Service does not target a Pod"
+          },
+          {
+            "name": "service_type_is_nodeport",
+            "short_description": "Service type is NodePort"
+          },
+          {
+            "name": "service_with_external_load_balancer",
+            "short_description": "Service with external load balancer"
+          },
+          {
+            "name": "shared_host_ipc_namespace",
+            "short_description": "Shared host IPC namespace"
+          },
+          {
+            "name": "shared_host_network_namespace",
+            "short_description": "Shared host network namespace"
+          },
+          {
+            "name": "shared_host_pid_namespace",
+            "short_description": "Shared host PID namespace"
+          },
+          {
+            "name": "shared_service_account",
+            "short_description": "Shared service account"
+          },
+          {
+            "name": "statefulset_has_no_pod_anti_affinity",
+            "short_description": "StatefulSet without podAntiAffinity"
+          },
+          {
+            "name": "statefulset_requests_storage",
+            "short_description": "StatefulSet requests storage"
+          },
+          {
+            "name": "statefulset_without_pod_disruption_budget",
+            "short_description": "StatefulSet without PodDisruptionBudget"
+          },
+          {
+            "name": "statefulset_without_service_name",
+            "short_description": "StatefulSet without service name"
+          },
+          {
+            "name": "terminated_pod_garbage_collector_threshold_not_properly_set",
+            "short_description": "Terminated pod garbage collector threshold not properly set"
+          },
+          {
+            "name": "tiller_deployment_is_accessible_from_within_the_cluster",
+            "short_description": "Tiller Deployment accessible within cluster"
+          },
+          {
+            "name": "tiller_is_deployed",
+            "short_description": "Tiller (Helm v2) deployed"
+          },
+          {
+            "name": "tiller_service_is_not_deleted",
+            "short_description": "Tiller Service present"
+          },
+          {
+            "name": "tls_connection_certificate_not_setup",
+            "short_description": "TLS connection certificate not set up"
+          },
+          {
+            "name": "token_auth_file_is_set",
+            "short_description": "Token auth file is set"
+          },
+          {
+            "name": "use_service_account_credentials_not_set_to_true",
+            "short_description": "Use service account credentials not set to true"
+          },
+          {
+            "name": "using_kubernetes_native_secret_management",
+            "short_description": "Using Kubernetes native secret management"
+          },
+          {
+            "name": "using_unrecommended_namespace",
+            "short_description": "Using unrecommended namespace"
+          },
+          {
+            "name": "volume_mount_with_os_directory_write_permissions",
+            "short_description": "Volume mount with OS directory write permissions"
+          },
+          {
+            "name": "weak_tls_cipher_suites",
+            "short_description": "Weak TLS cipher suites"
+          },
+          {
+            "name": "workload_host_port_not_specified",
+            "short_description": "Workload host port not specified"
+          },
+          {
+            "name": "workload_mounting_with_sensitive_os_directory",
+            "short_description": "Workload mounting with sensitive OS directory"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "name": "terraform",
     "providers": [
       {
