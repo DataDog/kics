@@ -29,3 +29,77 @@ meta:
 ### Description
 
  Pinning an action to a full-length commit SHA is currently the only way to use it as an immutable release. This helps mitigate the risk of a bad actor introducing a backdoor, as doing so would require generating a SHA-1 collision for a valid Git object. When choosing a SHA, ensure it comes from the action's original repository and not a fork.
+
+
+## Compliant Code Examples
+```yaml
+name: test-positive
+on:
+  pull_request:
+    types: [opened, synchronize, edited, reopened]
+    branches: 
+      - master
+jobs:
+  test-positive:
+    runs-on: ubuntu-latest
+    steps:
+    - name: PR comment
+      uses: thollander/actions-comment-pull-request@b07c7f86be67002023e6cb13f57df3f21cdd3411
+      with:
+        comment_tag: title_check
+        mode: recreate
+        create_if_not_exists: true
+```
+
+```yaml
+name: test-positive
+on:
+  pull_request:
+    types: [opened, synchronize, edited, reopened]
+    branches:
+      - master
+jobs:
+  test-positive:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v4
+      with:
+        persist-credentials: false
+
+```
+
+```yaml
+name: test-negative3
+on:
+  pull_request:
+    types: [opened, synchronize, edited, reopened]
+    branches:
+      - master
+jobs:
+  test-negative3:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Local action
+      uses: ./test.yml
+
+```
+## Non-Compliant Code Examples
+```yaml
+name: test-positive
+on:
+  pull_request:
+    types: [opened, synchronize, edited, reopened]
+    branches: 
+      - master
+jobs:
+  test-positive:
+    runs-on: ubuntu-latest
+    steps:
+    - name: PR comment
+      uses: thollander/actions-comment-pull-request@v2
+      with:
+        comment_tag: title_check
+        mode: recreate
+        create_if_not_exists: true
+```

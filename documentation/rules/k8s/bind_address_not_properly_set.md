@@ -1,0 +1,162 @@
+---
+title: "Bind address not properly set"
+group_id: "rules/k8s"
+meta:
+  name: "k8s/bind_address_not_properly_set"
+  id: "46a2e9ec-6a5f-4faa-9d39-4ea44d5d87a2"
+  display_name: "Bind address not properly set"
+  cloud_provider: "k8s"
+  framework: "Kubernetes"
+  severity: "INFO"
+  category: "Networking and Firewall"
+---
+## Metadata
+
+**Id:** `46a2e9ec-6a5f-4faa-9d39-4ea44d5d87a2`
+
+**Cloud Provider:** k8s
+
+**Framework:** Kubernetes
+
+**Severity:** Info
+
+**Category:** Networking and Firewall
+
+#### Learn More
+
+ - [Provider Reference](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-controller-manager/)
+
+### Description
+
+ When using `kube-controller-manager` or `kube-scheduler`, the `--bind-address` should be set to `127.0.0.1`.
+
+
+## Compliant Code Examples
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: command-demo
+  labels:
+    purpose: demonstrate-command
+spec:
+  containers:
+    - name: command-demo-container
+      image: gcr.io/google_containers/kube-controller-manager-amd64:v1.6.0
+      command: ["kube-controller-manager"]
+      args: ["--bind-address=127.0.0.1"]
+  restartPolicy: OnFailure
+
+```
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    component: kube-scheduler
+    tier: control-plane
+  name: kube-scheduler
+  namespace: kube-system
+spec:
+  selector:
+    matchLabels:
+      app: kube-controller-manager
+  template:
+    metadata:
+      labels:
+        app: kube-controller-manager
+  containers:
+    - name: command-demo-container
+      image: k8s.gcr.io/kube-scheduler:v1.19.0
+      command: ["kube-scheduler","--bind-address=127.0.0.1"]
+      args: []
+  restartPolicy: OnFailure
+
+```
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: command-demo
+  labels:
+    purpose: demonstrate-command
+spec:
+  containers:
+    - name: command-demo-container
+      image: gcr.io/google_containers/kube-controller-manager-amd64:v1.6.0
+      command: ["kube-controller-manager","--bind-address=127.0.0.1"]
+      args: []
+  restartPolicy: OnFailure
+
+```
+## Non-Compliant Code Examples
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: command-demo
+  labels:
+    purpose: demonstrate-command
+spec:
+  containers:
+    - name: command-demo-container
+      image: gcr.io/google_containers/kube-controller-manager-amd64:v1.6.0
+      command: ["kube-controller-manager"]
+      args: []
+  restartPolicy: OnFailure
+
+```
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    component: kube-scheduler
+    tier: control-plane
+  name: kube-scheduler
+  namespace: kube-system
+spec:
+  selector:
+    matchLabels:
+      app: kube-controller-manager
+  template:
+    metadata:
+      labels:
+        app: kube-controller-manager
+  containers:
+    - name: command-demo-container
+      image: k8s.gcr.io/kube-scheduler:v1.19.0
+      command: ["kube-scheduler"]
+      args: []
+  restartPolicy: OnFailure
+
+```
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    component: kube-scheduler
+    tier: control-plane
+  name: kube-scheduler
+  namespace: kube-system
+spec:
+  selector:
+    matchLabels:
+      app: kube-controller-manager
+  template:
+    metadata:
+      labels:
+        app: kube-controller-manager
+  containers:
+    - name: command-demo-container
+      image: k8s.gcr.io/kube-scheduler:v1.19.0
+      command: ["kube-scheduler","--bind-address=0.0.0.0"]
+      args: []
+  restartPolicy: OnFailure
+
+```

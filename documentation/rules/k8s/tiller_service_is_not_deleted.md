@@ -1,0 +1,67 @@
+---
+title: "Tiller Service present"
+group_id: "rules/k8s"
+meta:
+  name: "k8s/tiller_service_is_not_deleted"
+  id: "8b862ca9-0fbd-4959-ad72-b6609bdaa22d"
+  display_name: "Tiller Service present"
+  cloud_provider: "k8s"
+  framework: "Kubernetes"
+  severity: "HIGH"
+  category: "Insecure Configurations"
+---
+## Metadata
+
+**Id:** `8b862ca9-0fbd-4959-ad72-b6609bdaa22d`
+
+**Cloud Provider:** k8s
+
+**Framework:** Kubernetes
+
+**Severity:** High
+
+**Category:** Insecure Configurations
+
+#### Learn More
+
+ - [Provider Reference](https://kubernetes.io/docs/concepts/services-networking/service)
+
+### Description
+
+ Tiller Services should be removed, as Helm v2 is deprecated and no longer supported.
+
+
+## Compliant Code Examples
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: some-service
+  labels:
+    name: some-label
+spec:
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 9376
+```
+## Non-Compliant Code Examples
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: tiller-deploy
+  labels:
+    app: helm
+    name: tiller
+spec:
+  type: ClusterIP
+  selector:
+    app: helm
+    name: tiller
+  ports:
+  - name: tiller
+    port: 44134
+    protocol: TCP
+    targetPort: tiller
+```

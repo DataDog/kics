@@ -1,0 +1,149 @@
+---
+title: "etcd TLS certificate files not properly set"
+group_id: "rules/k8s"
+meta:
+  name: "k8s/etcd_tls_certificate_files_not_properly_set"
+  id: "075ca296-6768-4322-aea2-ba5063b969a9"
+  display_name: "etcd TLS certificate files not properly set"
+  cloud_provider: "k8s"
+  framework: "Kubernetes"
+  severity: "MEDIUM"
+  category: "Networking and Firewall"
+---
+## Metadata
+
+**Id:** `075ca296-6768-4322-aea2-ba5063b969a9`
+
+**Cloud Provider:** k8s
+
+**Framework:** Kubernetes
+
+**Severity:** Medium
+
+**Category:** Networking and Firewall
+
+#### Learn More
+
+ - [Provider Reference](https://etcd.io/docs/v3.4/op-guide/security/)
+
+### Description
+
+ When using `etcd`, the `--cert-file` and `--key-file` flags should be set.
+
+
+## Compliant Code Examples
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-etcd-deployment
+spec:
+  selector:
+    matchLabels:
+      app: app
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: app
+        version: v1
+    spec:
+      serviceAccountName: database
+      containers:
+      - name: database
+        image: gcr.io/google_containers/etcd:v3.2.18
+        imagePullPolicy: IfNotPresent
+        command: ["etcd"]
+        args: ["--cert-file=/etc/env/file.crt", "--key-file=/etc/env/file2.key"]
+      nodeSelector:
+        kubernetes.io/hostname: worker02  
+    restartPolicy: OnFailure
+
+```
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-etcd-deployment
+spec:
+  selector:
+    matchLabels:
+      app: app
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: app
+        version: v1
+    spec:
+      serviceAccountName: database
+      containers:
+      - name: database
+        image: gcr.io/google_containers/etcd:v3.2.18
+        imagePullPolicy: IfNotPresent
+        command: ["etcd", "--cert-file=/etc/env/file.crt", "--key-file=/etc/env/file2.key"]
+        args: []
+      nodeSelector:
+        kubernetes.io/hostname: worker02  
+    restartPolicy: OnFailure
+
+```
+## Non-Compliant Code Examples
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-etcd-deployment
+spec:
+  selector:
+    matchLabels:
+      app: app
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: app
+        version: v1
+    spec:
+      serviceAccountName: database
+      containers:
+      - name: database
+        image: gcr.io/google_containers/etcd:v3.2.18
+        imagePullPolicy: IfNotPresent
+        command: ["etcd"]
+        args: ["--key-file=/etc/env/file2.key"]
+      nodeSelector:
+        kubernetes.io/hostname: worker02  
+    restartPolicy: OnFailure
+
+```
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-etcd-deployment
+spec:
+  selector:
+    matchLabels:
+      app: app
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: app
+        version: v1
+    spec:
+      serviceAccountName: database
+      containers:
+      - name: database
+        image: gcr.io/google_containers/etcd:v3.2.18
+        imagePullPolicy: IfNotPresent
+        command: ["etcd"]
+        args: ["--cert-file=/etc/env/file.crt"]
+      nodeSelector:
+        kubernetes.io/hostname: worker02  
+    restartPolicy: OnFailure
+
+```

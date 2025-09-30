@@ -1,12 +1,11 @@
 {
-  "default": 
-    [
+  "terraform": [
       "aws",
       "azure",
       "gcp"
     ],
-  "terraform":[],
   "cicd": [
     "github"
-  ]
+  ],
+  "k8s": []
 }

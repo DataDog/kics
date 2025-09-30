@@ -1,9 +1,9 @@
 {
   "id": "73e251f0-363d-4e53-86e2-0a93592437eb",
-  "queryName": "Audit Log Path Not Set",
+  "queryName": "Audit log path not set",
   "severity": "MEDIUM",
   "category": "Observability",
-  "descriptionText": "When using kube-apiserver command, the 'audit-log-path' flag should be defined",
+  "descriptionText": "When using `kube-apiserver`, the `--audit-log-path` flag should be set.",
   "descriptionUrl": "https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/",
   "platform": "Kubernetes",
   "descriptionID": "21d0f732",
