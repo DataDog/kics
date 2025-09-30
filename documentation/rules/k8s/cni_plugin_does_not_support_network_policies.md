@@ -22,6 +22,10 @@ meta:
 
 **Category:** Networking and Firewall
 
+#### Learn More
+
+ - [Provider Reference](https://kubernetes.io/docs/concepts/extend-kubernetes/compute-storage-net/network-plugins/)
+
 ### Description
 
  Ensure use of a CNI plugin that supports NetworkPolicies. Without support, it may not be possible to effectively restrict cluster traffic.

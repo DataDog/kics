@@ -22,6 +22,10 @@ meta:
 
 **Category:** Resource Management
 
+#### Learn More
+
+ - [Provider Reference](https://kubernetes.io/docs/concepts/storage/volumes/)
+
 ### Description
 
  Containers can mount sensitive directories from the host, granting potentially dangerous access to critical host configurations and binaries.

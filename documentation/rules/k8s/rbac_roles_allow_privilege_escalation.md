@@ -22,6 +22,10 @@ meta:
 
 **Category:** Access Control
 
+#### Learn More
+
+ - [Provider Reference](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#restrictions-on-role-binding-creation-or-update)
+
 ### Description
 
  Roles or ClusterRoles with `bind` or `escalate` permissions allow subjects to create new bindings with other roles. This is dangerous, as users with these privileges can bind to roles that may exceed their own privileges.

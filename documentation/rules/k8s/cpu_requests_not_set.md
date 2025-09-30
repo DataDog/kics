@@ -22,6 +22,10 @@ meta:
 
 **Category:** Resource Management
 
+#### Learn More
+
+ - [Provider Reference](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#)
+
 ### Description
 
  CPU requests should be set to ensure the sum of resource requests of scheduled containers is less than the node's capacity.

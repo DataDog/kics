@@ -22,6 +22,10 @@ meta:
 
 **Category:** Availability
 
+#### Learn More
+
+ - [Provider Reference](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/)
+
 ### Description
 
  When using `kube-apiserver`, the `--enable-admission-plugins` flag should include `EventRateLimit`, and it should be correctly configured in the admission control config file.

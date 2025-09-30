@@ -22,6 +22,10 @@ meta:
 
 **Category:** Insecure Configurations
 
+#### Learn More
+
+ - [Provider Reference](https://kubernetes.io/docs/concepts/policy/pod-security-policy/)
+
 ### Description
 
  Limit capabilities for PodSecurityPolicy.

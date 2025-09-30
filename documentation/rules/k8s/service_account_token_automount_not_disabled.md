@@ -22,6 +22,10 @@ meta:
 
 **Category:** Insecure Defaults
 
+#### Learn More
+
+ - [Provider Reference](https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/#use-the-default-service-account-to-access-the-api-server)
+
 ### Description
 
  Service account tokens are automatically mounted even if not necessary.

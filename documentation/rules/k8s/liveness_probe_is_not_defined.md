@@ -22,6 +22,10 @@ meta:
 
 **Category:** Availability
 
+#### Learn More
+
+ - [Provider Reference](https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#when-should-you-use-a-liveness-probe)
+
 ### Description
 
  A liveness probe can improve availability by restarting unresponsive containers; however, it can cause cascading failures. Define one only when necessary.

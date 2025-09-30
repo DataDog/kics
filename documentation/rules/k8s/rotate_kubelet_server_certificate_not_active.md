@@ -22,6 +22,10 @@ meta:
 
 **Category:** Secret Management
 
+#### Learn More
+
+ - [Provider Reference](https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/)
+
 ### Description
 
  The `RotateKubeletServerCertificate` argument should be set to `true`.

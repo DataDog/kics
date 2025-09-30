@@ -22,6 +22,10 @@ meta:
 
 **Category:** Resource Management
 
+#### Learn More
+
+ - [Provider Reference](https://kubernetes.io/docs/concepts/policy/pod-security-policy/#volumes-and-file-systems)
+
 ### Description
 
  PodSecurityPolicy should set `readOnly` to `true` for every allowed host path.

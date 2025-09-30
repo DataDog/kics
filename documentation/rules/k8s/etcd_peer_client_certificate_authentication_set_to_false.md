@@ -22,6 +22,10 @@ meta:
 
 **Category:** Secret Management
 
+#### Learn More
+
+ - [Provider Reference](https://etcd.io/docs/v3.4/op-guide/security/)
+
 ### Description
 
  When using `etcd`, the `--peer-client-cert-auth` flag should be set to `true`.

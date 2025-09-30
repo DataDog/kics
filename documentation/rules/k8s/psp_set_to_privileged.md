@@ -22,6 +22,10 @@ meta:
 
 **Category:** Insecure Configurations
 
+#### Learn More
+
+ - [Provider Reference](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/pod_security_policy#privileged)
+
 ### Description
 
  Pods should not be allowed to request execution as privileged.

@@ -22,6 +22,10 @@ meta:
 
 **Category:** Observability
 
+#### Learn More
+
+ - [Provider Reference](https://kubernetes.io/docs/reference/command-line-tools-reference/kubelet/)
+
 ### Description
 
  When using `kubelet`, the `--event-qps` value should be set to `0`.

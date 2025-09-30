@@ -22,6 +22,10 @@ meta:
 
 **Category:** Insecure Configurations
 
+#### Learn More
+
+ - [Provider Reference](https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/)
+
 ### Description
 
  If not needed, disable the dashboard to prevent it from being used as an attack vector.

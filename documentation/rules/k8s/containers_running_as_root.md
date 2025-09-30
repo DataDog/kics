@@ -22,6 +22,10 @@ meta:
 
 **Category:** Best Practices
 
+#### Learn More
+
+ - [Provider Reference](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/)
+
 ### Description
 
  Containers should run only as a non-root user. This limits the exploitability of security misconfigurations and restricts an attacker's options in case of compromise.

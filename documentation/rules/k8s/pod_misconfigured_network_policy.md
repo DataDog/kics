@@ -22,6 +22,10 @@ meta:
 
 **Category:** Networking and Firewall
 
+#### Learn More
+
+ - [Provider Reference](https://kubernetes.io/docs/concepts/services-networking/network-policies/)
+
 ### Description
 
  Each Pod should be targeted by a network policy.

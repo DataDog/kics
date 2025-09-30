@@ -22,6 +22,10 @@ meta:
 
 **Category:** Insecure Configurations
 
+#### Learn More
+
+ - [Provider Reference](https://kubernetes.io/docs/concepts/containers/images/#updating-images)
+
 ### Description
 
  Images should be specified with their digests to ensure integrity.

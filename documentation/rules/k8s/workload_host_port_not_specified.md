@@ -22,6 +22,10 @@ meta:
 
 **Category:** Networking and Firewall
 
+#### Learn More
+
+ - [Provider Reference](https://kubernetes.io/docs/concepts/services-networking/connect-applications-service/#exposing-the-service)
+
 ### Description
 
  Verifies whether the Kubernetes workload's host port is specified.

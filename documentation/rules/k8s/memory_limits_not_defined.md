@@ -22,6 +22,10 @@ meta:
 
 **Category:** Resource Management
 
+#### Learn More
+
+ - [Provider Reference](https://kubernetes.io/docs/tasks/configure-pod-container/assign-memory-resource/)
+
 ### Description
 
  Memory limits should be defined for each container to prevent resource exhaustion by ensuring that containers do not consume more than the designated amount of memory.

@@ -22,6 +22,10 @@ meta:
 
 **Category:** Access Control
 
+#### Learn More
+
+ - [Provider Reference](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/)
+
 ### Description
 
  As a best practice, ensure correct use of namespaces to administer resources. Kubernetes authorization plugins can also create policies that segregate user access to namespaces.

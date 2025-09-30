@@ -22,6 +22,10 @@ meta:
 
 **Category:** Networking and Firewall
 
+#### Learn More
+
+ - [Provider Reference](https://kubernetes.io/docs/tasks/access-application-cluster/create-external-load-balancer/)
+
 ### Description
 
  The Service has an external load balancer, which may allow access from other networks and the internet.

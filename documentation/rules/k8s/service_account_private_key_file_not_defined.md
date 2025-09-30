@@ -22,6 +22,10 @@ meta:
 
 **Category:** Encryption
 
+#### Learn More
+
+ - [Provider Reference](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-controller-manager/)
+
 ### Description
 
  When using `kube-controller-manager`, the `--service-account-private-key-file` flag should be set.

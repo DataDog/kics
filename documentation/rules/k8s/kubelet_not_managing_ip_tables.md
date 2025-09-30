@@ -22,6 +22,10 @@ meta:
 
 **Category:** Networking and Firewall
 
+#### Learn More
+
+ - [Provider Reference](https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/)
+
 ### Description
 
  The kubelet argument `--make-iptables-util-chains` should be set to `true`.

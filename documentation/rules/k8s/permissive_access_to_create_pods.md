@@ -22,6 +22,10 @@ meta:
 
 **Category:** Access Control
 
+#### Learn More
+
+ - [Provider Reference](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#privilege-escalation-prevention-and-bootstrapping)
+
 ### Description
 
  The permission to create Pods in a cluster should be restricted because it allows privilege escalation.

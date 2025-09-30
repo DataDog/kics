@@ -22,6 +22,10 @@ meta:
 
 **Category:** Best Practices
 
+#### Learn More
+
+ - [Provider Reference](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/)
+
 ### Description
 
  Containers should not run with a low UID, as this may cause conflicts with the host's user table.

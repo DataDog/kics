@@ -22,6 +22,10 @@ meta:
 
 **Category:** Insecure Configurations
 
+#### Learn More
+
+ - [Provider Reference](https://kubernetes.io/docs/concepts/workloads/pods/#privileged-mode-for-containers)
+
 ### Description
 
  Privileged containers lack essential security restrictions and should be avoided by removing the `privileged` flag or setting it to `false`.

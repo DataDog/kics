@@ -22,6 +22,10 @@ meta:
 
 **Category:** Availability
 
+#### Learn More
+
+ - [Provider Reference](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale-walkthrough/)
+
 ### Description
 
  Deployments targeted by HorizontalPodAutoscaler should not have a statically configured replica count.

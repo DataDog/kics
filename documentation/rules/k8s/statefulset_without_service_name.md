@@ -22,6 +22,10 @@ meta:
 
 **Category:** Availability
 
+#### Learn More
+
+ - [Provider Reference](https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/)
+
 ### Description
 
  StatefulSets should have an existing headless `serviceName`. The headless service labels should also be applied to StatefulSet labels.

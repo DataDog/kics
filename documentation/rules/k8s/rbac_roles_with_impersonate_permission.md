@@ -22,6 +22,10 @@ meta:
 
 **Category:** Access Control
 
+#### Learn More
+
+ - [Provider Reference](https://kubernetes.io/docs/reference/access-authn-authz/authentication/#user-impersonation)
+
 ### Description
 
  Roles or ClusterRoles with the `impersonate` permission allow subjects to assume the rights of other users, groups, or service accounts. In case of compromise, attackers may abuse this sudo-like functionality to achieve privilege escalation.

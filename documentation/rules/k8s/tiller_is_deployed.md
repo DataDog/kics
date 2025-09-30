@@ -22,6 +22,10 @@ meta:
 
 **Category:** Insecure Configurations
 
+#### Learn More
+
+ - [Provider Reference](https://kubernetes.io/docs/concepts/containers/images/)
+
 ### Description
 
  Tiller (Helm v2) should not be deployed, as it is deprecated and no longer supported.

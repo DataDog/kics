@@ -22,6 +22,10 @@ meta:
 
 **Category:** Encryption
 
+#### Learn More
+
+ - [Provider Reference](https://kubernetes.io/docs/tasks/administer-cluster/encrypt-data/#understanding-the-encryption-at-rest-configuration)
+
 ### Description
 
  The encryption configuration should include at least one provider: `aescbc`, `kms`, or `secretbox`.

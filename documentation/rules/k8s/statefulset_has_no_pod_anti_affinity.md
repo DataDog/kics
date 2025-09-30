@@ -22,6 +22,10 @@ meta:
 
 **Category:** Resource Management
 
+#### Learn More
+
+ - [Provider Reference](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/)
+
 ### Description
 
  StatefulSets should define a `podAntiAffinity` policy to avoid scheduling multiple Pods on the same node.

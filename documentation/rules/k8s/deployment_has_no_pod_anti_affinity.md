@@ -22,6 +22,10 @@ meta:
 
 **Category:** Resource Management
 
+#### Learn More
+
+ - [Provider Reference](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/)
+
 ### Description
 
  Deployments should define a `podAntiAffinity` policy to prevent multiple Pods from being scheduled on the same node.

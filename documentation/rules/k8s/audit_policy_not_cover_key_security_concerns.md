@@ -22,6 +22,10 @@ meta:
 
 **Category:** Observability
 
+#### Learn More
+
+ - [Provider Reference](https://kubernetes.io/docs/tasks/debug-application-cluster/audit/)
+
 ### Description
 
  The audit policy should cover key security concerns about sensitive data logged in Kubernetes audit policies.

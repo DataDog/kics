@@ -22,6 +22,10 @@ meta:
 
 **Category:** Secret Management
 
+#### Learn More
+
+ - [Provider Reference](https://kubernetes.io/docs/reference/access-authn-authz/rbac/)
+
 ### Description
 
  Roles and ClusterRoles, when bound, should not use `get`, `list`, or `watch` verbs.

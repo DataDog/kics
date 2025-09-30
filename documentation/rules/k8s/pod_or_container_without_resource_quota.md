@@ -22,6 +22,10 @@ meta:
 
 **Category:** Insecure Configurations
 
+#### Learn More
+
+ - [Provider Reference](https://kubernetes.io/docs/concepts/policy/resource-quotas/)
+
 ### Description
 
  Each namespace should have a ResourceQuota policy associated with limiting the total resources that Pods, containers, and PersistentVolumeClaims can consume.

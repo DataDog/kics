@@ -22,6 +22,10 @@ meta:
 
 **Category:** Resource Management
 
+#### Learn More
+
+ - [Provider Reference](https://kubernetes.io/docs/tasks/configure-pod-container/assign-memory-resource/)
+
 ### Description
 
  Memory requests should be defined for each container to allow the kubelet to reserve the requested system resources and prevent over-provisioning on individual nodes.

@@ -22,6 +22,10 @@ meta:
 
 **Category:** Secret Management
 
+#### Learn More
+
+ - [Provider Reference](https://kubernetes.io/docs/concepts/configuration/secret/)
+
 ### Description
 
  Use of an external secret storage and management system should be considered for complex secret management needs, rather than using Kubernetes Secrets directly. Additionally, ensure that access to secrets is carefully limited.

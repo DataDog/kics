@@ -22,6 +22,10 @@ meta:
 
 **Category:** Availability
 
+#### Learn More
+
+ - [Provider Reference](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/#define-readiness-probes)
+
 ### Description
 
  A readiness probe should be configured.

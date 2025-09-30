@@ -22,6 +22,10 @@ meta:
 
 **Category:** Insecure Configurations
 
+#### Learn More
+
+ - [Provider Reference](https://kubernetes.io/docs/concepts/policy/pod-security-policy/#allowedprocmounttypes)
+
 ### Description
 
  Containers should not have full (unmasked) access to the host's `/proc` filesystem, as this can expose sensitive information and allow kernel parameter changes.

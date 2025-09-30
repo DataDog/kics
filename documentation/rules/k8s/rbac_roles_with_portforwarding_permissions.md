@@ -22,6 +22,10 @@ meta:
 
 **Category:** Access Control
 
+#### Learn More
+
+ - [Provider Reference](https://kubernetes.io/docs/reference/access-authn-authz/rbac/)
+
 ### Description
 
  Roles or ClusterRoles with permissions to port-forward into pods can open socket-level communication channels to containers. In case of compromise, attackers may abuse this for direct communication that bypasses network security controls.

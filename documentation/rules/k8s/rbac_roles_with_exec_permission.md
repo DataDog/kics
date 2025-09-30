@@ -22,6 +22,10 @@ meta:
 
 **Category:** Access Control
 
+#### Learn More
+
+ - [Provider Reference](https://kubernetes.io/docs/reference/access-authn-authz/rbac/)
+
 ### Description
 
  Roles or ClusterRoles with permissions to run commands in containers via `kubectl exec` could be abused by attackers to execute malicious code in case of compromise. To prevent this, the `pods/exec` verb should not be used in production environments.

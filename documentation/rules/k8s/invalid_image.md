@@ -22,6 +22,10 @@ meta:
 
 **Category:** Supply-Chain
 
+#### Learn More
+
+ - [Provider Reference](https://kubernetes.io/docs/concepts/containers/images/#updating-images)
+
 ### Description
 
  The image tag must be defined and not be empty or `latest`.

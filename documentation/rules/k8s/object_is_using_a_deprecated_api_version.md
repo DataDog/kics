@@ -22,6 +22,10 @@ meta:
 
 **Category:** Best Practices
 
+#### Learn More
+
+ - [Provider Reference](https://kubernetes.io/docs/reference/using-api/deprecation-guide/)
+
 ### Description
 
  Kubernetes APIs evolve over time and may be removed in newer releases. To prevent incompatibilities when upgrading Kubernetes, deprecated APIs should be replaced with newer, stable API versions.

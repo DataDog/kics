@@ -22,6 +22,10 @@ meta:
 
 **Category:** Build Process
 
+#### Learn More
+
+ - [Provider Reference](https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/)
+
 ### Description
 
  Kubernetes StatefulSets must have one volume claim template with the access mode `ReadWriteOnce`.

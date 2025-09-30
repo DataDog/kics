@@ -22,6 +22,10 @@ meta:
 
 **Category:** Best Practices
 
+#### Learn More
+
+ - [Provider Reference](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/)
+
 ### Description
 
  Metadata labels should be valid.

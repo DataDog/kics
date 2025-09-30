@@ -22,6 +22,10 @@ meta:
 
 **Category:** Networking and Firewall
 
+#### Learn More
+
+ - [Provider Reference](https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/)
+
 ### Description
 
  The `--streaming-connection-idle-timeout` flag should not be set to `0`.

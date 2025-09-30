@@ -22,6 +22,10 @@ meta:
 
 **Category:** Networking and Firewall
 
+#### Learn More
+
+ - [Provider Reference](https://kubernetes.io/docs/concepts/containers/images/)
+
 ### Description
 
  Tiller Deployments should not allow access from within the cluster.

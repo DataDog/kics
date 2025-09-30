@@ -22,6 +22,10 @@ meta:
 
 **Category:** Observability
 
+#### Learn More
+
+ - [Provider Reference](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/)
+
 ### Description
 
  When using `kube-apiserver`, the `--audit-log-maxbackup` flag should be set to 10 files or more.

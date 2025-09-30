@@ -22,6 +22,10 @@ meta:
 
 **Category:** Build Process
 
+#### Learn More
+
+ - [Provider Reference](https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/)
+
 ### Description
 
  A StatefulSet requests persistent volume storage.

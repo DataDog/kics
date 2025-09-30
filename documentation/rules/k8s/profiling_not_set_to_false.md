@@ -22,6 +22,10 @@ meta:
 
 **Category:** Observability
 
+#### Learn More
+
+ - [Provider Reference](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/)
+
 ### Description
 
  When using `kube-apiserver`, `kube-controller-manager`, or `kube-scheduler`, the `--profiling` flag should be set to `false`.

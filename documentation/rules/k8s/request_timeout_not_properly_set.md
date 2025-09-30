@@ -22,6 +22,10 @@ meta:
 
 **Category:** Availability
 
+#### Learn More
+
+ - [Provider Reference](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/)
+
 ### Description
 
  When using `kube-apiserver`, the `--request-timeout` value should not be excessively long.

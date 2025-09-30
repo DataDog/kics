@@ -22,6 +22,10 @@ meta:
 
 **Category:** Availability
 
+#### Learn More
+
+ - [Provider Reference](https://kubernetes.io/docs/tasks/run-application/configure-pdb/)
+
 ### Description
 
  StatefulSets should be assigned a PodDisruptionBudget to ensure high availability.

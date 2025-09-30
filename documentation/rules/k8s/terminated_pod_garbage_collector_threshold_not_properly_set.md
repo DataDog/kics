@@ -22,6 +22,10 @@ meta:
 
 **Category:** Availability
 
+#### Learn More
+
+ - [Provider Reference](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-controller-manager/)
+
 ### Description
 
  When using `kube-controller-manager`, the `--terminated-pod-gc-threshold` flag should be set between `0` and `12501`.

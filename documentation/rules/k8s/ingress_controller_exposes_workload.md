@@ -22,6 +22,10 @@ meta:
 
 **Category:** Insecure Configurations
 
+#### Learn More
+
+ - [Provider Reference](https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/)
+
 ### Description
 
  Ingress controllers should not expose workloads to avoid vulnerabilities and DoS attacks.

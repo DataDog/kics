@@ -22,6 +22,10 @@ meta:
 
 **Category:** Insecure Defaults
 
+#### Learn More
+
+ - [Provider Reference](https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/)
+
 ### Description
 
  A Kubernetes Pod should have a service account defined to restrict Kubernetes API access; the `serviceAccountName` attribute should be set and not empty.

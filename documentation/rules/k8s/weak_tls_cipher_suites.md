@@ -22,6 +22,10 @@ meta:
 
 **Category:** Encryption
 
+#### Learn More
+
+ - [Provider Reference](https://kubernetes.io/docs/reference/command-line-tools-reference/kubelet/)
+
 ### Description
 
  TLS connections should use strong cipher suites.

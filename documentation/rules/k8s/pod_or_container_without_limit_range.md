@@ -22,6 +22,10 @@ meta:
 
 **Category:** Insecure Configurations
 
+#### Learn More
+
+ - [Provider Reference](https://kubernetes.io/docs/concepts/policy/limit-range/)
+
 ### Description
 
  Each namespace should have an associated LimitRange policy to ensure that resource allocations of Pods, containers, and PersistentVolumeClaims do not exceed defined boundaries.

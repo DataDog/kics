@@ -22,6 +22,10 @@ meta:
 
 **Category:** Best Practices
 
+#### Learn More
+
+ - [Provider Reference](https://kubernetes.io/docs/concepts/workloads/pods/init-containers/)
+
 ### Description
 
  Containers should configure drop capabilities in the security context.

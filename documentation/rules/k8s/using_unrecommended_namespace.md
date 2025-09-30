@@ -22,6 +22,10 @@ meta:
 
 **Category:** Insecure Configurations
 
+#### Learn More
+
+ - [Provider Reference](https://kubernetes.io/docs/concepts/overview/working-with-objects/kubernetes-objects/)
+
 ### Description
 
  Namespaces such as `default`, `kube-system`, or `kube-public` should not be used.

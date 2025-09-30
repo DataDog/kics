@@ -22,6 +22,10 @@ meta:
 
 **Category:** Secret Management
 
+#### Learn More
+
+ - [Provider Reference](https://kubernetes.io/docs/concepts/configuration/secret/#using-secrets-as-environment-variables)
+
 ### Description
 
  Containers should not use secrets as environment variables.

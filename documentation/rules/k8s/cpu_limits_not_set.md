@@ -22,6 +22,10 @@ meta:
 
 **Category:** Resource Management
 
+#### Learn More
+
+ - [Provider Reference](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/)
+
 ### Description
 
  CPU limits should be set to ensure fair resource allocation and prevent containers from consuming excessive CPU.

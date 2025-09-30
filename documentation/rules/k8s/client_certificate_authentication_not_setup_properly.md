@@ -22,6 +22,10 @@ meta:
 
 **Category:** Access Control
 
+#### Learn More
+
+ - [Provider Reference](https://kubernetes.io/docs/reference/command-line-tools-reference/kubelet/)
+
 ### Description
 
  Client certificate authentication should be set up with a `.pem` or `.crt` file.

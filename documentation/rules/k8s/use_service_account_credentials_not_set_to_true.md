@@ -22,6 +22,10 @@ meta:
 
 **Category:** Access Control
 
+#### Learn More
+
+ - [Provider Reference](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-controller-manager/)
+
 ### Description
 
  When using `kube-controller-manager`, the `--use-service-account-credentials` flag should be set to `true`.

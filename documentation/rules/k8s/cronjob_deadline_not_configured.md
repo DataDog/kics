@@ -22,6 +22,10 @@ meta:
 
 **Category:** Resource Management
 
+#### Learn More
+
+ - [Provider Reference](https://kubernetes.io/docs/concepts/workloads/controllers/cron-jobs/)
+
 ### Description
 
  CronJobs must have a configured deadline. The `startingDeadlineSeconds` attribute must be defined.

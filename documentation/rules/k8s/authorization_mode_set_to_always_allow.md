@@ -22,6 +22,10 @@ meta:
 
 **Category:** Access Control
 
+#### Learn More
+
+ - [Provider Reference](https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/)
+
 ### Description
 
  When using `kubelet`, the `--authorization-mode` flag should not be set to `AlwaysAllow`.

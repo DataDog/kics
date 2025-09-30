@@ -22,6 +22,10 @@ meta:
 
 **Category:** Networking and Firewall
 
+#### Learn More
+
+ - [Provider Reference](https://etcd.io/docs/v3.4/op-guide/security/)
+
 ### Description
 
  When using `etcd`, the `--auto-tls` flag should be set to `false`.

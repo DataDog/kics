@@ -22,6 +22,10 @@ meta:
 
 **Category:** Access Control
 
+#### Learn More
+
+ - [Provider Reference](https://kubernetes.io/docs/tutorials/clusters/apparmor/)
+
 ### Description
 
  Containers should be configured with an AppArmor profile to enforce fine-grained access control over low-level system resources.
