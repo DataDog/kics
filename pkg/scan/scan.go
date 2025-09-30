@@ -25,6 +25,7 @@ import (
 	terraformParser "github.com/Checkmarx/kics/pkg/parser/terraform"
 	yamlParser "github.com/Checkmarx/kics/pkg/parser/yaml"
 	"github.com/Checkmarx/kics/pkg/resolver"
+	"github.com/Checkmarx/kics/pkg/resolver/helm"
 	"github.com/Checkmarx/kics/pkg/scanner"
 )
 
@@ -278,6 +279,7 @@ func (c *Client) createService(
 
 	// combinedResolver to be used to resolve files and templates
 	combinedResolver, err := resolver.NewBuilder().
+		Add(ctx, &helm.Resolver{}).
 		Build(ctx)
 	if err != nil {
 		return nil, err

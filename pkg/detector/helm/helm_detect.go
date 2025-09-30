@@ -67,10 +67,11 @@ func (d DetectKindLine) DetectLine(ctx context.Context, file *model.FileMetadata
 		helmID = -1
 	}
 
+	start, end := model.ResourceLine{}, model.ResourceLine{}
 	// Since we are only looking at keys we can ignore the second value passed through '=' and '[]'
 	for _, key := range strings.Split(sanitizedSubstring, ".") {
 		substr1, _ := detector.GenerateSubstrings(ctx, key, extractedString, lines, curLineRes.lineRes)
-		curLineRes = curLineRes.detectCurrentLine(lines, fmt.Sprintf("%s:", substr1), "", true, file.IDInfo, helmID)
+		curLineRes, start, end = curLineRes.detectCurrentLine(lines, fmt.Sprintf("%s:", substr1), "", true, file.IDInfo, helmID)
 
 		if curLineRes.breakRes {
 			break
@@ -100,6 +101,10 @@ func (d DetectKindLine) DetectLine(ctx context.Context, file *model.FileMetadata
 			VulnLines:             detector.GetAdjacentVulnLines(curLineRes.lineRes, outputLines, lines),
 			LineWithVulnerability: strings.Split(lines[curLineRes.lineRes], ": ")[0],
 			ResolvedFile:          file.FilePath,
+			VulnerablilityLocation: model.ResourceLocation{
+				Start: start,
+				End:   end,
+			},
 		}
 	}
 
@@ -135,17 +140,22 @@ func removeLines(current int, lineRemove map[int]int) int {
 }
 
 func (d detectCurlLine) detectCurrentLine(lines []string, str1,
-	str2 string, byKey bool, idInfo map[int]interface{}, id int) detectCurlLine {
+	str2 string, byKey bool, idInfo map[int]interface{}, id int) (detectCurlLine, model.ResourceLine, model.ResourceLine) {
 	distances := make(map[int]int)
+	starts, ends := make(map[int]model.ResourceLine), make(map[int]model.ResourceLine)
 	for i := d.lineRes; i < len(lines); i++ {
 		if str1 != "" && str2 != "" {
 			if strings.Contains(lines[i], str1) && strings.Contains(lines[i], str2) {
 				distances[i] = levenshtein.ComputeDistance(detector.ExtractLineFragment(lines[i], str2, byKey), str2)
+				starts[i] = model.ResourceLine{Line: i + 1, Col: 0}
+				ends[i] = model.ResourceLine{Line: i + 1, Col: len(lines[i])}
 			}
 		} else if str1 != "" {
 			if strings.Contains(lines[i], str1) {
 				distances[i] = levenshtein.ComputeDistance(
 					detector.ExtractLineFragment(strings.TrimSpace(lines[i]), str1, byKey), str1)
+				starts[i] = model.ResourceLine{Line: i + 1, Col: 0}
+				ends[i] = model.ResourceLine{Line: i + 1, Col: len(lines[i])}
 			}
 		}
 	}
@@ -161,7 +171,7 @@ func (d detectCurlLine) detectCurrentLine(lines []string, str1,
 				lastUniqueLine: lastSingle,
 				unique:         d.lastUnique.unique,
 			},
-		}
+		}, model.ResourceLine{}, model.ResourceLine{}
 	}
 
 	lineResponse := detector.SelectLineWithMinimumDistance(distances, d.lineRes)
@@ -172,14 +182,16 @@ func (d detectCurlLine) detectCurrentLine(lines []string, str1,
 	}
 
 	return detectCurlLine{
-		foundRes: true,
-		lineRes:  lineResponse,
-		breakRes: false,
-		lastUnique: dupHistory{
-			unique:         unique,
-			lastUniqueLine: lastSingle,
+			foundRes: true,
+			lineRes:  lineResponse,
+			breakRes: false,
+			lastUnique: dupHistory{
+				unique:         unique,
+				lastUniqueLine: lastSingle,
+			},
 		},
-	}
+		starts[lineResponse],
+		ends[lineResponse]
 }
 
 // detectLastSingle checks if the line is unique or a duplicate

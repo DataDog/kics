@@ -18,7 +18,7 @@ import (
 // Resolve will render file/template
 // SupportedTypes will return the file kinds that the resolver supports
 type kindResolver interface {
-	Resolve(filePath string) (model.ResolvedFiles, error)
+	Resolve(ctx context.Context, filePath string) (model.ResolvedFiles, error)
 	SupportedTypes() []model.FileKind
 }
 
@@ -66,7 +66,7 @@ func (b *Builder) Build(ctx context.Context) (*Resolver, error) {
 func (r *Resolver) Resolve(ctx context.Context, filePath string, kind model.FileKind) (model.ResolvedFiles, error) {
 	logger := logger.FromContext(ctx)
 	if r, ok := r.resolvers[kind]; ok {
-		obj, err := r.Resolve(filePath)
+		obj, err := r.Resolve(ctx, filePath)
 		if err != nil {
 			return model.ResolvedFiles{}, err
 		}
