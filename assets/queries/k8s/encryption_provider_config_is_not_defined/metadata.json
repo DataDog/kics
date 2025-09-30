@@ -4,8 +4,9 @@
   "severity": "MEDIUM",
   "category": "Encryption",
   "descriptionText": "When using `kube-apiserver`, the `--encryption-provider-config` flag should be set, and encryption should be correctly configured in the encryption configuration file.",
-  "descriptionUrl": "https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/k8s/encryption_provider_config_is_not_defined",
   "platform": "Kubernetes",
   "descriptionID": "c018594c",
-  "cwe": ""
+  "cwe": "",
+  "providerUrl": "https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/"
 }

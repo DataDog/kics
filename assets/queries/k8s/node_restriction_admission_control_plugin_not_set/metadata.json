@@ -4,7 +4,7 @@
   "severity": "MEDIUM",
   "category": "Access Control",
   "descriptionText": "When using `kube-apiserver`, the `--enable-admission-plugins` flag should include `NodeRestriction`, and it should be correctly configured in the admission control config file.",
-  "descriptionUrl": "https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/k8s/node_restriction_admission_control_plugin_not_set",
   "platform": "Kubernetes",
   "descriptionID": "2a03f1ec",
   "cwe": "",
@@ -16,5 +16,6 @@
       "framework_version": "v2",
       "requirement": "kubernetes"
     }
-  ]
+  ],
+  "providerUrl": "https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/"
 }

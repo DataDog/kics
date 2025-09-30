@@ -4,8 +4,9 @@
   "severity": "MEDIUM",
   "category": "Access Control",
   "descriptionText": "Roles or ClusterRoles with permissions to attach to containers via `kubectl attach` could be abused by attackers to read log output (stdout, stderr) and send input data (stdin) to running processes. Additionally, it could allow a malicious user to attach to a privileged container, resulting in privilege escalation. To prevent this, the `pods/attach` verb should not be used in production environments.",
-  "descriptionUrl": "https://kubernetes.io/docs/reference/access-authn-authz/rbac/",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/k8s/rbac_roles_with_attach_permission",
   "platform": "Kubernetes",
   "descriptionID": "d45330fd",
-  "cwe": ""
+  "cwe": "",
+  "providerUrl": "https://kubernetes.io/docs/reference/access-authn-authz/rbac/"
 }

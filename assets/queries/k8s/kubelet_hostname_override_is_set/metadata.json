@@ -4,8 +4,9 @@
   "severity": "LOW",
   "category": "Insecure Configurations",
   "descriptionText": "Hostnames should not be overridden.",
-  "descriptionUrl": "https://kubernetes.io/docs/reference/command-line-tools-reference/kubelet/",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/k8s/kubelet_hostname_override_is_set",
   "platform": "Kubernetes",
   "descriptionID": "a3adb557",
-  "cwe": ""
+  "cwe": "",
+  "providerUrl": "https://kubernetes.io/docs/reference/command-line-tools-reference/kubelet/"
 }

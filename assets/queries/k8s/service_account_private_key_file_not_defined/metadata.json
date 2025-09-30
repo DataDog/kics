@@ -4,9 +4,10 @@
   "severity": "MEDIUM",
   "category": "Encryption",
   "descriptionText": "When using `kube-controller-manager`, the `--service-account-private-key-file` flag should be set.",
-  "descriptionUrl": "https://kubernetes.io/docs/reference/command-line-tools-reference/kube-controller-manager/",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/k8s/service_account_private_key_file_not_defined",
   "platform": "Kubernetes",
   "descriptionID": "b2fc61b4",
   "cwe": "",
-  "oldSeverity": "HIGH"
+  "oldSeverity": "HIGH",
+  "providerUrl": "https://kubernetes.io/docs/reference/command-line-tools-reference/kube-controller-manager/"
 }

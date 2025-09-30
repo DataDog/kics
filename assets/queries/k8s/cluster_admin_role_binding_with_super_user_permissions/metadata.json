@@ -4,8 +4,9 @@
   "severity": "LOW",
   "category": "Access Control",
   "descriptionText": "Ensure that the `cluster-admin` role is used only where required (RBAC).",
-  "descriptionUrl": "https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/k8s/cluster_admin_role_binding_with_super_user_permissions",
   "platform": "Kubernetes",
   "descriptionID": "567eee7e",
-  "cwe": ""
+  "cwe": "",
+  "providerUrl": "https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles"
 }

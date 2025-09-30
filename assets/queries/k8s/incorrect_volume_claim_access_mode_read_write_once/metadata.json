@@ -4,8 +4,9 @@
   "severity": "MEDIUM",
   "category": "Build Process",
   "descriptionText": "Kubernetes StatefulSets must have one volume claim template with the access mode `ReadWriteOnce`.",
-  "descriptionUrl": "https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/k8s/incorrect_volume_claim_access_mode_read_write_once",
   "platform": "Kubernetes",
   "descriptionID": "f4e48914",
-  "cwe": ""
+  "cwe": "",
+  "providerUrl": "https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/"
 }

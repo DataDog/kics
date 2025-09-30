@@ -4,9 +4,10 @@
   "severity": "HIGH",
   "category": "Insecure Configurations",
   "descriptionText": "The workload mounts a volume with a sensitive OS directory.",
-  "descriptionUrl": "https://kubernetes.io/docs/concepts/policy/pod-security-policy/",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/k8s/workload_mounting_with_sensitive_os_directory",
   "platform": "Kubernetes",
   "descriptionID": "73339cde",
   "cwe": "",
-  "oldSeverity": "MEDIUM"
+  "oldSeverity": "MEDIUM",
+  "providerUrl": "https://kubernetes.io/docs/concepts/policy/pod-security-policy/"
 }

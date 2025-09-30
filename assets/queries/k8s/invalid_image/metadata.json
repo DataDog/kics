@@ -4,8 +4,9 @@
   "severity": "LOW",
   "category": "Supply-Chain",
   "descriptionText": "The image tag must be defined and not be empty or `latest`.",
-  "descriptionUrl": "https://kubernetes.io/docs/concepts/containers/images/#updating-images",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/k8s/invalid_image",
   "platform": "Kubernetes",
   "descriptionID": "30154626",
-  "cwe": ""
+  "cwe": "",
+  "providerUrl": "https://kubernetes.io/docs/concepts/containers/images/#updating-images"
 }

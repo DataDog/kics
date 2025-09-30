@@ -4,8 +4,9 @@
   "severity": "LOW",
   "category": "Best Practices",
   "descriptionText": "Containers should configure drop capabilities in the security context.",
-  "descriptionUrl": "https://kubernetes.io/docs/concepts/workloads/pods/init-containers/",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/k8s/no_drop_capabilities_for_containers",
   "platform": "Kubernetes",
   "descriptionID": "9d3ca6db",
-  "cwe": ""
+  "cwe": "",
+  "providerUrl": "https://kubernetes.io/docs/concepts/workloads/pods/init-containers/"
 }

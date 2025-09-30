@@ -4,8 +4,9 @@
   "severity": "MEDIUM",
   "category": "Best Practices",
   "descriptionText": "Containers should not run with a low UID, as this may cause conflicts with the host's user table.",
-  "descriptionUrl": "https://kubernetes.io/docs/tasks/configure-pod-container/security-context/",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/k8s/containers_run_with_low_uid",
   "platform": "Kubernetes",
   "descriptionID": "fc2c11f9",
-  "cwe": ""
+  "cwe": "",
+  "providerUrl": "https://kubernetes.io/docs/tasks/configure-pod-container/security-context/"
 }

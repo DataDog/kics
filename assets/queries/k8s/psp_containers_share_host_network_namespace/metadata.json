@@ -4,8 +4,9 @@
   "severity": "HIGH",
   "category": "Insecure Configurations",
   "descriptionText": "PodSecurityPolicies should not allow containers to share the host network namespace.",
-  "descriptionUrl": "https://kubernetes.io/docs/concepts/policy/pod-security-policy/",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/k8s/psp_containers_share_host_network_namespace",
   "platform": "Kubernetes",
   "descriptionID": "4b468f08",
-  "cwe": ""
+  "cwe": "",
+  "providerUrl": "https://kubernetes.io/docs/concepts/policy/pod-security-policy/"
 }

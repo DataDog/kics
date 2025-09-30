@@ -4,8 +4,9 @@
   "severity": "LOW",
   "category": "Insecure Configurations",
   "descriptionText": "Images should be specified with their digests to ensure integrity.",
-  "descriptionUrl": "https://kubernetes.io/docs/concepts/containers/images/#updating-images",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/k8s/image_without_digest",
   "platform": "Kubernetes",
   "descriptionID": "3f9f8d78",
-  "cwe": ""
+  "cwe": "",
+  "providerUrl": "https://kubernetes.io/docs/concepts/containers/images/#updating-images"
 }

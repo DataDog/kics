@@ -4,8 +4,9 @@
   "severity": "MEDIUM",
   "category": "Access Control",
   "descriptionText": "Roles or ClusterRoles with the `impersonate` permission allow subjects to assume the rights of other users, groups, or service accounts. In case of compromise, attackers may abuse this sudo-like functionality to achieve privilege escalation.",
-  "descriptionUrl": "https://kubernetes.io/docs/reference/access-authn-authz/authentication/#user-impersonation",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/k8s/rbac_roles_with_impersonate_permission",
   "platform": "Kubernetes",
   "descriptionID": "9f85c3f6",
-  "cwe": ""
+  "cwe": "",
+  "providerUrl": "https://kubernetes.io/docs/reference/access-authn-authz/authentication/#user-impersonation"
 }

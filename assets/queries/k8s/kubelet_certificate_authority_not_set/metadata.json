@@ -4,7 +4,7 @@
   "severity": "MEDIUM",
   "category": "Secret Management",
   "descriptionText": "When using `kube-apiserver`, the `--kubelet-certificate-authority` flag should be set.",
-  "descriptionUrl": "https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/k8s/kubelet_certificate_authority_not_set",
   "platform": "Kubernetes",
   "descriptionID": "ce08eb5d",
   "cwe": "",
@@ -15,5 +15,6 @@
       "framework_version": "v2",
       "requirement": "kubernetes"
     }
-  ]
+  ],
+  "providerUrl": "https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/"
 }

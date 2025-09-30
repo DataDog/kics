@@ -4,8 +4,9 @@
   "severity": "MEDIUM",
   "category": "Secret Management",
   "descriptionText": "The kubelet argument `--rotate-certificates` should be set to `true`.",
-  "descriptionUrl": "https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/k8s/kubelet_client_periodic_certificate_switch_disabled",
   "platform": "Kubernetes",
   "descriptionID": "1a17c91a",
-  "cwe": ""
+  "cwe": "",
+  "providerUrl": "https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/"
 }

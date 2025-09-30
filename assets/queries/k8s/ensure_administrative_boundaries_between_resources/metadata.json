@@ -4,8 +4,9 @@
   "severity": "INFO",
   "category": "Access Control",
   "descriptionText": "As a best practice, ensure correct use of namespaces to administer resources. Kubernetes authorization plugins can also create policies that segregate user access to namespaces.",
-  "descriptionUrl": "https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/k8s/ensure_administrative_boundaries_between_resources",
   "platform": "Kubernetes",
   "descriptionID": "8182d7cf",
-  "cwe": ""
+  "cwe": "",
+  "providerUrl": "https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/"
 }

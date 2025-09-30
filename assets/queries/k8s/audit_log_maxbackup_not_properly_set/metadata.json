@@ -4,8 +4,9 @@
   "severity": "LOW",
   "category": "Observability",
   "descriptionText": "When using `kube-apiserver`, the `--audit-log-maxbackup` flag should be set to 10 files or more.",
-  "descriptionUrl": "https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/k8s/audit_log_maxbackup_not_properly_set",
   "platform": "Kubernetes",
   "descriptionID": "eb8a6c2a",
-  "cwe": ""
+  "cwe": "",
+  "providerUrl": "https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/"
 }

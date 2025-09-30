@@ -4,8 +4,9 @@
   "severity": "LOW",
   "category": "Build Process",
   "descriptionText": "When using `kube-apiserver`, the `--disable-admission-plugins` flag should not include the `NamespaceLifecycle` plugin.",
-  "descriptionUrl": "https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/k8s/namespace_lifecycle_admission_control_plugin_disabled",
   "platform": "Kubernetes",
   "descriptionID": "13e94c89",
-  "cwe": ""
+  "cwe": "",
+  "providerUrl": "https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/"
 }

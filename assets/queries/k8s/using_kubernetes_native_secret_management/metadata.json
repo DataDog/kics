@@ -4,8 +4,9 @@
   "severity": "INFO",
   "category": "Secret Management",
   "descriptionText": "Use of an external secret storage and management system should be considered for complex secret management needs, rather than using Kubernetes Secrets directly. Additionally, ensure that access to secrets is carefully limited.",
-  "descriptionUrl": "https://kubernetes.io/docs/concepts/configuration/secret/",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/k8s/using_kubernetes_native_secret_management",
   "platform": "Kubernetes",
   "descriptionID": "3d7b569c",
-  "cwe": ""
+  "cwe": "",
+  "providerUrl": "https://kubernetes.io/docs/concepts/configuration/secret/"
 }

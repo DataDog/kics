@@ -4,8 +4,9 @@
   "severity": "LOW",
   "category": "Observability",
   "descriptionText": "The audit policy should cover key security concerns about sensitive data logged in Kubernetes audit policies.",
-  "descriptionUrl": "https://kubernetes.io/docs/tasks/debug-application-cluster/audit/",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/k8s/audit_policy_not_cover_key_security_concerns",
   "platform": "Kubernetes",
   "descriptionID": "4a720a0c",
-  "cwe": ""
+  "cwe": "",
+  "providerUrl": "https://kubernetes.io/docs/tasks/debug-application-cluster/audit/"
 }

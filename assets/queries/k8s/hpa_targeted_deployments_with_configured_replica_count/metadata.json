@@ -4,9 +4,10 @@
   "severity": "INFO",
   "category": "Availability",
   "descriptionText": "Deployments targeted by HorizontalPodAutoscaler should not have a statically configured replica count.",
-  "descriptionUrl": "https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale-walkthrough/",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/k8s/hpa_targeted_deployments_with_configured_replica_count",
   "platform": "Kubernetes",
   "descriptionID": "3ccc5d6c",
   "cwe": "",
-  "oldSeverity": "LOW"
+  "oldSeverity": "LOW",
+  "providerUrl": "https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale-walkthrough/"
 }

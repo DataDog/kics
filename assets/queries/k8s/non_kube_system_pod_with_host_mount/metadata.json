@@ -4,9 +4,10 @@
   "severity": "HIGH",
   "category": "Access Control",
   "descriptionText": "Non `kube-system` workloads should not have a `hostPath` volume mounted.",
-  "descriptionUrl": "https://kubernetes.io/docs/concepts/storage/volumes/",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/k8s/non_kube_system_pod_with_host_mount",
   "platform": "Kubernetes",
   "descriptionID": "e8553157",
   "cwe": "",
-  "oldSeverity": "MEDIUM"
+  "oldSeverity": "MEDIUM",
+  "providerUrl": "https://kubernetes.io/docs/concepts/storage/volumes/"
 }

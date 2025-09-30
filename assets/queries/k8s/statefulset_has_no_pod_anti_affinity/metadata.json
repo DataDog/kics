@@ -4,8 +4,9 @@
   "severity": "LOW",
   "category": "Resource Management",
   "descriptionText": "StatefulSets should define a `podAntiAffinity` policy to avoid scheduling multiple Pods on the same node.",
-  "descriptionUrl": "https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/k8s/statefulset_has_no_pod_anti_affinity",
   "platform": "Kubernetes",
   "descriptionID": "f0d30dd9",
-  "cwe": ""
+  "cwe": "",
+  "providerUrl": "https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/"
 }

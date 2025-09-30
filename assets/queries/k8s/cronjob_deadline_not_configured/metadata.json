@@ -4,8 +4,9 @@
   "severity": "LOW",
   "category": "Resource Management",
   "descriptionText": "CronJobs must have a configured deadline. The `startingDeadlineSeconds` attribute must be defined.",
-  "descriptionUrl": "https://kubernetes.io/docs/concepts/workloads/controllers/cron-jobs/",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/k8s/cronjob_deadline_not_configured",
   "platform": "Kubernetes",
   "descriptionID": "285952e5",
-  "cwe": ""
+  "cwe": "",
+  "providerUrl": "https://kubernetes.io/docs/concepts/workloads/controllers/cron-jobs/"
 }

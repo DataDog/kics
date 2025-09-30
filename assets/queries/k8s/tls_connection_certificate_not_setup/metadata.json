@@ -4,9 +4,10 @@
   "severity": "MEDIUM",
   "category": "Networking and Firewall",
   "descriptionText": "TLS connection certificate files should be set up.",
-  "descriptionUrl": "https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/k8s/tls_connection_certificate_not_setup",
   "platform": "Kubernetes",
   "descriptionID": "c8b75f30",
   "cwe": "",
-  "oldSeverity": "HIGH"
+  "oldSeverity": "HIGH",
+  "providerUrl": "https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/"
 }

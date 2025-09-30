@@ -4,8 +4,9 @@
   "severity": "MEDIUM",
   "category": "Secret Management",
   "descriptionText": "The certificate authority should be unique for etcd.",
-  "descriptionUrl": "https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/k8s/not_unique_certificate_authority",
   "platform": "Kubernetes",
   "descriptionID": "d2c6c9e8",
-  "cwe": ""
+  "cwe": "",
+  "providerUrl": "https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/"
 }

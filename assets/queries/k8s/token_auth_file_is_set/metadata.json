@@ -4,7 +4,7 @@
   "severity": "HIGH",
   "category": "Access Control",
   "descriptionText": "When using `kube-apiserver`, the `--token-auth-file` flag should not be set.",
-  "descriptionUrl": "https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/k8s/token_auth_file_is_set",
   "platform": "Kubernetes",
   "descriptionID": "5aa79e60",
   "cwe": "",
@@ -15,5 +15,6 @@
       "framework_version": "v2",
       "requirement": "kubernetes"
     }
-  ]
+  ],
+  "providerUrl": "https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/"
 }

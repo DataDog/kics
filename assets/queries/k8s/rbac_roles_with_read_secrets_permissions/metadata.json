@@ -4,8 +4,9 @@
   "severity": "MEDIUM",
   "category": "Access Control",
   "descriptionText": "Roles and ClusterRoles with `get`/`watch`/`list` permissions on Kubernetes Secrets are dangerous and should be avoided. In case of compromise, attackers could abuse these roles to access sensitive data, such as passwords, tokens, and keys.",
-  "descriptionUrl": "https://kubernetes.io/docs/reference/access-authn-authz/rbac/",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/k8s/rbac_roles_with_read_secrets_permissions",
   "platform": "Kubernetes",
   "descriptionID": "ca97f029",
-  "cwe": ""
+  "cwe": "",
+  "providerUrl": "https://kubernetes.io/docs/reference/access-authn-authz/rbac/"
 }

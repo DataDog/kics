@@ -4,8 +4,9 @@
   "severity": "HIGH",
   "category": "Networking and Firewall",
   "descriptionText": "Tiller Deployments should not allow access from within the cluster.",
-  "descriptionUrl": "https://kubernetes.io/docs/concepts/containers/images/",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/k8s/tiller_deployment_is_accessible_from_within_the_cluster",
   "platform": "Kubernetes",
   "descriptionID": "615614b8",
-  "cwe": ""
+  "cwe": "",
+  "providerUrl": "https://kubernetes.io/docs/concepts/containers/images/"
 }

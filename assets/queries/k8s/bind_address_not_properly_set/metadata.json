@@ -4,10 +4,11 @@
   "severity": "INFO",
   "category": "Networking and Firewall",
   "descriptionText": "When using `kube-controller-manager` or `kube-scheduler`, the `--bind-address` should be set to `127.0.0.1`.",
-  "descriptionUrl": "https://kubernetes.io/docs/reference/command-line-tools-reference/kube-controller-manager/",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/k8s/bind_address_not_properly_set",
   "platform": "Kubernetes",
   "descriptionID": "b52844f2",
   "cwe": "",
   "oldSeverity": "HIGH",
-  "cloudProvider": "common"
+  "cloudProvider": "common",
+  "providerUrl": "https://kubernetes.io/docs/reference/command-line-tools-reference/kube-controller-manager/"
 }

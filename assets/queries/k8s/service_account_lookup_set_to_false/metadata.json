@@ -4,7 +4,7 @@
   "severity": "HIGH",
   "category": "Access Control",
   "descriptionText": "When using `kube-apiserver`, the `--service-account-lookup` flag should be set to `true`.",
-  "descriptionUrl": "https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/k8s/service_account_lookup_set_to_false",
   "platform": "Kubernetes",
   "descriptionID": "c957c855",
   "cwe": "",
@@ -15,5 +15,6 @@
       "framework_version": "v2",
       "requirement": "kubernetes"
     }
-  ]
+  ],
+  "providerUrl": "https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/"
 }

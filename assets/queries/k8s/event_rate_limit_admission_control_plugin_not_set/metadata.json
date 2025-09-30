@@ -4,8 +4,9 @@
   "severity": "LOW",
   "category": "Availability",
   "descriptionText": "When using `kube-apiserver`, the `--enable-admission-plugins` flag should include `EventRateLimit`, and it should be correctly configured in the admission control config file.",
-  "descriptionUrl": "https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/k8s/event_rate_limit_admission_control_plugin_not_set",
   "platform": "Kubernetes",
   "descriptionID": "3cc9eca8",
-  "cwe": ""
+  "cwe": "",
+  "providerUrl": "https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/"
 }

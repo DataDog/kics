@@ -4,8 +4,9 @@
   "severity": "HIGH",
   "category": "Insecure Configurations",
   "descriptionText": "Privileged containers lack essential security restrictions and should be avoided by removing the `privileged` flag or setting it to `false`.",
-  "descriptionUrl": "https://kubernetes.io/docs/concepts/workloads/pods/#privileged-mode-for-containers",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/k8s/container_is_privileged",
   "platform": "Kubernetes",
   "descriptionID": "55f59030",
-  "cwe": ""
+  "cwe": "",
+  "providerUrl": "https://kubernetes.io/docs/concepts/workloads/pods/#privileged-mode-for-containers"
 }

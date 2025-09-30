@@ -4,8 +4,9 @@
   "severity": "MEDIUM",
   "category": "Networking and Firewall",
   "descriptionText": "Ensure use of a CNI plugin that supports NetworkPolicies. Without support, it may not be possible to effectively restrict cluster traffic.",
-  "descriptionUrl": "https://kubernetes.io/docs/concepts/extend-kubernetes/compute-storage-net/network-plugins/",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/k8s/cni_plugin_does_not_support_network_policies",
   "platform": "Kubernetes",
   "descriptionID": "0e8d122c",
-  "cwe": ""
+  "cwe": "",
+  "providerUrl": "https://kubernetes.io/docs/concepts/extend-kubernetes/compute-storage-net/network-plugins/"
 }

@@ -4,8 +4,9 @@
   "severity": "MEDIUM",
   "category": "Networking and Firewall",
   "descriptionText": "The `--streaming-connection-idle-timeout` flag should not be set to `0`.",
-  "descriptionUrl": "https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/k8s/kubelet_streaming_connection_timeout_disabled",
   "platform": "Kubernetes",
   "descriptionID": "f0a2431d",
-  "cwe": ""
+  "cwe": "",
+  "providerUrl": "https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/"
 }

@@ -4,8 +4,9 @@
   "severity": "LOW",
   "category": "Insecure Configurations",
   "descriptionText": "Each namespace should have a ResourceQuota policy associated with limiting the total resources that Pods, containers, and PersistentVolumeClaims can consume.",
-  "descriptionUrl": "https://kubernetes.io/docs/concepts/policy/resource-quotas/",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/k8s/pod_or_container_without_resource_quota",
   "platform": "Kubernetes",
   "descriptionID": "86499ed5",
-  "cwe": ""
+  "cwe": "",
+  "providerUrl": "https://kubernetes.io/docs/concepts/policy/resource-quotas/"
 }

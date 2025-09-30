@@ -4,8 +4,9 @@
   "severity": "LOW",
   "category": "Networking and Firewall",
   "descriptionText": "Verifies whether the Kubernetes workload's host port is specified.",
-  "descriptionUrl": "https://kubernetes.io/docs/concepts/services-networking/connect-applications-service/#exposing-the-service",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/k8s/workload_host_port_not_specified",
   "platform": "Kubernetes",
   "descriptionID": "dba41ddb",
-  "cwe": ""
+  "cwe": "",
+  "providerUrl": "https://kubernetes.io/docs/concepts/services-networking/connect-applications-service/#exposing-the-service"
 }

@@ -4,9 +4,10 @@
   "severity": "LOW",
   "category": "Resource Management",
   "descriptionText": "CPU requests should be set to ensure the sum of resource requests of scheduled containers is less than the node's capacity.",
-  "descriptionUrl": "https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/k8s/cpu_requests_not_set",
   "platform": "Kubernetes",
   "descriptionID": "ac7ad5df",
   "cwe": "",
-  "oldSeverity": "MEDIUM"
+  "oldSeverity": "MEDIUM",
+  "providerUrl": "https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#"
 }
