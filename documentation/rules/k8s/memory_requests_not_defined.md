@@ -83,33 +83,6 @@ spec:
 ```
 ## Non-Compliant Code Examples
 ```yaml
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: test-deployment2
-  labels:
-    app: test2
-spec:
-  replicas: 3
-  selector:
-    matchLabels:
-      app: test2
-  template:
-    metadata:
-      labels:
-        app: test2
-    spec:
-      containers:
-        - name:  pause
-          image: k8s.gcr.io/pause
-          resources:
-            limits:
-              cpu: 0.5
-              memory: 512Mi
-
-```
-
-```yaml
 apiVersion: v1
 kind: Pod
 metadata:
@@ -171,5 +144,32 @@ spec:
   - name: memory-demo-ctr-4
     image: polinux/stress
     command: ["stress"]
+
+```
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: test-deployment2
+  labels:
+    app: test2
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: test2
+  template:
+    metadata:
+      labels:
+        app: test2
+    spec:
+      containers:
+        - name:  pause
+          image: k8s.gcr.io/pause
+          resources:
+            limits:
+              cpu: 0.5
+              memory: 512Mi
 
 ```

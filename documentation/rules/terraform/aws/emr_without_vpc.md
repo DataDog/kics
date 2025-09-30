@@ -32,7 +32,7 @@ meta:
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "aws_emr_cluster" "negative1" {
   name          = "emr-test-arn"
   release_label = "emr-4.6.0"
@@ -41,7 +41,7 @@ resource "aws_emr_cluster" "negative1" {
 
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "aws_emr_cluster" "positive1" {
   name          = "emr-test-arn"
   release_label = "emr-4.6.0"

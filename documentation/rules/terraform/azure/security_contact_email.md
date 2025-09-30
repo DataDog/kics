@@ -51,7 +51,7 @@ resource "azurerm_security_center_contact" "secure" {
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "azurerm_security_center_contact" "negative" {
   email = "contact@example.com"
   phone = "+1-555-555-5555"
@@ -62,7 +62,7 @@ resource "azurerm_security_center_contact" "negative" {
 
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "azurerm_security_center_contact" "positive" {
   phone = "+1-555-555-5555"
 

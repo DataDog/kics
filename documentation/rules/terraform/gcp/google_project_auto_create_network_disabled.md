@@ -41,7 +41,7 @@ resource "google_project" "example" {
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "google_project" "negative1" {
   name       = "My Project"
   project_id = "your-project-id"
@@ -51,7 +51,7 @@ resource "google_project" "negative1" {
 
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "google_project" "positive1" {
   name       = "My Project"
   project_id = "your-project-id"

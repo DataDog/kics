@@ -40,7 +40,7 @@ meta:
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "aws_iam_role" "negative2" {
   name = "test_role"
 
@@ -73,7 +73,7 @@ EOF
 
 ```
 
-```terraform
+```tf
 resource "aws_iam_role" "negative1" {
   name = "test_role"
 
@@ -106,38 +106,7 @@ EOF
 
 ```
 ## Non-Compliant Code Examples
-```terraform
-resource "aws_iam_role" "positive2" {
-  name = "test_role"
-
-  assume_role_policy = <<EOF
-{
-  "Version": "2012-10-17",
-  "Statement": {
-      "Action": "sts:AssumeRole",
-      "Principal": {
-        "AWS": "arn:aws:iam::987654321145:root"
-      },
-      "Effect": "Allow",
-      "Resource": "*",
-      "Sid": "",
-      "Condition": { 
-         "Bool": { 
-            "aws:MultiFactorAuthPresent": "false" 
-          }
-      }
-  }
-}
-EOF
-
-  tags = {
-    tag-key = "tag-value"
-  }
-}
-
-```
-
-```terraform
+```tf
 resource "aws_iam_role" "positive3" {
   name = "test_role"
 
@@ -168,7 +137,7 @@ EOF
 
 ```
 
-```terraform
+```tf
 resource "aws_iam_role" "positive1" {
   name = "test_role"
 
@@ -186,6 +155,37 @@ resource "aws_iam_role" "positive1" {
       "Sid": ""
     }
   ]
+}
+EOF
+
+  tags = {
+    tag-key = "tag-value"
+  }
+}
+
+```
+
+```tf
+resource "aws_iam_role" "positive2" {
+  name = "test_role"
+
+  assume_role_policy = <<EOF
+{
+  "Version": "2012-10-17",
+  "Statement": {
+      "Action": "sts:AssumeRole",
+      "Principal": {
+        "AWS": "arn:aws:iam::987654321145:root"
+      },
+      "Effect": "Allow",
+      "Resource": "*",
+      "Sid": "",
+      "Condition": { 
+         "Bool": { 
+            "aws:MultiFactorAuthPresent": "false" 
+          }
+      }
+  }
 }
 EOF
 

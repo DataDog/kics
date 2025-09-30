@@ -57,12 +57,14 @@ name: Vulnerable workflow
 on:
   pull_request_target
 
+env:
+  # 1. Enable unsecure commands
+  ACTIONS_ALLOW_UNSECURE_COMMANDS: true
+  ENVIRONMENT_NAME: prod
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    env:
-      ACTIONS_ALLOW_UNSECURE_COMMANDS: true
     steps:
       # 2. Print github context
       - run: |
@@ -124,14 +126,12 @@ name: Vulnerable workflow
 on:
   pull_request_target
 
-env:
-  # 1. Enable unsecure commands
-  ACTIONS_ALLOW_UNSECURE_COMMANDS: true
-  ENVIRONMENT_NAME: prod
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    env:
+      ACTIONS_ALLOW_UNSECURE_COMMANDS: true
     steps:
       # 2. Print github context
       - run: |

@@ -46,25 +46,16 @@ spec:
 ```
 ## Non-Compliant Code Examples
 ```yaml
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: v1
+kind: Pod
 metadata:
-  name: deployment-with-image-pull-policy
+  name: private-image-test-always
 spec:
-  replicas: 3
-  selector:
-    matchLabels:
-      app: nginx
-  template:
-    metadata:
-      labels:
-        app: nginx
-    spec:
-      containers:
-        - name: nginx
-          image: library/nginx:1.20.0
-          imagePullPolicy: IfNotPresent
-
+  containers:
+    - name: uses-private-image
+      image: $PRIVATE_IMAGE_NAME:1.2
+      imagePullPolicy: Never
+      command: [ "echo", "SUCCESS" ]
 ```
 
 ```yaml
@@ -89,14 +80,23 @@ spec:
 ```
 
 ```yaml
-apiVersion: v1
-kind: Pod
+apiVersion: apps/v1
+kind: Deployment
 metadata:
-  name: private-image-test-always
+  name: deployment-with-image-pull-policy
 spec:
-  containers:
-    - name: uses-private-image
-      image: $PRIVATE_IMAGE_NAME:1.2
-      imagePullPolicy: Never
-      command: [ "echo", "SUCCESS" ]
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+        - name: nginx
+          image: library/nginx:1.20.0
+          imagePullPolicy: IfNotPresent
+
 ```

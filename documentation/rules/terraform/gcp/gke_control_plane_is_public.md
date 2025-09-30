@@ -34,7 +34,7 @@ To secure your GKE cluster, restrict access to the control plane by specifying k
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "google_container_cluster" "good_example" {
   name     = "good-cluster"
   location = "us-central1"
@@ -48,7 +48,7 @@ resource "google_container_cluster" "good_example" {
 
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "google_container_cluster" "bad_example" {
   name     = "bad-cluster"
   location = "us-central1"

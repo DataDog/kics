@@ -52,7 +52,7 @@ Failing to enforce adequate audit log retention can prevent detection of securit
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "azurerm_sql_database" "negative1" {
   name                = "myexamplesqldatabase"
   resource_group_name = azurerm_resource_group.example.name
@@ -143,7 +143,7 @@ resource "azurerm_sql_server" "negative5" {
 
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "azurerm_sql_database" "positive1" {
   name                = "myexamplesqldatabase"
   resource_group_name = azurerm_resource_group.example.name

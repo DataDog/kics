@@ -32,7 +32,30 @@ meta:
 
 
 ## Compliant Code Examples
-```terraform
+```tf
+module "ec2_instance" {
+  source  = "terraform-aws-modules/ec2-instance/aws"
+  version = "~> 3.0"
+
+  name = "single-instance"
+
+  ami                    = "ami-ebd02392"
+  instance_type          = "t2.micro"
+  key_name               = "user1"
+  monitoring             = true
+  vpc_security_group_ids = ["sg-12345678"]
+  subnet_id              = "subnet-eddcdzz4"
+  associate_public_ip_address = false
+
+  tags = {
+    Terraform   = "true"
+    Environment = "dev"
+  }
+}
+
+```
+
+```tf
 module "ec2_instance" {
   source  = "terraform-aws-modules/ec2-instance/aws"
   version = "~> 3.0"
@@ -69,30 +92,7 @@ resource "aws_security_group" "this" {
 
 ```
 
-```terraform
-module "ec2_instance" {
-  source  = "terraform-aws-modules/ec2-instance/aws"
-  version = "~> 3.0"
-
-  name = "single-instance"
-
-  ami                    = "ami-ebd02392"
-  instance_type          = "t2.micro"
-  key_name               = "user1"
-  monitoring             = true
-  vpc_security_group_ids = ["sg-12345678"]
-  subnet_id              = "subnet-eddcdzz4"
-  associate_public_ip_address = false
-
-  tags = {
-    Terraform   = "true"
-    Environment = "dev"
-  }
-}
-
-```
-
-```terraform
+```tf
 data "aws_ami" "ubuntu" {
   most_recent = true
 
@@ -121,29 +121,7 @@ resource "aws_instance" "web" {
 
 ```
 ## Non-Compliant Code Examples
-```terraform
-module "ec2_instance" {
-  source  = "terraform-aws-modules/ec2-instance/aws"
-  version = "~> 3.0"
-
-  name = "single-instance"
-
-  ami                    = "ami-ebd02392"
-  instance_type          = "t2.micro"
-  key_name               = "user1"
-  monitoring             = true
-  vpc_security_group_ids = ["sg-12345678"]
-  subnet_id              = "subnet-eddcdzz4"
-
-  tags = {
-    Terraform   = "true"
-    Environment = "dev"
-  }
-}
-
-```
-
-```terraform
+```tf
 module "ec2_instance" {
   source  = "terraform-aws-modules/ec2-instance/aws"
   version = "~> 3.0"
@@ -166,7 +144,7 @@ module "ec2_instance" {
 
 ```
 
-```terraform
+```tf
 data "aws_ami" "ubuntu1" {
   most_recent = true
 
@@ -199,6 +177,28 @@ resource "aws_instance" "web3" {
 
   tags = {
     Name = "HelloWorld"
+  }
+}
+
+```
+
+```tf
+module "ec2_instance" {
+  source  = "terraform-aws-modules/ec2-instance/aws"
+  version = "~> 3.0"
+
+  name = "single-instance"
+
+  ami                    = "ami-ebd02392"
+  instance_type          = "t2.micro"
+  key_name               = "user1"
+  monitoring             = true
+  vpc_security_group_ids = ["sg-12345678"]
+  subnet_id              = "subnet-eddcdzz4"
+
+  tags = {
+    Terraform   = "true"
+    Environment = "dev"
   }
 }
 

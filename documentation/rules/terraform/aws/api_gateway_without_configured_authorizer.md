@@ -32,7 +32,7 @@ meta:
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "aws_api_gateway_authorizer" "demo" {
   name                   = "demo"
   rest_api_id            = aws_api_gateway_rest_api.demo.id
@@ -46,7 +46,7 @@ resource "aws_api_gateway_rest_api" "demo" {
 
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "aws_api_gateway_authorizer" "demo" {
   name                   = "demo"
   rest_api_id            = aws_api_gateway_rest_api.demo.id

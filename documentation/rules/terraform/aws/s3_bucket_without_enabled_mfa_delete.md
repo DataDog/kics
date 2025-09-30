@@ -32,7 +32,7 @@ meta:
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 module "s3_bucket" {
   source = "terraform-aws-modules/s3-bucket/aws"
   version = "3.7.0"
@@ -43,13 +43,28 @@ module "s3_bucket" {
 
 ```
 
-```terraform
-module "s3_bucket" {
-  source = "terraform-aws-modules/s3-bucket/aws"
-  version = "3.7.0"
+```tf
+provider "aws" {
+  region = "us-east-1"
+}
 
-  bucket = "my-s3-bucket"
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 3.0"
+    }
+  }
+}
+
+resource "aws_s3_bucket" "negative4" {
+  bucket = "my-tf-test-bucket"
   acl    = "private"
+
+  tags = {
+    Name        = "My bucket"
+    Environment = "Dev"
+  }
 
   lifecycle_rule {
     id      = "tmp"
@@ -64,7 +79,7 @@ module "s3_bucket" {
 
 ```
 
-```terraform
+```tf
 module "s3_bucket" {
   source = "terraform-aws-modules/s3-bucket/aws"
   version = "3.7.0"
@@ -80,53 +95,7 @@ module "s3_bucket" {
 
 ```
 ## Non-Compliant Code Examples
-```terraform
-module "s3_bucket" {
-  source = "terraform-aws-modules/s3-bucket/aws"
-  version = "3.7.0"
-
-  bucket = "my-s3-bucket"
-  acl    = "private"
-
-  versioning {
-    enabled = false
-  }
-}
-
-```
-
-```terraform
-provider "aws" {
-  region = "us-east-1"
-}
-
-terraform {
-  required_providers {
-    aws = {
-      source  = "hashicorp/aws"
-      version = "~> 3.0"
-    }
-  }
-}
-
-resource "aws_s3_bucket" "positive2" {
-  bucket = "my-tf-test-bucket"
-  acl    = "private"
-
-  tags = {
-    Name        = "My bucket"
-    Environment = "Dev"
-  }
-
-  versioning {
-    enabled = true
-    mfa_delete = false
-  }
-}
-
-```
-
-```terraform
+```tf
 provider "aws" {
   region = "us-east-1"
 }
@@ -151,6 +120,70 @@ resource "aws_s3_bucket" "positive3" {
 
   versioning {
     enabled = false
+  }
+}
+
+```
+
+```tf
+terraform {
+  required_providers {
+    aws = {
+      source = "hashicorp/aws"
+      version = "4.2.0"
+    }
+  }
+}
+
+provider "aws" {
+  # Configuration options
+}
+
+resource "aws_s3_bucket" "bbb" {
+  bucket = "my-tf-test-bucket"
+
+  tags = {
+    Name        = "My bucket"
+    Environment = "Dev"
+  }
+}
+
+resource "aws_s3_bucket_versioning" "example" {
+  bucket = aws_s3_bucket.bbb.id
+
+  versioning_configuration {
+    status = "Disabled"
+    mfa_delete = "Enabled"
+  }
+}
+
+```
+
+```tf
+provider "aws" {
+  region = "us-east-1"
+}
+
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 3.0"
+    }
+  }
+}
+
+resource "aws_s3_bucket" "positive1" {
+  bucket = "my-tf-test-bucket"
+  acl    = "private"
+
+  tags = {
+    Name        = "My bucket"
+    Environment = "Dev"
+  }
+
+  versioning {
+    enabled = true
   }
 }
 

@@ -42,7 +42,7 @@ resource "aws_kinesis_stream" "secure_example" {
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "aws_kinesis_stream" "negative1" {
   name             = "terraform-kinesis-test"
   shard_count      = 1
@@ -66,7 +66,7 @@ resource "aws_kinesis_stream" "negative1" {
 
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "aws_kinesis_stream" "positive1" {
   name             = "terraform-kinesis-test"
   shard_count      = 1

@@ -77,8 +77,8 @@ spec:
   containers:
     - name: command-demo-container
       image: gcr.io/google_containers/kube-apiserver-amd64:v1.6.0
-      command: ["kube-apiserver","--disable-admission-plugins=NamespaceLifecycle"]
-      args: []
+      command: ["kube-apiserver"]
+      args: ["--disable-admission-plugins=NamespaceLifecycle"]
   restartPolicy: OnFailure
 
 ```
@@ -94,8 +94,8 @@ spec:
   containers:
     - name: command-demo-container
       image: gcr.io/google_containers/kube-apiserver-amd64:v1.6.0
-      command: ["kube-apiserver"]
-      args: ["--disable-admission-plugins=NamespaceLifecycle"]
+      command: ["kube-apiserver","--disable-admission-plugins=NamespaceLifecycle"]
+      args: []
   restartPolicy: OnFailure
 
 ```

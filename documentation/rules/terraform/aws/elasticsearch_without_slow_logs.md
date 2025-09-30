@@ -42,7 +42,7 @@ resource "aws_elasticsearch_domain" "example" {
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "aws_elasticsearch_domain" "negative1" {
 
   log_publishing_options {
@@ -54,7 +54,7 @@ resource "aws_elasticsearch_domain" "negative1" {
 
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "aws_elasticsearch_domain" "positive1" {
   log_publishing_options {
     cloudwatch_log_group_arn = aws_cloudwatch_log_group.example.arn

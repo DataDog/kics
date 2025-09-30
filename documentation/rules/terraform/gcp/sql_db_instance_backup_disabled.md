@@ -52,7 +52,7 @@ This ensures that point-in-time recovery is possible and critical business data 
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "google_sql_database_instance" "negative1" {
     name             = "master-instance"
     database_version = "POSTGRES_11"
@@ -67,7 +67,7 @@ resource "google_sql_database_instance" "negative1" {
 
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "google_sql_database_instance" "positive1" {
     name             = "master-instance"
     database_version = "POSTGRES_11"

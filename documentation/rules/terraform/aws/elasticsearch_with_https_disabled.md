@@ -48,7 +48,7 @@ Enforcing HTTPS ensures that all data transmitted between clients and the Elasti
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 provider "aws" {
   region = "us-west-2"
 }
@@ -86,7 +86,7 @@ resource "aws_elasticsearch_domain" "example" {
 
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 provider "aws" {
   region = "us-west-2"
 }

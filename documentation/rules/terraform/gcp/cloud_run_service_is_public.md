@@ -32,17 +32,7 @@ meta:
 
 
 ## Compliant Code Examples
-```terraform
-# Passing Terraform Example for IAM Binding
-resource "google_cloud_run_service_iam_binding" "good_example_binding" {
-  service = "my-cloud-run-service"
-  members = ["user:someone@example.com", "group:admins@example.com"] # ✅ No public principals
-  role    = "roles/run.invoker"
-}
-
-```
-
-```terraform
+```tf
 # Passing Terraform Example for IAM Member
 resource "google_cloud_run_service_iam_member" "good_example_member" {
   service = "my-cloud-run-service"
@@ -52,8 +42,18 @@ resource "google_cloud_run_service_iam_member" "good_example_member" {
 
 
 ```
+
+```tf
+# Passing Terraform Example for IAM Binding
+resource "google_cloud_run_service_iam_binding" "good_example_binding" {
+  service = "my-cloud-run-service"
+  members = ["user:someone@example.com", "group:admins@example.com"] # ✅ No public principals
+  role    = "roles/run.invoker"
+}
+
+```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 # Failing Terraform Example for IAM Member
 resource "google_cloud_run_service_iam_member" "bad_example_member" {
   service = "my-cloud-run-service"

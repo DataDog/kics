@@ -42,27 +42,43 @@ Neglecting to define the `Principal` in resource-based policies significantly in
 
 
 ## Compliant Code Examples
-```terraform
-data "aws_iam_policy_document" "glue-example-policyX" {
+```tf
+data "aws_iam_policy_document" "example" {
   statement {
     actions = [
-      "glue:CreateTable",
+      "cloudwatch:PutMetricData",
     ]
-    resources = ["arn:data.aws_partition.current.partition:glue:data.aws_region.current.name:data.aws_caller_identity.current.account_id:*"]
+
+    resources = ["*"]
+  }
+}
+
+data "aws_iam_policy_document" "lambda_assume" {
+  statement {
+    actions = [
+      "sts:AssumeRole",
+    ]
     principals {
-      identifiers = ["arn:aws:iam::var.account_id:saml-provider/var.provider_name"]
-      type        = "AWS"
+      type = "Service"
+      identifiers = [
+        "lambda.amazonaws.com"
+      ]
     }
   }
 }
 
-resource "aws_glue_resource_policy" "exampleX" {
-  policy = data.aws_iam_policy_document.glue-example-policyX.json
-}
+resource "aws_iam_role" "example" {
+  name               = "example-role"
+  assume_role_policy = data.aws_iam_policy_document.lambda_assume.json
 
+  inline_policy {
+    name   = "default"
+    policy = data.aws_iam_policy_document.example.json
+  }
+}
 ```
 
-```terraform
+```tf
 resource "aws_iam_user" "user" {
   name = "test-user"
 }
@@ -121,52 +137,27 @@ resource "aws_iam_policy_attachment" "test-attach" {
 
 ```
 
-```terraform
-provider "aws" {
-  region = "us-east-1"
-}
-
-resource "aws_kms_key" "secure_policy" {
-  description             = "KMS key + secure_policy"
-  deletion_window_in_days = 7
-
-  policy = <<EOF
-{
-    "Version": "2008-10-17",
-    "Statement": [
-        {
-            "Sid": "Secure Policy",
-            "Effect": "Allow",
-            "Resource": "*",
-            "Action": [
-            "kms:Create*",
-            "kms:Describe*",
-            "kms:Enable*",
-            "kms:List*",
-            "kms:Put*",
-            "kms:Update*",
-            "kms:Revoke*",
-            "kms:Disable*",
-            "kms:Get*",
-            "kms:Delete*",
-            "kms:TagResource",
-            "kms:UntagResource",
-            "kms:ScheduleKeyDeletion",
-            "kms:CancelKeyDeletion"
-            ],
-            "Principal": "AWS": [
-              "arn:aws:iam::AWS-account-ID:user/user-name-1",
-              "arn:aws:iam::AWS-account-ID:user/UserName2"
-            ]
-        }
+```tf
+data "aws_iam_policy_document" "glue-example-policyX" {
+  statement {
+    actions = [
+      "glue:CreateTable",
     ]
+    resources = ["arn:data.aws_partition.current.partition:glue:data.aws_region.current.name:data.aws_caller_identity.current.account_id:*"]
+    principals {
+      identifiers = ["arn:aws:iam::var.account_id:saml-provider/var.provider_name"]
+      type        = "AWS"
+    }
+  }
 }
-EOF
+
+resource "aws_glue_resource_policy" "exampleX" {
+  policy = data.aws_iam_policy_document.glue-example-policyX.json
 }
 
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 provider "aws" {
   region = "us-east-1"
 }

@@ -42,7 +42,7 @@ Failure to set an appropriate value for `desired_count` can lead to outages and 
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "aws_ecs_service" "negative1" {
   name    = "negative1"
   cluster = aws_ecs_cluster.example.id
@@ -74,7 +74,7 @@ resource "aws_ecs_service" "km_ecs_service" {
 
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "aws_ecs_service" "positive1" {
   name    = "positive1"
   cluster = aws_ecs_cluster.example.id

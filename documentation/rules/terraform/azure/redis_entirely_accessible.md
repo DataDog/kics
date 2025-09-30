@@ -46,7 +46,7 @@ resource "azurerm_redis_firewall_rule" "secure" {
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "azurerm_redis_cache" "negative1" {
   name                = "redis${random_id.server.hex}"
   location            = azurerm_resource_group.example.location
@@ -73,7 +73,7 @@ resource "azurerm_redis_firewall_rule" "negative2" {
 }
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "azurerm_redis_cache" "positive1" {
   name                = "redis${random_id.server.hex}"
   location            = azurerm_resource_group.example.location

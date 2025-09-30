@@ -47,7 +47,7 @@ resource "azurerm_network_watcher_flow_log" "secure_example" {
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "azurerm_network_watcher_flow_log" "negative1" {
   network_watcher_name = azurerm_network_watcher.test.name
   resource_group_name  = azurerm_resource_group.test.name
@@ -63,7 +63,7 @@ resource "azurerm_network_watcher_flow_log" "negative1" {
 }
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "azurerm_network_watcher_flow_log" "positive1" {
   network_watcher_name = azurerm_network_watcher.test.name
   resource_group_name  = azurerm_resource_group.test.name

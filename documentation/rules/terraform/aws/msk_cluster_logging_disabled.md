@@ -59,7 +59,7 @@ resource "aws_msk_cluster" "example" {
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "aws_msk_cluster" "negative1" {  
   logging_info {
     broker_logs {
@@ -72,7 +72,7 @@ resource "aws_msk_cluster" "negative1" {
 }
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "aws_msk_cluster" "positive1" {
   logging_info {
     broker_logs {

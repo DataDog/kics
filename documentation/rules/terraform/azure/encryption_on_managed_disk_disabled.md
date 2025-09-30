@@ -43,7 +43,7 @@ Enabling encryption with `encryption_settings = { enabled = true }` ensures sens
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 
 resource "azurerm_managed_disk" "negative1" {
   name                 = "acctestmd"
@@ -62,7 +62,7 @@ resource "azurerm_managed_disk" "negative1" {
 }
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "azurerm_managed_disk" "positive1" {
   name                 = "acctestmd"
   location             = "West US 2"

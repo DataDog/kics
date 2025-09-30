@@ -54,7 +54,7 @@ This misconfiguration exposes the environment to significant security risks, as 
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "aws_ssoadmin_permission_set_inline_policy" "neg1" {
   instance_arn       = aws_ssoadmin_permission_set.example.instance_arn
   permission_set_arn = aws_ssoadmin_permission_set.example.arn
@@ -90,7 +90,7 @@ POLICY
 
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "aws_ssoadmin_permission_set_inline_policy" "pos1" {
   instance_arn       = aws_ssoadmin_permission_set.example.instance_arn
   permission_set_arn = aws_ssoadmin_permission_set.example.arn

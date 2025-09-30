@@ -32,7 +32,7 @@ meta:
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "aws_elasticache_replication_group" "example3" {
   automatic_failover_enabled    = true
   availability_zones            = ["us-west-2a", "us-west-2b"]
@@ -47,7 +47,20 @@ resource "aws_elasticache_replication_group" "example3" {
 
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
+resource "aws_elasticache_replication_group" "example" {
+  automatic_failover_enabled    = true
+  availability_zones            = ["us-west-2a", "us-west-2b"]
+  replication_group_id          = "tf-rep-group-1"
+  replication_group_description = "test description"
+  node_type                     = "cache.m4.large"
+  number_cache_clusters         = 2
+  port                          = 6379
+}
+
+```
+
+```tf
 resource "aws_elasticache_replication_group" "example" {
   automatic_failover_enabled    = true
   availability_zones            = ["us-west-2a", "us-west-2b"]
@@ -57,19 +70,6 @@ resource "aws_elasticache_replication_group" "example" {
   number_cache_clusters         = 2
   port                          = 6379
   transit_encryption_enabled    = false
-}
-
-```
-
-```terraform
-resource "aws_elasticache_replication_group" "example" {
-  automatic_failover_enabled    = true
-  availability_zones            = ["us-west-2a", "us-west-2b"]
-  replication_group_id          = "tf-rep-group-1"
-  replication_group_description = "test description"
-  node_type                     = "cache.m4.large"
-  number_cache_clusters         = 2
-  port                          = 6379
 }
 
 ```

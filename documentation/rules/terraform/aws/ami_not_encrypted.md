@@ -49,7 +49,7 @@ resource "aws_ami" "secure" {
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 #this code is a correct code for which the query should not find any result
 resource "aws_ami" "negative1" {
   name                = "terraform-example"
@@ -65,7 +65,7 @@ resource "aws_ami" "negative1" {
 }
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 
 resource "aws_ami" "positive1" {
   name                = "terraform-example"

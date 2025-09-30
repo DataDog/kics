@@ -42,7 +42,7 @@ If OS Login is not enabled, user and SSH key management is handled by instance-l
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "google_compute_project_metadata" "negative1" {
   metadata = {
     enable-oslogin = true
@@ -51,7 +51,7 @@ resource "google_compute_project_metadata" "negative1" {
 
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "google_compute_project_metadata" "positive1" {
   metadata = {
     enable-oslogin = false

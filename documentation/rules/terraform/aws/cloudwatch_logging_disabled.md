@@ -39,7 +39,7 @@ resource "aws_route53_query_log" "example_com" {
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "aws_route53_zone" "example_com" {
   name = "example.com"
 }
@@ -52,7 +52,7 @@ resource "aws_route53_query_log" "example_com" {
 }
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "aws_route53_zone" "no_query_log" {
   name = "example.com"
 }

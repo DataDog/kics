@@ -42,7 +42,7 @@ viewer_certificate {
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "aws_s3_bucket" "negative1" {
   # configs
 }
@@ -97,7 +97,7 @@ resource "aws_cloudfront_distribution" "negative2" {
 
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "aws_s3_bucket" "positive1" {
   # configs
 }

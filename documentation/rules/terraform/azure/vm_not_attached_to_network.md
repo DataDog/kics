@@ -65,7 +65,7 @@ Neglecting to configure and attach an NSG can result in unrestricted network exp
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "azurerm_network_interface" "negative1" {
   name                = "${var.prefix}-nic"
   location            = azurerm_resource_group.main.location
@@ -91,7 +91,7 @@ resource "azurerm_virtual_machine" "negative2" {
 }
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "azurerm_virtual_machine" "positive1" {
   name                  = "${var.prefix}-vm"
   location              = azurerm_resource_group.main.location

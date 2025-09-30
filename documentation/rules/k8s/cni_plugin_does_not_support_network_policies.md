@@ -101,6 +101,36 @@ data:
 
 ```
 ## Non-Compliant Code Examples
+```json
+{
+  "name": "k8s-pod-network",
+  "cniVersion": "0.3.0",
+  "plugins": [
+    {
+      "type": "flannel",
+      "log_level": "info",
+      "datastore_type": "kubernetes",
+      "nodename": "127.0.0.1",
+      "ipam": {
+        "type": "host-local",
+        "subnet": "usePodCidr"
+      },
+      "policy": {
+        "type": "k8s"
+      },
+      "kubernetes": {
+        "kubeconfig": "/etc/cni/net.d/flannel-kubeconfig"
+      }
+    },
+    {
+      "type": "portmap",
+      "capabilities": {"portMappings": true}
+    }
+  ]
+}
+
+```
+
 ```yaml
 kind: ConfigMap
 apiVersion: v1
@@ -137,35 +167,5 @@ data:
         "Type": "vxlan"
       }
     }
-
-```
-
-```json
-{
-  "name": "k8s-pod-network",
-  "cniVersion": "0.3.0",
-  "plugins": [
-    {
-      "type": "flannel",
-      "log_level": "info",
-      "datastore_type": "kubernetes",
-      "nodename": "127.0.0.1",
-      "ipam": {
-        "type": "host-local",
-        "subnet": "usePodCidr"
-      },
-      "policy": {
-        "type": "k8s"
-      },
-      "kubernetes": {
-        "kubeconfig": "/etc/cni/net.d/flannel-kubeconfig"
-      }
-    },
-    {
-      "type": "portmap",
-      "capabilities": {"portMappings": true}
-    }
-  ]
-}
 
 ```

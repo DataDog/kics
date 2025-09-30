@@ -53,7 +53,7 @@ resource "aws_ami_launch_permission" "secure_example" {
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "aws_ami_launch_permission" "negative1" {
   image_id   = "ami-12345678"
   account_id = "123456789012"
@@ -67,7 +67,7 @@ resource "aws_ami_launch_permission" "example" {
 
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "aws_ami_launch_permission" "positive1" {
 
   image_id   = "ami-1235678"

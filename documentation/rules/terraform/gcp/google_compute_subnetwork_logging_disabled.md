@@ -46,7 +46,7 @@ Failure to enable logging can lead to security gaps, reducing visibility into po
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "google_compute_subnetwork" "negative1" {
   name          = "log-test-subnetwork"
   ip_cidr_range = "10.2.0.0/16"
@@ -61,7 +61,7 @@ resource "google_compute_subnetwork" "negative1" {
 }
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "google_compute_subnetwork" "positive1" {
   name          = "log-test-subnetwork"
   ip_cidr_range = "10.2.0.0/16"

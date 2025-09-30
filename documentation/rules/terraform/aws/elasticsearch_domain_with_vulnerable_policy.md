@@ -32,7 +32,7 @@ meta:
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "aws_elasticsearch_domain" "example2" {
   domain_name           = "tf-test"
   elasticsearch_version = "2.3"
@@ -64,7 +64,7 @@ POLICIES
 
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 provider "aws" {
   region = "us-east-1"
 }

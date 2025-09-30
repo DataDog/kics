@@ -32,7 +32,7 @@ meta:
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 //  Create a role which OpenShift instances will assume.
 //  This role has a policy saying it can be assumed by ec2
 //  instances.
@@ -100,7 +100,7 @@ resource "aws_iam_instance_profile" "negative4" {
 
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 //  Create a role which OpenShift instances will assume.
 //  This role has a policy saying it can be assumed by ec2
 //  instances.

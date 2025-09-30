@@ -51,7 +51,7 @@ records = [
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "aws_route53_record" "example" {
   allow_overwrite = true
   name            = "test.example.com"
@@ -68,7 +68,7 @@ resource "aws_route53_record" "example" {
 }
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "aws_route53_record" "example" {
   allow_overwrite = true
   name            = "test.example.com"

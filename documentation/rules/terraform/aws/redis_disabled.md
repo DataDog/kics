@@ -32,7 +32,7 @@ meta:
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 #this code is a correct code for which the query should not find any result
 resource "aws_elasticache_cluster" "negative1" {
   cluster_id           = "cluster-example"
@@ -44,7 +44,7 @@ resource "aws_elasticache_cluster" "negative1" {
 
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 #this is a problematic code where the query should report a result(s)
 resource "aws_elasticache_cluster" "positive1" {
   cluster_id           = "cluster-example"

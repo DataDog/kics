@@ -48,7 +48,7 @@ Leaving auto upgrade disabled can expose your cluster to exploits and instabilit
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "google_container_node_pool" "negative1" {
   name       = "my-node-pool"
   location   = "us-central1-a"
@@ -66,7 +66,7 @@ resource "google_container_node_pool" "negative1" {
 }
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "google_container_node_pool" "positive1" {
   name       = "my-node-pool"
   location   = "us-central1-a"

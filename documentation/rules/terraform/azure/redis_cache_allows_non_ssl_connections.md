@@ -50,7 +50,7 @@ Neglecting this configuration can lead to exposure of authentication credentials
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "azurerm_redis_cache" "negative1" {
   name                = "example-cache"
   location            = azurerm_resource_group.example.location
@@ -80,7 +80,7 @@ resource "azurerm_redis_cache" "negative2" {
 }
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "azurerm_redis_cache" "positive1" {
   name                = "example-cache"
   location            = azurerm_resource_group.example.location

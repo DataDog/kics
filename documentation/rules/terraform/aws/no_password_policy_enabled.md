@@ -54,7 +54,7 @@ resource "aws_iam_user_login_profile" "example" {
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "aws_iam_user_login_profile" "negative1" {
   user    = aws_iam_user.example.name
   pgp_key = "keybase:some_person_that_exists"
@@ -65,7 +65,7 @@ resource "aws_iam_user_login_profile" "negative1" {
 }
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "aws_iam_user_login_profile" "positive2" {
   user    = aws_iam_user.example.name
   pgp_key = "keybase:some_person_that_exists"

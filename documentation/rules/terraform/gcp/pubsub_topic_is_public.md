@@ -50,17 +50,7 @@ resource "google_pubsub_topic_iam_member" "good_example" {
 
 
 ## Compliant Code Examples
-```terraform
-# IAM Binding compliant
-resource "google_pubsub_topic_iam_binding" "good_example_binding" {
-  topic   = "example-topic"
-  members = ["user:someone@example.com", "group:admins@example.com"] # ✅ No public principals
-  role    = "roles/pubsub.subscriber"
-}
-
-```
-
-```terraform
+```tf
 # IAM Member compliant
 resource "google_pubsub_topic_iam_member" "good_example_member" {
   topic  = "example-topic"
@@ -69,8 +59,18 @@ resource "google_pubsub_topic_iam_member" "good_example_member" {
 }
 
 ```
+
+```tf
+# IAM Binding compliant
+resource "google_pubsub_topic_iam_binding" "good_example_binding" {
+  topic   = "example-topic"
+  members = ["user:someone@example.com", "group:admins@example.com"] # ✅ No public principals
+  role    = "roles/pubsub.subscriber"
+}
+
+```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 # IAM Member violation
 resource "google_pubsub_topic_iam_member" "bad_example_member" {
   topic  = "example-topic"

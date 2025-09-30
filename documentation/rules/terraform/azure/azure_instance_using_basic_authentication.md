@@ -49,7 +49,7 @@ Failure to enforce SSH key authentication can lead to unauthorized access, data 
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "azurerm_virtual_machine" "negative1" {
   name                  = "${var.prefix}-vm"
   location              = azurerm_resource_group.main.location
@@ -69,7 +69,7 @@ resource "azurerm_virtual_machine" "negative1" {
 
 ```
 
-```terraform
+```tf
 resource "azurerm_linux_virtual_machine" "negative1" {
   name                  = "${var.prefix}-vm"
   location              = azurerm_resource_group.main.location
@@ -85,19 +85,7 @@ resource "azurerm_linux_virtual_machine" "negative1" {
 
 ```
 ## Non-Compliant Code Examples
-```terraform
-resource "azurerm_linux_virtual_machine" "positive1" {
-  name                  = "${var.prefix}-vm"
-  location              = azurerm_resource_group.main.location
-  resource_group_name   = azurerm_resource_group.main.name
-  network_interface_ids = []
-  vm_size               = "Standard_DS1_v2"
-  disable_password_authentication = false
-}
-
-```
-
-```terraform
+```tf
 resource "azurerm_virtual_machine" "positive1" {
   name                  = "${var.prefix}-vm"
   location              = azurerm_resource_group.main.location
@@ -108,6 +96,18 @@ resource "azurerm_virtual_machine" "positive1" {
   os_profile_linux_config {
     disable_password_authentication = false
   }
+}
+
+```
+
+```tf
+resource "azurerm_linux_virtual_machine" "positive1" {
+  name                  = "${var.prefix}-vm"
+  location              = azurerm_resource_group.main.location
+  resource_group_name   = azurerm_resource_group.main.name
+  network_interface_ids = []
+  vm_size               = "Standard_DS1_v2"
+  disable_password_authentication = false
 }
 
 ```

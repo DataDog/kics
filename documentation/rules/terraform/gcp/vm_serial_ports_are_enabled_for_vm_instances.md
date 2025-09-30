@@ -46,7 +46,7 @@ metadata = {
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "google_compute_instance" "negative1" {
   name         = "test"
   machine_type = "e2-medium"
@@ -95,7 +95,7 @@ resource "google_compute_project_metadata_item" "negative3" {
 
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "google_compute_instance" "positive1" {
   name         = "test"
   machine_type = "e2-medium"

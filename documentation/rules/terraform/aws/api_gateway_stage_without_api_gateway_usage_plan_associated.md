@@ -55,7 +55,7 @@ resource "aws_api_gateway_usage_plan" "example" {
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "aws_api_gateway_stage" "negative1" {
   deployment_id = "some deployment id"
   rest_api_id   = "rest_api_1"
@@ -75,7 +75,7 @@ resource "aws_api_gateway_usage_plan" "negative2" {
 
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "aws_api_gateway_stage" "positive1" {
   rest_api_id   = "some deployment id"
   deployment_id = "some rest api id"

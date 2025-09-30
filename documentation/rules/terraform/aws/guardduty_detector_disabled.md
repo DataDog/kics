@@ -32,14 +32,14 @@ meta:
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "aws_guardduty_detector" "negative1" {
   enable = true
 }
 
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "aws_guardduty_detector" "positive1" {
   enable = false
 }

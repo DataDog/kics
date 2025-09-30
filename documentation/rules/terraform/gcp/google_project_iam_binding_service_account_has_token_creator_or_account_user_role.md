@@ -45,7 +45,7 @@ resource "google_project_iam_binding" "secure_example" {
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "google_project_iam_binding" "negative1" {
   project = "your-project-id"
   role    = "roles/editor"
@@ -56,7 +56,7 @@ resource "google_project_iam_binding" "negative1" {
 }
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "google_project_iam_binding" "positive1" {
   project = "your-project-id"
   role    = "roles/iam.serviceAccountTokenCreator"

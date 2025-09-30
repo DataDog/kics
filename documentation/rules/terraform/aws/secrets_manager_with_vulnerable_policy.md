@@ -32,7 +32,7 @@ meta:
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "aws_secretsmanager_secret" "example2" {
   name = "example"
 }
@@ -60,7 +60,7 @@ POLICY
 
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 provider "aws" {
   region = "us-east-1"
 }

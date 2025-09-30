@@ -32,7 +32,7 @@ meta:
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 #this code is a correct code for which the query should not find any result
 resource "aws_cloudfront_distribution" "negative1" {
   origin {
@@ -79,7 +79,7 @@ resource "aws_cloudfront_distribution" "negative1" {
 }
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 #this is a problematic code where the query should report a result(s)
 resource "aws_cloudfront_distribution" "positive1" {
   origin {

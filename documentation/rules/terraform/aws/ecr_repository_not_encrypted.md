@@ -41,7 +41,7 @@ Without this, sensitive container images may be at greater risk of unauthorized 
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "aws_ecr_repository" "foo2" {
   name                 = "bar"
   image_tag_mutability = "IMMUTABLE"
@@ -58,7 +58,7 @@ resource "aws_ecr_repository" "foo2" {
 
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "aws_ecr_repository" "foo" {
   name                 = "bar"
   image_tag_mutability = "IMMUTABLE"

@@ -41,7 +41,7 @@ resource "azurerm_application_gateway" "example" {
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "azurerm_application_gateway" "negative1" {
   name                = "example-appgateway"
   resource_group_name = azurerm_resource_group.example.name
@@ -53,7 +53,7 @@ resource "azurerm_application_gateway" "negative1" {
 }
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "azurerm_application_gateway" "positive1" {
   name                = "example-appgateway"
   resource_group_name = azurerm_resource_group.example.name

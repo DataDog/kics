@@ -37,7 +37,7 @@ enabled_cluster_log_types = ["api", "audit", "authenticator", "controllerManager
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 variable "cluster_name" {
   default = "example"
   type    = string
@@ -52,7 +52,7 @@ resource "aws_eks_cluster" "negative1" {
 
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 variable "cluster_name" {
   default = "example"
   type    = string

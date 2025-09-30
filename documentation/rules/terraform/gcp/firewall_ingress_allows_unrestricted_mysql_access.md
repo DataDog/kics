@@ -32,7 +32,7 @@ meta:
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "google_compute_firewall" "good_example" {
   name    = "good-firewall-mysql"
   network = "default"
@@ -47,7 +47,7 @@ resource "google_compute_firewall" "good_example" {
 
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "google_compute_firewall" "bad_example" {
   name    = "bad-firewall-mysql"
   network = "default"

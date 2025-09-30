@@ -39,7 +39,7 @@ resource "azurerm_container_registry" "example" {
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "azurerm_resource_group" "negative1" {
   name     = "resourceGroup1"
   location = "West US"
@@ -55,7 +55,7 @@ resource "azurerm_container_registry" "negative2" {
 }
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "azurerm_resource_group" "positive1" {
   name     = "resourceGroup1"
   location = "West US"

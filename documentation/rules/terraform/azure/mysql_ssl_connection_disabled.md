@@ -41,7 +41,7 @@ Enabling SSL enforcement mitigates this risk by ensuring that all clients must c
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "azurerm_mysql_server" "negative1" {
   name                = "webflux-mysql-${var.environment}${random_integer.rnd_int.result}"
   location            = azurerm_resource_group.example.location
@@ -63,7 +63,7 @@ resource "azurerm_mysql_server" "negative1" {
 
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "azurerm_mysql_server" "positive1" {
   name                = "webflux-mysql-${var.environment}${random_integer.rnd_int.result}"
   location            = azurerm_resource_group.example.location

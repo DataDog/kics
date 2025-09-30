@@ -41,7 +41,7 @@ resource "google_container_cluster" "secure_cluster" {
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 #this code is a correct code for which the query should not find any result
 resource "google_container_cluster" "negative1" {
   name               = "marcellus-wallace"
@@ -56,7 +56,7 @@ resource "google_container_cluster" "negative1" {
 }
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 #this is a problematic code where the query should report a result(s)
 resource "google_container_cluster" "positive1" {
   name               = "marcellus-wallace"

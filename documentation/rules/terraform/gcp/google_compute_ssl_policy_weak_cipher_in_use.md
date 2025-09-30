@@ -41,7 +41,7 @@ resource "google_compute_ssl_policy" "example" {
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "google_compute_ssl_policy" "negative1" {
   name            = "custom-ssl-policy"
   min_tls_version = "TLS_1_2"
@@ -50,7 +50,7 @@ resource "google_compute_ssl_policy" "negative1" {
 }
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "google_compute_ssl_policy" "positive1" {
   name            = "custom-ssl-policy"
   min_tls_version = "TLS_1_1"

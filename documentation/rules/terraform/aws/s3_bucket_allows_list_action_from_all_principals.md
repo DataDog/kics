@@ -32,7 +32,7 @@ meta:
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 module "s3_bucket" {
   source = "terraform-aws-modules/s3-bucket/aws"
   version = "3.7.0"
@@ -65,7 +65,7 @@ POLICY
 
 ```
 
-```terraform
+```tf
 resource "aws_s3_bucket_policy" "negative1" {
   bucket = aws_s3_bucket.b.id
 
@@ -90,35 +90,7 @@ POLICY
 
 ```
 ## Non-Compliant Code Examples
-```terraform
-resource "aws_s3_bucket_policy" "positive2" {
-  bucket = aws_s3_bucket.b.id
-
-  policy = <<POLICY
-{
-  "Version": "2012-10-17",
-  "Id": "MYBUCKETPOLICY",
-  "Statement": [
-    {
-      "Sid": "IPAllow",
-      "Effect": "Allow",
-      "Principal": {
-        "AWS": "*"
-      },
-      "Action": "s3:ListObjects",
-      "Resource": "arn:aws:s3:::my_tf_test_bucket/*",
-      "Condition": {
-         "IpAddress": {"aws:SourceIp": "8.8.8.8/32"}
-      }
-    }
-  ]
-}
-POLICY
-}
-
-```
-
-```terraform
+```tf
 module "s3_bucket" {
   source = "terraform-aws-modules/s3-bucket/aws"
   version = "3.7.0"
@@ -154,7 +126,7 @@ POLICY
 
 ```
 
-```terraform
+```tf
 resource "aws_s3_bucket_policy" "positive1" {
   bucket = aws_s3_bucket.b.id
 
@@ -167,6 +139,34 @@ resource "aws_s3_bucket_policy" "positive1" {
       "Sid": "IPAllow",
       "Effect": "Allow",
       "Principal": "*",
+      "Action": "s3:ListObjects",
+      "Resource": "arn:aws:s3:::my_tf_test_bucket/*",
+      "Condition": {
+         "IpAddress": {"aws:SourceIp": "8.8.8.8/32"}
+      }
+    }
+  ]
+}
+POLICY
+}
+
+```
+
+```tf
+resource "aws_s3_bucket_policy" "positive2" {
+  bucket = aws_s3_bucket.b.id
+
+  policy = <<POLICY
+{
+  "Version": "2012-10-17",
+  "Id": "MYBUCKETPOLICY",
+  "Statement": [
+    {
+      "Sid": "IPAllow",
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": "*"
+      },
       "Action": "s3:ListObjects",
       "Resource": "arn:aws:s3:::my_tf_test_bucket/*",
       "Condition": {

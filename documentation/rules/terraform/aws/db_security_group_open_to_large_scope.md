@@ -54,7 +54,7 @@ resource "aws_db_security_group" "negative1" {
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "aws_db_security_group" "negative1" {
   name = "rds_sg"
 
@@ -64,7 +64,7 @@ resource "aws_db_security_group" "negative1" {
 }
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "aws_db_security_group" "positive1" {
   name = "rds_sg"
 

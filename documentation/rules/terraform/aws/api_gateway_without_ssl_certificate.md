@@ -41,7 +41,7 @@ resource "aws_api_gateway_stage" "example" {
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "aws_api_gateway_stage" "negative1" {
   stage_name    = "prod"
   rest_api_id   = aws_api_gateway_rest_api.test.id
@@ -54,7 +54,7 @@ resource "aws_api_gateway_stage" "negative1" {
 
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "aws_api_gateway_stage" "positive1" {
   stage_name    = "prod"
   rest_api_id   = aws_api_gateway_rest_api.test.id

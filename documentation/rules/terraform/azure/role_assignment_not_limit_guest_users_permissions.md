@@ -39,7 +39,7 @@ permissions {
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "azurerm_role_definition" "example2" {
   name        = "my-custom-role"
   scope       = data.azurerm_subscription.primary.id
@@ -65,7 +65,7 @@ resource "azurerm_role_assignment" "example2" {
 
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "azurerm_role_definition" "example" {
   name        = "my-custom-role"
   scope       = data.azurerm_subscription.primary.id

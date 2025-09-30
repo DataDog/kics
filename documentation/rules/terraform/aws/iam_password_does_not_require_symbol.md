@@ -44,7 +44,7 @@ resource "aws_iam_account_password_policy" "bad_example" {
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "aws_iam_account_password_policy" "good_example" {
   minimum_password_length      = 14
   require_symbols              = true
@@ -55,7 +55,7 @@ resource "aws_iam_account_password_policy" "good_example" {
 
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "aws_iam_account_password_policy" "bad_example" {
   minimum_password_length      = 14
   require_symbols              = false

@@ -46,7 +46,7 @@ For additional security, implement network ACLs, security groups, and private VP
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "aws_msk_cluster" "negative2" {
   cluster_name           = "example"
   kafka_version          = "2.7.1"
@@ -74,7 +74,7 @@ resource "aws_msk_cluster" "negative2" {
 
 ```
 
-```terraform
+```tf
 resource "aws_msk_cluster" "negative1" {
   cluster_name           = "example"
   kafka_version          = "2.7.1"
@@ -107,7 +107,7 @@ resource "aws_msk_cluster" "negative1" {
 
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "aws_msk_cluster" "positive1" {
   cluster_name           = "example"
   kafka_version          = "2.7.1"

@@ -44,7 +44,7 @@ resource "google_container_cluster" "secure" {
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "google_container_cluster" "negative1" {
   name = "marcellus-wallace"
   location = "us-central1-a"
@@ -62,7 +62,7 @@ resource "google_container_cluster" "negative1" {
 
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "google_container_cluster" "positive1" {
   name = "marcellus-wallace"
   location = "us-central1-a"

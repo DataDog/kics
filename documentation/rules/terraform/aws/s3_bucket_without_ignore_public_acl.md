@@ -32,7 +32,7 @@ meta:
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 module "s3_bucket" {
   source = "terraform-aws-modules/s3-bucket/aws"
   version = "3.7.0"
@@ -48,7 +48,7 @@ module "s3_bucket" {
 
 ```
 
-```terraform
+```tf
 resource "aws_s3_bucket" "negative1" {
   bucket = "example"
 }
@@ -63,7 +63,37 @@ resource "aws_s3_bucket_public_access_block" "negative2" {
 
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
+module "s3_bucket" {
+  source = "terraform-aws-modules/s3-bucket/aws"
+  version = "3.7.0"
+
+  bucket = "my-s3-bucket"
+  acl    = "private"
+
+  versioning = {
+    enabled = true
+  }
+}
+
+```
+
+```tf
+resource "aws_s3_bucket" "positive1" {
+  bucket = "example"
+}
+
+resource "aws_s3_bucket_public_access_block" "positive2" {
+  bucket = aws_s3_bucket.example.id
+
+  block_public_acls   = true
+  block_public_policy = true
+  ignore_public_acls  = false
+}
+
+```
+
+```tf
 module "s3_bucket" {
   source = "terraform-aws-modules/s3-bucket/aws"
   version = "3.7.0"
@@ -75,35 +105,6 @@ module "s3_bucket" {
   versioning = {
     enabled = true
   }
-}
-
-```
-
-```terraform
-module "s3_bucket" {
-  source = "terraform-aws-modules/s3-bucket/aws"
-  version = "3.7.0"
-
-  bucket = "my-s3-bucket"
-  acl    = "private"
-
-  versioning = {
-    enabled = true
-  }
-}
-
-```
-
-```terraform
-resource "aws_s3_bucket" "positive1" {
-  bucket = "example"
-}
-
-resource "aws_s3_bucket_public_access_block" "positive2" {
-  bucket = aws_s3_bucket.example.id
-
-  block_public_acls   = true
-  block_public_policy = true
 }
 
 ```

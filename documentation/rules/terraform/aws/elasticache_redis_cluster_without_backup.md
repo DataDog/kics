@@ -54,7 +54,7 @@ resource "aws_elasticache_cluster" "secure" {
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "aws_elasticache_cluster" "negative1" {
   cluster_id           = "cluster"
   engine               = "redis"
@@ -82,7 +82,7 @@ resource "aws_elasticache_parameter_group" "default" {
 
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "aws_elasticache_cluster" "positive1" {
   cluster_id           = "cluster"
   engine               = "redis"

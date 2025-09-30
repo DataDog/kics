@@ -32,7 +32,7 @@ meta:
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "aws_dynamodb_table" "basic-dynamodb-table" {
   name           = "GameScores"
   billing_mode   = "PROVISIONED"
@@ -83,7 +83,7 @@ resource "aws_dynamodb_table" "basic-dynamodb-table" {
 
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "aws_dynamodb_table" "basic-dynamodb-table" {
   name           = "GameScores"
   billing_mode   = "PROVISIONED"
@@ -91,6 +91,10 @@ resource "aws_dynamodb_table" "basic-dynamodb-table" {
   write_capacity = 20
   hash_key       = "UserId"
   range_key      = "GameTitle"
+
+  point_in_time_recovery {
+   enabled = false
+  }
 
   attribute {
     name = "UserId"
@@ -130,7 +134,7 @@ resource "aws_dynamodb_table" "basic-dynamodb-table" {
 
 ```
 
-```terraform
+```tf
 resource "aws_dynamodb_table" "basic-dynamodb-table" {
   name           = "GameScores"
   billing_mode   = "PROVISIONED"
@@ -138,10 +142,6 @@ resource "aws_dynamodb_table" "basic-dynamodb-table" {
   write_capacity = 20
   hash_key       = "UserId"
   range_key      = "GameTitle"
-
-  point_in_time_recovery {
-   enabled = false
-  }
 
   attribute {
     name = "UserId"

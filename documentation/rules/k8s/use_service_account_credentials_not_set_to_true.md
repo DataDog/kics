@@ -77,7 +77,7 @@ spec:
   containers:
     - name: command-demo-container
       image: gcr.io/google_containers/kube-controller-manager-amd64:v1.6.0
-      command: ["kube-controller-manager"]
+      command: ["kube-controller-manager","--use-service-account-credentials=false"]
       args: []
   restartPolicy: OnFailure
 
@@ -94,7 +94,7 @@ spec:
   containers:
     - name: command-demo-container
       image: gcr.io/google_containers/kube-controller-manager-amd64:v1.6.0
-      command: ["kube-controller-manager","--use-service-account-credentials=false"]
+      command: ["kube-controller-manager"]
       args: []
   restartPolicy: OnFailure
 

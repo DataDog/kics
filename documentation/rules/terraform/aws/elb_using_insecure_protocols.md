@@ -41,7 +41,7 @@ Leaving insecure protocols enabled increases the risk of man-in-the-middle (MITM
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 #this code is a correct code for which the query should not find any result
 resource "aws_elb" "negative1" {
   name               = "wu-tang"
@@ -128,7 +128,7 @@ resource "aws_load_balancer_listener_policy" "negative7" {
 }
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 #this is a problematic code where the query should report a result(s)
 resource "aws_elb" "positive1" {
   name               = "wu-tang"

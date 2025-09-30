@@ -48,7 +48,7 @@ Limiting permissions in this way reduces the risk of unauthorized privilege esca
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "aws_iam_user" "cosmic2" {
   name = "cosmic2"
 }
@@ -73,7 +73,7 @@ resource "aws_iam_user_policy" "inline_policy_run_instances2" {
 
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "aws_iam_user" "cosmic" {
   name = "cosmic"
 }

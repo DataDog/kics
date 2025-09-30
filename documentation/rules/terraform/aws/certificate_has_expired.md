@@ -32,7 +32,17 @@ meta:
 
 
 ## Compliant Code Examples
-```terraform
+```yaml
+- name: upload a self-signed certificate2
+  community.aws.aws_acm:
+    certificate: "{{ lookup('file', 'validCertificate.pem' ) }}"
+    privateKey: "{{ lookup('file', 'key.pem' ) }}"
+    name_tag: my_cert
+    region: ap-southeast-2
+
+```
+
+```tf
 resource "aws_api_gateway_domain_name" "example" {
   certificate_body = file("validCertificate.pem")
   domain_name     = "api.example.com"
@@ -41,11 +51,21 @@ resource "aws_api_gateway_domain_name" "example" {
 
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "aws_api_gateway_domain_name" "example2" {
   certificate_body = file("expiredCertificate.pem")
   domain_name     = "api.example.com"
 }
 
+
+```
+
+```yaml
+- name: upload a self-signed certificate
+  community.aws.aws_acm:
+    certificate: "{{ lookup('file', 'expiredCertificate.pem' ) }}"
+    privateKey: "{{ lookup('file', 'key.pem' ) }}"
+    name_tag: my_cert
+    region: ap-southeast-2
 
 ```

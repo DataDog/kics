@@ -52,7 +52,7 @@ This ensures that only preflight CORS requests remain unauthenticated, while all
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "aws_api_gateway_method" "negative1" {
   rest_api_id   = aws_api_gateway_rest_api.this.id
   resource_id   = aws_api_gateway_resource.this.id
@@ -67,7 +67,7 @@ resource "aws_api_gateway_method" "negative1" {
 
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "aws_api_gateway_method" "positive1" {
   rest_api_id   = aws_api_gateway_rest_api.this.id
   resource_id   = aws_api_gateway_resource.this.id

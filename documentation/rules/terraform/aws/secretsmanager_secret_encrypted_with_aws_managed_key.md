@@ -32,7 +32,7 @@ meta:
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "aws_secretsmanager_secret" "test222" {
   name       = "test-cloudrail-1"
   kms_key_id = "alias/MyAlias"
@@ -41,7 +41,15 @@ resource "aws_secretsmanager_secret" "test222" {
 
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
+resource "aws_secretsmanager_secret" "test2" {
+  name       = "test-cloudrail-1"
+  kms_key_id = "alias/aws/secretsmanager"
+}
+
+```
+
+```tf
 provider "aws" {
   region = "us-east-1"
 }
@@ -53,14 +61,6 @@ data "aws_kms_key" "by_alias" {
 resource "aws_secretsmanager_secret" "test" {
   name       = "test-cloudrail-1"
   kms_key_id = data.aws_kms_key.by_alias.arn
-}
-
-```
-
-```terraform
-resource "aws_secretsmanager_secret" "test2" {
-  name       = "test-cloudrail-1"
-  kms_key_id = "alias/aws/secretsmanager"
 }
 
 ```

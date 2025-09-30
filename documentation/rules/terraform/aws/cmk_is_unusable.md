@@ -32,7 +32,7 @@ meta:
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "aws_kms_key" "a3" {
   description             = "KMS key 1"
   is_enabled = true
@@ -40,7 +40,7 @@ resource "aws_kms_key" "a3" {
 
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "aws_kms_key" "a" {
   description             = "KMS key 1"
   is_enabled = false

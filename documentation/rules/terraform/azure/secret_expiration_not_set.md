@@ -42,7 +42,7 @@ resource "azurerm_key_vault_secret" "example" {
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "azurerm_key_vault_secret" "negative1" {
     name         = "secret-sauce"
     value        = "szechuan"
@@ -55,7 +55,7 @@ resource "azurerm_key_vault_secret" "negative1" {
 }
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "azurerm_key_vault_secret" "positive1" {
     name         = "secret-sauce"
     value        = "szechuan"

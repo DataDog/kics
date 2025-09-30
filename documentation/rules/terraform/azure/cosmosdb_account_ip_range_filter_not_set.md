@@ -32,7 +32,7 @@ meta:
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "azurerm_cosmosdb_account" "negative1" {
   name                  = "example" 
 
@@ -43,7 +43,7 @@ resource "azurerm_cosmosdb_account" "negative1" {
 }
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "azurerm_cosmosdb_account" "positive1" {
   name                  = "example" 
   is_virtual_network_filter_enabled = true

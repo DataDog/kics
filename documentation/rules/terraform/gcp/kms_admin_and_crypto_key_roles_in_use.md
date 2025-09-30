@@ -45,7 +45,7 @@ data "google_iam_policy" "secure_example" {
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "google_project_iam_policy" "negative1" {
   project     = "your-project-id"
   policy_data = data.google_iam_policy.negative1.policy_data
@@ -71,7 +71,7 @@ data "google_iam_policy" "negative1" {
 
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "google_project_iam_policy" "positive1" {
   project     = "your-project-id"
   policy_data = data.google_iam_policy.positive1.policy_data

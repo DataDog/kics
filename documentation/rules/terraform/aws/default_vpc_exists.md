@@ -45,7 +45,7 @@ This ensures network isolation and enables more granular control over security s
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 module "vpc" {
   source  = "terraform-aws-modules/vpc/aws"
   version = "3.7.0"
@@ -68,7 +68,7 @@ module "vpc" {
 
 ```
 
-```terraform
+```tf
 resource "aws_vpc" "negative1" {
   cidr_block       = "10.0.0.0/16"
   instance_tenancy = "default"
@@ -82,7 +82,16 @@ resource "aws_vpc" "negative1" {
 
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
+resource "aws_default_vpc" "positive1" {
+  tags = {
+    Name = "Default VPC"
+  }
+}
+
+```
+
+```tf
 module "vpc" {
   source  = "terraform-aws-modules/vpc/aws"
   version = "3.7.0"
@@ -101,15 +110,6 @@ module "vpc" {
   tags = {
     Terraform   = "true"
     Environment = "dev"
-  }
-}
-
-```
-
-```terraform
-resource "aws_default_vpc" "positive1" {
-  tags = {
-    Name = "Default VPC"
   }
 }
 

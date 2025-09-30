@@ -41,7 +41,7 @@ resource "azurerm_postgresql_configuration" "secure_example" {
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 #this code is a correct code for which the query should not find any result
 resource "azurerm_postgresql_configuration" "negative1" {
     name                = "log_duration"
@@ -65,7 +65,7 @@ resource "azurerm_postgresql_configuration" "negative3" {
 }
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 #this is a problematic code where the query should report a result(s)
 resource "azurerm_postgresql_configuration" "positive1" {
     name                = "log_duration"

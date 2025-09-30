@@ -51,7 +51,7 @@ resource "aws_s3_bucket_object" "examplebucket_object" {
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "aws_s3_bucket" "examplebucket" {
   bucket = "examplebuckettftest"
   acl    = "private"
@@ -74,7 +74,7 @@ resource "aws_s3_bucket_object" "examplebucket_object" {
 
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "aws_s3_bucket" "examplebucket" {
   bucket = "examplebuckettftest"
   acl    = "private"

@@ -32,7 +32,7 @@ meta:
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "azurerm_network_security_rule" "negative1" {
      name                        = "example"
      priority                    = 100
@@ -189,7 +189,7 @@ resource "azurerm_network_security_rule" "negative11" {
 
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "azurerm_network_security_rule" "positive1" {
      name                        = "example"
      priority                    = 100

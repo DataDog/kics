@@ -32,17 +32,7 @@ meta:
 
 
 ## Compliant Code Examples
-```terraform
-# Passing IAM Member Example
-resource "google_storage_bucket_iam_member" "good_example_member" {
-  bucket = "example-bucket"
-  member = "user:someone@example.com" # ✅ Non-public principal
-  role   = "roles/storage.objectViewer"
-}
-
-```
-
-```terraform
+```tf
 # Passing IAM Binding Example
 resource "google_storage_bucket_iam_binding" "good_example_binding" {
   bucket  = "example-bucket"
@@ -51,8 +41,18 @@ resource "google_storage_bucket_iam_binding" "good_example_binding" {
 }
 
 ```
+
+```tf
+# Passing IAM Member Example
+resource "google_storage_bucket_iam_member" "good_example_member" {
+  bucket = "example-bucket"
+  member = "user:someone@example.com" # ✅ Non-public principal
+  role   = "roles/storage.objectViewer"
+}
+
+```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 # Failing IAM Member Example
 resource "google_storage_bucket_iam_member" "bad_example_member" {
   bucket = "example-bucket"

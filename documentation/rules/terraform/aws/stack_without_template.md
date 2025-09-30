@@ -46,7 +46,7 @@ resource "aws_cloudformation_stack" "example" {
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "aws_cloudformation_stack" "negative1" {
 
      name = "networking-stack"
@@ -73,7 +73,7 @@ resource "aws_cloudformation_stack" "negative2" {
 
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "aws_cloudformation_stack" "positive1" {
 
   name = "networking-stack"

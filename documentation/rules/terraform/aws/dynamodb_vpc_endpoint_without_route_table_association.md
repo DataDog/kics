@@ -32,7 +32,7 @@ meta:
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 provider "aws" {
   region = "us-east-1"
 }
@@ -148,7 +148,7 @@ resource "aws_dynamodb_table" "basic-dynamodb-table2" {
 
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 provider "aws" {
   region = "us-east-1"
 }

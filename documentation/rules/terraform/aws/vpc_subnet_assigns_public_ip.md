@@ -32,30 +32,7 @@ meta:
 
 
 ## Compliant Code Examples
-```terraform
-module "vpc" {
-  source  = "terraform-aws-modules/vpc/aws"
-  version = "3.7.0"
-
-  name = "my-vpc"
-  cidr = "10.0.0.0/16"
-
-  azs             = ["eu-west-1a", "eu-west-1b", "eu-west-1c"]
-  private_subnets = ["10.0.1.0/24", "10.0.2.0/24", "10.0.3.0/24"]
-
-  map_public_ip_on_launch = false
-  enable_nat_gateway      = true
-  enable_vpn_gateway      = true
-
-  tags = {
-    Terraform   = "true"
-    Environment = "dev"
-  }
-}
-
-```
-
-```terraform
+```tf
 resource "aws_vpc" "main3" {
   cidr_block = "10.0.0.0/16"
 }
@@ -73,7 +50,30 @@ resource "aws_subnet" "negative2" {
 
 ```
 
-```terraform
+```tf
+module "vpc" {
+  source  = "terraform-aws-modules/vpc/aws"
+  version = "3.7.0"
+
+  name = "my-vpc"
+  cidr = "10.0.0.0/16"
+
+  azs             = ["eu-west-1a", "eu-west-1b", "eu-west-1c"]
+  private_subnets = ["10.0.1.0/24", "10.0.2.0/24", "10.0.3.0/24"]
+
+  map_public_ip_on_launch = false
+  enable_nat_gateway      = true
+  enable_vpn_gateway      = true
+
+  tags = {
+    Terraform   = "true"
+    Environment = "dev"
+  }
+}
+
+```
+
+```tf
 resource "aws_vpc" "main2" {
   cidr_block = "10.0.0.0/16"
 }
@@ -89,30 +89,7 @@ resource "aws_subnet" "negative1" {
 
 ```
 ## Non-Compliant Code Examples
-```terraform
-module "vpc" {
-  source  = "terraform-aws-modules/vpc/aws"
-  version = "3.7.0"
-
-  name = "my-vpc"
-  cidr = "10.0.0.0/16"
-
-  azs             = ["eu-west-1a", "eu-west-1b", "eu-west-1c"]
-  private_subnets = ["10.0.1.0/24", "10.0.2.0/24", "10.0.3.0/24"]
-
-  map_public_ip_on_launch = true
-  enable_nat_gateway      = true
-  enable_vpn_gateway      = true
-
-  tags = {
-    Terraform   = "true"
-    Environment = "dev"
-  }
-}
-
-```
-
-```terraform
+```tf
 module "vpc" {
   source  = "terraform-aws-modules/vpc/aws"
   version = "3.7.0"
@@ -134,7 +111,7 @@ module "vpc" {
 
 ```
 
-```terraform
+```tf
 resource "aws_vpc" "main" {
   cidr_block = "10.0.0.0/16"
 }
@@ -148,6 +125,29 @@ resource "aws_subnet" "positive" {
   }
 
   map_public_ip_on_launch = true
+}
+
+```
+
+```tf
+module "vpc" {
+  source  = "terraform-aws-modules/vpc/aws"
+  version = "3.7.0"
+
+  name = "my-vpc"
+  cidr = "10.0.0.0/16"
+
+  azs             = ["eu-west-1a", "eu-west-1b", "eu-west-1c"]
+  private_subnets = ["10.0.1.0/24", "10.0.2.0/24", "10.0.3.0/24"]
+
+  map_public_ip_on_launch = true
+  enable_nat_gateway      = true
+  enable_vpn_gateway      = true
+
+  tags = {
+    Terraform   = "true"
+    Environment = "dev"
+  }
 }
 
 ```

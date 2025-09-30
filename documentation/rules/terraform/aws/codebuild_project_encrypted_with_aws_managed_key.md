@@ -32,7 +32,7 @@ meta:
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 provider "aws" {
   region = "us-east-1"
 }
@@ -99,7 +99,7 @@ resource "aws_codebuild_project" "project-cloudrail-test2" {
 
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 provider "aws" {
   region = "us-east-1"
 }

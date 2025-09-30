@@ -32,7 +32,7 @@ meta:
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "aws_iam_user" "example" {
   name          = "example"
   path          = "/"
@@ -41,7 +41,7 @@ resource "aws_iam_user" "example" {
 
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "aws_iam_user" "example" {
   name          = "example"
   path          = "/"

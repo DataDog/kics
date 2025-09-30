@@ -60,7 +60,7 @@ policy = jsonencode({
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "aws_lambda_function" "negativefunction1" {
   filename      = "lambda_function_payload.zip"
   function_name = "lambda_function_name"
@@ -230,7 +230,7 @@ resource "aws_iam_policy_attachment" "negativedirectpolicyattachment2" {
 }
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "aws_lambda_function" "positivefunction1" {
   filename      = "lambda_function_payload.zip"
   function_name = "lambda_function_name"

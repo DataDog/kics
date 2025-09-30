@@ -49,7 +49,7 @@ resource "azurerm_management_lock" "public-ip" {
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "azurerm_container_registry" "acr" {
 name = "containerRegistry1"
 resource_group_name = azurerm_resource_group.rg.name
@@ -68,7 +68,7 @@ notes = "Locked because it's needed by a third-party"
 
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "azurerm_container_registry" "acr" {
 name = "containerRegistry1"
 resource_group_name = azurerm_resource_group.rg.name

@@ -56,7 +56,7 @@ resource "aws_db_security_group" "example" {
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "aws_db_security_group" "negative1" {
   name = "rds_sg"
 
@@ -67,13 +67,9 @@ resource "aws_db_security_group" "negative1" {
 
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "aws_db_security_group" "positive1" {
   name = "rds_sg"
-
-  ingress {
-    cidr = "10.0.0.0/8"
-  }
 
   ingress {
     cidr = "0.0.0.0/0"
@@ -82,9 +78,13 @@ resource "aws_db_security_group" "positive1" {
 
 ```
 
-```terraform
+```tf
 resource "aws_db_security_group" "positive1" {
   name = "rds_sg"
+
+  ingress {
+    cidr = "10.0.0.0/8"
+  }
 
   ingress {
     cidr = "0.0.0.0/0"

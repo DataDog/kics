@@ -32,7 +32,7 @@ meta:
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "aws_cloudformation_stack_set_instance" "negative1" {
   account_id     = "123456789012"
   region         = "us-east-1"
@@ -41,7 +41,7 @@ resource "aws_cloudformation_stack_set_instance" "negative1" {
 }
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "aws_cloudformation_stack_set_instance" "positive1" {
   account_id     = "123456789012"
   region         = "us-east-1"

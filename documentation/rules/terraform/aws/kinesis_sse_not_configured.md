@@ -43,7 +43,7 @@ resource "aws_kinesis_firehose_delivery_stream" "example" {
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 
 resource "aws_kinesis_firehose_delivery_stream" "negative1" {
   name        = "${aws_s3_bucket.logs.bucket}-firehose"
@@ -72,7 +72,7 @@ resource "aws_kinesis_firehose_delivery_stream" "negative2" {
 
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "aws_kinesis_firehose_delivery_stream" "positive1" {
   name        = "${aws_s3_bucket.logs.bucket}-firehose"
   destination = "extended_s3"

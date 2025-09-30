@@ -32,7 +32,7 @@ meta:
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "aws_mq_broker" "negative1" {
   broker_name = "example"
 
@@ -58,7 +58,7 @@ resource "aws_mq_broker" "negative1" {
 }
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "aws_mq_broker" "positive1" {
   broker_name = "no-logging"
 }

@@ -43,7 +43,7 @@ resource "azurerm_sql_active_directory_administrator" "example" {
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "azurerm_resource_group" "negative1" {
   name     = "acceptanceTestResourceGroup1"
   location = "West US"
@@ -67,7 +67,7 @@ resource "azurerm_sql_active_directory_administrator" "negative3" {
 }
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "azurerm_resource_group" "positive1" {
   name     = "acceptanceTestResourceGroup1"
   location = "West US"

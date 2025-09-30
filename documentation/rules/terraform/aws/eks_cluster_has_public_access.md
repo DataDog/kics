@@ -32,7 +32,7 @@ meta:
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "aws_eks_cluster" "negative1" {
   name     = "example"
   role_arn = aws_iam_role.example.arn
@@ -58,7 +58,7 @@ output "kubeconfig-certificate-authority-data" {
 }
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "aws_eks_cluster" "positive1" {
   name     = "example"
   role_arn = aws_iam_role.example.arn

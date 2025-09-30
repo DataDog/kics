@@ -45,7 +45,7 @@ Without logging enabled, malicious or unauthorized access patterns can go undete
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "aws_cloudfront_distribution" "negative1" {
   origin {
     domain_name = aws_s3_bucket.b.bucket_regional_domain_name
@@ -70,7 +70,7 @@ resource "aws_cloudfront_distribution" "negative1" {
 }
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "aws_cloudfront_distribution" "positive1" {
   origin {
     domain_name = aws_s3_bucket.b.bucket_regional_domain_name

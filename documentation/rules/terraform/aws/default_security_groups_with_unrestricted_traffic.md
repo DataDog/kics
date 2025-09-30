@@ -43,7 +43,7 @@ ingress {
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "aws_default_security_group" "negative1" {
   vpc_id = aws_vpc.mainvpc.id
 
@@ -66,7 +66,7 @@ resource "aws_default_security_group" "negative1" {
 }
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "aws_default_security_group" "positive1" {
   vpc_id = aws_vpc.mainvpc.id
 

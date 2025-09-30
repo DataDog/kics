@@ -68,7 +68,7 @@ EOF
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "aws_sqs_queue" "q" {
   name = "examplequeue"
 }
@@ -97,7 +97,7 @@ POLICY
 }
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "aws_sqs_queue" "q" {
   name = "examplequeue"
 }

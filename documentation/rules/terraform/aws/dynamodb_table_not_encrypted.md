@@ -38,7 +38,7 @@ server_side_encryption {
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "aws_dynamodb_table" "example" {
   name             = "example"
   hash_key         = "TestTableHashKey"
@@ -66,7 +66,7 @@ resource "aws_dynamodb_table" "example" {
 
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "aws_dynamodb_table" "example" {
   name             = "example"
   hash_key         = "TestTableHashKey"

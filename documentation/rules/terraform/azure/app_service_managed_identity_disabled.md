@@ -42,7 +42,7 @@ resource "azurerm_app_service" "example" {
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "azurerm_app_service" "negative1" {
   name                = "example-app-service"
   location            = azurerm_resource_group.example.location
@@ -71,7 +71,7 @@ resource "azurerm_app_service" "negative1" {
 
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "azurerm_app_service" "positive1" {
   name                = "example-app-service"
   location            = azurerm_resource_group.example.location

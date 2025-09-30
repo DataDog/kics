@@ -42,17 +42,7 @@ resource "google_artifact_registry_repository_iam_binding" "good_example_binding
 
 
 ## Compliant Code Examples
-```terraform
-# IAM Member compliant
-resource "google_artifact_registry_repository_iam_member" "good_example_member" {
-  repository = "example-repo"
-  member     = "user:someone@example.com" # ✅ Non-public principal
-  role       = "roles/artifactregistry.reader"
-}
-
-```
-
-```terraform
+```tf
 
 # IAM Binding compliant
 resource "google_artifact_registry_repository_iam_binding" "good_example_binding" {
@@ -62,8 +52,18 @@ resource "google_artifact_registry_repository_iam_binding" "good_example_binding
 }
 
 ```
+
+```tf
+# IAM Member compliant
+resource "google_artifact_registry_repository_iam_member" "good_example_member" {
+  repository = "example-repo"
+  member     = "user:someone@example.com" # ✅ Non-public principal
+  role       = "roles/artifactregistry.reader"
+}
+
+```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 # IAM Member violation
 resource "google_artifact_registry_repository_iam_member" "bad_example_member" {
   repository = "example-repo"

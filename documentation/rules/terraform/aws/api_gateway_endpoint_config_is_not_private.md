@@ -42,7 +42,7 @@ resource "aws_api_gateway_rest_api" "secure_example" {
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "aws_api_gateway_rest_api" "negative1" {
   name = "regional-example"
 
@@ -53,7 +53,7 @@ resource "aws_api_gateway_rest_api" "negative1" {
 
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "aws_api_gateway_rest_api" "positive1" {
   name = "regional-example"
 

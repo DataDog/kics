@@ -34,7 +34,7 @@ To secure Cloud SQL instances, either disable public IP by setting ipv4_enabled 
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "google_sql_database_instance" "negative1" {
 
   name   = "private-instance-1"
@@ -77,7 +77,7 @@ resource "google_sql_database_instance" "negative2" {
 
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "google_sql_database_instance" "positive1" {
   name             = "master-instance"
   database_version = "POSTGRES_11"

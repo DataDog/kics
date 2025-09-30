@@ -32,7 +32,7 @@ meta:
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "azurerm_kubernetes_cluster" "negative1" {
   name                = "example-aks1"
   location            = azurerm_resource_group.example.location
@@ -63,7 +63,7 @@ resource "azurerm_kubernetes_cluster" "negative1" {
 
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "azurerm_kubernetes_cluster" "positive1" {
   name                = "example-aks1"
   location            = azurerm_resource_group.example.location

@@ -43,7 +43,7 @@ resource "aws_security_group" "secure_http" {
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "aws_security_group" "negative1" {
   name        = "negative_http"
   description = "Doesn't get the HTTP port open"
@@ -70,7 +70,7 @@ resource "aws_security_group" "negative3" {
 
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "aws_security_group" "positive1" {
   name        = "http_positive_tcp_1"
   description = "Gets the HTTP port open with the tcp protocol"

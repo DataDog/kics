@@ -34,7 +34,7 @@ Secure configuration requires specifying explicit IAM principals rather than usi
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "aws_sns_topic" "negative1" {
 policy = <<EOF
 {
@@ -56,7 +56,7 @@ EOF
 
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "aws_sns_topic" "positive1" {
 policy = <<EOF
 {

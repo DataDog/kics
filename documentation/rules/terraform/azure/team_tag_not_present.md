@@ -57,7 +57,22 @@ resource "azurerm_storage_account" "good_example" {
 
 
 ## Compliant Code Examples
-```terraform
+```tf
+resource "azurerm_storage_account" "good_example" {
+  name                     = "goodstorageacct"
+  resource_group_name      = "example-rg"
+  location                 = "East US"
+  account_tier             = "Standard"
+  account_replication_type = "LRS"
+  tags = {
+    team        = "DevOps" # Required tag is present
+    environment = "prod"
+  }
+}
+
+```
+
+```tf
 # ✅ "team" label is not a valid attribute for this resource type
 
 resource "azurerm_postgresql_test" "good_example" {
@@ -74,7 +89,7 @@ resource "azurerm_postgresql_test" "good_example" {
 
 ```
 
-```terraform
+```tf
 resource "azurerm_postgresql_server" "good_example" {
   name                = "good-postgresql-server"
   location            = "East US"
@@ -93,23 +108,8 @@ resource "azurerm_postgresql_server" "good_example" {
 }
 
 ```
-
-```terraform
-resource "azurerm_storage_account" "good_example" {
-  name                     = "goodstorageacct"
-  resource_group_name      = "example-rg"
-  location                 = "East US"
-  account_tier             = "Standard"
-  account_replication_type = "LRS"
-  tags = {
-    team        = "DevOps" # Required tag is present
-    environment = "prod"
-  }
-}
-
-```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 # Example 1: Missing tags block entirely
 resource "azurerm_storage_account" "bad_example_no_tags" {
   name                     = "badstorageacct"

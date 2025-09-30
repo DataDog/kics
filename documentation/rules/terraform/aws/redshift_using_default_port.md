@@ -32,7 +32,7 @@ meta:
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "aws_redshift_cluster" "negative1" {
   cluster_identifier    = "tf-redshift-cluster"
   database_name         = "mydb"
@@ -46,7 +46,20 @@ resource "aws_redshift_cluster" "negative1" {
 
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
+resource "aws_redshift_cluster" "positive1" {
+  cluster_identifier    = "tf-redshift-cluster"
+  database_name         = "mydb"
+  master_username       = "foo"
+  master_password       = "Mustbe8characters"
+  node_type             = "dc1.large"
+  cluster_type          = "single-node"
+  publicly_accessible   = false
+}
+
+```
+
+```tf
 resource "aws_redshift_cluster" "positive2" {
   cluster_identifier    = "tf-redshift-cluster"
   database_name         = "mydb"
@@ -56,19 +69,6 @@ resource "aws_redshift_cluster" "positive2" {
   cluster_type          = "single-node"
   publicly_accessible   = false
   port                  = 5439
-}
-
-```
-
-```terraform
-resource "aws_redshift_cluster" "positive1" {
-  cluster_identifier    = "tf-redshift-cluster"
-  database_name         = "mydb"
-  master_username       = "foo"
-  master_password       = "Mustbe8characters"
-  node_type             = "dc1.large"
-  cluster_type          = "single-node"
-  publicly_accessible   = false
 }
 
 ```

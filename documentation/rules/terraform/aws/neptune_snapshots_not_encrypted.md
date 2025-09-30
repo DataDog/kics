@@ -50,7 +50,7 @@ resource "aws_neptune_cluster_snapshot" "bad_example" {
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "aws_neptune_cluster_snapshot" "good_example" {
   db_cluster_identifier          = "example-cluster"
   db_cluster_snapshot_identifier = "example-snapshot"
@@ -59,7 +59,7 @@ resource "aws_neptune_cluster_snapshot" "good_example" {
 
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "aws_neptune_cluster_snapshot" "bad_example" {
   db_cluster_identifier          = "example-cluster"
   db_cluster_snapshot_identifier = "example-snapshot"

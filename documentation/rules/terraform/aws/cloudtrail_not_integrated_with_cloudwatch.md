@@ -53,7 +53,7 @@ resource "aws_cloudtrail" "example" {
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "aws_cloudwatch_log_group" "cloudtrail_log_group" {
   name = "aws-foundations-benchmark-1-4-0-terraform-3-4-remediated"
 }
@@ -160,7 +160,7 @@ POLICY
 
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "aws_cloudtrail" "positive1" {
   name                          = "tf-trail-foobar"
   s3_bucket_name                = aws_s3_bucket.foo.id

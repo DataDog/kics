@@ -46,7 +46,7 @@ If this misconfiguration is left unaddressed, sensitive data stored in the Docum
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 provider "aws" {
   region = "us-east-1"
 }
@@ -67,7 +67,7 @@ resource "aws_docdb_cluster" "test22" {
 
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 provider "aws" {
   region = "us-east-1"
 }

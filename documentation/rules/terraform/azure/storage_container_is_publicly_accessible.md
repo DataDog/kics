@@ -52,7 +52,7 @@ resource "azurerm_storage_container" "insecure_container" {
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "azurerm_storage_container" "negative1" {
   name                  = "vhds"
   storage_account_name  = azurerm_storage_account.example.name
@@ -66,7 +66,7 @@ resource "azurerm_storage_container" "negative2" {
 }
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "azurerm_storage_container" "positive1" {
   name                  = "vhds"
   storage_account_name  = azurerm_storage_account.example.name

@@ -44,7 +44,7 @@ Such overly permissive policies can allow any AWS account to perform any action 
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "aws_efs_file_system" "fs" {
   creation_token = "my-product"
 }
@@ -81,7 +81,7 @@ POLICY
 
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 provider "aws" {
   region = "us-east-1"
 }

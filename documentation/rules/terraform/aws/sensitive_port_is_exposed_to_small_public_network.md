@@ -32,7 +32,7 @@ meta:
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "aws_security_group" "negative1" {
   name        = "allow_tls1"
   description = "Allow TLS inbound traffic"
@@ -123,7 +123,7 @@ resource "aws_security_group" "negative6" {
 }
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "aws_security_group" "positive1" {
   name        = "allow_tls1"
   description = "Allow TLS inbound traffic"

@@ -60,8 +60,8 @@ spec:
   containers:
     - name: command-demo-container
       image: foo/bar
-      command: ["kubelet","--hostname-override=host"]
-      args: []
+      command: ["kubelet"]
+      args: ["--hostname-override=host"]
   restartPolicy: OnFailure
 
 ```
@@ -77,8 +77,8 @@ spec:
   containers:
     - name: command-demo-container
       image: foo/bar
-      command: ["kubelet"]
-      args: ["--hostname-override=host"]
+      command: ["kubelet","--hostname-override=host"]
+      args: []
   restartPolicy: OnFailure
 
 ```

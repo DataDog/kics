@@ -44,6 +44,23 @@ spec:
     - name: command-demo-container
       image: foo/bar
       command: ["kubelet"]
+      args: [""]
+  restartPolicy: OnFailure
+
+```
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: command-demo
+  labels:
+    purpose: demonstrate-command
+spec:
+  containers:
+    - name: command-demo-container
+      image: foo/bar
+      command: ["kubelet"]
       args: ["--make-iptables-util-chains=true"]
   restartPolicy: OnFailure
 
@@ -63,7 +80,7 @@ spec:
 }
 
 ```
-
+## Non-Compliant Code Examples
 ```yaml
 apiVersion: v1
 kind: Pod
@@ -76,11 +93,11 @@ spec:
     - name: command-demo-container
       image: foo/bar
       command: ["kubelet"]
-      args: [""]
+      args: ["--make-iptables-util-chains=false"]
   restartPolicy: OnFailure
 
 ```
-## Non-Compliant Code Examples
+
 ```yaml
 apiVersion: kubelet.config.k8s.io/v1beta1
 kind: KubeletConfiguration
@@ -105,22 +122,5 @@ makeIPTablesUtilChains: false
     "serializeImagePulls": false,
     "address": "192.168.0.8"
 }
-
-```
-
-```yaml
-apiVersion: v1
-kind: Pod
-metadata:
-  name: command-demo
-  labels:
-    purpose: demonstrate-command
-spec:
-  containers:
-    - name: command-demo-container
-      image: foo/bar
-      command: ["kubelet"]
-      args: ["--make-iptables-util-chains=false"]
-  restartPolicy: OnFailure
 
 ```

@@ -32,7 +32,7 @@ meta:
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 
 
 module "acm" {
@@ -181,7 +181,7 @@ resource "aws_cloudfront_distribution" "negative1" {
 
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 
 
 module "acm" {

@@ -52,7 +52,7 @@ subnet {
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 #this code is a correct code for which the query should not find any result
 resource "azure_virtual_network" "negative1" {
   name          = "test-network"
@@ -67,7 +67,7 @@ resource "azure_virtual_network" "negative1" {
 }
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 #this is a problematic code where the query should report a result(s)
 resource "azure_virtual_network" "positive1" {
   name          = "test-network"

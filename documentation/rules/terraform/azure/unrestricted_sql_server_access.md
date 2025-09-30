@@ -44,7 +44,7 @@ Avoid wide IP ranges or using `0.0.0.0` as seen in insecure configurations.
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "azurerm_resource_group" "negative1" {
   name     = "acceptanceTestResourceGroup1"
   location = "West US"
@@ -69,7 +69,7 @@ resource "azurerm_sql_firewall_rule" "negative3" {
 
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "azurerm_resource_group" "positive1" {
   name     = "acceptanceTestResourceGroup1"
   location = "West US"

@@ -45,7 +45,7 @@ This misconfiguration can lead to increased risk of data breaches and unauthoriz
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "aws_elasticache_cluster" "negative1" {
   cluster_id           = "cluster-example"
   engine               = "memcached"
@@ -58,7 +58,7 @@ resource "aws_elasticache_cluster" "negative1" {
 
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "aws_elasticache_cluster" "positive1" {
   cluster_id           = "cluster-example"
   engine               = "memcached"

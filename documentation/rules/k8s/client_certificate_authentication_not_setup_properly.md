@@ -42,23 +42,6 @@ metadata:
 spec:
   containers:
     - name: command-demo-container
-      image: foo/bar
-      command: ["kubelet"]
-      args: ["--client-ca-file=/var/lib/ca.pem"]
-  restartPolicy: OnFailure
-
-```
-
-```yaml
-apiVersion: v1
-kind: Pod
-metadata:
-  name: command-demo
-  labels:
-    purpose: demonstrate-command
-spec:
-  containers:
-    - name: command-demo-container
       image: gcr.io/google_containers/kube-apiserver-amd64:v1.6.0
       command: ["kube-apiserver"]
       args: ["--client-ca-file=/var/lib/ca.crt"]
@@ -85,6 +68,26 @@ evictionHard:
     memory.available:  "200Mi"
 
 ```
+
+```yaml
+apiVersion: kubelet.config.k8s.io/v1beta1
+kind: KubeletConfiguration
+address: "192.168.0.8"
+port: 20250
+protectKernelDefaults: false
+serializeImagePulls: false
+authentication:
+  anonymous:
+    enabled: false
+  webhook:
+    enabled: true
+  x509:
+    clientCAFile: "/var/lib/kubernetes/ca.pem"
+authorization:
+evictionHard:
+    memory.available:  "200Mi"
+
+```
 ## Non-Compliant Code Examples
 ```yaml
 apiVersion: v1
@@ -96,10 +99,22 @@ metadata:
 spec:
   containers:
     - name: command-demo-container
-      image: gcr.io/google_containers/kube-apiserver-amd64:v1.6.0
-      command: ["kube-apiserver"]
+      image: foo/bar
+      command: ["kubelet"]
       args: ["--client-ca-file=/var/lib/ca.txt"]
   restartPolicy: OnFailure
+
+```
+
+```yaml
+apiVersion: kubelet.config.k8s.io/v1beta1
+kind: KubeletConfiguration
+address: "192.168.0.8"
+port: 20250
+protectKernelDefaults: false
+serializeImagePulls: false
+evictionHard:
+  memory.available: "200Mi"
 
 ```
 
@@ -117,25 +132,5 @@ spec:
       command: ["kube-apiserver"]
       args: []
   restartPolicy: OnFailure
-
-```
-
-```yaml
-apiVersion: kubelet.config.k8s.io/v1beta1
-kind: KubeletConfiguration
-address: "192.168.0.8"
-port: 20250
-protectKernelDefaults: false
-serializeImagePulls: false
-authentication:
-  anonymous:
-    enabled: false
-  webhook:
-    enabled: true
-  x509:
-    clientCAFile: "/var/lib/kubernetes/ca.txt"
-authorization:
-evictionHard:
-    memory.available:  "200Mi"
 
 ```

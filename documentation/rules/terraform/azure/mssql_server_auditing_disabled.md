@@ -40,7 +40,7 @@ resource "azurerm_mssql_server_extended_auditing_policy" "example" {
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 provider "azurerm" {
   features {}
 }
@@ -82,7 +82,7 @@ resource "azurerm_mssql_server_extended_auditing_policy" "example" {
 
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "azurerm_mssql_server" "positive1" {
     name                         = "mssqlserver"
     resource_group_name          = azurerm_resource_group.example.name

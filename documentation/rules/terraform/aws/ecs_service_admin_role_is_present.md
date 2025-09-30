@@ -32,7 +32,7 @@ meta:
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 #this code is a correct code for which the query should not find any result
 resource "aws_ecs_service" "negative1" {
   name            = "mongodb"
@@ -60,7 +60,7 @@ resource "aws_ecs_service" "negative1" {
 }
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 #this is a problematic code where the query should report a result(s)
 resource "aws_ecs_service" "positive1" {
   name            = "mongodb"

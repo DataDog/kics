@@ -43,7 +43,7 @@ Distributing cache nodes across multiple AZs increases fault tolerance and avail
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "aws_elasticache_cluster" "negative1" {
   cluster_id           = "cluster-example"
   engine = "memcached"
@@ -54,7 +54,7 @@ resource "aws_elasticache_cluster" "negative1" {
 }
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "aws_elasticache_cluster" "positive1" {
   cluster_id = "cluster-example"
   engine = "memcached"

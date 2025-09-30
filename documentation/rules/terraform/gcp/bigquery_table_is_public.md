@@ -52,17 +52,7 @@ resource "google_bigquery_table_iam_member" "secure_example" {
 
 
 ## Compliant Code Examples
-```terraform
-# IAM Binding compliant
-resource "google_bigquery_table_iam_binding" "good_example_binding" {
-  table   = "example_table"
-  members = ["user:someone@example.com", "group:admins@example.com"] # ✅ No public principals
-  role    = "roles/bigquery.dataViewer"
-}
-
-```
-
-```terraform
+```tf
 # IAM Member compliant
 resource "google_bigquery_table_iam_member" "good_example_member" {
   table  = "example_table"
@@ -71,8 +61,18 @@ resource "google_bigquery_table_iam_member" "good_example_member" {
 }
 
 ```
+
+```tf
+# IAM Binding compliant
+resource "google_bigquery_table_iam_binding" "good_example_binding" {
+  table   = "example_table"
+  members = ["user:someone@example.com", "group:admins@example.com"] # ✅ No public principals
+  role    = "roles/bigquery.dataViewer"
+}
+
+```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 # IAM Member violation
 resource "google_bigquery_table_iam_member" "bad_example_member" {
   table  = "example_table"

@@ -32,7 +32,7 @@ meta:
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "aws_config_configuration_aggregator" "negative1" {
   name = "example"
 
@@ -54,7 +54,7 @@ resource "aws_config_configuration_aggregator" "negative2" {
 }
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "aws_config_configuration_aggregator" "positive1" {
   name = "example"
 

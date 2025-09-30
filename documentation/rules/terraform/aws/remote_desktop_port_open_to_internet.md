@@ -54,7 +54,7 @@ ingress {
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "aws_security_group" "negative1" {
   name        = "Dont open remote desktop port"
   description = "Doesn't enable the remote desktop port"
@@ -84,7 +84,7 @@ resource "aws_security_group" "negative_rdp_2" {
 
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "aws_security_group" "positive1" {
   name        = "rdp_positive_tcp_1"
   description = "Gets the remote desktop port open with the tcp protocol"

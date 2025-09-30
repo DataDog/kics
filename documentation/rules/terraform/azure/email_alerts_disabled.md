@@ -42,7 +42,7 @@ Setting `alert_notifications = true` ensures timely awareness and response to po
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "azurerm_security_center_contact" "negative1" {
     email = "contact@example.com"
     phone = "+1-555-555-5555"
@@ -50,7 +50,7 @@ resource "azurerm_security_center_contact" "negative1" {
 }
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "azurerm_security_center_contact" "positive1" {
     email = "contact@example.com"
     phone = "+1-555-555-5555"
