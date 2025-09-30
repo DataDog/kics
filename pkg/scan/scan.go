@@ -13,6 +13,7 @@ import (
 	"github.com/Checkmarx/kics/pkg/engine"
 	"github.com/Checkmarx/kics/pkg/engine/provider"
 	"github.com/Checkmarx/kics/pkg/engine/source"
+	"github.com/Checkmarx/kics/pkg/featureflags"
 	"github.com/Checkmarx/kics/pkg/kics"
 	"github.com/Checkmarx/kics/pkg/logger"
 	"github.com/Checkmarx/kics/pkg/model"
@@ -120,6 +121,7 @@ func (c *Client) initScan(ctx context.Context) (*executeScanParameters, error) {
 		c.Tracker,
 		c.Storage,
 		querySource,
+		c.FlagEvaluator,
 	)
 	if err != nil {
 		logger.Err(err).Msgf("failed to create service %v", err)
@@ -257,7 +259,7 @@ func (c *Client) createService(
 	paths []string,
 	t kics.Tracker,
 	store kics.Storage,
-	querySource *source.FilesystemSource) ([]*kics.Service, error) {
+	querySource *source.FilesystemSource, flagEvaluator featureflags.FlagEvaluator) ([]*kics.Service, error) {
 	filesSource, err := c.getFileSystemSourceProvider(ctx, paths)
 	if err != nil {
 		return nil, err
@@ -278,8 +280,11 @@ func (c *Client) createService(
 	}
 
 	// combinedResolver to be used to resolve files and templates
-	combinedResolver, err := resolver.NewBuilder().
-		Add(ctx, &helm.Resolver{}).
+	builder := resolver.NewBuilder()
+	if flagEvaluator.EvaluateWithOrg(featureflags.IacEnableKicsHelmResolver) {
+		builder = builder.Add(ctx, &helm.Resolver{})
+	}
+	combinedResolver, err := builder.
 		Build(ctx)
 	if err != nil {
 		return nil, err

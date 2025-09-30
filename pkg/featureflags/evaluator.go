@@ -5,6 +5,7 @@ const (
 	IacAttachDefaultFrameworks = "k9-iac-attach-default-frameworks"
 	IacDisableKicsRule         = "k9-iac-disable-kics-rule"
 	IacEnableKicsPlatform      = "k9-iac-enable-kics-platform"
+	IacEnableKicsHelmResolver  = "k9-iac-enable-kics-helm-resolver"
 )
 
 type FlagEvaluator interface {
