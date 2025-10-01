@@ -1,4 +1,4 @@
-# dd-iac-scan disable=e592a0c5-5bdb-414c-9066-5dba7cdea370
+# dd-iac-scan disable=a2b3c4d5-e6f7-8901-gh23-ijkl456m7890
 provider "aws" {
   region = "us-east-1"
 }

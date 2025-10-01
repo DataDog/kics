@@ -403,8 +403,8 @@ func Test_GetScanMetadata(t *testing.T) {
 					Files:      1,
 					Rules:      1,
 					Duration:   time.Minute,
-					ViolationBreakdowns: map[string][]string{
-						"MEDIUM": {"c065b98e-1515-4991-9dca-b602bd6a2fbb"},
+					ViolationBreakdowns: map[string]map[string]int{
+						"MEDIUM": {"c065b98e-1515-4991-9dca-b602bd6a2fbb": 1},
 					},
 				},
 				RuleStats: RuleStats{
@@ -431,9 +431,8 @@ func Test_GetScanMetadata(t *testing.T) {
 			v := c.generateMetadata(tt.results, tt.scanStartTime, tt.endTime)
 
 			require.Equal(t, tt.expectedMetadata.StartTime, v.StartTime)
-			require.Equal(t, len(tt.expectedMetadata.Stats.ViolationBreakdowns), len(v.Stats.ViolationBreakdowns))
 			require.Equal(t, tt.expectedMetadata.Stats.Violations, v.Stats.Violations)
-			require.Equal(t, tt.expectedMetadata.Stats.ViolationBreakdowns["MEDIUM"], v.Stats.ViolationBreakdowns["MEDIUM"])
+			require.Equal(t, tt.expectedMetadata.Stats.ViolationBreakdowns, v.Stats.ViolationBreakdowns)
 		})
 	}
 }
