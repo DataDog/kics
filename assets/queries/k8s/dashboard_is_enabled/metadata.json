@@ -4,8 +4,9 @@
   "severity": "LOW",
   "category": "Insecure Configurations",
   "descriptionText": "If not needed, disable the dashboard to prevent it from being used as an attack vector.",
-  "descriptionUrl": "https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/k8s/dashboard_is_enabled",
   "platform": "Kubernetes",
   "descriptionID": "ad0e6a8d",
-  "cwe": ""
+  "cwe": "",
+  "providerUrl": "https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/"
 }

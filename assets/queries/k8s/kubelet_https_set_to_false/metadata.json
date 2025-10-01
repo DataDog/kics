@@ -4,9 +4,10 @@
   "severity": "MEDIUM",
   "category": "Networking and Firewall",
   "descriptionText": "When using `kube-apiserver`, the `--kubelet-https` flag should not be set to `false`.",
-  "descriptionUrl": "https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/k8s/kubelet_https_set_to_false",
   "platform": "Kubernetes",
   "descriptionID": "754a303a",
   "cwe": "",
-  "oldSeverity": "HIGH"
+  "oldSeverity": "HIGH",
+  "providerUrl": "https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/"
 }

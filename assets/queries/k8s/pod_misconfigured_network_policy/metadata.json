@@ -4,8 +4,9 @@
   "severity": "MEDIUM",
   "category": "Networking and Firewall",
   "descriptionText": "Each Pod should be targeted by a network policy.",
-  "descriptionUrl": "https://kubernetes.io/docs/concepts/services-networking/network-policies/",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/k8s/pod_misconfigured_network_policy",
   "platform": "Kubernetes",
   "descriptionID": "20500552",
-  "cwe": ""
+  "cwe": "",
+  "providerUrl": "https://kubernetes.io/docs/concepts/services-networking/network-policies/"
 }

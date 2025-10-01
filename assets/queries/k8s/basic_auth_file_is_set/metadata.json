@@ -4,8 +4,9 @@
   "severity": "HIGH",
   "category": "Access Control",
   "descriptionText": "When using `kube-apiserver`, the `--basic-auth-file` flag should not be set.",
-  "descriptionUrl": "https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/k8s/basic_auth_file_is_set",
   "platform": "Kubernetes",
   "descriptionID": "e021b84c",
-  "cwe": ""
+  "cwe": "",
+  "providerUrl": "https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/"
 }

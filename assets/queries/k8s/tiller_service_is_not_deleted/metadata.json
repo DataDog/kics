@@ -4,8 +4,9 @@
   "severity": "HIGH",
   "category": "Insecure Configurations",
   "descriptionText": "Tiller Services should be removed, as Helm v2 is deprecated and no longer supported.",
-  "descriptionUrl": "https://kubernetes.io/docs/concepts/services-networking/service",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/k8s/tiller_service_is_not_deleted",
   "platform": "Kubernetes",
   "descriptionID": "4e704117",
-  "cwe": ""
+  "cwe": "",
+  "providerUrl": "https://kubernetes.io/docs/concepts/services-networking/service"
 }

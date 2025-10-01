@@ -4,7 +4,7 @@
   "severity": "MEDIUM",
   "category": "Insecure Configurations",
   "descriptionText": "When using `kube-apiserver`, the `--authorization-mode` flag should include `Node`.",
-  "descriptionUrl": "https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/k8s/authorization_mode_node_not_set",
   "platform": "Kubernetes",
   "descriptionID": "1d944481",
   "cwe": "",
@@ -15,5 +15,6 @@
       "framework_version": "v2",
       "requirement": "kubernetes"
     }
-  ]
+  ],
+  "providerUrl": "https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/"
 }

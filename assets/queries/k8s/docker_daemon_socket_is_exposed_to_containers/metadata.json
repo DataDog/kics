@@ -4,9 +4,10 @@
   "severity": "MEDIUM",
   "category": "Access Control",
   "descriptionText": "The Docker daemon socket should not be exposed to containers.",
-  "descriptionUrl": "https://kubernetes.io/docs/concepts/storage/volumes/",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/k8s/docker_daemon_socket_is_exposed_to_containers",
   "platform": "Kubernetes",
   "descriptionID": "0865e6f6",
   "cwe": "",
-  "oldSeverity": "LOW"
+  "oldSeverity": "LOW",
+  "providerUrl": "https://kubernetes.io/docs/concepts/storage/volumes/"
 }

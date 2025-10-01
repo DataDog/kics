@@ -4,8 +4,9 @@
   "severity": "LOW",
   "category": "Insecure Configurations",
   "descriptionText": "Each namespace should have an associated LimitRange policy to ensure that resource allocations of Pods, containers, and PersistentVolumeClaims do not exceed defined boundaries.",
-  "descriptionUrl": "https://kubernetes.io/docs/concepts/policy/limit-range/",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/k8s/pod_or_container_without_limit_range",
   "platform": "Kubernetes",
   "descriptionID": "142ed21f",
-  "cwe": ""
+  "cwe": "",
+  "providerUrl": "https://kubernetes.io/docs/concepts/policy/limit-range/"
 }

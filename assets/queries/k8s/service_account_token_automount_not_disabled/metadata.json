@@ -4,8 +4,9 @@
   "severity": "MEDIUM",
   "category": "Insecure Defaults",
   "descriptionText": "Service account tokens are automatically mounted even if not necessary.",
-  "descriptionUrl": "https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/#use-the-default-service-account-to-access-the-api-server",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/k8s/service_account_token_automount_not_disabled",
   "platform": "Kubernetes",
   "descriptionID": "51cade0f",
-  "cwe": ""
+  "cwe": "",
+  "providerUrl": "https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/#use-the-default-service-account-to-access-the-api-server"
 }

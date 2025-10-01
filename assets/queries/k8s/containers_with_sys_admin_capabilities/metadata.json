@@ -4,9 +4,10 @@
   "severity": "HIGH",
   "category": "Insecure Configurations",
   "descriptionText": "Containers should not have the `CAP_SYS_ADMIN` Linux capability.",
-  "descriptionUrl": "https://kubernetes.io/docs/tasks/configure-pod-container/security-context/",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/k8s/containers_with_sys_admin_capabilities",
   "platform": "Kubernetes",
   "descriptionID": "029aeb1d",
   "cwe": "",
-  "oldSeverity": "MEDIUM"
+  "oldSeverity": "MEDIUM",
+  "providerUrl": "https://kubernetes.io/docs/tasks/configure-pod-container/security-context/"
 }

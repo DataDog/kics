@@ -4,8 +4,9 @@
   "severity": "HIGH",
   "category": "Networking and Firewall",
   "descriptionText": "When using `etcd`, the `--peer-cert-file` and `--peer-key-file` flags should be set.",
-  "descriptionUrl": "https://etcd.io/docs/v3.4/op-guide/security/",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/k8s/etcd_peer_tls_certificate_files_not_properly_set",
   "platform": "Kubernetes",
   "descriptionID": "f3bb5a8e",
-  "cwe": ""
+  "cwe": "",
+  "providerUrl": "https://etcd.io/docs/v3.4/op-guide/security/"
 }

@@ -4,8 +4,9 @@
   "severity": "MEDIUM",
   "category": "Insecure Configurations",
   "descriptionText": "Containers should be configured with a secure seccomp profile to restrict potentially dangerous syscalls.",
-  "descriptionUrl": "https://kubernetes.io/docs/tutorials/security/seccomp/#create-pod-that-uses-the-container-runtime-default-seccomp-profile",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/k8s/seccomp_profile_is_not_configured",
   "platform": "Kubernetes",
   "descriptionID": "d943c7e7",
-  "cwe": ""
+  "cwe": "",
+  "providerUrl": "https://kubernetes.io/docs/tutorials/security/seccomp/#create-pod-that-uses-the-container-runtime-default-seccomp-profile"
 }

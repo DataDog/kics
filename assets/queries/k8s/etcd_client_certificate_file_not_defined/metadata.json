@@ -4,8 +4,9 @@
   "severity": "MEDIUM",
   "category": "Secret Management",
   "descriptionText": "When using `kube-apiserver`, the `--etcd-cafile` flag should be set.",
-  "descriptionUrl": "https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/k8s/etcd_client_certificate_file_not_defined",
   "platform": "Kubernetes",
   "descriptionID": "f385527b",
-  "cwe": ""
+  "cwe": "",
+  "providerUrl": "https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/"
 }

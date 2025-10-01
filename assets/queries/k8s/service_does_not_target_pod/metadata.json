@@ -4,8 +4,9 @@
   "severity": "LOW",
   "category": "Insecure Configurations",
   "descriptionText": "The Service should target at least one Pod.",
-  "descriptionUrl": "https://kubernetes.io/docs/concepts/services-networking/service/",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/k8s/service_does_not_target_pod",
   "platform": "Kubernetes",
   "descriptionID": "e7c26645",
-  "cwe": ""
+  "cwe": "",
+  "providerUrl": "https://kubernetes.io/docs/concepts/services-networking/service/"
 }

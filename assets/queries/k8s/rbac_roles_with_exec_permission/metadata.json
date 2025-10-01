@@ -4,8 +4,9 @@
   "severity": "MEDIUM",
   "category": "Access Control",
   "descriptionText": "Roles or ClusterRoles with permissions to run commands in containers via `kubectl exec` could be abused by attackers to execute malicious code in case of compromise. To prevent this, the `pods/exec` verb should not be used in production environments.",
-  "descriptionUrl": "https://kubernetes.io/docs/reference/access-authn-authz/rbac/",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/k8s/rbac_roles_with_exec_permission",
   "platform": "Kubernetes",
   "descriptionID": "c589f42c",
-  "cwe": ""
+  "cwe": "",
+  "providerUrl": "https://kubernetes.io/docs/reference/access-authn-authz/rbac/"
 }

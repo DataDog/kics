@@ -4,9 +4,10 @@
   "severity": "HIGH",
   "category": "Insecure Configurations",
   "descriptionText": "PodSecurityPolicy allows containers to share the host IPC namespace.",
-  "descriptionUrl": "https://kubernetes.io/docs/concepts/policy/pod-security-policy/",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/k8s/psp_allows_sharing_host_ipc",
   "platform": "Kubernetes",
   "descriptionID": "329be51b",
   "cwe": "",
-  "oldSeverity": "MEDIUM"
+  "oldSeverity": "MEDIUM",
+  "providerUrl": "https://kubernetes.io/docs/concepts/policy/pod-security-policy/"
 }

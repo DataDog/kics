@@ -4,8 +4,9 @@
   "severity": "LOW",
   "category": "Secret Management",
   "descriptionText": "Containers should not use secrets as environment variables.",
-  "descriptionUrl": "https://kubernetes.io/docs/concepts/configuration/secret/#using-secrets-as-environment-variables",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/k8s/secrets_as_environment_variables",
   "platform": "Kubernetes",
   "descriptionID": "99365a7d",
-  "cwe": ""
+  "cwe": "",
+  "providerUrl": "https://kubernetes.io/docs/concepts/configuration/secret/#using-secrets-as-environment-variables"
 }

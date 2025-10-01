@@ -4,7 +4,7 @@
   "severity": "HIGH",
   "category": "Access Control",
   "descriptionText": "When using `kubelet`, the `--authorization-mode` flag should not be set to `AlwaysAllow`.",
-  "descriptionUrl": "https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/k8s/authorization_mode_set_to_always_allow",
   "platform": "Kubernetes",
   "descriptionID": "f5c66471",
   "cwe": "",
@@ -22,5 +22,6 @@
       "framework_version": "v2",
       "requirement": "kubernetes"
     }
-  ]
+  ],
+  "providerUrl": "https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/"
 }

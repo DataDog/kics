@@ -4,8 +4,9 @@
   "severity": "LOW",
   "category": "Observability",
   "descriptionText": "When using `kube-apiserver`, `kube-controller-manager`, or `kube-scheduler`, the `--profiling` flag should be set to `false`.",
-  "descriptionUrl": "https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/k8s/profiling_not_set_to_false",
   "platform": "Kubernetes",
   "descriptionID": "622a1db7",
-  "cwe": ""
+  "cwe": "",
+  "providerUrl": "https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/"
 }

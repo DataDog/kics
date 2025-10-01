@@ -4,8 +4,9 @@
   "severity": "MEDIUM",
   "category": "Resource Management",
   "descriptionText": "Containers should not share the host IPC namespace.",
-  "descriptionUrl": "https://kubernetes.io/docs/concepts/policy/pod-security-policy/",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/k8s/shared_host_ipc_namespace",
   "platform": "Kubernetes",
   "descriptionID": "1ef1fe71",
-  "cwe": ""
+  "cwe": "",
+  "providerUrl": "https://kubernetes.io/docs/concepts/policy/pod-security-policy/"
 }

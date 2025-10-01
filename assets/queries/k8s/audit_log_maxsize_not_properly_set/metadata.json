@@ -4,8 +4,9 @@
   "severity": "LOW",
   "category": "Observability",
   "descriptionText": "When using `kube-apiserver`, the `--audit-log-maxsize` flag should be set to 100 megabytes or more.",
-  "descriptionUrl": "https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/k8s/audit_log_maxsize_not_properly_set",
   "platform": "Kubernetes",
   "descriptionID": "9609fc23",
-  "cwe": ""
+  "cwe": "",
+  "providerUrl": "https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/"
 }

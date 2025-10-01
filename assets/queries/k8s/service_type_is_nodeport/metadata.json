@@ -4,8 +4,9 @@
   "severity": "LOW",
   "category": "Networking and Firewall",
   "descriptionText": "The Service type should not be `NodePort`.",
-  "descriptionUrl": "https://kubernetes.io/docs/concepts/services-networking/service/",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/k8s/service_type_is_nodeport",
   "platform": "Kubernetes",
   "descriptionID": "4744714e",
-  "cwe": ""
+  "cwe": "",
+  "providerUrl": "https://kubernetes.io/docs/concepts/services-networking/service/"
 }

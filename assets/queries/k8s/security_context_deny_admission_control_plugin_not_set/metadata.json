@@ -4,8 +4,9 @@
   "severity": "MEDIUM",
   "category": "Insecure Configurations",
   "descriptionText": "When using `kube-apiserver`, the `--enable-admission-plugins` flag should include `SecurityContextDeny`, and it should be correctly configured in the admission control config file when `PodSecurityPolicy` is not set.",
-  "descriptionUrl": "https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/k8s/security_context_deny_admission_control_plugin_not_set",
   "platform": "Kubernetes",
   "descriptionID": "571f15ee",
-  "cwe": ""
+  "cwe": "",
+  "providerUrl": "https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/"
 }

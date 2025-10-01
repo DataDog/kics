@@ -4,8 +4,9 @@
   "severity": "HIGH",
   "category": "Insecure Configurations",
   "descriptionText": "Containers should not run with `allowPrivilegeEscalation` to prevent them from gaining more privileges than their parent process.",
-  "descriptionUrl": "https://kubernetes.io/docs/tasks/configure-pod-container/security-context/",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/k8s/privilege_escalation_allowed",
   "platform": "Kubernetes",
   "descriptionID": "525fccf4",
-  "cwe": ""
+  "cwe": "",
+  "providerUrl": "https://kubernetes.io/docs/tasks/configure-pod-container/security-context/"
 }

@@ -4,8 +4,9 @@
   "severity": "LOW",
   "category": "Availability",
   "descriptionText": "The Horizontal Pod Autoscaler must target a valid object.",
-  "descriptionUrl": "https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale-walkthrough/",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/k8s/hpa_targets_invalid_object",
   "platform": "Kubernetes",
   "descriptionID": "450f7251",
-  "cwe": ""
+  "cwe": "",
+  "providerUrl": "https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale-walkthrough/"
 }

@@ -4,8 +4,9 @@
   "severity": "HIGH",
   "category": "Networking and Firewall",
   "descriptionText": "When using `kube-apiserver`, the `--insecure-bind-address` flag should not be set.",
-  "descriptionUrl": "https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/k8s/insecure_bind_address_set",
   "platform": "Kubernetes",
   "descriptionID": "5b1eb26c",
-  "cwe": ""
+  "cwe": "",
+  "providerUrl": "https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/"
 }

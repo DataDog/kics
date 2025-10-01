@@ -4,7 +4,7 @@
   "severity": "MEDIUM",
   "category": "Networking and Firewall",
   "descriptionText": "When using `kubelet`, the read-only port should be set to `0` (`--read-only-port=0`).",
-  "descriptionUrl": "https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/k8s/kubelet_read_only_port_is_not_set_to_zero",
   "platform": "Kubernetes",
   "descriptionID": "8cedc17d",
   "cwe": "",
@@ -15,5 +15,6 @@
       "framework_version": "v2",
       "requirement": "kubernetes"
     }
-  ]
+  ],
+  "providerUrl": "https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/"
 }

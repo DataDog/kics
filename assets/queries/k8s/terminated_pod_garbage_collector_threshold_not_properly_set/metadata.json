@@ -4,8 +4,9 @@
   "severity": "MEDIUM",
   "category": "Availability",
   "descriptionText": "When using `kube-controller-manager`, the `--terminated-pod-gc-threshold` flag should be set between `0` and `12501`.",
-  "descriptionUrl": "https://kubernetes.io/docs/reference/command-line-tools-reference/kube-controller-manager/",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/k8s/terminated_pod_garbage_collector_threshold_not_properly_set",
   "platform": "Kubernetes",
   "descriptionID": "19ea96ee",
-  "cwe": ""
+  "cwe": "",
+  "providerUrl": "https://kubernetes.io/docs/reference/command-line-tools-reference/kube-controller-manager/"
 }

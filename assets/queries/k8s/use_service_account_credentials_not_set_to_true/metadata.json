@@ -4,7 +4,7 @@
   "severity": "MEDIUM",
   "category": "Access Control",
   "descriptionText": "When using `kube-controller-manager`, the `--use-service-account-credentials` flag should be set to `true`.",
-  "descriptionUrl": "https://kubernetes.io/docs/reference/command-line-tools-reference/kube-controller-manager/",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/k8s/use_service_account_credentials_not_set_to_true",
   "platform": "Kubernetes",
   "descriptionID": "f6b4d617",
   "cwe": "",
@@ -16,5 +16,6 @@
       "framework_version": "v2",
       "requirement": "kubernetes"
     }
-  ]
+  ],
+  "providerUrl": "https://kubernetes.io/docs/reference/command-line-tools-reference/kube-controller-manager/"
 }

@@ -4,8 +4,9 @@
   "severity": "MEDIUM",
   "category": "Availability",
   "descriptionText": "A readiness probe should be configured.",
-  "descriptionUrl": "https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/#define-readiness-probes",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/k8s/readiness_probe_is_not_configured",
   "platform": "Kubernetes",
   "descriptionID": "28c0498a",
-  "cwe": ""
+  "cwe": "",
+  "providerUrl": "https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/#define-readiness-probes"
 }

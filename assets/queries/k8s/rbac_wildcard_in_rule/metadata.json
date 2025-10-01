@@ -4,8 +4,9 @@
   "severity": "HIGH",
   "category": "Access Control",
   "descriptionText": "Roles and ClusterRoles with wildcard RBAC permissions grant excessive rights to the Kubernetes API and should be avoided. The principle of least privilege recommends specifying only the needed objects and actions.",
-  "descriptionUrl": "https://kubernetes.io/docs/reference/access-authn-authz/rbac/",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/k8s/rbac_wildcard_in_rule",
   "platform": "Kubernetes",
   "descriptionID": "ccf4e279",
-  "cwe": ""
+  "cwe": "",
+  "providerUrl": "https://kubernetes.io/docs/reference/access-authn-authz/rbac/"
 }

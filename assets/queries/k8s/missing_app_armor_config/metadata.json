@@ -4,8 +4,9 @@
   "severity": "LOW",
   "category": "Access Control",
   "descriptionText": "Containers should be configured with an AppArmor profile to enforce fine-grained access control over low-level system resources.",
-  "descriptionUrl": "https://kubernetes.io/docs/tutorials/clusters/apparmor/",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/k8s/missing_app_armor_config",
   "platform": "Kubernetes",
   "descriptionID": "59c17c0a",
-  "cwe": ""
+  "cwe": "",
+  "providerUrl": "https://kubernetes.io/docs/tutorials/clusters/apparmor/"
 }

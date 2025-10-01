@@ -4,9 +4,10 @@
   "severity": "MEDIUM",
   "category": "Networking and Firewall",
   "descriptionText": "When using `etcd`, the `--peer-auto-tls` flag should be set to `false`.",
-  "descriptionUrl": "https://etcd.io/docs/v3.4/op-guide/security/",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/k8s/peer_auto_tls_set_to_true",
   "platform": "Kubernetes",
   "descriptionID": "02a0a4d9",
   "cwe": "",
-  "oldSeverity": "HIGH"
+  "oldSeverity": "HIGH",
+  "providerUrl": "https://etcd.io/docs/v3.4/op-guide/security/"
 }

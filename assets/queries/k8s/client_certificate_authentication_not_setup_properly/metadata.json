@@ -4,7 +4,7 @@
   "severity": "HIGH",
   "category": "Access Control",
   "descriptionText": "Client certificate authentication should be set up with a `.pem` or `.crt` file.",
-  "descriptionUrl": "https://kubernetes.io/docs/reference/command-line-tools-reference/kubelet/",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/k8s/client_certificate_authentication_not_setup_properly",
   "platform": "Kubernetes",
   "descriptionID": "78c11e53",
   "cwe": "",
@@ -15,5 +15,6 @@
       "framework_version": "v2",
       "requirement": "kubernetes"
     }
-  ]
+  ],
+  "providerUrl": "https://kubernetes.io/docs/reference/command-line-tools-reference/kubelet/"
 }

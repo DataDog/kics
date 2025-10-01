@@ -4,8 +4,9 @@
   "severity": "MEDIUM",
   "category": "Encryption",
   "descriptionText": "The encryption configuration should include at least one provider: `aescbc`, `kms`, or `secretbox`.",
-  "descriptionUrl": "https://kubernetes.io/docs/tasks/administer-cluster/encrypt-data/#understanding-the-encryption-at-rest-configuration",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/k8s/encryption_provider_not_properly_configured",
   "platform": "Kubernetes",
   "descriptionID": "c60a5ece",
-  "cwe": ""
+  "cwe": "",
+  "providerUrl": "https://kubernetes.io/docs/tasks/administer-cluster/encrypt-data/#understanding-the-encryption-at-rest-configuration"
 }

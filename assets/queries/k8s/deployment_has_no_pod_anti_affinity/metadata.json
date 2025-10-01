@@ -4,8 +4,9 @@
   "severity": "LOW",
   "category": "Resource Management",
   "descriptionText": "Deployments should define a `podAntiAffinity` policy to prevent multiple Pods from being scheduled on the same node.",
-  "descriptionUrl": "https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/k8s/deployment_has_no_pod_anti_affinity",
   "platform": "Kubernetes",
   "descriptionID": "22146f41",
-  "cwe": ""
+  "cwe": "",
+  "providerUrl": "https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/"
 }

@@ -4,9 +4,10 @@
   "severity": "LOW",
   "category": "Networking and Firewall",
   "descriptionText": "Each network policy should target at least one Pod.",
-  "descriptionUrl": "https://kubernetes.io/docs/concepts/services-networking/network-policies/",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/k8s/network_policy_is_not_targeting_any_pod",
   "platform": "Kubernetes",
   "descriptionID": "be3c67e3",
   "cwe": "",
-  "oldSeverity": "MEDIUM"
+  "oldSeverity": "MEDIUM",
+  "providerUrl": "https://kubernetes.io/docs/concepts/services-networking/network-policies/"
 }

@@ -4,9 +4,10 @@
   "severity": "MEDIUM",
   "category": "Networking and Firewall",
   "descriptionText": "When using `etcd`, the `--cert-file` and `--key-file` flags should be set.",
-  "descriptionUrl": "https://etcd.io/docs/v3.4/op-guide/security/",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/k8s/etcd_tls_certificate_files_not_properly_set",
   "platform": "Kubernetes",
   "descriptionID": "3c8aae35",
   "cwe": "",
-  "oldSeverity": "HIGH"
+  "oldSeverity": "HIGH",
+  "providerUrl": "https://etcd.io/docs/v3.4/op-guide/security/"
 }

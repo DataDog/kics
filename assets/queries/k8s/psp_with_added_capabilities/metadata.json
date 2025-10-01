@@ -4,9 +4,10 @@
   "severity": "HIGH",
   "category": "Insecure Configurations",
   "descriptionText": "PodSecurityPolicy should not include added capabilities.",
-  "descriptionUrl": "https://kubernetes.io/docs/concepts/policy/pod-security-policy/",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/k8s/psp_with_added_capabilities",
   "platform": "Kubernetes",
   "descriptionID": "2889da19",
   "cwe": "",
-  "oldSeverity": "MEDIUM"
+  "oldSeverity": "MEDIUM",
+  "providerUrl": "https://kubernetes.io/docs/concepts/policy/pod-security-policy/"
 }

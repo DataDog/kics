@@ -4,8 +4,9 @@
   "severity": "MEDIUM",
   "category": "Access Control",
   "descriptionText": "When using `kubelet` or `kube-apiserver`, the `--anonymous-auth` flag should be set to `false`.",
-  "descriptionUrl": "https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/",
+  "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/k8s/anonymous_auth_is_not_set_to_false",
   "platform": "Kubernetes",
   "descriptionID": "2e5b19cc",
-  "cwe": ""
+  "cwe": "",
+  "providerUrl": "https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/"
 }
