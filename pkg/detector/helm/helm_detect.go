@@ -147,15 +147,15 @@ func (d detectCurlLine) detectCurrentLine(lines []string, str1,
 		if str1 != "" && str2 != "" {
 			if strings.Contains(lines[i], str1) && strings.Contains(lines[i], str2) {
 				distances[i] = levenshtein.ComputeDistance(detector.ExtractLineFragment(lines[i], str2, byKey), str2)
-				starts[i] = model.ResourceLine{Line: i + 1, Col: 0}
-				ends[i] = model.ResourceLine{Line: i + 1, Col: len(lines[i])}
+				starts[i] = model.ResourceLine{Line: i, Col: 0}
+				ends[i] = model.ResourceLine{Line: i, Col: len(lines[i])}
 			}
 		} else if str1 != "" {
 			if strings.Contains(lines[i], str1) {
 				distances[i] = levenshtein.ComputeDistance(
 					detector.ExtractLineFragment(strings.TrimSpace(lines[i]), str1, byKey), str1)
-				starts[i] = model.ResourceLine{Line: i + 1, Col: 0}
-				ends[i] = model.ResourceLine{Line: i + 1, Col: len(lines[i])}
+				starts[i] = model.ResourceLine{Line: i, Col: 0}
+				ends[i] = model.ResourceLine{Line: i, Col: len(lines[i])}
 			}
 		}
 	}
