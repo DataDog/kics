@@ -62,6 +62,34 @@ spec:
 ```
 ## Non-Compliant Code Examples
 ```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: example
+spec:
+  containers:
+      - name: payment
+        image: nginx
+        securityContext:
+          capabilities:
+            drop:
+              - SYS_ADMIN
+      - name: payment2
+        image: nginx
+      - name: payment4
+        image: nginx
+        securityContext:
+          capabilities:
+            add:
+              - NET_BIND_SERVICE
+      - name: payment3
+        image: nginx
+        securityContext:
+          allowPrivilegeEscalation: false
+
+```
+
+```yaml
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -95,32 +123,4 @@ spec:
           capabilities:
             add:
               - NET_ADMIN
-```
-
-```yaml
-apiVersion: v1
-kind: Pod
-metadata:
-  name: example
-spec:
-  containers:
-      - name: payment
-        image: nginx
-        securityContext:
-          capabilities:
-            drop:
-              - SYS_ADMIN
-      - name: payment2
-        image: nginx
-      - name: payment4
-        image: nginx
-        securityContext:
-          capabilities:
-            add:
-              - NET_BIND_SERVICE
-      - name: payment3
-        image: nginx
-        securityContext:
-          allowPrivilegeEscalation: false
-
 ```

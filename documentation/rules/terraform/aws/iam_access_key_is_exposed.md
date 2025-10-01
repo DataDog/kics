@@ -39,7 +39,7 @@ resource "aws_iam_access_key" "secure_root" {
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "aws_iam_access_key" "negative1" {
   user = "some-user"
 }
@@ -56,7 +56,7 @@ resource "aws_iam_access_key" "negative3" {
 
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "aws_iam_access_key" "positive1" {
   user = "root"
   status = "Active"

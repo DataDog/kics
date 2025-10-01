@@ -49,7 +49,7 @@ Neglecting to enforce SSL can result in data breaches or non-compliance with sec
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "azurerm_postgresql_server" "negative1" {
   name                = "example-psqlserver"
   location            = azurerm_resource_group.example.location
@@ -72,7 +72,7 @@ resource "azurerm_postgresql_server" "negative1" {
 }
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "azurerm_postgresql_server" "positive1" {
   name                = "example-psqlserver"
   location            = azurerm_resource_group.example.location

@@ -45,7 +45,7 @@ Without comprehensive audit logs, organizations may be unable to detect or inves
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "google_project_iam_audit_config" "negative1" {
   project = "your-project-id"
   service = "allServices"
@@ -58,7 +58,7 @@ resource "google_project_iam_audit_config" "negative1" {
 }
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "google_project_iam_audit_config" "positive1" {
   project = "your-project-id"
   service = "some_specific_service"

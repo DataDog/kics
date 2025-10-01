@@ -42,7 +42,7 @@ Avoid insecure patterns such as the following:
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "aws_iam_role" "negative1" {
   name = "test_role"
 
@@ -69,7 +69,7 @@ EOF
 }
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "aws_iam_role" "positive1" {
   name = "test_role"
 

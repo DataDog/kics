@@ -46,7 +46,7 @@ resource "aws_iam_account_password_policy" "example" {
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "aws_iam_account_password_policy" "negative1" {
   minimum_password_length        = 8
   require_lowercase_characters   = true
@@ -58,7 +58,7 @@ resource "aws_iam_account_password_policy" "negative1" {
 }
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "aws_iam_account_password_policy" "positive1" {
   minimum_password_length        = 8
   require_lowercase_characters   = true

@@ -32,7 +32,7 @@ meta:
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "aws_ecs_task_definition" "negative1" {
   family                = "service"
   network_mode = "awsvpc"
@@ -49,7 +49,7 @@ resource "aws_ecs_task_definition" "negative1" {
 }
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "aws_ecs_task_definition" "positive1" {
   family                = "service"
   network_mode = "none"

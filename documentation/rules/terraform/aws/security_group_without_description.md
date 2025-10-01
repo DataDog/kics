@@ -49,7 +49,7 @@ Without clear descriptions, security teams may struggle to quickly identify the 
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "aws_security_group" "allow_tls" {
   name        = "allow_tls"
   description = "Allow TLS inbound traffic"
@@ -71,7 +71,7 @@ resource "aws_security_group" "allow_tls" {
 
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "aws_security_group" "allow_tls" {
   name        = "allow_tls"
   vpc_id      = aws_vpc.main.id

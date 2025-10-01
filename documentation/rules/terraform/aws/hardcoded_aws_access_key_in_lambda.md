@@ -32,7 +32,7 @@ meta:
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "aws_iam_role" "negative1" {
   name = "iam_for_lambda"
 
@@ -74,7 +74,7 @@ resource "aws_lambda_function" "negative2" {
 }
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "aws_iam_role" "positive1" {
   name = "iam_for_lambda"
 

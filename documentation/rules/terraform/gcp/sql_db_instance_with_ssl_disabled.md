@@ -42,7 +42,7 @@ Without this configuration, sensitive data such as credentials, personal informa
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "google_sql_database_instance" "negative1" {
   provider = google-beta
 
@@ -62,7 +62,7 @@ resource "google_sql_database_instance" "negative1" {
 }
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "google_sql_database_instance" "positive1" {
   provider = google-beta
 

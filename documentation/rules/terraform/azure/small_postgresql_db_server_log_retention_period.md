@@ -43,7 +43,7 @@ Increasing the retention period to a secure value (such as `value = 5`) helps en
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "azurerm_postgresql_configuration" "negative1" {
   name                = "log_retention_days"
   resource_group_name = azurerm_resource_group.example.name
@@ -52,7 +52,7 @@ resource "azurerm_postgresql_configuration" "negative1" {
 }
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "azurerm_postgresql_configuration" "positive1" {
   name                = "log_retention_days"
   resource_group_name = azurerm_resource_group.example.name

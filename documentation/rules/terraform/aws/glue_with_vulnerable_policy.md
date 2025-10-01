@@ -42,7 +42,7 @@ Allowing all actions and granting access to any principal exposes the Glue resou
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 data "aws_iam_policy_document" "glue-example-policy2" {
   statement {
     actions = [
@@ -62,7 +62,7 @@ resource "aws_glue_resource_policy" "example2" {
 
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 data "aws_iam_policy_document" "glue-example-policy" {
   statement {
     actions = [

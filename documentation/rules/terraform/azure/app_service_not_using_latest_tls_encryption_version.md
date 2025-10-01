@@ -41,7 +41,38 @@ resource "azurerm_app_service" "example" {
 
 
 ## Compliant Code Examples
-```terraform
+```tf
+resource "azurerm_app_service" "negative1" {
+  name                = "example-app-service"
+  location            = azurerm_resource_group.example.location
+  resource_group_name = azurerm_resource_group.example.name
+  app_service_plan_id = azurerm_app_service_plan.example.id
+
+  site_config {
+    dotnet_framework_version = "v4.0"
+    scm_type                 = "LocalGit"
+    min_tls_version          = 1.3
+  }
+}
+
+```
+
+```tf
+resource "azurerm_app_service" "negative1" {
+  name                = "example-app-service"
+  location            = azurerm_resource_group.example.location
+  resource_group_name = azurerm_resource_group.example.name
+  app_service_plan_id = azurerm_app_service_plan.example.id
+
+  site_config {
+    dotnet_framework_version = "v4.0"
+    scm_type                 = "LocalGit"
+  }
+}
+
+```
+
+```tf
 resource "azurerm_app_service" "negative3" {
   name                = "example-app-service"
   location            = azurerm_resource_group.example.location
@@ -50,39 +81,8 @@ resource "azurerm_app_service" "negative3" {
 }
 
 ```
-
-```terraform
-resource "azurerm_app_service" "negative1" {
-  name                = "example-app-service"
-  location            = azurerm_resource_group.example.location
-  resource_group_name = azurerm_resource_group.example.name
-  app_service_plan_id = azurerm_app_service_plan.example.id
-
-  site_config {
-    dotnet_framework_version = "v4.0"
-    scm_type                 = "LocalGit"
-  }
-}
-
-```
-
-```terraform
-resource "azurerm_app_service" "negative1" {
-  name                = "example-app-service"
-  location            = azurerm_resource_group.example.location
-  resource_group_name = azurerm_resource_group.example.name
-  app_service_plan_id = azurerm_app_service_plan.example.id
-
-  site_config {
-    dotnet_framework_version = "v4.0"
-    scm_type                 = "LocalGit"
-    min_tls_version = 1.2
-  }
-}
-
-```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "azurerm_app_service" "positive1" {
   name                = "example-app-service"
   location            = azurerm_resource_group.example.location

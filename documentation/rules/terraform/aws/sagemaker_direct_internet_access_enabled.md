@@ -52,7 +52,7 @@ resource "aws_sagemaker_notebook_instance" "bad_example" {
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "aws_sagemaker_notebook_instance" "good_example" {
   name                   = "example-notebook"
   role_arn               = "arn:aws:iam::123456789012:role/SageMakerRole"
@@ -62,7 +62,7 @@ resource "aws_sagemaker_notebook_instance" "good_example" {
 
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "aws_sagemaker_notebook_instance" "bad_example" {
   name                   = "example-notebook"
   role_arn               = "arn:aws:iam::123456789012:role/SageMakerRole"

@@ -41,7 +41,7 @@ extended_auditing_policy {
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "azurerm_sql_server" "negative1" {
     name                         = "mssqlserver"
     resource_group_name          = azurerm_resource_group.example.name
@@ -59,7 +59,7 @@ resource "azurerm_sql_server" "negative1" {
 }
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "azurerm_sql_server" "positive1" {
     name                         = "mssqlserver"
     resource_group_name          = azurerm_resource_group.example.name

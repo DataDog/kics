@@ -44,7 +44,7 @@ Missing notifications can lead to undetected application outages or misconfigura
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "aws_cloudformation_stack" "negative1" {
 
   name = "networking-stack"
@@ -59,7 +59,7 @@ resource "aws_cloudformation_stack" "negative1" {
 }
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "aws_cloudformation_stack" "positive1" {
 
   name = "networking-stack"

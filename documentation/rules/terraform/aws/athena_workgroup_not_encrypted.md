@@ -45,7 +45,7 @@ resource "aws_athena_workgroup" "example" {
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "aws_athena_workgroup" "example" {
   name = "example"
 
@@ -66,7 +66,7 @@ resource "aws_athena_workgroup" "example" {
 
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "aws_athena_workgroup" "example" {
   name = "example"
 }

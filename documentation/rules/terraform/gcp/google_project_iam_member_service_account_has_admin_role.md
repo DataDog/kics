@@ -50,7 +50,7 @@ resource "google_project_iam_member" "secure" {
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "google_project_iam_member" "negative1" {
   project = "your-project-id"
   role    = "roles/editor"
@@ -58,7 +58,7 @@ resource "google_project_iam_member" "negative1" {
 }
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "google_project_iam_member" "positive1" {
   project = "your-project-id"
   role    = "roles/iam.serviceAccountAdmin"

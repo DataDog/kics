@@ -47,7 +47,7 @@ resource "aws_secretsmanager_secret" "example" {
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "aws_secretsmanager_secret" "example" {
   name = "example"
   kms_key_id = "arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"
@@ -55,7 +55,7 @@ resource "aws_secretsmanager_secret" "example" {
 
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "aws_secretsmanager_secret" "example" {
   name = "example"
 }

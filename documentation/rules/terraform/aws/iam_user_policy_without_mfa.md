@@ -42,7 +42,7 @@ meta:
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "aws_iam_user" "negative1" {
   name = "root"
   path = "/system/"
@@ -102,7 +102,7 @@ EOF
 }
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "aws_iam_user" "positive1" {
   name = "root"
   path = "/system/"

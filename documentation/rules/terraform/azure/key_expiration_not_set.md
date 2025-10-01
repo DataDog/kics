@@ -45,7 +45,7 @@ Failure to set this attribute can result in persistent, potentially stale keys t
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "azurerm_key_vault_key" "negative1" {
     name         = "generated-certificate"
     key_vault_id = azurerm_key_vault.example.id
@@ -64,7 +64,7 @@ resource "azurerm_key_vault_key" "negative1" {
 }
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "azurerm_key_vault_key" "positive1" {
     name         = "generated-certificate"
     key_vault_id = azurerm_key_vault.example.id

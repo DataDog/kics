@@ -34,7 +34,7 @@ To properly secure Neptune clusters, always set the `storage_encrypted parameter
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "aws_neptune_cluster" "negative1" {
   cluster_identifier                  = "neptune-cluster-demo"
   engine                              = "neptune"
@@ -47,7 +47,7 @@ resource "aws_neptune_cluster" "negative1" {
 }
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "aws_neptune_cluster" "positive1" {
   cluster_identifier                  = "neptune-cluster-demo"
   engine                              = "neptune"

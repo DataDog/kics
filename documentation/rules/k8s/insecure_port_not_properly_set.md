@@ -76,8 +76,7 @@ spec:
   containers:
     - name: command-demo-container
       image: gcr.io/google_containers/kube-apiserver-amd64:v1.6.0
-      command: ["kube-apiserver"]
-      args: []
+      command: ["kube-apiserver", "--insecure-port=1143"]
   restartPolicy: OnFailure
 
 ```
@@ -93,7 +92,8 @@ spec:
   containers:
     - name: command-demo-container
       image: gcr.io/google_containers/kube-apiserver-amd64:v1.6.0
-      command: ["kube-apiserver", "--insecure-port=1143"]
+      command: ["kube-apiserver"]
+      args: []
   restartPolicy: OnFailure
 
 ```

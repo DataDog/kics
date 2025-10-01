@@ -41,7 +41,7 @@ settings {
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "google_sql_database_instance" "good_example" {
   name             = "good-instance"
   database_version = "SQLSERVER_2019_STANDARD"
@@ -58,7 +58,7 @@ resource "google_sql_database_instance" "good_example" {
 
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "google_sql_database_instance" "bad_example" {
   name             = "bad-instance"
   database_version = "SQLSERVER_2019_STANDARD"

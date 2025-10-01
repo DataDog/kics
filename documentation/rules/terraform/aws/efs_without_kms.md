@@ -32,7 +32,7 @@ meta:
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "aws_efs_file_system" "negative1" {
   creation_token = "my-product"
   encrypted = true
@@ -44,7 +44,7 @@ resource "aws_efs_file_system" "negative1" {
 }
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "aws_efs_file_system" "positive1" {
   creation_token = "my-product"
   encrypted = true

@@ -32,7 +32,22 @@ meta:
 
 
 ## Compliant Code Examples
-```terraform
+```tf
+resource "azurerm_app_service" "good_example" {
+  name                = "good-app-service"
+  location            = "East US"
+  resource_group_name = "example-rg"
+  app_service_plan_id = "example-plan-id"
+
+  site_config {
+    remote_debugging_enabled = [false] # ✅ Remote debugging disabled
+    min_tls_version          = ["1.2"]
+  }
+}
+
+```
+
+```tf
 
 resource "azurerm_linux_web_app" "good_example" {
   name                = "good-linux-web-app"
@@ -47,23 +62,8 @@ resource "azurerm_linux_web_app" "good_example" {
 }
 
 ```
-
-```terraform
-resource "azurerm_app_service" "good_example" {
-  name                = "good-app-service"
-  location            = "East US"
-  resource_group_name = "example-rg"
-  app_service_plan_id = "example-plan-id"
-
-  site_config {
-    remote_debugging_enabled = [false] # ✅ Remote debugging disabled
-    min_tls_version          = ["1.2"]
-  }
-}
-
-```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "azurerm_app_service" "bad_example" {
   name                = "bad-app-service"
   location            = "East US"

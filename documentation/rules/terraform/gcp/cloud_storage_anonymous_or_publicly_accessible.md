@@ -50,7 +50,7 @@ resource "google_storage_bucket_iam_binding" "secure" {
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 #this code is a correct code for which the query should not find any result
 resource "google_storage_bucket_iam_binding" "negative1" {
   bucket = google_storage_bucket.default.name
@@ -61,7 +61,7 @@ resource "google_storage_bucket_iam_binding" "negative1" {
 }
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 #this is a problematic code where the query should report a result(s)
 resource "google_storage_bucket_iam_binding" "positive1" {
   bucket = google_storage_bucket.default.name

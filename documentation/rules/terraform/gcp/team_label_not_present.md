@@ -48,47 +48,7 @@ Neglecting this can lead to orphaned resources, wasted spend, and slower inciden
 
 
 ## Compliant Code Examples
-```terraform
-# ✅ "team" label is not a valid attribute for this resource type
-resource "google_container_cluster" "good_example" {
-  name               = "marcellus-wallace"
-  location           = "us-central1-a"
-  initial_node_count = 3
-  monitoring_service = "monitoring.googleapis.com"
-
-  timeouts {
-    create = "30m"
-    update = "40m"
-  }
-}
-
-```
-
-```terraform
-resource "google_compute_instance" "good_example" {
-  name         = "good-instance"
-  machine_type = "e2-medium"
-  zone         = "us-central1-a"
-
-  boot_disk {
-    initialize_params {
-      image = "debian-cloud/debian-10"
-    }
-  }
-
-  network_interface {
-    network = "default"
-  }
-
-  labels = {
-    Team        = "DevOps" # ✅ "Team" tag is present
-    environment = "prod"
-  }
-}
-
-```
-
-```terraform
+```tf
 resource "google_compute_instance" "good_example" {
   name         = "good-instance"
   machine_type = "e2-medium"
@@ -111,8 +71,48 @@ resource "google_compute_instance" "good_example" {
 }
 
 ```
+
+```tf
+# ✅ "team" label is not a valid attribute for this resource type
+resource "google_container_cluster" "good_example" {
+  name               = "marcellus-wallace"
+  location           = "us-central1-a"
+  initial_node_count = 3
+  monitoring_service = "monitoring.googleapis.com"
+
+  timeouts {
+    create = "30m"
+    update = "40m"
+  }
+}
+
+```
+
+```tf
+resource "google_compute_instance" "good_example" {
+  name         = "good-instance"
+  machine_type = "e2-medium"
+  zone         = "us-central1-a"
+
+  boot_disk {
+    initialize_params {
+      image = "debian-cloud/debian-10"
+    }
+  }
+
+  network_interface {
+    network = "default"
+  }
+
+  labels = {
+    Team        = "DevOps" # ✅ "Team" tag is present
+    environment = "prod"
+  }
+}
+
+```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "google_bigtable_instance" "positive2" {
   name = "marcellus-wallace"
   timeouts {

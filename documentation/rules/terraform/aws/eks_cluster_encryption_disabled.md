@@ -56,7 +56,7 @@ resource "aws_eks_cluster" "negative1" {
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 variable "cluster_name" {
   default = "example"
   type    = string
@@ -76,7 +76,20 @@ resource "aws_eks_cluster" "negative1" {
 
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
+variable "cluster_name" {
+  default = "example"
+  type    = string
+}
+
+resource "aws_eks_cluster" "positive1" {
+  depends_on = [aws_cloudwatch_log_group.example]
+  name                      = var.cluster_name
+}
+
+```
+
+```tf
 variable "cluster_name" {
   default = "example"
   type    = string
@@ -92,19 +105,6 @@ resource "aws_eks_cluster" "positive2" {
       key_arn = "test"
     }
   }
-}
-
-```
-
-```terraform
-variable "cluster_name" {
-  default = "example"
-  type    = string
-}
-
-resource "aws_eks_cluster" "positive1" {
-  depends_on = [aws_cloudwatch_log_group.example]
-  name                      = var.cluster_name
 }
 
 ```

@@ -40,7 +40,7 @@ This ensures that all internal communications within the cluster is encrypted, r
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "aws_elasticsearch_domain" "negative1" {
   domain_name           = "example"
   elasticsearch_version = "1.5"
@@ -64,7 +64,27 @@ resource "aws_elasticsearch_domain" "negative1" {
 
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
+resource "aws_elasticsearch_domain" "positive1" {
+  domain_name           = "example"
+  elasticsearch_version = "1.5"
+
+  cluster_config {
+    instance_type = "r4.large.elasticsearch"
+  }
+
+  snapshot_options {
+    automated_snapshot_start_hour = 23
+  }
+
+  tags = {
+    Domain = "TestDomain"
+  }
+}
+
+```
+
+```tf
 resource "aws_elasticsearch_domain" "positive1" {
   domain_name           = "example"
   elasticsearch_version = "1.5"
@@ -79,26 +99,6 @@ resource "aws_elasticsearch_domain" "positive1" {
 
   node_to_node_encryption {
     enabled = false
-  }
-
-  tags = {
-    Domain = "TestDomain"
-  }
-}
-
-```
-
-```terraform
-resource "aws_elasticsearch_domain" "positive1" {
-  domain_name           = "example"
-  elasticsearch_version = "1.5"
-
-  cluster_config {
-    instance_type = "r4.large.elasticsearch"
-  }
-
-  snapshot_options {
-    automated_snapshot_start_hour = 23
   }
 
   tags = {

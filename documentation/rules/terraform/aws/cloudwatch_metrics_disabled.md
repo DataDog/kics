@@ -32,7 +32,7 @@ meta:
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 #this code is a correct code for which the query should not find any result
 resource "aws_api_gateway_method_settings" "negative1" {
   rest_api_id = aws_api_gateway_rest_api.test.id
@@ -46,7 +46,7 @@ resource "aws_api_gateway_method_settings" "negative1" {
 }
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 #this is a problematic code where the query should report a result(s)
 resource "aws_api_gateway_method_settings" "positive1" {
   rest_api_id = aws_api_gateway_rest_api.test.id

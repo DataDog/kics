@@ -37,7 +37,7 @@ resource "aws_ebs_encryption_by_default" "example" {
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "aws_ebs_encryption_by_default" "negative1" {
   enabled = true
 }
@@ -47,7 +47,7 @@ resource "aws_ebs_encryption_by_default" "negative2" {
 }
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "aws_ebs_encryption_by_default" "positive1" {
   enabled = false
 }

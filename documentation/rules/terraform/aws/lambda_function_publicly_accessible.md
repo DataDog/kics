@@ -39,7 +39,7 @@ principal = "*"
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "aws_lambda_permission" "restricted_lambda" {
   statement_id  = "AllowSpecificAccount"
   action        = "lambda:InvokeFunction"
@@ -49,7 +49,7 @@ resource "aws_lambda_permission" "restricted_lambda" {
 
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "aws_lambda_permission" "public_lambda" {
   statement_id  = "AllowPublicAccess"
   action        = "lambda:InvokeFunction"

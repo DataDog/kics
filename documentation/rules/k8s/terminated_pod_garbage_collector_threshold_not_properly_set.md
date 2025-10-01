@@ -77,8 +77,8 @@ spec:
   containers:
     - name: command-demo-container
       image: gcr.io/google_containers/kube-controller-manager-amd64:v1.6.0
-      command: ["kube-controller-manager"]
-      args: ["--terminated-pod-gc-threshold=12501"]
+      command: ["kube-controller-manager","--terminated-pod-gc-threshold=0"]
+      args: []
   restartPolicy: OnFailure
 
 ```
@@ -94,8 +94,8 @@ spec:
   containers:
     - name: command-demo-container
       image: gcr.io/google_containers/kube-controller-manager-amd64:v1.6.0
-      command: ["kube-controller-manager","--terminated-pod-gc-threshold=0"]
-      args: []
+      command: ["kube-controller-manager"]
+      args: ["--terminated-pod-gc-threshold=12501"]
   restartPolicy: OnFailure
 
 ```

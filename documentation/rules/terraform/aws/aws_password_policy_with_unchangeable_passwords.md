@@ -32,7 +32,7 @@ meta:
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "aws_sqs_queue" "negative1" {
   name = "examplequeue"
 }
@@ -48,7 +48,7 @@ resource "aws_iam_account_password_policy" "negative2" {
 }
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "aws_sqs_queue" "positive1" {
   name = "examplequeue"
 }

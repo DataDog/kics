@@ -39,7 +39,7 @@ resource "azurerm_network_interface" "secure" {
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "azurerm_network_interface" "negative2" {
   name                = "example-nic"
   location            = azurerm_resource_group.example.location
@@ -54,7 +54,7 @@ resource "azurerm_network_interface" "negative2" {
 
 ```
 
-```terraform
+```tf
 resource "azurerm_network_interface" "negative1" {
   name                = "example-nic"
   location            = azurerm_resource_group.example.location
@@ -71,7 +71,7 @@ resource "azurerm_network_interface" "negative1" {
 
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "azurerm_network_interface" "positive" {
   name                = "example-nic"
   location            = azurerm_resource_group.example.location

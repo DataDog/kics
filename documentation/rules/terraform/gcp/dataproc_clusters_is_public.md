@@ -32,16 +32,7 @@ meta:
 
 
 ## Compliant Code Examples
-```terraform
-# Passing IAM Member example
-resource "google_dataproc_cluster_iam_member" "good_member" {
-  name   = "good-dataproc-member"
-  member = "user:someone@example.com" # ✅ Non-public principal
-}
-
-```
-
-```terraform
+```tf
 # Passing IAM Binding example
 resource "google_dataproc_cluster_iam_binding" "good_binding" {
   name    = "good-dataproc-binding"
@@ -49,8 +40,17 @@ resource "google_dataproc_cluster_iam_binding" "good_binding" {
 }
 
 ```
+
+```tf
+# Passing IAM Member example
+resource "google_dataproc_cluster_iam_member" "good_member" {
+  name   = "good-dataproc-member"
+  member = "user:someone@example.com" # ✅ Non-public principal
+}
+
+```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 # Positive test case# Failing IAM Member example
 resource "google_dataproc_cluster_iam_member" "bad_member" {
   name   = "bad-dataproc-member"

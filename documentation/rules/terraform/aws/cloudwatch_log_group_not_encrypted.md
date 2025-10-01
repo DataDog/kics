@@ -41,7 +41,7 @@ By specifying the `kms_key_id` attribute, you ensure that log data is encrypted 
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "aws_cloudwatch_log_group" "negative1" {
   name = "Yada"
 
@@ -56,7 +56,7 @@ resource "aws_cloudwatch_log_group" "negative1" {
 
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "aws_cloudwatch_log_group" "negative1" {
   name = "Yada"
 

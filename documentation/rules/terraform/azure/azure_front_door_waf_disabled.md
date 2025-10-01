@@ -40,7 +40,7 @@ frontend_endpoint {
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "azurerm_frontdoor" "negative" {
   name                                         = "example-FrontDoor"
   resource_group_name                          = azurerm_resource_group.example.name
@@ -87,7 +87,7 @@ resource "azurerm_frontdoor" "negative" {
 
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "azurerm_frontdoor" "positive" {
   name                                         = "example-FrontDoor"
   resource_group_name                          = azurerm_resource_group.example.name

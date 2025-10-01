@@ -40,7 +40,7 @@ dnssec_config {
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "google_dns_managed_zone" "negative1" {
     name        = "example-zone"
     dns_name    = "example-${random_id.rnd.hex}.com."
@@ -59,7 +59,7 @@ resource "google_dns_managed_zone" "negative1" {
 
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "google_dns_managed_zone" "positive1" {
     name        = "example-zone"
     dns_name    = "example-${random_id.rnd.hex}.com."

@@ -41,7 +41,7 @@ This ensures that sensitive container and application data on disk is encrypted 
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "azurerm_kubernetes_cluster" "negative" {
   name                = "example-aks1"
   location            = azurerm_resource_group.example.location
@@ -74,7 +74,7 @@ resource "azurerm_kubernetes_cluster2" "negative" {
 
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "azurerm_kubernetes_cluster" "positive" {
   name                = "example-aks1"
   location            = azurerm_resource_group.example.location

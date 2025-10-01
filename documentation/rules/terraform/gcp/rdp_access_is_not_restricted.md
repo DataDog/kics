@@ -58,7 +58,7 @@ resource "google_compute_firewall" "secure" {
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "google_compute_firewall" "negative1" {
   name    = "test-firewall"
   network = google_compute_network.default.name
@@ -76,7 +76,7 @@ resource "google_compute_firewall" "negative1" {
 }
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "google_compute_firewall" "positive1" {
   name    = "test-firewall"
   network = google_compute_network.default.name

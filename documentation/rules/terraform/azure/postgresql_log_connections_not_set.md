@@ -41,7 +41,7 @@ resource "azurerm_postgresql_configuration" "secure" {
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "azurerm_postgresql_configuration" "negative1" {
     name                = "log_connections"
     resource_group_name = data.azurerm_resource_group.example.name
@@ -64,7 +64,7 @@ resource "azurerm_postgresql_configuration" "negative3" {
 }
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "azurerm_postgresql_configuration" "positive1" {
     name                = "log_connections"
     resource_group_name = data.azurerm_resource_group.example.name

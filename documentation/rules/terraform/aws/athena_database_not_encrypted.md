@@ -44,7 +44,7 @@ resource "aws_athena_database" "secure_example" {
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "aws_s3_bucket" "hoge" {
   bucket = "hoge"
 }
@@ -61,7 +61,7 @@ resource "aws_athena_database" "hoge" {
 
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "aws_s3_bucket" "hoge" {
   bucket = "hoge"
 }

@@ -32,7 +32,7 @@ meta:
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "aws_iam_user" "userExample" {
   name = "loadbalancer"
   path = "/system/"
@@ -50,7 +50,7 @@ resource "aws_iam_access_key" "negative1" {
 
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "aws_iam_access_key" "positive1" {
   user    = aws_iam_user.lb.name
   pgp_key = "keybase:some_person_that_exists"

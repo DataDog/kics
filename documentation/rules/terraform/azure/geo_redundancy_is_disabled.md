@@ -55,7 +55,7 @@ Without geo-redundant backups enabled, business-critical data may become unrecov
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "azurerm_postgresql_server" "negative1" {
     name                = "dbserver"
     location            = "usgovvirginia"
@@ -78,7 +78,7 @@ resource "azurerm_postgresql_server" "negative1" {
 
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 
 resource "azurerm_postgresql_server" "positive1" {
     name                = "dbserver"

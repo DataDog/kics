@@ -47,14 +47,7 @@ resource "google_compute_network" "legacy_network" {
 
 
 ## Compliant Code Examples
-```terraform
-resource "google_compute_network" "legacy_network_2" {
-  name = "legacy-network"
-}
-
-```
-
-```terraform
+```tf
 resource "google_compute_network" "modern_network" {
   name                    = "modern-network"
   auto_create_subnetworks = false
@@ -62,7 +55,7 @@ resource "google_compute_network" "modern_network" {
 
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "google_compute_network" "legacy_network" {
   name                    = "legacy-network"
   auto_create_subnetworks = true

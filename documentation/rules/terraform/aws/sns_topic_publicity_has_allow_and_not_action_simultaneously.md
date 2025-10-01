@@ -44,7 +44,7 @@ meta:
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 module "s3_bucket" {
   source = "terraform-aws-modules/s3-bucket/aws"
   version = "3.7.0"
@@ -83,7 +83,7 @@ POLICY
 
 ```
 
-```terraform
+```tf
 resource "aws_sns_topic" "negative1" {
   name = "my-topic-with-policy"
 }
@@ -109,7 +109,33 @@ POLICY
 
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
+resource "aws_sns_topic" "positive1" {
+  name = "my-topic-with-policy"
+}
+
+resource "aws_sns_topic_policy" "positive2" {
+  arn = aws_sns_topic.test.arn
+
+  policy = <<POLICY
+{
+  "Version": "2012-10-17",
+  "Id": "MYPOLICYTEST",
+  "Statement": [
+    {
+      "NotAction": "s3:DeleteBucket",
+      "Resource": "arn:aws:s3:::*",
+      "Sid": "MyStatementId",
+      "Effect": "Allow"
+    }
+  ]
+}
+POLICY
+}
+
+```
+
+```tf
 module "s3_bucket" {
   source = "terraform-aws-modules/s3-bucket/aws"
   version = "3.7.0"
@@ -144,32 +170,6 @@ POLICY
       }
     }
   }
-}
-
-```
-
-```terraform
-resource "aws_sns_topic" "positive1" {
-  name = "my-topic-with-policy"
-}
-
-resource "aws_sns_topic_policy" "positive2" {
-  arn = aws_sns_topic.test.arn
-
-  policy = <<POLICY
-{
-  "Version": "2012-10-17",
-  "Id": "MYPOLICYTEST",
-  "Statement": [
-    {
-      "NotAction": "s3:DeleteBucket",
-      "Resource": "arn:aws:s3:::*",
-      "Sid": "MyStatementId",
-      "Effect": "Allow"
-    }
-  ]
-}
-POLICY
 }
 
 ```

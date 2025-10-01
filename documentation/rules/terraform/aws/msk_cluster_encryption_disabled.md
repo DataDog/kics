@@ -48,7 +48,7 @@ resource "aws_msk_cluster" "example" {
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "aws_msk_cluster" "negative1" {  
   encryption_info {
     encryption_at_rest_kms_key_arn = aws_kms_key.kms.arn
@@ -84,7 +84,7 @@ resource "aws_msk_cluster" "negative4" {
 }
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "aws_msk_cluster" "positive1" {
   cluster_name           = "example"
   kafka_version          = "2.4.1"

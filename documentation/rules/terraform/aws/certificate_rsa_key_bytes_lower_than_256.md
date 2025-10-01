@@ -32,7 +32,7 @@ meta:
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "aws_iam_server_certificate" "test_cert22" {
   name             = "some_test_cert"
   certificate_body = file("./rsa4096.pem")
@@ -46,7 +46,7 @@ EOF
 
 ```
 
-```terraform
+```tf
 resource "aws_api_gateway_domain_name" "example3" {
   certificate_body = file("./rsa4096.pem")
   domain_name     = "api.example.com"
@@ -54,7 +54,15 @@ resource "aws_api_gateway_domain_name" "example3" {
 
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
+resource "aws_api_gateway_domain_name" "example" {
+  certificate_body = file("./rsa1024.pem")
+  domain_name     = "api.example.com"
+}
+
+```
+
+```tf
 resource "aws_iam_server_certificate" "test_cert2" {
   name             = "some_test_cert"
   certificate_body = file("./rsa1024.pem")
@@ -63,14 +71,6 @@ resource "aws_iam_server_certificate" "test_cert2" {
 [......] # cert contents
 -----END RSA PRIVATE KEY-----
 EOF
-}
-
-```
-
-```terraform
-resource "aws_api_gateway_domain_name" "example" {
-  certificate_body = file("./rsa1024.pem")
-  domain_name     = "api.example.com"
 }
 
 ```

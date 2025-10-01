@@ -47,7 +47,7 @@ Insecure configurations either omit the `encrypt_at_rest` block entirely or expl
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "aws_elasticsearch_domain" "negative1" {
   domain_name           = "example"
   elasticsearch_version = "1.5"
@@ -58,7 +58,7 @@ resource "aws_elasticsearch_domain" "negative1" {
 }
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "aws_elasticsearch_domain" "positive1" {
   domain_name           = "example"
   elasticsearch_version = "1.5"

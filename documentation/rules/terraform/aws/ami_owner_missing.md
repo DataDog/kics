@@ -59,7 +59,7 @@ data "aws_ami" "ubuntu" {
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 data "aws_ami" "ubuntu" {
   most_recent = true
   filter {
@@ -119,7 +119,7 @@ data "aws_ami" "ubuntu" {
 
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 # non-compliant
 data "aws_ami" "ubuntu" {
   most_recent = true

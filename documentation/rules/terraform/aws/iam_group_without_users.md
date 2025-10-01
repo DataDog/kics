@@ -46,7 +46,7 @@ resource "aws_iam_group_membership" "team" {
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "aws_iam_group_membership" "team" {
   name = "tf-testing-group-membership"
 
@@ -72,7 +72,7 @@ resource "aws_iam_user" "user_two" {
 
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "aws_iam_group_membership" "team2" {
   name = "tf-testing-group-membership"
 

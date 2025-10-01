@@ -41,7 +41,7 @@ resource "aws_docdb_cluster" "docdb" {
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "aws_docdb_cluster" "docdb" {
   cluster_identifier      = "my-docdb-cluster"
   engine                  = "docdb"
@@ -56,7 +56,7 @@ resource "aws_docdb_cluster" "docdb" {
 
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "aws_docdb_cluster" "docdb" {
   cluster_identifier      = "my-docdb-cluster"
   engine                  = "docdb"

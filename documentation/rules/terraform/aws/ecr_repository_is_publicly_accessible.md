@@ -32,7 +32,7 @@ meta:
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "aws_ecr_repository" "negative1" {
   name = "bar"
 }
@@ -74,7 +74,7 @@ EOF
 
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "aws_ecr_repository" "positive1" {
   name = "bar"
 }

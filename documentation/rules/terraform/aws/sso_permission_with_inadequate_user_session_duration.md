@@ -41,7 +41,7 @@ resource "aws_ssoadmin_permission_set" "example" {
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "aws_ssoadmin_permission_set" "example" {
   name             = "Example"
   description      = "An example"
@@ -60,7 +60,7 @@ resource "aws_ssoadmin_permission_set" "example2" {
 
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "aws_ssoadmin_permission_set" "example3" {
   name             = "Example"
   description      = "An example"

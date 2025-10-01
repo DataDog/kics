@@ -215,7 +215,7 @@ spec:
   containers:
     - name: command-demo-container
       image: gcr.io/google_containers/kube-apiserver-amd64:v1.6.0
-      command: ["kube-apiserver","--audit-policy-file=./not/valid/file.yaml"]
+      command: ["kube-apiserver"]
       args: []
   restartPolicy: OnFailure
 
@@ -250,7 +250,7 @@ spec:
   containers:
     - name: command-demo-container
       image: gcr.io/google_containers/kube-apiserver-amd64:v1.6.0
-      command: ["kube-apiserver"]
+      command: ["kube-apiserver","--audit-policy-file=./not/valid/file.yaml"]
       args: []
   restartPolicy: OnFailure
 

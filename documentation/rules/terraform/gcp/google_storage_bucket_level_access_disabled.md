@@ -45,7 +45,7 @@ resource "google_storage_bucket" "secure_bucket" {
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "google_storage_bucket" "negative1" {
   name          = "image-store.com"
   location      = "EU"
@@ -66,7 +66,7 @@ resource "google_storage_bucket" "negative1" {
 }
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "google_storage_bucket" "positive1" {
   name          = "image-store.com"
   location      = "EU"

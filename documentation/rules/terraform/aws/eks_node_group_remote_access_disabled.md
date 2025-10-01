@@ -32,7 +32,7 @@ meta:
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "aws_eks_node_group" "negative" {
   cluster_name    = aws_eks_cluster.example.name
   node_group_name = "example"
@@ -61,7 +61,7 @@ resource "aws_eks_node_group" "negative" {
 
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "aws_eks_node_group" "positive" {
   cluster_name    = aws_eks_cluster.example.name
   node_group_name = "example"

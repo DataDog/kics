@@ -47,7 +47,7 @@ resource "azurerm_storage_table" "table_resource2" {
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "azurerm_storage_table" "table_resource2" {
   name                 = "my_table_name"
   storage_account_name = "mystoragexxx"
@@ -63,7 +63,7 @@ resource "azurerm_storage_table" "table_resource2" {
 
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "azurerm_storage_table" "table_resource" {
   name                 = "my_table_name"
   storage_account_name = "mystoragexxx"

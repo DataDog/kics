@@ -44,7 +44,7 @@ Restricting access to only the necessary hosts mitigates the risk of data breach
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "azurerm_redis_firewall_rule" "negative1" {
   name                = "someIPrange"
   redis_cache_name    = azurerm_redis_cache.example.name
@@ -54,7 +54,7 @@ resource "azurerm_redis_firewall_rule" "negative1" {
 }
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "azurerm_redis_firewall_rule" "positive1" {
   name                = "someIPrange"
   redis_cache_name    = azurerm_redis_cache.example.name

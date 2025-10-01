@@ -41,7 +41,7 @@ Failure to address this may result in exposure to security threats or outages du
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "azurerm_redis_cache" "negative1" {
     name                = "timeout-redis"
     location            = "West Europe"
@@ -68,7 +68,7 @@ resource "azurerm_redis_cache" "negative1" {
 }
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "azurerm_redis_cache" "positive1" {
     name                = "timeout-redis"
     location            = "West Europe"

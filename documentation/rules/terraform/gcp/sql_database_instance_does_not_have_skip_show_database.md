@@ -52,7 +52,7 @@ resource "google_sql_database_instance" "good_example" {
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "google_sql_database_instance" "good_example" {
   name             = "good-instance"
   database_version = "MYSQL_8"
@@ -73,7 +73,7 @@ resource "google_sql_database_instance" "good_example" {
 
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "google_sql_database_instance" "bad_example" {
   name             = "bad-instance"
   database_version = "MYSQL_8"

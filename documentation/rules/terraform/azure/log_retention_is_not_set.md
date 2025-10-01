@@ -54,7 +54,7 @@ Failing to enable log retention can result in loss of critical data needed for c
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "azurerm_postgresql_configuration" "negative1" {
     name                = "log_retention"
     resource_group_name = data.azurerm_resource_group.example.name
@@ -77,7 +77,7 @@ resource "azurerm_postgresql_configuration" "negative3" {
 }
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "azurerm_postgresql_configuration" "positive1" {
     name                = "log_retention"
     resource_group_name = data.azurerm_resource_group.example.name

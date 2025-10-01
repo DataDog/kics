@@ -39,39 +39,7 @@ This ensures the application benefits from the latest patches and features.
 
 
 ## Compliant Code Examples
-```terraform
-provider "azurerm" {
-  features {}
-}
-
-resource "azurerm_resource_group" "example" {
-  name     = "example-resources"
-  location = "West Europe"
-}
-
-resource "azurerm_service_plan" "example" {
-  name                = "example"
-  resource_group_name = azurerm_resource_group.example.name
-  location            = azurerm_resource_group.example.location
-  sku_name            = "P1v2"
-}
-
-resource "azurerm_linux_web_app" "example3" {
-  name                = "example3"
-  resource_group_name = azurerm_resource_group.example.name
-  location            = azurerm_service_plan.example.location
-  service_plan_id     = azurerm_service_plan.example.id
-
-  site_config{
-    application_stack{
-      php_version = "8.1"
-    }    
-  }
-}
-
-```
-
-```terraform
+```tf
 provider "azurerm" {
   features {}
 }
@@ -103,7 +71,39 @@ resource "azurerm_windows_web_app" "example2" {
 
 ```
 
-```terraform
+```tf
+provider "azurerm" {
+  features {}
+}
+
+resource "azurerm_resource_group" "example" {
+  name     = "example-resources"
+  location = "West Europe"
+}
+
+resource "azurerm_service_plan" "example" {
+  name                = "example"
+  resource_group_name = azurerm_resource_group.example.name
+  location            = azurerm_resource_group.example.location
+  sku_name            = "P1v2"
+}
+
+resource "azurerm_linux_web_app" "example3" {
+  name                = "example3"
+  resource_group_name = azurerm_resource_group.example.name
+  location            = azurerm_service_plan.example.location
+  service_plan_id     = azurerm_service_plan.example.id
+
+  site_config{
+    application_stack{
+      php_version = "8.1"
+    }    
+  }
+}
+
+```
+
+```tf
 resource "azurerm_app_service" "example1" {
   name                = "example1-app-service"
   location            = azurerm_resource_group.example.location
@@ -130,39 +130,7 @@ resource "azurerm_app_service" "example1" {
 
 ```
 ## Non-Compliant Code Examples
-```terraform
-provider "azurerm" {
-  features {}
-}
-
-resource "azurerm_resource_group" "example" {
-  name     = "example-resources"
-  location = "West Europe"
-}
-
-resource "azurerm_service_plan" "example" {
-  name                = "example"
-  resource_group_name = azurerm_resource_group.example.name
-  location            = azurerm_resource_group.example.location
-  sku_name            = "P1v2"
-}
-
-resource "azurerm_windows_web_app" "example5" {
-  name                = "example5"
-  resource_group_name = azurerm_resource_group.example.name
-  location            = azurerm_service_plan.example.location
-  service_plan_id     = azurerm_service_plan.example.id
-
-   site_config{
-    application_stack{
-      php_version = "v7.3"
-    }    
-  }
-}
-
-```
-
-```terraform
+```tf
 provider "azurerm" {
   features {}
 }
@@ -195,7 +163,7 @@ resource "azurerm_linux_web_app" "example6" {
 
 ```
 
-```terraform
+```tf
 resource "azurerm_app_service" "example4" {
   name                = "example4-app-service"
   location            = azurerm_resource_group.example.location
@@ -217,6 +185,38 @@ resource "azurerm_app_service" "example4" {
     name  = "Database"
     type  = "SQLServer"
     value = "Server=some-server.mydomain.com;Integrated Security=SSPI"
+  }
+}
+
+```
+
+```tf
+provider "azurerm" {
+  features {}
+}
+
+resource "azurerm_resource_group" "example" {
+  name     = "example-resources"
+  location = "West Europe"
+}
+
+resource "azurerm_service_plan" "example" {
+  name                = "example"
+  resource_group_name = azurerm_resource_group.example.name
+  location            = azurerm_resource_group.example.location
+  sku_name            = "P1v2"
+}
+
+resource "azurerm_windows_web_app" "example5" {
+  name                = "example5"
+  resource_group_name = azurerm_resource_group.example.name
+  location            = azurerm_service_plan.example.location
+  service_plan_id     = azurerm_service_plan.example.id
+
+   site_config{
+    application_stack{
+      php_version = "v7.3"
+    }    
   }
 }
 

@@ -54,7 +54,7 @@ resource "google_dataproc_cluster" "bad_example" {
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "google_dataproc_cluster" "good_example" {
   name   = "good-cluster"
   region = "us-central1"
@@ -68,7 +68,7 @@ resource "google_dataproc_cluster" "good_example" {
 
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "google_dataproc_cluster" "bad_example" {
   name   = "bad-cluster"
   region = "us-central1"

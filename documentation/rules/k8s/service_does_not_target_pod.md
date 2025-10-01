@@ -33,40 +33,6 @@ meta:
 
 ## Compliant Code Examples
 ```yaml
-
-apiVersion: v1
-kind: Service
-metadata:
-  name: helloworld
-spec:
-  type: NodePort
-  selector:
-    app: helloworld
-  ports:
-    - name: http
-      nodePort: 30475
-      port: 8089
-      protocol: TCP
-      targetPort: 8089
-
----
-
-apiVersion: v1
-kind: Pod
-metadata:
-  name: nginx
-  labels:
-    app: helloworld
-spec:
-  containers:
-  - name: nginx
-    image: nginx
-    ports:
-      - containerPort: 8089
-
-```
-
-```yaml
 apiVersion: v1
 kind: Service
 metadata:
@@ -150,7 +116,78 @@ spec:
               containerPort: 80
 
 ```
+
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: negative5
+spec:
+  selector:
+    app: negative5
+    tier: backend
+  ports:
+  - protocol: TCP
+    port: 80
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend
+spec:
+  selector:
+    matchLabels:
+      app: negative5
+      tier: backend
+      track: stable
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: negative5
+        tier: backend
+        track: stable
+    spec:
+      containers:
+        - name: negative5
+          image: "gcr.io/google-samples/hello-go-gke:1.0"
+          ports:
+            - name: http
+              containerPort: 80
+
+```
 ## Non-Compliant Code Examples
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: helloworld2
+spec:
+  type: NodePort
+  selector:
+    app: helloworld2
+  ports:
+    - name: http
+      nodePort: 30475
+      port: 9377
+      protocol: TCP
+      targetPort: 9377
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx2
+  labels:
+    app: hellowwwworld
+spec:
+  containers:
+    - name: nginx
+      image: nginx
+      ports:
+        - containerPort: 9377
+
+```
+
 ```yaml
 apiVersion: v1
 kind: Service
@@ -188,36 +225,5 @@ spec:
           image: nginx:1.14.2
           ports:
             - containerPort: 80
-
-```
-
-```yaml
-apiVersion: v1
-kind: Service
-metadata:
-  name: helloworld2
-spec:
-  type: NodePort
-  selector:
-    app: helloworld2
-  ports:
-    - name: http
-      nodePort: 30475
-      port: 9377
-      protocol: TCP
-      targetPort: 9377
----
-apiVersion: v1
-kind: Pod
-metadata:
-  name: nginx2
-  labels:
-    app: hellowwwworld
-spec:
-  containers:
-    - name: nginx
-      image: nginx
-      ports:
-        - containerPort: 9377
 
 ```

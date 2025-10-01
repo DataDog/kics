@@ -32,7 +32,7 @@ meta:
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "aws_api_gateway_rest_api" "test" {
   name = "example-rest-api"
 }
@@ -66,7 +66,7 @@ EOF
 
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 provider "aws" {
   region = "us-east-1"
 }

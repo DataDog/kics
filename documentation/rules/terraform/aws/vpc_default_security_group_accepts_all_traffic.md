@@ -49,7 +49,7 @@ ingress = [{
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "aws_vpc" "mainvpc2" {
   cidr_block = "10.1.0.0/16"
 }
@@ -60,7 +60,35 @@ resource "aws_default_security_group" "default2" {
 
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
+resource "aws_vpc" "mainvpc" {
+  cidr_block = "10.1.0.0/16"
+}
+
+resource "aws_default_security_group" "default" {
+  vpc_id = aws_vpc.mainvpc.id
+
+  ingress = [
+    {
+      protocol  = -1
+      self      = true
+      from_port = 0
+      to_port   = 0
+    }
+  ]
+
+  egress = [
+    {
+      from_port   = 0
+      to_port     = 0
+      protocol    = "-1"
+    }
+  ]
+}
+
+```
+
+```tf
 resource "aws_vpc" "mainvpc3" {
   cidr_block = "10.1.0.0/16"
 }
@@ -84,34 +112,6 @@ resource "aws_default_security_group" "default3" {
       to_port     = 0
       protocol    = "-1"
       cidr_blocks = ["0.0.0.0/0"]
-    }
-  ]
-}
-
-```
-
-```terraform
-resource "aws_vpc" "mainvpc" {
-  cidr_block = "10.1.0.0/16"
-}
-
-resource "aws_default_security_group" "default" {
-  vpc_id = aws_vpc.mainvpc.id
-
-  ingress = [
-    {
-      protocol  = -1
-      self      = true
-      from_port = 0
-      to_port   = 0
-    }
-  ]
-
-  egress = [
-    {
-      from_port   = 0
-      to_port     = 0
-      protocol    = "-1"
     }
   ]
 }

@@ -32,7 +32,7 @@ meta:
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "aws_rds_cluster" "postgresql" {
   cluster_identifier      = "aurora-cluster-demo"
   engine                  = "aurora-postgresql"
@@ -46,7 +46,7 @@ resource "aws_rds_cluster" "postgresql" {
 
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "aws_rds_cluster" "postgresql" {
   cluster_identifier      = "aurora-cluster-demo"
   engine                  = "aurora-postgresql"

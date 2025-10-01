@@ -41,7 +41,7 @@ Restricting write access helps protect against unauthorized changes to role defi
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "azurerm_role_definition" "example3" {
   role_definition_id = "00000000-0000-0000-0000-000000000000"
   name               = "my-custom-role-definition"
@@ -55,21 +55,7 @@ resource "azurerm_role_definition" "example3" {
 
 ```
 ## Non-Compliant Code Examples
-```terraform
-resource "azurerm_role_definition" "example" {
-  name        = "my-custom-role"
-  scope       = data.azurerm_subscription.primary.id
-  description = "This is a custom role created via Terraform"
-
-  permissions {
-    actions     = ["*"]
-    not_actions = []
-  }
-}
-
-```
-
-```terraform
+```tf
 resource "azurerm_role_definition" "example2" {
   role_definition_id = "00000000-0000-0000-0000-000000000000"
   name               = "my-custom-role-definition"
@@ -77,6 +63,20 @@ resource "azurerm_role_definition" "example2" {
 
   permissions {
     actions     = ["Microsoft.Authorization/roleDefinitions/write"]
+    not_actions = []
+  }
+}
+
+```
+
+```tf
+resource "azurerm_role_definition" "example" {
+  name        = "my-custom-role"
+  scope       = data.azurerm_subscription.primary.id
+  description = "This is a custom role created via Terraform"
+
+  permissions {
+    actions     = ["*"]
     not_actions = []
   }
 }

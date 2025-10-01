@@ -46,7 +46,7 @@ resource "aws_ebs_volume" "secure_example" {
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "aws_ebs_volume" "negative1" {
   availability_zone = "us-west-2a"
   size              = 40
@@ -66,26 +66,7 @@ resource "aws_ebs_snapshot" "negative1" {
 
 ```
 ## Non-Compliant Code Examples
-```terraform
-resource "aws_ebs_volume" "positive2" {
-  availability_zone = "us-west-2a"
-  size              = 40
-
-  tags = {
-    Name = "HelloWorld"
-  }
-}
-
-resource "aws_ebs_snapshot" "positive2" {
-  volume_id = aws_ebs_volume.positive2.id
-  tags {
-    Name = "Production"
-  }
-}
-
-```
-
-```terraform
+```tf
 resource "aws_ebs_volume" "positive1" {
   availability_zone = "us-west-2a"
   size              = 40
@@ -98,6 +79,25 @@ resource "aws_ebs_volume" "positive1" {
 
 resource "aws_ebs_snapshot" "positive1" {
   volume_id = aws_ebs_volume.positive1.id
+  tags {
+    Name = "Production"
+  }
+}
+
+```
+
+```tf
+resource "aws_ebs_volume" "positive2" {
+  availability_zone = "us-west-2a"
+  size              = 40
+
+  tags = {
+    Name = "HelloWorld"
+  }
+}
+
+resource "aws_ebs_snapshot" "positive2" {
+  volume_id = aws_ebs_volume.positive2.id
   tags {
     Name = "Production"
   }

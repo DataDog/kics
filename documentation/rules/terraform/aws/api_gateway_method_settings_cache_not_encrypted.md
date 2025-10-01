@@ -52,7 +52,7 @@ settings {
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "aws_api_gateway_rest_api" "example" {
   body = jsonencode({
     openapi = "3.0.1"
@@ -121,7 +121,7 @@ resource "aws_api_gateway_method_settings" "path_specific_3" {
 
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "aws_api_gateway_rest_api" "example" {
   body = jsonencode({
     openapi = "3.0.1"

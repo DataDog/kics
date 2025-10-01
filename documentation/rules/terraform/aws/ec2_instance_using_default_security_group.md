@@ -32,7 +32,7 @@ meta:
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "aws_instance" "negative2" {
   ami = "ami-003634241a8fcdec0"
 
@@ -43,7 +43,7 @@ resource "aws_instance" "negative2" {
 
 ```
 
-```terraform
+```tf
 resource "aws_instance" "negative1" {
   ami           = data.aws_ami.ubuntu.id
   instance_type = "t3.micro"
@@ -57,18 +57,7 @@ resource "aws_instance" "negative1" {
 
 ```
 ## Non-Compliant Code Examples
-```terraform
-resource "aws_instance" "positive2" {
-  ami = "ami-003634241a8fcdec0"
-
-  instance_type = "t2.micro"
-
-  vpc_security_group_ids = [aws_security_group.default.id]
-}
-
-```
-
-```terraform
+```tf
 resource "aws_instance" "positive1" {
   ami           = data.aws_ami.ubuntu.id
   instance_type = "t3.micro"
@@ -78,6 +67,17 @@ resource "aws_instance" "positive1" {
   }
 
   security_groups = [aws_security_group.default.id]
+}
+
+```
+
+```tf
+resource "aws_instance" "positive2" {
+  ami = "ami-003634241a8fcdec0"
+
+  instance_type = "t2.micro"
+
+  vpc_security_group_ids = [aws_security_group.default.id]
 }
 
 ```

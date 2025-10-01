@@ -49,7 +49,7 @@ setting {
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "aws_ecs_cluster" "foo" {
   name = "white-hart"
 
@@ -61,7 +61,7 @@ resource "aws_ecs_cluster" "foo" {
 
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "aws_ecs_cluster" "foo" {
   name = "white-hart"
 

@@ -32,7 +32,7 @@ meta:
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 module "s3_bucket" {
   source = "terraform-aws-modules/s3-bucket/aws"
   version = "3.7.0"
@@ -67,7 +67,7 @@ POLICY
 
 ```
 
-```terraform
+```tf
 resource "aws_s3_bucket" "negative1" {
   bucket = "example"
 }
@@ -81,7 +81,67 @@ resource "aws_s3_bucket_public_access_block" "negative2" {
 }
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
+module "s3_bucket" {
+  source = "terraform-aws-modules/s3-bucket/aws"
+  version = "3.7.0"
+
+  bucket = "my-s3-bucket"
+  acl    = "private"
+  restrict_public_buckets = true
+
+  versioning = {
+    enabled = true
+  }
+
+  policy = <<POLICY
+{
+  "Version": "2012-10-17",
+  "Id": "MYBUCKETPOLICY",
+  "Statement": [
+    {
+      "Sid": "IPAllow",
+      "Effect": "Deny",
+      "Action": "s3:*",
+      "Resource": "arn:aws:s3:::my_tf_test_bucket/*",
+      "Condition": {
+         "IpAddress": {"aws:SourceIp": "8.8.8.8/32"}
+      }
+    }
+  ]
+}
+POLICY
+}
+
+```
+
+```tf
+resource "aws_s3_bucket" "positive1" {
+  bucket = "example"
+}
+
+resource "aws_s3_bucket_public_access_block" "positive2" {
+  bucket = aws_s3_bucket.example.id
+
+  block_public_acls   = false
+  block_public_policy = true
+  ignore_public_acls  = false
+}
+
+// comment
+// comment
+// comment
+// comment
+// comment
+resource "aws_s3_bucket_public_access_block" "positive3" {
+  bucket = aws_s3_bucket.example.id
+
+  block_public_policy = true
+  ignore_public_acls  = false
+}
+```
+
+```tf
 module "s3_bucket" {
   source = "terraform-aws-modules/s3-bucket/aws"
   version = "3.7.0"
@@ -114,64 +174,4 @@ module "s3_bucket" {
 POLICY
 }
 
-```
-
-```terraform
-module "s3_bucket" {
-  source = "terraform-aws-modules/s3-bucket/aws"
-  version = "3.7.0"
-
-  bucket = "my-s3-bucket"
-  acl    = "private"
-  restrict_public_buckets = true
-
-  versioning = {
-    enabled = true
-  }
-
-  policy = <<POLICY
-{
-  "Version": "2012-10-17",
-  "Id": "MYBUCKETPOLICY",
-  "Statement": [
-    {
-      "Sid": "IPAllow",
-      "Effect": "Deny",
-      "Action": "s3:*",
-      "Resource": "arn:aws:s3:::my_tf_test_bucket/*",
-      "Condition": {
-         "IpAddress": {"aws:SourceIp": "8.8.8.8/32"}
-      }
-    }
-  ]
-}
-POLICY
-}
-
-```
-
-```terraform
-resource "aws_s3_bucket" "positive1" {
-  bucket = "example"
-}
-
-resource "aws_s3_bucket_public_access_block" "positive2" {
-  bucket = aws_s3_bucket.example.id
-
-  block_public_acls   = false
-  block_public_policy = true
-  ignore_public_acls  = false
-}
-
-// comment
-// comment
-// comment
-// comment
-// comment
-resource "aws_s3_bucket_public_access_block" "positive3" {
-  bucket = aws_s3_bucket.example.id
-
-  block_public_policy = true
-  ignore_public_acls  = false
-}
 ```

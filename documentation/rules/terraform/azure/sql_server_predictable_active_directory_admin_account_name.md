@@ -37,7 +37,7 @@ This helps reduce the likelihood of successful account compromise.
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 #this code is a correct code for which the query should not find any result
 data "azurerm_client_config" "current" {}
 
@@ -64,7 +64,7 @@ resource "azurerm_sql_active_directory_administrator" "negative3" {
 }
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 #this is a problematic code where the query should report a result(s)
 data "azurerm_client_config" "current" {}
 

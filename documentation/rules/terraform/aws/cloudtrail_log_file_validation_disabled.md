@@ -40,7 +40,7 @@ resource "aws_cloudtrail" "example" {
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "aws_cloudtrail" "negative1" {
   name                          = "negative1"
   s3_bucket_name                = "bucketlog1"
@@ -49,7 +49,7 @@ resource "aws_cloudtrail" "negative1" {
 
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "aws_cloudtrail" "positive1" {
   name                          = "positive1"
   s3_bucket_name                = "bucketlog1"

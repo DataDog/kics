@@ -32,7 +32,24 @@ meta:
 
 
 ## Compliant Code Examples
-```terraform
+```tf
+module "s3_bucket" {
+  source = "terraform-aws-modules/s3-bucket/aws"
+
+  version = "3.7.0"
+
+  bucket = "my-s3-bucket"
+  acl    = "private"
+
+  versioning = {
+    enabled = true
+  }
+
+}
+
+```
+
+```tf
 terraform {
   required_providers {
     aws = {
@@ -65,24 +82,7 @@ resource "aws_s3_bucket_versioning" "example" {
 
 ```
 
-```terraform
-module "s3_bucket" {
-  source = "terraform-aws-modules/s3-bucket/aws"
-
-  version = "3.7.0"
-
-  bucket = "my-s3-bucket"
-  acl    = "private"
-
-  versioning = {
-    enabled = true
-  }
-
-}
-
-```
-
-```terraform
+```tf
 provider "aws" {
   region = "us-east-1"
 }
@@ -112,46 +112,7 @@ resource "aws_s3_bucket" "negative1" {
 
 ```
 ## Non-Compliant Code Examples
-```terraform
-module "s3_bucket" {
-  source = "terraform-aws-modules/s3-bucket/aws"
-
-  version = "3.7.0"
-
-  bucket = "my-s3-bucket"
-  acl    = "private"
-
-}
-
-```
-
-```terraform
-provider "aws" {
-  region = "us-east-1"
-}
-
-terraform {
-  required_providers {
-    aws = {
-      source  = "hashicorp/aws"
-      version = "~> 3.0"
-    }
-  }
-}
-
-resource "aws_s3_bucket" "positive2" {
-  bucket = "my-tf-test-bucket"
-  acl    = "private"
-
-  tags = {
-    Name        = "My bucket"
-    Environment = "Dev"
-  }
-}
-
-```
-
-```terraform
+```tf
 provider "aws" {
   region = "us-east-1"
 }
@@ -177,6 +138,47 @@ resource "aws_s3_bucket" "positive3" {
   versioning {
     mfa_delete = true
   }
+}
+
+```
+
+```tf
+terraform {
+  required_providers {
+    aws = {
+      source = "hashicorp/aws"
+      version = "4.2.0"
+    }
+  }
+}
+
+provider "aws" {
+  # Configuration options
+}
+
+resource "aws_s3_bucket" "b2" {
+  bucket = "my-tf-test-bucket"
+
+  tags = {
+    Name        = "My bucket"
+    Environment = "Dev"
+  }
+}
+
+```
+
+```tf
+module "mybucket" {
+  source = "../../../../../../modules/aws-simple-bucket"
+
+  bucket_name = "dd-mybucket-eric-aws-simple-test-001"
+  versioning_config = {
+    enabled = false
+  }
+}
+
+provider "aws" {
+  region = "us-west-2"
 }
 
 ```

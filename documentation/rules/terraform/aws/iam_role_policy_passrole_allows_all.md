@@ -32,7 +32,7 @@ meta:
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "aws_iam_role_policy" "test_policy" {
   name = "test_policy"
   role = aws_iam_role.test_role.id
@@ -56,7 +56,7 @@ resource "aws_iam_role_policy" "test_policy" {
 
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "aws_iam_role_policy" "test_policy" {
   name = "test_policy"
   role = aws_iam_role.test_role.id

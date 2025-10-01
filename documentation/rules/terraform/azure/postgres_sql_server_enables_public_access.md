@@ -32,7 +32,7 @@ meta:
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "azurerm_postgresql_server" "good_example" {
   name                = "good-postgresql-server"
   location            = "East US"
@@ -47,7 +47,7 @@ resource "azurerm_postgresql_server" "good_example" {
 
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 # Failing example 1: Attribute exists but is set to true.
 resource "azurerm_postgresql_server" "bad_example" {
   name                = "bad-postgresql-server"

@@ -44,7 +44,7 @@ access {
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 # negative sample
 resource "google_bigquery_dataset" "negative1" {
   dataset_id                  = "example_dataset"
@@ -70,7 +70,7 @@ resource "google_bigquery_dataset" "negative1" {
 
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "google_bigquery_dataset" "positive1" {
   dataset_id                  = "example_dataset"
   friendly_name               = "test"

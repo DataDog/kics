@@ -49,7 +49,7 @@ resource "aws_cloudwatch_log_group" "example" {
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "aws_cloudwatch_log_group" "negative1" {
   name = "Yada"
 
@@ -63,7 +63,7 @@ resource "aws_cloudwatch_log_group" "negative1" {
 
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "aws_cloudwatch_log_group" "positive1" {
   name = "Yada"
 

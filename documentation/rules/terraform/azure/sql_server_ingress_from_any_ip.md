@@ -34,7 +34,7 @@ Instead of allowing all IPs, you should configure specific IP ranges or addresse
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "azurerm_sql_firewall_rule" "negative1" {
   name                = "FirewallRule1"
   resource_group_name = azurerm_resource_group.example.name
@@ -44,7 +44,7 @@ resource "azurerm_sql_firewall_rule" "negative1" {
 }
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "azurerm_sql_firewall_rule" "positive1" {
   name                = "FirewallRule1"
   resource_group_name = azurerm_resource_group.example.name

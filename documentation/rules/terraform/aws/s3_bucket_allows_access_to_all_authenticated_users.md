@@ -48,7 +48,7 @@ grantee {
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "aws_s3_bucket_acl" "good_example" {
   bucket = aws_s3_bucket.example.id
 
@@ -68,7 +68,7 @@ resource "aws_s3_bucket_acl" "good_example" {
 
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "aws_s3_bucket_acl" "bad_example" {
   bucket = aws_s3_bucket.example.id
 

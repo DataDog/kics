@@ -51,7 +51,7 @@ Unencrypted disks can lead to unauthorized disclosure of sensitive information o
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "google_compute_disk" "negative1" {
   name  = "test-disk"
   type  = "pd-ssd"
@@ -70,7 +70,7 @@ resource "google_compute_disk" "negative1" {
 
 ```
 
-```terraform
+```tf
 resource "google_compute_disk" "negative1" {
   name  = "test-disk"
   type  = "pd-ssd"
@@ -89,26 +89,7 @@ resource "google_compute_disk" "negative1" {
 
 ```
 ## Non-Compliant Code Examples
-```terraform
-resource "google_compute_disk" "positive3" {
-  name  = "test-disk"
-  type  = "pd-ssd"
-  zone  = "us-central1-a"
-  image = "debian-9-stretch-v20200805"
-  labels = {
-    environment = "dev"
-  }
-  physical_block_size_bytes = 4096
-
-  disk_encryption_key {
-      raw_key = ""
-      sha256 = "A"
-  }
-}
-
-```
-
-```terraform
+```tf
 resource "google_compute_disk" "positive4" {
   name  = "test-disk"
   type  = "pd-ssd"
@@ -127,7 +108,7 @@ resource "google_compute_disk" "positive4" {
 
 ```
 
-```terraform
+```tf
 resource "google_compute_disk" "positive1" {
   name  = "test-disk"
   type  = "pd-ssd"
@@ -151,6 +132,25 @@ resource "google_compute_disk" "positive2" {
 
   disk_encryption_key {
     sha256 = "A"
+  }
+}
+
+```
+
+```tf
+resource "google_compute_disk" "positive3" {
+  name  = "test-disk"
+  type  = "pd-ssd"
+  zone  = "us-central1-a"
+  image = "debian-9-stretch-v20200805"
+  labels = {
+    environment = "dev"
+  }
+  physical_block_size_bytes = 4096
+
+  disk_encryption_key {
+      raw_key = ""
+      sha256 = "A"
   }
 }
 

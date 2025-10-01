@@ -46,7 +46,7 @@ This logs Key Vault events and helps ensure accountability and traceability for 
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 provider "azurerm" {
   features {
     key_vault {
@@ -125,7 +125,7 @@ resource "azurerm_key_vault" "example" {
 }
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 provider "azurerm" {
   features {
     key_vault {

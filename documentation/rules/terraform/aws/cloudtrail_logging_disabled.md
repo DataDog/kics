@@ -40,7 +40,7 @@ resource "aws_cloudtrail" "example" {
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "aws_cloudtrail" "negative1" {
   name                          = "negative_1"
   s3_bucket_name                = "bucketlog"
@@ -53,7 +53,7 @@ resource "aws_cloudtrail" "negative2" {
 }
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 #this is a problematic code where the query should report a result(s)
 resource "aws_cloudtrail" "positive1" {
   name                          = "positive"

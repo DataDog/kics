@@ -48,7 +48,7 @@ resource "azurerm_kubernetes_cluster" "example" {
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "azurerm_kubernetes_cluster" "negative" {
   name                = "example-aks1"
   location            = azurerm_resource_group.example.location
@@ -60,18 +60,7 @@ resource "azurerm_kubernetes_cluster" "negative" {
 
 ```
 ## Non-Compliant Code Examples
-```terraform
-resource "azurerm_kubernetes_cluster" "positive2" {
-  name                = "example-aks1"
-  location            = azurerm_resource_group.example.location
-  resource_group_name = azurerm_resource_group.example.name
-  dns_prefix          = "exampleaks1"
-
-}
-
-```
-
-```terraform
+```tf
 resource "azurerm_kubernetes_cluster" "positive1" {
   name                = "example-aks1"
   location            = azurerm_resource_group.example.location
@@ -79,6 +68,17 @@ resource "azurerm_kubernetes_cluster" "positive1" {
   dns_prefix          = "exampleaks1"
 
   private_cluster_enabled = false
+}
+
+```
+
+```tf
+resource "azurerm_kubernetes_cluster" "positive2" {
+  name                = "example-aks1"
+  location            = azurerm_resource_group.example.location
+  resource_group_name = azurerm_resource_group.example.name
+  dns_prefix          = "exampleaks1"
+
 }
 
 ```

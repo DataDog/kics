@@ -39,7 +39,7 @@ retention_policy {
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "azurerm_monitor_log_profile" "negative1" {
   name = "default"
 
@@ -88,7 +88,7 @@ resource "azurerm_monitor_log_profile" "negative2" {
 
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "azurerm_monitor_log_profile" "positive1" {
   name = "default"
 

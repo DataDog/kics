@@ -38,7 +38,7 @@ resource "aws_neptune_cluster_instance" "example" {
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "aws_neptune_cluster_instance" "negative" {
   count              = 2
   cluster_identifier = aws_neptune_cluster.default.id
@@ -50,7 +50,7 @@ resource "aws_neptune_cluster_instance" "negative" {
 
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "aws_neptune_cluster_instance" "example" {
   count              = 2
   cluster_identifier = aws_neptune_cluster.default.id

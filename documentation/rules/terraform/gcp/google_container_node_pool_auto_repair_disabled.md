@@ -48,7 +48,7 @@ This configuration helps maintain a resilient and self-healing node environment 
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "google_container_cluster" "negative1" {
   name     = "my-gke-cluster"
   location = "us-central1"
@@ -69,7 +69,7 @@ resource "google_container_node_pool" "negative2" {
 
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "google_container_cluster" "positive1" {
   name     = "my-gke-cluster"
   location = "us-central1"

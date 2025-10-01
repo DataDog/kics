@@ -40,7 +40,7 @@ Without active tracing, teams lose critical visibility into Lambda execution, ma
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "aws_iam_role" "iam_for_lambda" {
   name = "iam_for_lambda"
 
@@ -87,7 +87,7 @@ resource "aws_lambda_function" "test_lambda" {
 
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "aws_iam_role" "iam_for_lambda2" {
   name = "iam_for_lambda"
 

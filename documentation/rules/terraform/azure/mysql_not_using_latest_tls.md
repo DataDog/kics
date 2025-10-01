@@ -32,7 +32,7 @@ meta:
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "azurerm_mysql_server" "good_example" {
   name                = "good-mysql-server"
   location            = "East US"
@@ -43,7 +43,7 @@ resource "azurerm_mysql_server" "good_example" {
 
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "azurerm_mysql_server" "bad_example" {
   name                = "bad-mysql-server"
   location            = "East US"

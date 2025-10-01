@@ -32,7 +32,7 @@ meta:
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "aws_vpc" "negative" {
   cidr_block = "10.0.0.0/16"
 }
@@ -53,7 +53,7 @@ resource "aws_networkfirewall_firewall" "example" {
 
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "aws_vpc" "positive" {
   cidr_block = "10.0.0.0/16"
 }

@@ -32,7 +32,7 @@ meta:
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "aws_db_snapshot" "private_snapshot" {
   db_snapshot_identifier = "private-db-snapshot"
   db_instance_identifier = "my-db-instance"
@@ -40,7 +40,7 @@ resource "aws_db_snapshot" "private_snapshot" {
 
 ```
 
-```terraform
+```tf
 resource "aws_db_snapshot" "private_snapshot" {
   db_snapshot_identifier = "private-db-snapshot"
   db_instance_identifier = "my-db-instance"
@@ -49,7 +49,7 @@ resource "aws_db_snapshot" "private_snapshot" {
 
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "aws_db_snapshot" "public_snapshot" {
   db_snapshot_identifier = "public-db-snapshot"
   db_instance_identifier = "my-db-instance"

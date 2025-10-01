@@ -32,7 +32,7 @@ meta:
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "aws_lambda_permission" "negative1" {
   action        = "lambda:InvokeFunction"
   function_name = aws_lambda_function.logging.function_name
@@ -42,7 +42,7 @@ resource "aws_lambda_permission" "negative1" {
 
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "aws_lambda_permission" "positive1" {
   action        = "lambda:DeleteFunction"
   function_name = aws_lambda_function.logging.function_name

@@ -38,39 +38,33 @@ site_config {
 
 
 ## Compliant Code Examples
-```terraform
-provider "azurerm" {
-  features {}
-}
-
-resource "azurerm_resource_group" "example" {
-  name     = "example-resources"
-  location = "West Europe"
-}
-
-resource "azurerm_service_plan" "example" {
-  name                = "example"
-  resource_group_name = azurerm_resource_group.example.name
+```tf
+resource "azurerm_app_service" "example1" {
+  name                = "example1-app-service"
   location            = azurerm_resource_group.example.location
-  sku_name            = "P1v2"
-}
-
-resource "azurerm_linux_web_app" "example3" {
-  name                = "example3"
   resource_group_name = azurerm_resource_group.example.name
-  location            = azurerm_service_plan.example.location
-  service_plan_id     = azurerm_service_plan.example.id
+  app_service_plan_id = azurerm_app_service_plan.example.id
+  
+  # SiteConfig block is optional before AzureRM version 3.0 
+  site_config {
+    dotnet_framework_version = "v4.0"
+    scm_type                 = "LocalGit"
+  }
 
-  site_config{
-    application_stack{
-      python_version = "3.10"
-    }    
+  app_settings = {
+    "SOME_KEY" = "some-value"
+  }
+
+  connection_string {
+    name  = "Database"
+    type  = "SQLServer"
+    value = "Server=some-server.mydomain.com;Integrated Security=SSPI"
   }
 }
 
 ```
 
-```terraform
+```tf
 provider "azurerm" {
   features {}
 }
@@ -102,34 +96,7 @@ resource "azurerm_windows_web_app" "example2" {
 
 ```
 
-```terraform
-resource "azurerm_app_service" "example1" {
-  name                = "example1-app-service"
-  location            = azurerm_resource_group.example.location
-  resource_group_name = azurerm_resource_group.example.name
-  app_service_plan_id = azurerm_app_service_plan.example.id
-  
-  # SiteConfig block is optional before AzureRM version 3.0 
-  site_config {
-    dotnet_framework_version = "v4.0"
-    scm_type                 = "LocalGit"
-    python_version              = "3.10"
-  }
-
-  app_settings = {
-    "SOME_KEY" = "some-value"
-  }
-
-  connection_string {
-    name  = "Database"
-    type  = "SQLServer"
-    value = "Server=some-server.mydomain.com;Integrated Security=SSPI"
-  }
-}
-
-```
-## Non-Compliant Code Examples
-```terraform
+```tf
 provider "azurerm" {
   features {}
 }
@@ -146,22 +113,22 @@ resource "azurerm_service_plan" "example" {
   sku_name            = "P1v2"
 }
 
-resource "azurerm_windows_web_app" "example5" {
-  name                = "example5"
+resource "azurerm_linux_web_app" "example3" {
+  name                = "example3"
   resource_group_name = azurerm_resource_group.example.name
   location            = azurerm_service_plan.example.location
   service_plan_id     = azurerm_service_plan.example.id
 
-   site_config{
+  site_config{
     application_stack{
-      python_version = "v2.7"
+      python_version = "3.10"
     }    
   }
 }
 
 ```
-
-```terraform
+## Non-Compliant Code Examples
+```tf
 provider "azurerm" {
   features {}
 }
@@ -194,7 +161,7 @@ resource "azurerm_linux_web_app" "example6" {
 
 ```
 
-```terraform
+```tf
 resource "azurerm_app_service" "example4" {
   name                = "example4-app-service"
   location            = azurerm_resource_group.example.location
@@ -216,6 +183,38 @@ resource "azurerm_app_service" "example4" {
     name  = "Database"
     type  = "SQLServer"
     value = "Server=some-server.mydomain.com;Integrated Security=SSPI"
+  }
+}
+
+```
+
+```tf
+provider "azurerm" {
+  features {}
+}
+
+resource "azurerm_resource_group" "example" {
+  name     = "example-resources"
+  location = "West Europe"
+}
+
+resource "azurerm_service_plan" "example" {
+  name                = "example"
+  resource_group_name = azurerm_resource_group.example.name
+  location            = azurerm_resource_group.example.location
+  sku_name            = "P1v2"
+}
+
+resource "azurerm_windows_web_app" "example5" {
+  name                = "example5"
+  resource_group_name = azurerm_resource_group.example.name
+  location            = azurerm_service_plan.example.location
+  service_plan_id     = azurerm_service_plan.example.id
+
+   site_config{
+    application_stack{
+      python_version = "v2.7"
+    }    
   }
 }
 

@@ -32,7 +32,7 @@ meta:
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 data "aws_iam_policy_document" "test_destination_policy2" {
   statement {
     effect = "Allow"
@@ -62,7 +62,7 @@ resource "aws_cloudwatch_log_destination_policy" "test_destination_policy2" {
 
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 data "aws_iam_policy_document" "test_destination_policy" {
   statement {
     effect = "Allow"

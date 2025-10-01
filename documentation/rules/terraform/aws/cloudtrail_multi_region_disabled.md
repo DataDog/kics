@@ -41,7 +41,7 @@ resource "aws_cloudtrail" "secure_example" {
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 #this code is a correct code for which the query should not find any result
 resource "aws_cloudtrail" "negative1" {
   name                          = "negative"
@@ -51,16 +51,7 @@ resource "aws_cloudtrail" "negative1" {
 
 ```
 ## Non-Compliant Code Examples
-```terraform
-resource "aws_cloudtrail" "positive2" {
-  name                          = "npositive_2"
-  s3_bucket_name                = "bucketlog_2"
-  is_multi_region_trail         = false
-}
-
-```
-
-```terraform
+```tf
 resource "aws_cloudtrail" "positive3" {
   name                          = "npositive_3"
   s3_bucket_name                = "bucketlog_3"
@@ -70,11 +61,20 @@ resource "aws_cloudtrail" "positive3" {
 
 ```
 
-```terraform
+```tf
 #this is a problematic code where the query should report a result(s)
 resource "aws_cloudtrail" "positive1" {
   name                          = "npositive_1"
   s3_bucket_name                = "bucketlog_1"
+}
+
+```
+
+```tf
+resource "aws_cloudtrail" "positive2" {
+  name                          = "npositive_2"
+  s3_bucket_name                = "bucketlog_2"
+  is_multi_region_trail         = false
 }
 
 ```

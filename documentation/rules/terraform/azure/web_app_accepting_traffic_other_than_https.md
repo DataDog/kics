@@ -54,7 +54,7 @@ resource "azurerm_app_service" "example" {
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "azurerm_resource_group" "example" {
   name     = "example-resources"
   location = "West Europe"
@@ -93,7 +93,7 @@ resource "azurerm_app_service" "example" {
 
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "azurerm_resource_group" "example" {
   name     = "example-resources"
   location = "West Europe"

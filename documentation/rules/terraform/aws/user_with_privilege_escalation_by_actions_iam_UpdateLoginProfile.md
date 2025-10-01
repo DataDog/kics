@@ -41,7 +41,7 @@ This creates a privilege escalation risk, as the user could assign themselves or
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "aws_iam_user" "cosmic2" {
   name = "cosmic2"
 }
@@ -66,7 +66,7 @@ resource "aws_iam_user_policy" "inline_policy_run_instances2" {
 
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "aws_iam_user" "cosmic" {
   name = "cosmic"
 }

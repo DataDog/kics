@@ -57,7 +57,7 @@ Enabling logging helps improve visibility into data access and can aid in compli
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "google_storage_bucket" "negative1" {
   name          = "auto-expiring-bucket"
   location      = "US"
@@ -78,7 +78,7 @@ resource "google_storage_bucket" "negative1" {
 }
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "google_storage_bucket" "positive1" {
   name          = "auto-expiring-bucket"
   location      = "US"

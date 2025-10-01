@@ -41,7 +41,7 @@ Enabling MFA (for example, `mfa_configuration = "ON"` or `"OPTIONAL"`) significa
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "aws_cognito_user_pool" "negative1" {
   # ... other configuration ...
 
@@ -67,7 +67,7 @@ resource "aws_cognito_user_pool" "negative2" {
 
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "aws_cognito_user_pool" "positive1" {
   # ... other configuration ...
 

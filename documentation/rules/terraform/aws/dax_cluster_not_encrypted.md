@@ -45,7 +45,7 @@ Insecure configurations either omit the `server_side_encryption` block entirely,
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "aws_dax_cluster" "bar" {
   cluster_name       = "cluster-example"
   iam_role_arn       = data.aws_iam_role.example.arn
@@ -59,7 +59,7 @@ resource "aws_dax_cluster" "bar" {
 
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "aws_dax_cluster" "bar_1" {
   cluster_name       = "cluster-example"
   iam_role_arn       = data.aws_iam_role.example.arn

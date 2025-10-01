@@ -41,7 +41,7 @@ resource "aws_redshift_cluster" "secure_example" {
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "aws_redshift_cluster" "negative1" {
   cluster_identifier = "tf-redshift-cluster"
   database_name      = "mydb"
@@ -61,7 +61,7 @@ resource "aws_redshift_cluster" "negative1" {
 
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "aws_redshift_cluster" "positive1" {
   cluster_identifier = "tf-redshift-cluster"
   database_name      = "mydb"

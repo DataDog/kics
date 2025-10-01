@@ -62,7 +62,7 @@ Leaving this unaddressed may expose sensitive data or allow unauthorized access 
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "azurerm_function_app" "negative" {
   name                       = "test-azure-functions"
   location                   = azurerm_resource_group.example.location
@@ -78,7 +78,7 @@ resource "azurerm_function_app" "negative" {
 
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "azurerm_function_app" "positive1" {
   name                       = "test-azure-functions"
   location                   = azurerm_resource_group.example.location

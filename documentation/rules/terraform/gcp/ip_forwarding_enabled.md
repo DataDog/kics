@@ -53,7 +53,7 @@ Disabling IP forwarding hardens network boundaries and reduces the attack surfac
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "google_compute_instance" "appserver" {
   name           = "primary-application-server"
   machine_type   = "e2-medium"
@@ -72,7 +72,7 @@ resource "google_compute_instance" "appserver" {
 
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "google_compute_instance" "appserver" {
   name           = "primary-application-server"
   machine_type   = "e2-medium"

@@ -32,7 +32,7 @@ meta:
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "aws_dms_replication_instance" "test" {
   allocated_storage            = 20
   apply_immediately            = true
@@ -59,7 +59,7 @@ resource "aws_dms_replication_instance" "test" {
 }
 ```
 
-```terraform
+```tf
 resource "aws_dms_replication_instance" "test" {
   allocated_storage            = 20
   apply_immediately            = true
@@ -85,7 +85,7 @@ resource "aws_dms_replication_instance" "test" {
 }
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "aws_dms_replication_instance" "test" {
   allocated_storage            = 20
   apply_immediately            = true

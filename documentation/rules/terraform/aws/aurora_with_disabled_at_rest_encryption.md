@@ -39,7 +39,7 @@ resource "aws_rds_cluster" "my_cluster" {
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 provider "aws" {
   region = "us-west-2"  # Replace with your desired AWS region
 }
@@ -73,7 +73,7 @@ output "cluster_endpoint" {
 
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 provider "aws" {
   region = "us-west-2"  # Replace with your desired AWS region
 }
@@ -89,6 +89,7 @@ resource "aws_rds_cluster" "my_cluster" {
   deletion_protection          = false
   skip_final_snapshot          = true
   apply_immediately            = true
+  storage_encrypted            = false
 }
 
 resource "aws_rds_cluster_instance" "my_cluster_instance" {
@@ -106,7 +107,7 @@ output "cluster_endpoint" {
 
 ```
 
-```terraform
+```tf
 provider "aws" {
   region = "us-west-2"  # Replace with your desired AWS region
 }
@@ -122,7 +123,6 @@ resource "aws_rds_cluster" "my_cluster" {
   deletion_protection          = false
   skip_final_snapshot          = true
   apply_immediately            = true
-  storage_encrypted            = false
 }
 
 resource "aws_rds_cluster_instance" "my_cluster_instance" {

@@ -45,7 +45,7 @@ resource "aws_config_config_rule" "encrypted_volumes" {
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "aws_config_config_rule" "negative1" {
   name = "encrypted_vols_rule"
 
@@ -65,7 +65,7 @@ resource "aws_config_config_rule" "negative2" {
 }
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "aws_config_config_rule" "positive1" {
   name = "some_rule"
 

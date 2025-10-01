@@ -44,7 +44,7 @@ Failing to enforce modern TLS versions can expose sensitive data in transit to i
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "azurerm_storage_account" "negative1" {
   name                     = "storageaccountname"
   resource_group_name      = azurerm_resource_group.example.name
@@ -60,7 +60,7 @@ resource "azurerm_storage_account" "negative1" {
 
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "azurerm_storage_account" "positive2" {
   name                     = "storageaccountname"
   resource_group_name      = azurerm_resource_group.example.name

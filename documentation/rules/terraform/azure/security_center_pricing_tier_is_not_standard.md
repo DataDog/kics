@@ -48,13 +48,13 @@ resource "azurerm_security_center_subscription_pricing" "example" {
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "azurerm_security_center_subscription_pricing" "negative1" {
    tier = "Standard"
 }
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "azurerm_security_center_subscription_pricing" "positive1" {
    tier = "Free"
 }

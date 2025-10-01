@@ -40,7 +40,7 @@ This leaves accounts within the organization more vulnerable to misconfiguration
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "aws_organizations_organization" "negative1" {
   aws_service_access_principals = [
     "cloudtrail.amazonaws.com",
@@ -52,7 +52,7 @@ resource "aws_organizations_organization" "negative1" {
 
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "aws_organizations_organization" "positive1" {
   aws_service_access_principals = [
     "cloudtrail.amazonaws.com",

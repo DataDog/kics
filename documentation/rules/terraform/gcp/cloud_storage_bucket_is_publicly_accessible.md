@@ -40,7 +40,7 @@ resource "google_storage_bucket_iam_member" "secure_example" {
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "google_storage_bucket_iam_member" "negative1" {
   bucket = google_storage_bucket.default.name
   role = "roles/storage.admin"
@@ -55,7 +55,7 @@ resource "google_storage_bucket_iam_member" "negative2" {
 }
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "google_storage_bucket_iam_member" "positive1" {
   bucket = google_storage_bucket.default.name
   role = "roles/storage.admin"

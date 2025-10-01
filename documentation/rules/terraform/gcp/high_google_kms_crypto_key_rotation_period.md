@@ -43,7 +43,7 @@ resource "google_kms_crypto_key" "secure_example" {
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "google_kms_crypto_key" "negative1" {
   name            = "crypto-key-example"
   key_ring        = google_kms_key_ring.keyring.id
@@ -55,7 +55,7 @@ resource "google_kms_crypto_key" "negative1" {
 
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "google_kms_crypto_key" "positive1" {
   name            = "crypto-key-example"
   key_ring        = google_kms_key_ring.keyring.id

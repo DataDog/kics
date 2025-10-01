@@ -32,7 +32,7 @@ meta:
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "aws_ecr_repository" "foo" {
   name                 = "bar"
   image_tag_mutability = "IMMUTABLE"
@@ -44,7 +44,7 @@ resource "aws_ecr_repository" "foo" {
 
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "aws_ecr_repository" "foo2" {
   name                 = "bar"
   image_tag_mutability = "MUTABLE"

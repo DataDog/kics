@@ -36,7 +36,7 @@ administrator_login = "UnpredictableAdminLogin"
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 #this code is a correct code for which the query should not find any result
 resource "azurerm_resource_group" "negative1" {
   name     = "database-rg"
@@ -72,7 +72,7 @@ resource "azurerm_sql_server" "negative3" {
 }
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 #this is a problematic code where the query should report a result(s)
 resource "azurerm_resource_group" "positive1" {
   name     = "database-rg"

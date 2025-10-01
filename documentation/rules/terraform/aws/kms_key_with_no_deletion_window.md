@@ -44,7 +44,7 @@ resource "aws_kms_key" "negative1" {
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "aws_kms_key" "negative1" {
   description             = "KMS key 1"
   
@@ -56,7 +56,7 @@ resource "aws_kms_key" "negative1" {
 }
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "aws_kms_key" "positive1" {
   description             = "KMS key 1"
   

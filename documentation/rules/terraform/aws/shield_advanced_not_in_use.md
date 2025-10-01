@@ -43,7 +43,7 @@ resource "aws_shield_protection" "example" {
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "aws_route53_zone" "negative2" {
   name = "example.com"
 }
@@ -59,7 +59,7 @@ resource "aws_shield_protection" "negative2" {
 
 ```
 
-```terraform
+```tf
 data "aws_availability_zones" "available" {}
 data "aws_region" "current" {}
 data "aws_caller_identity" "current" {}
@@ -79,23 +79,7 @@ resource "aws_shield_protection" "negative1" {
 
 ```
 ## Non-Compliant Code Examples
-```terraform
-resource "aws_route53_zone" "positive2" {
-  name = "example.com"
-}
-
-resource "aws_shield_protection" "positive2" {
-  name         = "example"
-  resource_arn = aws_route53_zone.positive.arn
-
-  tags = {
-    Environment = "Dev"
-  }
-}
-
-```
-
-```terraform
+```tf
 data "aws_availability_zones" "available" {}
 data "aws_region" "current" {}
 data "aws_caller_identity" "current" {}
@@ -107,6 +91,22 @@ resource "aws_eip" "positive1" {
 resource "aws_shield_protection" "positive1" {
   name         = "example"
   resource_arn = "arn:aws:ec2:${data.aws_region.current.name}:${data.aws_caller_identity.current.account_id}:eip-allocation/${aws_eip.positive.id}"
+
+  tags = {
+    Environment = "Dev"
+  }
+}
+
+```
+
+```tf
+resource "aws_route53_zone" "positive2" {
+  name = "example.com"
+}
+
+resource "aws_shield_protection" "positive2" {
+  name         = "example"
+  resource_arn = aws_route53_zone.positive.arn
 
   tags = {
     Environment = "Dev"

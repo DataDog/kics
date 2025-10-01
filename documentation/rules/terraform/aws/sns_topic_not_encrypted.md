@@ -32,7 +32,7 @@ meta:
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 provider "aws2" {
   region = "us-east-1"
 }
@@ -44,21 +44,21 @@ resource "aws_sns_topic" "test2" {
 
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
+resource "aws_sns_topic" "user_updates" {
+  name              = "user-updates-topic"
+  kms_master_key_id = ""
+}
+
+```
+
+```tf
 provider "aws" {
   region = "us-east-1"
 }
 
 resource "aws_sns_topic" "test" {
   name = "sns_not_ecnrypted"
-}
-
-```
-
-```terraform
-resource "aws_sns_topic" "user_updates" {
-  name              = "user-updates-topic"
-  kms_master_key_id = ""
 }
 
 ```

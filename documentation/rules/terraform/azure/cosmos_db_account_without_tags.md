@@ -52,7 +52,7 @@ Leaving tags unconfigured can lead to unmanaged resources, increased risk of mis
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "azurerm_cosmosdb_account" "negative1" {
   name                = "tfex-cosmos-db-${random_integer.ri.result}"
   location            = azurerm_resource_group.rg.location
@@ -63,7 +63,7 @@ resource "azurerm_cosmosdb_account" "negative1" {
 }
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "azurerm_cosmosdb_account" "positive1" {
   name                = "tfex-cosmos-db-${random_integer.ri.result}"
   location            = azurerm_resource_group.rg.location

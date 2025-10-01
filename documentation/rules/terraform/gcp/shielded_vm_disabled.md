@@ -44,7 +44,7 @@ data "google_compute_instance" "appserver" {
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 #this code is a correct code for which the query should not find any result
 data "google_compute_instance" "appserver" {
   name = "primary-application-server"
@@ -57,7 +57,7 @@ data "google_compute_instance" "appserver" {
 }
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 #this is a problematic code where the query should report a result(s)
 data "google_compute_instance" "appserver1" {
   name = "primary-application-server"
@@ -122,7 +122,7 @@ data "google_compute_instance" "appserver7" {
 }
 ```
 
-```terraform
+```tf
 resource "google_compute_instance" "jumpbox" {
   name         = "${var.name}-jumpbox"
   machine_type = var.instance_type

@@ -36,7 +36,29 @@ ignore_public_acls = false```.
 
 
 ## Compliant Code Examples
-```terraform
+```tf
+module "s3_bucket" {
+  source = "terraform-aws-modules/s3-bucket/aws"
+
+  version = "3.7.0"
+
+  bucket = "my-s3-bucket"
+  acl    = "public-read-write"
+
+  versioning = {
+    enabled = true
+  }
+
+  block_public_acls = false
+  block_public_policy = true
+  ignore_public_acls = false
+  restrict_public_buckets = true
+
+}
+
+```
+
+```tf
 terraform {
   required_providers {
     aws = {
@@ -69,29 +91,7 @@ resource "aws_s3_bucket_public_access_block" "block_public_bucket_322" {
 
 ```
 
-```terraform
-module "s3_bucket" {
-  source = "terraform-aws-modules/s3-bucket/aws"
-
-  version = "3.7.0"
-
-  bucket = "my-s3-bucket"
-  acl    = "public-read-write"
-
-  versioning = {
-    enabled = true
-  }
-
-  block_public_acls = false
-  block_public_policy = true
-  ignore_public_acls = false
-  restrict_public_buckets = true
-
-}
-
-```
-
-```terraform
+```tf
 provider "aws" {
   region = "us-east-1"
 }
@@ -119,29 +119,7 @@ resource "aws_s3_bucket_public_access_block" "block_public_bucket_32" {
 
 ```
 ## Non-Compliant Code Examples
-```terraform
-module "s3_bucket" {
-  source = "terraform-aws-modules/s3-bucket/aws"
-
-  version = "3.7.0"
-
-  bucket = "my-s3-bucket"
-  acl    = "public-read-write"
-
-  versioning = {
-    enabled = true
-  }
-
-  block_public_acls = true
-  block_public_policy = true
-  ignore_public_acls = true
-  restrict_public_buckets = true
-
-}
-
-```
-
-```terraform
+```tf
 terraform {
   required_providers {
     aws = {
@@ -174,7 +152,7 @@ resource "aws_s3_bucket_public_access_block" "block_public_bucket_3" {
 
 ```
 
-```terraform
+```tf
 provider "aws" {
   region = "us-east-1"
 }
@@ -199,6 +177,28 @@ resource "aws_s3_bucket_public_access_block" "block_public_bucket_3" {
   block_public_policy = true
   ignore_public_acls = true
   restrict_public_buckets = true
+}
+
+```
+
+```tf
+module "s3_bucket" {
+  source = "terraform-aws-modules/s3-bucket/aws"
+
+  version = "3.7.0"
+
+  bucket = "my-s3-bucket"
+  acl    = "public-read-write"
+
+  versioning = {
+    enabled = true
+  }
+
+  block_public_acls = true
+  block_public_policy = true
+  ignore_public_acls = true
+  restrict_public_buckets = true
+
 }
 
 ```

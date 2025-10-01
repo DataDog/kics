@@ -32,7 +32,7 @@ meta:
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "aws_lambda_permission" "allow_cloudwatch" {
   statement_id  = "AllowExecutionFromCloudWatch"
   action        = "lambda:InvokeFunction"
@@ -79,7 +79,7 @@ resource "aws_iam_role" "iam_for_lambda" {
 
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 provider "aws" {
   region = "us-east-1"
 }

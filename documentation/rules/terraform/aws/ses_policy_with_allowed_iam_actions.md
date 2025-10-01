@@ -34,7 +34,7 @@ Instead, SES policies should explicitly specify the ARNs of trusted principals t
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "aws_ses_identity_policy" "negative1" {
   identity = aws_ses_domain_identity.example.arn
   name     = "example"
@@ -58,7 +58,7 @@ EOF
 
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "aws_ses_identity_policy" "positive1" {
   identity = aws_ses_domain_identity.example.arn
   name     = "example"

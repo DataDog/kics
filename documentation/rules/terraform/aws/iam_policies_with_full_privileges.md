@@ -44,7 +44,7 @@ Granting such broad permissions bypasses the principle of least privilege, enabl
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "aws_iam_role_policy" "negative1" {
   name = "apigateway-cloudwatch-logging"
   role = aws_iam_role.apigateway_cloudwatch_logging.id
@@ -77,7 +77,7 @@ data "aws_iam_policy_document" "example" {
 
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "aws_iam_role_policy" "positive1" {
   name = "apigateway-cloudwatch-logging"
   role = aws_iam_role.apigateway_cloudwatch_logging.id

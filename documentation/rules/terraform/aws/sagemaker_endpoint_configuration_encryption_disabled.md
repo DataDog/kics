@@ -41,7 +41,7 @@ In contrast, the insecure version omits this critical encryption setting.
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "aws_sagemaker_endpoint_configuration" "negative" {
   name = "my-endpoint-config"
 
@@ -61,7 +61,7 @@ resource "aws_sagemaker_endpoint_configuration" "negative" {
 
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "aws_sagemaker_endpoint_configuration" "positive" {
   name = "my-endpoint-config"
 

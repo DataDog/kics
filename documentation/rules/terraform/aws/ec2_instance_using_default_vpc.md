@@ -32,7 +32,7 @@ meta:
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "aws_instance" "negative1" {
   ami = "ami-003634241a8fcdec0"
 
@@ -53,7 +53,7 @@ resource "aws_subnet" "my_subnet2" {
 
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "aws_instance" "positive1" {
   ami = "ami-003634241a8fcdec0"
 

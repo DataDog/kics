@@ -45,7 +45,7 @@ CONTAINER_PROPERTIES
 
 
 ## Compliant Code Examples
-```terraform
+```tf
 resource "aws_batch_job_definition" "negative1" {
   name = "tf_test_batch_job_definition"
   type = "container"
@@ -127,7 +127,7 @@ CONTAINER_PROPERTIES
 
 ```
 ## Non-Compliant Code Examples
-```terraform
+```tf
 resource "aws_batch_job_definition" "positive1" {
   name = "tf_test_batch_job_definition"
   type = "container"
