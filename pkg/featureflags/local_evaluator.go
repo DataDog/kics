@@ -10,6 +10,7 @@ func NewLocalEvaluatorWithOverrides(overrides map[string]bool) *LocalEvaluator {
 		IacAttachDefaultFrameworks: true,
 		IacDisableKicsRule:         false,
 		IacEnableKicsPlatform:      true,
+		IacEnableKicsHelmResolver:  true,
 	}
 
 	for k, v := range overrides {
