@@ -31,7 +31,7 @@ func (s *Service) resolverSink(
 	}
 	resFiles, err := s.Resolver.Resolve(ctx, filename, kind)
 	if err != nil {
-		logger.Err(err).Msgf("failed to render file content")
+		logger.Err(err).Msgf("failed to render file content '%s' with fileType '%s'", filename, kind)
 		return []string{}, err
 	}
 
@@ -44,7 +44,7 @@ func (s *Service) resolverSink(
 			if documents.Kind == "break" {
 				return []string{}, nil
 			}
-			logger.Err(err).Msgf("failed to parse file content")
+			logger.Err(err).Msgf("failed to parse file content '%s' with fileType '%s'", rfile.FileName, kind)
 			return []string{}, nil
 		}
 

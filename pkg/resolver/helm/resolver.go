@@ -11,7 +11,6 @@ import (
 	"github.com/Checkmarx/kics/pkg/model"
 	masterUtils "github.com/Checkmarx/kics/pkg/utils"
 	"github.com/pkg/errors"
-	"github.com/rs/zerolog/log"
 	"helm.sh/helm/v3/pkg/chart"
 	"helm.sh/helm/v3/pkg/cli/values"
 	"helm.sh/helm/v3/pkg/release"
@@ -45,14 +44,14 @@ func (r *Resolver) Resolve(ctx context.Context, filePath string) (model.Resolved
 			masterUtils.HandlePanic(ctx, r, errMessage)
 		}
 	}()
-	splits, excluded, err := renderHelm(filePath)
+	splits, excluded, err := renderHelm(ctx, filePath)
 	if err != nil { // return error to be logged
 		return model.ResolvedFiles{}, errors.New("failed to render helm chart")
 	}
 	var rfiles = model.ResolvedFiles{
 		Excluded: excluded,
 	}
-	log.Debug().Msgf("Len splits: %d", len(*splits))
+	logger.Debug().Msgf("Processing %d helm manifest splits from chart '%s'", len(*splits), filePath)
 	for _, split := range *splits {
 		subFolder := filepath.Base(filePath)
 
@@ -69,7 +68,7 @@ func (r *Resolver) Resolve(ctx context.Context, filePath string) (model.Resolved
 			IDInfo:       split.splitIDMap,
 		})
 	}
-	logger.Debug().Msg("Successfully processed the Helm files")
+	logger.Debug().Msgf("Successfully processed %d helm files from chart '%s'", len(*splits), filePath)
 	return rfiles, nil
 }
 
@@ -79,14 +78,18 @@ func (r *Resolver) SupportedTypes() []model.FileKind {
 }
 
 // renderHelm will use helm library to render helm charts
-func renderHelm(path string) (*[]splitManifest, []string, error) {
+func renderHelm(ctx context.Context, path string) (*[]splitManifest, []string, error) {
+	logger := logger.FromContext(ctx)
 	client := newClient()
+	logger.Debug().Msg("Running helm install")
 	manifest, excluded, err := runInstall([]string{path}, client, &values.Options{})
 	if err != nil {
+		logger.Error().Msgf("failed to run helm install '%s': %s", path, err)
 		return nil, []string{}, err
 	}
 	splitted, err := splitManifestYAML(manifest)
 	if err != nil {
+		logger.Error().Msgf("failed to split helm manifest YAML for chart '%s': %s", path, err)
 		return nil, []string{}, err
 	}
 	return splitted, excluded, nil
