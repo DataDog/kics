@@ -734,11 +734,6 @@ func TestEntropyInterval(t *testing.T) {
 // 		)
 // 		require.NoError(t, err, "NewInspector() should not return error")
 
-// 		proBarBuilder := progress.InitializePbBuilder(true, true, true)
-// 		progressBar := proBarBuilder.BuildCounter("Executing queries: ", secretsInspector.GetQueriesLength(), wg, currentQuery)
-
-// 		go progressBar.Start()
-
 // 		basePaths := []string{filepath.FromSlash("assets/queries/")}
 // 		gotVulns, err := secretsInspector.Inspect(ctx, basePaths, in.files, currentQuery)
 // 		if in.wantErr {

@@ -19,7 +19,6 @@ import (
 	"github.com/Checkmarx/kics/pkg/logger"
 	"github.com/Checkmarx/kics/pkg/model"
 	consolePrinter "github.com/Checkmarx/kics/pkg/printer"
-	"github.com/Checkmarx/kics/pkg/progress"
 	"github.com/Checkmarx/kics/pkg/report"
 )
 
@@ -57,7 +56,6 @@ func (c *Client) resolveOutputs(
 	summary *model.Summary,
 	documents model.Documents,
 	printer *consolePrinter.Printer,
-	proBarBuilder progress.PbBuilder,
 ) error {
 	logger := logger.FromContext(ctx)
 	logger.Debug().Msg("console.resolveOutputs()")
@@ -82,12 +80,11 @@ func (c *Client) resolveOutputs(
 		c.ScanParams.OutputPath,
 		c.ScanParams.OutputName,
 		summary, c.ScanParams.ReportFormats,
-		proBarBuilder,
 		c.ScanParams.SCIInfo,
 	)
 }
 
-func printOutput(ctx context.Context, outputPath, filename string, body interface{}, formats []string, proBarBuilder progress.PbBuilder, sciInfo model.SCIInfo) error {
+func printOutput(ctx context.Context, outputPath, filename string, body interface{}, formats []string, sciInfo model.SCIInfo) error {
 	logger := logger.FromContext(ctx)
 	logger.Debug().Msg("console.printOutput()")
 	if outputPath == "" {
@@ -99,7 +96,7 @@ func printOutput(ctx context.Context, outputPath, filename string, body interfac
 
 	logger.Debug().Msgf("Output formats provided [%v]", strings.Join(formats, ","))
 	logger.Debug().Msgf("SCIInfo: %v", sciInfo)
-	err := consoleHelpers.GenerateReport(ctx, outputPath, filename, body, formats, proBarBuilder, sciInfo)
+	err := consoleHelpers.GenerateReport(ctx, outputPath, filename, body, formats, sciInfo)
 
 	return err
 }
@@ -128,8 +125,7 @@ func (c *Client) postScan(ctx context.Context, scanResults *Results) (ScanMetada
 		ctx,
 		&summary,
 		scanResults.Files.Combine(ctx, c.ScanParams.LineInfoPayload),
-		c.Printer,
-		*c.ProBarBuilder); err != nil {
+		c.Printer); err != nil {
 		logger.Err(err).Msgf("failed to resolve outputs %v", err)
 		return metadata, err
 	}

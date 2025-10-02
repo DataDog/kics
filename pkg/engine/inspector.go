@@ -229,7 +229,7 @@ func (c *Inspector) createInspectionJobs(jobs chan<- InspectionJob, queries []mo
 
 // This function performs an inspection job and sends the result to the results channel
 func (c *Inspector) performInspection(ctx context.Context, scanID string, files model.FileMetadatas,
-	astPayload ast.Value, baseScanPaths []string, currentQuery chan<- int64,
+	astPayload ast.Value, baseScanPaths []string,
 	jobs <-chan InspectionJob, results chan<- QueryResult, queries []model.QueryMetadata,
 	modules []tfmodules.ParsedModule) {
 	for job := range jobs {
@@ -239,8 +239,6 @@ func (c *Inspector) performInspection(ctx context.Context, scanID string, files 
 			return
 		default:
 		}
-
-		currentQuery <- 1
 
 		queryOpa, err := c.QueryLoader.LoadQuery(ctx, &queries[job.queryID], modules)
 		if err != nil {
@@ -275,8 +273,7 @@ func (c *Inspector) Inspect(
 	scanID string,
 	files model.FileMetadatas,
 	baseScanPaths []string,
-	platforms []string,
-	currentQuery chan<- int64) ([]model.Vulnerability, error) {
+	platforms []string) ([]model.Vulnerability, error) {
 	logger := logger.FromContext(ctx)
 	logger.Debug().Msg("engine.Inspect()")
 	combinedFiles := files.Combine(ctx, false)
@@ -329,7 +326,7 @@ func (c *Inspector) Inspect(
 		go func() {
 			// Decrement the counter when the goroutine completes
 			defer wg.Done()
-			c.performInspection(ctx, scanID, files, astPayload, baseScanPaths, currentQuery, jobs, results, queries, enrichedModules)
+			c.performInspection(ctx, scanID, files, astPayload, baseScanPaths, jobs, results, queries, enrichedModules)
 		}()
 	}
 	// Start a goroutine to create inspection jobs

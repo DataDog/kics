@@ -12,7 +12,6 @@ package test
 // 	"github.com/Checkmarx/kics/pkg/engine/mock"
 // 	"github.com/Checkmarx/kics/pkg/engine/source"
 // 	"github.com/Checkmarx/kics/pkg/model"
-// 	"github.com/Checkmarx/kics/pkg/progress"
 // 	"github.com/golang/mock/gomock"
 // 	"github.com/rs/zerolog"
 // 	"github.com/rs/zerolog/log"
@@ -317,13 +316,6 @@ var (
 
 // 	currentQuery := make(chan int64)
 
-// 	wg := &sync.WaitGroup{}
-// 	proBarBuilder := progress.InitializePbBuilder(true, true, true)
-// 	platforms := []string{"Ansible", "AzureResourceManager", "Buildah", "CICD", "CloudFormation", "GRPC", "Kubernetes", "OpenAPI", "Terraform"}
-// 	progressBar := proBarBuilder.BuildCounter("Executing queries: ", inspector.LenQueriesByPlat(platforms), wg, currentQuery)
-// 	go progressBar.Start()
-
-// 	wg.Add(1)
 // 	vulnerabilities, err := inspector.Inspect(
 // 		ctx,
 // 		scanID,
@@ -337,12 +329,7 @@ var (
 // 		currentQuery,
 // 	)
 
-// 	go func() {
-// 		defer func() {
-// 			close(currentQuery)
-// 		}()
-// 		wg.Wait()
-// 	}()
+// 	close(currentQuery)
 
 // 	require.Nil(t, err)
 // 	return vulnerabilities

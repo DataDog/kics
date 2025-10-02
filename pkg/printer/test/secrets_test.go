@@ -52,14 +52,7 @@ const (
 // 	)
 // 	require.NoError(t, err, "unable to create secrets inspector")
 
-// 	wg := &sync.WaitGroup{}
 // 	currentQuery := make(chan int64)
-// 	wg.Add(1)
-
-// 	proBarBuilder := progress.InitializePbBuilder(true, true, true)
-// 	progressBar := proBarBuilder.BuildCounter("Executing queries: ", secretsInspector.GetQueriesLength(), wg, currentQuery)
-
-// 	go progressBar.Start()
 
 // 	vulnerabilities, err := secretsInspector.Inspect(
 // 		ctx,
@@ -69,11 +62,7 @@ const (
 // 	)
 // 	require.NoError(t, err, "unable to inspect secrets")
 
-// 	go func() {
-// 		defer func() {
-// 			close(currentQuery)
-// 		}()
-// 	}()
+// 	close(currentQuery)
 
 // 	requireEqualVulnerabilities(t, expectedVulnerabilities, vulnerabilities, secretsQueryDir)
 // }

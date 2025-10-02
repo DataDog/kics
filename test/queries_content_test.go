@@ -22,7 +22,6 @@ import (
 	"github.com/Checkmarx/kics/pkg/engine/source"
 	"github.com/Checkmarx/kics/pkg/featureflags"
 	"github.com/Checkmarx/kics/pkg/model"
-	"github.com/Checkmarx/kics/pkg/progress"
 	"github.com/golang/mock/gomock"
 	"github.com/rs/zerolog"
 	"github.com/rs/zerolog/log"
@@ -279,14 +278,9 @@ func testQueryHasGoodReturnParams(t *testing.T, entry queryEntry) { //nolint
 
 	inspector.EnableCoverageReport()
 
-	wg := &sync.WaitGroup{}
 	currentQuery := make(chan int64)
-	proBarBuilder := progress.InitializePbBuilder(true, true, true)
 	platforms := MapToStringSlice(constants.AvailablePlatforms)
-	progressBar := proBarBuilder.BuildCounter("Executing queries: ", inspector.LenQueriesByPlat(platforms), wg, currentQuery)
-	go progressBar.Start(ctx)
 
-	wg.Add(1)
 	_, err = inspector.Inspect(ctx, scanID, getFileMetadatas(
 		t,
 		entry.PositiveFiles(t)),
@@ -295,12 +289,7 @@ func testQueryHasGoodReturnParams(t *testing.T, entry queryEntry) { //nolint
 		currentQuery,
 	)
 
-	go func() {
-		defer func() {
-			close(currentQuery)
-		}()
-		wg.Wait()
-	}()
+	close(currentQuery)
 
 	require.Nil(t, err)
 

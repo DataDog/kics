@@ -15,7 +15,6 @@ import (
 	"github.com/Checkmarx/kics/pkg/logger"
 	"github.com/Checkmarx/kics/pkg/model"
 	consolePrinter "github.com/Checkmarx/kics/pkg/printer"
-	"github.com/Checkmarx/kics/pkg/progress"
 	"github.com/rs/zerolog/log"
 )
 
@@ -69,7 +68,6 @@ type Client struct {
 	Storage           *storage.MemoryStorage
 	ExcludeResultsMap map[string]bool
 	Printer           *consolePrinter.Printer
-	ProBarBuilder     *progress.PbBuilder
 	FlagEvaluator     featureflags.FlagEvaluator
 }
 
@@ -119,7 +117,7 @@ func GetDefaultParameters(ctx context.Context, rootPath string, extraInfos map[s
 }
 
 // NewClient initializes the client with all the required parameters
-func NewClient(ctx context.Context, params *Parameters, proBarBuilder *progress.PbBuilder, customPrint *consolePrinter.Printer) (*Client, error) {
+func NewClient(ctx context.Context, params *Parameters, customPrint *consolePrinter.Printer) (*Client, error) {
 	logger := logger.FromContext(ctx)
 	t, err := tracker.NewTracker(params.PreviewLines)
 	if err != nil {
@@ -134,7 +132,6 @@ func NewClient(ctx context.Context, params *Parameters, proBarBuilder *progress.
 	return &Client{
 		ScanParams:        params,
 		Tracker:           t,
-		ProBarBuilder:     proBarBuilder,
 		Storage:           store,
 		ExcludeResultsMap: excludeResultsMap,
 		Printer:           customPrint,
