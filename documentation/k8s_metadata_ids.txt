@@ -1,0 +1,571 @@
+K8s Metadata IDs
+================
+
+ID: 2b1836f1-dcce-416e-8e16-da8c71920633
+Query: Workload Host Port Not Specified
+Path: k8s/workload_host_port_not_specified/metadata.json
+---
+ID: afa36afb-39fe-4d94-b9b6-afb236f7a03d
+Query: Pod Security Policy Admission Control Plugin Not Set
+Path: k8s/pod_security_policy_admission_control_plugin_not_set/metadata.json
+---
+ID: 09bb9e96-8da3-4736-b89a-b36814acca60
+Query: Etcd Peer TLS Certificate Files Not Properly Set
+Path: k8s/etcd_peer_tls_certificate_files_not_properly_set/metadata.json
+---
+ID: 075ca296-6768-4322-aea2-ba5063b969a9
+Query: Etcd TLS Certificate Files Not Properly Set
+Path: k8s/etcd_tls_certificate_files_not_properly_set/metadata.json
+---
+ID: 056ac60e-fe07-4acc-9b34-8e1d51716ab9
+Query: ServiceAccount Allows Access Secrets
+Path: k8s/service_account_allows_access_secrets/metadata.json
+---
+ID: bb241e61-77c3-4b97-9575-c0f8a1e008d0
+Query: StatefulSet Without Service Name
+Path: k8s/statefulset_without_service_name/metadata.json
+---
+ID: c1032cf7-3628-44e2-bd53-38c17cf31b6b
+Query: Shared Service Account
+Path: k8s/shared_service_account/metadata.json
+---
+ID: 510d5810-9a30-443a-817d-5c1fa527b110
+Query: Weak TLS Cipher Suites
+Path: k8s/weak_tls_cipher_suites/metadata.json
+---
+ID: a5530bd7-225a-48f9-91bb-f40b04200165
+Query: Service Account Lookup Set To False
+Path: k8s/service_account_lookup_set_to_false/metadata.json
+---
+ID: 52d70f2e-3257-474c-b3dc-8ad9ba6a061a
+Query: Kubelet Client Periodic Certificate Switch Disabled
+Path: k8s/kubelet_client_periodic_certificate_switch_disabled/metadata.json
+---
+ID: 1de5cc51-f376-4638-a940-20f2e85ae238
+Query: Anonymous Auth Is Not Set To False
+Path: k8s/anonymous_auth_is_not_set_to_false/metadata.json
+---
+ID: 229588ef-8fde-40c8-8756-f4f2b5825ded
+Query: Memory Requests Not Defined
+Path: k8s/memory_requests_not_defined/metadata.json
+---
+ID: ec18a0d3-0069-4a58-a7fb-fbfe0b4bbbe0
+Query: Kubelet Certificate Authority Not Set
+Path: k8s/kubelet_certificate_authority_not_set/metadata.json
+---
+ID: 49113af4-29ca-458e-b8d4-724c01a4a24f
+Query: Terminated Pod Garbage Collector Threshold Not Properly Set
+Path: k8s/terminated_pod_garbage_collector_threshold_not_properly_set/metadata.json
+---
+ID: 4ac0e2b7-d2d2-4af7-8799-e8de6721ccda
+Query: CPU Limits Not Set
+Path: k8s/cpu_limits_not_set/metadata.json
+---
+ID: 46a2e9ec-6a5f-4faa-9d39-4ea44d5d87a2
+Query: Bind Address Not Properly Set
+Path: k8s/bind_address_not_properly_set/metadata.json
+---
+ID: b9c83569-459b-4110-8f79-6305aa33cb37
+Query: Using Kubernetes Native Secret Management
+Path: k8s/using_kubernetes_native_secret_management/metadata.json
+---
+ID: a9c2f49d-0671-4fc9-9ece-f4e261e128d0
+Query: Root Container Not Mounted Read-only
+Path: k8s/root_container_not_mounted_as_read_only/metadata.json
+---
+ID: 8b36775e-183d-4d46-b0f7-96a6f34a723f
+Query: Missing AppArmor Profile
+Path: k8s/missing_app_armor_config/metadata.json
+---
+ID: 94b76ea5-e074-4ca2-8a03-c5a606e30645
+Query: Object Is Using A Deprecated API Version
+Path: k8s/object_is_using_a_deprecated_api_version/metadata.json
+---
+ID: b7bca5c4-1dab-4c2c-8cbe-3050b9d59b14
+Query: RBAC Roles with Read Secrets Permissions
+Path: k8s/rbac_roles_with_read_secrets_permissions/metadata.json
+---
+ID: 10efce34-5af6-4d83-b414-9e096d5a06a9
+Query: Encryption Provider Not Properly Configured
+Path: k8s/encryption_provider_not_properly_configured/metadata.json
+---
+ID: 768aab52-2504-4a2f-a3e3-329d5a679848
+Query: Audit Log Maxbackup Not Properly Set
+Path: k8s/audit_log_maxbackup_not_properly_set/metadata.json
+---
+ID: c48e57d3-d642-4e0b-90db-37f807b41b91
+Query: PSP Set To Privileged
+Path: k8s/psp_set_to_privileged/metadata.json
+---
+ID: cbd2db69-0b21-4c14-8a40-7710a50571a9
+Query: Encryption Provider Config Is Not Defined
+Path: k8s/encryption_provider_config_is_not_defined/metadata.json
+---
+ID: 85ab1c5b-014e-4352-b5f8-d7dea3bb4fd3
+Query: Network Policy Is Not Targeting Any Pod
+Path: k8s/network_policy_is_not_targeting_any_pod/metadata.json
+---
+ID: d2ad057f-0928-41ef-a83c-f59203bb855b
+Query: Dashboard Is Enabled
+Path: k8s/dashboard_is_enabled/metadata.json
+---
+ID: 5308a7a8-06f8-45ac-bf10-791fe21de46e
+Query: Workload Mounting With Sensitive OS Directory
+Path: k8s/workload_mounting_with_sensitive_os_directory/metadata.json
+---
+ID: 1c621b8e-2c6a-44f5-bd6a-fb0fb7ba33e2
+Query: Rotate Kubelet Server Certificate Not Active
+Path: k8s/rotate_kubelet_server_certificate_not_active/metadata.json
+---
+ID: e0e00aba-5f1c-4981-a542-9a9563c0ee20
+Query: Client Certificate Authentication Not Setup Properly
+Path: k8s/client_certificate_authentication_not_setup_properly/metadata.json
+---
+ID: 268ca686-7fb7-4ae9-b129-955a2a89064e
+Query: No Drop Capabilities for Containers
+Path: k8s/no_drop_capabilities_for_containers/metadata.json
+---
+ID: fa4def8c-1898-4a35-a139-7b76b1acdef0
+Query: Insecure Port Not Properly Set
+Path: k8s/insecure_port_not_properly_set/metadata.json
+---
+ID: 591ade62-d6b0-4580-b1ae-209f80ba1cd9
+Query: Service Account Name Undefined Or Empty
+Path: k8s/service_account_name_undefined_or_empty/metadata.json
+---
+ID: 6cf42c97-facd-4fda-b8af-ea4529123355
+Query: Kubelet Protect Kernel Defaults Set To False
+Path: k8s/kubelet_protect_kernel_defaults_set_to_false/metadata.json
+---
+ID: 1828a670-5957-4bc5-9974-47da228f75e2
+Query: Audit Policy Not Cover Key Security Concerns
+Path: k8s/audit_policy_not_cover_key_security_concerns/metadata.json
+---
+ID: 05fb986f-ac73-4ebb-a5b2-7faafa93d882
+Query: Root CA File Not Defined
+Path: k8s/root_ca_file_not_defined/metadata.json
+---
+ID: a77f4d07-c6e0-4a48-8b35-0eeb51576f4f
+Query: Always Pull Images Admission Control Plugin Not Set
+Path: k8s/always_pull_images_admission_control_plugin_not_set/metadata.json
+---
+ID: da9f3aa8-fbfb-472f-b5a1-576127944218
+Query: Audit Log Maxage Not Properly Set
+Path: k8s/audit_log_maxage_not_properly_set/metadata.json
+---
+ID: 5572cc5e-1e4c-4113-92a6-7a8a3bd25e6d
+Query: Privilege Escalation Allowed
+Path: k8s/privilege_escalation_allowed/metadata.json
+---
+ID: bf36b900-b5ef-4828-adb7-70eb543b7cfb
+Query: Kubelet Hostname Override Is Set
+Path: k8s/kubelet_hostname_override_is_set/metadata.json
+---
+ID: 1db3a5a5-bf75-44e5-9e44-c56cfc8b1ac5
+Query: StatefulSet Without PodDisruptionBudget
+Path: k8s/statefulset_without_pod_disruption_budget/metadata.json
+---
+ID: a659f3b5-9bf0-438a-bd9a-7d3a6427f1e3
+Query: Readiness Probe Is Not Configured
+Path: k8s/readiness_probe_is_not_configured/metadata.json
+---
+ID: 14abda69-8e91-4acb-9931-76e2bee90284
+Query: Image Policy Webhook Admission Control Plugin Not Set
+Path: k8s/image_policy_webhook_admission_control_plugin_not_set/metadata.json
+---
+ID: 98ce8b81-7707-4734-aa39-627c6db3d84b
+Query: Auto TLS Set To True
+Path: k8s/auto_tls_set_to_true/metadata.json
+---
+ID: de4421f1-4e35-43b4-9783-737dd4e4a47e
+Query: PSP With Unrestricted Access to Host Path
+Path: k8s/psp_with_unrestricted_access_to_host_path/metadata.json
+---
+ID: ed89b97d-04e9-4fd4-919f-ee5b27e555e9
+Query: Kubelet Streaming Connection Timeout Disabled
+Path: k8s/kubelet_streaming_connection_timeout_disabled/metadata.json
+---
+ID: ca469dd4-c736-448f-8ac1-30a642705e0a
+Query: CPU Requests Not Set
+Path: k8s/cpu_requests_not_set/metadata.json
+---
+ID: 895a5a95-3756-4b04-9924-2f3bc93181bd
+Query: Etcd TLS Certificate Not Properly Configured
+Path: k8s/etcd_tls_certificate_not_properly_configured/metadata.json
+---
+ID: 611ab018-c4aa-4ba2-b0f6-a448337509a6
+Query: Using Unrecommended Namespace
+Path: k8s/using_unrecommended_namespace/metadata.json
+---
+ID: 3d658f8b-d988-41a0-a841-40043121de1e
+Query: Secrets As Environment Variables
+Path: k8s/secrets_as_environment_variables/metadata.json
+---
+ID: ce30e584-b33f-4c7d-b418-a3d7027f8f60
+Query: Always Admit Admission Control Plugin Set
+Path: k8s/always_admit_admission_control_plugin_set/metadata.json
+---
+ID: 36a27826-1bf5-49da-aeb0-a60a30c0e834
+Query: Kubelet Client Certificate Or Key Not Set
+Path: k8s/kubelet_client_certificate_or_key_not_set/metadata.json
+---
+ID: 249328b8-5f0f-409f-b1dd-029f07882e11
+Query: Cluster Admin Rolebinding With Superuser Permissions
+Path: k8s/cluster_admin_role_binding_with_super_user_permissions/metadata.json
+---
+ID: 02323c00-cdc3-4fdc-a310-4f2b3e7a1660
+Query: Container Running With Low UID
+Path: k8s/containers_run_with_low_uid/metadata.json
+---
+ID: 6b896afb-ca07-467a-b256-1a0077a1c08e
+Query: RBAC Wildcard In Rule
+Path: k8s/rbac_wildcard_in_rule/metadata.json
+---
+ID: 35c0a471-f7c8-4993-aa2c-503a3c712a66
+Query: Audit Log Maxsize Not Properly Set
+Path: k8s/audit_log_maxsize_not_properly_set/metadata.json
+---
+ID: 2f491173-6375-4a84-b28e-a4e2b9a58a69
+Query: Profiling Not Set To False
+Path: k8s/profiling_not_set_to_false/metadata.json
+---
+ID: f377b83e-bd07-4f48-a591-60c82b14a78b
+Query: Seccomp Profile Is Not Configured
+Path: k8s/seccomp_profile_is_not_configured/metadata.json
+---
+ID: fa750c81-93c2-4fab-9c6d-d3fd3ce3b89f
+Query: TSL Connection Certificate Not Setup
+Path: k8s/tls_connection_certificate_not_setup/metadata.json
+---
+ID: b23e9b98-0cb6-4fc9-b257-1f3270442678
+Query: Deployment Without PodDisruptionBudget
+Path: k8s/deployment_without_pod_disruption_budget/metadata.json
+---
+ID: e3aa0612-4351-4a0d-983f-aefea25cf203
+Query: Root Containers Admitted
+Path: k8s/root_containers_admitted/metadata.json
+---
+ID: caa3479d-885d-4882-9aac-95e5e78ef5c2
+Query: Image Pull Policy Of The Container Is Not Set To Always
+Path: k8s/image_pull_policy_of_container_is_not_always/metadata.json
+---
+ID: b7d0181d-0a9b-4611-9d1c-1ad4f0b620ff
+Query: Etcd Peer Client Certificate Authentication Set To False
+Path: k8s/etcd_peer_client_certificate_authentication_set_to_false/metadata.json
+---
+ID: 583053b7-e632-46f0-b989-f81ff8045385
+Query: Invalid Image Tag
+Path: k8s/invalid_image/metadata.json
+---
+ID: 0401f71b-9c1e-4821-ab15-a955caa621be
+Query: Pod Misconfigured Network Policy
+Path: k8s/pod_misconfigured_network_policy/metadata.json
+---
+ID: ade74944-a674-4e00-859e-c6eab5bde441
+Query: Liveness Probe Is Not Defined
+Path: k8s/liveness_probe_is_not_defined/metadata.json
+---
+ID: 73e251f0-363d-4e53-86e2-0a93592437eb
+Query: Audit Log Path Not Set
+Path: k8s/audit_log_path_not_set/metadata.json
+---
+ID: 19ebaa28-fc86-4a58-bcfa-015c9e22fe40
+Query: Containers With Added Capabilities
+Path: k8s/containers_with_added_capabilities/metadata.json
+---
+ID: e17fa86a-6222-4584-a914-56e8f6c87e06
+Query: Tiller Deployment Is Accessible From Within The Cluster
+Path: k8s/tiller_deployment_is_accessible_from_within_the_cluster/metadata.json
+---
+ID: b9380fd3-5ffe-4d10-9290-13e18e71eee1
+Query: Insecure Bind Address Set
+Path: k8s/insecure_bind_address_set/metadata.json
+---
+ID: 1aa4a1ae-5dbb-48a1-9aa2-630ea4be208e
+Query: Authorization Mode RBAC Not Set
+Path: k8s/authorization_mode_rbac_not_set/metadata.json
+---
+ID: 03aabc8c-35d6-481e-9c85-20139cf72d23
+Query: CNI Plugin Does Not Support Network Policies
+Path: k8s/cni_plugin_does_not_support_network_policies/metadata.json
+---
+ID: 2f652c42-619d-4361-b361-9f599688f8ca
+Query: HPA Targets Invalid Object
+Path: k8s/hpa_targets_invalid_object/metadata.json
+---
+ID: cd290efd-6c82-4e9d-a698-be12ae31d536
+Query: Shared Host IPC Namespace
+Path: k8s/shared_host_ipc_namespace/metadata.json
+---
+ID: 4a20ebac-1060-4c81-95d1-1f7f620e983b
+Query: Pod or Container Without LimitRange
+Path: k8s/pod_or_container_without_limit_range/metadata.json
+---
+ID: 235236ee-ad78-4065-bd29-61b061f28ce0
+Query: Containers With Sys Admin Capabilities
+Path: k8s/containers_with_sys_admin_capabilities/metadata.json
+---
+ID: ccc98ff7-68a7-436e-9218-185cb0b0b780
+Query: Service Account Private Key File Not Defined
+Path: k8s/service_account_private_key_file_not_defined/metadata.json
+---
+ID: 6b6bdfb3-c3ae-44cb-88e4-7405c1ba2c8a
+Query: Shared Host Network Namespace
+Path: k8s/shared_host_network_namespace/metadata.json
+---
+ID: 9f85c3f6-26fd-4007-938a-2e0cb0100980
+Query: RBAC Roles with Impersonate Permission
+Path: k8s/rbac_roles_with_impersonate_permission/metadata.json
+---
+ID: 32ecd76e-7bbf-402e-bf48-8b9485749558
+Query: Token Auth File Is Set
+Path: k8s/token_auth_file_is_set/metadata.json
+---
+ID: 845acfbe-3e10-4b8e-b656-3b404d36dfb2
+Query: Service Type is NodePort
+Path: k8s/service_type_is_nodeport/metadata.json
+---
+ID: 4d7ee40f-fc5d-427d-8cac-dffbe22d42d1
+Query: Authorization Mode Node Not Set
+Path: k8s/authorization_mode_node_not_set/metadata.json
+---
+ID: 3d24b204-b73d-42cb-b0bf-1a5438c5f71e
+Query: Secure Port Set To Zero
+Path: k8s/secure_port_set_to_zero/metadata.json
+---
+ID: 48a5beba-e4c0-4584-a2aa-e6894e4cf424
+Query: Pod or Container Without ResourceQuota
+Path: k8s/pod_or_container_without_resource_quota/metadata.json
+---
+ID: a31b7b82-d994-48c4-bd21-3bab6c31827a
+Query: Deployment Has No PodAntiAffinity
+Path: k8s/deployment_has_no_pod_anti_affinity/metadata.json
+---
+ID: 1acd93f1-5a37-45c0-aaac-82ece818be7d
+Query: Use Service Account Credentials Not Set To True
+Path: k8s/use_service_account_credentials_not_set_to_true/metadata.json
+---
+ID: e0099af2-fe17-411f-9991-0de28fe15f3c
+Query: Event Rate Limit Admission Control Plugin Not Set
+Path: k8s/event_rate_limit_admission_control_plugin_not_set/metadata.json
+---
+ID: 33fc6923-6553-4fe6-9d3a-4efa51eb874b
+Query: Node Restriction Admission Control Plugin Not Set
+Path: k8s/node_restriction_admission_control_plugin_not_set/metadata.json
+---
+ID: 6d173be7-545a-46c6-a81d-2ae52ed1605d
+Query: Tiller (Helm v2) Is Deployed
+Path: k8s/tiller_is_deployed/metadata.json
+---
+ID: e84eaf4d-2f45-47b2-abe8-e581b06deb66
+Query: Ensure Administrative Boundaries Between Resources
+Path: k8s/ensure_administrative_boundaries_between_resources/metadata.json
+---
+ID: 87554eef-154d-411d-bdce-9dbd91e56851
+Query: PSP Allows Privilege Escalation
+Path: k8s/psp_allows_privilege_escalation/metadata.json
+---
+ID: 9127f0d9-2310-42e7-866f-5fd9d20dcbad
+Query: Cluster Allows Unsafe Sysctls
+Path: k8s/cluster_allows_unsafe_sysctls/metadata.json
+---
+ID: 69bbc5e3-0818-4150-89cc-1e989b48f23b
+Query: Ingress Controller Exposes Workload
+Path: k8s/ingress_controller_exposes_workload/metadata.json
+---
+ID: 1e749bc9-fde8-471c-af0c-8254efd2dee5
+Query: Role Binding To Default Service Account
+Path: k8s/role_binding_to_default_service_account/metadata.json
+---
+ID: a6f34658-fdfb-4154-9536-56d516f65828
+Query: Docker Daemon Socket is Exposed to Containers
+Path: k8s/docker_daemon_socket_is_exposed_to_containers/metadata.json
+---
+ID: 5f89001f-6dd9-49ff-9b15-d8cd71b617f4
+Query: Kubelet Not Managing Ip Tables
+Path: k8s/kubelet_not_managing_ip_tables/metadata.json
+---
+ID: d740d048-8ed3-49d3-b77b-6f072f3b669e
+Query: StatefulSet Has No PodAntiAffinity
+Path: k8s/statefulset_has_no_pod_anti_affinity/metadata.json
+---
+ID: d45330fd-f58d-45fb-a682-6481477a0f84
+Query: RBAC Roles with Attach Permission
+Path: k8s/rbac_roles_with_attach_permission/metadata.json
+---
+ID: dab4ec72-ce2e-4732-b7c3-1757dcce01a1
+Query: Service Account Key File Not Properly Set
+Path: k8s/service_account_key_file_not_properly_set/metadata.json
+---
+ID: 8b862ca9-0fbd-4959-ad72-b6609bdaa22d
+Query: Tiller Service Is Not Deleted
+Path: k8s/tiller_service_is_not_deleted/metadata.json
+---
+ID: c589f42c-7924-4871-aee2-1cede9bc7cbc
+Query: RBAC Roles with Exec Permission
+Path: k8s/rbac_roles_with_exec_permission/metadata.json
+---
+ID: aa8f7a35-9923-4cad-bd61-a19b7f6aac91
+Query: Non Kube System Pod With Host Mount
+Path: k8s/non_kube_system_pod_with_host_mount/metadata.json
+---
+ID: 5744cbb8-5946-4b75-a196-ade44449525b
+Query: HPA Targeted Deployments With Configured Replica Count
+Path: k8s/hpa_targeted_deployments_with_configured_replica_count/metadata.json
+---
+ID: 8320826e-7a9c-4b0b-9535-578333193432
+Query: RBAC Roles Allow Privilege Escalation
+Path: k8s/rbac_roles_allow_privilege_escalation/metadata.json
+---
+ID: caa93370-791f-4fc6-814b-ba6ce0cb4032
+Query: Not Limited Capabilities For Pod Security Policy
+Path: k8s/not_limited_capabilities_for_pod_security_policy/metadata.json
+---
+ID: 302736f4-b16c-41b8-befe-c0baffa0bd9d
+Query: Shared Host PID Namespace
+Path: k8s/shared_host_pid_namespace/metadata.json
+---
+ID: 192fe40b-b1c3-448a-aba2-6cc19a300fe3
+Query: CronJob Deadline Not Configured
+Path: k8s/cronjob_deadline_not_configured/metadata.json
+---
+ID: 3ca03a61-3249-4c16-8427-6f8e47dda729
+Query: Service Does Not Target Pod
+Path: k8s/service_does_not_target_pod/metadata.json
+---
+ID: 1a07a446-8e61-4e4d-bc16-b0781fcb8211
+Query: Kubelet Event QPS Not Properly Set
+Path: k8s/kubelet_event_qps_not_properly_set/metadata.json
+---
+ID: d89a15bb-8dba-4c71-9529-bef6729b9c09
+Query: Request Timeout Not Properly Set
+Path: k8s/request_timeout_not_properly_set/metadata.json
+---
+ID: 80f93444-b240-4ebb-a4c6-5c40b76c04ea
+Query: PSP Allows Sharing Host IPC
+Path: k8s/psp_allows_sharing_host_ipc/metadata.json
+---
+ID: 8cf4671a-cf3d-46fc-8389-21e7405063a2
+Query: StatefulSet Requests Storage
+Path: k8s/statefulset_requests_storage/metadata.json
+---
+ID: f1f4d8da-1ac4-47d0-b1aa-91e69d33f7d5
+Query: Authorization Mode Set To Always Allow
+Path: k8s/authorization_mode_set_to_always_allow/metadata.json
+---
+ID: 6a68bebe-c021-492e-8ddb-55b0567fb768
+Query: Security Context Deny Admission Control Plugin Not Set
+Path: k8s/security_context_deny_admission_control_plugin_not_set/metadata.json
+---
+ID: 9391103a-d8d7-4671-ac5d-606ba7ccb0ac
+Query: Etcd Client Certificate Authentication Set To False
+Path: k8s/etcd_client_certificate_authentication_set_to_false/metadata.json
+---
+ID: cf34805e-3872-4c08-bf92-6ff7bb0cfadb
+Query: Container Running As Root
+Path: k8s/containers_running_as_root/metadata.json
+---
+ID: f922827f-aab6-447c-832a-e1ff63312bd3
+Query: Container Runs Unmasked
+Path: k8s/container_runs_unmasked/metadata.json
+---
+ID: 1123031a-f921-4c5b-bd86-ef354ecfd37a
+Query: Metadata Label Is Invalid
+Path: k8s/metadata_label_is_invalid/metadata.json
+---
+ID: 38fa11ef-dbcc-4da8-9680-7e1fd855b6fb
+Query: RBAC Roles with Port-Forwarding Permission
+Path: k8s/rbac_roles_with_portforwarding_permissions/metadata.json
+---
+ID: 26763a1c-5dda-4772-b507-5fca7fb5f165
+Query: Service With External Load Balancer
+Path: k8s/service_with_external_load_balancer/metadata.json
+---
+ID: 9587c890-0524-40c2-9ce2-663af7c2f063
+Query: Service Account Admission Control Plugin Disabled
+Path: k8s/service_account_admission_control_plugin_disabled/metadata.json
+---
+ID: b7652612-de4e-4466-a0bf-1cd81f0c6063
+Query: Volume Mount With OS Directory Write Permissions
+Path: k8s/volume_mount_with_os_directory_write_permissions/metadata.json
+---
+ID: 1ffe7bf7-563b-4b3d-a71d-ba6bd8d49b37
+Query: Namespace Lifecycle Admission Control Plugin Disabled
+Path: k8s/namespace_lifecycle_admission_control_plugin_disabled/metadata.json
+---
+ID: a33e9173-b674-4dfb-9d82-cf3754816e4b
+Query: PSP Allows Containers To Share The Host Network Namespace
+Path: k8s/psp_containers_share_host_network_namespace/metadata.json
+---
+ID: a97a340a-0063-418e-b3a1-3028941d0995
+Query: Pod or Container Without Security Context
+Path: k8s/pod_or_container_without_security_context/metadata.json
+---
+ID: ae8827e2-4af9-4baa-9998-87539ae0d6f0
+Query: Peer Auto TLS Set To True
+Path: k8s/peer_auto_tls_set_to_true/metadata.json
+---
+ID: cb7e695d-6a85-495c-b15f-23aed2519303
+Query: Not Unique Certificate Authority
+Path: k8s/not_unique_certificate_authority/metadata.json
+---
+ID: cdc8b54e-6b16-4538-a1b0-35849dbe29cf
+Query: Kubelet HTTPS Set To False
+Path: k8s/kubelet_https_set_to_false/metadata.json
+---
+ID: 592ad21d-ad9b-46c6-8d2d-fad09d62a942
+Query: Permissive Access to Create Pods
+Path: k8s/permissive_access_to_create_pods/metadata.json
+---
+ID: dd29336b-fe57-445b-a26e-e6aa867ae609
+Query: Container Is Privileged
+Path: k8s/container_is_privileged/metadata.json
+---
+ID: 7c81d34c-8e5a-402b-9798-9f442630e678
+Query: Image Without Digest
+Path: k8s/image_without_digest/metadata.json
+---
+ID: 48471392-d4d0-47c0-b135-cdec95eb3eef
+Query: Service Account Token Automount Not Disabled
+Path: k8s/service_account_token_automount_not_disabled/metadata.json
+---
+ID: dbbc6705-d541-43b0-b166-dd4be8208b54
+Query: NET_RAW Capabilities Not Being Dropped
+Path: k8s/net_raw_capabilities_not_being_dropped/metadata.json
+---
+ID: 2940d48a-dc5e-4178-a3f8-bfbd80720b41
+Query: Kubelet Read Only Port Is Not Set To Zero
+Path: k8s/kubelet_read_only_port_is_not_set_to_zero/metadata.json
+---
+ID: b14d1bc4-a208-45db-92f0-e21f8e2588e9
+Query: Memory Limits Not Defined
+Path: k8s/memory_limits_not_defined/metadata.json
+---
+ID: 3f5ff8a7-5ad6-4d02-86f5-666307da1b20
+Query: Etcd Client Certificate File Not Defined
+Path: k8s/etcd_client_certificate_file_not_defined/metadata.json
+---
+ID: 7307579a-3abb-46ad-9ce5-2a915634d5c8
+Query: PSP With Added Capabilities
+Path: k8s/psp_with_added_capabilities/metadata.json
+---
+ID: 13a49a2e-488e-4309-a7c0-d6b05577a5fb
+Query: Audit Policy File Not Defined
+Path: k8s/audit_policy_file_not_defined/metadata.json
+---
+ID: 3878dc92-8e5d-47cf-9cdd-7590f71d21b9
+Query: Incorrect Volume Claim Access Mode ReadWriteOnce
+Path: k8s/incorrect_volume_claim_access_mode_read_write_once/metadata.json
+---
+ID: 2270987f-bb51-479f-b8be-3ca73e5ad648
+Query: NET_RAW Capabilities Disabled for PSP
+Path: k8s/net_raw_capabilities_disabled_for_psp/metadata.json
+---
+ID: 91dacd0e-d189-4a9c-8272-5999a3cc32d9
+Query: PSP Allows Sharing Host PID
+Path: k8s/psp_allows_sharing_host_pid/metadata.json
+---
+ID: 5da47109-f8d6-4585-9e2b-96a8958a12f5
+Query: Basic Auth File Is Set
+Path: k8s/basic_auth_file_is_set/metadata.json
+---

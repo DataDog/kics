@@ -47,6 +47,7 @@ func (r *Resolver) Resolve(ctx context.Context, filePath string) (model.Resolved
 	}()
 	splits, excluded, err := renderHelm(filePath)
 	if err != nil { // return error to be logged
+		logger.Error().Msgf("failed to render helm chart '%s': %s", filePath, err)
 		return model.ResolvedFiles{}, errors.New("failed to render helm chart")
 	}
 	var rfiles = model.ResolvedFiles{
