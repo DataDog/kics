@@ -233,6 +233,13 @@ func (c *Inspector) performInspection(ctx context.Context, scanID string, files 
 	jobs <-chan InspectionJob, results chan<- QueryResult, queries []model.QueryMetadata,
 	modules []tfmodules.ParsedModule) {
 	for job := range jobs {
+		select {
+		case <-ctx.Done():
+			// Stop accepting job and return on context cancellation
+			return
+		default:
+		}
+
 		currentQuery <- 1
 
 		queryOpa, err := c.QueryLoader.LoadQuery(ctx, &queries[job.queryID], modules)
@@ -337,30 +344,46 @@ func (c *Inspector) Inspect(
 
 	// Collect all the results
 	moduleVulns := make(map[string]int)
-	for result := range results {
-		if result.err != nil {
-			fmt.Println()
-			c.failedQueries[queries[result.queryID].Query] = result.err
-
-			continue
-		}
-		for _, vulnerability := range result.vulnerabilities {
-			if vulnerability.ResourceType == "module" {
-				val, ok := moduleVulns[vulnerability.QueryName]
-				if ok {
-					moduleVulns[vulnerability.QueryName] = val + 1
-				} else {
-					moduleVulns[vulnerability.QueryName] = 1
-					logger.Info().Msgf("Found module vulnerability %s of severity %s", vulnerability.QueryName, vulnerability.Severity)
-				}
+loop:
+	for {
+		select {
+		case <-ctx.Done():
+			return vulnerabilities, ctx.Err()
+		case result, ok := <-results:
+			if !ok {
+				// Channel closed, we're done
+				break loop
 			}
+			processResult(ctx, &result, &vulnerabilities, &moduleVulns, queries, c)
 		}
-		vulnerabilities = append(vulnerabilities, result.vulnerabilities...)
 	}
+
 	for vulnerability, number := range moduleVulns {
 		logger.Info().Msgf("Found %d of module vulnerability %s", number, vulnerability)
 	}
 	return vulnerabilities, nil
+}
+
+func processResult(ctx context.Context, result *QueryResult, vulnerabilities *[]model.Vulnerability, moduleVulns *map[string]int, queries []model.QueryMetadata, c *Inspector) {
+	logger := logger.FromContext(ctx)
+	if result.err != nil {
+		fmt.Println()
+
+		c.failedQueries[queries[result.queryID].Query] = result.err
+		return
+	}
+	for _, vulnerability := range result.vulnerabilities {
+		if vulnerability.ResourceType == "module" {
+			val, ok := (*moduleVulns)[vulnerability.QueryName]
+			if ok {
+				(*moduleVulns)[vulnerability.QueryName] = val + 1
+			} else {
+				(*moduleVulns)[vulnerability.QueryName] = 1
+				logger.Info().Msgf("Found module vulnerability %s of severity %s", vulnerability.QueryName, vulnerability.Severity)
+			}
+		}
+	}
+	*vulnerabilities = append(*vulnerabilities, result.vulnerabilities...)
 }
 
 // LenQueriesByPlat returns the number of queries by platforms

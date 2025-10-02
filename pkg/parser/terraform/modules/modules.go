@@ -374,20 +374,29 @@ func ParseAllModuleVariables(ctx context.Context, modules map[string]ParsedModul
 		wg.Add(1)
 		go func() {
 			defer wg.Done()
-			for mod := range input {
-				if !mod.IsLocal {
-					output <- ModuleParseResult{Module: mod}
-					continue
-				}
-				modulePath := resolveModulePath(mod.AbsSource, rootDir)
+			for {
+				select {
+				case <-ctx.Done():
+					return
+				case mod, ok := <-input:
+					if !ok {
+						// Channel closed, we’re done
+						return
+					}
+					if !mod.IsLocal {
+						output <- ModuleParseResult{Module: mod}
+						continue
+					}
+					modulePath := resolveModulePath(mod.AbsSource, rootDir)
 
-				attributesData, err := generateEquivalentMap(ctx, modulePath)
-				if err != nil {
-					logger.Warn().Msg("Failed to generate equivalent map")
-				} else {
-					mod.AttributesData = attributesData
+					attributesData, err := generateEquivalentMap(ctx, modulePath)
+					if err != nil {
+						logger.Warn().Msg("Failed to generate equivalent map")
+					} else {
+						mod.AttributesData = attributesData
+					}
+					output <- ModuleParseResult{Module: mod, Error: err}
 				}
-				output <- ModuleParseResult{Module: mod, Error: err}
 			}
 		}()
 	}
@@ -400,22 +409,33 @@ func ParseAllModuleVariables(ctx context.Context, modules map[string]ParsedModul
 
 	// Feed input channel
 	go func() {
+		defer close(input)
 		for _, mod := range modules {
-			input <- mod
+			select {
+			case <-ctx.Done():
+				return
+			default:
+				input <- mod
+			}
 		}
-		close(input)
 	}()
 
 	// Collect results
 	finalModules := make([]ParsedModule, 0, len(modules))
-	for res := range output {
-		if res.Error != nil {
-			logger.Warn().Msgf("Failed to parse module %s: %v", res.Module.Name, res.Error)
+	for {
+		select {
+		case <-ctx.Done():
+			return finalModules
+		case res, ok := <-output:
+			if !ok {
+				return finalModules
+			}
+			if res.Error != nil {
+				logger.Warn().Msgf("Failed to parse module %s: %v", res.Module.Name, res.Error)
+			}
+			finalModules = append(finalModules, res.Module)
 		}
-		finalModules = append(finalModules, res.Module)
 	}
-
-	return finalModules
 }
 
 func generateEquivalentMap(ctx context.Context, modulePath string) (map[string]ModuleAttributesInfo, error) {
