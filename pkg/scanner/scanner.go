@@ -30,6 +30,7 @@ func PrepareAndScan(
 	var wg sync.WaitGroup
 	wgDone := make(chan bool)
 	errCh := make(chan error)
+	defer close(errCh)
 	var wgProg sync.WaitGroup
 
 	for _, service := range services {
@@ -38,14 +39,14 @@ func PrepareAndScan(
 	}
 
 	go func() {
-		defer func() {
-			close(wgDone)
-		}()
+		defer close(wgDone)
 		wg.Wait()
 		wgProg.Wait()
 	}()
 
 	select {
+	case <-ctx.Done():
+		return ctx.Err()
 	case <-wgDone:
 		metrics.Metric.Stop()
 		err := StartScan(ctx, scanID, proBarBuilder, services)
@@ -54,7 +55,6 @@ func PrepareAndScan(
 		}
 		break
 	case err := <-errCh:
-		close(errCh)
 		return err
 	}
 	return nil
@@ -96,6 +96,9 @@ func StartScan(ctx context.Context, scanID string,
 	}()
 
 	select {
+	case <-ctx.Done():
+		close(errCh)
+		return ctx.Err()
 	case <-wgDone:
 		break
 	case err := <-errCh:

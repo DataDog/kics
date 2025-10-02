@@ -10,6 +10,7 @@ import (
 	"context"
 	"fmt"
 	"path/filepath"
+	"time"
 
 	"github.com/Checkmarx/kics/internal/console"
 	"github.com/Checkmarx/kics/pkg/featureflags"
@@ -39,7 +40,12 @@ func main() {
 */
 
 func ExecuteKICSScan(inputPaths []string, outputPath string, sciInfo model.SCIInfo, FlagEvaluator featureflags.FlagEvaluator, consolePrint ...bool) (scan.ScanMetadata, string, error) {
-	ctx := context.Background()
+	// Use a context with timeout to ensure goroutines are properly cleaned up
+	// when the scan finish (even on a panic) or after 2 hours.
+	// This prevents goroutine leaks that can cause thread exhaustion
+	ctx, cancel := context.WithTimeout(context.Background(), 120*time.Minute)
+	defer cancel()
+
 	extraInfos := map[string]string{
 		"org":        fmt.Sprintf("%d", sciInfo.OrgId),
 		"branch":     sciInfo.RepositoryCommitInfo.Branch,
