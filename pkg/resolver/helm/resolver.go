@@ -80,9 +80,9 @@ func (r *Resolver) SupportedTypes() []model.FileKind {
 // renderHelm will use helm library to render helm charts
 func renderHelm(ctx context.Context, path string) (*[]splitManifest, []string, error) {
 	logger := logger.FromContext(ctx)
-	client := newClient()
+	client := newClient(ctx)
 	logger.Debug().Msg("Running helm install")
-	manifest, excluded, err := runInstall([]string{path}, client, &values.Options{})
+	manifest, excluded, err := runInstall(ctx, []string{path}, client, &values.Options{})
 	if err != nil {
 		logger.Error().Msgf("failed to run helm install '%s': %s", path, err)
 		return nil, []string{}, err
