@@ -29,7 +29,7 @@ type ScanStats struct {
 	// Duration contains the time it took to complete the analysis.
 	Duration time.Duration
 	// ViolationBreakdowns contains a breakdown of the violations by severity.
-	ViolationBreakdowns map[string][]string
+	ViolationBreakdowns map[string]map[string]int
 	// ResourcesFound contains the number of resources that were analyzed.
 	ResourcesScanned int
 }
