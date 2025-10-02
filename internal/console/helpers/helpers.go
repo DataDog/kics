@@ -22,7 +22,6 @@ import (
 	"github.com/BurntSushi/toml"
 	"github.com/Checkmarx/kics/internal/metrics"
 	"github.com/Checkmarx/kics/pkg/model"
-	"github.com/Checkmarx/kics/pkg/progress"
 	"github.com/Checkmarx/kics/pkg/report"
 	"github.com/hashicorp/hcl"
 	"github.com/rs/zerolog"
@@ -105,15 +104,11 @@ func FileAnalyzer(path string) (string, error) {
 }
 
 // GenerateReport execute each report function to generate report
-func GenerateReport(ctx context.Context, path, filename string, body interface{}, formats []string, proBarBuilder progress.PbBuilder, sciInfo model.SCIInfo) error {
+func GenerateReport(ctx context.Context, path, filename string, body interface{}, formats []string, sciInfo model.SCIInfo) error {
 	log.Debug().Msgf("helpers.GenerateReport()")
 	metrics.Metric.Start("generate_report")
 
-	progressBar := proBarBuilder.BuildCircle("Generating Reports: ")
-
 	var err error = nil
-	go progressBar.Start(ctx)
-	defer progressBar.Close()
 
 	for _, format := range formats {
 		format = strings.ToLower(format)

@@ -19,7 +19,7 @@ func ExecuteScan(ctx context.Context, scanParams *scan.Parameters) (scan.ScanMet
 
 	console.preScan(scanParams)
 
-	client, err := scan.NewClient(ctx, scanParams, console.ProBarBuilder, console.Printer)
+	client, err := scan.NewClient(ctx, scanParams, console.Printer)
 
 	if err != nil {
 		log.Err(err).Msgf("failed to create scan client%v", err)

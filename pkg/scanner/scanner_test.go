@@ -16,7 +16,6 @@ import (
 	"github.com/Checkmarx/kics/pkg/featureflags"
 	"github.com/Checkmarx/kics/pkg/kics"
 	"github.com/Checkmarx/kics/pkg/parser"
-	"github.com/Checkmarx/kics/pkg/progress"
 	"github.com/Checkmarx/kics/pkg/resolver"
 	"github.com/stretchr/testify/require"
 
@@ -82,7 +81,7 @@ func TestScanner_StartScan(t *testing.T) {
 			defer tt.ctx.cancel()
 			services, store, err := createServices(tt.fields.types, tt.fields.cloudProviders)
 			require.NoError(t, err)
-			err = StartScan(tt.ctx.ctx, tt.args.scanID, progress.PbBuilder{}, services)
+			err = StartScan(tt.ctx.ctx, tt.args.scanID, services)
 			require.NoError(t, err)
 			require.NotEmpty(t, &store)
 		})
@@ -182,7 +181,7 @@ func TestScanner_ConcurrentScans(t *testing.T) {
 			go func(id int) {
 				defer wg.Done()
 				scanID := fmt.Sprintf("concurrent-scan-%d", id)
-				err := StartScan(ctx, scanID, progress.PbBuilder{}, services)
+				err := StartScan(ctx, scanID, services)
 				if err != nil {
 					errChan <- fmt.Errorf("goroutine %d failed: %w", id, err)
 				}
@@ -214,7 +213,7 @@ func TestScanner_ConcurrentScans(t *testing.T) {
 				require.NotEmpty(t, store)
 
 				scanID := fmt.Sprintf("concurrent-diff-services-%d", id)
-				err = StartScan(ctx, scanID, progress.PbBuilder{}, services)
+				err = StartScan(ctx, scanID, services)
 				if err != nil {
 					errChan <- fmt.Errorf("goroutine %d scan failed: %w", id, err)
 				}
@@ -246,7 +245,7 @@ func TestScanner_ConcurrentScans(t *testing.T) {
 				require.NotEmpty(t, store)
 
 				scanID := fmt.Sprintf("concurrent-prepare-scan-%d", id)
-				err = PrepareAndScan(ctx, scanID, false, 5, progress.PbBuilder{}, services)
+				err = PrepareAndScan(ctx, scanID, false, 5, services)
 				if err != nil {
 					errChan <- fmt.Errorf("goroutine %d prepare and scan failed: %w", id, err)
 				}
@@ -284,7 +283,7 @@ func TestScanner_ConcurrentScansWithTimeout(t *testing.T) {
 				require.NotEmpty(t, store)
 
 				scanID := fmt.Sprintf("concurrent-timeout-%d", id)
-				err = StartScan(testCtx.ctx, scanID, progress.PbBuilder{}, services)
+				err = StartScan(testCtx.ctx, scanID, services)
 				if err != nil {
 					errChan <- fmt.Errorf("goroutine %d scan failed: %w", id, err)
 				}
@@ -323,7 +322,7 @@ func TestScanner_StressTestConcurrency(t *testing.T) {
 				require.NotEmpty(t, store)
 
 				scanID := fmt.Sprintf("stress-test-%d", id)
-				err = PrepareAndScan(ctx, scanID, false, 5, progress.PbBuilder{}, services)
+				err = PrepareAndScan(ctx, scanID, false, 5, services)
 				if err != nil {
 					errChan <- fmt.Errorf("goroutine %d stress test failed: %w", id, err)
 				}

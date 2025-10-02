@@ -9,7 +9,6 @@ import (
 	"sort"
 	"strconv"
 	"strings"
-	"sync"
 	"testing"
 
 	"github.com/Checkmarx/kics/internal/constants"
@@ -19,7 +18,6 @@ import (
 	"github.com/Checkmarx/kics/pkg/engine/source"
 	"github.com/Checkmarx/kics/pkg/featureflags"
 	"github.com/Checkmarx/kics/pkg/model"
-	"github.com/Checkmarx/kics/pkg/progress"
 	"github.com/golang/mock/gomock"
 	"github.com/rs/zerolog"
 	"github.com/rs/zerolog/log"
@@ -232,13 +230,7 @@ func testQuery(tb testing.TB, entry queryEntry, filesPath []string, expectedVuln
 	require.Nil(tb, err)
 	require.NotNil(tb, inspector)
 
-	wg := &sync.WaitGroup{}
-	currentQuery := make(chan int64)
-	proBarBuilder := progress.InitializePbBuilder(true, true, true)
 	platforms := MapToStringSlice(constants.AvailablePlatforms)
-	progressBar := proBarBuilder.BuildCounter("Executing queries: ", inspector.LenQueriesByPlat(platforms), wg, currentQuery)
-	go progressBar.Start(ctx)
-	wg.Add(1)
 
 	vulnerabilities, err := inspector.Inspect(
 		ctx,
@@ -246,15 +238,7 @@ func testQuery(tb testing.TB, entry queryEntry, filesPath []string, expectedVuln
 		getFileMetadatas(tb, filesPath),
 		[]string{BaseTestsScanPath},
 		platforms,
-		currentQuery,
 	)
-
-	go func() {
-		defer func() {
-			close(currentQuery)
-		}()
-		wg.Wait()
-	}()
 
 	require.Nil(tb, err)
 	validateQueryResultFields(tb, vulnerabilities)
