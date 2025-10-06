@@ -3,7 +3,7 @@
   "queryName": "Authorization mode node not set",
   "severity": "MEDIUM",
   "category": "Insecure Configurations",
-  "descriptionText": "When using `kube-apiserver`, the `--authorization-mode` flag should include `Node`.",
+  "descriptionText": "When a container runs `kube-apiserver`, the `--authorization-mode` flag should include `Node`. This rule applies to both `containers` and `initContainers` and inspects the container `command` to verify the presence of `--authorization-mode` with the `Node` value. Omission of `Node` from `--authorization-mode` may disable node-level authorization and increase the API server's security risk.",
   "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/k8s/authorization_mode_node_not_set",
   "platform": "Kubernetes",
   "descriptionID": "1d944481",
