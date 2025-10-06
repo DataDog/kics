@@ -3,7 +3,7 @@
   "queryName": "Token auth file is set",
   "severity": "HIGH",
   "category": "Access Control",
-  "descriptionText": "When using `kube-apiserver`, the `--token-auth-file` flag should not be set.",
+  "descriptionText": "Containers and initContainers that invoke `kube-apiserver` must not include the `--token-auth-file` flag. This flag enables static token-based authentication and should not be used; rely on supported, more secure authentication methods instead.",
   "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/k8s/token_auth_file_is_set",
   "platform": "Kubernetes",
   "descriptionID": "5aa79e60",
