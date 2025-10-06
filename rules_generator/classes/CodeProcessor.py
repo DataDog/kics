@@ -88,6 +88,6 @@ class CodeProcessor:
         self.__write_file(path / "test/positive_module.tf", snippets_list[0].strip())
         self.__write_file(path / "test/negative_module.tf", snippets_list[1].strip())
 
-    def write_metadata(self, path: Path, metadata: Path) -> None:
+    def write_metadata(self, path: Path, metadata: dict) -> None:
         with open(path / "metadata.json", "w") as f:
             json.dump(metadata, f, indent=2, ensure_ascii=False)

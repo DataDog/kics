@@ -1,12 +1,16 @@
 from pydantic import BaseModel
 
 
-class Output(BaseModel):
+class QueryAndDescriptionOutput(BaseModel):
     queryName: str
     descriptionText: str
 
     def toDict(self):
-        return {
-            "queryName": self.queryName,
-            "descriptionText": self.descriptionText,
-        }
+        return self.model_dump()
+
+
+class DescriptionOutput(BaseModel):
+    descriptionText: str
+
+    def toDict(self):
+        return self.model_dump()

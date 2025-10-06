@@ -1,5 +1,5 @@
 from openai import OpenAI
-from classes.models.Output import Output
+from classes.models.Output import QueryAndDescriptionOutput, DescriptionOutput
 
 
 class RulesGenerator:
@@ -33,7 +33,9 @@ Answer with only the refactored code, one new line, "@@@@@", a second new line a
         )
         return response.output_text
 
-    def send_rule_doc_formatting_request(self, metadata: dict) -> Output:
+    def send_rule_doc_formatting_request(
+        self, metadata: dict
+    ) -> QueryAndDescriptionOutput:
         system_message = """You are to format some text. You will be provided with a rule name, line break, @@@@@, line break and a rule description.
 Your job is to ensure that the case of the rule's name is good: except the first word, proper nouns and acronyms, no word should start with a capital case.
 Your job is to reformulate the description to make it as clear as possible."""
@@ -49,6 +51,35 @@ Your job is to reformulate the description to make it as clear as possible."""
                     "content": f"queryName: {queryName}\n\descriptionText: {descriptionText}",
                 },
             ],
-            text_format=Output,
+            text_format=QueryAndDescriptionOutput,
         )
         return response.output_parsed
+
+    def send_rule_doc_extend_description_request(
+        self, rule: str, metadata: dict
+    ) -> DescriptionOutput:
+        system_message = """You are working on a description text for a rego rule.
+Task:
+- Improve the wording for clarity and grammar.
+- Do not change the technical meaning.
+- Stay as close to the original phrasing as possible (minimal edits).
+- Normalize tone (declarative, consistent).
+- Correct grammar, articles, and awkward phrasing (e.g., "should not have" → "should not include", "defined and set to" → "set to").
+- Keep flags and component names accurate, wrap CLI flags in backticks.
+- Do not rewrite into instructions — preserve the original contextual style.
+- Extend the rule's description using your understanding the rego rule - two to three lines.
+Output:
+- The new description without decorations"""
+
+        descriptionText = metadata["descriptionText"]
+        response = self.client.responses.create(
+            model="gpt-5-mini-2025-08-07",
+            input=[
+                {"role": "system", "content": system_message},
+                {
+                    "role": "user",
+                    "content": f"rule: {rule}\ndescriptionText: {descriptionText}",
+                },
+            ],
+        )
+        return response.output_text
