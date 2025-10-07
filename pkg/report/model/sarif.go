@@ -54,6 +54,7 @@ type ruleMetadata struct {
 	queryURI         string
 	queryCategory    string
 	queryCwe         string
+	queryPlatform    string
 	severity         model.Severity
 	frameworks       []model.Framework
 }
@@ -235,6 +236,7 @@ const (
 	executionTimeTag         = "DATADOG_EXECUTION_TIME_SECS:%v"
 	ruleTypeProperty         = "DATADOG_RULE_TYPE:IAC_SCANNING"
 	categoryTag              = "DATADOG_CATEGORY:%s"
+	platformTag              = "DATADOG_PLATFORM:%s"
 	scannedFileCountTag      = "DATADOG_SCANNED_FILE_COUNT:%d"
 )
 
@@ -538,7 +540,8 @@ func (sr *sarifReport) buildSarifRule(queryMetadata *ruleMetadata, cisMetadata r
 
 		categoryTag := GetCategoryTag(queryMetadata.queryCategory)
 		kicsRuleIDTag := GetKICSRuleIDTag(queryMetadata.queryID)
-		tags = append(tags, categoryTag, kicsRuleIDTag)
+		platformTag := GetPlatformTag(queryMetadata.queryPlatform)
+		tags = append(tags, categoryTag, kicsRuleIDTag, platformTag)
 
 		rule := sarifRule{
 			RuleID:               queryMetadata.queryName,
@@ -608,6 +611,7 @@ func (sr *sarifReport) BuildSarifIssue(ctx context.Context, issue *model.QueryRe
 			queryURI:         issue.QueryURI,
 			queryCategory:    issue.Category,
 			queryCwe:         issue.CWE,
+			queryPlatform:    issue.Platform,
 			severity:         issue.Severity,
 			frameworks:       issue.Frameworks,
 		}
