@@ -15,36 +15,6 @@ import (
 	"github.com/Checkmarx/kics/pkg/model"
 )
 
-// func maskPreviewLines(secretsPath string, scanResults *Results) error {
-// 	secretsRegexRulesContent, err := getSecretsRegexRules(secretsPath)
-// 	if err != nil {
-// 		return err
-// 	}
-
-// 	var allRegexQueries secrets.RegexRuleStruct
-
-// 	err = json.Unmarshal([]byte(secretsRegexRulesContent), &allRegexQueries)
-// 	if err != nil {
-// 		return err
-// 	}
-
-// 	allowRules, err := secrets.CompileRegex(allRegexQueries.AllowRules)
-// 	if err != nil {
-// 		return err
-// 	}
-
-// 	rules, err := compileRegexQueries(allRegexQueries.Rules)
-// 	if err != nil {
-// 		return err
-// 	}
-
-// 	for i := range scanResults.Results {
-// 		item := scanResults.Results[i]
-// 		hideSecret(item.VulnLines, &allowRules, &rules)
-// 	}
-// 	return nil
-// }
-
 func compileRegexQueries(allRegexQueries []secrets.RegexQuery) ([]secrets.RegexQuery, error) {
 	for i := range allRegexQueries {
 		compiledRegexp, err := regexp.Compile(allRegexQueries[i].RegexStr)

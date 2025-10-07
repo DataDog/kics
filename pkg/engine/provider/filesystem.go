@@ -176,12 +176,6 @@ func (s *FileSystemSourceProvider) walkDir(ctx context.Context, scanPath string,
 		if info.IsDir() {
 			excluded, errRes := resolverSink(ctx, strings.ReplaceAll(path, "\\", "/"))
 			if errRes != nil {
-				// sentryReport.ReportSentry(&sentryReport.Report{
-				// 	Message:  fmt.Sprintf("Filesystem files provider couldn't Resolve Directory, file=%s", info.Name()),
-				// 	Err:      errRes,
-				// 	Location: "func walkDir()",
-				// 	FileName: info.Name(),
-				// }, true)
 				return nil
 			}
 			if errAdd := s.AddExcluded(ctx, excluded); errAdd != nil {
@@ -199,18 +193,9 @@ func (s *FileSystemSourceProvider) walkDir(ctx context.Context, scanPath string,
 			}
 			return errors.Wrap(err, "failed to open file")
 		}
-		defer closeFile(c, info)
+		defer c.Close()
 
-		err = sink(ctx, strings.ReplaceAll(path, "\\", "/"), c)
-		if err != nil {
-			// sentryReport.ReportSentry(&sentryReport.Report{
-			// 	Message:  fmt.Sprintf("Filesystem files provider couldn't parse file, file=%s", info.Name()),
-			// 	Err:      err,
-			// 	Location: "func walkDir()",
-			// 	FileName: info.Name(),
-			// }, true)
-		}
-		return nil
+		return sink(ctx, strings.ReplaceAll(path, "\\", "/"), c)
 	})
 }
 
@@ -226,17 +211,6 @@ func openScanFile(ctx context.Context, scanPath string, extensions model.Extensi
 		return nil, errors.Wrap(errOpenFile, "failed to open path")
 	}
 	return c, nil
-}
-
-func closeFile(file *os.File, info os.FileInfo) {
-	if err := file.Close(); err != nil {
-		// sentryReport.ReportSentry(&sentryReport.Report{
-		// 	Message:  fmt.Sprintf("Filesystem couldn't close file, file=%s", info.Name()),
-		// 	Err:      err,
-		// 	Location: "func closeFile()",
-		// 	FileName: info.Name(),
-		// }, true)
-	}
 }
 
 func (s *FileSystemSourceProvider) checkConditions(ctx context.Context, info os.FileInfo, extensions model.Extensions,

@@ -110,7 +110,6 @@ func (s serviceSlice) GetQueriesLength() int {
 	count := 0
 	for _, service := range s {
 		count += service.Inspector.LenQueriesByPlat(service.Parser.Platform)
-		// count += service.SecretsInspector.GetQueriesLength()
 	}
 	return count
 }

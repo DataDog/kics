@@ -370,32 +370,12 @@ func getAllDirs(ctx context.Context, embedfs *embed.FS, path string) ([]string, 
 // iterate over the embedded query directory and read the respective queries
 func (s *FilesystemSource) iterateEmbeddedQuerySources(ctx context.Context) ([]string, error) {
 	logger := logger.FromContext(ctx)
-	// dirEntries, err := queryDir.ReadDir(".")
-	// if err != nil {
-	// 	return nil, errors.Wrap(err, "failed to read embedded query directory")
-	// }
 	logger.Info().Msg("getAllDirs()")
 
 	queryDirs, err := assets.GetEmbeddedQueryDirs(ctx)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to get query sources")
 	}
-	// err := fs.WalkDir(queryDir, ".", func(p string, d fs.DirEntry, err error) error {
-	// 	if err != nil {
-	// 		return err
-	// 	}
-
-	// 	if d.IsDir() || d.Name() != QueryFileName {
-	// 		return nil
-	// 	}
-
-	// 	querypathDir := filepath.Dir(p)
-
-	// 	logger.Info().Msgf("Query path: %s", querypathDir)
-	// 	queryDirs = append(queryDirs, querypathDir)
-
-	// 	return nil
-	// })
 
 	if err != nil {
 		logger.Error().Msgf("failed to get query Source: %v", err)
@@ -406,18 +386,11 @@ func (s *FilesystemSource) iterateEmbeddedQuerySources(ctx context.Context) ([]s
 
 // iterateQueryDirs iterates all query directories and reads the respective queries
 func (s *FilesystemSource) iterateQueryDirs(ctx context.Context, queryDirs []string, queryParameters *QueryInspectorParameters) []model.QueryMetadata {
-	// logger := logger.FromContext(ctx)
 	queries := make([]model.QueryMetadata, 0, len(queryDirs))
 
 	for _, queryDir := range queryDirs {
 		query, errRQ := ReadQuery(ctx, queryDir)
 		if errRQ != nil {
-			// sentryReport.ReportSentry(&sentryReport.Report{
-			// 	Message:  fmt.Sprintf("Query provider failed to read query, query=%s", path.Base(queryDir)),
-			// 	Err:      errRQ,
-			// 	Location: "func GetQueries()",
-			// 	FileName: path.Base(queryDir),
-			// }, true)
 			continue
 		}
 
@@ -432,21 +405,6 @@ func (s *FilesystemSource) iterateQueryDirs(ctx context.Context, queryDirs []str
 		if !s.CheckCloudProvider(query.Metadata["cloudProvider"]) {
 			continue
 		}
-
-		// customInputData, readInputErr := readInputData(baseDir, filepath.Join(queryParameters.InputDataPath, query.Metadata["id"].(string)+".json"))
-		// if readInputErr != nil {
-		// 	logger.Err(errRQ).
-		// 		Msgf("failed to read input data, query=%s", path.Base(queryDir))
-		// 	continue
-		// }
-
-		// inputData, mergeError := MergeInputData(query.InputData, customInputData)
-		// if mergeError != nil {
-		// 	logger.Err(mergeError).
-		// 		Msgf("failed to merge input data, query=%s", path.Base(queryDir))
-		// 	continue
-		// }
-		// query.InputData = inputData
 
 		if len(queryParameters.IncludeQueries.ByIDs) > 0 {
 			if checkQueryInclude(ctx, query.Metadata["id"], queryParameters.IncludeQueries.ByIDs) {
@@ -522,7 +480,6 @@ func ReadQuery(ctx context.Context, queryDir string) (model.QueryMetadata, error
 func ReadMetadata(ctx context.Context, queryDir string) (map[string]interface{}, error) {
 	logger := logger.FromContext(ctx)
 	f, err := assets.GetEmbeddedQueryFile(ctx, filepath.Clean(path.Join(queryDir, MetadataFileName)))
-	// f, err := os.Open(filepath.Clean(path.Join(queryDir, MetadataFileName)))
 	if err != nil {
 		logger.Error().Msgf("Queries provider can't read metadata, query=%s: %v", path.Base(queryDir), err)
 		return nil, err

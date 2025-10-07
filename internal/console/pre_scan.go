@@ -25,106 +25,6 @@ var (
 	banner string
 )
 
-// func preRun(cmd *cobra.Command) error {
-// 	err := initializeConfig(cmd)
-// 	if err != nil {
-// 		return errors.New(initError + err.Error())
-// 	}
-
-// 	err = flags.Validate()
-// 	if err != nil {
-// 		return err
-// 	}
-
-// 	err = flags.ValidateQuerySelectionFlags()
-// 	if err != nil {
-// 		return err
-// 	}
-
-// 	err = flags.ValidateTypeSelectionFlags()
-// 	if err != nil {
-// 		return err
-// 	}
-
-// 	err = internalPrinter.SetupPrinter(cmd.InheritedFlags())
-// 	if err != nil {
-// 		return errors.New(initError + err.Error())
-// 	}
-// 	err = metrics.InitializeMetrics(flags.GetStrFlag(flags.ProfilingFlag), flags.GetBoolFlag(flags.CIFlag))
-// 	if err != nil {
-// 		return errors.New(initError + err.Error())
-// 	}
-// 	return nil
-// }
-
-// func setupConfigFile() (bool, error) {
-// 	if flags.GetStrFlag(flags.ConfigFlag) == "" {
-// 		path := flags.GetMultiStrFlag(flags.PathFlag)
-// 		if len(path) == 0 {
-// 			return true, nil
-// 		}
-// 		if len(path) > 1 {
-// 			warnings = append(warnings, "Any kics.config file will be ignored, please use --config if kics.config is wanted")
-// 			return true, nil
-// 		}
-// 		configPath := path[0]
-// 		info, err := os.Stat(configPath)
-// 		if err != nil {
-// 			return true, nil
-// 		}
-// 		if !info.IsDir() {
-// 			configPath = filepath.Dir(configPath)
-// 		}
-// 		_, err = os.Stat(filepath.ToSlash(filepath.Join(configPath, constants.DefaultConfigFilename)))
-// 		if err != nil {
-// 			if os.IsNotExist(err) {
-// 				return true, nil
-// 			}
-// 			return true, err
-// 		}
-// 		flags.SetStrFlag(flags.ConfigFlag, filepath.ToSlash(filepath.Join(configPath, constants.DefaultConfigFilename)))
-// 	}
-// 	return false, nil
-// }
-
-// func initializeConfig(cmd *cobra.Command) error {
-// 	log.Debug().Msg("console.initializeConfig()")
-
-// 	v := viper.New()
-// 	v.SetEnvPrefix("KICS")
-// 	v.AutomaticEnv()
-// 	errBind := flags.BindFlags(cmd, v)
-// 	if errBind != nil {
-// 		return errBind
-// 	}
-
-// 	exit, err := setupConfigFile()
-// 	if err != nil {
-// 		return err
-// 	}
-// 	if exit {
-// 		return nil
-// 	}
-
-// 	base := filepath.Base(flags.GetStrFlag(flags.ConfigFlag))
-// 	v.SetConfigName(base)
-// 	v.AddConfigPath(filepath.Dir(flags.GetStrFlag(flags.ConfigFlag)))
-// 	ext, err := consoleHelpers.FileAnalyzer(flags.GetStrFlag(flags.ConfigFlag))
-// 	if err != nil {
-// 		return err
-// 	}
-// 	v.SetConfigType(ext)
-// 	if err := v.ReadInConfig(); err != nil {
-// 		return err
-// 	}
-
-// 	errBind = flags.BindFlags(cmd, v)
-// 	if errBind != nil {
-// 		return errBind
-// 	}
-// 	return nil
-// }
-
 type console struct {
 	Printer       *internalPrinter.Printer
 	ProBarBuilder *progress.PbBuilder
@@ -137,9 +37,6 @@ func newConsole() *console {
 // preScan is responsible for scan preparation
 func (console *console) preScan(params *scan.Parameters) {
 	log.Debug().Msg("console.scan()")
-	// for _, warn := range warnings {
-	// 	log.Warn().Msgf(warn)
-	// }
 
 	printer := internalPrinter.NewPrinter(true)
 	printer.Success.Printf("\n%s\n", banner)

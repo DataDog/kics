@@ -122,18 +122,6 @@ func (info *k8sAPICall) listKinds(ctx context.Context, apiVersion string, kinds 
 			logger.Info().Msgf("failed to list %s: %s", apiVersion, err)
 		}
 
-		// // objList, err := meta.ExtractList(resource)
-		// // if err != nil {
-		// // 	logger.Info().Msgf("failed to extract list: %s", err)
-		// // }
-
-		// logger.Info().Msgf("KICS found %d %s(s) in %s from %s", len(objList), kind, getNamespace(namespace), apiVersion)
-
-		// for i := range objList {
-		// 	item := objList[i]
-		// 	sb = info.getResource(item, apiVersion, kind, sb)
-		// }
-
 		if sb.String() != "" {
 			info.saveK8sResources(ctx, kind, sb.String(), apiVersionFolder)
 		}

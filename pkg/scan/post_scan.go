@@ -24,7 +24,6 @@ import (
 )
 
 func (c *Client) getSummary(ctx context.Context, results []model.Vulnerability, end time.Time, pathParameters model.PathParameters) model.Summary {
-	// logger := logger.FromContext(ctx)
 	counters := model.Counters{
 		ScannedFiles:           c.Tracker.FoundFiles,
 		ScannedFilesLines:      c.Tracker.FoundCountLines,
@@ -50,16 +49,6 @@ func (c *Client) getSummary(ctx context.Context, results []model.Vulnerability, 
 		Start: c.ScanStartTime,
 		End:   end,
 	}
-
-	// if c.ScanParams.DisableFullDesc {
-	// 	logger.Warn().Msg("Skipping descriptions because provided disable flag is set")
-	// } else {
-	// 	err := descriptions.RequestAndOverrideDescriptions(&summary)
-	// 	if err != nil {
-	// 		logger.Warn().Msgf("Unable to get descriptions: %s", err)
-	// 		logger.Warn().Msgf("Using default descriptions")
-	// 	}
-	// }
 
 	return summary
 }
@@ -130,14 +119,6 @@ func (c *Client) postScan(ctx context.Context, scanResults *Results) (ScanMetada
 		}
 	}
 
-	// // mask results preview if Secrets Scan is disabled
-	// if c.ScanParams.DisableSecrets {
-	// 	err := maskPreviewLines(c.ScanParams.SecretsRegexesPath, scanResults)
-	// 	if err != nil {
-	// 		logger.Err(err)
-	// 		return err
-	// 	}
-	// }
 	sort.Strings(c.ScanParams.Path)
 	summary := c.getSummary(ctx, scanResults.Results, time.Now(), model.PathParameters{
 		ScannedPaths:      c.ScanParams.Path,

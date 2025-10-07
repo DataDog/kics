@@ -66,13 +66,6 @@ func (s *Service) sink(ctx context.Context, filename, scanID string,
 	for _, document := range documents.Docs {
 		_, err = json.Marshal(document)
 		if err != nil {
-			// sentryReport.ReportSentry(&sentryReport.Report{
-			// 	Message:  fmt.Sprintf("failed to marshal content in file: %s", filename),
-			// 	Err:      err,
-			// 	Location: "func sink()",
-			// 	FileName: filename,
-			// 	Kind:     documents.Kind,
-			// }, true)
 			continue
 		}
 
