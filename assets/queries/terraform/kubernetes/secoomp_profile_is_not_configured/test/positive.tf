@@ -113,7 +113,7 @@ resource "kubernetes_pod" "pod3" {
     name = "terraform-example"
 
     annotations = {
-      seccomp.security.alpha.kubernetes.io/defaultProfileName = "rntim/dfl"
+      "seccomp.security.alpha.kubernetes.io/defaultProfileName" = "rntim/dfl"
     }
   }
 

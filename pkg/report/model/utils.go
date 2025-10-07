@@ -66,6 +66,10 @@ func GetScannedFilesCountTag(scannedFiles int) string {
 	return fmt.Sprintf(scannedFileCountTag, scannedFiles)
 }
 
+func GetPlatformTag(platform string) string {
+	return fmt.Sprintf(platformTag, platform)
+}
+
 // stringToHash returns a SHA256 hash of the input string.
 func StringToHash(str string) string {
 	hash := sha256.New()
