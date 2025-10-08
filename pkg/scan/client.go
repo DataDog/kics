@@ -11,7 +11,6 @@ import (
 
 	"github.com/Checkmarx/kics/internal/storage"
 	"github.com/Checkmarx/kics/internal/tracker"
-	"github.com/Checkmarx/kics/pkg/descriptions"
 	"github.com/Checkmarx/kics/pkg/featureflags"
 	"github.com/Checkmarx/kics/pkg/logger"
 	"github.com/Checkmarx/kics/pkg/model"
@@ -129,8 +128,6 @@ func NewClient(ctx context.Context, params *Parameters, proBarBuilder *progress.
 		logger.Err(err).Msgf("failed to create tracker %v", err)
 		return nil, err
 	}
-
-	descriptions.CheckVersion(ctx, t)
 
 	store := storage.NewMemoryStorage()
 
