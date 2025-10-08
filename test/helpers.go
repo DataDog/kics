@@ -625,9 +625,6 @@ var SimpleSummaryMockAsff = model.Summary{
 		},
 		TotalCounter: 1,
 	},
-	LatestVersion: model.Version{
-		Latest: true,
-	},
 }
 
 // ComplexSummaryMock a summary with more results to be used without running kics scan
@@ -656,9 +653,6 @@ var ComplexSummaryMock = model.Summary{
 		},
 		TotalCounter: 5,
 	},
-	LatestVersion: model.Version{
-		Latest: true,
-	},
 }
 
 var ComplexSummaryMockWithExperimental = model.Summary{
@@ -683,9 +677,6 @@ var ComplexSummaryMockWithExperimental = model.Summary{
 			model.SeverityCritical: 0,
 		},
 		TotalCounter: 3,
-	},
-	LatestVersion: model.Version{
-		Latest: true,
 	},
 }
 

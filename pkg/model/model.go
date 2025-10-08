@@ -81,12 +81,6 @@ var (
 	KICSCommentRgxpYaml = regexp.MustCompile(`((/{2})|#)*\s*dd-iac-scan\s*(ignore-line|ignore-block)\s*\n*$`)
 )
 
-// Version - is the model for the version response
-type Version struct {
-	Latest           bool   `json:"is_latest"`
-	LatestVersionTag string `json:"latest_version"`
-}
-
 // VulnerabilityLines is the representation of the found line for issue
 type VulnerabilityLines struct {
 	Line                   int

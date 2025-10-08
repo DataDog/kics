@@ -38,10 +38,6 @@ func Test_GetSummary(t *testing.T) {
 				ExecutingQueries:   1,
 				ExecutedQueries:    1,
 				FailedSimilarityID: 12312312,
-				Version: model.Version{
-					Latest:           true,
-					LatestVersionTag: "Dev",
-				},
 			},
 			scanParameters: Parameters{
 				DisableFullDesc: false,
@@ -73,10 +69,6 @@ func Test_GetSummary(t *testing.T) {
 			},
 			expectedResult: model.Summary{
 				Version: "",
-				LatestVersion: model.Version{
-					Latest:           true,
-					LatestVersionTag: "Dev",
-				},
 				Counters: model.Counters{
 					ScannedFiles:           1,
 					ScannedFilesLines:      1,
@@ -141,10 +133,6 @@ func Test_PrintOutput(t *testing.T) {
 			filename:   "results",
 			body: model.Summary{
 				Version: "",
-				LatestVersion: model.Version{
-					Latest:           true,
-					LatestVersionTag: "",
-				},
 				Counters: model.Counters{
 					ScannedFiles:           10,
 					ScannedFilesLines:      76,
@@ -190,10 +178,6 @@ func Test_PrintOutput(t *testing.T) {
 			filename:   "results",
 			body: model.Summary{
 				Version: "",
-				LatestVersion: model.Version{
-					Latest:           true,
-					LatestVersionTag: "",
-				},
 				Counters: model.Counters{
 					ScannedFiles:           10,
 					ScannedFilesLines:      76,
@@ -239,10 +223,6 @@ func Test_PrintOutput(t *testing.T) {
 			filename:   "results",
 			body: model.Summary{
 				Version: "",
-				LatestVersion: model.Version{
-					Latest:           true,
-					LatestVersionTag: "",
-				},
 				Counters: model.Counters{
 					ScannedFiles:           10,
 					ScannedFilesLines:      76,
@@ -318,10 +298,6 @@ func Test_resolveOutputs(t *testing.T) {
 				ParsedFiles:        0,
 				FoundCountLines:    0,
 				ParsedCountLines:   0,
-				Version: model.Version{
-					Latest:           true,
-					LatestVersionTag: "",
-				},
 			},
 		},
 	}
@@ -362,10 +338,6 @@ func Test_GetScanMetadata(t *testing.T) {
 				ExecutingQueries:   1,
 				ExecutedQueries:    1,
 				FailedSimilarityID: 12312312,
-				Version: model.Version{
-					Latest:           true,
-					LatestVersionTag: "Dev",
-				},
 			},
 			results: &Results{
 				Files: []model.FileMetadata{

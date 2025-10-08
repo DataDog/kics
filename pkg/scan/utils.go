@@ -251,17 +251,6 @@ func usingCustomQueries(queriesPath []string) bool {
 	return !utils.ContainsInString(filepath.Join("assets", "queries"), queriesPath)
 }
 
-// printVersionCheck - Prints and logs warning if not using KICS latest version
-func printVersionCheck(ctx context.Context, customPrint *consolePrinter.Printer, s *model.Summary) {
-	logger := logger.FromContext(ctx)
-	if !s.LatestVersion.Latest {
-		message := fmt.Sprintf("A new version 'v%s' of KICS is available, please consider updating", s.LatestVersion.LatestVersionTag)
-
-		fmt.Println(customPrint.VersionMessage.Sprintf(message))
-		logger.Warn().Msgf(message)
-	}
-}
-
 func getTotalFiles(ctx context.Context, paths []string) int {
 	logger := logger.FromContext(ctx)
 	files := 0

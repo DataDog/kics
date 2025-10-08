@@ -42,7 +42,6 @@ func (c *Client) getSummary(ctx context.Context, results []model.Vulnerability, 
 		results,
 		c.ScanParams.ScanID,
 		pathParameters.PathExtractionMap,
-		c.Tracker.Version,
 		c.ScanParams.OutputPath,
 	)
 	summary.Times = model.Times{

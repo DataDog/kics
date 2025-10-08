@@ -10,7 +10,6 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/Checkmarx/kics/pkg/model"
 	"github.com/Checkmarx/kics/test"
 	"github.com/stretchr/testify/require"
 )
@@ -29,7 +28,6 @@ func TestCITracker(t *testing.T) {
 		ParsedFiles           int
 		FailedSimilarityID    int
 		FailedOldSimilarityID int
-		Version               model.Version
 		FoundCountLines       int
 		ParsedCountLines      int
 		IgnoreCountLines      int
@@ -50,7 +48,6 @@ func TestCITracker(t *testing.T) {
 				ParsedFiles:           0,
 				FailedSimilarityID:    0,
 				FailedOldSimilarityID: 0,
-				Version:               model.Version{},
 				FoundCountLines:       2,
 				ParsedCountLines:      1,
 				IgnoreCountLines:      4,
@@ -68,7 +65,6 @@ func TestCITracker(t *testing.T) {
 			FoundFiles:         tt.fields.FoundFiles,
 			ParsedFiles:        tt.fields.ParsedFiles,
 			FailedSimilarityID: tt.fields.FailedSimilarityID,
-			Version:            tt.fields.Version,
 			FoundCountLines:    tt.fields.FoundCountLines,
 			ParsedCountLines:   tt.fields.ParsedCountLines,
 			IgnoreCountLines:   tt.fields.IgnoreCountLines,
@@ -111,10 +107,6 @@ func TestCITracker(t *testing.T) {
 		t.Run(fmt.Sprintf(tt.name+"_FailedDetectLine"), func(t *testing.T) {
 			c.FailedDetectLine()
 			require.Equal(t, 0, c.ExecutedQueries)
-		})
-		t.Run(fmt.Sprintf(tt.name+"_TrackVersion"), func(t *testing.T) {
-			c.TrackVersion(model.Version{Latest: true, LatestVersionTag: "python:3.10"})
-			require.Equal(t, model.Version{Latest: true, LatestVersionTag: "python:3.10"}, c.Version)
 		})
 		t.Run(fmt.Sprintf(tt.name+"_TrackFileFoundCountLines"), func(t *testing.T) {
 			c.TrackFileFoundCountLines(3)
