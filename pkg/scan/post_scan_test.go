@@ -39,9 +39,7 @@ func Test_GetSummary(t *testing.T) {
 				ExecutedQueries:    1,
 				FailedSimilarityID: 12312312,
 			},
-			scanParameters: Parameters{
-				DisableFullDesc: false,
-			},
+			scanParameters: Parameters{},
 			results: []model.Vulnerability{
 				{
 					ScanID:       "console",
