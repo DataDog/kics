@@ -204,7 +204,6 @@ func (c *Client) generateStats(scanResults *Results, scanDuration time.Duration)
 			violationBreakdowns[string(vuln.Severity)] = make(map[string]int)
 		}
 
-
 		violationBreakdowns[string(vuln.Severity)][vuln.QueryID]++
 	}
 

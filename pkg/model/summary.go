@@ -101,7 +101,7 @@ type Times struct {
 
 // Summary is a report of a single scan
 type Summary struct {
-	Version       string  `json:"kics_version,omitempty"`
+	Version string `json:"kics_version,omitempty"`
 	Counters
 	SeveritySummary
 	Times
