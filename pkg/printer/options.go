@@ -10,7 +10,6 @@ import (
 	"io"
 	"os"
 	"path/filepath"
-	"strings"
 
 	consoleHelpers "github.com/Checkmarx/kics/internal/console/helpers"
 	"github.com/Checkmarx/kics/internal/constants"
@@ -19,38 +18,6 @@ import (
 	"github.com/pkg/errors"
 	"github.com/rs/zerolog"
 )
-
-// NoColor - disables ASCII color codes
-func NoColor(opt interface{}, changed bool) error {
-	noColor := opt.(bool)
-	if noColor {
-		color.Disable()
-		consoleLogger.NoColor = true
-	}
-	return nil
-}
-
-// Verbose - redirects log entries to stdout
-func Verbose(opt interface{}, changed bool) error {
-	verbose := opt.(bool)
-	if verbose {
-		consoleLogger = zerolog.ConsoleWriter{Out: os.Stdout}
-		outConsoleLogger = os.Stdout
-	}
-	return nil
-}
-
-// Silent - disables stdout output
-func Silent(ctx context.Context, opt interface{}) error {
-	logger := logger.FromContext(ctx)
-	silent := opt.(bool)
-	if silent {
-		color.SetOutput(io.Discard)
-		os.Stdout = nil
-		logger.Output(zerolog.MultiLevelWriter(io.Discard, outFileLogger.(io.Writer)))
-	}
-	return nil
-}
 
 // CI - enable only log messages to CLI output
 func CI(ctx context.Context, opt interface{}) error {
@@ -107,43 +74,6 @@ func LogPath(opt interface{}, changed bool) error {
 	loggerFile, err = os.OpenFile(logPath, os.O_CREATE|os.O_WRONLY, os.ModePerm)
 	if err != nil {
 		return err
-	}
-	return nil
-}
-
-// LogFile - enables write to log file
-func LogFile(opt interface{}, changed bool) error {
-	logFile := opt.(bool)
-	if logFile {
-		logPath, err := constants.GetDefaultLogPath()
-		if err != nil {
-			return err
-		}
-		loggerFile, err = os.OpenFile(filepath.Clean(logPath), os.O_CREATE|os.O_WRONLY, os.ModePerm)
-		if err != nil {
-			return err
-		}
-		fileLogger = consoleHelpers.CustomConsoleWriter(&zerolog.ConsoleWriter{Out: loggerFile.(io.Writer), NoColor: true})
-	}
-	return nil
-}
-
-// LogLevel - sets log level
-func LogLevel(opt interface{}, changed bool) error {
-	logLevel := opt.(string)
-	switch strings.ToUpper(logLevel) {
-	case "TRACE":
-		zerolog.SetGlobalLevel(zerolog.TraceLevel)
-	case "DEBUG":
-		zerolog.SetGlobalLevel(zerolog.DebugLevel)
-	case "INFO":
-		zerolog.SetGlobalLevel(zerolog.InfoLevel)
-	case "WARN":
-		zerolog.SetGlobalLevel(zerolog.WarnLevel)
-	case "ERROR":
-		zerolog.SetGlobalLevel(zerolog.ErrorLevel)
-	case "FATAL":
-		zerolog.SetGlobalLevel(zerolog.FatalLevel)
 	}
 	return nil
 }

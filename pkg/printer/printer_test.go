@@ -1,23 +1,5 @@
 package printer
 
-// func TestPrinter_SetupPrinter(t *testing.T) {
-// 	mockCmd := &cobra.Command{
-// 		Use:   "mock",
-// 		Short: "Mock cmd",
-// 		RunE: func(cmd *cobra.Command, args []string) error {
-// 			return nil
-// 		},
-// 	}
-
-// 	data, err := os.ReadFile(filepath.FromSlash("../../internal/console/assets/kics-flags.json"))
-// 	require.NoError(t, err)
-// 	flags.InitJSONFlags(mockCmd, string(data), false, []string{"terraform"}, []string{"aws"})
-
-// 	err = SetupPrinter(mockCmd.Flags())
-// 	require.NoError(t, err)
-// 	require.True(t, IsInitialized())
-// }
-
 // func TestPrinter(t *testing.T) {
 // 	type args struct {
 // 		content string
@@ -154,57 +136,6 @@ package printer
 // 			})
 // 			require.NoError(t, err)
 // 			require.Equal(t, testCase.expectedResultFull, out)
-// 		})
-// 	}
-// }
-
-// func TestHelpers_WordWrap(t *testing.T) {
-// 	type args struct {
-// 		s           string
-// 		indentation string
-// 		limit       int
-// 	}
-
-// 	tests := []struct {
-// 		name string
-// 		args args
-// 		want string
-// 	}{
-// 		{
-// 			name: "test_word_wrap",
-// 			args: args{
-// 				s:           "testing",
-// 				indentation: "-",
-// 				limit:       1,
-// 			},
-// 			want: "-testing\r\n",
-// 		},
-// 		{
-// 			name: "test_word_wrap",
-// 			args: args{
-// 				s:           "",
-// 				indentation: "-",
-// 				limit:       1,
-// 			},
-// 			want: "",
-// 		},
-// 		{
-// 			name: "test_word_wrap",
-// 			args: args{
-// 				s:           "testing string word wrap",
-// 				indentation: "-",
-// 				limit:       2,
-// 			},
-// 			want: "-testing string\r\n-word wrap\r\n",
-// 		},
-// 	}
-
-// 	for _, tt := range tests {
-// 		t.Run(tt.name, func(t *testing.T) {
-// 			got := WordWrap(tt.args.s, tt.args.indentation, tt.args.limit)
-// 			if !reflect.DeepEqual(got, tt.want) {
-// 				t.Errorf("WordWrap =\n%v, want = \n%v", got, tt.want)
-// 			}
 // 		})
 // 	}
 // }
