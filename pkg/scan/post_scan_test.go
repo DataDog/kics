@@ -316,8 +316,6 @@ func Test_resolveOutputs(t *testing.T) {
 				FailedSimilarityID: 0,
 				LoadedQueries:      0,
 				ParsedFiles:        0,
-				ScanSecrets:        0,
-				ScanPaths:          0,
 				FoundCountLines:    0,
 				ParsedCountLines:   0,
 				Version: model.Version{

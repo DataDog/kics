@@ -29,8 +29,6 @@ func TestCITracker(t *testing.T) {
 		ParsedFiles           int
 		FailedSimilarityID    int
 		FailedOldSimilarityID int
-		ScanSecrets           int
-		ScanPaths             int
 		Version               model.Version
 		FoundCountLines       int
 		ParsedCountLines      int
@@ -52,8 +50,6 @@ func TestCITracker(t *testing.T) {
 				ParsedFiles:           0,
 				FailedSimilarityID:    0,
 				FailedOldSimilarityID: 0,
-				ScanSecrets:           0,
-				ScanPaths:             0,
 				Version:               model.Version{},
 				FoundCountLines:       2,
 				ParsedCountLines:      1,
@@ -72,8 +68,6 @@ func TestCITracker(t *testing.T) {
 			FoundFiles:         tt.fields.FoundFiles,
 			ParsedFiles:        tt.fields.ParsedFiles,
 			FailedSimilarityID: tt.fields.FailedSimilarityID,
-			ScanSecrets:        tt.fields.ScanSecrets,
-			ScanPaths:          tt.fields.ScanPaths,
 			Version:            tt.fields.Version,
 			FoundCountLines:    tt.fields.FoundCountLines,
 			ParsedCountLines:   tt.fields.ParsedCountLines,
@@ -117,14 +111,6 @@ func TestCITracker(t *testing.T) {
 		t.Run(fmt.Sprintf(tt.name+"_FailedDetectLine"), func(t *testing.T) {
 			c.FailedDetectLine()
 			require.Equal(t, 0, c.ExecutedQueries)
-		})
-		t.Run(fmt.Sprintf(tt.name+"_ScanSecrets"), func(t *testing.T) {
-			c.TrackScanSecret()
-			require.Equal(t, 1, c.ScanSecrets)
-		})
-		t.Run(fmt.Sprintf(tt.name+"_ScanPaths"), func(t *testing.T) {
-			c.TrackScanPath()
-			require.Equal(t, 1, c.ScanPaths)
 		})
 		t.Run(fmt.Sprintf(tt.name+"_TrackVersion"), func(t *testing.T) {
 			c.TrackVersion(model.Version{Latest: true, LatestVersionTag: "python:3.10"})
