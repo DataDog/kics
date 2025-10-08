@@ -22,7 +22,6 @@ import (
 // Parameters represents all available scan parameters
 type Parameters struct {
 	CloudProvider               []string
-	DisableFullDesc             bool
 	ExcludeCategories           []string
 	ExcludePaths                []string
 	ExcludeQueries              []string
@@ -85,7 +84,6 @@ func GetDefaultParameters(ctx context.Context, rootPath string, extraInfos map[s
 
 	return &Parameters{
 		CloudProvider:               []string{""},
-		DisableFullDesc:             false,
 		ExcludeCategories:           configParams.ExcludeCategories,
 		ExcludeQueries:              configParams.ExcludeQueries,
 		ExcludeResults:              configParams.ExcludeResults,

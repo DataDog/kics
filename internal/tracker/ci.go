@@ -27,7 +27,6 @@ type CITracker struct {
 	FailedOldSimilarityID int
 	LoadedQueries         int
 	ParsedFiles           int
-	ScanPaths             int
 	lines                 int
 	FoundCountLines       int
 	ParsedCountLines      int
@@ -113,11 +112,6 @@ func (c *CITracker) FailedComputeSimilarityID() {
 // FailedComputeOldSimilarityID - queries that failed to compute old similarity ID
 func (c *CITracker) FailedComputeOldSimilarityID() {
 	c.FailedOldSimilarityID++
-}
-
-// TrackScanPath - paths to preform scan
-func (c *CITracker) TrackScanPath() {
-	c.ScanPaths++
 }
 
 // TrackFileFoundCountLines - information about the lines of the scanned files
