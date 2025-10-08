@@ -98,8 +98,7 @@ func (s *Service) StartScan(
 	ctx context.Context,
 	scanID string,
 	errCh chan<- error,
-	wg *sync.WaitGroup,
-	currentQuery chan<- int64) {
+	wg *sync.WaitGroup) {
 	logger := logger.FromContext(ctx)
 	logger.Debug().Msg("service.StartScan()")
 	defer wg.Done()
@@ -110,7 +109,6 @@ func (s *Service) StartScan(
 		s.files,
 		s.SourceProvider.GetBasePaths(),
 		s.Parser.Platform,
-		currentQuery,
 	)
 	if err != nil {
 		errCh <- errors.Wrap(err, "failed to inspect files")

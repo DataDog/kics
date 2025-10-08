@@ -229,11 +229,16 @@ func (c *Inspector) createInspectionJobs(jobs chan<- InspectionJob, queries []mo
 
 // This function performs an inspection job and sends the result to the results channel
 func (c *Inspector) performInspection(ctx context.Context, scanID string, files model.FileMetadatas,
-	astPayload ast.Value, baseScanPaths []string, currentQuery chan<- int64,
+	astPayload ast.Value, baseScanPaths []string,
 	jobs <-chan InspectionJob, results chan<- QueryResult, queries []model.QueryMetadata,
 	modules []tfmodules.ParsedModule) {
 	for job := range jobs {
-		currentQuery <- 1
+		select {
+		case <-ctx.Done():
+			// Stop accepting job and return on context cancellation
+			return
+		default:
+		}
 
 		queryOpa, err := c.QueryLoader.LoadQuery(ctx, &queries[job.queryID], modules)
 		if err != nil {
@@ -268,8 +273,7 @@ func (c *Inspector) Inspect(
 	scanID string,
 	files model.FileMetadatas,
 	baseScanPaths []string,
-	platforms []string,
-	currentQuery chan<- int64) ([]model.Vulnerability, error) {
+	platforms []string) ([]model.Vulnerability, error) {
 	logger := logger.FromContext(ctx)
 	logger.Debug().Msg("engine.Inspect()")
 	combinedFiles := files.Combine(ctx, false)
@@ -322,7 +326,7 @@ func (c *Inspector) Inspect(
 		go func() {
 			// Decrement the counter when the goroutine completes
 			defer wg.Done()
-			c.performInspection(ctx, scanID, files, astPayload, baseScanPaths, currentQuery, jobs, results, queries, enrichedModules)
+			c.performInspection(ctx, scanID, files, astPayload, baseScanPaths, jobs, results, queries, enrichedModules)
 		}()
 	}
 	// Start a goroutine to create inspection jobs
@@ -337,30 +341,46 @@ func (c *Inspector) Inspect(
 
 	// Collect all the results
 	moduleVulns := make(map[string]int)
-	for result := range results {
-		if result.err != nil {
-			fmt.Println()
-			c.failedQueries[queries[result.queryID].Query] = result.err
-
-			continue
-		}
-		for _, vulnerability := range result.vulnerabilities {
-			if vulnerability.ResourceType == "module" {
-				val, ok := moduleVulns[vulnerability.QueryName]
-				if ok {
-					moduleVulns[vulnerability.QueryName] = val + 1
-				} else {
-					moduleVulns[vulnerability.QueryName] = 1
-					logger.Info().Msgf("Found module vulnerability %s of severity %s", vulnerability.QueryName, vulnerability.Severity)
-				}
+loop:
+	for {
+		select {
+		case <-ctx.Done():
+			return vulnerabilities, ctx.Err()
+		case result, ok := <-results:
+			if !ok {
+				// Channel closed, we're done
+				break loop
 			}
+			processResult(ctx, &result, &vulnerabilities, &moduleVulns, queries, c)
 		}
-		vulnerabilities = append(vulnerabilities, result.vulnerabilities...)
 	}
+
 	for vulnerability, number := range moduleVulns {
 		logger.Info().Msgf("Found %d of module vulnerability %s", number, vulnerability)
 	}
 	return vulnerabilities, nil
+}
+
+func processResult(ctx context.Context, result *QueryResult, vulnerabilities *[]model.Vulnerability, moduleVulns *map[string]int, queries []model.QueryMetadata, c *Inspector) {
+	logger := logger.FromContext(ctx)
+	if result.err != nil {
+		fmt.Println()
+
+		c.failedQueries[queries[result.queryID].Query] = result.err
+		return
+	}
+	for _, vulnerability := range result.vulnerabilities {
+		if vulnerability.ResourceType == "module" {
+			val, ok := (*moduleVulns)[vulnerability.QueryName]
+			if ok {
+				(*moduleVulns)[vulnerability.QueryName] = val + 1
+			} else {
+				(*moduleVulns)[vulnerability.QueryName] = 1
+				logger.Info().Msgf("Found module vulnerability %s of severity %s", vulnerability.QueryName, vulnerability.Severity)
+			}
+		}
+	}
+	*vulnerabilities = append(*vulnerabilities, result.vulnerabilities...)
 }
 
 // LenQueriesByPlat returns the number of queries by platforms

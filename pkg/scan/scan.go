@@ -46,8 +46,6 @@ type executeScanParameters struct {
 
 func (c *Client) initScan(ctx context.Context) (*executeScanParameters, error) {
 	logger := logger.FromContext(ctx)
-	progressBar := c.ProBarBuilder.BuildCircle("Preparing Scan Assets: ")
-	go progressBar.Start(ctx)
 
 	extractedPaths, err := c.prepareAndAnalyzePaths(ctx)
 	if err != nil {
@@ -106,10 +104,6 @@ func (c *Client) initScan(ctx context.Context) (*executeScanParameters, error) {
 		return nil, err
 	}
 
-	if err := progressBar.Close(); err != nil {
-		logger.Debug().Msgf("Failed to close progress bar: %s", err.Error())
-	}
-
 	return &executeScanParameters{
 		services:       services,
 		inspector:      inspector,
@@ -136,7 +130,7 @@ func (c *Client) executeScan(ctx context.Context) (*Results, error) {
 
 	if err = scanner.PrepareAndScan(
 		ctx,
-		c.ScanParams.ScanID, c.ScanParams.OpenAPIResolveReferences, c.ScanParams.MaxResolverDepth, *c.ProBarBuilder,
+		c.ScanParams.ScanID, c.ScanParams.OpenAPIResolveReferences, c.ScanParams.MaxResolverDepth,
 		executeScanParameters.services); err != nil {
 		logger.Err(err).Msgf("failed to prepare and scan %v", err)
 		return nil, err

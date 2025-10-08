@@ -17,7 +17,6 @@ import (
 	"github.com/Checkmarx/kics/pkg/model"
 	"github.com/gookit/color"
 	"github.com/rs/zerolog"
-	"github.com/spf13/pflag"
 )
 
 const (
@@ -54,26 +53,6 @@ type Printer struct {
 	VersionMessage      color.RGBColor
 	ContributionMessage color.RGBColor
 	minimal             bool
-}
-
-// WordWrap Wraps text at the specified number of words
-func WordWrap(s, indentation string, limit int) string {
-	if strings.TrimSpace(s) == "" {
-		return s
-	}
-
-	wordSlice := strings.Fields(s)
-	var result string
-
-	for len(wordSlice) >= 1 {
-		result = result + indentation + strings.Join(wordSlice[:limit], " ") + "\r\n"
-
-		wordSlice = wordSlice[limit:]
-		if len(wordSlice) < limit {
-			limit = len(wordSlice)
-		}
-	}
-	return result
 }
 
 // PrintResult prints on output the summary results
@@ -195,18 +174,6 @@ func printFiles(ctx context.Context, query *model.QueryResult, printer *Printer)
 			fmt.Print("\n\n")
 		}
 	}
-}
-
-// SetupPrinter - configures stdout and log options with given FlagSet
-func SetupPrinter(flags *pflag.FlagSet) error {
-
-	initialized = true
-	return nil
-}
-
-// IsInitialized returns true if printer is ready, false otherwise
-func IsInitialized() bool {
-	return initialized
 }
 
 // NewPrinter initializes a new Printer

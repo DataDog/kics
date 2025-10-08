@@ -126,10 +126,6 @@ func TestCITracker(t *testing.T) {
 			c.TrackScanPath()
 			require.Equal(t, 1, c.ScanPaths)
 		})
-		t.Run(fmt.Sprintf(tt.name+"_TrackVersion"), func(t *testing.T) {
-			c.TrackVersion(model.Version{Latest: true, LatestVersionTag: "python:3.10"})
-			require.Equal(t, model.Version{Latest: true, LatestVersionTag: "python:3.10"}, c.Version)
-		})
 		t.Run(fmt.Sprintf(tt.name+"_TrackFileFoundCountLines"), func(t *testing.T) {
 			c.TrackFileFoundCountLines(3)
 			require.Equal(t, 5, c.FoundCountLines)

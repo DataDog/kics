@@ -10,7 +10,6 @@ import (
 	"sync"
 
 	"github.com/Checkmarx/kics/internal/constants"
-	"github.com/Checkmarx/kics/pkg/model"
 )
 
 // CITracker contains information of how many queries were loaded and executed
@@ -28,13 +27,10 @@ type CITracker struct {
 	FailedOldSimilarityID int
 	LoadedQueries         int
 	ParsedFiles           int
-	ScanSecrets           int
-	ScanPaths             int
 	lines                 int
 	FoundCountLines       int
 	ParsedCountLines      int
 	IgnoreCountLines      int
-	Version               model.Version
 	BagOfFilesParse       map[string]int
 	BagOfFilesFound       map[string]int
 	syncFileMutex         sync.Mutex
@@ -116,21 +112,6 @@ func (c *CITracker) FailedComputeSimilarityID() {
 // FailedComputeOldSimilarityID - queries that failed to compute old similarity ID
 func (c *CITracker) FailedComputeOldSimilarityID() {
 	c.FailedOldSimilarityID++
-}
-
-// TrackScanSecret - add to secrets scanned
-func (c *CITracker) TrackScanSecret() {
-	c.ScanSecrets++
-}
-
-// TrackScanPath - paths to preform scan
-func (c *CITracker) TrackScanPath() {
-	c.ScanPaths++
-}
-
-// TrackVersion - information if current version is latest
-func (c *CITracker) TrackVersion(retrievedVersion model.Version) {
-	c.Version = retrievedVersion
 }
 
 // TrackFileFoundCountLines - information about the lines of the scanned files

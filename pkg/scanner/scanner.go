@@ -7,13 +7,11 @@ package scanner
 
 import (
 	"context"
-	"fmt"
 	"sync"
 
 	"github.com/Checkmarx/kics/internal/metrics"
 	"github.com/Checkmarx/kics/pkg/kics"
 	"github.com/Checkmarx/kics/pkg/logger"
-	"github.com/Checkmarx/kics/pkg/progress"
 )
 
 type serviceSlice []*kics.Service
@@ -23,14 +21,13 @@ func PrepareAndScan(
 	scanID string,
 	openAPIResolveReferences bool,
 	maxResolverDepth int,
-	proBarBuilder progress.PbBuilder,
 	services serviceSlice,
 ) error {
 	metrics.Metric.Start("prepare_sources")
 	var wg sync.WaitGroup
 	wgDone := make(chan bool)
 	errCh := make(chan error)
-	var wgProg sync.WaitGroup
+	defer close(errCh)
 
 	for _, service := range services {
 		wg.Add(1)
@@ -38,64 +35,54 @@ func PrepareAndScan(
 	}
 
 	go func() {
-		defer func() {
-			close(wgDone)
-		}()
+		defer close(wgDone)
 		wg.Wait()
-		wgProg.Wait()
 	}()
 
 	select {
+	case <-ctx.Done():
+		return ctx.Err()
 	case <-wgDone:
 		metrics.Metric.Stop()
-		err := StartScan(ctx, scanID, proBarBuilder, services)
+		err := StartScan(ctx, scanID, services)
 		if err != nil {
 			return err
 		}
 		break
 	case err := <-errCh:
-		close(errCh)
 		return err
 	}
 	return nil
 }
 
 // StartScan will run concurrent scans by parser
-func StartScan(ctx context.Context, scanID string,
-	proBarBuilder progress.PbBuilder, services serviceSlice) error {
+func StartScan(ctx context.Context, scanID string, services serviceSlice) error {
 	logger := logger.FromContext(ctx)
 	defer metrics.Metric.Stop()
 	metrics.Metric.Start("start_scan")
 	var wg sync.WaitGroup
 	wgDone := make(chan bool)
 	errCh := make(chan error)
-	currentQuery := make(chan int64, 1)
-	var wgProg sync.WaitGroup
 
 	logger.Info().Msgf("Starting scan with id: %s", scanID)
 
 	total := services.GetQueriesLength()
 	logger.Info().Msgf("Got %d queries", total)
-	if total != 0 {
-		startProgressBar(ctx, total, &wgProg, currentQuery, proBarBuilder)
-	}
 
 	for _, service := range services {
 		wg.Add(1)
-		go service.StartScan(ctx, scanID, errCh, &wg, currentQuery)
+		go service.StartScan(ctx, scanID, errCh, &wg)
 	}
 
 	go func() {
-		defer func() {
-			close(currentQuery)
-			close(wgDone)
-			fmt.Println("\r")
-		}()
+		defer close(wgDone)
 		wg.Wait()
-		wgProg.Wait()
 	}()
 
 	select {
+	case <-ctx.Done():
+		close(errCh)
+		return ctx.Err()
 	case <-wgDone:
 		break
 	case err := <-errCh:
@@ -112,10 +99,4 @@ func (s serviceSlice) GetQueriesLength() int {
 		count += service.Inspector.LenQueriesByPlat(service.Parser.Platform)
 	}
 	return count
-}
-
-func startProgressBar(ctx context.Context, total int, wg *sync.WaitGroup, progressChannel chan int64, proBarBuilder progress.PbBuilder) {
-	wg.Add(1)
-	progressBar := proBarBuilder.BuildCounter("Executing queries: ", total, wg, progressChannel)
-	go progressBar.Start(ctx)
 }
