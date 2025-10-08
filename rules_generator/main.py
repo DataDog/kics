@@ -91,6 +91,11 @@ def generate_metadata(path: str) -> None:
     coordinator.generate_metadata(path)
 
 
+def extend_descriptions(path: str) -> None:
+    coordinator = Coordinator()
+    coordinator.generate_extended_descriptions(path)
+
+
 if __name__ == "__main__":
     args = parse_args()
     asked = args.generation
@@ -107,3 +112,5 @@ if __name__ == "__main__":
         generate_module_support(path, skip, check_sev)
     elif asked == "generate_metadata":
         generate_metadata(path)
+    elif asked == "extend_descriptions":
+        extend_descriptions(path)

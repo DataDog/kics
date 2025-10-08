@@ -3,7 +3,7 @@
   "queryName": "Cluster allows unsafe sysctls",
   "severity": "HIGH",
   "category": "Insecure Configurations",
-  "descriptionText": "A Kubernetes cluster must not allow unsafe sysctls to prevent a Pod from influencing other Pods, harming node health, or gaining CPU or memory outside resource limits. `spec.securityContext.sysctls` must not specify unsafe sysctls, and `allowedUnsafeSysctls` must be undefined.",
+  "descriptionText": "A Kubernetes cluster must not allow unsafe sysctls. Allowing unsafe sysctls can let a Pod influence other Pods, harm node stability, or consume CPU or memory beyond resource limits. `spec.securityContext.sysctls` must not include unsafe sysctls, and `allowedUnsafeSysctls` must be undefined.\n\nThis rule detects PodSecurityPolicy resources where `allowedUnsafeSysctls` is defined and flags any `spec.securityContext.sysctls` entries that are not in the defined safe list. Only a limited set of sysctls are considered safe; all others are treated as unsafe and should not be used.",
   "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/k8s/cluster_allows_unsafe_sysctls",
   "platform": "Kubernetes",
   "descriptionID": "6eb994bc",

@@ -3,7 +3,7 @@
   "queryName": "Container running as root",
   "severity": "MEDIUM",
   "category": "Best Practices",
-  "descriptionText": "Containers should run only as a non-root user. This limits the exploitability of security misconfigurations and restricts an attacker's options in case of compromise.",
+  "descriptionText": "Containers should run as a non-root user. This rule checks `securityContext.runAsUser` and `securityContext.runAsNonRoot` at both the container and pod levels (including inherited settings) and requires `runAsUser` > 0 and/or `runAsNonRoot` = true. Running as non-root reduces the exploitability of security misconfigurations and limits an attacker's options if a container is compromised.",
   "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/k8s/containers_running_as_root",
   "platform": "Kubernetes",
   "descriptionID": "9d5b1d16",

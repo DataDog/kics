@@ -3,7 +3,7 @@
   "queryName": "Authorization mode set to always allow",
   "severity": "HIGH",
   "category": "Access Control",
-  "descriptionText": "When using `kubelet`, the `--authorization-mode` flag should not be set to `AlwaysAllow`.",
+  "descriptionText": "When using `kubelet` or `kube-apiserver`, the `--authorization-mode` flag should not be set to `AlwaysAllow`. The rule also checks `KubeletConfiguration` resources and flags an `authorization.mode` equal to `AlwaysAllow`. The `AlwaysAllow` mode grants unrestricted access to all requests and bypasses cluster authorization controls.",
   "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/k8s/authorization_mode_set_to_always_allow",
   "platform": "Kubernetes",
   "descriptionID": "f5c66471",
