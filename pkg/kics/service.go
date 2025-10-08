@@ -104,16 +104,6 @@ func (s *Service) StartScan(
 	logger.Debug().Msg("service.StartScan()")
 	defer wg.Done()
 
-	// secretsVulnerabilities, err := s.SecretsInspector.Inspect(
-	// 	ctx,
-	// 	s.SourceProvider.GetBasePaths(),
-	// 	s.files,
-	// 	currentQuery,
-	// )
-	// if err != nil {
-	// 	errCh <- errors.Wrap(err, "failed to inspect secrets")
-	// }
-
 	vulnerabilities, err := s.Inspector.Inspect(
 		ctx,
 		scanID,
@@ -125,9 +115,6 @@ func (s *Service) StartScan(
 	if err != nil {
 		errCh <- errors.Wrap(err, "failed to inspect files")
 	}
-	// vulnerabilities = append(vulnerabilities, secretsVulnerabilities...)
-
-	// updateMaskedSecrets(&vulnerabilities, s.SecretsInspector.SecretTracker)
 
 	err = s.Storage.SaveVulnerabilities(ctx, vulnerabilities)
 	if err != nil {

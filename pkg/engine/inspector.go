@@ -155,17 +155,6 @@ func NewInspector(
 	}
 	platformLibraries := getPlatformLibraries(ctx, queriesSource, queries)
 
-	// regoLibrary := source.RegoLibraries{
-	// 	LibraryCode:      string(libraryFile),
-	// 	LibraryInputData: "",
-	// }
-
-	// platformLibraries := map[string]source.RegoLibraries{
-	// 	"terraform": regoLibrary,
-	// }
-
-	// logger.Info().Msgf("Platform libraries loaded: %d, %d", len(platformLibraries), len(libraryFile))
-
 	queryLoader := prepareQueries(queries, commonLibrary, platformLibraries, tracker)
 
 	failedQueries := make(map[string]error)
@@ -351,15 +340,6 @@ func (c *Inspector) Inspect(
 	for result := range results {
 		if result.err != nil {
 			fmt.Println()
-			// sentryReport.ReportSentry(&sentryReport.Report{
-			// 	Message:  fmt.Sprintf("Inspector. query executed with error, query=%s", queries[result.queryID].Query),
-			// 	Err:      result.err,
-			// 	Location: "func Inspect()",
-			// 	Platform: queries[result.queryID].Platform,
-			// 	Metadata: queries[result.queryID].Metadata,
-			// 	Query:    queries[result.queryID].Query,
-			// }, true)
-
 			c.failedQueries[queries[result.queryID].Query] = result.err
 
 			continue
@@ -572,15 +552,6 @@ func getVulnerabilitiesFromQuery(ctx context.Context, qCtx *QueryContext, c *Ins
 		return nil, false
 	}
 	if err != nil {
-		// sentryReport.ReportSentry(&sentryReport.Report{
-		// 	Message:  fmt.Sprintf("Inspector can't save vulnerability, query=%s", qCtx.Query.Metadata.Query),
-		// 	Err:      err,
-		// 	Location: "func decodeQueryResults()",
-		// 	Platform: qCtx.Query.Metadata.Platform,
-		// 	Metadata: qCtx.Query.Metadata.Metadata,
-		// 	Query:    qCtx.Query.Metadata.Query,
-		// }, true)
-
 		if _, ok := c.failedQueries[qCtx.Query.Metadata.Query]; !ok {
 			c.failedQueries[qCtx.Query.Metadata.Query] = err
 		}
@@ -713,15 +684,6 @@ func (q QueryLoader) LoadQuery(ctx context.Context, query *model.QueryMetadata, 
 		).PrepareForEval(ctx)
 
 		if err != nil {
-			// sentryReport.ReportSentry(&sentryReport.Report{
-			// 	Message:  fmt.Sprintf("Inspector failed to prepare query for evaluation, query=%s", query.Query),
-			// 	Err:      err,
-			// 	Location: "func NewInspector()",
-			// 	Query:    query.Query,
-			// 	Metadata: query.Metadata,
-			// 	Platform: query.Platform,
-			// }, true)
-
 			return nil, err
 		}
 

@@ -60,22 +60,6 @@ func (info *k8sAPICall) saveK8sResources(ctx context.Context, kind, k8sResources
 	}
 }
 
-// func (info *k8sAPICall) getResource(o runtime.Object, apiVersion, kind string, sb *strings.Builder) *strings.Builder {
-// 	e := json.NewYAMLSerializer(json.DefaultMetaFactory, scheme.Scheme, scheme.Scheme)
-
-// 	begin := fmt.Sprintf("\n---\napiVersion: %s\nkind: %s\n", getAPIVersion(apiVersion), kind)
-
-// 	if _, err := sb.WriteString(begin); err != nil {
-// 		logger.Err(err).Msg("failed to write")
-// 	}
-
-// 	if err := e.Encode(o, sb); err != nil {
-// 		logger.Err(err).Msg("failed to encode")
-// 	}
-
-// 	return sb
-// }
-
 func extractK8sAPIOptions(path string, supportedKinds *supportedKinds) (*K8sAPIOptions, error) {
 	pathInfo := strings.Split(path, ":")
 	if len(pathInfo) != kuberneterPathLength {

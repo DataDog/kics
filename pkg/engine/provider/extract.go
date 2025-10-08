@@ -83,36 +83,6 @@ func GetSources(ctx context.Context, source []string, downloadDir string) (Extra
 	}
 	for _, path := range source {
 		destination := filepath.Join(downloadDir, utils.NextRandom())
-		// logger.Info().Msgf("Extracting %s to %s", path, destination)
-		// mode := getter.ClientModeAny
-
-		// pwd := "external/com_github_checkmarx_kics/"
-
-		// opts := []getter.ClientOption{}
-
-		// opts = append(opts, getter.WithInsecure())
-
-		// ctx, cancel := context.WithCancel(context.Background())
-
-		// goGetter := getterStruct{
-		// 	ctx:         ctx,
-		// 	cancel:      cancel,
-		// 	mode:        mode,
-		// 	pwd:         pwd,
-		// 	opts:        opts,
-		// 	destination: destination,
-		// 	source:      path,
-		// }
-
-		// getterDst, err := getPaths(&goGetter)
-		// if err != nil {
-		// 	if ignoreDamagedFiles(path) {
-		// 		continue
-		// 	}
-		// 	logger.Error().Msgf("%s", err)
-		// 	return ExtractedPath{}, err
-		// }
-		// tempDst, local := checkSymLink(getterDst, path)
 
 		extrStruct.ExtractionMap[destination] = model.ExtractedPathObject{
 			Path:      path,

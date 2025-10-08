@@ -92,28 +92,6 @@ func (c *Client) initScan(ctx context.Context) (*executeScanParameters, error) {
 
 	logger.Info().Msgf("Finshed inspect query source %v", querySource)
 
-	// secretsRegexRulesContent, err := getSecretsRegexRules(c.ScanParams.SecretsRegexesPath)
-	// if err != nil {
-	// 	return nil, err
-	// }
-
-	// isCustomSecretsRegexes := c.ScanParams.SecretsRegexesPath != ""
-
-	// secretsInspector, err := secrets.NewInspector(
-	// 	ctx,
-	// 	c.ExcludeResultsMap,
-	// 	c.Tracker,
-	// 	queryFilter,
-	// 	c.ScanParams.DisableSecrets,
-	// 	c.ScanParams.QueryExecTimeout,
-	// 	secretsRegexRulesContent,
-	// 	isCustomSecretsRegexes,
-	// )
-	// if err != nil {
-	// 	logger.Err(err)
-	// 	return nil, err
-	// }
-
 	services, err := c.createService(
 		ctx,
 		inspector,
@@ -216,20 +194,6 @@ func getExcludeResultsMap(excludeResults []string) map[string]bool {
 	return excludeResultsMap
 }
 
-// func getSecretsRegexRules(regexRulesPath string) (regexRulesContent string, err error) {
-// 	if regexRulesPath != "" {
-// 		b, err := os.ReadFile(regexRulesPath)
-// 		if err != nil {
-// 			return regexRulesContent, err
-// 		}
-// 		regexRulesContent = string(b)
-// 	} else {
-// 		regexRulesContent = assets.SecretsQueryRegexRulesJSON
-// 	}
-
-// 	return regexRulesContent, nil
-// }
-
 func (c *Client) createQueryFilter() *source.QueryInspectorParameters {
 	excludeQueries := source.ExcludeQueries{
 		ByIDs:        c.ScanParams.ExcludeQueries,
@@ -266,7 +230,6 @@ func (c *Client) createService(
 	}
 
 	combinedParser, err := parser.NewBuilder(ctx).
-		// Add(&jsonParser.Parser{}).
 		Add(&yamlParser.Parser{}).
 		Add(terraformParser.NewDefaultWithParams(c.ScanParams.TerraformVarsPath, c.ScanParams.SCIInfo)).
 		Add(&bicepParser.Parser{}).

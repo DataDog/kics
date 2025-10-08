@@ -67,13 +67,6 @@ func (s *Service) resolverSink(
 		for _, document := range documents.Docs {
 			_, err = json.Marshal(document)
 			if err != nil {
-				// sentryReport.ReportSentry(&sentryReport.Report{
-				// 	Message:  fmt.Sprintf("failed to marshal content in file: %s", rfile.FileName),
-				// 	Err:      err,
-				// 	Location: "func resolverSink()",
-				// 	FileName: rfile.FileName,
-				// 	Kind:     kind,
-				// }, true)
 				continue
 			}
 
