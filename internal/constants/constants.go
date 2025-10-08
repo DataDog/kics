@@ -123,12 +123,6 @@ const (
 
 	// SentryRefreshRate - sentry crash report refresh rate
 	SentryRefreshRate = 2
-
-	// LogFormatJSON - print log as json
-	LogFormatJSON = "json"
-
-	// LogFormatPretty - print log more readable
-	LogFormatPretty = "pretty"
 )
 
 // GetRelease - returns the current release in the format 'kics@version' to be used by sentry
