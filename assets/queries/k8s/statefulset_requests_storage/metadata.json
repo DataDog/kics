@@ -3,7 +3,7 @@
   "queryName": "StatefulSet requests storage",
   "severity": "LOW",
   "category": "Build Process",
-  "descriptionText": "A StatefulSet includes a persistent volume storage request under spec.volumeClaimTemplates[*].spec.resources.requests.storage. This policy treats a set storage request as an incorrect value; the storage request should not be set on StatefulSet volumeClaimTemplates.",
+  "descriptionText": "StatefulSets should not define a storage request under `spec.volumeClaimTemplates[*].spec.resources.requests.storage`. This rule flags any StatefulSet that includes this field.",
   "descriptionUrl": "https://docs.datadoghq.com/security/code_security/iac_security/iac_rules/k8s/statefulset_requests_storage",
   "platform": "Kubernetes",
   "descriptionID": "6210afe6",
