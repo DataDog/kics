@@ -7,6 +7,7 @@ meta:
   display_name: "Unpinned actions full length commit SHA"
   cloud_provider: "github"
   framework: "CICD"
+  platform: "CICD"
   severity: "LOW"
   category: "Supply-Chain"
 ---

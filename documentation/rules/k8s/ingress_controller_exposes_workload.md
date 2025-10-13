@@ -7,6 +7,7 @@ meta:
   display_name: "Ingress controller exposes workload"
   cloud_provider: "k8s"
   framework: "Kubernetes"
+  platform: "Kubernetes"
   severity: "MEDIUM"
   category: "Insecure Configurations"
 ---

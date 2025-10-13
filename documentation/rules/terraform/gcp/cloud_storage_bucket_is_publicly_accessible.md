@@ -7,6 +7,7 @@ meta:
   display_name: "Cloud Storage bucket is publicly accessible"
   cloud_provider: "gcp"
   framework: "Terraform"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"
 ---

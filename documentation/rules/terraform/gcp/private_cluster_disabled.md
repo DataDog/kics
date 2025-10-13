@@ -7,6 +7,7 @@ meta:
   display_name: "Private cluster disabled"
   cloud_provider: "gcp"
   framework: "Terraform"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Insecure Configurations"
 ---

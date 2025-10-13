@@ -7,6 +7,7 @@ meta:
   display_name: "Ensure that PostgreSQL server disables public network access"
   cloud_provider: "azure"
   framework: "Terraform"
+  platform: "Terraform"
   severity: "HIGH"
   category: "Networking and Firewall"
 ---

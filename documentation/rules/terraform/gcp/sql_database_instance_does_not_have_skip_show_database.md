@@ -7,6 +7,7 @@ meta:
   display_name: "Ensure SQL database instance has skip show database flag"
   cloud_provider: "gcp"
   framework: "Terraform"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Insecure Configurations"
 ---

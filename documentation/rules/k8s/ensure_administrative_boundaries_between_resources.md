@@ -7,6 +7,7 @@ meta:
   display_name: "Ensure administrative boundaries between resources"
   cloud_provider: "k8s"
   framework: "Kubernetes"
+  platform: "Kubernetes"
   severity: "INFO"
   category: "Access Control"
 ---

@@ -7,6 +7,7 @@ meta:
   display_name: "Kubelet protect-kernel-defaults set to false"
   cloud_provider: "k8s"
   framework: "Kubernetes"
+  platform: "Kubernetes"
   severity: "MEDIUM"
   category: "Insecure Configurations"
 ---

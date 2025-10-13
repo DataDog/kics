@@ -7,6 +7,7 @@ meta:
   display_name: "SQL DB instance publicly accessible"
   cloud_provider: "gcp"
   framework: "Terraform"
+  platform: "Terraform"
   severity: "CRITICAL"
   category: "Insecure Configurations"
 ---

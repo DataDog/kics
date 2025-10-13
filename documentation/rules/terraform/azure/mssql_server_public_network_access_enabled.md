@@ -7,6 +7,7 @@ meta:
   display_name: "MSSQL server public network access enabled"
   cloud_provider: "azure"
   framework: "Terraform"
+  platform: "Terraform"
   severity: "HIGH"
   category: "Networking and Firewall"
 ---

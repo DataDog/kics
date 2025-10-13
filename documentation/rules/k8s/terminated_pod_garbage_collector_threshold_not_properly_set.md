@@ -7,6 +7,7 @@ meta:
   display_name: "Terminated pod garbage collector threshold not properly set"
   cloud_provider: "k8s"
   framework: "Kubernetes"
+  platform: "Kubernetes"
   severity: "MEDIUM"
   category: "Availability"
 ---

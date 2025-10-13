@@ -7,6 +7,7 @@ meta:
   display_name: "Profiling not set to false"
   cloud_provider: "k8s"
   framework: "Kubernetes"
+  platform: "Kubernetes"
   severity: "LOW"
   category: "Observability"
 ---

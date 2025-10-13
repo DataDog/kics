@@ -7,6 +7,7 @@ meta:
   display_name: "DocumentDB cluster not encrypted"
   cloud_provider: "aws"
   framework: "Terraform"
+  platform: "Terraform"
   severity: "HIGH"
   category: "Encryption"
 ---

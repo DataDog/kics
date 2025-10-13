@@ -106,6 +106,7 @@ meta:
   display_name: "{display_name}"
   cloud_provider: "{cloud_provider}"
   framework: "{framework}"
+  platform: "{framework}"
   severity: "{severity}"
   category: "{category}"
 ---

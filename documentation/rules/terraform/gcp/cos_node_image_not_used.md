@@ -7,6 +7,7 @@ meta:
   display_name: "COS node image not used"
   cloud_provider: "gcp"
   framework: "Terraform"
+  platform: "Terraform"
   severity: "LOW"
   category: "Insecure Configurations"
 ---

@@ -7,6 +7,7 @@ meta:
   display_name: "Service with external load balancer"
   cloud_provider: "k8s"
   framework: "Kubernetes"
+  platform: "Kubernetes"
   severity: "MEDIUM"
   category: "Networking and Firewall"
 ---

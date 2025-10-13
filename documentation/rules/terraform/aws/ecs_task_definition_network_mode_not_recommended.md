@@ -7,6 +7,7 @@ meta:
   display_name: "ECS task definition network mode not recommended"
   cloud_provider: "aws"
   framework: "Terraform"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Insecure Configurations"
 ---

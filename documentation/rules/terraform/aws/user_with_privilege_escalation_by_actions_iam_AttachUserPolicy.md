@@ -7,6 +7,7 @@ meta:
   display_name: "User with privilege escalation by actions 'iam:AttachUserPolicy'"
   cloud_provider: "aws"
   framework: "Terraform"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"
 ---

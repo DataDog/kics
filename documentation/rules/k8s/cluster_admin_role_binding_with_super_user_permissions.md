@@ -7,6 +7,7 @@ meta:
   display_name: "Cluster admin rolebinding with superuser permissions"
   cloud_provider: "k8s"
   framework: "Kubernetes"
+  platform: "Kubernetes"
   severity: "LOW"
   category: "Access Control"
 ---

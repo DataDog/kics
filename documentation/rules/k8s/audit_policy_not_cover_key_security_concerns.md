@@ -7,6 +7,7 @@ meta:
   display_name: "Audit policy does not cover key security concerns"
   cloud_provider: "k8s"
   framework: "Kubernetes"
+  platform: "Kubernetes"
   severity: "LOW"
   category: "Observability"
 ---

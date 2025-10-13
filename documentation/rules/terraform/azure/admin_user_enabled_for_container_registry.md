@@ -7,6 +7,7 @@ meta:
   display_name: "Admin user enabled for container registry"
   cloud_provider: "azure"
   framework: "Terraform"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"
 ---

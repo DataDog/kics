@@ -7,6 +7,7 @@ meta:
   display_name: "SNS topic publicity has allow and NotAction simultaneously"
   cloud_provider: "aws"
   framework: "Terraform"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"
 ---

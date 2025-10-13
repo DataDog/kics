@@ -7,6 +7,7 @@ meta:
   display_name: "Unsecured commands"
   cloud_provider: "github"
   framework: "CICD"
+  platform: "CICD"
   severity: "MEDIUM"
   category: "Insecure Configurations"
 ---

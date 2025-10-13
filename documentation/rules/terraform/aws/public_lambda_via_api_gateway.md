@@ -7,6 +7,7 @@ meta:
   display_name: "Public Lambda via API Gateway"
   cloud_provider: "aws"
   framework: "Terraform"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"
 ---

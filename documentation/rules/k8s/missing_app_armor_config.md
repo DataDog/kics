@@ -7,6 +7,7 @@ meta:
   display_name: "Missing AppArmor profile"
   cloud_provider: "k8s"
   framework: "Kubernetes"
+  platform: "Kubernetes"
   severity: "LOW"
   category: "Access Control"
 ---

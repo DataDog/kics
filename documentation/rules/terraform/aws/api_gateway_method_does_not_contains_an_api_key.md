@@ -7,6 +7,7 @@ meta:
   display_name: "API Gateway method does not contains an API key"
   cloud_provider: "aws"
   framework: "Terraform"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"
 ---

@@ -7,6 +7,7 @@ meta:
   display_name: "Security group not used"
   cloud_provider: "aws"
   framework: "Terraform"
+  platform: "Terraform"
   severity: "INFO"
   category: "Access Control"
 ---

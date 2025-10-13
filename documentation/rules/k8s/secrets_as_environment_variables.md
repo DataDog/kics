@@ -7,6 +7,7 @@ meta:
   display_name: "Secrets used as environment variables"
   cloud_provider: "k8s"
   framework: "Kubernetes"
+  platform: "Kubernetes"
   severity: "LOW"
   category: "Secret Management"
 ---

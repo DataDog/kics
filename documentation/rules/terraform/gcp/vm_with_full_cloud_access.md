@@ -7,6 +7,7 @@ meta:
   display_name: "VM with full cloud access"
   cloud_provider: "gcp"
   framework: "Terraform"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"
 ---

@@ -7,6 +7,7 @@ meta:
   display_name: "Lambda with vulnerable policy"
   cloud_provider: "aws"
   framework: "Terraform"
+  platform: "Terraform"
   severity: "HIGH"
   category: "Access Control"
 ---

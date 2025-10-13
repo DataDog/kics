@@ -7,6 +7,7 @@ meta:
   display_name: "Service account with improper privileges"
   cloud_provider: "gcp"
   framework: "Terraform"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Resource Management"
 ---

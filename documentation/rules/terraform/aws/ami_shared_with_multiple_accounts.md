@@ -7,6 +7,7 @@ meta:
   display_name: "AMI shared with multiple accounts"
   cloud_provider: "aws"
   framework: "Terraform"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"
 ---

@@ -7,6 +7,7 @@ meta:
   display_name: "Lambda functions without X-Ray tracing"
   cloud_provider: "aws"
   framework: "Terraform"
+  platform: "Terraform"
   severity: "LOW"
   category: "Observability"
 ---

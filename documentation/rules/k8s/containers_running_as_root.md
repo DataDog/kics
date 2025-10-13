@@ -7,6 +7,7 @@ meta:
   display_name: "Container running as root"
   cloud_provider: "k8s"
   framework: "Kubernetes"
+  platform: "Kubernetes"
   severity: "MEDIUM"
   category: "Best Practices"
 ---

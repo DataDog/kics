@@ -7,6 +7,7 @@ meta:
   display_name: "SQL server predictable admin account name"
   cloud_provider: "azure"
   framework: "Terraform"
+  platform: "Terraform"
   severity: "LOW"
   category: "Best Practices"
 ---

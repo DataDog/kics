@@ -7,6 +7,7 @@ meta:
   display_name: "IAM audit not properly configured"
   cloud_provider: "gcp"
   framework: "Terraform"
+  platform: "Terraform"
   severity: "LOW"
   category: "Observability"
 ---

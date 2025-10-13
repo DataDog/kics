@@ -7,6 +7,7 @@ meta:
   display_name: "RBAC wildcard in rule"
   cloud_provider: "k8s"
   framework: "Kubernetes"
+  platform: "Kubernetes"
   severity: "HIGH"
   category: "Access Control"
 ---

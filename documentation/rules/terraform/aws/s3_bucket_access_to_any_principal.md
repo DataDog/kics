@@ -7,6 +7,7 @@ meta:
   display_name: "S3 bucket access to any principal"
   cloud_provider: "aws"
   framework: "Terraform"
+  platform: "Terraform"
   severity: "CRITICAL"
   category: "Access Control"
 ---

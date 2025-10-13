@@ -7,6 +7,7 @@ meta:
   display_name: "Stack without template"
   cloud_provider: "aws"
   framework: "Terraform"
+  platform: "Terraform"
   severity: "LOW"
   category: "Build Process"
 ---

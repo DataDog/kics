@@ -7,6 +7,7 @@ meta:
   display_name: "Disk encryption disabled"
   cloud_provider: "gcp"
   framework: "Terraform"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Encryption"
 ---

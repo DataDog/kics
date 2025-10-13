@@ -7,6 +7,7 @@ meta:
   display_name: "BigQuery dataset is public"
   cloud_provider: "gcp"
   framework: "Terraform"
+  platform: "Terraform"
   severity: "HIGH"
   category: "Access Control"
 ---

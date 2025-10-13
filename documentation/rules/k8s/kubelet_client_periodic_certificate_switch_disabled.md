@@ -7,6 +7,7 @@ meta:
   display_name: "Kubelet client periodic certificate switch disabled"
   cloud_provider: "k8s"
   framework: "Kubernetes"
+  platform: "Kubernetes"
   severity: "MEDIUM"
   category: "Secret Management"
 ---

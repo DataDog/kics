@@ -7,6 +7,7 @@ meta:
   display_name: "Public and private EC2 share role"
   cloud_provider: "aws"
   framework: "Terraform"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"
 ---

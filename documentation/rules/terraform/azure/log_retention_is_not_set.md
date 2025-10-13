@@ -7,6 +7,7 @@ meta:
   display_name: "Log retention is not set"
   cloud_provider: "azure"
   framework: "Terraform"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Observability"
 ---

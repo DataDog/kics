@@ -7,6 +7,7 @@ meta:
   display_name: "Liveness probe is not defined"
   cloud_provider: "k8s"
   framework: "Kubernetes"
+  platform: "Kubernetes"
   severity: "INFO"
   category: "Availability"
 ---

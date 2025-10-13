@@ -7,6 +7,7 @@ meta:
   display_name: "Dynamodb VPC endpoint without route table association"
   cloud_provider: "aws"
   framework: "Terraform"
+  platform: "Terraform"
   severity: "LOW"
   category: "Networking and Firewall"
 ---

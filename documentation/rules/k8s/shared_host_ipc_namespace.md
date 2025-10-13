@@ -7,6 +7,7 @@ meta:
   display_name: "Shared host IPC namespace"
   cloud_provider: "k8s"
   framework: "Kubernetes"
+  platform: "Kubernetes"
   severity: "MEDIUM"
   category: "Resource Management"
 ---

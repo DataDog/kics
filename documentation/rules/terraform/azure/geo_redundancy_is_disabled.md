@@ -7,6 +7,7 @@ meta:
   display_name: "Geo redundancy is disabled"
   cloud_provider: "azure"
   framework: "Terraform"
+  platform: "Terraform"
   severity: "LOW"
   category: "Backup"
 ---

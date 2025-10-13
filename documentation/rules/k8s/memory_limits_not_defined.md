@@ -7,6 +7,7 @@ meta:
   display_name: "Memory limits not defined"
   cloud_provider: "k8s"
   framework: "Kubernetes"
+  platform: "Kubernetes"
   severity: "MEDIUM"
   category: "Resource Management"
 ---

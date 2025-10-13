@@ -7,6 +7,7 @@ meta:
   display_name: "Instance with no VPC"
   cloud_provider: "aws"
   framework: "Terraform"
+  platform: "Terraform"
   severity: "LOW"
   category: "Insecure Configurations"
 ---

@@ -7,6 +7,7 @@ meta:
   display_name: "EC2 instance using API keys"
   cloud_provider: "aws"
   framework: "Terraform"
+  platform: "Terraform"
   severity: "LOW"
   category: "Access Control"
 ---

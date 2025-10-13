@@ -7,6 +7,7 @@ meta:
   display_name: "Security group is not configured"
   cloud_provider: "azure"
   framework: "Terraform"
+  platform: "Terraform"
   severity: "HIGH"
   category: "Insecure Configurations"
 ---

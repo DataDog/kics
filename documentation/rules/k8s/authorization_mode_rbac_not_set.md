@@ -7,6 +7,7 @@ meta:
   display_name: "Authorization mode RBAC not set"
   cloud_provider: "k8s"
   framework: "Kubernetes"
+  platform: "Kubernetes"
   severity: "MEDIUM"
   category: "Access Control"
 ---

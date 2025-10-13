@@ -7,6 +7,7 @@ meta:
   display_name: "SQL Server cross DB ownership chaining enabled"
   cloud_provider: "gcp"
   framework: "Terraform"
+  platform: "Terraform"
   severity: "HIGH"
   category: "Insecure Configurations"
 ---

@@ -7,6 +7,7 @@ meta:
   display_name: "Client certificate authentication not set up properly"
   cloud_provider: "k8s"
   framework: "Kubernetes"
+  platform: "Kubernetes"
   severity: "HIGH"
   category: "Access Control"
 ---

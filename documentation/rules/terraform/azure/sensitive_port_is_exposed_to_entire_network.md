@@ -7,6 +7,7 @@ meta:
   display_name: "Sensitive port is exposed to entire network"
   cloud_provider: "azure"
   framework: "Terraform"
+  platform: "Terraform"
   severity: "HIGH"
   category: "Networking and Firewall"
 ---

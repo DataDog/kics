@@ -7,6 +7,7 @@ meta:
   display_name: "Elasticsearch without slow logs"
   cloud_provider: "aws"
   framework: "Terraform"
+  platform: "Terraform"
   severity: "LOW"
   category: "Observability"
 ---

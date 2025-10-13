@@ -7,6 +7,7 @@ meta:
   display_name: "CloudWatch AWS organizations changes missing alarm"
   cloud_provider: "aws"
   framework: "Terraform"
+  platform: "Terraform"
   severity: "INFO"
   category: "Observability"
 ---

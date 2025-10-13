@@ -7,6 +7,7 @@ meta:
   display_name: "Certificate RSA key bytes lower than 256"
   cloud_provider: "aws"
   framework: "Terraform"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Insecure Configurations"
 ---

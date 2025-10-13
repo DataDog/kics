@@ -7,6 +7,7 @@ meta:
   display_name: "Google project IAM member service account has admin role"
   cloud_provider: "gcp"
   framework: "Terraform"
+  platform: "Terraform"
   severity: "HIGH"
   category: "Access Control"
 ---

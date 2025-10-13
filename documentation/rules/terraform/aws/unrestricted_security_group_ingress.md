@@ -7,6 +7,7 @@ meta:
   display_name: "Unrestricted security group ingress"
   cloud_provider: "aws"
   framework: "Terraform"
+  platform: "Terraform"
   severity: "HIGH"
   category: "Networking and Firewall"
 ---

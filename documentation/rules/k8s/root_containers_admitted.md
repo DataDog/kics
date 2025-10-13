@@ -7,6 +7,7 @@ meta:
   display_name: "Root containers admitted"
   cloud_provider: "k8s"
   framework: "Kubernetes"
+  platform: "Kubernetes"
   severity: "MEDIUM"
   category: "Best Practices"
 ---

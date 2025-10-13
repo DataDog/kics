@@ -7,6 +7,7 @@ meta:
   display_name: "SQL server auditing disabled"
   cloud_provider: "azure"
   framework: "Terraform"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Observability"
 ---

@@ -7,6 +7,7 @@ meta:
   display_name: "Using default service account"
   cloud_provider: "gcp"
   framework: "Terraform"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Insecure Defaults"
 ---

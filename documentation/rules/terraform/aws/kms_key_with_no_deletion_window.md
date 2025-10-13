@@ -7,6 +7,7 @@ meta:
   display_name: "KMS key with no deletion window"
   cloud_provider: "aws"
   framework: "Terraform"
+  platform: "Terraform"
   severity: "LOW"
   category: "Observability"
 ---

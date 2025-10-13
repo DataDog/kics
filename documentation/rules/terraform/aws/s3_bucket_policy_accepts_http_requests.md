@@ -7,6 +7,7 @@ meta:
   display_name: "S3 bucket policy accepts HTTP requests"
   cloud_provider: "aws"
   framework: "Terraform"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Encryption"
 ---

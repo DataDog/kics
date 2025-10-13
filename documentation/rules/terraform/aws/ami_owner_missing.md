@@ -7,6 +7,7 @@ meta:
   display_name: "AMI most recent without owner or filter"
   cloud_provider: "aws"
   framework: "Terraform"
+  platform: "Terraform"
   severity: "HIGH"
   category: "Access Control"
 ---

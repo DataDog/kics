@@ -7,6 +7,7 @@ meta:
   display_name: "Group with privilege escalation by actions 'iam:AddUserToGroup'"
   cloud_provider: "aws"
   framework: "Terraform"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"
 ---

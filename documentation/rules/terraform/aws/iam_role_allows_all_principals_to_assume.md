@@ -7,6 +7,7 @@ meta:
   display_name: "IAM role allows all principals to assume"
   cloud_provider: "aws"
   framework: "Terraform"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"
 ---

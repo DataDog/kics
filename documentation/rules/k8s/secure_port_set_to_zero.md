@@ -7,6 +7,7 @@ meta:
   display_name: "Secure port set to zero"
   cloud_provider: "k8s"
   framework: "Kubernetes"
+  platform: "Kubernetes"
   severity: "HIGH"
   category: "Networking and Firewall"
 ---

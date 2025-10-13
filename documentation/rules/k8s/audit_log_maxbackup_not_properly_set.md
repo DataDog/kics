@@ -7,6 +7,7 @@ meta:
   display_name: "Audit log maxbackup not properly set"
   cloud_provider: "k8s"
   framework: "Kubernetes"
+  platform: "Kubernetes"
   severity: "LOW"
   category: "Observability"
 ---

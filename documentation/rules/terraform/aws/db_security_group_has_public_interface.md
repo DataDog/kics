@@ -7,6 +7,7 @@ meta:
   display_name: "DB security group has public interface"
   cloud_provider: "aws"
   framework: "Terraform"
+  platform: "Terraform"
   severity: "HIGH"
   category: "Insecure Configurations"
 ---
