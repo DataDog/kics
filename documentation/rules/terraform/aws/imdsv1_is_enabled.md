@@ -90,14 +90,13 @@ resource "aws_launch_template" "bad_example" {
   }
 }
 
-# Test case 1: Missing metadata_options entirely (should trigger finding) - K9VULN-7671 scenario
+# Test case 1: Missing metadata_options entirely (should trigger finding)
 resource "aws_launch_template" "missing_metadata_options" {
   name_prefix   = "missing-metadata"
   image_id      = "ami-123456"
   instance_type = "t2.micro"
 }
 
-# This is not a test case, but validates case https://datadoghq.atlassian.net/browse/K9VULN-7671
 resource "aws_launch_template" "good_example" {
   name_prefix   = "secure"
   image_id      = "ami-123456"
