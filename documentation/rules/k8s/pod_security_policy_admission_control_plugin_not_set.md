@@ -28,7 +28,7 @@ meta:
 
 ### Description
 
- When using `kube-apiserver`, the `--enable-admission-plugins` flag should include `PodSecurityPolicy`, and it should be correctly configured in the admission control config file.
+ When a `kube-apiserver` container is present (in `containers` or `initContainers`), the `--enable-admission-plugins` flag should include `PodSecurityPolicy`. The rule inspects the container `command` for `kube-apiserver` and reports a MissingAttribute if the flag does not contain `PodSecurityPolicy`. The admission control configuration file should also be correctly configured to enable the plugin.
 
 
 ## Compliant Code Examples

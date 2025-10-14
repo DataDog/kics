@@ -32,6 +32,16 @@ meta:
 
 
 ## Compliant Code Examples
+```yaml
+- name: upload a self-signed certificate2
+  community.aws.aws_acm:
+    certificate: "{{ lookup('file', 'validCertificate.pem' ) }}"
+    privateKey: "{{ lookup('file', 'key.pem' ) }}"
+    name_tag: my_cert
+    region: ap-southeast-2
+
+```
+
 ```terraform
 resource "aws_api_gateway_domain_name" "example" {
   certificate_body = file("validCertificate.pem")
@@ -41,6 +51,16 @@ resource "aws_api_gateway_domain_name" "example" {
 
 ```
 ## Non-Compliant Code Examples
+```yaml
+- name: upload a self-signed certificate
+  community.aws.aws_acm:
+    certificate: "{{ lookup('file', 'expiredCertificate.pem' ) }}"
+    privateKey: "{{ lookup('file', 'key.pem' ) }}"
+    name_tag: my_cert
+    region: ap-southeast-2
+
+```
+
 ```terraform
 resource "aws_api_gateway_domain_name" "example2" {
   certificate_body = file("expiredCertificate.pem")

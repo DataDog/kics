@@ -28,7 +28,10 @@ meta:
 
 ### Description
 
- Containers must not be allowed to run with root privileges; `privileged`, `allowPrivilegeEscalation`, and `readOnlyRootFilesystem` must be set to `false`; `runAsUser.rule` must be set to `MustRunAsNonRoot`; and adding the root group must be forbidden.
+ To ensure containers do not run with root privileges:
+- Set `privileged`, `allowPrivilegeEscalation`, and `readOnlyRootFilesystem` to `false`.
+- Set `runAsUser.rule` to `MustRunAsNonRoot`.
+- Configure `fsGroup` and `supplementalGroups` with `MustRunAs`, ensuring the root range (GID 0) and root group are not permitted.
 
 
 ## Compliant Code Examples

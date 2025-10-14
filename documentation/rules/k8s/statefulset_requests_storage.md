@@ -28,7 +28,7 @@ meta:
 
 ### Description
 
- A StatefulSet requests persistent volume storage.
+ StatefulSets should not define a storage request under `spec.volumeClaimTemplates[*].spec.resources.requests.storage`. This rule flags any StatefulSet that includes this field.
 
 
 ## Compliant Code Examples

@@ -28,7 +28,7 @@ meta:
 
 ### Description
 
- A readiness probe should be configured.
+ Each container should define a `readinessProbe`. This rule flags containers that do not have the `readinessProbe` attribute set (excludes resources of kind Job and CronJob). A configured `readinessProbe` lets the kubelet determine when a pod is ready to receive traffic.
 
 
 ## Compliant Code Examples

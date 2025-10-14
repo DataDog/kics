@@ -28,7 +28,7 @@ meta:
 
 ### Description
 
- When using `kube-apiserver`, the `--audit-log-maxbackup` flag should be set to 10 files or more.
+ When a container or initContainer runs `kube-apiserver`, the `--audit-log-maxbackup` flag should be set to 10 or more. The rule reports a MissingAttribute when the flag is not defined and an IncorrectValue when the flag is defined with a value less than 10. Setting the flag to at least 10 helps retain rotated audit logs for a longer period.
 
 
 ## Compliant Code Examples

@@ -28,7 +28,7 @@ meta:
 
 ### Description
 
- When using `kube-apiserver`, the `--authorization-mode` flag should include `Node`.
+ When a container runs `kube-apiserver`, the `--authorization-mode` flag should include `Node`. This rule applies to both `containers` and `initContainers` and inspects the container `command` to verify the presence of `--authorization-mode` with the `Node` value. Omission of `Node` from `--authorization-mode` may disable node-level authorization and increase the API server's security risk.
 
 
 ## Compliant Code Examples

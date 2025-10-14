@@ -28,7 +28,7 @@ meta:
 
 ### Description
 
- When using `kube-apiserver`, the `--audit-log-path` flag should be set.
+ When `kube-apiserver` appears in a container command, the `--audit-log-path` flag should be set. This rule detects containers running `kube-apiserver` that do not include the `--audit-log-path` flag. Without `--audit-log-path`, the API server will not write audit logs to a file, preventing persistent audit records and hindering incident investigation and compliance.
 
 
 ## Compliant Code Examples

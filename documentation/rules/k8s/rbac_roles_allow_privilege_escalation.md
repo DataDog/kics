@@ -28,7 +28,7 @@ meta:
 
 ### Description
 
- Roles or ClusterRoles with `bind` or `escalate` permissions allow subjects to create new bindings with other roles. This is dangerous, as users with these privileges can bind to roles that may exceed their own privileges.
+ Roles or ClusterRoles that include `bind` or `escalate` permissions allow subjects to create new bindings with other roles. These permissions enable privilege escalation, because users with them can bind to roles that may exceed their own privileges and gain unauthorized elevated access. This rule flags Role and ClusterRole objects whose rules include `bind` or `escalate` for the `roles` or `clusterroles` resources.
 
 
 ## Compliant Code Examples

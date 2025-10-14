@@ -28,7 +28,7 @@ meta:
 
 ### Description
 
- Namespaces such as `default`, `kube-system`, or `kube-public` should not be used.
+ Resources must include a non-null `metadata.namespace`. Namespaces such as `default`, `kube-system`, and `kube-public` must not be used; choose an appropriate non-system namespace instead.
 
 
 ## Compliant Code Examples

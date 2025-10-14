@@ -28,7 +28,7 @@ meta:
 
 ### Description
 
- A Kubernetes Pod should have a service account defined to restrict Kubernetes API access; the `serviceAccountName` attribute should be set and not empty.
+ A Kubernetes Pod should have a service account defined to restrict Kubernetes API access. The `serviceAccountName` attribute should be present in the Pod spec and not be empty. Pods missing this attribute or having an empty value are reported by the rule.
 
 
 ## Compliant Code Examples

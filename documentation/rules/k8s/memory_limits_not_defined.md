@@ -28,7 +28,7 @@ meta:
 
 ### Description
 
- Memory limits should be defined for each container to prevent resource exhaustion by ensuring that containers do not consume more than the designated amount of memory.
+ Memory limits (`resources.limits.memory`) should be defined for each container (including `initContainers`) to prevent resource exhaustion by ensuring containers cannot consume more memory than allotted. Defining memory limits helps maintain cluster stability and predictable resource scheduling.
 
 
 ## Compliant Code Examples

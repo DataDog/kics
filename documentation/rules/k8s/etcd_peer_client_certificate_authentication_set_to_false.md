@@ -28,7 +28,7 @@ meta:
 
 ### Description
 
- When using `etcd`, the `--peer-client-cert-auth` flag should be set to `true`.
+ When using `etcd`, the `--peer-client-cert-auth` flag should be set to `true`. If the flag is set to `false` or not defined, peer client certificate authentication will be disabled, reducing cluster security.
 
 
 ## Compliant Code Examples

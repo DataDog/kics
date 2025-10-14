@@ -28,7 +28,7 @@ meta:
 
 ### Description
 
- No Role or ClusterRole should bind to a default service account.
+ No RoleBinding or ClusterRoleBinding should bind to the default ServiceAccount. Binding roles to the default ServiceAccount grants those permissions to all pods that use that account in the namespace, increasing the risk of unintended privilege escalation. This undermines least-privilege principles and can expose workloads to unnecessary privileges.
 
 
 ## Compliant Code Examples

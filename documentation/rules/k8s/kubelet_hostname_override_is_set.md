@@ -29,6 +29,8 @@ meta:
 ### Description
 
  Hostnames should not be overridden.
+This rule detects containers (including `initContainers`) whose command invokes `kubelet` and includes the `--hostname-override=` flag.
+Overriding the node hostname can create duplicate or incorrect hostnames and may disrupt node identity and cluster operations.
 
 
 ## Compliant Code Examples

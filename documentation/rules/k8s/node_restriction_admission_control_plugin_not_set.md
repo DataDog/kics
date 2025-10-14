@@ -28,7 +28,7 @@ meta:
 
 ### Description
 
- When using `kube-apiserver`, the `--enable-admission-plugins` flag should include `NodeRestriction`, and it should be correctly configured in the admission control config file.
+ When a container runs `kube-apiserver`, the `--enable-admission-plugins` flag should include `NodeRestriction`. This rule checks container command lines and reports resources where `--enable-admission-plugins` does not contain `NodeRestriction`. The `NodeRestriction` plugin must also be enabled in the cluster admission control configuration.
 
 
 ## Compliant Code Examples

@@ -28,7 +28,7 @@ meta:
 
 ### Description
 
- The Service type should not be `NodePort`.
+ Service resources should not have `spec.type` set to `NodePort`. A `NodePort` service exposes pods on each node and can create security and accessibility concerns; prefer `ClusterIP` or `LoadBalancer` where appropriate.
 
 
 ## Compliant Code Examples

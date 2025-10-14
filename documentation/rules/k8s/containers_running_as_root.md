@@ -28,7 +28,7 @@ meta:
 
 ### Description
 
- Containers should run only as a non-root user. This limits the exploitability of security misconfigurations and restricts an attacker's options in case of compromise.
+ Containers should run as a non-root user. This rule checks `securityContext.runAsUser` and `securityContext.runAsNonRoot` at both the container and pod levels (including inherited settings) and requires `runAsUser` > 0 and/or `runAsNonRoot` = true. Running as non-root reduces the exploitability of security misconfigurations and limits an attacker's options if a container is compromised.
 
 
 ## Compliant Code Examples

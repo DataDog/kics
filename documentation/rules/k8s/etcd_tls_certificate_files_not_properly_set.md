@@ -28,7 +28,7 @@ meta:
 
 ### Description
 
- When using `etcd`, the `--cert-file` and `--key-file` flags should be set.
+ For containers and initContainers that run `etcd`, the `--cert-file` and `--key-file` flags must be set. This rule reports resources whose container command includes `etcd` but where one or both flags are missing from the container command.
 
 
 ## Compliant Code Examples
