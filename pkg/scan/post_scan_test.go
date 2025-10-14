@@ -10,7 +10,6 @@ import (
 	"github.com/Checkmarx/kics/internal/tracker"
 	"github.com/Checkmarx/kics/pkg/model"
 	"github.com/Checkmarx/kics/pkg/printer"
-	"github.com/Checkmarx/kics/pkg/progress"
 	"github.com/Checkmarx/kics/pkg/utils"
 	"github.com/stretchr/testify/require"
 )
@@ -38,14 +37,8 @@ func Test_GetSummary(t *testing.T) {
 				ExecutingQueries:   1,
 				ExecutedQueries:    1,
 				FailedSimilarityID: 12312312,
-				Version: model.Version{
-					Latest:           true,
-					LatestVersionTag: "Dev",
-				},
 			},
-			scanParameters: Parameters{
-				DisableFullDesc: false,
-			},
+			scanParameters: Parameters{},
 			results: []model.Vulnerability{
 				{
 					ScanID:       "console",
@@ -73,10 +66,6 @@ func Test_GetSummary(t *testing.T) {
 			},
 			expectedResult: model.Summary{
 				Version: "",
-				LatestVersion: model.Version{
-					Latest:           true,
-					LatestVersionTag: "Dev",
-				},
 				Counters: model.Counters{
 					ScannedFiles:           1,
 					ScannedFilesLines:      1,
@@ -128,12 +117,11 @@ func Test_GetSummary(t *testing.T) {
 func Test_PrintOutput(t *testing.T) {
 
 	tests := []struct {
-		name          string
-		outputPath    string
-		filename      string
-		body          interface{}
-		formats       []string
-		proBarBuilder progress.PbBuilder
+		name       string
+		outputPath string
+		filename   string
+		body       interface{}
+		formats    []string
 	}{
 		{
 			name:       "print result without output file",
@@ -141,10 +129,6 @@ func Test_PrintOutput(t *testing.T) {
 			filename:   "results",
 			body: model.Summary{
 				Version: "",
-				LatestVersion: model.Version{
-					Latest:           true,
-					LatestVersionTag: "",
-				},
 				Counters: model.Counters{
 					ScannedFiles:           10,
 					ScannedFilesLines:      76,
@@ -182,7 +166,6 @@ func Test_PrintOutput(t *testing.T) {
 			formats: []string{
 				"json",
 			},
-			proBarBuilder: *progress.InitializePbBuilder(true, false, true),
 		},
 		{
 			name:       "print with output path",
@@ -190,10 +173,6 @@ func Test_PrintOutput(t *testing.T) {
 			filename:   "results",
 			body: model.Summary{
 				Version: "",
-				LatestVersion: model.Version{
-					Latest:           true,
-					LatestVersionTag: "",
-				},
 				Counters: model.Counters{
 					ScannedFiles:           10,
 					ScannedFilesLines:      76,
@@ -231,7 +210,6 @@ func Test_PrintOutput(t *testing.T) {
 			formats: []string{
 				"json",
 			},
-			proBarBuilder: *progress.InitializePbBuilder(true, false, true),
 		},
 		{
 			name:       "print with empty formats",
@@ -239,10 +217,6 @@ func Test_PrintOutput(t *testing.T) {
 			filename:   "results",
 			body: model.Summary{
 				Version: "",
-				LatestVersion: model.Version{
-					Latest:           true,
-					LatestVersionTag: "",
-				},
 				Counters: model.Counters{
 					ScannedFiles:           10,
 					ScannedFilesLines:      76,
@@ -277,15 +251,14 @@ func Test_PrintOutput(t *testing.T) {
 					"assets/queries/terraform/alicloud/action_trail_logging_all_regions_disabled/test/positive9.tf": "/home/miguel/cx/kics/assets/queries/terraform/alicloud/action_trail_logging_all_regions_disabled/test/positive9.tf",
 				},
 			},
-			formats:       []string{},
-			proBarBuilder: *progress.InitializePbBuilder(true, false, true),
+			formats: []string{},
 		},
 	}
 
 	ctx := context.Background()
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			err := printOutput(ctx, tt.outputPath, tt.filename, tt.body, tt.formats, tt.proBarBuilder, model.SCIInfo{})
+			err := printOutput(ctx, tt.outputPath, tt.filename, tt.body, tt.formats, model.SCIInfo{})
 			os.Remove(filepath.Join("..", "..", tt.filename+".json"))
 			require.NoError(t, err)
 		})
@@ -316,14 +289,8 @@ func Test_resolveOutputs(t *testing.T) {
 				FailedSimilarityID: 0,
 				LoadedQueries:      0,
 				ParsedFiles:        0,
-				ScanSecrets:        0,
-				ScanPaths:          0,
 				FoundCountLines:    0,
 				ParsedCountLines:   0,
-				Version: model.Version{
-					Latest:           true,
-					LatestVersionTag: "",
-				},
 			},
 		},
 	}
@@ -334,7 +301,6 @@ func Test_resolveOutputs(t *testing.T) {
 			c := Client{}
 			c.Tracker = &tt.tracker
 			c.ScanParams = &tt.scanParams
-			c.ProBarBuilder = progress.InitializePbBuilder(true, false, true)
 			c.Printer = printer.NewPrinter(true)
 			md, err := c.postScan(ctx, tt.scanResults)
 			require.NotNil(t, md)
@@ -364,10 +330,6 @@ func Test_GetScanMetadata(t *testing.T) {
 				ExecutingQueries:   1,
 				ExecutedQueries:    1,
 				FailedSimilarityID: 12312312,
-				Version: model.Version{
-					Latest:           true,
-					LatestVersionTag: "Dev",
-				},
 			},
 			results: &Results{
 				Files: []model.FileMetadata{

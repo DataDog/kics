@@ -14,7 +14,7 @@ func Test_Client(t *testing.T) {
 		ExcludeResults: []string{},
 	}
 
-	client, err := NewClient(ctx, params, nil, nil)
+	client, err := NewClient(ctx, params, nil)
 
 	require.NotNil(t, client)
 	require.NoError(t, err)
@@ -27,7 +27,7 @@ func Test_ClientError(t *testing.T) {
 		ExcludeResults: []string{},
 	}
 
-	client, err := NewClient(ctx, params, nil, nil)
+	client, err := NewClient(ctx, params, nil)
 
 	require.Nil(t, client)
 	require.Error(t, err)

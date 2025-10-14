@@ -25,10 +25,10 @@ func Test_E2EExclusions(t *testing.T) {
 				Files:      1,
 				Rules:      1124,
 				ViolationBreakdowns: map[string]map[string]int{
-					"INFO":   {
+					"INFO": {
 						"a2b3c4d5-e6f7-8901-gh23-ijkl456m7890": 1,
 					},
-					"LOW":    {
+					"LOW": {
 						"c5b31ab9-0f26-4a49-b8aa-4cc064392f4d": 2,
 					},
 					"MEDIUM": {
@@ -46,7 +46,7 @@ func Test_E2EExclusions(t *testing.T) {
 				Files:      1,
 				Rules:      1124,
 				ViolationBreakdowns: map[string]map[string]int{
-					"LOW":    {
+					"LOW": {
 						"c5b31ab9-0f26-4a49-b8aa-4cc064392f4d": 2,
 					},
 					"MEDIUM": {

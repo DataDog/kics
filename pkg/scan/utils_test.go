@@ -67,61 +67,6 @@ func Test_GetQueryPath(t *testing.T) {
 	}
 }
 
-func Test_PrintVersionCheck(t *testing.T) {
-	tests := []struct {
-		name           string
-		consolePrinter *consolePrinter.Printer
-		modelSummary   *model.Summary
-		expectedOutput string
-	}{
-		{
-			name:           "test latest version",
-			consolePrinter: consolePrinter.NewPrinter(true),
-			modelSummary: &model.Summary{
-				Version: "v1.0.0",
-				LatestVersion: model.Version{
-					Latest:           true,
-					LatestVersionTag: "1.0.0",
-				},
-			},
-			expectedOutput: "",
-		},
-		{
-			name:           "test outdated version",
-			consolePrinter: consolePrinter.NewPrinter(true),
-			modelSummary: &model.Summary{
-				Version: "v1.0.0",
-				LatestVersion: model.Version{
-					Latest:           false,
-					LatestVersionTag: "1.1.0",
-				},
-			},
-			expectedOutput: "A new version 'v1.1.0' of KICS is available, please consider updating",
-		},
-	}
-
-	ctx := context.Background()
-	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T) {
-			rescueStdout := os.Stdout
-			r, w, _ := os.Pipe()
-			os.Stdout = w
-
-			printVersionCheck(ctx, tt.consolePrinter, tt.modelSummary)
-
-			w.Close()
-			out, _ := ioutil.ReadAll(r)
-			os.Stdout = rescueStdout
-
-			if tt.expectedOutput != "" {
-				require.Contains(t, string(out), tt.expectedOutput)
-			} else {
-				require.Equal(t, tt.expectedOutput, string(out))
-			}
-		})
-	}
-}
-
 func Test_ContributionAppeal(t *testing.T) {
 	tests := []struct {
 		name           string

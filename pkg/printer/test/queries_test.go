@@ -18,7 +18,6 @@ package test
 // 	"github.com/Checkmarx/kics/pkg/engine/mock"
 // 	"github.com/Checkmarx/kics/pkg/engine/source"
 // 	"github.com/Checkmarx/kics/pkg/model"
-// 	"github.com/Checkmarx/kics/pkg/progress"
 // 	"github.com/golang/mock/gomock"
 // 	"github.com/rs/zerolog"
 // 	"github.com/rs/zerolog/log"
@@ -227,13 +226,8 @@ package test
 // 	require.Nil(tb, err)
 // 	require.NotNil(tb, inspector)
 
-// 	wg := &sync.WaitGroup{}
 // 	currentQuery := make(chan int64)
-// 	proBarBuilder := progress.InitializePbBuilder(true, true, true)
 // 	platforms := MapToStringSlice(constants.AvailablePlatforms)
-// 	progressBar := proBarBuilder.BuildCounter("Executing queries: ", inspector.LenQueriesByPlat(platforms), wg, currentQuery)
-// 	go progressBar.Start()
-// 	wg.Add(1)
 
 // 	vulnerabilities, err := inspector.Inspect(
 // 		ctx,
@@ -244,12 +238,7 @@ package test
 // 		currentQuery,
 // 	)
 
-// 	go func() {
-// 		defer func() {
-// 			close(currentQuery)
-// 		}()
-// 		wg.Wait()
-// 	}()
+// 	close(currentQuery)
 
 // 	require.Nil(tb, err)
 // 	validateQueryResultFields(tb, vulnerabilities)

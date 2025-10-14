@@ -7,7 +7,6 @@ import (
 	"github.com/Checkmarx/kics/pkg/engine/source"
 	"github.com/Checkmarx/kics/pkg/model"
 	consolePrinter "github.com/Checkmarx/kics/pkg/printer"
-	"github.com/Checkmarx/kics/pkg/progress"
 	"github.com/stretchr/testify/require"
 )
 
@@ -46,7 +45,7 @@ func Test_ExecuteScan(t *testing.T) {
 	ctx := context.Background()
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			c, err := NewClient(ctx, &tt.scanParams, &progress.PbBuilder{}, &consolePrinter.Printer{})
+			c, err := NewClient(ctx, &tt.scanParams, &consolePrinter.Printer{})
 
 			if err != nil {
 				t.Fatalf(`NewClient failed for path %s with error: %v`, tt.scanParams.Path[0], err)

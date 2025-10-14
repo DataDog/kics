@@ -99,16 +99,9 @@ type Times struct {
 	End   time.Time `json:"end"`
 }
 
-// VersionResponse - is the model for the version response
-type VersionResponse struct {
-	Latest           bool   `json:"is_latest"`
-	LatestVersionTag string `json:"latest_version"`
-}
-
 // Summary is a report of a single scan
 type Summary struct {
-	Version       string  `json:"kics_version,omitempty"`
-	LatestVersion Version `json:"-"`
+	Version string `json:"kics_version,omitempty"`
 	Counters
 	SeveritySummary
 	Times
@@ -194,7 +187,7 @@ func resolvePath(filePath string, pathExtractionMap map[string]ExtractedPathObje
 
 // CreateSummary creates a report for a single scan, based on its scanID
 func CreateSummary(ctx context.Context, counters Counters, vulnerabilities []Vulnerability,
-	scanID string, pathExtractionMap map[string]ExtractedPathObject, version Version, downloadDir string) Summary {
+	scanID string, pathExtractionMap map[string]ExtractedPathObject, downloadDir string) Summary {
 	logger := logger.FromContext(ctx)
 	logger.Debug().Msg("model.CreateSummary()")
 	q := make(map[string]QueryResult, len(vulnerabilities))
@@ -299,7 +292,6 @@ func CreateSummary(ctx context.Context, counters Counters, vulnerabilities []Vul
 		Queries:         queries,
 		SeveritySummary: severitySummary,
 		ScannedPaths:    removeAllURLCredentials(pathExtractionMap),
-		LatestVersion:   version,
 		FilePaths:       filePaths,
 	}
 }

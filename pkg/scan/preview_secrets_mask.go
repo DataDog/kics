@@ -15,21 +15,6 @@ import (
 	"github.com/Checkmarx/kics/pkg/model"
 )
 
-func compileRegexQueries(allRegexQueries []secrets.RegexQuery) ([]secrets.RegexQuery, error) {
-	for i := range allRegexQueries {
-		compiledRegexp, err := regexp.Compile(allRegexQueries[i].RegexStr)
-		if err != nil {
-			return allRegexQueries, err
-		}
-		allRegexQueries[i].Regex = compiledRegexp
-
-		for j := range allRegexQueries[i].AllowRules {
-			allRegexQueries[i].AllowRules[j].Regex = regexp.MustCompile(allRegexQueries[i].AllowRules[j].RegexStr)
-		}
-	}
-	return allRegexQueries, nil
-}
-
 func hideSecret(lines *[]model.CodeLine, allowRules *[]secrets.AllowRule, rules *[]secrets.RegexQuery) {
 	for idx, line := range *lines {
 		for i := range *rules {

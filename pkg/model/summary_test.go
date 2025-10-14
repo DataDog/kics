@@ -47,7 +47,7 @@ func TestCreateSummary(t *testing.T) {
 
 	ctx := context.Background()
 	t.Run("create_summary_empty", func(t *testing.T) {
-		summary := CreateSummary(ctx, counter, []Vulnerability{}, "scanID", pathExtractionMap, Version{}, "")
+		summary := CreateSummary(ctx, counter, []Vulnerability{}, "scanID", pathExtractionMap, "")
 		require.Equal(t, summary, Summary{
 			Counters: counter,
 			SeveritySummary: SeveritySummary{
@@ -71,7 +71,7 @@ func TestCreateSummary(t *testing.T) {
 	t.Run("create_summary", func(t *testing.T) {
 		filePaths := make(map[string]string)
 		filePaths["fileName"] = "fileName"
-		summary := CreateSummary(ctx, counter, vulnerabilities, "scanID", pathExtractionMap, Version{}, "")
+		summary := CreateSummary(ctx, counter, vulnerabilities, "scanID", pathExtractionMap, "")
 		require.Equal(t, summary, Summary{
 			Counters: counter,
 			SeveritySummary: SeveritySummary{
