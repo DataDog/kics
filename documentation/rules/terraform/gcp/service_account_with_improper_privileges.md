@@ -55,27 +55,6 @@ Failing to restrict service account privileges can enable attackers or compromis
 
 ## Compliant Code Examples
 ```terraform
-resource "google_project_iam_binding" "project5" {
-  role = "roles/viewer"
-
-  members = [
-    "serviceAccount:jane@example.com",
-  ]
-}
-
-data "google_iam_policy" "policy6" {
-  binding {
-    role = "roles/viewer"
-
-    members = [
-      "user:jane@example.com",
-    ]
-  }
-}
-
-```
-
-```terraform
 resource "google_project_iam_binding" "project3" {
   project = "your-project-id"
   role    = "roles/apigee.runtimeAgent"
@@ -100,6 +79,27 @@ resource "google_project_iam_member" "project4" {
 ```
 
 ```terraform
+resource "google_project_iam_binding" "project5" {
+  role = "roles/viewer"
+
+  members = [
+    "serviceAccount:jane@example.com",
+  ]
+}
+
+data "google_iam_policy" "policy6" {
+  binding {
+    role = "roles/viewer"
+
+    members = [
+      "user:jane@example.com",
+    ]
+  }
+}
+
+```
+
+```terraform
 data "google_iam_policy" "policy5" {
   binding {
     role = "roles/apigee.runtimeAgent"
@@ -112,30 +112,6 @@ data "google_iam_policy" "policy5" {
 
 ```
 ## Non-Compliant Code Examples
-```terraform
-resource "google_project_iam_binding" "project1" {
-  project = "your-project-id"
-  role    = "roles/container.admin"
-
-  members = [
-    "serviceAccount:jane@example.com",
-  ]
-
-  condition {
-    title       = "expires_after_2019_12_31"
-    description = "Expiring at midnight of 2019-12-31"
-    expression  = "request.time < timestamp(\"2020-01-01T00:00:00Z\")"
-  }
-}
-
-resource "google_project_iam_member" "project2" {
-  project = "your-project-id"
-  role    = "roles/editor"
-  member  = "serviceAccount:jane@example.com"
-}
-
-```
-
 ```terraform
 data "google_iam_policy" "admin" {
   binding {
@@ -158,17 +134,36 @@ data "google_iam_policy" "admin" {
 ```terraform
 data "google_iam_policy" "admin" {
   binding {
-    role = "roles/admin"
-    members = [
-      "serviceAccount:your-custom-sa@your-project.iam.gserviceaccount.com",
-    ]
-  }
-  binding {
     role = "roles/editor"
+
     members = [
-      "serviceAccount:alice@gmail.com",
+      "serviceAccount:jane@example.com",
     ]
   }
+}
+
+```
+
+```terraform
+resource "google_project_iam_binding" "project1" {
+  project = "your-project-id"
+  role    = "roles/container.admin"
+
+  members = [
+    "serviceAccount:jane@example.com",
+  ]
+
+  condition {
+    title       = "expires_after_2019_12_31"
+    description = "Expiring at midnight of 2019-12-31"
+    expression  = "request.time < timestamp(\"2020-01-01T00:00:00Z\")"
+  }
+}
+
+resource "google_project_iam_member" "project2" {
+  project = "your-project-id"
+  role    = "roles/editor"
+  member  = "serviceAccount:jane@example.com"
 }
 
 ```

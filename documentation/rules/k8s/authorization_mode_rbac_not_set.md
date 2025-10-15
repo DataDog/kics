@@ -78,7 +78,7 @@ spec:
     - name: command-demo-container
       image: gcr.io/google_containers/kube-apiserver-amd64:v1.6.0
       command: ["kube-apiserver"]
-      args: ["--authorization-mode=Node"]
+      args: ["--authorization-mode=AlwaysAllow"]
   restartPolicy: OnFailure
 
 ```
@@ -95,7 +95,7 @@ spec:
     - name: command-demo-container
       image: gcr.io/google_containers/kube-apiserver-amd64:v1.6.0
       command: ["kube-apiserver"]
-      args: ["--authorization-mode=AlwaysAllow"]
+      args: ["--authorization-mode=Node"]
   restartPolicy: OnFailure
 
 ```

@@ -135,6 +135,23 @@ resource "aws_db_instance" "negative1" {
 ```
 ## Non-Compliant Code Examples
 ```terraform
+resource "aws_db_instance" "positive1" {
+  allocated_storage    = 20
+  storage_type         = "gp2"
+  engine               = "mysql"
+  engine_version       = "5.7"
+  instance_class       = "db.t2.micro"
+  name                 = "mydb"
+  username             = "foo"
+  password             = "foobarbaz"
+  iam_database_authentication_enabled = true
+  storage_encrypted = true
+  ca_cert_identifier = "rds-ca-2019"
+  auto_minor_version_upgrade = false
+}
+```
+
+```terraform
 module "db" {
   source  = "terraform-aws-modules/rds/aws"
   version = "~> 3.0"
@@ -211,21 +228,4 @@ module "db" {
   ]
 }
 
-```
-
-```terraform
-resource "aws_db_instance" "positive1" {
-  allocated_storage    = 20
-  storage_type         = "gp2"
-  engine               = "mysql"
-  engine_version       = "5.7"
-  instance_class       = "db.t2.micro"
-  name                 = "mydb"
-  username             = "foo"
-  password             = "foobarbaz"
-  iam_database_authentication_enabled = true
-  storage_encrypted = true
-  ca_cert_identifier = "rds-ca-2019"
-  auto_minor_version_upgrade = false
-}
 ```

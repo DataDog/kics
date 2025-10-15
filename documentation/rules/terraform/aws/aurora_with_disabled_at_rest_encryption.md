@@ -89,6 +89,7 @@ resource "aws_rds_cluster" "my_cluster" {
   deletion_protection          = false
   skip_final_snapshot          = true
   apply_immediately            = true
+  storage_encrypted            = false
 }
 
 resource "aws_rds_cluster_instance" "my_cluster_instance" {
@@ -122,7 +123,6 @@ resource "aws_rds_cluster" "my_cluster" {
   deletion_protection          = false
   skip_final_snapshot          = true
   apply_immediately            = true
-  storage_encrypted            = false
 }
 
 resource "aws_rds_cluster_instance" "my_cluster_instance" {

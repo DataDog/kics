@@ -73,33 +73,25 @@ spec:
 ```
 
 ```yaml
-apiVersion: kubelet.config.k8s.io/v1beta1
-kind: KubeletConfiguration
-address: "192.168.0.8"
-port: 20250
-serializeImagePulls: false
-tlsCertFile: "someFile.txt"
-tlsPrivateKeyFile: "someFile.txt"
-evictionHard:
-    memory.available:  "200Mi"
+apiVersion: v1
+kind: Pod
+metadata:
+  name: command-demo
+  labels:
+    purpose: demonstrate-command
+spec:
+  containers:
+    - name: command-demo-container
+      image: foo/bar
+      command: ["kubelet"]
+      args: []
+  restartPolicy: OnFailure
+
 
 
 
 ```
 ## Non-Compliant Code Examples
-```yaml
-apiVersion: kubelet.config.k8s.io/v1beta1
-kind: KubeletConfiguration
-address: "192.168.0.8"
-port: 20250
-serializeImagePulls: false
-evictionHard:
-    memory.available:  "200Mi"
-
-
-
-```
-
 ```yaml
 apiVersion: v1
 kind: Pod
@@ -115,6 +107,19 @@ spec:
       args: []
   restartPolicy: OnFailure
 
+
+
+
+```
+
+```yaml
+apiVersion: kubelet.config.k8s.io/v1beta1
+kind: KubeletConfiguration
+address: "192.168.0.8"
+port: 20250
+serializeImagePulls: false
+evictionHard:
+    memory.available:  "200Mi"
 
 
 

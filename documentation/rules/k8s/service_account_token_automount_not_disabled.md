@@ -90,34 +90,6 @@ spec:
 ## Non-Compliant Code Examples
 ```yaml
 apiVersion: v1
-kind: ServiceAccount
-metadata:
-  name: redistest-sa
-automountServiceAccountToken: true
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: demoenv
-  labels:
-    app: redis
-spec:
-  selector:
-    matchLabels:
-      app: redis
-  template:
-    metadata:      
-      labels:
-        app: redis
-    spec:
-      serviceAccountName: redistest-sa
-      containers:
-      - name: redis
-        image: redis:latest
-```
-
-```yaml
-apiVersion: v1
 kind: Pod
 metadata:
   name: security-context-demo
@@ -188,4 +160,32 @@ spec:
           securityContext:
             allowPrivilegeEscalation: false        
 
+```
+
+```yaml
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: redistest-sa
+automountServiceAccountToken: true
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: demoenv
+  labels:
+    app: redis
+spec:
+  selector:
+    matchLabels:
+      app: redis
+  template:
+    metadata:      
+      labels:
+        app: redis
+    spec:
+      serviceAccountName: redistest-sa
+      containers:
+      - name: redis
+        image: redis:latest
 ```

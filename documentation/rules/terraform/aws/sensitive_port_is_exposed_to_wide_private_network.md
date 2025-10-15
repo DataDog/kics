@@ -77,8 +77,8 @@ module "vote_service_sg" {
 ```
 
 ```terraform
-resource "aws_security_group" "negative3" {
-  name        = "allow_tls3"
+resource "aws_security_group" "negative4" {
+  name        = "allow_tls4"
   description = "Allow TLS inbound traffic"
   vpc_id      = aws_vpc.main.id
 
@@ -87,7 +87,7 @@ resource "aws_security_group" "negative3" {
     from_port   = 25
     to_port     = 2500
     protocol    = "tcp"
-    cidr_blocks = ["1.2.3.4/0"]
+    cidr_blocks = ["1.2.3.4/5"]
   }
 }
 
@@ -111,40 +111,6 @@ resource "aws_security_group" "negative2" {
 ```
 ## Non-Compliant Code Examples
 ```terraform
-resource "aws_security_group" "positive6" {
-  name        = "allow_tls6"
-  description = "Allow TLS inbound traffic"
-  vpc_id      = aws_vpc.main.id
-
-  ingress {
-    description = "TLS from VPC"
-    from_port   = 135
-    to_port     = 170
-    protocol    = "udp"
-    cidr_blocks = ["10.68.0.0", "172.16.0.0/12"]
-  }
-}
-
-```
-
-```terraform
-resource "aws_security_group" "positive2" {
-  name        = "allow_tls2"
-  description = "Allow TLS inbound traffic"
-  vpc_id      = aws_vpc.main.id
-
-  ingress {
-    description = "TLS from VPC"
-    from_port   = 20
-    to_port     = 60
-    protocol    = "tcp"
-    cidr_blocks = ["192.168.0.0/16"]
-  }
-}
-
-```
-
-```terraform
 resource "aws_security_group" "positive3" {
   name        = "allow_tls3"
   description = "Allow TLS inbound traffic"
@@ -156,6 +122,40 @@ resource "aws_security_group" "positive3" {
     to_port     = 6000
     protocol    = "-1"
     cidr_blocks = ["172.16.0.0/12"]
+  }
+}
+
+```
+
+```terraform
+resource "aws_security_group" "positive8" {
+  name        = "allow_tls8"
+  description = "Allow TLS inbound traffic"
+  vpc_id      = aws_vpc.main.id
+
+  ingress {
+    description = "TLS from VPC"
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["172.16.0.0/12"]
+  }
+}
+
+```
+
+```terraform
+resource "aws_security_group" "positive1" {
+  name        = "allow_tls1"
+  description = "Allow TLS inbound traffic"
+  vpc_id      = aws_vpc.main.id
+
+  ingress {
+    description = "TLS from VPC"
+    from_port   = 2200
+    to_port     = 2500
+    protocol    = "-1"
+    cidr_blocks = ["10.0.0.0/8"]
   }
 }
 

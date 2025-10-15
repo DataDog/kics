@@ -52,6 +52,22 @@ jobs:
 ```
 
 ```yaml
+name: test-negative3
+on:
+  pull_request:
+    types: [opened, synchronize, edited, reopened]
+    branches:
+      - master
+jobs:
+  test-negative3:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Local action
+      uses: ./test.yml
+
+```
+
+```yaml
 name: test-positive
 on:
   pull_request:
@@ -66,22 +82,6 @@ jobs:
       uses: actions/checkout@v4
       with:
         persist-credentials: false
-
-```
-
-```yaml
-name: test-negative3
-on:
-  pull_request:
-    types: [opened, synchronize, edited, reopened]
-    branches:
-      - master
-jobs:
-  test-negative3:
-    runs-on: ubuntu-latest
-    steps:
-    - name: Local action
-      uses: ./test.yml
 
 ```
 ## Non-Compliant Code Examples

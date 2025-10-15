@@ -106,73 +106,6 @@ resource "aws_api_gateway_method_settings" "all" {
   method_path = "*/*"
 
   settings {
-  }
-}
-
-
-resource "aws_apigatewayv2_stage" "postive2" {
-  stage_name    = "dev"
-  rest_api_id   = "id"
-
-  access_log_settings {
-    destination_arn = "dest"
-  }
-
-  default_route_settings {
-  }
-}
-
-```
-
-```terraform
-resource "aws_api_gateway_stage" "postive1" {
-  stage_name    = "dev"
-  rest_api_id   = "id"
-
-  access_log_settings {
-    destination_arn = "dest"
-  }
-}
-
-resource "aws_api_gateway_method_settings" "all" {
-  stage_name  = aws_api_gateway_stage.postive1.stage_name
-  method_path = "*/*"
-
-  settings {
-    logging_level   = ""
-  }
-}
-
-resource "aws_apigatewayv2_stage" "postive2" {
-  stage_name    = "dev"
-  rest_api_id   = "id"
-
-  access_log_settings {
-    destination_arn = "dest"
-  }
-
-  default_route_settings {
-    logging_level   = ""
-  }
-}
-
-```
-
-```terraform
-resource "aws_api_gateway_stage" "postive1" {
-  stage_name    = "dev"
-  rest_api_id   = "id"
-
-  access_log_settings {
-    destination_arn = "dest"
-  }
-}
-
-resource "aws_api_gateway_method_settings" "all" {
-  stage_name  = aws_api_gateway_stage.postive1.stage_name
-  method_path = "*/*"
-
-  settings {
     metrics_enabled = true
   }
 }
@@ -187,6 +120,66 @@ resource "aws_apigatewayv2_stage" "postive2" {
 
   default_route_settings {
     data_trace_enabled = "true"
+  }
+}
+
+```
+
+```terraform
+resource "aws_api_gateway_stage" "postive1" {
+  stage_name    = "dev"
+  rest_api_id   = "id"
+}
+
+resource "aws_api_gateway_method_settings" "all" {
+  stage_name  = aws_api_gateway_stage.postive1.stage_name
+  method_path = "*/*"
+
+  settings {
+    logging_level   = "ERROR"
+  }
+}
+
+resource "aws_apigatewayv2_stage" "postive2" {
+  stage_name    = "dev"
+  rest_api_id   = "id"
+
+  default_route_settings {
+    logging_level   = "ERROR"
+  }
+}
+
+```
+
+```terraform
+resource "aws_api_gateway_stage" "postive1" {
+  stage_name    = "dev"
+  rest_api_id   = "id"
+
+  access_log_settings {
+    destination_arn = "dest"
+  }
+}
+
+resource "aws_api_gateway_method_settings" "all" {
+  stage_name  = aws_api_gateway_stage.postive1.stage_name
+  method_path = "*/*"
+
+  settings {
+    logging_level   = ""
+  }
+}
+
+resource "aws_apigatewayv2_stage" "postive2" {
+  stage_name    = "dev"
+  rest_api_id   = "id"
+
+  access_log_settings {
+    destination_arn = "dest"
+  }
+
+  default_route_settings {
+    logging_level   = ""
   }
 }
 

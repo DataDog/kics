@@ -73,6 +73,38 @@ spec:
 apiVersion: v1
 kind: Pod
 metadata:
+  name: negative3-pod
+  namespace: negative3
+spec:
+  containers:
+  - name: nginx
+    image: nginx:1.14.2
+    ports:
+    - containerPort: 80
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: negative3-netpol
+  labels:
+    policy: just-egress
+  namespace: negative3
+spec:
+  podSelector: {}
+  egress:
+  - to:
+    - ipBlock:
+        cidr: 10.0.0.0/24
+    ports:
+    - protocol: TCP
+      port: 5978
+
+```
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
   name: negative2-pod
   namespace: negative2-namespace
   labels:
@@ -113,63 +145,7 @@ spec:
       port: 5978
 
 ```
-
-```yaml
-apiVersion: v1
-kind: Pod
-metadata:
-  name: negative3-pod
-  namespace: negative3
-spec:
-  containers:
-  - name: nginx
-    image: nginx:1.14.2
-    ports:
-    - containerPort: 80
----
-apiVersion: networking.k8s.io/v1
-kind: NetworkPolicy
-metadata:
-  name: negative3-netpol
-  labels:
-    policy: just-egress
-  namespace: negative3
-spec:
-  podSelector: {}
-  egress:
-  - to:
-    - ipBlock:
-        cidr: 10.0.0.0/24
-    ports:
-    - protocol: TCP
-      port: 5978
-
-```
 ## Non-Compliant Code Examples
-```yaml
-apiVersion: v1
-kind: Pod
-metadata:
-  name: positive2-pod
-  namespace: positive2
-spec:
-  containers:
-  - name: nginx
-    image: nginx:1.14.2
-    ports:
-    - containerPort: 80
----
-apiVersion: networking.k8s.io/v1
-kind: NetworkPolicy
-metadata:
-  name: positive2-netpol
-  namespace: positive2
-spec:
-  podSelector: {}
-  policyTypes: []
-
-```
-
 ```yaml
 apiVersion: v1
 kind: Pod
@@ -196,6 +172,30 @@ spec:
   podSelector:
     matchLabels:
       app: shouldmatch
+  policyTypes: []
+
+```
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: positive2-pod
+  namespace: positive2
+spec:
+  containers:
+  - name: nginx
+    image: nginx:1.14.2
+    ports:
+    - containerPort: 80
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: positive2-netpol
+  namespace: positive2
+spec:
+  podSelector: {}
   policyTypes: []
 
 ```

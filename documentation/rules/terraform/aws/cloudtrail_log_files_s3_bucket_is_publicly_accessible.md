@@ -40,38 +40,6 @@ resource "aws_s3_bucket" "b" {
 
 ## Compliant Code Examples
 ```terraform
-terraform {
-  required_providers {
-    aws = {
-      source = "hashicorp/aws"
-      version = "4.2.0"
-    }
-  }
-}
-
-provider "aws" {
-  # Configuration options
-}
-
-resource "aws_cloudtrail" "foobar4" {
-  name                          = "tf-trail-foobar"
-  s3_bucket_name                = aws_s3_bucket.bbb.id
-  s3_key_prefix                 = "prefix"
-  include_global_service_events = false
-}
-
-resource "aws_s3_bucket" "bb" {
-  bucket = "my-tf-test-bucket"
-}
-
-resource "aws_s3_bucket_acl" "example_bucket_acl2" {
-  bucket = aws_s3_bucket.bbb.id
-  acl    = "private"
-}
-
-```
-
-```terraform
 provider "aws" {
   region = "us-east-1"
 }
@@ -105,35 +73,39 @@ resource "aws_s3_bucket" "b2" {
 }
 
 ```
-## Non-Compliant Code Examples
+
 ```terraform
-variable "aws_access_key" {}
-variable "aws_secret_key" {}
-variable "private_key_path" {}
-variable "key_name" {}
-variable "region" {
-  default = "us-west-2"
-}
-provider "aws" {
-  access_key = var.aws_access_key
-  secret_key = var.aws_secret_key
-  region     = var.region
-}
-
-module "s3_bucket" {
-  source  = "terraform-aws-modules/s3-bucket/aws"
-  version = "3.7.0"
-
-  versioning = {
-    enabled = true
+terraform {
+  required_providers {
+    aws = {
+      source = "hashicorp/aws"
+      version = "4.2.0"
+    }
   }
+}
 
-  bucket = "my_bucket"
-  acl    = "public-read"
+provider "aws" {
+  # Configuration options
+}
+
+resource "aws_cloudtrail" "foobar4" {
+  name                          = "tf-trail-foobar"
+  s3_bucket_name                = aws_s3_bucket.bbb.id
+  s3_key_prefix                 = "prefix"
+  include_global_service_events = false
+}
+
+resource "aws_s3_bucket" "bb" {
+  bucket = "my-tf-test-bucket"
+}
+
+resource "aws_s3_bucket_acl" "example_bucket_acl2" {
+  bucket = aws_s3_bucket.bbb.id
+  acl    = "private"
 }
 
 ```
-
+## Non-Compliant Code Examples
 ```terraform
 terraform {
   required_providers {
@@ -210,6 +182,34 @@ resource "aws_s3_bucket" "b" {
     Name        = "My bucket"
     Environment = "Dev"
   }
+}
+
+```
+
+```terraform
+variable "aws_access_key" {}
+variable "aws_secret_key" {}
+variable "private_key_path" {}
+variable "key_name" {}
+variable "region" {
+  default = "us-west-2"
+}
+provider "aws" {
+  access_key = var.aws_access_key
+  secret_key = var.aws_secret_key
+  region     = var.region
+}
+
+module "s3_bucket" {
+  source  = "terraform-aws-modules/s3-bucket/aws"
+  version = "3.7.0"
+
+  versioning = {
+    enabled = true
+  }
+
+  bucket = "my_bucket"
+  acl    = "public-read"
 }
 
 ```

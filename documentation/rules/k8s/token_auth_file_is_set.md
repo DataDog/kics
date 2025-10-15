@@ -76,8 +76,7 @@ spec:
   containers:
     - name: command-demo-container
       image: gcr.io/google_containers/kube-apiserver-amd64:v1.6.0
-      command: ["kube-apiserver"]
-      args: ["--token-auth-file=/path/to/any/file"]
+      command: ["kube-apiserver", "--token-auth-file=/path/to/any/file"]
   restartPolicy: OnFailure
 
 ```
@@ -93,7 +92,8 @@ spec:
   containers:
     - name: command-demo-container
       image: gcr.io/google_containers/kube-apiserver-amd64:v1.6.0
-      command: ["kube-apiserver", "--token-auth-file=/path/to/any/file"]
+      command: ["kube-apiserver"]
+      args: ["--token-auth-file=/path/to/any/file"]
   restartPolicy: OnFailure
 
 ```

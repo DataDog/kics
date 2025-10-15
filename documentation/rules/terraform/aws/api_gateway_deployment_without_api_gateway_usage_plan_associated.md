@@ -42,30 +42,6 @@ resource "aws_api_gateway_usage_plan" "example" {
 
 
 ## Compliant Code Examples
-```terraform
-resource "aws_api_gateway_deployment" "negative1" {
-  rest_api_id   = "rest_api_1"
-  stage_name    = "development"
-}
-
-resource "aws_api_gateway_usage_plan" "negative2" {
-  name         = "my-usage-plan"
-  description  = "my description"
-  product_code = "MYCODE"
-
-  api_stages {
-    api_id = "rest_api_1"
-    stage  = "development"
-  }
-
-  api_stages {
-    api_id = "rest_api_2"
-    stage  = "development_2"
-  }
-}
-
-```
-
 ```json
 {
   "format_version": "0.2",
@@ -254,7 +230,58 @@ resource "aws_api_gateway_usage_plan" "negative2" {
 }
 
 ```
+
+```terraform
+resource "aws_api_gateway_deployment" "negative1" {
+  rest_api_id   = "rest_api_1"
+  stage_name    = "development"
+}
+
+resource "aws_api_gateway_usage_plan" "negative2" {
+  name         = "my-usage-plan"
+  description  = "my description"
+  product_code = "MYCODE"
+
+  api_stages {
+    api_id = "rest_api_1"
+    stage  = "development"
+  }
+
+  api_stages {
+    api_id = "rest_api_2"
+    stage  = "development_2"
+  }
+}
+
+```
 ## Non-Compliant Code Examples
+```terraform
+resource "aws_api_gateway_deployment" "positive1" {
+  rest_api_id   = "some rest api id"
+  stage_name = "some name"
+  tags {
+    project = "ProjectName"
+  }
+}
+
+resource "aws_api_gateway_deployment" "positive2" {
+  rest_api_id   = "some rest api id"
+  stage_name    = "development"
+}
+
+resource "aws_api_gateway_usage_plan" "positive3" {
+  name         = "my-usage-plan"
+  description  = "my description"
+  product_code = "MYCODE"
+
+  api_stages {
+    api_id = "another id"
+    stage  = "development"
+  }
+}
+
+```
+
 ```json
 {
   "format_version": "0.2",
@@ -501,33 +528,6 @@ resource "aws_api_gateway_usage_plan" "negative2" {
         }
       ]
     }
-  }
-}
-
-```
-
-```terraform
-resource "aws_api_gateway_deployment" "positive1" {
-  rest_api_id   = "some rest api id"
-  stage_name = "some name"
-  tags {
-    project = "ProjectName"
-  }
-}
-
-resource "aws_api_gateway_deployment" "positive2" {
-  rest_api_id   = "some rest api id"
-  stage_name    = "development"
-}
-
-resource "aws_api_gateway_usage_plan" "positive3" {
-  name         = "my-usage-plan"
-  description  = "my description"
-  product_code = "MYCODE"
-
-  api_stages {
-    api_id = "another id"
-    stage  = "development"
   }
 }
 

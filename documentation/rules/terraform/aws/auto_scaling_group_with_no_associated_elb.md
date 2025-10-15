@@ -49,14 +49,14 @@ resource "aws_autoscaling_group" "bar3" {
 
 ## Compliant Code Examples
 ```terraform
-resource "aws_autoscaling_group" "my_asg" {
-  name_prefix          = format("%s-", var.name)
-  vpc_zone_identifier  = var.private_zone_identifiers
-  launch_configuration = aws_launch_configuration.config.name
-  target_group_arns    = [var.target_group_arns]
+resource "aws_autoscaling_group" "foo" {
+  name_prefix          = "bar-"
+  vpc_zone_identifier  = ["subnet-abcd1234", "subnet-1a2b3c4d"]
+  launch_configuration = aws_launch_configuration.foobar.name
+  target_group_arns    = ["bar", "baz", "qux"]
   min_size             = 1
-  max_size             = 2
-  desired_capacity     = 1
+  max_size             = 3
+  desired_capacity     = 2
   instance_refresh {
     strategy = "Rolling"
     preferences {
@@ -226,30 +226,14 @@ module "asg" {
 ```
 
 ```terraform
-resource "aws_autoscaling_group" "bar3" {
-  availability_zones = ["us-east-1a"]
-  desired_capacity   = 1
-  max_size           = 1
-  min_size           = 1
-
-  launch_template {
-    id      = aws_launch_template.foobar.id
-    version = "$Latest"
-  }
-
-  load_balancers = ["elb_1"]
-}
-
-```
-## Non-Compliant Code Examples
-```terraform
-resource "aws_autoscaling_group" "foo" {
-  name_prefix          = "bar-"
-  vpc_zone_identifier  = ["subnet-abcd1234", "subnet-1a2b3c4d"]
-  launch_configuration = aws_launch_configuration.foobar.name
+resource "aws_autoscaling_group" "my_asg" {
+  name_prefix          = format("%s-", var.name)
+  vpc_zone_identifier  = var.private_zone_identifiers
+  launch_configuration = aws_launch_configuration.config.name
+  target_group_arns    = [var.target_group_arns]
   min_size             = 1
-  max_size             = 3
-  desired_capacity     = 2
+  max_size             = 2
+  desired_capacity     = 1
   instance_refresh {
     strategy = "Rolling"
     preferences {
@@ -259,24 +243,7 @@ resource "aws_autoscaling_group" "foo" {
 }
 
 ```
-
-```terraform
-resource "aws_autoscaling_group" "positive2" {
-  availability_zones = ["us-east-1a"]
-  desired_capacity   = 1
-  max_size           = 1
-  min_size           = 1
-
-  launch_template {
-    id      = aws_launch_template.foobar.id
-    version = "$Latest"
-  }
-
-  load_balancers = []
-}
-
-```
-
+## Non-Compliant Code Examples
 ```terraform
 module "positive3" {
   source  = "terraform-aws-modules/autoscaling/aws"
@@ -430,6 +397,39 @@ module "positive3" {
     extra_tag1 = "extra_value1"
     extra_tag2 = "extra_value2"
   }
+}
+
+```
+
+```terraform
+resource "aws_autoscaling_group" "bar" {
+  availability_zones = ["us-east-1a"]
+  desired_capacity   = 1
+  max_size           = 1
+  min_size           = 1
+
+  launch_template {
+    id      = aws_launch_template.foobar.id
+    version = "$Latest"
+  }
+}
+
+
+```
+
+```terraform
+resource "aws_autoscaling_group" "positive2" {
+  availability_zones = ["us-east-1a"]
+  desired_capacity   = 1
+  max_size           = 1
+  min_size           = 1
+
+  launch_template {
+    id      = aws_launch_template.foobar.id
+    version = "$Latest"
+  }
+
+  load_balancers = []
 }
 
 ```

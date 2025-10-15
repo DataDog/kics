@@ -137,7 +137,8 @@ spec:
 apiVersion: v1
 kind: Pod
 metadata:
-  name: pod2
+  name: pod1
+  namespace: myNewPod
 spec:
   containers:
   - name: app
@@ -202,17 +203,22 @@ spec:
 ```
 
 ```yaml
-kind: PersistentVolumeClaim
 apiVersion: v1
+kind: Pod
 metadata:
-  name: webcontent
-  namespace: k8s-test9
-  annotations:
-    volume.alpha.kubernetes.io/storage-class: default
+  name: pod2
 spec:
-  accessModes: [ReadWriteOnce]
-  resources:
-    requests:
-      storage: 5Gi
+  containers:
+  - name: app
+    image: images.my-company.example/app:v4
+    securityContext:
+      allowPrivilegeEscalation: false
+    resources:
+      requests:
+        memory: "64Mi"
+        cpu: "250m"
+      limits:
+        memory: "128Mi"
+        cpu: "500m"
 
 ```

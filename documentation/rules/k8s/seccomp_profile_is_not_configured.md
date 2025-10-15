@@ -64,8 +64,6 @@ spec:
     spec:
       securityContext:
         runAsUser: 19000
-        seccompProfile:
-            type: RuntimeDefault
       containers:
         - name: frontend
           image: nginx
@@ -73,12 +71,16 @@ spec:
             - containerPort: 80
           securityContext:
             allowPrivilegeEscalation: false
+            seccompProfile:
+                type: RuntimeDefault
         - name: echoserver
           image: k8s.gcr.io/echoserver:1.4
           ports:
             - containerPort: 8080
           securityContext:
             allowPrivilegeEscalation: false
+            seccompProfile:
+                type: RuntimeDefault
 
 ```
 
@@ -101,6 +103,8 @@ spec:
     spec:
       securityContext:
         runAsUser: 19000
+        seccompProfile:
+            type: RuntimeDefault
       containers:
         - name: frontend
           image: nginx
@@ -108,20 +112,110 @@ spec:
             - containerPort: 80
           securityContext:
             allowPrivilegeEscalation: false
-            seccompProfile:
-                type: RuntimeDefault
         - name: echoserver
           image: k8s.gcr.io/echoserver:1.4
           ports:
             - containerPort: 8080
           securityContext:
             allowPrivilegeEscalation: false
-            seccompProfile:
-                type: RuntimeDefault
 
 ```
 ## Non-Compliant Code Examples
 ```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-test-1
+spec:
+  containers:
+  - name: foobar
+    image: foo/bar:latest
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-test-2
+  annotations:
+    some-annotation: myannotation
+spec:
+  containers:
+  - name: foobar
+    image: foo/bar:latest
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-test-3
+  annotations:
+    seccomp.security.alpha.kubernetes.io/defaultProfileName: 'rntim/dfl'
+spec:
+  containers:
+  - name: foobar
+    image: foo/bar:latest
+---
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: hello
+spec:
+  schedule: "*/1 * * * *"
+  jobTemplate:
+    spec:
+      template:
+        metadata:
+          annotations:
+            seccomp.security.alpha.kubernetes.io/defaultProfileName: 'rntim/dfl'
+        spec:
+          containers:
+          - name: hello
+            image: busybox
+            imagePullPolicy: IfNotPresent
+            args:
+            - /bin/sh
+            - -c
+            - date; echo Hello from the Kubernetes cluster
+          restartPolicy: OnFailure
+
+```
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: securitydemo
+  labels:
+    app: web
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: web
+  template:
+    metadata:
+      labels:
+        app: web
+    spec:
+      securityContext:
+        runAsUser: 19000
+      containers:
+        - name: frontend
+          image: nginx
+          ports:
+            - containerPort: 80
+          securityContext:
+            allowPrivilegeEscalation: false
+        - name: echoserver
+          image: k8s.gcr.io/echoserver:1.4
+          ports:
+            - containerPort: 8080
+          securityContext:
+            allowPrivilegeEscalation: false
+            seccompProfile:
+                type: Unconfined
+
+```
+
+```yaml
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -155,81 +249,5 @@ spec:
             allowPrivilegeEscalation: false
             seccompProfile:
                 type: RuntimeDefault
-
-```
-
-```yaml
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: securitydemo
-  labels:
-    app: web
-spec:
-  replicas: 2
-  selector:
-    matchLabels:
-      app: web
-  template:
-    metadata:
-      labels:
-        app: web
-    spec:
-      securityContext:
-        runAsUser: 19000
-      containers:
-        - name: frontend
-          image: nginx
-          ports:
-            - containerPort: 80
-          securityContext:
-            allowPrivilegeEscalation: false
-        - name: echoserver
-          image: k8s.gcr.io/echoserver:1.4
-          ports:
-            - containerPort: 8080
-          securityContext:
-            allowPrivilegeEscalation: false
-            seccompProfile:
-                type: Unconfined
-
-```
-
-```yaml
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: securitydemo
-  labels:
-    app: web
-spec:
-  replicas: 2
-  selector:
-    matchLabels:
-      app: web
-  template:
-    metadata:
-      labels:
-        app: web
-    spec:
-      securityContext:
-        runAsUser: 19000
-        seccompProfile:
-            type: RuntimeDefault
-      containers:
-        - name: frontend
-          image: nginx
-          ports:
-            - containerPort: 80
-          securityContext:
-            allowPrivilegeEscalation: false
-        - name: echoserver
-          image: k8s.gcr.io/echoserver:1.4
-          ports:
-            - containerPort: 8080
-          securityContext:
-            allowPrivilegeEscalation: false
-            seccompProfile:
-                type: Unconfined
 
 ```

@@ -46,9 +46,10 @@ resource "aws_ebs_volume" "negative1" {
 ```
 ## Non-Compliant Code Examples
 ```terraform
-resource "aws_ebs_volume" "positive2" {
+resource "aws_ebs_volume" "positive1" {
   availability_zone = "us-west-2a"
   size              = 40
+  encrypted         = false
 
   tags = {
     Name = "HelloWorld"
@@ -58,10 +59,9 @@ resource "aws_ebs_volume" "positive2" {
 ```
 
 ```terraform
-resource "aws_ebs_volume" "positive1" {
+resource "aws_ebs_volume" "positive2" {
   availability_zone = "us-west-2a"
   size              = 40
-  encrypted         = false
 
   tags = {
     Name = "HelloWorld"

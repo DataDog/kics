@@ -49,31 +49,6 @@ spec:
 ```
 ## Non-Compliant Code Examples
 ```yaml
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: test-deployment
-  labels:
-    app: test
-spec:
-  replicas: 3
-  selector:
-    matchLabels:
-      app: test
-  template:
-    metadata:
-      labels:
-        app: test
-    spec:
-      containers:
-        - name:  pause
-          image: k8s.gcr.io/pause
-          securityContext:
-            privileged: true
-
-```
-
-```yaml
 apiVersion: v1
 kind: Pod
 metadata:
@@ -102,5 +77,30 @@ spec:
   containers:
   - name: sec-ctx-4
     image: gcr.io/google-samples/node-hello:1.0
+
+```
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: test-deployment
+  labels:
+    app: test
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: test
+  template:
+    metadata:
+      labels:
+        app: test
+    spec:
+      containers:
+        - name:  pause
+          image: k8s.gcr.io/pause
+          securityContext:
+            privileged: true
 
 ```

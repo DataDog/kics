@@ -44,23 +44,20 @@ metadata:
 spec:
   containers:
     - name: command-demo-container
-      image: gcr.io/google_containers/kube-apiserver-amd64:v1.6.0
-      command: ["kube-apiserver", "--anonymous-auth=false"]
+      image: foo/bar
+      command: ["kubelet", "--anonymous-auth=false"]
   restartPolicy: OnFailure
 
 ```
 
-```json
-{
-    "kind": "KubeletConfiguration",
-    "apiVersion": "kubelet.config.k8s.io/v1beta1",
-    "address": "0.0.0.0",
-    "authentication": {
-      "anonymous": {
-        "enabled": false
-      }
-    }
-}
+```yaml
+apiVersion: kubelet.config.k8s.io/v1beta1
+kind: KubeletConfiguration
+address: "192.168.0.8"
+port: 20250
+serializeImagePulls: false
+readOnlyPort: 0
+
 ```
 
 ```yaml
@@ -73,8 +70,8 @@ metadata:
 spec:
   containers:
     - name: command-demo-container
-      image: foo/bar
-      command: ["kubelet", "--anonymous-auth=false"]
+      image: gcr.io/google_containers/kube-apiserver-amd64:v1.6.0
+      command: ["kube-apiserver", "--anonymous-auth=false"]
   restartPolicy: OnFailure
 
 ```
@@ -90,8 +87,7 @@ spec:
   containers:
     - name: command-demo-container
       image: gcr.io/google_containers/kube-apiserver-amd64:v1.6.0
-      command: ["kube-apiserver"]
-      args: ["--anonymous-auth=true"]
+      command: ["kube-apiserver", "--anonymous-auth=true"]
   restartPolicy: OnFailure
 
 ```
@@ -112,19 +108,15 @@ spec:
 
 ```
 
-```yaml
-apiVersion: v1
-kind: Pod
-metadata:
-  name: command-demo
-  labels:
-    purpose: demonstrate-command
-spec:
-  containers:
-    - name: command-demo-container
-      image: foo/bar
-      command: ["kubelet"]
-      args: ["--anonymous-auth=true"]
-  restartPolicy: OnFailure
-
+```json
+{
+    "kind": "KubeletConfiguration",
+    "apiVersion": "kubelet.config.k8s.io/v1beta1",
+    "address": "0.0.0.0",
+    "authentication": {
+      "anonymous": {
+        "enabled": true
+      }
+    }
+}
 ```

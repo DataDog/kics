@@ -103,7 +103,7 @@ module "s3_bucket" {
     "Statement": [
       {
         "Sid": "IPAllow",
-        "Effect": "Deny",
+        "Effect": "Allow",
         "Principal": "*",
         "Action": "s3:*",
         "Resource": [
@@ -111,21 +111,7 @@ module "s3_bucket" {
         ],
         "Condition": {
           "Bool": {
-            "aws:SecureTransport": "false"
-          }
-        }
-      },
-      {
-        "Sid": "IPAllow",
-        "Effect": "Deny",
-        "Principal": "*",
-        "Action": "s3:*",
-        "Resource": [
-          "aws_s3_bucket.c.arn"
-        ],
-        "Condition": {
-          "Bool": {
-            "aws:SecureTransport": "false"
+            "aws:SecureTransport": "true"
           }
         }
       }
@@ -167,36 +153,6 @@ EOF
 ```
 ## Non-Compliant Code Examples
 ```terraform
-resource "aws_s3_bucket" "b2" {
-  bucket = "my-tf-test-bucket"
-
-  policy = <<EOF
-{
-    "Version": "2012-10-17",
-    "Id": "MYBUCKETPOLICY",
-    "Statement": [
-      {
-        "Sid": "IPAllow",
-        "Effect": "Deny",
-        "Principal": "*",
-        "Action": "s3:*",
-        "Resource": [
-          "aws_s3_bucket.b.arn"
-        ],
-        "Condition": {
-          "IpAddress": {
-            "aws:SourceIp": "8.8.8.8/32"
-          }
-        }
-      }
-    ]
-}
-EOF
-}
-
-```
-
-```terraform
 module "s3_bucket" {
   source = "terraform-aws-modules/s3-bucket/aws"
   version = "3.7.0"
@@ -235,38 +191,69 @@ EOF
 ```
 
 ```terraform
+resource "aws_s3_bucket" "b" {
+  bucket = "my-tf-test-bucket"
+}
 
-data "aws_iam_policy_document" "pos4" {
+resource "aws_s3_bucket_policy" "b" {
+  bucket = aws_s3_bucket.b.id
 
-  statement {
-    effect = "Deny"
-
-    principals {
-      type        = "*"
-      identifiers = ["*"]
-    }
-
-    actions = [
-      "s3:*",
+  policy = <<EOF
+{
+    "Version": "2012-10-17",
+    "Id": "MYBUCKETPOLICY",
+    "Statement": [
+      {
+        "Sid": "IPAllow",
+        "Effect": "Deny",
+        "Principal": "*",
+        "Action": "s3:*",
+        "Resource": [
+          "aws_s3_bucket.b.arn"
+        ],
+        "Condition": {
+          "IpAddress": {
+            "aws:SourceIp": "8.8.8.8/32"
+          }
+        }
+      }
     ]
-
-
-    resources = [
-      "arn:aws:s3:::a/*",
-      "arn:aws:s3:::a",
-    ]
-    condition {
-      test     = "Bool"
-      variable = "aws:SecureTransport"
-      values   = ["true"]
-    }
-  }
+}
+EOF
 }
 
 
-resource "aws_s3_bucket" "pos4" {
-  bucket = "a"
-  policy = data.aws_iam_policy_document.pos4.json
+
+
+
+```
+
+```terraform
+resource "aws_s3_bucket" "b2" {
+  bucket = "my-tf-test-bucket"
+
+  policy = <<EOF
+{
+    "Version": "2012-10-17",
+    "Id": "MYBUCKETPOLICY",
+    "Statement": [
+      {
+        "Sid": "IPAllow",
+        "Effect": "Deny",
+        "Principal": "*",
+        "Action": "s3:*",
+        "Resource": [
+          "aws_s3_bucket.b.arn"
+        ],
+        "Condition": {
+          "IpAddress": {
+            "aws:SourceIp": "8.8.8.8/32"
+          }
+        }
+      }
+    ]
+}
+EOF
 }
 
 ```

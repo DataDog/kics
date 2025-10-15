@@ -60,19 +60,9 @@ rules:
 apiVersion: audit.k8s.io/v1 # This is required.
 kind: Policy
 # Don't generate audit events for all requests in RequestReceived stage.
+omitStages:
+  - "RequestReceived"
 rules:
-  - level: RequestResponse
-    resources:
-    - group: ""
-      resources: ["secrets","configmaps","tokenreviews"]
-  - level: Metadata
-    resources:
-    - group: ""
-      resources: ["pods","deployments"]
-  - level: None
-    resources:
-    - group: ""
-      resources: ["pods/exec", "pods/portforward", "pods/proxy", "services/proxy"]
 
 ```
 
@@ -102,8 +92,18 @@ rules:
 apiVersion: audit.k8s.io/v1 # This is required.
 kind: Policy
 # Don't generate audit events for all requests in RequestReceived stage.
-omitStages:
-  - "RequestReceived"
 rules:
+  - level: RequestResponse
+    resources:
+    - group: ""
+      resources: ["secrets","configmaps","tokenreviews"]
+  - level: Metadata
+    resources:
+    - group: ""
+      resources: ["pods","deployments"]
+  - level: None
+    resources:
+    - group: ""
+      resources: ["pods/exec", "pods/portforward", "pods/proxy", "services/proxy"]
 
 ```

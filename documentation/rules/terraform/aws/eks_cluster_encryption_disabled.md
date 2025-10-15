@@ -82,16 +82,9 @@ variable "cluster_name" {
   type    = string
 }
 
-resource "aws_eks_cluster" "positive2" {
+resource "aws_eks_cluster" "positive1" {
   depends_on = [aws_cloudwatch_log_group.example]
   name                      = var.cluster_name
-
-  encryption_config {
-    resources = ["s"]
-    provider {
-      key_arn = "test"
-    }
-  }
 }
 
 ```
@@ -102,9 +95,16 @@ variable "cluster_name" {
   type    = string
 }
 
-resource "aws_eks_cluster" "positive1" {
+resource "aws_eks_cluster" "positive2" {
   depends_on = [aws_cloudwatch_log_group.example]
   name                      = var.cluster_name
+
+  encryption_config {
+    resources = ["s"]
+    provider {
+      key_arn = "test"
+    }
+  }
 }
 
 ```

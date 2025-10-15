@@ -44,7 +44,7 @@ resource "aws_opensearch_domain" "good_example" {
 
 ## Compliant Code Examples
 ```terraform
-resource "aws_elasticsearch_domain" "good_example" {
+resource "aws_opensearch_domain" "good_example" {
   domain_name = "example"
 
   advanced_security_options {
@@ -56,7 +56,7 @@ resource "aws_elasticsearch_domain" "good_example" {
 ```
 
 ```terraform
-resource "aws_opensearch_domain" "good_example" {
+resource "aws_elasticsearch_domain" "good_example" {
   domain_name = "example"
 
   advanced_security_options {
