@@ -7,6 +7,7 @@ meta:
   display_name: "Default security groups with unrestricted traffic"
   cloud_provider: "aws"
   framework: "Terraform"
+  platform: "Terraform"
   severity: "HIGH"
   category: "Networking and Firewall"
 ---

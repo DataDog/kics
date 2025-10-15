@@ -7,6 +7,7 @@ meta:
   display_name: "DB snapshot is public"
   cloud_provider: "aws"
   framework: "Terraform"
+  platform: "Terraform"
   severity: "HIGH"
   category: "Access Control"
 ---

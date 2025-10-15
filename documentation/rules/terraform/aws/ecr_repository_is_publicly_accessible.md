@@ -7,6 +7,7 @@ meta:
   display_name: "ECR repository is publicly accessible"
   cloud_provider: "aws"
   framework: "Terraform"
+  platform: "Terraform"
   severity: "CRITICAL"
   category: "Access Control"
 ---

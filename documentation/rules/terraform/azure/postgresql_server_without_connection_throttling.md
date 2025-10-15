@@ -7,6 +7,7 @@ meta:
   display_name: "PostgreSQL server without connection throttling"
   cloud_provider: "azure"
   framework: "Terraform"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Observability"
 ---

@@ -7,6 +7,7 @@ meta:
   display_name: "Legacy client certificate auth enabled"
   cloud_provider: "gcp"
   framework: "Terraform"
+  platform: "Terraform"
   severity: "LOW"
   category: "Insecure Configurations"
 ---

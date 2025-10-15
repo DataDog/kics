@@ -7,6 +7,7 @@ meta:
   display_name: "TLS connection certificate not set up"
   cloud_provider: "k8s"
   framework: "Kubernetes"
+  platform: "Kubernetes"
   severity: "MEDIUM"
   category: "Networking and Firewall"
 ---

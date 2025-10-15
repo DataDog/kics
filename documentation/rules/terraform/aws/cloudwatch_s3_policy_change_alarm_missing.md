@@ -7,6 +7,7 @@ meta:
   display_name: "CloudWatch S3 policy change alarm missing"
   cloud_provider: "aws"
   framework: "Terraform"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Observability"
 ---

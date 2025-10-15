@@ -7,6 +7,7 @@ meta:
   display_name: "Dataproc clusters has public IPs"
   cloud_provider: "gcp"
   framework: "Terraform"
+  platform: "Terraform"
   severity: "HIGH"
   category: "Insecure Configurations"
 ---

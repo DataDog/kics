@@ -7,6 +7,7 @@ meta:
   display_name: "GuardDuty detector disabled"
   cloud_provider: "aws"
   framework: "Terraform"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Observability"
 ---

@@ -7,6 +7,7 @@ meta:
   display_name: "Automatic minor upgrades disabled"
   cloud_provider: "aws"
   framework: "Terraform"
+  platform: "Terraform"
   severity: "LOW"
   category: "Best Practices"
 ---

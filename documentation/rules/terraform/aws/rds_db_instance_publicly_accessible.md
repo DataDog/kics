@@ -7,6 +7,7 @@ meta:
   display_name: "RDS DB instance publicly accessible"
   cloud_provider: "aws"
   framework: "Terraform"
+  platform: "Terraform"
   severity: "CRITICAL"
   category: "Insecure Configurations"
 ---

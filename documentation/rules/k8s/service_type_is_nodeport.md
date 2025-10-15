@@ -7,6 +7,7 @@ meta:
   display_name: "Service type is NodePort"
   cloud_provider: "k8s"
   framework: "Kubernetes"
+  platform: "Kubernetes"
   severity: "LOW"
   category: "Networking and Firewall"
 ---

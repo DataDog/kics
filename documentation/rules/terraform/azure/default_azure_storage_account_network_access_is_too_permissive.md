@@ -7,6 +7,7 @@ meta:
   display_name: "Default Azure storage account network access is too permissive"
   cloud_provider: "azure"
   framework: "Terraform"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Insecure Defaults"
 ---

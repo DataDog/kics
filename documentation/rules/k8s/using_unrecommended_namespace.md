@@ -7,6 +7,7 @@ meta:
   display_name: "Using unrecommended namespace"
   cloud_provider: "k8s"
   framework: "Kubernetes"
+  platform: "Kubernetes"
   severity: "MEDIUM"
   category: "Insecure Configurations"
 ---

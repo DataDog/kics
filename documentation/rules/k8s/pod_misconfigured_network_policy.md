@@ -7,6 +7,7 @@ meta:
   display_name: "Pod misconfigured network policy"
   cloud_provider: "k8s"
   framework: "Kubernetes"
+  platform: "Kubernetes"
   severity: "MEDIUM"
   category: "Networking and Firewall"
 ---

@@ -7,6 +7,7 @@ meta:
   display_name: "CloudTrail log files S3 bucket is publicly accessible"
   cloud_provider: "aws"
   framework: "Terraform"
+  platform: "Terraform"
   severity: "HIGH"
   category: "Observability"
 ---

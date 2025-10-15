@@ -7,6 +7,7 @@ meta:
   display_name: "Ensure that UDP services are restricted from the Internet"
   cloud_provider: "azure"
   framework: "Terraform"
+  platform: "Terraform"
   severity: "HIGH"
   category: "Networking and Firewall"
 ---

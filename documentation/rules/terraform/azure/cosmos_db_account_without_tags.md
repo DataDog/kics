@@ -7,6 +7,7 @@ meta:
   display_name: "Cosmos DB account without tags"
   cloud_provider: "azure"
   framework: "Terraform"
+  platform: "Terraform"
   severity: "LOW"
   category: "Build Process"
 ---

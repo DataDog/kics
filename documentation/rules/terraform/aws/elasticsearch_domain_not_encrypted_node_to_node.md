@@ -7,6 +7,7 @@ meta:
   display_name: "Elasticsearch domain not encrypted node to node"
   cloud_provider: "aws"
   framework: "Terraform"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Encryption"
 ---

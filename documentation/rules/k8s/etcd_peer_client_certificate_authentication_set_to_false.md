@@ -7,6 +7,7 @@ meta:
   display_name: "etcd peer client certificate authentication set to false"
   cloud_provider: "k8s"
   framework: "Kubernetes"
+  platform: "Kubernetes"
   severity: "MEDIUM"
   category: "Secret Management"
 ---

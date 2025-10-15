@@ -7,6 +7,7 @@ meta:
   display_name: "MSK broker is publicly accessible"
   cloud_provider: "aws"
   framework: "Terraform"
+  platform: "Terraform"
   severity: "HIGH"
   category: "Access Control"
 ---

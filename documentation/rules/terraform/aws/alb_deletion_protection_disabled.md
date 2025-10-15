@@ -7,6 +7,7 @@ meta:
   display_name: "ALB deletion protection disabled"
   cloud_provider: "aws"
   framework: "Terraform"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Insecure Configurations"
 ---

@@ -7,6 +7,7 @@ meta:
   display_name: "Group with privilege escalation by actions 'ec2:RunInstances' and 'iam:PassRole'"
   cloud_provider: "aws"
   framework: "Terraform"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"
 ---

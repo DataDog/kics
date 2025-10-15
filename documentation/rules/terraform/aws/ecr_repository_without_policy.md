@@ -7,6 +7,7 @@ meta:
   display_name: "ECR repository without policy"
   cloud_provider: "aws"
   framework: "Terraform"
+  platform: "Terraform"
   severity: "LOW"
   category: "Best Practices"
 ---

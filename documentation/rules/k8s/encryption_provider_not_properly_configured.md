@@ -7,6 +7,7 @@ meta:
   display_name: "Encryption provider not properly configured"
   cloud_provider: "k8s"
   framework: "Kubernetes"
+  platform: "Kubernetes"
   severity: "MEDIUM"
   category: "Encryption"
 ---

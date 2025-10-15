@@ -7,6 +7,7 @@ meta:
   display_name: "PSP allows privilege escalation"
   cloud_provider: "k8s"
   framework: "Kubernetes"
+  platform: "Kubernetes"
   severity: "HIGH"
   category: "Insecure Configurations"
 ---

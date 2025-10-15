@@ -7,6 +7,7 @@ meta:
   display_name: "Glue Data Catalog encryption disabled"
   cloud_provider: "aws"
   framework: "Terraform"
+  platform: "Terraform"
   severity: "HIGH"
   category: "Encryption"
 ---

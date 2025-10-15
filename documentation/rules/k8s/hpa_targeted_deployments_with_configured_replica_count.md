@@ -7,6 +7,7 @@ meta:
   display_name: "HPA targeted deployments with configured replica count"
   cloud_provider: "k8s"
   framework: "Kubernetes"
+  platform: "Kubernetes"
   severity: "INFO"
   category: "Availability"
 ---

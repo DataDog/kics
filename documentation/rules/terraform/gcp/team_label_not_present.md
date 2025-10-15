@@ -7,6 +7,7 @@ meta:
   display_name: "Team label missing on GCP resource"
   cloud_provider: "gcp"
   framework: "Terraform"
+  platform: "Terraform"
   severity: "INFO"
   category: "Best Practices"
 ---

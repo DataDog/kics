@@ -7,6 +7,7 @@ meta:
   display_name: "SQL DB instance with SSL disabled"
   cloud_provider: "gcp"
   framework: "Terraform"
+  platform: "Terraform"
   severity: "HIGH"
   category: "Encryption"
 ---

@@ -7,6 +7,7 @@ meta:
   display_name: "Dashboard is enabled"
   cloud_provider: "k8s"
   framework: "Kubernetes"
+  platform: "Kubernetes"
   severity: "LOW"
   category: "Insecure Configurations"
 ---

@@ -7,6 +7,7 @@ meta:
   display_name: "API Gateway with invalid compression"
   cloud_provider: "aws"
   framework: "Terraform"
+  platform: "Terraform"
   severity: "LOW"
   category: "Encryption"
 ---

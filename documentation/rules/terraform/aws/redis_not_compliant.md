@@ -7,6 +7,7 @@ meta:
   display_name: "Redis not compliant"
   cloud_provider: "aws"
   framework: "Terraform"
+  platform: "Terraform"
   severity: "HIGH"
   category: "Encryption"
 ---

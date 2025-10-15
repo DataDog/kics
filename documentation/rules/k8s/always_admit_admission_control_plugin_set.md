@@ -7,6 +7,7 @@ meta:
   display_name: "Always admit admission control plugin set"
   cloud_provider: "k8s"
   framework: "Kubernetes"
+  platform: "Kubernetes"
   severity: "MEDIUM"
   category: "Access Control"
 ---

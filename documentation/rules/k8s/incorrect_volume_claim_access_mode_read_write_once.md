@@ -7,6 +7,7 @@ meta:
   display_name: "Incorrect volume claim access mode ReadWriteOnce"
   cloud_provider: "k8s"
   framework: "Kubernetes"
+  platform: "Kubernetes"
   severity: "MEDIUM"
   category: "Build Process"
 ---

@@ -7,6 +7,7 @@ meta:
   display_name: "StatefulSet without service name"
   cloud_provider: "k8s"
   framework: "Kubernetes"
+  platform: "Kubernetes"
   severity: "LOW"
   category: "Availability"
 ---

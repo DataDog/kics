@@ -87,7 +87,7 @@ def build_markdown(
     title = metadata.get("queryName", "Untitled Rule")
     rule_id = metadata.get("id", "unknown-id")
     display_name = metadata.get("queryName", "no-name")
-    framework = metadata.get("platform", "unknown")
+    platform = metadata.get("platform", "unknown")
     severity = metadata.get("severity", "INFO").upper()
     category = metadata.get("category", "unknown")
     description = metadata.get("descriptionText", "No description provided.")
@@ -105,7 +105,8 @@ meta:
   id: "{rule_id}"
   display_name: "{display_name}"
   cloud_provider: "{cloud_provider}"
-  framework: "{framework}"
+  framework: "{platform}"
+  platform: "{platform}"
   severity: "{severity}"
   category: "{category}"
 ---
@@ -115,7 +116,7 @@ meta:
 
 **Cloud Provider:** {cloud_provider}
 
-**Framework:** {framework}
+**Framework:** {platform}
 
 **Severity:** {severity.capitalize()}
 

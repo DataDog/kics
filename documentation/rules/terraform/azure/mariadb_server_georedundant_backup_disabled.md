@@ -7,6 +7,7 @@ meta:
   display_name: "MariaDB server geo-redundant backup disabled"
   cloud_provider: "azure"
   framework: "Terraform"
+  platform: "Terraform"
   severity: "LOW"
   category: "Backup"
 ---

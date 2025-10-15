@@ -7,6 +7,7 @@ meta:
   display_name: "Permissive access to create Pods"
   cloud_provider: "k8s"
   framework: "Kubernetes"
+  platform: "Kubernetes"
   severity: "MEDIUM"
   category: "Access Control"
 ---

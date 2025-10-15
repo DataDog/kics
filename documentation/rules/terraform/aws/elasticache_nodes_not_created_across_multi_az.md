@@ -7,6 +7,7 @@ meta:
   display_name: "ElastiCache nodes not created across multi AZ"
   cloud_provider: "aws"
   framework: "Terraform"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Availability"
 ---

@@ -7,6 +7,7 @@ meta:
   display_name: "Pod or container without ResourceQuota"
   cloud_provider: "k8s"
   framework: "Kubernetes"
+  platform: "Kubernetes"
   severity: "LOW"
   category: "Insecure Configurations"
 ---

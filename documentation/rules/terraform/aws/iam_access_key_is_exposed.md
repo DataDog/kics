@@ -7,6 +7,7 @@ meta:
   display_name: "IAM access key is exposed"
   cloud_provider: "aws"
   framework: "Terraform"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"
 ---

@@ -7,6 +7,7 @@ meta:
   display_name: "Small MSSQL server audit retention"
   cloud_provider: "azure"
   framework: "Terraform"
+  platform: "Terraform"
   severity: "LOW"
   category: "Observability"
 ---

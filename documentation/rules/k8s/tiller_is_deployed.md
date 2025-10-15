@@ -7,6 +7,7 @@ meta:
   display_name: "Tiller (Helm v2) deployed"
   cloud_provider: "k8s"
   framework: "Kubernetes"
+  platform: "Kubernetes"
   severity: "HIGH"
   category: "Insecure Configurations"
 ---

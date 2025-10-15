@@ -7,6 +7,7 @@ meta:
   display_name: "Kubelet certificate authority not set"
   cloud_provider: "k8s"
   framework: "Kubernetes"
+  platform: "Kubernetes"
   severity: "MEDIUM"
   category: "Secret Management"
 ---

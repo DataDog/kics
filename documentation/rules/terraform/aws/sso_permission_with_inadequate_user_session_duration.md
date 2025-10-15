@@ -7,6 +7,7 @@ meta:
   display_name: "SSO permission with inadequate user session duration"
   cloud_provider: "aws"
   framework: "Terraform"
+  platform: "Terraform"
   severity: "LOW"
   category: "Access Control"
 ---

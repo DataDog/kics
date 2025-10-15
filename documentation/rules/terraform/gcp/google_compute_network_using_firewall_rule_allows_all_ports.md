@@ -7,6 +7,7 @@ meta:
   display_name: "Google Compute network using firewall rule that allows all ports"
   cloud_provider: "gcp"
   framework: "Terraform"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Networking and Firewall"
 ---

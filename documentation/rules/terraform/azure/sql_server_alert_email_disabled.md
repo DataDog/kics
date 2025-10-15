@@ -7,6 +7,7 @@ meta:
   display_name: "SQL server alert email disabled"
   cloud_provider: "azure"
   framework: "Terraform"
+  platform: "Terraform"
   severity: "INFO"
   category: "Best Practices"
 ---

@@ -7,6 +7,7 @@ meta:
   display_name: "SSH access is not restricted"
   cloud_provider: "gcp"
   framework: "Terraform"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Networking and Firewall"
 ---

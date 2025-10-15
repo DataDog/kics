@@ -7,6 +7,7 @@ meta:
   display_name: "CMK rotation disabled"
   cloud_provider: "aws"
   framework: "Terraform"
+  platform: "Terraform"
   severity: "LOW"
   category: "Observability"
 ---

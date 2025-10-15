@@ -7,6 +7,7 @@ meta:
   display_name: "S3 static website host enabled"
   cloud_provider: "aws"
   framework: "Terraform"
+  platform: "Terraform"
   severity: "HIGH"
   category: "Insecure Configurations"
 ---

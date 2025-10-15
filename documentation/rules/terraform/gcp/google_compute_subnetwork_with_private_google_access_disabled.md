@@ -7,6 +7,7 @@ meta:
   display_name: "Google Compute subnetwork with private Google access disabled"
   cloud_provider: "gcp"
   framework: "Terraform"
+  platform: "Terraform"
   severity: "LOW"
   category: "Networking and Firewall"
 ---

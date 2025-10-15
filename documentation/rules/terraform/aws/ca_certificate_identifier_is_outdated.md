@@ -7,6 +7,7 @@ meta:
   display_name: "CA certificate identifier is outdated"
   cloud_provider: "aws"
   framework: "Terraform"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Encryption"
 ---

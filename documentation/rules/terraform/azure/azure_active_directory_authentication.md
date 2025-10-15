@@ -7,6 +7,7 @@ meta:
   display_name: "Azure Active Directory authentication"
   cloud_provider: "azure"
   framework: "Terraform"
+  platform: "Terraform"
   severity: "LOW"
   category: "Access Control"
 ---

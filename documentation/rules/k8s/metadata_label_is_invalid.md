@@ -7,6 +7,7 @@ meta:
   display_name: "Invalid metadata label"
   cloud_provider: "k8s"
   framework: "Kubernetes"
+  platform: "Kubernetes"
   severity: "LOW"
   category: "Best Practices"
 ---

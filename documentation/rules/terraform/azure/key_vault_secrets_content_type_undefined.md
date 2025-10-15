@@ -7,6 +7,7 @@ meta:
   display_name: "Key Vault secrets content type undefined"
   cloud_provider: "azure"
   framework: "Terraform"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Best Practices"
 ---

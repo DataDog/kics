@@ -7,6 +7,7 @@ meta:
   display_name: "Unscanned ECR image"
   cloud_provider: "aws"
   framework: "Terraform"
+  platform: "Terraform"
   severity: "LOW"
   category: "Observability"
 ---

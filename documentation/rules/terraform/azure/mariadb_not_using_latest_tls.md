@@ -7,6 +7,7 @@ meta:
   display_name: "Ensure Azure MariaDB server is using latest TLS (1.2)"
   cloud_provider: "azure"
   framework: "Terraform"
+  platform: "Terraform"
   severity: "HIGH"
   category: "Encryption"
 ---

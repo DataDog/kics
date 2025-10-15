@@ -7,6 +7,7 @@ meta:
   display_name: "ECR image tag not immutable"
   cloud_provider: "aws"
   framework: "Terraform"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Insecure Configurations"
 ---

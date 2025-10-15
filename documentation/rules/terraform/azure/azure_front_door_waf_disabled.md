@@ -7,6 +7,7 @@ meta:
   display_name: "Azure Front Door WAF disabled"
   cloud_provider: "azure"
   framework: "Terraform"
+  platform: "Terraform"
   severity: "LOW"
   category: "Networking and Firewall"
 ---

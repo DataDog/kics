@@ -7,6 +7,7 @@ meta:
   display_name: "IAM password policy does not require numbers"
   cloud_provider: "aws"
   framework: "Terraform"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Best Practices"
 ---

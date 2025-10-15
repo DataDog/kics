@@ -7,6 +7,7 @@ meta:
   display_name: "VPC peering route table with unrestricted CIDR"
   cloud_provider: "aws"
   framework: "Terraform"
+  platform: "Terraform"
   severity: "HIGH"
   category: "Networking and Firewall"
 ---

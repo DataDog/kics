@@ -7,6 +7,7 @@ meta:
   display_name: "Secure ciphers disabled"
   cloud_provider: "aws"
   framework: "Terraform"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Encryption"
 ---

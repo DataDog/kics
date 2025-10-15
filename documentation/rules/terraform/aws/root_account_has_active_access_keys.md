@@ -7,6 +7,7 @@ meta:
   display_name: "Root account has active access keys"
   cloud_provider: "aws"
   framework: "Terraform"
+  platform: "Terraform"
   severity: "HIGH"
   category: "Insecure Configurations"
 ---

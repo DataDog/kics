@@ -7,6 +7,7 @@ meta:
   display_name: "User with IAM role"
   cloud_provider: "gcp"
   framework: "Terraform"
+  platform: "Terraform"
   severity: "LOW"
   category: "Access Control"
 ---

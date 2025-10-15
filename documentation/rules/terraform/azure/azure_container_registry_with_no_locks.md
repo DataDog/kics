@@ -7,6 +7,7 @@ meta:
   display_name: "Azure Container Registry with no locks"
   cloud_provider: "azure"
   framework: "Terraform"
+  platform: "Terraform"
   severity: "HIGH"
   category: "Insecure Configurations"
 ---

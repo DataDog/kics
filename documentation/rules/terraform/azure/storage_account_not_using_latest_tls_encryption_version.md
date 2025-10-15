@@ -7,6 +7,7 @@ meta:
   display_name: "Storage account not using latest TLS encryption version"
   cloud_provider: "azure"
   framework: "Terraform"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Encryption"
 ---

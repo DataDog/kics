@@ -7,6 +7,7 @@ meta:
   display_name: "S3 bucket with unsecured CORS rule"
   cloud_provider: "aws"
   framework: "Terraform"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Insecure Configurations"
 ---

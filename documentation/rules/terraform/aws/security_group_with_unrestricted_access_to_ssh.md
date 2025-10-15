@@ -7,6 +7,7 @@ meta:
   display_name: "Security group with unrestricted access to SSH"
   cloud_provider: "aws"
   framework: "Terraform"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Networking and Firewall"
 ---

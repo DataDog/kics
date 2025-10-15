@@ -7,6 +7,7 @@ meta:
   display_name: "App Service without latest Python version"
   cloud_provider: "azure"
   framework: "Terraform"
+  platform: "Terraform"
   severity: "LOW"
   category: "Best Practices"
 ---

@@ -7,6 +7,7 @@ meta:
   display_name: "API Gateway X-Ray disabled"
   cloud_provider: "aws"
   framework: "Terraform"
+  platform: "Terraform"
   severity: "LOW"
   category: "Observability"
 ---

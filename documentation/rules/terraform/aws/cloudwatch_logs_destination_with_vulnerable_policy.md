@@ -7,6 +7,7 @@ meta:
   display_name: "CloudWatch logs destination with vulnerable policy"
   cloud_provider: "aws"
   framework: "Terraform"
+  platform: "Terraform"
   severity: "LOW"
   category: "Access Control"
 ---

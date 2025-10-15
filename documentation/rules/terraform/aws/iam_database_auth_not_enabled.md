@@ -7,6 +7,7 @@ meta:
   display_name: "IAM database auth not enabled"
   cloud_provider: "aws"
   framework: "Terraform"
+  platform: "Terraform"
   severity: "MEDIUM"
   category: "Encryption"
 ---

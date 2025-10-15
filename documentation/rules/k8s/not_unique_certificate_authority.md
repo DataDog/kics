@@ -7,6 +7,7 @@ meta:
   display_name: "Certificate authority is not unique"
   cloud_provider: "k8s"
   framework: "Kubernetes"
+  platform: "Kubernetes"
   severity: "MEDIUM"
   category: "Secret Management"
 ---

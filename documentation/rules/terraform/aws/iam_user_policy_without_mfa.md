@@ -7,6 +7,7 @@ meta:
   display_name: "IAM user policy without MFA"
   cloud_provider: "aws"
   framework: "Terraform"
+  platform: "Terraform"
   severity: "LOW"
   category: "Insecure Configurations"
 ---

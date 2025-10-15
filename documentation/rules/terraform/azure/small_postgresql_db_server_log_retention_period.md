@@ -7,6 +7,7 @@ meta:
   display_name: "Small PostgreSQL DB server log retention period"
   cloud_provider: "azure"
   framework: "Terraform"
+  platform: "Terraform"
   severity: "LOW"
   category: "Observability"
 ---

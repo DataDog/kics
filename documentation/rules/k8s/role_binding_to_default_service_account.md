@@ -7,6 +7,7 @@ meta:
   display_name: "Role binding to default service account"
   cloud_provider: "k8s"
   framework: "Kubernetes"
+  platform: "Kubernetes"
   severity: "MEDIUM"
   category: "Insecure Defaults"
 ---
