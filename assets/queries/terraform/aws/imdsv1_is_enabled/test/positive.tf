@@ -19,7 +19,7 @@ resource "aws_launch_template" "bad_example" {
   }
 }
 
-# Test case 1: Missing metadata_options entirely (should trigger finding)
+# Test case 1: Missing metadata_options entirely (should trigger this resource to be flagged by security checks)
 resource "aws_launch_template" "missing_metadata_options" {
   name_prefix   = "missing-metadata"
   image_id      = "ami-123456"
