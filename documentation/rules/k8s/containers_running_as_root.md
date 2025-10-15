@@ -56,6 +56,24 @@ spec:
 apiVersion: v1
 kind: Pod
 metadata:
+  name: containers-runs-as-root
+spec:
+  securityContext:
+    runAsUser: 0
+    runAsNonRoot: false
+  containers:
+  - name: sec-ctx-demo-100
+    image: gcr.io/google-samples/node-hello:1.0
+    securityContext:
+      runAsUser: 1000
+      runAsNonRoot: false
+      
+```
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
   name: security-context-demo-1
 spec:
   securityContext:
@@ -74,6 +92,56 @@ spec:
       runAsNonRoot: true
       
 ```
+## Non-Compliant Code Examples
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: security-context-demo-2
+spec:
+  securityContext:
+    runAsUser: 1000
+    runAsNonRoot: false
+  containers:
+  - name: sec-ctx-demo-2
+    image: gcr.io/google-samples/node-hello:1.0
+    securityContext:
+      runAsUser: 0
+      allowPrivilegeEscalation: false
+      runAsNonRoot: false
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: security-context-demo-3
+spec:
+  securityContext:
+    runAsUser: 1000
+    runAsNonRoot: false
+  containers:
+  - name: sec-ctx-demo-2
+    image: gcr.io/google-samples/node-hello:1.0
+    securityContext:
+      allowPrivilegeEscalation: false
+      runAsNonRoot: false
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: security-context-demo-4
+spec:
+  securityContext:
+    runAsUser: 1000
+    runAsNonRoot: true
+  containers:
+  - name: sec-ctx-demo-2
+    image: gcr.io/google-samples/node-hello:1.0
+    securityContext:
+      runAsUser: 0
+      allowPrivilegeEscalation: false
+      runAsNonRoot: false
+
+```
 
 ```yaml
 apiVersion: v1
@@ -88,11 +156,12 @@ spec:
   - name: sec-ctx-demo-100
     image: gcr.io/google-samples/node-hello:1.0
     securityContext:
-      runAsUser: 1000
+      runAsUser: 0
       runAsNonRoot: false
       
+      
 ```
-## Non-Compliant Code Examples
+
 ```yaml
 apiVersion: v1
 kind: Pod
@@ -114,41 +183,4 @@ spec:
       runAsUser: 0
       runAsNonRoot: false
       
-```
-
-```yaml
-apiVersion: v1
-kind: Pod
-metadata:
-  name: containers-runs-as-root
-spec:
-  securityContext:
-    runAsUser: 0
-    runAsNonRoot: false
-  containers:
-  - name: sec-ctx-demo-100
-    image: gcr.io/google-samples/node-hello:1.0
-    securityContext:
-      runAsUser: 0
-      runAsNonRoot: false
-      
-      
-```
-
-```yaml
-apiVersion: v1
-kind: Pod
-metadata:
-  name: security-context-demo-2
-spec:
-  containers:
-  - name: sec-ctx-demo-1
-    image: gcr.io/google-samples/node-hello:1.0
-  - name: sec-ctx-demo-2
-    image: gcr.io/google-samples/node-hello:1.0
-    securityContext:
-      runAsUser: 0
-      allowPrivilegeEscalation: false
-      runAsNonRoot: false
-
 ```

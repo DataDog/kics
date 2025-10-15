@@ -103,21 +103,63 @@ jobs:
 ```
 ## Non-Compliant Code Examples
 ```yaml
-name: Pull Request Workflow
-
+name: Web Page To Markdown
 on:
-  pull_request_target:
-    types:
-      - opened
-
+  issues:
+    types: [opened]
 jobs:
-  process_pull_request:
+  WebPageToMarkdown:
     runs-on: ubuntu-latest
     steps:
-      - name: Echo Pull Request Body
+      - name: Does the issue need to be converted to markdown
         run: |
-          echo "Pull Request Body: ${{ github.event.pull_request.body }}"
+          if [ "${{ github.event.issue.body }}" ]; then
+            if [[ "${{ github.event.issue.title }}" =~ ^\[Auto\]* ]]; then
+              :
+            else
+              echo "This issue does not need to generate a markdown file." 1>&2
+              exit 1;
+            fi;
+          else
+            echo "The description of the issue is empty." 1>&2
+            exit 1;
+          fi;
+        shell: bash
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+      - name: Crawl pages and generate Markdown files
+        uses: freeCodeCamp-China/article-webpage-to-markdown-action@v0.1.8
+        with:
+          newsLink: '${{ github.event.issue.body }}'
+          markDownFilePath: './chinese/articles/'
+          githubToken: ${{ github.token }}
+      - name: Git Auto Commit
+        uses: stefanzweifel/git-auto-commit-action@v4.9.2
+        with:
+          commit_message: '${{ github.event.issue.title }}'
+          file_pattern: chinese/articles/*.md
+          commit_user_name: PageToMarkdown Bot
+          commit_user_email: PageToMarkdown-bot@freeCodeCamp.org
 
+```
+
+```yaml
+name: Author Workflow
+
+on:
+  author:
+    types:
+      - created
+
+jobs:
+  process_author:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Echo Author's Username
+        run: |
+          echo "Author's Name: ${{ github.event.authors.name }}"
 
 ```
 
@@ -136,23 +178,5 @@ jobs:
       - name: Echo Issue Comment Body
         run: |
           echo "Issue Comment Body: ${{ github.event.comment.body }}"
-
-```
-
-```yaml
-name: Discussion Workflow
-
-on:
-  discussion:
-    types:
-      - created
-
-jobs:
-  process_discussion:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Echo Discussion Title
-        run: |
-          echo "Discussion Title: ${{ github.event.discussion.title }}"
 
 ```

@@ -81,7 +81,7 @@ spec:
     - name: command-demo-container
       image: gcr.io/google_containers/kube-apiserver-amd64:v1.6.0
       command: ["kube-apiserver"]
-      args: []
+      args: ["--audit-log-maxsize=50"]
   restartPolicy: OnFailure
 
 ```
@@ -159,7 +159,7 @@ spec:
     - name: command-demo-container
       image: gcr.io/google_containers/kube-apiserver-amd64:v1.6.0
       command: ["kube-apiserver"]
-      args: ["--audit-log-maxsize=50"]
+      args: []
   restartPolicy: OnFailure
 
 ```

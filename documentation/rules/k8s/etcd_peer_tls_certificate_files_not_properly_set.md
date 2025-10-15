@@ -113,7 +113,7 @@ spec:
         image: gcr.io/google_containers/etcd:v3.2.18
         imagePullPolicy: IfNotPresent
         command: ["etcd"]
-        args: ["--peer-key-file=/etc/env/file2.key"]
+        args: ["--peer-cert-file=/etc/env/file.crt"]
       nodeSelector:
         kubernetes.io/hostname: worker02  
     restartPolicy: OnFailure
@@ -142,7 +142,7 @@ spec:
         image: gcr.io/google_containers/etcd:v3.2.18
         imagePullPolicy: IfNotPresent
         command: ["etcd"]
-        args: ["--peer-cert-file=/etc/env/file.crt"]
+        args: ["--peer-key-file=/etc/env/file2.key"]
       nodeSelector:
         kubernetes.io/hostname: worker02  
     restartPolicy: OnFailure

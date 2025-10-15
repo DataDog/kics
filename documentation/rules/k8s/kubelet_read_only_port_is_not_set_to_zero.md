@@ -78,7 +78,8 @@ spec:
   containers:
     - name: command-demo-container
       image: foo/bar
-      command: ["kubelet", "--read-only-port=1"]
+      command: ["kubelet"]
+      args: ["--read-only-port=1"]
   restartPolicy: OnFailure
 
 ```

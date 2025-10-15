@@ -90,43 +90,6 @@ kind: ClusterRole
 metadata:
   name: secret-reader
 rules:
-  - apiGroups:
-      - "*"
-    resources:
-      - "*"
-    verbs:
-      - get
-      - list
-      - watch
-  - apiGroups:
-      - apiextensions.k8s.io
-    resources:
-      - custom
-    verbs:
-      - create
-      - delete
-  - apiGroups:
-      - "*"
-    resources:
-      - "*"
-    verbs:
-      - create
-      - delete
-      - get
-      - list
-      - patch
-      - update
-      - watch
-
-```
-
-```yaml
-#this is a problematic code where the query should report a result(s)
-apiVersion: rbac.authorization.k8s.io/v1
-kind: ClusterRole
-metadata:
-  name: secret-reader
-rules:
 - apiGroups: [""]
   resources: ["pods"]
   verbs:
@@ -181,4 +144,41 @@ rules:
 - apiGroups: [""]
   resources: ["p*ds"]
   verbs: ["get", "watch", "create"]
+```
+
+```yaml
+#this is a problematic code where the query should report a result(s)
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: secret-reader
+rules:
+  - apiGroups:
+      - "*"
+    resources:
+      - "*"
+    verbs:
+      - get
+      - list
+      - watch
+  - apiGroups:
+      - apiextensions.k8s.io
+    resources:
+      - custom
+    verbs:
+      - create
+      - delete
+  - apiGroups:
+      - "*"
+    resources:
+      - "*"
+    verbs:
+      - create
+      - delete
+      - get
+      - list
+      - patch
+      - update
+      - watch
+
 ```

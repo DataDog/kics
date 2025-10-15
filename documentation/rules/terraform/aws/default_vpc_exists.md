@@ -84,6 +84,15 @@ resource "aws_vpc" "negative1" {
 ```
 ## Non-Compliant Code Examples
 ```terraform
+resource "aws_default_vpc" "positive1" {
+  tags = {
+    Name = "Default VPC"
+  }
+}
+
+```
+
+```terraform
 module "vpc" {
   source  = "terraform-aws-modules/vpc/aws"
   version = "3.7.0"
@@ -102,15 +111,6 @@ module "vpc" {
   tags = {
     Terraform   = "true"
     Environment = "dev"
-  }
-}
-
-```
-
-```terraform
-resource "aws_default_vpc" "positive1" {
-  tags = {
-    Name = "Default VPC"
   }
 }
 

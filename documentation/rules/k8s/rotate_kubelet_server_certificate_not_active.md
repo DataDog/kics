@@ -34,6 +34,23 @@ meta:
 
 ## Compliant Code Examples
 ```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: command-demo
+  labels:
+    purpose: demonstrate-command
+spec:
+  containers:
+    - name: command-demo-container
+      image: foo/bar
+      command: ["kubelet"]
+      args: [""]
+  restartPolicy: OnFailure
+
+```
+
+```yaml
 apiVersion: kubelet.config.k8s.io/v1beta1
 kind: KubeletConfiguration
 address: "192.168.0.8"
@@ -43,20 +60,6 @@ evictionHard:
     memory.available:  "200Mi"
 featureGates:
     RotateKubeletServerCertificate: true
-
-```
-
-```json
-{
-    "kind": "KubeletConfiguration",
-    "address": "192.168.0.8",
-    "apiVersion": "kubelet.config.k8s.io/v1beta1",
-    "evictionHard": {
-        "memory.available": "200Mi"
-    },
-    "port": 20250,
-    "serializeImagePulls": false
-}
 
 ```
 
@@ -78,6 +81,19 @@ featureGates:
 ```
 ## Non-Compliant Code Examples
 ```yaml
+apiVersion: kubelet.config.k8s.io/v1beta1
+kind: KubeletConfiguration
+address: "192.168.0.8"
+port: 20250
+serializeImagePulls: false
+evictionHard:
+    memory.available:  "200Mi"
+featureGates:
+    RotateKubeletServerCertificate: false
+
+```
+
+```yaml
 apiVersion: v1
 kind: Pod
 metadata:
@@ -91,23 +107,6 @@ spec:
       command: ["kubelet"]
       args: ["--feature-gates=RotateKubeletServerCertificate=false"]
   restartPolicy: OnFailure
-
-```
-
-```json
-{
-    "kind": "KubeletConfiguration",
-    "address": "192.168.0.8",
-    "apiVersion": "kubelet.config.k8s.io/v1beta1",
-    "evictionHard": {
-        "memory.available": "200Mi"
-    },
-    "featureGates": {
-        "RotateKubeletServerCertificate": false
-    },
-    "port": 20250,
-    "serializeImagePulls": false
-}
 
 ```
 

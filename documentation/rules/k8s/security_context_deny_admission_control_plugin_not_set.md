@@ -61,7 +61,7 @@ spec:
   containers:
     - name: command-demo-container
       image: gcr.io/google_containers/kube-apiserver-amd64:v1.6.0
-      command: ["kube-apiserver","--enable-admission-plugins=SecurityContextDeny", "--admission-control-config-file=path/to/plugin/config/file.yaml"]
+      command: ["kube-apiserver","--enable-admission-plugins=PodSecurityPolicy", "--admission-control-config-file=path/to/plugin/config/file.yaml"]
       args: []
   restartPolicy: OnFailure
 
@@ -78,7 +78,7 @@ spec:
   containers:
     - name: command-demo-container
       image: gcr.io/google_containers/kube-apiserver-amd64:v1.6.0
-      command: ["kube-apiserver","--enable-admission-plugins=PodSecurityPolicy", "--admission-control-config-file=path/to/plugin/config/file.yaml"]
+      command: ["kube-apiserver","--enable-admission-plugins=SecurityContextDeny", "--admission-control-config-file=path/to/plugin/config/file.yaml"]
       args: []
   restartPolicy: OnFailure
 

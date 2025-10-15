@@ -37,23 +37,6 @@ meta:
 apiVersion: v1
 kind: Pod
 metadata:
-  name: command-demo
-  labels:
-    purpose: demonstrate-command
-spec:
-  containers:
-    - name: command-demo-container
-      image: gcr.io/google_containers/kube-controller-manager-amd64:v1.6.0
-      command: ["kube-controller-manager"]
-      args: ["--bind-address=127.0.0.1"]
-  restartPolicy: OnFailure
-
-```
-
-```yaml
-apiVersion: v1
-kind: Pod
-metadata:
   labels:
     component: kube-scheduler
     tier: control-plane
@@ -87,8 +70,34 @@ spec:
   containers:
     - name: command-demo-container
       image: gcr.io/google_containers/kube-controller-manager-amd64:v1.6.0
-      command: ["kube-controller-manager","--bind-address=127.0.0.1"]
-      args: []
+      command: ["kube-controller-manager"]
+      args: ["--bind-address=127.0.0.1"]
+  restartPolicy: OnFailure
+
+```
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    component: kube-scheduler
+    tier: control-plane
+  name: kube-scheduler
+  namespace: kube-system
+spec:
+  selector:
+    matchLabels:
+      app: kube-controller-manager
+  template:
+    metadata:
+      labels:
+        app: kube-controller-manager
+  containers:
+    - name: command-demo-container
+      image: k8s.gcr.io/kube-scheduler:v1.19.0
+      command: ["kube-scheduler"]
+      args: ["--bind-address=127.0.0.1"]
   restartPolicy: OnFailure
 
 ```
@@ -104,7 +113,7 @@ spec:
   containers:
     - name: command-demo-container
       image: gcr.io/google_containers/kube-controller-manager-amd64:v1.6.0
-      command: ["kube-controller-manager"]
+      command: ["kube-controller-manager","--bind-address=0.0.0.0"]
       args: []
   restartPolicy: OnFailure
 
@@ -140,23 +149,14 @@ spec:
 apiVersion: v1
 kind: Pod
 metadata:
+  name: command-demo
   labels:
-    component: kube-scheduler
-    tier: control-plane
-  name: kube-scheduler
-  namespace: kube-system
+    purpose: demonstrate-command
 spec:
-  selector:
-    matchLabels:
-      app: kube-controller-manager
-  template:
-    metadata:
-      labels:
-        app: kube-controller-manager
   containers:
     - name: command-demo-container
-      image: k8s.gcr.io/kube-scheduler:v1.19.0
-      command: ["kube-scheduler","--bind-address=0.0.0.0"]
+      image: gcr.io/google_containers/kube-controller-manager-amd64:v1.6.0
+      command: ["kube-controller-manager"]
       args: []
   restartPolicy: OnFailure
 

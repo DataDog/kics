@@ -53,17 +53,6 @@ resource "azurerm_storage_account" "secure_example" {
 
 ## Compliant Code Examples
 ```terraform
-resource "azurerm_storage_account" "negative6" {
-  name                     = "storageaccountname"
-  resource_group_name      = azurerm_resource_group.example.name
-  location                 = azurerm_resource_group.example.location
-  account_tier             = "Standard"
-  account_replication_type = "GRS"
-}
-
-```
-
-```terraform
 resource "azurerm_storage_account" "negative5" {
   name                     = "storageaccountname"
   resource_group_name      = azurerm_resource_group.example.name
@@ -72,6 +61,17 @@ resource "azurerm_storage_account" "negative5" {
   account_replication_type = "GRS"
 
   allow_blob_public_access = false
+}
+
+```
+
+```terraform
+resource "azurerm_storage_account" "negative6" {
+  name                     = "storageaccountname"
+  resource_group_name      = azurerm_resource_group.example.name
+  location                 = azurerm_resource_group.example.location
+  account_tier             = "Standard"
+  account_replication_type = "GRS"
 }
 
 ```
@@ -107,19 +107,6 @@ resource "azurerm_storage_account_network_rules" "negative2" {
 }
 ```
 ## Non-Compliant Code Examples
-```terraform
-resource "azurerm_storage_account" "positive5" {
-  name                     = "storageaccountname"
-  resource_group_name      = azurerm_resource_group.example.name
-  location                 = azurerm_resource_group.example.location
-  account_tier             = "Standard"
-  account_replication_type = "GRS"
-
-  allow_blob_public_access = true
-}
-
-```
-
 ```terraform
 resource "azurerm_storage_account" "positive1" {
   name                = "storageaccountname"
@@ -176,4 +163,17 @@ resource "azurerm_storage_account_network_rules" "positive4" {
   virtual_network_subnet_ids = [azurerm_subnet.test.id]
   bypass                     = ["Metrics"]
 }
+```
+
+```terraform
+resource "azurerm_storage_account" "positive5" {
+  name                     = "storageaccountname"
+  resource_group_name      = azurerm_resource_group.example.name
+  location                 = azurerm_resource_group.example.location
+  account_tier             = "Standard"
+  account_replication_type = "GRS"
+
+  allow_blob_public_access = true
+}
+
 ```

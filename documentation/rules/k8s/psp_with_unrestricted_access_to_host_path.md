@@ -61,8 +61,6 @@ metadata:
   name: example
 spec:
   hostIPC: false
-  allowedHostPaths:
-  - pathPrefix: /dev
   runAsUser:
     rule: 'RunAsAny'
   seLinux:
@@ -102,6 +100,8 @@ metadata:
   name: example
 spec:
   hostIPC: false
+  allowedHostPaths:
+  - pathPrefix: /dev
   runAsUser:
     rule: 'RunAsAny'
   seLinux:

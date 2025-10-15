@@ -63,6 +63,20 @@ resource "aws_wafregional_web_acl_association" "foo_waf33" {
 ```
 ## Non-Compliant Code Examples
 ```terraform
+resource "aws_alb" "foo" {
+  internal = false
+  subnets  = [aws_subnet.foo.id, aws_subnet.bar.id]
+}
+
+resource "aws_wafregional_web_acl_association" "foo_waf" {
+  resource_arn = aws_alb.fooooo.arn
+  web_acl_id   = aws_wafregional_web_acl.foo.id
+}
+
+
+```
+
+```terraform
 resource "aws_lb" "alb" {
   name               = "test-lb-tf"
   internal           = false
@@ -75,18 +89,4 @@ resource "aws_wafv2_web_acl_association" "alb_waf_association" {
   resource_arn = aws_lb.alba.arn
   web_acl_arn  = aws_wafv2_web_acl.example.arn
 }
-```
-
-```terraform
-resource "aws_alb" "foo" {
-  internal = false
-  subnets  = [aws_subnet.foo.id, aws_subnet.bar.id]
-}
-
-resource "aws_wafregional_web_acl_association" "foo_waf" {
-  resource_arn = aws_alb.fooooo.arn
-  web_acl_id   = aws_wafregional_web_acl.foo.id
-}
-
-
 ```

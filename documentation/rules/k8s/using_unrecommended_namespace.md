@@ -79,7 +79,8 @@ metadata:
 apiVersion: v1
 kind: Pod
 metadata:
-  name: frontend2
+  name: frontend
+  namespace: default
 spec:
   containers:
   - name: app
@@ -106,6 +107,7 @@ spec:
         memory: "128Mi"
         cpu: "500m"
 
+
 ```
 
 ```yaml
@@ -121,7 +123,31 @@ metadata:
 apiVersion: v1
 kind: Pod
 metadata:
-  name: mongo.db.collection.com
-  namespace: kube-system
+  name: frontend2
+spec:
+  containers:
+  - name: app
+    image: images.my-company.example/app:v4
+    securityContext:
+      allowPrivilegeEscalation: false
+    resources:
+      requests:
+        memory: "64Mi"
+        cpu: "250m"
+      limits:
+        memory: "128Mi"
+        cpu: "500m"
+
+  - name: log-aggregator
+    image: images.my-company.example/log-aggregator:v6
+    securityContext:
+      allowPrivilegeEscalation: false
+    resources:
+      requests:
+        memory: "64Mi"
+        cpu: "250m"
+      limits:
+        memory: "128Mi"
+        cpu: "500m"
 
 ```

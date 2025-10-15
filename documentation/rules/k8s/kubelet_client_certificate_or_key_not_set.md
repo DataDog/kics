@@ -78,7 +78,6 @@ spec:
     - name: command-demo-container
       image: gcr.io/google_containers/kube-apiserver-amd64:v1.6.0
       command: ["kube-apiserver"]
-      args: ["--kubelet-client-certificate=/path/to/any/file.pem"]
   restartPolicy: OnFailure
 
 ```
@@ -112,6 +111,7 @@ spec:
     - name: command-demo-container
       image: gcr.io/google_containers/kube-apiserver-amd64:v1.6.0
       command: ["kube-apiserver"]
+      args: ["--kubelet-client-certificate=/path/to/any/file.pem"]
   restartPolicy: OnFailure
 
 ```

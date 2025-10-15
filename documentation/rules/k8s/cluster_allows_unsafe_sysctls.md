@@ -99,32 +99,6 @@ spec:
 ```
 ## Non-Compliant Code Examples
 ```yaml
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: test-app
-  labels:
-    app: test-app
-spec:
-  selector:
-    matchLabels:
-      app: test-app
-  template:
-    metadata:
-      labels:
-        app: test-app
-    spec:
-      securityContext:
-        sysctls:
-        - name: kernel.sem
-          value: "128 32768 128 4096"
-      containers:
-      - name: test-ubuntu
-        image: ubuntu
-
-```
-
-```yaml
 #this is a problematic code where the query should report a result(s)
 apiVersion: v1
 kind: Pod
@@ -160,5 +134,31 @@ spec:
     rule: RunAsAny
   fsGroup:
     rule: RunAsAny
+
+```
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: test-app
+  labels:
+    app: test-app
+spec:
+  selector:
+    matchLabels:
+      app: test-app
+  template:
+    metadata:
+      labels:
+        app: test-app
+    spec:
+      securityContext:
+        sysctls:
+        - name: kernel.sem
+          value: "128 32768 128 4096"
+      containers:
+      - name: test-ubuntu
+        image: ubuntu
 
 ```

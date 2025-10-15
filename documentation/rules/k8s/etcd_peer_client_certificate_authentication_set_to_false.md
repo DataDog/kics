@@ -84,7 +84,7 @@ spec:
         image: gcr.io/google_containers/etcd:v3.2.18
         imagePullPolicy: IfNotPresent
         command: ["etcd"]
-        args: []
+        args: ["--peer-client-cert-auth=false"]
       nodeSelector:
         kubernetes.io/hostname: worker02  
     restartPolicy: OnFailure
@@ -113,7 +113,7 @@ spec:
         image: gcr.io/google_containers/etcd:v3.2.18
         imagePullPolicy: IfNotPresent
         command: ["etcd"]
-        args: ["--peer-client-cert-auth=false"]
+        args: []
       nodeSelector:
         kubernetes.io/hostname: worker02  
     restartPolicy: OnFailure

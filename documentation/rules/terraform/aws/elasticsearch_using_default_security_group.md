@@ -52,6 +52,17 @@ resource "aws_elasticsearch_domain" "good_example" {
   domain_name = "example"
 
   vpc_options {
+    security_group_ids = ["sg-12345678"] # ✅ Explicit security group assigned
+  }
+}
+
+```
+
+```terraform
+resource "aws_elasticsearch_domain" "good_example" {
+  domain_name = "example"
+
+  vpc_options {
 
   }
 }
@@ -64,17 +75,6 @@ resource "aws_opensearch_domain" "good_example" {
 
   vpc_options {
     security_group_ids = ["sg-87654321"] # ✅ Explicit security group assigned
-  }
-}
-
-```
-
-```terraform
-resource "aws_elasticsearch_domain" "good_example" {
-  domain_name = "example"
-
-  vpc_options {
-    security_group_ids = ["sg-12345678"] # ✅ Explicit security group assigned
   }
 }
 

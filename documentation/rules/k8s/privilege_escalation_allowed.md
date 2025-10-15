@@ -70,34 +70,6 @@ spec:
 apiVersion: v1
 kind: Pod
 metadata:
-  name: example-priv
-spec:
-  containers:
-      - name: payment
-        image: nginx
-        securityContext:
-          capabilities:
-          drop:
-            - SYS_ADMIN
-      - name: payment2
-        image: nginx
-      - name: payment4
-        image: nginx
-        securityContext:
-          capabilities:
-            add:
-              - NET_BIND_SERVICE
-      - name: payment3
-        image: nginx
-        securityContext:
-          allowPrivilegeEscalation: false
-
-```
-
-```yaml
-apiVersion: v1
-kind: Pod
-metadata:
   name: pod2
 spec:
   containers:
@@ -124,5 +96,33 @@ spec:
       limits:
         memory: "128Mi"
         cpu: "500m"
+
+```
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: example-priv
+spec:
+  containers:
+      - name: payment
+        image: nginx
+        securityContext:
+          capabilities:
+          drop:
+            - SYS_ADMIN
+      - name: payment2
+        image: nginx
+      - name: payment4
+        image: nginx
+        securityContext:
+          capabilities:
+            add:
+              - NET_BIND_SERVICE
+      - name: payment3
+        image: nginx
+        securityContext:
+          allowPrivilegeEscalation: false
 
 ```

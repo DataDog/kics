@@ -34,16 +34,6 @@ meta:
 
 ## Compliant Code Examples
 ```terraform
-# IAM Binding compliant
-resource "google_kms_key_ring_iam_binding" "good_example_binding" {
-  key_ring_id = "example-key-ring"
-  members     = ["user:someone@example.com", "group:admins@example.com"] # ✅ No public principals
-  role        = "roles/cloudkms.cryptoKeyEncrypterDecrypter"
-}
-
-```
-
-```terraform
 # IAM Member compliant
 resource "google_kms_key_ring_iam_member" "good_example_member" {
   key_ring_id = "example-key-ring"
@@ -52,6 +42,16 @@ resource "google_kms_key_ring_iam_member" "good_example_member" {
 }
 
 
+
+```
+
+```terraform
+# IAM Binding compliant
+resource "google_kms_key_ring_iam_binding" "good_example_binding" {
+  key_ring_id = "example-key-ring"
+  members     = ["user:someone@example.com", "group:admins@example.com"] # ✅ No public principals
+  role        = "roles/cloudkms.cryptoKeyEncrypterDecrypter"
+}
 
 ```
 ## Non-Compliant Code Examples

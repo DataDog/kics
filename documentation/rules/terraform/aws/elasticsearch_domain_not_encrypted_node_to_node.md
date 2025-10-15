@@ -78,10 +78,6 @@ resource "aws_elasticsearch_domain" "positive1" {
     automated_snapshot_start_hour = 23
   }
 
-  node_to_node_encryption {
-    enabled = false
-  }
-
   tags = {
     Domain = "TestDomain"
   }
@@ -100,6 +96,10 @@ resource "aws_elasticsearch_domain" "positive1" {
 
   snapshot_options {
     automated_snapshot_start_hour = 23
+  }
+
+  node_to_node_encryption {
+    enabled = false
   }
 
   tags = {

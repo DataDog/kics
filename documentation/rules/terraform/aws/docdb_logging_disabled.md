@@ -63,21 +63,6 @@ resource "aws_docdb_cluster" "negative1" {
 ```
 ## Non-Compliant Code Examples
 ```terraform
-resource "aws_docdb_cluster" "positive2" {
-  cluster_identifier      = "my-docdb-cluster"
-  engine                  = "docdb"
-  master_username         = "foo"
-  master_password         = "mustbeeightchars"
-  backup_retention_period = 5
-  preferred_backup_window = "07:00-09:00"
-  skip_final_snapshot     = true
-
-  enabled_cloudwatch_logs_exports = []
-}
-
-```
-
-```terraform
 resource "aws_docdb_cluster" "positive3" {
   cluster_identifier      = "my-docdb-cluster"
   engine                  = "docdb"
@@ -93,7 +78,20 @@ resource "aws_docdb_cluster" "positive3" {
 ```
 
 ```terraform
-resource "aws_docdb_cluster" "positive4" {
+resource "aws_docdb_cluster" "positive1" {
+  cluster_identifier      = "my-docdb-cluster"
+  engine                  = "docdb"
+  master_username         = "foo"
+  master_password         = "mustbeeightchars"
+  backup_retention_period = 5
+  preferred_backup_window = "07:00-09:00"
+  skip_final_snapshot     = true
+}
+
+```
+
+```terraform
+resource "aws_docdb_cluster" "positive2" {
   cluster_identifier      = "my-docdb-cluster"
   engine                  = "docdb"
   master_username         = "foo"
@@ -102,7 +100,7 @@ resource "aws_docdb_cluster" "positive4" {
   preferred_backup_window = "07:00-09:00"
   skip_final_snapshot     = true
 
-  enabled_cloudwatch_logs_exports = ["audit"]
+  enabled_cloudwatch_logs_exports = []
 }
 
 ```

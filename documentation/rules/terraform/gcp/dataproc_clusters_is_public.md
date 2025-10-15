@@ -34,19 +34,19 @@ meta:
 
 ## Compliant Code Examples
 ```terraform
-# Passing IAM Member example
-resource "google_dataproc_cluster_iam_member" "good_member" {
-  name   = "good-dataproc-member"
-  member = "user:someone@example.com" # ✅ Non-public principal
+# Passing IAM Binding example
+resource "google_dataproc_cluster_iam_binding" "good_binding" {
+  name    = "good-dataproc-binding"
+  members = ["user:someone@example.com", "group:admins@example.com"] # ✅ No public principals
 }
 
 ```
 
 ```terraform
-# Passing IAM Binding example
-resource "google_dataproc_cluster_iam_binding" "good_binding" {
-  name    = "good-dataproc-binding"
-  members = ["user:someone@example.com", "group:admins@example.com"] # ✅ No public principals
+# Passing IAM Member example
+resource "google_dataproc_cluster_iam_member" "good_member" {
+  name   = "good-dataproc-member"
+  member = "user:someone@example.com" # ✅ Non-public principal
 }
 
 ```

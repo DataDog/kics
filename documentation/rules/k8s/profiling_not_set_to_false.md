@@ -34,23 +34,6 @@ meta:
 
 ## Compliant Code Examples
 ```yaml
-apiVersion: v1
-kind: Pod
-metadata:
-  name: command-demo
-  labels:
-    purpose: demonstrate-command
-spec:
-  containers:
-    - name: command-demo-container
-      image: gcr.io/google_containers/kube-apiserver-amd64:v1.6.0
-      command: ["kube-apiserver"]
-      args: ["--profiling=false"]
-  restartPolicy: OnFailure
-
-```
-
-```yaml
 apiVersion: kubescheduler.config.k8s.io/v1beta2
 kind: KubeSchedulerConfiguration
 enableProfiling: false
@@ -85,12 +68,12 @@ spec:
   restartPolicy: OnFailure
 
 ```
-## Non-Compliant Code Examples
+
 ```yaml
 apiVersion: v1
 kind: Pod
 metadata:
-  name: command-demo-1
+  name: command-demo
   labels:
     purpose: demonstrate-command
 spec:
@@ -98,8 +81,41 @@ spec:
     - name: command-demo-container
       image: gcr.io/google_containers/kube-apiserver-amd64:v1.6.0
       command: ["kube-apiserver"]
-      args: []
+      args: ["--profiling=false"]
   restartPolicy: OnFailure
+
+```
+## Non-Compliant Code Examples
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: command-demo
+  labels:
+    purpose: demonstrate-command
+spec:
+  containers:
+    - name: command-demo-container
+      image: gcr.io/google_containers/kube-apiserver-amd64:v1.6.0
+      command: ["kube-apiserver"]
+      args: ["--profiling=true"]
+  restartPolicy: OnFailure
+
+```
+
+```yaml
+apiVersion: kubescheduler.config.k8s.io/v1beta2
+kind: KubeSchedulerConfiguration
+enableProfiling: true
+profiles: 
+  pluginConfig: 
+    args: 
+      scoringStrategy: 
+        resources:  
+          name: cpu
+          weight: 1
+        type: MostAllocated
+    name: NodeResourcesFit2
 
 ```
 
@@ -125,33 +141,6 @@ spec:
     - name: command-demo-container
       image: gcr.io/google_containers/kube-controller-manager-master-3
       command: ["kube-controller-manager","--profiling=true"]
-      args: []
-  restartPolicy: OnFailure
-
-```
-
-```yaml
-apiVersion: v1
-kind: Pod
-metadata:
-  creationTimestamp: null
-  labels:
-    component: kube-controller-manager
-    tier: control-plane
-  name: kube-controller-manager-master-4
-  namespace: kube-system
-spec:
-  selector:
-    matchLabels:
-      app: kube-controller-manager
-  template:
-    metadata:
-      labels:
-        app: kube-controller-manager
-  containers:
-    - name: command-demo-container
-      image: gcr.io/google_containers/kube-controller-manager-master-4
-      command: ["kube-controller-manager"]
       args: []
   restartPolicy: OnFailure
 

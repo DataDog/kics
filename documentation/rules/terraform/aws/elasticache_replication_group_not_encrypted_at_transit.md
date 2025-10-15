@@ -57,7 +57,6 @@ resource "aws_elasticache_replication_group" "example" {
   node_type                     = "cache.m4.large"
   number_cache_clusters         = 2
   port                          = 6379
-  transit_encryption_enabled    = false
 }
 
 ```
@@ -71,6 +70,7 @@ resource "aws_elasticache_replication_group" "example" {
   node_type                     = "cache.m4.large"
   number_cache_clusters         = 2
   port                          = 6379
+  transit_encryption_enabled    = false
 }
 
 ```

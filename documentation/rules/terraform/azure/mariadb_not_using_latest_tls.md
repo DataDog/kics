@@ -47,19 +47,6 @@ resource "azurerm_mariadb_server" "good_example" {
 
 ## Compliant Code Examples
 ```terraform
-# Passing example: ssl_minimal_tls_version_enforced not defined (defaults to TLS1_2)
-resource "azurerm_mariadb_server" "good_example_default" {
-  name                = "good-mariadb-server-default"
-  location            = "East US"
-  resource_group_name = "example-rg"
-
-  ssl_enforcement_enabled = ["true"]
-  # ssl_minimal_tls_version_enforced not specified → defaults to TLS1_2
-}
-
-```
-
-```terraform
 # Passing example: Correct enforcement and TLS settings
 resource "azurerm_mariadb_server" "good_example" {
   name                = "good-mariadb-server"
@@ -68,6 +55,19 @@ resource "azurerm_mariadb_server" "good_example" {
 
   ssl_enforcement_enabled          = ["true"]
   ssl_minimal_tls_version_enforced = ["TLS1_2"] # Correct setting
+}
+
+```
+
+```terraform
+# Passing example: ssl_minimal_tls_version_enforced not defined (defaults to TLS1_2)
+resource "azurerm_mariadb_server" "good_example_default" {
+  name                = "good-mariadb-server-default"
+  location            = "East US"
+  resource_group_name = "example-rg"
+
+  ssl_enforcement_enabled = ["true"]
+  # ssl_minimal_tls_version_enforced not specified → defaults to TLS1_2
 }
 
 ```

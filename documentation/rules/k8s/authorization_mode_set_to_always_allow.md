@@ -43,22 +43,25 @@ metadata:
 spec:
   containers:
     - name: command-demo-container
-      image: gcr.io/google_containers/kube-apiserver-amd64:v1.6.0
-      command: ["kube-apiserver"]
-      args: ["--authorization-mode=MyMode"]
+      image: foo/bar
+      command: ["kubelet", "--authorization-mode=MyMode"]
   restartPolicy: OnFailure
 
 ```
 
-```json
-{
-    "kind": "KubeletConfiguration",
-    "apiVersion": "kubelet.config.k8s.io/v1beta1",
-    "address": "0.0.0.0",
-    "authorization": {
-      "mode": "webhook"
-    }
-} 
+```yaml
+apiVersion: kubelet.config.k8s.io/v1beta1
+kind: KubeletConfiguration
+address: "192.168.0.8"
+port: 20250
+serializeImagePulls: false
+readOnlyPort: 0
+authentication:
+  anonymous:
+    enabled: false
+authorization:
+  mode: webhook
+
 ```
 
 ```yaml
@@ -71,8 +74,9 @@ metadata:
 spec:
   containers:
     - name: command-demo-container
-      image: foo/bar
-      command: ["kubelet", "--authorization-mode=MyMode"]
+      image: gcr.io/google_containers/kube-apiserver-amd64:v1.6.0
+      command: ["kube-apiserver"]
+      args: ["--authorization-mode=MyMode"]
   restartPolicy: OnFailure
 
 ```
@@ -88,7 +92,9 @@ spec:
   containers:
     - name: command-demo-container
       image: gcr.io/google_containers/kube-apiserver-amd64:v1.6.0
-      command: ["kube-apiserver", "--authorization-mode=MyMode,AlwaysAllow"]
+      command: ["kube-apiserver"]
+      args:
+        ["--anonymous-auth=false", "--authorization-mode=MyMode,AlwaysAllow"]
   restartPolicy: OnFailure
 
 ```
@@ -111,18 +117,13 @@ spec:
 
 ```
 
-```yaml
-apiVersion: v1
-kind: Pod
-metadata:
-  name: command-demo
-  labels:
-    purpose: demonstrate-command
-spec:
-  containers:
-    - name: command-demo-container
-      image: foo/bar
-      command: ["kubelet", "--authorization-mode=MyMode,AlwaysAllow"]
-  restartPolicy: OnFailure
-
+```json
+{
+    "kind": "KubeletConfiguration",
+    "apiVersion": "kubelet.config.k8s.io/v1beta1",
+    "address": "0.0.0.0",
+    "authorization": {
+      "mode": "AlwaysAllow"
+    }
+} 
 ```

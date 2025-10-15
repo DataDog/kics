@@ -64,7 +64,7 @@ resource "google_compute_network" "custom-test" {
 ```
 ## Non-Compliant Code Examples
 ```terraform
-resource "google_compute_subnetwork" "positive2" {
+resource "google_compute_subnetwork" "positive1" {
   name          = "test-subnetwork"
   ip_cidr_range = "10.2.0.0/16"
   region        = "us-central1"
@@ -73,7 +73,6 @@ resource "google_compute_subnetwork" "positive2" {
     range_name    = "tf-test-secondary-range-update1"
     ip_cidr_range = "192.168.10.0/24"
   }
-  private_ip_google_access = false
 }
 
 resource "google_compute_network" "custom-test" {
@@ -84,7 +83,7 @@ resource "google_compute_network" "custom-test" {
 ```
 
 ```terraform
-resource "google_compute_subnetwork" "positive1" {
+resource "google_compute_subnetwork" "positive2" {
   name          = "test-subnetwork"
   ip_cidr_range = "10.2.0.0/16"
   region        = "us-central1"
@@ -93,6 +92,7 @@ resource "google_compute_subnetwork" "positive1" {
     range_name    = "tf-test-secondary-range-update1"
     ip_cidr_range = "192.168.10.0/24"
   }
+  private_ip_google_access = false
 }
 
 resource "google_compute_network" "custom-test" {

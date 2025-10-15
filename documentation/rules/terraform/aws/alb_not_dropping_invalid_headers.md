@@ -47,54 +47,14 @@ Enabling `drop_invalid_header_fields = true` helps mitigate these risks by ensur
 
 ## Compliant Code Examples
 ```terraform
-resource "aws_alb" "enabled" {
-  internal           = false
-  name               = "alb"
-  subnets            = module.vpc.public_subnets
-
-  drop_invalid_header_fields = true
-}
-
-resource "aws_lb" "enabled" {
-  internal           = false
-  name               = "alb"
-  subnets            = module.vpc.public_subnets
-
-  drop_invalid_header_fields = true
-}
-
-```
-
-```terraform
-resource "aws_lb" "enabled" {
-  internal           = false
-  load_balancer_type = "application"
-  name               = "alb"
-  subnets            = module.vpc.public_subnets
-
-  drop_invalid_header_fields = true
-}
-
-```
-
-```terraform
-resource "aws_alb" "enabled" {
-  internal           = false
-  load_balancer_type = "application"
-  name               = "alb"
-  subnets            = module.vpc.public_subnets
-
-  drop_invalid_header_fields = true
-}
-
-```
-## Non-Compliant Code Examples
-```terraform
 module "alb" {
   source  = "terraform-aws-modules/alb/aws"
   version = "~> 6.0"
 
   name = "my-alb"
+
+  load_balancer_type = "application"
+  drop_invalid_header_fields = true
 
   vpc_id             = "vpc-abcde012"
   subnets            = ["subnet-abcde012", "subnet-bcde012a"]
@@ -148,16 +108,45 @@ module "alb" {
 ```
 
 ```terraform
-resource "aws_lb" "disabled_1" {
+resource "aws_lb" "enabled" {
   internal           = false
   load_balancer_type = "application"
+  name               = "alb"
+  subnets            = module.vpc.public_subnets
+
+  drop_invalid_header_fields = true
+}
+
+```
+
+```terraform
+resource "aws_alb" "enabled" {
+  internal           = false
+  name               = "alb"
+  subnets            = module.vpc.public_subnets
+
+  drop_invalid_header_fields = true
+}
+
+resource "aws_lb" "enabled" {
+  internal           = false
+  name               = "alb"
+  subnets            = module.vpc.public_subnets
+
+  drop_invalid_header_fields = true
+}
+
+```
+## Non-Compliant Code Examples
+```terraform
+resource "aws_alb" "disabled_1" {
+  internal           = false
   name               = "alb"
   subnets            = module.vpc.public_subnets
 }
 
 resource "aws_lb" "disabled_2" {
   internal           = false
-  load_balancer_type = "application"
   name               = "alb"
   subnets            = module.vpc.public_subnets
 
@@ -169,12 +158,33 @@ resource "aws_lb" "disabled_2" {
 ```terraform
 resource "aws_alb" "disabled_1" {
   internal           = false
+  load_balancer_type = "application"
+  name               = "alb"
+  subnets            = module.vpc.public_subnets
+}
+
+resource "aws_alb" "disabled_2" {
+  internal           = false
+  load_balancer_type = "application"
+  name               = "alb"
+  subnets            = module.vpc.public_subnets
+
+  drop_invalid_header_fields = false
+}
+
+```
+
+```terraform
+resource "aws_lb" "disabled_1" {
+  internal           = false
+  load_balancer_type = "application"
   name               = "alb"
   subnets            = module.vpc.public_subnets
 }
 
 resource "aws_lb" "disabled_2" {
   internal           = false
+  load_balancer_type = "application"
   name               = "alb"
   subnets            = module.vpc.public_subnets
 

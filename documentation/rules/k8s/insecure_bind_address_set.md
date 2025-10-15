@@ -77,8 +77,7 @@ spec:
   containers:
     - name: command-demo-container
       image: gcr.io/google_containers/kube-apiserver-amd64:v1.6.0
-      command: ["kube-apiserver"]
-      args: ["--insecure-bind-address=127.0.0.1"]
+      command: ["kube-apiserver", "--insecure-bind-address=127.0.0.1"]
   restartPolicy: OnFailure
 
 ```
@@ -94,7 +93,8 @@ spec:
   containers:
     - name: command-demo-container
       image: gcr.io/google_containers/kube-apiserver-amd64:v1.6.0
-      command: ["kube-apiserver", "--insecure-bind-address=127.0.0.1"]
+      command: ["kube-apiserver"]
+      args: ["--insecure-bind-address=127.0.0.1"]
   restartPolicy: OnFailure
 
 ```

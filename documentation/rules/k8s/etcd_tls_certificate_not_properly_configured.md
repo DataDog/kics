@@ -79,7 +79,7 @@ spec:
     - name: command-demo-container
       image: gcr.io/google_containers/kube-apiserver-amd64:v1.6.0
       command: ["kube-apiserver"]
-      args: ["--etcd-certfile=/path/to/cert/file.crt"]
+      args: ["--etcd-keyfile=/path/to/key/file.key"]
   restartPolicy: OnFailure
 
 ```
@@ -96,7 +96,7 @@ spec:
     - name: command-demo-container
       image: gcr.io/google_containers/kube-apiserver-amd64:v1.6.0
       command: ["kube-apiserver"]
-      args: ["--etcd-keyfile=/path/to/key/file.key"]
+      args: ["--etcd-certfile=/path/to/cert/file.crt"]
   restartPolicy: OnFailure
 
 ```

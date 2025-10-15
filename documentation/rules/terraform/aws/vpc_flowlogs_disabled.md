@@ -91,27 +91,6 @@ resource "aws_flow_log" "example2" {
 ```
 ## Non-Compliant Code Examples
 ```terraform
-resource "aws_vpc" "main" {
-  cidr_block = "10.0.0.0/16"
-}
-
-resource "aws_flow_log" "example" {
-  iam_role_arn    = aws_iam_role.example.arn
-  log_destination = aws_cloudwatch_log_group.example.arn
-  traffic_type    = "ALL"
-  vpc_id          = aws_vpc.example.id
-}
-
-resource "aws_flow_log" "example2" {
-  iam_role_arn    = aws_iam_role.example.arn
-  log_destination = aws_cloudwatch_log_group.example.arn
-  traffic_type    = "ALL"
-  vpc_id          = aws_vpc.example2.id
-}
-
-```
-
-```terraform
 module "vpc" {
   source  = "terraform-aws-modules/vpc/aws"
   version = "3.7.0"
@@ -136,24 +115,42 @@ module "vpc" {
 ```
 
 ```terraform
-module "vpc" {
-  source  = "terraform-aws-modules/vpc/aws"
-  version = "3.7.0"
+resource "aws_vpc" "main" {
+  cidr_block = "10.0.0.0/16"
+}
 
-  name = "my-vpc"
-  cidr = "10.0.0.0/16"
+resource "aws_flow_log" "example" {
+  iam_role_arn    = aws_iam_role.example.arn
+  log_destination = aws_cloudwatch_log_group.example.arn
+  traffic_type    = "ALL"
+}
 
-  azs             = ["eu-west-1a", "eu-west-1b", "eu-west-1c"]
-  private_subnets = ["10.0.1.0/24", "10.0.2.0/24", "10.0.3.0/24"]
-  public_subnets  = ["10.0.101.0/24", "10.0.102.0/24", "10.0.103.0/24"]
+resource "aws_flow_log" "example1" {
+  iam_role_arn    = aws_iam_role.example.arn
+  log_destination = aws_cloudwatch_log_group.main.arn
+  traffic_type    = "ALL"
+  vpc_id          = aws_vpc.main.id
+}
 
-  enable_nat_gateway = true
-  enable_vpn_gateway = true
+```
 
-  tags = {
-    Terraform   = "true"
-    Environment = "dev"
-  }
+```terraform
+resource "aws_vpc" "main" {
+  cidr_block = "10.0.0.0/16"
+}
+
+resource "aws_flow_log" "example" {
+  iam_role_arn    = aws_iam_role.example.arn
+  log_destination = aws_cloudwatch_log_group.example.arn
+  traffic_type    = "ALL"
+  vpc_id          = aws_vpc.example.id
+}
+
+resource "aws_flow_log" "example2" {
+  iam_role_arn    = aws_iam_role.example.arn
+  log_destination = aws_cloudwatch_log_group.example.arn
+  traffic_type    = "ALL"
+  vpc_id          = aws_vpc.example2.id
 }
 
 ```

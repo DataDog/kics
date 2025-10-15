@@ -74,6 +74,14 @@ EOF
 ```
 ## Non-Compliant Code Examples
 ```terraform
+resource "aws_ecr_repository" "foo" {
+  name = "bar"
+}
+
+
+```
+
+```terraform
 resource "aws_ecr_repository" "foo2" {
   name = "bar"
 }
@@ -111,13 +119,5 @@ resource "aws_ecr_repository_policy" "foopolicy" {
 }
 EOF
 }
-
-```
-
-```terraform
-resource "aws_ecr_repository" "foo" {
-  name = "bar"
-}
-
 
 ```

@@ -69,19 +69,16 @@ spec:
 ```
 
 ```yaml
-apiVersion: v1
-kind: Pod
-metadata:
-  name: command-demo
-  labels:
-    purpose: demonstrate-command
-spec:
-  containers:
-    - name: command-demo-container
-      image: foo/bar
-      command: ["kubelet"]
-      args: []
-  restartPolicy: OnFailure
+apiVersion: kubelet.config.k8s.io/v1beta1
+kind: KubeletConfiguration
+address: "192.168.0.8"
+port: 20250
+serializeImagePulls: false
+eventRecordQPS: 0
+tlsCertFile: "someFile.txt"
+tlsPrivateKeyFile: "someFile.txt"
+evictionHard:
+    memory.available:  "200Mi"
 
 ```
 ## Non-Compliant Code Examples
@@ -96,8 +93,8 @@ spec:
   containers:
     - name: command-demo-container
       image: foo/bar
-      command: ["kubelet","--event-qps=3"]
-      args: []
+      command: ["kubelet"]
+      args: ["--event-qps=1"]
   restartPolicy: OnFailure
 
 ```
@@ -117,14 +114,18 @@ evictionHard:
 ```
 
 ```yaml
-apiVersion: kubelet.config.k8s.io/v1beta1
-kind: KubeletConfiguration
-address: "192.168.0.8"
-port: 20250
-serializeImagePulls: false
-tlsCertFile: "someFile.txt"
-tlsPrivateKeyFile: "someFile.txt"
-evictionHard:
-    memory.available:  "200Mi"
+apiVersion: v1
+kind: Pod
+metadata:
+  name: command-demo
+  labels:
+    purpose: demonstrate-command
+spec:
+  containers:
+    - name: command-demo-container
+      image: foo/bar
+      command: ["kubelet","--event-qps=3"]
+      args: []
+  restartPolicy: OnFailure
 
 ```
