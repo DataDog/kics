@@ -28,7 +28,7 @@ meta:
 
 ### Description
 
- Each namespace should have a ResourceQuota policy associated with limiting the total resources that Pods, containers, and PersistentVolumeClaims can consume.
+ Each namespace must have a ResourceQuota that limits the total resources consumed by Pods, containers, and PersistentVolumeClaims. The rule checks common workload kinds (Pod, Deployment, DaemonSet, StatefulSet, ReplicaSet, ReplicationController, Job, CronJob) and PersistentVolumeClaims and flags resources whose namespace does not have an associated ResourceQuota. If a resource omits a namespace, it is treated as belonging to the "default" namespace.
 
 
 ## Compliant Code Examples

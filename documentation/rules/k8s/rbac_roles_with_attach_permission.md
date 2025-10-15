@@ -28,7 +28,9 @@ meta:
 
 ### Description
 
- Roles or ClusterRoles with permissions to attach to containers via `kubectl attach` could be abused by attackers to read log output (stdout, stderr) and send input data (stdin) to running processes. Additionally, it could allow a malicious user to attach to a privileged container, resulting in privilege escalation. To prevent this, the `pods/attach` verb should not be used in production environments.
+ Roles or ClusterRoles that permit attaching to containers via `kubectl attach` can be abused by attackers to read process output (stdout, stderr) and send input (stdin) to running processes.
+They can also allow a malicious user to attach to a privileged container, resulting in privilege escalation.
+For this reason, the `pods/attach` resource should not be included in production Role or ClusterRole rules. This rule flags Role or ClusterRole documents whose rules include the `pods/attach` resource (and related verb entries such as `create` or `*`). Findings support least-privilege enforcement by identifying and removing attach permissions from cluster roles.
 
 
 ## Compliant Code Examples

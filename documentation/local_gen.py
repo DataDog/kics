@@ -14,6 +14,7 @@ from pathlib import Path
 NO_DESC = "No description provided"
 POSITIVE = re.compile(r"^positive\d*\..+$")
 NEGATIVE = re.compile(r"^negative\d*\..+$")
+CODE_SUFFIX = {"tf": "terraform", "yaml": "yaml", "json": "json"}
 
 
 def parse_args():
@@ -68,12 +69,14 @@ def get_code_snippets(test_dir, resource_type, max_examples):
         (f for f in test_dir.iterdir() if NEGATIVE.match(f.name)), max_examples
     ):
         if code := read_file_contents(file).replace("```", "\\`\\`\\`"):
-            compliant.append(f"```{file.suffix.lstrip('.')}\n{code}\n```")
+            compliant.append(f"```{CODE_SUFFIX[file.suffix.lstrip('.')]}\n{code}\n```")
     for file in islice(
         (f for f in test_dir.iterdir() if POSITIVE.match(f.name)), max_examples
     ):
         if code := read_file_contents(file).replace("```", "\\`\\`\\`"):
-            non_compliant.append(f"```{file.suffix.lstrip('.')}\n{code}\n```")
+            non_compliant.append(
+                f"```{CODE_SUFFIX[file.suffix.lstrip('.')]}\n{code}\n```"
+            )
     return compliant, non_compliant
 
 

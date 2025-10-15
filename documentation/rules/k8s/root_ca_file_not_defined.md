@@ -28,7 +28,7 @@ meta:
 
 ### Description
 
- When using `kube-controller-manager`, the `--root-ca-file` flag should be set.
+ Containers (including `initContainers`) that run `kube-controller-manager` should include the `--root-ca-file` flag. This flag specifies the path to the root CA certificate used to validate TLS certificates; without it the controller manager may not validate certificates correctly. The rule reports a MissingAttribute when the `--root-ca-file` flag is not present in the container's command.
 
 
 ## Compliant Code Examples

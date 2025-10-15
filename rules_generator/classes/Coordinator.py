@@ -107,3 +107,25 @@ class Coordinator:
             except KeyboardInterrupt:
                 print("Ctrl-C pressed!")
                 sys.exit(0)
+
+    def generate_extended_descriptions(self, path_str) -> None:
+        path = Path(path_str)
+        with alive_bar(len(list(path.glob("*")))) as bar:
+            rules_list = sorted(path.iterdir())
+            try:
+                for rule in rules_list:
+                    if not (rule.is_dir() and (rule / "metadata.json").exists()):
+                        continue
+                    metadata = self.codeProcessor.load_metadata(rule)
+                    rego = self.codeProcessor.read_snippet(rule)
+                    update = (
+                        self.rulesGenerator.send_rule_doc_extend_description_request(
+                            rego, metadata
+                        )
+                    )
+                    metadata["descriptionText"] = update
+                    self.codeProcessor.write_metadata(rule, metadata)
+                    bar()
+            except KeyboardInterrupt:
+                print("Ctrl-C pressed!")
+                sys.exit(0)

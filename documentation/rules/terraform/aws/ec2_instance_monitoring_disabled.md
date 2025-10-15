@@ -83,6 +83,55 @@ resource "aws_instance" "monitoring_negative1" {
 }
 
 ```
+
+```json
+{
+  "//": {
+    "metadata": {
+      "backend": "local",
+      "stackName": "cdktf-test",
+      "version": "0.9.0"
+    },
+    "outputs": {}
+  },
+  "provider": {
+    "aws": [
+      {
+        "region": "us-east-1"
+      }
+    ]
+  },
+  "resource": {
+    "aws_instance": {
+      "cdktf-test": {
+        "//": {
+          "metadata": {
+            "path": "cdktf-test/cdktf-test",
+            "uniqueId": "cdktf-test"
+          }
+        },
+        "ami": "ami-1212f123",
+        "instance_type": "t2.micro",
+        "monitoring": true
+      }
+    }
+  },
+  "terraform": {
+    "backend": {
+      "local": {
+        "path": "/terraform.cdktf-test.tfstate"
+      }
+    },
+    "required_providers": {
+      "aws": {
+        "source": "aws",
+        "version": "~> 3.0"
+      }
+    }
+  }
+}
+
+```
 ## Non-Compliant Code Examples
 ```terraform
 data "aws_ami" "ubuntu" {
@@ -135,24 +184,50 @@ module "ec2_instance" {
 
 ```
 
-```terraform
-module "ec2_instance" {
-  source  = "terraform-aws-modules/ec2-instance/aws"
-  version = "~> 3.0"
-
-  name = "single-instance"
-
-  ami                    = "ami-ebd02392"
-  instance_type          = "t2.micro"
-  key_name               = "user1"
-  monitoring             = false
-  vpc_security_group_ids = ["sg-12345678"]
-  subnet_id              = "subnet-eddcdzz4"
-  associate_public_ip_address = false
-
-  tags = {
-    Terraform   = "true"
-    Environment = "dev"
+```json
+{
+  "//": {
+    "metadata": {
+      "backend": "local",
+      "stackName": "cdktf-test",
+      "version": "0.9.0"
+    },
+    "outputs": {}
+  },
+  "provider": {
+    "aws": [
+      {
+        "region": "us-east-1"
+      }
+    ]
+  },
+  "resource": {
+    "aws_instance": {
+      "cdktf-test": {
+        "//": {
+          "metadata": {
+            "path": "cdktf-test/cdktf-test",
+            "uniqueId": "cdktf-test"
+          }
+        },
+        "ami": "ami-1212f123",
+        "instance_type": "t2.micro",
+        "monitoring": false
+      }
+    }
+  },
+  "terraform": {
+    "backend": {
+      "local": {
+        "path": "/terraform.cdktf-test.tfstate"
+      }
+    },
+    "required_providers": {
+      "aws": {
+        "source": "aws",
+        "version": "~> 3.0"
+      }
+    }
   }
 }
 

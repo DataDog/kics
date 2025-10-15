@@ -28,7 +28,7 @@ meta:
 
 ### Description
 
- Roles or ClusterRoles with permissions to run commands in containers via `kubectl exec` could be abused by attackers to execute malicious code in case of compromise. To prevent this, the `pods/exec` verb should not be used in production environments.
+ Roles or ClusterRoles that grant permissions to run commands in containers via `kubectl exec` can be abused by attackers to execute malicious code if a subject is compromised. To reduce this risk, the `pods/exec` verb should not be used in production environments. Such permissions increase the attack surface and violate the principle of least privilege. When exec access is required, it should be tightly scoped to specific subjects and namespaces and regularly audited.
 
 
 ## Compliant Code Examples

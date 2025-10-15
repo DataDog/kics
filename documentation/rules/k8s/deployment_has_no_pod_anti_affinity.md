@@ -28,7 +28,7 @@ meta:
 
 ### Description
 
- Deployments should define a `podAntiAffinity` policy to prevent multiple Pods from being scheduled on the same node.
+ Deployments with more than two replicas should include a `podAntiAffinity` policy to prevent multiple Pods from being scheduled on the same node. The policy must be defined under `spec.template.spec.affinity.podAntiAffinity` and include at least one of `preferredDuringSchedulingIgnoredDuringExecution` or `requiredDuringSchedulingIgnoredDuringExecution`. Each affinity term's `podAffinityTerm.topologyKey` must be set to 'kubernetes.io/hostname', and its `labelSelector.matchLabels` must match labels on the pod template.
 
 
 ## Compliant Code Examples

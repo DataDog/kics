@@ -28,7 +28,7 @@ meta:
 
 ### Description
 
- When using `kube-apiserver`, the `--encryption-provider-config` flag should be set, and encryption should be correctly configured in the encryption configuration file.
+ When `kube-apiserver` is used, the `--encryption-provider-config` flag should be set, and the referenced encryption configuration file should correctly configure encryption providers. This rule checks `containers` and `initContainers` for `kube-apiserver` command invocations and reports when the `--encryption-provider-config` flag is not present. Missing this flag and a valid encryption config can result in secrets and other sensitive data being stored unencrypted at rest.
 
 
 ## Compliant Code Examples

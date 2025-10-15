@@ -28,7 +28,11 @@ meta:
 
 ### Description
 
- TLS connection certificate files should be set up.
+ TLS certificate files for TLS connections should be set.
+
+For API server containers, the rule verifies that the `--tls-cert-file` and `--tls-private-key-file` flags are included in their command.
+For `KubeletConfiguration` documents, the rule verifies that the `tlsCertFile` and `tlsPrivateKeyFile` fields are present.
+If any of these are absent, the rule reports a MissingAttribute issue with the expected and actual values.
 
 
 ## Compliant Code Examples

@@ -28,7 +28,7 @@ meta:
 
 ### Description
 
- Containers should configure drop capabilities in the security context.
+ Containers and initContainers should configure drop capabilities in their `securityContext`. The rule requires that each container defines `securityContext.capabilities` with a `drop` attribute; missing `securityContext`, `capabilities`, or `drop` is reported. This enforces least-privilege by removing unnecessary Linux capabilities.
 
 
 ## Compliant Code Examples

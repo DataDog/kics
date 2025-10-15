@@ -28,7 +28,7 @@ meta:
 
 ### Description
 
- The permission to create Pods in a cluster should be restricted because it allows privilege escalation.
+ The permission to create Pods in a cluster should be restricted because it can allow privilege escalation. This rule detects Role and ClusterRole rules where verbs include "create" for the "pods" resource, or where verbs or resources use wildcard values together with non-custom API groups (empty string or "*"). When triggered, the rule reports the document, resource, and rule location containing the unsafe verb/resource combination.
 
 
 ## Compliant Code Examples

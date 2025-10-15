@@ -28,7 +28,8 @@ meta:
 
 ### Description
 
- The Service should target at least one Pod.
+ The Service must target at least one Pod. Its `.spec.selector` must match labels on Pod-bearing resources (Pod, ReplicationController, ReplicaSet, Deployment, DaemonSet, StatefulSet, Job, or CronJob job template).
+Each Service port must reference a container port on at least one matched Pod — either by numeric `targetPort`, by named `targetPort`, or by falling back to the Service `port` when `targetPort` is unspecified.
 
 
 ## Compliant Code Examples

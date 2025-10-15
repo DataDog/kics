@@ -48,13 +48,6 @@ resource "google_compute_network" "legacy_network" {
 
 ## Compliant Code Examples
 ```terraform
-resource "google_compute_network" "legacy_network_2" {
-  name = "legacy-network"
-}
-
-```
-
-```terraform
 resource "google_compute_network" "modern_network" {
   name                    = "modern-network"
   auto_create_subnetworks = false

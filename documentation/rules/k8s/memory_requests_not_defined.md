@@ -28,7 +28,7 @@ meta:
 
 ### Description
 
- Memory requests should be defined for each container to allow the kubelet to reserve the requested system resources and prevent over-provisioning on individual nodes.
+ Memory requests should be defined for each container so the scheduler and kubelet can account for and reserve the requested memory and help prevent over-provisioning on nodes. Without a defined memory request, the scheduler may overcommit node memory, increasing the risk of resource contention and out-of-memory (OOM) terminations.
 
 
 ## Compliant Code Examples

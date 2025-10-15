@@ -28,7 +28,7 @@ meta:
 
 ### Description
 
- When using `kube-apiserver`, the `--enable-admission-plugins` flag should include `SecurityContextDeny`, and it should be correctly configured in the admission control config file when `PodSecurityPolicy` is not set.
+ For `kube-apiserver`, the `--enable-admission-plugins` flag should include `SecurityContextDeny` when `PodSecurityPolicy` is not set. The `SecurityContextDeny` plugin must also be configured in the admission control configuration file. This ensures pod security constraints remain enforced when `PodSecurityPolicy` is disabled. The rule checks both `containers` and `initContainers` command lines for the presence of the flag and plugin.
 
 
 ## Compliant Code Examples

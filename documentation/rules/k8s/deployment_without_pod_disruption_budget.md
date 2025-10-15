@@ -28,7 +28,7 @@ meta:
 
 ### Description
 
- Deployments should be assigned a PodDisruptionBudget to ensure high availability.
+ Deployments with more than one replica should be targeted by a PodDisruptionBudget to ensure high availability during voluntary disruptions. This rule flags Deployment resources that have replicas > 1 but are not selected by any PodDisruptionBudget. A PodDisruptionBudget helps maintain the desired number of available pods during node drains or other disruptions.
 
 
 ## Compliant Code Examples

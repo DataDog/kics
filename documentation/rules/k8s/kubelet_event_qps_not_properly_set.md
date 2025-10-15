@@ -28,7 +28,7 @@ meta:
 
 ### Description
 
- When using `kubelet`, the `--event-qps` value should be set to `0`.
+ When running `kubelet`, the `--event-qps` flag should be set to `0`. The rule flags kubelet containers whose command includes `kubelet` and whose `--event-qps` flag is not set to `0`. It also inspects `KubeletConfiguration` resources and reports when `eventRecordQPS` is missing or set to a non-zero value.
 
 
 ## Compliant Code Examples
