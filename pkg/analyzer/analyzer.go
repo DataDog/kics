@@ -156,6 +156,7 @@ type Analyzer struct {
 	GitIgnoreFileName string
 	ExcludeGitIgnore  bool
 	MaxFileSize       int
+	NumWorkers        int
 }
 
 // types is a map that contains the regex by type
@@ -326,17 +327,45 @@ func Analyze(ctx context.Context, a *Analyzer) (model.AnalyzedPaths, error) {
 
 	a.Types, a.ExcludeTypes = typeLower(a.Types, a.ExcludeTypes)
 
-	// Start the workers
-	for _, file := range files {
+	// Use a worker pool to limit concurrent file analysis
+	numWorkers := utils.AdjustNumWorkers(a.NumWorkers)
+
+	// Create a job channel for files to analyze
+	jobs := make(chan string, len(files))
+
+	// Start worker pool
+	for i := 0; i < numWorkers; i++ {
 		wg.Add(1)
-		// analyze the files concurrently
-		a := &analyzerInfo{
-			typesFlag:        a.Types,
-			excludeTypesFlag: a.ExcludeTypes,
-			filePath:         file,
-		}
-		go a.worker(ctx, results, unwanted, locCount, &wg)
+		go func() {
+			defer wg.Done()
+			for filePath := range jobs {
+				select {
+				case <-ctx.Done():
+					return
+				default:
+				}
+
+				analyzerInfo := &analyzerInfo{
+					typesFlag:        a.Types,
+					excludeTypesFlag: a.ExcludeTypes,
+					filePath:         filePath,
+				}
+				analyzerInfo.worker(ctx, results, unwanted, locCount)
+			}
+		}()
 	}
+
+	// Feed jobs to workers
+	go func() {
+		defer close(jobs)
+		for _, file := range files {
+			select {
+			case <-ctx.Done():
+				return
+			case jobs <- file:
+			}
+		}
+	}()
 
 	go func() {
 		// close channel results when the worker has finished writing into it
@@ -364,9 +393,7 @@ func Analyze(ctx context.Context, a *Analyzer) (model.AnalyzedPaths, error) {
 // worker determines the type of the file by ext (dockerfile and terraform)/content and
 // writes the answer to the results channel
 // if no types were found, the worker will write the path of the file in the unwanted channel
-func (a *analyzerInfo) worker(ctx context.Context, results, unwanted chan<- string, locCount chan<- int, wg *sync.WaitGroup) { //nolint: gocyclo
-	defer wg.Done()
-
+func (a *analyzerInfo) worker(ctx context.Context, results, unwanted chan<- string, locCount chan<- int) { //nolint: gocyclo
 	ext, errExt := utils.GetExtension(ctx, a.filePath)
 	if errExt == nil {
 		linesCount, _ := utils.LineCounter(ctx, a.filePath)
