@@ -11,8 +11,6 @@ import (
 	"encoding/json"
 	"fmt"
 	"reflect"
-
-	"runtime"
 	"strings"
 	"sync"
 	"time"
@@ -26,6 +24,7 @@ import (
 	"github.com/Checkmarx/kics/pkg/logger"
 	"github.com/Checkmarx/kics/pkg/model"
 	tfmodules "github.com/Checkmarx/kics/pkg/parser/terraform/modules"
+	"github.com/Checkmarx/kics/pkg/utils"
 	"github.com/hashicorp/hcl/v2"
 	"github.com/hashicorp/hcl/v2/hclsyntax"
 	"github.com/open-policy-agent/opa/ast"
@@ -114,15 +113,6 @@ var (
 	}
 )
 
-func adjustNumWorkers(workers int) int {
-	// for the case in which the end user decides to use num workers as "auto-detected"
-	// we will set the number of workers to the number of CPUs available based on GOMAXPROCS value
-	if workers == 0 {
-		return runtime.GOMAXPROCS(-1)
-	}
-	return workers
-}
-
 // NewInspector initializes a inspector, compiling and loading queries for scan and its tracker
 func NewInspector(
 	ctx context.Context,
@@ -185,7 +175,7 @@ func NewInspector(
 		detector:            lineDetector,
 		queryExecTimeout:    queryExecTimeout,
 		useOldSeverities:    useOldSeverities,
-		numWorkers:          adjustNumWorkers(numWorkers),
+		numWorkers:          utils.AdjustNumWorkers(numWorkers),
 		kicsComputeNewSimID: kicsComputeNewSimID,
 		flagEvaluator:       flagEvaluator,
 	}, nil
