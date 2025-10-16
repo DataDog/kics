@@ -11,7 +11,7 @@ CxPolicy[result] {
 	common_lib.valid_key(metadata, "annotations")
 
 	annotations := metadata.annotations
-	not common_lib.valid_key(annotations, "${seccomp.security.alpha.kubernetes.io/defaultProfileName}")
+	not common_lib.valid_key(annotations, "seccomp.security.alpha.kubernetes.io/defaultProfileName")
 
 	result := {
 		"documentId": input.document[i].id,
@@ -31,9 +31,9 @@ CxPolicy[result] {
 	common_lib.valid_key(metadata, "annotations")
 
 	annotations := metadata.annotations
-	common_lib.valid_key(annotations, "${seccomp.security.alpha.kubernetes.io/defaultProfileName}")
+	common_lib.valid_key(annotations, "seccomp.security.alpha.kubernetes.io/defaultProfileName")
 
-	seccomp := annotations["${seccomp.security.alpha.kubernetes.io/defaultProfileName}"]
+	seccomp := annotations["seccomp.security.alpha.kubernetes.io/defaultProfileName"]
 
 	seccomp != "runtime/default"
 
@@ -90,7 +90,7 @@ CxPolicy[result] {
 	common_lib.valid_key(metadata, "annotations")
 
 	annotations := metadata.annotations
-	not common_lib.valid_key(annotations, "${seccomp.security.alpha.kubernetes.io/defaultProfileName}")
+	not common_lib.valid_key(annotations, "seccomp.security.alpha.kubernetes.io/defaultProfileName")
 
 	result := {
 		"documentId": input.document[i].id,
@@ -110,9 +110,9 @@ CxPolicy[result] {
 	common_lib.valid_key(metadata, "annotations")
 
 	annotations := metadata.annotations
-	common_lib.valid_key(annotations, "${seccomp.security.alpha.kubernetes.io/defaultProfileName}")
+	common_lib.valid_key(annotations, "seccomp.security.alpha.kubernetes.io/defaultProfileName")
 
-	seccomp := annotations["${seccomp.security.alpha.kubernetes.io/defaultProfileName}"]
+	seccomp := annotations["seccomp.security.alpha.kubernetes.io/defaultProfileName"]
 	seccomp != "runtime/default"
 
 	result := {
@@ -157,7 +157,7 @@ CxPolicy[result] {
 	common_lib.valid_key(metadata, "annotations")
 
 	annotations := metadata.annotations
-	not common_lib.valid_key(annotations, "${seccomp.security.alpha.kubernetes.io/defaultProfileName}")
+	not common_lib.valid_key(annotations, "seccomp.security.alpha.kubernetes.io/defaultProfileName")
 
 	result := {
 		"documentId": input.document[i].id,
@@ -179,9 +179,9 @@ CxPolicy[result] {
 	common_lib.valid_key(metadata, "annotations")
 
 	annotations := metadata.annotations
-	common_lib.valid_key(annotations, "${seccomp.security.alpha.kubernetes.io/defaultProfileName}")
+	common_lib.valid_key(annotations, "seccomp.security.alpha.kubernetes.io/defaultProfileName")
 
-	seccomp := annotations["${seccomp.security.alpha.kubernetes.io/defaultProfileName}"]
+	seccomp := annotations["seccomp.security.alpha.kubernetes.io/defaultProfileName"]
 
 	seccomp != "runtime/default"
 
