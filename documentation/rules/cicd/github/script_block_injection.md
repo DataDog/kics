@@ -6,7 +6,6 @@ meta:
   id: "62ff6823-927a-427f-acf9-f1ea2932d616"
   display_name: "Script block injection"
   cloud_provider: "github"
-  framework: "CICD"
   platform: "CICD"
   severity: "HIGH"
   category: "Insecure Configurations"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** github
 
-**Framework:** CICD
+**Platform:** CICD
 
 **Severity:** High
 

@@ -6,7 +6,6 @@ meta:
   id: "8055dec2-efb8-4fe6-8837-d9bed6ff202a"
   display_name: "User with privilege escalation by actions 'lambda:CreateFunction' and 'iam:PassRole' and 'lambda:InvokeFunction'"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** aws
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** Medium
 

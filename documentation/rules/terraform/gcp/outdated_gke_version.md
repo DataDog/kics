@@ -6,7 +6,6 @@ meta:
   id: "128df7ec-f185-48bc-8913-ce756a3ccb85"
   display_name: "Outdated GKE version"
   cloud_provider: "gcp"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "LOW"
   category: "Best Practices"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** gcp
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** Low
 

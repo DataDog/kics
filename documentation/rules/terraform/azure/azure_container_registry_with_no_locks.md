@@ -6,7 +6,6 @@ meta:
   id: "a187ac47-8163-42ce-8a63-c115236be6fb"
   display_name: "Azure Container Registry with no locks"
   cloud_provider: "azure"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "HIGH"
   category: "Insecure Configurations"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** azure
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** High
 

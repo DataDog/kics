@@ -6,7 +6,6 @@ meta:
   id: "704dadd3-54fc-48ac-b6a0-02f170011473"
   display_name: "GuardDuty detector disabled"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Observability"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** aws
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** Medium
 

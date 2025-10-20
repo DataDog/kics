@@ -6,7 +6,6 @@ meta:
   id: "83a229ba-483e-47c6-8db7-dc96969bce5a"
   display_name: "SQL database audit disabled"
   cloud_provider: "azure"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Resource Management"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** azure
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** Medium
 

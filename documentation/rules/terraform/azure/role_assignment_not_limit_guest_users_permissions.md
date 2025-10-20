@@ -6,7 +6,6 @@ meta:
   id: "8e75e431-449f-49e9-b56a-c8f1378025cf"
   display_name: "Role assignment not limit guest user permissions"
   cloud_provider: "azure"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** azure
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** Medium
 

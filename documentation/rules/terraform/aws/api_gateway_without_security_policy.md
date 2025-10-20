@@ -6,7 +6,6 @@ meta:
   id: "4e1cc5d3-2811-4fb2-861c-ee9b3cb7f90b"
   display_name: "API Gateway without security policy"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Insecure Configurations"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** aws
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** Medium
 

@@ -6,7 +6,6 @@ meta:
   id: "3206240f-2e87-4e58-8d24-3e19e7c83d7c"
   display_name: "ECS service admin role is present"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "HIGH"
   category: "Access Control"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** aws
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** High
 

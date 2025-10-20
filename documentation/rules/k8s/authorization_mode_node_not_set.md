@@ -6,7 +6,6 @@ meta:
   id: "4d7ee40f-fc5d-427d-8cac-dffbe22d42d1"
   display_name: "Authorization mode node not set"
   cloud_provider: "k8s"
-  framework: "Kubernetes"
   platform: "Kubernetes"
   severity: "MEDIUM"
   category: "Insecure Configurations"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** k8s
 
-**Framework:** Kubernetes
+**Platform:** Kubernetes
 
 **Severity:** Medium
 

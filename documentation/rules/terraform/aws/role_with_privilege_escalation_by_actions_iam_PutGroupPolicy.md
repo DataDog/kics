@@ -6,7 +6,6 @@ meta:
   id: "d6047119-a0b2-4b59-a4f2-127a36fb685b"
   display_name: "Role with privilege escalation by actions 'iam:PutGroupPolicy'"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** aws
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** Medium
 

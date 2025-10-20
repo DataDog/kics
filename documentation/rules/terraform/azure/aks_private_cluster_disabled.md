@@ -6,7 +6,6 @@ meta:
   id: "599318f2-6653-4569-9e21-041d06c63a89"
   display_name: "AKS private cluster disabled"
   cloud_provider: "azure"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Insecure Configurations"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** azure
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** Medium
 

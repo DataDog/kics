@@ -6,7 +6,6 @@ meta:
   id: "302736f4-b16c-41b8-befe-c0baffa0bd9d"
   display_name: "Shared host PID namespace"
   cloud_provider: "k8s"
-  framework: "Kubernetes"
   platform: "Kubernetes"
   severity: "HIGH"
   category: "Insecure Configurations"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** k8s
 
-**Framework:** Kubernetes
+**Platform:** Kubernetes
 
 **Severity:** High
 

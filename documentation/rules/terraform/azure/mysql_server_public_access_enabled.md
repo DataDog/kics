@@ -6,7 +6,6 @@ meta:
   id: "f118890b-2468-42b1-9ce9-af35146b425b"
   display_name: "MySQL server public access enabled"
   cloud_provider: "azure"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "HIGH"
   category: "Networking and Firewall"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** azure
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** High
 

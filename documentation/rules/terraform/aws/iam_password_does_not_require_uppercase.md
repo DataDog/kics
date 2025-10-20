@@ -6,7 +6,6 @@ meta:
   id: "2c3d4ghwt-e5f6-7890-ab12-cd34ef567890"
   display_name: "IAM password policy does not require uppercase letter"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Best Practices"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** aws
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** Medium
 

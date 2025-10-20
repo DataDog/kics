@@ -6,7 +6,6 @@ meta:
   id: "97fa667a-d05b-4f16-9071-58b939f34751"
   display_name: "Serial ports are enabled for VM instances"
   cloud_provider: "gcp"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Networking and Firewall"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** gcp
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** Medium
 

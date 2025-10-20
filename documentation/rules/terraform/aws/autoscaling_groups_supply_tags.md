@@ -6,7 +6,6 @@ meta:
   id: "ba48df05-eaa1-4d64-905e-4a4b051e7587"
   display_name: "Autoscaling groups supply tags"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "LOW"
   category: "Availability"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** aws
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** Low
 

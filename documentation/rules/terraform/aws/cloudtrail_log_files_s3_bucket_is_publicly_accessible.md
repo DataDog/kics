@@ -6,7 +6,6 @@ meta:
   id: "bd0088a5-c133-4b20-b129-ec9968b16ef3"
   display_name: "CloudTrail log files S3 bucket is publicly accessible"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "HIGH"
   category: "Observability"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** aws
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** High
 

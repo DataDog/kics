@@ -105,7 +105,6 @@ meta:
   id: "{rule_id}"
   display_name: "{display_name}"
   cloud_provider: "{cloud_provider}"
-  framework: "{platform}"
   platform: "{platform}"
   severity: "{severity}"
   category: "{category}"
@@ -116,7 +115,7 @@ meta:
 
 **Cloud Provider:** {cloud_provider}
 
-**Framework:** {platform}
+**Platform:** {platform}
 
 **Severity:** {severity.capitalize()}
 

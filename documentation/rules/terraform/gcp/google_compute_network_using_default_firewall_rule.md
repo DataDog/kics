@@ -6,7 +6,6 @@ meta:
   id: "40abce54-95b1-478c-8e5f-ea0bf0bb0e33"
   display_name: "Google Compute network using default firewall rule"
   cloud_provider: "gcp"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Networking and Firewall"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** gcp
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** Medium
 

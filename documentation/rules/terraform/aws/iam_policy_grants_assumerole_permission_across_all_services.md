@@ -6,7 +6,6 @@ meta:
   id: "bcdcbdc6-a350-4855-ae7c-d1e6436f7c97"
   display_name: "IAM policy grants 'AssumeRole' permission across all services"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** aws
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** Medium
 

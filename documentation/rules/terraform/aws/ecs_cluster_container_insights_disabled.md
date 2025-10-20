@@ -6,7 +6,6 @@ meta:
   id: "97cb0688-369a-4d26-b1f7-86c4c91231bc"
   display_name: "ECS cluster with container insights disabled"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "LOW"
   category: "Observability"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** aws
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** Low
 

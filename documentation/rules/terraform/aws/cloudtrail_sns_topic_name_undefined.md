@@ -6,7 +6,6 @@ meta:
   id: "482b7d26-0bdb-4b5f-bf6f-545826c0a3dd"
   display_name: "CloudTrail SNS topic name undefined"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "LOW"
   category: "Observability"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** aws
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** Low
 

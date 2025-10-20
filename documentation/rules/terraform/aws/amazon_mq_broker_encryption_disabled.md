@@ -6,7 +6,6 @@ meta:
   id: "3db3f534-e3a3-487f-88c7-0a9fbf64b702"
   display_name: "AmazonMQ broker encryption disabled"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "HIGH"
   category: "Encryption"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** aws
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** High
 

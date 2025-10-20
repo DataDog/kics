@@ -6,7 +6,6 @@ meta:
   id: "c7fc1481-2899-4490-bbd8-544a3a61a2f3"
   display_name: "App Service authentication disabled"
   cloud_provider: "azure"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** azure
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** Medium
 

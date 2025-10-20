@@ -6,7 +6,6 @@ meta:
   id: "ad296c0d-8131-4d6b-b030-1b0e73a99ad3"
   display_name: "Group with privilege escalation by actions 'iam:UpdateLoginProfile'"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** aws
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** Medium
 

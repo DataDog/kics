@@ -6,7 +6,6 @@ meta:
   id: "4ac0e2b7-d2d2-4af7-8799-e8de6721ccda"
   display_name: "CPU limits not set"
   cloud_provider: "k8s"
-  framework: "Kubernetes"
   platform: "Kubernetes"
   severity: "LOW"
   category: "Resource Management"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** k8s
 
-**Framework:** Kubernetes
+**Platform:** Kubernetes
 
 **Severity:** Low
 

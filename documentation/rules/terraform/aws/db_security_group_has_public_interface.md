@@ -6,7 +6,6 @@ meta:
   id: "f0d8781f-99bf-4958-9917-d39283b168a0"
   display_name: "DB security group has public interface"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "HIGH"
   category: "Insecure Configurations"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** aws
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** High
 

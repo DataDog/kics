@@ -6,7 +6,6 @@ meta:
   id: "a2f548f2-188c-4fff-b172-e9a6acb216bd"
   display_name: "Secrets Manager secret without KMS"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Encryption"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** aws
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** Medium
 

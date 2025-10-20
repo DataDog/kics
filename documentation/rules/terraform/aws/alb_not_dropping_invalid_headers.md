@@ -6,7 +6,6 @@ meta:
   id: "6e3fd2ed-5c83-4c68-9679-7700d224d379"
   display_name: "ALB not dropping invalid headers"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Best Practices"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** aws
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** Medium
 

@@ -6,7 +6,6 @@ meta:
   id: "235236ee-ad78-4065-bd29-61b061f28ce0"
   display_name: "Containers with sys admin capabilities"
   cloud_provider: "k8s"
-  framework: "Kubernetes"
   platform: "Kubernetes"
   severity: "HIGH"
   category: "Insecure Configurations"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** k8s
 
-**Framework:** Kubernetes
+**Platform:** Kubernetes
 
 **Severity:** High
 

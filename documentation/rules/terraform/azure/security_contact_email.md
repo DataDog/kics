@@ -6,7 +6,6 @@ meta:
   id: "34664094-59e0-4524-b69f-deaa1a68cce3"
   display_name: "Security contact email"
   cloud_provider: "azure"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Best Practices"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** azure
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** Medium
 

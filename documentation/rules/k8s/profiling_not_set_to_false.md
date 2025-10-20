@@ -6,7 +6,6 @@ meta:
   id: "2f491173-6375-4a84-b28e-a4e2b9a58a69"
   display_name: "Profiling not set to false"
   cloud_provider: "k8s"
-  framework: "Kubernetes"
   platform: "Kubernetes"
   severity: "LOW"
   category: "Observability"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** k8s
 
-**Framework:** Kubernetes
+**Platform:** Kubernetes
 
 **Severity:** Low
 

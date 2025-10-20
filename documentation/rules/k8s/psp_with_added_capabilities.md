@@ -6,7 +6,6 @@ meta:
   id: "7307579a-3abb-46ad-9ce5-2a915634d5c8"
   display_name: "PSP with added capabilities"
   cloud_provider: "k8s"
-  framework: "Kubernetes"
   platform: "Kubernetes"
   severity: "HIGH"
   category: "Insecure Configurations"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** k8s
 
-**Framework:** Kubernetes
+**Platform:** Kubernetes
 
 **Severity:** High
 

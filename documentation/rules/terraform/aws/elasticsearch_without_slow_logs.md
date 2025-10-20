@@ -6,7 +6,6 @@ meta:
   id: "e979fcbc-df6c-422d-9458-c33d65e71c45"
   display_name: "Elasticsearch without slow logs"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "LOW"
   category: "Observability"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** aws
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** Low
 

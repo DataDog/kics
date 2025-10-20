@@ -6,7 +6,6 @@ meta:
   id: "46883ce1-dc3e-4b17-9195-c6a601624c73"
   display_name: "Default security groups with unrestricted traffic"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "HIGH"
   category: "Networking and Firewall"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** aws
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** High
 

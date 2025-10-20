@@ -6,7 +6,6 @@ meta:
   id: "1afbb3fa-cf6c-4a3d-b730-95e9f4df343e"
   display_name: "ElastiCache replication group not encrypted at transit"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Encryption"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** aws
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** Medium
 

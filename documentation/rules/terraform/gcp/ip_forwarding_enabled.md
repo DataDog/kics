@@ -6,7 +6,6 @@ meta:
   id: "f34c0c25-47b4-41eb-9c79-249b4dd47b89"
   display_name: "IP forwarding enabled"
   cloud_provider: "gcp"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Networking and Firewall"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** gcp
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** Medium
 

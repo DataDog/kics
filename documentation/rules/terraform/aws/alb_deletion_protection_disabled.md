@@ -6,7 +6,6 @@ meta:
   id: "afecd1f1-6378-4f7e-bb3b-60c35801fdd4"
   display_name: "ALB deletion protection disabled"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Insecure Configurations"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** aws
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** Medium
 

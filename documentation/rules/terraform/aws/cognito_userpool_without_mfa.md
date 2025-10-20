@@ -6,7 +6,6 @@ meta:
   id: "ec28bf61-a474-4dbe-b414-6dd3a067d6f0"
   display_name: "Cognito user pool without MFA"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "LOW"
   category: "Best Practices"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** aws
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** Low
 

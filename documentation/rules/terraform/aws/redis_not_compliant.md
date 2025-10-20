@@ -6,7 +6,6 @@ meta:
   id: "254c932d-e3bf-44b2-bc9d-eb5fdb09f8d4"
   display_name: "Redis not compliant"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "HIGH"
   category: "Encryption"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** aws
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** High
 

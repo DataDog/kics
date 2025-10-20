@@ -6,7 +6,6 @@ meta:
   id: "abb06e5f-ef9a-4a99-98c6-376d396bfcdf"
   display_name: "SQS queue exposed"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "HIGH"
   category: "Access Control"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** aws
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** High
 

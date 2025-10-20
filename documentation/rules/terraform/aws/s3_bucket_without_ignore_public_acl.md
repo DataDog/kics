@@ -6,7 +6,6 @@ meta:
   id: "4fa66806-0dd9-4f8d-9480-3174d39c7c91"
   display_name: "S3 bucket without ignore public ACL"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Insecure Configurations"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** aws
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** Medium
 

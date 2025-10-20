@@ -6,7 +6,6 @@ meta:
   id: "91bea7b8-0c31-4863-adc9-93f6177266c4"
   display_name: "Stack without template"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "LOW"
   category: "Build Process"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** aws
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** Low
 

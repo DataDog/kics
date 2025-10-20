@@ -6,7 +6,6 @@ meta:
   id: "9bb3c639-5edf-458c-8ee5-30c17c7d671d"
   display_name: "Function App client certificates not required"
   cloud_provider: "azure"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Insecure Configurations"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** azure
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** Medium
 

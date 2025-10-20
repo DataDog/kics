@@ -6,7 +6,6 @@ meta:
   id: "d24c0755-c028-44b1-b503-8e719c898832"
   display_name: "S3 bucket allows put action from all principals"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "CRITICAL"
   category: "Access Control"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** aws
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** Critical
 

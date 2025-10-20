@@ -6,7 +6,6 @@ meta:
   id: "5c0003fb-9aa0-42c1-9da3-eb0e332bef21"
   display_name: "Secure ciphers disabled"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Encryption"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** aws
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** Medium
 

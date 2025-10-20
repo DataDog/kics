@@ -6,7 +6,6 @@ meta:
   id: "59acb56b-2b10-4c2c-ba38-f2223c3f5cfc"
   display_name: "Small MSSQL server audit retention"
   cloud_provider: "azure"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "LOW"
   category: "Observability"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** azure
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** Low
 

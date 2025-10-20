@@ -6,7 +6,6 @@ meta:
   id: "730675f9-52ed-49b6-8ead-0acb5dd7df7f"
   display_name: "SQS policy with public access"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** aws
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** Medium
 

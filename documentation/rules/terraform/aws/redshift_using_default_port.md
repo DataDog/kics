@@ -6,7 +6,6 @@ meta:
   id: "41abc6cc-dde1-4217-83d3-fb5f0cc09d8f"
   display_name: "Redshift using default port"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "LOW"
   category: "Networking and Firewall"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** aws
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** Low
 

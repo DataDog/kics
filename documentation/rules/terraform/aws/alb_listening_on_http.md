@@ -6,7 +6,6 @@ meta:
   id: "de7f5e83-da88-4046-871f-ea18504b1d43"
   display_name: "ALB listening on HTTP"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Networking and Firewall"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** aws
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** Medium
 

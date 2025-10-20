@@ -6,7 +6,6 @@ meta:
   id: "6e8849c1-3aa7-40e3-9063-b85ee300f29f"
   display_name: "SQS with SSE disabled"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Encryption"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** aws
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** Medium
 

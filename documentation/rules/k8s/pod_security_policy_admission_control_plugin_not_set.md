@@ -6,7 +6,6 @@ meta:
   id: "afa36afb-39fe-4d94-b9b6-afb236f7a03d"
   display_name: "Pod security policy admission control plugin not set"
   cloud_provider: "k8s"
-  framework: "Kubernetes"
   platform: "Kubernetes"
   severity: "HIGH"
   category: "Build Process"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** k8s
 
-**Framework:** Kubernetes
+**Platform:** Kubernetes
 
 **Severity:** High
 

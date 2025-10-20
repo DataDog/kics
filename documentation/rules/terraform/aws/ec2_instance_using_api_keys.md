@@ -6,7 +6,6 @@ meta:
   id: "0b93729a-d882-4803-bdc3-ac429a21f158"
   display_name: "EC2 instance using API keys"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "LOW"
   category: "Access Control"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** aws
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** Low
 

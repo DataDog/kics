@@ -6,7 +6,6 @@ meta:
   id: "3e3c175e-aadf-4e2b-a464-3fdac5748d24"
   display_name: "SSH is exposed to the Internet"
   cloud_provider: "azure"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Networking and Firewall"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** azure
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** Medium
 

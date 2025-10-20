@@ -6,7 +6,6 @@ meta:
   id: "862fe4bf-3eec-4767-a517-40f378886b88"
   display_name: "Kinesis not encrypted with KMS"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "HIGH"
   category: "Encryption"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** aws
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** High
 

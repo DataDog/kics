@@ -6,7 +6,6 @@ meta:
   id: "126c1788-23c2-4a10-906c-ef179f4f96ec"
   display_name: "ELB using insecure protocols"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Encryption"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** aws
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** Medium
 

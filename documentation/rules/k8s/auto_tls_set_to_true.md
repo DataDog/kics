@@ -6,7 +6,6 @@ meta:
   id: "98ce8b81-7707-4734-aa39-627c6db3d84b"
   display_name: "Auto TLS set to true"
   cloud_provider: "k8s"
-  framework: "Kubernetes"
   platform: "Kubernetes"
   severity: "MEDIUM"
   category: "Networking and Firewall"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** k8s
 
-**Framework:** Kubernetes
+**Platform:** Kubernetes
 
 **Severity:** Medium
 

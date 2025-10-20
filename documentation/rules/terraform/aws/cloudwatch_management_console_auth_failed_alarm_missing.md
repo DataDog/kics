@@ -6,7 +6,6 @@ meta:
   id: "5864d189-ee9a-4009-ac0c-8a582e6b7919"
   display_name: "CloudWatch management console auth failed alarm missing"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Observability"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** aws
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** Medium
 

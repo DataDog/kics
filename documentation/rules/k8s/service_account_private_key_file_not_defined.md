@@ -6,7 +6,6 @@ meta:
   id: "ccc98ff7-68a7-436e-9218-185cb0b0b780"
   display_name: "Service account private key file not defined"
   cloud_provider: "k8s"
-  framework: "Kubernetes"
   platform: "Kubernetes"
   severity: "MEDIUM"
   category: "Encryption"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** k8s
 
-**Framework:** Kubernetes
+**Platform:** Kubernetes
 
 **Severity:** Medium
 

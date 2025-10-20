@@ -6,7 +6,6 @@ meta:
   id: "b4c6d7e8-f9a1-4bcd-89ef-01234abcd567"
   display_name: "Fine-grained access control disabled for OpenSearch/Elasticsearch"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "HIGH"
   category: "Access Control"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** aws
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** High
 

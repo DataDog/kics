@@ -6,7 +6,6 @@ meta:
   id: "1db3a5a5-bf75-44e5-9e44-c56cfc8b1ac5"
   display_name: "StatefulSet without PodDisruptionBudget"
   cloud_provider: "k8s"
-  framework: "Kubernetes"
   platform: "Kubernetes"
   severity: "LOW"
   category: "Availability"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** k8s
 
-**Framework:** Kubernetes
+**Platform:** Kubernetes
 
 **Severity:** Low
 

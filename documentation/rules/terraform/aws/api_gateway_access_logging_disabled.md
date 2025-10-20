@@ -6,7 +6,6 @@ meta:
   id: "1b6799eb-4a7a-4b04-9001-8cceb9999326"
   display_name: "API Gateway access logging disabled"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Observability"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** aws
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** Medium
 

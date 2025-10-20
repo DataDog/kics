@@ -6,7 +6,6 @@ meta:
   id: "a81573f9-3691-4d83-88a0-7d4af63e17a3"
   display_name: "Azure App Service client certificate disabled"
   cloud_provider: "azure"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Insecure Configurations"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** azure
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** Medium
 

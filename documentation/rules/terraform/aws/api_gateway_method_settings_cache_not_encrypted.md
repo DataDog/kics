@@ -6,7 +6,6 @@ meta:
   id: "b7c9a40c-23e4-4a2d-8d39-a3352f10f288"
   display_name: "API Gateway method settings cache not encrypted"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "HIGH"
   category: "Encryption"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** aws
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** High
 

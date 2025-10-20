@@ -6,7 +6,6 @@ meta:
   id: "66cd88ac-9ddf-424a-b77e-e55e17630bee"
   display_name: "Batch job definition with privileged container properties"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "HIGH"
   category: "Insecure Configurations"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** aws
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** High
 

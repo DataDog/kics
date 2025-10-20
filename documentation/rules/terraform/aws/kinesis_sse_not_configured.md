@@ -6,7 +6,6 @@ meta:
   id: "5c6dd5e7-1fe0-4cae-8f81-4c122717cef3"
   display_name: "Kinesis SSE not configured"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "HIGH"
   category: "Encryption"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** aws
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** High
 

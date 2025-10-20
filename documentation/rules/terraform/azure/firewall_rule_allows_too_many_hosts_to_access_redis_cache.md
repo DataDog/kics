@@ -6,7 +6,6 @@ meta:
   id: "a829b715-cf75-4e92-b645-54c9b739edfb"
   display_name: "Firewall rule allows too many hosts to access Redis Cache"
   cloud_provider: "azure"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Networking and Firewall"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** azure
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** Medium
 

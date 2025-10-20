@@ -6,7 +6,6 @@ meta:
   id: "671211c5-5d2a-4e97-8867-30fc28b02216"
   display_name: "API Gateway method does not contains an API key"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** aws
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** Medium
 

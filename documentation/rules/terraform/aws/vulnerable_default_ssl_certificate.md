@@ -6,7 +6,6 @@ meta:
   id: "3a1e94df-6847-4c0e-a3b6-6c6af4e128ef"
   display_name: "Vulnerable default SSL certificate"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Insecure Defaults"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** aws
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** Medium
 

@@ -6,7 +6,6 @@ meta:
   id: "0a96ce49-4163-4ee6-8169-eb3b0797d694"
   display_name: "API Gateway without configured authorizer"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** aws
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** Medium
 

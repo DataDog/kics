@@ -6,7 +6,6 @@ meta:
   id: "9ec311bf-dfd9-421f-8498-0b063c8bc552"
   display_name: "IAM user with access to console"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** aws
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** Medium
 

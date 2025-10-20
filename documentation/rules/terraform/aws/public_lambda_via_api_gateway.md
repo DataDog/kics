@@ -6,7 +6,6 @@ meta:
   id: "3ef8696c-e4ae-4872-92c7-520bb44dfe77"
   display_name: "Public Lambda via API Gateway"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** aws
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** Medium
 

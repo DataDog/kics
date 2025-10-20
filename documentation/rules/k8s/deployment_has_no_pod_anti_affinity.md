@@ -6,7 +6,6 @@ meta:
   id: "a31b7b82-d994-48c4-bd21-3bab6c31827a"
   display_name: "Deployment without podAntiAffinity"
   cloud_provider: "k8s"
-  framework: "Kubernetes"
   platform: "Kubernetes"
   severity: "LOW"
   category: "Resource Management"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** k8s
 
-**Framework:** Kubernetes
+**Platform:** Kubernetes
 
 **Severity:** Low
 

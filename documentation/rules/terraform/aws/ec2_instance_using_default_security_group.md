@@ -6,7 +6,6 @@ meta:
   id: "f1adc521-f79a-4d71-b55b-a68294687432"
   display_name: "EC2 instance using default security group"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** aws
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** Medium
 

@@ -6,7 +6,6 @@ meta:
   id: "c87749b3-ff10-41f5-9df2-c421e8151759"
   display_name: "Function App managed identity disabled"
   cloud_provider: "azure"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Insecure Configurations"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** azure
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** Medium
 

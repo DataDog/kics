@@ -6,7 +6,6 @@ meta:
   id: "6b6bdfb3-c3ae-44cb-88e4-7405c1ba2c8a"
   display_name: "Shared host network namespace"
   cloud_provider: "k8s"
-  framework: "Kubernetes"
   platform: "Kubernetes"
   severity: "MEDIUM"
   category: "Resource Management"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** k8s
 
-**Framework:** Kubernetes
+**Platform:** Kubernetes
 
 **Severity:** Medium
 

@@ -6,7 +6,6 @@ meta:
   id: "01d50b14-e933-4c99-b314-6d08cd37ad35"
   display_name: "Glue Data Catalog encryption disabled"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "HIGH"
   category: "Encryption"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** aws
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** High
 

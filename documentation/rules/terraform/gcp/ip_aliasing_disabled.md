@@ -6,7 +6,6 @@ meta:
   id: "c606ba1d-d736-43eb-ac24-e16108f3a9e0"
   display_name: "IP aliasing disabled"
   cloud_provider: "gcp"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Insecure Configurations"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** gcp
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** Medium
 

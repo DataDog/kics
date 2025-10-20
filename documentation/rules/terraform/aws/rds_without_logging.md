@@ -6,7 +6,6 @@ meta:
   id: "8d7f7b8c-6c7c-40f8-baa6-62006c6c7b56"
   display_name: "RDS without logging"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Observability"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** aws
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** Medium
 

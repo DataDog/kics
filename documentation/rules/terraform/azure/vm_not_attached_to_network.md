@@ -6,7 +6,6 @@ meta:
   id: "bbf6b3df-4b65-4f87-82cc-da9f30f8c033"
   display_name: "VM not attached to network"
   cloud_provider: "azure"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Insecure Configurations"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** azure
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** Medium
 

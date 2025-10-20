@@ -6,7 +6,6 @@ meta:
   id: "4d080822-5ee2-49a4-8984-68f3d4c890fc"
   display_name: "Key expiration not set"
   cloud_provider: "azure"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Secret Management"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** azure
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** Medium
 

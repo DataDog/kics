@@ -6,7 +6,6 @@ meta:
   id: "625abc0e-f980-4ac9-a775-f7519ee34296"
   display_name: "API Gateway deployment without access log setting"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Observability"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** aws
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** Medium
 

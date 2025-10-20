@@ -6,7 +6,6 @@ meta:
   id: "0b530315-0ea4-497f-b34c-4ff86268f59d"
   display_name: "KMS key with no deletion window"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "LOW"
   category: "Observability"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** aws
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** Low
 

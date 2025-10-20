@@ -6,7 +6,6 @@ meta:
   id: "c010082c-76e0-4b91-91d9-6e8439e455dd"
   display_name: "Cloud Storage bucket is publicly accessible"
   cloud_provider: "gcp"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** gcp
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** Medium
 

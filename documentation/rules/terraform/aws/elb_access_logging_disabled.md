@@ -6,7 +6,6 @@ meta:
   id: "20018359-6fd7-4d05-ab26-d4dffccbdf79"
   display_name: "ELB access log disabled"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Observability"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** aws
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** Medium
 

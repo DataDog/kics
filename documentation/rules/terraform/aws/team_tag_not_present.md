@@ -6,7 +6,6 @@ meta:
   id: "a2b3c4d5-e6f7-8901-gh23-ijkl456m7890"
   display_name: "Team tag missing on AWS resource"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "INFO"
   category: "Best Practices"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** aws
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** Info
 

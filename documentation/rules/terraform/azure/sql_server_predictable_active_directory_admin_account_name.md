@@ -6,7 +6,6 @@ meta:
   id: "bcd3fc01-5902-4f2a-b05a-227f9bbf5450"
   display_name: "SQL server predictable Active Directory admin account name"
   cloud_provider: "azure"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "LOW"
   category: "Best Practices"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** azure
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** Low
 

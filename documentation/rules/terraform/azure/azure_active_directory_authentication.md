@@ -6,7 +6,6 @@ meta:
   id: "a21c8da9-41bf-40cf-941d-330cf0d11fc7"
   display_name: "Azure Active Directory authentication"
   cloud_provider: "azure"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "LOW"
   category: "Access Control"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** azure
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** Low
 

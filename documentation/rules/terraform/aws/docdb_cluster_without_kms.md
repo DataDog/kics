@@ -6,7 +6,6 @@ meta:
   id: "4766d3ea-241c-4ee6-93ff-c380c996bd1a"
   display_name: "DocumentDB cluster without KMS"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "HIGH"
   category: "Encryption"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** aws
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** High
 

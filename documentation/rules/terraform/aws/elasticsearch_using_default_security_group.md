@@ -6,7 +6,6 @@ meta:
   id: "d3e1f5a9-bb45-4c89-b97c-12d34ef56789"
   display_name: "Elasticsearch uses default security group"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "HIGH"
   category: "Networking and Firewall"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** aws
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** High
 

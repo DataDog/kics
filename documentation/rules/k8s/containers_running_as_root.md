@@ -6,7 +6,6 @@ meta:
   id: "cf34805e-3872-4c08-bf92-6ff7bb0cfadb"
   display_name: "Container running as root"
   cloud_provider: "k8s"
-  framework: "Kubernetes"
   platform: "Kubernetes"
   severity: "MEDIUM"
   category: "Best Practices"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** k8s
 
-**Framework:** Kubernetes
+**Platform:** Kubernetes
 
 **Severity:** Medium
 

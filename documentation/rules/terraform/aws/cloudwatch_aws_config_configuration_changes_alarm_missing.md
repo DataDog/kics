@@ -6,7 +6,6 @@ meta:
   id: "5b8d7527-de8e-4114-b9dd-9d988f1f418f"
   display_name: "CloudWatch AWS Config configuration changes alarm missing"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Observability"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** aws
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** Medium
 

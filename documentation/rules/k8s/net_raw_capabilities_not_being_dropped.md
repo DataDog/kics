@@ -6,7 +6,6 @@ meta:
   id: "dbbc6705-d541-43b0-b166-dd4be8208b54"
   display_name: "NET_RAW capabilities not dropped"
   cloud_provider: "k8s"
-  framework: "Kubernetes"
   platform: "Kubernetes"
   severity: "MEDIUM"
   category: "Insecure Configurations"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** k8s
 
-**Framework:** Kubernetes
+**Platform:** Kubernetes
 
 **Severity:** Medium
 

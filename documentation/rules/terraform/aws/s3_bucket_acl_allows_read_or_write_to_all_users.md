@@ -6,7 +6,6 @@ meta:
   id: "38c5ee0d-7f22-4260-ab72-5073048df100"
   display_name: "S3 bucket ACL allows read or write to all users"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "CRITICAL"
   category: "Access Control"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** aws
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** Critical
 

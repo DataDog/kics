@@ -6,7 +6,6 @@ meta:
   id: "1acd93f1-5a37-45c0-aaac-82ece818be7d"
   display_name: "Use service account credentials not set to true"
   cloud_provider: "k8s"
-  framework: "Kubernetes"
   platform: "Kubernetes"
   severity: "MEDIUM"
   category: "Access Control"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** k8s
 
-**Framework:** Kubernetes
+**Platform:** Kubernetes
 
 **Severity:** Medium
 

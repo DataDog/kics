@@ -6,7 +6,6 @@ meta:
   id: "2b856bf9-8e8c-4005-875f-303a8cba3918"
   display_name: "Small activity log retention period"
   cloud_provider: "azure"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "LOW"
   category: "Observability"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** azure
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** Low
 

@@ -6,7 +6,6 @@ meta:
   id: "dd5230f8-a577-4bbb-b7ac-f2c2fe7d5299"
   display_name: "Storage container is publicly accessible"
   cloud_provider: "azure"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "HIGH"
   category: "Access Control"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** azure
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** High
 

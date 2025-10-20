@@ -6,7 +6,6 @@ meta:
   id: "4f615f3e-fb9c-4fad-8b70-2e9f781806ce"
   display_name: "DB security group open to large scope"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "HIGH"
   category: "Networking and Firewall"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** aws
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** High
 

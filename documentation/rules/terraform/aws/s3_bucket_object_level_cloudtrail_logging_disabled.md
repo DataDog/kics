@@ -6,7 +6,6 @@ meta:
   id: "a8fc2180-b3ac-4c93-bd0d-a55b974e4b07"
   display_name: "S3 bucket object-level CloudTrail logging disabled"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Observability"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** aws
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** Medium
 

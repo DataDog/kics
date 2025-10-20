@@ -6,7 +6,6 @@ meta:
   id: "583053b7-e632-46f0-b989-f81ff8045385"
   display_name: "Invalid image tag"
   cloud_provider: "k8s"
-  framework: "Kubernetes"
   platform: "Kubernetes"
   severity: "LOW"
   category: "Supply-Chain"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** k8s
 
-**Framework:** Kubernetes
+**Platform:** Kubernetes
 
 **Severity:** Low
 

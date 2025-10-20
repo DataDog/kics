@@ -6,7 +6,6 @@ meta:
   id: "17f75827-0684-48f4-8747-61129c7e4198"
   display_name: "Public storage account"
   cloud_provider: "azure"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "HIGH"
   category: "Access Control"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** azure
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** High
 

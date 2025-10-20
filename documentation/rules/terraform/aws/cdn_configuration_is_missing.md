@@ -6,7 +6,6 @@ meta:
   id: "1bc367f6-901d-4870-ad0c-71d79762ef52"
   display_name: "CDN configuration is missing"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "LOW"
   category: "Best Practices"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** aws
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** Low
 

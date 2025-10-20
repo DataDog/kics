@@ -6,7 +6,6 @@ meta:
   id: "31245f98-a6a9-4182-9fc1-45482b9d030a"
   display_name: "MQ broker logging disabled"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Observability"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** aws
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** Medium
 

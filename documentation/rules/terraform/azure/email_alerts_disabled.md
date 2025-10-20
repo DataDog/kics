@@ -6,7 +6,6 @@ meta:
   id: "9db38e87-f6aa-4b5e-a1ec-7266df259409"
   display_name: "Email alerts disabled"
   cloud_provider: "azure"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Observability"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** azure
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** Medium
 

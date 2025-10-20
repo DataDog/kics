@@ -6,7 +6,6 @@ meta:
   id: "3b6d777b-76e3-4133-80a3-0d6f667ade7f"
   display_name: "Automatic minor upgrades disabled"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "LOW"
   category: "Best Practices"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** aws
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** Low
 

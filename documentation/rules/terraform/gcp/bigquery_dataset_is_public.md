@@ -6,7 +6,6 @@ meta:
   id: "e576ce44-dd03-4022-a8c0-3906acca2ab4"
   display_name: "BigQuery dataset is public"
   cloud_provider: "gcp"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "HIGH"
   category: "Access Control"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** gcp
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** High
 

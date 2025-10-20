@@ -6,7 +6,6 @@ meta:
   id: "2f737336-b18a-4602-8ea0-b200312e1ac1"
   display_name: "RDS associated with public subnet"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "CRITICAL"
   category: "Networking and Firewall"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** aws
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** Critical
 

@@ -6,7 +6,6 @@ meta:
   id: "f6a7b8c9-d0e1-2345-f678-90abcdef1234"
   display_name: "Container Registry repo is public"
   cloud_provider: "gcp"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "HIGH"
   category: "Insecure Configurations"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** gcp
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** High
 

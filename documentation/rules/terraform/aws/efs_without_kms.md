@@ -6,7 +6,6 @@ meta:
   id: "25d251f3-f348-4f95-845c-1090e41a615c"
   display_name: "EFS without KMS"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "LOW"
   category: "Encryption"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** aws
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** Low
 

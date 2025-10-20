@@ -6,7 +6,6 @@ meta:
   id: "04c686f1-e0cd-4812-88e1-4e038410074c"
   display_name: "Group with privilege escalation by actions 'iam:CreateLoginProfile'"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** aws
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** Medium
 

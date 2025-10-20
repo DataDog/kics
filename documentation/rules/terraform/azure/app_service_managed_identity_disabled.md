@@ -6,7 +6,6 @@ meta:
   id: "b61cce4b-0cc4-472b-8096-15617a6d769b"
   display_name: "App Service managed identity disabled"
   cloud_provider: "azure"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "LOW"
   category: "Resource Management"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** azure
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** Low
 

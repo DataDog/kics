@@ -6,7 +6,6 @@ meta:
   id: "ee49557d-750c-4cc1-aa95-94ab36cbefde"
   display_name: "Role with privilege escalation by actions 'iam:CreatePolicyVersion'"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** aws
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** Medium
 

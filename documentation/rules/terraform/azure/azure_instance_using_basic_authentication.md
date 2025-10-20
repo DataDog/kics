@@ -6,7 +6,6 @@ meta:
   id: "dafe30ec-325d-4516-85d1-e8e6776f012c"
   display_name: "Azure instance using basic authentication"
   cloud_provider: "azure"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Best Practices"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** azure
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** Medium
 

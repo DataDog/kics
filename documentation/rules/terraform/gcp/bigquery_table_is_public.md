@@ -6,7 +6,6 @@ meta:
   id: "a9b8c7d6-e5f4-3210-abcd-1234567890ab"
   display_name: "BigQuery table is public"
   cloud_provider: "gcp"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "HIGH"
   category: "Insecure Configurations"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** gcp
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** High
 

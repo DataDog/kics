@@ -6,7 +6,6 @@ meta:
   id: "b9380fd3-5ffe-4d10-9290-13e18e71eee1"
   display_name: "Insecure bind address set"
   cloud_provider: "k8s"
-  framework: "Kubernetes"
   platform: "Kubernetes"
   severity: "HIGH"
   category: "Networking and Firewall"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** k8s
 
-**Framework:** Kubernetes
+**Platform:** Kubernetes
 
 **Severity:** High
 

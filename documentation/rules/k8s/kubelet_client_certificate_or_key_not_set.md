@@ -6,7 +6,6 @@ meta:
   id: "36a27826-1bf5-49da-aeb0-a60a30c0e834"
   display_name: "Kubelet client certificate or key not set"
   cloud_provider: "k8s"
-  framework: "Kubernetes"
   platform: "Kubernetes"
   severity: "MEDIUM"
   category: "Secret Management"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** k8s
 
-**Framework:** Kubernetes
+**Platform:** Kubernetes
 
 **Severity:** Medium
 

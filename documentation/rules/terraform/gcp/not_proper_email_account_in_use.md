@@ -6,7 +6,6 @@ meta:
   id: "9356962e-4a4f-4d06-ac59-dc8008775eaa"
   display_name: "Not proper email account in use"
   cloud_provider: "gcp"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "LOW"
   category: "Insecure Configurations"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** gcp
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** Low
 

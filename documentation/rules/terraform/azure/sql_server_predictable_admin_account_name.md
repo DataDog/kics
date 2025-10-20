@@ -6,7 +6,6 @@ meta:
   id: "2ab6de9a-0136-415c-be92-79d2e4fd750f"
   display_name: "SQL server predictable admin account name"
   cloud_provider: "azure"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "LOW"
   category: "Best Practices"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** azure
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** Low
 

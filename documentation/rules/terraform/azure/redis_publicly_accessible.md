@@ -6,7 +6,6 @@ meta:
   id: "5089d055-53ff-421b-9482-a5267bdce629"
   display_name: "Redis publicly accessible"
   cloud_provider: "azure"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "CRITICAL"
   category: "Networking and Firewall"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** azure
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** Critical
 

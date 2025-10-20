@@ -6,7 +6,6 @@ meta:
   id: "07f7134f-9f37-476e-8664-670c218e4702"
   display_name: "PostgreSQL log disconnections not set"
   cloud_provider: "azure"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Observability"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** azure
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** Medium
 

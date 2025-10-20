@@ -6,7 +6,6 @@ meta:
   id: "575a2155-6af1-4026-b1af-d5bc8fe2a904"
   display_name: "IAM policy grants full permissions"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "HIGH"
   category: "Access Control"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** aws
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** High
 

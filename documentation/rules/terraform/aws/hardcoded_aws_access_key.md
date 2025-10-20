@@ -6,7 +6,6 @@ meta:
   id: "d7b9d850-3e06-4a75-852f-c46c2e92240b"
   display_name: "Hardcoded AWS access key"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "HIGH"
   category: "Secret Management"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** aws
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** High
 

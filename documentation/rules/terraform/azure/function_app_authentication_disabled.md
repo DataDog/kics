@@ -6,7 +6,6 @@ meta:
   id: "e65a0733-94a0-4826-82f4-df529f4c593f"
   display_name: "Function App authentication disabled"
   cloud_provider: "azure"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** azure
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** Medium
 

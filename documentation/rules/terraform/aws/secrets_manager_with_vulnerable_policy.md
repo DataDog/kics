@@ -6,7 +6,6 @@ meta:
   id: "fa00ce45-386d-4718-8392-fb485e1f3c5b"
   display_name: "Secrets Manager with vulnerable policy"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "HIGH"
   category: "Access Control"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** aws
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** High
 

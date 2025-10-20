@@ -6,7 +6,6 @@ meta:
   id: "1419b4c6-6d5c-4534-9cf6-6a5266085333"
   display_name: "CloudFront without WAF"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Networking and Firewall"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** aws
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** Medium
 

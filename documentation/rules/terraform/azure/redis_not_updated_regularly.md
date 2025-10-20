@@ -6,7 +6,6 @@ meta:
   id: "b947809d-dd2f-4de9-b724-04d101c515aa"
   display_name: "Redis not updated regularly"
   cloud_provider: "azure"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Insecure Configurations"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** azure
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** Medium
 

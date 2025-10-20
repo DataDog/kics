@@ -6,7 +6,6 @@ meta:
   id: "846646e3-2af1-428c-ac5d-271eccfa6faf"
   display_name: "Group with privilege escalation by actions 'iam:CreateAccessKey'"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** aws
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** Medium
 

@@ -6,7 +6,6 @@ meta:
   id: "874d68a3-bfbe-4a4b-aaa0-9e74d7da634b"
   display_name: "Certificate RSA key bytes lower than 256"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Insecure Configurations"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** aws
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** Medium
 

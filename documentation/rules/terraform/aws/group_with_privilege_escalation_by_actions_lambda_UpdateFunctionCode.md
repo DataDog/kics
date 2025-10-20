@@ -6,7 +6,6 @@ meta:
   id: "571254d8-aa6a-432e-9725-535d3ef04d69"
   display_name: "Group with privilege escalation by actions 'lambda:UpdateFunctionCode'"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** aws
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** Medium
 

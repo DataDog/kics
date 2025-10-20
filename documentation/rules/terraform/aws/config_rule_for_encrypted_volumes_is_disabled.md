@@ -6,7 +6,6 @@ meta:
   id: "abdb29d4-5ca1-4e91-800b-b3569bbd788c"
   display_name: "Config rule for encrypted volumes disabled"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "HIGH"
   category: "Encryption"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** aws
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** High
 

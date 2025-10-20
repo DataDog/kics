@@ -6,7 +6,6 @@ meta:
   id: "b5681959-6c09-4f55-b42b-c40fa12d03ec"
   display_name: "IAM user policy without MFA"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "LOW"
   category: "Insecure Configurations"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** aws
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** Low
 

@@ -6,7 +6,6 @@ meta:
   id: "a6cd52a1-3056-4910-96a5-894de9f3f3b3"
   display_name: "Cloud Storage is anonymous or publicly accessible"
   cloud_provider: "gcp"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "CRITICAL"
   category: "Access Control"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** gcp
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** Critical
 

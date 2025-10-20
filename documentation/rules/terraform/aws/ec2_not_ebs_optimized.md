@@ -6,7 +6,6 @@ meta:
   id: "60224630-175a-472a-9e23-133827040766"
   display_name: "EC2 not EBS optimized"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "INFO"
   category: "Best Practices"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** aws
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** Info
 

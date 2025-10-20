@@ -6,7 +6,6 @@ meta:
   id: "1e749bc9-fde8-471c-af0c-8254efd2dee5"
   display_name: "Role binding to default service account"
   cloud_provider: "k8s"
-  framework: "Kubernetes"
   platform: "Kubernetes"
   severity: "MEDIUM"
   category: "Insecure Defaults"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** k8s
 
-**Framework:** Kubernetes
+**Platform:** Kubernetes
 
 **Severity:** Medium
 

@@ -6,7 +6,6 @@ meta:
   id: "b1d51728-7270-4991-ac2f-fc26e2695b38"
   display_name: "Disk encryption disabled"
   cloud_provider: "gcp"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Encryption"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** gcp
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** Medium
 

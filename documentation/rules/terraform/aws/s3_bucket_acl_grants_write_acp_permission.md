@@ -6,7 +6,6 @@ meta:
   id: "64a222aa-7793-4e40-915f-4b302c76e4d4"
   display_name: "S3 bucket ACL grants WRITE_ACP permission"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "CRITICAL"
   category: "Access Control"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** aws
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** Critical
 

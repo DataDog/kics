@@ -6,7 +6,6 @@ meta:
   id: "c5b31ab9-0f26-4a49-b8aa-4cc064392f4d"
   display_name: "S3 bucket without enabled MFA delete"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "LOW"
   category: "Insecure Configurations"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** aws
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** Low
 

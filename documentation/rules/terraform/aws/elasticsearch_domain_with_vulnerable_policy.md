@@ -6,7 +6,6 @@ meta:
   id: "16c4216a-50d3-4785-bfb2-4adb5144a8ba"
   display_name: "Elasticsearch domain with vulnerable policy"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** aws
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** Medium
 

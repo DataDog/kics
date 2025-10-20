@@ -6,7 +6,6 @@ meta:
   id: "4bc4dd4c-7d8d-405e-a0fb-57fa4c31b4d9"
   display_name: "S3 bucket policy accepts HTTP requests"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Encryption"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** aws
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** Medium
 

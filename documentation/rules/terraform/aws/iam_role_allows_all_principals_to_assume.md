@@ -6,7 +6,6 @@ meta:
   id: "12b7e704-37f0-4d1e-911a-44bf60c48c21"
   display_name: "IAM role allows all principals to assume"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** aws
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** Medium
 

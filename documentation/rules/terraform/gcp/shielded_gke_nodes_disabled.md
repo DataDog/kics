@@ -6,7 +6,6 @@ meta:
   id: "579a0727-9c29-4d58-8195-fc5802a8bdb4"
   display_name: "Shielded GKE nodes disabled"
   cloud_provider: "gcp"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Insecure Configurations"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** gcp
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** Medium
 

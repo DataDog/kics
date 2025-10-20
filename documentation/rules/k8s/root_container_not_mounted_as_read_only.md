@@ -6,7 +6,6 @@ meta:
   id: "a9c2f49d-0671-4fc9-9ece-f4e261e128d0"
   display_name: "Root container not mounted as read-only"
   cloud_provider: "k8s"
-  framework: "Kubernetes"
   platform: "Kubernetes"
   severity: "LOW"
   category: "Build Process"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** k8s
 
-**Framework:** Kubernetes
+**Platform:** Kubernetes
 
 **Severity:** Low
 

@@ -6,7 +6,6 @@ meta:
   id: "d4e5f6g7-h8i9-0jkl-1234-mn567opq8901"
   display_name: "S3 bucket allows authenticated users access"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "HIGH"
   category: "Access Control"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** aws
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** High
 

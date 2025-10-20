@@ -6,7 +6,6 @@ meta:
   id: "9a4ef195-74b9-4c58-b8ed-2b2fe4353a75"
   display_name: "VPC default security group accepts all traffic"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "HIGH"
   category: "Networking and Firewall"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** aws
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** High
 

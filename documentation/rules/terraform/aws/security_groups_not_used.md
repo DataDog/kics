@@ -6,7 +6,6 @@ meta:
   id: "4849211b-ac39-479e-ae78-5694d506cb24"
   display_name: "Security group not used"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "INFO"
   category: "Access Control"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** aws
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** Info
 

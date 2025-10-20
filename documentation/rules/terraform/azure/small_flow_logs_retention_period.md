@@ -6,7 +6,6 @@ meta:
   id: "7750fcca-dd03-4d38-b663-4b70289bcfd4"
   display_name: "Small flow logs retention period"
   cloud_provider: "azure"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Insecure Configurations"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** azure
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** Medium
 

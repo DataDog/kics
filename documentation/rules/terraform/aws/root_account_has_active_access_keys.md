@@ -6,7 +6,6 @@ meta:
   id: "970d224d-b42a-416b-81f9-8f4dfe70c4bc"
   display_name: "Root account has active access keys"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "HIGH"
   category: "Insecure Configurations"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** aws
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** High
 

@@ -6,7 +6,6 @@ meta:
   id: "a659f3b5-9bf0-438a-bd9a-7d3a6427f1e3"
   display_name: "Readiness probe is not configured"
   cloud_provider: "k8s"
-  framework: "Kubernetes"
   platform: "Kubernetes"
   severity: "MEDIUM"
   category: "Availability"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** k8s
 
-**Framework:** Kubernetes
+**Platform:** Kubernetes
 
 **Severity:** Medium
 

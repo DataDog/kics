@@ -6,7 +6,6 @@ meta:
   id: "94fbe150-27e3-4eba-9ca6-af32865e4503"
   display_name: "User with privilege escalation by actions 'glue:CreateDevEndpoint' and 'iam:PassRole'"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** aws
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** Medium
 

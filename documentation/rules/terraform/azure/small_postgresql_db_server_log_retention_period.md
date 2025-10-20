@@ -6,7 +6,6 @@ meta:
   id: "261a83f8-dd72-4e8c-b5e1-ebf06e8fe606"
   display_name: "Small PostgreSQL DB server log retention period"
   cloud_provider: "azure"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "LOW"
   category: "Observability"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** azure
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** Low
 

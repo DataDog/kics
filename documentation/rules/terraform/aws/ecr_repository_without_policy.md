@@ -6,7 +6,6 @@ meta:
   id: "69e7c320-b65d-41bb-be02-d63ecc0bcc9d"
   display_name: "ECR repository without policy"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "LOW"
   category: "Best Practices"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** aws
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** Low
 

@@ -6,7 +6,6 @@ meta:
   id: "741f1291-47ac-4a85-a07b-3d32a9d6bd3e"
   display_name: "DynamoDB table Point-in-Time Recovery disabled"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "INFO"
   category: "Best Practices"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** aws
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** Info
 

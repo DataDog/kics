@@ -6,7 +6,6 @@ meta:
   id: "1btsf2f9-af8c-4dfc-a0f1-a03adb70deb2"
   display_name: "Lambda function publicly accessible"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "HIGH"
   category: "Access Control"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** aws
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** High
 

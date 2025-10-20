@@ -6,7 +6,6 @@ meta:
   id: "25c0ea09-f1c5-4380-b055-3b83863f2bb8"
   display_name: "Sqlserver ingress from any IP"
   cloud_provider: "azure"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "CRITICAL"
   category: "Networking and Firewall"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** azure
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** Critical
 

@@ -6,7 +6,6 @@ meta:
   id: "bca7cc4d-b3a4-4345-9461-eb69c68fcd26"
   display_name: "RDS using default port"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "LOW"
   category: "Networking and Firewall"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** aws
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** Low
 

@@ -6,7 +6,6 @@ meta:
   id: "da9f3aa8-fbfb-472f-b5a1-576127944218"
   display_name: "Audit log maxage not properly set"
   cloud_provider: "k8s"
-  framework: "Kubernetes"
   platform: "Kubernetes"
   severity: "LOW"
   category: "Observability"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** k8s
 
-**Framework:** Kubernetes
+**Platform:** Kubernetes
 
 **Severity:** Low
 

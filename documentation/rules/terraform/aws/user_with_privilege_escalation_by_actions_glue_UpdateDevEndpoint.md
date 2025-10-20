@@ -6,7 +6,6 @@ meta:
   id: "9b877bd8-94b4-4c10-a060-8e0436cc09fa"
   display_name: "User with privilege escalation by actions 'glue:UpdateDevEndpoint'"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** aws
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** Medium
 

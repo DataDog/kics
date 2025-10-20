@@ -6,7 +6,6 @@ meta:
   id: "5ba6229c-8057-433e-91d0-21cf13569ca9"
   display_name: "Service control policies disabled"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Insecure Configurations"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** aws
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** Medium
 

@@ -6,7 +6,6 @@ meta:
   id: "590d878b-abdc-428f-895a-e2b68a0e1998"
   display_name: "Unknown port exposed to internet"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "HIGH"
   category: "Networking and Firewall"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** aws
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** High
 

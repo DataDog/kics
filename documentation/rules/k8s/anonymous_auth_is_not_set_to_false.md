@@ -6,7 +6,6 @@ meta:
   id: "1de5cc51-f376-4638-a940-20f2e85ae238"
   display_name: "Anonymous auth is not set to false"
   cloud_provider: "k8s"
-  framework: "Kubernetes"
   platform: "Kubernetes"
   severity: "MEDIUM"
   category: "Access Control"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** k8s
 
-**Framework:** Kubernetes
+**Platform:** Kubernetes
 
 **Severity:** Medium
 

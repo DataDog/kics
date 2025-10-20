@@ -6,7 +6,6 @@ meta:
   id: "96fe318e-d631-4156-99fa-9080d57280ae"
   display_name: "App Service without latest PHP version"
   cloud_provider: "azure"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "LOW"
   category: "Best Practices"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** azure
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** Low
 

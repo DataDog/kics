@@ -6,7 +6,6 @@ meta:
   id: "b139213e-7d24-49c2-8025-c18faa21ecaa"
   display_name: "Node auto upgrade disabled"
   cloud_provider: "gcp"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Resource Management"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** gcp
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** Medium
 

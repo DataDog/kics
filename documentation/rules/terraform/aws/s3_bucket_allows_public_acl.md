@@ -6,7 +6,6 @@ meta:
   id: "d0cc8694-fcad-43ff-ac86-32331d7e867f"
   display_name: "S3 bucket allows public ACL"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** aws
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** Medium
 

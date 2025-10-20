@@ -6,7 +6,6 @@ meta:
   id: "1df37f4b-7197-45ce-83f8-9994d2fcf885"
   display_name: "S3 bucket allows get action from all principals"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "HIGH"
   category: "Access Control"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** aws
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** High
 

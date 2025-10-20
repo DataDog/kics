@@ -6,7 +6,6 @@ meta:
   id: "35113e6f-2c6b-414d-beec-7a9482d3b2d1"
   display_name: "RDS DB instance publicly accessible"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "CRITICAL"
   category: "Insecure Configurations"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** aws
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** Critical
 

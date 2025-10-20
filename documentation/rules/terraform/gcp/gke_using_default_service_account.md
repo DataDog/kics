@@ -6,7 +6,6 @@ meta:
   id: "1c8eef02-17b1-4a3e-b01d-dcc3292d2c38"
   display_name: "GKE using default service account"
   cloud_provider: "gcp"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Insecure Defaults"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** gcp
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** Medium
 

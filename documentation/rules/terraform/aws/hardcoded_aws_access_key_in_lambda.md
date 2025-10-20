@@ -6,7 +6,6 @@ meta:
   id: "1402afd8-a95c-4e84-8b0b-6fb43758e6ce"
   display_name: "Hardcoded AWS access key in Lambda"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "HIGH"
   category: "Secret Management"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** aws
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** High
 

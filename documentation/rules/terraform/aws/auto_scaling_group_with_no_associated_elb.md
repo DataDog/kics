@@ -6,7 +6,6 @@ meta:
   id: "8e94dced-9bcc-4203-8eb7-7e41202b2505"
   display_name: "Auto scaling group with no associated ELB"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Availability"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** aws
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** Medium
 

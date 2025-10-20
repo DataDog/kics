@@ -6,7 +6,6 @@ meta:
   id: "d1846b12-20c5-4d45-8798-fc35b79268eb"
   display_name: "ECR image tag not immutable"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Insecure Configurations"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** aws
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** Medium
 

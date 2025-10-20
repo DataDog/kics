@@ -6,7 +6,6 @@ meta:
   id: "5d89db57-8b51-4b38-bb76-b9bd42bd40f0"
   display_name: "ElastiCache using default port"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "LOW"
   category: "Networking and Firewall"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** aws
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** Low
 

@@ -6,7 +6,6 @@ meta:
   id: "6e0e2f68-3fd9-4cd8-a5e4-e2213ef0df97"
   display_name: "Stack retention disabled"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Backup"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** aws
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** Medium
 

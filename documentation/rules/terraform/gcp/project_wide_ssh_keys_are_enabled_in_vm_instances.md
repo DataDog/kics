@@ -6,7 +6,6 @@ meta:
   id: "3e4d5ce6-3280-4027-8010-c26eeea1ec01"
   display_name: "Project-wide SSH keys are enabled in VM instances"
   cloud_provider: "gcp"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Secret Management"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** gcp
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** Medium
 

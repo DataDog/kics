@@ -6,7 +6,6 @@ meta:
   id: "ad5b4e97-2850-4adf-be17-1d293e0b85ee"
   display_name: "Glue security configuration encryption disabled"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "HIGH"
   category: "Encryption"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** aws
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** High
 

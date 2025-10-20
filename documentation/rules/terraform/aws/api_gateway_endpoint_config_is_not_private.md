@@ -6,7 +6,6 @@ meta:
   id: "6b2739db-9c49-4db7-b980-7816e0c248c1"
   display_name: "API Gateway endpoint config is not private"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Networking and Firewall"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** aws
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** Medium
 

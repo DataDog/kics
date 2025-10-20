@@ -6,7 +6,6 @@ meta:
   id: "5400f379-a347-4bdd-a032-446465fdcc6f"
   display_name: "Trusted Microsoft services not enabled"
   cloud_provider: "azure"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Networking and Firewall"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** azure
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** Medium
 

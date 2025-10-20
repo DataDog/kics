@@ -6,7 +6,6 @@ meta:
   id: "a7b8c9d0-e1f2-3a4b-5c6d-7e8f90123456"
   display_name: "Artifact Registry repo is public"
   cloud_provider: "gcp"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "HIGH"
   category: "Access Control"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** gcp
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** High
 

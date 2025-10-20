@@ -6,7 +6,6 @@ meta:
   id: "2b3c8a6d-9856-43e6-ab1d-d651094f03b4"
   display_name: "EMR without VPC"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "LOW"
   category: "Networking and Firewall"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** aws
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** Low
 

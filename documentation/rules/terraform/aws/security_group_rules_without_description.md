@@ -6,7 +6,6 @@ meta:
   id: "68eb4bf3-f9bf-463d-b5cf-e029bb446d2e"
   display_name: "Security group rule without description"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "INFO"
   category: "Best Practices"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** aws
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** Info
 

@@ -6,7 +6,6 @@ meta:
   id: "b8a31292-509d-4b61-bc40-13b167db7e9c"
   display_name: "Role with privilege escalation by actions 'iam:AddUserToGroup'"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** aws
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** Medium
 

@@ -6,7 +6,6 @@ meta:
   id: "0afa6ab8-a047-48cf-be07-93a2f8c34cf7"
   display_name: "ALB is not integrated with WAF"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Networking and Firewall"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** aws
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** Medium
 

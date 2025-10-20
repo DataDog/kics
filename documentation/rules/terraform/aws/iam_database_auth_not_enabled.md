@@ -6,7 +6,6 @@ meta:
   id: "88fd05e0-ac0e-43d2-ba6d-fc0ba60ae1a6"
   display_name: "IAM database auth not enabled"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Encryption"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** aws
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** Medium
 

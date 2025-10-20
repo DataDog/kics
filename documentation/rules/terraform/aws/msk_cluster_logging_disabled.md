@@ -6,7 +6,6 @@ meta:
   id: "2f56b7ab-7fba-4e93-82f0-247e5ddeb239"
   display_name: "MSK cluster logging disabled"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Observability"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** aws
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** Medium
 

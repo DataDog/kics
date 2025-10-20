@@ -6,7 +6,6 @@ meta:
   id: "1c621b8e-2c6a-44f5-bd6a-fb0fb7ba33e2"
   display_name: "Rotate Kubelet server certificate not active"
   cloud_provider: "k8s"
-  framework: "Kubernetes"
   platform: "Kubernetes"
   severity: "MEDIUM"
   category: "Secret Management"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** k8s
 
-**Framework:** Kubernetes
+**Platform:** Kubernetes
 
 **Severity:** Medium
 

@@ -6,7 +6,6 @@ meta:
   id: "9ef7d25d-9764-4224-9968-fa321c56ef76"
   display_name: "AWS password policy with unchangeable passwords"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "LOW"
   category: "Insecure Configurations"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** aws
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** Low
 

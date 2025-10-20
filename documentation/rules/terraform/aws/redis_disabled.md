@@ -6,7 +6,6 @@ meta:
   id: "4bd15dd9-8d5e-4008-8532-27eb0c3706d3"
   display_name: "Redis disabled"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "LOW"
   category: "Insecure Configurations"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** aws
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** Low
 

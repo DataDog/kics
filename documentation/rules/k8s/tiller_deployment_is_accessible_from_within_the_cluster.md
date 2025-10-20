@@ -6,7 +6,6 @@ meta:
   id: "e17fa86a-6222-4584-a914-56e8f6c87e06"
   display_name: "Tiller Deployment accessible within cluster"
   cloud_provider: "k8s"
-  framework: "Kubernetes"
   platform: "Kubernetes"
   severity: "HIGH"
   category: "Networking and Firewall"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** k8s
 
-**Framework:** Kubernetes
+**Platform:** Kubernetes
 
 **Severity:** High
 

@@ -6,7 +6,6 @@ meta:
   id: "cefdad16-0dd5-4ac5-8ed2-a37502c78672"
   display_name: "Service account with improper privileges"
   cloud_provider: "gcp"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Resource Management"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** gcp
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** Medium
 

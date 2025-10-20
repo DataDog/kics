@@ -6,7 +6,6 @@ meta:
   id: "27c6a499-895a-4dc7-9617-5c485218db13"
   display_name: "CloudWatch S3 policy change alarm missing"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Observability"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** aws
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** Medium
 

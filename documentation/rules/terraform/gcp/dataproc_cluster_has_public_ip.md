@@ -6,7 +6,6 @@ meta:
   id: "d2c4b6a8-1234-4f56-9abc-def012345678"
   display_name: "Dataproc clusters has public IPs"
   cloud_provider: "gcp"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "HIGH"
   category: "Insecure Configurations"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** gcp
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** High
 

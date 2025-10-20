@@ -6,7 +6,6 @@ meta:
   id: "6d23d87e-1c5b-4308-b224-92624300f29b"
   display_name: "User with privilege escalation by actions 'iam:AttachGroupPolicy'"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** aws
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** Medium
 

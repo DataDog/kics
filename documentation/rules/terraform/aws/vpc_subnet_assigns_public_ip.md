@@ -6,7 +6,6 @@ meta:
   id: "52f04a44-6bfa-4c41-b1d3-4ae99a2de05c"
   display_name: "VPC subnet assigns public IP"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Networking and Firewall"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** aws
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** Medium
 

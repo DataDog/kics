@@ -6,7 +6,6 @@ meta:
   id: "7f0a8696-7159-4337-ad0d-8a3ab4a78195"
   display_name: "MariaDB server public network access enabled"
   cloud_provider: "azure"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "HIGH"
   category: "Networking and Firewall"
@@ -17,7 +16,7 @@ meta:
 
 **Cloud Provider:** azure
 
-**Framework:** Terraform
+**Platform:** Terraform
 
 **Severity:** High
 
