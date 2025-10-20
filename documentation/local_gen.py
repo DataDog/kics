@@ -115,7 +115,7 @@ meta:
 
 **Cloud Provider:** {cloud_provider}
 
-**Framework:** {platform}
+**Platform:** {platform}
 
 **Severity:** {severity.capitalize()}
 

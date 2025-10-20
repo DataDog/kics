@@ -16,7 +16,7 @@ meta:
 
 **Cloud Provider:** github
 
-**Framework:** CICD
+**Platform:** CICD
 
 **Severity:** High
 
