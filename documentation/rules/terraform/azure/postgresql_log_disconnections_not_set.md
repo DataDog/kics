@@ -7,6 +7,7 @@ meta:
   display_name: "PostgreSQL log disconnections not set"
   cloud_provider: "azure"
   platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Observability"
 ---

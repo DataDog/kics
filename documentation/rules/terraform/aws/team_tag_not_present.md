@@ -7,6 +7,7 @@ meta:
   display_name: "Team tag missing on AWS resource"
   cloud_provider: "aws"
   platform: "Terraform"
+  framework: "Terraform"
   severity: "INFO"
   category: "Best Practices"
 ---

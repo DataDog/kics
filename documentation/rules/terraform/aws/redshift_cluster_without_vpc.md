@@ -7,6 +7,7 @@ meta:
   display_name: "Redshift cluster without VPC"
   cloud_provider: "aws"
   platform: "Terraform"
+  framework: "Terraform"
   severity: "LOW"
   category: "Insecure Configurations"
 ---

@@ -7,6 +7,7 @@ meta:
   display_name: "Container with low UID"
   cloud_provider: "k8s"
   platform: "Kubernetes"
+  framework: "Kubernetes"
   severity: "MEDIUM"
   category: "Best Practices"
 ---

@@ -7,6 +7,7 @@ meta:
   display_name: "Ensure MySQL is using the latest version of TLS encryption"
   cloud_provider: "azure"
   platform: "Terraform"
+  framework: "Terraform"
   severity: "HIGH"
   category: "Networking and Firewall"
 ---

@@ -7,6 +7,7 @@ meta:
   display_name: "Invalid image tag"
   cloud_provider: "k8s"
   platform: "Kubernetes"
+  framework: "Kubernetes"
   severity: "LOW"
   category: "Supply-Chain"
 ---

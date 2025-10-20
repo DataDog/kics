@@ -7,6 +7,7 @@ meta:
   display_name: "CloudTrail log files not encrypted with KMS"
   cloud_provider: "aws"
   platform: "Terraform"
+  framework: "Terraform"
   severity: "LOW"
   category: "Encryption"
 ---

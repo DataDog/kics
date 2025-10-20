@@ -7,6 +7,7 @@ meta:
   display_name: "SSO identity user unsafe creation"
   cloud_provider: "aws"
   platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"
 ---

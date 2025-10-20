@@ -7,6 +7,7 @@ meta:
   display_name: "S3 bucket allows get action from all principals"
   cloud_provider: "aws"
   platform: "Terraform"
+  framework: "Terraform"
   severity: "HIGH"
   category: "Access Control"
 ---

@@ -7,6 +7,7 @@ meta:
   display_name: "Audit log maxage not properly set"
   cloud_provider: "k8s"
   platform: "Kubernetes"
+  framework: "Kubernetes"
   severity: "LOW"
   category: "Observability"
 ---

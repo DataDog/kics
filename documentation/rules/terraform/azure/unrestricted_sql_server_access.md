@@ -7,6 +7,7 @@ meta:
   display_name: "Unrestricted SQL server access"
   cloud_provider: "azure"
   platform: "Terraform"
+  framework: "Terraform"
   severity: "CRITICAL"
   category: "Networking and Firewall"
 ---

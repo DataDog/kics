@@ -7,6 +7,7 @@ meta:
   display_name: "Cloud KMS key ring is anonymously or publicly accessible"
   cloud_provider: "gcp"
   platform: "Terraform"
+  framework: "Terraform"
   severity: "HIGH"
   category: "Encryption"
 ---

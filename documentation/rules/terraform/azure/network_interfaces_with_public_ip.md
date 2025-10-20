@@ -7,6 +7,7 @@ meta:
   display_name: "Network interfaces with public IP"
   cloud_provider: "azure"
   platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Networking and Firewall"
 ---

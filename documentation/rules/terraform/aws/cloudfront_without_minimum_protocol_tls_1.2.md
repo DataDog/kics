@@ -7,6 +7,7 @@ meta:
   display_name: "CloudFront without minimum protocol TLS 1.2"
   cloud_provider: "aws"
   platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Insecure Configurations"
 ---

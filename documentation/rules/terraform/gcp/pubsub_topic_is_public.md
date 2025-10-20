@@ -7,6 +7,7 @@ meta:
   display_name: "Pub/Sub Topics are anonymously or publicly accessible"
   cloud_provider: "gcp"
   platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Insecure Configurations"
 ---

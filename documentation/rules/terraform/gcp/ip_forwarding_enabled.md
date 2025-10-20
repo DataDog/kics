@@ -7,6 +7,7 @@ meta:
   display_name: "IP forwarding enabled"
   cloud_provider: "gcp"
   platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Networking and Firewall"
 ---

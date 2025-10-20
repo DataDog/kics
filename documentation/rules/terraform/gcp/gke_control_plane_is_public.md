@@ -7,6 +7,7 @@ meta:
   display_name: "GKE control plane is public"
   cloud_provider: "gcp"
   platform: "Terraform"
+  framework: "Terraform"
   severity: "HIGH"
   category: "Networking and Firewall"
 ---

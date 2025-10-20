@@ -7,6 +7,7 @@ meta:
   display_name: "CloudTrail log files S3 bucket with logging disabled"
   cloud_provider: "aws"
   platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Observability"
 ---

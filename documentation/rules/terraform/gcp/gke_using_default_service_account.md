@@ -7,6 +7,7 @@ meta:
   display_name: "GKE using default service account"
   cloud_provider: "gcp"
   platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Insecure Defaults"
 ---

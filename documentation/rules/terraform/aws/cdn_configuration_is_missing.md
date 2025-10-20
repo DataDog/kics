@@ -7,6 +7,7 @@ meta:
   display_name: "CDN configuration is missing"
   cloud_provider: "aws"
   platform: "Terraform"
+  framework: "Terraform"
   severity: "LOW"
   category: "Best Practices"
 ---

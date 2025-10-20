@@ -7,6 +7,7 @@ meta:
   display_name: "KMS key with vulnerable policy"
   cloud_provider: "aws"
   platform: "Terraform"
+  framework: "Terraform"
   severity: "HIGH"
   category: "Insecure Configurations"
 ---

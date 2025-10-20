@@ -7,6 +7,7 @@ meta:
   display_name: "There are non GCP-managed service account keys for a service account"
   cloud_provider: "gcp"
   platform: "Terraform"
+  framework: "Terraform"
   severity: "HIGH"
   category: "Encryption"
 ---

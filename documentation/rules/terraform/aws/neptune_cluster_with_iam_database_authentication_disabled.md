@@ -7,6 +7,7 @@ meta:
   display_name: "Neptune cluster with IAM database authentication disabled"
   cloud_provider: "aws"
   platform: "Terraform"
+  framework: "Terraform"
   severity: "HIGH"
   category: "Access Control"
 ---

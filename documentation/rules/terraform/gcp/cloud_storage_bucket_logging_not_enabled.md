@@ -7,6 +7,7 @@ meta:
   display_name: "Cloud Storage bucket logging not enabled"
   cloud_provider: "gcp"
   platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Observability"
 ---

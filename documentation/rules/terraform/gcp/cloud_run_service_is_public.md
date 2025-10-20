@@ -7,6 +7,7 @@ meta:
   display_name: "Cloud Run service is public"
   cloud_provider: "gcp"
   platform: "Terraform"
+  framework: "Terraform"
   severity: "HIGH"
   category: "Insecure Configurations"
 ---

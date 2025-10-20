@@ -7,6 +7,7 @@ meta:
   display_name: "S3 bucket allows delete action from all principals"
   cloud_provider: "aws"
   platform: "Terraform"
+  framework: "Terraform"
   severity: "CRITICAL"
   category: "Access Control"
 ---

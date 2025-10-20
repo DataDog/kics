@@ -7,6 +7,7 @@ meta:
   display_name: "Service control policies disabled"
   cloud_provider: "aws"
   platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Insecure Configurations"
 ---

@@ -7,6 +7,7 @@ meta:
   display_name: "Role with privilege escalation by actions 'glue:CreateDevEndpoint' and 'iam:PassRole'"
   cloud_provider: "aws"
   platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"
 ---

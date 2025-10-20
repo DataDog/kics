@@ -7,6 +7,7 @@ meta:
   display_name: "Security center pricing tier is not standard"
   cloud_provider: "azure"
   platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Insecure Configurations"
 ---

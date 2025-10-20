@@ -7,6 +7,7 @@ meta:
   display_name: "Cross-account IAM assume role policy without external id or MFA"
   cloud_provider: "aws"
   platform: "Terraform"
+  framework: "Terraform"
   severity: "HIGH"
   category: "Access Control"
 ---

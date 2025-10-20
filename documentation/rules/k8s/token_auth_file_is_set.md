@@ -7,6 +7,7 @@ meta:
   display_name: "Token auth file is set"
   cloud_provider: "k8s"
   platform: "Kubernetes"
+  framework: "Kubernetes"
   severity: "HIGH"
   category: "Access Control"
 ---

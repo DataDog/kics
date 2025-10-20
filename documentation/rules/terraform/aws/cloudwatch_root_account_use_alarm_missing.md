@@ -7,6 +7,7 @@ meta:
   display_name: "CloudWatch root account use missing"
   cloud_provider: "aws"
   platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Observability"
 ---

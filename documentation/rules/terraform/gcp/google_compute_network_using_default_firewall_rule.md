@@ -7,6 +7,7 @@ meta:
   display_name: "Google Compute network using default firewall rule"
   cloud_provider: "gcp"
   platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Networking and Firewall"
 ---

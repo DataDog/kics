@@ -7,6 +7,7 @@ meta:
   display_name: "IAM password policy does not require uppercase letter"
   cloud_provider: "aws"
   platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Best Practices"
 ---

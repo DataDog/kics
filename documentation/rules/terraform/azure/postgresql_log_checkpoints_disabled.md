@@ -7,6 +7,7 @@ meta:
   display_name: "PostgreSQL log checkpoints disabled"
   cloud_provider: "azure"
   platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Observability"
 ---

@@ -7,6 +7,7 @@ meta:
   display_name: "SSH is exposed to the Internet"
   cloud_provider: "azure"
   platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Networking and Firewall"
 ---

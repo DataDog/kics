@@ -7,6 +7,7 @@ meta:
   display_name: "DB security group with public scope"
   cloud_provider: "aws"
   platform: "Terraform"
+  framework: "Terraform"
   severity: "CRITICAL"
   category: "Networking and Firewall"
 ---

@@ -7,6 +7,7 @@ meta:
   display_name: "Virtual network with DDoS protection plan disabled"
   cloud_provider: "azure"
   platform: "Terraform"
+  framework: "Terraform"
   severity: "LOW"
   category: "Availability"
 ---

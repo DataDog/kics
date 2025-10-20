@@ -7,6 +7,7 @@ meta:
   display_name: "Network watcher flow disabled"
   cloud_provider: "azure"
   platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Insecure Configurations"
 ---

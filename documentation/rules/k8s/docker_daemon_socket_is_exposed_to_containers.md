@@ -7,6 +7,7 @@ meta:
   display_name: "Docker daemon socket is exposed to containers"
   cloud_provider: "k8s"
   platform: "Kubernetes"
+  framework: "Kubernetes"
   severity: "MEDIUM"
   category: "Access Control"
 ---

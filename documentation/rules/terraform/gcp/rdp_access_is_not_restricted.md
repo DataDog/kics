@@ -7,6 +7,7 @@ meta:
   display_name: "RDP access is not restricted"
   cloud_provider: "gcp"
   platform: "Terraform"
+  framework: "Terraform"
   severity: "HIGH"
   category: "Networking and Firewall"
 ---

@@ -7,6 +7,7 @@ meta:
   display_name: "Not proper email account in use"
   cloud_provider: "gcp"
   platform: "Terraform"
+  framework: "Terraform"
   severity: "LOW"
   category: "Insecure Configurations"
 ---

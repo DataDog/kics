@@ -7,6 +7,7 @@ meta:
   display_name: "ALB not dropping invalid headers"
   cloud_provider: "aws"
   platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Best Practices"
 ---

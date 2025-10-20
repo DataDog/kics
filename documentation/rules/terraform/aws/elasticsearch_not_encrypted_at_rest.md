@@ -7,6 +7,7 @@ meta:
   display_name: "Elasticsearch not encrypted at rest"
   cloud_provider: "aws"
   platform: "Terraform"
+  framework: "Terraform"
   severity: "HIGH"
   category: "Encryption"
 ---

@@ -7,6 +7,7 @@ meta:
   display_name: "Trusted Microsoft services not enabled"
   cloud_provider: "azure"
   platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Networking and Firewall"
 ---

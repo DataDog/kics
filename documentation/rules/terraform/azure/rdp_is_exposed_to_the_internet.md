@@ -7,6 +7,7 @@ meta:
   display_name: "RDP is exposed to the internet"
   cloud_provider: "azure"
   platform: "Terraform"
+  framework: "Terraform"
   severity: "HIGH"
   category: "Networking and Firewall"
 ---

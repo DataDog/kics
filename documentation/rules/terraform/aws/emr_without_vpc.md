@@ -7,6 +7,7 @@ meta:
   display_name: "EMR without VPC"
   cloud_provider: "aws"
   platform: "Terraform"
+  framework: "Terraform"
   severity: "LOW"
   category: "Networking and Firewall"
 ---

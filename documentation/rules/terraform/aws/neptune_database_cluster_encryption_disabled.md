@@ -7,6 +7,7 @@ meta:
   display_name: "Neptune database cluster encryption disabled"
   cloud_provider: "aws"
   platform: "Terraform"
+  framework: "Terraform"
   severity: "HIGH"
   category: "Encryption"
 ---

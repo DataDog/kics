@@ -7,6 +7,7 @@ meta:
   display_name: "Resource not using tags"
   cloud_provider: "aws"
   platform: "Terraform"
+  framework: "Terraform"
   severity: "INFO"
   category: "Best Practices"
 ---

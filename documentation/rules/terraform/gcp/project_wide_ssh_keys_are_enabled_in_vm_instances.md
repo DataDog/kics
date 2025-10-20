@@ -7,6 +7,7 @@ meta:
   display_name: "Project-wide SSH keys are enabled in VM instances"
   cloud_provider: "gcp"
   platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Secret Management"
 ---

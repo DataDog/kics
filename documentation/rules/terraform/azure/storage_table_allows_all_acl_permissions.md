@@ -7,6 +7,7 @@ meta:
   display_name: "Storage table allows all ACL permissions"
   cloud_provider: "azure"
   platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"
 ---

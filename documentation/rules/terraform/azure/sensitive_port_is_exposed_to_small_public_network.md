@@ -7,6 +7,7 @@ meta:
   display_name: "Sensitive port is exposed to small public network"
   cloud_provider: "azure"
   platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Networking and Firewall"
 ---

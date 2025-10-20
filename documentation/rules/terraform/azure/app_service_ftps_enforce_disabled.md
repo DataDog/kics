@@ -7,6 +7,7 @@ meta:
   display_name: "App Service FTPS enforce disabled"
   cloud_provider: "azure"
   platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Insecure Configurations"
 ---

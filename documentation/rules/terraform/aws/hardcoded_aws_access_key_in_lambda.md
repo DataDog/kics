@@ -7,6 +7,7 @@ meta:
   display_name: "Hardcoded AWS access key in Lambda"
   cloud_provider: "aws"
   platform: "Terraform"
+  framework: "Terraform"
   severity: "HIGH"
   category: "Secret Management"
 ---

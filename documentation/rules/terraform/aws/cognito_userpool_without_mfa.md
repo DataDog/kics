@@ -7,6 +7,7 @@ meta:
   display_name: "Cognito user pool without MFA"
   cloud_provider: "aws"
   platform: "Terraform"
+  framework: "Terraform"
   severity: "LOW"
   category: "Best Practices"
 ---

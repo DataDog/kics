@@ -7,6 +7,7 @@ meta:
   display_name: "ECR repository not encrypted with CMK"
   cloud_provider: "aws"
   platform: "Terraform"
+  framework: "Terraform"
   severity: "LOW"
   category: "Encryption"
 ---

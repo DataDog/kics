@@ -7,6 +7,7 @@ meta:
   display_name: "S3 bucket ACL allows read or write to all users"
   cloud_provider: "aws"
   platform: "Terraform"
+  framework: "Terraform"
   severity: "CRITICAL"
   category: "Access Control"
 ---

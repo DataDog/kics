@@ -7,6 +7,7 @@ meta:
   display_name: "CMK is unusable"
   cloud_provider: "aws"
   platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Availability"
 ---

@@ -7,6 +7,7 @@ meta:
   display_name: "Pod or container without security context"
   cloud_provider: "k8s"
   platform: "Kubernetes"
+  framework: "Kubernetes"
   severity: "LOW"
   category: "Insecure Configurations"
 ---

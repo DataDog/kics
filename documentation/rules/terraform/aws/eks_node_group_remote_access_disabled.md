@@ -7,6 +7,7 @@ meta:
   display_name: "EKS node group remote access disabled"
   cloud_provider: "aws"
   platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Networking and Firewall"
 ---

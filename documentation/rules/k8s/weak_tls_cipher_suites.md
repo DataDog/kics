@@ -7,6 +7,7 @@ meta:
   display_name: "Weak TLS cipher suites"
   cloud_provider: "k8s"
   platform: "Kubernetes"
+  framework: "Kubernetes"
   severity: "MEDIUM"
   category: "Encryption"
 ---

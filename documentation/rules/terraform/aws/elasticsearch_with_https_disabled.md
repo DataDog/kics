@@ -7,6 +7,7 @@ meta:
   display_name: "Elasticsearch with HTTPS disabled"
   cloud_provider: "aws"
   platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Networking and Firewall"
 ---

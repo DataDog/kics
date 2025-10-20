@@ -7,6 +7,7 @@ meta:
   display_name: "EFS without KMS"
   cloud_provider: "aws"
   platform: "Terraform"
+  framework: "Terraform"
   severity: "LOW"
   category: "Encryption"
 ---

@@ -7,6 +7,7 @@ meta:
   display_name: "Run block injection"
   cloud_provider: "github"
   platform: "CICD"
+  framework: "CICD"
   severity: "MEDIUM"
   category: "Insecure Configurations"
 ---

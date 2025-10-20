@@ -7,6 +7,7 @@ meta:
   display_name: "API Gateway without configured authorizer"
   cloud_provider: "aws"
   platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"
 ---

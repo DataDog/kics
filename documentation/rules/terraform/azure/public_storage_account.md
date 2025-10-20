@@ -7,6 +7,7 @@ meta:
   display_name: "Public storage account"
   cloud_provider: "azure"
   platform: "Terraform"
+  framework: "Terraform"
   severity: "HIGH"
   category: "Access Control"
 ---

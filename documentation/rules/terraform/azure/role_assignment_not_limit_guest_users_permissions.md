@@ -7,6 +7,7 @@ meta:
   display_name: "Role assignment not limit guest user permissions"
   cloud_provider: "azure"
   platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"
 ---

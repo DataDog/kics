@@ -7,6 +7,7 @@ meta:
   display_name: "SSL enforce disabled"
   cloud_provider: "azure"
   platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Encryption"
 ---

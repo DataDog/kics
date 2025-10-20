@@ -7,6 +7,7 @@ meta:
   display_name: "DNSSEC using RSASHA1"
   cloud_provider: "gcp"
   platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Encryption"
 ---

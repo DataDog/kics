@@ -7,6 +7,7 @@ meta:
   display_name: "Container with unmasked /proc access"
   cloud_provider: "k8s"
   platform: "Kubernetes"
+  framework: "Kubernetes"
   severity: "HIGH"
   category: "Insecure Configurations"
 ---

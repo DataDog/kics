@@ -7,6 +7,7 @@ meta:
   display_name: "Artifact Registry repo is public"
   cloud_provider: "gcp"
   platform: "Terraform"
+  framework: "Terraform"
   severity: "HIGH"
   category: "Access Control"
 ---

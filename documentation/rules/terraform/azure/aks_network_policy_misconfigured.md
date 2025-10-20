@@ -7,6 +7,7 @@ meta:
   display_name: "AKS network policy misconfigured"
   cloud_provider: "azure"
   platform: "Terraform"
+  framework: "Terraform"
   severity: "LOW"
   category: "Insecure Configurations"
 ---

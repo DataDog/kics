@@ -7,6 +7,7 @@ meta:
   display_name: "AKS disk encryption set ID undefined"
   cloud_provider: "azure"
   platform: "Terraform"
+  framework: "Terraform"
   severity: "LOW"
   category: "Encryption"
 ---

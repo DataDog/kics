@@ -7,6 +7,7 @@ meta:
   display_name: "Readiness probe is not configured"
   cloud_provider: "k8s"
   platform: "Kubernetes"
+  framework: "Kubernetes"
   severity: "MEDIUM"
   category: "Availability"
 ---

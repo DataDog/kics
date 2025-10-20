@@ -7,6 +7,7 @@ meta:
   display_name: "Network policy without Pod target"
   cloud_provider: "k8s"
   platform: "Kubernetes"
+  framework: "Kubernetes"
   severity: "LOW"
   category: "Networking and Firewall"
 ---

@@ -7,6 +7,7 @@ meta:
   display_name: "Default VPC exists"
   cloud_provider: "aws"
   platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Insecure Defaults"
 ---

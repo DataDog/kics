@@ -7,6 +7,7 @@ meta:
   display_name: "IAM role with full privileges"
   cloud_provider: "aws"
   platform: "Terraform"
+  framework: "Terraform"
   severity: "HIGH"
   category: "Access Control"
 ---

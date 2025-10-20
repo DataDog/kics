@@ -7,6 +7,7 @@ meta:
   display_name: "Root CA file not defined"
   cloud_provider: "k8s"
   platform: "Kubernetes"
+  framework: "Kubernetes"
   severity: "MEDIUM"
   category: "Encryption"
 ---

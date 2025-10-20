@@ -7,6 +7,7 @@ meta:
   display_name: "IAM user with access to console"
   cloud_provider: "aws"
   platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"
 ---

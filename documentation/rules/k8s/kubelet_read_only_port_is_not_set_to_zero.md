@@ -7,6 +7,7 @@ meta:
   display_name: "Kubelet read-only port is not set to zero"
   cloud_provider: "k8s"
   platform: "Kubernetes"
+  framework: "Kubernetes"
   severity: "MEDIUM"
   category: "Networking and Firewall"
 ---

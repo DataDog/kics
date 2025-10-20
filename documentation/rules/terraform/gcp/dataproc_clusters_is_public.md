@@ -7,6 +7,7 @@ meta:
   display_name: "Dataproc clusters publicly accessible"
   cloud_provider: "gcp"
   platform: "Terraform"
+  framework: "Terraform"
   severity: "HIGH"
   category: "Insecure Configurations"
 ---

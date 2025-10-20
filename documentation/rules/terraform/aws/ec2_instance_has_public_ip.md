@@ -7,6 +7,7 @@ meta:
   display_name: "EC2 instance has public IP"
   cloud_provider: "aws"
   platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Networking and Firewall"
 ---

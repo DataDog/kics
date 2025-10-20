@@ -7,6 +7,7 @@ meta:
   display_name: "CloudWatch AWS Config configuration changes alarm missing"
   cloud_provider: "aws"
   platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Observability"
 ---

@@ -7,6 +7,7 @@ meta:
   display_name: "Missing cluster log types"
   cloud_provider: "aws"
   platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Observability"
 ---

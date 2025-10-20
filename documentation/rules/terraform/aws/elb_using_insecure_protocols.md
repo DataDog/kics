@@ -7,6 +7,7 @@ meta:
   display_name: "ELB using insecure protocols"
   cloud_provider: "aws"
   platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Encryption"
 ---
