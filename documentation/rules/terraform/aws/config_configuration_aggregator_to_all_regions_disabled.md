@@ -7,6 +7,7 @@ meta:
   display_name: "Configuration aggregator to all regions disabled"
   cloud_provider: "aws"
   platform: "Terraform"
+  framework: "Terraform"
   severity: "LOW"
   category: "Observability"
 ---

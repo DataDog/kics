@@ -7,6 +7,7 @@ meta:
   display_name: "DocumentDB cluster without KMS"
   cloud_provider: "aws"
   platform: "Terraform"
+  framework: "Terraform"
   severity: "HIGH"
   category: "Encryption"
 ---

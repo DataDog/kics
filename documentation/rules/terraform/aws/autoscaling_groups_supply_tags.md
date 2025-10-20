@@ -7,6 +7,7 @@ meta:
   display_name: "Autoscaling groups supply tags"
   cloud_provider: "aws"
   platform: "Terraform"
+  framework: "Terraform"
   severity: "LOW"
   category: "Availability"
 ---

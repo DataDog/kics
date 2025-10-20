@@ -7,6 +7,7 @@ meta:
   display_name: "Object is using a deprecated API version"
   cloud_provider: "k8s"
   platform: "Kubernetes"
+  framework: "Kubernetes"
   severity: "LOW"
   category: "Best Practices"
 ---

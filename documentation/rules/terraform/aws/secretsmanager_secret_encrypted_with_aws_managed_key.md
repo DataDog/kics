@@ -7,6 +7,7 @@ meta:
   display_name: "Secrets Manager secret encrypted with AWS-managed key"
   cloud_provider: "aws"
   platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Encryption"
 ---

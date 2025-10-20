@@ -7,6 +7,7 @@ meta:
   display_name: "Namespace lifecycle admission control plugin disabled"
   cloud_provider: "k8s"
   platform: "Kubernetes"
+  framework: "Kubernetes"
   severity: "LOW"
   category: "Build Process"
 ---

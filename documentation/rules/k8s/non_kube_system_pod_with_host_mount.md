@@ -7,6 +7,7 @@ meta:
   display_name: "Non kube-system pod with host mount"
   cloud_provider: "k8s"
   platform: "Kubernetes"
+  framework: "Kubernetes"
   severity: "HIGH"
   category: "Access Control"
 ---

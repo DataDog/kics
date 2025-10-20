@@ -7,6 +7,7 @@ meta:
   display_name: "CloudWatch logging disabled"
   cloud_provider: "aws"
   platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Observability"
 ---

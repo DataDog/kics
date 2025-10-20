@@ -7,6 +7,7 @@ meta:
   display_name: "Outdated GKE version"
   cloud_provider: "gcp"
   platform: "Terraform"
+  framework: "Terraform"
   severity: "LOW"
   category: "Best Practices"
 ---

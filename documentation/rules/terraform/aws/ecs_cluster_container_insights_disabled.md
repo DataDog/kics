@@ -7,6 +7,7 @@ meta:
   display_name: "ECS cluster with container insights disabled"
   cloud_provider: "aws"
   platform: "Terraform"
+  framework: "Terraform"
   severity: "LOW"
   category: "Observability"
 ---

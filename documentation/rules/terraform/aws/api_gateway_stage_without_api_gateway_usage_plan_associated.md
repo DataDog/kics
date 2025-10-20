@@ -7,6 +7,7 @@ meta:
   display_name: "API Gateway stage without API Gateway usage plan associated"
   cloud_provider: "aws"
   platform: "Terraform"
+  framework: "Terraform"
   severity: "LOW"
   category: "Resource Management"
 ---

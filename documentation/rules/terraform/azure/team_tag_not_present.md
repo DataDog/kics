@@ -7,6 +7,7 @@ meta:
   display_name: "Ensure that Azure cloud resource has a team tag"
   cloud_provider: "azure"
   platform: "Terraform"
+  framework: "Terraform"
   severity: "INFO"
   category: "Best Practices"
 ---

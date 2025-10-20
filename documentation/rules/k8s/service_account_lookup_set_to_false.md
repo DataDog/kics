@@ -7,6 +7,7 @@ meta:
   display_name: "Service account lookup set to false"
   cloud_provider: "k8s"
   platform: "Kubernetes"
+  framework: "Kubernetes"
   severity: "HIGH"
   category: "Access Control"
 ---

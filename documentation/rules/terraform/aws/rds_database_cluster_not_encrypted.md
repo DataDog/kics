@@ -7,6 +7,7 @@ meta:
   display_name: "RDS database cluster not encrypted"
   cloud_provider: "aws"
   platform: "Terraform"
+  framework: "Terraform"
   severity: "HIGH"
   category: "Encryption"
 ---

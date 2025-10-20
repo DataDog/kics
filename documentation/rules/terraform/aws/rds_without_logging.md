@@ -7,6 +7,7 @@ meta:
   display_name: "RDS without logging"
   cloud_provider: "aws"
   platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Observability"
 ---

@@ -7,6 +7,7 @@ meta:
   display_name: "Remote Desktop port open to internet"
   cloud_provider: "aws"
   platform: "Terraform"
+  framework: "Terraform"
   severity: "HIGH"
   category: "Networking and Firewall"
 ---

@@ -7,6 +7,7 @@ meta:
   display_name: "MySQL server public access enabled"
   cloud_provider: "azure"
   platform: "Terraform"
+  framework: "Terraform"
   severity: "HIGH"
   category: "Networking and Firewall"
 ---

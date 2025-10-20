@@ -7,6 +7,7 @@ meta:
   display_name: "SNS topic is publicly accessible"
   cloud_provider: "aws"
   platform: "Terraform"
+  framework: "Terraform"
   severity: "CRITICAL"
   category: "Access Control"
 ---

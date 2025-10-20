@@ -7,6 +7,7 @@ meta:
   display_name: "GKE legacy authorization enabled"
   cloud_provider: "gcp"
   platform: "Terraform"
+  framework: "Terraform"
   severity: "HIGH"
   category: "Insecure Configurations"
 ---

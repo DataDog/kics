@@ -7,6 +7,7 @@ meta:
   display_name: "Dashboard is enabled"
   cloud_provider: "azure"
   platform: "Terraform"
+  framework: "Terraform"
   severity: "LOW"
   category: "Insecure Configurations"
 ---

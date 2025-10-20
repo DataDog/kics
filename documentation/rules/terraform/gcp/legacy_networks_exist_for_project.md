@@ -7,6 +7,7 @@ meta:
   display_name: "Ensure legacy networks do not exist for a project"
   cloud_provider: "gcp"
   platform: "Terraform"
+  framework: "Terraform"
   severity: "HIGH"
   category: "Networking and Firewall"
 ---

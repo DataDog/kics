@@ -7,6 +7,7 @@ meta:
   display_name: "Service account admission control plugin disabled"
   cloud_provider: "k8s"
   platform: "Kubernetes"
+  framework: "Kubernetes"
   severity: "MEDIUM"
   category: "Access Control"
 ---

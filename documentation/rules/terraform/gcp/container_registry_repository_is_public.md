@@ -7,6 +7,7 @@ meta:
   display_name: "Container Registry repo is public"
   cloud_provider: "gcp"
   platform: "Terraform"
+  framework: "Terraform"
   severity: "HIGH"
   category: "Insecure Configurations"
 ---

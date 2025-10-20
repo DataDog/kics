@@ -7,6 +7,7 @@ meta:
   display_name: "SES policy with allowed IAM actions"
   cloud_provider: "aws"
   platform: "Terraform"
+  framework: "Terraform"
   severity: "HIGH"
   category: "Access Control"
 ---

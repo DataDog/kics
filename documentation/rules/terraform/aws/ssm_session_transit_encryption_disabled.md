@@ -7,6 +7,7 @@ meta:
   display_name: "SSM session transit encryption disabled"
   cloud_provider: "aws"
   platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Encryption"
 ---

@@ -7,6 +7,7 @@ meta:
   display_name: "Cloud DNS without DNSSEC"
   cloud_provider: "gcp"
   platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Insecure Configurations"
 ---

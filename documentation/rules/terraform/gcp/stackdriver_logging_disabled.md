@@ -7,6 +7,7 @@ meta:
   display_name: "Stackdriver Logging disabled"
   cloud_provider: "gcp"
   platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Observability"
 ---

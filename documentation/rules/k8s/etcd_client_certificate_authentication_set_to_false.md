@@ -7,6 +7,7 @@ meta:
   display_name: "etcd client certificate authentication set to false"
   cloud_provider: "k8s"
   platform: "Kubernetes"
+  framework: "Kubernetes"
   severity: "MEDIUM"
   category: "Secret Management"
 ---

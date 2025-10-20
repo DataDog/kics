@@ -7,6 +7,7 @@ meta:
   display_name: "RDS associated with public subnet"
   cloud_provider: "aws"
   platform: "Terraform"
+  framework: "Terraform"
   severity: "CRITICAL"
   category: "Networking and Firewall"
 ---

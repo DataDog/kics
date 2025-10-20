@@ -7,6 +7,7 @@ meta:
   display_name: "Function App not using latest TLS encryption version"
   cloud_provider: "azure"
   platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Encryption"
 ---

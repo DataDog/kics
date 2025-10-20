@@ -7,6 +7,7 @@ meta:
   display_name: "Google Compute SSL policy weak cipher in use"
   cloud_provider: "gcp"
   platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Encryption"
 ---

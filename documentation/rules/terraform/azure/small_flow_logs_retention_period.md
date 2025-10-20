@@ -7,6 +7,7 @@ meta:
   display_name: "Small flow logs retention period"
   cloud_provider: "azure"
   platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Insecure Configurations"
 ---

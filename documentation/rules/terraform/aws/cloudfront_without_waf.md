@@ -7,6 +7,7 @@ meta:
   display_name: "CloudFront without WAF"
   cloud_provider: "aws"
   platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Networking and Firewall"
 ---

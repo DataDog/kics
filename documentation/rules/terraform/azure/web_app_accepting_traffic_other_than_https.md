@@ -7,6 +7,7 @@ meta:
   display_name: "Web app accepting traffic other than HTTPS"
   cloud_provider: "azure"
   platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Insecure Configurations"
 ---

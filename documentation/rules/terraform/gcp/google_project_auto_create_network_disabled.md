@@ -7,6 +7,7 @@ meta:
   display_name: "Google project auto create network disabled"
   cloud_provider: "gcp"
   platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Insecure Configurations"
 ---

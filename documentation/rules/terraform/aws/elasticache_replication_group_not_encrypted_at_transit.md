@@ -7,6 +7,7 @@ meta:
   display_name: "ElastiCache replication group not encrypted at transit"
   cloud_provider: "aws"
   platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Encryption"
 ---

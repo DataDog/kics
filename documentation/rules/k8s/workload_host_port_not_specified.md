@@ -7,6 +7,7 @@ meta:
   display_name: "Workload host port not specified"
   cloud_provider: "k8s"
   platform: "Kubernetes"
+  framework: "Kubernetes"
   severity: "LOW"
   category: "Networking and Firewall"
 ---

@@ -7,6 +7,7 @@ meta:
   display_name: "Google Storage bucket level access disabled"
   cloud_provider: "gcp"
   platform: "Terraform"
+  framework: "Terraform"
   severity: "HIGH"
   category: "Insecure Configurations"
 ---

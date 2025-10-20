@@ -7,6 +7,7 @@ meta:
   display_name: "Fine-grained access control disabled for OpenSearch/Elasticsearch"
   cloud_provider: "aws"
   platform: "Terraform"
+  framework: "Terraform"
   severity: "HIGH"
   category: "Access Control"
 ---

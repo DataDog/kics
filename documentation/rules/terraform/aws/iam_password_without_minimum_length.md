@@ -7,6 +7,7 @@ meta:
   display_name: "IAM password without minimum length"
   cloud_provider: "aws"
   platform: "Terraform"
+  framework: "Terraform"
   severity: "LOW"
   category: "Best Practices"
 ---

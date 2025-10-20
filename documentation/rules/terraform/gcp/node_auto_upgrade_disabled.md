@@ -7,6 +7,7 @@ meta:
   display_name: "Node auto upgrade disabled"
   cloud_provider: "gcp"
   platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Resource Management"
 ---

@@ -7,6 +7,7 @@ meta:
   display_name: "EKS cluster has public access"
   cloud_provider: "aws"
   platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Insecure Configurations"
 ---

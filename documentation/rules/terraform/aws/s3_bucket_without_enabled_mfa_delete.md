@@ -7,6 +7,7 @@ meta:
   display_name: "S3 bucket without enabled MFA delete"
   cloud_provider: "aws"
   platform: "Terraform"
+  framework: "Terraform"
   severity: "LOW"
   category: "Insecure Configurations"
 ---

@@ -7,6 +7,7 @@ meta:
   display_name: "Use service account credentials not set to true"
   cloud_provider: "k8s"
   platform: "Kubernetes"
+  framework: "Kubernetes"
   severity: "MEDIUM"
   category: "Access Control"
 ---

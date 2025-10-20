@@ -7,6 +7,7 @@ meta:
   display_name: "Authentication without MFA"
   cloud_provider: "aws"
   platform: "Terraform"
+  framework: "Terraform"
   severity: "LOW"
   category: "Access Control"
 ---

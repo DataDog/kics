@@ -7,6 +7,7 @@ meta:
   display_name: "EC2 not EBS optimized"
   cloud_provider: "aws"
   platform: "Terraform"
+  framework: "Terraform"
   severity: "INFO"
   category: "Best Practices"
 ---

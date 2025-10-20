@@ -7,6 +7,7 @@ meta:
   display_name: "RBAC roles with exec permission"
   cloud_provider: "k8s"
   platform: "Kubernetes"
+  framework: "Kubernetes"
   severity: "MEDIUM"
   category: "Access Control"
 ---

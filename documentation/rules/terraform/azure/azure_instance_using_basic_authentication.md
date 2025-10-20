@@ -7,6 +7,7 @@ meta:
   display_name: "Azure instance using basic authentication"
   cloud_provider: "azure"
   platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Best Practices"
 ---

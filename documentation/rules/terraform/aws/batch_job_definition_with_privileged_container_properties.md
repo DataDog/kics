@@ -7,6 +7,7 @@ meta:
   display_name: "Batch job definition with privileged container properties"
   cloud_provider: "aws"
   platform: "Terraform"
+  framework: "Terraform"
   severity: "HIGH"
   category: "Insecure Configurations"
 ---

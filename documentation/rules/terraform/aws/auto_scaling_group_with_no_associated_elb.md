@@ -7,6 +7,7 @@ meta:
   display_name: "Auto scaling group with no associated ELB"
   cloud_provider: "aws"
   platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Availability"
 ---

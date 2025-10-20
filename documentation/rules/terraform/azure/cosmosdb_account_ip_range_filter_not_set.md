@@ -7,6 +7,7 @@ meta:
   display_name: "CosmosDB account IP range filter not set"
   cloud_provider: "azure"
   platform: "Terraform"
+  framework: "Terraform"
   severity: "CRITICAL"
   category: "Networking and Firewall"
 ---

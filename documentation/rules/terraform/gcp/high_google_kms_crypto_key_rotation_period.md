@@ -7,6 +7,7 @@ meta:
   display_name: "High Google KMS crypto key rotation period"
   cloud_provider: "gcp"
   platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Secret Management"
 ---

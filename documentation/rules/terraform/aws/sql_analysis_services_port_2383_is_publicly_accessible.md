@@ -7,6 +7,7 @@ meta:
   display_name: "SQL analysis services port 2383 (TCP) is publicly accessible"
   cloud_provider: "aws"
   platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Networking and Firewall"
 ---

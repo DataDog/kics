@@ -7,6 +7,7 @@ meta:
   display_name: "Redis publicly accessible"
   cloud_provider: "azure"
   platform: "Terraform"
+  framework: "Terraform"
   severity: "CRITICAL"
   category: "Networking and Firewall"
 ---

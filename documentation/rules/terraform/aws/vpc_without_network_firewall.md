@@ -7,6 +7,7 @@ meta:
   display_name: "VPC without Network Firewall"
   cloud_provider: "aws"
   platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Networking and Firewall"
 ---

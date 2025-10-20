@@ -7,6 +7,7 @@ meta:
   display_name: "S3 bucket allows put action from all principals"
   cloud_provider: "aws"
   platform: "Terraform"
+  framework: "Terraform"
   severity: "CRITICAL"
   category: "Access Control"
 ---

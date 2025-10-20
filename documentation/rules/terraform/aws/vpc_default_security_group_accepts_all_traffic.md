@@ -7,6 +7,7 @@ meta:
   display_name: "VPC default security group accepts all traffic"
   cloud_provider: "aws"
   platform: "Terraform"
+  framework: "Terraform"
   severity: "HIGH"
   category: "Networking and Firewall"
 ---

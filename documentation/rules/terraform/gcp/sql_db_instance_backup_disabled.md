@@ -7,6 +7,7 @@ meta:
   display_name: "SQL DB instance backup disabled"
   cloud_provider: "gcp"
   platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Backup"
 ---

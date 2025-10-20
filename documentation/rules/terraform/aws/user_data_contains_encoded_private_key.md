@@ -7,6 +7,7 @@ meta:
   display_name: "User data contains encoded private key"
   cloud_provider: "aws"
   platform: "Terraform"
+  framework: "Terraform"
   severity: "HIGH"
   category: "Encryption"
 ---

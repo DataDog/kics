@@ -7,6 +7,7 @@ meta:
   display_name: "Lambda function with privileged role"
   cloud_provider: "aws"
   platform: "Terraform"
+  framework: "Terraform"
   severity: "HIGH"
   category: "Insecure Configurations"
 ---

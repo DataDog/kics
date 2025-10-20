@@ -7,6 +7,7 @@ meta:
   display_name: "DocumentDB cluster encrypted with AWS managed key"
   cloud_provider: "aws"
   platform: "Terraform"
+  framework: "Terraform"
   severity: "LOW"
   category: "Encryption"
 ---

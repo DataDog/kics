@@ -7,6 +7,7 @@ meta:
   display_name: "IAM policy grants 'AssumeRole' permission across all services"
   cloud_provider: "aws"
   platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"
 ---

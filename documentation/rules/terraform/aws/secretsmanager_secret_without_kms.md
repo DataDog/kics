@@ -7,6 +7,7 @@ meta:
   display_name: "Secrets Manager secret without KMS"
   cloud_provider: "aws"
   platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Encryption"
 ---

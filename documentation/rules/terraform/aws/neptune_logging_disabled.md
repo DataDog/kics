@@ -7,6 +7,7 @@ meta:
   display_name: "Neptune logging is disabled"
   cloud_provider: "aws"
   platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Observability"
 ---

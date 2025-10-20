@@ -7,6 +7,7 @@ meta:
   display_name: "CloudTrail not integrated with CloudWatch"
   cloud_provider: "aws"
   platform: "Terraform"
+  framework: "Terraform"
   severity: "LOW"
   category: "Observability"
 ---

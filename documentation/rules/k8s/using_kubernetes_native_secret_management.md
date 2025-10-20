@@ -7,6 +7,7 @@ meta:
   display_name: "Using Kubernetes native secret management"
   cloud_provider: "k8s"
   platform: "Kubernetes"
+  framework: "Kubernetes"
   severity: "INFO"
   category: "Secret Management"
 ---

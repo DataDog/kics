@@ -7,6 +7,7 @@ meta:
   display_name: "OSLogin disabled"
   cloud_provider: "gcp"
   platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"
 ---

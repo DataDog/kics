@@ -7,6 +7,7 @@ meta:
   display_name: "ElastiCache Redis cluster without backup"
   cloud_provider: "aws"
   platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Backup"
 ---

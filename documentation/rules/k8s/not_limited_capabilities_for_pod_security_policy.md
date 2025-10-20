@@ -7,6 +7,7 @@ meta:
   display_name: "Unrestricted capabilities in PodSecurityPolicy"
   cloud_provider: "k8s"
   platform: "Kubernetes"
+  framework: "Kubernetes"
   severity: "INFO"
   category: "Insecure Configurations"
 ---

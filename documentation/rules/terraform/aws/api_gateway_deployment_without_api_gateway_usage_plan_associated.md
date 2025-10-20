@@ -7,6 +7,7 @@ meta:
   display_name: "API gateway deployment without API gateway usage plan associated"
   cloud_provider: "aws"
   platform: "Terraform"
+  framework: "Terraform"
   severity: "LOW"
   category: "Observability"
 ---

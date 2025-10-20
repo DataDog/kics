@@ -7,6 +7,7 @@ meta:
   display_name: "CloudFront logging disabled"
   cloud_provider: "aws"
   platform: "Terraform"
+  framework: "Terraform"
   severity: "MEDIUM"
   category: "Observability"
 ---

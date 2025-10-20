@@ -7,6 +7,7 @@ meta:
   display_name: "IAM policy grants full permissions"
   cloud_provider: "aws"
   platform: "Terraform"
+  framework: "Terraform"
   severity: "HIGH"
   category: "Access Control"
 ---
