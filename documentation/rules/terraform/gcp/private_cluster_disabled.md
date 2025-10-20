@@ -6,7 +6,6 @@ meta:
   id: "6ccb85d7-0420-4907-9380-50313f80946b"
   display_name: "Private cluster disabled"
   cloud_provider: "gcp"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Insecure Configurations"

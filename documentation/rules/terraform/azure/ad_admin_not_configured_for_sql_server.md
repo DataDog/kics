@@ -6,7 +6,6 @@ meta:
   id: "a3a055d2-9a2e-4cc9-b9fb-12850a1a3a4b"
   display_name: "AD admin not configured for SQL server"
   cloud_provider: "azure"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Insecure Configurations"

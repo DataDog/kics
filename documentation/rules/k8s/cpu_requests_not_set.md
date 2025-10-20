@@ -6,7 +6,6 @@ meta:
   id: "ca469dd4-c736-448f-8ac1-30a642705e0a"
   display_name: "CPU requests not set"
   cloud_provider: "k8s"
-  framework: "Kubernetes"
   platform: "Kubernetes"
   severity: "LOW"
   category: "Resource Management"

@@ -6,7 +6,6 @@ meta:
   id: "94b76ea5-e074-4ca2-8a03-c5a606e30645"
   display_name: "Object is using a deprecated API version"
   cloud_provider: "k8s"
-  framework: "Kubernetes"
   platform: "Kubernetes"
   severity: "LOW"
   category: "Best Practices"

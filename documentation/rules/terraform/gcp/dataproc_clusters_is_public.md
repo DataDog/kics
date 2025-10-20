@@ -6,7 +6,6 @@ meta:
   id: "e3f7a9b1-c2d3-4e5f-8901-23456789abcd"
   display_name: "Dataproc clusters publicly accessible"
   cloud_provider: "gcp"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "HIGH"
   category: "Insecure Configurations"

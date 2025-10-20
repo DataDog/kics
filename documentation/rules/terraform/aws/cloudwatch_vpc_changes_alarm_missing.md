@@ -6,7 +6,6 @@ meta:
   id: "9d0d4512-1959-43a2-a17f-72360ff06d1b"
   display_name: "CloudWatch VPC changes alarm missing"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Observability"

@@ -6,7 +6,6 @@ meta:
   id: "f83121ea-03da-434f-9277-9cd247ab3047"
   display_name: "VPC Flow Logs disabled"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Observability"

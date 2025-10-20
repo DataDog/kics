@@ -6,7 +6,6 @@ meta:
   id: "e6f7g8h9-i0j1-4klm-56no-7890pqrstu12"
   display_name: "DMS endpoints without SSL"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "HIGH"
   category: "Networking and Firewall"

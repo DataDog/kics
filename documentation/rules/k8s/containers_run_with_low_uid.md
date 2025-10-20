@@ -6,7 +6,6 @@ meta:
   id: "02323c00-cdc3-4fdc-a310-4f2b3e7a1660"
   display_name: "Container with low UID"
   cloud_provider: "k8s"
-  framework: "Kubernetes"
   platform: "Kubernetes"
   severity: "MEDIUM"
   category: "Best Practices"

@@ -6,7 +6,6 @@ meta:
   id: "33627268-1445-4385-988a-318fd9d1a512"
   display_name: "User with privilege escalation by actions 'iam:UpdateAssumeRolePolicy' and 'sts:AssumeRole'"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"

@@ -6,7 +6,6 @@ meta:
   id: "acfdbec6-4a17-471f-b412-169d77553332"
   display_name: "Google Container node pool auto repair disabled"
   cloud_provider: "gcp"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Insecure Configurations"

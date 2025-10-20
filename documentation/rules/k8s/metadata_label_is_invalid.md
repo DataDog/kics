@@ -6,7 +6,6 @@ meta:
   id: "1123031a-f921-4c5b-bd86-ef354ecfd37a"
   display_name: "Invalid metadata label"
   cloud_provider: "k8s"
-  framework: "Kubernetes"
   platform: "Kubernetes"
   severity: "LOW"
   category: "Best Practices"

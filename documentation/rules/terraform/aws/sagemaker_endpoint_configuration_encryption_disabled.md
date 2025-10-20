@@ -6,7 +6,6 @@ meta:
   id: "58b35504-0287-4154-bf69-02c0573deab8"
   display_name: "SageMaker endpoint configuration encryption disabled"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "HIGH"
   category: "Encryption"

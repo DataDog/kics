@@ -6,7 +6,6 @@ meta:
   id: "b26d2b7e-60f6-413d-a3a1-a57db24aa2b3"
   display_name: "SNS topic is publicly accessible"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "CRITICAL"
   category: "Access Control"

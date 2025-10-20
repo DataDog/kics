@@ -6,7 +6,6 @@ meta:
   id: "ce60d060-efb8-4bfd-9cf7-ff8945d00d90"
   display_name: "Misconfigured password policy expiration"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "LOW"
   category: "Best Practices"

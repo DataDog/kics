@@ -6,7 +6,6 @@ meta:
   id: "19ffbe31-9d72-4379-9768-431195eae328"
   display_name: "User with privilege escalation by actions 'cloudformation:CreateStack' and 'iam:PassRole'"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"

@@ -6,7 +6,6 @@ meta:
   id: "591ade62-d6b0-4580-b1ae-209f80ba1cd9"
   display_name: "Service account name undefined or empty"
   cloud_provider: "k8s"
-  framework: "Kubernetes"
   platform: "Kubernetes"
   severity: "MEDIUM"
   category: "Insecure Defaults"

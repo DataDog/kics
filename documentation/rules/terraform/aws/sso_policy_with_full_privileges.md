@@ -6,7 +6,6 @@ meta:
   id: "132a8c31-9837-4203-9fd1-15ca210c7b73"
   display_name: "SSO policy with full privileges"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"

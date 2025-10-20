@@ -6,7 +6,6 @@ meta:
   id: "ac5a0bc0-a54c-45aa-90c3-15f7703b9132"
   display_name: "Configuration aggregator to all regions disabled"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "LOW"
   category: "Observability"

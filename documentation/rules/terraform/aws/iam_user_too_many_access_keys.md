@@ -6,7 +6,6 @@ meta:
   id: "3561130e-9c5f-485b-9e16-2764c82763e5"
   display_name: "IAM user has too many access keys"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Insecure Configurations"

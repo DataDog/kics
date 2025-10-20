@@ -6,7 +6,6 @@ meta:
   id: "d25edb51-07fb-4a73-97d4-41cecdc53a22"
   display_name: "Glue with vulnerable policy"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"

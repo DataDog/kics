@@ -6,7 +6,6 @@ meta:
   id: "89806cdc-9c2e-4bd1-a0dc-53f339bcfb2a"
   display_name: "Password without reuse prevention"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "LOW"
   category: "Best Practices"

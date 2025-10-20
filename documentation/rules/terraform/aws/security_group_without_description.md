@@ -6,7 +6,6 @@ meta:
   id: "cb3f5ed6-0d18-40de-a93d-b3538db31e8c"
   display_name: "Security group rule without description"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "INFO"
   category: "Best Practices"

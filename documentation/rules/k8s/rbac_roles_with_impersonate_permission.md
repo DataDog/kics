@@ -6,7 +6,6 @@ meta:
   id: "9f85c3f6-26fd-4007-938a-2e0cb0100980"
   display_name: "RBAC roles with impersonate permission"
   cloud_provider: "k8s"
-  framework: "Kubernetes"
   platform: "Kubernetes"
   severity: "MEDIUM"
   category: "Access Control"

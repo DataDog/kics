@@ -6,7 +6,6 @@ meta:
   id: "5744cbb8-5946-4b75-a196-ade44449525b"
   display_name: "HPA targeted deployments with configured replica count"
   cloud_provider: "k8s"
-  framework: "Kubernetes"
   platform: "Kubernetes"
   severity: "INFO"
   category: "Availability"

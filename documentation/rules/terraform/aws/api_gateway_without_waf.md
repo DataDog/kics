@@ -6,7 +6,6 @@ meta:
   id: "a186e82c-1078-4a7b-85d8-579561fde884"
   display_name: "API Gateway without WAF"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Networking and Firewall"

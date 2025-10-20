@@ -6,7 +6,6 @@ meta:
   id: "aa8f7a35-9923-4cad-bd61-a19b7f6aac91"
   display_name: "Non kube-system pod with host mount"
   cloud_provider: "k8s"
-  framework: "Kubernetes"
   platform: "Kubernetes"
   severity: "HIGH"
   category: "Access Control"

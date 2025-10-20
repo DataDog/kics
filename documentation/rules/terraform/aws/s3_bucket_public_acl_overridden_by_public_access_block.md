@@ -6,7 +6,6 @@ meta:
   id: "bf878b1a-7418-4de3-b13c-3a86cf894920"
   display_name: "S3 bucket public ACL overridden by public access block"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "HIGH"
   category: "Access Control"

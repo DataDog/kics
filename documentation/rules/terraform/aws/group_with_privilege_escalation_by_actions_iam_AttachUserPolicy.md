@@ -6,7 +6,6 @@ meta:
   id: "db78d14b-10e5-4e6e-84b1-dace6327b1ec"
   display_name: "Group with privilege escalation by actions 'iam:AttachUserPolicy'"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"

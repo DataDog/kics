@@ -6,7 +6,6 @@ meta:
   id: "4de9de27-254e-424f-bd70-4c1e95790838"
   display_name: "Launch configuration is not encrypted"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "HIGH"
   category: "Encryption"

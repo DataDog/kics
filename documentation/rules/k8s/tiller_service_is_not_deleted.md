@@ -6,7 +6,6 @@ meta:
   id: "8b862ca9-0fbd-4959-ad72-b6609bdaa22d"
   display_name: "Tiller Service present"
   cloud_provider: "k8s"
-  framework: "Kubernetes"
   platform: "Kubernetes"
   severity: "HIGH"
   category: "Insecure Configurations"

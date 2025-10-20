@@ -6,7 +6,6 @@ meta:
   id: "40430747-442d-450a-a34f-dc57149f4609"
   display_name: "Google Compute subnetwork logging disabled"
   cloud_provider: "gcp"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Observability"

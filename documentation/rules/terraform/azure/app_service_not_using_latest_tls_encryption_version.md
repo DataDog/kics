@@ -6,7 +6,6 @@ meta:
   id: "b7b9d1c7-2d3b-49b4-b867-ebbe68d0b643"
   display_name: "App Service not using latest TLS encryption version"
   cloud_provider: "azure"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Encryption"

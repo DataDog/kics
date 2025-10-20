@@ -6,7 +6,6 @@ meta:
   id: "16e0879a-c4ae-4ff8-a67d-a2eed5d67b8f"
   display_name: "PostgreSQL log duration not set"
   cloud_provider: "azure"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Observability"

@@ -6,7 +6,6 @@ meta:
   id: "f11aec39-858f-4b6f-b946-0a1bf46c0c87"
   display_name: "DAX cluster not encrypted"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "HIGH"
   category: "Encryption"

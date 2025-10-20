@@ -6,7 +6,6 @@ meta:
   id: "a1b2c3d4-e5f6-7890-ab12-cd34ef567890"
   display_name: "IAM password policy does not require lowercase letter"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Best Practices"

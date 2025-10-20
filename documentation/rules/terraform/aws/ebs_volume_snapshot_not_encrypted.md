@@ -6,7 +6,6 @@ meta:
   id: "e6b4b943-6883-47a9-9739-7ada9568f8ca"
   display_name: "EBS volume snapshot not encrypted"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "HIGH"
   category: "Encryption"

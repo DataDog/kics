@@ -6,7 +6,6 @@ meta:
   id: "45fc717a-bd86-415c-bdd8-677901be1aa6"
   display_name: "Function App not using latest TLS encryption version"
   cloud_provider: "azure"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Encryption"

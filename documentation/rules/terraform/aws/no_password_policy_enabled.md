@@ -6,7 +6,6 @@ meta:
   id: "b592ffd4-0577-44b6-bd35-8c5ee81b5918"
   display_name: "No password policy enabled"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Insecure Configurations"

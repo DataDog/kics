@@ -6,7 +6,6 @@ meta:
   id: "7c81d34c-8e5a-402b-9798-9f442630e678"
   display_name: "Image without digest"
   cloud_provider: "k8s"
-  framework: "Kubernetes"
   platform: "Kubernetes"
   severity: "LOW"
   category: "Insecure Configurations"

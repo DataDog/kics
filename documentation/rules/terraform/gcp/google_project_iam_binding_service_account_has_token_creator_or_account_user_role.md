@@ -6,7 +6,6 @@ meta:
   id: "617ef6ff-711e-4bd7-94ae-e965911b1b40"
   display_name: "Google project IAM binding service account has token creator or account user role"
   cloud_provider: "gcp"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "HIGH"
   category: "Access Control"

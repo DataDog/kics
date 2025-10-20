@@ -6,7 +6,6 @@ meta:
   id: "e7530c3c-b7cf-4149-8db9-d037a0b5268e"
   display_name: "Elasticsearch without IAM authentication"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"

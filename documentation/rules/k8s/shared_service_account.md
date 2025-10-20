@@ -6,7 +6,6 @@ meta:
   id: "c1032cf7-3628-44e2-bd53-38c17cf31b6b"
   display_name: "Shared service account"
   cloud_provider: "k8s"
-  framework: "Kubernetes"
   platform: "Kubernetes"
   severity: "MEDIUM"
   category: "Secret Management"

@@ -6,7 +6,6 @@ meta:
   id: "fd632aaf-b8a1-424d-a4d1-0de22fd3247a"
   display_name: "VPC without Network Firewall"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Networking and Firewall"

@@ -6,7 +6,6 @@ meta:
   id: "g3l20gd0k-e5f6-7890-ab12-cd34ef567890"
   display_name: "Neptune cluster snapshot not encrypted"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "HIGH"
   category: "Encryption"

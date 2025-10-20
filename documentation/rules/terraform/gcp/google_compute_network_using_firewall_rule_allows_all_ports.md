@@ -6,7 +6,6 @@ meta:
   id: "22ef1d26-80f8-4a6c-8c15-f35aab3cac78"
   display_name: "Google Compute network using firewall rule that allows all ports"
   cloud_provider: "gcp"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Networking and Firewall"

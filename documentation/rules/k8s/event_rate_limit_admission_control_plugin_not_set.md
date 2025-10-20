@@ -6,7 +6,6 @@ meta:
   id: "e0099af2-fe17-411f-9991-0de28fe15f3c"
   display_name: "Event rate limit admission control plugin not set"
   cloud_provider: "k8s"
-  framework: "Kubernetes"
   platform: "Kubernetes"
   severity: "LOW"
   category: "Availability"

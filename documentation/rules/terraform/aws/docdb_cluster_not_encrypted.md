@@ -6,7 +6,6 @@ meta:
   id: "bc1f9009-84a0-490f-ae09-3e0ea6d74ad6"
   display_name: "DocumentDB cluster not encrypted"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "HIGH"
   category: "Encryption"

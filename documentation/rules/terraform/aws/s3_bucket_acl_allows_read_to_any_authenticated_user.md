@@ -6,7 +6,6 @@ meta:
   id: "57b9893d-33b1-4419-bcea-a717ea87e139"
   display_name: "S3 bucket ACL allows read to any authenticated user"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "HIGH"
   category: "Access Control"

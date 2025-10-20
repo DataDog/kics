@@ -6,7 +6,6 @@ meta:
   id: "3d658f8b-d988-41a0-a841-40043121de1e"
   display_name: "Secrets used as environment variables"
   cloud_provider: "k8s"
-  framework: "Kubernetes"
   platform: "Kubernetes"
   severity: "LOW"
   category: "Secret Management"

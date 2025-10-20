@@ -6,7 +6,6 @@ meta:
   id: "63ebcb19-2739-4d3f-aa5c-e8bbb9b85281"
   display_name: "EKS cluster encryption disabled"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "HIGH"
   category: "Encryption"

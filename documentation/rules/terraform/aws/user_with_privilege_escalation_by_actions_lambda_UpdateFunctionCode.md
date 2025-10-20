@@ -6,7 +6,6 @@ meta:
   id: "b69247e5-7e73-464e-ba74-ec9b715c6e12"
   display_name: "User with privilege escalation by actions 'lambda:UpdateFunctionCode'"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"

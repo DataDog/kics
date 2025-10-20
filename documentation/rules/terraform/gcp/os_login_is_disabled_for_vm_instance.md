@@ -6,7 +6,6 @@ meta:
   id: "d0b4d550-c001-46c3-bbdb-d5d75d33f05f"
   display_name: "OSLogin is disabled for VM instance"
   cloud_provider: "gcp"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Insecure Configurations"

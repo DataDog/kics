@@ -6,7 +6,6 @@ meta:
   id: "42f4b905-3736-4213-bfe9-c0660518cda8"
   display_name: "EKS cluster has public access"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Insecure Configurations"

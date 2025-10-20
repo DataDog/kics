@@ -6,7 +6,6 @@ meta:
   id: "5fb49a69-8d46-4495-a2f8-9c8c622b2b6e"
   display_name: "S3 bucket object not encrypted"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "HIGH"
   category: "Encryption"

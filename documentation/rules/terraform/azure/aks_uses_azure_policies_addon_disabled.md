@@ -6,7 +6,6 @@ meta:
   id: "43789711-161b-4708-b5bb-9d1c626f7492"
   display_name: "Azure Policy Add-on Disabled in AKS Cluster"
   cloud_provider: "azure"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "LOW"
   category: "Best Practices"

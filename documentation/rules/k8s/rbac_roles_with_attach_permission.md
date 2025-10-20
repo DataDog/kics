@@ -6,7 +6,6 @@ meta:
   id: "d45330fd-f58d-45fb-a682-6481477a0f84"
   display_name: "RBAC roles with attach permission"
   cloud_provider: "k8s"
-  framework: "Kubernetes"
   platform: "Kubernetes"
   severity: "MEDIUM"
   category: "Access Control"

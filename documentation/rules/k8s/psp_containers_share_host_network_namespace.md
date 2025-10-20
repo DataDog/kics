@@ -6,7 +6,6 @@ meta:
   id: "a33e9173-b674-4dfb-9d82-cf3754816e4b"
   display_name: "PodSecurityPolicy allows host network sharing"
   cloud_provider: "k8s"
-  framework: "Kubernetes"
   platform: "Kubernetes"
   severity: "HIGH"
   category: "Insecure Configurations"

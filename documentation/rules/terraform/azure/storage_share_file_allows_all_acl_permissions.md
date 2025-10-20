@@ -6,7 +6,6 @@ meta:
   id: "48bbe0fd-57e4-4678-a4a1-119e79c90fc3"
   display_name: "Storage share file allows all ACL permissions"
   cloud_provider: "azure"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"

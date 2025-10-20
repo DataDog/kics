@@ -6,7 +6,6 @@ meta:
   id: "15ccec05-5476-4890-ad19-53991eba1db8"
   display_name: "API Gateway with open access"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Insecure Configurations"

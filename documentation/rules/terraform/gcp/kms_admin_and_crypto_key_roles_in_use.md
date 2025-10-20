@@ -6,7 +6,6 @@ meta:
   id: "92e4464a-4139-4d57-8742-b5acc0347680"
   display_name: "KMS admin and CryptoKey roles in use"
   cloud_provider: "gcp"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"

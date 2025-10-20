@@ -6,7 +6,6 @@ meta:
   id: "ef0b316a-211e-42f1-888e-64efe172b755"
   display_name: "CloudWatch without retention period specified"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "INFO"
   category: "Observability"

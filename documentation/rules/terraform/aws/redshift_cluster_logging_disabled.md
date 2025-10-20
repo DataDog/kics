@@ -6,7 +6,6 @@ meta:
   id: "15ffbacc-fa42-4f6f-a57d-2feac7365caa"
   display_name: "Redshift cluster logging disabled"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Observability"

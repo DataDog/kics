@@ -6,7 +6,6 @@ meta:
   id: "6425c98b-ca4e-41fe-896a-c78772c131f8"
   display_name: "PostgreSQL server infrastructure encryption disabled"
   cloud_provider: "azure"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "LOW"
   category: "Encryption"

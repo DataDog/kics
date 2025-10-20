@@ -6,7 +6,6 @@ meta:
   id: "28545147-2fc6-42d5-a1f9-cf226658e591"
   display_name: "SNS topic not encrypted"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "HIGH"
   category: "Encryption"

@@ -6,7 +6,6 @@ meta:
   id: "03aabc8c-35d6-481e-9c85-20139cf72d23"
   display_name: "CNI plugin does not support network policies"
   cloud_provider: "k8s"
-  framework: "Kubernetes"
   platform: "Kubernetes"
   severity: "MEDIUM"
   category: "Networking and Firewall"

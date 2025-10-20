@@ -6,7 +6,6 @@ meta:
   id: "80f93444-b240-4ebb-a4c6-5c40b76c04ea"
   display_name: "PSP allows sharing host IPC"
   cloud_provider: "k8s"
-  framework: "Kubernetes"
   platform: "Kubernetes"
   severity: "HIGH"
   category: "Insecure Configurations"

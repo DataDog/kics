@@ -6,7 +6,6 @@ meta:
   id: "54378d69-dd7c-4b08-a43e-80d563396857"
   display_name: "MSK broker is publicly accessible"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "HIGH"
   category: "Access Control"

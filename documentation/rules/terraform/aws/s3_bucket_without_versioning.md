@@ -6,7 +6,6 @@ meta:
   id: "568a4d22-3517-44a6-a7ad-6a7eed88722c"
   display_name: "S3 bucket without versioning"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Backup"

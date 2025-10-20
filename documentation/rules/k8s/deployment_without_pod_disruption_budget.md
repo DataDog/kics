@@ -6,7 +6,6 @@ meta:
   id: "b23e9b98-0cb6-4fc9-b257-1f3270442678"
   display_name: "Deployment without PodDisruptionBudget"
   cloud_provider: "k8s"
-  framework: "Kubernetes"
   platform: "Kubernetes"
   severity: "LOW"
   category: "Availability"

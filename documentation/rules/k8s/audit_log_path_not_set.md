@@ -6,7 +6,6 @@ meta:
   id: "73e251f0-363d-4e53-86e2-0a93592437eb"
   display_name: "Audit log path not set"
   cloud_provider: "k8s"
-  framework: "Kubernetes"
   platform: "Kubernetes"
   severity: "MEDIUM"
   category: "Observability"

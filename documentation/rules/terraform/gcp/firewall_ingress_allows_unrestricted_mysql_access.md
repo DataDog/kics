@@ -6,7 +6,6 @@ meta:
   id: "d0a1b2c3-d4e5-6789-abcd-ef0123456789"
   display_name: "Google Compute firewall ingress allows unrestricted MySQL access"
   cloud_provider: "gcp"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Networking and Firewall"

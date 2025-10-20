@@ -6,7 +6,6 @@ meta:
   id: "92fe237e-074c-4262-81a4-2077acb928c1"
   display_name: "Sensitive port is exposed to wide private network"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "LOW"
   category: "Networking and Firewall"

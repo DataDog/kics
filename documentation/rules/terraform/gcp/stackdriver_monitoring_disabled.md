@@ -6,7 +6,6 @@ meta:
   id: "30e8dfd2-3591-4d19-8d11-79e93106c93d"
   display_name: "Stackdriver Monitoring disabled"
   cloud_provider: "gcp"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Observability"

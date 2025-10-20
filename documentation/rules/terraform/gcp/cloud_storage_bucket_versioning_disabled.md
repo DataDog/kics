@@ -6,7 +6,6 @@ meta:
   id: "e7e961ac-d17e-4413-84bc-8a1fbe242944"
   display_name: "Cloud Storage bucket versioning disabled"
   cloud_provider: "gcp"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Observability"

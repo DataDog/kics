@@ -6,7 +6,6 @@ meta:
   id: "b9033580-6886-401a-8631-5f19f5bb24c7"
   display_name: "Workspaces workspace volume not encrypted"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "HIGH"
   category: "Encryption"

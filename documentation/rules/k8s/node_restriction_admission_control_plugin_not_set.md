@@ -6,7 +6,6 @@ meta:
   id: "33fc6923-6553-4fe6-9d3a-4efa51eb874b"
   display_name: "Node restriction admission control plugin not set"
   cloud_provider: "k8s"
-  framework: "Kubernetes"
   platform: "Kubernetes"
   severity: "MEDIUM"
   category: "Access Control"

@@ -6,7 +6,6 @@ meta:
   id: "bf36b900-b5ef-4828-adb7-70eb543b7cfb"
   display_name: "Kubelet hostname override is set"
   cloud_provider: "k8s"
-  framework: "Kubernetes"
   platform: "Kubernetes"
   severity: "LOW"
   category: "Insecure Configurations"

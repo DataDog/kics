@@ -6,7 +6,6 @@ meta:
   id: "113208f2-a886-4526-9ecc-f3218600e12c"
   display_name: "User with privilege escalation by actions 'iam:CreateAccessKey'"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"

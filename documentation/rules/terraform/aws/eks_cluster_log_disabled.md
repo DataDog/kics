@@ -6,7 +6,6 @@ meta:
   id: "37304d3f-f852-40b8-ae3f-725e87a7cedf"
   display_name: "EKS cluster logging is not enabled"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Observability"

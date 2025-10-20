@@ -6,7 +6,6 @@ meta:
   id: "4a20ebac-1060-4c81-95d1-1f7f620e983b"
   display_name: "Pod or container without LimitRange"
   cloud_provider: "k8s"
-  framework: "Kubernetes"
   platform: "Kubernetes"
   severity: "LOW"
   category: "Insecure Configurations"

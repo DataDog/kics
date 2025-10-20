@@ -6,7 +6,6 @@ meta:
   id: "94690d79-b3b0-43de-b656-84ebef5753e5"
   display_name: "CloudFront logging disabled"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Observability"

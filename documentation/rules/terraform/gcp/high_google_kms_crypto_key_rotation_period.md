@@ -6,7 +6,6 @@ meta:
   id: "d8c57c4e-bf6f-4e32-a2bf-8643532de77b"
   display_name: "High Google KMS crypto key rotation period"
   cloud_provider: "gcp"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Secret Management"

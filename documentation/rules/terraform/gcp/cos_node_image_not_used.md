@@ -6,7 +6,6 @@ meta:
   id: "8a893e46-e267-485a-8690-51f39951de58"
   display_name: "COS node image not used"
   cloud_provider: "gcp"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "LOW"
   category: "Insecure Configurations"

@@ -6,7 +6,6 @@ meta:
   id: "3af7f2fd-06e6-4dab-b996-2912bea19ba4"
   display_name: "Network ACL with unrestricted access to SSH"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Networking and Firewall"

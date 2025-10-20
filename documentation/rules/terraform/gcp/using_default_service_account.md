@@ -6,7 +6,6 @@ meta:
   id: "3cb4af0b-056d-4fb1-8b95-fdc4593625ff"
   display_name: "Using default service account"
   cloud_provider: "gcp"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Insecure Defaults"

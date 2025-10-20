@@ -6,7 +6,6 @@ meta:
   id: "73e42469-3a86-4f39-ad78-098f325b4e9f"
   display_name: "MySQL SSL connection disabled"
   cloud_provider: "azure"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Encryption"

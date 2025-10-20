@@ -6,7 +6,6 @@ meta:
   id: "7e3c1a2b-9d4f-4c8e-8a5b-0f1e2d3c4b6a"
   display_name: "Cloud Run service is public"
   cloud_provider: "gcp"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "HIGH"
   category: "Insecure Configurations"

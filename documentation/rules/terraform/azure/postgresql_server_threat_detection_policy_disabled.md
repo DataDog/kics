@@ -6,7 +6,6 @@ meta:
   id: "c407c3cf-c409-4b29-b590-db5f4138d332"
   display_name: "PostgreSQL Server threat detection policy disabled"
   cloud_provider: "azure"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Resource Management"

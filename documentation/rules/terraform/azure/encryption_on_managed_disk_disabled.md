@@ -6,7 +6,6 @@ meta:
   id: "a99130ab-4c0e-43aa-97f8-78d4fcb30024"
   display_name: "Encryption on managed disk disabled"
   cloud_provider: "azure"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Encryption"

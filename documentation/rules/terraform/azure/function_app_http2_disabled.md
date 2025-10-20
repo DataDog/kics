@@ -6,7 +6,6 @@ meta:
   id: "ace823d1-4432-4dee-945b-cdf11a5a6bd0"
   display_name: "Function App HTTP2 disabled"
   cloud_provider: "azure"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Insecure Configurations"

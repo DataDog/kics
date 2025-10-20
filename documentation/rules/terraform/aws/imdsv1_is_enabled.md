@@ -6,7 +6,6 @@ meta:
   id: "f1g2h3i4-j5k6-7lmn-8opq-9012rstuvwxy"
   display_name: "IMDSv1 enabled"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "HIGH"
   category: "Best Practices"

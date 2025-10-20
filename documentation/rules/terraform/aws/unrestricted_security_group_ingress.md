@@ -6,7 +6,6 @@ meta:
   id: "4728cd65-a20c-49da-8b31-9c08b423e4db"
   display_name: "Unrestricted security group ingress"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "HIGH"
   category: "Networking and Firewall"

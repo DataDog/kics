@@ -6,7 +6,6 @@ meta:
   id: "d7ba74da-2da0-4d4b-83c8-2fd72a3f6c28"
   display_name: "Unrestricted SQL server access"
   cloud_provider: "azure"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "CRITICAL"
   category: "Networking and Firewall"

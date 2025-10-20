@@ -6,7 +6,6 @@ meta:
   id: "efbf6449-5ec5-4cfe-8f15-acc51e0d787c"
   display_name: "RDP is exposed to the internet"
   cloud_provider: "azure"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "HIGH"
   category: "Networking and Firewall"

@@ -6,7 +6,6 @@ meta:
   id: "2285e608-ddbc-47f3-ba54-ce7121e31216"
   display_name: "CloudWatch route table changes alarm missing"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "LOW"
   category: "Observability"

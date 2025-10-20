@@ -6,7 +6,6 @@ meta:
   id: "42bb6b7f-6d54-4428-b707-666f669d94fb"
   display_name: "S3 static website host enabled"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "HIGH"
   category: "Insecure Configurations"

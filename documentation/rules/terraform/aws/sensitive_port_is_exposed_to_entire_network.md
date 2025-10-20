@@ -6,7 +6,6 @@ meta:
   id: "381c3f2a-ef6f-4eff-99f7-b169cda3422c"
   display_name: "Sensitive port is exposed to entire network"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "HIGH"
   category: "Networking and Firewall"

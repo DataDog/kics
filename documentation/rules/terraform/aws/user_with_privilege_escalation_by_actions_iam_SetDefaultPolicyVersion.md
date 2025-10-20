@@ -6,7 +6,6 @@ meta:
   id: "43a41523-386a-4cb1-becb-42af6b414433"
   display_name: "User with privilege escalation by actions 'iam:SetDefaultPolicyVersion'"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"

@@ -6,7 +6,6 @@ meta:
   id: "1a4bc881-9f69-4d44-8c9a-d37d08f54c50"
   display_name: "S3 bucket allows public policy"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "HIGH"
   category: "Access Control"

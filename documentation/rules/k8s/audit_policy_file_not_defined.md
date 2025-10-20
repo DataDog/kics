@@ -6,7 +6,6 @@ meta:
   id: "13a49a2e-488e-4309-a7c0-d6b05577a5fb"
   display_name: "Audit policy file not defined"
   cloud_provider: "k8s"
-  framework: "Kubernetes"
   platform: "Kubernetes"
   severity: "MEDIUM"
   category: "Observability"

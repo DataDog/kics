@@ -6,7 +6,6 @@ meta:
   id: "816ea8cf-d589-442d-a917-2dd0ce0e45e3"
   display_name: "SQS policy allows all actions"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "HIGH"
   category: "Access Control"

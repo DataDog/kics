@@ -6,7 +6,6 @@ meta:
   id: "48207659-729f-4b5c-9402-f884257d794f"
   display_name: "EFS not encrypted"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "HIGH"
   category: "Encryption"

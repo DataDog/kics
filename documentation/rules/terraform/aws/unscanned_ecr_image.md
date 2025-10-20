@@ -6,7 +6,6 @@ meta:
   id: "9630336b-3fed-4096-8173-b9afdfe346a7"
   display_name: "Unscanned ECR image"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "LOW"
   category: "Observability"

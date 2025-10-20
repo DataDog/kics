@@ -6,7 +6,6 @@ meta:
   id: "a5530bd7-225a-48f9-91bb-f40b04200165"
   display_name: "Service account lookup set to false"
   cloud_provider: "k8s"
-  framework: "Kubernetes"
   platform: "Kubernetes"
   severity: "HIGH"
   category: "Access Control"

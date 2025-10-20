@@ -6,7 +6,6 @@ meta:
   id: "0bc534c5-13d1-4353-a7fe-b8665d5c1d7d"
   display_name: "Dynamodb VPC endpoint without route table association"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "LOW"
   category: "Networking and Firewall"

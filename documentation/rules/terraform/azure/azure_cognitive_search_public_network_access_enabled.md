@@ -6,7 +6,6 @@ meta:
   id: "4a9e0f00-0765-4f72-a0d4-d31110b78279"
   display_name: "Azure Cognitive Search public network access enabled"
   cloud_provider: "azure"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Networking and Firewall"

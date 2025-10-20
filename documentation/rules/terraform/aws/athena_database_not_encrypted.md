@@ -6,7 +6,6 @@ meta:
   id: "b2315cae-b110-4426-81e0-80bb8640cdd3"
   display_name: "Athena database not encrypted"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "HIGH"
   category: "Encryption"

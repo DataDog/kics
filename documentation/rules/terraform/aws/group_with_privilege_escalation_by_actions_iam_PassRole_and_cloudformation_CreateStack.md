@@ -6,7 +6,6 @@ meta:
   id: "9b0ffadc-a61f-4c2a-b1e6-68fab60f6267"
   display_name: "Group with privilege escalation by actions 'cloudformation:CreateStack' and 'iam:PassRole'"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"

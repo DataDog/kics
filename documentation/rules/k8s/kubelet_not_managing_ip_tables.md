@@ -6,7 +6,6 @@ meta:
   id: "5f89001f-6dd9-49ff-9b15-d8cd71b617f4"
   display_name: "Kubelet not managing IP tables"
   cloud_provider: "k8s"
-  framework: "Kubernetes"
   platform: "Kubernetes"
   severity: "MEDIUM"
   category: "Networking and Firewall"

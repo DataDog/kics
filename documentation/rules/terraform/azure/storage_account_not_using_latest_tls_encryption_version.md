@@ -6,7 +6,6 @@ meta:
   id: "8263f146-5e03-43e0-9cfe-db960d56d1e7"
   display_name: "Storage account not using latest TLS encryption version"
   cloud_provider: "azure"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Encryption"

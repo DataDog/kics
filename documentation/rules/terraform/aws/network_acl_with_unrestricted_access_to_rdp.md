@@ -6,7 +6,6 @@ meta:
   id: "a20be318-cac7-457b-911d-04cc6e812c25"
   display_name: "Network ACL with unrestricted access to RDP"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "HIGH"
   category: "Networking and Firewall"

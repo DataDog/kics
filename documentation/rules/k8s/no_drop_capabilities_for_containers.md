@@ -6,7 +6,6 @@ meta:
   id: "268ca686-7fb7-4ae9-b129-955a2a89064e"
   display_name: "Containers missing drop capabilities"
   cloud_provider: "k8s"
-  framework: "Kubernetes"
   platform: "Kubernetes"
   severity: "LOW"
   category: "Best Practices"

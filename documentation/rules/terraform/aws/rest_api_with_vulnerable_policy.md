@@ -6,7 +6,6 @@ meta:
   id: "b161c11b-a59b-4431-9a29-4e19f63e6b27"
   display_name: "REST API with vulnerable policy"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"

@@ -6,7 +6,6 @@ meta:
   id: "e86e26fc-489e-44f0-9bcd-97305e4ba69a"
   display_name: "ECR repository is publicly accessible"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "CRITICAL"
   category: "Access Control"

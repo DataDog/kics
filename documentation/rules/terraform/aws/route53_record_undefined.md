@@ -6,7 +6,6 @@ meta:
   id: "25db74bf-fa3b-44da-934e-8c3e005c0453"
   display_name: "Route53 record undefined"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "HIGH"
   category: "Networking and Firewall"

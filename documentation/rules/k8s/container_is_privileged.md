@@ -6,7 +6,6 @@ meta:
   id: "dd29336b-fe57-445b-a26e-e6aa867ae609"
   display_name: "Container is privileged"
   cloud_provider: "k8s"
-  framework: "Kubernetes"
   platform: "Kubernetes"
   severity: "HIGH"
   category: "Insecure Configurations"

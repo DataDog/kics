@@ -6,7 +6,6 @@ meta:
   id: "6d173be7-545a-46c6-a81d-2ae52ed1605d"
   display_name: "Tiller (Helm v2) deployed"
   cloud_provider: "k8s"
-  framework: "Kubernetes"
   platform: "Kubernetes"
   severity: "HIGH"
   category: "Insecure Configurations"

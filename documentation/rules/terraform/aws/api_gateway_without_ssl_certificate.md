@@ -6,7 +6,6 @@ meta:
   id: "0b4869fc-a842-4597-aa00-1294df425440"
   display_name: "API Gateway without SSL certificate"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Insecure Configurations"

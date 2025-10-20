@@ -6,7 +6,6 @@ meta:
   id: "151187cb-0efc-481c-babd-ad24e3c9bc22"
   display_name: "Remote Desktop port open to internet"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "HIGH"
   category: "Networking and Firewall"

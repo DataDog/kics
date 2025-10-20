@@ -6,7 +6,6 @@ meta:
   id: "e6f61c37-106b-449f-a5bb-81bfcaceb8b4"
   display_name: "Google Compute network using firewall rule that allows port range"
   cloud_provider: "gcp"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "LOW"
   category: "Networking and Firewall"

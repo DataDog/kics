@@ -6,7 +6,6 @@ meta:
   id: "e0e00aba-5f1c-4981-a542-9a9563c0ee20"
   display_name: "Client certificate authentication not set up properly"
   cloud_provider: "k8s"
-  framework: "Kubernetes"
   platform: "Kubernetes"
   severity: "HIGH"
   category: "Access Control"

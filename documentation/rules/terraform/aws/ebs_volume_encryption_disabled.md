@@ -6,7 +6,6 @@ meta:
   id: "cc997676-481b-4e93-aa81-d19f8c5e9b12"
   display_name: "EBS volume encryption disabled"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "HIGH"
   category: "Encryption"

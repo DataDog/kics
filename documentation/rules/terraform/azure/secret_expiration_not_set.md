@@ -6,7 +6,6 @@ meta:
   id: "dfa20ffa-f476-428f-a490-424b41e91c7f"
   display_name: "Secret expiration not set"
   cloud_provider: "azure"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Secret Management"

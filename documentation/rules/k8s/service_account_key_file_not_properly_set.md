@@ -6,7 +6,6 @@ meta:
   id: "dab4ec72-ce2e-4732-b7c3-1757dcce01a1"
   display_name: "Service account key file not properly set"
   cloud_provider: "k8s"
-  framework: "Kubernetes"
   platform: "Kubernetes"
   severity: "MEDIUM"
   category: "Secret Management"

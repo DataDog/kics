@@ -6,7 +6,6 @@ meta:
   id: "75ec6890-83af-4bf1-9f16-e83726df0bd0"
   display_name: "Lambda permission misconfigured"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "LOW"
   category: "Best Practices"

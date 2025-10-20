@@ -6,7 +6,6 @@ meta:
   id: "3ddfa124-6407-4845-a501-179f90c65097"
   display_name: "Authentication without MFA"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "LOW"
   category: "Access Control"

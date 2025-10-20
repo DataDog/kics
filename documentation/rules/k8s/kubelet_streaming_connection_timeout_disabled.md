@@ -6,7 +6,6 @@ meta:
   id: "ed89b97d-04e9-4fd4-919f-ee5b27e555e9"
   display_name: "Kubelet streaming connection timeout disabled"
   cloud_provider: "k8s"
-  framework: "Kubernetes"
   platform: "Kubernetes"
   severity: "MEDIUM"
   category: "Networking and Firewall"

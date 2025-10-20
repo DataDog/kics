@@ -6,7 +6,6 @@ meta:
   id: "8bbb242f-6e38-4127-86d4-d8f0b2687ae2"
   display_name: "AMI not encrypted"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Encryption"

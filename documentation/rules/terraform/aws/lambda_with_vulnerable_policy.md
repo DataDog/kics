@@ -6,7 +6,6 @@ meta:
   id: "ad9dabc7-7839-4bae-a957-aa9120013f39"
   display_name: "Lambda with vulnerable policy"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "HIGH"
   category: "Access Control"

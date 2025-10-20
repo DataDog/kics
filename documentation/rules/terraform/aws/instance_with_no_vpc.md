@@ -6,7 +6,6 @@ meta:
   id: "a31a5a29-718a-4ff4-8001-a69e5e4d029e"
   display_name: "Instance with no VPC"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "LOW"
   category: "Insecure Configurations"

@@ -6,7 +6,6 @@ meta:
   id: "48471392-d4d0-47c0-b135-cdec95eb3eef"
   display_name: "Service account token auto-mount not disabled"
   cloud_provider: "k8s"
-  framework: "Kubernetes"
   platform: "Kubernetes"
   severity: "MEDIUM"
   category: "Insecure Defaults"

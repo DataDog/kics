@@ -6,7 +6,6 @@ meta:
   id: "46a2e9ec-6a5f-4faa-9d39-4ea44d5d87a2"
   display_name: "Bind address not properly set"
   cloud_provider: "k8s"
-  framework: "Kubernetes"
   platform: "Kubernetes"
   severity: "INFO"
   category: "Networking and Firewall"

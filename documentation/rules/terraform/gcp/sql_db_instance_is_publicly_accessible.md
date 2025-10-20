@@ -6,7 +6,6 @@ meta:
   id: "b187edca-b81e-4fdc-aff4-aab57db45edb"
   display_name: "SQL DB instance publicly accessible"
   cloud_provider: "gcp"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "CRITICAL"
   category: "Insecure Configurations"

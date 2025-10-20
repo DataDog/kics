@@ -6,7 +6,6 @@ meta:
   id: "3ca03a61-3249-4c16-8427-6f8e47dda729"
   display_name: "Service does not target a Pod"
   cloud_provider: "k8s"
-  framework: "Kubernetes"
   platform: "Kubernetes"
   severity: "LOW"
   category: "Insecure Configurations"

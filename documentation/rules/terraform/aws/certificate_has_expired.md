@@ -6,7 +6,6 @@ meta:
   id: "c3831315-5ae6-4fa8-b458-3d4d5ab7a3f6"
   display_name: "Certificate has expired"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"

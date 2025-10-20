@@ -6,7 +6,6 @@ meta:
   id: "9a205ba3-0dd1-42eb-8d54-2ffec836b51a"
   display_name: "Role with privilege escalation by actions 'iam:CreateLoginProfile'"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"

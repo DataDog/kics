@@ -6,7 +6,6 @@ meta:
   id: "6db52fa6-d4da-4608-908a-89f0c59e743e"
   display_name: "MSK cluster encryption disabled"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "HIGH"
   category: "Encryption"

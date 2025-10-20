@@ -6,7 +6,6 @@ meta:
   id: "8f3c16b3-354d-45db-8ad5-5066778a9485"
   display_name: "Group with privilege escalation by actions 'glue:UpdateDevEndpoint'"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"

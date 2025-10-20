@@ -6,7 +6,6 @@ meta:
   id: "5308a7a8-06f8-45ac-bf10-791fe21de46e"
   display_name: "Workload mounting with sensitive OS directory"
   cloud_provider: "k8s"
-  framework: "Kubernetes"
   platform: "Kubernetes"
   severity: "HIGH"
   category: "Insecure Configurations"

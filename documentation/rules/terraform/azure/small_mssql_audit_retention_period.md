@@ -6,7 +6,6 @@ meta:
   id: "9c301481-e6ec-44f7-8a49-8ec63e2969ea"
   display_name: "Small MSSQL audit retention period"
   cloud_provider: "azure"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "LOW"
   category: "Observability"

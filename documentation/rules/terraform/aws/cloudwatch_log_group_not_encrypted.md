@@ -6,7 +6,6 @@ meta:
   id: "0afbcfe9-d341-4b92-a64c-7e6de0543879"
   display_name: "CloudWatch log group without KMS"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Encryption"

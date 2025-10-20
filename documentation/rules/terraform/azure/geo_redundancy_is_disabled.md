@@ -6,7 +6,6 @@ meta:
   id: "8b042c30-e441-453f-b162-7696982ebc58"
   display_name: "Geo redundancy is disabled"
   cloud_provider: "azure"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "LOW"
   category: "Backup"

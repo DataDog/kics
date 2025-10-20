@@ -6,7 +6,6 @@ meta:
   id: "cb7e695d-6a85-495c-b15f-23aed2519303"
   display_name: "Certificate authority is not unique"
   cloud_provider: "k8s"
-  framework: "Kubernetes"
   platform: "Kubernetes"
   severity: "MEDIUM"
   category: "Secret Management"

@@ -6,7 +6,6 @@ meta:
   id: "96e8183b-e985-457b-90cd-61c0503a3369"
   display_name: "Global Accelerator flow logs disabled"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Observability"

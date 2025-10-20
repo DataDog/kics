@@ -6,7 +6,6 @@ meta:
   id: "5da47109-f8d6-4585-9e2b-96a8958a12f5"
   display_name: "Basic auth file is set"
   cloud_provider: "k8s"
-  framework: "Kubernetes"
   platform: "Kubernetes"
   severity: "HIGH"
   category: "Access Control"

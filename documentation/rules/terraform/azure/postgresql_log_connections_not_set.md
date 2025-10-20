@@ -6,7 +6,6 @@ meta:
   id: "c640d783-10c5-4071-b6c1-23507300d333"
   display_name: "PostgreSQL log connections not set"
   cloud_provider: "azure"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Observability"

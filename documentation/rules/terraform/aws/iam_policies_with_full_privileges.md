@@ -6,7 +6,6 @@ meta:
   id: "2f37c4a3-58b9-4afe-8a87-d7f1d2286f84"
   display_name: "IAM policies with full privileges"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"

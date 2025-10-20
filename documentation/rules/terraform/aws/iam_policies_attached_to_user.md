@@ -6,7 +6,6 @@ meta:
   id: "b4378389-a9aa-44ee-91e7-ef183f11079e"
   display_name: "IAM policies attached to user"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"

@@ -6,7 +6,6 @@ meta:
   id: "7ebc9038-0bde-479a-acc4-6ed7b6758899"
   display_name: "KMS key with vulnerable policy"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "HIGH"
   category: "Insecure Configurations"

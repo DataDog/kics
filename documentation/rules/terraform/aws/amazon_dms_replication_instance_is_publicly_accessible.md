@@ -6,7 +6,6 @@ meta:
   id: "030d3b18-1821-45b4-9e08-50efbe7becbb"
   display_name: "Amazon DMS replication instance is publicly accessible"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "CRITICAL"
   category: "Access Control"

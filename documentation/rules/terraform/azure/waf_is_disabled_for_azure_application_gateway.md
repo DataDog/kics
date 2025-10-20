@@ -6,7 +6,6 @@ meta:
   id: "2e48d91c-50e4-45c8-9312-27b625868a72"
   display_name: "WAF is disabled for Azure application gateway"
   cloud_provider: "azure"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Networking and Firewall"

@@ -6,7 +6,6 @@ meta:
   id: "550e8400-e29b-41d4-a716-446655440000"
   display_name: "Ensure legacy networks do not exist for a project"
   cloud_provider: "gcp"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "HIGH"
   category: "Networking and Firewall"

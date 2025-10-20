@@ -6,7 +6,6 @@ meta:
   id: "c0c1e744-0f37-445e-924a-1846f0839f69"
   display_name: "Group with privilege escalation by actions 'iam:PutRolePolicy'"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"

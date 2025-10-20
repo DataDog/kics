@@ -6,7 +6,6 @@ meta:
   id: "7081f85c-b94d-40fd-8b45-a4f1cac75e46"
   display_name: "IAM access key is exposed"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"

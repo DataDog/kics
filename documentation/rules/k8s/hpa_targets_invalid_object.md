@@ -6,7 +6,6 @@ meta:
   id: "2f652c42-619d-4361-b361-9f599688f8ca"
   display_name: "HPA targets invalid object"
   cloud_provider: "k8s"
-  framework: "Kubernetes"
   platform: "Kubernetes"
   severity: "LOW"
   category: "Availability"

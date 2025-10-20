@@ -6,7 +6,6 @@ meta:
   id: "24e16922-4330-4e9d-be8a-caa90299466a"
   display_name: "Elasticsearch not encrypted at rest"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "HIGH"
   category: "Encryption"

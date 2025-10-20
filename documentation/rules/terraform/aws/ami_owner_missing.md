@@ -6,7 +6,6 @@ meta:
   id: "f317c3c2-58e5-4aa7-bb8e-3a7f6bcd274a"
   display_name: "AMI most recent without owner or filter"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "HIGH"
   category: "Access Control"

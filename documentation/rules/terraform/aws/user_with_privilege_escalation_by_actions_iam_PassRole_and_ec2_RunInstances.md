@@ -6,7 +6,6 @@ meta:
   id: "89561b03-cb35-44a9-a7e9-8356e71606f4"
   display_name: "User with privilege escalation by actions 'ec2:RunInstances' and 'iam:PassRole'"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"

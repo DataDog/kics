@@ -6,7 +6,6 @@ meta:
   id: "bbe3dd3d-fea9-4b68-a785-cfabe2bbbc54"
   display_name: "Policy without principal"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"

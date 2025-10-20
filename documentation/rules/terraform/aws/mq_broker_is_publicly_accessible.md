@@ -6,7 +6,6 @@ meta:
   id: "4eb5f791-c861-4afd-9f94-f2a6a3fe49cb"
   display_name: "MQ broker is publicly accessible"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "HIGH"
   category: "Insecure Configurations"

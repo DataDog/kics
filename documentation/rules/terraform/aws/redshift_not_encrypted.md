@@ -6,7 +6,6 @@ meta:
   id: "cfdcabb0-fc06-427c-865b-c59f13e898ce"
   display_name: "Redshift not encrypted"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "HIGH"
   category: "Encryption"

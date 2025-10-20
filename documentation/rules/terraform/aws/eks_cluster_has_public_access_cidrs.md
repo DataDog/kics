@@ -6,7 +6,6 @@ meta:
   id: "61cf9883-1752-4768-b18c-0d57f2737709"
   display_name: "EKS cluster has public access CIDRs"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Networking and Firewall"

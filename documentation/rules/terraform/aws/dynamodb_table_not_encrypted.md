@@ -6,7 +6,6 @@ meta:
   id: "ce089fd4-1406-47bd-8aad-c259772bb294"
   display_name: "DynamoDB table not encrypted"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "HIGH"
   category: "Encryption"

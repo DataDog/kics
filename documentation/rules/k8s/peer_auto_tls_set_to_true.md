@@ -6,7 +6,6 @@ meta:
   id: "ae8827e2-4af9-4baa-9998-87539ae0d6f0"
   display_name: "Peer auto TLS set to true"
   cloud_provider: "k8s"
-  framework: "Kubernetes"
   platform: "Kubernetes"
   severity: "MEDIUM"
   category: "Networking and Firewall"

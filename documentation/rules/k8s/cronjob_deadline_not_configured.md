@@ -6,7 +6,6 @@ meta:
   id: "192fe40b-b1c3-448a-aba2-6cc19a300fe3"
   display_name: "CronJob deadline not configured"
   cloud_provider: "k8s"
-  framework: "Kubernetes"
   platform: "Kubernetes"
   severity: "LOW"
   category: "Resource Management"

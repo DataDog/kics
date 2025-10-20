@@ -6,7 +6,6 @@ meta:
   id: "9ba198e0-fef4-464a-8a4d-75ea55300de7"
   display_name: "Neptune cluster instance is publicly accessible"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "HIGH"
   category: "Access Control"

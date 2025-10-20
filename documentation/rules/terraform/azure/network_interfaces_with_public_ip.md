@@ -6,7 +6,6 @@ meta:
   id: "c1573577-e494-4417-8854-7e119368dc8b"
   display_name: "Network interfaces with public IP"
   cloud_provider: "azure"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Networking and Firewall"

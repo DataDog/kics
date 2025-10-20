@@ -6,7 +6,6 @@ meta:
   id: "8320826e-7a9c-4b0b-9535-578333193432"
   display_name: "RBAC roles allow privilege escalation"
   cloud_provider: "k8s"
-  framework: "Kubernetes"
   platform: "Kubernetes"
   severity: "MEDIUM"
   category: "Access Control"

@@ -6,7 +6,6 @@ meta:
   id: "6deb34e2-5d9c-499a-801b-ea6d9eda894f"
   display_name: "User with privilege escalation by actions 'iam:UpdateLoginProfile'"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"

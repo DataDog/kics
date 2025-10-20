@@ -6,7 +6,6 @@ meta:
   id: "e39bee8c-fe54-4a3f-824d-e5e2d1cca40a"
   display_name: "IAM role policy passrole allows all"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"

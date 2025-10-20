@@ -6,7 +6,6 @@ meta:
   id: "65c1bc7a-4835-4ac4-a2b6-13d310b0648d"
   display_name: "Cluster labels disabled"
   cloud_provider: "gcp"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "LOW"
   category: "Insecure Configurations"

@@ -6,7 +6,6 @@ meta:
   id: "0a8e8dc5-b6fc-44fc-b5a1-969ec950f9b0"
   display_name: "CloudWatch changes to NACL alarm missing"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Observability"

@@ -6,7 +6,6 @@ meta:
   id: "084c6686-2a70-4710-91b1-000393e54c12"
   display_name: "Shield Advanced not in use"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "LOW"
   category: "Networking and Firewall"

@@ -6,7 +6,6 @@ meta:
   id: "1a690d1d-0ae7-49fa-b2db-b75ae0dd1d3e"
   display_name: "Aurora with disabled at rest encryption"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "HIGH"
   category: "Encryption"

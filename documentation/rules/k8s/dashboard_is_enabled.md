@@ -6,7 +6,6 @@ meta:
   id: "d2ad057f-0928-41ef-a83c-f59203bb855b"
   display_name: "Dashboard is enabled"
   cloud_provider: "k8s"
-  framework: "Kubernetes"
   platform: "Kubernetes"
   severity: "LOW"
   category: "Insecure Configurations"

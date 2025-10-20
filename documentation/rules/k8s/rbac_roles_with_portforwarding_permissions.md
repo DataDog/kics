@@ -6,7 +6,6 @@ meta:
   id: "38fa11ef-dbcc-4da8-9680-7e1fd855b6fb"
   display_name: "RBAC roles with port-forwarding permission"
   cloud_provider: "k8s"
-  framework: "Kubernetes"
   platform: "Kubernetes"
   severity: "MEDIUM"
   category: "Access Control"

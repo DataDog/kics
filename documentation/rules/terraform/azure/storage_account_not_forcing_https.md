@@ -6,7 +6,6 @@ meta:
   id: "12944ec4-1fa0-47be-8b17-42a034f937c2"
   display_name: "Storage account not forcing HTTPS"
   cloud_provider: "azure"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Encryption"

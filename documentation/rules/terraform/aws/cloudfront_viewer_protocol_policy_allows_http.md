@@ -6,7 +6,6 @@ meta:
   id: "55af1353-2f62-4fa0-a8e1-a210ca2708f5"
   display_name: "Cloudfront viewer protocol policy allows HTTP"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Encryption"

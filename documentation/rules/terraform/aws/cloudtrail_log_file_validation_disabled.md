@@ -6,7 +6,6 @@ meta:
   id: "52ffcfa6-6c70-4ea6-8376-d828d3961669"
   display_name: "CloudTrail log file validation disabled"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "LOW"
   category: "Observability"

@@ -6,7 +6,6 @@ meta:
   id: "fa750c81-93c2-4fab-9c6d-d3fd3ce3b89f"
   display_name: "TLS connection certificate not set up"
   cloud_provider: "k8s"
-  framework: "Kubernetes"
   platform: "Kubernetes"
   severity: "MEDIUM"
   category: "Networking and Firewall"

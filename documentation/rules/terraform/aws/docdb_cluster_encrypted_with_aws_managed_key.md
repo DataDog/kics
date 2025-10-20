@@ -6,7 +6,6 @@ meta:
   id: "2134641d-30a4-4b16-8ffc-2cd4c4ffd15d"
   display_name: "DocumentDB cluster encrypted with AWS managed key"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "LOW"
   category: "Encryption"

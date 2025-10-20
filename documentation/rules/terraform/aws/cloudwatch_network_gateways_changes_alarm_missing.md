@@ -6,7 +6,6 @@ meta:
   id: "6b6874fe-4c2f-4eea-8b90-7cceaa4a125e"
   display_name: "CloudWatch network gateways changes alarm missing"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "LOW"
   category: "Observability"

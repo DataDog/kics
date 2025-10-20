@@ -6,7 +6,6 @@ meta:
   id: "4a800e14-c94a-442d-9067-5a2e9f6c0a4c"
   display_name: "ELB using weak ciphers"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "HIGH"
   category: "Encryption"

@@ -6,7 +6,6 @@ meta:
   id: "f3674e0c-f6be-43fa-b71c-bf346d1aed99"
   display_name: "SageMaker notebook instance without KMS"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "HIGH"
   category: "Encryption"

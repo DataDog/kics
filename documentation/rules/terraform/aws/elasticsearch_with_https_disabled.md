@@ -6,7 +6,6 @@ meta:
   id: "2e9e0729-66d5-4148-9d39-5e6fb4bf2a4e"
   display_name: "Elasticsearch with HTTPS disabled"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Networking and Firewall"

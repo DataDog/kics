@@ -6,7 +6,6 @@ meta:
   id: "acb6b4e2-a086-4f35-aefd-4db6ea51ada2"
   display_name: "Elasticsearch log disabled"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Observability"

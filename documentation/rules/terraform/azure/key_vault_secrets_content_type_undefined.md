@@ -6,7 +6,6 @@ meta:
   id: "f8e08a38-fc6e-4915-abbe-a7aadf1d59ef"
   display_name: "Key Vault secrets content type undefined"
   cloud_provider: "azure"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Best Practices"

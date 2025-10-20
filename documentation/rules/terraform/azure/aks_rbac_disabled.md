@@ -6,7 +6,6 @@ meta:
   id: "86f92117-eed8-4614-9c6c-b26da20ff37f"
   display_name: "AKS RBAC disabled"
   cloud_provider: "azure"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"

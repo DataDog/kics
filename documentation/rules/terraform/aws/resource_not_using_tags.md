@@ -6,7 +6,6 @@ meta:
   id: "e38a8e0a-b88b-4902-b3fe-b0fcb17d5c10"
   display_name: "Resource not using tags"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "INFO"
   category: "Best Practices"

@@ -6,7 +6,6 @@ meta:
   id: "11e7550e-c4b6-472e-adff-c698f157cdd7"
   display_name: "Network policy disabled"
   cloud_provider: "gcp"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Insecure Configurations"

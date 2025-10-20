@@ -6,7 +6,6 @@ meta:
   id: "65905cec-d691-4320-b320-2000436cb696"
   display_name: "Security group with unrestricted access to SSH"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Networking and Firewall"

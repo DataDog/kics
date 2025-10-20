@@ -6,7 +6,6 @@ meta:
   id: "e29a75e6-aba3-4896-b42d-b87818c16b58"
   display_name: "Redis cache allows non SSL connections"
   cloud_provider: "azure"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Insecure Configurations"

@@ -6,7 +6,6 @@ meta:
   id: "081069cb-588b-4ce1-884c-2a1ce3029fe5"
   display_name: "CloudWatch metrics disabled"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Observability"

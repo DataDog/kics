@@ -6,7 +6,6 @@ meta:
   id: "60fd272d-15f4-4d8f-afe4-77d9c6cc0453"
   display_name: "Unsecured commands"
   cloud_provider: "github"
-  framework: "CICD"
   platform: "CICD"
   severity: "MEDIUM"
   category: "Insecure Configurations"

@@ -6,7 +6,6 @@ meta:
   id: "ba40ace1-a047-483c-8a8d-bc2d3a67a82d"
   display_name: "EKS node group remote access disabled"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Networking and Firewall"

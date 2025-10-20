@@ -6,7 +6,6 @@ meta:
   id: "de4421f1-4e35-43b4-9783-737dd4e4a47e"
   display_name: "PSP with unrestricted access to host path"
   cloud_provider: "k8s"
-  framework: "Kubernetes"
   platform: "Kubernetes"
   severity: "HIGH"
   category: "Resource Management"

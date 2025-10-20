@@ -6,7 +6,6 @@ meta:
   id: "16cc87d1-dd47-4f46-b3ce-4dfcac8fd2f5"
   display_name: "KMS CryptoKey is publicly accessible"
   cloud_provider: "gcp"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "HIGH"
   category: "Encryption"

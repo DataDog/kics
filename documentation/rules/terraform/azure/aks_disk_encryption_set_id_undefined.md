@@ -6,7 +6,6 @@ meta:
   id: "b17d8bb8-4c08-4785-867e-cb9e62a622aa"
   display_name: "AKS disk encryption set ID undefined"
   cloud_provider: "azure"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "LOW"
   category: "Encryption"

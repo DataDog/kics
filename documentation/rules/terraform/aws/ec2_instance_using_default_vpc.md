@@ -6,7 +6,6 @@ meta:
   id: "7e4a6e76-568d-43ef-8c4e-36dea481bff1"
   display_name: "EC2 instance using default VPC"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "LOW"
   category: "Networking and Firewall"

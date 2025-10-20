@@ -6,7 +6,6 @@ meta:
   id: "e3f7a9b0-c1d2-3e4f-5678-90abcdef1234"
   display_name: "Ensure web app is not remotely debuggable"
   cloud_provider: "azure"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "HIGH"
   category: "Insecure Configurations"

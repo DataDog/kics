@@ -6,7 +6,6 @@ meta:
   id: "f3g4h5i6-j7k8-9lmn-0opq-12345abcdefg"
   display_name: "SageMaker notebook internet access enabled"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "HIGH"
   category: "Networking and Firewall"

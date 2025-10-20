@@ -6,7 +6,6 @@ meta:
   id: "ffb02aca-0d12-475e-b77c-a726f7aeff4b"
   display_name: "Log retention is not set"
   cloud_provider: "azure"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Observability"

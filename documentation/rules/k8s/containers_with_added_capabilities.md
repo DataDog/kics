@@ -6,7 +6,6 @@ meta:
   id: "19ebaa28-fc86-4a58-bcfa-015c9e22fe40"
   display_name: "Containers with added capabilities"
   cloud_provider: "k8s"
-  framework: "Kubernetes"
   platform: "Kubernetes"
   severity: "MEDIUM"
   category: "Insecure Configurations"

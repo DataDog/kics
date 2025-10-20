@@ -6,7 +6,6 @@ meta:
   id: "1b44e234-3d73-41a8-9954-0b154135280e"
   display_name: "Shielded VM disabled"
   cloud_provider: "gcp"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Insecure Configurations"

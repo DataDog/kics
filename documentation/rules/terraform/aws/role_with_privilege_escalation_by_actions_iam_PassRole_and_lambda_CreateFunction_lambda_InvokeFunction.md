@@ -6,7 +6,6 @@ meta:
   id: "fa62ac4f-f5b9-45b9-97c1-625c8b6253ca"
   display_name: "Role with privilege escalation by actions 'lambda:CreateFunction' and 'iam:PassRole' and 'lambda:InvokeFunction'"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"

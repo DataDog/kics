@@ -6,7 +6,6 @@ meta:
   id: "35c0a471-f7c8-4993-aa2c-503a3c712a66"
   display_name: "Audit log maxsize not properly set"
   cloud_provider: "k8s"
-  framework: "Kubernetes"
   platform: "Kubernetes"
   severity: "LOW"
   category: "Observability"

@@ -6,7 +6,6 @@ meta:
   id: "b72d0026-f649-4c91-a9ea-15d8f681ac09"
   display_name: "Stack notifications disabled"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Observability"

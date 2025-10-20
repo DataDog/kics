@@ -6,7 +6,6 @@ meta:
   id: "fae52418-bb8b-4ac2-b287-0b9082d6a3fd"
   display_name: "EFS with vulnerable policy"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"

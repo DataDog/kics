@@ -6,7 +6,6 @@ meta:
   id: "d3f8e9c1-7a2b-4d5f-90e2-123456789abc"
   display_name: "Google Compute firewall ingress allows unrestricted FTP access"
   cloud_provider: "gcp"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Networking and Firewall"

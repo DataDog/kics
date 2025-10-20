@@ -6,7 +6,6 @@ meta:
   id: "510d5810-9a30-443a-817d-5c1fa527b110"
   display_name: "Weak TLS cipher suites"
   cloud_provider: "k8s"
-  framework: "Kubernetes"
   platform: "Kubernetes"
   severity: "MEDIUM"
   category: "Encryption"

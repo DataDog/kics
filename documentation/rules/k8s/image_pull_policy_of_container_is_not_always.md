@@ -6,7 +6,6 @@ meta:
   id: "caa3479d-885d-4882-9aac-95e5e78ef5c2"
   display_name: "Image pull policy of the container is not set to always"
   cloud_provider: "k8s"
-  framework: "Kubernetes"
   platform: "Kubernetes"
   severity: "LOW"
   category: "Insecure Configurations"

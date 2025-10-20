@@ -6,7 +6,6 @@ meta:
   id: "e3aa0612-4351-4a0d-983f-aefea25cf203"
   display_name: "Root containers admitted"
   cloud_provider: "k8s"
-  framework: "Kubernetes"
   platform: "Kubernetes"
   severity: "MEDIUM"
   category: "Best Practices"

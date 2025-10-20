@@ -6,7 +6,6 @@ meta:
   id: "c3f2e1d0-b9a8-7c6d-5e4f-3210fedcba98"
   display_name: "ssl_enforcement_enabled is not set to ENABLED for MySQL database server"
   cloud_provider: "azure"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "HIGH"
   category: "Networking and Firewall"

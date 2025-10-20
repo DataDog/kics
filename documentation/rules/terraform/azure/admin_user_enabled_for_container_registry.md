@@ -6,7 +6,6 @@ meta:
   id: "b897dfbf-322c-45a8-b67c-1e698beeaa51"
   display_name: "Admin user enabled for container registry"
   cloud_provider: "azure"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"

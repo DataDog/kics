@@ -6,7 +6,6 @@ meta:
   id: "20f14e1a-a899-4e79-9f09-b6a84cd4649b"
   display_name: "Run block injection"
   cloud_provider: "github"
-  framework: "CICD"
   platform: "CICD"
   severity: "MEDIUM"
   category: "Insecure Configurations"

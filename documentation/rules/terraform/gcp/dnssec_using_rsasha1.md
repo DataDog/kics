@@ -6,7 +6,6 @@ meta:
   id: "ccc3100c-0fdd-4a5e-9908-c10107291860"
   display_name: "DNSSEC using RSASHA1"
   cloud_provider: "gcp"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Encryption"

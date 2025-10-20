@@ -6,7 +6,6 @@ meta:
   id: "38b85c45-e772-4de8-a247-69619ca137b3"
   display_name: "CloudWatch AWS organizations changes missing alarm"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "INFO"
   category: "Observability"

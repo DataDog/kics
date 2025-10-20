@@ -6,7 +6,6 @@ meta:
   id: "4c18a45b-4ab1-4790-9f83-399ac695f1e5"
   display_name: "CloudWatch unauthorized access alarm missing"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "CRITICAL"
   category: "Observability"

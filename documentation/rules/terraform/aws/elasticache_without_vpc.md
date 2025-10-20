@@ -6,7 +6,6 @@ meta:
   id: "8c849af7-a399-46f7-a34c-32d3dc96f1fc"
   display_name: "ElastiCache without VPC"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "LOW"
   category: "Networking and Firewall"

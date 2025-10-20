@@ -6,7 +6,6 @@ meta:
   id: "85da374f-b00f-4832-9d44-84a1ca1e89f8"
   display_name: "App Service FTPS enforce disabled"
   cloud_provider: "azure"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Insecure Configurations"

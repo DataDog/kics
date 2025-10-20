@@ -6,7 +6,6 @@ meta:
   id: "ffac8a12-322e-42c1-b9b9-81ff85c39ef7"
   display_name: "HTTP port open to internet"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Networking and Firewall"

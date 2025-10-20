@@ -6,7 +6,6 @@ meta:
   id: "fc101ca7-c9dd-4198-a1eb-0fbe92e80044"
   display_name: "IAM group without users"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Access Control"

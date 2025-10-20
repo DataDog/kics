@@ -6,7 +6,6 @@ meta:
   id: "93f9tyjk-e5f6-7890-ab12-cd34ef567890"
   display_name: "ssl_enforcement_enabled is not set to ENABLED for PostgreSQL database server"
   cloud_provider: "azure"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "HIGH"
   category: "Networking and Firewall"

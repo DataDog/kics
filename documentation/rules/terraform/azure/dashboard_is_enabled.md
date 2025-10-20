@@ -6,7 +6,6 @@ meta:
   id: "61c3cb8b-0715-47e4-b788-86dde40dd2db"
   display_name: "Dashboard is enabled"
   cloud_provider: "azure"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "LOW"
   category: "Insecure Configurations"

@@ -6,7 +6,6 @@ meta:
   id: "f377b83e-bd07-4f48-a591-60c82b14a78b"
   display_name: "Seccomp profile is not configured"
   cloud_provider: "k8s"
-  framework: "Kubernetes"
   platform: "Kubernetes"
   severity: "MEDIUM"
   category: "Insecure Configurations"

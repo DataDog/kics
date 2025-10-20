@@ -6,7 +6,6 @@ meta:
   id: "a4966c4f-9141-48b8-a564-ffe9959945bc"
   display_name: "S3 bucket with all permissions"
   cloud_provider: "aws"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "CRITICAL"
   category: "Access Control"

@@ -6,7 +6,6 @@ meta:
   id: "11e9a948-c6c3-4a0f-8dcf-b5cf1763cdbe"
   display_name: "Web app accepting traffic other than HTTPS"
   cloud_provider: "azure"
-  framework: "Terraform"
   platform: "Terraform"
   severity: "MEDIUM"
   category: "Insecure Configurations"

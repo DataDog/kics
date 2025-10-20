@@ -6,7 +6,6 @@ meta:
   id: "bb241e61-77c3-4b97-9575-c0f8a1e008d0"
   display_name: "StatefulSet without service name"
   cloud_provider: "k8s"
-  framework: "Kubernetes"
   platform: "Kubernetes"
   severity: "LOW"
   category: "Availability"
