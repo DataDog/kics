@@ -133,6 +133,16 @@ func TestEngine_detectHelmLine(t *testing.T) { //nolint
 				},
 				LineWithVulnerability: "  containers:",
 				ResolvedFile:          "test-connection.yaml",
+				VulnerablilityLocation: model.ResourceLocation{
+					Start: model.ResourceLine{
+						Line: 10,
+						Col:  0,
+					},
+					End: model.ResourceLine{
+						Line: 10,
+						Col:  13,
+					},
+				},
 			},
 		},
 		{
@@ -166,6 +176,16 @@ func TestEngine_detectHelmLine(t *testing.T) { //nolint
 				},
 				LineWithVulnerability: "spec:",
 				ResolvedFile:          "test-dup_values.yaml",
+				VulnerablilityLocation: model.ResourceLocation{
+					Start: model.ResourceLine{
+						Line: 10,
+						Col:  0,
+					},
+					End: model.ResourceLine{
+						Line: 10,
+						Col:  13,
+					},
+				},
 			},
 		},
 		{
@@ -196,6 +216,16 @@ func TestEngine_detectHelmLine(t *testing.T) { //nolint
 				},
 				LineWithVulnerability: "  containers:",
 				ResolvedFile:          "test-dups.yaml",
+				VulnerablilityLocation: model.ResourceLocation{
+					Start: model.ResourceLine{
+						Line: 27,
+						Col:  0,
+					},
+					End: model.ResourceLine{
+						Line: 27,
+						Col:  13,
+					},
+				},
 			},
 		},
 	}
