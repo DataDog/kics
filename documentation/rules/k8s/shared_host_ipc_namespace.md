@@ -5,7 +5,7 @@ meta:
   name: "k8s/shared_host_ipc_namespace"
   id: "cd290efd-6c82-4e9d-a698-be12ae31d536"
   display_name: "Shared host IPC namespace"
-  cloud_provider: "k8s"
+  cloud_provider: "Kubernetes"
   platform: "Kubernetes"
   framework: "Kubernetes"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `cd290efd-6c82-4e9d-a698-be12ae31d536`
 
-**Cloud Provider:** k8s
+**Cloud Provider:** Kubernetes
 
 **Platform:** Kubernetes
 

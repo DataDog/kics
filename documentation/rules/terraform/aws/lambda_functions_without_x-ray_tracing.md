@@ -5,7 +5,7 @@ meta:
   name: "aws/lambda_functions_without_x-ray_tracing"
   id: "8152e0cf-d2f0-47ad-96d5-d003a76eabd1"
   display_name: "Lambda functions without X-Ray tracing"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "LOW"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `8152e0cf-d2f0-47ad-96d5-d003a76eabd1`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

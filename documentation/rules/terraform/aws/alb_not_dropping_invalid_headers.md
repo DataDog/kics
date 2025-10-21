@@ -5,7 +5,7 @@ meta:
   name: "aws/alb_not_dropping_invalid_headers"
   id: "6e3fd2ed-5c83-4c68-9679-7700d224d379"
   display_name: "ALB not dropping invalid headers"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `6e3fd2ed-5c83-4c68-9679-7700d224d379`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

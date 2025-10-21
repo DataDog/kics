@@ -5,7 +5,7 @@ meta:
   name: "aws/group_with_privilege_escalation_by_actions_iam_PassRole_and_ec2_RunInstances"
   id: "15e6ad8c-f420-49a6-bafb-074f5eb1ec74"
   display_name: "Group with privilege escalation by actions 'ec2:RunInstances' and 'iam:PassRole'"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `15e6ad8c-f420-49a6-bafb-074f5eb1ec74`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

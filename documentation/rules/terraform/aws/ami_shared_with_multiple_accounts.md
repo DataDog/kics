@@ -5,7 +5,7 @@ meta:
   name: "aws/ami_shared_with_multiple_accounts"
   id: "ba4e0031-3e9d-4d7d-b0d6-bd8f003f8698"
   display_name: "AMI shared with multiple accounts"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `ba4e0031-3e9d-4d7d-b0d6-bd8f003f8698`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

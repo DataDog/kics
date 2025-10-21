@@ -5,7 +5,7 @@ meta:
   name: "aws/network_acl_with_unrestricted_access_to_rdp"
   id: "a20be318-cac7-457b-911d-04cc6e812c25"
   display_name: "Network ACL with unrestricted access to RDP"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "HIGH"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `a20be318-cac7-457b-911d-04cc6e812c25`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

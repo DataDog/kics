@@ -5,7 +5,7 @@ meta:
   name: "azure/vm_not_attached_to_network"
   id: "bbf6b3df-4b65-4f87-82cc-da9f30f8c033"
   display_name: "VM not attached to network"
-  cloud_provider: "azure"
+  cloud_provider: "Azure"
   platform: "Terraform"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `bbf6b3df-4b65-4f87-82cc-da9f30f8c033`
 
-**Cloud Provider:** azure
+**Cloud Provider:** Azure
 
 **Platform:** Terraform
 

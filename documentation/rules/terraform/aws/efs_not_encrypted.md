@@ -5,7 +5,7 @@ meta:
   name: "aws/efs_not_encrypted"
   id: "48207659-729f-4b5c-9402-f884257d794f"
   display_name: "EFS not encrypted"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "HIGH"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `48207659-729f-4b5c-9402-f884257d794f`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

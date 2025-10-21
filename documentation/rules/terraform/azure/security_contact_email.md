@@ -5,7 +5,7 @@ meta:
   name: "azure/security_contact_email"
   id: "34664094-59e0-4524-b69f-deaa1a68cce3"
   display_name: "Security contact email"
-  cloud_provider: "azure"
+  cloud_provider: "Azure"
   platform: "Terraform"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `34664094-59e0-4524-b69f-deaa1a68cce3`
 
-**Cloud Provider:** azure
+**Cloud Provider:** Azure
 
 **Platform:** Terraform
 

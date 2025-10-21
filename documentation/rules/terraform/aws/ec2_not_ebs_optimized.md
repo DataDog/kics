@@ -5,7 +5,7 @@ meta:
   name: "aws/ec2_not_ebs_optimized"
   id: "60224630-175a-472a-9e23-133827040766"
   display_name: "EC2 not EBS optimized"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "INFO"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `60224630-175a-472a-9e23-133827040766`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

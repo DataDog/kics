@@ -5,7 +5,7 @@ meta:
   name: "aws/redis_disabled"
   id: "4bd15dd9-8d5e-4008-8532-27eb0c3706d3"
   display_name: "Redis disabled"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "LOW"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `4bd15dd9-8d5e-4008-8532-27eb0c3706d3`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

@@ -5,7 +5,7 @@ meta:
   name: "aws/athena_database_not_encrypted"
   id: "b2315cae-b110-4426-81e0-80bb8640cdd3"
   display_name: "Athena database not encrypted"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "HIGH"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `b2315cae-b110-4426-81e0-80bb8640cdd3`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

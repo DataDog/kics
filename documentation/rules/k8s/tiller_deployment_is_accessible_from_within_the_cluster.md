@@ -5,7 +5,7 @@ meta:
   name: "k8s/tiller_deployment_is_accessible_from_within_the_cluster"
   id: "e17fa86a-6222-4584-a914-56e8f6c87e06"
   display_name: "Tiller Deployment accessible within cluster"
-  cloud_provider: "k8s"
+  cloud_provider: "Kubernetes"
   platform: "Kubernetes"
   framework: "Kubernetes"
   severity: "HIGH"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `e17fa86a-6222-4584-a914-56e8f6c87e06`
 
-**Cloud Provider:** k8s
+**Cloud Provider:** Kubernetes
 
 **Platform:** Kubernetes
 

@@ -5,7 +5,7 @@ meta:
   name: "k8s/no_drop_capabilities_for_containers"
   id: "268ca686-7fb7-4ae9-b129-955a2a89064e"
   display_name: "Containers missing drop capabilities"
-  cloud_provider: "k8s"
+  cloud_provider: "Kubernetes"
   platform: "Kubernetes"
   framework: "Kubernetes"
   severity: "LOW"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `268ca686-7fb7-4ae9-b129-955a2a89064e`
 
-**Cloud Provider:** k8s
+**Cloud Provider:** Kubernetes
 
 **Platform:** Kubernetes
 

@@ -5,7 +5,7 @@ meta:
   name: "aws/sqs_policy_with_public_access"
   id: "730675f9-52ed-49b6-8ead-0acb5dd7df7f"
   display_name: "SQS policy with public access"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `730675f9-52ed-49b6-8ead-0acb5dd7df7f`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

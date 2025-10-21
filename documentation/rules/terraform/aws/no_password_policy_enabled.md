@@ -5,7 +5,7 @@ meta:
   name: "aws/no_password_policy_enabled"
   id: "b592ffd4-0577-44b6-bd35-8c5ee81b5918"
   display_name: "No password policy enabled"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `b592ffd4-0577-44b6-bd35-8c5ee81b5918`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

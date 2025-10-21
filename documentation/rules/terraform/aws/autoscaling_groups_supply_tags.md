@@ -5,7 +5,7 @@ meta:
   name: "aws/autoscaling_groups_supply_tags"
   id: "ba48df05-eaa1-4d64-905e-4a4b051e7587"
   display_name: "Autoscaling groups supply tags"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "LOW"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `ba48df05-eaa1-4d64-905e-4a4b051e7587`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

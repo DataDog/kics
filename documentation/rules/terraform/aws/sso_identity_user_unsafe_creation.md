@@ -5,7 +5,7 @@ meta:
   name: "aws/sso_identity_user_unsafe_creation"
   id: "4003118b-046b-4640-b200-b8c7a4c8b89f"
   display_name: "SSO identity user unsafe creation"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `4003118b-046b-4640-b200-b8c7a4c8b89f`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

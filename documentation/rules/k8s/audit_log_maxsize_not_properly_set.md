@@ -5,7 +5,7 @@ meta:
   name: "k8s/audit_log_maxsize_not_properly_set"
   id: "35c0a471-f7c8-4993-aa2c-503a3c712a66"
   display_name: "Audit log maxsize not properly set"
-  cloud_provider: "k8s"
+  cloud_provider: "Kubernetes"
   platform: "Kubernetes"
   framework: "Kubernetes"
   severity: "LOW"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `35c0a471-f7c8-4993-aa2c-503a3c712a66`
 
-**Cloud Provider:** k8s
+**Cloud Provider:** Kubernetes
 
 **Platform:** Kubernetes
 

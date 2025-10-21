@@ -5,7 +5,7 @@ meta:
   name: "azure/key_vault_secrets_content_type_undefined"
   id: "f8e08a38-fc6e-4915-abbe-a7aadf1d59ef"
   display_name: "Key Vault secrets content type undefined"
-  cloud_provider: "azure"
+  cloud_provider: "Azure"
   platform: "Terraform"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `f8e08a38-fc6e-4915-abbe-a7aadf1d59ef`
 
-**Cloud Provider:** azure
+**Cloud Provider:** Azure
 
 **Platform:** Terraform
 

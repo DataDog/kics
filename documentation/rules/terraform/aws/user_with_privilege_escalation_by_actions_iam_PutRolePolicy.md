@@ -5,7 +5,7 @@ meta:
   name: "aws/user_with_privilege_escalation_by_actions_iam_PutRolePolicy"
   id: "eeb4d37a-3c59-4789-a00c-1509bc3af1e5"
   display_name: "User with privilege escalation by actions 'iam:PutRolePolicy'"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `eeb4d37a-3c59-4789-a00c-1509bc3af1e5`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

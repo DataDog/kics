@@ -5,7 +5,7 @@ meta:
   name: "gcp/rdp_access_is_not_restricted"
   id: "678fd659-96f2-454a-a2a0-c2571f83a4a3"
   display_name: "RDP access is not restricted"
-  cloud_provider: "gcp"
+  cloud_provider: "GCP"
   platform: "Terraform"
   framework: "Terraform"
   severity: "HIGH"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `678fd659-96f2-454a-a2a0-c2571f83a4a3`
 
-**Cloud Provider:** gcp
+**Cloud Provider:** GCP
 
 **Platform:** Terraform
 

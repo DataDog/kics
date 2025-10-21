@@ -5,7 +5,7 @@ meta:
   name: "k8s/not_limited_capabilities_for_pod_security_policy"
   id: "caa93370-791f-4fc6-814b-ba6ce0cb4032"
   display_name: "Unrestricted capabilities in PodSecurityPolicy"
-  cloud_provider: "k8s"
+  cloud_provider: "Kubernetes"
   platform: "Kubernetes"
   framework: "Kubernetes"
   severity: "INFO"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `caa93370-791f-4fc6-814b-ba6ce0cb4032`
 
-**Cloud Provider:** k8s
+**Cloud Provider:** Kubernetes
 
 **Platform:** Kubernetes
 

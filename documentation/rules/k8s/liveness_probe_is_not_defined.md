@@ -5,7 +5,7 @@ meta:
   name: "k8s/liveness_probe_is_not_defined"
   id: "ade74944-a674-4e00-859e-c6eab5bde441"
   display_name: "Liveness probe is not defined"
-  cloud_provider: "k8s"
+  cloud_provider: "Kubernetes"
   platform: "Kubernetes"
   framework: "Kubernetes"
   severity: "INFO"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `ade74944-a674-4e00-859e-c6eab5bde441`
 
-**Cloud Provider:** k8s
+**Cloud Provider:** Kubernetes
 
 **Platform:** Kubernetes
 

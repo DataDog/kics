@@ -5,7 +5,7 @@ meta:
   name: "aws/ecr_repository_not_encrypted"
   id: "0e32d561-4b5a-4664-a6e3-a3fa85649157"
   display_name: "ECR repository not encrypted with CMK"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "LOW"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `0e32d561-4b5a-4664-a6e3-a3fa85649157`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

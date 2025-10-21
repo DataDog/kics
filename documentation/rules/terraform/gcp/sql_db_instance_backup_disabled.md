@@ -5,7 +5,7 @@ meta:
   name: "gcp/sql_db_instance_backup_disabled"
   id: "cf3c7631-cd1e-42f3-8801-a561214a6e79"
   display_name: "SQL DB instance backup disabled"
-  cloud_provider: "gcp"
+  cloud_provider: "GCP"
   platform: "Terraform"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `cf3c7631-cd1e-42f3-8801-a561214a6e79`
 
-**Cloud Provider:** gcp
+**Cloud Provider:** GCP
 
 **Platform:** Terraform
 

@@ -5,7 +5,7 @@ meta:
   name: "aws/s3_bucket_allows_list_action_from_all_principals"
   id: "66c6f96f-2d9e-417e-a998-9058aeeecd44"
   display_name: "S3 bucket allows list action from all principals"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "HIGH"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `66c6f96f-2d9e-417e-a998-9058aeeecd44`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

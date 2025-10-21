@@ -5,7 +5,7 @@ meta:
   name: "azure/key_expiration_not_set"
   id: "4d080822-5ee2-49a4-8984-68f3d4c890fc"
   display_name: "Key expiration not set"
-  cloud_provider: "azure"
+  cloud_provider: "Azure"
   platform: "Terraform"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `4d080822-5ee2-49a4-8984-68f3d4c890fc`
 
-**Cloud Provider:** azure
+**Cloud Provider:** Azure
 
 **Platform:** Terraform
 

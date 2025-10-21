@@ -5,7 +5,7 @@ meta:
   name: "aws/sensitive_port_is_exposed_to_small_public_network"
   id: "e35c16a2-d54e-419d-8546-a804d8e024d0"
   display_name: "Sensitive port is exposed to small public network"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `e35c16a2-d54e-419d-8546-a804d8e024d0`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

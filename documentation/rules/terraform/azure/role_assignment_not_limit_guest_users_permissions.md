@@ -5,7 +5,7 @@ meta:
   name: "azure/role_assignment_not_limit_guest_users_permissions"
   id: "8e75e431-449f-49e9-b56a-c8f1378025cf"
   display_name: "Role assignment not limit guest user permissions"
-  cloud_provider: "azure"
+  cloud_provider: "Azure"
   platform: "Terraform"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `8e75e431-449f-49e9-b56a-c8f1378025cf`
 
-**Cloud Provider:** azure
+**Cloud Provider:** Azure
 
 **Platform:** Terraform
 

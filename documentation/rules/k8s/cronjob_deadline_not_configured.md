@@ -5,7 +5,7 @@ meta:
   name: "k8s/cronjob_deadline_not_configured"
   id: "192fe40b-b1c3-448a-aba2-6cc19a300fe3"
   display_name: "CronJob deadline not configured"
-  cloud_provider: "k8s"
+  cloud_provider: "Kubernetes"
   platform: "Kubernetes"
   framework: "Kubernetes"
   severity: "LOW"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `192fe40b-b1c3-448a-aba2-6cc19a300fe3`
 
-**Cloud Provider:** k8s
+**Cloud Provider:** Kubernetes
 
 **Platform:** Kubernetes
 

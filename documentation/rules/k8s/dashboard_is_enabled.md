@@ -5,7 +5,7 @@ meta:
   name: "k8s/dashboard_is_enabled"
   id: "d2ad057f-0928-41ef-a83c-f59203bb855b"
   display_name: "Dashboard is enabled"
-  cloud_provider: "k8s"
+  cloud_provider: "Kubernetes"
   platform: "Kubernetes"
   framework: "Kubernetes"
   severity: "LOW"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `d2ad057f-0928-41ef-a83c-f59203bb855b`
 
-**Cloud Provider:** k8s
+**Cloud Provider:** Kubernetes
 
 **Platform:** Kubernetes
 

@@ -5,7 +5,7 @@ meta:
   name: "aws/security_group_without_description"
   id: "cb3f5ed6-0d18-40de-a93d-b3538db31e8c"
   display_name: "Security group rule without description"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "INFO"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `cb3f5ed6-0d18-40de-a93d-b3538db31e8c`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

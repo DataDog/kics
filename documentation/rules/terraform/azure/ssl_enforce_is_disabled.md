@@ -5,7 +5,7 @@ meta:
   name: "azure/ssl_enforce_is_disabled"
   id: "0437633b-daa6-4bbc-8526-c0d2443b946e"
   display_name: "SSL enforce disabled"
-  cloud_provider: "azure"
+  cloud_provider: "Azure"
   platform: "Terraform"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `0437633b-daa6-4bbc-8526-c0d2443b946e`
 
-**Cloud Provider:** azure
+**Cloud Provider:** Azure
 
 **Platform:** Terraform
 

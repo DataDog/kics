@@ -5,7 +5,7 @@ meta:
   name: "aws/kinesis_sse_not_configured"
   id: "5c6dd5e7-1fe0-4cae-8f81-4c122717cef3"
   display_name: "Kinesis SSE not configured"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "HIGH"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `5c6dd5e7-1fe0-4cae-8f81-4c122717cef3`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

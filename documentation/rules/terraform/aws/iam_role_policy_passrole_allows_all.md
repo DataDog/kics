@@ -5,7 +5,7 @@ meta:
   name: "aws/iam_role_policy_passrole_allows_all"
   id: "e39bee8c-fe54-4a3f-824d-e5e2d1cca40a"
   display_name: "IAM role policy passrole allows all"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `e39bee8c-fe54-4a3f-824d-e5e2d1cca40a`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

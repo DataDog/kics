@@ -5,7 +5,7 @@ meta:
   name: "aws/iam_group_without_users"
   id: "fc101ca7-c9dd-4198-a1eb-0fbe92e80044"
   display_name: "IAM group without users"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `fc101ca7-c9dd-4198-a1eb-0fbe92e80044`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

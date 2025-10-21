@@ -5,7 +5,7 @@ meta:
   name: "azure/app_service_without_latest_python_version"
   id: "cc4aaa9d-1070-461a-b519-04e00f42db8a"
   display_name: "App Service without latest Python version"
-  cloud_provider: "azure"
+  cloud_provider: "Azure"
   platform: "Terraform"
   framework: "Terraform"
   severity: "LOW"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `cc4aaa9d-1070-461a-b519-04e00f42db8a`
 
-**Cloud Provider:** azure
+**Cloud Provider:** Azure
 
 **Platform:** Terraform
 

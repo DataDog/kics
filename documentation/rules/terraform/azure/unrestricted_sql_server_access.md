@@ -5,7 +5,7 @@ meta:
   name: "azure/unrestricted_sql_server_access"
   id: "d7ba74da-2da0-4d4b-83c8-2fd72a3f6c28"
   display_name: "Unrestricted SQL server access"
-  cloud_provider: "azure"
+  cloud_provider: "Azure"
   platform: "Terraform"
   framework: "Terraform"
   severity: "CRITICAL"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `d7ba74da-2da0-4d4b-83c8-2fd72a3f6c28`
 
-**Cloud Provider:** azure
+**Cloud Provider:** Azure
 
 **Platform:** Terraform
 

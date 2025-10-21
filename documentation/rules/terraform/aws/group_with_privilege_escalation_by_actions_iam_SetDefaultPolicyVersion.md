@@ -5,7 +5,7 @@ meta:
   name: "aws/group_with_privilege_escalation_by_actions_iam_SetDefaultPolicyVersion"
   id: "7782d4b3-e23e-432b-9742-d9528432e771"
   display_name: "Group with privilege escalation by actions 'iam:SetDefaultPolicyVersion'"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `7782d4b3-e23e-432b-9742-d9528432e771`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

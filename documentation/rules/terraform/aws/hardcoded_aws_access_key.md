@@ -5,7 +5,7 @@ meta:
   name: "aws/hardcoded_aws_access_key"
   id: "d7b9d850-3e06-4a75-852f-c46c2e92240b"
   display_name: "Hardcoded AWS access key"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "HIGH"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `d7b9d850-3e06-4a75-852f-c46c2e92240b`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

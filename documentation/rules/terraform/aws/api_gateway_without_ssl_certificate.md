@@ -5,7 +5,7 @@ meta:
   name: "aws/api_gateway_without_ssl_certificate"
   id: "0b4869fc-a842-4597-aa00-1294df425440"
   display_name: "API Gateway without SSL certificate"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `0b4869fc-a842-4597-aa00-1294df425440`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

@@ -5,7 +5,7 @@ meta:
   name: "azure/redis_entirely_accessible"
   id: "fd8da341-6760-4450-b26c-9f6d8850575e"
   display_name: "Redis entirely accessible"
-  cloud_provider: "azure"
+  cloud_provider: "Azure"
   platform: "Terraform"
   framework: "Terraform"
   severity: "CRITICAL"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `fd8da341-6760-4450-b26c-9f6d8850575e`
 
-**Cloud Provider:** azure
+**Cloud Provider:** Azure
 
 **Platform:** Terraform
 

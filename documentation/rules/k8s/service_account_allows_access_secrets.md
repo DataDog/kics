@@ -5,7 +5,7 @@ meta:
   name: "k8s/service_account_allows_access_secrets"
   id: "056ac60e-fe07-4acc-9b34-8e1d51716ab9"
   display_name: "ServiceAccount allows access to secrets"
-  cloud_provider: "k8s"
+  cloud_provider: "Kubernetes"
   platform: "Kubernetes"
   framework: "Kubernetes"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `056ac60e-fe07-4acc-9b34-8e1d51716ab9`
 
-**Cloud Provider:** k8s
+**Cloud Provider:** Kubernetes
 
 **Platform:** Kubernetes
 

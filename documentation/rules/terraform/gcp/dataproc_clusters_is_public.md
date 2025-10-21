@@ -5,7 +5,7 @@ meta:
   name: "gcp/dataproc_clusters_is_public"
   id: "e3f7a9b1-c2d3-4e5f-8901-23456789abcd"
   display_name: "Dataproc clusters publicly accessible"
-  cloud_provider: "gcp"
+  cloud_provider: "GCP"
   platform: "Terraform"
   framework: "Terraform"
   severity: "HIGH"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `e3f7a9b1-c2d3-4e5f-8901-23456789abcd`
 
-**Cloud Provider:** gcp
+**Cloud Provider:** GCP
 
 **Platform:** Terraform
 

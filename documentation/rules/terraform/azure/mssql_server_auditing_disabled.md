@@ -5,7 +5,7 @@ meta:
   name: "azure/mssql_server_auditing_disabled"
   id: "609839ae-bd81-4375-9910-5bce72ae7b92"
   display_name: "MSSQL server auditing disabled"
-  cloud_provider: "azure"
+  cloud_provider: "Azure"
   platform: "Terraform"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `609839ae-bd81-4375-9910-5bce72ae7b92`
 
-**Cloud Provider:** azure
+**Cloud Provider:** Azure
 
 **Platform:** Terraform
 

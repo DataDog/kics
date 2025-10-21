@@ -5,7 +5,7 @@ meta:
   name: "aws/ecs_task_definition_volume_not_encrypted"
   id: "4d46ff3b-7160-41d1-a310-71d6d370b08f"
   display_name: "ECS task definition volume not encrypted"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "HIGH"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `4d46ff3b-7160-41d1-a310-71d6d370b08f`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

@@ -5,7 +5,7 @@ meta:
   name: "gcp/ssh_access_is_not_restricted"
   id: "c4dcdcdf-10dd-4bf4-b4a0-8f6239e6aaa0"
   display_name: "SSH access is not restricted"
-  cloud_provider: "gcp"
+  cloud_provider: "GCP"
   platform: "Terraform"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `c4dcdcdf-10dd-4bf4-b4a0-8f6239e6aaa0`
 
-**Cloud Provider:** gcp
+**Cloud Provider:** GCP
 
 **Platform:** Terraform
 

@@ -5,7 +5,7 @@ meta:
   name: "gcp/gke_legacy_authorization_enabled"
   id: "5baa92d2-d8ee-4c75-88a4-52d9d8bb8067"
   display_name: "GKE legacy authorization enabled"
-  cloud_provider: "gcp"
+  cloud_provider: "GCP"
   platform: "Terraform"
   framework: "Terraform"
   severity: "HIGH"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `5baa92d2-d8ee-4c75-88a4-52d9d8bb8067`
 
-**Cloud Provider:** gcp
+**Cloud Provider:** GCP
 
 **Platform:** Terraform
 

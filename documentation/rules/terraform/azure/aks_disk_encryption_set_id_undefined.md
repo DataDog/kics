@@ -5,7 +5,7 @@ meta:
   name: "azure/aks_disk_encryption_set_id_undefined"
   id: "b17d8bb8-4c08-4785-867e-cb9e62a622aa"
   display_name: "AKS disk encryption set ID undefined"
-  cloud_provider: "azure"
+  cloud_provider: "Azure"
   platform: "Terraform"
   framework: "Terraform"
   severity: "LOW"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `b17d8bb8-4c08-4785-867e-cb9e62a622aa`
 
-**Cloud Provider:** azure
+**Cloud Provider:** Azure
 
 **Platform:** Terraform
 

@@ -5,7 +5,7 @@ meta:
   name: "gcp/artifact_registry_repository_is_public"
   id: "a7b8c9d0-e1f2-3a4b-5c6d-7e8f90123456"
   display_name: "Artifact Registry repo is public"
-  cloud_provider: "gcp"
+  cloud_provider: "GCP"
   platform: "Terraform"
   framework: "Terraform"
   severity: "HIGH"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `a7b8c9d0-e1f2-3a4b-5c6d-7e8f90123456`
 
-**Cloud Provider:** gcp
+**Cloud Provider:** GCP
 
 **Platform:** Terraform
 

@@ -5,7 +5,7 @@ meta:
   name: "azure/mssql_server_public_network_access_enabled"
   id: "ade36cf4-329f-4830-a83d-9db72c800507"
   display_name: "MSSQL server public network access enabled"
-  cloud_provider: "azure"
+  cloud_provider: "Azure"
   platform: "Terraform"
   framework: "Terraform"
   severity: "HIGH"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `ade36cf4-329f-4830-a83d-9db72c800507`
 
-**Cloud Provider:** azure
+**Cloud Provider:** Azure
 
 **Platform:** Terraform
 

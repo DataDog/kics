@@ -5,7 +5,7 @@ meta:
   name: "aws/lambda_iam_invokefunction_misconfigured"
   id: "0ca1017d-3b80-423e-bb9c-6cd5898d34bd"
   display_name: "Lambda IAM InvokeFunction misconfigured"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "LOW"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `0ca1017d-3b80-423e-bb9c-6cd5898d34bd`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

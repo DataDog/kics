@@ -5,7 +5,7 @@ meta:
   name: "k8s/insecure_bind_address_set"
   id: "b9380fd3-5ffe-4d10-9290-13e18e71eee1"
   display_name: "Insecure bind address set"
-  cloud_provider: "k8s"
+  cloud_provider: "Kubernetes"
   platform: "Kubernetes"
   framework: "Kubernetes"
   severity: "HIGH"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `b9380fd3-5ffe-4d10-9290-13e18e71eee1`
 
-**Cloud Provider:** k8s
+**Cloud Provider:** Kubernetes
 
 **Platform:** Kubernetes
 

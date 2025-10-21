@@ -5,7 +5,7 @@ meta:
   name: "k8s/net_raw_capabilities_not_being_dropped"
   id: "dbbc6705-d541-43b0-b166-dd4be8208b54"
   display_name: "NET_RAW capabilities not dropped"
-  cloud_provider: "k8s"
+  cloud_provider: "Kubernetes"
   platform: "Kubernetes"
   framework: "Kubernetes"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `dbbc6705-d541-43b0-b166-dd4be8208b54`
 
-**Cloud Provider:** k8s
+**Cloud Provider:** Kubernetes
 
 **Platform:** Kubernetes
 

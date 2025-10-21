@@ -5,7 +5,7 @@ meta:
   name: "aws/route53_record_undefined"
   id: "25db74bf-fa3b-44da-934e-8c3e005c0453"
   display_name: "Route53 record undefined"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "HIGH"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `25db74bf-fa3b-44da-934e-8c3e005c0453`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

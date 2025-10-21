@@ -5,7 +5,7 @@ meta:
   name: "k8s/deployment_without_pod_disruption_budget"
   id: "b23e9b98-0cb6-4fc9-b257-1f3270442678"
   display_name: "Deployment without PodDisruptionBudget"
-  cloud_provider: "k8s"
+  cloud_provider: "Kubernetes"
   platform: "Kubernetes"
   framework: "Kubernetes"
   severity: "LOW"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `b23e9b98-0cb6-4fc9-b257-1f3270442678`
 
-**Cloud Provider:** k8s
+**Cloud Provider:** Kubernetes
 
 **Platform:** Kubernetes
 

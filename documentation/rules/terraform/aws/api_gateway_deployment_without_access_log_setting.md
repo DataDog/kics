@@ -5,7 +5,7 @@ meta:
   name: "aws/api_gateway_deployment_without_access_log_setting"
   id: "625abc0e-f980-4ac9-a775-f7519ee34296"
   display_name: "API Gateway deployment without access log setting"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `625abc0e-f980-4ac9-a775-f7519ee34296`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

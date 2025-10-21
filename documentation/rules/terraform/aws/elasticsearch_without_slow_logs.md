@@ -5,7 +5,7 @@ meta:
   name: "aws/elasticsearch_without_slow_logs"
   id: "e979fcbc-df6c-422d-9458-c33d65e71c45"
   display_name: "Elasticsearch without slow logs"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "LOW"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `e979fcbc-df6c-422d-9458-c33d65e71c45`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

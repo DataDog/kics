@@ -5,7 +5,7 @@ meta:
   name: "aws/cloudwatch_log_group_not_encrypted"
   id: "0afbcfe9-d341-4b92-a64c-7e6de0543879"
   display_name: "CloudWatch log group without KMS"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `0afbcfe9-d341-4b92-a64c-7e6de0543879`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

@@ -5,7 +5,7 @@ meta:
   name: "aws/security_groups_not_used"
   id: "4849211b-ac39-479e-ae78-5694d506cb24"
   display_name: "Security group not used"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "INFO"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `4849211b-ac39-479e-ae78-5694d506cb24`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

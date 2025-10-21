@@ -5,7 +5,7 @@ meta:
   name: "aws/cloudtrail_logging_disabled"
   id: "4bb76f17-3d63-4529-bdca-2b454529d774"
   display_name: "CloudTrail logging disabled"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `4bb76f17-3d63-4529-bdca-2b454529d774`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

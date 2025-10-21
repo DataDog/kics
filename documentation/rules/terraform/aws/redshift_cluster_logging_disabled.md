@@ -5,7 +5,7 @@ meta:
   name: "aws/redshift_cluster_logging_disabled"
   id: "15ffbacc-fa42-4f6f-a57d-2feac7365caa"
   display_name: "Redshift cluster logging disabled"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `15ffbacc-fa42-4f6f-a57d-2feac7365caa`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

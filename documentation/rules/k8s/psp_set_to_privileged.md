@@ -5,7 +5,7 @@ meta:
   name: "k8s/psp_set_to_privileged"
   id: "c48e57d3-d642-4e0b-90db-37f807b41b91"
   display_name: "PSP set to privileged"
-  cloud_provider: "k8s"
+  cloud_provider: "Kubernetes"
   platform: "Kubernetes"
   framework: "Kubernetes"
   severity: "HIGH"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `c48e57d3-d642-4e0b-90db-37f807b41b91`
 
-**Cloud Provider:** k8s
+**Cloud Provider:** Kubernetes
 
 **Platform:** Kubernetes
 

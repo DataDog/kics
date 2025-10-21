@@ -5,7 +5,7 @@ meta:
   name: "aws/group_with_privilege_escalation_by_actions_iam_PassRole_and_glue_CreateDevEndpoint"
   id: "7d544dad-8a6c-431c-84c1-5f07fe9afc0e"
   display_name: "Group with privilege escalation by actions 'glue:CreateDevEndpoint' and 'iam:PassRole'"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `7d544dad-8a6c-431c-84c1-5f07fe9afc0e`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

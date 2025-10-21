@@ -5,7 +5,7 @@ meta:
   name: "aws/sensitive_port_is_exposed_to_wide_private_network"
   id: "92fe237e-074c-4262-81a4-2077acb928c1"
   display_name: "Sensitive port is exposed to wide private network"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "LOW"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `92fe237e-074c-4262-81a4-2077acb928c1`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

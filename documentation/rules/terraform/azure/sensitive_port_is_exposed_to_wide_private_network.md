@@ -5,7 +5,7 @@ meta:
   name: "azure/sensitive_port_is_exposed_to_wide_private_network"
   id: "c6c7b33d-d7f6-4ab8-8c82-ca0431ecdb7e"
   display_name: "Sensitive port is exposed to wide private network"
-  cloud_provider: "azure"
+  cloud_provider: "Azure"
   platform: "Terraform"
   framework: "Terraform"
   severity: "LOW"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `c6c7b33d-d7f6-4ab8-8c82-ca0431ecdb7e`
 
-**Cloud Provider:** azure
+**Cloud Provider:** Azure
 
 **Platform:** Terraform
 

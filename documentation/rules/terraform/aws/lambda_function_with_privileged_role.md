@@ -5,7 +5,7 @@ meta:
   name: "aws/lambda_function_with_privileged_role"
   id: "1b3af2f9-af8c-4dfc-a0f1-a03adb70deb2"
   display_name: "Lambda function with privileged role"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "HIGH"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `1b3af2f9-af8c-4dfc-a0f1-a03adb70deb2`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

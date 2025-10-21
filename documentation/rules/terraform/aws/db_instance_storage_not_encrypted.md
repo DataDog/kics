@@ -5,7 +5,7 @@ meta:
   name: "aws/db_instance_storage_not_encrypted"
   id: "08bd0760-8752-44e1-9779-7bb369b2b4e4"
   display_name: "DB instance storage not encrypted"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "HIGH"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `08bd0760-8752-44e1-9779-7bb369b2b4e4`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

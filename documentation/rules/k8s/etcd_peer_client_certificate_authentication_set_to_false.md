@@ -5,7 +5,7 @@ meta:
   name: "k8s/etcd_peer_client_certificate_authentication_set_to_false"
   id: "b7d0181d-0a9b-4611-9d1c-1ad4f0b620ff"
   display_name: "etcd peer client certificate authentication set to false"
-  cloud_provider: "k8s"
+  cloud_provider: "Kubernetes"
   platform: "Kubernetes"
   framework: "Kubernetes"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `b7d0181d-0a9b-4611-9d1c-1ad4f0b620ff`
 
-**Cloud Provider:** k8s
+**Cloud Provider:** Kubernetes
 
 **Platform:** Kubernetes
 

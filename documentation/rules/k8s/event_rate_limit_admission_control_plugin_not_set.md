@@ -5,7 +5,7 @@ meta:
   name: "k8s/event_rate_limit_admission_control_plugin_not_set"
   id: "e0099af2-fe17-411f-9991-0de28fe15f3c"
   display_name: "Event rate limit admission control plugin not set"
-  cloud_provider: "k8s"
+  cloud_provider: "Kubernetes"
   platform: "Kubernetes"
   framework: "Kubernetes"
   severity: "LOW"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `e0099af2-fe17-411f-9991-0de28fe15f3c`
 
-**Cloud Provider:** k8s
+**Cloud Provider:** Kubernetes
 
 **Platform:** Kubernetes
 

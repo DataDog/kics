@@ -5,7 +5,7 @@ meta:
   name: "k8s/containers_with_sys_admin_capabilities"
   id: "235236ee-ad78-4065-bd29-61b061f28ce0"
   display_name: "Containers with sys admin capabilities"
-  cloud_provider: "k8s"
+  cloud_provider: "Kubernetes"
   platform: "Kubernetes"
   framework: "Kubernetes"
   severity: "HIGH"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `235236ee-ad78-4065-bd29-61b061f28ce0`
 
-**Cloud Provider:** k8s
+**Cloud Provider:** Kubernetes
 
 **Platform:** Kubernetes
 

@@ -5,7 +5,7 @@ meta:
   name: "aws/authentication_without_mfa"
   id: "3ddfa124-6407-4845-a501-179f90c65097"
   display_name: "Authentication without MFA"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "LOW"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `3ddfa124-6407-4845-a501-179f90c65097`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

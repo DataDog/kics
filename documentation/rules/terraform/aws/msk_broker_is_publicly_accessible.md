@@ -5,7 +5,7 @@ meta:
   name: "aws/msk_broker_is_publicly_accessible"
   id: "54378d69-dd7c-4b08-a43e-80d563396857"
   display_name: "MSK broker is publicly accessible"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "HIGH"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `54378d69-dd7c-4b08-a43e-80d563396857`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

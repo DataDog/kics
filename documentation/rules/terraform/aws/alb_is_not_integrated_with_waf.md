@@ -5,7 +5,7 @@ meta:
   name: "aws/alb_is_not_integrated_with_waf"
   id: "0afa6ab8-a047-48cf-be07-93a2f8c34cf7"
   display_name: "ALB is not integrated with WAF"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `0afa6ab8-a047-48cf-be07-93a2f8c34cf7`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

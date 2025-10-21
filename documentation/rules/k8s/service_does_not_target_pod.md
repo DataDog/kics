@@ -5,7 +5,7 @@ meta:
   name: "k8s/service_does_not_target_pod"
   id: "3ca03a61-3249-4c16-8427-6f8e47dda729"
   display_name: "Service does not target a Pod"
-  cloud_provider: "k8s"
+  cloud_provider: "Kubernetes"
   platform: "Kubernetes"
   framework: "Kubernetes"
   severity: "LOW"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `3ca03a61-3249-4c16-8427-6f8e47dda729`
 
-**Cloud Provider:** k8s
+**Cloud Provider:** Kubernetes
 
 **Platform:** Kubernetes
 

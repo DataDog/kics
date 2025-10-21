@@ -5,7 +5,7 @@ meta:
   name: "aws/shield_advanced_not_in_use"
   id: "084c6686-2a70-4710-91b1-000393e54c12"
   display_name: "Shield Advanced not in use"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "LOW"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `084c6686-2a70-4710-91b1-000393e54c12`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

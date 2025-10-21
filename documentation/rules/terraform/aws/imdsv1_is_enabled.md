@@ -5,7 +5,7 @@ meta:
   name: "aws/imdsv1_is_enabled"
   id: "f1g2h3i4-j5k6-7lmn-8opq-9012rstuvwxy"
   display_name: "IMDSv1 enabled"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "HIGH"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `f1g2h3i4-j5k6-7lmn-8opq-9012rstuvwxy`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

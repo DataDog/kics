@@ -5,7 +5,7 @@ meta:
   name: "azure/function_app_http2_disabled"
   id: "ace823d1-4432-4dee-945b-cdf11a5a6bd0"
   display_name: "Function App HTTP2 disabled"
-  cloud_provider: "azure"
+  cloud_provider: "Azure"
   platform: "Terraform"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `ace823d1-4432-4dee-945b-cdf11a5a6bd0`
 
-**Cloud Provider:** azure
+**Cloud Provider:** Azure
 
 **Platform:** Terraform
 

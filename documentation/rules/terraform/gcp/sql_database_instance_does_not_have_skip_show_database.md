@@ -5,7 +5,7 @@ meta:
   name: "gcp/sql_database_instance_does_not_have_skip_show_database"
   id: "a8b7c6d5-e4f3-2109-8a7b-6c5d4e3f2109"
   display_name: "Ensure SQL database instance has skip show database flag"
-  cloud_provider: "gcp"
+  cloud_provider: "GCP"
   platform: "Terraform"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `a8b7c6d5-e4f3-2109-8a7b-6c5d4e3f2109`
 
-**Cloud Provider:** gcp
+**Cloud Provider:** GCP
 
 **Platform:** Terraform
 

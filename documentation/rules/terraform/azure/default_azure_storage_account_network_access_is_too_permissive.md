@@ -5,7 +5,7 @@ meta:
   name: "azure/default_azure_storage_account_network_access_is_too_permissive"
   id: "a5613650-32ec-4975-a305-31af783153ea"
   display_name: "Default Azure storage account network access is too permissive"
-  cloud_provider: "azure"
+  cloud_provider: "Azure"
   platform: "Terraform"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `a5613650-32ec-4975-a305-31af783153ea`
 
-**Cloud Provider:** azure
+**Cloud Provider:** Azure
 
 **Platform:** Terraform
 

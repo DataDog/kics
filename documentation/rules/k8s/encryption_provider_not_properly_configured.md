@@ -5,7 +5,7 @@ meta:
   name: "k8s/encryption_provider_not_properly_configured"
   id: "10efce34-5af6-4d83-b414-9e096d5a06a9"
   display_name: "Encryption provider not properly configured"
-  cloud_provider: "k8s"
+  cloud_provider: "Kubernetes"
   platform: "Kubernetes"
   framework: "Kubernetes"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `10efce34-5af6-4d83-b414-9e096d5a06a9`
 
-**Cloud Provider:** k8s
+**Cloud Provider:** Kubernetes
 
 **Platform:** Kubernetes
 

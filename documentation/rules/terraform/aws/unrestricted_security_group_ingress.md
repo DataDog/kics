@@ -5,7 +5,7 @@ meta:
   name: "aws/unrestricted_security_group_ingress"
   id: "4728cd65-a20c-49da-8b31-9c08b423e4db"
   display_name: "Unrestricted security group ingress"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "HIGH"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `4728cd65-a20c-49da-8b31-9c08b423e4db`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

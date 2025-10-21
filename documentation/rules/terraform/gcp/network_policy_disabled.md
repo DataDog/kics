@@ -5,7 +5,7 @@ meta:
   name: "gcp/network_policy_disabled"
   id: "11e7550e-c4b6-472e-adff-c698f157cdd7"
   display_name: "Network policy disabled"
-  cloud_provider: "gcp"
+  cloud_provider: "GCP"
   platform: "Terraform"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `11e7550e-c4b6-472e-adff-c698f157cdd7`
 
-**Cloud Provider:** gcp
+**Cloud Provider:** GCP
 
 **Platform:** Terraform
 

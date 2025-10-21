@@ -5,7 +5,7 @@ meta:
   name: "k8s/image_policy_webhook_admission_control_plugin_not_set"
   id: "14abda69-8e91-4acb-9931-76e2bee90284"
   display_name: "Image policy webhook admission control plugin not set"
-  cloud_provider: "k8s"
+  cloud_provider: "Kubernetes"
   platform: "Kubernetes"
   framework: "Kubernetes"
   severity: "LOW"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `14abda69-8e91-4acb-9931-76e2bee90284`
 
-**Cloud Provider:** k8s
+**Cloud Provider:** Kubernetes
 
 **Platform:** Kubernetes
 

@@ -5,7 +5,7 @@ meta:
   name: "aws/elasticache_nodes_not_created_across_multi_az"
   id: "6db03a91-f933-4f13-ab38-a8b87a7de54d"
   display_name: "ElastiCache nodes not created across multi AZ"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `6db03a91-f933-4f13-ab38-a8b87a7de54d`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

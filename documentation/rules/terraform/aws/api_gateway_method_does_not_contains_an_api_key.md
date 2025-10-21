@@ -5,7 +5,7 @@ meta:
   name: "aws/api_gateway_method_does_not_contains_an_api_key"
   id: "671211c5-5d2a-4e97-8867-30fc28b02216"
   display_name: "API Gateway method does not contains an API key"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `671211c5-5d2a-4e97-8867-30fc28b02216`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

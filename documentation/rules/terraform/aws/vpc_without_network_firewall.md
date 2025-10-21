@@ -5,7 +5,7 @@ meta:
   name: "aws/vpc_without_network_firewall"
   id: "fd632aaf-b8a1-424d-a4d1-0de22fd3247a"
   display_name: "VPC without Network Firewall"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `fd632aaf-b8a1-424d-a4d1-0de22fd3247a`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

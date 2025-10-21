@@ -5,7 +5,7 @@ meta:
   name: "k8s/not_unique_certificate_authority"
   id: "cb7e695d-6a85-495c-b15f-23aed2519303"
   display_name: "Certificate authority is not unique"
-  cloud_provider: "k8s"
+  cloud_provider: "Kubernetes"
   platform: "Kubernetes"
   framework: "Kubernetes"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `cb7e695d-6a85-495c-b15f-23aed2519303`
 
-**Cloud Provider:** k8s
+**Cloud Provider:** Kubernetes
 
 **Platform:** Kubernetes
 

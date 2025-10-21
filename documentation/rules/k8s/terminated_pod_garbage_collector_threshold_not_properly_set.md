@@ -5,7 +5,7 @@ meta:
   name: "k8s/terminated_pod_garbage_collector_threshold_not_properly_set"
   id: "49113af4-29ca-458e-b8d4-724c01a4a24f"
   display_name: "Terminated pod garbage collector threshold not properly set"
-  cloud_provider: "k8s"
+  cloud_provider: "Kubernetes"
   platform: "Kubernetes"
   framework: "Kubernetes"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `49113af4-29ca-458e-b8d4-724c01a4a24f`
 
-**Cloud Provider:** k8s
+**Cloud Provider:** Kubernetes
 
 **Platform:** Kubernetes
 

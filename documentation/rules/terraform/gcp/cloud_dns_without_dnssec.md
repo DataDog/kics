@@ -5,7 +5,7 @@ meta:
   name: "gcp/cloud_dns_without_dnssec"
   id: "5ef61c88-bbb4-4725-b1df-55d23c9676bb"
   display_name: "Cloud DNS without DNSSEC"
-  cloud_provider: "gcp"
+  cloud_provider: "GCP"
   platform: "Terraform"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `5ef61c88-bbb4-4725-b1df-55d23c9676bb`
 
-**Cloud Provider:** gcp
+**Cloud Provider:** GCP
 
 **Platform:** Terraform
 

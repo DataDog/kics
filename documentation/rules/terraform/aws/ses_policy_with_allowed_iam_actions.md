@@ -5,7 +5,7 @@ meta:
   name: "aws/ses_policy_with_allowed_iam_actions"
   id: "34b921bd-90a0-402e-a0a5-dc73371fd963"
   display_name: "SES policy with allowed IAM actions"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "HIGH"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `34b921bd-90a0-402e-a0a5-dc73371fd963`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

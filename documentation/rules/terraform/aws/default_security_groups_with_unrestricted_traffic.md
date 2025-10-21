@@ -5,7 +5,7 @@ meta:
   name: "aws/default_security_groups_with_unrestricted_traffic"
   id: "46883ce1-dc3e-4b17-9195-c6a601624c73"
   display_name: "Default security groups with unrestricted traffic"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "HIGH"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `46883ce1-dc3e-4b17-9195-c6a601624c73`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

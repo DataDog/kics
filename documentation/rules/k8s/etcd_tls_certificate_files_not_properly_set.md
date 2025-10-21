@@ -5,7 +5,7 @@ meta:
   name: "k8s/etcd_tls_certificate_files_not_properly_set"
   id: "075ca296-6768-4322-aea2-ba5063b969a9"
   display_name: "etcd TLS certificate files not properly set"
-  cloud_provider: "k8s"
+  cloud_provider: "Kubernetes"
   platform: "Kubernetes"
   framework: "Kubernetes"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `075ca296-6768-4322-aea2-ba5063b969a9`
 
-**Cloud Provider:** k8s
+**Cloud Provider:** Kubernetes
 
 **Platform:** Kubernetes
 

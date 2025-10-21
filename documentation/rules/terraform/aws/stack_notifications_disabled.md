@@ -5,7 +5,7 @@ meta:
   name: "aws/stack_notifications_disabled"
   id: "b72d0026-f649-4c91-a9ea-15d8f681ac09"
   display_name: "Stack notifications disabled"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `b72d0026-f649-4c91-a9ea-15d8f681ac09`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

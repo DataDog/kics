@@ -5,7 +5,7 @@ meta:
   name: "aws/dynamodb_table_not_encrypted"
   id: "ce089fd4-1406-47bd-8aad-c259772bb294"
   display_name: "DynamoDB table not encrypted"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "HIGH"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `ce089fd4-1406-47bd-8aad-c259772bb294`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

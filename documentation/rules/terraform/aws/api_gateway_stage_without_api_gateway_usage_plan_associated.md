@@ -5,7 +5,7 @@ meta:
   name: "aws/api_gateway_stage_without_api_gateway_usage_plan_associated"
   id: "c999cf62-0920-40f8-8dda-0caccd66ed7e"
   display_name: "API Gateway stage without API Gateway usage plan associated"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "LOW"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `c999cf62-0920-40f8-8dda-0caccd66ed7e`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

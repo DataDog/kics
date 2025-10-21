@@ -5,7 +5,7 @@ meta:
   name: "k8s/service_type_is_nodeport"
   id: "845acfbe-3e10-4b8e-b656-3b404d36dfb2"
   display_name: "Service type is NodePort"
-  cloud_provider: "k8s"
+  cloud_provider: "Kubernetes"
   platform: "Kubernetes"
   framework: "Kubernetes"
   severity: "LOW"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `845acfbe-3e10-4b8e-b656-3b404d36dfb2`
 
-**Cloud Provider:** k8s
+**Cloud Provider:** Kubernetes
 
 **Platform:** Kubernetes
 

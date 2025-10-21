@@ -5,7 +5,7 @@ meta:
   name: "aws/cloudwatch_cloudtrail_configuration_changes_alarm_missing"
   id: "0f6cbf69-41bb-47dc-93f3-3844640bf480"
   display_name: "Cloudwatch CloudTrail configuration changes alarm missing"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `0f6cbf69-41bb-47dc-93f3-3844640bf480`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

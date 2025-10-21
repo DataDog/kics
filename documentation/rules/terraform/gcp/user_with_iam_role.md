@@ -5,7 +5,7 @@ meta:
   name: "gcp/user_with_iam_role"
   id: "704fcc44-a58f-4af5-82e2-93f2a58ef918"
   display_name: "User with IAM role"
-  cloud_provider: "gcp"
+  cloud_provider: "GCP"
   platform: "Terraform"
   framework: "Terraform"
   severity: "LOW"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `704fcc44-a58f-4af5-82e2-93f2a58ef918`
 
-**Cloud Provider:** gcp
+**Cloud Provider:** GCP
 
 **Platform:** Terraform
 

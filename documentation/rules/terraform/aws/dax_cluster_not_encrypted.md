@@ -5,7 +5,7 @@ meta:
   name: "aws/dax_cluster_not_encrypted"
   id: "f11aec39-858f-4b6f-b946-0a1bf46c0c87"
   display_name: "DAX cluster not encrypted"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "HIGH"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `f11aec39-858f-4b6f-b946-0a1bf46c0c87`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

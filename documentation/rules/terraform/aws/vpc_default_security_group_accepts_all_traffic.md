@@ -5,7 +5,7 @@ meta:
   name: "aws/vpc_default_security_group_accepts_all_traffic"
   id: "9a4ef195-74b9-4c58-b8ed-2b2fe4353a75"
   display_name: "VPC default security group accepts all traffic"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "HIGH"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `9a4ef195-74b9-4c58-b8ed-2b2fe4353a75`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

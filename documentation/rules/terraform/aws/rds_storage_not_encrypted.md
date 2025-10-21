@@ -5,7 +5,7 @@ meta:
   name: "aws/rds_storage_not_encrypted"
   id: "3199c26c-7871-4cb3-99c2-10a59244ce7f"
   display_name: "RDS storage not encrypted"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "HIGH"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `3199c26c-7871-4cb3-99c2-10a59244ce7f`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

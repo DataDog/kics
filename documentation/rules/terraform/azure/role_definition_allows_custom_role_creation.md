@@ -5,7 +5,7 @@ meta:
   name: "azure/role_definition_allows_custom_role_creation"
   id: "3fa5900f-9aac-4982-96b2-a6143d9c99fb"
   display_name: "Role definition allows custom role creation"
-  cloud_provider: "azure"
+  cloud_provider: "Azure"
   platform: "Terraform"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `3fa5900f-9aac-4982-96b2-a6143d9c99fb`
 
-**Cloud Provider:** azure
+**Cloud Provider:** Azure
 
 **Platform:** Terraform
 

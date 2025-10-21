@@ -5,7 +5,7 @@ meta:
   name: "aws/cloudwatch_logging_disabled"
   id: "7dbba512-e244-42dc-98bb-422339827967"
   display_name: "CloudWatch logging disabled"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `7dbba512-e244-42dc-98bb-422339827967`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

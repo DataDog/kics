@@ -5,7 +5,7 @@ meta:
   name: "azure/log_retention_is_not_set"
   id: "ffb02aca-0d12-475e-b77c-a726f7aeff4b"
   display_name: "Log retention is not set"
-  cloud_provider: "azure"
+  cloud_provider: "Azure"
   platform: "Terraform"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `ffb02aca-0d12-475e-b77c-a726f7aeff4b`
 
-**Cloud Provider:** azure
+**Cloud Provider:** Azure
 
 **Platform:** Terraform
 

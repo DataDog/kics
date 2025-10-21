@@ -5,7 +5,7 @@ meta:
   name: "azure/azure_container_registry_with_no_locks"
   id: "a187ac47-8163-42ce-8a63-c115236be6fb"
   display_name: "Azure Container Registry with no locks"
-  cloud_provider: "azure"
+  cloud_provider: "Azure"
   platform: "Terraform"
   framework: "Terraform"
   severity: "HIGH"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `a187ac47-8163-42ce-8a63-c115236be6fb`
 
-**Cloud Provider:** azure
+**Cloud Provider:** Azure
 
 **Platform:** Terraform
 

@@ -5,7 +5,7 @@ meta:
   name: "azure/vault_auditing_disabled"
   id: "38c71c00-c177-4cd7-8d36-cd1007cdb190"
   display_name: "Vault auditing disabled"
-  cloud_provider: "azure"
+  cloud_provider: "Azure"
   platform: "Terraform"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `38c71c00-c177-4cd7-8d36-cd1007cdb190`
 
-**Cloud Provider:** azure
+**Cloud Provider:** Azure
 
 **Platform:** Terraform
 

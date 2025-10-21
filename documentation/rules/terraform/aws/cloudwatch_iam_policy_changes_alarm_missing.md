@@ -5,7 +5,7 @@ meta:
   name: "aws/cloudwatch_iam_policy_changes_alarm_missing"
   id: "eaaba502-2f94-411a-a3c2-83d63cc1776d"
   display_name: "CloudWatch IAM policy changes alarm missing"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "LOW"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `eaaba502-2f94-411a-a3c2-83d63cc1776d`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

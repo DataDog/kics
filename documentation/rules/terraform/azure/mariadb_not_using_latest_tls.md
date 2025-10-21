@@ -5,7 +5,7 @@ meta:
   name: "azure/mariadb_not_using_latest_tls"
   id: "8f0e6b2d-3c9a-4f1e-8d2a-7b6c5d4e3f21"
   display_name: "Ensure Azure MariaDB server is using latest TLS (1.2)"
-  cloud_provider: "azure"
+  cloud_provider: "Azure"
   platform: "Terraform"
   framework: "Terraform"
   severity: "HIGH"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `8f0e6b2d-3c9a-4f1e-8d2a-7b6c5d4e3f21`
 
-**Cloud Provider:** azure
+**Cloud Provider:** Azure
 
 **Platform:** Terraform
 

@@ -5,7 +5,7 @@ meta:
   name: "aws/s3_bucket_with_all_permissions"
   id: "a4966c4f-9141-48b8-a564-ffe9959945bc"
   display_name: "S3 bucket with all permissions"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "CRITICAL"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `a4966c4f-9141-48b8-a564-ffe9959945bc`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

@@ -5,7 +5,7 @@ meta:
   name: "k8s/psp_with_unrestricted_access_to_host_path"
   id: "de4421f1-4e35-43b4-9783-737dd4e4a47e"
   display_name: "PSP with unrestricted access to host path"
-  cloud_provider: "k8s"
+  cloud_provider: "Kubernetes"
   platform: "Kubernetes"
   framework: "Kubernetes"
   severity: "HIGH"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `de4421f1-4e35-43b4-9783-737dd4e4a47e`
 
-**Cloud Provider:** k8s
+**Cloud Provider:** Kubernetes
 
 **Platform:** Kubernetes
 

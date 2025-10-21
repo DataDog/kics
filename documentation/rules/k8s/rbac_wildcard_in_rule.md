@@ -5,7 +5,7 @@ meta:
   name: "k8s/rbac_wildcard_in_rule"
   id: "6b896afb-ca07-467a-b256-1a0077a1c08e"
   display_name: "RBAC wildcard in rule"
-  cloud_provider: "k8s"
+  cloud_provider: "Kubernetes"
   platform: "Kubernetes"
   framework: "Kubernetes"
   severity: "HIGH"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `6b896afb-ca07-467a-b256-1a0077a1c08e`
 
-**Cloud Provider:** k8s
+**Cloud Provider:** Kubernetes
 
 **Platform:** Kubernetes
 

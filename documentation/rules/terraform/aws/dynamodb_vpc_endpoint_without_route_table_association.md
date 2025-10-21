@@ -5,7 +5,7 @@ meta:
   name: "aws/dynamodb_vpc_endpoint_without_route_table_association"
   id: "0bc534c5-13d1-4353-a7fe-b8665d5c1d7d"
   display_name: "Dynamodb VPC endpoint without route table association"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "LOW"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `0bc534c5-13d1-4353-a7fe-b8665d5c1d7d`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

@@ -5,7 +5,7 @@ meta:
   name: "aws/role_with_privilege_escalation_by_actions_glue_UpdateDevEndpoint"
   id: "eda48c88-2b7d-4e34-b6ca-04c0194aee17"
   display_name: "Role with privilege escalation by actions 'glue:UpdateDevEndpoint'"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `eda48c88-2b7d-4e34-b6ca-04c0194aee17`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

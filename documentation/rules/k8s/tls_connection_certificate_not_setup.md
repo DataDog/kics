@@ -5,7 +5,7 @@ meta:
   name: "k8s/tls_connection_certificate_not_setup"
   id: "fa750c81-93c2-4fab-9c6d-d3fd3ce3b89f"
   display_name: "TLS connection certificate not set up"
-  cloud_provider: "k8s"
+  cloud_provider: "Kubernetes"
   platform: "Kubernetes"
   framework: "Kubernetes"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `fa750c81-93c2-4fab-9c6d-d3fd3ce3b89f`
 
-**Cloud Provider:** k8s
+**Cloud Provider:** Kubernetes
 
 **Platform:** Kubernetes
 

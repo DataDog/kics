@@ -5,7 +5,7 @@ meta:
   name: "aws/s3_bucket_allows_delete_action_from_all_principals"
   id: "ffdf4b37-7703-4dfe-a682-9d2e99bc6c09"
   display_name: "S3 bucket allows delete action from all principals"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "CRITICAL"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `ffdf4b37-7703-4dfe-a682-9d2e99bc6c09`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

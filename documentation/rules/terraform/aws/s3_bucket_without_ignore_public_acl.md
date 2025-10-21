@@ -5,7 +5,7 @@ meta:
   name: "aws/s3_bucket_without_ignore_public_acl"
   id: "4fa66806-0dd9-4f8d-9480-3174d39c7c91"
   display_name: "S3 bucket without ignore public ACL"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `4fa66806-0dd9-4f8d-9480-3174d39c7c91`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

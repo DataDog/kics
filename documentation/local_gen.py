@@ -15,6 +15,13 @@ NO_DESC = "No description provided"
 POSITIVE = re.compile(r"^positive\d*\..+$")
 NEGATIVE = re.compile(r"^negative\d*\..+$")
 CODE_SUFFIX = {"tf": "terraform", "yaml": "yaml", "json": "json"}
+CLOUD_PROVIDER = {
+    "aws": "AWS",
+    "gcp": "GCP",
+    "k8s": "Kubernetes",
+    "azure": "Azure",
+    "github": "GitHub",
+}
 
 
 def parse_args():
@@ -96,6 +103,7 @@ def build_markdown(
         rule_path / "test", resource_type, max_examples
     )
     meta_name = f"{cloud_provider}/{rule_name}"
+    clean_provider = CLOUD_PROVIDER[cloud_provider]
 
     markdown = f"""---
 title: {json.dumps(title)}
@@ -104,7 +112,7 @@ meta:
   name: "{meta_name}"
   id: "{rule_id}"
   display_name: "{display_name}"
-  cloud_provider: "{cloud_provider}"
+  cloud_provider: "{clean_provider}"
   platform: "{platform}"
   framework: "{platform}"
   severity: "{severity}"
@@ -114,7 +122,7 @@ meta:
 
 **Id:** `{rule_id}`
 
-**Cloud Provider:** {cloud_provider}
+**Cloud Provider:** {clean_provider}
 
 **Platform:** {platform}
 

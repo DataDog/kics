@@ -5,7 +5,7 @@ meta:
   name: "aws/certificate_has_expired"
   id: "c3831315-5ae6-4fa8-b458-3d4d5ab7a3f6"
   display_name: "Certificate has expired"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `c3831315-5ae6-4fa8-b458-3d4d5ab7a3f6`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

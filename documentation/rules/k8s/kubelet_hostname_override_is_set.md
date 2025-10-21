@@ -5,7 +5,7 @@ meta:
   name: "k8s/kubelet_hostname_override_is_set"
   id: "bf36b900-b5ef-4828-adb7-70eb543b7cfb"
   display_name: "Kubelet hostname override is set"
-  cloud_provider: "k8s"
+  cloud_provider: "Kubernetes"
   platform: "Kubernetes"
   framework: "Kubernetes"
   severity: "LOW"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `bf36b900-b5ef-4828-adb7-70eb543b7cfb`
 
-**Cloud Provider:** k8s
+**Cloud Provider:** Kubernetes
 
 **Platform:** Kubernetes
 

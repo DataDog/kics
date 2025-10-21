@@ -5,7 +5,7 @@ meta:
   name: "aws/default_vpc_exists"
   id: "96ed3526-0179-4c73-b1b2-372fde2e0d13"
   display_name: "Default VPC exists"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `96ed3526-0179-4c73-b1b2-372fde2e0d13`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

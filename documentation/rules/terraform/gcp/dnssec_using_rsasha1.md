@@ -5,7 +5,7 @@ meta:
   name: "gcp/dnssec_using_rsasha1"
   id: "ccc3100c-0fdd-4a5e-9908-c10107291860"
   display_name: "DNSSEC using RSASHA1"
-  cloud_provider: "gcp"
+  cloud_provider: "GCP"
   platform: "Terraform"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `ccc3100c-0fdd-4a5e-9908-c10107291860`
 
-**Cloud Provider:** gcp
+**Cloud Provider:** GCP
 
 **Platform:** Terraform
 

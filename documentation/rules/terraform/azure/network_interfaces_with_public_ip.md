@@ -5,7 +5,7 @@ meta:
   name: "azure/network_interfaces_with_public_ip"
   id: "c1573577-e494-4417-8854-7e119368dc8b"
   display_name: "Network interfaces with public IP"
-  cloud_provider: "azure"
+  cloud_provider: "Azure"
   platform: "Terraform"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `c1573577-e494-4417-8854-7e119368dc8b`
 
-**Cloud Provider:** azure
+**Cloud Provider:** Azure
 
 **Platform:** Terraform
 

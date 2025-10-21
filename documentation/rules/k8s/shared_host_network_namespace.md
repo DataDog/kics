@@ -5,7 +5,7 @@ meta:
   name: "k8s/shared_host_network_namespace"
   id: "6b6bdfb3-c3ae-44cb-88e4-7405c1ba2c8a"
   display_name: "Shared host network namespace"
-  cloud_provider: "k8s"
+  cloud_provider: "Kubernetes"
   platform: "Kubernetes"
   framework: "Kubernetes"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `6b6bdfb3-c3ae-44cb-88e4-7405c1ba2c8a`
 
-**Cloud Provider:** k8s
+**Cloud Provider:** Kubernetes
 
 **Platform:** Kubernetes
 

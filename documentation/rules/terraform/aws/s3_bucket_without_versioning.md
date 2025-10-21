@@ -5,7 +5,7 @@ meta:
   name: "aws/s3_bucket_without_versioning"
   id: "568a4d22-3517-44a6-a7ad-6a7eed88722c"
   display_name: "S3 bucket without versioning"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `568a4d22-3517-44a6-a7ad-6a7eed88722c`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

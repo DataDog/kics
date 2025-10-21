@@ -5,7 +5,7 @@ meta:
   name: "aws/sqs_vpc_endpoint_without_dns_resolution"
   id: "e9b7acf9-9ba0-4837-a744-31e7df1e434d"
   display_name: "SQS VPC endpoint without DNS resolution"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "LOW"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `e9b7acf9-9ba0-4837-a744-31e7df1e434d`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

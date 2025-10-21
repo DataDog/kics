@@ -5,7 +5,7 @@ meta:
   name: "azure/azure_active_directory_authentication"
   id: "a21c8da9-41bf-40cf-941d-330cf0d11fc7"
   display_name: "Azure Active Directory authentication"
-  cloud_provider: "azure"
+  cloud_provider: "Azure"
   platform: "Terraform"
   framework: "Terraform"
   severity: "LOW"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `a21c8da9-41bf-40cf-941d-330cf0d11fc7`
 
-**Cloud Provider:** azure
+**Cloud Provider:** Azure
 
 **Platform:** Terraform
 

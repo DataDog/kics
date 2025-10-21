@@ -5,7 +5,7 @@ meta:
   name: "k8s/psp_allows_privilege_escalation"
   id: "87554eef-154d-411d-bdce-9dbd91e56851"
   display_name: "PSP allows privilege escalation"
-  cloud_provider: "k8s"
+  cloud_provider: "Kubernetes"
   platform: "Kubernetes"
   framework: "Kubernetes"
   severity: "HIGH"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `87554eef-154d-411d-bdce-9dbd91e56851`
 
-**Cloud Provider:** k8s
+**Cloud Provider:** Kubernetes
 
 **Platform:** Kubernetes
 

@@ -5,7 +5,7 @@ meta:
   name: "aws/group_with_privilege_escalation_by_actions_iam_PutGroupPolicy"
   id: "e77c89f6-9c85-49ea-b95b-5f960fe5be92"
   display_name: "Group with privilege escalation by actions 'iam:PutGroupPolicy'"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `e77c89f6-9c85-49ea-b95b-5f960fe5be92`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

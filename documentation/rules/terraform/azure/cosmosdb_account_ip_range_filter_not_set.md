@@ -5,7 +5,7 @@ meta:
   name: "azure/cosmosdb_account_ip_range_filter_not_set"
   id: "c2a3efb6-8a58-481c-82f2-bfddf34bb4b7"
   display_name: "CosmosDB account IP range filter not set"
-  cloud_provider: "azure"
+  cloud_provider: "Azure"
   platform: "Terraform"
   framework: "Terraform"
   severity: "CRITICAL"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `c2a3efb6-8a58-481c-82f2-bfddf34bb4b7`
 
-**Cloud Provider:** azure
+**Cloud Provider:** Azure
 
 **Platform:** Terraform
 

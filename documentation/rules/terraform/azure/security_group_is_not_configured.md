@@ -5,7 +5,7 @@ meta:
   name: "azure/security_group_is_not_configured"
   id: "5c822443-e1ea-46b8-84eb-758ec602e844"
   display_name: "Security group is not configured"
-  cloud_provider: "azure"
+  cloud_provider: "Azure"
   platform: "Terraform"
   framework: "Terraform"
   severity: "HIGH"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `5c822443-e1ea-46b8-84eb-758ec602e844`
 
-**Cloud Provider:** azure
+**Cloud Provider:** Azure
 
 **Platform:** Terraform
 

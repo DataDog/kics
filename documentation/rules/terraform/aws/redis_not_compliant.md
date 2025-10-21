@@ -5,7 +5,7 @@ meta:
   name: "aws/redis_not_compliant"
   id: "254c932d-e3bf-44b2-bc9d-eb5fdb09f8d4"
   display_name: "Redis not compliant"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "HIGH"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `254c932d-e3bf-44b2-bc9d-eb5fdb09f8d4`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

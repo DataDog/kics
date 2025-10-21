@@ -5,7 +5,7 @@ meta:
   name: "aws/redshift_cluster_without_vpc"
   id: "0a494a6a-ebe2-48a0-9d77-cf9d5125e1b3"
   display_name: "Redshift cluster without VPC"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "LOW"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `0a494a6a-ebe2-48a0-9d77-cf9d5125e1b3`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

@@ -5,7 +5,7 @@ meta:
   name: "aws/eks_cluster_has_public_access"
   id: "42f4b905-3736-4213-bfe9-c0660518cda8"
   display_name: "EKS cluster has public access"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `42f4b905-3736-4213-bfe9-c0660518cda8`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

@@ -5,7 +5,7 @@ meta:
   name: "k8s/psp_allows_sharing_host_ipc"
   id: "80f93444-b240-4ebb-a4c6-5c40b76c04ea"
   display_name: "PSP allows sharing host IPC"
-  cloud_provider: "k8s"
+  cloud_provider: "Kubernetes"
   platform: "Kubernetes"
   framework: "Kubernetes"
   severity: "HIGH"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `80f93444-b240-4ebb-a4c6-5c40b76c04ea`
 
-**Cloud Provider:** k8s
+**Cloud Provider:** Kubernetes
 
 **Platform:** Kubernetes
 

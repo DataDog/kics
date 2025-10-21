@@ -5,7 +5,7 @@ meta:
   name: "k8s/cpu_requests_not_set"
   id: "ca469dd4-c736-448f-8ac1-30a642705e0a"
   display_name: "CPU requests not set"
-  cloud_provider: "k8s"
+  cloud_provider: "Kubernetes"
   platform: "Kubernetes"
   framework: "Kubernetes"
   severity: "LOW"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `ca469dd4-c736-448f-8ac1-30a642705e0a`
 
-**Cloud Provider:** k8s
+**Cloud Provider:** Kubernetes
 
 **Platform:** Kubernetes
 

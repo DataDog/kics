@@ -5,7 +5,7 @@ meta:
   name: "azure/network_interfaces_ip_forwarding_enabled"
   id: "4216ebac-d74c-4423-b437-35025cb88af5"
   display_name: "Network interfaces IP forwarding enabled"
-  cloud_provider: "azure"
+  cloud_provider: "Azure"
   platform: "Terraform"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `4216ebac-d74c-4423-b437-35025cb88af5`
 
-**Cloud Provider:** azure
+**Cloud Provider:** Azure
 
 **Platform:** Terraform
 

@@ -5,7 +5,7 @@ meta:
   name: "gcp/google_project_iam_member_service_account_has_admin_role"
   id: "84d36481-fd63-48cb-838e-635c44806ec2"
   display_name: "Google project IAM member service account has admin role"
-  cloud_provider: "gcp"
+  cloud_provider: "GCP"
   platform: "Terraform"
   framework: "Terraform"
   severity: "HIGH"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `84d36481-fd63-48cb-838e-635c44806ec2`
 
-**Cloud Provider:** gcp
+**Cloud Provider:** GCP
 
 **Platform:** Terraform
 

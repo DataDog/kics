@@ -5,7 +5,7 @@ meta:
   name: "gcp/stackdriver_logging_disabled"
   id: "4c7ebcb2-eae2-461e-bc83-456ee2d4f694"
   display_name: "Stackdriver Logging disabled"
-  cloud_provider: "gcp"
+  cloud_provider: "GCP"
   platform: "Terraform"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `4c7ebcb2-eae2-461e-bc83-456ee2d4f694`
 
-**Cloud Provider:** gcp
+**Cloud Provider:** GCP
 
 **Platform:** Terraform
 

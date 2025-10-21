@@ -5,7 +5,7 @@ meta:
   name: "k8s/etcd_client_certificate_file_not_defined"
   id: "3f5ff8a7-5ad6-4d02-86f5-666307da1b20"
   display_name: "etcd client certificate file not defined"
-  cloud_provider: "k8s"
+  cloud_provider: "Kubernetes"
   platform: "Kubernetes"
   framework: "Kubernetes"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `3f5ff8a7-5ad6-4d02-86f5-666307da1b20`
 
-**Cloud Provider:** k8s
+**Cloud Provider:** Kubernetes
 
 **Platform:** Kubernetes
 

@@ -5,7 +5,7 @@ meta:
   name: "k8s/containers_running_as_root"
   id: "cf34805e-3872-4c08-bf92-6ff7bb0cfadb"
   display_name: "Container running as root"
-  cloud_provider: "k8s"
+  cloud_provider: "Kubernetes"
   platform: "Kubernetes"
   framework: "Kubernetes"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `cf34805e-3872-4c08-bf92-6ff7bb0cfadb`
 
-**Cloud Provider:** k8s
+**Cloud Provider:** Kubernetes
 
 **Platform:** Kubernetes
 

@@ -5,7 +5,7 @@ meta:
   name: "k8s/request_timeout_not_properly_set"
   id: "d89a15bb-8dba-4c71-9529-bef6729b9c09"
   display_name: "Request timeout not properly set"
-  cloud_provider: "k8s"
+  cloud_provider: "Kubernetes"
   platform: "Kubernetes"
   framework: "Kubernetes"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `d89a15bb-8dba-4c71-9529-bef6729b9c09`
 
-**Cloud Provider:** k8s
+**Cloud Provider:** Kubernetes
 
 **Platform:** Kubernetes
 

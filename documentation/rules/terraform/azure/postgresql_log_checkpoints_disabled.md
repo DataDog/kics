@@ -5,7 +5,7 @@ meta:
   name: "azure/postgresql_log_checkpoints_disabled"
   id: "3790d386-be81-4dcf-9850-eaa7df6c10d9"
   display_name: "PostgreSQL log checkpoints disabled"
-  cloud_provider: "azure"
+  cloud_provider: "Azure"
   platform: "Terraform"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `3790d386-be81-4dcf-9850-eaa7df6c10d9`
 
-**Cloud Provider:** azure
+**Cloud Provider:** Azure
 
 **Platform:** Terraform
 

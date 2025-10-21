@@ -5,7 +5,7 @@ meta:
   name: "azure/geo_redundancy_is_disabled"
   id: "8b042c30-e441-453f-b162-7696982ebc58"
   display_name: "Geo redundancy is disabled"
-  cloud_provider: "azure"
+  cloud_provider: "Azure"
   platform: "Terraform"
   framework: "Terraform"
   severity: "LOW"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `8b042c30-e441-453f-b162-7696982ebc58`
 
-**Cloud Provider:** azure
+**Cloud Provider:** Azure
 
 **Platform:** Terraform
 

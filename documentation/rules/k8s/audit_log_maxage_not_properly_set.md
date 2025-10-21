@@ -5,7 +5,7 @@ meta:
   name: "k8s/audit_log_maxage_not_properly_set"
   id: "da9f3aa8-fbfb-472f-b5a1-576127944218"
   display_name: "Audit log maxage not properly set"
-  cloud_provider: "k8s"
+  cloud_provider: "Kubernetes"
   platform: "Kubernetes"
   framework: "Kubernetes"
   severity: "LOW"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `da9f3aa8-fbfb-472f-b5a1-576127944218`
 
-**Cloud Provider:** k8s
+**Cloud Provider:** Kubernetes
 
 **Platform:** Kubernetes
 

@@ -5,7 +5,7 @@ meta:
   name: "gcp/sql_db_instance_is_publicly_accessible"
   id: "b187edca-b81e-4fdc-aff4-aab57db45edb"
   display_name: "SQL DB instance publicly accessible"
-  cloud_provider: "gcp"
+  cloud_provider: "GCP"
   platform: "Terraform"
   framework: "Terraform"
   severity: "CRITICAL"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `b187edca-b81e-4fdc-aff4-aab57db45edb`
 
-**Cloud Provider:** gcp
+**Cloud Provider:** GCP
 
 **Platform:** Terraform
 

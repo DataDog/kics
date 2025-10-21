@@ -5,7 +5,7 @@ meta:
   name: "azure/network_watcher_flow_disabled"
   id: "b90842e5-6779-44d4-9760-972f4c03ba1c"
   display_name: "Network watcher flow disabled"
-  cloud_provider: "azure"
+  cloud_provider: "Azure"
   platform: "Terraform"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `b90842e5-6779-44d4-9760-972f4c03ba1c`
 
-**Cloud Provider:** azure
+**Cloud Provider:** Azure
 
 **Platform:** Terraform
 

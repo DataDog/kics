@@ -5,7 +5,7 @@ meta:
   name: "aws/ecs_cluster_container_insights_disabled"
   id: "97cb0688-369a-4d26-b1f7-86c4c91231bc"
   display_name: "ECS cluster with container insights disabled"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "LOW"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `97cb0688-369a-4d26-b1f7-86c4c91231bc`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

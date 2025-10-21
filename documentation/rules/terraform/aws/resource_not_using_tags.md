@@ -5,7 +5,7 @@ meta:
   name: "aws/resource_not_using_tags"
   id: "e38a8e0a-b88b-4902-b3fe-b0fcb17d5c10"
   display_name: "Resource not using tags"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "INFO"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `e38a8e0a-b88b-4902-b3fe-b0fcb17d5c10`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

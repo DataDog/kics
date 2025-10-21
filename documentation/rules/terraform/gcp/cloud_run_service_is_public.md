@@ -5,7 +5,7 @@ meta:
   name: "gcp/cloud_run_service_is_public"
   id: "7e3c1a2b-9d4f-4c8e-8a5b-0f1e2d3c4b6a"
   display_name: "Cloud Run service is public"
-  cloud_provider: "gcp"
+  cloud_provider: "GCP"
   platform: "Terraform"
   framework: "Terraform"
   severity: "HIGH"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `7e3c1a2b-9d4f-4c8e-8a5b-0f1e2d3c4b6a`
 
-**Cloud Provider:** gcp
+**Cloud Provider:** GCP
 
 **Platform:** Terraform
 

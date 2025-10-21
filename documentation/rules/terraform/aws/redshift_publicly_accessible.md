@@ -5,7 +5,7 @@ meta:
   name: "aws/redshift_publicly_accessible"
   id: "af173fde-95ea-4584-b904-bb3923ac4bda"
   display_name: "Redshift publicly accessible"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "HIGH"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `af173fde-95ea-4584-b904-bb3923ac4bda`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

@@ -5,7 +5,7 @@ meta:
   name: "aws/role_with_privilege_escalation_by_actions_iam_PassRole_and_cloudformation_CreateStack"
   id: "be2aa235-bd93-4b68-978a-1cc65d49082f"
   display_name: "Role with privilege escalation by actions 'cloudformation:CreateStack' and 'iam:PassRole'"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `be2aa235-bd93-4b68-978a-1cc65d49082f`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

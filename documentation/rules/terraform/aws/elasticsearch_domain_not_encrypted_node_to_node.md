@@ -5,7 +5,7 @@ meta:
   name: "aws/elasticsearch_domain_not_encrypted_node_to_node"
   id: "967eb3e6-26fc-497d-8895-6428beb6e8e2"
   display_name: "Elasticsearch domain not encrypted node to node"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `967eb3e6-26fc-497d-8895-6428beb6e8e2`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

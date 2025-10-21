@@ -5,7 +5,7 @@ meta:
   name: "aws/sqs_queue_exposed"
   id: "abb06e5f-ef9a-4a99-98c6-376d396bfcdf"
   display_name: "SQS queue exposed"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "HIGH"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `abb06e5f-ef9a-4a99-98c6-376d396bfcdf`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

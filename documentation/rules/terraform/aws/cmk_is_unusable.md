@@ -5,7 +5,7 @@ meta:
   name: "aws/cmk_is_unusable"
   id: "7350fa23-dcf7-4938-916d-6a60b0c73b50"
   display_name: "CMK is unusable"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `7350fa23-dcf7-4938-916d-6a60b0c73b50`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

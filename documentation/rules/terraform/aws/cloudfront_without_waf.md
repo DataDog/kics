@@ -5,7 +5,7 @@ meta:
   name: "aws/cloudfront_without_waf"
   id: "1419b4c6-6d5c-4534-9cf6-6a5266085333"
   display_name: "CloudFront without WAF"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `1419b4c6-6d5c-4534-9cf6-6a5266085333`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

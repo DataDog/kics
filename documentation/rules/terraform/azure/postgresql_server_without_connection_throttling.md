@@ -5,7 +5,7 @@ meta:
   name: "azure/postgresql_server_without_connection_throttling"
   id: "2b3c671f-1b76-4741-8789-ed1fe0785dc4"
   display_name: "PostgreSQL server without connection throttling"
-  cloud_provider: "azure"
+  cloud_provider: "Azure"
   platform: "Terraform"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `2b3c671f-1b76-4741-8789-ed1fe0785dc4`
 
-**Cloud Provider:** azure
+**Cloud Provider:** Azure
 
 **Platform:** Terraform
 

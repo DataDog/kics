@@ -5,7 +5,7 @@ meta:
   name: "k8s/service_account_key_file_not_properly_set"
   id: "dab4ec72-ce2e-4732-b7c3-1757dcce01a1"
   display_name: "Service account key file not properly set"
-  cloud_provider: "k8s"
+  cloud_provider: "Kubernetes"
   platform: "Kubernetes"
   framework: "Kubernetes"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `dab4ec72-ce2e-4732-b7c3-1757dcce01a1`
 
-**Cloud Provider:** k8s
+**Cloud Provider:** Kubernetes
 
 **Platform:** Kubernetes
 

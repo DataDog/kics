@@ -5,7 +5,7 @@ meta:
   name: "k8s/seccomp_profile_is_not_configured"
   id: "f377b83e-bd07-4f48-a591-60c82b14a78b"
   display_name: "Seccomp profile is not configured"
-  cloud_provider: "k8s"
+  cloud_provider: "Kubernetes"
   platform: "Kubernetes"
   framework: "Kubernetes"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `f377b83e-bd07-4f48-a591-60c82b14a78b`
 
-**Cloud Provider:** k8s
+**Cloud Provider:** Kubernetes
 
 **Platform:** Kubernetes
 

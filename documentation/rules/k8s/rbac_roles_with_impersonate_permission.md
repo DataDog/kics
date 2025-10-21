@@ -5,7 +5,7 @@ meta:
   name: "k8s/rbac_roles_with_impersonate_permission"
   id: "9f85c3f6-26fd-4007-938a-2e0cb0100980"
   display_name: "RBAC roles with impersonate permission"
-  cloud_provider: "k8s"
+  cloud_provider: "Kubernetes"
   platform: "Kubernetes"
   framework: "Kubernetes"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `9f85c3f6-26fd-4007-938a-2e0cb0100980`
 
-**Cloud Provider:** k8s
+**Cloud Provider:** Kubernetes
 
 **Platform:** Kubernetes
 

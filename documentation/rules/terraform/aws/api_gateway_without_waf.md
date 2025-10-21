@@ -5,7 +5,7 @@ meta:
   name: "aws/api_gateway_without_waf"
   id: "a186e82c-1078-4a7b-85d8-579561fde884"
   display_name: "API Gateway without WAF"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `a186e82c-1078-4a7b-85d8-579561fde884`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

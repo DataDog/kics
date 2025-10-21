@@ -5,7 +5,7 @@ meta:
   name: "k8s/kubelet_certificate_authority_not_set"
   id: "ec18a0d3-0069-4a58-a7fb-fbfe0b4bbbe0"
   display_name: "Kubelet certificate authority not set"
-  cloud_provider: "k8s"
+  cloud_provider: "Kubernetes"
   platform: "Kubernetes"
   framework: "Kubernetes"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `ec18a0d3-0069-4a58-a7fb-fbfe0b4bbbe0`
 
-**Cloud Provider:** k8s
+**Cloud Provider:** Kubernetes
 
 **Platform:** Kubernetes
 

@@ -5,7 +5,7 @@ meta:
   name: "aws/db_security_group_open_to_large_scope"
   id: "4f615f3e-fb9c-4fad-8b70-2e9f781806ce"
   display_name: "DB security group open to large scope"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "HIGH"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `4f615f3e-fb9c-4fad-8b70-2e9f781806ce`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

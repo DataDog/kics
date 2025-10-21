@@ -5,7 +5,7 @@ meta:
   name: "k8s/kubelet_https_set_to_false"
   id: "cdc8b54e-6b16-4538-a1b0-35849dbe29cf"
   display_name: "Kubelet HTTPS set to false"
-  cloud_provider: "k8s"
+  cloud_provider: "Kubernetes"
   platform: "Kubernetes"
   framework: "Kubernetes"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `cdc8b54e-6b16-4538-a1b0-35849dbe29cf`
 
-**Cloud Provider:** k8s
+**Cloud Provider:** Kubernetes
 
 **Platform:** Kubernetes
 

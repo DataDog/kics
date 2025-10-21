@@ -5,7 +5,7 @@ meta:
   name: "aws/s3_static_website_host_enabled"
   id: "42bb6b7f-6d54-4428-b707-666f669d94fb"
   display_name: "S3 static website host enabled"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "HIGH"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `42bb6b7f-6d54-4428-b707-666f669d94fb`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

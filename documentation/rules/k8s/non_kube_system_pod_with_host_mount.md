@@ -5,7 +5,7 @@ meta:
   name: "k8s/non_kube_system_pod_with_host_mount"
   id: "aa8f7a35-9923-4cad-bd61-a19b7f6aac91"
   display_name: "Non kube-system pod with host mount"
-  cloud_provider: "k8s"
+  cloud_provider: "Kubernetes"
   platform: "Kubernetes"
   framework: "Kubernetes"
   severity: "HIGH"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `aa8f7a35-9923-4cad-bd61-a19b7f6aac91`
 
-**Cloud Provider:** k8s
+**Cloud Provider:** Kubernetes
 
 **Platform:** Kubernetes
 

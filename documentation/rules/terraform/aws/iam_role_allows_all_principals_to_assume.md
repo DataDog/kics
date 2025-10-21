@@ -5,7 +5,7 @@ meta:
   name: "aws/iam_role_allows_all_principals_to_assume"
   id: "12b7e704-37f0-4d1e-911a-44bf60c48c21"
   display_name: "IAM role allows all principals to assume"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `12b7e704-37f0-4d1e-911a-44bf60c48c21`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

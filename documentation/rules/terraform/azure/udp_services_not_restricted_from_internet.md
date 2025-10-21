@@ -5,7 +5,7 @@ meta:
   name: "azure/udp_services_not_restricted_from_internet"
   id: "a3b4c5d6-e7f8-9012-3456-7890abcdef12"
   display_name: "Ensure that UDP services are restricted from the Internet"
-  cloud_provider: "azure"
+  cloud_provider: "Azure"
   platform: "Terraform"
   framework: "Terraform"
   severity: "HIGH"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `a3b4c5d6-e7f8-9012-3456-7890abcdef12`
 
-**Cloud Provider:** azure
+**Cloud Provider:** Azure
 
 **Platform:** Terraform
 

@@ -5,7 +5,7 @@ meta:
   name: "k8s/cni_plugin_does_not_support_network_policies"
   id: "03aabc8c-35d6-481e-9c85-20139cf72d23"
   display_name: "CNI plugin does not support network policies"
-  cloud_provider: "k8s"
+  cloud_provider: "Kubernetes"
   platform: "Kubernetes"
   framework: "Kubernetes"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `03aabc8c-35d6-481e-9c85-20139cf72d23`
 
-**Cloud Provider:** k8s
+**Cloud Provider:** Kubernetes
 
 **Platform:** Kubernetes
 

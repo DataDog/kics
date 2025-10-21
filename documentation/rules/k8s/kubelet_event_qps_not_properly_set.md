@@ -5,7 +5,7 @@ meta:
   name: "k8s/kubelet_event_qps_not_properly_set"
   id: "1a07a446-8e61-4e4d-bc16-b0781fcb8211"
   display_name: "Kubelet event QPS not properly set"
-  cloud_provider: "k8s"
+  cloud_provider: "Kubernetes"
   platform: "Kubernetes"
   framework: "Kubernetes"
   severity: "LOW"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `1a07a446-8e61-4e4d-bc16-b0781fcb8211`
 
-**Cloud Provider:** k8s
+**Cloud Provider:** Kubernetes
 
 **Platform:** Kubernetes
 

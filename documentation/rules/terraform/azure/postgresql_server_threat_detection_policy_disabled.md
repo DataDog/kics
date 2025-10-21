@@ -5,7 +5,7 @@ meta:
   name: "azure/postgresql_server_threat_detection_policy_disabled"
   id: "c407c3cf-c409-4b29-b590-db5f4138d332"
   display_name: "PostgreSQL Server threat detection policy disabled"
-  cloud_provider: "azure"
+  cloud_provider: "Azure"
   platform: "Terraform"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `c407c3cf-c409-4b29-b590-db5f4138d332`
 
-**Cloud Provider:** azure
+**Cloud Provider:** Azure
 
 **Platform:** Terraform
 

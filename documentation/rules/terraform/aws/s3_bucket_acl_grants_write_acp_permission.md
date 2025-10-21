@@ -5,7 +5,7 @@ meta:
   name: "aws/s3_bucket_acl_grants_write_acp_permission"
   id: "64a222aa-7793-4e40-915f-4b302c76e4d4"
   display_name: "S3 bucket ACL grants WRITE_ACP permission"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "CRITICAL"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `64a222aa-7793-4e40-915f-4b302c76e4d4`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

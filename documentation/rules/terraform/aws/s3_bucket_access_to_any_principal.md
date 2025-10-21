@@ -5,7 +5,7 @@ meta:
   name: "aws/s3_bucket_access_to_any_principal"
   id: "7af43613-6bb9-4a0e-8c4d-1314b799425e"
   display_name: "S3 bucket access to any principal"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "CRITICAL"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `7af43613-6bb9-4a0e-8c4d-1314b799425e`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

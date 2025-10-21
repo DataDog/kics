@@ -5,7 +5,7 @@ meta:
   name: "aws/kms_key_with_full_permissions"
   id: "7ebc9038-0bde-479a-acc4-6ed7b6758899"
   display_name: "KMS key with vulnerable policy"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "HIGH"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `7ebc9038-0bde-479a-acc4-6ed7b6758899`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

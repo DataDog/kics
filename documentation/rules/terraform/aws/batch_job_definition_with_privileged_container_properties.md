@@ -5,7 +5,7 @@ meta:
   name: "aws/batch_job_definition_with_privileged_container_properties"
   id: "66cd88ac-9ddf-424a-b77e-e55e17630bee"
   display_name: "Batch job definition with privileged container properties"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "HIGH"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `66cd88ac-9ddf-424a-b77e-e55e17630bee`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

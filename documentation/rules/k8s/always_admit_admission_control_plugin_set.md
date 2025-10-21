@@ -5,7 +5,7 @@ meta:
   name: "k8s/always_admit_admission_control_plugin_set"
   id: "ce30e584-b33f-4c7d-b418-a3d7027f8f60"
   display_name: "Always admit admission control plugin set"
-  cloud_provider: "k8s"
+  cloud_provider: "Kubernetes"
   platform: "Kubernetes"
   framework: "Kubernetes"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `ce30e584-b33f-4c7d-b418-a3d7027f8f60`
 
-**Cloud Provider:** k8s
+**Cloud Provider:** Kubernetes
 
 **Platform:** Kubernetes
 

@@ -5,7 +5,7 @@ meta:
   name: "k8s/using_unrecommended_namespace"
   id: "611ab018-c4aa-4ba2-b0f6-a448337509a6"
   display_name: "Using unrecommended namespace"
-  cloud_provider: "k8s"
+  cloud_provider: "Kubernetes"
   platform: "Kubernetes"
   framework: "Kubernetes"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `611ab018-c4aa-4ba2-b0f6-a448337509a6`
 
-**Cloud Provider:** k8s
+**Cloud Provider:** Kubernetes
 
 **Platform:** Kubernetes
 

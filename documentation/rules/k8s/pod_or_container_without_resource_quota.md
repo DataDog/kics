@@ -5,7 +5,7 @@ meta:
   name: "k8s/pod_or_container_without_resource_quota"
   id: "48a5beba-e4c0-4584-a2aa-e6894e4cf424"
   display_name: "Pod or container without ResourceQuota"
-  cloud_provider: "k8s"
+  cloud_provider: "Kubernetes"
   platform: "Kubernetes"
   framework: "Kubernetes"
   severity: "LOW"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `48a5beba-e4c0-4584-a2aa-e6894e4cf424`
 
-**Cloud Provider:** k8s
+**Cloud Provider:** Kubernetes
 
 **Platform:** Kubernetes
 

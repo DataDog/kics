@@ -5,7 +5,7 @@ meta:
   name: "k8s/containers_with_added_capabilities"
   id: "19ebaa28-fc86-4a58-bcfa-015c9e22fe40"
   display_name: "Containers with added capabilities"
-  cloud_provider: "k8s"
+  cloud_provider: "Kubernetes"
   platform: "Kubernetes"
   framework: "Kubernetes"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `19ebaa28-fc86-4a58-bcfa-015c9e22fe40`
 
-**Cloud Provider:** k8s
+**Cloud Provider:** Kubernetes
 
 **Platform:** Kubernetes
 

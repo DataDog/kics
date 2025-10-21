@@ -5,7 +5,7 @@ meta:
   name: "k8s/rbac_roles_with_read_secrets_permissions"
   id: "b7bca5c4-1dab-4c2c-8cbe-3050b9d59b14"
   display_name: "RBAC roles with read secrets permissions"
-  cloud_provider: "k8s"
+  cloud_provider: "Kubernetes"
   platform: "Kubernetes"
   framework: "Kubernetes"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `b7bca5c4-1dab-4c2c-8cbe-3050b9d59b14`
 
-**Cloud Provider:** k8s
+**Cloud Provider:** Kubernetes
 
 **Platform:** Kubernetes
 

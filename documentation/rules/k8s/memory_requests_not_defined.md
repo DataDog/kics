@@ -5,7 +5,7 @@ meta:
   name: "k8s/memory_requests_not_defined"
   id: "229588ef-8fde-40c8-8756-f4f2b5825ded"
   display_name: "Memory requests not defined"
-  cloud_provider: "k8s"
+  cloud_provider: "Kubernetes"
   platform: "Kubernetes"
   framework: "Kubernetes"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `229588ef-8fde-40c8-8756-f4f2b5825ded`
 
-**Cloud Provider:** k8s
+**Cloud Provider:** Kubernetes
 
 **Platform:** Kubernetes
 

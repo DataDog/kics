@@ -5,7 +5,7 @@ meta:
   name: "aws/ecs_task_definition_network_mode_not_recommended"
   id: "9f4a9409-9c60-4671-be96-9716dbf63db1"
   display_name: "ECS task definition network mode not recommended"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `9f4a9409-9c60-4671-be96-9716dbf63db1`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

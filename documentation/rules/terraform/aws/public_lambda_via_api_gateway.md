@@ -5,7 +5,7 @@ meta:
   name: "aws/public_lambda_via_api_gateway"
   id: "3ef8696c-e4ae-4872-92c7-520bb44dfe77"
   display_name: "Public Lambda via API Gateway"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `3ef8696c-e4ae-4872-92c7-520bb44dfe77`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

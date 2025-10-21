@@ -5,7 +5,7 @@ meta:
   name: "k8s/docker_daemon_socket_is_exposed_to_containers"
   id: "a6f34658-fdfb-4154-9536-56d516f65828"
   display_name: "Docker daemon socket is exposed to containers"
-  cloud_provider: "k8s"
+  cloud_provider: "Kubernetes"
   platform: "Kubernetes"
   framework: "Kubernetes"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `a6f34658-fdfb-4154-9536-56d516f65828`
 
-**Cloud Provider:** k8s
+**Cloud Provider:** Kubernetes
 
 **Platform:** Kubernetes
 

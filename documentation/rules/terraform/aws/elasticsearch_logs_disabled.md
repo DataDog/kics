@@ -5,7 +5,7 @@ meta:
   name: "aws/elasticsearch_logs_disabled"
   id: "acb6b4e2-a086-4f35-aefd-4db6ea51ada2"
   display_name: "Elasticsearch log disabled"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `acb6b4e2-a086-4f35-aefd-4db6ea51ada2`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

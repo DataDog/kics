@@ -5,7 +5,7 @@ meta:
   name: "k8s/containers_run_with_low_uid"
   id: "02323c00-cdc3-4fdc-a310-4f2b3e7a1660"
   display_name: "Container with low UID"
-  cloud_provider: "k8s"
+  cloud_provider: "Kubernetes"
   platform: "Kubernetes"
   framework: "Kubernetes"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `02323c00-cdc3-4fdc-a310-4f2b3e7a1660`
 
-**Cloud Provider:** k8s
+**Cloud Provider:** Kubernetes
 
 **Platform:** Kubernetes
 

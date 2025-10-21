@@ -5,7 +5,7 @@ meta:
   name: "github/unpinned_actions_full_length_commit_sha"
   id: "555ab8f9-2001-455e-a077-f2d0f41e2fb9"
   display_name: "Unpinned actions full length commit SHA"
-  cloud_provider: "github"
+  cloud_provider: "GitHub"
   platform: "CICD"
   framework: "CICD"
   severity: "LOW"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `555ab8f9-2001-455e-a077-f2d0f41e2fb9`
 
-**Cloud Provider:** github
+**Cloud Provider:** GitHub
 
 **Platform:** CICD
 

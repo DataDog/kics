@@ -5,7 +5,7 @@ meta:
   name: "aws/neptune_snapshots_not_encrypted"
   id: "g3l20gd0k-e5f6-7890-ab12-cd34ef567890"
   display_name: "Neptune cluster snapshot not encrypted"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "HIGH"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `g3l20gd0k-e5f6-7890-ab12-cd34ef567890`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

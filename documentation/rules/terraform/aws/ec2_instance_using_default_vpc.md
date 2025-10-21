@@ -5,7 +5,7 @@ meta:
   name: "aws/ec2_instance_using_default_vpc"
   id: "7e4a6e76-568d-43ef-8c4e-36dea481bff1"
   display_name: "EC2 instance using default VPC"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "LOW"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `7e4a6e76-568d-43ef-8c4e-36dea481bff1`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

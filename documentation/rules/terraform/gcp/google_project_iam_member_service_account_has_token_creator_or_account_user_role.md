@@ -5,7 +5,7 @@ meta:
   name: "gcp/google_project_iam_member_service_account_has_token_creator_or_account_user_role"
   id: "c68b4e6d-4e01-4ca1-b256-1e18e875785c"
   display_name: "Google project IAM member service account has token creator or account user role"
-  cloud_provider: "gcp"
+  cloud_provider: "GCP"
   platform: "Terraform"
   framework: "Terraform"
   severity: "HIGH"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `c68b4e6d-4e01-4ca1-b256-1e18e875785c`
 
-**Cloud Provider:** gcp
+**Cloud Provider:** GCP
 
 **Platform:** Terraform
 

@@ -5,7 +5,7 @@ meta:
   name: "aws/cmk_rotation_disabled"
   id: "22fbfeac-7b5a-421a-8a27-7a2178bb910b"
   display_name: "CMK rotation disabled"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "LOW"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `22fbfeac-7b5a-421a-8a27-7a2178bb910b`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

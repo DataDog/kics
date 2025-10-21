@@ -5,7 +5,7 @@ meta:
   name: "aws/vpc_peering_route_table_with_unrestricted_cidr"
   id: "b3a41501-f712-4c4f-81e5-db9a7dc0e34e"
   display_name: "VPC peering route table with unrestricted CIDR"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "HIGH"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `b3a41501-f712-4c4f-81e5-db9a7dc0e34e`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

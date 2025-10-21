@@ -5,7 +5,7 @@ meta:
   name: "aws/unscanned_ecr_image"
   id: "9630336b-3fed-4096-8173-b9afdfe346a7"
   display_name: "Unscanned ECR image"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "LOW"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `9630336b-3fed-4096-8173-b9afdfe346a7`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

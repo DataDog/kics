@@ -5,7 +5,7 @@ meta:
   name: "gcp/google_storage_bucket_level_access_disabled"
   id: "bb0db090-5509-4853-a827-75ced0b3caa0"
   display_name: "Google Storage bucket level access disabled"
-  cloud_provider: "gcp"
+  cloud_provider: "GCP"
   platform: "Terraform"
   framework: "Terraform"
   severity: "HIGH"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `bb0db090-5509-4853-a827-75ced0b3caa0`
 
-**Cloud Provider:** gcp
+**Cloud Provider:** GCP
 
 **Platform:** Terraform
 

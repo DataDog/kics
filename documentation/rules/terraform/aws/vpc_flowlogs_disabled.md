@@ -5,7 +5,7 @@ meta:
   name: "aws/vpc_flowlogs_disabled"
   id: "f83121ea-03da-434f-9277-9cd247ab3047"
   display_name: "VPC Flow Logs disabled"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `f83121ea-03da-434f-9277-9cd247ab3047`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

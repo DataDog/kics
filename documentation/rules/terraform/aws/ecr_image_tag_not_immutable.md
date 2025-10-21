@@ -5,7 +5,7 @@ meta:
   name: "aws/ecr_image_tag_not_immutable"
   id: "d1846b12-20c5-4d45-8798-fc35b79268eb"
   display_name: "ECR image tag not immutable"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `d1846b12-20c5-4d45-8798-fc35b79268eb`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

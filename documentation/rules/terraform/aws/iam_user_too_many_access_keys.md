@@ -5,7 +5,7 @@ meta:
   name: "aws/iam_user_too_many_access_keys"
   id: "3561130e-9c5f-485b-9e16-2764c82763e5"
   display_name: "IAM user has too many access keys"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `3561130e-9c5f-485b-9e16-2764c82763e5`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

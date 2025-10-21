@@ -5,7 +5,7 @@ meta:
   name: "k8s/image_without_digest"
   id: "7c81d34c-8e5a-402b-9798-9f442630e678"
   display_name: "Image without digest"
-  cloud_provider: "k8s"
+  cloud_provider: "Kubernetes"
   platform: "Kubernetes"
   framework: "Kubernetes"
   severity: "LOW"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `7c81d34c-8e5a-402b-9798-9f442630e678`
 
-**Cloud Provider:** k8s
+**Cloud Provider:** Kubernetes
 
 **Platform:** Kubernetes
 

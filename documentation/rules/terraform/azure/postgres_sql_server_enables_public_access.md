@@ -5,7 +5,7 @@ meta:
   name: "azure/postgres_sql_server_enables_public_access"
   id: "c7f8e9a1-b2c3-d4e5-f6a7-8901b2c3d4e5"
   display_name: "Ensure that PostgreSQL server disables public network access"
-  cloud_provider: "azure"
+  cloud_provider: "Azure"
   platform: "Terraform"
   framework: "Terraform"
   severity: "HIGH"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `c7f8e9a1-b2c3-d4e5-f6a7-8901b2c3d4e5`
 
-**Cloud Provider:** azure
+**Cloud Provider:** Azure
 
 **Platform:** Terraform
 
