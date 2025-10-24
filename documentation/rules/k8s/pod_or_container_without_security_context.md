@@ -5,7 +5,7 @@ meta:
   name: "k8s/pod_or_container_without_security_context"
   id: "a97a340a-0063-418e-b3a1-3028941d0995"
   display_name: "Pod or container without security context"
-  cloud_provider: "k8s"
+  cloud_provider: "Kubernetes"
   platform: "Kubernetes"
   framework: "Kubernetes"
   severity: "LOW"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `a97a340a-0063-418e-b3a1-3028941d0995`
 
-**Cloud Provider:** k8s
+**Cloud Provider:** Kubernetes
 
 **Platform:** Kubernetes
 

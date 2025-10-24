@@ -5,7 +5,7 @@ meta:
   name: "gcp/private_cluster_disabled"
   id: "6ccb85d7-0420-4907-9380-50313f80946b"
   display_name: "Private cluster disabled"
-  cloud_provider: "gcp"
+  cloud_provider: "GCP"
   platform: "Terraform"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `6ccb85d7-0420-4907-9380-50313f80946b`
 
-**Cloud Provider:** gcp
+**Cloud Provider:** GCP
 
 **Platform:** Terraform
 

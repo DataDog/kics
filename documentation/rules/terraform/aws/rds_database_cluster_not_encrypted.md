@@ -5,7 +5,7 @@ meta:
   name: "aws/rds_database_cluster_not_encrypted"
   id: "656880aa-1388-488f-a6d4-8f73c23149b2"
   display_name: "RDS database cluster not encrypted"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "HIGH"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `656880aa-1388-488f-a6d4-8f73c23149b2`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

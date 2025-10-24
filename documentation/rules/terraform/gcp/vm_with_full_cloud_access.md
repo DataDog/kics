@@ -5,7 +5,7 @@ meta:
   name: "gcp/vm_with_full_cloud_access"
   id: "bc280331-27b9-4acb-a010-018e8098aa5d"
   display_name: "VM with full cloud access"
-  cloud_provider: "gcp"
+  cloud_provider: "GCP"
   platform: "Terraform"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `bc280331-27b9-4acb-a010-018e8098aa5d`
 
-**Cloud Provider:** gcp
+**Cloud Provider:** GCP
 
 **Platform:** Terraform
 

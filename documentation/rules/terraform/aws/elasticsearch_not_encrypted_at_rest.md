@@ -5,7 +5,7 @@ meta:
   name: "aws/elasticsearch_not_encrypted_at_rest"
   id: "24e16922-4330-4e9d-be8a-caa90299466a"
   display_name: "Elasticsearch not encrypted at rest"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "HIGH"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `24e16922-4330-4e9d-be8a-caa90299466a`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

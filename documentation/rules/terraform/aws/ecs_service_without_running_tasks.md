@@ -5,7 +5,7 @@ meta:
   name: "aws/ecs_service_without_running_tasks"
   id: "91f16d09-689e-4926-aca7-155157f634ed"
   display_name: "ECS service without running tasks"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "LOW"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `91f16d09-689e-4926-aca7-155157f634ed`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

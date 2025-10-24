@@ -5,7 +5,7 @@ meta:
   name: "aws/team_tag_not_present"
   id: "a2b3c4d5-e6f7-8901-gh23-ijkl456m7890"
   display_name: "Team tag missing on AWS resource"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "INFO"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `a2b3c4d5-e6f7-8901-gh23-ijkl456m7890`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

@@ -5,7 +5,7 @@ meta:
   name: "aws/sagemaker_notebook_instance_without_kms"
   id: "f3674e0c-f6be-43fa-b71c-bf346d1aed99"
   display_name: "SageMaker notebook instance without KMS"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "HIGH"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `f3674e0c-f6be-43fa-b71c-bf346d1aed99`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

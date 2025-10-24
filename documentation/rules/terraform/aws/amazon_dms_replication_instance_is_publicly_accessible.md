@@ -5,7 +5,7 @@ meta:
   name: "aws/amazon_dms_replication_instance_is_publicly_accessible"
   id: "030d3b18-1821-45b4-9e08-50efbe7becbb"
   display_name: "Amazon DMS replication instance is publicly accessible"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "CRITICAL"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `030d3b18-1821-45b4-9e08-50efbe7becbb`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

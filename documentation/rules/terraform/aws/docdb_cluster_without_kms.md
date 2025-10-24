@@ -5,7 +5,7 @@ meta:
   name: "aws/docdb_cluster_without_kms"
   id: "4766d3ea-241c-4ee6-93ff-c380c996bd1a"
   display_name: "DocumentDB cluster without KMS"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "HIGH"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `4766d3ea-241c-4ee6-93ff-c380c996bd1a`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

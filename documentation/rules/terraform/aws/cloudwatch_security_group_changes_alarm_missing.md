@@ -5,7 +5,7 @@ meta:
   name: "aws/cloudwatch_security_group_changes_alarm_missing"
   id: "4beaf898-9f8b-4237-89e2-5ffdc7ee6006"
   display_name: "Cloudwatch security group changes alarm missing"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `4beaf898-9f8b-4237-89e2-5ffdc7ee6006`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

@@ -5,7 +5,7 @@ meta:
   name: "k8s/psp_allows_sharing_host_pid"
   id: "91dacd0e-d189-4a9c-8272-5999a3cc32d9"
   display_name: "PSP allows sharing host PID"
-  cloud_provider: "k8s"
+  cloud_provider: "Kubernetes"
   platform: "Kubernetes"
   framework: "Kubernetes"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `91dacd0e-d189-4a9c-8272-5999a3cc32d9`
 
-**Cloud Provider:** k8s
+**Cloud Provider:** Kubernetes
 
 **Platform:** Kubernetes
 

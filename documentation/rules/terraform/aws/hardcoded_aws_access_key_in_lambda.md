@@ -5,7 +5,7 @@ meta:
   name: "aws/hardcoded_aws_access_key_in_lambda"
   id: "1402afd8-a95c-4e84-8b0b-6fb43758e6ce"
   display_name: "Hardcoded AWS access key in Lambda"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "HIGH"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `1402afd8-a95c-4e84-8b0b-6fb43758e6ce`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

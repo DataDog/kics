@@ -5,7 +5,7 @@ meta:
   name: "aws/missing_cluster_log_types"
   id: "66f130d9-b81d-4e8e-9b08-da74b9c891df"
   display_name: "Missing cluster log types"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `66f130d9-b81d-4e8e-9b08-da74b9c891df`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

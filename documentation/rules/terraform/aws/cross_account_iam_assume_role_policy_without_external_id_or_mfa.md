@@ -5,7 +5,7 @@ meta:
   name: "aws/cross_account_iam_assume_role_policy_without_external_id_or_mfa"
   id: "09c35abf-5852-4622-ac7a-b987b331232e"
   display_name: "Cross-account IAM assume role policy without external id or MFA"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "HIGH"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `09c35abf-5852-4622-ac7a-b987b331232e`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

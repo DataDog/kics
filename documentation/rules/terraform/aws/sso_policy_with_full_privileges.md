@@ -5,7 +5,7 @@ meta:
   name: "aws/sso_policy_with_full_privileges"
   id: "132a8c31-9837-4203-9fd1-15ca210c7b73"
   display_name: "SSO policy with full privileges"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `132a8c31-9837-4203-9fd1-15ca210c7b73`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

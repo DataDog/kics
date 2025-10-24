@@ -5,7 +5,7 @@ meta:
   name: "aws/cloudtrail_multi_region_disabled"
   id: "8173d5eb-96b5-4aa6-a71b-ecfa153c123d"
   display_name: "CloudTrail multi region disabled"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "LOW"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `8173d5eb-96b5-4aa6-a71b-ecfa153c123d`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

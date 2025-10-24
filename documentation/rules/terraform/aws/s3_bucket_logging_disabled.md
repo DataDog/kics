@@ -5,7 +5,7 @@ meta:
   name: "aws/s3_bucket_logging_disabled"
   id: "f861041c-8c9f-4156-acfc-5e6e524f5884"
   display_name: "S3 bucket logging disabled"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `f861041c-8c9f-4156-acfc-5e6e524f5884`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

@@ -5,7 +5,7 @@ meta:
   name: "k8s/pod_security_policy_admission_control_plugin_not_set"
   id: "afa36afb-39fe-4d94-b9b6-afb236f7a03d"
   display_name: "Pod security policy admission control plugin not set"
-  cloud_provider: "k8s"
+  cloud_provider: "Kubernetes"
   platform: "Kubernetes"
   framework: "Kubernetes"
   severity: "HIGH"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `afa36afb-39fe-4d94-b9b6-afb236f7a03d`
 
-**Cloud Provider:** k8s
+**Cloud Provider:** Kubernetes
 
 **Platform:** Kubernetes
 

@@ -5,7 +5,7 @@ meta:
   name: "aws/security_group_with_unrestricted_access_to_ssh"
   id: "65905cec-d691-4320-b320-2000436cb696"
   display_name: "Security group with unrestricted access to SSH"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `65905cec-d691-4320-b320-2000436cb696`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

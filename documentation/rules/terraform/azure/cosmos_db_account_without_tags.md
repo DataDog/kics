@@ -5,7 +5,7 @@ meta:
   name: "azure/cosmos_db_account_without_tags"
   id: "56dad03e-e94f-4dd6-93a4-c253a03ff7a0"
   display_name: "Cosmos DB account without tags"
-  cloud_provider: "azure"
+  cloud_provider: "Azure"
   platform: "Terraform"
   framework: "Terraform"
   severity: "LOW"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `56dad03e-e94f-4dd6-93a4-c253a03ff7a0`
 
-**Cloud Provider:** azure
+**Cloud Provider:** Azure
 
 **Platform:** Terraform
 

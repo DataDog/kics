@@ -5,7 +5,7 @@ meta:
   name: "aws/password_without_reuse_prevention"
   id: "89806cdc-9c2e-4bd1-a0dc-53f339bcfb2a"
   display_name: "Password without reuse prevention"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "LOW"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `89806cdc-9c2e-4bd1-a0dc-53f339bcfb2a`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

@@ -5,7 +5,7 @@ meta:
   name: "aws/sns_topic_publicity_has_allow_and_not_action_simultaneously"
   id: "5ea624e4-c8b1-4bb3-87a4-4235a776adcc"
   display_name: "SNS topic publicity has allow and NotAction simultaneously"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `5ea624e4-c8b1-4bb3-87a4-4235a776adcc`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

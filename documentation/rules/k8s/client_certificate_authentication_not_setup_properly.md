@@ -5,7 +5,7 @@ meta:
   name: "k8s/client_certificate_authentication_not_setup_properly"
   id: "e0e00aba-5f1c-4981-a542-9a9563c0ee20"
   display_name: "Client certificate authentication not set up properly"
-  cloud_provider: "k8s"
+  cloud_provider: "Kubernetes"
   platform: "Kubernetes"
   framework: "Kubernetes"
   severity: "HIGH"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `e0e00aba-5f1c-4981-a542-9a9563c0ee20`
 
-**Cloud Provider:** k8s
+**Cloud Provider:** Kubernetes
 
 **Platform:** Kubernetes
 

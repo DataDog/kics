@@ -5,7 +5,7 @@ meta:
   name: "gcp/os_login_is_disabled_for_vm_instance"
   id: "d0b4d550-c001-46c3-bbdb-d5d75d33f05f"
   display_name: "OSLogin is disabled for VM instance"
-  cloud_provider: "gcp"
+  cloud_provider: "GCP"
   platform: "Terraform"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `d0b4d550-c001-46c3-bbdb-d5d75d33f05f`
 
-**Cloud Provider:** gcp
+**Cloud Provider:** GCP
 
 **Platform:** Terraform
 

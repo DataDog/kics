@@ -5,7 +5,7 @@ meta:
   name: "k8s/metadata_label_is_invalid"
   id: "1123031a-f921-4c5b-bd86-ef354ecfd37a"
   display_name: "Invalid metadata label"
-  cloud_provider: "k8s"
+  cloud_provider: "Kubernetes"
   platform: "Kubernetes"
   framework: "Kubernetes"
   severity: "LOW"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `1123031a-f921-4c5b-bd86-ef354ecfd37a`
 
-**Cloud Provider:** k8s
+**Cloud Provider:** Kubernetes
 
 **Platform:** Kubernetes
 

@@ -5,7 +5,7 @@ meta:
   name: "k8s/audit_log_path_not_set"
   id: "73e251f0-363d-4e53-86e2-0a93592437eb"
   display_name: "Audit log path not set"
-  cloud_provider: "k8s"
+  cloud_provider: "Kubernetes"
   platform: "Kubernetes"
   framework: "Kubernetes"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `73e251f0-363d-4e53-86e2-0a93592437eb`
 
-**Cloud Provider:** k8s
+**Cloud Provider:** Kubernetes
 
 **Platform:** Kubernetes
 

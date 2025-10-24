@@ -5,7 +5,7 @@ meta:
   name: "azure/aks_rbac_disabled"
   id: "86f92117-eed8-4614-9c6c-b26da20ff37f"
   display_name: "AKS RBAC disabled"
-  cloud_provider: "azure"
+  cloud_provider: "Azure"
   platform: "Terraform"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `86f92117-eed8-4614-9c6c-b26da20ff37f`
 
-**Cloud Provider:** azure
+**Cloud Provider:** Azure
 
 **Platform:** Terraform
 

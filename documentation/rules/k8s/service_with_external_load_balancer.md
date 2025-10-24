@@ -5,7 +5,7 @@ meta:
   name: "k8s/service_with_external_load_balancer"
   id: "26763a1c-5dda-4772-b507-5fca7fb5f165"
   display_name: "Service with external load balancer"
-  cloud_provider: "k8s"
+  cloud_provider: "Kubernetes"
   platform: "Kubernetes"
   framework: "Kubernetes"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `26763a1c-5dda-4772-b507-5fca7fb5f165`
 
-**Cloud Provider:** k8s
+**Cloud Provider:** Kubernetes
 
 **Platform:** Kubernetes
 

@@ -5,7 +5,7 @@ meta:
   name: "aws/api_gateway_xray_disabled"
   id: "5813ef56-fa94-406a-b35d-977d4a56ff2b"
   display_name: "API Gateway X-Ray disabled"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "LOW"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `5813ef56-fa94-406a-b35d-977d4a56ff2b`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

@@ -5,7 +5,7 @@ meta:
   name: "aws/redshift_not_encrypted"
   id: "cfdcabb0-fc06-427c-865b-c59f13e898ce"
   display_name: "Redshift not encrypted"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "HIGH"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `cfdcabb0-fc06-427c-865b-c59f13e898ce`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

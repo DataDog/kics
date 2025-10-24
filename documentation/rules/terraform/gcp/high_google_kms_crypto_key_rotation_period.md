@@ -5,7 +5,7 @@ meta:
   name: "gcp/high_google_kms_crypto_key_rotation_period"
   id: "d8c57c4e-bf6f-4e32-a2bf-8643532de77b"
   display_name: "High Google KMS crypto key rotation period"
-  cloud_provider: "gcp"
+  cloud_provider: "GCP"
   platform: "Terraform"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `d8c57c4e-bf6f-4e32-a2bf-8643532de77b`
 
-**Cloud Provider:** gcp
+**Cloud Provider:** GCP
 
 **Platform:** Terraform
 

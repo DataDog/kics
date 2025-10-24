@@ -5,7 +5,7 @@ meta:
   name: "aws/rds_associated_with_public_subnet"
   id: "2f737336-b18a-4602-8ea0-b200312e1ac1"
   display_name: "RDS associated with public subnet"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "CRITICAL"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `2f737336-b18a-4602-8ea0-b200312e1ac1`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

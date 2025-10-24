@@ -5,7 +5,7 @@ meta:
   name: "aws/lambda_permission_principal_is_wildcard"
   id: "e08ed7eb-f3ef-494d-9d22-2e3db756a347"
   display_name: "Lambda permission principal is wildcard"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `e08ed7eb-f3ef-494d-9d22-2e3db756a347`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

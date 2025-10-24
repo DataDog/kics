@@ -5,7 +5,7 @@ meta:
   name: "azure/function_app_client_certificates_unrequired"
   id: "9bb3c639-5edf-458c-8ee5-30c17c7d671d"
   display_name: "Function App client certificates not required"
-  cloud_provider: "azure"
+  cloud_provider: "Azure"
   platform: "Terraform"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `9bb3c639-5edf-458c-8ee5-30c17c7d671d`
 
-**Cloud Provider:** azure
+**Cloud Provider:** Azure
 
 **Platform:** Terraform
 

@@ -5,7 +5,7 @@ meta:
   name: "aws/docdb_logging_disabled"
   id: "56f6a008-1b14-4af4-b9b2-ab7cf7e27641"
   display_name: "DocumentDB logging is disabled"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `56f6a008-1b14-4af4-b9b2-ab7cf7e27641`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

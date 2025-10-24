@@ -5,7 +5,7 @@ meta:
   name: "aws/api_gateway_with_cloudwatch_logging_disabled"
   id: "982aa526-6970-4c59-8b9b-2ce7e019fe36"
   display_name: "API Gateway with CloudWatch logging disabled"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `982aa526-6970-4c59-8b9b-2ce7e019fe36`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

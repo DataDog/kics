@@ -5,7 +5,7 @@ meta:
   name: "gcp/gke_using_default_service_account"
   id: "1c8eef02-17b1-4a3e-b01d-dcc3292d2c38"
   display_name: "GKE using default service account"
-  cloud_provider: "gcp"
+  cloud_provider: "GCP"
   platform: "Terraform"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `1c8eef02-17b1-4a3e-b01d-dcc3292d2c38`
 
-**Cloud Provider:** gcp
+**Cloud Provider:** GCP
 
 **Platform:** Terraform
 

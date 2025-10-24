@@ -5,7 +5,7 @@ meta:
   name: "k8s/audit_policy_file_not_defined"
   id: "13a49a2e-488e-4309-a7c0-d6b05577a5fb"
   display_name: "Audit policy file not defined"
-  cloud_provider: "k8s"
+  cloud_provider: "Kubernetes"
   platform: "Kubernetes"
   framework: "Kubernetes"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `13a49a2e-488e-4309-a7c0-d6b05577a5fb`
 
-**Cloud Provider:** k8s
+**Cloud Provider:** Kubernetes
 
 **Platform:** Kubernetes
 

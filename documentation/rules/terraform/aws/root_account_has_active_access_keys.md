@@ -5,7 +5,7 @@ meta:
   name: "aws/root_account_has_active_access_keys"
   id: "970d224d-b42a-416b-81f9-8f4dfe70c4bc"
   display_name: "Root account has active access keys"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "HIGH"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `970d224d-b42a-416b-81f9-8f4dfe70c4bc`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

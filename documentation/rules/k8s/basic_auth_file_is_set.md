@@ -5,7 +5,7 @@ meta:
   name: "k8s/basic_auth_file_is_set"
   id: "5da47109-f8d6-4585-9e2b-96a8958a12f5"
   display_name: "Basic auth file is set"
-  cloud_provider: "k8s"
+  cloud_provider: "Kubernetes"
   platform: "Kubernetes"
   framework: "Kubernetes"
   severity: "HIGH"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `5da47109-f8d6-4585-9e2b-96a8958a12f5`
 
-**Cloud Provider:** k8s
+**Cloud Provider:** Kubernetes
 
 **Platform:** Kubernetes
 

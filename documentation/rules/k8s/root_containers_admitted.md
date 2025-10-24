@@ -5,7 +5,7 @@ meta:
   name: "k8s/root_containers_admitted"
   id: "e3aa0612-4351-4a0d-983f-aefea25cf203"
   display_name: "Root containers admitted"
-  cloud_provider: "k8s"
+  cloud_provider: "Kubernetes"
   platform: "Kubernetes"
   framework: "Kubernetes"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `e3aa0612-4351-4a0d-983f-aefea25cf203`
 
-**Cloud Provider:** k8s
+**Cloud Provider:** Kubernetes
 
 **Platform:** Kubernetes
 

@@ -5,7 +5,7 @@ meta:
   name: "aws/neptune_database_cluster_encryption_disabled"
   id: "98d59056-f745-4ef5-8613-32bca8d40b7e"
   display_name: "Neptune database cluster encryption disabled"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "HIGH"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `98d59056-f745-4ef5-8613-32bca8d40b7e`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

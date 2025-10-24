@@ -5,7 +5,7 @@ meta:
   name: "azure/small_flow_logs_retention_period"
   id: "7750fcca-dd03-4d38-b663-4b70289bcfd4"
   display_name: "Small flow logs retention period"
-  cloud_provider: "azure"
+  cloud_provider: "Azure"
   platform: "Terraform"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `7750fcca-dd03-4d38-b663-4b70289bcfd4`
 
-**Cloud Provider:** azure
+**Cloud Provider:** Azure
 
 **Platform:** Terraform
 

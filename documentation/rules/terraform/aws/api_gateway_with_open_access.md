@@ -5,7 +5,7 @@ meta:
   name: "aws/api_gateway_with_open_access"
   id: "15ccec05-5476-4890-ad19-53991eba1db8"
   display_name: "API Gateway with open access"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `15ccec05-5476-4890-ad19-53991eba1db8`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

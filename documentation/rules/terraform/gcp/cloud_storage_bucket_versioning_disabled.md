@@ -5,7 +5,7 @@ meta:
   name: "gcp/cloud_storage_bucket_versioning_disabled"
   id: "e7e961ac-d17e-4413-84bc-8a1fbe242944"
   display_name: "Cloud Storage bucket versioning disabled"
-  cloud_provider: "gcp"
+  cloud_provider: "GCP"
   platform: "Terraform"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `e7e961ac-d17e-4413-84bc-8a1fbe242944`
 
-**Cloud Provider:** gcp
+**Cloud Provider:** GCP
 
 **Platform:** Terraform
 

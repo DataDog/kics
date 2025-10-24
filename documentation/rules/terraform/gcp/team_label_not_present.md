@@ -5,7 +5,7 @@ meta:
   name: "gcp/team_label_not_present"
   id: "b2b3c4d5-e6f7-8901-gh23-ijkl456m7890"
   display_name: "Team label missing on GCP resource"
-  cloud_provider: "gcp"
+  cloud_provider: "GCP"
   platform: "Terraform"
   framework: "Terraform"
   severity: "INFO"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `b2b3c4d5-e6f7-8901-gh23-ijkl456m7890`
 
-**Cloud Provider:** gcp
+**Cloud Provider:** GCP
 
 **Platform:** Terraform
 

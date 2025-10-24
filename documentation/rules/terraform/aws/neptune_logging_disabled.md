@@ -5,7 +5,7 @@ meta:
   name: "aws/neptune_logging_disabled"
   id: "45cff7b6-3b80-40c1-ba7b-2cf480678bb8"
   display_name: "Neptune logging is disabled"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `45cff7b6-3b80-40c1-ba7b-2cf480678bb8`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

@@ -5,7 +5,7 @@ meta:
   name: "aws/s3_bucket_object_not_encrypted"
   id: "5fb49a69-8d46-4495-a2f8-9c8c622b2b6e"
   display_name: "S3 bucket object not encrypted"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "HIGH"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `5fb49a69-8d46-4495-a2f8-9c8c622b2b6e`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

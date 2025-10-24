@@ -5,7 +5,7 @@ meta:
   name: "aws/s3_bucket_with_unsecured_cors_rule"
   id: "98a8f708-121b-455b-ae2f-da3fb59d17e1"
   display_name: "S3 bucket with unsecured CORS rule"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `98a8f708-121b-455b-ae2f-da3fb59d17e1`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

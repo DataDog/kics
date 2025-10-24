@@ -5,7 +5,7 @@ meta:
   name: "azure/redis_cache_allows_non_ssl_connections"
   id: "e29a75e6-aba3-4896-b42d-b87818c16b58"
   display_name: "Redis cache allows non SSL connections"
-  cloud_provider: "azure"
+  cloud_provider: "Azure"
   platform: "Terraform"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `e29a75e6-aba3-4896-b42d-b87818c16b58`
 
-**Cloud Provider:** azure
+**Cloud Provider:** Azure
 
 **Platform:** Terraform
 

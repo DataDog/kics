@@ -5,7 +5,7 @@ meta:
   name: "gcp/legacy_client_certificate_auth_enabled"
   id: "73fb21a1-b19a-45b1-b648-b47b1678681e"
   display_name: "Legacy client certificate auth enabled"
-  cloud_provider: "gcp"
+  cloud_provider: "GCP"
   platform: "Terraform"
   framework: "Terraform"
   severity: "LOW"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `73fb21a1-b19a-45b1-b648-b47b1678681e`
 
-**Cloud Provider:** gcp
+**Cloud Provider:** GCP
 
 **Platform:** Terraform
 

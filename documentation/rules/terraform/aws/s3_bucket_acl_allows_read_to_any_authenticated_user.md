@@ -5,7 +5,7 @@ meta:
   name: "aws/s3_bucket_acl_allows_read_to_any_authenticated_user"
   id: "57b9893d-33b1-4419-bcea-a717ea87e139"
   display_name: "S3 bucket ACL allows read to any authenticated user"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "HIGH"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `57b9893d-33b1-4419-bcea-a717ea87e139`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

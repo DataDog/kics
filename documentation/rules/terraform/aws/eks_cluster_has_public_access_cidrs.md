@@ -5,7 +5,7 @@ meta:
   name: "aws/eks_cluster_has_public_access_cidrs"
   id: "61cf9883-1752-4768-b18c-0d57f2737709"
   display_name: "EKS cluster has public access CIDRs"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `61cf9883-1752-4768-b18c-0d57f2737709`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

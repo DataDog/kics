@@ -5,7 +5,7 @@ meta:
   name: "k8s/shared_host_pid_namespace"
   id: "302736f4-b16c-41b8-befe-c0baffa0bd9d"
   display_name: "Shared host PID namespace"
-  cloud_provider: "k8s"
+  cloud_provider: "Kubernetes"
   platform: "Kubernetes"
   framework: "Kubernetes"
   severity: "HIGH"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `302736f4-b16c-41b8-befe-c0baffa0bd9d`
 
-**Cloud Provider:** k8s
+**Cloud Provider:** Kubernetes
 
 **Platform:** Kubernetes
 

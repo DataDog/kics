@@ -5,7 +5,7 @@ meta:
   name: "k8s/object_is_using_a_deprecated_api_version"
   id: "94b76ea5-e074-4ca2-8a03-c5a606e30645"
   display_name: "Object is using a deprecated API version"
-  cloud_provider: "k8s"
+  cloud_provider: "Kubernetes"
   platform: "Kubernetes"
   framework: "Kubernetes"
   severity: "LOW"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `94b76ea5-e074-4ca2-8a03-c5a606e30645`
 
-**Cloud Provider:** k8s
+**Cloud Provider:** Kubernetes
 
 **Platform:** Kubernetes
 

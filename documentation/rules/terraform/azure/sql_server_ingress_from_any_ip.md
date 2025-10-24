@@ -5,7 +5,7 @@ meta:
   name: "azure/sql_server_ingress_from_any_ip"
   id: "25c0ea09-f1c5-4380-b055-3b83863f2bb8"
   display_name: "Sqlserver ingress from any IP"
-  cloud_provider: "azure"
+  cloud_provider: "Azure"
   platform: "Terraform"
   framework: "Terraform"
   severity: "CRITICAL"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `25c0ea09-f1c5-4380-b055-3b83863f2bb8`
 
-**Cloud Provider:** azure
+**Cloud Provider:** Azure
 
 **Platform:** Terraform
 

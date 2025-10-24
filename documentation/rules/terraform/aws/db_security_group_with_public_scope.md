@@ -5,7 +5,7 @@ meta:
   name: "aws/db_security_group_with_public_scope"
   id: "1e0ef61b-ad85-4518-a3d3-85eaad164885"
   display_name: "DB security group with public scope"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "CRITICAL"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `1e0ef61b-ad85-4518-a3d3-85eaad164885`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

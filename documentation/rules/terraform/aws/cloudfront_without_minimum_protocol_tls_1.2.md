@@ -5,7 +5,7 @@ meta:
   name: "aws/cloudfront_without_minimum_protocol_tls_1.2"
   id: "00e5e55e-c2ff-46b3-a757-a7a1cd802456"
   display_name: "CloudFront without minimum protocol TLS 1.2"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `00e5e55e-c2ff-46b3-a757-a7a1cd802456`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

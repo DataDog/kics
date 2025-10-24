@@ -5,7 +5,7 @@ meta:
   name: "aws/ami_owner_missing"
   id: "f317c3c2-58e5-4aa7-bb8e-3a7f6bcd274a"
   display_name: "AMI most recent without owner or filter"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "HIGH"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `f317c3c2-58e5-4aa7-bb8e-3a7f6bcd274a`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

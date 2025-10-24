@@ -5,7 +5,7 @@ meta:
   name: "k8s/shared_service_account"
   id: "c1032cf7-3628-44e2-bd53-38c17cf31b6b"
   display_name: "Shared service account"
-  cloud_provider: "k8s"
+  cloud_provider: "Kubernetes"
   platform: "Kubernetes"
   framework: "Kubernetes"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `c1032cf7-3628-44e2-bd53-38c17cf31b6b`
 
-**Cloud Provider:** k8s
+**Cloud Provider:** Kubernetes
 
 **Platform:** Kubernetes
 

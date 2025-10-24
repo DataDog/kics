@@ -5,7 +5,7 @@ meta:
   name: "k8s/pod_or_container_without_limit_range"
   id: "4a20ebac-1060-4c81-95d1-1f7f620e983b"
   display_name: "Pod or container without LimitRange"
-  cloud_provider: "k8s"
+  cloud_provider: "Kubernetes"
   platform: "Kubernetes"
   framework: "Kubernetes"
   severity: "LOW"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `4a20ebac-1060-4c81-95d1-1f7f620e983b`
 
-**Cloud Provider:** k8s
+**Cloud Provider:** Kubernetes
 
 **Platform:** Kubernetes
 

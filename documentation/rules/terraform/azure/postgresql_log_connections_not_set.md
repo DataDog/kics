@@ -5,7 +5,7 @@ meta:
   name: "azure/postgresql_log_connections_not_set"
   id: "c640d783-10c5-4071-b6c1-23507300d333"
   display_name: "PostgreSQL log connections not set"
-  cloud_provider: "azure"
+  cloud_provider: "Azure"
   platform: "Terraform"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `c640d783-10c5-4071-b6c1-23507300d333`
 
-**Cloud Provider:** azure
+**Cloud Provider:** Azure
 
 **Platform:** Terraform
 

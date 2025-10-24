@@ -5,7 +5,7 @@ meta:
   name: "aws/ca_certificate_identifier_is_outdated"
   id: "9f40c07e-699e-4410-8856-3ba0f2e3a2dd"
   display_name: "CA certificate identifier is outdated"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `9f40c07e-699e-4410-8856-3ba0f2e3a2dd`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

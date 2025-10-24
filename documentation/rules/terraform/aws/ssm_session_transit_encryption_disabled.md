@@ -5,7 +5,7 @@ meta:
   name: "aws/ssm_session_transit_encryption_disabled"
   id: "ce60cc6b-6831-4bd7-84a2-cc7f8ee71433"
   display_name: "SSM session transit encryption disabled"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `ce60cc6b-6831-4bd7-84a2-cc7f8ee71433`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

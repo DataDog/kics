@@ -5,7 +5,7 @@ meta:
   name: "aws/alb_listening_on_http"
   id: "de7f5e83-da88-4046-871f-ea18504b1d43"
   display_name: "ALB listening on HTTP"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `de7f5e83-da88-4046-871f-ea18504b1d43`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

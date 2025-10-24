@@ -5,7 +5,7 @@ meta:
   name: "k8s/token_auth_file_is_set"
   id: "32ecd76e-7bbf-402e-bf48-8b9485749558"
   display_name: "Token auth file is set"
-  cloud_provider: "k8s"
+  cloud_provider: "Kubernetes"
   platform: "Kubernetes"
   framework: "Kubernetes"
   severity: "HIGH"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `32ecd76e-7bbf-402e-bf48-8b9485749558`
 
-**Cloud Provider:** k8s
+**Cloud Provider:** Kubernetes
 
 **Platform:** Kubernetes
 

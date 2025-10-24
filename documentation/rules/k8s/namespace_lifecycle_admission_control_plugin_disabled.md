@@ -5,7 +5,7 @@ meta:
   name: "k8s/namespace_lifecycle_admission_control_plugin_disabled"
   id: "1ffe7bf7-563b-4b3d-a71d-ba6bd8d49b37"
   display_name: "Namespace lifecycle admission control plugin disabled"
-  cloud_provider: "k8s"
+  cloud_provider: "Kubernetes"
   platform: "Kubernetes"
   framework: "Kubernetes"
   severity: "LOW"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `1ffe7bf7-563b-4b3d-a71d-ba6bd8d49b37`
 
-**Cloud Provider:** k8s
+**Cloud Provider:** Kubernetes
 
 **Platform:** Kubernetes
 

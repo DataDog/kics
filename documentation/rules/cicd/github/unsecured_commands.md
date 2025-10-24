@@ -5,7 +5,7 @@ meta:
   name: "github/unsecured_commands"
   id: "60fd272d-15f4-4d8f-afe4-77d9c6cc0453"
   display_name: "Unsecured commands"
-  cloud_provider: "github"
+  cloud_provider: "GitHub"
   platform: "CICD"
   framework: "CICD"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `60fd272d-15f4-4d8f-afe4-77d9c6cc0453`
 
-**Cloud Provider:** github
+**Cloud Provider:** GitHub
 
 **Platform:** CICD
 

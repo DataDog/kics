@@ -5,7 +5,7 @@ meta:
   name: "aws/rds_with_backup_disabled"
   id: "1dc73fb4-5b51-430c-8c5f-25dcf9090b02"
   display_name: "RDS with backup disabled"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `1dc73fb4-5b51-430c-8c5f-25dcf9090b02`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

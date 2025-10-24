@@ -5,7 +5,7 @@ meta:
   name: "k8s/kubelet_client_periodic_certificate_switch_disabled"
   id: "52d70f2e-3257-474c-b3dc-8ad9ba6a061a"
   display_name: "Kubelet client periodic certificate switch disabled"
-  cloud_provider: "k8s"
+  cloud_provider: "Kubernetes"
   platform: "Kubernetes"
   framework: "Kubernetes"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `52d70f2e-3257-474c-b3dc-8ad9ba6a061a`
 
-**Cloud Provider:** k8s
+**Cloud Provider:** Kubernetes
 
 **Platform:** Kubernetes
 

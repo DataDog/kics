@@ -5,7 +5,7 @@ meta:
   name: "k8s/statefulset_without_service_name"
   id: "bb241e61-77c3-4b97-9575-c0f8a1e008d0"
   display_name: "StatefulSet without service name"
-  cloud_provider: "k8s"
+  cloud_provider: "Kubernetes"
   platform: "Kubernetes"
   framework: "Kubernetes"
   severity: "LOW"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `bb241e61-77c3-4b97-9575-c0f8a1e008d0`
 
-**Cloud Provider:** k8s
+**Cloud Provider:** Kubernetes
 
 **Platform:** Kubernetes
 

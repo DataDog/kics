@@ -5,7 +5,7 @@ meta:
   name: "aws/cloudtrail_log_file_validation_disabled"
   id: "52ffcfa6-6c70-4ea6-8376-d828d3961669"
   display_name: "CloudTrail log file validation disabled"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "LOW"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `52ffcfa6-6c70-4ea6-8376-d828d3961669`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

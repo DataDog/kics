@@ -5,7 +5,7 @@ meta:
   name: "azure/rdp_is_exposed_to_the_internet"
   id: "efbf6449-5ec5-4cfe-8f15-acc51e0d787c"
   display_name: "RDP is exposed to the internet"
-  cloud_provider: "azure"
+  cloud_provider: "Azure"
   platform: "Terraform"
   framework: "Terraform"
   severity: "HIGH"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `efbf6449-5ec5-4cfe-8f15-acc51e0d787c`
 
-**Cloud Provider:** azure
+**Cloud Provider:** Azure
 
 **Platform:** Terraform
 

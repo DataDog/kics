@@ -5,7 +5,7 @@ meta:
   name: "aws/s3_bucket_public_acl_overridden_by_public_access_block"
   id: "bf878b1a-7418-4de3-b13c-3a86cf894920"
   display_name: "S3 bucket public ACL overridden by public access block"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "HIGH"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `bf878b1a-7418-4de3-b13c-3a86cf894920`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

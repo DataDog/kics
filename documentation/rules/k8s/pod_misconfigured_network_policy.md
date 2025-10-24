@@ -5,7 +5,7 @@ meta:
   name: "k8s/pod_misconfigured_network_policy"
   id: "0401f71b-9c1e-4821-ab15-a955caa621be"
   display_name: "Pod misconfigured network policy"
-  cloud_provider: "k8s"
+  cloud_provider: "Kubernetes"
   platform: "Kubernetes"
   framework: "Kubernetes"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `0401f71b-9c1e-4821-ab15-a955caa621be`
 
-**Cloud Provider:** k8s
+**Cloud Provider:** Kubernetes
 
 **Platform:** Kubernetes
 

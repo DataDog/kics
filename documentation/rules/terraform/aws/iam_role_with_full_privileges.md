@@ -5,7 +5,7 @@ meta:
   name: "aws/iam_role_with_full_privileges"
   id: "b1ffa705-19a3-4b73-b9d0-0c97d0663842"
   display_name: "IAM role with full privileges"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "HIGH"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `b1ffa705-19a3-4b73-b9d0-0c97d0663842`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

@@ -5,7 +5,7 @@ meta:
   name: "aws/api_gateway_without_security_policy"
   id: "4e1cc5d3-2811-4fb2-861c-ee9b3cb7f90b"
   display_name: "API Gateway without security policy"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `4e1cc5d3-2811-4fb2-861c-ee9b3cb7f90b`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

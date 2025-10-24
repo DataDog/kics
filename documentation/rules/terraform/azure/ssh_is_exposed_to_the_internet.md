@@ -5,7 +5,7 @@ meta:
   name: "azure/ssh_is_exposed_to_the_internet"
   id: "3e3c175e-aadf-4e2b-a464-3fdac5748d24"
   display_name: "SSH is exposed to the Internet"
-  cloud_provider: "azure"
+  cloud_provider: "Azure"
   platform: "Terraform"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `3e3c175e-aadf-4e2b-a464-3fdac5748d24`
 
-**Cloud Provider:** azure
+**Cloud Provider:** Azure
 
 **Platform:** Terraform
 

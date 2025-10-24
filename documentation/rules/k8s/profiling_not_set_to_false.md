@@ -5,7 +5,7 @@ meta:
   name: "k8s/profiling_not_set_to_false"
   id: "2f491173-6375-4a84-b28e-a4e2b9a58a69"
   display_name: "Profiling not set to false"
-  cloud_provider: "k8s"
+  cloud_provider: "Kubernetes"
   platform: "Kubernetes"
   framework: "Kubernetes"
   severity: "LOW"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `2f491173-6375-4a84-b28e-a4e2b9a58a69`
 
-**Cloud Provider:** k8s
+**Cloud Provider:** Kubernetes
 
 **Platform:** Kubernetes
 

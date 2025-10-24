@@ -5,7 +5,7 @@ meta:
   name: "aws/config_configuration_aggregator_to_all_regions_disabled"
   id: "ac5a0bc0-a54c-45aa-90c3-15f7703b9132"
   display_name: "Configuration aggregator to all regions disabled"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "LOW"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `ac5a0bc0-a54c-45aa-90c3-15f7703b9132`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

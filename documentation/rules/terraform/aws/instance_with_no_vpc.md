@@ -5,7 +5,7 @@ meta:
   name: "aws/instance_with_no_vpc"
   id: "a31a5a29-718a-4ff4-8001-a69e5e4d029e"
   display_name: "Instance with no VPC"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "LOW"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `a31a5a29-718a-4ff4-8001-a69e5e4d029e`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

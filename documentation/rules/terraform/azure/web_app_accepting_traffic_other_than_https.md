@@ -5,7 +5,7 @@ meta:
   name: "azure/web_app_accepting_traffic_other_than_https"
   id: "11e9a948-c6c3-4a0f-8dcf-b5cf1763cdbe"
   display_name: "Web app accepting traffic other than HTTPS"
-  cloud_provider: "azure"
+  cloud_provider: "Azure"
   platform: "Terraform"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `11e9a948-c6c3-4a0f-8dcf-b5cf1763cdbe`
 
-**Cloud Provider:** azure
+**Cloud Provider:** Azure
 
 **Platform:** Terraform
 

@@ -5,7 +5,7 @@ meta:
   name: "aws/sagemaker_direct_internet_access_enabled"
   id: "f3g4h5i6-j7k8-9lmn-0opq-12345abcdefg"
   display_name: "SageMaker notebook internet access enabled"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "HIGH"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `f3g4h5i6-j7k8-9lmn-0opq-12345abcdefg`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

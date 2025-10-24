@@ -5,7 +5,7 @@ meta:
   name: "k8s/statefulset_requests_storage"
   id: "8cf4671a-cf3d-46fc-8389-21e7405063a2"
   display_name: "StatefulSet requests storage"
-  cloud_provider: "k8s"
+  cloud_provider: "Kubernetes"
   platform: "Kubernetes"
   framework: "Kubernetes"
   severity: "LOW"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `8cf4671a-cf3d-46fc-8389-21e7405063a2`
 
-**Cloud Provider:** k8s
+**Cloud Provider:** Kubernetes
 
 **Platform:** Kubernetes
 

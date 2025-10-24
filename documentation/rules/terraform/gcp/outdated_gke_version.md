@@ -5,7 +5,7 @@ meta:
   name: "gcp/outdated_gke_version"
   id: "128df7ec-f185-48bc-8913-ce756a3ccb85"
   display_name: "Outdated GKE version"
-  cloud_provider: "gcp"
+  cloud_provider: "GCP"
   platform: "Terraform"
   framework: "Terraform"
   severity: "LOW"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `128df7ec-f185-48bc-8913-ce756a3ccb85`
 
-**Cloud Provider:** gcp
+**Cloud Provider:** GCP
 
 **Platform:** Terraform
 

@@ -5,7 +5,7 @@ meta:
   name: "aws/policy_without_principal"
   id: "bbe3dd3d-fea9-4b68-a785-cfabe2bbbc54"
   display_name: "Policy without principal"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `bbe3dd3d-fea9-4b68-a785-cfabe2bbbc54`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

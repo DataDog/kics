@@ -5,7 +5,7 @@ meta:
   name: "k8s/service_account_token_automount_not_disabled"
   id: "48471392-d4d0-47c0-b135-cdec95eb3eef"
   display_name: "Service account token auto-mount not disabled"
-  cloud_provider: "k8s"
+  cloud_provider: "Kubernetes"
   platform: "Kubernetes"
   framework: "Kubernetes"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `48471392-d4d0-47c0-b135-cdec95eb3eef`
 
-**Cloud Provider:** k8s
+**Cloud Provider:** Kubernetes
 
 **Platform:** Kubernetes
 

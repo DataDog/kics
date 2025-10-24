@@ -5,7 +5,7 @@ meta:
   name: "aws/api_gateway_deployment_without_api_gateway_usage_plan_associated"
   id: "b3a59b8e-94a3-403e-b6e2-527abaf12034"
   display_name: "API gateway deployment without API gateway usage plan associated"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "LOW"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `b3a59b8e-94a3-403e-b6e2-527abaf12034`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

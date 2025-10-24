@@ -5,7 +5,7 @@ meta:
   name: "aws/cloudwatch_root_account_use_alarm_missing"
   id: "8b1b1e67-6248-4dca-bbad-93486bb181c0"
   display_name: "CloudWatch root account use missing"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `8b1b1e67-6248-4dca-bbad-93486bb181c0`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

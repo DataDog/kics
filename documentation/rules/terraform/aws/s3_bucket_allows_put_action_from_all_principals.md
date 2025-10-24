@@ -5,7 +5,7 @@ meta:
   name: "aws/s3_bucket_allows_put_action_from_all_principals"
   id: "d24c0755-c028-44b1-b503-8e719c898832"
   display_name: "S3 bucket allows put action from all principals"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "CRITICAL"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `d24c0755-c028-44b1-b503-8e719c898832`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

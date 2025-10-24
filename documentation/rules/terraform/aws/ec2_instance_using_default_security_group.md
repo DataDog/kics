@@ -5,7 +5,7 @@ meta:
   name: "aws/ec2_instance_using_default_security_group"
   id: "f1adc521-f79a-4d71-b55b-a68294687432"
   display_name: "EC2 instance using default security group"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `f1adc521-f79a-4d71-b55b-a68294687432`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

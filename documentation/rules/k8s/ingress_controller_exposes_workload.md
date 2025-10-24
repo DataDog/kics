@@ -5,7 +5,7 @@ meta:
   name: "k8s/ingress_controller_exposes_workload"
   id: "69bbc5e3-0818-4150-89cc-1e989b48f23b"
   display_name: "Ingress controller exposes workload"
-  cloud_provider: "k8s"
+  cloud_provider: "Kubernetes"
   platform: "Kubernetes"
   framework: "Kubernetes"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `69bbc5e3-0818-4150-89cc-1e989b48f23b`
 
-**Cloud Provider:** k8s
+**Cloud Provider:** Kubernetes
 
 **Platform:** Kubernetes
 

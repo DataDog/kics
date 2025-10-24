@@ -5,7 +5,7 @@ meta:
   name: "aws/rds_without_logging"
   id: "8d7f7b8c-6c7c-40f8-baa6-62006c6c7b56"
   display_name: "RDS without logging"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `8d7f7b8c-6c7c-40f8-baa6-62006c6c7b56`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

@@ -5,7 +5,7 @@ meta:
   name: "aws/elasticsearch_without_iam_authentication"
   id: "e7530c3c-b7cf-4149-8db9-d037a0b5268e"
   display_name: "Elasticsearch without IAM authentication"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `e7530c3c-b7cf-4149-8db9-d037a0b5268e`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

@@ -5,7 +5,7 @@ meta:
   name: "k8s/missing_app_armor_config"
   id: "8b36775e-183d-4d46-b0f7-96a6f34a723f"
   display_name: "Missing AppArmor profile"
-  cloud_provider: "k8s"
+  cloud_provider: "Kubernetes"
   platform: "Kubernetes"
   framework: "Kubernetes"
   severity: "LOW"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `8b36775e-183d-4d46-b0f7-96a6f34a723f`
 
-**Cloud Provider:** k8s
+**Cloud Provider:** Kubernetes
 
 **Platform:** Kubernetes
 

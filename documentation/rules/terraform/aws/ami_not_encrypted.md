@@ -5,7 +5,7 @@ meta:
   name: "aws/ami_not_encrypted"
   id: "8bbb242f-6e38-4127-86d4-d8f0b2687ae2"
   display_name: "AMI not encrypted"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `8bbb242f-6e38-4127-86d4-d8f0b2687ae2`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

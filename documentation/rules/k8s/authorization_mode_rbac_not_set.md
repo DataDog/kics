@@ -5,7 +5,7 @@ meta:
   name: "k8s/authorization_mode_rbac_not_set"
   id: "1aa4a1ae-5dbb-48a1-9aa2-630ea4be208e"
   display_name: "Authorization mode RBAC not set"
-  cloud_provider: "k8s"
+  cloud_provider: "Kubernetes"
   platform: "Kubernetes"
   framework: "Kubernetes"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `1aa4a1ae-5dbb-48a1-9aa2-630ea4be208e`
 
-**Cloud Provider:** k8s
+**Cloud Provider:** Kubernetes
 
 **Platform:** Kubernetes
 

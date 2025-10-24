@@ -5,7 +5,7 @@ meta:
   name: "k8s/psp_with_added_capabilities"
   id: "7307579a-3abb-46ad-9ce5-2a915634d5c8"
   display_name: "PSP with added capabilities"
-  cloud_provider: "k8s"
+  cloud_provider: "Kubernetes"
   platform: "Kubernetes"
   framework: "Kubernetes"
   severity: "HIGH"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `7307579a-3abb-46ad-9ce5-2a915634d5c8`
 
-**Cloud Provider:** k8s
+**Cloud Provider:** Kubernetes
 
 **Platform:** Kubernetes
 

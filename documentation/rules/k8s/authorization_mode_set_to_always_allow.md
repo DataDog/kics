@@ -5,7 +5,7 @@ meta:
   name: "k8s/authorization_mode_set_to_always_allow"
   id: "f1f4d8da-1ac4-47d0-b1aa-91e69d33f7d5"
   display_name: "Authorization mode set to always allow"
-  cloud_provider: "k8s"
+  cloud_provider: "Kubernetes"
   platform: "Kubernetes"
   framework: "Kubernetes"
   severity: "HIGH"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `f1f4d8da-1ac4-47d0-b1aa-91e69d33f7d5`
 
-**Cloud Provider:** k8s
+**Cloud Provider:** Kubernetes
 
 **Platform:** Kubernetes
 

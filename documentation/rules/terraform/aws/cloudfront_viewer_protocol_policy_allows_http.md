@@ -5,7 +5,7 @@ meta:
   name: "aws/cloudfront_viewer_protocol_policy_allows_http"
   id: "55af1353-2f62-4fa0-a8e1-a210ca2708f5"
   display_name: "Cloudfront viewer protocol policy allows HTTP"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `55af1353-2f62-4fa0-a8e1-a210ca2708f5`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

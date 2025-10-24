@@ -5,7 +5,7 @@ meta:
   name: "aws/efs_without_kms"
   id: "25d251f3-f348-4f95-845c-1090e41a615c"
   display_name: "EFS without KMS"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "LOW"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `25d251f3-f348-4f95-845c-1090e41a615c`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

@@ -5,7 +5,7 @@ meta:
   name: "k8s/container_is_privileged"
   id: "dd29336b-fe57-445b-a26e-e6aa867ae609"
   display_name: "Container is privileged"
-  cloud_provider: "k8s"
+  cloud_provider: "Kubernetes"
   platform: "Kubernetes"
   framework: "Kubernetes"
   severity: "HIGH"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `dd29336b-fe57-445b-a26e-e6aa867ae609`
 
-**Cloud Provider:** k8s
+**Cloud Provider:** Kubernetes
 
 **Platform:** Kubernetes
 

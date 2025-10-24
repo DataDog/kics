@@ -5,7 +5,7 @@ meta:
   name: "azure/postgresql_log_duration_not_set"
   id: "16e0879a-c4ae-4ff8-a67d-a2eed5d67b8f"
   display_name: "PostgreSQL log duration not set"
-  cloud_provider: "azure"
+  cloud_provider: "Azure"
   platform: "Terraform"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `16e0879a-c4ae-4ff8-a67d-a2eed5d67b8f`
 
-**Cloud Provider:** azure
+**Cloud Provider:** Azure
 
 **Platform:** Terraform
 

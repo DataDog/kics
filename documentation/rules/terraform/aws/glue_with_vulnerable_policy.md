@@ -5,7 +5,7 @@ meta:
   name: "aws/glue_with_vulnerable_policy"
   id: "d25edb51-07fb-4a73-97d4-41cecdc53a22"
   display_name: "Glue with vulnerable policy"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `d25edb51-07fb-4a73-97d4-41cecdc53a22`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

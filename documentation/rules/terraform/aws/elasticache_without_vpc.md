@@ -5,7 +5,7 @@ meta:
   name: "aws/elasticache_without_vpc"
   id: "8c849af7-a399-46f7-a34c-32d3dc96f1fc"
   display_name: "ElastiCache without VPC"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "LOW"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `8c849af7-a399-46f7-a34c-32d3dc96f1fc`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

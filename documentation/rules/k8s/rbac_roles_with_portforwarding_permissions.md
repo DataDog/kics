@@ -5,7 +5,7 @@ meta:
   name: "k8s/rbac_roles_with_portforwarding_permissions"
   id: "38fa11ef-dbcc-4da8-9680-7e1fd855b6fb"
   display_name: "RBAC roles with port-forwarding permission"
-  cloud_provider: "k8s"
+  cloud_provider: "Kubernetes"
   platform: "Kubernetes"
   framework: "Kubernetes"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `38fa11ef-dbcc-4da8-9680-7e1fd855b6fb`
 
-**Cloud Provider:** k8s
+**Cloud Provider:** Kubernetes
 
 **Platform:** Kubernetes
 

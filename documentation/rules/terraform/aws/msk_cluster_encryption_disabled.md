@@ -5,7 +5,7 @@ meta:
   name: "aws/msk_cluster_encryption_disabled"
   id: "6db52fa6-d4da-4608-908a-89f0c59e743e"
   display_name: "MSK cluster encryption disabled"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "HIGH"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `6db52fa6-d4da-4608-908a-89f0c59e743e`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

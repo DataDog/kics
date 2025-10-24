@@ -5,7 +5,7 @@ meta:
   name: "k8s/tiller_is_deployed"
   id: "6d173be7-545a-46c6-a81d-2ae52ed1605d"
   display_name: "Tiller (Helm v2) deployed"
-  cloud_provider: "k8s"
+  cloud_provider: "Kubernetes"
   platform: "Kubernetes"
   framework: "Kubernetes"
   severity: "HIGH"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `6d173be7-545a-46c6-a81d-2ae52ed1605d`
 
-**Cloud Provider:** k8s
+**Cloud Provider:** Kubernetes
 
 **Platform:** Kubernetes
 

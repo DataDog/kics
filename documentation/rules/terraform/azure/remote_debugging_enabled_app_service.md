@@ -5,7 +5,7 @@ meta:
   name: "azure/remote_debugging_enabled_app_service"
   id: "e3f7a9b0-c1d2-3e4f-5678-90abcdef1234"
   display_name: "Ensure web app is not remotely debuggable"
-  cloud_provider: "azure"
+  cloud_provider: "Azure"
   platform: "Terraform"
   framework: "Terraform"
   severity: "HIGH"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `e3f7a9b0-c1d2-3e4f-5678-90abcdef1234`
 
-**Cloud Provider:** azure
+**Cloud Provider:** Azure
 
 **Platform:** Terraform
 

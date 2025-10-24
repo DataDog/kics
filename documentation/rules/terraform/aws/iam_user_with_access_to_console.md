@@ -5,7 +5,7 @@ meta:
   name: "aws/iam_user_with_access_to_console"
   id: "9ec311bf-dfd9-421f-8498-0b063c8bc552"
   display_name: "IAM user with access to console"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `9ec311bf-dfd9-421f-8498-0b063c8bc552`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

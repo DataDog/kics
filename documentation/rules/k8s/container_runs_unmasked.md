@@ -5,7 +5,7 @@ meta:
   name: "k8s/container_runs_unmasked"
   id: "f922827f-aab6-447c-832a-e1ff63312bd3"
   display_name: "Container with unmasked /proc access"
-  cloud_provider: "k8s"
+  cloud_provider: "Kubernetes"
   platform: "Kubernetes"
   framework: "Kubernetes"
   severity: "HIGH"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `f922827f-aab6-447c-832a-e1ff63312bd3`
 
-**Cloud Provider:** k8s
+**Cloud Provider:** Kubernetes
 
 **Platform:** Kubernetes
 

@@ -5,7 +5,7 @@ meta:
   name: "aws/secretsmanager_secret_without_kms"
   id: "a2f548f2-188c-4fff-b172-e9a6acb216bd"
   display_name: "Secrets Manager secret without KMS"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `a2f548f2-188c-4fff-b172-e9a6acb216bd`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

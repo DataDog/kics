@@ -5,7 +5,7 @@ meta:
   name: "gcp/pubsub_topic_is_public"
   id: "7sdj7dsj8-f348-4f95-845c-1090e41a615c"
   display_name: "Pub/Sub Topics are anonymously or publicly accessible"
-  cloud_provider: "gcp"
+  cloud_provider: "GCP"
   platform: "Terraform"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `7sdj7dsj8-f348-4f95-845c-1090e41a615c`
 
-**Cloud Provider:** gcp
+**Cloud Provider:** GCP
 
 **Platform:** Terraform
 

@@ -5,7 +5,7 @@ meta:
   name: "aws/api_gateway_with_invalid_compression"
   id: "ed35928e-195c-4405-a252-98ccb664ab7b"
   display_name: "API Gateway with invalid compression"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "LOW"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `ed35928e-195c-4405-a252-98ccb664ab7b`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

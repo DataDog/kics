@@ -5,7 +5,7 @@ meta:
   name: "k8s/peer_auto_tls_set_to_true"
   id: "ae8827e2-4af9-4baa-9998-87539ae0d6f0"
   display_name: "Peer auto TLS set to true"
-  cloud_provider: "k8s"
+  cloud_provider: "Kubernetes"
   platform: "Kubernetes"
   framework: "Kubernetes"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `ae8827e2-4af9-4baa-9998-87539ae0d6f0`
 
-**Cloud Provider:** k8s
+**Cloud Provider:** Kubernetes
 
 **Platform:** Kubernetes
 

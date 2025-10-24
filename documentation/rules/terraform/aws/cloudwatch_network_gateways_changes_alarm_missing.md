@@ -5,7 +5,7 @@ meta:
   name: "aws/cloudwatch_network_gateways_changes_alarm_missing"
   id: "6b6874fe-4c2f-4eea-8b90-7cceaa4a125e"
   display_name: "CloudWatch network gateways changes alarm missing"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "LOW"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `6b6874fe-4c2f-4eea-8b90-7cceaa4a125e`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

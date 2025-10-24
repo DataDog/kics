@@ -5,7 +5,7 @@ meta:
   name: "azure/aks_uses_azure_policies_addon_disabled"
   id: "43789711-161b-4708-b5bb-9d1c626f7492"
   display_name: "Azure Policy Add-on Disabled in AKS Cluster"
-  cloud_provider: "azure"
+  cloud_provider: "Azure"
   platform: "Terraform"
   framework: "Terraform"
   severity: "LOW"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `43789711-161b-4708-b5bb-9d1c626f7492`
 
-**Cloud Provider:** azure
+**Cloud Provider:** Azure
 
 **Platform:** Terraform
 

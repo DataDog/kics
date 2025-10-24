@@ -5,7 +5,7 @@ meta:
   name: "azure/mariadb_server_georedundant_backup_disabled"
   id: "0a70d5f3-1ecd-4c8e-9292-928fc9a8c4f1"
   display_name: "MariaDB server geo-redundant backup disabled"
-  cloud_provider: "azure"
+  cloud_provider: "Azure"
   platform: "Terraform"
   framework: "Terraform"
   severity: "LOW"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `0a70d5f3-1ecd-4c8e-9292-928fc9a8c4f1`
 
-**Cloud Provider:** azure
+**Cloud Provider:** Azure
 
 **Platform:** Terraform
 

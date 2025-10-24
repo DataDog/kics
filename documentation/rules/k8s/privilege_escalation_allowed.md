@@ -5,7 +5,7 @@ meta:
   name: "k8s/privilege_escalation_allowed"
   id: "5572cc5e-1e4c-4113-92a6-7a8a3bd25e6d"
   display_name: "Privilege escalation allowed"
-  cloud_provider: "k8s"
+  cloud_provider: "Kubernetes"
   platform: "Kubernetes"
   framework: "Kubernetes"
   severity: "HIGH"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `5572cc5e-1e4c-4113-92a6-7a8a3bd25e6d`
 
-**Cloud Provider:** k8s
+**Cloud Provider:** Kubernetes
 
 **Platform:** Kubernetes
 

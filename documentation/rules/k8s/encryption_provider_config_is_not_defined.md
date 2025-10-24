@@ -5,7 +5,7 @@ meta:
   name: "k8s/encryption_provider_config_is_not_defined"
   id: "cbd2db69-0b21-4c14-8a40-7710a50571a9"
   display_name: "Encryption provider config is not defined"
-  cloud_provider: "k8s"
+  cloud_provider: "Kubernetes"
   platform: "Kubernetes"
   framework: "Kubernetes"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `cbd2db69-0b21-4c14-8a40-7710a50571a9`
 
-**Cloud Provider:** k8s
+**Cloud Provider:** Kubernetes
 
 **Platform:** Kubernetes
 

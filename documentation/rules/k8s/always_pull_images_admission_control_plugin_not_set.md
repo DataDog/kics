@@ -5,7 +5,7 @@ meta:
   name: "k8s/always_pull_images_admission_control_plugin_not_set"
   id: "a77f4d07-c6e0-4a48-8b35-0eeb51576f4f"
   display_name: "Always pull images admission control plugin not set"
-  cloud_provider: "k8s"
+  cloud_provider: "Kubernetes"
   platform: "Kubernetes"
   framework: "Kubernetes"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `a77f4d07-c6e0-4a48-8b35-0eeb51576f4f`
 
-**Cloud Provider:** k8s
+**Cloud Provider:** Kubernetes
 
 **Platform:** Kubernetes
 

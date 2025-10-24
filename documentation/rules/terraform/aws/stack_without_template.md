@@ -5,7 +5,7 @@ meta:
   name: "aws/stack_without_template"
   id: "91bea7b8-0c31-4863-adc9-93f6177266c4"
   display_name: "Stack without template"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "LOW"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `91bea7b8-0c31-4863-adc9-93f6177266c4`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

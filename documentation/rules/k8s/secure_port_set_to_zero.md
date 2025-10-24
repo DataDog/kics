@@ -5,7 +5,7 @@ meta:
   name: "k8s/secure_port_set_to_zero"
   id: "3d24b204-b73d-42cb-b0bf-1a5438c5f71e"
   display_name: "Secure port set to zero"
-  cloud_provider: "k8s"
+  cloud_provider: "Kubernetes"
   platform: "Kubernetes"
   framework: "Kubernetes"
   severity: "HIGH"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `3d24b204-b73d-42cb-b0bf-1a5438c5f71e`
 
-**Cloud Provider:** k8s
+**Cloud Provider:** Kubernetes
 
 **Platform:** Kubernetes
 

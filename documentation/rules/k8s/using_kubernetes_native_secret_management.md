@@ -5,7 +5,7 @@ meta:
   name: "k8s/using_kubernetes_native_secret_management"
   id: "b9c83569-459b-4110-8f79-6305aa33cb37"
   display_name: "Using Kubernetes native secret management"
-  cloud_provider: "k8s"
+  cloud_provider: "Kubernetes"
   platform: "Kubernetes"
   framework: "Kubernetes"
   severity: "INFO"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `b9c83569-459b-4110-8f79-6305aa33cb37`
 
-**Cloud Provider:** k8s
+**Cloud Provider:** Kubernetes
 
 **Platform:** Kubernetes
 

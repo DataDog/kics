@@ -5,7 +5,7 @@ meta:
   name: "aws/mq_broker_is_publicly_accessible"
   id: "4eb5f791-c861-4afd-9f94-f2a6a3fe49cb"
   display_name: "MQ broker is publicly accessible"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "HIGH"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `4eb5f791-c861-4afd-9f94-f2a6a3fe49cb`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

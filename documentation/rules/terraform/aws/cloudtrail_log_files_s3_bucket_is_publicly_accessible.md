@@ -5,7 +5,7 @@ meta:
   name: "aws/cloudtrail_log_files_s3_bucket_is_publicly_accessible"
   id: "bd0088a5-c133-4b20-b129-ec9968b16ef3"
   display_name: "CloudTrail log files S3 bucket is publicly accessible"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "HIGH"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `bd0088a5-c133-4b20-b129-ec9968b16ef3`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

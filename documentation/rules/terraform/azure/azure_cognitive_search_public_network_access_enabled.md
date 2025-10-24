@@ -5,7 +5,7 @@ meta:
   name: "azure/azure_cognitive_search_public_network_access_enabled"
   id: "4a9e0f00-0765-4f72-a0d4-d31110b78279"
   display_name: "Azure Cognitive Search public network access enabled"
-  cloud_provider: "azure"
+  cloud_provider: "Azure"
   platform: "Terraform"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `4a9e0f00-0765-4f72-a0d4-d31110b78279`
 
-**Cloud Provider:** azure
+**Cloud Provider:** Azure
 
 **Platform:** Terraform
 

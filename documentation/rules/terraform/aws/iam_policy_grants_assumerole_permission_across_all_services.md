@@ -5,7 +5,7 @@ meta:
   name: "aws/iam_policy_grants_assumerole_permission_across_all_services"
   id: "bcdcbdc6-a350-4855-ae7c-d1e6436f7c97"
   display_name: "IAM policy grants 'AssumeRole' permission across all services"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `bcdcbdc6-a350-4855-ae7c-d1e6436f7c97`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

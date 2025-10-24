@@ -5,7 +5,7 @@ meta:
   name: "k8s/rbac_roles_with_attach_permission"
   id: "d45330fd-f58d-45fb-a682-6481477a0f84"
   display_name: "RBAC roles with attach permission"
-  cloud_provider: "k8s"
+  cloud_provider: "Kubernetes"
   platform: "Kubernetes"
   framework: "Kubernetes"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `d45330fd-f58d-45fb-a682-6481477a0f84`
 
-**Cloud Provider:** k8s
+**Cloud Provider:** Kubernetes
 
 **Platform:** Kubernetes
 

@@ -5,7 +5,7 @@ meta:
   name: "aws/sns_topic_encrypted_with_aws_managed_key"
   id: "b1a72f66-2236-4f3b-87ba-0da1b366956f"
   display_name: "SNS topic encrypted with AWS managed key"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `b1a72f66-2236-4f3b-87ba-0da1b366956f`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

@@ -5,7 +5,7 @@ meta:
   name: "aws/ebs_volume_snapshot_not_encrypted"
   id: "e6b4b943-6883-47a9-9739-7ada9568f8ca"
   display_name: "EBS volume snapshot not encrypted"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "HIGH"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `e6b4b943-6883-47a9-9739-7ada9568f8ca`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

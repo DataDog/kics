@@ -5,7 +5,7 @@ meta:
   name: "azure/sql_server_alert_email_disabled"
   id: "55975007-f6e7-4134-83c3-298f1fe4b519"
   display_name: "SQL server alert email disabled"
-  cloud_provider: "azure"
+  cloud_provider: "Azure"
   platform: "Terraform"
   framework: "Terraform"
   severity: "INFO"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `55975007-f6e7-4134-83c3-298f1fe4b519`
 
-**Cloud Provider:** azure
+**Cloud Provider:** Azure
 
 **Platform:** Terraform
 

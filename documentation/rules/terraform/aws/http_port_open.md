@@ -5,7 +5,7 @@ meta:
   name: "aws/http_port_open"
   id: "ffac8a12-322e-42c1-b9b9-81ff85c39ef7"
   display_name: "HTTP port open to internet"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `ffac8a12-322e-42c1-b9b9-81ff85c39ef7`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

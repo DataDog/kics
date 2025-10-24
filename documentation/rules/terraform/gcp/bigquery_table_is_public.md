@@ -5,7 +5,7 @@ meta:
   name: "gcp/bigquery_table_is_public"
   id: "a9b8c7d6-e5f4-3210-abcd-1234567890ab"
   display_name: "BigQuery table is public"
-  cloud_provider: "gcp"
+  cloud_provider: "GCP"
   platform: "Terraform"
   framework: "Terraform"
   severity: "HIGH"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `a9b8c7d6-e5f4-3210-abcd-1234567890ab`
 
-**Cloud Provider:** gcp
+**Cloud Provider:** GCP
 
 **Platform:** Terraform
 

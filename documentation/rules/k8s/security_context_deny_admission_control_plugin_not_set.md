@@ -5,7 +5,7 @@ meta:
   name: "k8s/security_context_deny_admission_control_plugin_not_set"
   id: "6a68bebe-c021-492e-8ddb-55b0567fb768"
   display_name: "Security context deny admission control plugin not set"
-  cloud_provider: "k8s"
+  cloud_provider: "Kubernetes"
   platform: "Kubernetes"
   framework: "Kubernetes"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `6a68bebe-c021-492e-8ddb-55b0567fb768`
 
-**Cloud Provider:** k8s
+**Cloud Provider:** Kubernetes
 
 **Platform:** Kubernetes
 

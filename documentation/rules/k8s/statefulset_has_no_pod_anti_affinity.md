@@ -5,7 +5,7 @@ meta:
   name: "k8s/statefulset_has_no_pod_anti_affinity"
   id: "d740d048-8ed3-49d3-b77b-6f072f3b669e"
   display_name: "StatefulSet without podAntiAffinity"
-  cloud_provider: "k8s"
+  cloud_provider: "Kubernetes"
   platform: "Kubernetes"
   framework: "Kubernetes"
   severity: "LOW"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `d740d048-8ed3-49d3-b77b-6f072f3b669e`
 
-**Cloud Provider:** k8s
+**Cloud Provider:** Kubernetes
 
 **Platform:** Kubernetes
 

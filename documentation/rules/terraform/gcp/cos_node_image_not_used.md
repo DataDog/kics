@@ -5,7 +5,7 @@ meta:
   name: "gcp/cos_node_image_not_used"
   id: "8a893e46-e267-485a-8690-51f39951de58"
   display_name: "COS node image not used"
-  cloud_provider: "gcp"
+  cloud_provider: "GCP"
   platform: "Terraform"
   framework: "Terraform"
   severity: "LOW"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `8a893e46-e267-485a-8690-51f39951de58`
 
-**Cloud Provider:** gcp
+**Cloud Provider:** GCP
 
 **Platform:** Terraform
 

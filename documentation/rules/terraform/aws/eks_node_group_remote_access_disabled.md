@@ -5,7 +5,7 @@ meta:
   name: "aws/eks_node_group_remote_access_disabled"
   id: "ba40ace1-a047-483c-8a8d-bc2d3a67a82d"
   display_name: "EKS node group remote access disabled"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `ba40ace1-a047-483c-8a8d-bc2d3a67a82d`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

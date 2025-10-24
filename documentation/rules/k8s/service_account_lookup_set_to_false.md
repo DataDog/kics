@@ -5,7 +5,7 @@ meta:
   name: "k8s/service_account_lookup_set_to_false"
   id: "a5530bd7-225a-48f9-91bb-f40b04200165"
   display_name: "Service account lookup set to false"
-  cloud_provider: "k8s"
+  cloud_provider: "Kubernetes"
   platform: "Kubernetes"
   framework: "Kubernetes"
   severity: "HIGH"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `a5530bd7-225a-48f9-91bb-f40b04200165`
 
-**Cloud Provider:** k8s
+**Cloud Provider:** Kubernetes
 
 **Platform:** Kubernetes
 

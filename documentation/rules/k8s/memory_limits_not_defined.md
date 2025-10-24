@@ -5,7 +5,7 @@ meta:
   name: "k8s/memory_limits_not_defined"
   id: "b14d1bc4-a208-45db-92f0-e21f8e2588e9"
   display_name: "Memory limits not defined"
-  cloud_provider: "k8s"
+  cloud_provider: "Kubernetes"
   platform: "Kubernetes"
   framework: "Kubernetes"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `b14d1bc4-a208-45db-92f0-e21f8e2588e9`
 
-**Cloud Provider:** k8s
+**Cloud Provider:** Kubernetes
 
 **Platform:** Kubernetes
 

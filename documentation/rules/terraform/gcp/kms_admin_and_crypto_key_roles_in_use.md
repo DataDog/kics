@@ -5,7 +5,7 @@ meta:
   name: "gcp/kms_admin_and_crypto_key_roles_in_use"
   id: "92e4464a-4139-4d57-8742-b5acc0347680"
   display_name: "KMS admin and CryptoKey roles in use"
-  cloud_provider: "gcp"
+  cloud_provider: "GCP"
   platform: "Terraform"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `92e4464a-4139-4d57-8742-b5acc0347680`
 
-**Cloud Provider:** gcp
+**Cloud Provider:** GCP
 
 **Platform:** Terraform
 

@@ -5,7 +5,7 @@ meta:
   name: "azure/mysql_server_public_access_enabled"
   id: "f118890b-2468-42b1-9ce9-af35146b425b"
   display_name: "MySQL server public access enabled"
-  cloud_provider: "azure"
+  cloud_provider: "Azure"
   platform: "Terraform"
   framework: "Terraform"
   severity: "HIGH"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `f118890b-2468-42b1-9ce9-af35146b425b`
 
-**Cloud Provider:** azure
+**Cloud Provider:** Azure
 
 **Platform:** Terraform
 

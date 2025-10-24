@@ -5,7 +5,7 @@ meta:
   name: "gcp/shielded_vm_disabled"
   id: "1b44e234-3d73-41a8-9954-0b154135280e"
   display_name: "Shielded VM disabled"
-  cloud_provider: "gcp"
+  cloud_provider: "GCP"
   platform: "Terraform"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `1b44e234-3d73-41a8-9954-0b154135280e`
 
-**Cloud Provider:** gcp
+**Cloud Provider:** GCP
 
 **Platform:** Terraform
 

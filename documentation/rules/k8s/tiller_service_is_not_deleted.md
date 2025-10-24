@@ -5,7 +5,7 @@ meta:
   name: "k8s/tiller_service_is_not_deleted"
   id: "8b862ca9-0fbd-4959-ad72-b6609bdaa22d"
   display_name: "Tiller Service present"
-  cloud_provider: "k8s"
+  cloud_provider: "Kubernetes"
   platform: "Kubernetes"
   framework: "Kubernetes"
   severity: "HIGH"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `8b862ca9-0fbd-4959-ad72-b6609bdaa22d`
 
-**Cloud Provider:** k8s
+**Cloud Provider:** Kubernetes
 
 **Platform:** Kubernetes
 

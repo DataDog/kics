@@ -5,7 +5,7 @@ meta:
   name: "aws/rds_using_default_port"
   id: "bca7cc4d-b3a4-4345-9461-eb69c68fcd26"
   display_name: "RDS using default port"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "LOW"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `bca7cc4d-b3a4-4345-9461-eb69c68fcd26`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

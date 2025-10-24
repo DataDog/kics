@@ -5,7 +5,7 @@ meta:
   name: "aws/role_with_privilege_escalation_by_actions_iam_AttachUserPolicy"
   id: "7c96920c-6fd0-449d-9a52-0aa431b6beaf"
   display_name: "Role with privilege escalation by actions 'iam:AttachUserPolicy'"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `7c96920c-6fd0-449d-9a52-0aa431b6beaf`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

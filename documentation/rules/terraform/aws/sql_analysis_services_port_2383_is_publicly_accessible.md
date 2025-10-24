@@ -5,7 +5,7 @@ meta:
   name: "aws/sql_analysis_services_port_2383_is_publicly_accessible"
   id: "54c417bf-c762-48b9-9d31-b3d87047e3f0"
   display_name: "SQL analysis services port 2383 (TCP) is publicly accessible"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `54c417bf-c762-48b9-9d31-b3d87047e3f0`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

@@ -5,7 +5,7 @@ meta:
   name: "gcp/sql_db_instance_with_ssl_disabled"
   id: "02474449-71aa-40a1-87ae-e14497747b00"
   display_name: "SQL DB instance with SSL disabled"
-  cloud_provider: "gcp"
+  cloud_provider: "GCP"
   platform: "Terraform"
   framework: "Terraform"
   severity: "HIGH"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `02474449-71aa-40a1-87ae-e14497747b00`
 
-**Cloud Provider:** gcp
+**Cloud Provider:** GCP
 
 **Platform:** Terraform
 

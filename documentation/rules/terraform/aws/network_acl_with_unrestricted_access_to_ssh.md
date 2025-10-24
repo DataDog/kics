@@ -5,7 +5,7 @@ meta:
   name: "aws/network_acl_with_unrestricted_access_to_ssh"
   id: "3af7f2fd-06e6-4dab-b996-2912bea19ba4"
   display_name: "Network ACL with unrestricted access to SSH"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `3af7f2fd-06e6-4dab-b996-2912bea19ba4`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

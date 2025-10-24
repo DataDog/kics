@@ -5,7 +5,7 @@ meta:
   name: "github/script_block_injection"
   id: "62ff6823-927a-427f-acf9-f1ea2932d616"
   display_name: "Script block injection"
-  cloud_provider: "github"
+  cloud_provider: "GitHub"
   platform: "CICD"
   framework: "CICD"
   severity: "HIGH"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `62ff6823-927a-427f-acf9-f1ea2932d616`
 
-**Cloud Provider:** github
+**Cloud Provider:** GitHub
 
 **Platform:** CICD
 

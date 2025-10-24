@@ -5,7 +5,7 @@ meta:
   name: "aws/user_with_privilege_escalation_by_actions_lambda_UpdateFunctionCode"
   id: "b69247e5-7e73-464e-ba74-ec9b715c6e12"
   display_name: "User with privilege escalation by actions 'lambda:UpdateFunctionCode'"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `b69247e5-7e73-464e-ba74-ec9b715c6e12`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

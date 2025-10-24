@@ -5,7 +5,7 @@ meta:
   name: "k8s/cluster_allows_unsafe_sysctls"
   id: "9127f0d9-2310-42e7-866f-5fd9d20dcbad"
   display_name: "Cluster allows unsafe sysctls"
-  cloud_provider: "k8s"
+  cloud_provider: "Kubernetes"
   platform: "Kubernetes"
   framework: "Kubernetes"
   severity: "HIGH"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `9127f0d9-2310-42e7-866f-5fd9d20dcbad`
 
-**Cloud Provider:** k8s
+**Cloud Provider:** Kubernetes
 
 **Platform:** Kubernetes
 

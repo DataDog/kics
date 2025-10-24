@@ -5,7 +5,7 @@ meta:
   name: "aws/athena_workgroup_not_encrypted"
   id: "d364984a-a222-4b5f-a8b0-e23ab19ebff3"
   display_name: "Athena workgroup not encrypted"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "HIGH"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `d364984a-a222-4b5f-a8b0-e23ab19ebff3`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

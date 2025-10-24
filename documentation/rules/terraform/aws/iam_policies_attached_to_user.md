@@ -5,7 +5,7 @@ meta:
   name: "aws/iam_policies_attached_to_user"
   id: "b4378389-a9aa-44ee-91e7-ef183f11079e"
   display_name: "IAM policies attached to user"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `b4378389-a9aa-44ee-91e7-ef183f11079e`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

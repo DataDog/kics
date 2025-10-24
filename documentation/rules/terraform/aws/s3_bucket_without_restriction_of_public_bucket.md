@@ -5,7 +5,7 @@ meta:
   name: "aws/s3_bucket_without_restriction_of_public_bucket"
   id: "1ec253ab-c220-4d63-b2de-5b40e0af9293"
   display_name: "S3 bucket without restriction of public bucket"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `1ec253ab-c220-4d63-b2de-5b40e0af9293`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

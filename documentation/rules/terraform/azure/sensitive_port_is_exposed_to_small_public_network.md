@@ -5,7 +5,7 @@ meta:
   name: "azure/sensitive_port_is_exposed_to_small_public_network"
   id: "e9dee01f-2505-4df2-b9bf-7804d1fd9082"
   display_name: "Sensitive port is exposed to small public network"
-  cloud_provider: "azure"
+  cloud_provider: "Azure"
   platform: "Terraform"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `e9dee01f-2505-4df2-b9bf-7804d1fd9082`
 
-**Cloud Provider:** azure
+**Cloud Provider:** Azure
 
 **Platform:** Terraform
 

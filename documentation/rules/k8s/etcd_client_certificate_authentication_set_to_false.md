@@ -5,7 +5,7 @@ meta:
   name: "k8s/etcd_client_certificate_authentication_set_to_false"
   id: "9391103a-d8d7-4671-ac5d-606ba7ccb0ac"
   display_name: "etcd client certificate authentication set to false"
-  cloud_provider: "k8s"
+  cloud_provider: "Kubernetes"
   platform: "Kubernetes"
   framework: "Kubernetes"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `9391103a-d8d7-4671-ac5d-606ba7ccb0ac`
 
-**Cloud Provider:** k8s
+**Cloud Provider:** Kubernetes
 
 **Platform:** Kubernetes
 

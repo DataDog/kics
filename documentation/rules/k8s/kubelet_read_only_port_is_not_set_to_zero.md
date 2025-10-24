@@ -5,7 +5,7 @@ meta:
   name: "k8s/kubelet_read_only_port_is_not_set_to_zero"
   id: "2940d48a-dc5e-4178-a3f8-bfbd80720b41"
   display_name: "Kubelet read-only port is not set to zero"
-  cloud_provider: "k8s"
+  cloud_provider: "Kubernetes"
   platform: "Kubernetes"
   framework: "Kubernetes"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `2940d48a-dc5e-4178-a3f8-bfbd80720b41`
 
-**Cloud Provider:** k8s
+**Cloud Provider:** Kubernetes
 
 **Platform:** Kubernetes
 

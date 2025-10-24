@@ -5,7 +5,7 @@ meta:
   name: "k8s/root_ca_file_not_defined"
   id: "05fb986f-ac73-4ebb-a5b2-7faafa93d882"
   display_name: "Root CA file not defined"
-  cloud_provider: "k8s"
+  cloud_provider: "Kubernetes"
   platform: "Kubernetes"
   framework: "Kubernetes"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `05fb986f-ac73-4ebb-a5b2-7faafa93d882`
 
-**Cloud Provider:** k8s
+**Cloud Provider:** Kubernetes
 
 **Platform:** Kubernetes
 

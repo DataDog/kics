@@ -5,7 +5,7 @@ meta:
   name: "aws/redshift_using_default_port"
   id: "41abc6cc-dde1-4217-83d3-fb5f0cc09d8f"
   display_name: "Redshift using default port"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "LOW"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `41abc6cc-dde1-4217-83d3-fb5f0cc09d8f`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

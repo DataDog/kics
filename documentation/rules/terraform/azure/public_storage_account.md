@@ -5,7 +5,7 @@ meta:
   name: "azure/public_storage_account"
   id: "17f75827-0684-48f4-8747-61129c7e4198"
   display_name: "Public storage account"
-  cloud_provider: "azure"
+  cloud_provider: "Azure"
   platform: "Terraform"
   framework: "Terraform"
   severity: "HIGH"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `17f75827-0684-48f4-8747-61129c7e4198`
 
-**Cloud Provider:** azure
+**Cloud Provider:** Azure
 
 **Platform:** Terraform
 

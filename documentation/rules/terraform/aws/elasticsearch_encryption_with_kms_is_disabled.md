@@ -5,7 +5,7 @@ meta:
   name: "aws/elasticsearch_encryption_with_kms_is_disabled"
   id: "7af2f4a3-00d9-47f3-8d15-ca0888f4e5b2"
   display_name: "Elasticsearch encryption with KMS disabled"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "HIGH"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `7af2f4a3-00d9-47f3-8d15-ca0888f4e5b2`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

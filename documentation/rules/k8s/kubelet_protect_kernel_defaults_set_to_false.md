@@ -5,7 +5,7 @@ meta:
   name: "k8s/kubelet_protect_kernel_defaults_set_to_false"
   id: "6cf42c97-facd-4fda-b8af-ea4529123355"
   display_name: "Kubelet protect-kernel-defaults set to false"
-  cloud_provider: "k8s"
+  cloud_provider: "Kubernetes"
   platform: "Kubernetes"
   framework: "Kubernetes"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `6cf42c97-facd-4fda-b8af-ea4529123355`
 
-**Cloud Provider:** k8s
+**Cloud Provider:** Kubernetes
 
 **Platform:** Kubernetes
 

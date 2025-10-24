@@ -5,7 +5,7 @@ meta:
   name: "gcp/kms_crypto_key_publicly_accessible"
   id: "16cc87d1-dd47-4f46-b3ce-4dfcac8fd2f5"
   display_name: "KMS CryptoKey is publicly accessible"
-  cloud_provider: "gcp"
+  cloud_provider: "GCP"
   platform: "Terraform"
   framework: "Terraform"
   severity: "HIGH"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `16cc87d1-dd47-4f46-b3ce-4dfcac8fd2f5`
 
-**Cloud Provider:** gcp
+**Cloud Provider:** GCP
 
 **Platform:** Terraform
 

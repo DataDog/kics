@@ -5,7 +5,7 @@ meta:
   name: "aws/efs_with_vulnerable_policy"
   id: "fae52418-bb8b-4ac2-b287-0b9082d6a3fd"
   display_name: "EFS with vulnerable policy"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `fae52418-bb8b-4ac2-b287-0b9082d6a3fd`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

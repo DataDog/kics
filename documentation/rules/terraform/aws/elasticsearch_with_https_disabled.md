@@ -5,7 +5,7 @@ meta:
   name: "aws/elasticsearch_with_https_disabled"
   id: "2e9e0729-66d5-4148-9d39-5e6fb4bf2a4e"
   display_name: "Elasticsearch with HTTPS disabled"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `2e9e0729-66d5-4148-9d39-5e6fb4bf2a4e`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

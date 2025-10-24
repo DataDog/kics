@@ -5,7 +5,7 @@ meta:
   name: "azure/storage_container_is_publicly_accessible"
   id: "dd5230f8-a577-4bbb-b7ac-f2c2fe7d5299"
   display_name: "Storage container is publicly accessible"
-  cloud_provider: "azure"
+  cloud_provider: "Azure"
   platform: "Terraform"
   framework: "Terraform"
   severity: "HIGH"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `dd5230f8-a577-4bbb-b7ac-f2c2fe7d5299`
 
-**Cloud Provider:** azure
+**Cloud Provider:** Azure
 
 **Platform:** Terraform
 

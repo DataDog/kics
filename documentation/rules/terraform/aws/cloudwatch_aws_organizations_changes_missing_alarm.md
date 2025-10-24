@@ -5,7 +5,7 @@ meta:
   name: "aws/cloudwatch_aws_organizations_changes_missing_alarm"
   id: "38b85c45-e772-4de8-a247-69619ca137b3"
   display_name: "CloudWatch AWS organizations changes missing alarm"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "INFO"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `38b85c45-e772-4de8-a247-69619ca137b3`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

@@ -5,7 +5,7 @@ meta:
   name: "gcp/os_login_disabled"
   id: "32ecd6eb-0711-421f-9627-1a28d9eff217"
   display_name: "OSLogin disabled"
-  cloud_provider: "gcp"
+  cloud_provider: "GCP"
   platform: "Terraform"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `32ecd6eb-0711-421f-9627-1a28d9eff217`
 
-**Cloud Provider:** gcp
+**Cloud Provider:** GCP
 
 **Platform:** Terraform
 

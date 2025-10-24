@@ -5,7 +5,7 @@ meta:
   name: "k8s/cluster_admin_role_binding_with_super_user_permissions"
   id: "249328b8-5f0f-409f-b1dd-029f07882e11"
   display_name: "Cluster admin rolebinding with superuser permissions"
-  cloud_provider: "k8s"
+  cloud_provider: "Kubernetes"
   platform: "Kubernetes"
   framework: "Kubernetes"
   severity: "LOW"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `249328b8-5f0f-409f-b1dd-029f07882e11`
 
-**Cloud Provider:** k8s
+**Cloud Provider:** Kubernetes
 
 **Platform:** Kubernetes
 

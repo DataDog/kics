@@ -5,7 +5,7 @@ meta:
   name: "k8s/hpa_targets_invalid_object"
   id: "2f652c42-619d-4361-b361-9f599688f8ca"
   display_name: "HPA targets invalid object"
-  cloud_provider: "k8s"
+  cloud_provider: "Kubernetes"
   platform: "Kubernetes"
   framework: "Kubernetes"
   severity: "LOW"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `2f652c42-619d-4361-b361-9f599688f8ca`
 
-**Cloud Provider:** k8s
+**Cloud Provider:** Kubernetes
 
 **Platform:** Kubernetes
 

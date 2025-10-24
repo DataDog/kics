@@ -5,7 +5,7 @@ meta:
   name: "gcp/container_registry_repository_is_public"
   id: "f6a7b8c9-d0e1-2345-f678-90abcdef1234"
   display_name: "Container Registry repo is public"
-  cloud_provider: "gcp"
+  cloud_provider: "GCP"
   platform: "Terraform"
   framework: "Terraform"
   severity: "HIGH"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `f6a7b8c9-d0e1-2345-f678-90abcdef1234`
 
-**Cloud Provider:** gcp
+**Cloud Provider:** GCP
 
 **Platform:** Terraform
 

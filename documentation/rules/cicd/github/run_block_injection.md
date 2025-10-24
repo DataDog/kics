@@ -5,7 +5,7 @@ meta:
   name: "github/run_block_injection"
   id: "20f14e1a-a899-4e79-9f09-b6a84cd4649b"
   display_name: "Run block injection"
-  cloud_provider: "github"
+  cloud_provider: "GitHub"
   platform: "CICD"
   framework: "CICD"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `20f14e1a-a899-4e79-9f09-b6a84cd4649b`
 
-**Cloud Provider:** github
+**Cloud Provider:** GitHub
 
 **Platform:** CICD
 

@@ -5,7 +5,7 @@ meta:
   name: "aws/iam_access_key_is_exposed"
   id: "7081f85c-b94d-40fd-8b45-a4f1cac75e46"
   display_name: "IAM access key is exposed"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `7081f85c-b94d-40fd-8b45-a4f1cac75e46`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

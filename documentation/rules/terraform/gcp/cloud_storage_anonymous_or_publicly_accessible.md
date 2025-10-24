@@ -5,7 +5,7 @@ meta:
   name: "gcp/cloud_storage_anonymous_or_publicly_accessible"
   id: "a6cd52a1-3056-4910-96a5-894de9f3f3b3"
   display_name: "Cloud Storage is anonymous or publicly accessible"
-  cloud_provider: "gcp"
+  cloud_provider: "GCP"
   platform: "Terraform"
   framework: "Terraform"
   severity: "CRITICAL"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `a6cd52a1-3056-4910-96a5-894de9f3f3b3`
 
-**Cloud Provider:** gcp
+**Cloud Provider:** GCP
 
 **Platform:** Terraform
 

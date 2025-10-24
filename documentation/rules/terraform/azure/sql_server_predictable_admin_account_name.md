@@ -5,7 +5,7 @@ meta:
   name: "azure/sql_server_predictable_admin_account_name"
   id: "2ab6de9a-0136-415c-be92-79d2e4fd750f"
   display_name: "SQL server predictable admin account name"
-  cloud_provider: "azure"
+  cloud_provider: "Azure"
   platform: "Terraform"
   framework: "Terraform"
   severity: "LOW"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `2ab6de9a-0136-415c-be92-79d2e4fd750f`
 
-**Cloud Provider:** azure
+**Cloud Provider:** Azure
 
 **Platform:** Terraform
 

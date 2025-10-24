@@ -5,7 +5,7 @@ meta:
   name: "gcp/sql_database_has_cross_db_ownership_chaining"
   id: "b2d5f3c9-1e68-47a1-89b4-92f3a6d7e123"
   display_name: "SQL Server cross DB ownership chaining enabled"
-  cloud_provider: "gcp"
+  cloud_provider: "GCP"
   platform: "Terraform"
   framework: "Terraform"
   severity: "HIGH"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `b2d5f3c9-1e68-47a1-89b4-92f3a6d7e123`
 
-**Cloud Provider:** gcp
+**Cloud Provider:** GCP
 
 **Platform:** Terraform
 

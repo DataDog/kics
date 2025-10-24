@@ -5,7 +5,7 @@ meta:
   name: "aws/ec2_instance_monitoring_disabled"
   id: "23b70e32-032e-4fa6-ba5c-82f56b9980e6"
   display_name: "EC2 instance monitoring disabled"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "MEDIUM"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `23b70e32-032e-4fa6-ba5c-82f56b9980e6`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

@@ -5,7 +5,7 @@ meta:
   name: "aws/rds_db_instance_publicly_accessible"
   id: "35113e6f-2c6b-414d-beec-7a9482d3b2d1"
   display_name: "RDS DB instance publicly accessible"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "CRITICAL"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `35113e6f-2c6b-414d-beec-7a9482d3b2d1`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

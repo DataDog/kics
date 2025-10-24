@@ -5,7 +5,7 @@ meta:
   name: "aws/remote_desktop_port_open_to_internet"
   id: "151187cb-0efc-481c-babd-ad24e3c9bc22"
   display_name: "Remote Desktop port open to internet"
-  cloud_provider: "aws"
+  cloud_provider: "AWS"
   platform: "Terraform"
   framework: "Terraform"
   severity: "HIGH"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `151187cb-0efc-481c-babd-ad24e3c9bc22`
 
-**Cloud Provider:** aws
+**Cloud Provider:** AWS
 
 **Platform:** Terraform
 

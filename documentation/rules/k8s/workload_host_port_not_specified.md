@@ -5,7 +5,7 @@ meta:
   name: "k8s/workload_host_port_not_specified"
   id: "2b1836f1-dcce-416e-8e16-da8c71920633"
   display_name: "Workload host port not specified"
-  cloud_provider: "k8s"
+  cloud_provider: "Kubernetes"
   platform: "Kubernetes"
   framework: "Kubernetes"
   severity: "LOW"
@@ -15,7 +15,7 @@ meta:
 
 **Id:** `2b1836f1-dcce-416e-8e16-da8c71920633`
 
-**Cloud Provider:** k8s
+**Cloud Provider:** Kubernetes
 
 **Platform:** Kubernetes
 
