@@ -66,6 +66,7 @@ func (s *Service) sink(ctx context.Context, filename, scanID string,
 	for _, document := range documents.Docs {
 		_, err = json.Marshal(document)
 		if err != nil {
+			logger.Err(err).Msgf("failed to marshal document for file: %s", filename)
 			continue
 		}
 
@@ -95,7 +96,7 @@ func (s *Service) sink(ctx context.Context, filename, scanID string,
 	s.Tracker.TrackFileParseCountLines(documents.CountLines - len(documents.IgnoreLines))
 	s.Tracker.TrackFileIgnoreCountLines(len(documents.IgnoreLines))
 
-	return errors.Wrap(err, "failed to save file content")
+	return nil
 }
 
 func resolveCRLFFile(fileContent []byte) []byte {
